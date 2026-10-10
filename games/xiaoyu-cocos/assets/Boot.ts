@@ -1,4 +1,4 @@
-import { _decorator, Component, ResolutionPolicy, view } from 'cc';
+import { _decorator, Component, profiler, ResolutionPolicy, view } from 'cc';
 import { Application } from './game/Application';
 const { ccclass } = _decorator;
 
@@ -7,6 +7,7 @@ export class Boot extends Component {
     private application: Application;
     start() {
         view.setDesignResolutionSize(720, 1280, ResolutionPolicy.FIXED_WIDTH);
+        profiler.hideStats();
         this.application = new Application(this.node);
         this.application.start().catch(error => console.error('[LittleSteps] startup failed', error));
     }

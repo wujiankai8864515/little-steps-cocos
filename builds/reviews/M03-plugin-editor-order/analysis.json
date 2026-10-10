@@ -3,7 +3,8 @@
   "evidence": "Explicit framework-not-loaded warning preceding Missing class and null constructor in scene metrics; exit 36",
   "root_cause": "Engine.ts eagerly resolves plugin and registers mesh class at module evaluation, even for editor-only scene inspection",
   "fix": "Resolve framework and register custom mesh class lazily when runtime constructs the application/rig",
-  "regression": "Typecheck passed; clean second candidate actual build pending",
+  "regression": "Second clean candidate compiled (official success exit 36), attached Boot loaded and Home first draw observed in actual browser",
   "source_scene_changed": false,
-  "status": "fix_candidate_pending_real_build"
+  "status": "closed_for_module_loading; full-game visual acceptance still pending",
+  "exit_code_source": "https://docs.cocos.com/creator/3.8/manual/en/editor/publish/publish-in-command-line.html"
 }

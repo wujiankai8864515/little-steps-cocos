@@ -1302,7 +1302,7 @@
     }
   ],
   "snapshotSHA256": "3302b9c84116f6a31a5c3374ec6e8d03d54d45447ce6fde35179213ba4bb358d",
-  "build": "failed_exit_36",
+  "build": "compiler_exit_36_success_but_invalid_attached_boot_rejected",
   "visual": "pending",
   "wechat": "not covered by this fixture",
   "command": [
@@ -1316,5 +1316,7 @@
   "evidence": [
     "builds/reviews/M03-plugin-editor-order/project.log",
     "builds/reviews/M03-plugin-editor-order/builder.log"
-  ]
+  ],
+  "buildExitCode": 36,
+  "exitCodeMeaning": "Official Creator success code; logs still contain invalid Boot and Missing class, so QA rejects this artifact"
 }

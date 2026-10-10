@@ -2,6 +2,7 @@ import { Node, Sprite, UITransform, Vec3 } from 'cc';
 import { GameAssets } from './Assets';
 import { core, meshSprite, Scope } from './Engine';
 import { nodeAt } from './Visual';
+import { deformPart, SoftPose } from './SoftGeometry';
 
 // Authored Skeleton2D hierarchy and all seven curves are transferred verbatim.
 // Source math stays in downward coordinates; only the Cocos submission flips y.
@@ -82,4 +83,16 @@ export class XiaoyuRig {
         return null;
     }
     snapshot() { return {elapsed: this.elapsed, contacts: this.contacts}; }
+    deform(pose: SoftPose) {
+        const body = this.nodes.get('Skeleton2D/Ground/Body/OriginalBody');
+        const affine = (node: Node) => {
+            const m = node.worldMatrix;
+            return [m.m00, -m.m01, -m.m04, m.m05, m.m12, -m.m13];
+        };
+        const inverseBody = core.Math2D.inverse(affine(body));
+        for (const part of this.meshes) {
+            const toBody = core.Math2D.multiply(inverseBody, affine(part.node));
+            if (deformPart(part.mesh, part.node.name, pose, toBody)) part.sprite.geometryChanged();
+        }
+    }
 }

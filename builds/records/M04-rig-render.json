@@ -1,0 +1,41 @@
+{
+  "id": "M04.1",
+  "status": "partial_actual_browser_mesh_rendered_full_interaction_and_fidelity_pending",
+  "sourceCandidate": "home-rig-v2",
+  "runtimeEvidence": [
+    "builds/qa/cocos/home-rig-v2-405x720.jpg",
+    "builds/qa/baseline/godot-home.jpg"
+  ],
+  "verified": [
+    "Creator 3.8.8 build with attached Boot class valid after lazy plugin lookup",
+    "Runtime plugin loaded; asset catalog and required bundles acquired",
+    "Real custom 2D mesh draws original body, tail and mallet; all authored curves present",
+    "Source composition first draw observed in browser; no runtime errors in captured console"
+  ],
+  "notVerified": [
+    "strict matched clock/state pixel comparison",
+    "all Home controls and page flows",
+    "shared lighting and shadows",
+    "actual drag/landing and rigid-part occlusion",
+    "WeChat phone, loading or 60fps guarantee"
+  ],
+  "viewport": {
+    "wide": [
+      1280,
+      720
+    ],
+    "portrait": [
+      405,
+      720
+    ],
+    "wideFinding": "Default Cocos web-mobile canvas fills viewport; use portrait content viewport for same-size reference. Shipping portrait WeChat/responsive safe area pending."
+  },
+  "softGeometry": {
+    "status": "source typechecked; 4 geometric tests passed; actual drag wiring pending",
+    "source": [
+      "home/behavior/character_geometry.gd",
+      "home/behavior/soft_attachment_mesh.gd"
+    ]
+  },
+  "profilingOverlay": "Present in v2 debug fixture; source Boot now hides it. Clean next fixture screenshot pending."
+}
