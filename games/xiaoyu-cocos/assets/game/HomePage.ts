@@ -14,6 +14,7 @@ import { SessionMerit } from './MeritFeedback';
 import { MeritArtView } from './MeritArtView';
 import { FishInteraction } from './FishInteraction';
 import { InteractionFeedback } from './InteractionFeedback';
+import { HomeIncense, makeIncenseGradient } from './HomeIncense';
 
 let roomSerial=0;
 
@@ -31,17 +32,19 @@ export class HomePage {
     readonly roomRoot:Node;
     private surface:any;
     readonly fish:FishInteraction;
+    readonly incense:HomeIncense;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
         const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width);
         const target=await assets.acquireTransient('HomeRoom-'+(++roomSerial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'HomeRoom'),texture=>texture.destroy(),scope);
-        const page=new HomePage(parent,assets,scope,height,gestureSeen,clock,target,plan,music);
+        const gradient=await assets.acquireTransient('IncenseRodGradient',65536,makeIncenseGradient,texture=>texture.destroy(),scope);
+        const page=new HomePage(parent,assets,scope,height,gestureSeen,clock,target,plan,music,gradient);
         await scope.guard(page.surface.ready);
         console.info('[LittleSteps] Home room prepared '+JSON.stringify(page.surface.snapshot()));
         return page;
     }
-    private constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic) {
+    private constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic,gradient:any) {
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.root.active=false;
         scope.own(() => { this.root.active = false; this.root.destroy(); });
@@ -75,6 +78,7 @@ export class HomePage {
         this.meritArt=new MeritArtView(this.roomRoot,assets,scope);
         this.hud=new HomeHUD(this.root,assets,scope,height,music);
         this.feedback=new InteractionFeedback(this.roomRoot,scope);
+        this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,height]);
         // Room RT and the user's main Canvas have different physical origins.
         // Actor coordinates remain canonical in either parent; map input and
         // projection through the actor's current presentation frame.
@@ -91,13 +95,14 @@ export class HomePage {
             pulse:(at,accepted)=>this.feedback.pulse(at,accepted),hold:(at,fraction)=>this.feedback.hold(at,fraction),clear:()=>{this.feedback.clear();this.rig.resetSecondary();},
         });
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
-        this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{const accepted=this.fish.down(id,point(at));if(accepted)report('down');return accepted;},move:(at:number[],id:number)=>this.fish.move(id,point(at)),up:(at:number[],id:number)=>{this.fish.up(id,point(at));report('up');},cancel:()=>{this.fish.cancel(false);report('cancel');}},()=>this.active&&!this.hud.blocked);
-        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){this.pointerBinding.cancel();this.fish.cancel(true);report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
+        let owner='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.incense.down(id,point(at))){owner='incense';console.info('[LittleSteps] incense input down');return true;}const accepted=this.fish.down(id,point(at));if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{if(owner==='incense')this.incense.move(id,point(at));else this.fish.move(id,point(at));},up:(at:number[],id:number)=>{if(owner==='incense'){this.incense.up(id,point(at));console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else{this.fish.up(id,point(at));report('up');}owner='';},cancel:()=>{this.incense.cancel();this.fish.cancel(false);owner='';report('cancel');}},()=>this.active&&!this.hud.blocked);
+        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){this.pointerBinding.cancel();this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
-        this.hud.onOpen=()=>{this.pointerBinding.cancel();this.fish.cancel(true);this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
-        this.rig.onContact=()=>{if(!this.active)return;if(this.merit.award(this.rig.behavior.contacts)){this.hud.merit.setValue(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
+        this.hud.onOpen=()=>{this.pointerBinding.cancel();this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
+        this.rig.onContact=()=>{if(!this.active)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
         layers.push({z:100,order:1003,node:this.meritArt.root});
         layers.push({z:90,order:1004,node:this.feedback.root});
+        layers.push({z:22,order:1005,node:this.incense.root},{z:24,order:1006,node:this.incense.visual},{z:24,order:1007,node:this.incense.hint});
         layers.push({z: 12, order: 1000, node: this.rig.root});
         layers.push({z:-40,order:1001,node:this.lighting.shafts()},{z:-39,order:1002,node:this.lighting.dustNode()});
         this.shadows.layers.forEach(layer=>layers.push(layer));
@@ -108,7 +113,7 @@ export class HomePage {
         console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
-    resume() {this.active=true;this.surface.setActive(true);this.hud.setActive(true);}
-    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
+    resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.hud.setActive(true);}
+    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.incense.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
 }

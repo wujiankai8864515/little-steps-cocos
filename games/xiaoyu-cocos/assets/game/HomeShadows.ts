@@ -1,4 +1,4 @@
-import { Color, Graphics, Material, Node, Sprite, Vec4 } from 'cc';
+import { Color, Graphics, Material, Node, Sprite, SpriteFrame, Vec4 } from 'cc';
 import { ArtSpec, GameAssets } from './Assets';
 import { core, meshSprite, Scope } from './Engine';
 import { HomeClock } from './HomeClock';
@@ -13,13 +13,13 @@ export class HomeShadows {
     readonly layers:Array<{z:number;order:number;node:Node}>=[];
     private soft=new Map<Node,{grid:any;sun:ShadowGeometry;lamp:ShadowGeometry;active:()=>boolean;lift:()=>number;ground:()=>number;frame:()=>Node;using:boolean;physical:number}>();
     constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
-    add(source:Node,resource:string,properties:any,centered=false) {
-        const spec=this.assets.art(resource),name=source.name,grounded=!!SUPPORT_SPANS[name]&&properties['metadata/floor'];
-        const contacts=grounded?contactProfile(name,spec.size,(x,y)=>this.assets.alpha(resource,x,y)).contacts:[];
+    add(source:Node,resource:string,properties:any,centered=false,custom?:{spec:ArtSpec;frame:()=>SpriteFrame}) {
+        const spec=custom?custom.spec:this.assets.art(resource),name=source.name,grounded=!!(properties['metadata/spans']||SUPPORT_SPANS[name])&&properties['metadata/floor'];
+        const contacts=grounded?contactProfile(name,spec.size,(x,y)=>this.assets.alpha(resource,x,y),properties['metadata/spans']||SUPPORT_SPANS[name]).contacts:[];
         const group=nodeAt(this.root,name+'Projection'),make=(kind:string):Pass=>{
             const node=nodeAt(group,kind),mesh=shadowGeometry(spec.size,contacts),sprite=node.addComponent(meshSprite());
-            sprite.configure(mesh,spec.size,spec.content);sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=this.assets.frame(resource,this.scope);
-            const material=new Material();material.initialize({effectAsset:this.assets.effect('home-shadow'),defines:{USE_TEXTURE:true}});
+            sprite.configure(mesh,spec.size,spec.content);sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=custom?custom.frame():this.assets.frame(resource,this.scope);
+            const material=new Material();material.initialize({effectAsset:this.assets.effect(properties['metadata/table']?'home-table-shadow':'home-shadow'),defines:{USE_TEXTURE:true}});
             const c=spec.content,s=spec.size;material.setProperty('sourceUV',new Vec4(c[0]/s[0],c[1]/s[1],c[2]/s[0],c[3]/s[1]));material.setProperty('textureSize',new Vec4(s[0],s[1],0,0));
             sprite.customMaterial=material;this.scope.own(()=>material.destroy());return {root:node,sprite,mesh,material};
         };
@@ -34,7 +34,7 @@ export class HomeShadows {
         const inverse=core.Math2D.inverse(this.affine(this.root)),naturalEnergy=s.sunEnergy>0?s.sunEnergy:s.moonEnergy*.34;
         const cast=s.sunEnergy>0?s.cast:s.moonCast,cot=s.sunEnergy>0?s.cot:1.6,penumbra=s.sunEnergy>0?1.35+(.7-1.35)*s.noon:1.25;
         for(const caster of this.casters) {
-            const p=caster.properties,floor=!!p['metadata/floor'],factor=p['metadata/height_factor'],soft=this.soft.get(caster.source),ground=soft?soft.ground():p['metadata/ground'],lift=soft?soft.lift():0,active=soft&&soft.active();
+            const p=caster.properties,floor=!!p['metadata/floor'],factor=p['metadata/height_factor'],soft=this.soft.get(caster.source),ground=soft?soft.ground():typeof p['metadata/ground']==='function'?p['metadata/ground']():p['metadata/ground'],lift=soft?soft.lift():0,active=soft&&soft.active();
             if(soft&&!!active!==soft.using){soft.using=!!active;[caster.sun,caster.lamp].forEach((pass,i)=>{if(pass)pass.sprite.configure(active?(i===0?soft.sun:soft.lamp):pass.mesh,caster.spec.size,caster.spec.content);});}
             let matrix=core.Math2D.multiply(soft?core.Math2D.inverse(this.affine(soft.frame())):inverse,this.affine(caster.source));
             if(caster.centered)matrix=core.Math2D.multiply(matrix,[1,0,0,1,-caster.spec.size[0]/2,-caster.spec.size[1]/2]);
@@ -48,7 +48,8 @@ export class HomeShadows {
                 else projectShadow(pass.mesh,matrix,directions[index],ground,caster.grounded,floor,lift,[cast[0]*cot*p['metadata/thickness'],cast[1]*cot*p['metadata/thickness']]);
                 pass.sprite.geometryChanged();const material=pass.material;
                 material.setProperty('roomOrigin',new Vec4(origin.x,origin.y,scale.x,scale.y));material.setProperty('castState',new Vec4(cast[0],cast[1],0,0));
-                material.setProperty('shadowState',new Vec4(cot,energy,penumbra,factor));material.setProperty('shadowFlags',new Vec4(floor?1:0,index===0?1:0,index===1?1:0,1));
+                material.setProperty('shadowState',new Vec4(cot,energy,penumbra,factor));material.setProperty('shadowFlags',new Vec4(floor&&!p['metadata/table']?1:0,index===0?1:0,index===1?1:0,1));
+                if(p['metadata/table']){const m=core.Math2D.multiply(core.Math2D.inverse(this.affine(p['metadata/table'])),this.affine(this.root));material.setProperty('tableOrigin',new Vec4(m[4],m[5],0,0));material.setProperty('tableAxes',new Vec4(m[0],m[1],m[2],m[3]));}
             });
             if(caster.contact) {
                 const g=caster.contact;g.node.active=caster.source.activeInHierarchy;g.clear();

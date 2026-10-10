@@ -1,0 +1,154 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        tableOrigin: { value: [0, 0, 0, 0] }
+        tableAxes: { value: [1, 0, 0, 1] }
+        roomOrigin: { value: [0, 0, 1, 1] }
+        sourceUV: { value: [0, 0, 1, 1] }
+        textureSize: { value: [1, 1, 0, 0] }
+        castState: { value: [0, 1, 0, 0] }
+        shadowState: { value: [1, 0.35, 1, 0.6] }
+        shadowFlags: { value: [1, 1, 0, 1] }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec3 sourcePayload;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; sourcePayload=a_color.xyz; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform TabletopState {vec4 tableOrigin;vec4 tableAxes;};
+  #define tabletop_origin tableOrigin.xy
+  #define tabletop_axis_x tableAxes.xy
+  #define tabletop_axis_y tableAxes.zw
+  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;};
+  #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
+  #define texture_bounds vec4(0.0,0.0,1.0,1.0)
+  #define cast_dir castState.xy
+  #define cot_e shadowState.x
+  #define strength shadowState.y
+  #define penumbra_scale shadowState.z
+  #define height_factor shadowState.w
+  #define floor_clip (shadowFlags.x > 0.5)
+  #define use_window (shadowFlags.y > 0.5)
+  #define lamp_shadow (shadowFlags.z > 0.5)
+  #define source_opacity shadowFlags.w
+  in vec3 sourcePayload;
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+
+// Home's approved window geometry, sill, floor and leaf/mullion occluders only.
+// One continuous 2.5D projector. Adapters supply actual room geometry/occluders.
+float shared_window_u(vec2 p,vec2 direction,vec4 geometry,float floor_y){
+ float depth=max(p.y-geometry.y,0.0);
+ float floor_depth=max(p.y-floor_y,0.0);
+ float width=geometry.z+depth*geometry.w;
+ float center=geometry.x+direction.x*(depth*0.43+floor_depth*0.22);
+ return (p.x-center)/width;
+}
+float shared_window_field(vec2 point,vec2 direction,float cotangent,vec4 geometry,float floor_y,vec2 aperture,vec2 start,vec4 reach,vec3 mullion,float baseline,float leaf_breakup){
+ float depth=max(point.y-geometry.y,0.0);
+ float u=shared_window_u(point,direction,geometry,floor_y);
+ float gate=1.0-smoothstep(aperture.x,aperture.y,abs(u));
+ float pane=baseline+(1.0-baseline)*smoothstep(mullion.y,mullion.z,abs(u-mullion.x));
+ float leaves=sin(u*48.0+depth*0.018)*sin(u*29.0-depth*0.022);
+ float edge=1.0-leaf_breakup*smoothstep(0.53,0.96,abs(u))*(0.5+0.5*leaves);
+ return gate*pane*edge*smoothstep(start.x,start.y,point.y)*(1.0-smoothstep(reach.x+cotangent*reach.z,reach.y+cotangent*reach.w,point.y));
+}
+
+float window_field(vec2 p,vec2 direction,float cotangent){
+ return shared_window_field(p,direction,cotangent,vec4(156.0,145.0,119.0,0.46),740.0,vec2(0.84,1.05),vec2(130.0,205.0),vec4(1060.0,1200.0,90.0,90.0),vec3(-0.23,0.02,0.075),0.61,0.22);
+}
+
+vec4 sample_shadow(vec2 uv){
+  vec2 p=(uv-sourceUV.xy)/sourceUV.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
+}
+float inside_source(vec2 uv){
+    return step(texture_bounds.x,uv.x)*step(texture_bounds.y,uv.y)*step(uv.x,texture_bounds.z)*step(uv.y,texture_bounds.w);
+}
+vec2 clamped_source_uv(vec2 uv,vec2 texel){
+    // Keep bilinear footprints within this atlas entry, including the half texel.
+    return clamp(uv,texture_bounds.xy+texel*0.5,texture_bounds.zw-texel*0.5);
+}
+
+
+float tabletop_edge(vec2 a,vec2 b,vec2 p){vec2 d=b-a;return (d.x*(p.y-a.y)-d.y*(p.x-a.x))/max(length(d),1.0);}
+float tabletop_mask(vec2 world){
+    vec2 p=tabletop_origin+tabletop_axis_x*world.x+tabletop_axis_y*world.y;
+    float e=min(min(tabletop_edge(vec2(22.,207.),vec2(174.,134.),p),tabletop_edge(vec2(174.,134.),vec2(487.,175.),p)),
+        min(tabletop_edge(vec2(487.,175.),vec2(355.,268.),p),tabletop_edge(vec2(355.,268.),vec2(22.,207.),p)));
+    return smoothstep(-0.5,1.5,e);
+}
+
+vec4 frag(){
+  vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+  vec2 source_world=sourcePayload.xy;float source_height=sourcePayload.z;
+  vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
+
+    float h=source_height*height_factor;
+    // Penumbra grows away from grounded contact, to avoid cut-paper blocks.
+    vec2 d=TEXTURE_PIXEL_SIZE*(2.0+clamp(h*0.045,0.0,9.0))*penumbra_scale;
+    float a=sample_shadow(clamped_source_uv(UV,TEXTURE_PIXEL_SIZE)).a*inside_source(UV)*0.24;
+    a+=sample_shadow(clamped_source_uv(UV+vec2(d.x,0.0),TEXTURE_PIXEL_SIZE)).a*inside_source(UV+vec2(d.x,0.0))*0.12;
+    a+=sample_shadow(clamped_source_uv(UV-vec2(d.x,0.0),TEXTURE_PIXEL_SIZE)).a*inside_source(UV-vec2(d.x,0.0))*0.12;
+    a+=sample_shadow(clamped_source_uv(UV+vec2(0.0,d.y),TEXTURE_PIXEL_SIZE)).a*inside_source(UV+vec2(0.0,d.y))*0.12;
+    a+=sample_shadow(clamped_source_uv(UV-vec2(0.0,d.y),TEXTURE_PIXEL_SIZE)).a*inside_source(UV-vec2(0.0,d.y))*0.12;
+    a+=sample_shadow(clamped_source_uv(UV+d*0.707,TEXTURE_PIXEL_SIZE)).a*inside_source(UV+d*0.707)*0.07;
+    a+=sample_shadow(clamped_source_uv(UV-d*0.707,TEXTURE_PIXEL_SIZE)).a*inside_source(UV-d*0.707)*0.07;
+    a+=sample_shadow(clamped_source_uv(UV+vec2(d.x,-d.y)*0.707,TEXTURE_PIXEL_SIZE)).a*inside_source(UV+vec2(d.x,-d.y)*0.707)*0.07;
+    a+=sample_shadow(clamped_source_uv(UV+vec2(-d.x,d.y)*0.707,TEXTURE_PIXEL_SIZE)).a*inside_source(UV+vec2(-d.x,d.y)*0.707)*0.07;
+    float g=min(window_field(world_pos,cast_dir,cot_e),window_field(source_world,cast_dir,cot_e));
+    if(!use_window){g=1.0;}
+    if(lamp_shadow){
+        float r=length(world_pos-vec2(465.0,468.0))/672.0;
+        float falloff=r<0.35?mix(1.0,0.45,r/0.35):mix(0.45,0.0,clamp((r-0.35)/0.65,0.0,1.0));
+        g*=falloff;
+    }
+    if(floor_clip){g*=smoothstep(738.0,748.0,world_pos.y);}
+    vec4 result=vec4(0.10,0.075,0.055,a*strength*g*tabletop_mask(world_pos)*source_opacity);
+result.a*=color.a;return result;}
+
+}%

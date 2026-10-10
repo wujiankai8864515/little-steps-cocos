@@ -6,6 +6,21 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+test('Information bubbles stay in the safe area and reserve head clearance across moving anchors',()=>{
+ const safe=[24,135,672,1025],options={minWidth:320,maxWidth:430,aboveOnly:true};
+ assert.deepEqual(Array.from(core.infoBubbleLayout([350,100],safe,96,30,options)),[350,100,0,0]);
+ for(const anchor of [[350,666],[5,600],[715,900],[350,270]]){const r=core.infoBubbleLayout(anchor,safe,96,30,options);assert.ok(r[0]>=30&&r[0]+r[2]<=690);assert.ok(r[1]>=141&&r[1]+r[3]<=Math.min(1160,anchor[1]+6)-6);assert.equal(r[2],320);}
+});
+test('Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time',()=>{
+ class Node {constructor(name){this.name=name;this.children=[];this.active=true;this.components=new Map();}addChild(child){child.parent=this;this.children.push(child);}addComponent(T){const value=new T();value.node=this;this.components.set(T,value);return value;}getComponent(T){return this.components.get(T);}setPosition(){}destroy(){this.destroyed=true;}}
+ class UITransform {setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}}
+ class Label {updateRenderData(){const ui=this.node.getComponent(UITransform);if(this.overflow===0)ui.width=96;ui.height=this.lineHeight*1.26;}}
+ Label.Overflow={NONE:0,RESIZE_HEIGHT:1,CLAMP:2};Label.HorizontalAlign={CENTER:0};Label.VerticalAlign={CENTER:0};
+ class Graphics {clear(){}moveTo(){}lineTo(){}close(){}fill(){}stroke(){}}
+ const cc={Node,UITransform,Label,Graphics,UIOpacity:class{},Color:class{constructor(...rgba){this.rgba=rgba;}}},bubble=core.registerUI(cc).infoBubble(new Node('room'),{},'还没燃尽',[350,100],[24,135,672,1025],{aboveOnly:true,minWidth:320});
+ assert.equal(bubble.root.active,true);assert.equal(bubble.snapshot().speakerClearanceBlocked,true);assert.ok(bubble.root.children.every(c=>!c.active));bubble.advance(10);assert.equal(bubble.snapshot().phase,'pop');
+ bubble.setAnchor([350,666]);assert.equal(bubble.snapshot().speakerClearanceBlocked,false);assert.ok(bubble.root.children.every(c=>c.active));bubble.advance(.25);bubble.advance(.2);assert.equal(bubble.snapshot().phase,'hold');bubble.close();bubble.advance(.19);assert.equal(bubble.root.active,false);bubble.setAnchor([350,600]);assert.equal(bubble.root.active,false);
+});
 function fakePointerEngine(){
  class Node {constructor(){this.isValid=true;this.activeInHierarchy=true;this.events=new Map();this.ui={width:100,height:80,convertToNodeSpaceAR:p=>p};}on(e,f){this.events.set(e,f);}off(e,f){if(this.events.get(e)===f)this.events.delete(e);}getComponent(){return this.ui;}emit(e,id,x=20,y=30){const event={getID:()=>id,getUILocation:()=>({x,y:-y})};const f=this.events.get(e);if(f)f(event);return event;}}
  Node.EventType={TOUCH_START:'down',TOUCH_MOVE:'move',TOUCH_END:'up',TOUCH_CANCEL:'cancel'};

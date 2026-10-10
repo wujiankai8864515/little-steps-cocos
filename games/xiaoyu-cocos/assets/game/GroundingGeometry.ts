@@ -7,9 +7,9 @@ export type ShadowGeometry={source:Float32Array;vertices:Float32Array;indices:Ui
 const transform=(m:number[],x:number,y:number)=>[m[0]*x+m[2]*y+m[4],m[1]*x+m[3]*y+m[5]];
 // Shader's original RG encoding rounds contact support to 1/16 illustration px.
 const quantize=(value:number)=>Math.min(65535,Math.max(0,Math.round((value+2048)*16)))/16-2048;
-export function contactProfile(name:string,size:number[],alpha:(x:number,y:number)=>number) {
+export function contactProfile(name:string,size:number[],alpha:(x:number,y:number)=>number,spans=SUPPORT_SPANS[name]||[]) {
     const contacts:number[][][]=[];
-    for(const span of SUPPORT_SPANS[name]||[]) {
+    for(const span of spans) {
         const line:number[][]=[];
         for(let x=span[0];x<=span[1];x+=2) {
             for(let y=size[1]-1;y>=0;y--)if(alpha(x,y)>=.5){line.push([x+.5,y+.5]);break;}

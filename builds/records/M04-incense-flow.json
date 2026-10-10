@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "id": "M04.8",
+  "status": "partial_incense_browser_and_storage_verified_full_parity_pending",
+  "originalSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "publishedReferenceCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "sources": [
+    {
+      "path": "home/independent_incense.gd",
+      "sha256": "5497657b1cb1588a2f3e5634bba41afbe01ccde5deb0e2a53e310803d7a5d1af"
+    },
+    {
+      "path": "home/incense_burn_store.gd",
+      "sha256": "a2ab6be7d5dcb316fc7319f34f9a1c7c99047f6c3227e05c6e50ed5be42c080e"
+    },
+    {
+      "path": "home/flowers/tabletop_support.gd",
+      "sha256": "6fdc7be09e3a5a30f329510fbcaed71511a8126f3a7d5ee669bfffe078ee5f72"
+    },
+    {
+      "path": "home/interaction/home_note.gd",
+      "sha256": "bfd283f04d7e8bcf2ab7dba384de27e7ea11eb866673bfe7bc002e41ee3ee2fd"
+    },
+    {
+      "path": "home/interaction/character_bubble_anchor.gd",
+      "sha256": "e3122cd1cdc2ea31bb9d42a743decd45a57e5e6f0bbf2f633135c3da5a842a96"
+    },
+    {
+      "path": "home/feedback/bitmap_hint.gd",
+      "sha256": "09f6db59dfd5e91ecbe89046c9bac31418c79a6a579e967c699e8e6c230323cc"
+    },
+    {
+      "path": "home/feedback/wayfinding_hint_style.gd",
+      "sha256": "deec35cff18c8efbcd764855343c278bea948c4ecc9a6bc58f3b03489aaeefad"
+    },
+    {
+      "path": "home/feedback/prompt_sparkles.gd",
+      "sha256": "5b2fc543c98b0b78a01670249da884775262caa0f333ab8487a5b5f195760e29"
+    },
+    {
+      "path": "home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "path": "home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "assets/round2/incense_ceramic.png.import",
+      "sha256": "241c001b62273973237b702dec275bb62762a9e9078ae53266b29ad48de163cd"
+    },
+    {
+      "path": "framework/addons/travel_core/ui/speech_bubble.gd",
+      "sha256": "9e155fac41eb1d1913333dc0ad80a7eb69c93f8b811fbc463ccf237d753bda0b"
+    }
+  ],
+  "sourceIntegrity": "builds/reviews/M04-incense-source-integrity.json",
+  "implementation": {
+    "framework": [
+      "generic UTF-8 SHA-256 checkpoints, verified temporary/main readback and retained recovery generations",
+      "measured moving-anchor information bubble with paused speaker-clearance blocking"
+    ],
+    "game": [
+      "original eight-field incense schema, latest valid recovery generation, future-schema protection, stale-save refusal and 64 shared slots",
+      "monotonic/deadline burn clock, restore elapsed time, 30-second stick and live contact reward +2",
+      "original bounded five-column smoke ribbon, generation separation, ignition/ember geometry",
+      "original ceramic contact spans, stick lighting and natural/lamp tabletop shadows",
+      "nine-pixel entry cancel, .28-second bounce, Escape/page/settings cancel and shared bubble"
+    ]
+  },
+  "checks": {
+    "tests": 67,
+    "testsLog": "builds/reviews/M04-incense-v4-tests.log",
+    "typecheckExit": 0,
+    "typecheckLog": "builds/reviews/M04-incense-v2-typecheck.log",
+    "creator": "3.8.8",
+    "buildExit": 36,
+    "buildLogs": [
+      "builds/reviews/M04-incense-runtime-v2-build.log",
+      "builds/reviews/M04-incense-phase2-v2-build.log"
+    ],
+    "pluginSHA256": "632ea8cc8037721707d223885bcbb9095cb63f1599e2618f583821c6272f1ce8",
+    "pluginModes": [
+      "0444",
+      "0555"
+    ],
+    "limits": "CLI completion verified by nonblank browser Home; raw logs retain Creator debug worker SIGTERM messages"
+  },
+  "browser": {
+    "method": "CUA real browser inputs, screenshots and public console; no injected hidden engine state",
+    "viewport": [
+      405,
+      720
+    ],
+    "runtimeURL": "http://127.0.0.1:8820/",
+    "scope": "Direct Home QA route, noon frozen; real animation/clocks/storage/input active",
+    "finalURLRuntimeErrorsOrWarnings": [],
+    "entryEscape": {
+      "release": "2026-10-10T22:55:32.475Z",
+      "escape": "2026-10-10T22:55:32.487Z",
+      "nextValidClick": "2026-10-10T22:55:38.579Z",
+      "burnCountBeforeNextClick": 0,
+      "proof": "builds/reviews/cocos-incense-escape-runtime-v2.jpg"
+    },
+    "started": {
+      "timestamp": "2026-10-10T22:55:38.852Z",
+      "remaining": 30,
+      "burnCount": 1,
+      "revision": 1,
+      "merit": 2,
+      "persistenceFailed": false
+    },
+    "repeat": {
+      "release": "2026-10-10T22:55:48.581Z",
+      "remaining": 20.283299904584652,
+      "burnCount": 1,
+      "message": "还没燃尽",
+      "messageTimestamp": "2026-10-10T22:55:48.855Z",
+      "anchor": [
+        350,
+        666.5011173481629
+      ],
+      "card": [
+        190,
+        566.5011173481629,
+        320,
+        80
+      ],
+      "fontSize": 24
+    },
+    "reload": {
+      "timestamp": "2026-10-10T22:55:55.756Z",
+      "remaining": 13.095999956130981,
+      "burnCount": 1,
+      "revision": 16,
+      "persistenceFailed": false
+    },
+    "heldOutsideInput": {
+      "press": "2026-10-10T22:56:06.554Z",
+      "release": "2026-10-10T22:56:07.365Z",
+      "position": [
+        10,
+        670
+      ],
+      "durationMs": 800,
+      "tipPhaseOnRelease": "hold",
+      "remaining": 1.4912998092174532,
+      "proof": "builds/reviews/cocos-incense-tip-held-runtime-v2.jpg"
+    },
+    "finished": {
+      "timestamp": "2026-10-10T22:56:08.859Z",
+      "remaining": 0,
+      "burnCount": 1,
+      "revision": 29,
+      "merit": 1,
+      "smokeTail": 5.591499809265138,
+      "persistenceFailed": false,
+      "proofAfterTail": "builds/reviews/cocos-incense-finished-runtime-v2.jpg"
+    },
+    "contacts": [
+      {
+        "timestamp": "2026-10-10T22:55:40.401Z",
+        "count": 6,
+        "amount": 2,
+        "lastContact": 5
+      },
+      {
+        "timestamp": "2026-10-10T22:55:47.668Z",
+        "count": 8,
+        "amount": 2,
+        "lastContact": 6
+      },
+      {
+        "timestamp": "2026-10-10T22:55:49.951Z",
+        "count": 10,
+        "amount": 2,
+        "lastContact": 7
+      },
+      {
+        "timestamp": "2026-10-10T22:55:52.151Z",
+        "count": 12,
+        "amount": 2,
+        "lastContact": 8
+      },
+      {
+        "timestamp": "2026-10-10T22:58:56.909Z",
+        "count": 68,
+        "amount": 1,
+        "lastContact": 63
+      }
+    ],
+    "resourceObservation": {
+      "directHomeEntries": 77,
+      "reservedBytes": 183660601,
+      "limits": {
+        "entries": 128,
+        "bytes": 268435456,
+        "specsPerBatch": 80
+      },
+      "scope": "Direct Home only; complete route peak and 19,000,000-byte first download pending"
+    }
+  },
+  "checkpoint": {
+    "phaseSeconds": 2,
+    "steps": 60,
+    "stepSeconds": 0.03333333333333333,
+    "candidates": [
+      "godot-incense-phase2-v1",
+      "home-incense-phase2-v2"
+    ],
+    "logTimestamps": [
+      "2026-10-10T22:56:18.744Z",
+      "2026-10-10T22:59:05.865Z"
+    ],
+    "remainingBoth": 27.9999999999999,
+    "durationBoth": 30,
+    "burnCountBoth": 1,
+    "pointsBoth": 61,
+    "maximumLoggedPositionComponentDifference": 0.0001260195246004514,
+    "maximumLoggedAgeDifference": 4.884981308350689e-15,
+    "numericLimits": "Includes Godot Vector2 string rounding and 32-bit vector precision. One deterministic phase only.",
+    "comparison": "builds/reviews/incense-phase2-comparison-v2.json",
+    "image": "builds/reviews/incense-phase2-comparison-v2.png",
+    "fixtureLimits": "Fixed clocks, isolated storage, programmatic ignition, actor/plant rest and noon. Input/storage separately tested in runtime-v2."
+  },
+  "failures": "builds/reviews/M04-incense-review.md",
+  "remaining": [
+    "exact 0.9px FontVariation fill embolden and all hint/glint raster details",
+    "residual rod/ceramic/table pixels; ignition/tail/re-ignition and all daylight/night/lamp/viewport cases",
+    "real device focus/resource/performance checks and source-frozen WeChat packaging",
+    "vase/flowers, articulated backpack, dragging/offering/drinking, and all remaining pages",
+    "all 138 final requirements remain pending"
+  ],
+  "fullAcceptance": false
+}

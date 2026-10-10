@@ -36,7 +36,8 @@
         "M01-framework.json",
         "M05-surface-flow.json",
         "M04-home-ui-flow.json",
-        "M04-fish-input-flow.json"
+        "M04-fish-input-flow.json",
+        "M04-incense-flow.json"
       ]
     },
     {
@@ -62,14 +63,15 @@
     {
       "id": "M04",
       "description": "complete Home interactions and dynamic rig",
-      "status": "partial_ambient_plants_header_music_merit_and_body_lift_checkpoint_browser_observed_complete_Home_pending",
+      "status": "partial_ambient_plants_header_music_merit_fish_lift_and_incense_browser_observed_complete_Home_pending",
       "evidence": [
         "M04-rig-render.json",
         "M04-ambient-flow.json",
         "M04-plants-flow.json",
         "M04-home-ui-flow.json",
         "M04-fish-input-flow.json",
-        "M04-fish-tail-fin-checkpoints.json"
+        "M04-fish-tail-fin-checkpoints.json",
+        "M04-incense-flow.json"
       ]
     },
     {
@@ -83,7 +85,8 @@
         "M04-plants-flow.json",
         "M05-surface-flow.json",
         "M04-fish-input-flow.json",
-        "M04-fish-tail-fin-checkpoints.json"
+        "M04-fish-tail-fin-checkpoints.json",
+        "M04-incense-flow.json"
       ]
     },
     {
@@ -107,8 +110,10 @@
     {
       "id": "M09",
       "description": "resource bundles, save integrity and lifecycle",
-      "status": "pending",
-      "evidence": []
+      "status": "partial_incense_integrity_recovery_clock_restore_verified_full_save_and_lifecycle_pending",
+      "evidence": [
+        "M04-incense-flow.json"
+      ]
     },
     {
       "id": "M10",

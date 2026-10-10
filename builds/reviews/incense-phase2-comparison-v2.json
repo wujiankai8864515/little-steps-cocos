@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "reference": {
+    "path": "builds/reviews/godot-incense-phase2-v1.jpg",
+    "sha256": "3a33778aa6063d0cac6bcc553093c75829b46e9da76f9dba3a9dba5965a15dbc"
+  },
+  "cocos": {
+    "path": "builds/reviews/cocos-incense-phase2-v2.jpg",
+    "sha256": "1328e4cd1f0eabee2bf8311e3fafd60903b7eca8af856f5df05ac9269d684c96"
+  },
+  "comparison": {
+    "path": "builds/reviews/incense-phase2-comparison-v2.png",
+    "sha256": "7a2710743bef6aefafa00af8055f1956235a60b18580f36b41f07114e00404a0",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.6175628715134887,
+      "RMSRGB": 6.194687545063947,
+      "maximumChannelDifference": 179
+    },
+    "incenseSmokeAndRod": {
+      "rect": [
+        85,
+        468,
+        122,
+        600
+      ],
+      "meanAbsoluteRGB": 1.1794976794976797,
+      "RMSRGB": 2.0420084570134667,
+      "maximumChannelDifference": 18
+    },
+    "ceramicAndTableShadow": {
+      "rect": [
+        76,
+        590,
+        141,
+        635
+      ],
+      "meanAbsoluteRGB": 1.4174358974358974,
+      "RMSRGB": 2.130337796018182,
+      "maximumChannelDifference": 13
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Explicit fixed-clock, isolated-storage ignition; original 1/30 steps and plants/actor at authored rest. Whole frame retains unported vase, articulated backpack and other outstanding product differences. Caption embolden, all lighting/size cases and WeChat GPU/device acceptance pending."
+}

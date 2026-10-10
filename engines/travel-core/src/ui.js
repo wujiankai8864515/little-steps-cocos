@@ -56,6 +56,15 @@ class SwingFeedback {
         while(remaining>0){const step=Math.min(remaining,.016);this.clock+=step;const breeze=Math.sin(this.clock*.8)*.009;this.velocity+=(-18*(this.angle-breeze)-4.5*this.velocity)*step;this.angle=Math2D.clamp(this.angle+this.velocity*step,-.045,.045);remaining-=step;}
     }
 }
+function infoBubbleLayout(anchor,safe,naturalWidth,measuredHeight,options={}) {
+    const r=safe.slice(),point=options.fontSize||24;
+    if(options.aboveOnly){r[3]=Math.min(r[1]+r[3],anchor[1]+6)-r[1];if(r[3]<130)return [anchor[0],anchor[1],0,0];}
+    const available=[r[0]+6,r[1]+6,r[2]-12,r[3]-12],max=Math.min(options.maxWidth||430,available[2]),min=Math.min(options.minWidth||270,max),w=Math2D.clamp(naturalWidth+56,min,max);
+    let h=Math.min(Math.max(Math.max(measuredHeight,point*1.5)+44,79),available[3]-24);
+    const above=Math2D.clamp(anchor[1]-available[1]-20,0,available[3]-24),below=Math2D.clamp(available[1]+available[3]-anchor[1]-20,0,available[3]-24),under=above<h&&below>above;
+    h=Math.min(h,Math.max(under?below:above,80));
+    return [Math2D.clamp(anchor[0]-w/2,available[0],available[0]+available[2]-w),Math2D.clamp(under?anchor[1]+20:anchor[1]-h-20,available[1],available[1]+available[3]-h),w,h];
+}
 function registerUI(cc) {
     const node = (parent, name, rect) => {
         const n = new cc.Node(name); parent.addChild(n); n.setPosition(rect[0],-rect[1]);
@@ -117,7 +126,7 @@ function registerUI(cc) {
     }
     function fixedBubble(parent, font, message, card, anchor, options = {}) {
         const root = node(parent, 'SpeechBubble', [0,0,1,1]), shape = node(root,'PaperShape',[0,0,1,1]);
-        const graphics = shape.addComponent(cc.Graphics), center = [card[0]+card[2]/2,card[1]+card[3]/2];
+        const graphics = shape.addComponent(cc.Graphics);
         const content = node(root,'Content',[card[0]+28,card[1]+20,card[2]-56,card[3]-40]);
         const text = content.addComponent(cc.Label); text.overflow = cc.Label.Overflow.RESIZE_HEIGHT; text.font = font; text.string = message;
         text.horizontalAlign = cc.Label.HorizontalAlign.CENTER; text.verticalAlign = cc.Label.VerticalAlign.CENTER;
@@ -138,6 +147,7 @@ function registerUI(cc) {
         const shapeOpacity = shape.addComponent(cc.UIOpacity), contentOpacity = content.addComponent(cc.UIOpacity);
         let phase = 'pop', time = 0, hold = 0;
         const paint = scale => {
+            const center=[card[0]+card[2]/2,card[1]+card[3]/2];
             graphics.clear();
             const base = card[1] > anchor[1] ? card[1] : card[1]+card[3];
             const tip = [Math2D.clamp(anchor[0],card[0]+22,card[0]+card[2]-22),Math2D.clamp(anchor[1],base-26,base+26)];
@@ -145,7 +155,7 @@ function registerUI(cc) {
             polygon(graphics,contour.map(p=>[p[0],p[1]+4]),[.23,.12,.055,.12]);
             polygon(graphics,contour,[1,.945098039,.839215686,1],[.788235294,.654901961,.443137255,.58]);
         };
-        const api = {root, text, close() {phase='closing';time=0;}, advance(delta) {
+        const api = {root, text, layout(next,at) {card.splice(0,4,...next);anchor.splice(0,2,...at);bounds.setContentSize(Math.max(1,card[2]-56),Math.max(1,card[3]-40));content.setPosition(card[0]+28,-(card[1]+20+(options.fontMetrics?(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*size/2:0)));}, close() {phase='closing';time=0;}, advance(delta) {
             time += Math.max(0,delta);
             let scale = 1, alpha = 1, textAlpha = 1;
             if (phase === 'pop') {
@@ -165,6 +175,15 @@ function registerUI(cc) {
             paint(scale);shapeOpacity.opacity=255*alpha;contentOpacity.opacity=255*alpha*textAlpha;
         }, snapshot: () => ({phase,fontSize:size,card:[...card],measured})};
         api.advance(0); return api;
+    }
+    function infoBubble(parent,font,message,anchor,safe,options={}) {
+        const probe=node(parent,'BubbleMeasurement',[0,0,1,1]),label=probe.addComponent(cc.Label),bounds=probe.getComponent(cc.UITransform),point=options.fontSize||24;
+        label.font=font;label.string=message;label.fontSize=point;label.lineHeight=point*(options.fontMetrics?options.fontMetrics.height:1.2);label.enableWrapText=false;label.overflow=cc.Label.Overflow.NONE;label.updateRenderData(true);
+        const natural=bounds.width,initial=infoBubbleLayout(anchor,safe,natural,point*1.5,Object.assign({},options,{aboveOnly:false}));label.enableWrapText=true;label.overflow=cc.Label.Overflow.RESIZE_HEIGHT;bounds.setContentSize(Math.max(1,initial[2]-56),1);label.updateRenderData(true);const measured=Math.max(0,bounds.height-.26*label.lineHeight);probe.destroy();
+        const card=infoBubbleLayout(anchor,safe,natural,measured,options),fallback=infoBubbleLayout(anchor,safe,natural,measured,Object.assign({},options,{aboveOnly:false})),api=fixedBubble(parent,font,message,card[2]>0?card:fallback,anchor.slice(),options),advance=api.advance,snapshot=api.snapshot;
+        let blocked=false;
+        api.setAnchor=at=>{const rect=infoBubbleLayout(at,safe,natural,measured,options);blocked=rect[2]===0;api.layout(rect,at);api.root.children.forEach(child=>{child.active=!blocked;});};
+        api.advance=delta=>{if(!blocked)advance(delta);};api.snapshot=()=>Object.assign(snapshot(),{speakerClearanceBlocked:blocked});api.setAnchor(anchor);return api;
     }
     function hangingReturn(parent, font, rect, callback, enabled = () => true) {
         const root = node(parent,'HangingReturn',rect), sx=rect[2]/78,sy=rect[3]/128;
@@ -197,6 +216,6 @@ function registerUI(cc) {
         hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
         return {root,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
-    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, hangingReturn});
+    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, hangingReturn});
 }
-Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback});
+Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback,infoBubbleLayout});

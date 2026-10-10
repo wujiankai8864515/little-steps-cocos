@@ -385,6 +385,15 @@ class SwingFeedback {
         while(remaining>0){const step=Math.min(remaining,.016);this.clock+=step;const breeze=Math.sin(this.clock*.8)*.009;this.velocity+=(-18*(this.angle-breeze)-4.5*this.velocity)*step;this.angle=Math2D.clamp(this.angle+this.velocity*step,-.045,.045);remaining-=step;}
     }
 }
+function infoBubbleLayout(anchor,safe,naturalWidth,measuredHeight,options={}) {
+    const r=safe.slice(),point=options.fontSize||24;
+    if(options.aboveOnly){r[3]=Math.min(r[1]+r[3],anchor[1]+6)-r[1];if(r[3]<130)return [anchor[0],anchor[1],0,0];}
+    const available=[r[0]+6,r[1]+6,r[2]-12,r[3]-12],max=Math.min(options.maxWidth||430,available[2]),min=Math.min(options.minWidth||270,max),w=Math2D.clamp(naturalWidth+56,min,max);
+    let h=Math.min(Math.max(Math.max(measuredHeight,point*1.5)+44,79),available[3]-24);
+    const above=Math2D.clamp(anchor[1]-available[1]-20,0,available[3]-24),below=Math2D.clamp(available[1]+available[3]-anchor[1]-20,0,available[3]-24),under=above<h&&below>above;
+    h=Math.min(h,Math.max(under?below:above,80));
+    return [Math2D.clamp(anchor[0]-w/2,available[0],available[0]+available[2]-w),Math2D.clamp(under?anchor[1]+20:anchor[1]-h-20,available[1],available[1]+available[3]-h),w,h];
+}
 function registerUI(cc) {
     const node = (parent, name, rect) => {
         const n = new cc.Node(name); parent.addChild(n); n.setPosition(rect[0],-rect[1]);
@@ -446,7 +455,7 @@ function registerUI(cc) {
     }
     function fixedBubble(parent, font, message, card, anchor, options = {}) {
         const root = node(parent, 'SpeechBubble', [0,0,1,1]), shape = node(root,'PaperShape',[0,0,1,1]);
-        const graphics = shape.addComponent(cc.Graphics), center = [card[0]+card[2]/2,card[1]+card[3]/2];
+        const graphics = shape.addComponent(cc.Graphics);
         const content = node(root,'Content',[card[0]+28,card[1]+20,card[2]-56,card[3]-40]);
         const text = content.addComponent(cc.Label); text.overflow = cc.Label.Overflow.RESIZE_HEIGHT; text.font = font; text.string = message;
         text.horizontalAlign = cc.Label.HorizontalAlign.CENTER; text.verticalAlign = cc.Label.VerticalAlign.CENTER;
@@ -467,6 +476,7 @@ function registerUI(cc) {
         const shapeOpacity = shape.addComponent(cc.UIOpacity), contentOpacity = content.addComponent(cc.UIOpacity);
         let phase = 'pop', time = 0, hold = 0;
         const paint = scale => {
+            const center=[card[0]+card[2]/2,card[1]+card[3]/2];
             graphics.clear();
             const base = card[1] > anchor[1] ? card[1] : card[1]+card[3];
             const tip = [Math2D.clamp(anchor[0],card[0]+22,card[0]+card[2]-22),Math2D.clamp(anchor[1],base-26,base+26)];
@@ -474,7 +484,7 @@ function registerUI(cc) {
             polygon(graphics,contour.map(p=>[p[0],p[1]+4]),[.23,.12,.055,.12]);
             polygon(graphics,contour,[1,.945098039,.839215686,1],[.788235294,.654901961,.443137255,.58]);
         };
-        const api = {root, text, close() {phase='closing';time=0;}, advance(delta) {
+        const api = {root, text, layout(next,at) {card.splice(0,4,...next);anchor.splice(0,2,...at);bounds.setContentSize(Math.max(1,card[2]-56),Math.max(1,card[3]-40));content.setPosition(card[0]+28,-(card[1]+20+(options.fontMetrics?(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*size/2:0)));}, close() {phase='closing';time=0;}, advance(delta) {
             time += Math.max(0,delta);
             let scale = 1, alpha = 1, textAlpha = 1;
             if (phase === 'pop') {
@@ -494,6 +504,15 @@ function registerUI(cc) {
             paint(scale);shapeOpacity.opacity=255*alpha;contentOpacity.opacity=255*alpha*textAlpha;
         }, snapshot: () => ({phase,fontSize:size,card:[...card],measured})};
         api.advance(0); return api;
+    }
+    function infoBubble(parent,font,message,anchor,safe,options={}) {
+        const probe=node(parent,'BubbleMeasurement',[0,0,1,1]),label=probe.addComponent(cc.Label),bounds=probe.getComponent(cc.UITransform),point=options.fontSize||24;
+        label.font=font;label.string=message;label.fontSize=point;label.lineHeight=point*(options.fontMetrics?options.fontMetrics.height:1.2);label.enableWrapText=false;label.overflow=cc.Label.Overflow.NONE;label.updateRenderData(true);
+        const natural=bounds.width,initial=infoBubbleLayout(anchor,safe,natural,point*1.5,Object.assign({},options,{aboveOnly:false}));label.enableWrapText=true;label.overflow=cc.Label.Overflow.RESIZE_HEIGHT;bounds.setContentSize(Math.max(1,initial[2]-56),1);label.updateRenderData(true);const measured=Math.max(0,bounds.height-.26*label.lineHeight);probe.destroy();
+        const card=infoBubbleLayout(anchor,safe,natural,measured,options),fallback=infoBubbleLayout(anchor,safe,natural,measured,Object.assign({},options,{aboveOnly:false})),api=fixedBubble(parent,font,message,card[2]>0?card:fallback,anchor.slice(),options),advance=api.advance,snapshot=api.snapshot;
+        let blocked=false;
+        api.setAnchor=at=>{const rect=infoBubbleLayout(at,safe,natural,measured,options);blocked=rect[2]===0;api.layout(rect,at);api.root.children.forEach(child=>{child.active=!blocked;});};
+        api.advance=delta=>{if(!blocked)advance(delta);};api.snapshot=()=>Object.assign(snapshot(),{speakerClearanceBlocked:blocked});api.setAnchor(anchor);return api;
     }
     function hangingReturn(parent, font, rect, callback, enabled = () => true) {
         const root = node(parent,'HangingReturn',rect), sx=rect[2]/78,sy=rect[3]/128;
@@ -526,9 +545,9 @@ function registerUI(cc) {
         hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
         return {root,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
-    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, hangingReturn});
+    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, hangingReturn});
 }
-Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback});
+Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback,infoBubbleLayout});
 
 // Two update ticks and one actual draw precede the sine-out entrance.
 function createPageRouter(cc, owner) {
@@ -724,6 +743,64 @@ function registerRenderSurface(cc) {
     return {estimateTarget, createTarget, create};
 }
 Object.assign(api, {registerRenderSurface});
+
+// Checksummed, recoverable checkpoints. The game supplies schema validation
+// and generation ordering; this module knows no save slot or product rule.
+function checkpointUtf8(text) {
+    const bytes=[];
+    for(let i=0;i<text.length;i++) {
+        let cp=text.charCodeAt(i);
+        if(cp>=0xd800&&cp<=0xdbff) {const next=text.charCodeAt(i+1);if(next>=0xdc00&&next<=0xdfff){cp=0x10000+(cp-0xd800)*1024+next-0xdc00;i++;}else cp=0xfffd;}
+        else if(cp>=0xdc00&&cp<=0xdfff)cp=0xfffd;
+        if(cp<128)bytes.push(cp);else if(cp<2048)bytes.push(192|(cp>>6),128|(cp&63));else if(cp<65536)bytes.push(224|(cp>>12),128|((cp>>6)&63),128|(cp&63));else bytes.push(240|(cp>>18),128|((cp>>12)&63),128|((cp>>6)&63),128|(cp&63));
+    }
+    return bytes;
+}
+function checkpointSHA256(text) {
+    const bytes=checkpointUtf8(text),length=bytes.length*8;
+    bytes.push(128);while(bytes.length%64!==56)bytes.push(0);
+    const high=Math.floor(length/4294967296),low=length>>>0;
+    for(const word of [high,low])for(let shift=24;shift>=0;shift-=8)bytes.push((word>>>shift)&255);
+    const k=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    const h=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],w=new Int32Array(64),rotr=(x,n)=>(x>>>n)|(x<<(32-n));
+    for(let base=0;base<bytes.length;base+=64) {
+        for(let i=0;i<16;i++)w[i]=bytes[base+i*4]<<24|bytes[base+i*4+1]<<16|bytes[base+i*4+2]<<8|bytes[base+i*4+3];
+        for(let i=16;i<64;i++){const a=w[i-15],b=w[i-2];w[i]=(rotr(a,7)^rotr(a,18)^(a>>>3))+w[i-16]+(rotr(b,17)^rotr(b,19)^(b>>>10))+w[i-7];}
+        let [a,b,c,d,e,f,g,j]=h;
+        for(let i=0;i<64;i++){const t=(j+(rotr(e,6)^rotr(e,11)^rotr(e,25))+((e&f)^(~e&g))+k[i]+w[i])|0,u=((rotr(a,2)^rotr(a,13)^rotr(a,22))+((a&b)^(a&c)^(b&c)))|0;j=g;g=f;f=e;e=(d+t)|0;d=c;c=b;b=a;a=(t+u)|0;}
+        [a,b,c,d,e,f,g,j].forEach((v,i)=>h[i]=(h[i]+v)|0);
+    }
+    return h.map(v=>('00000000'+(v>>>0).toString(16)).slice(-8)).join('');
+}
+function checkpointCanonical(value) {
+    if(Array.isArray(value))return value.map(checkpointCanonical);
+    if(value&&typeof value==='object'){const out={};Object.keys(value).sort().forEach(k=>{out[k]=checkpointCanonical(value[k]);});return out;}
+    return value;
+}
+class CheckpointStore {
+    constructor(storage,maxBytes=4096){this.storage=storage;this.maxBytes=maxBytes;this.lastError='';this.committed=false;}
+    envelope(data){const payload=JSON.stringify(checkpointCanonical(data));return JSON.stringify({payload,sha256:checkpointSHA256(payload)});}
+    decode(contents){
+        if(typeof contents!=='string'||checkpointUtf8(contents).length>this.maxBytes)return null;
+        try{const box=JSON.parse(contents);if(typeof box.payload!=='string'||checkpointSHA256(box.payload)!==box.sha256)return null;const data=JSON.parse(box.payload);return data&&typeof data==='object'&&!Array.isArray(data)?data:null;}catch(_){return null;}
+    }
+    read(key){
+        this.lastError='';const records=[];let found=false;
+        for(const suffix of ['','.tmp','.bak'])try{const contents=this.storage.getItem(key+suffix);if(typeof contents==='string'){found=true;const data=this.decode(contents);if(data)records.push({data,source:key+suffix});}}catch(error){this.lastError='checkpoint_read_failed:'+String(error.name||error);}
+        if(found&&!records.length&&!this.lastError)this.lastError='no_valid_saved_generation';return records;
+    }
+    write(key,data){
+        this.lastError='';this.committed=false;const contents=this.envelope(data);
+        if(checkpointUtf8(contents).length>this.maxBytes){this.lastError='save_too_large';return false;}
+        try {
+            this.storage.setItem(key+'.tmp',contents);if(this.storage.getItem(key+'.tmp')!==contents)throw new Error('verify_temporary_save_failed');
+            const before=this.storage.getItem(key);if(typeof before==='string')this.storage.setItem(key+'.bak',before);
+            this.storage.setItem(key,contents);if(this.storage.getItem(key)!==contents)throw new Error('verify_committed_save_failed');
+            this.committed=true;return true;
+        }catch(error){this.lastError='checkpoint_write_failed:'+String(error.message||error);return false;}
+    }
+}
+Object.assign(api,{CheckpointStore,checkpointSHA256});
 
 Object.defineProperty(root, 'LittleStepsCore', {value: Object.freeze(api), writable: false, configurable: false});
 })(globalThis);

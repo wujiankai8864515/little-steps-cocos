@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "sources": {
+    "shaders/incense_stick.gdshader": "45c1e05058eab9e3ec56a2288a058c04ceec42a1e72c3765cee1887a336d6bdb",
+    "shaders/window_field.gdshaderinc": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+    "shaders/outdoor_window.gdshaderinc": "cfb69ca48f6b87c960521eef9070720faabe2adc6a5f172cefb1a518259f8970",
+    "shared_room_lighting/pane_geometry.gdshaderinc": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+    "shared_room_lighting/outdoor_scene.gdshaderinc": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+    "shared_room_lighting/thin_glass.gdshaderinc": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71",
+    "home/flowers/tabletop_support.gd": "6fdc7be09e3a5a30f329510fbcaed71511a8126f3a7d5ee669bfffe078ee5f72"
+  },
+  "existingReceiverSHA256": "8df34cb8a33b7cb24805db9a981f071467b0edd4c899e33d96d077d1b0fb8015",
+  "existingShadowSHA256": "7698e324fad97564cf1af10b314517368c07cde97ed70cf6ee461faa1df000fb",
+  "outputs": [
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-incense.effect",
+      "sha256": "c4d665ca3582c10084c7c762915bad6d59abc29ade7eabd8f406e0d2e0fe8295"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-smoke.effect",
+      "sha256": "eee1d6813f9f89902c5b829cbf74bc43563cc3f35f4ea17bd3c9800b582948cb"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-table-shadow.effect",
+      "sha256": "90c4791f4fbe7c088e37993ed9278dae56aeec63f2d4584a17ff248646ccf3e8"
+    }
+  ],
+  "limits": "Original formulas adapted to Cocos; shader compilation, same-state rod/smoke/tabletop pixels and WeChat GPU still require runtime verification"
+}

@@ -25,6 +25,7 @@ export class XiaoyuRig {
     liftHeight=0;
     private grabSource=[335,150];private grabPixel=[0,0];private grabbed:Node=null;
     private heldBones:Array<{node:Node;position:Vec3;scale:Vec3;angle:number}>=[];
+    private headProfile:number[][]=null;
     onContact: () => void = () => {};
     constructor(parent: Node, private assets: GameAssets, private scope: Scope, position = [15, 615]) {
         this.root = nodeAt(parent, 'XiaoyuRig', position[0], position[1], 670, 402);
@@ -182,6 +183,12 @@ export class XiaoyuRig {
         this.deform(this.softPose());this.setMouthOpen(frame.mouth);this.setEyeOffsets(frame.closed?[0,0]:frame.gaze);
     }
     gripWorld(){const pixel=this.grabPixel,body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),toBody=core.Math2D.multiply(core.Math2D.inverse(this.affine(body)),this.affine(this.grabbed)),offset=attachmentOffset(this.grabbed.name,pixel,this.softPose(),toBody);const p=this.grabbed.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(pixel[0]+offset[0],-pixel[1]-offset[1]));return [p.x,p.y];}
+    noteAnchor(frame:Node){
+        if(!this.headProfile){this.headProfile=[];for(let x=160;x<552;x++)for(let y=40;y<250;y++)if(this.assets.bitmapContains('res://home/interaction/alpha_masks/body.res',x,y)){this.headProfile.push([x+.5,y+.5]);break;}}
+        const part=this.meshes.find(p=>p.node.name==='OriginalBody'),inverse=core.Math2D.inverse(this.affine(frame)),matrix=core.Math2D.multiply(inverse,this.affine(part.node));let top=Infinity;
+        for(const p of this.headProfile){const at=core.renderedPointAt(part.mesh,p);top=Math.min(top,core.Math2D.transform(matrix,...at)[1]);}
+        const center=core.Math2D.transform(core.Math2D.multiply(inverse,this.affine(this.root)),335,0);return [center[0],top-10];
+    }
     land(impact:number){this.liftMotion.amount=0;this.liftMotion.lag=[0,0];this.landing.begin(impact,this.behavior.secondary);}
     visualBounds(relativeTo:Node){const inverse=core.Math2D.inverse(this.affine(relativeTo)),points:number[][]=[];this.meshes.forEach(part=>{const r=this.assets.art(part.resource).opaque,m=core.Math2D.multiply(inverse,this.affine(part.node));[[r[0],r[1]],[r[2],r[1]],[r[0],r[3]],[r[2],r[3]]].forEach(p=>points.push(core.Math2D.transform(m,...p)));});const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.min(...xs)-42,y=Math.min(...ys)-42;return [x,y,Math.max(...xs)+42-x,Math.max(...ys)+42-y];}
     private affine(node:Node){const m=node.worldMatrix;return [m.m00,-m.m01,-m.m04,m.m05,m.m12,-m.m13];}

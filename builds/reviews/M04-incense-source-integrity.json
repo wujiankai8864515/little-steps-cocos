@@ -1,0 +1,1683 @@
+{
+  "schema": 1,
+  "candidates": [
+    {
+      "candidate": "home-incense-runtime-v1",
+      "files": 470,
+      "snapshotSHA256": "a958e61d9d588bb45455dea6bddff20d4a23428e85720ad01430700c915d9a68",
+      "frozenRuntimeFilesMatchManifestAfterCreatorBuild": true,
+      "latestRuntimeProductionMatchesOutsideExplicitOverrides": false,
+      "productionDifferences": [
+        "engines/travel-core/dist/travel-core.js",
+        "engines/travel-core/src/ui.js",
+        "engines/travel-core/test/core.test.cjs",
+        "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+        "games/xiaoyu-cocos/assets/plugins/travel-core.js"
+      ],
+      "runtimeProductionDifferences": [
+        "engines/travel-core/dist/travel-core.js",
+        "engines/travel-core/src/ui.js",
+        "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+        "games/xiaoyu-cocos/assets/plugins/travel-core.js"
+      ],
+      "creatorMetadataOnlyChanges": [
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        }
+      ],
+      "note": "v1 runtime retained as earlier implementation evidence; added test-only coverage after freezing is explicitly listed"
+    },
+    {
+      "candidate": "home-incense-runtime-v2",
+      "files": 470,
+      "snapshotSHA256": "8454227dcaaa5c5f26ebebef43fc899c0f5e45298e2c40cdde7de0a7694d6b14",
+      "frozenRuntimeFilesMatchManifestAfterCreatorBuild": true,
+      "latestRuntimeProductionMatchesOutsideExplicitOverrides": true,
+      "productionDifferences": [
+        "engines/travel-core/test/core.test.cjs"
+      ],
+      "runtimeProductionDifferences": [],
+      "creatorMetadataOnlyChanges": [
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        }
+      ],
+      "note": "v1 runtime retained as earlier implementation evidence; added test-only coverage after freezing is explicitly listed"
+    },
+    {
+      "candidate": "home-incense-phase2-v1",
+      "files": 470,
+      "snapshotSHA256": "97f8f5417567a0d37168ae521bfdbb8d583570be764afd146cada49960a5fb66",
+      "frozenRuntimeFilesMatchManifestAfterCreatorBuild": true,
+      "latestRuntimeProductionMatchesOutsideExplicitOverrides": true,
+      "productionDifferences": [
+        "engines/travel-core/test/core.test.cjs"
+      ],
+      "runtimeProductionDifferences": [],
+      "creatorMetadataOnlyChanges": [
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        }
+      ],
+      "note": "v1 runtime retained as earlier implementation evidence; added test-only coverage after freezing is explicitly listed"
+    },
+    {
+      "candidate": "home-incense-phase2-v2",
+      "files": 470,
+      "snapshotSHA256": "4766ae8331fce7e611b02a4121ec8a553ee21d7855f9922e1d93dc7c039b40d4",
+      "frozenRuntimeFilesMatchManifestAfterCreatorBuild": true,
+      "latestRuntimeProductionMatchesOutsideExplicitOverrides": true,
+      "productionDifferences": [
+        "engines/travel-core/test/core.test.cjs"
+      ],
+      "runtimeProductionDifferences": [],
+      "creatorMetadataOnlyChanges": [
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect.meta",
+          "changedKeys": [
+            "files"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        },
+        {
+          "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json.meta",
+          "changedKeys": [
+            "files",
+            "ver"
+          ]
+        }
+      ],
+      "note": "v1 runtime retained as earlier implementation evidence; added test-only coverage after freezing is explicitly listed"
+    }
+  ],
+  "plugin": {
+    "sha256": "632ea8cc8037721707d223885bcbb9095cb63f1599e2618f583821c6272f1ce8",
+    "targetMode": "0444",
+    "directoryMode": "0555",
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "metadata": {
+      "ver": "4.0.24",
+      "importer": "javascript",
+      "imported": true,
+      "uuid": "7d0bdc9d-6e8b-5ee4-a751-c655c245ba31",
+      "files": [],
+      "subMetas": {},
+      "userData": {
+        "isPlugin": true,
+        "loadPluginInEditor": false,
+        "loadPluginInWeb": true,
+        "loadPluginInNative": false,
+        "loadPluginInMiniGame": true,
+        "executionScope": "global"
+      }
+    }
+  },
+  "userProject": {
+    "baselineFiles": 16,
+    "unchanged": 15,
+    "intentionallyChangedBeforeThisItem": [
+      "games/xiaoyu-cocos/assets/Boot.ts"
+    ],
+    "sceneUUID": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa",
+    "bootUUID": "8dacabd2-f20d-42ab-aa32-8ffb576527d7",
+    "designResolution": [
+      720,
+      1280
+    ]
+  },
+  "original": {
+    "commit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "clean": true,
+    "shaderSourceHashesVerified": 8
+  },
+  "release": "QA candidates only; no WeChat build/device or complete parity acceptance"
+}
