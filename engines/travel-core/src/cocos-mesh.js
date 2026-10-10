@@ -25,9 +25,9 @@ function registerCocos(cc) {
             const rd = sprite.renderData, frame = sprite.spriteFrame;
             if (!rd || !frame || !sprite.mesh) return;
             const uv = frame.uv, vb = rd.chunk.vb, points = sprite.mesh.source;
-            const width = sprite.sourceSize[0], height = sprite.sourceSize[1];
+            const rect = sprite.sourceRect;
             for (let i = 0; i < rd.dataLength; ++i) {
-                const x = points[i * 2] / width, y = points[i * 2 + 1] / height, offset = i * rd.floatStride;
+                const x = (points[i * 2] - rect[0]) / rect[2], y = (points[i * 2 + 1] - rect[1]) / rect[3], offset = i * rd.floatStride;
                 // Bilinear frame UVs also preserve vertical texture conventions.
                 vb[offset + 3] = (uv[4] + (uv[6] - uv[4]) * x) * (1 - y) + (uv[0] + (uv[2] - uv[0]) * x) * y;
                 vb[offset + 4] = (uv[5] + (uv[7] - uv[5]) * x) * (1 - y) + (uv[1] + (uv[3] - uv[1]) * x) * y;
@@ -61,12 +61,12 @@ function registerCocos(cc) {
         },
     };
     class TravelMeshSprite extends cc.Sprite {
-        constructor(...args) { super(...args); this.mesh = null; this.sourceSize = [1, 1]; }
-        configure(mesh, sourceSize) {
+        constructor(...args) { super(...args); this.mesh = null; this.sourceRect = [0, 0, 1, 1]; }
+        configure(mesh, sourceSize, contentRect = [0, 0, sourceSize[0], sourceSize[1]]) {
             if (!(mesh.vertices instanceof Float32Array) || mesh.vertices.length !== mesh.source.length) throw new Error('Invalid UI mesh');
             if (sourceSize.some(x => !(x > 0))) throw new Error('Invalid source dimensions');
             this.destroyRenderData();
-            this.mesh = mesh; this.sourceSize = [...sourceSize];
+            this.mesh = mesh; this.sourceRect = [...contentRect];
             this._flushAssembler();
         }
         geometryChanged() {

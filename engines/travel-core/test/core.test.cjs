@@ -49,3 +49,18 @@ test('Plugin namespace is frozen and nonwritable', () => {
     assert.ok(Object.isFrozen(core));
     assert.equal(Object.getOwnPropertyDescriptor(context, 'LittleStepsCore').writable, false);
 });
+test('Shared leases deduplicate loads and retain admission until cancelled late work settles', async () => {
+    const gate = new core.ResourceGate({maxBytes: 20, maxEntries: 2});
+    const one = new core.Lifetime(), two = new core.Lifetime();
+    let resolve, loaded = 0, unloaded = 0;
+    const loader = () => { ++loaded; return new Promise(r => { resolve = r; }); };
+    const a = gate.acquire([{key: 'shared', bytes: 12}], loader, () => ++unloaded, one);
+    const b = gate.acquire([{key: 'shared', bytes: 12}], loader, () => ++unloaded, two);
+    await Promise.resolve(); one.dispose();
+    assert.equal(gate.snapshot().reservedBytes, 12);
+    await assert.rejects(gate.acquire([{key: 'too-large', bytes: 9}], loader, () => {}, two), /budget/);
+    resolve({texture: 1}); await assert.rejects(a, {name: 'CancelledError'});
+    const leased = await b;
+    assert.equal(loaded, 1); assert.ok(leased.get('shared'));
+    two.dispose(); assert.equal(unloaded, 1); assert.equal(gate.snapshot().reservedBytes, 0);
+});
