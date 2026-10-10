@@ -50,7 +50,7 @@
     "newTests": 7,
     "testEvidence": "builds/reviews/M04-home-ui-tests-v1.log",
     "typeScriptNoEmit": "passed on final implementation",
-    "diffCheck": "passed",
+    "diffCheck": "Source and structured records passed: git diff --check 020ca19 HEAD -- . :(exclude)builds/reviews/*.log. Original Creator logs preserve their emitted CR and blank lines; unscoped check reports log whitespace.",
     "sourceIntegrity": "builds/reviews/M04-home-ui-source-integrity.json",
     "editorBaselineUnchangedFiles": 15,
     "sceneUUID": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa",
@@ -175,6 +175,12 @@
       "evidence": "Runtime reported Home logical height 405 and target 1440x810 before fixed-viewport reload; same pending resize issue noted in M05",
       "validation": "Fixed 405x720 viewport followed by intentional reload or navigation gives correct initial portrait composition",
       "status": "runtime resize and additional sizes pending; not claimed fixed"
+    },
+    {
+      "trigger": "Unscoped staged whitespace check includes original Creator build logs",
+      "effect": "Git reports carriage-return/trailing-space and EOF blank-line diagnostics in four raw logs; implementation has no whitespace errors",
+      "handling": "Retain byte-faithful raw build evidence; explicitly scope source/structured-record whitespace verification by excluding builds/reviews/*.log",
+      "validation": "Scoped check passed against committed implementation; no source changes or history rewriting"
     }
   ],
   "limits": [
