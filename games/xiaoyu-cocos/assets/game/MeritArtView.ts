@@ -20,9 +20,9 @@ export class MeritArtView {
         for(let i=0;i<18;i++){const n=nodeAt(this.root,'Glyph'+i),s=n.addComponent(Sprite);s.sizeMode=Sprite.SizeMode.CUSTOM;s.customMaterial=material;this.slots.push(s);}
         scope.own(()=>{this.root.active=false;this.root.destroy();});this.root.active=false;
     }
-    update(state:ReturnType<SessionMerit['snapshot']>) {
+    update(state:ReturnType<SessionMerit['snapshot']>,groundDelta=[0,0]) {
         this.root.active=state.visible;if(!state.visible)return;
-        this.root.setPosition(state.position[0],-state.position[1]);this.opacity.opacity=state.alpha*255;
+        this.root.setPosition(state.position[0]+groundDelta[0],-state.position[1]-groundDelta[1]);this.opacity.opacity=state.alpha*255;
         if(this.amount===state.amount)return;this.amount=state.amount;
         const draws=meritLayout(state.amount).draws;
         this.slots.forEach((sprite,i)=>{const draw=draws[i];sprite.node.active=!!draw;if(!draw)return;const entry=this.frames.get(draw.glyph),r=entry.region,c=entry.clip,d=draw.rect;sprite.spriteFrame=entry.frame;sprite.node.setPosition(d[0]+(c[0]-r[0])/r[2]*d[2],-(d[1]+(c[1]-r[1])/r[3]*d[3]));sprite.node.getComponent(UITransform).setContentSize(c[2]/r[2]*d[2],c[3]/r[3]*d[3]);});

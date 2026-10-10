@@ -12,6 +12,7 @@ export class HomeHUD {
     readonly settings:HomeHeaderTag;
     readonly merit:HomeHeaderTag;
     readonly credits:MusicCreditsView;
+    readonly safe:number[];
     private entry=new HomeEntryIntent();
     private binding:any;
     private active=false;
@@ -19,6 +20,7 @@ export class HomeHUD {
     constructor(parent:Node,assets:GameAssets,scope:Scope,height:number,music:()=>HomeMusic) {
         this.root=nodeAt(parent,'HomeHUD',0,-(height-1280)/2,720,height);
         const s=sys.getSafeAreaRect(false),safe=[Math.max(0,s.x),Math.max(0,height-s.y-s.height),Math.min(720,s.width),Math.min(height,s.height)];
+        this.safe=safe;
         this.settings=new HomeHeaderTag(this.root,assets,scope,[safe[0]+16,safe[1]+8,72,92]);
         this.merit=new HomeHeaderTag(this.root,assets,scope,[safe[0]+safe[2]-202,safe[1]+8,186,82],false);
         this.credits=new MusicCreditsView(this.root,assets,scope,height,safe,music);

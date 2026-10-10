@@ -24,6 +24,11 @@ test('Deferred button actions reject a wrong-finger cancel, a withdrawn contact 
  node.emit('down',1);node.emit('move',1,101,30);node.emit('move',1);node.emit('up',1);cc.flush();assert.equal(accepted,1);
  node.emit('down',1);node.emit('up',1);binding.dispose();cc.flush();assert.equal(accepted,1);assert.equal(node.events.size,0);
 });
+test('A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once',()=>{
+ const cc=fakePointerEngine(),node=new cc.Node();let opaque=false,released=0,downs=0;
+ const binding=core.registerUI(cc).pointer(node,{down:()=>{downs++;return opaque;},up:()=>released++});
+ const rejected=node.emit('down',1);assert.equal(rejected.propagationStopped,undefined);node.emit('up',1);assert.equal(released,0);opaque=true;const accepted=node.emit('down',2);assert.equal(accepted.propagationStopped,true);node.emit('up',2);assert.equal(released,1);assert.equal(downs,2);binding.dispose();
+});
 test('Suspended paper feedback remains bounded and uses the original positive press impulse',()=>{
  const swing=new core.SwingFeedback();swing.press();assert.equal(swing.velocity,.12);assert.equal(swing.scale,.955);swing.release();assert.equal(swing.pressTime,.075);
  for(let i=0;i<3000;i++){swing.advance(i%17?1/60:1);assert.ok(Math.abs(swing.angle)<=.045);assert.ok(swing.scale>=.955&&swing.scale<=1.01);}const previous=JSON.stringify(swing);swing.advance(NaN);assert.equal(JSON.stringify(swing),previous);assert.equal(swing.scale,1);

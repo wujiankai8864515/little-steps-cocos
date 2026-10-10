@@ -52,16 +52,21 @@ export class CharacterBehavior {
     readonly director=new AmbientDirector();readonly secondary=new SecondaryMotion();
     tapTime=0;contactSent=false;playerTapActive=false;playerSerial=0;playerHits=0;contacts=0;
     actionNumber=0;elapsed=0;hitReactionAge=-1;gaze=[0,0];nextDozeMarkTime=.45;
-    resetPose(){this.playerTapActive=false;this.contactSent=false;this.secondary.reset();this.tapTime=0;this.hitReactionAge=-1;this.gaze=[0,0];}
-    requestPlayerTap(){this.resetPose();this.director.request('self_tap');this.playerTapActive=true;this.playerSerial++;}
+    private playerTimestamp:number=null;
+    resetPose(){this.playerTapActive=false;this.contactSent=false;this.secondary.reset();this.tapTime=0;this.hitReactionAge=-1;this.gaze=[0,0];this.playerTimestamp=null;}
+    requestPlayerTap(timestamp?:number){this.resetPose();this.director.request('self_tap');this.playerTapActive=true;this.playerSerial++;if(Number.isFinite(timestamp))this.playerTimestamp=timestamp;}
     focusLost(){this.playerTapActive=false;this.contactSent=false;this.tapTime=0;this.hitReactionAge=-1;}
-    advance(delta:number,night:boolean):BehaviorFrame|null {
+    advance(delta:number,night:boolean,timestamp?:number):BehaviorFrame|null {
         if(!Number.isFinite(delta))return null;
         const step=clamp(delta,0,.1);this.elapsed+=delta;
         if(this.hitReactionAge>=0){this.hitReactionAge+=step;if(this.hitReactionAge>=.15)this.hitReactionAge=-1;}
         const before=this.director.state;let boundary=false,contact=false;
         if(before==='self_tap'){
-            const previous=this.tapTime;this.tapTime+=step*this.director.speed();
+            // An input released just before this update must not consume the
+            // preceding frame. Godot uses its monotonic input timestamp here.
+            let tapStep=step;
+            if(this.playerTapActive&&this.playerTimestamp!==null&&Number.isFinite(timestamp)){tapStep=clamp(timestamp-this.playerTimestamp,0,.1);this.playerTimestamp=timestamp;}
+            const previous=this.tapTime;this.tapTime+=tapStep*this.director.speed();
             contact=!this.contactSent&&previous<1.29&&this.tapTime>=1.29;
             if(contact){this.contactSent=true;this.hitReactionAge=0;this.secondary.impulse([-.26,.8,-.18,.34].map(v=>v*this.director.strength()));}
             const cycle=this.playerTapActive?3.2:2.15+this.director.tapIdleSeconds*this.director.speed();boundary=this.tapTime>=cycle;

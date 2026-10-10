@@ -13,6 +13,7 @@ export const core: any = {
     get SwingFeedback() { return installed().SwingFeedback; },
     createGrid: (...args: any[]) => installed().createGrid(...args),
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
+    renderedPointAt: (...args:any[]) => installed().renderedPointAt(...args),
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),
     clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
     bitMapContains: (...args:any[]) => installed().bitMapContains(...args),

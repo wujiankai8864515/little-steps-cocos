@@ -31,6 +31,16 @@ export function softOffset(pixel: number[], grab: number[], amount: number, lag:
     const faceShift = faceGrab ? [0, 0] : liftOffset([365, 177], grab, amount, lag);
     return shift.map((value, i) => value * (1 - face) + faceShift[i] * face);
 }
+export function bodyPixelVisible(pixel:number[]) {const smooth=core.Math2D.smoothstep;return (1-smooth(150,151,pixel[0]))*smooth(198,199,pixel[1])*(1-smooth(245,246,pixel[1]))<.84;}
+export function attachmentOffset(kind:string,pixel:number[],pose:SoftPose,toBody:number[]) {
+    const math=core.Math2D,sample=kind==='OriginalFinAndRigidMallet'?[458,257]:pixel,posed=math.transform(toBody,...sample),aligned=posed.slice();
+    if(kind==='OriginalTail'){const seam=math.smoothstep(115,155,pixel[0])*math.clamp(pose.amount,0,1);aligned[0]+=(pixel[0]-aligned[0])*seam;aligned[1]+=(pixel[1]-aligned[1])*seam;}
+    const shift=softOffset(aligned,pose.grab,pose.amount,pose.lag,pose.phase);
+    if(kind==='OriginalBody'){const weight=1-math.smoothstep(230,296,pixel[1]),land=landingOffset(pixel,pose.landing);shift[0]+=pose.jelly[0]*weight+land[0];shift[1]+=pose.jelly[1]*weight+land[1];if(pose.amount>0)shift[1]=Math.min(shift[1],pose.clearance);}
+    const offset=math.basis(math.inverse(toBody),shift[0]+aligned[0]-posed[0],shift[1]+aligned[1]-posed[1]);
+    if(kind==='OriginalFinAndRigidMallet'&&pose.heldPart===kind){const mask=1-math.smoothstep(.72,1,Math.hypot((pixel[0]-462)/39,(pixel[1]-255)/34)),away=math.smoothstep(0,24,Math.hypot(pixel[0]-pose.handGrab[0],pixel[1]-pose.handGrab[1]));offset[0]+=(pose.handMotion?.[0]||0)*away*mask*pose.amount;offset[1]+=(pose.handMotion?.[1]||0)*away*mask*pose.amount;}
+    return offset;
+}
 export function deformPart(mesh: any, kind: string, pose: SoftPose, toBody: number[]) {
     const math = core.Math2D, points = mesh.source, out = mesh.vertices;
     const fromBody = math.inverse(toBody), held = pose.heldPart === kind;

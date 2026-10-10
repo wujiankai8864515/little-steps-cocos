@@ -77,7 +77,7 @@ function registerUI(cc) {
             if(captured!==-1||!enabled())return;
             const at=point(event),ui=target.getComponent(cc.UITransform);
             if(at[0]<0||at[1]<0||at[0]>=ui.width||at[1]>=ui.height)return;
-            captured=event.getID();event.propagationStopped=true;if(callbacks.down)callbacks.down(at,captured);
+            captured=event.getID();if(callbacks.down&&callbacks.down(at,captured)===false){captured=-1;return;}event.propagationStopped=true;
         };
         const move=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}if(callbacks.move)callbacks.move(point(event),captured);};
         const end=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}const id=captured;captured=-1;if(callbacks.up)callbacks.up(point(event),id);};

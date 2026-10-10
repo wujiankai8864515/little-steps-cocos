@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "scope": "Body grabbed at [350,800], moved to [380,560], 21 hold + 42 lift steps at 1/60; hour 12; plants rest",
+  "reference": {
+    "path": "builds/reviews/godot-fish-body-checkpoint-v4.jpg",
+    "sha256": "49b13911ff3c043ce9792ae078f3fa2026110a56c13f02b767d387b10057c98c"
+  },
+  "cocos": {
+    "path": "builds/reviews/cocos-fish-body-checkpoint-v2.jpg",
+    "sha256": "e77110fa20869183b89475fad9ca5256e8fe1f9df1b85033e608ff5236bbfad0"
+  },
+  "comparison": {
+    "path": "builds/reviews/fish-body-checkpoint-comparison-v1.png",
+    "sha256": "76dddca385821e1b44a71f6a8325b0ff833d315b279439dbcade724637c7fc56",
+    "method": "Actual 405x720 images, unaligned, unscaled, unrecolored; unamplified absolute RGB difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 2.028461362597165,
+      "RMSRGB": 7.8077458218382105,
+      "maximumChannelDifference": 184,
+      "meanAbsoluteLuma": 1.9813614540466393
+    },
+    "liftedActor": {
+      "rect": [
+        42,
+        241,
+        355,
+        423
+      ],
+      "meanAbsoluteRGB": 1.8187281302297276,
+      "RMSRGB": 4.419013404450702,
+      "maximumChannelDifference": 68,
+      "meanAbsoluteLuma": 1.7842748306007092
+    },
+    "matProjection": {
+      "rect": [
+        93,
+        512,
+        285,
+        598
+      ],
+      "meanAbsoluteRGB": 3.665919735142119,
+      "RMSRGB": 13.359700719961339,
+      "maximumChannelDifference": 168,
+      "meanAbsoluteLuma": 3.6422601744186047
+    }
+  },
+  "status": "measurement_only_full_visual_acceptance_pending",
+  "excludedAcceptance": "Whole image includes unported articulated backpack, vase/incense, action marks and header differences. Tail/fin grabs, landing, physical drag, night and device acceptance remain pending."
+}

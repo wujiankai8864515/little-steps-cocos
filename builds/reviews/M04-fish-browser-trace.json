@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "source": "Public browser console messages observed through CUA; selected values retained exactly, not engine evaluation",
+  "cocos": {
+    "url": "http://127.0.0.1:8814/",
+    "checkpointTime": "2026-10-10T22:19:12.137Z",
+    "input": {
+      "state": "DRAGGING",
+      "capturedPointer": 246,
+      "ground": [
+        380,
+        951
+      ],
+      "height": 240,
+      "heldSeconds": 0.35,
+      "grabAmount": 1,
+      "maxLift": 240,
+      "lag": [
+        -0.037455244380758465,
+        0.2996419550460677
+      ],
+      "dropEvaluations": 0
+    },
+    "rig": {
+      "secondaryOffsets": [
+        0,
+        0.0030756281318620013,
+        -0.008373838030076682,
+        -0.0002557701217917891
+      ],
+      "suspended": true,
+      "heldPart": "OriginalBody",
+      "parent": "FishDragPresentation",
+      "layer": 1073741824,
+      "localPosition": [
+        45,
+        -375
+      ],
+      "lift": {
+        "amount": 1,
+        "elapsed": 0.7000000000000005,
+        "lag": [
+          -0.02124298596278648,
+          0.485553964863691
+        ],
+        "height": 240,
+        "pixel": [
+          335,
+          185
+        ]
+      }
+    },
+    "escape": {
+      "time": "2026-10-10T22:23:44.196Z",
+      "state": "IDLE",
+      "capturedPointer": null,
+      "ground": [
+        350,
+        951
+      ],
+      "height": 0,
+      "dropEvaluations": 0,
+      "parent": "HomeWorld",
+      "layer": 524288,
+      "localPosition": [
+        15,
+        -615
+      ],
+      "landingActive": false,
+      "contacts": 0,
+      "shadowSnapshotTiming": "Snapshot retains prior-frame soft body physicalLift 206.41236541487137; screenshot after next draw proves restored rest"
+    }
+  },
+  "godot": {
+    "url": "http://127.0.0.1:8813/index.js?host_revision=continuous-loading-v7",
+    "checkpointTime": "2026-10-10T22:20:19.556Z",
+    "input": {
+      "state": "DRAGGING",
+      "captured_pointer": 246,
+      "fish_ground": "(380.0, 951.0)",
+      "fish_lift_height": 240.0,
+      "drop_evaluations": 0,
+      "selected_id": "fish"
+    },
+    "rig_position": "(45.0, 375.0)",
+    "grab_part": "OriginalBody",
+    "grab_pixel": "(335.0, 185.0)",
+    "lift_amount": 1.0,
+    "lift_elapsed": 0.700000000000001,
+    "drag_lag": "(-0.021243, 0.485554)",
+    "secondary": "(0.0, 0.003076, -0.008374, -0.000256)",
+    "mouth": -2.69762029992987,
+    "pupil_left": "(0.499516, 0.367229)",
+    "pupil_right": "(0.089607, 0.065877)"
+  },
+  "limits": "Checkpoint is source-driven fixed controller state; physical held movement, full landing, tail/fin/night and devices remain pending"
+}

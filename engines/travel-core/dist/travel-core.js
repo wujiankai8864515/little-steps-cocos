@@ -134,7 +134,15 @@ function sourcePixelAt(mesh, point) {
     return null;
 }
 
-Object.assign(api, {Math2D, BoneRig, sampleTrack, createGrid, weightedSkin, sourcePixelAt});
+// Forward sampling of the same two-triangle grid, used by anchors and casts.
+function renderedPointAt(mesh, point) {
+    const fx=(point[0]-mesh.rect[0])/mesh.rect[2]*mesh.columns,fy=(point[1]-mesh.rect[1])/mesh.rect[3]*mesh.rows;
+    const x=Math2D.clamp(Math.floor(fx),0,mesh.columns-1),y=Math2D.clamp(Math.floor(fy),0,mesh.rows-1),u=fx-x,v=fy-y,i=y*(mesh.columns+1)+x;
+    const indices=v<=u?[i,i+1,i+mesh.columns+2]:[i,i+mesh.columns+2,i+mesh.columns+1],weights=v<=u?[1-u,u-v,v]:[1-v,u,v-u];
+    return [0,1].map(axis=>indices.reduce((sum,index,j)=>sum+mesh.vertices[index*2+axis]*weights[j],0));
+}
+
+Object.assign(api, {Math2D, BoneRig, sampleTrack, createGrid, weightedSkin, sourcePixelAt, renderedPointAt});
 
 // Every page/request owns a scope. Late continuations cannot revive disposed pages.
 class Lifetime {
@@ -398,7 +406,7 @@ function registerUI(cc) {
             if(captured!==-1||!enabled())return;
             const at=point(event),ui=target.getComponent(cc.UITransform);
             if(at[0]<0||at[1]<0||at[0]>=ui.width||at[1]>=ui.height)return;
-            captured=event.getID();event.propagationStopped=true;if(callbacks.down)callbacks.down(at,captured);
+            captured=event.getID();if(callbacks.down&&callbacks.down(at,captured)===false){captured=-1;return;}event.propagationStopped=true;
         };
         const move=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}if(callbacks.move)callbacks.move(point(event),captured);};
         const end=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}const id=captured;captured=-1;if(callbacks.up)callbacks.up(point(event),id);};

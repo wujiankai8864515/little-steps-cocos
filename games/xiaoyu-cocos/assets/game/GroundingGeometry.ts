@@ -45,3 +45,18 @@ export function projectShadow(mesh:ShadowGeometry,matrix:number[],direction:numb
     }
 }
 export function projectedContacts(mesh:ShadowGeometry,matrix:number[],lift=0) {return mesh.contacts.map(line=>line.map(p=>{const point=transform(matrix,p[0],p[1]);point[1]+=lift;return point;}));}
+export function softShadowGeometry(grid:any,contacts:number[][][]=[]) :ShadowGeometry {
+    const profile:number[][]=[];contacts.forEach(line=>line.forEach(p=>profile.push(p)));const support=new Float32Array(grid.source.length/2);
+    for(let i=0;i<support.length;i++)support[i]=profile.length?supportAt(profile,grid.source[i*2]):grid.source[i*2+1];
+    return {source:grid.source,vertices:new Float32Array(grid.source.length),indices:grid.indices,vertexData:new Float32Array(support.length*3),support,profile,contacts};
+}
+export function projectSoftShadow(mesh:ShadowGeometry,grid:any,matrix:number[],direction:number[],ground:number,grounded:boolean,lift:number) {
+    for(let i=0;i<mesh.source.length;i+=2){
+        const point=transform(matrix,grid.vertices[i],grid.vertices[i+1]),support=quantize(grounded?transform(matrix,mesh.source[i],mesh.support[i/2])[1]+lift:ground),height=Math.max(support-point[1],0);
+        mesh.vertices[i]=point[0]+direction[0]*height;mesh.vertices[i+1]=support+direction[1]*height;
+        mesh.vertexData[i/2*3]=point[0];mesh.vertexData[i/2*3+1]=point[1];mesh.vertexData[i/2*3+2]=height;
+    }
+}
+export function physicalLift(mesh:ShadowGeometry,grid:any,matrix:number[],lift:number,rendered:(grid:any,p:number[])=>number[]) {
+    let signed=Infinity;for(const p of mesh.profile){const original=transform(matrix,p[0],p[1]),deformed=rendered(grid,p),point=transform(matrix,deformed[0],deformed[1]);signed=Math.min(signed,original[1]+lift-point[1]);}return Math.max(0,signed);
+}

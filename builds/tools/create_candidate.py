@@ -22,10 +22,11 @@ def main():
     parser.add_argument('--route', choices=['login', 'home'], default='login')
     parser.add_argument('--hour',type=float,help='Explicit initial Home hour; freezes only with --freeze')
     parser.add_argument('--freeze',action='store_true',help='Freeze Home time and actor pose in this candidate only')
+    parser.add_argument('--freeze-clock',action='store_true',help='Freeze only Home time, preserving real actor animation and input')
     parser.add_argument('--freeze-plants',action='store_true',help='Keep Home plants at their authored rest pose; requires --freeze')
     parser.add_argument('--plant-time',type=float,default=0,help='Deterministically advance plant wind before freezing; fixed 1/60 steps')
     args = parser.parse_args()
-    if (args.hour is not None or args.freeze) and args.route!='home':parser.error('Home fixtures require --route home')
+    if (args.hour is not None or args.freeze or args.freeze_clock) and args.route!='home':parser.error('Home fixtures require --route home')
     if args.hour is not None and not math.isfinite(args.hour):parser.error('Hour must be finite')
     if args.freeze_plants and not args.freeze:parser.error('--freeze-plants requires --freeze')
     if not math.isfinite(args.plant_time) or not 0<=args.plant_time<=60 or abs(args.plant_time*60-round(args.plant_time*60))>1e-8:parser.error('--plant-time requires 0..60 seconds in exact 1/60 steps')
@@ -51,11 +52,13 @@ def main():
         boot.write_text(text.replace(point,f'this.application.clock.seekHour({args.hour});\n        '+point))
         overrides[0]['fixtureSHA256']=digest(boot)
         overrides.append({'file':'assets/Boot.ts','hour':args.hour,'fixtureSHA256':digest(boot),'purpose':'Declared initial Home hour; clock freezes only when --freeze is supplied'})
-    if args.freeze:
-        for filename,old,new in [('Application.ts','this.clock.advance(delta)','this.clock.advance(0)'),('HomePage.ts','this.rig.advance(delta,this.clock.nightProgress()>=0)','this.rig.poseAt(0)')]:
+    if args.freeze or args.freeze_clock:
+        replacements=[('Application.ts','this.clock.advance(delta)','this.clock.advance(0)')]
+        if args.freeze:replacements.append(('HomePage.ts','this.rig.advance(delta,this.clock.nightProgress()>=0)','this.rig.poseAt(0)'))
+        for filename,old,new in replacements:
             path=project/'assets/game'/filename;before=digest(path);text=path.read_text();assert text.count(old)==1
             path.write_text(text.replace(old,new))
-            overrides.append({'file':'assets/game/'+filename,'sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Freeze product clock and original actor pose at zero; QA only, not shipping behavior'})
+            overrides.append({'file':'assets/game/'+filename,'sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Freeze product clock only' if args.freeze_clock and not args.freeze else 'Freeze product clock and original actor pose at zero; QA only, not shipping behavior'})
     if args.freeze_plants:
         path=project/'assets/game/HomePage.ts';before=digest(path);text=path.read_text();point='this.plants.advance(delta)';assert text.count(point)==1
         path.write_text(text.replace(point,'this.plants.advance(0)'))

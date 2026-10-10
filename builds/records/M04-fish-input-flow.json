@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "id": "M04.6-fish-input-lift",
+  "status": "partial_body_checkpoint_and_input_browser_observed_complete_Home_full_acceptance_pending",
+  "originalSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "publishedReferenceCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "sources": [
+    {
+      "path": "games/travel_woodfish/project/home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/interaction/home_interaction_controller.gd",
+      "sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/behavior/character_geometry.gd",
+      "sha256": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/behavior/rig_secondary_motion.gd",
+      "sha256": "23f67f76c34bafcfeacd785a45e287ec549a74c9dd79a6d98b15417462c01bda"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/grounding/alpha_grounding.gd",
+      "sha256": "f4260d398b44a3c40659a649613da74dc9f7a3ce6dd00ab73caa7ef581fcb754"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/behavior/soft_attachment_mesh.gd",
+      "sha256": "92f2f1e08549e0aae8db7de1b33dfec3f15895edd719e2c3d89fb93cb0fa9a5a"
+    }
+  ],
+  "sourceReadback": "Original repository clean; six relevant Home/controller/geometry/grounding sources have no diff from published to latest commit",
+  "implementation": {
+    "framework": "Generic forward two-triangle sampling and a declined pointer-down return value; installed through readonly JS plugin",
+    "game": "Real alpha/body visibility hit, 0.34s hold, 9px movement rule, original-pixel pinning, bounded lift and lag, held bone transforms, .36s fixed-home settle, once-only landing, face/pupil deformation, source ripple arcs, cancellation, mesh-derived soft projections and measured floor contacts",
+    "presentation": "Preserve canonical local TRS between Room RT and main Canvas; convert input and caster matrices through the actor presentation frame; update actor lighting origin for the selected frame",
+    "merit": "Reward position follows fish ground; contacts remain monotonic across pose reset"
+  },
+  "checks": {
+    "tests": 57,
+    "newTests": 7,
+    "testEvidence": "builds/reviews/M04-fish-input-tests-v1.log",
+    "typeScriptNoEmit": "passed on final source",
+    "pythonSyntax": "create_candidate.py and create_fish_checkpoint.py compiled in memory; compare_fish_checkpoint.py executed successfully",
+    "whitespace": "source/structured records passed; exclude raw builds/reviews/*.log to preserve Creator CR bytes",
+    "integrity": "builds/reviews/M04-fish-source-integrity.json",
+    "unchangedUserFiles": 15,
+    "sceneUUID": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa",
+    "bootUUID": "8dacabd2-f20d-42ab-aa32-8ffb576527d7",
+    "pluginSHA256": "fe23c95733425689d0b5913b2477710682e4026a24488af126b58bd3069eaf33",
+    "pluginModes": [
+      "0444",
+      "0555"
+    ]
+  },
+  "browser": {
+    "viewport": [
+      405,
+      720
+    ],
+    "creator": "3.8.8",
+    "cocosInputCandidate": "home-fish-input-noon-v3",
+    "cocosFinalCheckpoint": "home-fish-body-checkpoint-v2",
+    "godotFinalCheckpoint": "godot-fish-body-checkpoint-v4",
+    "fixtureInputs": {
+      "down": [
+        350,
+        800
+      ],
+      "pointer": 246,
+      "holdSteps": 21,
+      "move": [
+        380,
+        560
+      ],
+      "liftSteps": 42,
+      "stepSeconds": 0.016666666666666666,
+      "phase": 0.7,
+      "hour": 12,
+      "plants": "rest"
+    },
+    "fixtureLimits": "Controller-driven fixed pose, not physical drag. Home clock/ambient/controller progression frozen in declared QA sources; normal production code has none of those overrides. Native fixture hooks after actual input enable; Cocos checkpoint created before first draw.",
+    "observedRealInput": [
+      "Short click starts one full manual clip; playerSerial=1 and playerHits=1 observed",
+      "Immediate drag before .34s cancels hold; held=.0665s, longPressEligible=false, no tap",
+      "Long click produces PRESSED -> DRAGGING -> SETTLING -> IDLE and one drop evaluation per settle",
+      "Focused real Escape cancels controller-driven 240px lift: captured pointer null, state IDLE, root [15,-615], RT layer 524288, no drop evaluation or landing"
+    ],
+    "escapeEvidence": {
+      "image": "builds/reviews/cocos-fish-checkpoint-escape-focused-v2.jpg",
+      "time": "2026-10-10T22:23:44.196Z",
+      "unfocusedAttempt": "builds/reviews/cocos-fish-checkpoint-escape-v2.jpg has no Escape event; not accepted",
+      "shadowEventLog": "Event snapshot precedes the next shadow update; displayed return screenshot confirms next-frame rest projection"
+    },
+    "actualReady": {
+      "cocosFirstDraw": "2026-10-10T22:19:12.208Z",
+      "godotHomeReady": "2026-10-10T22:20:19.543Z",
+      "godotCheckpoint": "2026-10-10T22:20:19.556Z",
+      "urlScopedFinalWarningsOrErrors": 0,
+      "imagesNonblank": "verified by actual screenshot inspection and >1000 distinct colors"
+    },
+    "numericCheckpoint": {
+      "common": {
+        "state": "DRAGGING",
+        "grabPart": "OriginalBody",
+        "grabPixel": [
+          335,
+          185
+        ],
+        "ground": [
+          380,
+          951
+        ],
+        "liftHeight": 240,
+        "rootCanonical": [
+          45,
+          375
+        ],
+        "amount": 1,
+        "elapsed": 0.7
+      },
+      "godot": {
+        "lag": [
+          -0.021243,
+          0.485554
+        ],
+        "secondary": [
+          0,
+          0.003076,
+          -0.008374,
+          -0.000256
+        ],
+        "mouth": -2.69762029992987,
+        "safePupils": [
+          [
+            0.499516,
+            0.367229
+          ],
+          [
+            0.089607,
+            0.065877
+          ]
+        ]
+      },
+      "cocos": {
+        "lag": [
+          -0.02124298596278648,
+          0.485553964863691
+        ],
+        "secondary": [
+          0,
+          0.0030756281318620013,
+          -0.008373838030076682,
+          -0.0002557701217917891
+        ]
+      },
+      "matching": "lag and secondary agree to original logged precision; root, lift, grab pixel and phase match exactly to shown precision; actual eye and mouth rendering retained in comparison image"
+    },
+    "screenshotTiming": "v3 numbered long-click screenshots were captured before .34s; the filename ending confirmed was captured after IDLE at 22:14:03.044Z. None count as a held-state screenshot. Cross-Canvas visibility is proven by the controller-held final checkpoint, and real long-click state transitions by runtime logs.",
+    "runtimeTrace": "builds/reviews/M04-fish-browser-trace.json"
+  },
+  "comparison": {
+    "record": "builds/reviews/fish-body-checkpoint-comparison-v2.json",
+    "image": "builds/reviews/fish-body-checkpoint-comparison-v2.png",
+    "method": "Actual 405x720 images, unaligned, unscaled, unrecolored; unamplified absolute RGB difference",
+    "meanAbsoluteRGB": {
+      "whole": 2.028461362597165,
+      "liftedActor": 1.8187281302297276,
+      "matProjection": 1.5303591470258138
+    },
+    "acceptance": "measurement only; residual pixel differences remain pending",
+    "roiRevision": "v1 projection ROI included unported incense caption/lid; v2 changes ROI only, whole-frame images, diff and measurements unchanged"
+  },
+  "failures": [
+    {
+      "candidate": [
+        "home-fish-input-noon-v1",
+        "home-fish-input-noon-v2"
+      ],
+      "trigger": "Real long click reaches DRAGGING",
+      "evidence": "builds/reviews/cocos-fish-drag-body-noon-v1.jpg and v2 public root/part positions",
+      "cause": "Reparenting kept physical RT world coordinates across different Canvas origins; root local became approximately [-347,-1254], outside main camera",
+      "fix": "Canonical local TRS, frame-aware input and projection, actor material roomOrigin",
+      "verification": "Final held checkpoint displays 240px lift; real long-click returns to [15,-615]; full gesture/tail/fin/night/device verification pending"
+    },
+    {
+      "candidate": "godot-fish-body-checkpoint-v1",
+      "cause": "pointer_down was placed inside GDScript assert; release runtime omitted its side effect",
+      "observed": "IDLE / null grabbed part / no lift; not accepted",
+      "fix": "Execute pointer_down in an explicit conditional"
+    },
+    {
+      "candidate": "godot-fish-body-checkpoint-v2",
+      "cause": "Checkpoint executed during Home preload, then normal page pause/cancel restored it",
+      "evidence": "builds/reviews/godot-fish-body-checkpoint-v2.jpg is Login; numerical trace only, no visual acceptance",
+      "fix": "Run after actual Home input enable"
+    },
+    {
+      "candidate": "godot-fish-body-checkpoint-v3",
+      "cause": "Home entry calls resume_page(false) then set_input_enabled(true); allow_input hook never fired",
+      "evidence": "builds/reviews/godot-fish-body-checkpoint-v3.jpg is rest Home, no checkpoint log",
+      "fix": "One-time _process hook gated by input_enabled; v4 shows pose and matching log"
+    },
+    {
+      "candidate": "home-fish-body-checkpoint-v1",
+      "cause": "QA loop did not advance ripple at the same order as the original controller",
+      "fix": "Advance feedback before controller in production and fixture; v2 images retained"
+    }
+  ],
+  "buildLogs": "Raw Creator logs retained. Exit 36 plus completed build is required; debug SIGTERM/trackTimeEnd messages remain in emitted logs and are not mistaken for runtime shader failures.",
+  "remaining": [
+    "Physical long-press move gesture and live landing screenshots",
+    "Tail and fin grabbed-pose same-state screenshots",
+    "Night/lamp lift and landing comparison",
+    "All prop drag, ownership, attention, offers and drink sequences",
+    "Action marks, incense/vase, backpack articulation, wardrobe/photos/travel/darkroom/departure",
+    "Multi-size/resume/retry/all buttons, 19MB first-download budget, saves/recovery and real WeChat build/device acceptance"
+  ],
+  "fullAcceptance": "All 138 final requirements remain pending; no complete 1:1 or device acceptance claim"
+}
