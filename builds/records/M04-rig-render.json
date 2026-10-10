@@ -4,13 +4,16 @@
   "sourceCandidate": "home-rig-v2",
   "runtimeEvidence": [
     "builds/qa/cocos/home-rig-v2-405x720.jpg",
-    "builds/qa/baseline/godot-home.jpg"
+    "builds/qa/baseline/godot-home.jpg",
+    "builds/qa/cocos/home-rig-v3-405x720.jpg",
+    "builds/qa/cocos/home-rig-v3-console.json"
   ],
   "verified": [
     "Creator 3.8.8 build with attached Boot class valid after lazy plugin lookup",
     "Runtime plugin loaded; asset catalog and required bundles acquired",
     "Real custom 2D mesh draws original body, tail and mallet; all authored curves present",
-    "Source composition first draw observed in browser; no runtime errors in captured console"
+    "Source composition first draw observed in browser; no runtime errors in captured console",
+    "v3 actual runtime has no captured warnings/errors; clean geometry screenshot saved"
   ],
   "notVerified": [
     "strict matched clock/state pixel comparison",
@@ -37,5 +40,6 @@
       "home/behavior/soft_attachment_mesh.gd"
     ]
   },
-  "profilingOverlay": "Present in v2 debug fixture; source Boot now hides it. Clean next fixture screenshot pending."
+  "profilingOverlay": "Removed in Boot; actual v3 clean screenshot inspected",
+  "cleanCandidate": "home-rig-v3"
 }

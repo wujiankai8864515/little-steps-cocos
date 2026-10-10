@@ -3,6 +3,6 @@
   "evidence": "Older push expected 40a0b27 but remote already had 8554408; remote rejected stale lock update",
   "root_cause": "Started a second mutation before first push completed",
   "fix": "Serialize all subsequent push/fetch operations; ordinary non-force retry from latest source",
-  "status": "remote final readback pending",
+  "status": "closed; serialized normal push and fetch succeeded",
   "history_rewritten": false
 }
