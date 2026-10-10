@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "id": "M01",
+  "status": "math_and_distribution_verified_render_pending",
+  "creator": "3.8.8",
+  "plugin": {
+    "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js",
+    "target_mode": "0o444",
+    "sha256": "f313b98b5b5322a8fdce630ba01e60c53a0a2b549189a1b1fa1b0bf389456eb4",
+    "meta": "isPlugin=true; executionScope=global; Web and MiniGame enabled"
+  },
+  "engine_hooks": [
+    {
+      "path": "cocos/2d/assembler/sprite/simple.ts",
+      "sha256": "e2c2da3e1f28b38b59d815f761724de884270aebf74fabc7736ced6153d2c7e6"
+    },
+    {
+      "path": "cocos/2d/components/sprite.ts",
+      "sha256": "d82794919dbeeefd0fc6fcf89e1e8addfec8969c3c0fc028eb4a315c82e1b385"
+    },
+    {
+      "path": "cocos/2d/renderer/render-data.ts",
+      "sha256": "fa17aca5b8c2b1d2332b5e68fe63b1c9d20c04a798682fd982851d553fb28282"
+    }
+  ],
+  "validation": {
+    "node_tests": {
+      "passed": 6,
+      "scope": "Affine/rest skin, inverse deformed hit, interpolation/discrete visibility, late cancellation, frozen API"
+    },
+    "render": "pending actual Creator build and browser",
+    "readonly": "0444 target / 0555 dist; source remains editable in engines. Same-user chmod is not a security boundary."
+  },
+  "source_backup": {
+    "M00_remote_commit": "66266c14bf5987381d2f8bc7a554c2f1c803773f",
+    "fetch_and_tree_diff": "passed"
+  }
+}

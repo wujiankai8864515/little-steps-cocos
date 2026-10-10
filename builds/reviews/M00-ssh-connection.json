@@ -1,0 +1,13 @@
+{
+  "id": "M00",
+  "trigger": "Sandbox blocked outbound SSH; alternate SSH endpoint host key absent",
+  "evidence": [
+    "port 22 Operation not permitted in sandbox",
+    "ssh.github.com:443 Host key verification failed"
+  ],
+  "root_cause": "Network sandbox for first attempt and missing trusted host entry for alternate endpoint",
+  "resolution": "Use authorized normal configured SSH endpoint outside sandbox; push and fetch succeeded",
+  "regression": "HEAD and fetched origin/main both 66266c14bf5987381d2f8bc7a554c2f1c803773f; tree diff empty",
+  "status": "closed",
+  "remaining": "No Cocos runtime or visual validation established by this operation"
+}
