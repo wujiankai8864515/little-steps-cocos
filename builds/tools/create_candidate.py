@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""Freeze a local QA mirror, preserving framework links and declaring overrides.
+
+This creates a browser test fixture; shipping remains exclusively wechatgame.
+No product rules or rendering implementation belong in this script.
+"""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import shutil
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[2]
+
+def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--name', required=True)
+    parser.add_argument('--route', choices=['login', 'home'], default='login')
+    args = parser.parse_args()
+    if not all(c.isalnum() or c in '-_' for c in args.name): raise ValueError('Invalid candidate name')
+    stage = ROOT / 'builds/work' / args.name
+    if stage.exists(): raise FileExistsError('Use a new candidate name; retain previous evidence')
+    stage.mkdir(parents=True)
+    for directory in ['engines/travel-core', 'games/xiaoyu-cocos']:
+        shutil.copytree(ROOT / directory, stage / directory, symlinks=True, ignore=shutil.ignore_patterns('.git', 'library', 'temp', 'local', 'build', 'profiles', 'node_modules', '.DS_Store'))
+    project = stage / 'games/xiaoyu-cocos'
+    boot = project / 'assets/Boot.ts'
+    original = digest(boot)
+    overrides = []
+    if args.route != 'login':
+        text = boot.read_text(); old = 'this.application.start()'
+        assert text.count(old) == 1, 'Boot fixture injection point changed'
+        boot.write_text(text.replace(old, f"this.application.start('{args.route}')"))
+        overrides.append({'file': 'assets/Boot.ts', 'sourceSHA256': original, 'fixtureSHA256': digest(boot), 'purpose': 'Explicit direct Home route to validate the real source rig; not full entry-flow acceptance'})
+    config = {
+        'platform': 'web-mobile', 'name': 'Little Steps QA candidate', 'outputName': 'preview',
+        'buildPath': str(stage / 'output'), 'startScene': 'de1d350c-133c-4d0e-9d2a-1df4d6992aaa',
+        'debug': True, 'md5Cache': False, 'sourceMaps': True,
+        'packages': {'web-mobile': {'orientation': 'portrait'}},
+    }
+    (stage / 'build-config.json').write_text(json.dumps(config, indent=2) + '\n')
+    files = []
+    for directory in ['engines/travel-core', 'games/xiaoyu-cocos']:
+        for path in sorted((stage / directory).rglob('*')):
+            if path.is_file(): files.append({'path': str(path.relative_to(stage)), 'sha256': digest(path), 'symlink': str(path.readlink()) if path.is_symlink() else None})
+    manifest = {
+        'schema': 1, 'name': args.name, 'kind': 'QA candidate, not formal release',
+        'sourceCommit': subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip(),
+        'sourceDirty': bool(subprocess.check_output(['git', '-C', str(ROOT), 'status', '--porcelain'], text=True).strip()),
+        'creator': '3.8.8', 'route': args.route, 'overrides': overrides, 'files': files,
+        'snapshotSHA256': hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest(),
+        'build': 'pending', 'visual': 'pending', 'wechat': 'not covered by this fixture',
+        'command': ['/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator', '--project', str(project), '--build', 'configPath=' + str(stage / 'build-config.json')],
+    }
+    records = ROOT / 'builds/records/candidates'; records.mkdir(parents=True, exist_ok=True)
+    (records / (args.name + '.json')).write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({'project': str(project), 'config': str(stage / 'build-config.json'), 'manifest': str(records / (args.name + '.json')), 'files': len(files), 'overrides': len(overrides)}))
+
+if __name__ == '__main__': main()

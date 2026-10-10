@@ -1,0 +1,34 @@
+{
+  "id": "M03.1",
+  "status": "source_typecheck_passed_actual_renderer_pending",
+  "routes": [
+    "login",
+    "home fixture"
+  ],
+  "source_preserved": {
+    "scene_sha256": "95d3251274653614557153d6c82d974f860bed97e05a3417d0f6ee8a7870a28d",
+    "boot_uuid": "8dacabd2-f20d-42ab-aa32-8ffb576527d7"
+  },
+  "implemented": [
+    "dynamic Boot startup and page roots",
+    "source login art and exact intro timing",
+    "source peeking clip effect",
+    "source bone hierarchy and original animation sampling",
+    "cropped source pixels restored at original coordinates",
+    "raw alpha hit mapping",
+    "leased bundle acquisition"
+  ],
+  "incomplete": [
+    "loading animation/progress/retry",
+    "login to comic flow",
+    "comic and all other routes",
+    "Home lighting, effects, plants and full interactions",
+    "soft deformation and secondary motion",
+    "save, audio and foreground/background",
+    "strict screenshot/button/flow and WeChat device acceptance"
+  ],
+  "validation": [
+    "Creator 3.8.8 generated declarations: tsc --noEmit --skipLibCheck passed"
+  ],
+  "source_only_not_visual_acceptance": true
+}
