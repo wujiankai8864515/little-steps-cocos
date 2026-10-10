@@ -1,0 +1,28 @@
+{
+  "id": "M03.1",
+  "failures": [
+    {
+      "trigger": "Typecheck against user ES2015 project",
+      "evidence": "Object.entries unavailable in ObjectConstructor",
+      "root_cause": "ES2017 API introduced into ES2015 target",
+      "fix": "Use Object.keys and indexed catalog lookup",
+      "regression": "tsc --noEmit --skipLibCheck passed",
+      "status": "closed"
+    },
+    {
+      "trigger": "Staging root-relative paths from project subdirectory",
+      "evidence": "Git pathspec did not match",
+      "fix": "Stage from repository root",
+      "regression": "M03.1 commit created; no user file deletion",
+      "status": "closed"
+    },
+    {
+      "trigger": "Cocos CLI launch in workspace sandbox",
+      "evidence": "Exit 134 without diagnostic output",
+      "root_cause": "Not yet proven; GUI/cache access limitation suspected",
+      "next": "Retry same official CLI outside sandbox under user authorization",
+      "status": "open"
+    }
+  ],
+  "boundary": "Tooling and source checks are not visual or full-game acceptance"
+}

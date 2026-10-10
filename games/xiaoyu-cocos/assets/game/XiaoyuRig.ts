@@ -1,6 +1,6 @@
 import { Node, Sprite, UITransform, Vec3 } from 'cc';
 import { GameAssets } from './Assets';
-import { core, MeshSprite, Scope } from './Engine';
+import { core, meshSprite, Scope } from './Engine';
 import { nodeAt } from './Visual';
 
 // Authored Skeleton2D hierarchy and all seven curves are transferred verbatim.
@@ -42,7 +42,7 @@ export class XiaoyuRig {
                 const rect = [Math.max(0, bounds[0] - 3), Math.max(0, bounds[1] - 3), Math.min(spec.size[0], bounds[2] + 3), Math.min(spec.size[1], bounds[3] + 3)];
                 const mesh = core.createGrid([rect[0], rect[1], rect[2] - rect[0], rect[3] - rect[1]], section.name === 'OriginalFinAndRigidMallet' ? 7 : 14);
                 node.getComponent(UITransform).setContentSize(spec.size[0], spec.size[1]);
-                const sprite = node.addComponent(MeshSprite); sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+                const sprite = node.addComponent(meshSprite()); sprite.sizeMode = Sprite.SizeMode.CUSTOM;
                 sprite.configure(mesh, spec.size, spec.content); sprite.spriteFrame = assets.frame(resource, scope);
                 this.meshes.push({resource, node, mesh, sprite});
             }

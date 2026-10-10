@@ -1,0 +1,9 @@
+{
+  "trigger": "Cocos build reads Boot to serialize scene while runtime plugin is disabled in editor",
+  "evidence": "Explicit framework-not-loaded warning preceding Missing class and null constructor in scene metrics; exit 36",
+  "root_cause": "Engine.ts eagerly resolves plugin and registers mesh class at module evaluation, even for editor-only scene inspection",
+  "fix": "Resolve framework and register custom mesh class lazily when runtime constructs the application/rig",
+  "regression": "Typecheck passed; clean second candidate actual build pending",
+  "source_scene_changed": false,
+  "status": "fix_candidate_pending_real_build"
+}
