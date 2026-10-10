@@ -62,6 +62,10 @@ export class GameAssets {
         // Conservative shader/pipeline reservation; these join the same page gate.
         return this.acquireSpecs(names.map(name=>({key:'effect:'+name,bytes:512*1024,spec:{kind:'effect',path:'effects/'+name}})),scope);
     }
+    async acquireTransient<T>(key:string,bytes:number,create:()=>T,dispose:(value:T)=>void,scope:Scope):Promise<T> {
+        const lease=await this.gate.acquire([{key:'transient:'+key,bytes}],create,dispose,scope);
+        return lease.get('transient:'+key);
+    }
     private acquireSpecs(specs:any[],scope:Scope) {
         return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);

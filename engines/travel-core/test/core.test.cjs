@@ -6,6 +6,64 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+function fakeSurfaceEngine() {
+    class Node {
+        constructor(name) {this.name=name;this.layer=1<<30;this.children=[];this.events=new Map();this.active=true;this.destroyCount=0;}
+        on(event,callback) {this.events.set(event,callback);}
+        off(event,callback) {if(this.events.get(event)===callback)this.events.delete(event);}
+        addChild(child) {if(child.parent)child.parent.removeChild(child);child.parent=this;this.children.push(child);const callback=this.events.get('added');if(callback)callback(child);}
+        removeChild(child) {this.children.splice(this.children.indexOf(child),1);child.parent=null;const callback=this.events.get('removed');if(callback)callback(child);}
+        setPosition(...p) {this.position=p;}
+        addComponent(Type) {const component=new Type();component.node=this;return component;}
+        destroy() {this.destroyCount++;}
+    }
+    Node.EventType={CHILD_ADDED:'added',CHILD_REMOVED:'removed'};
+    class UITransform {setAnchorPoint(...value){this.anchor=value;}setContentSize(width,height){this.width=width;this.height=height;}}
+    class Sprite {} Sprite.SizeMode={CUSTOM:1};
+    class SpriteFrame {constructor(){this.destroyCount=0;}destroy(){this.destroyCount++;}}
+    class Camera {constructor(){this.enabledInHierarchy=true;}} Camera.ProjectionType={ORTHO:0};Camera.ClearFlag={SOLID_COLOR:1};
+    class Canvas {} class Color {constructor(...rgba){this.rgba=rgba;}}
+    class RenderTexture {initialize(info){Object.assign(this,info);}setFilters(){}setMipFilter(){}setWrapMode(){}destroy(){this.destroyed=true;}}
+    RenderTexture.Filter={LINEAR:2,NONE:0};RenderTexture.WrapMode={CLAMP_TO_EDGE:2};
+    const drawListeners=new Set(),director={on(event,callback){drawListeners.add(callback);},off(event,callback){drawListeners.delete(callback);},draw(){for(const callback of drawListeners)callback();}},Director={EVENT_AFTER_DRAW:'draw'};
+    return {Node,UITransform,Sprite,SpriteFrame,Camera,Canvas,Color,RenderTexture,director,Director};
+}
+test('Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice',()=>{
+    const cc=fakeSurfaceEngine(),scope=new core.Lifetime(),host=new cc.Node('scene'),displayParent=new cc.Node('page'),renderer=core.registerRenderSurface(cc),target=renderer.createTarget(720,1280,'room');
+    displayParent.layer=1<<25;
+    const surface=renderer.create({host,displayParent,logicalSize:[720,1440],displayRect:[0,-80,720,1440],target,layer:1<<19},scope);
+    const root=new cc.Node('world'),leaf=new cc.Node('sprite');root.addChild(leaf);surface.content.addChild(root);
+    assert.equal(root.layer,1<<19);assert.equal(leaf.layer,1<<19);assert.equal(surface.camera.visibility,1<<19);
+    assert.equal(surface.content.parent.parent,host);assert.equal(surface.display.parent,displayParent);
+    assert.equal(surface.display.layer,1<<25);assert.equal(surface.camera.orthoHeight,720);
+    surface.content.removeChild(root);assert.equal(root.layer,1<<30);assert.equal(leaf.layer,1<<30);assert.equal(root.events.size,0);
+    surface.content.addChild(root);const dynamic=new cc.Node('later');leaf.addChild(dynamic);assert.equal(dynamic.layer,1<<19);
+    surface.setActive(false);assert.equal(surface.snapshot().active,false);surface.setActive(true);
+    scope.dispose();surface.dispose();assert.equal(surface.snapshot().disposed,true);assert.equal(surface.camera.targetTexture,null);assert.equal(surface.camera.enabled,false);
+    assert.equal(surface.content.parent.destroyCount,1);assert.equal(surface.display.destroyCount,1);assert.equal(leaf.events.size,0);assert.equal(surface.layout([720,1280],[0,0,720,1280],target),false);
+    // The caller's resource gate owns the target. Surface disposal never frees
+    // a texture while another admitted owner may still use it.
+    assert.equal(target.destroyed,undefined);
+});
+test('Render-target admission includes color/depth before allocation and cancellation releases the late target once',async()=>{
+    const renderer=core.registerRenderSurface(fakeSurfaceEngine()),bytes=renderer.estimateTarget(720,1280),gate=new core.ResourceGate({maxBytes:bytes}),scope=new core.Lifetime();
+    assert.equal(bytes,7372800);assert.throws(()=>renderer.estimateTarget(0,1),/size/);
+    let resolve,created=0,released=0;
+    const request=gate.acquire([{key:'room',bytes}],()=>{created++;assert.equal(gate.snapshot().reservedBytes,bytes);return new Promise(r=>resolve=r);},()=>released++,scope);
+    await Promise.resolve();await assert.rejects(gate.acquire([{key:'other',bytes:8}],()=>created++,()=>{},scope),/budget/);assert.equal(created,1);
+    scope.dispose();assert.equal(gate.snapshot().reservedBytes,bytes);resolve({texture:true});await assert.rejects(request,{name:'CancelledError'});
+    assert.equal(released,1);assert.equal(gate.snapshot().reservedBytes,0);
+});
+test('Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners',async()=>{
+ const cc=fakeSurfaceEngine(),renderer=core.registerRenderSurface(cc),owner=new core.Lifetime(),host=new cc.Node('scene'),page=new cc.Node('page'),target=renderer.createTarget(720,1280,'room');
+ const create=scope=>renderer.create({host,displayParent:page,logicalSize:[720,1280],displayRect:[0,0,720,1280],target},scope);
+ const surface=create(owner);let settled=false;surface.ready.then(()=>settled=true);
+ surface.setActive(false);cc.director.draw();assert.equal(surface.snapshot().readyFrames,0);surface.setActive(true);
+ cc.director.draw();await Promise.resolve();assert.equal(settled,false);cc.director.draw();await surface.ready;assert.equal(settled,true);
+ const cancelledScope=new core.Lifetime(),cancelled=create(cancelledScope);assert.notEqual(surface.camera.visibility,cancelled.camera.visibility);cancelledScope.dispose();await assert.rejects(cancelled.ready,{name:'CancelledError'});cc.director.draw();assert.equal(cancelled.snapshot().readyFrames,0);
+ const reusedScope=new core.Lifetime(),reused=create(reusedScope);assert.equal(reused.camera.visibility,cancelled.camera.visibility);reusedScope.dispose();await assert.rejects(reused.ready,{name:'CancelledError'});
+ owner.dispose();
+});
 test('UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity',()=>{
     class Sprite {constructor(){this.color={r:255,g:255,b:255,a:128};}get renderData(){return this._renderData;}destroyRenderData(){this._renderData=null;}requestRenderData(){return this._renderData={data:[],floatStride:9,chunk:{setIndexBuffer(){}},resize(n){this.chunk.vb=new Float32Array(n*9);},get dataLength(){return this._length;},set dataLength(n){this._length=n;this.data=Array.from({length:n},()=>({}));}};}getRenderMaterial(){return {};}markForUpdateRenderData(){}}
     const Mesh=core.registerCocos({Sprite,_decorator:{ccclass:()=>type=>type}}),sprite=new Mesh();

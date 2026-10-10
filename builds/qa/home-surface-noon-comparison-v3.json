@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "state": {
+    "hour": 12.0,
+    "viewport": [
+      405,
+      720
+    ],
+    "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+    "clock": "frozen",
+    "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures"
+  },
+  "referenceConsole": {
+    "path": "builds/reviews/M04-godot-plants-rest-noon-v2-browser.json",
+    "sha256": "8c43d60785c8c39a881ca88c98f90cceb892c99f001ab391261758a43740c623",
+    "gameHour": 12.0,
+    "plantPhase": 0.0,
+    "plantShadows": "refreshed after seeking hour; actual room context logged"
+  },
+  "plantShadowState": "verified against actual corrected reference console",
+  "sourceFiles": [
+    {
+      "path": "builds/qa/godot-home-plants-rest-noon-v2.jpg",
+      "sha256": "8d57b4fd37f77865f743b6686d0ffd44f0c8022df4816f8a7c7815c5d06ebdc4"
+    },
+    {
+      "path": "builds/qa/cocos-home-surface-noon-v3.jpg",
+      "sha256": "428b7e6a53ced99d65e1d1ab79e454d05b20ab3532194e6749856d2eede75916"
+    }
+  ],
+  "method": "Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.",
+  "regions": [
+    {
+      "region": "full",
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 3.3785219478738,
+      "maxRGB": 232
+    },
+    {
+      "region": "sky_glass",
+      "rect": [
+        73,
+        4,
+        124,
+        61
+      ],
+      "meanAbsoluteRGB": 1.1549134273592478,
+      "maxRGB": 12
+    },
+    {
+      "region": "receiver_wall",
+      "rect": [
+        190,
+        294,
+        249,
+        367
+      ],
+      "meanAbsoluteRGB": 0.45035213992725015,
+      "maxRGB": 4
+    },
+    {
+      "region": "floor",
+      "rect": [
+        219,
+        618,
+        300,
+        687
+      ],
+      "meanAbsoluteRGB": 0.604699707759289,
+      "maxRGB": 7
+    },
+    {
+      "region": "actor_face",
+      "rect": [
+        88,
+        404,
+        280,
+        498
+      ],
+      "meanAbsoluteRGB": 0.6986369680851063,
+      "maxRGB": 17
+    },
+    {
+      "region": "left_plants",
+      "rect": [
+        0,
+        75,
+        34,
+        308
+      ],
+      "meanAbsoluteRGB": 2.33400656399899,
+      "maxRGB": 29
+    },
+    {
+      "region": "window_plants",
+      "rect": [
+        126,
+        0,
+        186,
+        384
+      ],
+      "meanAbsoluteRGB": 1.3019241898148148,
+      "maxRGB": 32
+    },
+    {
+      "region": "shelf_plants",
+      "rect": [
+        260,
+        52,
+        398,
+        143
+      ],
+      "meanAbsoluteRGB": 0.7591442374051071,
+      "maxRGB": 9
+    }
+  ],
+  "acceptance": "pending; this fixed-pose comparison does not cover remaining imagery, all input flows, animated face/soft shadows, or WeChat devices",
+  "image": "builds/qa/home-surface-noon-comparison-v3.png"
+}

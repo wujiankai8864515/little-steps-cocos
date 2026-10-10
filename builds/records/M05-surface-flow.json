@@ -1,0 +1,411 @@
+{
+  "schema": 1,
+  "id": "M05.4",
+  "status": "partial_original_Home_render_target_pipeline_browser_verified_full_product_parity_pending",
+  "originalSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sources": [
+    {
+      "repository": "original",
+      "path": "games/travel_woodfish/project/home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "repository": "original",
+      "path": "games/travel_woodfish/project/home/home_page.tscn",
+      "sha256": "cda085956659166887ea8065fc8c657fb9bd7efc65122ba3d745e08568fcd6df"
+    },
+    {
+      "repository": "original",
+      "path": "games/travel_woodfish/project/project.godot",
+      "sha256": "e9837493e9ede804631915b41cb351fae5fbd068cf06cdba8c20362079e0d63b"
+    }
+  ],
+  "installedSDK": {
+    "creator": "3.8.8",
+    "files": [
+      {
+        "path": "cocos/2d/framework/canvas.ts",
+        "sha256": "2af98ed7ecade4188e04343d597f3ea983379f38434d97483a2305940d51f867"
+      },
+      {
+        "path": "cocos/misc/camera-component.ts",
+        "sha256": "dacb33382d34f06916696d1a7a292c26d36d55439b6fa70d97d3fb3edd60843b"
+      },
+      {
+        "path": "cocos/asset/assets/render-texture.ts",
+        "sha256": "1f01a12ad007c816e7b75f0c42f0146c8b45c847b2d90f51db1331b9fdb5f66d"
+      },
+      {
+        "path": "cocos/2d/components/sprite.ts",
+        "sha256": "d82794919dbeeefd0fc6fcf89e1e8addfec8969c3c0fc028eb4a315c82e1b385"
+      },
+      {
+        "path": "editor/assets/effects/for2d/builtin-sprite.effect",
+        "sha256": "c96f9d8b9f06c7b7d79f881a39eebfac712d0a9cde7ed7cd88d26e42bc2098f1"
+      }
+    ]
+  },
+  "implementation": {
+    "framework": "engines/travel-core/src/cocos-surface.js",
+    "gamePolicy": "games/xiaoyu-cocos/assets/game/HomeRenderPlan.ts",
+    "world": "HomeRoom renders separately from presentation and future HUD",
+    "rasterPolicy": "720-wide minimum; physicalWidth / 720 clamped to 1..2; logical-height centering copied from original",
+    "resourceAdmission": "color plus depth/stencil estimated at 8 bytes per pixel through existing 80-spec/128-entry/256MiB gate before allocation",
+    "presentation": "Builtin SAMPLE_FROM_RT backend flip, linear filters, no mipmap, clamp; opacity applied to presentation once",
+    "preparation": "two completed offscreen draws before route adopts Home; hidden page remains hidden during preparation",
+    "lifecycle": "camera disabled/detached target, frame destroyed, layer/event subscriptions removed, target released by gate; cancellation tests passed; real interruption matrix pending",
+    "overlappingSurfaces": "distinct user layers reserved per scene, restored on detach and freed on disposal"
+  },
+  "checks": {
+    "tests": {
+      "passed": 43,
+      "failed": 0,
+      "log": "builds/reviews/M05-surface-final-tests.log"
+    },
+    "typecheck": "passed against installed Creator 3.8.8 SDK",
+    "diffCheck": "passed",
+    "sourceIntegrity": {
+      "unchangedEditorFiles": 15,
+      "priorIntentionalBootImplementationChange": true,
+      "sourceFilesMatchUnmodifiedEntrySnapshot": 432,
+      "pluginSHA256": "ab4dd55615450ce789c69ad3d658dd895233737a6946f6c39cf10fb0c0eb1507",
+      "targetMode": "0o444",
+      "directoryMode": "0o555",
+      "pluginMeta": {
+        "ver": "4.0.24",
+        "importer": "javascript",
+        "imported": true,
+        "uuid": "7d0bdc9d-6e8b-5ee4-a751-c655c245ba31",
+        "files": [],
+        "subMetas": {},
+        "userData": {
+          "isPlugin": true,
+          "loadPluginInEditor": false,
+          "loadPluginInWeb": true,
+          "loadPluginInNative": false,
+          "loadPluginInMiniGame": true,
+          "executionScope": "global"
+        }
+      }
+    },
+    "candidateImportIntegrity": "builds/reviews/M05-surface-entry-import-integrity.json",
+    "postImportMetadataMigrations": 57,
+    "postImportImplementationAndArtBytesChanged": 0,
+    "postImportUUIDOrUserDataChanges": 0
+  },
+  "browser": {
+    "viewport": [
+      405,
+      720
+    ],
+    "room": {
+      "logicalSize": [
+        720,
+        1280
+      ],
+      "pixels": [
+        720,
+        1280
+      ],
+      "layer": 524288,
+      "priority": -1,
+      "active": true,
+      "disposed": false,
+      "cameraEnabled": true,
+      "cameraPosition": {
+        "x": 0,
+        "y": 0,
+        "z": 1000
+      },
+      "contentPosition": {
+        "x": -360,
+        "y": 640,
+        "z": 0
+      },
+      "displayPosition": {
+        "x": 0,
+        "y": 1280,
+        "z": 0
+      },
+      "trackedNodes": 221,
+      "readyFrames": 2
+    },
+    "normalEntry": {
+      "candidate": "home-surface-entry-v1",
+      "overrides": 0,
+      "routes": [
+        "[LittleSteps] PAGE_READY LOGIN",
+        "[LittleSteps] PAGE_READY COMIC",
+        "[LittleSteps] PAGE_READY HOME; full Home product parity pending"
+      ],
+      "resourcesIncludingRenderTarget": {
+        "entries": 88,
+        "reservedBytes": 199195185,
+        "pending": 0
+      },
+      "rigContacts": 9,
+      "actualKnockStarts": 9,
+      "actualMusicStarts": 2,
+      "browser": "builds/reviews/M05-surface-entry-v1-browser.json",
+      "image": "builds/qa/cocos-home-surface-entry-v1.jpg",
+      "manualInput": "not covered; nine automatic source-clock contacts/audio starts only"
+    },
+    "scope": "no scoped errors or warnings observed in three prepared browser fixtures; complete lifecycle/WeChat pending"
+  },
+  "sameStateScreenshots": [
+    {
+      "evidence": "builds/qa/home-surface-noon-comparison-v3.json",
+      "image": "builds/qa/home-surface-noon-comparison-v3.png",
+      "state": {
+        "hour": 12.0,
+        "viewport": [
+          405,
+          720
+        ],
+        "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+        "clock": "frozen",
+        "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures"
+      },
+      "metrics": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 3.3785219478738,
+          "maxRGB": 232
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 1.1549134273592478,
+          "maxRGB": 12
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.45035213992725015,
+          "maxRGB": 4
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.604699707759289,
+          "maxRGB": 7
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 0.6986369680851063,
+          "maxRGB": 17
+        },
+        {
+          "region": "left_plants",
+          "rect": [
+            0,
+            75,
+            34,
+            308
+          ],
+          "meanAbsoluteRGB": 2.33400656399899,
+          "maxRGB": 29
+        },
+        {
+          "region": "window_plants",
+          "rect": [
+            126,
+            0,
+            186,
+            384
+          ],
+          "meanAbsoluteRGB": 1.3019241898148148,
+          "maxRGB": 32
+        },
+        {
+          "region": "shelf_plants",
+          "rect": [
+            260,
+            52,
+            398,
+            143
+          ],
+          "meanAbsoluteRGB": 0.7591442374051071,
+          "maxRGB": 9
+        }
+      ],
+      "referenceConsole": {
+        "path": "builds/reviews/M04-godot-plants-rest-noon-v2-browser.json",
+        "sha256": "8c43d60785c8c39a881ca88c98f90cceb892c99f001ab391261758a43740c623",
+        "gameHour": 12.0,
+        "plantPhase": 0.0,
+        "plantShadows": "refreshed after seeking hour; actual room context logged"
+      },
+      "plantShadowState": "verified against actual corrected reference console"
+    },
+    {
+      "evidence": "builds/qa/home-surface-night-comparison-v1.json",
+      "image": "builds/qa/home-surface-night-comparison-v1.png",
+      "state": {
+        "hour": 1.0,
+        "viewport": [
+          405,
+          720
+        ],
+        "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+        "clock": "frozen",
+        "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures"
+      },
+      "metrics": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 3.552494284407865,
+          "maxRGB": 250
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 0.4220846233230134,
+          "maxRGB": 5
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.5968578283414596,
+          "maxRGB": 5
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.39553885608636014,
+          "maxRGB": 7
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 0.7905400413711584,
+          "maxRGB": 13
+        },
+        {
+          "region": "left_plants",
+          "rect": [
+            0,
+            75,
+            34,
+            308
+          ],
+          "meanAbsoluteRGB": 2.1916182782125726,
+          "maxRGB": 21
+        },
+        {
+          "region": "window_plants",
+          "rect": [
+            126,
+            0,
+            186,
+            384
+          ],
+          "meanAbsoluteRGB": 1.3626446759259256,
+          "maxRGB": 40
+        },
+        {
+          "region": "shelf_plants",
+          "rect": [
+            260,
+            52,
+            398,
+            143
+          ],
+          "meanAbsoluteRGB": 0.900886553060466,
+          "maxRGB": 14
+        }
+      ],
+      "referenceConsole": {
+        "path": "builds/reviews/M04-godot-plants-rest-night-v2-browser.json",
+        "sha256": "40855ad5ba1395b7b8ee91d3c4a167e67ac0340da4bfed102cfffddd5ef5cfdb",
+        "gameHour": 1.0,
+        "plantPhase": 0.0,
+        "plantShadows": "refreshed after seeking hour; actual room context logged"
+      },
+      "plantShadowState": "verified against actual corrected reference console"
+    }
+  ],
+  "sameReferenceBeforeAfterFullMeanRGB": [
+    {
+      "hour": 12,
+      "before": 4.271968449931413,
+      "after": 3.3785219478738,
+      "scope": "whole frame includes known missing HUD/props; error is not an acceptance threshold"
+    },
+    {
+      "hour": 1,
+      "before": 3.8904812528577963,
+      "after": 3.552494284407865,
+      "scope": "same declared frozen actor/plant/hour reference and 405x720 viewport"
+    }
+  ],
+  "retainedIssue": {
+    "candidate": "home-surface-noon-v1",
+    "initial": "black capture despite positive first-draw log and no scoped browser errors",
+    "recheck": "normal room without source changes",
+    "rootCause": "unestablished",
+    "diagnostic": "home-surface-noon-v2 declares one-pixel GPU readback; pixel [215,161,108,255], correct world and camera geometry",
+    "followup": "explicit two-draw readiness and actual normal-entry/noon/night screenshots; repeated cold load/device stress pending"
+  },
+  "limits": [
+    "All 138 requirement acceptance rows retain pending; this is one verified rendering step",
+    "Exact RGB parity still pending; color interpolation, Godot native gradient sampling, prop/bag animation and missing HUD/incense/flowers contribute remaining differences",
+    "Initial sizing validated at 405x720 only; other sizes, runtime resizing and safe areas pending",
+    "Home buttons, real manual alpha interaction, merit/save, incense/flowers, bag/ribbon, darkroom, travel/photo/wardrobe and interruption matrix pending",
+    "Render-target admission now included but Home first download is still above 19000000 bytes; total resource/VRAM audit pending",
+    "Formal WeChat-only shipping and real-device GPU/input/performance acceptance pending"
+  ]
+}
