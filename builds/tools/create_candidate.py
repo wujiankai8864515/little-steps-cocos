@@ -22,9 +22,14 @@ def main():
     parser.add_argument('--route', choices=['login', 'home'], default='login')
     parser.add_argument('--hour',type=float,help='Explicit initial Home hour; freezes only with --freeze')
     parser.add_argument('--freeze',action='store_true',help='Freeze Home time and actor pose in this candidate only')
+    parser.add_argument('--freeze-plants',action='store_true',help='Keep Home plants at their authored rest pose; requires --freeze')
+    parser.add_argument('--plant-time',type=float,default=0,help='Deterministically advance plant wind before freezing; fixed 1/60 steps')
     args = parser.parse_args()
     if (args.hour is not None or args.freeze) and args.route!='home':parser.error('Home fixtures require --route home')
     if args.hour is not None and not math.isfinite(args.hour):parser.error('Hour must be finite')
+    if args.freeze_plants and not args.freeze:parser.error('--freeze-plants requires --freeze')
+    if not math.isfinite(args.plant_time) or not 0<=args.plant_time<=60 or abs(args.plant_time*60-round(args.plant_time*60))>1e-8:parser.error('--plant-time requires 0..60 seconds in exact 1/60 steps')
+    if args.plant_time and not args.freeze_plants:parser.error('--plant-time requires --freeze-plants')
     if not all(c.isalnum() or c in '-_' for c in args.name): raise ValueError('Invalid candidate name')
     stage = ROOT / 'builds/work' / args.name
     if stage.exists(): raise FileExistsError('Use a new candidate name; retain previous evidence')
@@ -51,6 +56,14 @@ def main():
             path=project/'assets/game'/filename;before=digest(path);text=path.read_text();assert text.count(old)==1
             path.write_text(text.replace(old,new))
             overrides.append({'file':'assets/game/'+filename,'sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Freeze product clock and original actor pose at zero; QA only, not shipping behavior'})
+    if args.freeze_plants:
+        path=project/'assets/game/HomePage.ts';before=digest(path);text=path.read_text();point='this.plants.advance(delta)';assert text.count(point)==1
+        path.write_text(text.replace(point,'this.plants.advance(0)'))
+        overrides.append({'file':'assets/game/HomePage.ts','sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Freeze independent Home plant phase at zero with neutral joints; QA only, not shipping behavior'})
+        if args.plant_time:
+            path=project/'assets/game/HomePlants.ts';before=digest(path);text=path.read_text();point='});this.advance(0);this.updateShadows();';assert text.count(point)==1
+            path.write_text(text.replace(point,f'}});for(let reviewStep=0;reviewStep<{round(args.plant_time*60)};reviewStep++)this.advance(1/60);this.updateShadows();'))
+            overrides.append({'file':'assets/game/HomePlants.ts','sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Deterministic plant wind checkpoint before freezing; no shipping override','seconds':args.plant_time,'steps':round(args.plant_time*60),'stepSeconds':1/60})
     config = {
         'platform': 'web-mobile', 'name': 'Little Steps QA candidate', 'outputName': 'preview',
         'buildPath': str(stage / 'output'), 'startScene': 'de1d350c-133c-4d0e-9d2a-1df4d6992aaa',

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "initial": {
+    "command": "python3 -m py_compile builds/tools/freeze_godot_plants.py builds/tools/compare_lighting.py builds/tools/create_candidate.py builds/tools/import_godot_lighting.py",
+    "status": "failed environment cache write",
+    "reason": "System Python tried to write bytecode under /Users/wkk/Library/Caches/com.apple.python/Users/wkk/dotWorkers, outside workspace permissions"
+  },
+  "repair": {
+    "method": "compile(source, filename, exec) checks syntax in memory without writing global bytecode caches",
+    "files": [
+      "freeze_godot_plants.py",
+      "compare_lighting.py",
+      "create_candidate.py",
+      "import_godot_lighting.py"
+    ],
+    "status": "passed"
+  },
+  "userPermissionRequest": "unnecessary; work continues using workspace-safe validation"
+}

@@ -17,6 +17,8 @@
     "shared_room_lighting/window_beam_profile.gdshaderinc": "b51ccba109864c553883979c586e1fca92e55610ef63e8610fd553c29f77e6a6",
     "shaders/light_shafts.gdshader": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
     "shaders/home_grounded_shadow.gdshader": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557",
+    "home/secondary/part_wall_shadow.gdshader": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526",
+    "shared_room_lighting/dark_window_field.gdshaderinc": "7fa9576b57736a2f9cde4016a03496a16cc008a318de7f333503d5d050d8a185",
     "shared_room_lighting/lighting_snapshot.gd": "0474847a22736db7e0426fd8318634554bdf2239c49c6c3a70fc212d3a6a2101",
     "home/room_props_controller.gd": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83",
     "scripts/approved_lighting_v3.gd": "1918b937b6c80b65284f1235406fcabd57ccec9a67e062f6bc1f42b3302ced7a",
@@ -47,6 +49,10 @@
     {
       "path": "games/xiaoyu-cocos/assets/resources/effects/home-shadow.effect",
       "sha256": "7698e324fad97564cf1af10b314517368c07cde97ed70cf6ee461faa1df000fb"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part-shadow.effect",
+      "sha256": "a088f2343b4cdd7d0a24573fd237656fef3632dfb768e9e4100c858a4c547be3"
     }
   ],
   "godotCanvasReference": {
@@ -57,7 +63,7 @@
   "limits": [
     "native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D",
     "animated face, outfit and prop variants still require full input/flow verification",
-    "soft-mesh lift/landing and articulated backpack/plant shadows pending",
+    "soft-mesh lift/landing and articulated backpack shadows pending; independent Home plant checkpoints tracked separately",
     "full same-state screenshot matrix and WeChat true-device acceptance pending"
   ]
 }

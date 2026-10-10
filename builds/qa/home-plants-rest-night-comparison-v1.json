@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "state": {
+    "hour": 1.0,
+    "viewport": [
+      405,
+      720
+    ],
+    "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+    "clock": "frozen",
+    "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures"
+  },
+  "sourceFiles": [
+    {
+      "path": "builds/qa/godot-home-plants-rest-night-v1.jpg",
+      "sha256": "d4a4fac6f0fd00f28965d63cf2579a93a6ff26a69e152710881aea8028bfdb77"
+    },
+    {
+      "path": "builds/qa/cocos-home-plants-rest-night-v1.jpg",
+      "sha256": "fac5906257bdb52f70e5c13965a5078e2019638105bfd1ca5fbfae8c20f6254d"
+    }
+  ],
+  "method": "Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.",
+  "regions": [
+    {
+      "region": "full",
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 3.881841563786008,
+      "maxRGB": 248
+    },
+    {
+      "region": "sky_glass",
+      "rect": [
+        73,
+        4,
+        124,
+        61
+      ],
+      "meanAbsoluteRGB": 0.8548331613347093,
+      "maxRGB": 20
+    },
+    {
+      "region": "receiver_wall",
+      "rect": [
+        190,
+        294,
+        249,
+        367
+      ],
+      "meanAbsoluteRGB": 0.6891881433325594,
+      "maxRGB": 6
+    },
+    {
+      "region": "floor",
+      "rect": [
+        219,
+        618,
+        300,
+        687
+      ],
+      "meanAbsoluteRGB": 0.33172302737520126,
+      "maxRGB": 7
+    },
+    {
+      "region": "actor_face",
+      "rect": [
+        88,
+        404,
+        280,
+        498
+      ],
+      "meanAbsoluteRGB": 0.9860372340425533,
+      "maxRGB": 26
+    },
+    {
+      "region": "left_plants",
+      "rect": [
+        0,
+        75,
+        34,
+        308
+      ],
+      "meanAbsoluteRGB": 2.553311453336699,
+      "maxRGB": 26
+    },
+    {
+      "region": "window_plants",
+      "rect": [
+        126,
+        0,
+        186,
+        384
+      ],
+      "meanAbsoluteRGB": 2.175896990740741,
+      "maxRGB": 41
+    },
+    {
+      "region": "shelf_plants",
+      "rect": [
+        260,
+        52,
+        398,
+        143
+      ],
+      "meanAbsoluteRGB": 1.2403779795084142,
+      "maxRGB": 19
+    }
+  ],
+  "acceptance": "pending; this fixed-pose comparison does not cover remaining imagery, all input flows, animated face/soft shadows, or WeChat devices",
+  "image": "builds/qa/home-plants-rest-night-comparison-v1.png",
+  "referenceLimitation": "Retained diagnostic comparison only: v1 Godot plant shadow uniforms remained at the hour before review freeze. Actual images retained; plant-shadow same-state acceptance withdrawn and replaced by corrected-reference comparisons."
+}

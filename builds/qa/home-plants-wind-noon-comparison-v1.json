@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "state": {
+    "hour": 12.0,
+    "viewport": [
+      405,
+      720
+    ],
+    "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+    "clock": "frozen",
+    "plantPhase": {
+      "seconds": 3.0,
+      "stepSeconds": 0.016666666666666666,
+      "status": "both fixtures deterministically advanced then frozen"
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "builds/qa/godot-home-plants-wind-noon-v1.jpg",
+      "sha256": "a8f275d188b3ad084ee68b8373f8dc37c2cbb79e6f4592a9cfb822854ae7e4cc"
+    },
+    {
+      "path": "builds/qa/cocos-home-plants-wind-noon-v1.jpg",
+      "sha256": "9af80d65f9fb782b226e36be70661ba3130575b44652494a60a571304e466f5c"
+    }
+  ],
+  "method": "Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.",
+  "regions": [
+    {
+      "region": "full",
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 4.276606081390032,
+      "maxRGB": 234
+    },
+    {
+      "region": "sky_glass",
+      "rect": [
+        73,
+        4,
+        124,
+        61
+      ],
+      "meanAbsoluteRGB": 2.667813324160073,
+      "maxRGB": 27
+    },
+    {
+      "region": "receiver_wall",
+      "rect": [
+        190,
+        294,
+        249,
+        367
+      ],
+      "meanAbsoluteRGB": 0.5408250135438434,
+      "maxRGB": 5
+    },
+    {
+      "region": "floor",
+      "rect": [
+        219,
+        618,
+        300,
+        687
+      ],
+      "meanAbsoluteRGB": 0.5989741754637085,
+      "maxRGB": 9
+    },
+    {
+      "region": "actor_face",
+      "rect": [
+        88,
+        404,
+        280,
+        498
+      ],
+      "meanAbsoluteRGB": 1.3311354905437351,
+      "maxRGB": 36
+    },
+    {
+      "region": "left_plants",
+      "rect": [
+        0,
+        75,
+        34,
+        308
+      ],
+      "meanAbsoluteRGB": 4.057266683497433,
+      "maxRGB": 56
+    },
+    {
+      "region": "window_plants",
+      "rect": [
+        126,
+        0,
+        186,
+        384
+      ],
+      "meanAbsoluteRGB": 3.7421151620370368,
+      "maxRGB": 53
+    },
+    {
+      "region": "shelf_plants",
+      "rect": [
+        260,
+        52,
+        398,
+        143
+      ],
+      "meanAbsoluteRGB": 1.7557997557997558,
+      "maxRGB": 32
+    }
+  ],
+  "acceptance": "pending; this fixed-pose comparison does not cover remaining imagery, all input flows, animated face/soft shadows, or WeChat devices",
+  "image": "builds/qa/home-plants-wind-noon-comparison-v1.png",
+  "referenceLimitation": "Retained diagnostic comparison only: v1 Godot plant shadow uniforms remained at the hour before review freeze. Actual images retained; plant-shadow same-state acceptance withdrawn and replaced by corrected-reference comparisons."
+}

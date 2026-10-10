@@ -1,0 +1,142 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        roomOrigin: { value: [0, 0, 1, 1] }
+        sourceUV: { value: [0, 0, 1, 1] }
+        visibleUV: { value: [0, 0, 1, 1] }
+        ambientState: { value: [0.55, 0.59, 0.63, 0.43] }
+        sunState: { value: [1, 0.91, 0.76, 0] }
+        sunVectorState: { value: [0, 0, 1, 1] }
+        castState: { value: [0.6, 0.6, -0.32, 0.95] }
+        timeState: { value: [7, 1, 0, 0] }
+        weightsState: { value: [1, 0, 0, 1] }
+        celestialState: { value: [147.5, 63.55, 228, 95] }
+        maskRect: { value: [0, 0, 1, 1] }
+        partShadowState: { value: [0, 0, 0, 0] }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform RoomState {
+    vec4 roomOrigin;
+    vec4 sourceUV;
+    vec4 visibleUV;
+    vec4 ambientState;
+    vec4 sunState;
+    vec4 sunVectorState;
+    vec4 castState;
+    vec4 timeState;
+    vec4 weightsState;
+    vec4 celestialState;
+    vec4 maskRect;
+  };
+  #define ambient_color ambientState.rgb
+  #define sun_energy ambientState.a
+  #define sun_color sunState.rgb
+  #define moon_energy sunState.a
+  #define sun_vector sunVectorState.xyz
+  #define cot_e sunVectorState.w
+  #define cast_dir castState.xy
+  #define moon_cast_dir castState.zw
+  #define game_hour timeState.x
+  #define daylight timeState.y
+  #define noon_weight timeState.z
+  #define afterglow_energy timeState.w
+  #define morning_weight weightsState.x
+  #define sunset_weight weightsState.y
+  #define lamp_glow (weightsState.z / 0.78)
+  #define surface_type weightsState.w
+  #define sun_screen_position celestialState.xy
+  #define moon_screen_position celestialState.zw
+  #define visible_uv visibleUV
+  #define show_mask false
+  #define outdoor_enabled true
+  #define use_shared_outdoor_paint true
+  #define shared_outdoor_uv_rect vec4(0.0,0.0,1.0,1.0)
+
+  uniform PartShadowState {vec4 partShadowState;};
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+
+// Home's approved window geometry, sill, floor and leaf/mullion occluders only.
+// One continuous 2.5D projector. Adapters supply actual room geometry/occluders.
+float shared_window_u(vec2 p,vec2 direction,vec4 geometry,float floor_y){
+ float depth=max(p.y-geometry.y,0.0);
+ float floor_depth=max(p.y-floor_y,0.0);
+ float width=geometry.z+depth*geometry.w;
+ float center=geometry.x+direction.x*(depth*0.43+floor_depth*0.22);
+ return (p.x-center)/width;
+}
+float shared_window_field(vec2 point,vec2 direction,float cotangent,vec4 geometry,float floor_y,vec2 aperture,vec2 start,vec4 reach,vec3 mullion,float baseline,float leaf_breakup){
+ float depth=max(point.y-geometry.y,0.0);
+ float u=shared_window_u(point,direction,geometry,floor_y);
+ float gate=1.0-smoothstep(aperture.x,aperture.y,abs(u));
+ float pane=baseline+(1.0-baseline)*smoothstep(mullion.y,mullion.z,abs(u-mullion.x));
+ float leaves=sin(u*48.0+depth*0.018)*sin(u*29.0-depth*0.022);
+ float edge=1.0-leaf_breakup*smoothstep(0.53,0.96,abs(u))*(0.5+0.5*leaves);
+ return gate*pane*edge*smoothstep(start.x,start.y,point.y)*(1.0-smoothstep(reach.x+cotangent*reach.z,reach.y+cotangent*reach.w,point.y));
+}
+
+float window_field(vec2 p,vec2 direction,float cotangent){
+ return shared_window_field(p,direction,cotangent,vec4(156.0,145.0,119.0,0.46),740.0,vec2(0.84,1.05),vec2(130.0,205.0),vec4(1060.0,1200.0,90.0,90.0),vec3(-0.23,0.02,0.075),0.61,0.22);
+}
+
+// Darkroom's actual window geometry, floor and central mullion only.
+float dark_window_field(vec2 p,vec2 direction,float cotangent){
+ return shared_window_field(p,direction,cotangent,vec4(491.0,370.0,146.0,0.38),850.0,vec2(0.82,1.06),vec2(350.0,410.0),vec4(1130.0,1320.0,20.0,20.0),vec3(0.23,0.038,0.085),0.43,0.0);
+}
+
+vec4 frag(){
+  vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+
+    float gate=(partShadowState.y>0.5)?dark_window_field(world_pos,cast_dir,cot_e):window_field(world_pos,cast_dir,cot_e);
+    if(partShadowState.z>0.5){gate=1.0;}
+    float alpha=CCSampleWithAlphaSeparated(cc_spriteTexture,uv0).a;
+    vec4 result=vec4(0.08,0.07,0.10,alpha*partShadowState.x*gate);
+return result*color;}
+
+}%

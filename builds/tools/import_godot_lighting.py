@@ -243,11 +243,20 @@ def main():
 '''+fragment+'result.a*=color.a;return result;}\n'
     shadow_props={'roomOrigin':[0,0,1,1],'sourceUV':[0,0,1,1],'textureSize':[1,1,0,0],'castState':[0,1,0,0],'shadowState':[1,.35,1,.6],'shadowFlags':[1,1,0,1]}
     outputs.append(write('home-shadow',effect('home-shadow',shadow_body,uniforms=shadow_uniforms,properties=shadow_props,vertex=shadow_vertex)))
+    part_shadow=read('home/secondary/part_wall_shadow.gdshader')
+    part_fragment=part_shadow.split('void fragment(){',1)[1].rsplit('}',1)[0].replace('dark_room?','(partShadowState.y>0.5)?').replace('if(is_lamp)','if(partShadowState.z>0.5)').replace('texture(TEXTURE,UV)','CCSampleWithAlphaSeparated(cc_spriteTexture,uv0)').replace('alpha*strength*gate','alpha*partShadowState.x*gate').replace('COLOR=','vec4 result=')
+    # Both room adapters include the same kernel. Godot resolves shared includes;
+    # this source flattener must emit that kernel once for the Cocos compiler.
+    dark_gate=re.sub(r'^#include .*\n','',read('shared_room_lighting/dark_window_field.gdshaderinc'),flags=re.M)
+    part_body=gate+'\n'+dark_gate+'''\nvec4 frag(){
+  vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+'''+part_fragment+'return result*color;}\n'
+    outputs.append(write('home-part-shadow',effect('home-part-shadow',part_body,uniforms=UNIFORMS+'\n  uniform PartShadowState {vec4 partShadowState;};\n',properties={**PROPERTIES,'partShadowState':[0,0,0,0]})))
     read('shared_room_lighting/lighting_snapshot.gd');read('home/room_props_controller.gd');read('scripts/approved_lighting_v3.gd');read('home/grounding/alpha_grounding.gd');read('home/behavior/eye_geometry.gd')
     report={'schema':1,'sourceCommit':subprocess.check_output(['git','-C',str(ROOT.parent/'little-steps'),'rev-parse','HEAD'],text=True).strip(),
         'status':'source formula transfer; browser evidence and acceptance tracked separately','sources':sources,'outputs':outputs,
         'godotCanvasReference':{'url':'https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/drivers/gles3/shaders/canvas.glsl','gitBlob':'37d851a3c00336b254b17d3c41b9e84539ce5ef4','exactPublished4_5_2CommitVerified':True},
-        'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','animated face, outfit and prop variants still require full input/flow verification','soft-mesh lift/landing and articulated backpack/plant shadows pending','full same-state screenshot matrix and WeChat true-device acceptance pending']}
+        'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','animated face, outfit and prop variants still require full input/flow verification','soft-mesh lift/landing and articulated backpack shadows pending; independent Home plant checkpoints tracked separately','full same-state screenshot matrix and WeChat true-device acceptance pending']}
     (ROOT/'builds/records/M05-lighting-transfer.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'effects':len(outputs),'sourceFiles':len(sources)}))
 

@@ -1,0 +1,497 @@
+{
+  "schema": 1,
+  "id": "M04.3 / M05.3",
+  "status": "partial_original_Home_plants_bones_and_shadows_actual_browser_verified_full_product_parity_pending",
+  "sources": [
+    {
+      "path": "home/secondary/room_plants.gd",
+      "sha256": "acd5688ae6f6daf7319292719da36258e5d3bf23c5fab8c9b94f73dc5cdf8c6f"
+    },
+    {
+      "path": "home/secondary/spring_mesh_part.gd",
+      "sha256": "f6224376ae7ecba680647d6e6bbc63c6562f78f12281a9ae8dfee359cfed7e0f"
+    },
+    {
+      "path": "home/secondary/part_wall_shadow.gdshader",
+      "sha256": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526"
+    },
+    {
+      "path": "assets/round2/home_plants_contract.json",
+      "sha256": "f208f732544e063db0f680e321ec89c24c23ae0f70cefb98e2cd69c7d5fa48f2"
+    },
+    {
+      "path": "shaders/window_field.gdshaderinc",
+      "sha256": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9"
+    },
+    {
+      "path": "shared_room_lighting/window_field_kernel.gdshaderinc",
+      "sha256": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44"
+    },
+    {
+      "path": "shared_room_lighting/dark_window_field.gdshaderinc",
+      "sha256": "7fa9576b57736a2f9cde4016a03496a16cc008a318de7f333503d5d050d8a185"
+    }
+  ],
+  "assetProvenance": {
+    "record": "M02-asset-transfer.json",
+    "atlas": "res://assets/round2/home_plants_atlas.png",
+    "contract": "res://assets/round2/home_plants_contract.json",
+    "newBitmapArt": false,
+    "newEffect": "home-part-shadow",
+    "effectReservationBytes": 524288
+  },
+  "implemented": [
+    "18 original atlas pieces, 54 successive joints, 324 nine-row vertices with immutable UVs",
+    "Original parent tip/socket attachment, inherited angle and independent absolute scale",
+    "Original bounded local wind scheduler, spring stiffness/damping, velocity and angle limits",
+    "18 celestial plus 18 lamp shadows share live mesh points, use original room field gate and world-space cast shifts",
+    "Plant nodes, meshes, materials, frames and callbacks belong to Home page scope; framework remains a read-only symlink plugin"
+  ],
+  "checks": {
+    "nodeTests": {
+      "passed": 39,
+      "failed": 0,
+      "evidence": "builds/reviews/M04-plants-fixed-tests.log",
+      "covers": "Original mesh topology, articulated tips, immutable atlas UVs, fixed roots/child sockets, 12000 mixed-time frames, wind limits and rest settling alongside prior framework/rig/audio checks"
+    },
+    "typecheck": "tsc --noEmit --skipLibCheck succeeded",
+    "diffCheck": "git diff --check succeeded",
+    "originalCodeSincePublishedRelease": "HomeWorld, room_plants and spring_mesh_part unchanged between a0237fa78982b9df5732558a67a0630ec73abe93 and b4f77afc02999a465757177794343eb3d531c5e6; original Git checkout clean",
+    "editorBaseline": {
+      "unchangedFiles": 15,
+      "intentionalPriorBootImplementation": "Boot.ts code previously changed; scene/Boot UUIDs, mounted component and design dimensions preserved"
+    },
+    "frameworkPlugin": {
+      "targetSHA256": "67b506d4ccc6e0a65cc7836234f28f4a850b5a34a568f322f50eb240252d1e68",
+      "targetMode": "444",
+      "directoryMode": "555",
+      "symlink": "../../../../engines/travel-core/dist/travel-core.js",
+      "webMiniGameGlobalPlugin": true,
+      "changedThisStep": false
+    },
+    "buildToolSyntax": {
+      "status": "4 tools compiled in memory without global cache writes",
+      "evidence": "builds/reviews/M04-plants-script-validation.json"
+    }
+  },
+  "browser": {
+    "candidates": [
+      "home-plants-noon-v2",
+      "home-plants-night-v1",
+      "home-plants-wind-v1",
+      "home-plants-entry-v1"
+    ],
+    "creatorExitCode": 36,
+    "effectImportAndActualHomeDraw": "observed for all four; exit code alone is not acceptance",
+    "viewport": [
+      405,
+      720
+    ],
+    "urlScopedErrorsAndWarnings": 0,
+    "lightingReceivers": 43,
+    "plantShadowPasses": 36,
+    "normalEntry": {
+      "sourceOverrides": 0,
+      "allImplementationFilesMatchCandidate": true,
+      "routes": [
+        "[LittleSteps] PAGE_READY LOGIN",
+        "[LittleSteps] PAGE_READY COMIC",
+        "[LittleSteps] PAGE_READY HOME; full Home product parity pending"
+      ],
+      "resources": {
+        "entries": 87,
+        "reservedBytes": 191822385,
+        "pending": 0
+      },
+      "actualWind": {
+        "parts": 18,
+        "bones": 54,
+        "vertices": 324,
+        "maxParts": 32,
+        "phase": 3.0149999999999975,
+        "eventCount": 4,
+        "activePulses": 1,
+        "peakActivePulses": 2,
+        "maxActivePulses": 2
+      },
+      "actualRigContacts": 9,
+      "actualKnockStarts": 9,
+      "actualMusicStarts": 2,
+      "logs": "builds/reviews/M04-plants-entry-v1-browser.json",
+      "image": "builds/qa/cocos-home-plants-entry-v1.jpg"
+    }
+  },
+  "sameStateScreenshots": [
+    {
+      "hour": 12.0,
+      "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures",
+      "referenceConsole": {
+        "path": "builds/reviews/M04-godot-plants-rest-noon-v2-browser.json",
+        "sha256": "8c43d60785c8c39a881ca88c98f90cceb892c99f001ab391261758a43740c623",
+        "gameHour": 12.0,
+        "plantPhase": 0.0,
+        "plantShadows": "refreshed after seeking hour; actual room context logged"
+      },
+      "plantShadowState": "verified against actual corrected reference console",
+      "image": "builds/qa/home-plants-rest-noon-corrected-comparison-v1.png",
+      "metrics": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 4.271968449931413,
+          "maxRGB": 232
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 2.667813324160073,
+          "maxRGB": 27
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.5408250135438434,
+          "maxRGB": 5
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.5989741754637085,
+          "maxRGB": 9
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 1.3311354905437351,
+          "maxRGB": 36
+        },
+        {
+          "region": "left_plants",
+          "rect": [
+            0,
+            75,
+            34,
+            308
+          ],
+          "meanAbsoluteRGB": 4.057266683497433,
+          "maxRGB": 56
+        },
+        {
+          "region": "window_plants",
+          "rect": [
+            126,
+            0,
+            186,
+            384
+          ],
+          "meanAbsoluteRGB": 3.7421151620370368,
+          "maxRGB": 53
+        },
+        {
+          "region": "shelf_plants",
+          "rect": [
+            260,
+            52,
+            398,
+            143
+          ],
+          "meanAbsoluteRGB": 1.757790518660084,
+          "maxRGB": 32
+        }
+      ]
+    },
+    {
+      "hour": 1.0,
+      "plantPhase": "zero phase, neutral joints, wind disabled in declared QA fixtures",
+      "referenceConsole": {
+        "path": "builds/reviews/M04-godot-plants-rest-night-v2-browser.json",
+        "sha256": "40855ad5ba1395b7b8ee91d3c4a167e67ac0340da4bfed102cfffddd5ef5cfdb",
+        "gameHour": 1.0,
+        "plantPhase": 0.0,
+        "plantShadows": "refreshed after seeking hour; actual room context logged"
+      },
+      "plantShadowState": "verified against actual corrected reference console",
+      "image": "builds/qa/home-plants-rest-night-corrected-comparison-v1.png",
+      "metrics": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 3.8904812528577963,
+          "maxRGB": 249
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 0.8548331613347093,
+          "maxRGB": 20
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.6891881433325594,
+          "maxRGB": 6
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.33172302737520126,
+          "maxRGB": 7
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 0.9860372340425533,
+          "maxRGB": 26
+        },
+        {
+          "region": "left_plants",
+          "rect": [
+            0,
+            75,
+            34,
+            308
+          ],
+          "meanAbsoluteRGB": 2.553311453336699,
+          "maxRGB": 26
+        },
+        {
+          "region": "window_plants",
+          "rect": [
+            126,
+            0,
+            186,
+            384
+          ],
+          "meanAbsoluteRGB": 2.175896990740741,
+          "maxRGB": 41
+        },
+        {
+          "region": "shelf_plants",
+          "rect": [
+            260,
+            52,
+            398,
+            143
+          ],
+          "meanAbsoluteRGB": 1.2403779795084142,
+          "maxRGB": 19
+        }
+      ]
+    },
+    {
+      "hour": 12.0,
+      "plantPhase": {
+        "seconds": 3.0,
+        "stepSeconds": 0.016666666666666666,
+        "status": "both fixtures deterministically advanced then frozen"
+      },
+      "referenceConsole": {
+        "path": "builds/reviews/M04-godot-plants-wind-noon-v2-browser.json",
+        "sha256": "49fac37248d6113e1902af7676828bcc52aa987c58e6635a8163c6bbbbd8b392",
+        "gameHour": 12.0,
+        "plantPhase": 2.99999999999999,
+        "plantShadows": "refreshed after seeking hour; actual room context logged"
+      },
+      "plantShadowState": "verified against actual corrected reference console",
+      "image": "builds/qa/home-plants-wind-noon-corrected-comparison-v1.png",
+      "metrics": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 4.274334705075446,
+          "maxRGB": 232
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 2.667813324160073,
+          "maxRGB": 27
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.5408250135438434,
+          "maxRGB": 5
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.5989741754637085,
+          "maxRGB": 9
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 1.3311354905437351,
+          "maxRGB": 36
+        },
+        {
+          "region": "left_plants",
+          "rect": [
+            0,
+            75,
+            34,
+            308
+          ],
+          "meanAbsoluteRGB": 4.057266683497433,
+          "maxRGB": 56
+        },
+        {
+          "region": "window_plants",
+          "rect": [
+            126,
+            0,
+            186,
+            384
+          ],
+          "meanAbsoluteRGB": 3.7421151620370368,
+          "maxRGB": 53
+        },
+        {
+          "region": "shelf_plants",
+          "rect": [
+            260,
+            52,
+            398,
+            143
+          ],
+          "meanAbsoluteRGB": 1.7557997557997558,
+          "maxRGB": 32
+        }
+      ]
+    }
+  ],
+  "referenceFixture": {
+    "kind": "explicitly modified Godot QA reference, not unchanged published PCK",
+    "publishedEngine": "unchanged verified Godot 4.5.2",
+    "packReaderSource": "https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/core/io/file_access_pack.cpp",
+    "verifiedGitBlob": "244469e9d90c3e7663ae8eab4a941d7b2b1e92b1",
+    "originalEntries": 264,
+    "unchangedPayloads": 263,
+    "changedRemap": "home/home_world.gd.remap",
+    "addedSource": "qa/home_world.gd",
+    "integrity": "All original/repacked MD5 payloads and untouched bytes verified; actual pack SHA and size declared in host manifest; engine/integrity checks retained",
+    "why": "Original set_review_hour freezes clock and actor but leaves independent plants running; QA reset disables only plant process/wind after zero/180 fixed steps",
+    "records": [
+      "candidates/godot-plants-rest-noon-v2.json",
+      "candidates/godot-plants-rest-night-v2.json",
+      "candidates/godot-plants-wind-noon-v2.json"
+    ],
+    "shadowRefresh": "After HomeWorld updates sought-hour lighting, RoomPlants.advance(0) refreshes shadow uniforms before disabling wind; actual game_hour and phase checked in console"
+  },
+  "physicsReconciliation": {
+    "evidence": "builds/reviews/M04-plants-source-wind-reconciliation-v2.json",
+    "kind": "actual Godot console vectors vs Cocos pure geometry calculation; actual GPU screenshots tracked separately",
+    "seconds": 3,
+    "steps": 180,
+    "matchingEventCount": 4,
+    "matchingActivePulses": 1,
+    "maxRootError": 7.110503065632656e-05,
+    "maxTipError": 7.932428331969277e-05,
+    "maxAngleError": 4.36865234747531e-07
+  },
+  "retainedFailure": {
+    "candidate": "home-plants-noon-v1",
+    "rootCause": "Duplicate shared window kernel functions caused Creator EFX2406; process still exited 36; startup failed because effect asset was omitted",
+    "repair": "Emit shared kernel once and both room adapters; verify imported effect, positive first draw and no runtime errors in distinct candidates",
+    "record": "candidates/home-plants-noon-v1.json",
+    "referenceStateRepair": {
+      "rootCause": "Plant process was disabled before sought-hour shadow uniforms refreshed",
+      "repair": "Call RoomPlants.advance(0) after HomeWorld.update_lighting, then freeze wind/process; validate actual game_hour and phase from public console in screenshot comparator",
+      "references": [
+        "candidates/godot-plants-rest-noon-v1.json",
+        "candidates/godot-plants-rest-night-v1.json",
+        "candidates/godot-plants-wind-noon-v1.json"
+      ],
+      "replacementReferences": [
+        "candidates/godot-plants-rest-noon-v2.json",
+        "candidates/godot-plants-rest-night-v2.json",
+        "candidates/godot-plants-wind-noon-v2.json"
+      ]
+    }
+  },
+  "limits": [
+    "All 138 product requirement rows retain pending acceptance; this is a verified partial step",
+    "Original Godot Home renders a minimum 720-wide SubViewport then presents it at 405 CSS pixels; Cocos currently renders Home directly to 405. Matching the world render-target pipeline is next; contribution to sampling differences is an inference until actual corrected builds.",
+    "Plant area RGB differences remain (corrected noon region means 4.057/3.742/1.758); exact render-target/sampling parity pending",
+    "Fixed whole-page comparison still includes missing settings/merit tags, incense/vase, backpack shape and other independent prop phases; full Home input/flow not accepted",
+    "Normal-entry checkpoints cover natural wind and sound once; page interruption/late cleanup, all viewport sizes and WeChat devices remain pending",
+    "Home first-download budget is already over 19000000 bytes with current art; resource split/optimization and actual memory limits remain pending",
+    "Soft drag/landing shadows, backpack/ribbon motion, darkroom, travel, photo/journal/wardrobe, save integrity and formal WeChat shipping remain pending"
+  ]
+}

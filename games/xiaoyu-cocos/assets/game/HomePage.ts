@@ -7,12 +7,14 @@ import { XiaoyuRig } from './XiaoyuRig';
 import { HomeClock } from './HomeClock';
 import { HomeLighting } from './HomeLighting';
 import { HomeShadows } from './HomeShadows';
+import { HomePlants } from './HomePlants';
 
 export class HomePage {
     readonly root: Node;
     readonly rig: XiaoyuRig;
     readonly lighting:HomeLighting;
     readonly shadows:HomeShadows;
+    readonly plants:HomePlants;
     private active=false;
     private knock:AudioPort;
     constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen=()=>false,private clock=new HomeClock()) {
@@ -34,6 +36,8 @@ export class HomePage {
         this.rig = new XiaoyuRig(this.root, assets, scope);
         this.rig.receivers.forEach(item=>this.lighting.receiver(item.sprite,item.spec,1,[.2,.15,.68,.72],item.node.name==='OriginalBody'||item.eye?'face':'receiver',item.eye||0,item.eye?this.rig.pupilOffsets()[item.eye-1]:[0,0]));
         this.rig.receivers.filter(item=>item.node.name.indexOf('Eye')<0).forEach(item=>this.shadows.add(item.node,item.resource,{'metadata/ground':951,'metadata/height_factor':.72,'metadata/floor':true,'metadata/shadow_z':1,'metadata/thickness':0}));
+        this.plants=new HomePlants(this.root,assets,scope,this.lighting,this.clock);
+        this.plants.roots.forEach(layer=>layers.push(layer));
         this.knock=audioTransport().player(this.root,scope,'WoodKnock',(event:string,state:any)=>console.info('[LittleSteps] knock audio '+event+' '+JSON.stringify(state)));
         this.knock.gain(Math.pow(10,-8/20));
         this.rig.onContact=()=>{if(!this.active||!gestureSeen())return;this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();};
@@ -49,5 +53,5 @@ export class HomePage {
     }
     resume() {this.active=true;}
     pause() {this.active=false;this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { this.rig.advance(delta,this.clock.nightProgress()>=0);this.lighting.update();this.shadows.update(); }
+    advance(delta: number) { this.rig.advance(delta,this.clock.nightProgress()>=0);this.plants.advance(delta);this.lighting.update();this.shadows.update();this.plants.updateShadows(); }
 }

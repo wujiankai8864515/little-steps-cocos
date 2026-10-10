@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "status": "actual corrected Godot browser console vs Cocos pure geometry calculation; GPU compared separately",
+  "seconds": 3,
+  "steps": 180,
+  "stepSeconds": 0.016666666666666666,
+  "gameHour": 12,
+  "plantShadows": "refreshed at dt=0 after seeking hour in original reference",
+  "originalEvidence": "builds/reviews/M04-godot-plants-wind-noon-v2-browser.json",
+  "cocosSource": "games/xiaoyu-cocos/assets/game/PlantGeometry.ts",
+  "sourceLogFloatPrecision": "Godot console rounds vector components; roots and tips checked within .001 logical pixel, angles within .000001 radians",
+  "scheduler": {
+    "original": {
+      "eventCount": 4,
+      "activePulses": 1
+    },
+    "cocos": {
+      "parts": 18,
+      "bones": 54,
+      "vertices": 324,
+      "maxParts": 32,
+      "phase": 2.9999999999999942,
+      "eventCount": 4,
+      "activePulses": 1,
+      "peakActivePulses": 2,
+      "maxActivePulses": 2
+    }
+  },
+  "errors": [
+    {
+      "name": "LeftStemA",
+      "rootMaxError": 0,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000017103805191709398
+    },
+    {
+      "name": "LeftStemB",
+      "rootMaxError": 0.000017103805191709398,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000031584210830715165
+    },
+    {
+      "name": "LeftTip",
+      "rootMaxError": 0.000031584210830715165,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000006871052619317197
+    },
+    {
+      "name": "LeftIndependentLeaf",
+      "rootMaxError": 0.00003232716665024782,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000008924455954684163
+    },
+    {
+      "name": "WindowStemA",
+      "rootMaxError": 0,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000036500750525192416
+    },
+    {
+      "name": "WindowStemB",
+      "rootMaxError": 0.000036500750525192416,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00003733388041382568
+    },
+    {
+      "name": "WindowStemC",
+      "rootMaxError": 0.00003733388041382568,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00001225537715754399
+    },
+    {
+      "name": "WindowTip",
+      "rootMaxError": 0.00001225537715754399,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00007689060976190376
+    },
+    {
+      "name": "WindowBranch",
+      "rootMaxError": 0.000043564587002720145,
+      "angleMaxError": 0,
+      "tipMaxError": 0.0000433588032251464
+    },
+    {
+      "name": "WindowIndependentLeaf",
+      "rootMaxError": 0.00003626271342227483,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000049264681820204714
+    },
+    {
+      "name": "PotCrown",
+      "rootMaxError": 0,
+      "angleMaxError": 4.36865234747531e-7,
+      "tipMaxError": 0.000003297872183338768
+    },
+    {
+      "name": "PotIndependentLeaf",
+      "rootMaxError": 0.000026648670825579757,
+      "angleMaxError": 3.787152767185942e-7,
+      "tipMaxError": 0.00006696563667674127
+    },
+    {
+      "name": "PotRunner",
+      "rootMaxError": 0,
+      "angleMaxError": 0,
+      "tipMaxError": 0.000026044420906146115
+    },
+    {
+      "name": "PotBranch",
+      "rootMaxError": 0.000027286813732985138,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00003035191423350625
+    },
+    {
+      "name": "ShelfTrailA",
+      "rootMaxError": 0.000026044420906146115,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00004145846139635978
+    },
+    {
+      "name": "ShelfTrailB",
+      "rootMaxError": 0.00004145846139635978,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00007110503065632656
+    },
+    {
+      "name": "ShelfTrailTip",
+      "rootMaxError": 0.00007110503065632656,
+      "angleMaxError": 0,
+      "tipMaxError": 0.00006877417195028102
+    },
+    {
+      "name": "ShelfIndependentLeaf",
+      "rootMaxError": 0.00004145846142478149,
+      "angleMaxError": 3.5731713101273127e-7,
+      "tipMaxError": 0.00007932428331969277
+    }
+  ]
+}

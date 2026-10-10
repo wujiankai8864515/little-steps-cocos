@@ -1,0 +1,47 @@
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (3.793042ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (2.035125ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.2475ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (1.290125ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.346291ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.440833ms)
+✔ Disposed request rejects late completion and releases the late resource (0.457875ms)
+✔ Plugin namespace is frozen and nonwritable (0.303333ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (1.983833ms)
+✔ Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment (10.032667ms)
+✔ Night doze begins only after a complete strike, holds across night and wakes through the original dawn rest (23.333417ms)
+✔ Manual priority plays one full clip, recovers for 0.8 seconds, and focus loss discards an unseen strike (3.075875ms)
+✔ Spring integration caps slow frames at four substeps and keeps every bone within source motion bounds (43.804959ms)
+✔ Long day simulation produces cooldown-separated microdozes and bounded face motion, and invalid deltas leave the pose intact (68.82575ms)
+✔ Comic reveals sound once per panel, and suspension never replays skipped panels (2.297167ms)
+✔ Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model (0.946583ms)
+✔ Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade (0.522625ms)
+✔ Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries (0.263334ms)
+✔ Runtime interval hit queries reconstruct every defined bit of all 19 original masks (3945.57875ms)
+✔ Opening never skips time while paused or accepts the final action before the full hold (0.677042ms)
+✔ Cancel is terminal, retries are owned once and a new entry starts blank (0.655458ms)
+✔ Loading mallet contacts the doll at all three authored strikes without sliding its support (1.922042ms)
+✔ Diagonal comic panels clip at the reveal edge and retain original texture coordinates (0.600041ms)
+✔ Measured contact profiles use original alpha >= .5 and preserve separate feet (1.926375ms)
+✔ Grounded mesh projects each height from its measured support and preserves source coordinates (0.64ms)
+✔ Legacy floor and wall passes retain their original affine projection behavior (0.098084ms)
+✔ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (2.959167ms)
+✔ Source noon geometry and latest Home gains remain distinct from shared light values (0.710916ms)
+✔ Night transition, moon positions and ambient accents preserve dawn/dusk boundaries (0.272083ms)
+✔ All 24h light samples remain finite, bounded, normalized and periodic (13.050833ms)
+✔ Dust is confined to the approved projected window rather than a full-screen overlay (0.342375ms)
+✔ Each original piece has three local joints, immutable atlas UVs and exact nine-row source topology (518.188ms)
+✔ Successive joints preserve the fixed root and reproduce an independently summed articulated tip (0.219625ms)
+✔ Long mixed-frame wind remains local, bounded to two pulses, and every child stays connected to its authored socket (3715.865375ms)
+✔ Removing wind lets each independent joint return to its own rest without atlas drift; invalid time changes nothing (510.122625ms)
+✔ Grabbed face stays fixed and the mat contact row cannot move during landing squash (0.549708ms)
+✔ Unheld rigid fin moves as one attachment without stretching its mallet (0.254125ms)
+✔ Neutral tail and fin retain source points regardless of parent pose (0.130416ms)
+✔ Jelly remains upper-body local and repeated identical deformation reuses geometry (0.999208ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5133.664292

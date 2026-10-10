@@ -1,0 +1,104 @@
+[
+  {
+    "level": "log",
+    "message": "Init Base: 5.635009765625 ms",
+    "timestamp": "2026-10-10T20:23:16.939Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Init Infrastructure: 9.329833984375 ms",
+    "timestamp": "2026-10-10T20:23:16.949Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "[PHYSICS2D]: register box2d.",
+    "timestamp": "2026-10-10T20:23:16.958Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Init SubSystem: 18.243896484375 ms",
+    "timestamp": "2026-10-10T20:23:16.987Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Cocos Creator v3.8.8",
+    "timestamp": "2026-10-10T20:23:16.987Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Using custom pipeline: Builtin",
+    "timestamp": "2026-10-10T20:23:17.022Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Init Project: 37.681884765625 ms",
+    "timestamp": "2026-10-10T20:23:17.026Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "LoadScene db://assets/scene.scene: 7.528076171875 ms",
+    "timestamp": "2026-10-10T20:23:18.787Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "InitScene: 0.218994140625 ms",
+    "timestamp": "2026-10-10T20:23:18.787Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "AttachPersist: 0.093994140625 ms",
+    "timestamp": "2026-10-10T20:23:18.787Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "AutoRelease: 0.134033203125 ms",
+    "timestamp": "2026-10-10T20:23:18.787Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Destroy: 0.535888671875 ms",
+    "timestamp": "2026-10-10T20:23:18.788Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Activate: 6.382080078125 ms",
+    "timestamp": "2026-10-10T20:23:18.794Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "log",
+    "message": "Success to load scene: db://assets/scene.scene",
+    "timestamp": "2026-10-10T20:23:18.795Z",
+    "url": "http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js"
+  },
+  {
+    "level": "info",
+    "message": "[LittleSteps] source catalog ready Object",
+    "timestamp": "2026-10-10T20:23:18.809Z",
+    "url": "http://127.0.0.1:8786/assets/main/index.js"
+  },
+  {
+    "level": "info",
+    "message": "[LittleSteps] page resources admitted {\"groups\":[\"home\",\"core_code\",\"shared_boot_ui\",\"shared_room_visual\"],\"entries\":64,\"reservedBytes\":170455097,\"pending\":0}",
+    "timestamp": "2026-10-10T20:23:19.070Z",
+    "url": "http://127.0.0.1:8786/assets/main/index.js"
+  },
+  {
+    "level": "error",
+    "message": "[LittleSteps] startup failed Error: Bundle resources doesn't contain effects/home-part-shadow\n    at _loop2 (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:33599:29)\n    at _loop (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:33650:19)\n    at parse (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:33662:15)\n    at Pipeline.sync (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:22962:26)\n    at preprocess (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:33449:57)\n    at Pipeline._flow (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:22987:11)\n    at Pipeline.async (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:22982:16)\n    at AssetManager.loadAny (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:33837:20)\n    at Bundle.load (http://127.0.0.1:8786/cocos-js/_virtual_cc-DPceWclo.js:31910:33)\n    at asset (http://127.0.0.1:8786/assets/main/index.js:1216:35)",
+    "timestamp": "2026-10-10T20:23:19.079Z",
+    "url": "http://127.0.0.1:8786/assets/main/index.js"
+  }
+]

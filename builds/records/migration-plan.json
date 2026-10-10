@@ -59,20 +59,22 @@
     {
       "id": "M04",
       "description": "complete Home interactions and dynamic rig",
-      "status": "partial_original_ambient_bones_face_actual_browser_verified_all_home_interactions_pending",
+      "status": "partial_original_ambient_and_independent_Home_plants_browser_verified_all_home_interactions_pending",
       "evidence": [
         "M04-rig-render.json",
-        "M04-ambient-flow.json"
+        "M04-ambient-flow.json",
+        "M04-plants-flow.json"
       ]
     },
     {
       "id": "M05",
       "description": "original shared lighting and all render passes",
-      "status": "partial_receivers_static_pupils_and_grounded_browser_shadows_verified_full_parity_pending",
+      "status": "partial_receivers_pupils_grounded_and_independent_plant_shadows_browser_verified_full_parity_pending",
       "evidence": [
         "M05-lighting-transfer.json",
         "M05-lighting-flow.json",
-        "M05-shadow-eye-flow.json"
+        "M05-shadow-eye-flow.json",
+        "M04-plants-flow.json"
       ]
     },
     {
