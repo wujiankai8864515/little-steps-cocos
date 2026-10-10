@@ -34,6 +34,16 @@ def write_json(path, value):
 def uid(name):
     return str(uuid.uuid5(NAMESPACE, name))
 
+def font_metrics(path):
+    data = path.read_bytes()
+    tables = {}
+    for i in range(struct.unpack_from('>H', data, 4)[0]):
+        tag, _, offset, _ = struct.unpack_from('>4sIII', data, 12 + i * 16)
+        tables[tag.decode()] = offset
+    units = struct.unpack_from('>H', data, tables['head'] + 18)[0]
+    ascent, descent, _ = struct.unpack_from('>hhh', data, tables['hhea'] + 4)
+    return {'ascent': ascent / units, 'descent': -descent / units, 'height': (ascent - descent) / units, 'source': 'TrueType hhea/head; raster and Godot hinting comparison still required'}
+
 def basic_meta(path, importer, version='1.0.0', user_data=None):
     write_json(Path(str(path) + '.meta'), {
         'ver': version, 'importer': importer, 'imported': True,
@@ -210,6 +220,7 @@ def main():
             shutil.copyfile(original, destination)
             basic_meta(destination, 'ttf-font' if suffix == '.ttf' else 'json', '1.0.1')
             catalog[resource] = {'kind': 'font' if suffix == '.ttf' else 'json', 'bundle': group, 'path': str(Path(resource_name).with_suffix('')), 'decodedBytes': destination.stat().st_size}
+            if suffix == '.ttf': catalog[resource]['fontMetrics'] = font_metrics(original)
             record = {'resource': resource, 'bundle': group, 'bytes': destination.stat().st_size, 'sha256': sha(destination.read_bytes()), 'source': str(original.relative_to(SOURCE)), 'verification': 'byte-identical'}
         provenance.append(record)
     for name in names:

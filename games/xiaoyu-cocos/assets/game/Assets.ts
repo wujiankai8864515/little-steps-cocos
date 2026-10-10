@@ -4,6 +4,7 @@ import { core, Scope } from './Engine';
 export interface ArtSpec {
     kind: 'texture' | 'font' | 'json'; bundle: string; path: string;
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
+    fontMetrics?: {ascent:number;descent:number;height:number};
 }
 export class GameAssets {
     catalog: { assets: Record<string, ArtSpec>; groups: Record<string, any> };

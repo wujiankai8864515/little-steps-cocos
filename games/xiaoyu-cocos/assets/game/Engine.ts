@@ -13,7 +13,10 @@ export const core: any = {
     createGrid: (...args: any[]) => installed().createGrid(...args),
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),
+    clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
 };
+export const sharedUI = () => installed().registerUI(cc);
+export const pageRouter = (owner: Scope) => installed().createPageRouter(cc, owner);
 export const meshSprite = () => installed().registerCocos(cc) as new () => cc.Sprite & {
     configure(mesh: any, size: number[], content?: number[]): void;
     geometryChanged(): void;

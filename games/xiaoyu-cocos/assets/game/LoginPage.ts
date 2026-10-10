@@ -1,11 +1,16 @@
 import { Color, EffectAsset, Material, Node, Vec4 } from 'cc';
 import { GameAssets } from './Assets';
-import { core, Scope } from './Engine';
+import { core, Scope, sharedUI } from './Engine';
 import { label, nodeAt, picture } from './Visual';
 
 export class LoginPage {
     readonly root: Node;
     onEnter = () => {};
+    onCancel = () => {};
+    active = false;
+    private action: any;
+    private back: any;
+    private status: ReturnType<typeof label>;
     private stage = 0;
     private elapsed = 0;
     private greetingTime = 0;
@@ -35,8 +40,11 @@ export class LoginPage {
             scope.own(() => material.destroy());
         }
         label(this.root, assets, 'FooterCopy', '隐私说明  ·  用户协议', [185, height - 86], [350, 36], 22, [0.63, 0.46, 0.33]);
-        this.root.on(Node.EventType.TOUCH_END, this.enter, this);
-        scope.own(() => { this.root.active = false; this.root.destroy(); });
+        this.action=sharedUI().action(this.root,()=>this.enter(),()=>this.active&&!this.accepted);
+        this.status=label(this.root,assets,'EntryStatus','',[80,height-143],[560,34],22,[.4,.27,.14]);
+        this.back=sharedUI().hangingReturn(this.root,assets.font('res://assets/bootstrap_ui.ttf'),[12,12,72,118],()=>this.onCancel(),()=>this.active&&this.accepted);
+        this.back.root.active=false;
+        scope.own(() => { this.action.dispose();this.back.dispose();this.root.active = false; this.root.destroy(); });
         this.title.root.active = true; this.title.root.setPosition(0, -20);
         this.setAlpha(this.title, 0); this.setAlpha(this.subtitle, 0);
         this.peek(0);
@@ -51,7 +59,14 @@ export class LoginPage {
         });
     }
     private next(stage: number) { this.stage = stage; this.elapsed = 0; }
+    get ready() { return this.stage === 4; }
+    setStatus(text: string) {this.status.string=text;}
+    resetIntent(text='') {this.accepted=false;this.back.root.active=false;this.setStatus(text);this.action.cancel();}
+    pause() {this.active=false;this.action.cancel();this.back.cancel();}
+    resume() {this.active=true;}
     advance(delta: number) {
+        if (!this.active) return;
+        this.back.advance(delta);
         const step = Math.min(Math.max(delta, 0), 0.1); this.elapsed += step;
         const smooth = core.Math2D.smoothstep, clamp = core.Math2D.clamp;
         if (this.stage === 0) {
@@ -79,6 +94,6 @@ export class LoginPage {
     }
     private enter() {
         if (this.accepted || !this.root.active) return;
-        this.accepted = true; this.onEnter();
+        this.accepted = true;this.back.root.active=true;this.setStatus('正在准备开场…'); this.onEnter();
     }
 }

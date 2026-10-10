@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "id": "M03.3",
+  "status": "entry_flow_actual_browser_observed_full_product_parity_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "implemented": [
+    "dynamic Loading actors with original 66 frames and three contacts",
+    "Login branded timing, peeking shader, owned enter action and return tag",
+    "Comic single source image, convex polygon clipping, fixed native bubble slots, sequential clock and full-page hold, explicit final tap",
+    "sine-out entry transitions after two update ticks and first draw",
+    "resource/page scopes and intent cancellation, repeatable Comic entry, basic focus suspend/resume wiring",
+    "fixed caption geometry for three-dot Home wait"
+  ],
+  "observed": [
+    "Cocos browser Login first draw and greeting",
+    "Comic started blank; panel logs at 1.9 second intervals",
+    "final tap entered real Home source mesh",
+    "Escape from Comic rebuilt Login presentation in v2",
+    "v4 source labels retained authored widths and font size 43",
+    "original and Cocos screenshots both actual 405x720; no image registration/resize/filter in difference metric",
+    "v4 final tap entered Home; current-origin console had 17 records and zero errors/warnings"
+  ],
+  "tests": {
+    "frameworkMathLifecycle": 7,
+    "gameSoftGeometry": 4,
+    "entryContracts": 4,
+    "typecheck": "Cocos 3.8.8 TypeScript passed"
+  },
+  "candidates": [
+    "entry-flow-v1",
+    "entry-flow-v2",
+    "entry-flow-v3",
+    "entry-flow-v4"
+  ],
+  "screenshots": [
+    "builds/qa/entry-comparison-v4.png",
+    "builds/qa/baseline/godot-login-405x720.jpg",
+    "builds/qa/baseline/godot-comic-405x720.jpg",
+    "builds/qa/cocos/entry-login-v4.jpg",
+    "builds/qa/cocos/entry-comic-v4.jpg",
+    "builds/qa/cocos/entry-home-v4.jpg"
+  ],
+  "notAccepted": [
+    "Comic audio extraction/playback remains pending; runtime deliberately logs pending rather than faking sound",
+    "full shared bubble choices/natural layout/scroll/custom API remains pending; fixed-slot path implemented",
+    "slow network byte progress/retry injection and all transition interruption cases",
+    "exact font raster/outline/shadow and prompt phase parity; JPEG absolute difference evidence is not acceptance",
+    "bootstrap catalog/effects budget admission and actual first-download accounting",
+    "responsive resize and safe areas across supported devices",
+    "all complete Home/Darkroom/Travel/Photo/Wardrobe/collections/light interactions",
+    "formal WeChat-only package/device verification"
+  ],
+  "console": "builds/qa/cocos/entry-flow-v4-console.json",
+  "plugin": {
+    "targetMode": "0o444",
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "9b3d66c55682fd84d2d22d15b6b45ccee0914cd8aca0dfc6ca0793213ae41428"
+  }
+}

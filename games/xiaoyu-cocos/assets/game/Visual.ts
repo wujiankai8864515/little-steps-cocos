@@ -1,10 +1,17 @@
-import { Color, Label, Node, Sprite, UITransform } from 'cc';
+import { Color, Graphics, Label, Node, Sprite, UITransform } from 'cc';
 import { GameAssets } from './Assets';
 import { Scope } from './Engine';
 
 export function nodeAt(parent: Node, name: string, x = 0, y = 0, width = 1, height = 1) {
     const node = new Node(name); parent.addChild(node); node.setPosition(x, -y);
     const ui = node.addComponent(UITransform); ui.setAnchorPoint(0, 1); ui.setContentSize(width, height);
+    return node;
+}
+export function panel(parent: Node, name: string, rect: number[], fill: number[], radius = 0, stroke?: number[], width = 1) {
+    const node = nodeAt(parent, name, rect[0], rect[1], rect[2], rect[3]);
+    const g = node.addComponent(Graphics); g.fillColor = new Color(fill[0]*255,fill[1]*255,fill[2]*255,(fill[3] === undefined ? 1 : fill[3])*255);
+    g.roundRect(0,-rect[3],rect[2],rect[3],radius); g.fill();
+    if (stroke) { g.strokeColor = new Color(stroke[0]*255,stroke[1]*255,stroke[2]*255,(stroke[3] === undefined ? 1 : stroke[3])*255);g.lineWidth=width;g.stroke(); }
     return node;
 }
 export function picture(parent: Node, assets: GameAssets, scope: Scope, resource: string, name: string, properties: any = {}) {
@@ -21,9 +28,11 @@ export function picture(parent: Node, assets: GameAssets, scope: Scope, resource
 }
 export function label(parent: Node, assets: GameAssets, name: string, text: string, position: number[], size: number[], fontSize: number, color: number[], font = 'res://assets/bootstrap_ui.ttf') {
     const node = nodeAt(parent, name, position[0], position[1], size[0], size[1]);
-    const component = node.addComponent(Label); component.font = assets.font(font); component.string = text;
+    const component = node.addComponent(Label); component.overflow = Label.Overflow.CLAMP;
+    component.font = assets.font(font); component.string = text;
     component.fontSize = fontSize; component.lineHeight = fontSize * 1.2;
     component.horizontalAlign = Label.HorizontalAlign.CENTER; component.verticalAlign = Label.VerticalAlign.CENTER;
     component.color = new Color(color[0] * 255, color[1] * 255, color[2] * 255, 255);
+    node.getComponent(UITransform).setContentSize(size[0],size[1]);
     return component;
 }

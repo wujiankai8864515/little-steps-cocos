@@ -1,0 +1,37 @@
+{
+  "id": "M03.3-entry-typography",
+  "status": "authored_width_and_43_point_font_recovered_in_v4_full_raster_parity_pending",
+  "trigger": "same-content screenshot comparison against original comic and Login",
+  "evidence": [
+    "builds/qa/cocos/entry-comic-v1.jpg",
+    "builds/qa/cocos/entry-comic-v2.jpg",
+    "builds/qa/baseline/godot-comic-content-405x720.jpg"
+  ],
+  "observedFailures": [
+    "v1 introduced a visible return tag not present in original Comic; removed in v2",
+    "v1/v2 font size reduced to 35 and text/waiting captions displaced",
+    "v3 diagnostic: requested widths 224/270/296 were replaced with 88.67996215820312 before measurement"
+  ],
+  "rootCause": "Creator Label defaults to Overflow.NONE and changing font forces immediate render sizing of default Label text; setting font before constrained overflow/layout corrupted requested dimensions",
+  "fix": "set constrained overflow before font binding, restore authored UITransform width before each font measurement; remove Creator 0.26 line canvas padding from text-height comparison; keep original TrueType hhea/head metrics",
+  "notYetVerified": [
+    "strict font raster/bubble/prompt phase alignment",
+    "Comic exact audio",
+    "slow network/retry injection",
+    "pause/resume during transitions",
+    "WeChat device and final resource budgets"
+  ],
+  "verification": {
+    "allFourFontSizes": 43,
+    "actualWidths": [
+      224,
+      224,
+      270,
+      296
+    ],
+    "evidence": [
+      "builds/qa/entry-comparison-v4.json",
+      "builds/qa/cocos/entry-comic-v4.jpg"
+    ]
+  }
+}

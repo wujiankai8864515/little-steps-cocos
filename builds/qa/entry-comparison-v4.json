@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "status": "comparison_evidence_only_not_acceptance",
+  "viewport": [
+    405,
+    720
+  ],
+  "reference": "baseline/godot-comic-405x720.jpg",
+  "candidate": "cocos/entry-comic-v4.jpg",
+  "alignment": "actual 405x720 physical viewports; no registration/resize/blur/color correction",
+  "state": "all panels fully revealed; final prompt breathing phase not synchronized",
+  "method": "raw 8-bit RGB absolute difference of browser JPEG screenshots; image compression and font rasterization remain in measurement",
+  "regions": {
+    "whole_page": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": [
+        1.3953840877914951,
+        1.4162448559670782,
+        1.633144718792867
+      ],
+      "maxAbsoluteRGB": [
+        128,
+        132,
+        132
+      ]
+    },
+    "paper": {
+      "rect": [
+        14,
+        66,
+        391,
+        635
+      ],
+      "meanAbsoluteRGB": [
+        1.6550978262389693,
+        1.6638385552390764,
+        1.923030305855589
+      ],
+      "maxAbsoluteRGB": [
+        128,
+        132,
+        132
+      ]
+    },
+    "upper_art": {
+      "rect": [
+        155,
+        205,
+        220,
+        280
+      ],
+      "meanAbsoluteRGB": [
+        1.5747692307692307,
+        1.4693333333333334,
+        1.737025641025641
+      ],
+      "maxAbsoluteRGB": [
+        14,
+        12,
+        13
+      ]
+    },
+    "lower_art": {
+      "rect": [
+        260,
+        540,
+        375,
+        620
+      ],
+      "meanAbsoluteRGB": [
+        0.59,
+        0.5372826086956521,
+        0.7541304347826087
+      ],
+      "maxAbsoluteRGB": [
+        8,
+        8,
+        10
+      ]
+    },
+    "background": {
+      "rect": [
+        50,
+        15,
+        375,
+        50
+      ],
+      "meanAbsoluteRGB": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxAbsoluteRGB": [
+        0,
+        0,
+        0
+      ]
+    },
+    "bubble_1": {
+      "rect": [
+        40,
+        143,
+        154,
+        192
+      ],
+      "meanAbsoluteRGB": [
+        4.31077694235589,
+        4.715538847117794,
+        5.1582527747941285
+      ],
+      "maxAbsoluteRGB": [
+        86,
+        84,
+        82
+      ]
+    },
+    "bubble_3": {
+      "rect": [
+        32,
+        313,
+        164,
+        373
+      ],
+      "meanAbsoluteRGB": [
+        7.920707070707071,
+        8.401136363636363,
+        8.708838383838383
+      ],
+      "maxAbsoluteRGB": [
+        128,
+        132,
+        132
+      ]
+    },
+    "prompt": {
+      "rect": [
+        150,
+        669,
+        257,
+        709
+      ],
+      "meanAbsoluteRGB": [
+        5.05,
+        5.130841121495327,
+        4.9766355140186915
+      ],
+      "maxAbsoluteRGB": [
+        84,
+        84,
+        84
+      ]
+    }
+  }
+}
