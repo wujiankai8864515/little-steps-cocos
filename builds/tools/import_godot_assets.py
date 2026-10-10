@@ -14,8 +14,10 @@ import shutil
 import struct
 import subprocess
 import uuid
+import wave
 from pathlib import Path
 from PIL import Image
+from godot_binary import read_resource, qoa_pcm16
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT.parent / 'little-steps'
@@ -109,6 +111,56 @@ def resolve_image(resource, seen=None):
         return decode_ctex(texture), [imported, texture]
     raise FileNotFoundError(resource)
 
+def mp3_budget(data):
+    """Conservative decoded float32 buffer size from actual MPEG frame headers."""
+    at = 0
+    if data[:3] == b'ID3':
+        if len(data) < 10 or any(n & 128 for n in data[6:10]): raise ValueError('Invalid ID3 size')
+        at = 10 + sum(n << shift for n, shift in zip(data[6:10], [21,14,7,0]))
+        if data[5] & 16: at += 10
+    frames, samples, channels, rate = 0, 0, 0, 0
+    while at < len(data):
+        if len(data)-at == 128 and data[at:at+3] == b'TAG': break
+        if at + 4 > len(data): raise ValueError('Truncated MP3 frame')
+        h = int.from_bytes(data[at:at+4], 'big')
+        version, layer, bit, hz = (h>>19)&3, (h>>17)&3, (h>>12)&15, (h>>10)&3
+        if h>>21 != 0x7ff or version == 1 or layer != 1 or bit in (0,15) or hz == 3:
+            raise ValueError(f'Unsupported MP3 frame at {at}')
+        bitrate = ([0,32,40,48,56,64,80,96,112,128,160,192,224,256,320] if version == 3 else [0,8,16,24,32,40,48,56,64,80,96,112,128,144,160])[bit]*1000
+        current_rate = [44100,48000,32000][hz] // (1 if version == 3 else 2 if version == 2 else 4)
+        current_channels = 1 if (h>>6)&3 == 3 else 2
+        if frames and (current_rate != rate or current_channels != channels): raise ValueError('MP3 layout changes')
+        rate, channels = current_rate, current_channels
+        length = (144 if version == 3 else 72)*bitrate//rate + ((h>>9)&1)
+        if at+length > len(data): raise ValueError('Truncated MP3 payload')
+        samples += 1152 if version == 3 else 576; frames += 1; at += length
+    if not frames: raise ValueError('No MP3 frames')
+    return {'sampleRate':rate, 'channels':channels, 'frames':frames, 'maximumDecodedSamples':samples, 'decodedBytes':samples*channels*4, 'durationUpperBound':samples/rate}
+
+def resolve_audio(resource):
+    original = PROJECT / resource.removeprefix('res://')
+    imported = Path(str(original) + '.import')
+    if not imported.exists(): raise FileNotFoundError(f'Missing original audio import: {resource}')
+    match = re.search(r'path\s*=\s*"([^"]+)"', imported.read_text())
+    if not match: raise ValueError(f'No audio import target: {resource}')
+    rel = match.group(1).removeprefix('res://')
+    target = next((p for p in [PROJECT / rel, CACHE / rel] if p.exists()), None)
+    if target is None: raise FileNotFoundError(rel)
+    value = read_resource(target.read_bytes())['resources'][-1]
+    props, dependencies = value['properties'], [imported, target]
+    if value['type'] == 'AudioStreamMP3':
+        data = props['data']
+        return data, {**mp3_budget(data), 'verification':'byte-identical embedded original MP3', 'embeddedPayload256':sha(data)}, dependencies
+    if value['type'] != 'AudioStreamWAV' or props.get('format') != 3:
+        raise ValueError(f'Unsupported original audio encoding: {resource}')
+    pcm, info = qoa_pcm16(props['data'])
+    if props.get('mix_rate',44100) != info['sampleRate'] or (2 if props.get('stereo',False) else 1) != info['channels']:
+        raise ValueError('QOA and Godot audio metadata disagree')
+    output = io.BytesIO()
+    with wave.open(output,'wb') as wav:
+        wav.setnchannels(info['channels']);wav.setsampwidth(2);wav.setframerate(info['sampleRate']);wav.writeframes(pcm)
+    return output.getvalue(), {**info, 'decodedBytes':info['samples']*info['channels']*4, 'pcm256':sha(pcm), 'verification':'PCM16 identical to Godot 4.5 QOA decoder; no additional lossy compression'}, dependencies
+
 def split_top(text, delimiter=','):
     pieces, start, depth, quoted, escaped = [], 0, 0, False, False
     for i, char in enumerate(text):
@@ -177,8 +229,8 @@ def main():
     catalog, provenance, unsupported, group_masks = {}, [], [], {}
     for resource in resources:
         suffix = Path(resource).suffix
-        if suffix not in ('.png', '.ttf', '.json'):
-            if suffix in ('.wav', '.mp3', '.res'): unsupported.append(resource)
+        if suffix not in ('.png', '.ttf', '.json', '.wav', '.mp3'):
+            if suffix == '.res': unsupported.append(resource)
             continue
         group = bundle_for[resource]
         resource_name = resource.removeprefix('res://')
@@ -215,6 +267,14 @@ def main():
                 if obsolete.exists(): obsolete.unlink()
             catalog[resource] = {'kind': 'texture', 'bundle': group, 'path': str(Path(resource_name).with_suffix('')) + '/texture', 'size': [w, h], 'content': [content[0], content[1], sw, sh], 'opaque': list(bounds), 'alpha': 'alpha-masks', 'decodedBytes': sw * sh * 4}
             record = {'resource': resource, 'bundle': group, 'logicalSize': [w, h], 'content': catalog[resource]['content'], 'sourceDecodedRGBA256': sha(image.tobytes()), 'transferredRGBA256': sha(trimmed.tobytes()), 'png256': sha(destination.read_bytes()), 'pngBytes': destination.stat().st_size, 'pixelVerification': 'exact transferred pixels, alpha and source origin; transparent exterior omitted', 'dependencies': [{'path': str(p.relative_to(SOURCE)), 'sha256': sha(p.read_bytes())} for p in dependencies]}
+        elif suffix in ('.wav', '.mp3'):
+            data, audio, dependencies = resolve_audio(resource)
+            destination.write_bytes(data)
+            basic_meta(destination, 'audio-clip', '1.0.0', {'downloadMode':0})
+            meta_path = Path(str(destination) + '.meta')
+            meta = json.loads(meta_path.read_text());meta['files']=[suffix,'.json'];write_json(meta_path,meta)
+            catalog[resource] = {'kind':'audio', 'bundle':group, 'path':str(Path(resource_name).with_suffix('')), 'decodedBytes':audio['decodedBytes'], 'audio':audio}
+            record = {'resource':resource, 'bundle':group, 'bytes':len(data), 'sha256':sha(data), **audio, 'dependencies':[{'path':str(p.relative_to(SOURCE)), 'sha256':sha(p.read_bytes())} for p in dependencies]}
         else:
             if not original.exists(): raise FileNotFoundError(resource)
             shutil.copyfile(original, destination)
@@ -244,6 +304,13 @@ def main():
     for p in (SOURCE / 'build/fonts/licenses').iterdir():
         if p.is_file(): shutil.copyfile(p, licences / p.name)
     shutil.copyfile(SOURCE / 'build/fonts/manifest.json', licences.parent / 'source-font-manifest.json')
+    music_licences = licences.parent / 'music'
+    music_licences.mkdir(parents=True, exist_ok=True)
+    for p in (SOURCE / 'build/web_host_seed/licenses/music').iterdir():
+        if p.is_file(): shutil.copyfile(p, music_licences / p.name)
+    credits = (PROJECT / 'home/audio/music_credits.gd').read_text()
+    literal = re.search(r'const CREDITS_TEXT : = ("[^\n]+")', credits).group(1)
+    (music_licences / 'source-credits.txt').write_text(json.loads(literal) + '\n')
     commit = subprocess.check_output(['git', '-C', str(SOURCE), 'rev-parse', 'HEAD'], text=True).strip()
     report = {'schema': 1, 'sourceCommit': commit, 'status': 'pixel_and_authored_data_transfer_verified_runtime_pending', 'assets': provenance, 'scenes': [{'resource': s['resource'], 'sha256': s['sha256'], 'sections': len(s['sections'])} for s in scenes], 'untransferred': unsupported, 'budget': {'decodedTextureBytesAllGroups': sum(v['decodedBytes'] for v in catalog.values() if v['kind'] == 'texture'), 'homeFirstDownloadLimit': 19000000, 'runtimeAdmission': 'pending actual stage closures; do not treat total export size as first screen or resident memory'}, 'sourceModified': False}
     write_json(ROOT / 'builds/records/M02-asset-transfer.json', report)
