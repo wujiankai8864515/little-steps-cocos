@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "id": "M04.7-tail-fin-checkpoints",
+  "status": "partial_fixed_tail_and_fin_numeric_and_screenshot_observed_full_acceptance_pending",
+  "sourceCommit": "05a8b4500882f46b4691750b82a98f9f03f7c283",
+  "implementationChange": "None in production; add explicit part labels and correct input scope to the screenshot comparison tool",
+  "integrity": "builds/reviews/M04-fish-tail-fin-integrity.json",
+  "viewport": [
+    405,
+    720
+  ],
+  "phase": 0.7,
+  "stepSeconds": 0.016666666666666666,
+  "holdSteps": 21,
+  "liftSteps": 42,
+  "hour": 12,
+  "plants": "rest",
+  "tail": {
+    "down": [
+      130,
+      855
+    ],
+    "move": [
+      160,
+      615
+    ],
+    "grabPixel": [
+      115,
+      240
+    ],
+    "cocos": {
+      "checkpointTime": "2026-10-10T22:31:59.935Z",
+      "ground": [
+        379.62573488203327,
+        951
+      ],
+      "height": 239.03587393777946,
+      "rootCanonical": [
+        44.62573488203327,
+        375.96412606222054
+      ]
+    },
+    "godot": {
+      "checkpointTime": "2026-10-10T22:32:30.336Z",
+      "ground": "(379.6257, 951.0)",
+      "height": 239.035888671875,
+      "rootCanonical": "(44.62567, 375.9641)"
+    },
+    "comparison": "builds/reviews/fish-tail-checkpoint-comparison-v1.json",
+    "image": "builds/reviews/fish-tail-checkpoint-comparison-v1.png",
+    "heightDifference": 1.4734095543644798e-05,
+    "meanAbsoluteRGB": {
+      "whole": 2.031178555098308,
+      "liftedActor": 1.797382064155227,
+      "matProjection": 1.3528058361391695
+    },
+    "acceptance": "Measurements only; residual difference remains pending"
+  },
+  "fin": {
+    "down": [
+      477,
+      870
+    ],
+    "move": [
+      507,
+      630
+    ],
+    "cocos": {
+      "checkpointTime": "2026-10-10T22:33:04.789Z",
+      "ground": [
+        380.26915688087934,
+        951
+      ],
+      "height": 238.8296791782302,
+      "rootCanonical": [
+        45.269156880879336,
+        376.1703208217698
+      ],
+      "grabPixel": [
+        459.2654012631542,
+        261.7048281828582
+      ],
+      "sourceGrab": [
+        462,
+        255
+      ]
+    },
+    "godot": {
+      "checkpointTime": "2026-10-10T22:34:00.453Z",
+      "ground": "(380.2691, 951.0)",
+      "height": 238.829772949219,
+      "rootCanonical": "(45.26913, 376.1702)",
+      "grabPixel": "(459.2654, 261.7049)"
+    },
+    "comparison": "builds/reviews/fish-fin-checkpoint-comparison-v1.json",
+    "image": "builds/reviews/fish-fin-checkpoint-comparison-v1.png",
+    "heightDifference": 9.377098879781443e-05,
+    "meanAbsoluteRGB": {
+      "whole": 2.019003200731596,
+      "liftedActor": 1.6545970891018815,
+      "matProjection": 1.4740460157126822
+    },
+    "acceptance": "Measurements only; residual difference remains pending"
+  },
+  "sharedMotion": {
+    "lagCocos": [
+      -0.02124298596278648,
+      0.485553964863691
+    ],
+    "lagGodot": "(-0.021243, 0.485554)",
+    "secondaryCocos": [
+      0,
+      0.0030756281318620013,
+      -0.008373838030076682,
+      -0.0002557701217917891
+    ],
+    "secondaryGodot": "(0.0, 0.003076, -0.008374, -0.000256)"
+  },
+  "limits": "Declared controller-driven QA only. Physical long-press movement, landing, night/multiple sizes/WeChat devices and all 138 final requirements remain pending. No alignment, scaling or recoloring of screenshots.",
+  "numericAssessment": "Lag and secondary offsets agree to original printed precision. Both lift height differences are below 0.0001px; root position and fin source-pixel prints have finite precision, so no exact-bit equivalence claim.",
+  "runtime": {
+    "cocosFirstDraw": {
+      "tail": "2026-10-10T22:32:00.023Z",
+      "fin": "2026-10-10T22:33:04.862Z"
+    },
+    "godotPreloadPrepared": {
+      "tail": "2026-10-10T22:31:28.755Z",
+      "fin": "2026-10-10T22:33:02.834Z"
+    },
+    "godotVisibleStateEvidence": "Checkpoint runs once after actual input_enabled in Home following real Login and Comic UI clicks; screenshots visibly show the held Home pose. Preload HOME_READY alone does not prove display.",
+    "warningsOrErrorsScopedToURLs8815Through8818": 0,
+    "firstDrawAndSnapshot": "Cocos constructor logs parts.active=false before root adoption; actual nonblank screenshot, not that constructor flag, proves the held render"
+  }
+}
