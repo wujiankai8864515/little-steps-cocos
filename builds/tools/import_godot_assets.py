@@ -74,6 +74,19 @@ def resolve_image(resource, seen=None):
     seen.add(resource)
     path = PROJECT / resource.removeprefix('res://')
     dependencies = []
+    if path.exists() and path.suffix == '.res':
+        model=read_resource(path.read_bytes());main=model['resources'][-1]
+        if main['type']!='ImageTexture':raise ValueError('Binary image must be an ImageTexture')
+        reference=main['properties']['image']
+        if set(reference)!= {'godotInternalResource'}:raise ValueError('Expected internal Image reference')
+        image_resource=model['resources'][reference['godotInternalResource']]
+        if image_resource['type']!='Image':raise ValueError('ImageTexture points to unsupported resource')
+        image=image_resource['properties']['data'];w,h=image['width'],image['height']
+        if image['format']!='RedGreen' or image['mipmaps'] or not 0<w*h<=64*1024*1024 or len(image['data'])!=w*h*2:
+            raise ValueError('Unsupported binary Image layout')
+        # RG8 samples as (R,G,0,1); an LA PNG would put G in alpha incorrectly.
+        rgba=bytearray(w*h*4);rgba[0::4]=image['data'][0::2];rgba[1::4]=image['data'][1::2];rgba[3::4]=b'\xff'*(w*h)
+        return Image.frombytes('RGBA',(w,h),bytes(rgba)),[path]
     if path.exists() and path.suffix == '.png':
         return Image.open(path).convert('RGBA'), [path]
     if path.exists() and path.suffix == '.ctex':
@@ -161,6 +174,30 @@ def resolve_audio(resource):
         wav.setnchannels(info['channels']);wav.setsampwidth(2);wav.setframerate(info['sampleRate']);wav.writeframes(pcm)
     return output.getvalue(), {**info, 'decodedBytes':info['samples']*info['channels']*4, 'pcm256':sha(pcm), 'verification':'PCM16 identical to Godot 4.5 QOA decoder; no additional lossy compression'}, dependencies
 
+def bitmap_rows(value):
+    w,h=value['size'];bits=value['data']
+    if not all(isinstance(n,int) and n>0 for n in (w,h)) or w*h>64*1024*1024 or len(bits)!=(w*h+7)//8:
+        raise ValueError('Invalid authored BitMap dimensions')
+    rows=[]
+    for y in range(h):
+        spans=[];start=None
+        for x in range(w+1):
+            offset=y*w+x;on=x<w and bool(bits[offset//8] & (1<<(offset%8)))
+            if on and start is None:start=x
+            elif not on and start is not None:spans.extend([start,x]);start=None
+        rows.append(spans)
+    # Reconstruct the packed bytes independently, including non-byte-aligned rows.
+    restored=bytearray(len(bits))
+    for y,row in enumerate(rows):
+        for i in range(0,len(row),2):
+            for x in range(row[i],row[i+1]):
+                offset=y*w+x;restored[offset//8]|=1<<(offset%8)
+    # Padding bits are not pixels; retain them in provenance, compare defined bits.
+    for index,(a,b) in enumerate(zip(bits,restored)):
+        mask=255 if index<len(bits)-1 or w*h%8==0 else (1<<(w*h%8))-1
+        if a&mask!=b&mask:raise ValueError('BitMap row transfer changed a pixel')
+    return {'size':[w,h],'rows':rows},sha(bits),sum(n.bit_count() for n in restored)
+
 def split_top(text, delimiter=','):
     pieces, start, depth, quoted, escaped = [], 0, 0, False, False
     for i, char in enumerate(text):
@@ -226,18 +263,39 @@ def main():
     names = args.groups or list(groups)
     resources = sorted({r for name in names for r in groups[name]['resources']})
     bundle_for = {r: next(name for name in names if r in groups[name]['resources']) for r in resources}
-    catalog, provenance, unsupported, group_masks = {}, [], [], {}
+    catalog, provenance, unsupported, group_masks, bitmaps = {}, [], [], {}, []
     for resource in resources:
         suffix = Path(resource).suffix
-        if suffix not in ('.png', '.ttf', '.json', '.wav', '.mp3'):
-            if suffix == '.res': unsupported.append(resource)
+        if suffix not in ('.png', '.ttf', '.json', '.wav', '.mp3', '.res'):
             continue
         group = bundle_for[resource]
         resource_name = resource.removeprefix('res://')
         destination = ASSETS / 'bundles' / group / resource_name
         destination.parent.mkdir(parents=True, exist_ok=True)
         original = PROJECT / resource_name
-        if suffix == '.png':
+        model=read_resource(original.read_bytes()) if suffix=='.res' else None
+        if model and model['resources'][-1]['type']=='BitMap':
+            records=model['resources'];keys={i:resource if i==len(records)-1 else resource+'::'+str(i) for i in range(len(records))}
+            def references(value):
+                if isinstance(value,dict) and set(value)=={'godotInternalResource'}:
+                    index=value['godotInternalResource']
+                    if index not in keys:raise ValueError('Invalid internal BitMap index')
+                    return {'resource':keys[index]}
+                return value
+            for i,part in enumerate(records):
+                if part['type']!='BitMap':raise ValueError('Unsupported subresource in BitMap')
+                payload,digest,count=bitmap_rows(part['properties']['data'])
+                payload['metadata']={k.removeprefix('metadata/'):references(v) for k,v in part['properties'].items() if k.startswith('metadata/')}
+                target=destination.with_suffix('.json') if i==len(records)-1 else destination.with_name(destination.stem+'-sub'+str(i)+'.json')
+                write_json(target,payload);basic_meta(target,'json','1.0.1')
+                size=target.stat().st_size;estimate=size*2+len(payload['rows'])*48+sum(len(row)*8 for row in payload['rows'])
+                catalog[keys[i]]={'kind':'mask','bundle':group,'path':str(target.relative_to(ASSETS/'bundles'/group).with_suffix('')),'size':payload['size'],'decodedBytes':estimate}
+                row={'resource':keys[i],'bundle':group,'size':payload['size'],'sourcePackedBits256':digest,'sourceFile':str(original.relative_to(SOURCE)),'sourceFile256':sha(original.read_bytes()),'json256':sha(target.read_bytes()),'jsonBytes':size,'coveredPixels':count,'bitVerification':'every defined source bit reconstructed exactly, LSB-first with continuous row indexing','metadata':payload['metadata']};bitmaps.append(row);provenance.append(row)
+            continue
+        if model and model['resources'][-1]['type']!='ImageTexture':
+            unsupported.append(resource);continue
+        if suffix=='.png' or model:
+            if model:destination=destination.with_suffix('.png')
             image, dependencies = resolve_image(resource)
             w, h = image.size
             bounds = image.getchannel('A').getbbox() or (0, 0, w, h)
@@ -251,6 +309,9 @@ def main():
             image_uuid = uid(str(destination.relative_to(ASSETS)))
             texture_uuid = image_uuid + '@6c48a'
             texture_meta = {'ver': '1.0.22', 'importer': 'texture', 'imported': True, 'uuid': texture_uuid, 'files': ['.json'], 'subMetas': {}, 'userData': {'wrapModeS': 'clamp-to-edge', 'wrapModeT': 'clamp-to-edge', 'minfilter': 'linear', 'magfilter': 'linear', 'mipfilter': 'none', 'premultiplyAlpha': False, 'anisotropy': 0, 'isUuid': True, 'imageUuidOrDatabaseUri': image_uuid, 'visible': False}, 'displayName': destination.stem, 'id': '6c48a', 'name': 'texture'}
+            if model:
+                # doll_source_mask.gdshaderinc explicitly uses nearest data sampling.
+                texture_meta['userData']['minfilter']=texture_meta['userData']['magfilter']='nearest'
             write_json(Path(str(destination) + '.meta'), {'ver': '1.0.27', 'importer': 'image', 'imported': True, 'uuid': image_uuid, 'files': ['.json', '.png'], 'subMetas': {'6c48a': texture_meta}, 'userData': {'type': 'texture', 'redirect': texture_uuid, 'hasAlpha': True, 'fixAlphaTransparencyArtifacts': False}})
             # Run-length alpha rows retain the exact 8-bit source coverage, not a rectangle hit target.
             alpha = trimmed.getchannel('A').tobytes()
@@ -267,6 +328,8 @@ def main():
                 if obsolete.exists(): obsolete.unlink()
             catalog[resource] = {'kind': 'texture', 'bundle': group, 'path': str(Path(resource_name).with_suffix('')) + '/texture', 'size': [w, h], 'content': [content[0], content[1], sw, sh], 'opaque': list(bounds), 'alpha': 'alpha-masks', 'decodedBytes': sw * sh * 4}
             record = {'resource': resource, 'bundle': group, 'logicalSize': [w, h], 'content': catalog[resource]['content'], 'sourceDecodedRGBA256': sha(image.tobytes()), 'transferredRGBA256': sha(trimmed.tobytes()), 'png256': sha(destination.read_bytes()), 'pngBytes': destination.stat().st_size, 'pixelVerification': 'exact transferred pixels, alpha and source origin; transparent exterior omitted', 'dependencies': [{'path': str(p.relative_to(SOURCE)), 'sha256': sha(p.read_bytes())} for p in dependencies]}
+            if model:
+                record['binaryImage']={'format':'RedGreen','channelExpansion':'(R,G,0,255), preserving RG8 shader sampling','sourceRG256':sha(model['resources'][0]['properties']['data']['data'])}
         elif suffix in ('.wav', '.mp3'):
             data, audio, dependencies = resolve_audio(resource)
             destination.write_bytes(data)
@@ -313,7 +376,9 @@ def main():
     (music_licences / 'source-credits.txt').write_text(json.loads(literal) + '\n')
     commit = subprocess.check_output(['git', '-C', str(SOURCE), 'rev-parse', 'HEAD'], text=True).strip()
     report = {'schema': 1, 'sourceCommit': commit, 'status': 'pixel_and_authored_data_transfer_verified_runtime_pending', 'assets': provenance, 'scenes': [{'resource': s['resource'], 'sha256': s['sha256'], 'sections': len(s['sections'])} for s in scenes], 'untransferred': unsupported, 'budget': {'decodedTextureBytesAllGroups': sum(v['decodedBytes'] for v in catalog.values() if v['kind'] == 'texture'), 'homeFirstDownloadLimit': 19000000, 'runtimeAdmission': 'pending actual stage closures; do not treat total export size as first screen or resident memory'}, 'sourceModified': False}
+    report['coverage']='declared resource_groups assets; procedural/embedded script art and all gameplay migration remain separate'
     write_json(ROOT / 'builds/records/M02-asset-transfer.json', report)
+    write_json(ROOT / 'builds/records/M02-bitmap-transfer.json', {'schema':1,'sourceCommit':commit,'status':'offline_bits_and_RG_texture_verified_runtime_pending','bitmaps':bitmaps,'binaryImages':[r for r in provenance if 'binaryImage' in r],'formatSources':[{'url':'https://github.com/godotengine/godot/blob/4.5/core/io/file_access_compressed.cpp','gitBlob':'892a66bc7c604d9c5aa2f46652e8cee7de69660e'},{'url':'https://github.com/godotengine/godot/blob/4.5/core/io/resource_format_binary.cpp','gitBlob':'7ce92989f7f747b7c18c5717b66365a44b21dd48'},{'url':'https://github.com/godotengine/godot/blob/4.5/scene/resources/bit_map.cpp','gitBlob':'322dbf5ae643e96e353873f6c543e26ecdbb1152'}],'notVerified':['all actual page input hit regions','Darkroom RG mask shader display','full runtime embedded art beyond declared resource groups']})
     print(json.dumps({'assets': len(catalog), 'textures': sum(v['kind'] == 'texture' for v in catalog.values()), 'scenes': len(scenes), 'decodedTextureBytes': report['budget']['decodedTextureBytesAllGroups'], 'untransferred': len(unsupported)}))
 
 if __name__ == '__main__': main()

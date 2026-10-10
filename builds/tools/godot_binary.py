@@ -1,11 +1,43 @@
-"""Read the bounded Godot 4.5 RSRC subset used by imported audio/BitMaps.
+"""Read the bounded Godot 4.5 RSRC/RSCC subset used by audio/BitMaps.
 
 Based on the format specification in Godot's MIT-licensed core/io/
 resource_format_binary.{cpp,h}; audio math follows AudioStreamPlaybackWAV.
 This is an offline packaging adapter, not a runtime engine dependency.
 Unknown variants or compression fail explicitly rather than inventing data.
 """
+import ctypes
+import ctypes.util
 import struct
+from pathlib import Path
+
+def compressed_payload(data):
+    """Godot FileAccessCompressed RSCC: bounded Zstd blocks + footer magic."""
+    r=Reader(data)
+    if r.take(4)!=b'RSCC': raise ValueError('Not Godot compressed resource')
+    mode,block,total=r.u32(),r.u32(),r.u32()
+    if mode!=2 or not 0<block<=16*1024*1024 or not 0<total<=256*1024*1024:
+        raise ValueError('Unsupported/oversized Godot compressed resource')
+    count=total//block+1
+    if count>65536: raise ValueError('Too many compressed blocks')
+    sizes=[r.u32() for _ in range(count)]
+    if sum(sizes)+r.at+4!=len(data) or data[-4:]!=b'RSCC': raise ValueError('Invalid compressed resource bounds/footer')
+    library=ctypes.util.find_library('zstd')
+    if not library:
+        library=next((str(p) for p in [Path('/opt/homebrew/lib/libzstd.dylib'),Path('/usr/local/lib/libzstd.dylib')] if p.exists()),None)
+    if not library: raise RuntimeError('Offline BitMap transfer requires installed libzstd')
+    lib=ctypes.CDLL(library)
+    lib.ZSTD_decompress.argtypes=[ctypes.c_void_p,ctypes.c_size_t,ctypes.c_void_p,ctypes.c_size_t]
+    lib.ZSTD_decompress.restype=ctypes.c_size_t
+    lib.ZSTD_isError.argtypes=[ctypes.c_size_t];lib.ZSTD_isError.restype=ctypes.c_uint
+    output=bytearray()
+    for index,size in enumerate(sizes):
+        expected=min(block,total-index*block);buffer=ctypes.create_string_buffer(max(expected,1))
+        payload=r.take(size)
+        if payload[:4]!=b'\x28\xb5\x2f\xfd':raise ValueError('Expected a Zstd block')
+        actual=lib.ZSTD_decompress(buffer,expected,payload,len(payload))
+        if lib.ZSTD_isError(actual) or actual!=expected:raise ValueError('Zstd block output size mismatch')
+        output.extend(buffer.raw[:expected])
+    return bytes(output)
 
 class Reader:
     def __init__(self, data):
@@ -38,7 +70,13 @@ class Reader:
         if kind == 4: return self.number('d' if self.real_double else 'f')
         if kind == 41: return self.number('d')
         if kind == 5: return self.string()
+        if kind == 11: return [self.number('d' if self.real_double else 'f') for _ in range(4)]
         if kind == 45: return [self.number('i'), self.number('i')]
+        if kind == 24:
+            reference = self.u32()
+            if reference == 0: return None
+            if reference == 2: return {'godotInternalResource': self.u32()}
+            raise ValueError('External binary object references are not supported')
         if kind == 26:
             count = self.u32() & 0x7fffffff
             if count > 100000: raise ValueError('Godot dictionary exceeds supported bound')
@@ -53,7 +91,11 @@ class Reader:
 
 def read_resource(data):
     r = Reader(data)
-    if r.take(4) != b'RSRC': raise ValueError('Only uncompressed RSRC is supported')
+    magic=r.take(4)
+    if magic==b'RSCC':
+        # The virtual compressed stream has no RSRC magic; offsets start at 0.
+        data=compressed_payload(data);r=Reader(data)
+    elif magic!=b'RSRC': raise ValueError('Expected RSRC/RSCC resource')
     big = r.u32(); r.u32(); r.endian = '>' if big else '<'
     major, minor, version = r.u32(), r.u32(), r.u32()
     if major != 4 or version > 6: raise ValueError('Unsupported Godot binary version')

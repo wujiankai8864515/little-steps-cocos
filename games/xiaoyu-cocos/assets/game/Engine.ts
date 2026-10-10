@@ -14,6 +14,7 @@ export const core: any = {
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),
     clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
+    bitMapContains: (...args:any[]) => installed().bitMapContains(...args),
 };
 export const sharedUI = () => installed().registerUI(cc);
 export const pageRouter = (owner: Scope) => installed().createPageRouter(cc, owner);

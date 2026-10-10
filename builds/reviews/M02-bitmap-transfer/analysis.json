@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "findings": [
+    {
+      "observed": "initial plain BitMap reader explicitly rejected object variant 24 at byte 524729 in display mask and 328385 in backpack resource",
+      "resolution": "verified Godot 4.5 internal-reference encoding; preserve backpack submask and RG ImageTexture separately",
+      "typeCoverage": "18 main BitMaps + 1 internal BitMap + 1 RG ImageTexture; not 19 plain BitMap files"
+    },
+    {
+      "observed": "RG Image data cannot be imported as luminance-alpha PNG",
+      "resolution": "lossless (R,G,0,255) channel expansion plus nearest sampling matching doll_source_mask.gdshaderinc",
+      "verification": "all 524288 source RG bytes compared; original BitMap bits reconstructed through both Python and runtime plugin"
+    }
+  ],
+  "notAccepted": [
+    "full page UI hit regions",
+    "Darkroom rendered skin/mask parity",
+    "full embedded runtime art migration"
+  ]
+}

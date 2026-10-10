@@ -78,7 +78,7 @@ export class XiaoyuRig {
         for (const part of [...this.meshes].reverse()) {
             const local = part.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(worldPoint[0], worldPoint[1]));
             const source = core.sourcePixelAt(part.mesh, [local.x, -local.y]);
-            if (source && this.assets.alpha(part.resource, source[0], source[1]) >= 0.10) return {source, part: part.node.name};
+            if (source && this.assets.contains(part.resource, source[0], source[1])) return {source, part: part.node.name};
         }
         return null;
     }

@@ -39,7 +39,10 @@ def main():
                 record['embeddedMP3ByteIdentity']=True
             rows.append(record)
         assert len(rows)==6
-    report={'schema':1,'status':'all_six_offline_audio_transfers_verified_runtime_separate','sourceCommit':subprocess.check_output(['git','-C',str(SOURCE),'rev-parse','HEAD'],text=True).strip(),'assets':rows,'oracle':vendor,'notVerified':['actual Cocos playback','WeChat playback and lifecycle','subjective audible comparison']}
+    licenses=ROOT/'games/xiaoyu-cocos/licenses/music'
+    for row in json.loads((licenses/'snapshots.json').read_text())['snapshots']:
+        assert sha((licenses/row['file']).read_bytes())==row['sha256']
+    report={'schema':1,'status':'all_six_offline_audio_transfers_verified_runtime_separate','sourceCommit':subprocess.check_output(['git','-C',str(SOURCE),'rev-parse','HEAD'],text=True).strip(),'assets':rows,'oracle':vendor,'licences':{'sourceSnapshots':'games/xiaoyu-cocos/licenses/music/snapshots.json','sourceCredits':'games/xiaoyu-cocos/licenses/music/source-credits.txt','hashesVerified':True,'inGameCreditsUI':'pending full Home settings migration'},'notVerified':['actual Cocos playback','WeChat playback and lifecycle','subjective audible comparison']}
     (ROOT/'builds/records/M02-audio-decode.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'assets':len(rows),'qoaEffectsComparedSampleBySample':sum(r.get('exactSamples',False) for r in rows),'unchangedMP3':sum(r.get('embeddedMP3ByteIdentity',False) for r in rows)}))
 

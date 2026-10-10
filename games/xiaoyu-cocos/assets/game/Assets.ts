@@ -1,8 +1,15 @@
 import { Asset, AssetManager, assetManager, AudioClip, Font, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
 import { core, Scope } from './Engine';
 
+// Same logical texture -> authored BitMap mapping as alpha_hit_cache.gd.
+const hitMasks:Record<string,string>={
+    'res://assets/body.png':'body', 'res://assets/fin_mallet.png':'fin_mallet', 'res://assets/tail.png':'tail',
+    'res://assets/travelbag_closed.png':'bag', 'res://assets/doll_idle.png':'doll',
+    'res://assets/round2/water_bowl_clean.png':'bowl', 'res://assets/altar_neutral.png':'altar',
+};
+
 export interface ArtSpec {
-    kind: 'texture' | 'font' | 'json' | 'audio'; bundle: string; path: string;
+    kind: 'texture' | 'font' | 'json' | 'audio' | 'mask'; bundle: string; path: string;
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
     fontMetrics?: {ascent:number;descent:number;height:number};
 }
@@ -90,4 +97,9 @@ export class GameAssets {
         throw new Error('Alpha 行数据损坏');
     }
     snapshot() { return this.gate.snapshot(); }
+    bitmapContains(resource:string,x:number,y:number) {return core.bitMapContains(this.json(resource),x,y);}
+    contains(resource:string,x:number,y:number) {
+        const name=hitMasks[resource];
+        return name?this.bitmapContains('res://home/interaction/alpha_masks/'+name+'.res',x,y):this.alpha(resource,x,y)>=.16;
+    }
 }
