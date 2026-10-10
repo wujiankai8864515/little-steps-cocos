@@ -39,6 +39,15 @@ test('External clock anchors once, rolls back without growth, accrues hidden Hom
  b.setActive(false);const count=paints.length;b.syncActiveElapsed(70);near(b.model.activeSeconds,60);assert.equal(b.model.flowers.length,2);assert.equal(paints.length,count);b.syncActiveElapsed(2);assert.equal(b.model.activeSeconds,60);b.setActive(true);assert.deepEqual(paints[paints.length-1],[0,true]);b.syncActiveElapsed(3603);assert.equal(b.model.activeSeconds,60);
  const saved=b.model.snapshot(),reload=new FlowerBouquet(x.store);assert.equal(reload.model.activeSeconds,saved.active_seconds);reload.syncActiveElapsed(100000);assert.equal(reload.model.activeSeconds,saved.active_seconds);
 });
+test('A failed flower save retries its earned generation and clears the warning only after verified recovery',()=>{
+ const x=fixture(),key='travel_woodfish:home_flowers:vase_v1';let reject=true,warnings=[];
+ const checkpoint=new core.RawJSONCheckpointStore({getItem:k=>x.values.get(k)||null,setItem:(k,v)=>{if(reject&&k===key)throw Error('quota');x.values.set(k,v);}},65536),b=new FlowerBouquet(new FlowerStore(checkpoint));
+ b.onWarning=reason=>warnings.push(reason);assert.equal(b.flush(),false);assert.equal(b.persistenceFailed,true);assert.equal(b.dirty,true);assert.equal(b.model.revision,0);assert.equal(warnings.length,1);
+ b.advanceActive(60);assert.equal(b.model.flowers.length,2);assert.equal(b.persistenceFailed,true);assert.equal(b.model.revision,0);assert.equal(warnings.length,1);
+ reject=false;assert.equal(b.flush(),true);assert.equal(b.persistenceFailed,false);assert.equal(b.dirty,false);assert.equal(b.saveAge,0);assert.equal(b.model.revision,1);
+ const restored=new FlowerBouquet(x.store);assert.equal(restored.persistenceFailed,false);assert.equal(restored.model.activeSeconds,60);assert.equal(restored.model.flowers.length,2);
+ reject=true;b.advanceActive(5);assert.equal(b.persistenceFailed,true);assert.equal(warnings.length,2);assert.equal(b.model.revision,1);
+});
 test('Five bone transforms keep root and constant segment lengths while sun, night staggering and springs remain bounded',()=>{
  const f=new FlowerLife();f.initialize();f.advance(60);const p=new FlowerPose(f.flowers[0]),q=new FlowerPose(f.flowers[1]),phase=f.phaseFor(f.flowers[0]);p.pose(phase,0,0,true,[0,-447],true);assert.equal(p.points.length,6);assert.equal(p.angles.length,5);near(p.points[0][0],f.flowers[0].root_x);near(p.points[0][1],0);
  for(let i=0;i<5;i++)near(Math.hypot(p.points[i+1][0]-p.points[i][0],p.points[i+1][1]-p.points[i][1]),f.flowers[0].height/5);assert.equal(p.head.frame,4);assert.equal(p.head.blend,0);

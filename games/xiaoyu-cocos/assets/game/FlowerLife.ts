@@ -65,5 +65,5 @@ export class FlowerBouquet {
     advanceActive(delta:number){if(!Number.isFinite(delta)||delta<=0||delta>3600)return;const changed=this.model.advance(delta);this.dirty=true;this.saveAge+=delta;this.visualTime+=Math.min(delta,.1);this.accumulator+=delta;
         const ticks=Math.floor((this.accumulator+1e-7)*30);if(this.active&&this.isVisible()&&ticks>0){const consumed=ticks/30;this.accumulator=Math.max(0,this.accumulator-consumed);this.onVisual(Math.min(consumed,.1),false);}if(changed||this.saveAge>=5)this.flush();
     }
-    flush(){if(!this.persistence||!this.dirty)return true;if(!this.store.save(this.model,this.slot)){if(!this.persistenceFailed)this.onWarning(this.store.lastError);this.persistenceFailed=true;return false;}this.dirty=false;this.saveAge=0;return true;}
+    flush(){if(!this.persistence||!this.dirty)return true;if(!this.store.save(this.model,this.slot)){if(!this.persistenceFailed)this.onWarning(this.store.lastError);this.persistenceFailed=true;return false;}this.persistenceFailed=false;this.dirty=false;this.saveAge=0;return true;}
 }

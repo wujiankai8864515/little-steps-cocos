@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "scope": "Selected evidence derived from actual public console traces, not a complete console transcript",
+  "url": "http://127.0.0.1:8834/",
+  "viewport": [
+    405,
+    720
+  ],
+  "firstDrawTimestampsUTC": [
+    "2026-10-10T23:51:22.493Z",
+    "2026-10-10T23:51:28.467Z",
+    "2026-10-10T23:52:49.782Z",
+    "2026-10-10T23:53:53.093Z"
+  ],
+  "currentURLErrorsOrWarningsObserved": [],
+  "initial": {
+    "timestamp": "2026-10-10T23:51:22.470Z",
+    "earned": 0,
+    "revision": 1,
+    "count": 1,
+    "bones": 5,
+    "hour": 12,
+    "born": -8
+  },
+  "viewportReload": {
+    "timestamp": "2026-10-10T23:51:28.450Z",
+    "earned": 3.5821999999880747,
+    "revision": 2,
+    "count": 1,
+    "bones": 5
+  },
+  "growth": [
+    {
+      "timestamp": "2026-10-10T23:52:24.911Z",
+      "earned": 60.03209999996457,
+      "id": 1,
+      "born": 60,
+      "age": 0.032099999964572135,
+      "growth": 0.045066741595883794,
+      "headGrowth": 0.08,
+      "bloom": 0,
+      "count": 2,
+      "bones": 10
+    },
+    {
+      "timestamp": "2026-10-10T23:52:27.894Z",
+      "earned": 63.01559999996452,
+      "id": 1,
+      "born": 60,
+      "age": 3.0155999999645218,
+      "growth": 0.45701338663479424,
+      "headGrowth": 0.21372406752046924,
+      "bloom": 0.05518538934887637,
+      "count": 2,
+      "bones": 10
+    },
+    {
+      "timestamp": "2026-10-10T23:52:32.909Z",
+      "earned": 68.03059999996447,
+      "id": 1,
+      "born": 60,
+      "age": 8.030599999964465,
+      "growth": 1,
+      "headGrowth": 1,
+      "bloom": 1,
+      "count": 2,
+      "bones": 10
+    },
+    {
+      "timestamp": "2026-10-10T23:54:18.420Z",
+      "earned": 120.00049999999965,
+      "id": 2,
+      "born": 120,
+      "age": 0.0004999999996471161,
+      "growth": 0.045000016244512143,
+      "headGrowth": 0.08,
+      "bloom": 0,
+      "count": 3,
+      "bones": 15,
+      "daylight": false,
+      "sleep": 1
+    },
+    {
+      "timestamp": "2026-10-10T23:54:26.434Z",
+      "earned": 128.0154999999998,
+      "id": 2,
+      "born": 120,
+      "age": 8.015499999999804,
+      "growth": 1,
+      "headGrowth": 1,
+      "bloom": 1,
+      "count": 3,
+      "bones": 15,
+      "hour": 0.897119999996697,
+      "daylight": false,
+      "sleep": 1
+    }
+  ],
+  "night": {
+    "entry": {
+      "timestamp": "2026-10-10T23:51:43.477Z",
+      "earned": 18.598699999987986,
+      "hour": 20.007333333333307,
+      "sleep": 6.781125148472087e-05,
+      "frame": 3,
+      "blend": 0.9997287549940612
+    },
+    "firstDoze": {
+      "timestamp": "2026-10-10T23:51:49.608Z",
+      "earned": 24.73039999997622,
+      "hour": 21.642453333330124,
+      "sleep": 0.9608573588165414,
+      "serial": 1,
+      "markAge": 0
+    },
+    "firstDozeExpired": {
+      "timestamp": "2026-10-10T23:51:50.443Z",
+      "earned": 25.565399999976243,
+      "hour": 21.865119999996793,
+      "sleep": 1,
+      "serial": 1,
+      "markAge": -1
+    },
+    "stagger": {
+      "timestamp": "2026-10-10T23:54:14.219Z",
+      "earned": 115.80049999999956,
+      "hour": 21.639786666663483,
+      "serial": 1,
+      "poses": [
+        {
+          "id": 0,
+          "sleep": 0.9608573588165414,
+          "frame": 0,
+          "blend": 0.15657056473383424
+        },
+        {
+          "id": 1,
+          "sleep": 0.8420777974854281,
+          "frame": 0,
+          "blend": 0.6316888100582876
+        }
+      ]
+    },
+    "limits": "Public trace proves rendered state updates/emission/expiry, not exact Godot doze glyph pixels. Warm lamp visible in actual saved frame; capture timestamp/hour not exactly synchronized with latest public event."
+  },
+  "reload": {
+    "lastPeriodicSave": {
+      "timestamp": "2026-10-10T23:52:44.927Z",
+      "saved": true,
+      "earned": 80.04869999998792,
+      "revision": 18,
+      "count": 2
+    },
+    "restored": {
+      "timestamp": "2026-10-10T23:52:49.763Z",
+      "earned": 82.4488000000117,
+      "revision": 19,
+      "count": 2,
+      "bones": 10,
+      "births": [
+        -8,
+        60
+      ]
+    },
+    "limits": "Real same-origin sys.localStorage recovery. Final hide flush console event was not retained through navigation, so exact pre-unload earned time is inferred within the last periodic save interval, not claimed as an observed source log."
+  },
+  "away": {
+    "lastPeriodicSave": {
+      "timestamp": "2026-10-10T23:52:59.793Z",
+      "saved": true,
+      "earned": 92.46700000005917,
+      "revision": 21,
+      "count": 2
+    },
+    "holdStartedUTC": "2026-10-10T23:53:02.115Z",
+    "returnNavigationUTC": "2026-10-10T23:53:50.644Z",
+    "holdSeconds": 48.529,
+    "restored": {
+      "timestamp": "2026-10-10T23:53:53.070Z",
+      "earned": 94.66710000002341,
+      "revision": 22,
+      "count": 2,
+      "bones": 10,
+      "births": [
+        -8,
+        60
+      ]
+    },
+    "earnedSinceLastPeriodicSave": 2.200099999964244,
+    "limits": "Actual navigation away/back unloaded and recreated Home. Recovery lies inside the pre-departure save interval and excludes 48.529 wall seconds. This is not resident-tab pause/resume, cross-game-page time, or WeChat focus proof."
+  },
+  "residentTabAttempt": {
+    "action": "Open a second actual browser tab with the local QA hold page",
+    "observed": {
+      "documentHidden": false,
+      "documentVisibilityState": "visible",
+      "applicationSuspendLogs": []
+    },
+    "status": "not_a_supported_background_trigger_in_this_IAB_attempt; pending"
+  },
+  "screenshots": [
+    {
+      "path": "builds/reviews/cocos-flower-live-before-birth-v1.jpg",
+      "content": "One mature flower, actual night; captured after doze expired",
+      "sha256": "1cb6a75acc0cf5356c3d5314b6aed7ced46f90a30de9a3560e4b6b597b6967d9"
+    },
+    {
+      "path": "builds/reviews/cocos-flower-live-growth-v1.jpg",
+      "content": "Two flowers after the first eight-second growth; screenshot is mature, not an intermediate age-3 raster",
+      "sha256": "b94cf98fe642585f8b63ba62bf63fa4a62e39a1ddb5897ebaca193d87be33915"
+    },
+    {
+      "path": "builds/reviews/cocos-flower-live-reloaded-v1.jpg",
+      "content": "Two flowers recovered after actual reload",
+      "sha256": "47097f6a919284d767279e6eea4f55cfdde8b2e0ebb8fa1580ec5b9c7a29455c"
+    },
+    {
+      "path": "builds/reviews/cocos-flower-live-away-v1.jpg",
+      "content": "Actual local static hold page, no engine executing",
+      "sha256": "1774acf40ff152a7234620c5f4043dcfeee9e3054e00baec92aa9aa471ce3f7b"
+    },
+    {
+      "path": "builds/reviews/cocos-flower-live-returned-v1.jpg",
+      "content": "Two flowers recovered after 48.529 seconds away",
+      "sha256": "7324f3a4582eb6d508e042aba298406c603ef27b2f8c3a1fc26f176194c1af97"
+    },
+    {
+      "path": "builds/reviews/cocos-flower-live-lamp-v1.jpg",
+      "content": "Three sleeping flowers and the actual warm native lamp",
+      "sha256": "47cd0d3dfd564ae93d26f52e90d40a7f6dabb2eff5b09484affe20801d8721e6"
+    }
+  ]
+}

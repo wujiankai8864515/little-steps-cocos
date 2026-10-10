@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "id": "M04.10",
+  "status": "partial_real_browser_growth_reload_and_away_observed_full_flow_and_pixel_parity_pending",
+  "sourceCommit": "f41af7dd8393c2474698c80c66c5a960b0c976be",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FlowerLife.ts",
+      "sha256": "54dd8662a78627275c2c885e5271cfedfcc36a13e212b74b37bfe43aa8107f57",
+      "purpose": "Clear failed save marker on verified retry success, matching persistent_vase.gd::flush_save"
+    },
+    {
+      "path": "builds/tools/create_flower_live.py",
+      "sha256": "325927dd876f255d5986ff683a5e003e1b8d9e54d89d82dc3a531501e2b9ab4f",
+      "purpose": "Separate direct Home candidate with real product time/KV, bounded public trace only"
+    }
+  ],
+  "validation": {
+    "tests": {
+      "passed": 76,
+      "failed": 0,
+      "log": "builds/reviews/M04-flower-live-tests-v1.log"
+    },
+    "productionTypes": {
+      "status": "passed",
+      "log": "builds/reviews/M04-flower-live-production-types-v1.log"
+    },
+    "candidateTypes": {
+      "status": "passed_after_Creator_generated_config",
+      "log": "builds/reviews/M04-flower-live-candidate-types-v2.log"
+    },
+    "sourceIntegrity": "builds/reviews/M04-flower-live-source-integrity.json",
+    "candidate": "builds/records/candidates/cocos-flower-live-v1.json",
+    "browser": "builds/reviews/M04-flower-live-browser.json"
+  },
+  "actualBrowser": {
+    "firstBirthEarned": 60.03209999996457,
+    "firstBirthAge": 0.032099999964572135,
+    "firstMatureEarned": 68.03059999996447,
+    "secondBirthEarned": 120.00049999999965,
+    "secondMatureEarned": 128.0154999999998,
+    "awaySeconds": 48.529,
+    "restoredEarned": 94.66710000002341,
+    "restoredFlowerCount": 2,
+    "residentFocus": "pending_actual_IAB_second_tab_still_reports_visible"
+  },
+  "artifacts": {
+    "contactSheet": {
+      "path": "builds/reviews/flower-live-flow-v1.png",
+      "sha256": "ae479daf2ec9862dd2c344b5eff875775c469dbc3d3eb090f1cce4e982bf2465",
+      "method": "Four actual unscaled, unaligned, unrecolored 405x720 frames; labels only; separate real wall-clock states, not a Godot comparison"
+    },
+    "screenshots": [
+      {
+        "path": "builds/reviews/cocos-flower-live-before-birth-v1.jpg",
+        "content": "One mature flower, actual night; captured after doze expired",
+        "sha256": "1cb6a75acc0cf5356c3d5314b6aed7ced46f90a30de9a3560e4b6b597b6967d9"
+      },
+      {
+        "path": "builds/reviews/cocos-flower-live-growth-v1.jpg",
+        "content": "Two flowers after the first eight-second growth; screenshot is mature, not an intermediate age-3 raster",
+        "sha256": "b94cf98fe642585f8b63ba62bf63fa4a62e39a1ddb5897ebaca193d87be33915"
+      },
+      {
+        "path": "builds/reviews/cocos-flower-live-reloaded-v1.jpg",
+        "content": "Two flowers recovered after actual reload",
+        "sha256": "47097f6a919284d767279e6eea4f55cfdde8b2e0ebb8fa1580ec5b9c7a29455c"
+      },
+      {
+        "path": "builds/reviews/cocos-flower-live-away-v1.jpg",
+        "content": "Actual local static hold page, no engine executing",
+        "sha256": "1774acf40ff152a7234620c5f4043dcfeee9e3054e00baec92aa9aa471ce3f7b"
+      },
+      {
+        "path": "builds/reviews/cocos-flower-live-returned-v1.jpg",
+        "content": "Two flowers recovered after 48.529 seconds away",
+        "sha256": "7324f3a4582eb6d508e042aba298406c603ef27b2f8c3a1fc26f176194c1af97"
+      },
+      {
+        "path": "builds/reviews/cocos-flower-live-lamp-v1.jpg",
+        "content": "Three sleeping flowers and the actual warm native lamp",
+        "sha256": "47cd0d3dfd564ae93d26f52e90d40a7f6dabb2eff5b09484affe20801d8721e6"
+      }
+    ]
+  },
+  "failures": [
+    {
+      "trigger": "Typecheck frozen candidate before Creator initialization",
+      "evidence": "builds/reviews/M04-flower-live-types-v1.log",
+      "cause": "Generated temp/tsconfig.cocos.json absent; cascading missing cc/ES2015 declarations",
+      "repair": "Run official Creator build, then candidate typecheck; production typecheck independently passes",
+      "status": "resolved_check_order_no_product_workaround"
+    },
+    {
+      "trigger": "Resident background attempt by opening actual second IAB tab",
+      "evidence": "builds/reviews/M04-flower-live-browser.json",
+      "cause": "Observed document.hidden=false / visibilityState=visible; actual focus hide not triggered",
+      "repair": "Do not inject fake visibility/focus events; keep resident focus/device acceptance pending",
+      "status": "not_accepted_focus_case"
+    }
+  ],
+  "limits": [
+    "Direct Home QA at initial hour12 does not prove normal entry flow or persisted clock behavior",
+    "Browser KV readback and actual reload/away do not prove Godot user:// import or WeChat storage",
+    "Sleep glyph emit/expiry is public state evidence; exact glyph pixels and growth intermediate frame parity pending",
+    "Final pre-unload flush log absent; recovered time assessed within last periodic save interval",
+    "Resident focus, cross-Home/DarkRoom elapsed time, storage failures/corruption, all hours/sizes and WeChat device remain pending",
+    "Full Home interactions, remaining pages and all138 final requirements remain pending"
+  ]
+}
