@@ -20,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', required=True)
     parser.add_argument('--route', choices=['login', 'home'], default='login')
-    parser.add_argument('--hour',type=float,help='Explicit Home lighting fixture hour')
+    parser.add_argument('--hour',type=float,help='Explicit initial Home hour; freezes only with --freeze')
     parser.add_argument('--freeze',action='store_true',help='Freeze Home time and actor pose in this candidate only')
     args = parser.parse_args()
     if (args.hour is not None or args.freeze) and args.route!='home':parser.error('Home fixtures require --route home')
@@ -45,9 +45,9 @@ def main():
         assert text.count(point)==1
         boot.write_text(text.replace(point,f'this.application.clock.seekHour({args.hour});\n        '+point))
         overrides[0]['fixtureSHA256']=digest(boot)
-        overrides.append({'file':'assets/Boot.ts','hour':args.hour,'fixtureSHA256':digest(boot),'purpose':'Declared fixed lighting state for same-state screenshot comparison'})
+        overrides.append({'file':'assets/Boot.ts','hour':args.hour,'fixtureSHA256':digest(boot),'purpose':'Declared initial Home hour; clock freezes only when --freeze is supplied'})
     if args.freeze:
-        for filename,old,new in [('Application.ts','this.clock.advance(delta)','this.clock.advance(0)'),('HomePage.ts','this.rig.advance(delta)','this.rig.poseAt(0)')]:
+        for filename,old,new in [('Application.ts','this.clock.advance(delta)','this.clock.advance(0)'),('HomePage.ts','this.rig.advance(delta,this.clock.nightProgress()>=0)','this.rig.poseAt(0)')]:
             path=project/'assets/game'/filename;before=digest(path);text=path.read_text();assert text.count(old)==1
             path.write_text(text.replace(old,new))
             overrides.append({'file':'assets/game/'+filename,'sourceSHA256':before,'fixtureSHA256':digest(path),'purpose':'Freeze product clock and original actor pose at zero; QA only, not shipping behavior'})

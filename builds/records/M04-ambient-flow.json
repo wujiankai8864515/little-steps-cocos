@@ -1,0 +1,468 @@
+{
+  "schema": 1,
+  "id": "M04.2",
+  "status": "partial_original_ambient_bones_face_and_clock_cycle_actual_browser_verified_all_home_interactions_pending",
+  "sources": {
+    "home/behavior/ambient_director.gd": "21601cf74753f784ceb4c8e58c8a506b0831528029eb8ae0ebb8525a432a8950",
+    "home/behavior/rig_secondary_motion.gd": "23f67f76c34bafcfeacd785a45e287ec549a74c9dd79a6d98b15417462c01bda",
+    "home/behavior/character_geometry.gd": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896",
+    "home/home_world.gd": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859",
+    "xiaoyu_rig.tscn": "ef0effe5c2ce9e734fc46f957a4d57e8c35e1f0aed6b1cf9bda41cee5d2747ad",
+    "project.godot": "e9837493e9ede804631915b41cb351fae5fbd068cf06cdba8c20362079e0d63b"
+  },
+  "implemented": [
+    "original utility/fatigue/cooldown director, self_tap/rest/doze and dawn transitions",
+    "source 2.15-second moving segment plus 0.28-second real idle; five tempo and strength variations",
+    "single contact crossing forced to source pose 1.29, secondary impulse and original bone baseline restore",
+    "four bounded spring substeps, upper-body jelly, doze breath/yawn, blink and impact blink",
+    "source player/mallet/strike/doze gaze targets with smoothing and convex-domain pupil clamps",
+    "pupils follow the deformed upper body; mouth shader updated at runtime",
+    "focus loss discards unseen strike and stops owned knock audio; all public manual priority math is separate from pending pointer integration"
+  ],
+  "observed": [
+    {
+      "candidate": "home-ambient-night-v1",
+      "state": "initial hour 1, dynamic clock and actor; no matched-time visual claim",
+      "errors": 0,
+      "warnings": 0,
+      "transitionReasons": [
+        "nightfall",
+        "dawn_waking",
+        "day_resume",
+        "day_microdoze",
+        "day_microdoze_rested",
+        "nightfall"
+      ],
+      "transitions": [
+        {
+          "tapTime": 0,
+          "elapsed": 2.2824000000357603,
+          "contacts": 1,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            2.0831688257373973,
+            -0.1985178362936399
+          ],
+          "secondaryOffsets": [
+            0.00011868139702984074,
+            -0.0006053675538310605,
+            -1.4324001382498549e-05,
+            0.000191280687500788
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "doze",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "nightfall",
+            "transitions": 1,
+            "nightContext": true,
+            "completedTaps": 1,
+            "currentTapSpeed": 1.1502000000000001,
+            "tapStrength": 0.975,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 11.264999999999985,
+          "contacts": 1,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            -0.08687483472064474,
+            0.7131251652793551
+          ],
+          "secondaryOffsets": [
+            0.03753718233161188,
+            -0.036080553749759714,
+            0.016685171856301778,
+            0.032186102328419015
+          ],
+          "springSubsteps": 2,
+          "director": {
+            "state": "rest",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0.65,
+            "reason": "dawn_waking",
+            "transitions": 2,
+            "nightContext": false,
+            "completedTaps": 1,
+            "currentTapSpeed": 1.1502000000000001,
+            "tapStrength": 0.975,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 11.915100000023827,
+          "contacts": 1,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            0.1430041923085123,
+            0.2337020768304327
+          ],
+          "secondaryOffsets": [
+            0.0020449202264650316,
+            -0.015556109134440489,
+            -8.309213627472779e-05,
+            0.00015355631413603674
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "self_tap",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "day_resume",
+            "transitions": 3,
+            "nightContext": false,
+            "completedTaps": 1,
+            "currentTapSpeed": 1.1502000000000001,
+            "tapStrength": 0.975,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 23.19840000003595,
+          "contacts": 6,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            -0.33007586238751097,
+            0.2754201695264322
+          ],
+          "secondaryOffsets": [
+            0.00011532763207494103,
+            -0.0006386044864778696,
+            -1.4325513165069975e-05,
+            0.00018256654157164885
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "doze",
+            "stateElapsed": 0,
+            "fatigue": 0.7659324000003308,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "day_microdoze",
+            "transitions": 4,
+            "nightContext": false,
+            "completedTaps": 6,
+            "currentTapSpeed": 1.1502000000000001,
+            "tapStrength": 0.975,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 29.36530000001229,
+          "contacts": 6,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            0.5096783121555177,
+            0.16589981787310637
+          ],
+          "secondaryOffsets": [
+            0.0096457750130267,
+            -0.025567989185178316,
+            0.00650717898460809,
+            0.011829401045344069
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "self_tap",
+            "stateElapsed": 0,
+            "fatigue": 0.11840790000283496,
+            "dozeCooldown": 8,
+            "restRemaining": 0,
+            "reason": "day_microdoze_rested",
+            "transitions": 5,
+            "nightContext": false,
+            "completedTaps": 6,
+            "currentTapSpeed": 1.1502000000000001,
+            "tapStrength": 0.975,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 42.798400000036246,
+          "contacts": 12,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            -0.3299503584807988,
+            0.2754019594494998
+          ],
+          "secondaryOffsets": [
+            0.0001226783834082389,
+            -0.0005047109398806805,
+            -2.9367231714927175e-05,
+            0.0002416421319321544
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "doze",
+            "stateElapsed": 0,
+            "fatigue": 0.49453470000350336,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "nightfall",
+            "transitions": 6,
+            "nightContext": true,
+            "completedTaps": 12,
+            "currentTapSpeed": 1.0422,
+            "tapStrength": 1.035,
+            "tapIdleSeconds": 0.28
+          }
+        }
+      ],
+      "contacts": 12,
+      "allContactPoses": 1.29,
+      "actualKnockStarts": 0,
+      "actualMusicStarts": 0
+    },
+    {
+      "candidate": "home-ambient-entry-v1",
+      "state": "unmodified Boot/Login/Comic/Home; clock and actor dynamic",
+      "errors": 0,
+      "warnings": 0,
+      "transitionReasons": [
+        "day_microdoze",
+        "day_microdoze_rested",
+        "nightfall",
+        "dawn_waking",
+        "day_resume"
+      ],
+      "transitions": [
+        {
+          "tapTime": 0,
+          "elapsed": 11.281999999999977,
+          "contacts": 5,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            2.0750601995443225,
+            -0.19774541493040426
+          ],
+          "secondaryOffsets": [
+            0.00011291846460157655,
+            -0.0006933567045035352,
+            -1.0114675858768446e-05,
+            0.00016905339841410066
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "doze",
+            "stateElapsed": 0,
+            "fatigue": 0.5158960000000002,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "day_microdoze",
+            "transitions": 1,
+            "nightContext": false,
+            "completedTaps": 5,
+            "currentTapSpeed": 1.08,
+            "tapStrength": 1,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 16.282100000023803,
+          "contacts": 5,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            0.5067072761154762,
+            -0.05882083807265876
+          ],
+          "secondaryOffsets": [
+            -4.450151168092617e-08,
+            -0.00010291066720446006,
+            1.2881308311468388e-06,
+            -1.5685891231209086e-06
+          ],
+          "springSubsteps": 3,
+          "director": {
+            "state": "self_tap",
+            "stateElapsed": 0,
+            "fatigue": 0,
+            "dozeCooldown": 8,
+            "restRemaining": 0,
+            "reason": "day_microdoze_rested",
+            "transitions": 2,
+            "nightContext": false,
+            "completedTaps": 5,
+            "currentTapSpeed": 1.08,
+            "tapStrength": 1,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 25.248600000024016,
+          "contacts": 9,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            -0.3251268769782828,
+            0.2761137327878248
+          ],
+          "secondaryOffsets": [
+            0.0001340797179844394,
+            -0.00043008717489544644,
+            -2.4246355354950128e-05,
+            0.00025646553703446485
+          ],
+          "springSubsteps": 2,
+          "director": {
+            "state": "doze",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "nightfall",
+            "transitions": 3,
+            "nightContext": true,
+            "completedTaps": 9,
+            "currentTapSpeed": 1.0638,
+            "tapStrength": 1.015,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 54.38210000002429,
+          "contacts": 9,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            -0.08734659084006666,
+            0.7126534091599332
+          ],
+          "secondaryOffsets": [
+            0.025155778379404223,
+            -0.07951070279848844,
+            0.01668141880754608,
+            0.032176437381937095
+          ],
+          "springSubsteps": 2,
+          "director": {
+            "state": "rest",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0.65,
+            "reason": "dawn_waking",
+            "transitions": 4,
+            "nightContext": false,
+            "completedTaps": 9,
+            "currentTapSpeed": 1.0638,
+            "tapStrength": 1.015,
+            "tapIdleSeconds": 0.28
+          }
+        },
+        {
+          "tapTime": 0,
+          "elapsed": 55.04839999997661,
+          "contacts": 9,
+          "playerTapActive": false,
+          "playerSerial": 0,
+          "playerHits": 0,
+          "hitReactionAge": -1,
+          "gaze": [
+            0.13979472585156744,
+            0.2341689889340529
+          ],
+          "secondaryOffsets": [
+            -0.002890890608151364,
+            0.015376741124027645,
+            -4.085039942840119e-05,
+            0.0001692845610354254
+          ],
+          "springSubsteps": 2,
+          "director": {
+            "state": "self_tap",
+            "stateElapsed": 0,
+            "fatigue": 0.45,
+            "dozeCooldown": 0,
+            "restRemaining": 0,
+            "reason": "day_resume",
+            "transitions": 5,
+            "nightContext": false,
+            "completedTaps": 9,
+            "currentTapSpeed": 1.0638,
+            "tapStrength": 1.015,
+            "tapIdleSeconds": 0.28
+          }
+        }
+      ],
+      "contacts": 13,
+      "allContactPoses": 1.29,
+      "actualKnockStarts": 13,
+      "actualMusicStarts": 2
+    },
+    {
+      "candidate": "home-ambient-neutral-v1",
+      "state": "frozen hour 12, pose zero same-state regression",
+      "errors": 0,
+      "warnings": 0,
+      "transitionReasons": [],
+      "transitions": [],
+      "contacts": 0,
+      "allContactPoses": "frozen: no events",
+      "actualKnockStarts": 0,
+      "actualMusicStarts": 0
+    }
+  ],
+  "neutralRegression": {
+    "identicalRGBPixelsToM05_2": true,
+    "sameStateComparison": "builds/qa/home-ambient-neutral-comparison-v1.json"
+  },
+  "checks": {
+    "typecheck": "passed Creator 3.8.8 tsc noEmit",
+    "tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "log": "builds/reviews/M04-ambient-final-tests.log"
+  },
+  "limits": [
+    "all Home button/pointer/drag/choice interactions pending; manual priority is logic-test coverage only",
+    "merit save/award UI and ink/doze marks still pending",
+    "live animation has observed state/render evidence only; matching-phase Godot animation comparison still pending",
+    "soft-mesh silhouette shadows, backpack/plant articulation and wardrobe variants pending",
+    "source exact native lamp quantization/filter, all sizes and interruption matrix pending",
+    "formal WeChat pack, real devices, 19MB first download and runtime performance acceptance pending"
+  ]
+}

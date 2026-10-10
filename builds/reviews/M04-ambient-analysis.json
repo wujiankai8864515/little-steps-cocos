@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "scope": "M04.2 original ambient behavior",
+  "initialTests": {
+    "log": "builds/reviews/M04-ambient-initial-tests.log",
+    "failed": 1,
+    "reason": "fixture ended before a further hit; assertion incorrectly assumed every partial cycle had already contacted",
+    "fix": "account for whether the last partial clip passed contact; completed cycles still require exactly one contact"
+  },
+  "initialTypecheck": {
+    "errors": [
+      "TS2550 Array.includes unavailable in existing ES2015 project lib at two call sites"
+    ],
+    "fix": "use ES2015 indexOf for source reason/action membership; preserve project compiler settings"
+  },
+  "finalChecks": {
+    "tests": 35,
+    "passed": 35,
+    "typecheck": "passed"
+  },
+  "candidateSemantics": "--hour declares initial state; only --freeze freezes clock/actor. Dynamic-night metadata corrected to state actual behavior. No actual source or snapshot overwritten.",
+  "fullAcceptance": "pending; doze screenshots are actual runtime proof, not matched-phase original animation acceptance"
+}

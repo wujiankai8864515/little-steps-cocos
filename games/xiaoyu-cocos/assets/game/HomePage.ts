@@ -15,7 +15,7 @@ export class HomePage {
     readonly shadows:HomeShadows;
     private active=false;
     private knock:AudioPort;
-    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen=()=>false,clock=new HomeClock()) {
+    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen=()=>false,private clock=new HomeClock()) {
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.lighting=new HomeLighting(this.root,assets,scope,clock);
         this.shadows=new HomeShadows(this.root,assets,scope,clock);
@@ -48,6 +48,6 @@ export class HomePage {
         console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
     }
     resume() {this.active=true;}
-    pause() {this.active=false;this.knock.stop();}
-    advance(delta: number) { this.rig.advance(delta);this.lighting.update();this.shadows.update(); }
+    pause() {this.active=false;this.rig.focusLost();this.knock.stop();}
+    advance(delta: number) { this.rig.advance(delta,this.clock.nightProgress()>=0);this.lighting.update();this.shadows.update(); }
 }

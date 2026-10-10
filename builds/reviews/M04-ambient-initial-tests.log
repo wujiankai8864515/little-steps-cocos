@@ -1,0 +1,64 @@
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (2.52075ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (2.551667ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.456292ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.982792ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.373708ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.185209ms)
+✔ Disposed request rejects late completion and releases the late resource (0.578083ms)
+✔ Plugin namespace is frozen and nonwritable (0.058166ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.634625ms)
+✖ Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment (9.066125ms)
+✔ Night doze begins only after a complete strike, holds across night and wakes through the original dawn rest (21.230792ms)
+✔ Manual priority plays one full clip, recovers for 0.8 seconds, and focus loss discards an unseen strike (2.351917ms)
+✔ Spring integration caps slow frames at four substeps and keeps every bone within source motion bounds (39.492333ms)
+✔ Long day simulation produces cooldown-separated microdozes and bounded face motion, and invalid deltas leave the pose intact (60.979583ms)
+✔ Comic reveals sound once per panel, and suspension never replays skipped panels (0.921834ms)
+✔ Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model (0.304542ms)
+✔ Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade (0.14775ms)
+✔ Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries (0.158334ms)
+✔ Runtime interval hit queries reconstruct every defined bit of all 19 original masks (3447.077875ms)
+✔ Opening never skips time while paused or accepts the final action before the full hold (0.579958ms)
+✔ Cancel is terminal, retries are owned once and a new entry starts blank (0.479708ms)
+✔ Loading mallet contacts the doll at all three authored strikes without sliding its support (1.421833ms)
+✔ Diagonal comic panels clip at the reveal edge and retain original texture coordinates (0.251458ms)
+✔ Measured contact profiles use original alpha >= .5 and preserve separate feet (1.219209ms)
+✔ Grounded mesh projects each height from its measured support and preserves source coordinates (1.004791ms)
+✔ Legacy floor and wall passes retain their original affine projection behavior (0.124334ms)
+✔ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (4.991167ms)
+✔ Source noon geometry and latest Home gains remain distinct from shared light values (0.912583ms)
+✔ Night transition, moon positions and ambient accents preserve dawn/dusk boundaries (0.274667ms)
+✔ All 24h light samples remain finite, bounded, normalized and periodic (12.8155ms)
+✔ Dust is confined to the approved projected window rather than a full-screen overlay (0.173541ms)
+✔ Grabbed face stays fixed and the mat contact row cannot move during landing squash (0.666667ms)
+✔ Unheld rigid fin moves as one attachment without stretching its mallet (0.228917ms)
+✔ Neutral tail and fin retain source points regardless of parent pose (0.113083ms)
+✔ Jelly remains upper-body local and repeated identical deformation reuses geometry (0.19975ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 34
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3528.155917
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/ambient-behavior.test.cjs:5:1
+✖ Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment (9.066125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 6
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/ambient-behavior.test.cjs:8:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 6,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
