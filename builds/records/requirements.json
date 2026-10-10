@@ -1,0 +1,5481 @@
+{
+  "schema": 1,
+  "source_commit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "source_runtime_commit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "source_preview": "https://wujiankai8864515.github.io/little-steps-play/",
+  "authority": "Latest source and effective requirements; current user authorizes Cocos migration and supersedes older engine-only policy. Historical deployment/native PASS is not Cocos acceptance.",
+  "requirements": [
+    {
+      "id": "HISTORY:A001",
+      "requirement": "登录入场节奏\n标题、副标题缓慢就位，停顿后小余才探头；初始完全藏住。\n验收：冷启动、刷新和重进都不提前露头，顺序一致。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A001",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/login_page.gd",
+        "entry/door_hotspot.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A002",
+      "requirement": "登录全屏进入\n全屏点击均能进入下一阶段。\n验收：中央及四角有效，一次点击不重复切页；下一阶段未就绪时明确等待。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A002",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/native_cold_checks",
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/login_page.gd",
+        "entry/door_hotspot.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A003",
+      "requirement": "静置贴地阴影\n小余、娃娃、碗、凳子按真实底沿接地。\n验收：昼夜各阶段都不悬空，阴影近端不脱离物件。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A003",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "限定真实生产路径已核",
+        "code": {
+          "state": "真实Home交互调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "e394正式冷包实际资源与生产调用有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "e394正式包有限基线未发现新缺陷，完整主题仍待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "6101141抬升投影候选审计.md"
+        ],
+        "next_action": "保留未覆盖组合与用户实景边界，不重复实现已证路径"
+      },
+      "code_paths": [
+        "home/grounding/alpha_grounding.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A004",
+      "requirement": "抬起时双影\n查清接触阴影、投影和素材原有影子的叠加。\n验收：抬起没有多余固定影子；投影随高度变化，落地恢复接触关系。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A004",
+      "source_status": {
+        "summary": "修复已落正式包并部署，Web用户视觉待验",
+        "implementation_assessment": "三道具抬升投影修复已落d1正式包且上线v7",
+        "code": {
+          "state": "d1正式控制器GDC与候选修复一致",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "八延迟包字节不变，无新增资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "d1正式空res零overlay抬升/settling及饮水回归已验",
+          "latest_relevant_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "6101141抬升投影候选审计.md",
+          "d1正式包抬升补审.md",
+          "d1独立正式包核对.json"
+        ],
+        "next_action": "保留Web实景和用户视觉认可待验，不重复修已证原生路径"
+      },
+      "code_paths": [
+        "home/grounding/alpha_grounding.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A005",
+      "requirement": "拖起形变：克制重力下垂＋轻微上下弹，去掉明显左右Q弹；不追求夸张水滴，脸与鳍连接稳定。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A005",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "限定真实生产路径已核",
+        "code": {
+          "state": "真实Home交互调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "e394正式冷包实际资源与生产调用有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "e394正式包有限基线未发现新缺陷，完整主题仍待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "6101141抬升投影候选审计.md"
+        ],
+        "next_action": "保留未覆盖组合与用户实景边界，不重复实现已证路径"
+      },
+      "code_paths": [
+        "home/behavior/soft_attachment_mesh.gd",
+        "home/interaction/home_interaction_controller.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A006",
+      "requirement": "拖起微微挣扎与表情\n鳍尾轻轻挣动，配合眼神、眼球转动和面部表情；放下轻压、回弹后稳住。\n验收：拖起状态有明确生命反应，不僵直、不痛苦；放下自然恢复。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A006",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/rig_secondary_motion.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A007",
+      "requirement": "现在的主角敲木鱼动作太快了，不像敲木鱼，改回之前的，只是之前的敲木鱼动作和动作之间间隔太长",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A007",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "d1生产调用与Git源身份对应，QA-only未改产品",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关正式包成员/图集映射已核，无新资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "原曲线/默认1.08/独立idle真实时序；首GL停顿保留",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "10c7365952edd6a9c21c68c3543755e062745b42",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json",
+          "d1敲击五项有限补审.md",
+          "godot_home_knock_review/build/knock_contact_cycle_review/README.md"
+        ],
+        "next_action": "保留Web/设备/听音/用户视觉待验，不按测试数量判风格完成"
+      },
+      "code_paths": [
+        "home/behavior/ambient_director.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A008",
+      "requirement": "击中时轻微受刺激\n短暂缩眼、嘴部轻绷再放松。\n验收：跟接触时刻同步，程度轻微可爱，不呈现惩罚感。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A008",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "d1生产调用与Git源身份对应，QA-only未改产品",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关正式包成员/图集映射已核，无新资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "轻受击与自然strength/tempo变化存在，接触姿态角差极微；自然性用户待认可",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "10c7365952edd6a9c21c68c3543755e062745b42",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1敲击五项有限补审.md",
+          "godot_home_knock_review/build/knock_contact_cycle_review/README.md"
+        ],
+        "next_action": "保留Web/设备/听音/用户视觉待验，不按测试数量判风格完成"
+      },
+      "code_paths": [
+        "home/home_world.gd",
+        "home/action_marks.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A009",
+      "requirement": "日常眼神与表情\n敲击、瞌睡、喝水、拖起分别有眼球、视线和面部表现。\n验收：不是固定一张脸，视线目标清楚，表情切换不跳变。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A009",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_world.gd",
+        "home/behavior/drag_gaze.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A010",
+      "requirement": "全身果冻联动\n身体、鳍、尾巴有弹性、滞后及小动作。\n验收：联动实际可见，体型和接地稳定，无穿帮或突然放大缩小。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A010",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/rig_secondary_motion.gd",
+        "home/behavior/soft_attachment_mesh.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A011",
+      "requirement": "主页藤蔓：恢复可见、局部、不规则的柔和叶片摆动，不整串同步。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A011",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/secondary/room_plants.gd",
+        "home/secondary/spring_mesh_part.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A012",
+      "requirement": "背包肩带：修穿戴衔接和遮挡；挂墙时肩带也有独立弹性轻摆。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A012",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/secondary/articulated_backpack.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A013",
+      "requirement": "喝水\n碗沿对准红色嘴巴，视线看碗，有喝水表情，结束恢复敲击。\n验收：不穿脸、不对错部位，全过程自然衔接。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A013",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "限定真实生产路径已核",
+        "code": {
+          "state": "真实Home交互调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "e394正式冷包实际资源与生产调用有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "e394正式包有限基线未发现新缺陷，完整主题仍待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "6101141抬升投影候选审计.md"
+        ],
+        "next_action": "保留未覆盖组合与用户实景边界，不重复实现已证路径"
+      },
+      "code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/behavior/character_geometry.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A014",
+      "requirement": "主角背书包的动作还是太傻，当我拖书包确认后，改为用你旅行页面的背书包的静态图吧，起码背书包样子很协调。注意背书包的时候要加云雾的动效来做类似的出场动画",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A014",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/native_cold_checks",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/secondary/articulated_backpack.gd",
+        "home/room_props_controller.gd",
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A015",
+      "requirement": "物件询问与照片\n背包触发旅行询问，娃娃触发暗室询问，照片触发对应入口。\n验收：用自然气泡或场景载体，不堆生硬按钮；确认、取消、返回有效。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A015",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_page.gd",
+        "home/interaction/home_note.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A016",
+      "requirement": "两处灯：主页灯与暗室灯笼都立即Q弹回应，快速渐亮／渐灭，连续点击不被提示拦截。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A016",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_page.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A017",
+      "requirement": "60秒昼夜\n白天30秒、夜晚30秒；入夜先展示月光，夜半开灯，天亮前关灯。\n验收：时长正确，过渡平滑，月光和晨光阶段可见。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A017",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "d1共享clock和花生命周期实际调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "实际ctex/import与库存清单有证；花盘/叶/瓶原PNG缺失，恢复缓存链保留",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "真实活跃钟/跨页实例与暂停规则；真实第二朵和8秒成长；5/10朵存档seek及新进程重载分开",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "a202b1562fd4b77b0666f0a98dd516d62a420855",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1花钟与缓存条件补审.md",
+          "godot_clock_flower_review/build/clock_flower_cycle_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/home_cycle_clock.gd",
+        "scripts/app.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A018",
+      "requirement": "两处窗玻璃质感\n主页、暗室同步增强玻璃反射、透光与边缘质感。\n验收：可感知玻璃，但不蒙白遮住外景，昼夜表现协调。\n\n核验要求：每项对照真实素材、节点、生产调用和状态流程，列清逻辑／资源证据；受云端图形环境限制的实际画面和触感单独标待实测，不再笼统宣布全部完成。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A018",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_world.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A019",
+      "requirement": "香炉独立交互\n凳子上香炉独立燃烧；未燃尽提示，燃尽后点击重新点香。\n验收：不重复叠香，不要求小余参与。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A019",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已有实现，本次仅补核查证据，无生产修复",
+        "code": {
+          "state": "正式包实际生产点香/结算/恢复调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关34成员SHA与正式PCK吻合；烟为运行ArrayMesh，无另需烟图",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "真实点燃/不预燃/燃中不叠加/燃尽重燃，三进程同deadline恢复",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false,
+          "evidence_commit": "511e1f6e0904ec749a5f2a53c1abaae7dd0d5ccb",
+          "scope": "原9包空res零overlay；原生Mesa GL，_commit_home省略格漫；时段/焦点夹具边界保留"
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "godot_home_grounding_followup/build/incense_lifecycle_review/REPORT.md",
+          "godot_home_grounding_followup/build/incense_lifecycle_review/verdict.json"
+        ],
+        "next_action": "保留Web刷新/实机/高屏与用户认可待验；不称本次修复四项"
+      },
+      "code_paths": [
+        "home/independent_incense.gd",
+        "home/incense_burn_store.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A020",
+      "requirement": "花瓶、香炉、香的光影：补实际受光、接触阴影与随光源变化的投影。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A020",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已有实现，本次仅补核查证据，无生产修复",
+        "code": {
+          "state": "正式包实际生产点香/结算/恢复调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关34成员SHA与正式PCK吻合；烟为运行ArrayMesh，无另需烟图",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "仅炉与香材质、火头缩短、8/12/16点投影及接触；不扩为全花瓶或灯下显著受光",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false,
+          "evidence_commit": "511e1f6e0904ec749a5f2a53c1abaae7dd0d5ccb",
+          "scope": "原9包空res零overlay；原生Mesa GL，_commit_home省略格漫；时段/焦点夹具边界保留"
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "godot_home_grounding_followup/build/incense_lifecycle_review/REPORT.md",
+          "godot_home_grounding_followup/build/incense_lifecycle_review/verdict.json"
+        ],
+        "next_action": "保留Web刷新/实机/高屏与用户认可待验；不称本次修复四项"
+      },
+      "code_paths": [
+        "home/independent_incense.gd",
+        "home/flowers/tabletop_support.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A021",
+      "requirement": "拖拽层：原actor/附属件共用临时Canvas，动态高于Home内新增Canvas；释放取消恢复父层与固定锚，无透明输入罩",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A021",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "限定真实生产路径已核",
+        "code": {
+          "state": "真实Home交互调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "e394正式冷包实际资源与生产调用有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "e394正式包有限基线未发现新缺陷，完整主题仍待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "6101141抬升投影候选审计.md"
+        ],
+        "next_action": "保留未覆盖组合与用户实景边界，不重复实现已证路径"
+      },
+      "code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A022",
+      "requirement": "Loading展示与打布偶动画\n首屏显示定稿Loading，不闪Godot Logo；最低显示1秒，即使缓存命中也保留；打布偶动作补真实接触、力度和反馈。\n验收：Loading可看见，动作不穿透、不悬空；资源未就绪时超过1秒继续等待，不能强行跳页。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A022",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/loading_page.gd",
+        "entry/native_actor.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A023",
+      "requirement": "分阶段必要资源门槛\n• Loading：只等待登录必需资源及运行依赖。\n• 登录：并行下载格漫、主页必需资源。\n• 进入格漫：格漫资源就绪即可进入，不被主页下载拖住。\n• 格漫结束：主页必需资源就绪后才进入主页；未就绪时明确显示等待。\n• 同时可低优先级预加载后续资源，不挤占当前必要下载。\n验收：门槛包含下载及使用前必要准备；慢网、缓存、失败重试均不出现空白页、缺图或假完成；不强制首屏全量下载。若现有打包方式把资源绑成一包，需要调整资源组织。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A023",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "scripts/app.gd",
+        "config/resource_groups.json",
+        "config/resource_pack_manifest.json"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A024",
+      "requirement": "两首背景音乐\n白天《弹竖琴的小老鼠》、夜晚《Peaceful Mind》，低音量平滑切换，保留许可署名。\n验收：首次有效交互后可播放，切换不突兀，重进不重复播放器；只接这两首。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A024",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/audio/home_music.gd",
+        "home/audio/music_credits.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A025",
+      "requirement": "暗室\n已发三屏视觉候选：邀请→针／拖鞋互动→晦气消散。确认后按原玩法完成页面。\n验收：入口、操作反馈、结算与返回完整，风格与定稿一致。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A025",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/darkroom_actual_packs",
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_page.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A026",
+      "requirement": "格漫轻音效：逐格柔和“噗”声，加对应剧情的短音效，轻量同步。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A026",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/opening_story_paper.gd",
+        "entry/opening_story_progress.gd",
+        "entry/comic_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A027",
+      "requirement": "暗室首帧：房间显示前把光影准备好，避免先房间、后补光。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A027",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "scripts/app.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A028",
+      "requirement": "暗室点击阻断：修复默认针点布偶无反应、拖鞋无法选中的输入拦截。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A028",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/darkroom_actual_packs",
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_page.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A029",
+      "requirement": "针与拖鞋打击感：分别核查扎入／挥打、接触反馈、布偶反应、黑气、血条和结算。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A029",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/darkroom_actual_packs",
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_world.gd",
+        "darkroom/helpers/flowing_plumes.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A030",
+      "requirement": "工具选中态：去掉黄色线框，换柔和外发光；针、拖鞋尺寸收进托盘凹槽。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A030",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/helpers/tool_tray_fit.gd",
+        "darkroom/helpers/darkroom_hud.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A031",
+      "requirement": "暗室娃娃外形一致\n分件与物理关节保留主页同一只娃娃的原造型。\n验收：中性姿态与母版一比一对照，脸、比例、四肢、蝴蝶结不变；活动不裂缝。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A031",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/helpers/articulated_doll.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A032",
+      "requirement": "灯笼图案：去掉枝叶纹样，换干净的纸鹤点缀。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A032",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A033",
+      "requirement": "暗室叶片：保留已认可的随机方式与幅度，仅稍提高活动频率，不重做暗室。\n\n审查要求：逐项检查真实素材、节点、生产调用和完整状态流程；眼部、肩带、尾巴另做合成对照。报告区分“修改完成／代码资源验证／实际画面待验”，不以参数存在或单个测试通过笼统宣布全部完成。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A033",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A034",
+      "requirement": "返回控件：去掉点击出现的虚线圆框，修触摸返回，保留轻微弹性。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A034",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_page.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A035",
+      "requirement": "追物方向与完整瞳安全必须同时成立。半径由后续A066覆盖：当前左12×9.12、右10.8×7.92；旧左10×7.6、右9×6.6仅比较基线，不得回退。210候选只修clamp方向，半径/domain/shader不变；右眼可见行程很小，整体美术/Web仍待验。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A035",
+      "source_status": {
+        "summary": "d1方向反转已确证；候选保向修复，正式包待验",
+        "implementation_assessment": "真实右下请求被安全域最近点投影翻成右上；210候选改射线裁剪",
+        "code": {
+          "state": "210d915仅clamp_offset候选差异已独立核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "半径/domain/neutral/图/shader未变，候选两成员overlay明确",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "d1正式包复现反向；候选App预加载前overlay保向与完整瞳抽样有效；非正式包",
+          "latest_relevant_commit": "d1bfcaa",
+          "candidate_commit": "210d91577f880ca857c3764b0c44e9ceeca9188b",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/REPORT.md"
+        ],
+        "next_action": "同源正式包再核；右眼可见行程很小，整体美术/Web未认可",
+        "active_requirement": "追物方向与完整瞳安全必须同时成立。半径由后续A066覆盖：当前左12×9.12、右10.8×7.92；旧左10×7.6、右9×6.6仅比较基线，不得回退。210候选只修clamp方向，半径/domain/shader不变；右眼可见行程很小，整体美术/Web仍待验。"
+      },
+      "code_paths": [
+        "home/behavior/eye_geometry.gd",
+        "home/behavior/drag_gaze.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A036",
+      "requirement": "音频报错与卡顿：修重复恢复播放、重启复制大缓冲及残留播放，核查灯／照片连点时的卡顿。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A036",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/audio/home_music.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A037",
+      "requirement": "设置无法关闭：修触摸、关闭路由与遮罩，保证可关、可重开。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A037",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A038",
+      "requirement": "全项目内存：排查播放器、纹理、序列帧、页面节点、粒子及临时拷贝，区分泄漏和峰值浪费。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A038",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md",
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/diagnostic_comparison.json",
+          "d1花钟与缓存条件补审.md",
+          "godot_clock_flower_review/build/first_draw_default_cache/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现",
+        "open_observation": {
+          "id": "A049-A038-home-first-draw",
+          "state": "受控软件GL观察；用户常规硬件/Web未验证",
+          "environment_old": "llvmpipe + MESA_SHADER_CACHE_DISABLE=true；暖为同进程资源复用，不证明驱动cache暖",
+          "old_process_gaps_ms": [
+            8478,
+            5718
+          ],
+          "environment_default_cache": "llvmpipe隔离新缓存，移除显式disable；同进程冷暖一次样本",
+          "default_process_gaps_ms": [
+            7902,
+            4632
+          ],
+          "cache_write_not_hit_proof": true,
+          "causality": "未细分编译/JIT/sampler，不能判用户Web根因；不再延伸研究",
+          "no_production_change": true
+        }
+      },
+      "code_paths": [
+        "scripts/app.gd",
+        "config/resource_groups.json"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A039",
+      "requirement": "碗边残光：清理原图右边缘暖黄／黄绿残留，保留正常材质。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A039",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A040",
+      "requirement": "花瓶与香炉摆放：在凳面中央均衡分布；香炉更换为符合画风、辨识清楚的造型。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A040",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/flowers/tabletop_support.gd",
+        "home/independent_incense.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A041",
+      "requirement": "最新实图花朵过于等高同向拥挤，需明确高低/左右错落；不能用旧追光角度PASS关闭。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A041",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "d1共享clock和花生命周期实际调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "实际ctex/import与库存清单有证；花盘/叶/瓶原PNG缺失，恢复缓存链保留",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "真实活跃钟/跨页实例与暂停规则；真实第二朵和8秒成长；5/10朵存档seek及新进程重载分开",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "a202b1562fd4b77b0666f0a98dd516d62a420855",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json",
+          "d1花钟与缓存条件补审.md",
+          "godot_clock_flower_review/build/clock_flower_cycle_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/flowers/flower_life.gd",
+        "home/flowers/flower_head.gd",
+        "home/flowers/persistent_vase.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A042",
+      "requirement": "香烟：点燃初期就有柔和飘烟，燃尽时自然扩散淡去，去掉硬直裁切边。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A042",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已有实现，本次仅补核查证据，无生产修复",
+        "code": {
+          "state": "正式包实际生产点香/结算/恢复调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关34成员SHA与正式PCK吻合；烟为运行ArrayMesh，无另需烟图",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "原生首烟/中烟/燃尽尾烟连续扩散画面，用户画风与Web待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false,
+          "evidence_commit": "511e1f6e0904ec749a5f2a53c1abaae7dd0d5ccb",
+          "scope": "原9包空res零overlay；原生Mesa GL，_commit_home省略格漫；时段/焦点夹具边界保留"
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "godot_home_grounding_followup/build/incense_lifecycle_review/REPORT.md",
+          "godot_home_grounding_followup/build/incense_lifecycle_review/verdict.json"
+        ],
+        "next_action": "保留Web刷新/实机/高屏与用户认可待验；不称本次修复四项"
+      },
+      "code_paths": [
+        "home/independent_incense.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A043",
+      "requirement": "暗室自动下一轮\n旧娃随更明显、更慢的成功动画消散；完全消失后停1秒，新娃伴黑雾渐现，晦气条回满。\n验收：无需返回重进；时序完整，不双娃叠加、不重复结算，准备完成后可继续操作。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A043",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/darkroom_actual_packs",
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/darkroom_world.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A044",
+      "requirement": "修通用气泡的旧最小宽度等排版问题；主页、暗室、旅行统一公共组件与规则，验证长短文字/换行/连续切换。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A044",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/interaction/home_note.gd",
+        "travel/travel_page.gd",
+        "darkroom/helpers/doll_speech_bubble.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A045",
+      "requirement": "点香加成（新增优化）\n用户点燃才开始：一根香30秒，期间每次敲击功德+2，燃尽恢复+1；不重复叠加。\n验收：实际结算与显示一致；预加载不提前点燃，刷新恢复时间与加成一致。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A045",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已有实现，本次仅补核查证据，无生产修复",
+        "code": {
+          "state": "正式包实际生产点香/结算/恢复调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关34成员SHA与正式PCK吻合；烟为运行ArrayMesh，无另需烟图",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "真实30.011秒燃烧；实际contact +1→+2→+1，三进程恢复及过期不自燃",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false,
+          "evidence_commit": "511e1f6e0904ec749a5f2a53c1abaae7dd0d5ccb",
+          "scope": "原9包空res零overlay；原生Mesa GL，_commit_home省略格漫；时段/焦点夹具边界保留"
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "godot_home_grounding_followup/build/incense_lifecycle_review/REPORT.md",
+          "godot_home_grounding_followup/build/incense_lifecycle_review/verdict.json"
+        ],
+        "next_action": "保留Web刷新/实机/高屏与用户认可待验；不称本次修复四项"
+      },
+      "code_paths": [
+        "home/incense_burn_store.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A046",
+      "requirement": "精确文案为“暗室装载中…”，只在真实装载中显示，省略号循环；不是“正在装载”。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A046",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "e394bda",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "e394正式包补审.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "scripts/app.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A047",
+      "requirement": "最新要求去除Loading角色背后大圆圈/光环；不是仅旧进度条前端小圆点。网页preboot与Godot两处均须核实。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A047",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json",
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/loading_page.gd",
+        "entry/native_actor.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A048",
+      "requirement": "格漫“点击进入”：整页完成后显示轻柔呼吸效果，点击热区稳定。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A048",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "真实App启动链生产状态/调用有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "d1原生与冻结Web包身份、阶段资源实际backend挂载有证",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "启动链有限真包状态/输入与关键GL帧有证，详见逐项报告",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "entry/comic_page.gd",
+        "entry/opening_story_progress.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A049",
+      "requirement": "“正在准备小屋”：尾部点按一、二、三持续循环。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A049",
+      "source_status": {
+        "summary": "受控软件GL连续性有缺口，用户硬件/Web未验证",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "资源等待尾点正常；llvmpipe禁缓存及默认缓存均见多秒缺口，不判用户生产故障",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "60a742f",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1启动链有限补审.md",
+          "godot_startup_ready_review/build/startup_ready_review/diagnostic_comparison.json",
+          "d1花钟与缓存条件补审.md",
+          "godot_clock_flower_review/build/first_draw_default_cache/REPORT.md"
+        ],
+        "next_action": "保留环境边界；硬件/Web待验，不继续软件shader归因",
+        "open_observation": {
+          "id": "A049-A038-home-first-draw",
+          "state": "受控软件GL观察；用户常规硬件/Web未验证",
+          "environment_old": "llvmpipe + MESA_SHADER_CACHE_DISABLE=true；暖为同进程资源复用，不证明驱动cache暖",
+          "old_process_gaps_ms": [
+            8478,
+            5718
+          ],
+          "environment_default_cache": "llvmpipe隔离新缓存，移除显式disable；同进程冷暖一次样本",
+          "default_process_gaps_ms": [
+            7902,
+            4632
+          ],
+          "cache_write_not_hit_proof": true,
+          "causality": "未细分编译/JIT/sampler，不能判用户Web根因；不再延伸研究",
+          "no_production_change": true
+        }
+      },
+      "code_paths": [
+        "scripts/app.gd",
+        "entry/comic_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A050",
+      "requirement": "功德浮字：恢复“薄金微芒”艺术字，动态组合＋N，支持两位数及更多位数，不硬拉伸。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A050",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "d1生产调用与Git源身份对应，QA-only未改产品",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关正式包成员/图集映射已核，无新资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "四金额实际击打触发图集等比绘制；金额provider为夹具",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "10c7365952edd6a9c21c68c3543755e062745b42",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1敲击五项有限补审.md",
+          "godot_home_knock_review/build/knock_contact_cycle_review/README.md"
+        ],
+        "next_action": "保留Web/设备/听音/用户视觉待验，不按测试数量判风格完成"
+      },
+      "code_paths": [
+        "home/feedback/merit_amount_art.gd",
+        "home/feedback/merit_legacy_style.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A051",
+      "requirement": "03（Home两句10款位图选择板中选03，结合前一选择问题确认）",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A051",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/coexisting_hints_actual",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/feedback/wayfinding_hint_style.gd",
+        "home/independent_incense.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A052",
+      "requirement": "主角敲击输入：空白无反应；点中小余立刻完整敲一下，正在敲也立即重新执行，旧事件不重复结算。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A052",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "d1生产调用与Git源身份对应，QA-only未改产品",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关正式包成员/图集映射已核，无新资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "真实root alpha/空白/连点末击/触摸去重/失焦限定路径",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "10c7365952edd6a9c21c68c3543755e062745b42",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1敲击五项有限补审.md",
+          "godot_home_knock_review/build/knock_contact_cycle_review/README.md"
+        ],
+        "next_action": "保留Web/设备/听音/用户视觉待验，不按测试数量判风格完成"
+      },
+      "code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A053",
+      "requirement": "尾巴穿帮：检查拖起时裁切、UV、轮廓及身体连接同步，不靠减小动作掩盖。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A053",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/soft_attachment_mesh.gd",
+        "home/behavior/rig_secondary_motion.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A054",
+      "requirement": "眼白白球：查清额外白球的素材／合成来源，恢复连贯眼白，不能盲删层。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A054",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/eye_geometry.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A055",
+      "requirement": "收藏页重新出创意设计：不要方正信纸+规整icon列表；自然错落、有适度动态，背景虚化突出高清藏品；标题清楚、空木牌有明确用途、页码与前后按钮符合画风。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A055",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/native_cold_checks",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A056",
+      "requirement": "照片页重出详细示意图，依据最初MD、旧照片图和最新偏好，含进入/查看/返回流转。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A056",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/photo_actual_pack_qa",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/interaction/home_note.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A057",
+      "requirement": "指定文字统一为截图下方气泡的字体与风格。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A057",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_page.gd",
+        "travel/travel_speech.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A058",
+      "requirement": "旅行加载面板改成配套手绘风，保真实进度、取消返回。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A058",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A059",
+      "requirement": "五角星换为有材质、光晕和灵动闪烁的菱形四尖闪光。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A059",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A060",
+      "requirement": "开包等特效增强出现、运动、消散的动感。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A060",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_service.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A061",
+      "requirement": "修复截图中模糊材质，核对源图、缩放和纹理设置。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A061",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/paper_actual_packs",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_art.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A062",
+      "requirement": "地图放大，校正地图、闪光、提示语的位置与间距。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A062",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A063",
+      "requirement": "地面日记翻开两页补手绘记录和小插画，不留白。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A063",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/diary_actual_packs",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_open_diary_art.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A064",
+      "requirement": "批阅确认突出显示，配高光与柔和闪动。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A064",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/review_actual_packs",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A065",
+      "requirement": "你指出的两个按钮改成现有返回按钮同套画风。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A065",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/header_tag.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A066",
+      "requirement": "小余黑瞳在当前基础放大20%，保高光、眼白边界与自然跟随。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A066",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "正式d1真实角色路径及资源链有限核查有证",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "原ctex恢复链/正式包有证；body/tail/fin/closed原PNG缺失，不冒新导入",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "普通Home选定拖起/回落/喝水/敲击/瞌睡夹具、附件接缝与完整瞳有限证据；不扩出发/全组合",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_reference": "actor_gaze_review/baseline/REPORT.md",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "210d915眼球候选补审.md",
+          "godot_actor_gaze_fix/build/actor_gaze_review/baseline/REPORT.md"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/behavior/eye_geometry.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A067",
+      "requirement": "敲击旁三条漫画冲击线加入击中同步的短促迸发、伸缩与消散。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A067",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "d1生产调用与Git源身份对应，QA-only未改产品",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "相关正式包成员/图集映射已核，无新资源",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "三笔真实生成；fixed30扩张回缩200ms清空，仅视觉模拟",
+          "latest_relevant_commit": "d1bfcaa",
+          "qa_commit": "10c7365952edd6a9c21c68c3543755e062745b42",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "d1敲击五项有限补审.md",
+          "godot_home_knock_review/build/knock_contact_cycle_review/README.md"
+        ],
+        "next_action": "保留Web/设备/听音/用户视觉待验，不按测试数量判风格完成"
+      },
+      "code_paths": [
+        "home/action_marks.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A068",
+      "requirement": "旅途地图奇遇提示更醒目、可点，用菱形闪光/轻量引导，区分待选择与已处理，不强迫点击。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A068",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A069",
+      "requirement": "真实路线前进：固定多个地点和路牌，小余沿路移动、到站反馈；不能同一房屋反复换地名伪装行进。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A069",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A070",
+      "requirement": "先把当前旅途场景精调动态、分层，不急着扩场景数量，不整幅背景同摇。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A070",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A071",
+      "requirement": "旅途场景元素、动态与光影做成可配置、可复用效果，以后配景不反复改实现。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A071",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A072",
+      "requirement": "枫叶/叶片较频繁自然随风动，带弹性惯性、错相，不整组机械摆。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A072",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A073",
+      "requirement": "拆出独立钟体与钟舌，自然晃动、偶尔同步钟响，遵静音和音量设置。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A073",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A074",
+      "requirement": "天空云动态移动，节奏自然。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A074",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A075",
+      "requirement": "共享主页昼夜时间，呈现日升日落、晨昏、可见丁达尔光束与方向一致的投影。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A075",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A076",
+      "requirement": "清理或拆层背景中烘死的强光、光束与方向性阴影，给动态光照留空间，保手绘材质。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A076",
+      "source_status": {
+        "summary": "代码资源已核，当前真包专题待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "当前正式包缺该主题完整专项",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A077",
+      "requirement": "确认背包后改旅行静态背包角色并加云雾出场",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A077",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_a297012/native_cold_checks",
+          "关联组a297源码复核.md",
+          "godot_home_polish_followup/build/followup_20261006/history_repair_mapping.json"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_bridge.gd",
+        "travel/travel_home_props.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A078",
+      "requirement": "新旅行页：保批准地图布局，路线10秒一阶段共100有效秒；事件可不点；点光点原页人物小板才暂停，取消续行，终点AI统一处理未选",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A078",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/restart_actual_packs"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_model.gd",
+        "travel/travel_service.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A079",
+      "requirement": "满包：按最新放大图rect(273.5,925,171,180)，鱼身前接地，眼嘴完整，不碰右碗；开包rect(270,925,178,184)",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A079",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/restart_actual_packs"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A080",
+      "requirement": "入口反馈：地图/包/照片/设置/燃香等短弹完再触发；日记翻开完再进入；触摸取消、连点及合成鼠标去重；灯即时光渐变",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A080",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/home_page.gd",
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A081",
+      "requirement": "逐件保存、失败回滚、旧存档迁移、损坏主档备份、选择锁/偏好学习一次性与跨页清理",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A081",
+      "source_status": {
+        "summary": "已实施或存在生产实现，部分要求已验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "部分路径已验证，主题余项待验",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/restart_actual_packs"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "travel/travel_store.gd",
+        "travel/travel_model.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A082",
+      "requirement": "暗室待办补充：\n\n第31项增加：暗室物件投影随太阳、日出日落与灯笼变化。验收时检查方向、长度、柔度、接地点及遮挡，不能出现悬空或多余影子。\n\n第32项：黑气烟雾与晦气消散动画。保留你认可的布偶、绣花针、拖鞋以及第三屏消散画风；黑气要连续、柔顺地卷曲、扩散和消散，互动、血条及结算反馈同步。结果文字保持“晦气消除、乳腺通畅”。\n\n验收：烟雾像烟，不像硬块贴图；循环和结束不突跳；消散过程完整，最终结果可读，返回有效。\n\n说明：第三屏目前是静态视觉示意，不是已经完成的序列帧或动画；接下来按你认可的样式制作实际效果。此前31项保持有效。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A082",
+      "source_status": {
+        "summary": "已实施，限定原生真包已验，用户/Web待验",
+        "implementation_assessment": "已实施",
+        "code": {
+          "state": "生产改动/调用已核",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "新来源/正式包映射已核",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "限定生产路径已验证",
+          "latest_relevant_commit": "c242391",
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [
+          "home_polish_delivery_c242391/darkroom_actual_packs"
+        ],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "darkroom/helpers/flowing_plumes.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "HISTORY:A083",
+      "requirement": "最新版待办补充第27项：动作的漫画式反馈元素。\n\n敲木鱼、喝水、瞌睡、拖起挣动等动作，搭配符合动作含义的冲击线、水滴、困意或动势提示，沿用原画风格，轻量呈现。\n\n验收：与动作关键时刻同步，短暂出现后消失；不常驻、不遮住眼神和表情、不堆得过密，不把这些元素当作新增按钮或玩法。此前26项保持有效。",
+      "source_document": "build/followup_20261006/history_matrix_snapshot.json",
+      "source_id": "A083",
+      "source_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "d1 v7已发布（不代表本主题全部验收）",
+          "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+          "evidence": "d1部署终态记录.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "code_paths": [
+        "home/action_marks.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N01",
+      "requirement": "对象名+加载中+1/2/3点，例如暗室加载中...、日记加载中...、地图加载中...；不出现技术资源包名或准备旅行画卷；照片墙加载中...也统一",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N01",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/travel_home_bridge.gd:181,212,250",
+        "photo/photo_bridge.gd:50-51,66-76"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N02",
+      "requirement": "动态省略号不触发布局抖动",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N02",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "scripts/app.gd:_darkroom_wait_text",
+        "home/interaction/home_note.gd:update_route_waiting",
+        "addons/travel_core/ui/speech_bubble.gd:_layout"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N03",
+      "requirement": "照片墙光束柔和体积层次",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N03",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_page.gd:64-70; photo/photo_material.gd:10-18; darkroom/shaders/window_beams.gdshader",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N04",
+      "requirement": "照片页小余尾鳍缺失",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N04",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_actor.gd:configure; xiaoyu_rig.tscn:118; photo/photo_page.gd:backdrop/actor",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N05",
+      "requirement": "照片页小余影子随姿态与日月",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N05",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_page.gd:70-74",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N06",
+      "requirement": "底部两枚小屋夹子独立轻摆",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N06",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_page.gd:selectors configure/process/input",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N07",
+      "requirement": "照片纸摆幅与独立错相",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N07",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_paper.gd:deform/advance",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N08",
+      "requirement": "每张照片投影随纸面与光",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N08",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_paper.gd:advance",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N09",
+      "requirement": "挂夹与绳子投影适配数量",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N09",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_page.gd:WallFurniture._draw/_refresh/_process",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N10",
+      "requirement": "照片墙背景叶/藤拆分持续物理轻摆",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N10",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_page.gd/backdrop; photo/photo_actor.gd",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N11",
+      "requirement": "照片墙昼夜/光效频繁闪抖",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N11",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "photo/photo_material.gd:illuminate/wall_field; shared_room_lighting/lighting_snapshot.gd",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N12",
+      "requirement": "动态功德+N暗边",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N12",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "home/feedback/merit_amount_art.gd; home/feedback/assets/merit_digits_thin_gold.png",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N13",
+      "requirement": "旅途各牌面文案垂直居中",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N13",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_page.gd:_label/_map_page; travel/travel_scene_config.gd:landmarks",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N14",
+      "requirement": "旅行钟摆频率与钟声清楚可闻",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N14",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_scene_runtime.gd:_physics/_can_sound; travel/travel_scene_config.gd:bell/audio",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N15",
+      "requirement": "本旅行场景隐藏太阳/月亮实体保光效",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N15",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_scene_runtime.gd:_draw_sky/light_snapshot/_draw_light",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N16",
+      "requirement": "旅行页面清晰动态柔光束",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N16",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_scene_runtime.gd:_draw_light/_draw_portal_shaft; travel_scene_config.gd:beam_portals",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N18",
+      "requirement": "奇遇全屏层次引导与华丽菱形闪光",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N18",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_page.gd:EncounterGlow/_map_page",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N19",
+      "requirement": "全屏落叶近大远小景深",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N19",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_scene_config.gd:leaves; travel_scene_runtime.gd:_draw_leaves",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N20",
+      "requirement": "奇遇等待点击时同步提示音",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N20",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": "travel/travel_page.gd:EncounterGlow/_map_page; travel_service.gd",
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N21",
+      "requirement": "旅行页地点/故事文案合理载体与位置",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N21",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/travel_page.gd:291-294,475-483"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N22",
+      "requirement": "旅途路线贝塞尔手绘与真实材质节点",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N22",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/travel_scene_runtime.gd:_draw_route",
+        "travel/travel_scene_config.gd:sample_segment/route_position"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N23",
+      "requirement": "收藏底部物件选择不重排",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N23",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/treasure_gallery.gd:select_item/_build"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N24",
+      "requirement": "收藏实物分页与保留归档旅行日记",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N24",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/treasure_gallery.gd:_build/_build_archive",
+        "travel/travel_page.gd:_collection/open"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N25",
+      "requirement": "收藏详情小型日记纸质衬底",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N25",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/treasure_gallery.gd:_build/_light_label"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N26",
+      "requirement": "主页两03艺术提示占比收小",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N26",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "home/feedback/bitmap_hint.gd",
+        "home/independent_incense.gd:_make_hint",
+        "travel/travel_home_props.gd:diary_hint"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N27",
+      "requirement": "归来开包柔软云朵扩散",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N27",
+      "source_status": "implemented_group_candidate_verified_integration_formal_pending",
+      "code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_reward_flight.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R7:N28",
+      "requirement": "正式接入精简衣柜与通用粉色换肤",
+      "source_document": "build/round7_20261007/requirements.json",
+      "source_id": "N28",
+      "source_status": "authorized_implementation_in_progress",
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-01",
+      "requirement": "公共气泡布局与横向颤抖",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-01",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-02",
+      "requirement": "确认出发云雾复用暗室净化",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-02",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-03",
+      "requirement": "燃香及日记提示复用询问文字样式",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-03",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-04",
+      "requirement": "所有交互提示统一错落四尖菱光",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-04",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-05",
+      "requirement": "归来开包云朵移到背包前景",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-05",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-06",
+      "requirement": "奖励靠包上方扇形错落悬浮",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-06",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-07",
+      "requirement": "收齐奖励后慢贝塞尔回挂背包",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-07",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-08",
+      "requirement": "收藏日记斜牌文字居中",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-08",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-09",
+      "requirement": "收藏底排所有状态不显示名称",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-09",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-10",
+      "requirement": "收藏详情图名简介同一纸板",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-10",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-11",
+      "requirement": "灵物分类毛笔字配实物图标",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-11",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-12",
+      "requirement": "照片墙可见宽柔丁达尔光束",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-12",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-13",
+      "requirement": "照片藤蔓内容裁剪与离屏停算",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-13",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-14",
+      "requirement": "旅行落叶多种贝塞尔自然飘落",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-14",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-15",
+      "requirement": "奇遇全屏柔光束聚焦真实热区",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-15",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-16",
+      "requirement": "实际到站生成手绘脚印",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-16",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-17",
+      "requirement": "旅行常态宽柔丁达尔光束",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-17",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-18",
+      "requirement": "衣柜点击只内衣布轻反馈",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-18",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-19",
+      "requirement": "衣柜可见窗光丁达尔",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-19",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-20",
+      "requirement": "桃花真实点击试穿无反应",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-20",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-21",
+      "requirement": "衣柜两块标签视觉居中",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-21",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-22",
+      "requirement": "挂布固定挂点自然风动",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-22",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "R8:R8-23",
+      "requirement": "功德HUD增数时框不抖",
+      "source_document": "build/round8_20261007/requirements.json",
+      "source_id": "R8-23",
+      "source_status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "code_paths": [],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "POST-R9:N1",
+      "requirement": "格漫加载提示同位",
+      "source_document": "build/post_r9_feedback_20261007/requirements.json",
+      "source_id": "N1",
+      "source_status": null,
+      "code_paths": [
+        "games/travel_woodfish/project/entry/comic_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "POST-R9:N2",
+      "requirement": "奇遇结果纸质底板",
+      "source_document": "build/post_r9_feedback_20261007/requirements.json",
+      "source_id": "N2",
+      "source_status": null,
+      "code_paths": [
+        "games/travel_woodfish/project/travel/travel_page.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "POST-R9:N3",
+      "requirement": "背包主角原地渐隐",
+      "source_document": "build/post_r9_feedback_20261007/requirements.json",
+      "source_id": "N3",
+      "source_status": null,
+      "code_paths": [
+        "games/travel_woodfish/project/home/home_departure_visual.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "POST-R9:N4",
+      "requirement": "照片墙宽软斜光与受光层次",
+      "source_document": "build/post_r9_feedback_20261007/requirements.json",
+      "source_id": "N4",
+      "source_status": null,
+      "code_paths": [
+        "games/travel_woodfish/project/photo/photo_material.gd",
+        "games/travel_woodfish/project/photo/photo_page.gd",
+        "games/travel_woodfish/project/shared_room_lighting/soft_atmosphere.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    },
+    {
+      "id": "POST-R9:N5",
+      "requirement": "旅行场景柔光与昼夜受光",
+      "source_document": "build/post_r9_feedback_20261007/requirements.json",
+      "source_id": "N5",
+      "source_status": null,
+      "code_paths": [
+        "games/travel_woodfish/project/travel/travel_atmosphere.gd",
+        "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+      ],
+      "cocos_status": {
+        "code": "pending",
+        "resources": "pending",
+        "screenshot": "pending",
+        "interaction": "pending",
+        "wechat_build": "pending",
+        "wechat_device": "pending"
+      },
+      "cocos_evidence": []
+    }
+  ],
+  "withdrawn": [
+    {
+      "source": "R7:N17",
+      "reason": "Terminal trip timing must not depend on watching; preserve human-choice pause."
+    }
+  ],
+  "validation_protocol": {
+    "screenshots": {
+      "status": "pending",
+      "same_viewport": true,
+      "same_game_clock": true,
+      "same_progress_and_outfit": true,
+      "alpha_preserved": true,
+      "frames": [
+        "entry before and after transitions",
+        "stable day",
+        "stable night",
+        "lamp on/off",
+        "all pressed/hover/drag/release states",
+        "every popup and cancellation",
+        "all intermediate animation/contact/landing frames"
+      ],
+      "metrics": [
+        "pixel difference with aligned crop",
+        "structural overlay",
+        "manual visible review"
+      ],
+      "tolerance": "No blanket pixel tolerance can approve all effects. Any renderer difference must be identified and resolved or remain unaccepted."
+    },
+    "interaction": {
+      "status": "pending",
+      "all_buttons": true,
+      "all_routes": true,
+      "failure_cancel_retry": true,
+      "storage_reopen": true,
+      "reward_exactly_once": true,
+      "single_contact_single_merit": true
+    },
+    "device": {
+      "status": "pending",
+      "scope": [
+        "WeChat developer tool",
+        "physical WeChat phone",
+        "cold/warm load",
+        "safe area and foreground/background",
+        "download/memory/frame-time measurements"
+      ]
+    }
+  }
+}

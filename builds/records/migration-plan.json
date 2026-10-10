@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "status": "in_progress",
+  "target": "full fidelity migration, not prototype",
+  "creator": "3.8.8",
+  "shipping_platforms": [
+    "wechatgame"
+  ],
+  "warehouses": {
+    "framework": "engines/travel-core",
+    "game": "games/xiaoyu-cocos",
+    "packaging": "builds"
+  },
+  "boot_preserve": {
+    "script_uuid": "8dacabd2-f20d-42ab-aa32-8ffb576527d7",
+    "scene_uuid": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa",
+    "resolution": [
+      720,
+      1280
+    ]
+  },
+  "items": [
+    {
+      "id": "M00",
+      "description": "editor baseline and responsibility boundaries",
+      "status": "source_baseline_verified",
+      "evidence": [
+        "M00-editor-baseline.json"
+      ]
+    },
+    {
+      "id": "M01",
+      "description": "readonly framework plugin, 2D grid and bone math",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M02",
+      "description": "lossless approved assets and exact rig curves",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M03",
+      "description": "loading/login/comic transitions and readiness",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M04",
+      "description": "complete Home interactions and dynamic rig",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M05",
+      "description": "original shared lighting and all render passes",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M06",
+      "description": "darkroom doll skinning and complete interactions",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M07",
+      "description": "departure/travel/map/encounter/rewards",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M08",
+      "description": "photo wall, journal, collections and wardrobe",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M09",
+      "description": "resource bundles, save integrity and lifecycle",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M10",
+      "description": "WeChat-only reproducible packaging and remote source readback",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "M11",
+      "description": "strict complete screenshot/button/flow acceptance",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "requirements": "requirements.json",
+  "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity."
+}
