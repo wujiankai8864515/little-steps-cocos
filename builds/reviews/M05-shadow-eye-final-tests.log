@@ -1,0 +1,38 @@
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.929583ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (1.585208ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.147208ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.316291ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.136667ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.094125ms)
+✔ Disposed request rejects late completion and releases the late resource (0.312209ms)
+✔ Plugin namespace is frozen and nonwritable (0.051333ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.886333ms)
+✔ Comic reveals sound once per panel, and suspension never replays skipped panels (0.909333ms)
+✔ Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model (0.384042ms)
+✔ Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade (0.159167ms)
+✔ Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries (0.171584ms)
+✔ Runtime interval hit queries reconstruct every defined bit of all 19 original masks (3326.109083ms)
+✔ Opening never skips time while paused or accepts the final action before the full hold (1.016459ms)
+✔ Cancel is terminal, retries are owned once and a new entry starts blank (0.459333ms)
+✔ Loading mallet contacts the doll at all three authored strikes without sliding its support (1.615958ms)
+✔ Diagonal comic panels clip at the reveal edge and retain original texture coordinates (0.30925ms)
+✔ Measured contact profiles use original alpha >= .5 and preserve separate feet (1.788792ms)
+✔ Grounded mesh projects each height from its measured support and preserves source coordinates (0.750333ms)
+✔ Legacy floor and wall passes retain their original affine projection behavior (0.1ms)
+✔ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (3.485333ms)
+✔ Source noon geometry and latest Home gains remain distinct from shared light values (0.642375ms)
+✔ Night transition, moon positions and ambient accents preserve dawn/dusk boundaries (0.260667ms)
+✔ All 24h light samples remain finite, bounded, normalized and periodic (10.627625ms)
+✔ Dust is confined to the approved projected window rather than a full-screen overlay (0.127167ms)
+✔ Grabbed face stays fixed and the mat contact row cannot move during landing squash (0.492459ms)
+✔ Unheld rigid fin moves as one attachment without stretching its mallet (0.202625ms)
+✔ Neutral tail and fin retain source points regardless of parent pose (0.1085ms)
+✔ Jelly remains upper-body local and repeated identical deformation reuses geometry (0.10425ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3373.077875

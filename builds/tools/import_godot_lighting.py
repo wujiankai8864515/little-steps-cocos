@@ -93,8 +93,8 @@ CCProgram room-vs %{
 }%
 '''
 
-def effect(name,body,samplers=(),additive=False):
-    props=''.join(f'        {key}: {{ value: {json.dumps(value)} }}\n' for key,value in PROPERTIES.items())
+def effect(name,body,samplers=(),additive=False,uniforms=UNIFORMS,properties=None,vertex=VERTEX):
+    props=''.join(f'        {key}: {{ value: {json.dumps(value)} }}\n' for key,value in (PROPERTIES if properties is None else properties).items())
     props+=''.join(f'        {sampler}: {{ value: white }}\n' for sampler in samplers)
     declarations=''.join(f'  uniform sampler2D {sampler};\n' for sampler in samplers)
     dst='one' if additive else 'one_minus_src_alpha'
@@ -118,14 +118,14 @@ CCEffect %{{
         cullMode: none
       properties:
 {props}}}%
-{VERTEX}
+{vertex}
 CCProgram room-fs %{{
   precision highp float;
   #include <builtin/internal/embedded-alpha>
   in vec2 uv0;
   in vec4 color;
   in vec2 canvasPosition;
-{UNIFORMS}
+{uniforms}
   #pragma builtin(local)
   layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
 {declarations}
@@ -142,7 +142,7 @@ def write(name,value):
 def main():
     gate=include('shaders/window_field.gdshaderinc')
     outputs=[]
-    for kind,source in [('receiver','receiver'),('bleed','bleed_receiver'),('bed','bed_receiver')]:
+    for kind,source in [('receiver','receiver'),('bleed','bleed_receiver'),('bed','bed_receiver'),('face','home_face_receiver')]:
         outdoor=include('shaders/outdoor_window_extended.gdshaderinc' if kind=='bleed' else 'shaders/outdoor_window.gdshaderinc')
         outdoor=re.sub(r'^uniform .*;\n','',outdoor,flags=re.M)
         shader=read(f'shaders/{source}.gdshader')
@@ -164,6 +164,7 @@ def main():
 '''
         extra=''
         samplers=['shared_outdoor_paint']
+        uniforms=UNIFORMS;properties=PROPERTIES.copy()
         if kind=='bleed':samplers.append('neutral_center')
         if kind=='bed':
             samplers.append('occlusion_alpha')
@@ -173,6 +174,31 @@ def main():
   return texture(occlusion_alpha,p).a;
 }
 '''
+        if kind=='face':
+            # Preserve the full latest eye-white restoration, enlarged pupils,
+            # mouth and outfit compositing. All samples are in ORIGINAL pixels.
+            prefix=shader.split('varying vec2 world_pos;',1)[0]
+            prefix=re.sub(r'^uniform .*;\n','',prefix,flags=re.M)
+            prefix=re.sub(r'^#include .*\n|^shader_type .*\n|^varying .*\n','',prefix,flags=re.M)
+            extra=prefix+'''\nvec4 face_sample(vec2 uv){
+  vec2 p=(uv-sourceUV.xy)/sourceUV.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
+}\n'''
+            fragment=fragment.replace('texture(TEXTURE,','face_sample(')
+            samplers.append('outfit_texture')
+            properties.update({'textureSize':[670,402,0,0],'faceOffset':[0,0,0,0],'bodyState':[0,0,0,0],'outfitBand':[150,385,190,78],'outfitCrown':[0,0,0,0]})
+            uniforms+='''
+  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;};
+  #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
+  #define eye_layer int(bodyState.y)
+  #define mouth_open_px bodyState.x
+  #define pupil_display_offset faceOffset.xy
+  #define outfit_enabled (bodyState.z > 0.5)
+  #define outfit_band outfitBand
+  #define outfit_crown outfitCrown
+'''
+        face_pixel='vec2 face_pixel=UV*textureSize.xy;' if kind=='face' else ''
         body=gate+'\n'+outdoor+'\n'+extra+'''
   vec4 frag(){
     vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
@@ -180,18 +206,48 @@ def main():
     vec4 source_albedo,result;
     vec3 surf_normal;
     float exterior_mask;
-'''+fragment+lamp+'    return result*color;\n  }\n'
-        outputs.append(write('home-'+kind,effect('home-'+kind,body,samplers)))
+'''+face_pixel+fragment+lamp+'    return result*color;\n  }\n'
+        outputs.append(write('home-'+kind,effect('home-'+kind,body,samplers,uniforms=uniforms,properties=properties)))
     beam=include('shared_room_lighting/window_beam_profile.gdshaderinc')
     shafts=read('shaders/light_shafts.gdshader')
     frag=shafts.split('void fragment(){',1)[1].rsplit('}',1)[0]
     frag=frag.replace('if(!enabled){COLOR.a=0.0;}','').replace('COLOR=','vec4 result=')
     outputs.append(write('home-shafts',effect('home-shafts',gate+'\n'+beam+'\nvec4 frag(){vec2 UV=uv0;'+frag+'return result*color;}\n',additive=True)))
-    read('shared_room_lighting/lighting_snapshot.gd');read('home/room_props_controller.gd');read('scripts/approved_lighting_v3.gd')
+    shadow=read('shaders/home_grounded_shadow.gdshader')
+    functions=shadow.split('float inside_source',1)[1].split('void fragment(){',1)[0]
+    fragment=shadow.split('void fragment(){',1)[1].rsplit('}',1)[0].replace('texture(TEXTURE,','sample_shadow(').replace('COLOR=','vec4 result=')
+    shadow_uniforms='''
+  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;};
+  #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
+  #define texture_bounds vec4(0.0,0.0,1.0,1.0)
+  #define cast_dir castState.xy
+  #define cot_e shadowState.x
+  #define strength shadowState.y
+  #define penumbra_scale shadowState.z
+  #define height_factor shadowState.w
+  #define floor_clip (shadowFlags.x > 0.5)
+  #define use_window (shadowFlags.y > 0.5)
+  #define lamp_shadow (shadowFlags.z > 0.5)
+  #define source_opacity shadowFlags.w
+  in vec3 sourcePayload;
+'''
+    shadow_vertex=VERTEX.replace('out vec4 color;','out vec4 color;\n  out vec3 sourcePayload;').replace('color=a_color;','color=a_color; sourcePayload=a_color.xyz;')
+    shadow_body=gate+'''\nvec4 sample_shadow(vec2 uv){
+  vec2 p=(uv-sourceUV.xy)/sourceUV.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
+}\nfloat inside_source'''+functions+'''\nvec4 frag(){
+  vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+  vec2 source_world=sourcePayload.xy;float source_height=sourcePayload.z;
+  vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
+'''+fragment+'result.a*=color.a;return result;}\n'
+    shadow_props={'roomOrigin':[0,0,1,1],'sourceUV':[0,0,1,1],'textureSize':[1,1,0,0],'castState':[0,1,0,0],'shadowState':[1,.35,1,.6],'shadowFlags':[1,1,0,1]}
+    outputs.append(write('home-shadow',effect('home-shadow',shadow_body,uniforms=shadow_uniforms,properties=shadow_props,vertex=shadow_vertex)))
+    read('shared_room_lighting/lighting_snapshot.gd');read('home/room_props_controller.gd');read('scripts/approved_lighting_v3.gd');read('home/grounding/alpha_grounding.gd');read('home/behavior/eye_geometry.gd')
     report={'schema':1,'sourceCommit':subprocess.check_output(['git','-C',str(ROOT.parent/'little-steps'),'rev-parse','HEAD'],text=True).strip(),
-        'status':'formula transfer; GPU comparison pending','sources':sources,'outputs':outputs,
+        'status':'source formula transfer; browser evidence and acceptance tracked separately','sources':sources,'outputs':outputs,
         'godotCanvasReference':{'url':'https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/drivers/gles3/shaders/canvas.glsl','gitBlob':'37d851a3c00336b254b17d3c41b9e84539ce5ef4','exactPublished4_5_2CommitVerified':True},
-        'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','face and prop deformation shader variants pending','all alpha-grounded projections and independent plants pending','same-state Godot/Cocos screenshots and WeChat true-device acceptance pending']}
+        'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','animated face, outfit and prop variants still require full input/flow verification','soft-mesh lift/landing and articulated backpack/plant shadows pending','full same-state screenshot matrix and WeChat true-device acceptance pending']}
     (ROOT/'builds/records/M05-lighting-transfer.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'effects':len(outputs),'sourceFiles':len(sources)}))
 

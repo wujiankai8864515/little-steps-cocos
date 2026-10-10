@@ -1,0 +1,456 @@
+{
+  "schema": 1,
+  "id": "M05.2 / M04 static face",
+  "status": "partial_static_pupils_and_alpha_grounded_browser_shadows_verified_full_parity_pending",
+  "implemented": [
+    "original independent pupil source regions and rest positions; convex eroded-domain clamps",
+    "original face shader white/ink replacement, pupil enlargement and mouth/outfit uniforms; only neutral pose GPU coverage this increment",
+    "six source alpha profiles and separate contact foot polylines, source alpha threshold 0.5 and scan stride 2",
+    "twelve natural shadow casters and eligible native lamp casts; original source/destination window gates, floor clipping and nine-tap penumbra",
+    "source positions and heights carried as unclamped UI vertex shader payload; framework contains no product rules",
+    "six effect assets leased inside cancellable resource gate"
+  ],
+  "sourceFiles": {
+    "shaders/window_field.gdshaderinc": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+    "shaders/outdoor_window.gdshaderinc": "cfb69ca48f6b87c960521eef9070720faabe2adc6a5f172cefb1a518259f8970",
+    "shared_room_lighting/pane_geometry.gdshaderinc": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+    "shared_room_lighting/outdoor_scene.gdshaderinc": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+    "shared_room_lighting/thin_glass.gdshaderinc": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71",
+    "shaders/receiver.gdshader": "238e3b4ecb2bd8c2a796a0f18d1c234cad8d6332596b29badd39823435b9540a",
+    "shaders/outdoor_window_extended.gdshaderinc": "4f93af543431e5771f199721cb8e0e043aefc9e89af308dd5595c53c9d6cafa0",
+    "shaders/bleed_receiver.gdshader": "a55c804d934acfb3769d7b6c75017a214ffba6ba05a86f2375f79da0c44b200e",
+    "shaders/bed_receiver.gdshader": "d0c06363b116afa5327a063e5a6b41582c8fcbefeb35fae6a29e81d75db19c1b",
+    "shaders/home_face_receiver.gdshader": "1bdd67d4d31e1bb0bf0fa727fbb86e141c871dac29094e6495ce9f8e643e977e",
+    "shared_room_lighting/window_beam_profile.gdshaderinc": "b51ccba109864c553883979c586e1fca92e55610ef63e8610fd553c29f77e6a6",
+    "shaders/light_shafts.gdshader": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
+    "shaders/home_grounded_shadow.gdshader": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557",
+    "shared_room_lighting/lighting_snapshot.gd": "0474847a22736db7e0426fd8318634554bdf2239c49c6c3a70fc212d3a6a2101",
+    "home/room_props_controller.gd": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83",
+    "scripts/approved_lighting_v3.gd": "1918b937b6c80b65284f1235406fcabd57ccec9a67e062f6bc1f42b3302ced7a",
+    "home/grounding/alpha_grounding.gd": "f4260d398b44a3c40659a649613da74dc9f7a3ce6dd00ab73caa7ef581fcb754",
+    "home/behavior/eye_geometry.gd": "488c0ff3d2add469013fa8c3835bb5e19d0533009b4fbf4b9a66f6f44a196664"
+  },
+  "observed": [
+    {
+      "candidate": "home-shadow-eye-noon-v1",
+      "hour": 12,
+      "lighting": {
+        "hour": 12,
+        "receivers": 25,
+        "state": {
+          "hour": 12,
+          "day": 1,
+          "night": 0,
+          "nightScheduled": false,
+          "solarPhase": 0.5,
+          "moonPhase": 1,
+          "elevation": 1.2217304763960306,
+          "azimuth": 0,
+          "cast": [
+            0,
+            1
+          ],
+          "moonCast": [
+            -0.6331759213914504,
+            0.7740079150564856
+          ],
+          "cot": 0.36397023426620245,
+          "sunEnergy": 0.69,
+          "moonEnergy": 0,
+          "morning": 0,
+          "noon": 1,
+          "sunset": 0,
+          "afterglow": 0,
+          "ambient": [
+            0.43,
+            0.4600000000000001,
+            0.48
+          ],
+          "sunColor": [
+            1,
+            0.985,
+            0.9
+          ],
+          "sunVector": [
+            0,
+            -0.3420201433256689,
+            0.9396926207859084
+          ],
+          "sunPosition": [
+            180,
+            28
+          ],
+          "moonPosition": [
+            228,
+            94.99999999999999
+          ],
+          "receiverAmbient": [
+            0.43,
+            0.4600000000000001,
+            0.48
+          ],
+          "receiverSun": 0.7728,
+          "receiverMoon": 0,
+          "shaftSun": 0.69,
+          "shaftMoon": 0,
+          "lampEnergy": 0
+        },
+        "resources": {
+          "entries": 70,
+          "reservedBytes": 173600825,
+          "pending": 0
+        },
+        "limits": "grounded shadows, plants, prop/face variants and original GPU acceptance pending"
+      },
+      "shadows": {
+        "casters": 12,
+        "grounded": [
+          {
+            "name": "Wardrobe",
+            "profilePoints": 28,
+            "contacts": [
+              9,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Treasure",
+            "profilePoints": 195,
+            "contacts": [
+              141,
+              54
+            ]
+          },
+          {
+            "name": "Doll",
+            "profilePoints": 90,
+            "contacts": [
+              42,
+              48
+            ]
+          },
+          {
+            "name": "Bowl",
+            "profilePoints": 111,
+            "contacts": [
+              111
+            ]
+          },
+          {
+            "name": "Altar",
+            "profilePoints": 90,
+            "contacts": [
+              33,
+              33,
+              24
+            ]
+          },
+          {
+            "name": "OriginalBody",
+            "profilePoints": 144,
+            "contacts": [
+              144
+            ]
+          }
+        ],
+        "limits": "soft-mesh lift/landing and articulated backpack/plant shadows pending"
+      },
+      "errors": 0,
+      "warnings": 0,
+      "homeReady": false,
+      "actualMusicStarts": 0,
+      "actualKnockStarts": 0
+    },
+    {
+      "candidate": "home-shadow-eye-night-v1",
+      "hour": 1,
+      "lighting": {
+        "hour": 1,
+        "receivers": 25,
+        "state": {
+          "hour": 1,
+          "day": 0,
+          "night": 1,
+          "nightScheduled": true,
+          "solarPhase": 1,
+          "moonPhase": 0.625,
+          "elevation": 0,
+          "azimuth": 51,
+          "cast": [
+            -0.7670655145812821,
+            0.6415687775602493
+          ],
+          "moonCast": [
+            -0.33175147389151527,
+            0.9433668213218054
+          ],
+          "cot": 5,
+          "sunEnergy": 0,
+          "moonEnergy": 0.7,
+          "morning": 0,
+          "noon": 0,
+          "sunset": 0,
+          "afterglow": 0,
+          "ambient": [
+            0.115,
+            0.17,
+            0.29
+          ],
+          "sunColor": [
+            1,
+            0.91,
+            0.76
+          ],
+          "sunVector": [
+            0.7670655145812822,
+            -0.6415687775602494,
+            0
+          ],
+          "sunPosition": [
+            128,
+            108
+          ],
+          "moonPosition": [
+            192,
+            34.02395085425508
+          ],
+          "receiverAmbient": [
+            0.1081,
+            0.1598,
+            0.27259999999999995
+          ],
+          "receiverSun": 0,
+          "receiverMoon": 0.8959999999999999,
+          "shaftSun": 0,
+          "shaftMoon": 0.7,
+          "lampEnergy": 0.78
+        },
+        "resources": {
+          "entries": 70,
+          "reservedBytes": 173600825,
+          "pending": 0
+        },
+        "limits": "grounded shadows, plants, prop/face variants and original GPU acceptance pending"
+      },
+      "shadows": {
+        "casters": 12,
+        "grounded": [
+          {
+            "name": "Wardrobe",
+            "profilePoints": 28,
+            "contacts": [
+              9,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Treasure",
+            "profilePoints": 195,
+            "contacts": [
+              141,
+              54
+            ]
+          },
+          {
+            "name": "Doll",
+            "profilePoints": 90,
+            "contacts": [
+              42,
+              48
+            ]
+          },
+          {
+            "name": "Bowl",
+            "profilePoints": 111,
+            "contacts": [
+              111
+            ]
+          },
+          {
+            "name": "Altar",
+            "profilePoints": 90,
+            "contacts": [
+              33,
+              33,
+              24
+            ]
+          },
+          {
+            "name": "OriginalBody",
+            "profilePoints": 144,
+            "contacts": [
+              144
+            ]
+          }
+        ],
+        "limits": "soft-mesh lift/landing and articulated backpack/plant shadows pending"
+      },
+      "errors": 0,
+      "warnings": 0,
+      "homeReady": false,
+      "actualMusicStarts": 0,
+      "actualKnockStarts": 0
+    },
+    {
+      "candidate": "home-shadow-eye-entry-v1",
+      "hour": null,
+      "lighting": {
+        "hour": 7,
+        "receivers": 25,
+        "state": {
+          "hour": 7,
+          "day": 1,
+          "night": 0,
+          "nightScheduled": false,
+          "solarPhase": 0.1875,
+          "moonPhase": 1,
+          "elevation": 0.3770972321318806,
+          "azimuth": -42.40495022742981,
+          "cast": [
+            0.719994548194337,
+            0.693979719134812
+          ],
+          "moonCast": [
+            -0.6331759213914504,
+            0.7740079150564856
+          ],
+          "cot": 2.524928862955273,
+          "sunEnergy": 0.4314849667401778,
+          "moonEnergy": 0,
+          "morning": 1,
+          "noon": 0.005711410539145422,
+          "sunset": 0,
+          "afterglow": 0,
+          "ambient": [
+            0.5493146307353026,
+            0.5892575166299111,
+            0.6291432884191281
+          ],
+          "sunColor": [
+            1,
+            0.9104283557904359,
+            0.7607995974754803
+          ],
+          "sunVector": [
+            -0.6694058719205918,
+            -0.645218911931617,
+            0.36822321263604835
+          ],
+          "sunPosition": [
+            147.5,
+            63.554381358431826
+          ],
+          "moonPosition": [
+            228,
+            94.99999999999999
+          ],
+          "receiverAmbient": [
+            0.5493146307353026,
+            0.5892575166299111,
+            0.6291432884191281
+          ],
+          "receiverSun": 0.48326316274899916,
+          "receiverMoon": 0,
+          "shaftSun": 0.4314849667401778,
+          "shaftMoon": 0,
+          "lampEnergy": 0
+        },
+        "resources": {
+          "entries": 86,
+          "reservedBytes": 191298097,
+          "pending": 0
+        },
+        "limits": "grounded shadows, plants, prop/face variants and original GPU acceptance pending"
+      },
+      "shadows": {
+        "casters": 12,
+        "grounded": [
+          {
+            "name": "Wardrobe",
+            "profilePoints": 28,
+            "contacts": [
+              9,
+              12,
+              7
+            ]
+          },
+          {
+            "name": "Treasure",
+            "profilePoints": 195,
+            "contacts": [
+              141,
+              54
+            ]
+          },
+          {
+            "name": "Doll",
+            "profilePoints": 90,
+            "contacts": [
+              42,
+              48
+            ]
+          },
+          {
+            "name": "Bowl",
+            "profilePoints": 111,
+            "contacts": [
+              111
+            ]
+          },
+          {
+            "name": "Altar",
+            "profilePoints": 90,
+            "contacts": [
+              33,
+              33,
+              24
+            ]
+          },
+          {
+            "name": "OriginalBody",
+            "profilePoints": 144,
+            "contacts": [
+              144
+            ]
+          }
+        ],
+        "limits": "soft-mesh lift/landing and articulated backpack/plant shadows pending"
+      },
+      "errors": 0,
+      "warnings": 0,
+      "homeReady": true,
+      "actualMusicStarts": 2,
+      "actualKnockStarts": 5
+    }
+  ],
+  "comparisonFiles": [
+    "builds/qa/home-shadow-eye-noon-comparison-v1.json",
+    "builds/qa/home-shadow-eye-night-comparison-v1.json"
+  ],
+  "testEvidence": {
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "log": "builds/reviews/M05-shadow-eye-final-tests.log",
+    "typecheck": "passed tsc --noEmit --skipLibCheck for Creator 3.8.8 project"
+  },
+  "plugin": {
+    "link": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+    "target": "engines/travel-core/dist/travel-core.js",
+    "sha256": "67b506d4ccc6e0a65cc7836234f28f4a850b5a34a568f322f50eb240252d1e68",
+    "targetMode": "0444",
+    "directoryMode": "0555"
+  },
+  "limits": [
+    "whole-page full parity pending; images retain incomplete plants, props and UI",
+    "animated pupil/mouth, gaze, wardrobe outfit and mesh attachment motion not GPU/input accepted",
+    "soft-mesh lift/landing shadows and carried/disabled source cleanup pending",
+    "normal tap cadence, day/night ambient director and merit/marks pending",
+    "contact line anti-aliasing and native GradientTexture2D quantization/filter parity pending",
+    "same-state coverage currently only hour 12 and hour 1, pose zero at actual 405x720",
+    "Wechat true-device performance, official pack and all remaining requirements pending"
+  ]
+}

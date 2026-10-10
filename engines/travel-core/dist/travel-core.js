@@ -259,9 +259,16 @@ function registerCocos(cc) {
             const rd = sprite.renderData;
             if (!rd) return;
             const vb = rd.chunk.vb, c = sprite.color;
+            const payload = sprite.mesh && sprite.mesh.vertexData;
             for (let i = 0; i < rd.dataLength; ++i) {
                 const offset = i * rd.floatStride + 5;
-                vb[offset] = c.r / 255; vb[offset + 1] = c.g / 255; vb[offset + 2] = c.b / 255; vb[offset + 3] = c.a / 255;
+                // Optional three-float payload for custom UI shaders. Alpha stays
+                // under Creator's normal UIOpacity path (which overwrites alpha).
+                // Values need not be colors: do not clamp or premultiply RGB.
+                vb[offset] = payload ? payload[i * 3] : c.r / 255;
+                vb[offset + 1] = payload ? payload[i * 3 + 1] : c.g / 255;
+                vb[offset + 2] = payload ? payload[i * 3 + 2] : c.b / 255;
+                vb[offset + 3] = c.a / 255;
             }
         },
         fillBuffers(sprite) {
@@ -287,6 +294,7 @@ function registerCocos(cc) {
         configure(mesh, sourceSize, contentRect = [0, 0, sourceSize[0], sourceSize[1]]) {
             if (!(mesh.vertices instanceof Float32Array) || mesh.vertices.length !== mesh.source.length) throw new Error('Invalid UI mesh');
             if (sourceSize.some(x => !(x > 0))) throw new Error('Invalid source dimensions');
+            if (mesh.vertexData && (!(mesh.vertexData instanceof Float32Array) || mesh.vertexData.length !== mesh.source.length / 2 * 3 || mesh.vertexData.some(x => !Number.isFinite(x)))) throw new Error('Invalid UI vertex payload');
             this.destroyRenderData();
             this.mesh = mesh; this.sourceRect = [...contentRect];
             this._flushAssembler();

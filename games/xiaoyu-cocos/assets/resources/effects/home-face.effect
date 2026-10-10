@@ -1,0 +1,430 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        roomOrigin: { value: [0, 0, 1, 1] }
+        sourceUV: { value: [0, 0, 1, 1] }
+        visibleUV: { value: [0, 0, 1, 1] }
+        ambientState: { value: [0.55, 0.59, 0.63, 0.43] }
+        sunState: { value: [1, 0.91, 0.76, 0] }
+        sunVectorState: { value: [0, 0, 1, 1] }
+        castState: { value: [0.6, 0.6, -0.32, 0.95] }
+        timeState: { value: [7, 1, 0, 0] }
+        weightsState: { value: [1, 0, 0, 1] }
+        celestialState: { value: [147.5, 63.55, 228, 95] }
+        maskRect: { value: [0, 0, 1, 1] }
+        textureSize: { value: [670, 402, 0, 0] }
+        faceOffset: { value: [0, 0, 0, 0] }
+        bodyState: { value: [0, 0, 0, 0] }
+        outfitBand: { value: [150, 385, 190, 78] }
+        outfitCrown: { value: [0, 0, 0, 0] }
+        shared_outdoor_paint: { value: white }
+        outfit_texture: { value: white }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform RoomState {
+    vec4 roomOrigin;
+    vec4 sourceUV;
+    vec4 visibleUV;
+    vec4 ambientState;
+    vec4 sunState;
+    vec4 sunVectorState;
+    vec4 castState;
+    vec4 timeState;
+    vec4 weightsState;
+    vec4 celestialState;
+    vec4 maskRect;
+  };
+  #define ambient_color ambientState.rgb
+  #define sun_energy ambientState.a
+  #define sun_color sunState.rgb
+  #define moon_energy sunState.a
+  #define sun_vector sunVectorState.xyz
+  #define cot_e sunVectorState.w
+  #define cast_dir castState.xy
+  #define moon_cast_dir castState.zw
+  #define game_hour timeState.x
+  #define daylight timeState.y
+  #define noon_weight timeState.z
+  #define afterglow_energy timeState.w
+  #define morning_weight weightsState.x
+  #define sunset_weight weightsState.y
+  #define lamp_glow (weightsState.z / 0.78)
+  #define surface_type weightsState.w
+  #define sun_screen_position celestialState.xy
+  #define moon_screen_position celestialState.zw
+  #define visible_uv visibleUV
+  #define show_mask false
+  #define outdoor_enabled true
+  #define use_shared_outdoor_paint true
+  #define shared_outdoor_uv_rect vec4(0.0,0.0,1.0,1.0)
+
+  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;};
+  #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
+  #define eye_layer int(bodyState.y)
+  #define mouth_open_px bodyState.x
+  #define pupil_display_offset faceOffset.xy
+  #define outfit_enabled (bodyState.z > 0.5)
+  #define outfit_band outfitBand
+  #define outfit_crown outfitCrown
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+  uniform sampler2D shared_outdoor_paint;
+  uniform sampler2D outfit_texture;
+
+// Home's approved window geometry, sill, floor and leaf/mullion occluders only.
+// One continuous 2.5D projector. Adapters supply actual room geometry/occluders.
+float shared_window_u(vec2 p,vec2 direction,vec4 geometry,float floor_y){
+ float depth=max(p.y-geometry.y,0.0);
+ float floor_depth=max(p.y-floor_y,0.0);
+ float width=geometry.z+depth*geometry.w;
+ float center=geometry.x+direction.x*(depth*0.43+floor_depth*0.22);
+ return (p.x-center)/width;
+}
+float shared_window_field(vec2 point,vec2 direction,float cotangent,vec4 geometry,float floor_y,vec2 aperture,vec2 start,vec4 reach,vec3 mullion,float baseline,float leaf_breakup){
+ float depth=max(point.y-geometry.y,0.0);
+ float u=shared_window_u(point,direction,geometry,floor_y);
+ float gate=1.0-smoothstep(aperture.x,aperture.y,abs(u));
+ float pane=baseline+(1.0-baseline)*smoothstep(mullion.y,mullion.z,abs(u-mullion.x));
+ float leaves=sin(u*48.0+depth*0.018)*sin(u*29.0-depth*0.022);
+ float edge=1.0-leaf_breakup*smoothstep(0.53,0.96,abs(u))*(0.5+0.5*leaves);
+ return gate*pane*edge*smoothstep(start.x,start.y,point.y)*(1.0-smoothstep(reach.x+cotangent*reach.z,reach.y+cotangent*reach.w,point.y));
+}
+
+float window_field(vec2 p,vec2 direction,float cotangent){
+ return shared_window_field(p,direction,cotangent,vec4(156.0,145.0,119.0,0.46),740.0,vec2(0.84,1.05),vec2(130.0,205.0),vec4(1060.0,1200.0,90.0,90.0),vec3(-0.23,0.02,0.075),0.61,0.22);
+}
+
+// Visible glass apertures only. Original wood frame, vines and room pixels stay.
+// Screen-space coordinates are calibrated to this fixed 720 x 1280 illustration.
+// Signed interior distance in illustration pixels, shared by aperture and glass.
+float cross_2d(vec2 a,vec2 b){return a.x*b.y-a.y*b.x;}
+float pane_distance(vec2 p,vec2 a,vec2 b,vec2 c,vec2 d){
+ float e0=cross_2d(b-a,p-a)/length(b-a);
+ float e1=cross_2d(c-b,p-b)/length(c-b);
+ float e2=cross_2d(d-c,p-c)/length(d-c);
+ float e3=cross_2d(a-d,p-d)/length(a-d);
+ return min(min(e0,e1),min(e2,e3));
+}
+float inside_quad(vec2 p,vec2 a,vec2 b,vec2 c,vec2 d){
+ return smoothstep(0.0,1.25,pane_distance(p,a,b,c,d));
+}
+
+float outdoor_aperture(vec2 p){
+ float r=inside_quad(p,vec2(124.0,-8.0),vec2(239.0,-8.0),vec2(239.0,172.0),vec2(124.0,156.0));
+ float l=inside_quad(p,vec2(28.0,42.0),vec2(100.0,51.0),vec2(100.0,152.0),vec2(19.0,138.0));
+ float t=inside_quad(p,vec2(42.0,-8.0),vec2(100.0,-8.0),vec2(100.0,27.0),vec2(42.0,16.0));
+ return max(r,max(l,t));
+}
+// Common V3 outdoor paint, sky, moving clouds and celestial bodies.
+// Generated clean indoor backgrounds may drift: all windows explicitly sample
+// this one approved exterior instead of accidentally inheriting those edits.
+float cloud_ellipse(vec2 p,vec2 c,vec2 r){
+ return 1.0-smoothstep(0.75,1.12,length((p-c)/r));
+}
+vec3 shared_outdoor_scene(vec2 p,vec3 original,float day,float h,float morning,float noon,float sunset,float afterglow){
+ if(use_shared_outdoor_paint){
+  vec2 uv=shared_outdoor_uv_rect.xy+clamp(p/vec2(720.0,1280.0),vec2(0.0),vec2(1.0))*shared_outdoor_uv_rect.zw;
+  original=texture(shared_outdoor_paint,uv).rgb;
+ }
+ float phase=h/24.0*6.2831853;
+ vec3 night_tint=vec3(0.065,0.115,0.22);
+ vec3 exposure=mix(vec3(1.02,1.08,1.12),vec3(1.16,1.16,1.10),noon);
+ exposure=mix(exposure,vec3(1.14,0.74,0.48),sunset);
+ vec3 lift=mix(vec3(0.09,0.105,0.12),vec3(0.115,0.055,0.020),sunset);
+ vec3 outside=original*mix(night_tint,exposure,day)+lift*day;
+ // Painted sky is replaced only where its original chroma identifies sky/cloud;
+ // the existing roof and foliage retain their exact original texture/detail.
+ float blue= smoothstep(-0.055,0.045,original.b-original.r*0.91)
+            *smoothstep(-0.075,0.030,original.b-original.g*0.88);
+ blue*=1.0-smoothstep(113.0,139.0,p.y);
+ // Slate-blue roof/chimney must not be classified as sky. Protect its silhouette.
+ float roof=inside_quad(p,vec2(164.0,149.0),vec2(196.0,87.0),vec2(239.0,102.0),vec2(239.0,172.0));
+ // Bright original clouds can overlap the broad guard polygon; keep them in
+ // the moving sky pass, otherwise the polygon becomes a white triangular halo.
+ roof*=1.0-smoothstep(0.80,0.87,dot(original,vec3(0.2126,0.7152,0.0722)));
+ blue*=1.0-roof;
+ float py=clamp(p.y/180.0,0.0,1.0);
+ vec3 morning_sky=mix(vec3(0.62,0.84,1.0),vec3(0.97,0.96,0.86),py);
+ vec3 noon_sky=mix(vec3(0.43,0.77,1.0),vec3(0.88,0.95,1.0),py);
+ vec3 evening_sky=mix(vec3(1.0,0.51,0.29),vec3(1.0,0.81,0.49),py);
+ vec3 afterglow_sky=mix(vec3(0.80,0.27,0.23),vec3(1.0,0.58,0.30),py);
+ evening_sky=mix(evening_sky,afterglow_sky,clamp(afterglow/0.25,0.0,1.0));
+ vec3 day_sky=mix(morning_sky,noon_sky,noon);
+ day_sky=mix(day_sky,evening_sky,sunset);
+ vec3 night_sky=mix(vec3(0.018,0.035,0.10),vec3(0.06,0.105,0.20),py);
+ vec3 sky=mix(night_sky,day_sky,day);
+ // Smooth 24 h looping cloud motion, deliberately subtle, not weather simulation.
+ float cloud_x=166.0+sin(phase-1.0)*27.0;
+ float cloud=max(cloud_ellipse(p,vec2(cloud_x,52.0),vec2(35.0,9.0)),cloud_ellipse(p,vec2(cloud_x-14.0,47.0),vec2(14.0,12.0)));
+ cloud=max(cloud,cloud_ellipse(p,vec2(cloud_x+14.0,47.0),vec2(18.0,13.0)));
+ float cloud2=cloud_ellipse(p,vec2(72.0+cos(phase)*24.0,84.0),vec2(42.0,9.0));
+ cloud=max(cloud,cloud2*0.65);
+ vec3 cloud_day=mix(vec3(1.0,0.985,0.93),vec3(1.0,0.69,0.40),sunset);
+ sky=mix(sky,mix(vec3(0.12,0.16,0.24),cloud_day,day),cloud*(0.76*day+0.16));
+ float night=1.0-day;
+ // Both rooms observe the same eastern-rise / western-set trajectories.
+ vec2 sun_c=sun_screen_position;
+ float sun_disc=1.0-smoothstep(7.4,8.6,length(p-sun_c));
+ float sun_halo=exp(-pow(length(p-sun_c)/19.0,2.0));
+ float solar_visible=step(4.0,h)*(1.0-step(20.0,h))*day;
+ sky+=vec3(0.40,0.22,0.08)*sun_halo*solar_visible*0.25;
+ sky=mix(sky,mix(vec3(1.0,0.94,0.73),vec3(1.0,0.65,0.35),sunset),sun_disc*solar_visible);
+ vec2 moon_c=moon_screen_position;
+ float moon=1.0-smoothstep(8.3,9.4,length(p-moon_c));
+ float moon_halo=exp(-pow(length(p-moon_c)/17.0,2.0));
+ sky+=vec3(0.21,0.29,0.46)*moon_halo*night*0.55;
+ // Broad irregular lunar maria, not a repeated sine/checkerboard grid.
+ vec2 mp=(p-moon_c)/9.0;
+ float maria=cloud_ellipse(mp,vec2(-0.25,-0.16),vec2(0.34,0.23))*0.10;
+ maria+=cloud_ellipse(mp,vec2(0.28,0.31),vec2(0.23,0.37))*0.08;
+ maria+=cloud_ellipse(mp,vec2(-0.33,0.40),vec2(0.17,0.14))*0.07;
+ vec3 moon_paint=vec3(0.88,0.93,1.0)*(1.0-maria);
+ sky=mix(sky,moon_paint,moon*night);
+ vec2 star_cell=floor(p/19.0); vec2 sf=fract(p/19.0);
+ float hash=fract(sin(dot(star_cell,vec2(12.9898,78.233)))*43758.5453);
+ float star=(1.0-smoothstep(0.025,0.075,length(sf-vec2(0.45,0.48))))*step(0.73,hash);
+ sky+=vec3(0.40,0.52,0.68)*star*night*(0.7+0.3*sin(phase+hash*6.28));
+ return mix(outside,sky,blue);
+}
+
+// Stylized thin glass composition, not a screen-space white overlay or refraction.
+// A single bounded profile for both rooms. Outside detail retains >= 93% contrast.
+vec3 compose_window_glass(vec3 outside,vec2 p,float edge_distance,float day,float sunset){
+ float edge=(1.0-smoothstep(0.65,4.0,max(edge_distance,0.0)))*step(0.0,edge_distance);
+ float diagonal=p.x*0.77+p.y*0.24;
+ float reflection=exp(-pow((diagonal-164.0)/8.0,2.0))*0.032;
+ reflection+=exp(-pow((diagonal-76.0)/3.0,2.0))*0.018;
+ float night=1.0-day;
+ vec3 reflection_color=mix(vec3(0.35,0.47,0.65),vec3(0.82,0.91,1.0),day);
+ reflection_color=mix(reflection_color,vec3(1.0,0.69,0.42),sunset*0.45);
+ float reflection_amount=clamp(reflection*(0.65+0.55*night)+edge*0.035,0.0,0.05);
+ // High transmission, a restrained cool edge absorption, and a narrow rim.
+ vec3 transmitted=outside*mix(vec3(0.989,0.996,1.0),vec3(0.985,0.992,1.0),night);
+ vec3 glass=mix(transmitted,reflection_color,reflection_amount);
+ return glass+reflection_color*edge*(0.012+0.009*day);
+}
+
+float home_glass_distance(vec2 p){
+ // Same physical pane above y=0 in both normal and long-screen composition.
+ float r=pane_distance(p,vec2(124.0,-57.0),vec2(239.0,-34.0),vec2(239.0,172.0),vec2(124.0,156.0));
+ float l=pane_distance(p,vec2(28.0,42.0),vec2(100.0,51.0),vec2(100.0,152.0),vec2(19.0,138.0));
+ float t=pane_distance(p,vec2(42.0,-90.0),vec2(100.0,-78.0),vec2(100.0,27.0),vec2(42.0,16.0));
+ return max(r,max(l,t));
+}
+vec3 outdoor_scene(vec2 p,vec3 original,float day,float h,float morning,float noon,float sunset,float afterglow){
+ return compose_window_glass(shared_outdoor_scene(p,original,day,h,morning,noon,sunset,afterglow),p,home_glass_distance(p),day,sunset);
+}
+
+// Home-only local face deformation sharing the current room illumination contract.
+// Source-space pixels come from VERTEX, so an AtlasTexture does not move the masks.
+// Larger full pupils are independent, antialiased ellipses in the original ink colors.
+// No source PNG is rewritten. The body pass removes the entire baked pupil and
+// its antialias fringe; the slanted eyelid and outer eye ink stay stationary.
+// xy: original-body center, z: inset width, w: lower end of the hood rim.
+float eye_interior(vec2 p, int eye) {
+    vec2 c = eye == 1 ? vec2(300.0,176.0) : vec2(421.0,142.0);
+    vec2 r = eye == 1 ? vec2(32.0,27.0) : vec2(25.0,24.0);
+    float lid = eye == 1 ? 265.75 - 0.30*p.x : 267.0 - 0.296*p.x;
+    float oval = 1.0-smoothstep(0.935,0.980,length((p-c)/r));
+    return oval * smoothstep(2.0,3.2,p.y-lid);
+}
+float pupil_source_mask(vec2 p, int eye) {
+    vec2 c = eye == 1 ? vec2(322.5,176.0) : vec2(435.5,143.8);
+    vec2 r = eye == 1 ? vec2(12.0,9.12) : vec2(10.8,7.92);
+    // Do not multiply by the source eyelid. It would carry a severed half-pupil
+    // into the center even though the destination has room for a complete oval.
+    return 1.0-smoothstep(0.90,1.05,length((p-c)/r));
+}
+float eye_clear_mask(vec2 p, int eye) {
+    vec2 c = eye == 1 ? vec2(322.5,176.0) : vec2(435.5,143.8);
+    vec2 r = eye == 1 ? vec2(14.0,13.8) : vec2(13.5,13.8);
+    // The old right pupil fringe extends to source row 154. Clearing only the
+    // dark core leaves a 189/255 gray arc around a white patch (a second ball).
+    return (1.0-smoothstep(0.87,1.06,length((p-c)/r))) * eye_interior(p,eye);
+}
+vec3 restored_eye_white(vec3 original, vec2 p, vec3 left_white, vec3 right_white) {
+    vec3 result = mix(original,left_white,eye_clear_mask(p,1));
+    return mix(result,right_white,eye_clear_mask(p,2));
+}
+float body_tail_residue_mask(vec2 p) {
+    // Only the baked, detached one-pixel tail arc in the transparent body tile.
+    // The real tail has its own original texture/bone; preserve x >= 151 exactly.
+    return (1.0-smoothstep(150.0,151.0,p.x)) * smoothstep(198.0,199.0,p.y) * (1.0-smoothstep(245.0,246.0,p.y));
+}
+// Lift/landing uniforms remain read-only QA telemetry; actual displacement is
+// the original-texture Polygon2D vertex mesh, not a fragment resampling stretch.
+vec2 local_face_offset(vec2 p) {
+    // The RED lips are x355..391/y160..188. The brown lower mark is untouched.
+    vec2 mouth_delta = p - vec2(374.0, 174.0);
+    float mouth_mask = 1.0 - smoothstep(0.55, 1.0, length(mouth_delta / vec2(26.0, 23.0)));
+    vec2 shift = vec2(0.0, -clamp(mouth_open_px, -2.8, 2.8) * clamp(mouth_delta.y / 11.0, -1.0, 1.0) * mouth_mask);
+    return shift;
+}
+
+vec4 face_sample(vec2 uv){
+  vec2 p=(uv-sourceUV.xy)/sourceUV.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
+}
+
+  vec4 frag(){
+    vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+    vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
+    vec4 source_albedo,result;
+    vec3 surf_normal;
+    float exterior_mask;
+vec2 face_pixel=UV*textureSize.xy;
+    vec2 body_pixel = face_pixel;
+    vec2 source_pixel = body_pixel + (eye_layer == 0 ? local_face_offset(body_pixel) : vec2(0.0));
+    source_albedo=face_sample(UV + (source_pixel - face_pixel) * TEXTURE_PIXEL_SIZE);
+    // Source-pixel cloth sampling follows the SAME deformed mesh as the body.
+    // Only the generated pink textile is composited. Original IP face, outlines,
+    // fins and silhouette remain the authoritative original texture.
+    if (outfit_enabled && eye_layer == 0) {
+        vec4 cloth = texture(outfit_texture, source_pixel / vec2(670.0,402.0));
+        float band_phase=clamp((source_pixel.x-outfit_band.x)/outfit_band.y,0.0,1.0);
+        float edge=outfit_band.z+outfit_band.w*sin(band_phase*3.14159265);
+        float lower=smoothstep(edge-1.2,edge+1.2,source_pixel.y);
+        float face_keep=1.0-smoothstep(0.92,1.05,length((source_pixel-vec2(365.0,165.0))/vec2(148.0,80.0)));
+        float fin_keep=1.0-smoothstep(0.85,1.0,length((source_pixel-vec2(179.0,249.0))/vec2(38.0,38.0)));
+        float coverage=cloth.a*lower*(1.0-face_keep)*(1.0-fin_keep);
+        source_albedo.rgb = mix(source_albedo.rgb,cloth.rgb,coverage);
+        // The approved wardrobe view wraps peach cloth over the crown, but the
+        // prepared material contains only the lower wrap. Reuse its real fabric
+        // pixels on an inset rim of the ORIGINAL alpha silhouette. Sampling in
+        // body coordinates binds this to the existing soft mesh for all poses;
+        // never draw another head, alter alpha, or cover the face/eyes/fins.
+        if (outfit_crown.z > 0.0 && source_pixel.y < outfit_crown.w && source_albedo.a > 0.0) {
+            vec2 outward=normalize(source_pixel-outfit_crown.xy+vec2(0.0001));
+            float outer_alpha=face_sample(UV+outward*outfit_crown.z*TEXTURE_PIXEL_SIZE).a;
+            float upper=1.0-smoothstep(outfit_crown.w-24.0,outfit_crown.w,source_pixel.y);
+            float rim=(1.0-outer_alpha)*upper*(1.0-face_keep)*(1.0-fin_keep);
+            // The donor strip is the existing pink lower garment, not its face.
+            vec2 donor=vec2(mix(220.0,500.0,clamp((source_pixel.x-180.0)/355.0,0.0,1.0)),290.0+(source_pixel.y-70.0)*0.06);
+            vec4 crown_cloth=texture(outfit_texture,donor/vec2(670.0,402.0));
+            float keep_ink=smoothstep(0.20,0.48,max(source_albedo.r,max(source_albedo.g,source_albedo.b)));
+            source_albedo.rgb=mix(source_albedo.rgb,crown_cloth.rgb,rim*crown_cloth.a*keep_ink);
+        }
+    }
+    // Bounded source sampling avoids exposing an adjacent packed-atlas tile.
+    if (source_pixel.x < 0.5 || source_pixel.y < 0.5 || source_pixel.x > 669.5 || source_pixel.y > 401.5) {
+        source_albedo = vec4(0.0);
+    }
+    // Source-space relative UVs work for both loose PNGs and packed atlases.
+    vec3 left_white = face_sample(UV + (vec2(302.0,191.0)-face_pixel)*TEXTURE_PIXEL_SIZE).rgb;
+    vec3 right_white = face_sample(UV + (vec2(414.0,158.0)-face_pixel)*TEXTURE_PIXEL_SIZE).rgb;
+    if (eye_layer == 0) {
+        source_albedo.a *= 1.0-body_tail_residue_mask(source_pixel);
+        source_albedo.rgb = restored_eye_white(source_albedo.rgb,source_pixel,left_white,right_white);
+    } else {
+        float complete_pupil = pupil_source_mask(source_pixel,eye_layer);
+        vec2 destination_pixel = source_pixel+pupil_display_offset;
+        vec3 original_destination = face_sample(UV + (destination_pixel-face_pixel)*TEXTURE_PIXEL_SIZE).rgb;
+        vec3 destination_white = restored_eye_white(original_destination,destination_pixel,left_white,right_white);
+        float low = min(destination_white.r,min(destination_white.g,destination_white.b));
+        float high = max(destination_white.r,max(destination_white.g,destination_white.b));
+        float actual_white = smoothstep(0.64,0.78,low) * (1.0-smoothstep(0.055,0.13,high-low));
+        vec2 pupil_center = eye_layer == 1 ? vec2(322.5,176.0) : vec2(435.5,143.8);
+        vec2 glint_offset = eye_layer == 1 ? vec2(-2.4,-2.5) : vec2(-1.9,-2.0);
+        vec2 glint_radius = eye_layer == 1 ? vec2(1.8,2.0) : vec2(1.5,1.6);
+        vec2 ink_pixel = eye_layer == 1 ? vec2(322.5,179.5) : vec2(435.5,147.5);
+        vec2 glint_pixel = eye_layer == 1 ? vec2(316.5,175.5) : vec2(430.5,146.5);
+        vec3 ink = face_sample(UV + (ink_pixel-face_pixel)*TEXTURE_PIXEL_SIZE).rgb;
+        vec3 original_glint = face_sample(UV + (glint_pixel-face_pixel)*TEXTURE_PIXEL_SIZE).rgb;
+        // A small, soft warm-white catchlight stays INSIDE the moving pupil.
+        // This intentional highlight is separate from the removed old-white ring.
+        vec3 glint_white = (eye_layer == 1 ? left_white : right_white) * vec3(1.0,0.985,0.95);
+        vec3 glint_color = mix(original_glint,glint_white,0.90);
+        float glint = 1.0-smoothstep(0.35,1.0,length((source_pixel-pupil_center-glint_offset)/glint_radius));
+        source_albedo.rgb = mix(ink,glint_color,glint);
+        // eye_geometry.gd keeps the WHOLE oval inside the restored white. This
+        // is only a final safety guard; accepted gaze endpoints retain all alpha.
+        source_albedo.a *= complete_pupil * actual_white;
+    }
+    vec2 q=(UV-visible_uv.xy)/max(visible_uv.zw,vec2(0.001));
+    vec2 xy=(q-vec2(0.5,0.58))*2.0;
+    vec3 normal=normalize(vec3(xy.x*0.68,xy.y*0.3,0.9));
+    if(surface_type<0.5){
+        normal=world_pos.y>742.0?vec3(0.0,0.0,1.0):normalize(vec3(0.0,-0.95,0.31));
+    }
+    if(surface_type>1.5){normal=normalize(vec3(xy.x*0.18,-0.5,0.8));}
+    surf_normal=normal;
+    // Manual sun is a finite, height-aware 2.5D pass. Native PointLight2D
+    // remains active below for the warm lamp. UI has no lighting material.
+    float gate=window_field(world_pos,cast_dir,cot_e);
+    float lambert=max(dot(normal,sun_vector),0.0);
+    vec3 illumination=ambient_color+sun_color*sun_energy*gate*(0.20+0.80*lambert);
+    float moon_gate=window_field(world_pos,moon_cast_dir,1.6);
+    illumination+=vec3(0.28,0.43,0.80)*moon_energy*moon_gate*(0.24+0.35*max(normal.z,0.0));
+    // Evening afterglow stays bounded to the window-lit receiver region.
+    illumination+=vec3(1.0,0.29,0.11)*afterglow_energy*gate*(0.24+0.35*max(normal.z,0.0));
+    vec3 lit=source_albedo.rgb*illumination;
+    // A gentle highlight shoulder keeps strong noon light without clipping IP paint.
+    float peak=max(lit.r,max(lit.g,lit.b));
+    if(peak>0.90){lit*=((0.90+0.09*(1.0-exp(-(peak-0.90)/0.09)))/peak);}
+    if(surface_type>2.5){
+        float globe=1.0-smoothstep(0.70,1.0,length((UV-vec2(0.430,0.689))/vec2(0.229,0.208)));
+        lit+=vec3(1.0,0.78,0.40)*lamp_glow*globe*0.66;
+    }
+    exterior_mask=surface_type<0.5?outdoor_aperture(world_pos):0.0;
+    if(outdoor_enabled && exterior_mask>0.0){lit=mix(lit,outdoor_scene(world_pos,source_albedo.rgb,daylight,game_hour,morning_weight,noon_weight,sunset_weight,afterglow_energy),exterior_mask);}
+    result=vec4(lit,source_albedo.a);
+    if(show_mask){result=vec4(mix(vec3(0.06,0.10,0.13),vec3(1.0,0.73,0.24),gate*sun_energy),source_albedo.a);}
+
+
+    vec2 lamp_delta=vec2(465.0,468.0)-world_pos;
+    float lamp_radius=length(lamp_delta)/672.0;
+    float lamp_alpha=lamp_radius<0.35?mix(1.0,0.45,lamp_radius/0.35):mix(0.45,0.0,clamp((lamp_radius-0.35)/0.65,0.0,1.0));
+    vec3 lamp_direction=normalize(vec3(lamp_delta,150.0));
+    float lamp_diffuse=0.55+0.45*max(dot(surf_normal,lamp_direction),0.0);
+    result.rgb+=source_albedo.rgb*vec3(1.0,0.65,0.29)*weightsState.z*lamp_diffuse*(1.0-exterior_mask)*lamp_alpha*source_albedo.a;
+    return result*color;
+  }
+
+}%

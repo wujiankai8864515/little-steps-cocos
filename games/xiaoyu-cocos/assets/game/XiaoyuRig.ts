@@ -1,14 +1,16 @@
-import { Node, Sprite, UITransform, Vec3 } from 'cc';
+import { Node, Sprite, UITransform, Vec3, Vec4 } from 'cc';
 import { GameAssets } from './Assets';
 import { core, meshSprite, Scope } from './Engine';
 import { nodeAt } from './Visual';
 import { deformPart, SoftPose } from './SoftGeometry';
+import { clampEyeOffset, EYE_CENTERS, PUPIL_REGIONS, PUPIL_SOURCES } from './EyeGeometry';
 
 // Authored Skeleton2D hierarchy and all seven curves are transferred verbatim.
 // Source math stays in downward coordinates; only the Cocos submission flips y.
 export class XiaoyuRig {
     readonly root: Node;
-    readonly receivers:Array<{node:Node;sprite:Sprite;spec:any}>=[];
+    readonly receivers:Array<{resource:string;node:Node;sprite:Sprite;spec:any;eye?:number}>=[];
+    private pupils:Array<{node:Node;sprite:Sprite;region:number[];offset:number[]}>=[];
     private nodes = new Map<string, Node>();
     private meshes: Array<{resource: string; node: Node; mesh: any; sprite: any}> = [];
     private animation: any;
@@ -39,7 +41,7 @@ export class XiaoyuRig {
                 const rect = frame.rect.clone(); rect.x = region[0] - spec.content[0]; rect.y = region[1] - spec.content[1]; rect.width = region[2]; rect.height = region[3]; frame.rect = rect;
                 node.getComponent(UITransform).setContentSize(region[2], region[3]);
                 const sprite = node.addComponent(Sprite); sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = frame;
-                this.receivers.push({node,sprite,spec});
+                this.receivers.push({resource,node,sprite,spec});
             } else {
                 const spec = assets.art(resource), bounds = spec.opaque;
                 const rect = [Math.max(0, bounds[0] - 3), Math.max(0, bounds[1] - 3), Math.min(spec.size[0], bounds[2] + 3), Math.min(spec.size[1], bounds[3] + 3)];
@@ -48,12 +50,20 @@ export class XiaoyuRig {
                 const sprite = node.addComponent(meshSprite()); sprite.sizeMode = Sprite.SizeMode.CUSTOM;
                 sprite.configure(mesh, spec.size, spec.content); sprite.spriteFrame = assets.frame(resource, scope);
                 this.meshes.push({resource, node, mesh, sprite});
-                this.receivers.push({node,sprite,spec});
+                this.receivers.push({resource,node,sprite,spec});
             }
         }
         // Godot Tail has z_index -1 even though the authored body comes afterward.
         this.nodes.get('Skeleton2D/Ground/Body/Tail').setSiblingIndex(0);
         this.animation = scene.sections.find(s => s.kind === 'sub_resource' && s.type === 'Animation').properties;
+        const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),resource='res://assets/body.png',spec=assets.art(resource);
+        PUPIL_REGIONS.forEach((region,index)=>{
+            const offset=EYE_CENTERS[index].map((v,i)=>v-PUPIL_SOURCES[index][i]);
+            const node=nodeAt(body,index===0?'IndependentLeftEyePupil':'IndependentRightEyePupil',region[0]+offset[0],region[1]+offset[1],region[2],region[3]);
+            const frame=assets.frame(resource,scope),rect=frame.rect.clone();rect.x=region[0]-spec.content[0];rect.y=region[1]-spec.content[1];rect.width=region[2];rect.height=region[3];frame.rect=rect;
+            const sprite=node.addComponent(Sprite);sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=frame;
+            this.pupils.push({node,sprite,region,offset});this.receivers.push({resource,node,sprite,spec,eye:index+1});
+        });
         this.poseAt(0);
         console.info('[LittleSteps] original rig constructed', {bones: sections.filter(s => s.type === 'Bone2D').length, tracks: 7, vertices: this.meshes.map(m => m.mesh.source.length / 2)});
     }
@@ -68,6 +78,7 @@ export class XiaoyuRig {
             else if (property === 'rotation') node.angle = -value * 180 / Math.PI;
             else if (property === 'visible') node.active = value;
         }
+        this.pupils.forEach(pupil=>pupil.node.active=!this.nodes.get('Skeleton2D/Ground/Body/Expression').active);
     }
     advance(delta: number) {
         const before = this.elapsed, next = before + Math.min(Math.max(delta, 0), 0.1) * 1.08;
@@ -86,6 +97,21 @@ export class XiaoyuRig {
         return null;
     }
     snapshot() { return {elapsed: this.elapsed, contacts: this.contacts}; }
+    setEyeOffsets(left:number[],right=left) {
+        this.pupils.forEach((pupil,index)=>{
+            const safe=clampEyeOffset(index+1,index===0?left:right);
+            pupil.offset=EYE_CENTERS[index].map((v,i)=>v-PUPIL_SOURCES[index][i]+safe[i]);
+            pupil.node.setPosition(pupil.region[0]+pupil.offset[0],-pupil.region[1]-pupil.offset[1]);
+            if(pupil.sprite.customMaterial)pupil.sprite.customMaterial.setProperty('faceOffset',new Vec4(pupil.offset[0],pupil.offset[1],0,0));
+        });
+    }
+    setMouthOpen(value:number) {
+        const body=this.receivers.find(r=>r.node.name==='OriginalBody'),material=body.sprite.customMaterial;
+        if(!material)return;
+        const state=material.getProperty('bodyState') as Vec4;
+        material.setProperty('bodyState',new Vec4(Number.isFinite(value)?Math.max(-2.8,Math.min(2.8,value)):0,state.y,state.z,state.w));
+    }
+    pupilOffsets() {return this.pupils.map(p=>p.offset);}
     deform(pose: SoftPose) {
         const body = this.nodes.get('Skeleton2D/Ground/Body/OriginalBody');
         const affine = (node: Node) => {

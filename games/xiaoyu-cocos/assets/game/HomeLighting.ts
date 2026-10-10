@@ -5,13 +5,13 @@ import { HomeClock } from './HomeClock';
 import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
-export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts'];
+export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow'];
 type Receiver={material:Material;kind:string;surface:number};
 export class HomeLighting {
     private receivers:Receiver[]=[];
     private dust:Graphics;
     constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
-    receiver(sprite:Sprite,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver') {
+    receiver(sprite:Sprite,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver',eye=0,offset=[0,0]) {
         const material=this.material('home-'+kind),crop=spec.content,size=spec.size;
         material.setProperty('sourceUV',new Vec4(crop[0]/size[0],crop[1]/size[1],crop[2]/size[0],crop[3]/size[1]));
         material.setProperty('visibleUV',new Vec4(...visibleUV as [number,number,number,number]));
@@ -22,7 +22,13 @@ export class HomeLighting {
             material.setProperty('maskRect',new Vec4(c[0]/s[0],c[1]/s[1],c[2]/s[0],c[3]/s[1]));
             material.setProperty('occlusion_alpha',this.assets.texture('res://assets/bed_occlusion_mask.png'));
         }
+        if(kind==='face') {
+            material.setProperty('textureSize',new Vec4(size[0],size[1],0,0));
+            material.setProperty('bodyState',new Vec4(0,eye,0,0));
+            material.setProperty('faceOffset',new Vec4(offset[0],offset[1],0,0));
+        }
         sprite.customMaterial=material;this.receivers.push({material,kind,surface});
+        return material;
     }
     shafts() {
         const node=nodeAt(this.root,'WindowLightShafts2D',0,0,720,1280),sprite=node.addComponent(Sprite);

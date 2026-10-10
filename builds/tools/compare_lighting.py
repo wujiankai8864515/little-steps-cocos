@@ -20,10 +20,10 @@ def main():
     canvas=Image.new('RGB',(1215,748),(246,240,225));canvas.paste(a,(0,28));canvas.paste(b,(405,28));canvas.paste(ImageChops.difference(a,b),(810,28));draw=ImageDraw.Draw(canvas)
     for x,label in [(8,f'Godot published / hour {args.hour:g}'),(413,f'Cocos candidate / hour {args.hour:g}'),(818,'Absolute RGB difference / no scaling')]:draw.text((x,8),label,fill=(38,31,22))
     image=ROOT/'builds/qa'/f'{args.name}.png';canvas.save(image)
-    report={'schema':1,'state':{'hour':args.hour,'viewport':[405,720],'actorPose':'zero pose in both declared fixtures; face shader still differs','clock':'frozen'},
+    report={'schema':1,'state':{'hour':args.hour,'viewport':[405,720],'actorPose':'zero pose in both declared fixtures; remaining face differences reported by pixel metrics','clock':'frozen'},
         'sourceFiles':[{'path':str(p.relative_to(ROOT)) if p.is_absolute() else str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths],
         'method':'Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.',
-        'regions':rows,'acceptance':'pending; missing source plants, shadow projections, UI, face and articulated bag prevent full parity','image':str(image.relative_to(ROOT))}
+        'regions':rows,'acceptance':'pending; this fixed-pose comparison does not cover remaining imagery, all input flows, animated face/soft shadows, or WeChat devices','image':str(image.relative_to(ROOT))}
     image.with_suffix('.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(rows))
 
 if __name__=='__main__':main()

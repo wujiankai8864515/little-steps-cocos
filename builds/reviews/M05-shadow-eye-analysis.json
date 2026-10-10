@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "scope": "M05.2 static pupil and shadow candidate validation",
+  "testFailure": {
+    "initialLog": "builds/reviews/M05-shadow-eye-initial-tests.log",
+    "failures": [
+      "test double lacked the Sprite.renderData public getter, assembler got no render data",
+      "ray-collinearity test divided by a zero component and compared NaN fallback against a real ratio"
+    ],
+    "fixes": [
+      "test double forwards renderData getter to the same allocated data",
+      "collinearity uses the unit ray cross product; no division by zero"
+    ],
+    "productionCodeChangedForTestFailure": false,
+    "finalTests": 30,
+    "finalPassed": 30
+  },
+  "environmentEvents": [
+    {
+      "trigger": "first local preview command used guessed game/build/web-mobile directory",
+      "resolution": "stopped own unused server before navigation; used candidate configPath output/preview directory; no screenshot from wrong directory accepted"
+    },
+    {
+      "trigger": "ps in default sandbox",
+      "observed": "operation not permitted",
+      "resolution": "build completion checked from retained native log and actual browser output; no broad process kill"
+    }
+  ],
+  "buildExitNote": "noon initial tool output truncated; code not inferred. Native finish marker and real renderer verified, night/entry exit 36 directly observed",
+  "acceptance": "pending; numerical improvements do not establish whole-game or device parity"
+}

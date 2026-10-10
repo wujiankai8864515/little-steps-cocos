@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "state": {
+    "hour": 1.0,
+    "viewport": [
+      405,
+      720
+    ],
+    "actorPose": "zero pose in both declared fixtures; remaining face differences reported by pixel metrics",
+    "clock": "frozen"
+  },
+  "sourceFiles": [
+    {
+      "path": "builds/qa/cocos/godot-reference-night-v1.jpg",
+      "sha256": "39bd548896e7bf3a77b95f230120ebdf050d7e6fff300f0cccd30771d64b8b99"
+    },
+    {
+      "path": "builds/qa/cocos/home-shadow-eye-night-v1.jpg",
+      "sha256": "898c6340fc58a2210bbd5557a32cc64a67ba44a402526dfe2571130cd401dad5"
+    }
+  ],
+  "method": "Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.",
+  "regions": [
+    {
+      "region": "full",
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 4.630480109739369,
+      "maxRGB": 254
+    },
+    {
+      "region": "sky_glass",
+      "rect": [
+        73,
+        4,
+        124,
+        61
+      ],
+      "meanAbsoluteRGB": 0.8548331613347093,
+      "maxRGB": 20
+    },
+    {
+      "region": "receiver_wall",
+      "rect": [
+        190,
+        294,
+        249,
+        367
+      ],
+      "meanAbsoluteRGB": 0.6938317467688259,
+      "maxRGB": 6
+    },
+    {
+      "region": "floor",
+      "rect": [
+        219,
+        618,
+        300,
+        687
+      ],
+      "meanAbsoluteRGB": 0.33172302737520126,
+      "maxRGB": 7
+    },
+    {
+      "region": "actor_face",
+      "rect": [
+        88,
+        404,
+        280,
+        498
+      ],
+      "meanAbsoluteRGB": 0.9860372340425533,
+      "maxRGB": 26
+    }
+  ],
+  "acceptance": "pending; this fixed-pose comparison does not cover remaining imagery, all input flows, animated face/soft shadows, or WeChat devices",
+  "image": "builds/qa/home-shadow-eye-night-comparison-v1.png"
+}

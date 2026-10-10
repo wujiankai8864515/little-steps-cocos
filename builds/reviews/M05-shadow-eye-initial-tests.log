@@ -1,0 +1,61 @@
+✖ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.839541ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (0.760583ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.119042ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.368709ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.127667ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.086417ms)
+✔ Disposed request rejects late completion and releases the late resource (0.230875ms)
+✔ Plugin namespace is frozen and nonwritable (0.041459ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.359041ms)
+✔ Measured contact profiles use original alpha >= .5 and preserve separate feet (1.083083ms)
+✔ Grounded mesh projects each height from its measured support and preserves source coordinates (0.679208ms)
+✔ Legacy floor and wall passes retain their original affine projection behavior (0.107834ms)
+✖ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (0.417333ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 11
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 168.858083
+
+✖ failing tests:
+
+test at engines/travel-core/test/core.test.cjs:9:1
+✖ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.839541ms)
+  AssertionError [ERR_ASSERTION]: 0 != -10
+      at /Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/core.test.cjs:30:37
+      at Array.forEach (<anonymous>)
+      at near (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/core.test.cjs:30:12)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/core.test.cjs:13:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/grounding-eye.test.cjs:25:1
+✖ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (0.417333ms)
+  AssertionError [ERR_ASSERTION]: 0 != 1
+      at near (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/grounding-eye.test.cjs:5:87)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/grounding-eye.test.cjs:28:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

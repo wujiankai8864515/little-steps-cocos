@@ -6,6 +6,14 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+test('UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity',()=>{
+    class Sprite {constructor(){this.color={r:255,g:255,b:255,a:128};}get renderData(){return this._renderData;}destroyRenderData(){this._renderData=null;}requestRenderData(){return this._renderData={data:[],floatStride:9,chunk:{setIndexBuffer(){}},resize(n){this.chunk.vb=new Float32Array(n*9);},get dataLength(){return this._length;},set dataLength(n){this._length=n;this.data=Array.from({length:n},()=>({}));}};}getRenderMaterial(){return {};}markForUpdateRenderData(){}}
+    const Mesh=core.registerCocos({Sprite,_decorator:{ccclass:()=>type=>type}}),sprite=new Mesh();
+    const mesh=core.createGrid([0,0,10,10],10);mesh.vertexData=new Float32Array(mesh.source.length/2*3);mesh.vertexData.set([-10,1100,256]);sprite.configure(mesh,[10,10]);
+    const vb=sprite._renderData.chunk.vb;near(Array.from(vb.slice(5,8)),[-10,1100,256]);assert.ok(Math.abs(vb[8]-128/255)<1e-7);
+    assert.throws(()=>sprite.configure({...mesh,vertexData:new Float32Array(2)},[10,10]),/payload/);
+    assert.throws(()=>sprite.configure({...mesh,vertexData:new Float32Array(mesh.vertexData.length).fill(NaN)},[10,10]),/payload/);
+});
 test('Owned audio stops a queued late start and releases its clip exactly once',()=>{
     class Node {constructor(name){this.name=name;this.events=new Map();}addChild(n){n.parent=this;}addComponent(){return this.source={clip:null,playOnAwake:true,playing:false,volume:1,currentTime:0,plays:0,stops:0,pauses:0,play(){this.plays++;},stop(){this.playing=false;this.stops++;},pause(){this.playing=false;this.pauses++;}};}on(e,f){this.events.set(e,f);}off(e){this.events.delete(e);}destroy(){this.destroyed=true;}}
     const cc={Node,AudioSource:{EventType:{STARTED:'start',ENDED:'end'}}},scope=new core.Lifetime(),parent=new Node('root'),events=[];
