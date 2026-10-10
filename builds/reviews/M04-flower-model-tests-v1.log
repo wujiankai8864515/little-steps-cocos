@@ -1,0 +1,39 @@
+✔ One established starter and one birth per earned minute; cap ten never retires or backfills offline time (1.802584ms)
+✔ Restoration is atomic, migrates only geometry and preserves empty bouquets and earned boundaries (0.260459ms)
+✔ Schema 2 legacy cap shrinks to ten after full validation; geometry v2 and fractional legacy integers retain source rules (0.340209ms)
+✔ Raw JSON recovery selects latest valid main/tmp/bak and ties prefer main; failed readback keeps a recoverable generation (0.627334ms)
+✔ Raw store guards UTF8 bytes, invalid saves/slots and silent storage failure without committed revision (1.173ms)
+✔ External clock anchors once, rolls back without growth, accrues hidden Home time and limits drawing to 30 Hz (0.302334ms)
+✔ Five bone transforms keep root and constant segment lengths while sun, night staggering and springs remain bounded (22.09575ms)
+✖ Virtual sun covers vase-centered semicircle; mesh uses exact cropped 13x13 source topology and matching tilt normal (1.269417ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 271.491875
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/flowers.test.cjs:48:1
+✖ Virtual sun covers vase-centered semicircle; mesh uses exact cropped 13x13 source topology and matching tilt normal (1.269417ms)
+  AssertionError [ERR_ASSERTION]: 0.00009201076077838354 != 0
+      at near (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/flowers.test.cjs:6:33)
+      at /Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/flowers.test.cjs:51:197
+      at Array.forEach (<anonymous>)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/flowers.test.cjs:51:186)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

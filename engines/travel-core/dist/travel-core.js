@@ -800,7 +800,16 @@ class CheckpointStore {
         }catch(error){this.lastError='checkpoint_write_failed:'+String(error.message||error);return false;}
     }
 }
-Object.assign(api,{CheckpointStore,checkpointSHA256});
+// File-format migrations may need raw JSON rather than a checksummed envelope.
+// Validation and revision selection remain the caller's responsibility.
+class RawJSONCheckpointStore extends CheckpointStore {
+    envelope(data){return JSON.stringify(checkpointCanonical(data));}
+    decode(contents){
+        if(typeof contents!=='string'||checkpointUtf8(contents).length>this.maxBytes)return null;
+        try{const data=JSON.parse(contents);return data&&typeof data==='object'&&!Array.isArray(data)?data:null;}catch(_){return null;}
+    }
+}
+Object.assign(api,{CheckpointStore,RawJSONCheckpointStore,checkpointSHA256});
 
 Object.defineProperty(root, 'LittleStepsCore', {value: Object.freeze(api), writable: false, configurable: false});
 })(globalThis);

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "state": "noon-one-flower",
+  "reference": {
+    "path": "builds/reviews/godot-flower-noon-v5.jpg",
+    "sha256": "8d9f4dec3e3dfa3d1575e7642768620f295a2cb2806b02d470ba985e65249c1f"
+  },
+  "cocos": {
+    "path": "builds/reviews/cocos-flower-noon-v2.jpg",
+    "sha256": "0deaab8bb65bfb6d482edadd9899795c8e8816f0106973f44b06e48b809dde6d"
+  },
+  "comparison": {
+    "path": "builds/reviews/flower-noon-comparison-v1.png",
+    "sha256": "a949f635f94539d64f86d9f7221448e9f2c4e55077ec9b2d9006b46a1c2546bf",
+    "method": "Actual unaligned, unscaled, unrecolored equal 405x720 RGB captures; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.3853806584362138,
+      "RMSRGB": 4.014615271119036,
+      "maximumChannelDifference": 140
+    },
+    "bouquetAndVase": {
+      "rect": [
+        20,
+        478,
+        87,
+        628
+      ],
+      "meanAbsoluteRGB": 1.4982752902155887,
+      "RMSRGB": 3.4814493980411885,
+      "maximumChannelDifference": 76
+    },
+    "vaseAndTableShadow": {
+      "rect": [
+        17,
+        591,
+        87,
+        635
+      ],
+      "meanAbsoluteRGB": 1.3365800865800865,
+      "RMSRGB": 2.3444648300206294,
+      "maximumChannelDifference": 35
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Explicit earned-time isolated-storage pose fixture; captures are separate wall times. Whole frame retains backpack articulation, HUD details and other unresolved product differences. Godot Line2D versus Cocos Graphics tessellation/AA, all time/size/interaction cases and WeChat device pending."
+}

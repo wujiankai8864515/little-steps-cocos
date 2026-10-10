@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "id": "M04.9",
+  "status": "partial_flower_model_pose_and_three_browser_checkpoints_verified_full_parity_pending",
+  "recordedUTC": "2026-10-10T23:36:49.251217+00:00",
+  "originalSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "publishedReferenceCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "sources": [
+    {
+      "path": "home/flowers/flower_life.gd",
+      "sha256": "deae151437619bba41bf5bf149619e78fd98f27369c8f825d5a0b34094180166"
+    },
+    {
+      "path": "home/flowers/flower_store.gd",
+      "sha256": "0af75a454c5001317229368ae2bf7304226f6809d624c2246cbcd9dbe42e6027"
+    },
+    {
+      "path": "home/flowers/flower_stem.gd",
+      "sha256": "75c3dec43600ccef78e807630ce5ba2703d48c2eed6ddb48fed009bed41ec331"
+    },
+    {
+      "path": "home/flowers/flower_head.gd",
+      "sha256": "f13e6f60a76e007cce59e9275412c1bb86fc43d13c891f4b9e06986883449dfe"
+    },
+    {
+      "path": "home/flowers/persistent_vase.gd",
+      "sha256": "ab6c1161c2eb88a06ee31011354cf7141ce13fcfb9a9f8a6b07982a71beeccc5"
+    },
+    {
+      "path": "home/flowers/flower_receiver.gdshader",
+      "sha256": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760"
+    },
+    {
+      "path": "home/flowers/tabletop_support.gd",
+      "sha256": "6fdc7be09e3a5a30f329510fbcaed71511a8126f3a7d5ee669bfffe078ee5f72"
+    },
+    {
+      "path": "home/action_marks.gd",
+      "sha256": "732441172deb491cd57597099a1053705483772fd8e071f4979a8c37d414ff1d"
+    },
+    {
+      "path": "home/behavior/home_cycle_clock.gd",
+      "sha256": "73bdf493a591ff4050aca7523bafabf5a5746588e3b19d88db44ccdff967cbd8"
+    },
+    {
+      "path": "scripts/app.gd",
+      "sha256": "3f8d9db061b7f3a1a15d2c5ce6c0979ce513725572bb5cb2054a2e758149b15e"
+    },
+    {
+      "path": "home/flowers/assets/daisy_heads_candidate.png.import",
+      "sha256": "704c7e89eff596b31acb0160ffda37da37cbd372a27e2c5f316a8d719d51ac33"
+    },
+    {
+      "path": "home/flowers/assets/daisy_leaf_candidate.png.import",
+      "sha256": "2ff7f9f898d13fe87b36ddcd345a33a34ed072ce745e6c045be2114ee12ecb2c"
+    },
+    {
+      "path": "home/flowers/assets/empty_vase_candidate.png.import",
+      "sha256": "e34a1fd02c60c0893729df6a49a86d6feb14538da2a179a9a5fab83767d38873"
+    }
+  ],
+  "originalAssets": "Existing approved lossless Cocos source pixels retained. Raw Godot .png files absent in checkout; .png.import and source-catalog/M02 provenance retained. No newly generated art.",
+  "nativeShaderPackVerification": {
+    "pack": "house.pck",
+    "entry": "home/flowers/flower_receiver.gdshader",
+    "sha256": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760",
+    "matchesLatestRawShader": true,
+    "latestRawFlowersVersusPublishedCommitGitDiff": "empty"
+  },
+  "boundaries": {
+    "framework": "Generic RawJSONCheckpointStore codec only; game validation/order/time in games",
+    "game": "FlowerLife, raw FlowerStore, shared active-time controller, five-bone pose, 13x13 petal mesh, dynamic vase/back/lip/layers/receivers/table support and unlit doze glyph",
+    "builds": "Original shader transfer, declared frozen candidates, pack checksums, actual screenshot comparison and evidence only",
+    "platform": "Formal delivery remains WeChat only; these web-mobile builds are QA candidates"
+  },
+  "sourceRules": {
+    "schema": 3,
+    "geometryVersion": 2,
+    "earnedSecondsPerFlower": 60,
+    "growthSeconds": 8,
+    "cap": 10,
+    "offlineGrowth": false,
+    "retirement": false,
+    "geometryMigration": "Validate all records before mutation; schema 1/2 preserve earned bouquet, birth boundary, born/lifetime/phase and refresh only height/bend/root_x/head_size; never backfill or seed restored empty bouquet",
+    "drawing": "30Hz accumulation; step capped .1; 5 bones, 13x13 mesh and exact source seeded variation/spring/daynight formulas",
+    "daynightTransitionSeconds": 7,
+    "maxStaggerSeconds": 1.5,
+    "saveSeconds": 5,
+    "saveRecovery": "Raw JSON matches original format; validated highest revision across main/tmp/bak; main wins ties; UTF8 cap 65536. KV tmp/main readback replaces file flush/atomic rename; failed commit does not advance model revision."
+  },
+  "validation": {
+    "types": {
+      "status": "passed",
+      "log": "builds/reviews/M04-flower-types-v1.log"
+    },
+    "tests": {
+      "passed": 75,
+      "failed": 0,
+      "newFlowerCases": 8,
+      "log": "builds/reviews/M04-flower-all-tests-v1.log"
+    },
+    "creator": {
+      "version": "3.8.8",
+      "candidateExitCodes": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "firstDraw": "Actual URL-scoped Home first draw and nonblank 405x720 canvas; no current candidate browser warnings/errors in successful cases"
+    },
+    "browserCheckpoints": [
+      {
+        "state": "noon-one-flower",
+        "reference": "godot-flower-noon-v5",
+        "cocos": "cocos-flower-noon-v2",
+        "referenceTimestamp": "2026-10-10T23:23:35.895Z",
+        "cocosTimestamp": "2026-10-10T23:24:24.210Z",
+        "referencePort": 8828,
+        "cocosPort": 8829,
+        "earnedSeconds": 0,
+        "flowers": 1,
+        "bones": 5,
+        "pointMaxAbsoluteDifference": 5.1600941759488705e-05,
+        "headMaxAbsoluteDifference": 2.275605961651883e-08,
+        "comparison": "flower-noon-comparison-v1.json",
+        "raster": {
+          "whole": {
+            "rect": [
+              0,
+              0,
+              405,
+              720
+            ],
+            "meanAbsoluteRGB": 1.3853806584362138,
+            "RMSRGB": 4.014615271119036,
+            "maximumChannelDifference": 140
+          },
+          "bouquetAndVase": {
+            "rect": [
+              20,
+              478,
+              87,
+              628
+            ],
+            "meanAbsoluteRGB": 1.4982752902155887,
+            "RMSRGB": 3.4814493980411885,
+            "maximumChannelDifference": 76
+          },
+          "vaseAndTableShadow": {
+            "rect": [
+              17,
+              591,
+              87,
+              635
+            ],
+            "meanAbsoluteRGB": 1.3365800865800865,
+            "RMSRGB": 2.3444648300206294,
+            "maximumChannelDifference": 35
+          }
+        },
+        "numericMethod": "Public engine console active-snap checkpoints; pair poses by ID, take maximum absolute x/y component and head angle/scale/yaw/pitch differences; no viewport/hidden engine state injection"
+      },
+      {
+        "state": "night-ten-flowers",
+        "reference": "godot-flower-night-ten-v1",
+        "cocos": "cocos-flower-night-ten-v1",
+        "referenceTimestamp": "2026-10-10T23:27:30.152Z",
+        "cocosTimestamp": "2026-10-10T23:25:50.178Z",
+        "referencePort": 8831,
+        "cocosPort": 8830,
+        "earnedSeconds": 600,
+        "flowers": 10,
+        "bones": 50,
+        "pointMaxAbsoluteDifference": 0.0001831782360284251,
+        "headMaxAbsoluteDifference": 1.066876653688098e-07,
+        "comparison": "flower-night-ten-comparison-v1.json",
+        "raster": {
+          "whole": {
+            "rect": [
+              0,
+              0,
+              405,
+              720
+            ],
+            "meanAbsoluteRGB": 0.9986179698216735,
+            "RMSRGB": 3.3431652998803734,
+            "maximumChannelDifference": 144
+          },
+          "bouquetAndVase": {
+            "rect": [
+              20,
+              478,
+              87,
+              628
+            ],
+            "meanAbsoluteRGB": 1.893300165837479,
+            "RMSRGB": 4.769279575031853,
+            "maximumChannelDifference": 115
+          },
+          "vaseAndTableShadow": {
+            "rect": [
+              17,
+              591,
+              87,
+              635
+            ],
+            "meanAbsoluteRGB": 1.2054112554112555,
+            "RMSRGB": 2.2159121264216615,
+            "maximumChannelDifference": 26
+          }
+        },
+        "numericMethod": "Public engine console active-snap checkpoints; pair poses by ID, take maximum absolute x/y component and head angle/scale/yaw/pitch differences; no viewport/hidden engine state injection"
+      },
+      {
+        "state": "noon-ten-flowers",
+        "reference": "godot-flower-noon-ten-v1",
+        "cocos": "cocos-flower-noon-ten-v1",
+        "referenceTimestamp": "2026-10-10T23:31:58.023Z",
+        "cocosTimestamp": "2026-10-10T23:29:46.697Z",
+        "referencePort": 8833,
+        "cocosPort": 8832,
+        "earnedSeconds": 600,
+        "flowers": 10,
+        "bones": 50,
+        "pointMaxAbsoluteDifference": 0.00014709640592514006,
+        "headMaxAbsoluteDifference": 2.5663366609585125e-07,
+        "modelRecordMaxAbsoluteDifference": 1.1368683772161603e-13,
+        "comparison": "flower-noon-ten-comparison-v1.json",
+        "raster": {
+          "whole": {
+            "rect": [
+              0,
+              0,
+              405,
+              720
+            ],
+            "meanAbsoluteRGB": 1.469996570644719,
+            "RMSRGB": 4.26879103442519,
+            "maximumChannelDifference": 140
+          },
+          "bouquetAndVase": {
+            "rect": [
+              20,
+              478,
+              87,
+              628
+            ],
+            "meanAbsoluteRGB": 3.5160199004975126,
+            "RMSRGB": 7.687735060735836,
+            "maximumChannelDifference": 109
+          },
+          "vaseAndTableShadow": {
+            "rect": [
+              17,
+              591,
+              87,
+              635
+            ],
+            "meanAbsoluteRGB": 1.8207792207792206,
+            "RMSRGB": 3.8364058410353414,
+            "maximumChannelDifference": 70
+          }
+        },
+        "numericMethod": "Public engine console active-snap checkpoints; pair poses by ID, take maximum absolute x/y component and head angle/scale/yaw/pitch differences; no viewport/hidden engine state injection"
+      }
+    ],
+    "resourceAdmission": {
+      "entries": 79,
+      "reservedBytes": 184709177,
+      "pending": 0,
+      "limits": {
+        "maxEntries": 128,
+        "maxSpecsPerBatch": 80,
+        "estimatedBytes": 268435456
+      },
+      "evidenceURL": "http://127.0.0.1:8832/assets/main/index.js",
+      "timestamp": "2026-10-10T23:29:46.602Z",
+      "warning": "Estimated admission is not measured device memory/startup performance"
+    },
+    "pluginSHA256": "484f57a6d3c00e9405d0d654e57e5cac949652246ea5ef1b2a090db3015acb8c",
+    "sourceIntegrity": "builds/reviews/M04-flower-source-integrity.json"
+  },
+  "limits": [
+    "Screenshot averages are measurements, not fidelity percentages or acceptance. Three pairs are isolated flower/clock fixtures; other real-time incense hint/glints may differ at separate capture times. Whole-frame gaps remain visible.",
+    "Cocos Graphics round-line tessellation and derivative AA need closer raster matching to Godot Line2D; all head/leaf/lip/shadow pixel residuals remain pending.",
+    "Physical minute-boundary birth, 8-second growth, full 7-second staggered day/night transition, focus/page hide/show, persistence failure UI/runtime and doze glyph need separate actual browser evidence; pure tests and static fixtures do not replace them.",
+    "Home growth in darkroom/entering/returning must attach to Application shared active clock when those pages are migrated; current application has only Home game page.",
+    "Morning/evening/lamp-on, other viewport sizes, all prop/backpack/page flows, WeChat build/device and full 138-item acceptance remain pending."
+  ],
+  "failureLedger": "builds/reviews/M04-flower-review.md",
+  "overallGoal": "active_full_migration_not_complete"
+}

@@ -15,6 +15,7 @@ import { MeritArtView } from './MeritArtView';
 import { FishInteraction } from './FishInteraction';
 import { InteractionFeedback } from './InteractionFeedback';
 import { HomeIncense, makeIncenseGradient } from './HomeIncense';
+import { HomeFlowers } from './HomeFlowers';
 
 let roomSerial=0;
 
@@ -33,6 +34,7 @@ export class HomePage {
     private surface:any;
     readonly fish:FishInteraction;
     readonly incense:HomeIncense;
+    readonly flowers:HomeFlowers;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
@@ -79,6 +81,8 @@ export class HomePage {
         this.hud=new HomeHUD(this.root,assets,scope,height,music);
         this.feedback=new InteractionFeedback(this.roomRoot,scope);
         this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,height]);
+        this.flowers=new HomeFlowers(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,clock);
+        this.flowers.layers.forEach(layer=>layers.push(layer));
         // Room RT and the user's main Canvas have different physical origins.
         // Actor coordinates remain canonical in either parent; map input and
         // projection through the actor's current presentation frame.
@@ -113,7 +117,7 @@ export class HomePage {
         console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
-    resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.hud.setActive(true);}
-    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.incense.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
+    resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(true);}
+    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
 }

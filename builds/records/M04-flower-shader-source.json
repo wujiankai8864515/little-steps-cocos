@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "sources": {
+    "home/flowers/flower_receiver.gdshader": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760",
+    "shaders/window_field.gdshaderinc": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+    "shaders/outdoor_window.gdshaderinc": "cfb69ca48f6b87c960521eef9070720faabe2adc6a5f172cefb1a518259f8970",
+    "shared_room_lighting/pane_geometry.gdshaderinc": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+    "shared_room_lighting/outdoor_scene.gdshaderinc": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+    "shared_room_lighting/thin_glass.gdshaderinc": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71"
+  },
+  "existingReceiverSHA256": "8df34cb8a33b7cb24805db9a981f071467b0edd4c899e33d96d077d1b0fb8015",
+  "outputs": [
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower.effect",
+      "sha256": "504c8e4d21a317b3fc2a3fca33b9a9c813cd5e19e1066f27bebd6f4f1996d37f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower-line.effect",
+      "sha256": "295875447dce94de3a66d634545d616912c187d82fbc3828eada8144dd06e540"
+    }
+  ],
+  "limits": "Transferred source illumination and head normal; round line tessellation/AA uses Cocos Graphics and requires same-state raster verification; WeChat GPU pending"
+}

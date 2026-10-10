@@ -1,0 +1,10 @@
+{"files": 32, "bytes": 87349628, "laterHostSnapshots": 0, "web": "/Users/wkk/dotWorkers/little-steps-cocos/builds/work/godot-flower-noon-v4/web"}
+{"web": "/Users/wkk/dotWorkers/little-steps-cocos/builds/work/godot-flower-noon-v4/web", "originalEntries": 264, "fixtureEntries": 265, "unchangedEntries": 263, "fixturePackSHA256": "e498407263f61e00b87308c87e64c16d2e5c2e2409188c99cb41b4363d86b36c"}
+Traceback (most recent call last):
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/create_flower_checkpoint.py", line 57, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/create_flower_checkpoint.py", line 42, in main
+    point='func _sync_lighting_from_clock ( ) -> void :\n';assert text.count(point)==1;text=text.replace(point,point+f'    _world . cycle_clock . seek_hour ( {args.hour} )\n')
+                                                                  ^^^^^^^^^^^^^^^^^^^^
+AssertionError

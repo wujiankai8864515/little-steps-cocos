@@ -12,6 +12,7 @@ export const core: any = {
     get ResourceGate() { return installed().ResourceGate; },
     get SwingFeedback() { return installed().SwingFeedback; },
     get CheckpointStore() { return installed().CheckpointStore; },
+    get RawJSONCheckpointStore() { return installed().RawJSONCheckpointStore; },
     createGrid: (...args: any[]) => installed().createGrid(...args),
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
     renderedPointAt: (...args:any[]) => installed().renderedPointAt(...args),

@@ -107,6 +107,11 @@ export class GameAssets {
         throw new Error('Alpha 行数据损坏');
     }
     snapshot() { return this.gate.snapshot(); }
+    alphaBounds(resource:string,rect:number[]){
+        const spec=this.art(resource),masks=this.values.get(`alpha:${spec.bundle}`) as JsonAsset;if(!masks)throw new Error(`Alpha 尚未准入：${resource}`);const mask=masks.json[resource];let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
+        for(let y=Math.max(Math.floor(rect[1]),mask.origin[1]);y<Math.min(Math.ceil(rect[1]+rect[3]),mask.origin[1]+mask.size[1]);y++){const row=mask.rows[y-mask.origin[1]];let x=mask.origin[0];for(let i=0;i<row.length;i+=2){const end=x+row[i],a=Math.max(x,rect[0]),b=Math.min(end,rect[0]+rect[2]);if(row[i+1]>0&&b>a){left=Math.min(left,a);right=Math.max(right,b);top=Math.min(top,y);bottom=Math.max(bottom,y+1);}x=end;}}
+        return Number.isFinite(left)?[left,top,right-left,bottom-top]:[rect[0],rect[1],0,0];
+    }
     bitmapContains(resource:string,x:number,y:number) {return core.bitMapContains(this.json(resource),x,y);}
     contains(resource:string,x:number,y:number) {
         const name=hitMasks[resource];

@@ -5,14 +5,14 @@ import { HomeClock } from './HomeClock';
 import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
-export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow'];
+export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line'];
 type Receiver={material:Material;kind:string;surface:number};
 export class HomeLighting {
     private receivers:Receiver[]=[];
     private dust:Graphics;
     constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
-    receiver(sprite:Sprite,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver',eye=0,offset=[0,0]) {
-        const material=this.material('home-'+kind),crop=spec.content,size=spec.size;
+    receiver(sprite:Sprite|Graphics,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver',eye=0,offset=[0,0]) {
+        const material=this.material('home-'+kind,sprite instanceof Graphics),crop=spec.content,size=spec.size;
         material.setProperty('sourceUV',new Vec4(crop[0]/size[0],crop[1]/size[1],crop[2]/size[0],crop[3]/size[1]));
         material.setProperty('visibleUV',new Vec4(...visibleUV as [number,number,number,number]));
         material.setProperty('shared_outdoor_paint',this.assets.texture('res://assets/home_neutral.png'));
@@ -27,8 +27,8 @@ export class HomeLighting {
             material.setProperty('bodyState',new Vec4(0,eye,0,0));
             material.setProperty('faceOffset',new Vec4(offset[0],offset[1],0,0));
         }
-        sprite.customMaterial=material;this.receivers.push({material,kind,surface});
-        return material;
+        sprite.customMaterial=material;const bound=sprite instanceof Graphics?sprite.getMaterialInstance(0):material;this.receivers.push({material:bound,kind,surface});
+        return bound;
     }
     shafts() {
         const node=nodeAt(this.root,'WindowLightShafts2D',0,0,720,1280),sprite=node.addComponent(Sprite);
@@ -39,7 +39,7 @@ export class HomeLighting {
         return node;
     }
     dustNode() {const node=nodeAt(this.root,'SunlitDust');this.dust=node.addComponent(Graphics);return node;}
-    private material(name:string) {const material=new Material();material.initialize({effectAsset:this.assets.effect(name),defines:{USE_TEXTURE:true}});this.scope.own(()=>material.destroy());return material;}
+    private material(name:string,local=false) {const material=new Material();material.initialize({effectAsset:this.assets.effect(name),defines:{USE_TEXTURE:true,USE_LOCAL:local}});this.scope.own(()=>material.destroy());return material;}
     update() {
         const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),origin=this.root.worldPosition,scale=this.root.worldScale;
         for(const receiver of this.receivers) {
