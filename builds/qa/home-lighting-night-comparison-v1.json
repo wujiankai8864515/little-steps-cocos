@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "state": {
+    "hour": 1.0,
+    "viewport": [
+      405,
+      720
+    ],
+    "actorPose": "zero pose in both declared fixtures; face shader still differs",
+    "clock": "frozen"
+  },
+  "sourceFiles": [
+    {
+      "path": "builds/qa/cocos/godot-reference-night-v1.jpg",
+      "sha256": "39bd548896e7bf3a77b95f230120ebdf050d7e6fff300f0cccd30771d64b8b99"
+    },
+    {
+      "path": "builds/qa/cocos/home-lighting-night-v1.jpg",
+      "sha256": "3a2e80cf995fd2f98803970240a2228775a8ec3a8060b4553cbcf15c533f3648"
+    }
+  ],
+  "method": "Actual browser screenshots; no resize, alignment, blur or color adjustment. JPEG screenshot encoding included. Difference displayed at 1x without amplification.",
+  "regions": [
+    {
+      "region": "full",
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 5.167872656607225,
+      "maxRGB": 254
+    },
+    {
+      "region": "sky_glass",
+      "rect": [
+        73,
+        4,
+        124,
+        61
+      ],
+      "meanAbsoluteRGB": 0.8548331613347093,
+      "maxRGB": 20
+    },
+    {
+      "region": "receiver_wall",
+      "rect": [
+        190,
+        294,
+        249,
+        367
+      ],
+      "meanAbsoluteRGB": 0.6938317467688259,
+      "maxRGB": 6
+    },
+    {
+      "region": "floor",
+      "rect": [
+        219,
+        618,
+        300,
+        687
+      ],
+      "meanAbsoluteRGB": 0.33172302737520126,
+      "maxRGB": 7
+    },
+    {
+      "region": "actor_face",
+      "rect": [
+        88,
+        404,
+        280,
+        498
+      ],
+      "meanAbsoluteRGB": 3.2552822104018913,
+      "maxRGB": 190
+    }
+  ],
+  "acceptance": "pending; missing source plants, shadow projections, UI, face and articulated bag prevent full parity",
+  "image": "builds/qa/home-lighting-night-comparison-v1.png"
+}

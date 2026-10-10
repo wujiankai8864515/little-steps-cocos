@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "id": "M05.1",
+  "status": "partial_actual_browser_light_receivers_verified_full_render_parity_pending",
+  "implemented": [
+    "exact shared sun/moon/time snapshot and latest Home intensity accents",
+    "source window field and outdoor sky/glass GLSL, including the same approved outdoor paint",
+    "base object receiver on normal Sprite and original rig UI meshes",
+    "long-screen bleed edge/neutral transition and cropped BedForeground alpha mask",
+    "source three-ray additive beam and 54-particle dust positions/gates",
+    "native lamp light() energy/direction/addition port with analytic radial ramp",
+    "four effect assets leased inside the same cancellable resource admission gate"
+  ],
+  "observed": {
+    "noonHour": 12,
+    "nightHour": 1,
+    "viewport": [
+      405,
+      720
+    ],
+    "receivers": 23,
+    "directHomeAdmission": {
+      "entries": 68,
+      "reservedBytes": 172552249,
+      "pending": 0,
+      "limitBytes": 268435456
+    },
+    "errors": 0,
+    "warnings": 0,
+    "comparisons": {
+      "noon": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 7.635547553726567,
+          "maxRGB": 255
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 2.667813324160073,
+          "maxRGB": 27
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.5553749709774785,
+          "maxRGB": 7
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.5989741754637085,
+          "maxRGB": 9
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 6.554447399527187,
+          "maxRGB": 255
+        }
+      ],
+      "night": [
+        {
+          "region": "full",
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 5.167872656607225,
+          "maxRGB": 254
+        },
+        {
+          "region": "sky_glass",
+          "rect": [
+            73,
+            4,
+            124,
+            61
+          ],
+          "meanAbsoluteRGB": 0.8548331613347093,
+          "maxRGB": 20
+        },
+        {
+          "region": "receiver_wall",
+          "rect": [
+            190,
+            294,
+            249,
+            367
+          ],
+          "meanAbsoluteRGB": 0.6938317467688259,
+          "maxRGB": 6
+        },
+        {
+          "region": "floor",
+          "rect": [
+            219,
+            618,
+            300,
+            687
+          ],
+          "meanAbsoluteRGB": 0.33172302737520126,
+          "maxRGB": 7
+        },
+        {
+          "region": "actor_face",
+          "rect": [
+            88,
+            404,
+            280,
+            498
+          ],
+          "meanAbsoluteRGB": 3.2552822104018913,
+          "maxRGB": 190
+        }
+      ]
+    },
+    "normalHomeBeforePreviousPageRelease": {
+      "entries": 84,
+      "reservedBytes": 190249521,
+      "pending": 0
+    }
+  },
+  "godotReference": {
+    "publishedRuntimeCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+    "referenceSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "relevantShaderAndLightingSourceDiff": "empty",
+    "files": 32,
+    "bytes": 87349628,
+    "allPublishedFileHashesMatchManifest": true,
+    "gamePacksAndEngineChanged": false,
+    "overrides": "original --review-hour command-line QA parameter only",
+    "nativeCanvasExactCommit": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "nativeCanvasBlob": "37d851a3c00336b254b17d3c41b9e84539ce5ef4"
+  },
+  "checks": {
+    "nodeContracts": 25,
+    "typecheck": "Cocos 3.8.8 passed",
+    "browserBuilds": [
+      "home-lighting-v1",
+      "home-lighting-night-v1",
+      "home-lighting-entry-v1"
+    ],
+    "fullNormalEntry": "current normal Login -> Comic -> Home observed, two actual BGM starts and Home knock starts, zero errors/warnings"
+  },
+  "evidence": [
+    "builds/records/M05-lighting-transfer.json",
+    "builds/qa/home-lighting-noon-comparison-v1.png",
+    "builds/qa/home-lighting-noon-comparison-v1.json",
+    "builds/qa/home-lighting-night-comparison-v1.png",
+    "builds/qa/home-lighting-night-comparison-v1.json",
+    "builds/qa/cocos/home-lighting-entry-v1-console.json"
+  ],
+  "pending": [
+    "all grounded and contact shadow geometry",
+    "independent room plants and their receiver/shadow layers",
+    "face/pupil and prop deformation variants, articulated backpack",
+    "full Home UI and every prop action",
+    "native lamp GradientTexture2D pixel quantization/filtering comparison",
+    "dawn/dusk and long-screen GPU screenshots",
+    "19MB formal first-download and engine trimming",
+    "all WeChat true-device performance/lifecycle acceptance",
+    "all requirement-level final acceptance"
+  ]
+}

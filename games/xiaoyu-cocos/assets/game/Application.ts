@@ -5,6 +5,7 @@ import { HomeMusic } from './AudioBehavior';
 import { HomeClock } from './HomeClock';
 import { ComicPage } from './ComicPage';
 import { HomePage } from './HomePage';
+import { HOME_EFFECTS } from './HomeLighting';
 import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
 import { nodeAt } from './Visual';
@@ -98,9 +99,10 @@ export class Application {
         this.entering=true;const intent=++this.intent,scope=lifetime(this.scope);this.pendingScope=scope;
         try {
             await this.assets.acquireGroups(['home'],scope);
+            await this.assets.acquireEffects(HOME_EFFECTS,scope);
             while(scope.active&&!this.active)await this.frame(scope);
             if(intent!==this.intent||!scope.active)return;
-            const page=new HomePage(this.root,this.assets,scope,this.height,()=>this.gestureSeen);page.root.active=false;
+            const page=new HomePage(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock);page.root.active=false;
             const preparedMusic=await this.prepareMusic(scope);
             if(intent!==this.intent||!scope.active)return;
             if(!await this.present({page,scope},.52))return;
@@ -111,8 +113,9 @@ export class Application {
     }
     private async directHome() {
         const scope=lifetime(this.scope);await this.assets.acquireGroups(['home'],scope);
+        await this.assets.acquireEffects(HOME_EFFECTS,scope);
         const preparedMusic=await this.prepareMusic(scope);
-        const page=new HomePage(this.root,this.assets,scope,this.height,()=>this.gestureSeen);this.current={page,scope};this.page=page;page.resume();this.adoptMusic(preparedMusic);
+        const page=new HomePage(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock);this.current={page,scope};this.page=page;page.resume();this.adoptMusic(preparedMusic);
         director.once(Director.EVENT_AFTER_DRAW,()=>{if(scope.active)console.info('[LittleSteps] Home first draw');});
     }
     private async present(next: Prepared<Page>,duration:number,retainLogin=false) {

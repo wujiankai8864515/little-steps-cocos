@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "scope": "M05.1 receiver transfer and same-state browser fixtures",
+  "environmentEvents": [
+    {
+      "trigger": "default sandbox local server bind",
+      "observed": "PermissionError operation not permitted",
+      "resolution": "authorized require_escalated local-loopback server, no security warning bypass"
+    },
+    {
+      "trigger": "viewport resize while Godot already rendering at 1280x720",
+      "observed": "transient previous render aspect",
+      "resolution": "reload in declared actual 405x720 viewport before any comparison capture"
+    }
+  ],
+  "nativeBuildDiagnostic": {
+    "observed": "build-script worker SIGTERM debug entry retained in Creator logs",
+    "conclusion": "both complete processes exited with documented success 36 and actual browser shader renders/first draw observed; no runtime error or warning"
+  },
+  "retainedCandidates": [
+    "home-lighting-v1",
+    "home-lighting-night-v1",
+    "godot-reference-noon-v1",
+    "godot-reference-night-v1"
+  ],
+  "fullParity": "pending; comparison images intentionally retain all visible incomplete areas"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "status": "formula transfer; GPU comparison pending",
+  "sources": {
+    "shaders/window_field.gdshaderinc": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+    "shaders/outdoor_window.gdshaderinc": "cfb69ca48f6b87c960521eef9070720faabe2adc6a5f172cefb1a518259f8970",
+    "shared_room_lighting/pane_geometry.gdshaderinc": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+    "shared_room_lighting/outdoor_scene.gdshaderinc": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+    "shared_room_lighting/thin_glass.gdshaderinc": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71",
+    "shaders/receiver.gdshader": "238e3b4ecb2bd8c2a796a0f18d1c234cad8d6332596b29badd39823435b9540a",
+    "shaders/outdoor_window_extended.gdshaderinc": "4f93af543431e5771f199721cb8e0e043aefc9e89af308dd5595c53c9d6cafa0",
+    "shaders/bleed_receiver.gdshader": "a55c804d934acfb3769d7b6c75017a214ffba6ba05a86f2375f79da0c44b200e",
+    "shaders/bed_receiver.gdshader": "d0c06363b116afa5327a063e5a6b41582c8fcbefeb35fae6a29e81d75db19c1b",
+    "shared_room_lighting/window_beam_profile.gdshaderinc": "b51ccba109864c553883979c586e1fca92e55610ef63e8610fd553c29f77e6a6",
+    "shaders/light_shafts.gdshader": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
+    "shared_room_lighting/lighting_snapshot.gd": "0474847a22736db7e0426fd8318634554bdf2239c49c6c3a70fc212d3a6a2101",
+    "home/room_props_controller.gd": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83",
+    "scripts/approved_lighting_v3.gd": "1918b937b6c80b65284f1235406fcabd57ccec9a67e062f6bc1f42b3302ced7a"
+  },
+  "outputs": [
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-receiver.effect",
+      "sha256": "8df34cb8a33b7cb24805db9a981f071467b0edd4c899e33d96d077d1b0fb8015"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bleed.effect",
+      "sha256": "430497018093b1fbd3972ead3788089f97a6f1314b3b15e5b44a1b656e91d9fd"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bed.effect",
+      "sha256": "28192b8d212ad6bf633d79fda83307cac992837b7146fbff0d37839f49dd2995"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-shafts.effect",
+      "sha256": "0cdf75819759f46bec9ed3eb8430b31c74858234ffbd855ad1c87ca3934a6132"
+    }
+  ],
+  "godotCanvasReference": {
+    "url": "https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/drivers/gles3/shaders/canvas.glsl",
+    "gitBlob": "37d851a3c00336b254b17d3c41b9e84539ce5ef4",
+    "exactPublished4_5_2CommitVerified": true
+  },
+  "limits": [
+    "native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D",
+    "face and prop deformation shader variants pending",
+    "all alpha-grounded projections and independent plants pending",
+    "same-state Godot/Cocos screenshots and WeChat true-device acceptance pending"
+  ]
+}

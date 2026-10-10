@@ -8,6 +8,7 @@ import { deformPart, SoftPose } from './SoftGeometry';
 // Source math stays in downward coordinates; only the Cocos submission flips y.
 export class XiaoyuRig {
     readonly root: Node;
+    readonly receivers:Array<{node:Node;sprite:Sprite;spec:any}>=[];
     private nodes = new Map<string, Node>();
     private meshes: Array<{resource: string; node: Node; mesh: any; sprite: any}> = [];
     private animation: any;
@@ -38,6 +39,7 @@ export class XiaoyuRig {
                 const rect = frame.rect.clone(); rect.x = region[0] - spec.content[0]; rect.y = region[1] - spec.content[1]; rect.width = region[2]; rect.height = region[3]; frame.rect = rect;
                 node.getComponent(UITransform).setContentSize(region[2], region[3]);
                 const sprite = node.addComponent(Sprite); sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = frame;
+                this.receivers.push({node,sprite,spec});
             } else {
                 const spec = assets.art(resource), bounds = spec.opaque;
                 const rect = [Math.max(0, bounds[0] - 3), Math.max(0, bounds[1] - 3), Math.min(spec.size[0], bounds[2] + 3), Math.min(spec.size[1], bounds[3] + 3)];
@@ -46,6 +48,7 @@ export class XiaoyuRig {
                 const sprite = node.addComponent(meshSprite()); sprite.sizeMode = Sprite.SizeMode.CUSTOM;
                 sprite.configure(mesh, spec.size, spec.content); sprite.spriteFrame = assets.frame(resource, scope);
                 this.meshes.push({resource, node, mesh, sprite});
+                this.receivers.push({node,sprite,spec});
             }
         }
         // Godot Tail has z_index -1 even though the authored body comes afterward.
