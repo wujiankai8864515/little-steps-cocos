@@ -10,6 +10,7 @@ function installed(): any {
 export const core: any = {
     get Math2D() { return installed().Math2D; },
     get ResourceGate() { return installed().ResourceGate; },
+    get SwingFeedback() { return installed().SwingFeedback; },
     createGrid: (...args: any[]) => installed().createGrid(...args),
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),

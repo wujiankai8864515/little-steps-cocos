@@ -5,7 +5,7 @@ import { HomeClock } from './HomeClock';
 import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
-export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow'];
+export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit'];
 type Receiver={material:Material;kind:string;surface:number};
 export class HomeLighting {
     private receivers:Receiver[]=[];

@@ -43,6 +43,19 @@ function paperBubbleContour(card, tip, above) {
     curve([1,h*.19],[10,9],[29,6]);
     return points;
 }
+class SwingFeedback {
+    constructor() {this.angle=-.026;this.velocity=0;this.clock=0;this.pressTime=1;this.scale=1;}
+    press() {this.pressTime=0;this.velocity+=.12;this.scale=.955;}
+    release() {this.pressTime=Math.max(this.pressTime,.075);}
+    advance(delta) {
+        if(!Number.isFinite(delta))return;
+        this.pressTime=Math.min(1,this.pressTime+Math.max(delta,0));
+        const phase=this.pressTime/.32;
+        this.scale=this.pressTime<.32?1-.045*Math.cos(phase*Math.PI*1.4)*Math.exp(-phase*4):1;
+        let remaining=Math2D.clamp(delta,0,.1);
+        while(remaining>0){const step=Math.min(remaining,.016);this.clock+=step;const breeze=Math.sin(this.clock*.8)*.009;this.velocity+=(-18*(this.angle-breeze)-4.5*this.velocity)*step;this.angle=Math2D.clamp(this.angle+this.velocity*step,-.045,.045);remaining-=step;}
+    }
+}
 function registerUI(cc) {
     const node = (parent, name, rect) => {
         const n = new cc.Node(name); parent.addChild(n); n.setPosition(rect[0],-rect[1]);
@@ -56,6 +69,22 @@ function registerUI(cc) {
         g.fillColor = color(fill); g.fill();
         if (stroke) { g.strokeColor = color(stroke); g.lineWidth = width; g.stroke(); }
     };
+    function pointer(target, callbacks, enabled = () => true) {
+        let captured=-1;
+        const point=event=>{const p=event.getUILocation(),local=target.getComponent(cc.UITransform).convertToNodeSpaceAR(new cc.Vec3(p.x,p.y,0));return [local.x,-local.y];};
+        const cancel=()=>{if(captured===-1)return;captured=-1;if(callbacks.cancel)callbacks.cancel();};
+        const start=event=>{
+            if(captured!==-1||!enabled())return;
+            const at=point(event),ui=target.getComponent(cc.UITransform);
+            if(at[0]<0||at[1]<0||at[0]>=ui.width||at[1]>=ui.height)return;
+            captured=event.getID();event.propagationStopped=true;if(callbacks.down)callbacks.down(at,captured);
+        };
+        const move=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}if(callbacks.move)callbacks.move(point(event),captured);};
+        const end=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;if(!enabled()){cancel();return;}const id=captured;captured=-1;if(callbacks.up)callbacks.up(point(event),id);};
+        const cancelled=event=>{if(event.getID()!==captured)return;event.propagationStopped=true;cancel();};
+        target.on(cc.Node.EventType.TOUCH_START,start);target.on(cc.Node.EventType.TOUCH_MOVE,move);target.on(cc.Node.EventType.TOUCH_END,end);target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
+        return {cancel,dispose(){cancel();target.off(cc.Node.EventType.TOUCH_START,start);target.off(cc.Node.EventType.TOUCH_MOVE,move);target.off(cc.Node.EventType.TOUCH_END,end);target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled);}};
+    }
     function action(target, callback, enabled = () => true) {
         let pointer = -1, armed = false, generation = 0;
         const inside = (event) => {
@@ -81,9 +110,10 @@ function registerUI(cc) {
                 if (intent === generation && target.isValid && target.activeInHierarchy && enabled()) callback();
             });
         };
+        const cancelled=event=>{if(event.getID()!==pointer)return;event.propagationStopped=true;cancel();};
         target.on(cc.Node.EventType.TOUCH_START,start); target.on(cc.Node.EventType.TOUCH_MOVE,move);
-        target.on(cc.Node.EventType.TOUCH_END,end); target.on(cc.Node.EventType.TOUCH_CANCEL,cancel);
-        return {cancel, dispose() { cancel(); target.off(cc.Node.EventType.TOUCH_START,start); target.off(cc.Node.EventType.TOUCH_MOVE,move); target.off(cc.Node.EventType.TOUCH_END,end); target.off(cc.Node.EventType.TOUCH_CANCEL,cancel); }};
+        target.on(cc.Node.EventType.TOUCH_END,end); target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
+        return {cancel, dispose() { cancel(); target.off(cc.Node.EventType.TOUCH_START,start); target.off(cc.Node.EventType.TOUCH_MOVE,move); target.off(cc.Node.EventType.TOUCH_END,end); target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled); }};
     }
     function fixedBubble(parent, font, message, card, anchor, options = {}) {
         const root = node(parent, 'SpeechBubble', [0,0,1,1]), shape = node(root,'PaperShape',[0,0,1,1]);
@@ -161,18 +191,12 @@ function registerUI(cc) {
         const pin=node(root,'Pin',[39*sx,4*sy,1,1]).addComponent(cc.Graphics);
         pin.fillColor=color([.488784314,.308705882,.176862745,1]);pin.circle(0,0,2.6);pin.fill();
         const hit=node(root,'FixedReturnHitArea',[rect[2]*.09,rect[3]*.23,rect[2]*.82,rect[3]*.76]);
-        let angle=-.026, velocity=0,clock=0,pressTime=1;
+        const swing=new SwingFeedback();
         const binding=action(hit,callback,enabled);
-        hit.on(cc.Node.EventType.TOUCH_START,()=>{if(enabled()){pressTime=0;velocity-=.16;}});
-        hit.on(cc.Node.EventType.TOUCH_END,()=>{pressTime=Math.max(pressTime,.075);});
-        return {root,cancel:binding.cancel,dispose:binding.dispose,advance(delta){
-            pressTime=Math.min(1,pressTime+Math.max(delta,0));
-            const phase=pressTime/.32,scale=pressTime<.32?1-.045*Math.cos(phase*Math.PI*1.4)*Math.exp(-phase*4):1;
-            let remaining=Math2D.clamp(delta,0,.1);
-            while(remaining>0){const step=Math.min(remaining,.016);clock+=step;const breeze=Math.sin(clock*.8)*.009;velocity+=(-18*(angle-breeze)-4.5*velocity)*step;angle=Math2D.clamp(angle+velocity*step,-.045,.045);remaining-=step;}
-            visual.angle=-angle*180/Math.PI;visual.setScale(sx*scale,sy*scale,1);
-        }};
+        const press=()=>{if(enabled())swing.press();},release=()=>swing.release();
+        hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
+        return {root,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
-    return Object.freeze({node, color, polygon, action, fixedBubble, hangingReturn});
+    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, hangingReturn});
 }
-Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI});
+Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback});

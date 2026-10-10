@@ -1,7 +1,7 @@
 import { Node, screen } from 'cc';
 import { GameAssets } from './Assets';
 import { audioTransport, renderSurfaces, Scope } from './Engine';
-import { AudioPort } from './AudioBehavior';
+import { AudioPort, HomeMusic } from './AudioBehavior';
 import { nodeAt, picture } from './Visual';
 import { XiaoyuRig } from './XiaoyuRig';
 import { HomeClock } from './HomeClock';
@@ -9,6 +9,9 @@ import { HomeLighting } from './HomeLighting';
 import { HomeShadows } from './HomeShadows';
 import { HomePlants } from './HomePlants';
 import { homeRenderPlan } from './HomeRenderPlan';
+import { HomeHUD } from './HomeHUD';
+import { SessionMerit } from './MeritFeedback';
+import { MeritArtView } from './MeritArtView';
 
 let roomSerial=0;
 
@@ -18,19 +21,22 @@ export class HomePage {
     readonly lighting:HomeLighting;
     readonly shadows:HomeShadows;
     readonly plants:HomePlants;
+    readonly hud:HomeHUD;
+    readonly merit=new SessionMerit();
+    private meritArt:MeritArtView;
     private active=false;
     private knock:AudioPort;
     readonly roomRoot:Node;
     private surface:any;
-    static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock()) {
+    static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
         const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width);
         const target=await assets.acquireTransient('HomeRoom-'+(++roomSerial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'HomeRoom'),texture=>texture.destroy(),scope);
-        const page=new HomePage(parent,assets,scope,height,gestureSeen,clock,target,plan);
+        const page=new HomePage(parent,assets,scope,height,gestureSeen,clock,target,plan,music);
         await scope.guard(page.surface.ready);
         console.info('[LittleSteps] Home room prepared '+JSON.stringify(page.surface.snapshot()));
         return page;
     }
-    private constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>) {
+    private constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic) {
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.root.active=false;
         scope.own(() => { this.root.active = false; this.root.destroy(); });
@@ -57,7 +63,11 @@ export class HomePage {
         this.plants.roots.forEach(layer=>layers.push(layer));
         this.knock=audioTransport().player(this.root,scope,'WoodKnock',(event:string,state:any)=>console.info('[LittleSteps] knock audio '+event+' '+JSON.stringify(state)));
         this.knock.gain(Math.pow(10,-8/20));
-        this.rig.onContact=()=>{if(!this.active||!gestureSeen())return;this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();};
+        this.meritArt=new MeritArtView(this.roomRoot,assets,scope);
+        this.hud=new HomeHUD(this.root,assets,scope,height,music);
+        this.hud.onOpen=()=>{this.rig.behavior.resetPose();this.rig.behavior.director.resumeAfterPlayer();this.rig.poseAt(0);this.knock.stop();};
+        this.rig.onContact=()=>{if(!this.active)return;if(this.merit.award(this.rig.behavior.contacts)){this.hud.merit.setValue(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
+        layers.push({z:100,order:1003,node:this.meritArt.root});
         layers.push({z: 12, order: 1000, node: this.rig.root});
         layers.push({z:-40,order:1001,node:this.lighting.shafts()},{z:-39,order:1002,node:this.lighting.dustNode()});
         this.shadows.layers.forEach(layer=>layers.push(layer));
@@ -68,7 +78,7 @@ export class HomePage {
         console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
-    resume() {this.active=true;this.surface.setActive(true);}
-    pause() {this.active=false;this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { this.rig.advance(delta,this.clock.nightProgress()>=0);this.plants.advance(delta);this.lighting.update();this.shadows.update();this.plants.updateShadows(); }
+    resume() {this.active=true;this.surface.setActive(true);this.hud.setActive(true);}
+    pause() {this.active=false;this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    advance(delta: number) { this.rig.advance(delta,this.clock.nightProgress()>=0);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot());this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();this.shadows.update();this.plants.updateShadows(); }
 }

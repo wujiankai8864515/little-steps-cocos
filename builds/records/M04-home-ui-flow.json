@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "id": "M04.5-home-header-merit-music",
+  "status": "partial_browser_observed_complete_Home_and_full_acceptance_pending",
+  "originalSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "publishedReferenceCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "publishedToLatestRelevantGameSources": "five game sources have no Git diff; original repository remains clean",
+  "sources": [
+    {
+      "path": "games/travel_woodfish/project/home/header_tag.gd",
+      "sha256": "fe374ca9982aa6ab6bd462f8e331876ae2037caa3a2f577e7bf33a147a35a549"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/audio/music_credits.gd",
+      "sha256": "e66ea42924d721043d8e44e5bf22ae8df6ea79a0f931f9e3e67ec9f23060b5ce"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/feedback/merit_amount_art.gd",
+      "sha256": "4b34185a63df8ce737d42c0b6c7b57d904b2724ce46e9aa52c111d5ceb9bdc35"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_world.tscn",
+      "sha256": "1ebd5056ef7f68614d5b20738f09cccf7712c898e7b6af859dda5f2458581e17"
+    },
+    {
+      "path": "framework/addons/travel_core/ui/hanging_return.gd",
+      "sha256": "968b9d4a993485b6ae4eedeef76b750f4be56cada7a59175409f33ab73a2d7c6"
+    }
+  ],
+  "officialTheme": {
+    "commit": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "path": "scene/theme/default_theme.cpp",
+    "url": "https://api.github.com/repos/godotengine/godot/git/blobs/96f066dcf68c7ece7be2b1f9499049c8a5aa3578",
+    "blob": "96f066dcf68c7ece7be2b1f9499049c8a5aa3578",
+    "sha256": "6a5b6d801edffa90009811fe7e495bc1e1587d65acc083caa4d5c5c0e8b36443"
+  },
+  "implementation": {
+    "framework": "generic one-pointer binding, scoped deferred button actions and source SwingFeedback; readonly JavaScript plugin",
+    "game": "fixed header hit rectangles and paper rendering; 9px entry cancellation and 0.28s bounce; exact credit text, safe-area modal, scroll and music control; unique contact merit, approved bitmap layout and warm gold shader",
+    "reward": "monotonic contact serial, 1.25s lifetime, source fade and 45px/s rise; fixed 18 Sprite slots and 13 source atlas frames, no allocation per automatic strike",
+    "session": "counter begins at zero per Home session, matching original; no invented persisted currency",
+    "music": "modal does not stop the Home clock; interaction reset returns character to original ambient priority/rest; close removes button captures"
+  },
+  "checks": {
+    "behaviorTests": 50,
+    "newTests": 7,
+    "testEvidence": "builds/reviews/M04-home-ui-tests-v1.log",
+    "typeScriptNoEmit": "passed on final implementation",
+    "diffCheck": "passed",
+    "sourceIntegrity": "builds/reviews/M04-home-ui-source-integrity.json",
+    "editorBaselineUnchangedFiles": 15,
+    "sceneUUID": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa",
+    "bootUUID": "8dacabd2-f20d-42ab-aa32-8ffb576527d7",
+    "pluginSHA256": "7ef2d04e32c68ed5c9dca6b0793747fab5c8751e7de7177cec63652452c36fa8",
+    "pluginModes": [
+      "0444",
+      "0555"
+    ]
+  },
+  "browser": {
+    "viewport": [
+      405,
+      720
+    ],
+    "noonCandidate": "home-ui-noon-v2",
+    "noonFixtureOverrides": 5,
+    "finalNormalCandidate": "home-ui-entry-v2",
+    "normalFixtureOverrides": 0,
+    "allNormalSnapshotSourceFilesMatchBeforeImporter": 449,
+    "creatorMetadataOnlyChanges": 58,
+    "scopedWarningsOrErrors": 0,
+    "creditsActionsObserved": [
+      "settings click opens",
+      "music off pauses both actual audio players",
+      "music on resumes both players",
+      "body scroll exposes final license URL",
+      "Escape dismisses",
+      "reopen resets body to top",
+      "hanging return dismisses",
+      "settings pointer moves 21 physical pixels then releases: no modal",
+      "click after cancellation opens again"
+    ],
+    "audioOffObservation": {
+      "timestamp": "2026-10-10T21:33:07.617Z",
+      "enabled": false,
+      "canPlay": false,
+      "pauseWrites": 2,
+      "playerActualStarts": [
+        1,
+        1
+      ],
+      "playerWanted": [
+        "paused",
+        "paused"
+      ]
+    },
+    "audioOnObservation": {
+      "timestamp": "2026-10-10T21:33:20.232Z",
+      "enabled": true,
+      "canPlay": true,
+      "resumeWrites": 2,
+      "playerWanted": [
+        "playing",
+        "playing"
+      ]
+    },
+    "finalNormalPageReadiness": [
+      {
+        "page": "LOGIN",
+        "time": "2026-10-10T21:38:34.720Z"
+      },
+      {
+        "page": "COMIC",
+        "time": "2026-10-10T21:39:06.453Z"
+      },
+      {
+        "page": "HOME",
+        "time": "2026-10-10T21:39:47.587Z"
+      }
+    ],
+    "observedNormalContacts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "observedNormalCounts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "matchingActualKnockStarts": 9,
+    "lastKnockPlayRequests": 9,
+    "actualVisibleGoldScreenshot": "builds/qa/cocos-home-ui-entry-v2.jpg",
+    "measurementCutoff": "2026-10-10T21:40:11.819Z",
+    "HomePrepareResourceGate": {
+      "timestamp": "2026-10-10T21:39:46.944Z",
+      "entries": 89,
+      "reservedBytes": 199719473,
+      "pending": 0,
+      "meaning": "Admission estimate at prepare, not measured runtime/device VRAM"
+    }
+  },
+  "screenshots": "builds/reviews/M04-home-ui-comparison-v2.json",
+  "retainedIssues": [
+    {
+      "trigger": "First credit panel used fractional font height 24.864",
+      "evidence": "builds/qa/cocos-music-credits-on-v1.jpg",
+      "effect": "Text lines compressed cumulatively relative to original screenshot",
+      "repair": "Use separately rounded ascent/descent 20+6=26 at source font size 21; remove extra Creator canvas measurement padding from scroll extent",
+      "validation": "Rebuilt v2 and actual top/bottom credit screenshots; numeric residual difference remains; font raster acceptance pending",
+      "bodyMeanAbsoluteRGBBeforeAfterSameOriginal": [
+        16.45389522378385,
+        7.91294675741772
+      ]
+    },
+    {
+      "trigger": "Viewport changed after initial wide-window startup",
+      "effect": "Existing captured Application size remained stale",
+      "evidence": "Runtime reported Home logical height 405 and target 1440x810 before fixed-viewport reload; same pending resize issue noted in M05",
+      "validation": "Fixed 405x720 viewport followed by intentional reload or navigation gives correct initial portrait composition",
+      "status": "runtime resize and additional sizes pending; not claimed fixed"
+    }
+  ],
+  "limits": [
+    "All 138 requirements remain final-acceptance pending.",
+    "Full visual parity, font raster/hinting and border coverage are pending; raw screenshot RGB differences are retained without corrective alignment.",
+    "Noon v2 precedes final removal of an unused Visual helper and unused Color import only; final zero-override entry v2 exactly matches all 449 implementation snapshot files before Creator import.",
+    "Manual fish input/long press/drag, vase/incense/backpack articulation, offers and all downstream pages are still pending.",
+    "Reward screenshot demonstrates actual draw, not native same-contact visual acceptance.",
+    "Home first-download 19,000,000-byte optimization, runtime resizing, save/lifecycle, formal remote-frozen WeChat build and real device performance remain pending."
+  ]
+}

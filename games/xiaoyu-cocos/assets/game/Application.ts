@@ -102,7 +102,7 @@ export class Application {
             await this.assets.acquireEffects(HOME_EFFECTS,scope);
             while(scope.active&&!this.active)await this.frame(scope);
             if(intent!==this.intent||!scope.active)return;
-            const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock);page.root.active=false;
+            const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);page.root.active=false;
             const preparedMusic=await this.prepareMusic(scope);
             if(intent!==this.intent||!scope.active)return;
             if(!await this.present({page,scope},.52))return;
@@ -115,7 +115,7 @@ export class Application {
         const scope=lifetime(this.scope);await this.assets.acquireGroups(['home'],scope);
         await this.assets.acquireEffects(HOME_EFFECTS,scope);
         const preparedMusic=await this.prepareMusic(scope);
-        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);
+        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);
         director.once(Director.EVENT_AFTER_DRAW,()=>{if(scope.active)console.info('[LittleSteps] Home first draw');});
     }
     private async present(next: Prepared<Page>,duration:number,retainLogin=false) {

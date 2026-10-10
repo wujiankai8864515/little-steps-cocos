@@ -6,6 +6,28 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+function fakePointerEngine(){
+ class Node {constructor(){this.isValid=true;this.activeInHierarchy=true;this.events=new Map();this.ui={width:100,height:80,convertToNodeSpaceAR:p=>p};}on(e,f){this.events.set(e,f);}off(e,f){if(this.events.get(e)===f)this.events.delete(e);}getComponent(){return this.ui;}emit(e,id,x=20,y=30){const event={getID:()=>id,getUILocation:()=>({x,y:-y})};const f=this.events.get(e);if(f)f(event);return event;}}
+ Node.EventType={TOUCH_START:'down',TOUCH_MOVE:'move',TOUCH_END:'up',TOUCH_CANCEL:'cancel'};
+ class Vec3 {constructor(x,y,z){Object.assign(this,{x,y,z});}}
+ const queue=[];return {Node,Vec3,UITransform:class{},Director:{EVENT_AFTER_UPDATE:'frame'},director:{once:(e,f)=>queue.push(f)},flush(){while(queue.length)queue.shift()();}};
+}
+test('Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal',()=>{
+ const cc=fakePointerEngine(),node=new cc.Node(),events=[];let enabled=true;
+ const binding=core.registerUI(cc).pointer(node,{down:(p,id)=>events.push(['down',id]),move:(p,id)=>events.push(['move',id]),up:(p,id)=>events.push(['up',id]),cancel:()=>events.push(['cancel'])},()=>enabled);
+ node.emit('down',1);node.emit('down',2);node.emit('move',2);node.emit('cancel',2);node.emit('up',2);node.emit('move',1,200,30);node.emit('up',1,200,30);assert.deepEqual(events,[['down',1],['move',1],['up',1]]);
+ node.emit('down',3);enabled=false;node.emit('move',3);assert.deepEqual(events.slice(-2),[['down',3],['cancel']]);enabled=true;node.emit('up',3);binding.dispose();assert.equal(node.events.size,0);node.emit('down',4);assert.equal(events.length,5);
+});
+test('Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal',()=>{
+ const cc=fakePointerEngine(),node=new cc.Node();let accepted=0;const binding=core.registerUI(cc).action(node,()=>accepted++);
+ node.emit('down',1);node.emit('cancel',2);node.emit('up',1);cc.flush();assert.equal(accepted,1);
+ node.emit('down',1);node.emit('move',1,101,30);node.emit('move',1);node.emit('up',1);cc.flush();assert.equal(accepted,1);
+ node.emit('down',1);node.emit('up',1);binding.dispose();cc.flush();assert.equal(accepted,1);assert.equal(node.events.size,0);
+});
+test('Suspended paper feedback remains bounded and uses the original positive press impulse',()=>{
+ const swing=new core.SwingFeedback();swing.press();assert.equal(swing.velocity,.12);assert.equal(swing.scale,.955);swing.release();assert.equal(swing.pressTime,.075);
+ for(let i=0;i<3000;i++){swing.advance(i%17?1/60:1);assert.ok(Math.abs(swing.angle)<=.045);assert.ok(swing.scale>=.955&&swing.scale<=1.01);}const previous=JSON.stringify(swing);swing.advance(NaN);assert.equal(JSON.stringify(swing),previous);assert.equal(swing.scale,1);
+});
 function fakeSurfaceEngine() {
     class Node {
         constructor(name) {this.name=name;this.layer=1<<30;this.children=[];this.events=new Map();this.active=true;this.destroyCount=0;}
