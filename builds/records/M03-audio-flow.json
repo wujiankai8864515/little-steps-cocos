@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "id": "M03.4",
+  "status": "audio_source_transfer_and_actual_browser_events_verified_full_parity_pending",
+  "implemented": [
+    "all six original audio assets admitted as AudioClip with float32 decoded-size estimates",
+    "two owned Comic slots, original puff/drink/joy and -8dB, one reveal one requested effect",
+    "Home music original two loops, -24dB ceiling, four second smoothstep mix and 0.8s entrance fade",
+    "real gesture gate, page/focus suspend wiring, late-start stop and clip cleanup",
+    "Home shared 30s/30s clock, 04:00 dawn, 20:00 dusk, source lamp schedule",
+    "music prepared in cancellable candidate ownership before Home commit, adopted into application scope on success"
+  ],
+  "observed": {
+    "candidate": "entry-audio-v3",
+    "comicActualStarts": 6,
+    "comicActualEnds": 6,
+    "comicRevealedOnce": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "musicActualStarts": 2,
+    "HomeKnockActualStarts": 12,
+    "HomeAdmissionBeforeComicRelease": {
+      "entries": 69,
+      "reservedBytes": 187456501,
+      "limitBytes": 268435456
+    },
+    "errors": 0,
+    "warnings": 0,
+    "ComicEscapeCleanup": "v2 both owned audio sources disposed after return"
+  },
+  "tests": {
+    "totalPassed": 20,
+    "newAudioAndClockContracts": 5,
+    "typecheck": "Cocos 3.8.8 passed"
+  },
+  "candidates": [
+    "entry-audio-v1",
+    "entry-audio-v2",
+    "entry-audio-v3"
+  ],
+  "offlineAudio": "M02-audio-decode.json",
+  "console": "builds/qa/cocos/entry-audio-v3-console.json",
+  "screenshots": [
+    "builds/qa/cocos/entry-audio-comic-v3.jpg",
+    "builds/qa/cocos/entry-audio-home-v3.jpg"
+  ],
+  "plugin": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "targetMode": "0444",
+    "sha256": "e2c7df6afdec0b3870ba27de52fc2da772fd58d8ba43b053f9f5ae6638830e2f"
+  },
+  "budgets": {
+    "HomeSourceFilesBytes": 28888091,
+    "HomeFirstDownloadLimit": 19000000,
+    "firstDownloadStatus": "not passed; source files are not actual network accounting; optimize without new lossy pixels"
+  },
+  "notAccepted": [
+    "subjective audible comparison and WeChat device audio",
+    "actual background/resume positions, interruptions during asynchronous resource/music preparation",
+    "full eight-polyphony effect port and complete Home behavior/reward/inputs",
+    "shared music across Darkroom/travel/photo/wardrobe and actual settings/credit UI",
+    "all dynamic lights/shadows and same-state full screenshot parity",
+    "first-download bound, formal WeChat package and device performance"
+  ]
+}

@@ -1,8 +1,8 @@
-import { Asset, AssetManager, assetManager, Font, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
+import { Asset, AssetManager, assetManager, AudioClip, Font, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
 import { core, Scope } from './Engine';
 
 export interface ArtSpec {
-    kind: 'texture' | 'font' | 'json'; bundle: string; path: string;
+    kind: 'texture' | 'font' | 'json' | 'audio'; bundle: string; path: string;
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
     fontMetrics?: {ascent:number;descent:number;height:number};
 }
@@ -44,14 +44,20 @@ export class GameAssets {
             const mask = this.catalog.groups[name].cocosAlpha;
             if (mask) specs.push({key: `alpha:${name}`, bytes: mask.decodedBytes, spec: {kind: 'json', bundle: name, path: 'alpha-masks'}});
         }
-        const leased = await this.gate.acquire(specs, async ({key, spec}) => {
+        const leased = await this.acquireSpecs(specs,scope);
+        console.info('[LittleSteps] page resources admitted '+JSON.stringify({groups:Array.from(groups),...this.gate.snapshot()}));
+        return leased;
+    }
+    acquireResources(keys:string[],scope:Scope) {
+        return this.acquireSpecs(keys.map(key=>{const spec=this.catalog.assets[key];if(!spec)throw new Error(`缺少资源：${key}`);return {key,bytes:spec.decodedBytes,spec};}),scope);
+    }
+    private acquireSpecs(specs:any[],scope:Scope) {
+        return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = await this.bundle(spec.bundle);
-            const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'font' ? Font : JsonAsset;
+            const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : JsonAsset;
             const asset = await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
             asset.addRef(); this.values.set(key, asset); return asset;
         }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) this.values.delete(key); asset.decRef(); }, scope);
-        console.info('[LittleSteps] page resources admitted', {groups: [...groups], ...this.gate.snapshot()});
-        return leased;
     }
     art(resource: string): ArtSpec {
         const spec = this.catalog.assets[resource];
@@ -70,6 +76,7 @@ export class GameAssets {
         if (!value) throw new Error(`字体尚未准入：${resource}`);
         return value;
     }
+    audio(resource:string) {const value=this.values.get(resource) as AudioClip;if(!value)throw new Error(`音频尚未准入：${resource}`);return value;}
     json(resource: string) { const value = this.values.get(resource) as JsonAsset; if (!value) throw new Error(`数据尚未准入：${resource}`); return value.json; }
     scene(resource: string) { const value = this.scenes.find(s => s.resource === resource); if (!value) throw new Error(`缺少源场景：${resource}`); return value; }
     alpha(resource: string, x: number, y: number) {

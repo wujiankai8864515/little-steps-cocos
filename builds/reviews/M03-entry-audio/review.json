@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "findings": [
+    {
+      "id": "M02-audio-tls",
+      "observed": "curl raw.githubusercontent.com failed hostname certificate verification",
+      "resolution": "verified-TLS api.github.com contents endpoint, base64 payload verified against Git blob SHA; no certificate bypass",
+      "source": "builds/tools/vendor/qoa-source.json"
+    },
+    {
+      "id": "M03-audio-Set",
+      "observed": "v1 Comic snapshot revealedOnce became [{}] because Creator loose transpilation emitted [].concat(Set)",
+      "effect": "diagnostic snapshot incorrect; Set.has/Add playback dedup unaffected; v1 actual six starts",
+      "resolution": "Array.from(Set) for game logs; frozen v2/v3 retained",
+      "evidence": "builds/qa/cocos/entry-audio-v1-console.json"
+    },
+    {
+      "id": "M03-audio-commit-order",
+      "observed": "code review: awaiting music initialization after Home commit would discard Comic retry surface on music error",
+      "resolution": "prepare owned music before transition commit, adopt after success, candidate owner cancels pending audio scope",
+      "evidence": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "runtimeFailureObserved": false
+    }
+  ],
+  "notAccepted": [
+    "full audio focus suspend/resume and actual interruption while loading",
+    "all Home interactions and shared music across other pages",
+    "first-download budget and final WeChat device playback"
+  ]
+}

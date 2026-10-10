@@ -6,6 +6,17 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+test('Owned audio stops a queued late start and releases its clip exactly once',()=>{
+    class Node {constructor(name){this.name=name;this.events=new Map();}addChild(n){n.parent=this;}addComponent(){return this.source={clip:null,playOnAwake:true,playing:false,volume:1,currentTime:0,plays:0,stops:0,pauses:0,play(){this.plays++;},stop(){this.playing=false;this.stops++;},pause(){this.playing=false;this.pauses++;}};}on(e,f){this.events.set(e,f);}off(e){this.events.delete(e);}destroy(){this.destroyed=true;}}
+    const cc={Node,AudioSource:{EventType:{STARTED:'start',ENDED:'end'}}},scope=new core.Lifetime(),parent=new Node('root'),events=[];
+    const transport=core.registerAudio(cc),port=transport.player(parent,scope,'effect',(event,state)=>events.push([event,state]));
+    // Retain the constructed child through the fake surface, not private engine state.
+    let child;const original=parent.addChild;parent.addChild=n=>{child=n;original.call(parent,n);};
+    const second=transport.player(parent,scope,'late',(event,state)=>events.push([event,state]));second.assign({name:'clip'});second.play();second.stop();
+    child.source.playing=true;child.events.get('start')();assert.equal(child.source.playing,false);assert.equal(second.snapshot().actualStarts,0);assert.equal(second.snapshot().lateStartsStopped,1);
+    second.play();child.source.playing=true;child.events.get('start')();assert.equal(second.snapshot().actualStarts,1);second.pause();second.pause();assert.equal(second.snapshot().pauses,1);
+    scope.dispose();assert.equal(child.source.clip,null);assert.equal(child.destroyed,true);assert.equal(second.play(),false);second.dispose();assert.equal(events.filter(e=>e[0]==='disposed').length,2);assert.equal(port.snapshot().disposed,true);
+});
 const near = (actual, expected) => {
     assert.equal(actual.length, expected.length);
     actual.forEach((v, i) => assert.ok(Math.abs(v - expected[i]) < 1e-5, `${v} != ${expected[i]}`));

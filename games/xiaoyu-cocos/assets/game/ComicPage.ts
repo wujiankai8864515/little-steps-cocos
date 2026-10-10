@@ -1,6 +1,7 @@
 import { Color, input, Input, KeyCode, Label, Node, UIOpacity } from 'cc';
 import { GameAssets } from './Assets';
-import { core, meshSprite, Scope, sharedUI } from './Engine';
+import { audioTransport, core, meshSprite, Scope, sharedUI } from './Engine';
+import { ComicAudio } from './AudioBehavior';
 import { OpeningClock } from './OpeningClock';
 import { label, nodeAt, panel } from './Visual';
 
@@ -19,7 +20,8 @@ export class ComicPage {
     private actions: any[] = [];
     private dots: Node[] = [];
     private caption: Node;
-    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number) {
+    private audio: ComicAudio;
+    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen=false) {
         this.root=nodeAt(parent,'ComicPage',0,0,720,height);
         panel(this.root,'Background',[0,0,720,height],[.89,.85,.77,1]);
         const margin=Math.min(24,720*.035),header=Math.min(114,height*.13),frameH=height-header-margin;
@@ -30,6 +32,10 @@ export class ComicPage {
         panel(paper,'PaperColor',[0,0,1024,1536],[251/255,245/255,229/255,1]);
         const story:any=assets.json('res://config/opening_story.json');
         if(story.status!=='approved' || story.panels.length!==4 || story.presentation.mode!=='single_paper_sequential_reveal')throw new Error('开场正式内容不完整');
+        const transport=audioTransport(),sounds:Record<string,any>={};
+        Object.keys(story.sound_effects).forEach(key=>sounds[key]=assets.audio(story.sound_effects[key]));
+        this.audio=new ComicAudio([0,1].map(i=>transport.player(this.root,scope,'ComicOneShot'+i,(event:string,state:any)=>console.info('[LittleSteps] comic audio '+event+' '+JSON.stringify(state)))),sounds,gestureSeen);
+        scope.own(()=>this.audio.dispose());
         const slots=[[88,228,280,104],[679,69,280,104],[72,678,326,142],[54,1140,352,144]],anchors=[[280,358],[766,199],[354,846],[350,1310]];
         const Mesh=meshSprite(),ui=sharedUI();
         story.panels.forEach((p:any,i:number)=>{
@@ -60,14 +66,14 @@ export class ComicPage {
         label(this.retryHit,assets,'RetryCaption','重试',[0,0],[150,56],24,[.25,.17,.11]);
         this.actions.push(ui.action(this.retryHit,()=>this.clock.retry(this.active),()=>this.active&&!!this.clock.error));
         const key=(event:any)=>{if(!this.active)return;if(event.keyCode===KeyCode.SPACE||event.keyCode===KeyCode.ENTER)this.clock.enter(true);else if(event.keyCode===KeyCode.ESCAPE&&this.clock.cancel())this.onCancel();};input.on(Input.EventType.KEY_DOWN,key);
-        this.clock.onPanel=i=>console.info('[LittleSteps] comic panel '+i+' revealed; audio integration pending');
+        this.clock.onPanel=i=>{this.audio.reveal(i);console.info('[LittleSteps] comic panel '+i+' revealed '+JSON.stringify(this.audio.snapshot()));};
         this.clock.onFinished=()=>this.onEnter();this.clock.onRetry=()=>this.onRetry();
         console.info('[LittleSteps] comic typography '+JSON.stringify(this.panels.map(p=>p.bubble.snapshot())));
         scope.own(()=>{input.off(Input.EventType.KEY_DOWN,key);this.actions.forEach(a=>a.dispose());this.root.active=false;this.root.destroy();});this.refresh();
     }
-    start() {this.active=true;this.clock.start();this.refresh();}
-    pause() {this.active=false;this.actions.forEach(a=>a.cancel());}
-    resume() {this.active=true;}
+    start() {this.active=true;this.audio.setActive(true);this.clock.start();this.refresh();}
+    pause() {this.active=false;this.audio.setActive(false);this.actions.forEach(a=>a.cancel());}
+    resume() {this.active=true;this.audio.setActive(true);}
     fail(reason: string) {this.clock.fail(reason);this.refresh();}
     advance(delta:number) {this.clock.tick(delta,this.active);this.refresh();}
     private refresh() {

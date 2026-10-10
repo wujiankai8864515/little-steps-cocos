@@ -1,13 +1,16 @@
 import { Node } from 'cc';
 import { GameAssets } from './Assets';
-import { Scope } from './Engine';
+import { audioTransport, Scope } from './Engine';
+import { AudioPort } from './AudioBehavior';
 import { nodeAt, picture } from './Visual';
 import { XiaoyuRig } from './XiaoyuRig';
 
 export class HomePage {
     readonly root: Node;
     readonly rig: XiaoyuRig;
-    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number) {
+    private active=false;
+    private knock:AudioPort;
+    constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen=()=>false) {
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         const scene = assets.scene('res://home/home_world.tscn');
         const resources = new Map(scene.sections.filter(s => s.kind === 'ext_resource').map(s => [s.id, s.path]));
@@ -21,10 +24,15 @@ export class HomePage {
             layers.push({z: section.properties.z_index || 0, order, node: item.root});
         });
         this.rig = new XiaoyuRig(this.root, assets, scope);
+        this.knock=audioTransport().player(this.root,scope,'WoodKnock',(event:string,state:any)=>console.info('[LittleSteps] knock audio '+event+' '+JSON.stringify(state)));
+        this.knock.gain(Math.pow(10,-8/20));
+        this.rig.onContact=()=>{if(!this.active||!gestureSeen())return;this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();};
         layers.push({z: 12, order: 1000, node: this.rig.root});
         layers.sort((a, b) => a.z - b.z || a.order - b.order).forEach((layer, index) => layer.node.setSiblingIndex(index));
         scope.own(() => { this.root.active = false; this.root.destroy(); });
         console.info('[LittleSteps] Home source composition ready', {status: 'candidate; lighting, props, interactions and acceptance pending'});
     }
+    resume() {this.active=true;}
+    pause() {this.active=false;this.knock.stop();}
     advance(delta: number) { this.rig.advance(delta); }
 }

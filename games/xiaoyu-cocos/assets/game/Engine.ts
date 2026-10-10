@@ -17,6 +17,7 @@ export const core: any = {
 };
 export const sharedUI = () => installed().registerUI(cc);
 export const pageRouter = (owner: Scope) => installed().createPageRouter(cc, owner);
+export const audioTransport = () => installed().registerAudio(cc);
 export const meshSprite = () => installed().registerCocos(cc) as new () => cc.Sprite & {
     configure(mesh: any, size: number[], content?: number[]): void;
     geometryChanged(): void;
