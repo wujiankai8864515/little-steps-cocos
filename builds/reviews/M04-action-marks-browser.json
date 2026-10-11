@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "item": "M04.16",
+  "observedAt": "2026-10-11T18:16:21.088263+00:00",
+  "candidate": "action-marks-v1",
+  "origin": "http://127.0.0.1:8788",
+  "platform": "Independent Chrome via supported CUA; Creator 3.8.8",
+  "scope": "Home tap glyph visible at native 720x1280; remaining glyph/route GPU verification pending. No numerical pixel comparison performed. Not complete first version.",
+  "fixture": "QA Boot fixes selected clock hour and adds visible arm/capture/status/route buttons. Events are produced by actual gameplay. Captured frame freezes simulation delta with Application.advance(0); game.totalTime still advances, so subsequent manual input while frozen is not a real-time animation acceptance test.",
+  "checkpoints": [
+    {
+      "at": "2026-10-11T18:12:28.011Z",
+      "case": "arm tap captured an already-live autonomous tap before the queued coordinate click",
+      "route": "HomePage",
+      "contacts": 4,
+      "playerSerial": 0,
+      "playerHits": 0,
+      "mark": {
+        "kind": "tap",
+        "age": 0.1165,
+        "faceSafe": true
+      },
+      "status": "autonomous_event_only_not_manual_input_acceptance"
+    },
+    {
+      "at": "2026-10-11T18:12:42.479Z",
+      "case": "actual coordinate click at [350,840] queued manual tap while QA capture was frozen",
+      "contacts": 5,
+      "playerSerial": 1,
+      "playerHits": 1,
+      "markAge": 0,
+      "status": "manual event bridge and one settlement observed; timing requires unfrozen recheck"
+    },
+    {
+      "at": "2026-10-11T18:12:42.708Z",
+      "case": "resume arm, capture after mark advance",
+      "route": "HomePage",
+      "hour": 12,
+      "contacts": 5,
+      "playerSerial": 1,
+      "playerHits": 1,
+      "mark": {
+        "kind": "tap",
+        "age": 0.048899999998509885,
+        "alpha": 0.9337342624103406,
+        "position": [
+          565.7329952370159,
+          778.7840011874019
+        ],
+        "faceSafe": true,
+        "impulseScale": 1.0969810894748555
+      },
+      "resources": {
+        "entries": 93,
+        "reservedBytes": 129784985,
+        "pending": 0
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-action-marks-home-tap.png",
+      "sha256": "93d06574af35da88b8fc4b8fd86f320956bafad0c7e7c2cad52970bf76ee9e73",
+      "origin": "Browser-generated PNG downloaded as action-marks-v1-tap-2.png; unchanged copy",
+      "visible": "Three tapered strike rays beside mallet; merit 5 and +1 feedback; original Home layout"
+    }
+  ],
+  "warningErrorLogAtInitialHome": [],
+  "interruption": "Blob downloadMedia unsupported; ordinary link click successfully downloaded PNG but download waiter timed out and CUA runtime reset. Reacquiring tab reported debugger not attached. Supported native Chrome selection then returned explicit current-URL restriction. Computer use stopped immediately; no alternate browser control attempted after restriction.",
+  "cleanup": "Local candidate HTTP server stopped. Browser tab closure and temporary viewport reset could not be confirmed after tool restriction.",
+  "pending": [
+    "All four glyphs in real running Home including automatic/manual tap, night doze, actual long-press lift and bowl drink.",
+    "Wardrobe tap/doze visibility and held/settling sibling order after input.",
+    "Photo retains original no-mark behavior; full route/interruption cleanup matrix.",
+    "Longscreen/shortscreen actual glyph coordinates and held actor projection.",
+    "Real device frame pacing and WeChat performance."
+  ]
+}

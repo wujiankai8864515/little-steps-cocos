@@ -7,7 +7,7 @@ import { HomeShadows } from './HomeShadows';
 import { XiaoyuRig } from './XiaoyuRig';
 import { PropId } from './HomePropInteraction';
 import { drinkBowl } from './DrinkMotion';
-import { DrinkMarks } from './DrinkMarks';
+import { ActionMarks } from './ActionMarks';
 
 export type RoomProp={node:Node;resource:string;p:any;spec:any;anchor:number[];footprint:number[]};
 type VisualProp={item:RoomProp;home:number[];offset:number[];position:number[];scale:number[];angle:number;depth:number;restDepth:number;ground:number;lift:number;carried:boolean;frame:Node;settle:{angle:number;scale:number[]}};
@@ -19,7 +19,7 @@ const groundDepth=(y:number)=>Math.round(y<951?5+7*(y-862)/89:y<1012?12+3*(y-951
 // Real source sprites and table attachments, with canonical coordinates retained
 // when the renderer moves the held artwork out of the room RenderTexture.
 export class HomeProps {
-    readonly marks:DrinkMarks;
+    readonly marks:ActionMarks;
     layerRevision=0;
     private visuals=new Map<PropId,VisualProp>();
     private members:Array<{node:Node;index:number}>=[];
@@ -27,7 +27,7 @@ export class HomeProps {
     private pickup:number[];
     private sipMarkSent=false;
     private drinkState:any=null;
-    constructor(private room:Node,private assets:GameAssets,scope:Scope,private items:RoomProp[],private layers:Array<{z:number;order:number;node:Node}>,private shadows:HomeShadows,private rig:XiaoyuRig,private incense:HomeIncense,private flowers:HomeFlowers,private fishGround:()=>number[],private presentation:(id:PropId,active:boolean)=>Node){
+    constructor(private room:Node,private assets:GameAssets,scope:Scope,private items:RoomProp[],private layers:Array<{z:number;order:number;node:Node}>,private shadows:HomeShadows,private rig:XiaoyuRig,private incense:HomeIncense,private flowers:HomeFlowers,private fishGround:()=>number[],private presentation:(id:PropId,active:boolean)=>Node,actorFrame:()=>Node=()=>room){
         for(const [name,id] of [['Doll','doll'],['Bowl','bowl'],['Altar','low_table']] as [string,PropId][]){
             const item=items.find(p=>p.node.name===name),home=item.anchor.slice(),node=item.node;
             const visual:VisualProp={item,home,offset:[home[0]-node.position.x,home[1]+node.position.y],position:[node.position.x,-node.position.y],scale:[node.scale.x,node.scale.y],angle:node.angle,depth:item.p.z_index,restDepth:item.p.z_index,ground:home[1],lift:0,carried:false,frame:room,settle:null};
@@ -35,7 +35,7 @@ export class HomeProps {
             shadows.bindRigid(node,{frame:()=>visual.frame,ground:()=>visual.ground,lift:()=>visual.lift,carried:()=>visual.carried,depth:()=>near(item.anchor,home)?item.p['metadata/shadow_z']:visual.restDepth-1});
         }
         shadows.bindTableFrame(this.visuals.get('low_table').item.node,()=>this.visuals.get('low_table').frame);
-        this.marks=new DrinkMarks(room,scope,()=>rig.faceBounds(room));
+        this.marks=new ActionMarks(room,assets,scope,()=>rig.faceBounds(actorFrame()));
     }
     home(id:PropId){return this.visuals.get(id).home.slice();}
     private canonical(node:Node,p:number[],frame:Node){const w=node.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(p[0],-p[1])),q=frame.getComponent(UITransform).convertToNodeSpaceAR(w);return [q.x,-q.y];}
@@ -68,7 +68,7 @@ export class HomeProps {
         const mouth=this.rig.mouthContact(this.room),c=Math.cos(pose.rotation),s=Math.sin(pose.rotation),rim=[254*b.scale.x,83*b.scale.y],sip=[mouth[0]-c*rim[0]+s*rim[1],mouth[1]-s*rim[0]-c*rim[1]],rest=[v.home[0]-v.offset[0],v.home[1]-v.offset[1]];
         const at=pose.lower>0?sip.map((value,i)=>value+(rest[i]-value)*pose.lower):this.pickup.map((value,i)=>value+(sip[i]-value)*pose.pickup);
         b.setPosition(at[0],-at[1]);v.carried=true;this.setDepth(v,32);const water=b.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(262,-174));this.rig.trackDrinkBowl([water.x,water.y],delta);
-        if(pose.emitMark&&!this.sipMarkSent){this.sipMarkSent=true;this.marks.emit([mouth[0]+44,mouth[1]+40]);}
+        if(pose.emitMark&&!this.sipMarkSent){this.sipMarkSent=true;this.marks.emit('drink',[mouth[0]+44,mouth[1]+40]);}
         const contact=this.canonical(b,[254,83],this.room);this.drinkState={age,progress:pose.progress,phase:pose.phase,mouth,rim:contact,rimGap:Math.hypot(mouth[0]-contact[0],mouth[1]-contact[1]),bowlPosition:at,rotation:pose.rotation,carried:true,sipMarkSent:this.sipMarkSent};
     }
     drinkStop(preserveFish:boolean){this.drinkState=null;this.restore('bowl');if(!preserveFish)this.resetFish();}

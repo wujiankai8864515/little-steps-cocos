@@ -2,7 +2,7 @@
 // use separate adapters; no engine or pointer-emulation dependencies here.
 export interface FishPort {
     hit(point:number[]):boolean;position():number[];bounds():number[];visibleRect():number[];validDrop(point:number[]):boolean;
-    suspend():void;resume():void;tap():void;beginLift(point:number[]):number[];lift(amount:number,delta:number,lag:number[]):void;grip():number[];
+    suspend():void;resume():void;tap():void;beginLift(point:number[]):number[];lift(amount:number,delta:number,lag:number[]):void;grip():number[];liftMark?(point:number[]):void;
     setAnchor(ground:number[],lift:number):void;present(active:boolean):void;land(impact:number):void;
     pulse(point:number[],accepted?:boolean):void;hold(point:number[],fraction:number):void;clear():void;
 }
@@ -36,7 +36,7 @@ export class FishInteraction {
     }
     advance(delta:number){
         if(!Number.isFinite(delta))return;const dt=clamp(delta,0,.1);this.elapsed+=dt;
-        if(this.state==='PRESSED'){this.held+=dt;if(this.eligible){this.port.hold(this.pointer,Math.min(this.held/.34,1)*.98);if(this.held>=.34){this.state='DRAGGING';this.port.present(true);this.port.hold(this.pointer,0);this.port.pulse(this.pointer);this.amount=0;this.lag=[0,0];this.maxLift=0;this.grab=this.port.beginLift(this.pointer);this.moveGrip();}}}
+        if(this.state==='PRESSED'){this.held+=dt;if(this.eligible){this.port.hold(this.pointer,Math.min(this.held/.34,1)*.98);if(this.held>=.34){this.state='DRAGGING';this.port.present(true);this.port.hold(this.pointer,0);this.port.pulse(this.pointer);this.amount=0;this.lag=[0,0];this.maxLift=0;this.grab=this.port.beginLift(this.pointer);this.moveGrip();this.port.liftMark?.(this.pointer);}}}
         else if(this.state==='DRAGGING'){this.amount=Math.min(1,this.amount+dt*4);this.applyLift(this.amount,dt);this.moveGrip();this.lag=this.lag.map(v=>v*Math.exp(-dt*5));}
         else if(this.state==='SETTLING'){this.settleTime+=dt;const t=Math.min(1,this.settleTime/.36),eased=t*t*(3-2*t);this.setAnchor(this.settleFrom.map((v,i)=>v+([350,951][i]-v)*eased),this.settleHeight*(1-eased));this.applyLift((1-eased)*this.amount,dt);if(t>=1){this.port.present(false);this.state='IDLE';this.setAnchor([350,951],0);this.dropEvaluations++;this.resume();if(this.maxLift>.5)this.port.land(clamp(this.maxLift/100,.3,1));}}
     }

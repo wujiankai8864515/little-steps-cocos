@@ -33,6 +33,7 @@ export class XiaoyuRig {
     private heldBones:Array<{node:Node;position:Vec3;scale:Vec3;angle:number}>=[];
     private headProfile:number[][]=null;
     onContact: () => void = () => {};
+    onActionMark:(kind:'tap'|'doze',pixel:number[],offset:number[])=>void=()=>{};onClearActionMarks=()=>{};
     constructor(parent: Node, private assets: GameAssets, private scope: Scope, position = [15, 615]) {
         this.root = nodeAt(parent, 'XiaoyuRig', position[0], position[1], 670, 402);
         this.nodes.set('.', this.root);
@@ -111,6 +112,7 @@ export class XiaoyuRig {
         this.poseAt(frame.poseTime);
         const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),fin=this.nodes.get('Skeleton2D/Ground/Shoulder/GripMallet/OriginalFinAndRigidMallet'),grip=this.nodes.get('Skeleton2D/Ground/Shoulder/GripMallet');
         const doze=this.behavior.director.state==='doze';
+        if(frame.dozeMark)this.onActionMark('doze',[470,77],[0,0]);
         // In the source, the anticipation adjustment precedes gaze sampling,
         // while the doze lowering follows the secondary bone offsets.
         if(!doze)grip.angle-=frame.gripRotation*180/Math.PI;
@@ -129,7 +131,7 @@ export class XiaoyuRig {
         this.deform(this.softPose());
         this.setMouthOpen(frame.mouth);this.gazeBaseline=this.behavior.faceGaze(gaze,frame.step,frame.closed);this.setEyeOffsets(this.gazeBaseline);
         if(frame.transition)(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original ambient transition '+JSON.stringify(this.behavior.snapshot()));
-        if(frame.contact){(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original rig contact '+JSON.stringify({poseTime:frame.poseTime,...this.behavior.snapshot()}));this.onContact();}
+        if(frame.contact){(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original rig contact '+JSON.stringify({poseTime:frame.poseTime,...this.behavior.snapshot()}));this.onContact();this.onActionMark('tap',[500,181],[50,-18]);}
     }
     hitAt(worldPoint: number[]) {
         for (const name of ['OriginalFinAndRigidMallet','OriginalBody','OriginalTail']) {
@@ -142,7 +144,7 @@ export class XiaoyuRig {
         return null;
     }
     snapshot() {return {...this.behavior.snapshot(),suspended:this.suspended,dragGaze:this.dragGaze.snapshot(),pupilOffsets:this.pupilOffsets(),heldPart:this.grabbed?.name,rendering:{parent:this.root.parent?.name,layer:this.root.layer,position:{x:this.root.position.x,y:this.root.position.y,z:this.root.position.z},world:{x:this.root.worldPosition.x,y:this.root.worldPosition.y,z:this.root.worldPosition.z},parts:this.meshes.map(p=>({name:p.node.name,layer:p.node.layer,enabled:p.sprite.enabled,active:p.node.activeInHierarchy,position:{x:p.node.worldPosition.x,y:p.node.worldPosition.y,z:p.node.worldPosition.z}}))},lift:{amount:this.liftMotion.amount,elapsed:this.liftMotion.elapsed,lag:this.liftMotion.lag,height:this.liftHeight,grab:this.grabSource,pixel:this.grabPixel},landing:{active:this.landing.active,position:this.landing.position,velocity:this.landing.velocity,age:this.landing.age}};}
-    focusLost(){this.behavior.focusLost();this.dragGaze.setTarget('',[0,0]);}
+    focusLost(){this.onClearActionMarks();this.behavior.focusLost();this.dragGaze.setTarget('',[0,0]);}
     setActiveDragFocus(id:string,at:number[],frame:Node){this.dragGaze.setTarget(id,at);if(this.dragGaze.activeId)this.dragFocusFrame=frame;}
     advanceDragGaze(delta:number){
         const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody');
@@ -177,15 +179,16 @@ export class XiaoyuRig {
         const shoulder=this.nodes.get('Skeleton2D/Ground/Shoulder');shoulder.setPosition(shoulder.position.x+pose.shoulder[0],shoulder.position.y-pose.shoulder[1]);const raw=[-offsets[0]*95,offsets[2]*55],length=Math.hypot(...raw);this.jelly=raw.map(v=>length>5?v/length*5:v);const expression=this.nodes.get('Skeleton2D/Ground/Body/Expression');expression.setPosition(this.jelly[0],-this.jelly[1]);expression.active=pose.closed;this.pupils.forEach(p=>p.node.active=!pose.closed);this.gazeBaseline=pose.closed?[0,0]:pose.gaze;this.setMouthOpen(pose.mouth);this.setEyeOffsets(this.gazeBaseline);this.deform(this.softPose());
     }
     mouthContact(relativeTo:Node){const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),world=body.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(374+this.jelly[0],-183-this.jelly[1]-this.mouthValue*.82)),p=relativeTo.getComponent(UITransform).convertToNodeSpaceAR(world);return [p.x,-p.y];}
+    actionMarkPoint(pixel:number[],relativeTo:Node){const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),w=body.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(pixel[0],-pixel[1])),p=relativeTo.getComponent(UITransform).convertToNodeSpaceAR(w);return [p.x,-p.y];}
     faceBounds(relativeTo:Node){const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),points=[[255,115],[470,115],[470,220],[255,220]].map(p=>{const w=body.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(p[0],-p[1])),q=relativeTo.getComponent(UITransform).convertToNodeSpaceAR(w);return [q.x,-q.y];});const x=Math.min(...points.map(p=>p[0])),y=Math.min(...points.map(p=>p[1]));return [x,y,Math.max(...points.map(p=>p[0]))-x,Math.max(...points.map(p=>p[1]))-y];}
     trackDrinkBowl(world:number[],delta:number){if(!this.suspended||!world.every(Number.isFinite))return;const body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),at=body.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1])),direction=[at.x-365-this.jelly[0],-at.y-177-this.jelly[1]],length=Math.hypot(...direction),target=direction.map(v=>length>0?v/length*Math.min(length/22,2.6):0),gain=1-Math.exp(-17*Math.max(0,Math.min(.1,delta)));this.behavior.gaze=this.behavior.gaze.map((v,i)=>v+(target[i]-v)*gain);const expression=this.nodes.get('Skeleton2D/Ground/Body/Expression');this.gazeBaseline=expression.active?[0,0]:this.behavior.gaze;this.setEyeOffsets(this.gazeBaseline);}
     backpackNodes(){return {body:this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),tail:this.nodes.get('Skeleton2D/Ground/Body/Tail/OriginalTail'),tailBone:this.nodes.get('Skeleton2D/Ground/Body/Tail'),shoulder:this.nodes.get('Skeleton2D/Ground/Shoulder'),grip:this.nodes.get('Skeleton2D/Ground/Shoulder/GripMallet')};}
     coversBackpack(world:number[],depth:number){if(depth>12)return false;for(const part of this.meshes){if(!part.node.activeInHierarchy||!part.sprite.enabled||part.node.name.indexOf('Eye')>=0)continue;let actual=0,node=part.node;while(node!==this.root){const source=this.sourceDepth.get(node);actual+=source?.z||0;if(source?.relative===false)break;node=node.parent;}if(node===this.root)actual+=12;if(actual<depth)continue;const p=part.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1]));if(this.assets.contains(part.resource,p.x,-p.y))return true;}return false;}
     get softActive(){return this.liftMotion.amount>1e-5||this.landing.active;}
     resetSecondary(){this.behavior.resetPose();this.gazeBaseline=[0,0];this.jelly=[0,0];this.liftMotion.reset();this.landing.reset();this.poseAt(0);const expression=this.nodes.get('Skeleton2D/Ground/Body/Expression');expression.active=false;this.pupils.forEach(p=>p.node.active=true);this.setMouthOpen(0);this.setEyeOffsets([0,0]);this.deform(this.softPose());}
-    suspend(){if(!this.suspended)this.suspended=true;}
+    suspend(){if(!this.suspended){this.suspended=true;this.onClearActionMarks();}}
     resume(){if(!this.suspended)return;this.resetSecondary();this.behavior.director.resumeAfterPlayer();this.suspended=false;}
-    tap(){if(this.suspended)return;this.resetSecondary();this.behavior.requestPlayerTap(game.totalTime/1000);}
+    tap(){if(this.suspended)return;this.onClearActionMarks();this.resetSecondary();this.behavior.requestPlayerTap(game.totalTime/1000);}
     beginLift(worldPoint:number[]) {
         const picked=this.hitAt(worldPoint),body=this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),tail=this.nodes.get('Skeleton2D/Ground/Body/Tail');
         this.grabbed=this.meshes.find(p=>p.node.name===(picked?.part||'OriginalBody')).node;

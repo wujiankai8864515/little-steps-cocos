@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-11T18:16:21.088263+00:00",
+  "failures": [
+    {
+      "id": "M04-AMF01",
+      "evidence": "builds/reviews/M04-action-marks-tests-v1.log",
+      "trigger": "Initial new targeted tests: two failures.",
+      "rootCause": "A face rectangle persists across a rejected emit exactly as Godot does; fixture did not clear it before independent moving-face case. Rig test loader omitted real SoftGeometry/Engine math.",
+      "resolution": "Isolate independent case with clear; load production geometry/math; add actual manual-contact and lift-start tests.",
+      "status": "fixed_13_targeted_and_264_full_tests_pass"
+    },
+    {
+      "id": "M04-AMF02",
+      "evidence": "builds/reviews/M04-action-marks-types-v2.log",
+      "trigger": "Raw project tsc also checks bundled Creator engine declaration files.",
+      "rootCause": "Creator declaration dependencies include unresolved GPU/TypedArray/editor symbols. No game source errors were reported.",
+      "resolution": "Game source check with --skipLibCheck passes; does not claim engine .d.ts validation.",
+      "verification": "builds/reviews/M04-action-marks-types-v3.log",
+      "status": "game_source_pass_engine_declarations_excluded"
+    },
+    {
+      "id": "M04-AMF03",
+      "trigger": "Browser file export helper rejects blob URLs; ordinary download event waiter timed out despite successful PNG save.",
+      "resolution": "Preserved downloaded PNG; no repeated download waiter.",
+      "status": "evidence_saved_tool_limitation"
+    },
+    {
+      "id": "M04-AMF04",
+      "trigger": "After runtime reset, debugger attachment errors; native Chrome entry point then explicitly stopped Computer Use on current URL.",
+      "rootCause": "Unknown tool session restriction; no evidence of a Codex crash.",
+      "resolution": "Stopped Computer Use; saved evidence and stopped local server. No bypass attempted.",
+      "status": "remaining_browser_cases_pending"
+    },
+    {
+      "id": "M04-AMF05",
+      "trigger": "Arming capture during autonomous tap captures existing mark; manual click while frozen uses advancing game.totalTime.",
+      "resolution": "Evidence labels autonomous and paused-manual cases separately. Future real-time manual test must run unfrozen and arm on newly produced events.",
+      "status": "candidate_limitation_no_shipping_change"
+    }
+  ]
+}

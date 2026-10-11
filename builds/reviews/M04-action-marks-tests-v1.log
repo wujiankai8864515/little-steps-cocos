@@ -1,0 +1,48 @@
+✔ 52 unmodified Godot samples match mark admission, face relocation, glyphs, alpha, lifetime and tap motion (2.113041ms)
+✔ All kinds share a cap of three, per-kind cooldown/duplication and event deduplication across expiry (0.146708ms)
+✖ Invalid points/rectangles are rejected; moving faces suppress marks, long frames expire without resurrection (1.828709ms)
+✔ Tap ink has six bounded twelve-point contours and keeps the native orthogonal direction (0.654458ms)
+✖ Doze marks come from the original .45 then 3.4 second cadence; suspension and focus clear pending ink (0.70125ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 296.890875
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/action-marks.test.cjs:13:1
+✖ Invalid points/rectangles are rejected; moving faces suppress marks, long frames expire without resurrection (1.828709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/action-marks.test.cjs:14:344)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/action-marks.test.cjs:24:1
+✖ Doze marks come from the original .45 then 3.4 second cadence; suspension and focus clear pending ink (0.70125ms)
+  TypeError: (0 , SoftGeometry_1.landingOffset) is not a function
+      at XiaoyuRig.advance (evalmachine.<anonymous>:173:55)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/action-marks.test.cjs:25:142)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

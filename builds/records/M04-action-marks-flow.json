@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "item": "M04.16",
+  "updatedAt": "2026-10-11T18:16:21.088263+00:00",
+  "status": "shared_action_marks_source_and_native_rules_verified_home_tap_browser_visible_other_glyphs_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sourceFiles": [
+    {
+      "path": "games/travel_woodfish/project/home/action_marks.gd",
+      "sha256": "732441172deb491cd57597099a1053705483772fd8e071f4979a8c37d414ff1d"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_page.gd",
+      "sha256": "4904c0dfaf4233272d257bb1b7522fdb413558dc73eccd2867b01958fab5fae5"
+    }
+  ],
+  "implementation": [
+    "Original tap/drink/doze/lift specs, glyph paths, brush taper and movement, face exclusion, max-three capacity, cooldown and event deduplication.",
+    "Shared reusable room-owned renderer replaces drink-only renderer; no per-event asset/node creation.",
+    "Actual rig contact/doze events wired in Home and Wardrobe; Home long-press controller emits lift once; Wardrobe follows native tap/doze behavior without inventing a lift event.",
+    "Clear marks on focus loss, suspension, new tap and page cleanup; marks age before new frame events.",
+    "Canonical face bounds when Home actor is presented outside room render target; Wardrobe resting rig returns below mark layer."
+  ],
+  "nativeOracle": "builds/records/M04-action-marks-native.json",
+  "tests": {
+    "targeted": "builds/reviews/M04-action-marks-tests-v2.log",
+    "targetedPass": 13,
+    "regression": "builds/reviews/M04-action-marks-regression-v1.log",
+    "pass": 264,
+    "fail": 0,
+    "sourceTypecheck": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos (exit 0); builds/reviews/M04-action-marks-types-v3.log"
+  },
+  "candidate": "builds/records/candidates/action-marks-v1.json",
+  "frozenAudit": "builds/reviews/M04-action-marks-v1-frozen-audit.json",
+  "browser": "builds/reviews/M04-action-marks-browser.json",
+  "failures": "builds/reviews/M04-action-marks-failures.json",
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-action-marks-home-tap.png",
+      "sha256": "93d06574af35da88b8fc4b8fd86f320956bafad0c7e7c2cad52970bf76ee9e73",
+      "origin": "Browser-generated PNG downloaded as action-marks-v1-tap-2.png; unchanged copy",
+      "visible": "Three tapered strike rays beside mallet; merit 5 and +1 feedback; original Home layout"
+    }
+  ],
+  "scopeRule": "All functions/navigation/elements/layout/interactions remain 1:1 mandatory. Only numerical pixel diffs deferred. Not full first-version acceptance.",
+  "pending": [
+    "All four glyphs in real running Home including automatic/manual tap, night doze, actual long-press lift and bowl drink.",
+    "Wardrobe tap/doze visibility and held/settling sibling order after input.",
+    "Photo retains original no-mark behavior; full route/interruption cleanup matrix.",
+    "Longscreen/shortscreen actual glyph coordinates and held actor projection.",
+    "Real device frame pacing and WeChat performance."
+  ]
+}
