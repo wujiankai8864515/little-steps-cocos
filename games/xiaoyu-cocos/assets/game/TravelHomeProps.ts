@@ -6,6 +6,7 @@ import { HomeClock } from './HomeClock';
 import { homeLighting } from './LightingSnapshot';
 import { darkMaterial } from './DarkroomLighting';
 import { TravelService } from './TravelService';
+import { TravelDiaryArtwork } from './TravelDiaryArtwork';
 import { TravelAtlasSprite } from './TravelAtlasSprite';
 import { TravelRewardMotion } from './TravelRewardMotion';
 import { WayfindingHint } from './WayfindingHint';
@@ -32,6 +33,7 @@ export class TravelHomeProps {
             const v=new TravelAtlasSprite(this.root,assets,scope,TRAVEL_PROPS,PROP_REGIONS[key],key);this.sprites[key]=v;
             const spec=assets.art(TRAVEL_PROPS),r=PROP_REGIONS[key];this.receiver[key]=home.lighting.receiver(v.sprite,spec,1,[r[0]/1536,r[1]/1024,r[2]/1536,r[3]/1024]);v.root.active=false;
         }
+        new TravelDiaryArtwork(this.sprites.open_diary,assets,scope,home.lighting);
         this.sprites.map.place(MAP_RECT);this.sprites.diary.place(this.diaryRect);this.sprites.full_bag.place(BAG_RECT);
         this.tent=nodeAt(this.root,'ApprovedTent');
         this.tentMesh('ApprovedContact','res://travel/assets/home_tent_pixels.png',TENT_CONTACT_UV);

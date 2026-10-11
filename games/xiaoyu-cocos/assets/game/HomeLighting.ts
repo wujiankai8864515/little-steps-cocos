@@ -1,11 +1,11 @@
-import { Color, Graphics, Material, Node, Sprite, Vec4 } from 'cc';
+import { Color, Graphics, Label, Material, Node, Sprite, Vec4 } from 'cc';
 import { GameAssets, ArtSpec } from './Assets';
 import { Scope } from './Engine';
 import { HomeClock } from './HomeClock';
 import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
-export const HOME_EFFECTS=['original-stroke','darkroom-plume','home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line','home-part'];
+export const HOME_EFFECTS=['original-stroke','home-diary-ink','darkroom-plume','home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line','home-part'];
 type Receiver={material:Material;kind:string;surface:number;node?:Node};
 export class HomeLighting {
     private receivers:Receiver[]=[];
@@ -28,6 +28,15 @@ export class HomeLighting {
             material.setProperty('faceOffset',new Vec4(offset[0],offset[1],0,0));
         }
         sprite.customMaterial=material;const bound=sprite instanceof Graphics?sprite.getMaterialInstance(0):material;this.receivers.push({material:bound,kind,surface,node:sprite.node});
+        return bound;
+    }
+    ink(renderer:Sprite|Label, color=[1,1,1,1], coverage=false) {
+        const material=this.material('home-diary-ink');
+        material.setProperty('inkColor',new Vec4(color[0],color[1],color[2],color[3]??1));
+        material.setProperty('inkMode',new Vec4(coverage?1:0,0,0,0));
+        renderer.customMaterial=material;
+        const bound=renderer instanceof Label?renderer.getMaterialInstance(0):material;
+        this.receivers.push({material:bound,kind:'diary-ink',surface:1,node:renderer.node});
         return bound;
     }
     shafts() {

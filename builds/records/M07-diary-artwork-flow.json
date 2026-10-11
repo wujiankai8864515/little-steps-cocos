@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "M07.05",
+  "status": "source_and_candidate_compilation_verified_visual_pending",
+  "baseCommit": "f70dd72418e32bf614fba46aebf21b4eb226706b",
+  "implemented": [
+    "Original open diary titles, two atlas stickers, pencil lines and dashed route attached to actual book",
+    "Original diary ink shader and shared daylight/moon/lamp lighting",
+    "Native aligned dashes, ring and solid circle geometry; scoped material ownership"
+  ],
+  "validation": {
+    "regression": {
+      "pass": 176,
+      "fail": 0,
+      "log": "builds/reviews/M07-diary-regression-v1.log"
+    },
+    "typecheck": "builds/reviews/M07-diary-types-v1.log",
+    "candidate": "builds/records/candidates/cocos-travel-home-v2.json",
+    "shaderSource": "builds/records/M07-diary-shader-source.json",
+    "browser": "Home initialized and departure/return observed, diary visual not inspected; stopped graphical QA after user crash report",
+    "strictVisual": "pending",
+    "WeChat": "pending"
+  },
+  "openIssues": [
+    "Actual journal/map/collection page bindings remain pending",
+    "Browser resize after wide initial Home to 360x640 produced clipped room and black bands; reload workaround does not resolve it",
+    "Native glyph rendering and atlas mip/AA parity remain pending",
+    "Home 19,000,000-byte and total resource admission budgets remain failing"
+  ],
+  "continuation": [
+    "Gate recurring diagnostics to remove default snapshot serialization",
+    "Connect real Travel pages and preserve review ownership/save behavior",
+    "Implement responsive page/surface relayout without resetting gameplay",
+    "Resume serial independent browser visual validation only after source fixes"
+  ],
+  "sources": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts",
+      "sha256": "35aba456928176546c2daab535dbcf9aa2d7a5dc5521ad4dd1b1871db75e7e25"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryDrawing.ts",
+      "sha256": "e46b63a0a8f7547b332fd9e749393131be6ef2c581ca36cfc705fdb8321365b0"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeProps.ts",
+      "sha256": "295999c6243f5805673e6890274a04af8cbbfc619450af5101133bdad902ec37"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "481e1133016871043f109b097a66c2f747ef08a7b078535c994caf45df464dac"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-diary-ink.effect",
+      "sha256": "b75a7e5cfcab35b08804bc8953c8c13a062d47627d5bb9f8c2f45ea6b05864b0"
+    },
+    {
+      "path": "builds/tools/import_diary_shader.py",
+      "sha256": "bb34a14aa9b9b456b17bbe103bd2bb9e2ec10e24afe6958f92dffc18a6beade8"
+    }
+  ]
+}

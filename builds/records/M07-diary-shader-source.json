@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "M07.05",
+  "sources": {
+    "travel/travel_open_diary_art.gd": "3bffc5b16604e174d1eb04c6c77471eddf6ef517b9f687cf27e88acee471ed59",
+    "shaders/window_field.gdshaderinc": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44"
+  },
+  "outputs": [
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-diary-ink.effect",
+      "sha256": "b75a7e5cfcab35b08804bc8953c8c13a062d47627d5bb9f8c2f45ea6b05864b0"
+    }
+  ],
+  "nativeDrawing": {
+    "source": "https://github.com/godotengine/godot/blob/4.5.2-stable/scene/main/canvas_item.cpp",
+    "license": "MIT; existing engines/travel-core/NOTICE.godot.txt",
+    "details": "Aligned non-AA dashes, 20-point AA arc, 64-point filled non-AA dot; feather polylines use existing Godot-derived framework"
+  },
+  "limits": [
+    "Actual shader compile/render and same-state native comparison pending",
+    "TTF rasterization and native mipmapped atlas filtering remain subject to pixel comparison",
+    "Does not implement the journal page itself"
+  ]
+}
