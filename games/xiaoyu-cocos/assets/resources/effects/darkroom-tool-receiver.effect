@@ -1,0 +1,190 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        roomOrigin: { value: [0, 0, 1, 1] }
+        sourceUV: { value: [0, 0, 1, 1] }
+        visibleUV: { value: [0, 0, 1, 1] }
+        ambientState: { value: [0.55, 0.59, 0.63, 0.43] }
+        sunState: { value: [1, 0.91, 0.76, 0] }
+        sunVectorState: { value: [0, 0, 1, 1] }
+        castState: { value: [0.6, 0.6, -0.32, 0.95] }
+        timeState: { value: [7, 1, 0, 0] }
+        weightsState: { value: [1, 0, 0, 1] }
+        celestialState: { value: [147.5, 63.55, 228, 95] }
+        maskRect: { value: [0, 0, 1, 1] }
+        textureSize: { value: [1, 1, 0, 0] }
+        darkState: { value: [0, -1, 0.018, 0] }
+        textureBounds: { value: [0, 0, 1, 1] }
+        toolInverseX: { value: [1, 0, 0, 0] }
+        toolInverseY: { value: [0, 1, 0, 0] }
+        toolInverseOrigin: { value: [0, 0, 0, 0] }
+        toolUVRect: { value: [0, 0, 1, 1] }
+        toolRect: { value: [0, 0, 1, 1] }
+        sourceDisplayMask: { value: white }
+        tool_texture: { value: white }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform RoomState {
+    vec4 roomOrigin;
+    vec4 sourceUV;
+    vec4 visibleUV;
+    vec4 ambientState;
+    vec4 sunState;
+    vec4 sunVectorState;
+    vec4 castState;
+    vec4 timeState;
+    vec4 weightsState;
+    vec4 celestialState;
+    vec4 maskRect;
+  };
+  #define ambient_color ambientState.rgb
+  #define sun_energy ambientState.a
+  #define sun_color sunState.rgb
+  #define moon_energy sunState.a
+  #define sun_vector sunVectorState.xyz
+  #define cot_e sunVectorState.w
+  #define cast_dir castState.xy
+  #define moon_cast_dir castState.zw
+  #define game_hour timeState.x
+  #define daylight timeState.y
+  #define noon_weight timeState.z
+  #define afterglow_energy timeState.w
+  #define morning_weight weightsState.x
+  #define sunset_weight weightsState.y
+  #define lamp_glow (weightsState.z / 0.78)
+  #define surface_type weightsState.w
+  #define sun_screen_position celestialState.xy
+  #define moon_screen_position celestialState.zw
+  #define visible_uv visibleUV
+  #define show_mask false
+  #define outdoor_enabled true
+  #define use_shared_outdoor_paint true
+  #define shared_outdoor_uv_rect vec4(0.0,0.0,1.0,1.0)
+
+  uniform DarkExtras {
+    vec4 textureSize;
+    vec4 darkState;
+    vec4 textureBounds;
+    vec4 toolInverseX;
+    vec4 toolInverseY;
+    vec4 toolInverseOrigin;
+    vec4 toolUVRect;
+    vec4 toolRect;
+  };
+  #define lamp_weight darkState.x
+  #define release_glow darkState.y
+  #define selected darkState.x
+  #define radius_px darkState.y
+  #define age darkState.x
+  #define alpha darkState.y
+  #define flutter darkState.z
+  #define strength darkState.x
+  #define doll_part_id int(darkState.y)
+  #define mother_uv_rect vec4(0.0,0.0,1.0,1.0)
+  #define texture_bounds textureBounds
+  #define tool_inverse_x toolInverseX.xy
+  #define tool_inverse_y toolInverseY.xy
+  #define tool_inverse_origin toolInverseOrigin.xy
+  #define tool_uv_rect toolUVRect
+  #define tool_rect toolRect
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+  uniform sampler2D sourceDisplayMask;
+  uniform sampler2D tool_texture;
+
+
+  vec4 sourceSample(vec2 p) {
+    vec2 q=(p-sourceUV.xy)/sourceUV.zw;
+    float gate=step(0.0,q.x)*step(q.x,1.0)*step(0.0,q.y)*step(q.y,1.0);
+    return CCSampleWithAlphaSeparated(cc_spriteTexture,clamp(q,vec2(0.0),vec2(1.0)))*gate;
+  }
+
+
+// Shared by visible mother pieces, cast shadows and tool receiver clipping.
+// This resource contains engineering ownership masks, never replacement art.
+
+
+
+float doll_source_gate(vec2 uv, float source_alpha) {
+    if (doll_part_id < 0) { return 1.0; }
+    vec2 source_uv=(uv-mother_uv_rect.xy)/mother_uv_rect.zw;
+    vec2 data=texture(sourceDisplayMask,source_uv).rg;
+    int owner=int(floor(data.g*255.0+0.5))-1;
+    return owner == doll_part_id ? 1.0 : 0.0;
+}
+
+
+
+
+
+
+
+
+
+
+ vec4 frag() {
+    vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
+    vec2 TEXTURE_PIXEL_SIZE=1.0/textureSize.xy;
+    vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+    vec2 world_position=world_pos;
+    vec4 result;
+
+    // Receiver is the exact shared deformed doll skin, not its rigid proxy rect.
+    vec2 p=tool_inverse_origin+tool_inverse_x*(world_position.x-2.0)+tool_inverse_y*(world_position.y-4.0);
+    vec2 uv=(p-tool_rect.xy)/tool_rect.zw;
+    float inside=step(0.0,uv.x)*step(uv.x,1.0)*step(0.0,uv.y)*step(uv.y,1.0);
+    float tool_alpha=texture(tool_texture,tool_uv_rect.xy+clamp(uv,vec2(0.0),vec2(1.0))*tool_uv_rect.zw).a*inside;
+    float receiver=sourceSample(UV).a;
+    receiver*=doll_source_gate(UV,receiver);
+    result=vec4(0.06,0.035,0.08,tool_alpha*receiver*strength)*color;
+
+    return result;
+ }
+
+}%

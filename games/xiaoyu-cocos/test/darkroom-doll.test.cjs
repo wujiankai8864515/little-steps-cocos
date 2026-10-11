@@ -7,6 +7,7 @@ const {DollSkin,DOLL_PARTS}=load('DollSkin'),{DarkroomRound,darkToolPose}=load('
 const data=path.join(__dirname,'../assets/bundles/darkroom/darkroom/assets/round3'),read=name=>JSON.parse(fs.readFileSync(path.join(data,name+'.json'),'utf8'));
 const contract=read('doll_source_contract'),geometry=read('doll_source_geometry'),masks={};DOLL_PARTS.forEach(id=>masks[id]=read('doll_'+id+'_hit'));
 const make=()=>new DollSkin(contract,geometry,(id,x,y)=>api.bitMapContains(masks[id],x,y));
+const {fitTray,inPolygon,RECESSES,ResponsiveLamp,DARK_PLANT_PARTS}=load('DarkroomVisualRules'),{PlantForest}=load('PlantGeometry');
 const near=(a,b,t=1e-4)=>assert.ok(Math.abs(a-b)<=t,`${a} != ${b}, tolerance ${t}`),json=v=>JSON.parse(JSON.stringify(v));
 test('Authored mother pixels use the exact neutral source origin, 1089 vertices and original visible-cell diagonal',()=>{
  const rig=make();assert.equal(rig.mesh.vertices.length,2178);assert.equal(rig.mesh.indices.length,geometry.skin_visible_cells.filter(Boolean).length*6);
@@ -49,4 +50,16 @@ test('160 native Godot oracle frames preserve seven springs, contacts, expressio
   for(const p of row.probes){const at=rig.worldPoint(p.pixel);at.forEach((v,axis)=>near(v,p.world[axis],.00019));assert.equal(rig.partAt(at),p.part);}
   for(const key of ['expression','dragging','hit_serial','last_hit_part','substeps'])assert.equal(s[key],row.rig[key]);
  }
+});
+test('Both original tool contours fit the authored tray recesses after their pivot rotation and sixteen-step fitting',()=>{
+ const geometry=JSON.parse(fs.readFileSync(path.join(data,'../round2/doll_alpha_geometry.json'),'utf8'));
+ for(const tool of ['needle','slipper']){const fit=fitTray(tool,geometry.tools[tool]),m=api.Math2D.trs(fit.position,fit.rotation,[fit.scale,fit.scale]);assert.equal(fit.inside,true);assert.ok(fit.scale>.01&&fit.scale<.28);for(const p of geometry.tools[tool].contour)assert.equal(inPolygon(api.Math2D.transform(m,p[0]-fit.pivot[0],p[1]-fit.pivot[1]),RECESSES[tool]),true);}
+});
+test('Responsive lamp follows automatic clock, reverses a tap continuously, settles in .22s and retains the .34s squish',()=>{
+ const lamp=new ResponsiveLamp();lamp.advance(0,.7);near(lamp.value,.7);assert.equal(lamp.toggle(),false);lamp.advance(.11,1);near(lamp.value,.35);const before=lamp.value;assert.equal(lamp.toggle(),true);near(lamp.value,before);lamp.advance(.22,0);near(lamp.value,1);assert.notEqual(lamp.scale()[0],1);lamp.advance(.13,0);near(lamp.scale()[0],1);const state=JSON.stringify(lamp);lamp.advance(NaN,0);assert.equal(JSON.stringify(lamp),state);
+});
+test('Darkroom uses twenty-one authored independent three-joint plants, with at most two simultaneous source-amplitude pulses',()=>{
+ const contract=JSON.parse(fs.readFileSync(path.join(data,'../round2/darkroom_plants_contract.json'),'utf8')),forest=new PlantForest(contract,DARK_PLANT_PARTS,true);assert.equal(forest.parts.length,21);assert.equal(forest.parts.length*18,378);
+ for(let i=0;i<720;i++){forest.advance(1/60);assert.ok(forest.activePulses<=2);assert.ok(forest.bindings.every(b=>Math.abs(b.amplitude)<=.063001));assert.ok(forest.parts.every(p=>p.mesh.vertices.every(Number.isFinite)));}
+ assert.ok(forest.eventSerial>10);assert.equal(forest.peakActivePulses,2);forest.windEnabled=false;for(let i=0;i<600;i++)forest.advance(1/60);assert.ok(forest.parts.every(p=>p.angles.every(v=>v===0)));
 });

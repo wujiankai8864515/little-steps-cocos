@@ -54,8 +54,8 @@ export class PlantForest {
     readonly parts:SpringPlantPart[];readonly bindings:Array<{elapsed:number;duration:number;amplitude:number;events:number}>;
     phase=0;untilEvent=.18;eventSerial=0;activePulses=0;peakActivePulses=0;windEnabled=true;
     private eligible:number[]=[];
-    constructor(contract:any){
-        this.parts=HOME_PLANT_PARTS.map((recipe,index)=>{const part=new SpringPlantPart(recipe,contract.parts[recipe[1]]);if(['leaf','tip','cluster'].some(kind=>recipe[1].indexOf(kind)>=0))this.eligible.push(index);return part;});
+    constructor(contract:any,recipes:Recipe[]=HOME_PLANT_PARTS,private dark=false){
+        this.parts=recipes.map((recipe,index)=>{const part=new SpringPlantPart(recipe,contract.parts[recipe[1]]);if((dark?['herb','leaf','tip','cluster']:['leaf','tip','cluster']).some(kind=>recipe[1].indexOf(kind)>=0))this.eligible.push(index);return part;});
         if(this.parts.length>32)throw new Error('植物部件超过原版预算');
         this.bindings=this.parts.map(()=>({elapsed:2,duration:1,amplitude:0,events:0}));this.advance(0);
     }
@@ -65,8 +65,8 @@ export class PlantForest {
         const index=this.eligible[Math.floor(noise(this.eventSerial+1,.73)*this.eligible.length)%this.eligible.length],b=this.bindings[index];
         if(b.elapsed<b.duration){this.untilEvent=.13;return;}
         const seed=index*.47,polarity=noise(this.eventSerial+1,seed+.5)<.5?-1:1;
-        b.elapsed=0;b.duration=.75+.6*noise(this.eventSerial+1,seed+.9);b.amplitude=polarity*(.125+.08*noise(this.eventSerial+1,seed+1.7));b.events++;
-        this.eventSerial++;this.untilEvent=.45+.45*noise(this.eventSerial,seed+2.3);
+        b.elapsed=0;b.duration=.75+.6*noise(this.eventSerial+1,seed+.9);b.amplitude=polarity*((this.dark?.033:.125)+(this.dark?.03:.08)*noise(this.eventSerial+1,seed+1.7));b.events++;
+        this.eventSerial++;this.untilEvent=(this.dark?.4:.45)+(this.dark?.44:.45)*noise(this.eventSerial,seed+2.3);
     }
     advance(delta:number){
         if(!Number.isFinite(delta))return;

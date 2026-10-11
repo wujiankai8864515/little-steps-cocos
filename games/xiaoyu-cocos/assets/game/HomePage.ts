@@ -44,6 +44,8 @@ export class HomePage {
     readonly bag:BackpackInteraction;readonly note:HomeNote;
     readonly propVisuals:HomeProps;readonly props:HomePropInteraction;
     onDarkroomRequest:()=>boolean=null;
+    onPrepareDarkroom=()=>{};
+    onCancelDarkroom=()=>{};
     onTravelRequest:()=>boolean=null;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;private presentedActor='';
@@ -132,10 +134,10 @@ export class HomePage {
             captureSettle:id=>this.propVisuals.captureSettle(id),settleTransform:(id,e)=>this.propVisuals.settleTransform(id,e),restore:id=>this.propVisuals.restore(id),
             suspend:()=>{this.rig.suspend();this.rig.resetSecondary();this.knock.stop();},resume:()=>this.rig.resume(),resetFish:()=>this.propVisuals.resetFish(),
             drinkStart:()=>this.propVisuals.drinkStart(),drinkAdvance:(age,delta)=>this.propVisuals.drinkAdvance(age,delta),drinkStop:preserve=>this.propVisuals.drinkStop(preserve),
-            offer:()=>{this.incense.dismiss();this.note.ask('darkroom');},dismissOffer:immediate=>this.note.dismiss(immediate),prepareDoll:()=>{},
+            offer:()=>{this.incense.dismiss();this.onPrepareDarkroom();this.note.ask('darkroom');},dismissOffer:immediate=>this.note.dismiss(immediate),prepareDoll:()=>this.onPrepareDarkroom(),
             pulse:(at,accepted)=>this.feedback.pulse(at,accepted),hold:(at,fraction)=>this.feedback.hold(at,fraction),clear:()=>{this.feedback.clear();this.propVisuals.clear();},
         });
-        this.note.onDecision=(kind,accepted)=>{if(kind==='travel'){if(accepted&&this.onTravelRequest&&this.onTravelRequest())this.bag.commitOffer();else{this.bag.resolveOffer();if(accepted)this.note.info('旅行还在准备中');}}else{this.props.resolveOffer();if(accepted&&(!this.onDarkroomRequest||!this.onDarkroomRequest()))this.note.info('暗室还在准备中');}console.info('[LittleSteps] route decision '+JSON.stringify({kind,accepted,bag:this.bag.snapshot(),props:this.props.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));};
+        this.note.onDecision=(kind,accepted)=>{if(kind==='travel'){if(accepted&&this.onTravelRequest&&this.onTravelRequest())this.bag.commitOffer();else{this.bag.resolveOffer();if(accepted)this.note.info('旅行还在准备中');}}else if(kind==='darkroom_wait'){if(!accepted)this.onCancelDarkroom();}else if(kind==='darkroom_retry'){if(accepted)this.onDarkroomRequest?.();}else{this.props.resolveOffer();if(accepted&&(!this.onDarkroomRequest||!this.onDarkroomRequest()))this.note.info('暗室还在准备中');}console.info('[LittleSteps] route decision '+JSON.stringify({kind,accepted,bag:this.bag.snapshot(),props:this.props.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));};
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         const bagReport=(event:string)=>console.info('[LittleSteps] bag input '+JSON.stringify({event,...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));
         const propReport=(event:string)=>console.info('[LittleSteps] prop input '+JSON.stringify({event,...this.props.snapshot(),visual:this.propVisuals.snapshot(),note:this.note.snapshot()}));
@@ -157,7 +159,11 @@ export class HomePage {
         console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
-    resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(true);}
+    resume(allowInput=true) {this.active=allowInput;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(allowInput);}
+    showRouteWaiting(){this.pointerBinding.cancel();this.props.cancel('route_wait',true);this.incense.dismiss();this.note.routeWaiting();}
+    showRouteError(){this.note.routeError();}
+    clearRouteWaiting(){this.note.dismiss();this.incense.dismiss();}
+    setInput(enabled:boolean){this.active=enabled;this.hud.setActive(enabled);if(!enabled){this.pointerBinding.cancel();this.knock.stop();}}
     private sortRoomLayers(){this.roomLayers.filter(layer=>layer.node.parent===this.roomRoot).sort((a,b)=>a.z-b.z||a.order-b.order).forEach((layer,index)=>layer.node.setSiblingIndex(index));this.backpackLayerRevision=this.backpack.layerRevision;this.propLayerRevision=this.propVisuals.layerRevision;}
     pause() {this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
     advance(delta: number) {

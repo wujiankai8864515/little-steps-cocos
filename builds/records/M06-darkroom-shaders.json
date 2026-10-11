@@ -1,0 +1,64 @@
+{
+  "sources": {
+    "darkroom/shaders/room_light.gdshader": "9124f9f86727c73b8e48dff7c0895daec12893b01154d78c7c98a102aac6a1f4",
+    "shared_room_lighting/dark_window_field.gdshaderinc": "7fa9576b57736a2f9cde4016a03496a16cc008a318de7f333503d5d050d8a185",
+    "shared_room_lighting/window_field_kernel.gdshaderinc": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+    "darkroom/shaders/sky.gdshader": "fd358eaf756a02f58c237daa5e0f4934897e6e1b878465cda92b90def494f215",
+    "shared_room_lighting/pane_geometry.gdshaderinc": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+    "shared_room_lighting/outdoor_scene.gdshaderinc": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+    "shared_room_lighting/thin_glass.gdshaderinc": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71",
+    "darkroom/shaders/window_beams.gdshader": "45598bb284a354c898fc9fc0562ef3e8f6eb9ce2ba3b0dd1c98bcfdbda99e3e7",
+    "shared_room_lighting/window_beam_profile.gdshaderinc": "b51ccba109864c553883979c586e1fca92e55610ef63e8610fd553c29f77e6a6",
+    "darkroom/shaders/tool_selection_glow.gdshader": "9cb4b60ce832d2b582919b197724a5f46fdfb3ff0e87007a213bea6c9c2d4fe2",
+    "darkroom/shaders/alpha_shadow.gdshader": "9502472ce2155a6aec951ecbbf967ca866a05dd7b0bc9d2774113d6541b7739c",
+    "darkroom/shaders/doll_source_mask.gdshaderinc": "54e7d9d6746518522184c76dec37d2efd5f14d6c3fd2bc84cedf8471fa5c186e",
+    "darkroom/shaders/tool_receiver_shadow.gdshader": "5bef17e3977908e1b457dd4ed9a60745e57f43e5bcfd6f9dff8ea785d21a358d",
+    "darkroom/shaders/smoke_flow.gdshader": "ad9b504d09fea1e5d18e0776fe4acab120c30715c3b9d68d82f5ea49932c24c0"
+  },
+  "outputs": [
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-room.effect",
+      "sha256": "be635c56ef9b67e1a8a0787f3d5d2c7a49da52042875252cf94edff092764d7e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-sky.effect",
+      "sha256": "2d76c694483361a351bb25ad508b85ccc7fb8eb6cd4290f4b0b34ecec310d048"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-beams.effect",
+      "sha256": "ccd3da5c80b0baabc35342b023eb2c6a26418e1d51acc4c7e90cecf909e6f24f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-selection.effect",
+      "sha256": "1b4c71bd05d5deca255232413781b81295304c075d78d1fa5ec3af1c522b51c3"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-shadow.effect",
+      "sha256": "9c29314bbfc8f661748cd77914cad7692f65b9c6af009a1d6c5eaf792460bdfe"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-tool-receiver.effect",
+      "sha256": "9bc13ea67e435f046836dbacfa3e6cbdf1e66d8cff13807c31247d3eaeb14f04"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-plume.effect",
+      "sha256": "5755c3031a46409cc4ec25694339ade25f19e0884da28b6fa37412ed7e56a14c"
+    }
+  ],
+  "adaptations": [
+    "Cocos UBO vec4 packing",
+    "original normalized texture coordinates reconstructed for cropped PNG",
+    "native y-down world position reconstructed from canvas position",
+    "unsigned ownership byte floor(v+.5) for GLES100"
+  ],
+  "pending": [
+    "native full-page screenshot matrix",
+    "WeChat physical device"
+  ],
+  "creatorCompileObserved": {
+    "candidate": "cocos-darkroom-page-noon-v4",
+    "evidence": "builds/reviews/M06-darkroom-page-noon-v4-build.log",
+    "effectsSHA256MatchFrozenCandidate": true,
+    "boundary": "Compile observed; complete light/render matrix and device pending"
+  }
+}

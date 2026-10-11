@@ -1,0 +1,178 @@
+✔ Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance (2.69075ms)
+✔ Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger (0.888208ms)
+✔ Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision (4.897959ms)
+✔ Information bubbles stay in the safe area and reserve head clearance across moving anchors (0.196375ms)
+✔ Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time (0.827167ms)
+✔ Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal (0.867667ms)
+✔ Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal (0.51625ms)
+✔ A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once (0.22475ms)
+✔ Suspended paper feedback remains bounded and uses the original positive press impulse (7.679208ms)
+✔ Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice (1.840459ms)
+✔ Render-target admission includes color/depth before allocation and cancellation releases the late target once (1.327042ms)
+✔ Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners (1.207042ms)
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.989875ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (0.368708ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.107791ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.334625ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.165958ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.106875ms)
+✔ Disposed request rejects late completion and releases the late resource (0.107417ms)
+✔ Plugin namespace is frozen and nonwritable (0.041042ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.199459ms)
+✔ Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment (16.3135ms)
+✔ Night doze begins only after a complete strike, holds across night and wakes through the original dawn rest (26.405875ms)
+✔ Manual priority plays one full clip, recovers for 0.8 seconds, and focus loss discards an unseen strike (24.182833ms)
+✔ Spring integration caps slow frames at four substeps and keeps every bone within source motion bounds (93.234834ms)
+✔ Long day simulation produces cooldown-separated microdozes and bounded face motion, and invalid deltas leave the pose intact (134.075708ms)
+✔ Comic reveals sound once per panel, and suspension never replays skipped panels (1.367583ms)
+✔ Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model (0.336792ms)
+✔ Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade (0.1475ms)
+✔ Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries (0.159958ms)
+✔ Bag alpha pick, single pointer and 9px/0.34s entry preserve tap-only feedback and do not tap the fish (2.229042ms)
+✔ Held geometry stays within the 18px safe margin, and outside release settles home once without an offer (4.850083ms)
+✔ Drop enters the exact .36s fish offer, suspends ambient only when worn and rejects late duplicate resolutions (0.230875ms)
+✔ Page/focus cancellation clears capture and an unfinished settle without manufacturing a drop or offer (0.209291ms)
+✔ Travel acceptance transfers existing worn ownership without restoring a wall frame (0.115375ms)
+✔ Committed 11 mip PNGs decode to original native pixels and all image decode/upload memory is reserved (195.998042ms)
+✔ All five approved contours retain actual native float32 UV, fitted vertex and index bytes (2.775375ms)
+✔ Wear owns only existing bones for 0.24 seconds and restores captured bones before the return flight (1.121416ms)
+✔ Cancellation during return finishes exactly once; rewear starts at the wall; free drag retains the interrupted pose (0.251375ms)
+✔ Rendered worn triangles map back through shear to original alpha and reject occluded back layers during hit ownership (0.559833ms)
+✔ Floor projections share fitted source/UVs, preserve height payloads and rebuild only when encoded support changes (0.533875ms)
+✔ Actual native Godot 72-frame oracle matches every joint angle/velocity and rounded atlas seam (129.682708ms)
+✔ Five original atlas parts retain 15 joints, measured ribbon rows and authored seam UVs (10.813917ms)
+✔ Ribbon endpoints remain sewn through 0.24 second morph, and free drag preserves transition ownership (28.865208ms)
+✔ Independent bounded springs return to rest, and invalid steps do not mutate original parts (350.491583ms)
+✔ Wear and free drag transitions retain the sampled room position without artificial inertia (6.256125ms)
+✔ Rendered triangle hits map back to fixed atlas alpha; transparent holes and degenerate/outside triangles reject (1.301167ms)
+✔ Runtime interval hit queries reconstruct every defined bit of all 19 original masks (4217.299791ms)
+✔ Authored mother pixels use the exact neutral source origin, 1089 vertices and original visible-cell diagonal (17.824375ms)
+✔ Every part remains connected and its original BitMap stays authoritative after bounded spring and drag deformation (190.823792ms)
+✔ Contact is credited at native impact once; rapid taps queue only one strike; pause and drag cancel without late credit (16.638667ms)
+✔ Five slipper impacts remove100 with zero reward, reveal one result, one-second empty gap and complete1.55s spawn (554.946625ms)
+✔ Native tool source pivots touch the captured target exactly at both impact boundaries (0.22125ms)
+✔ 160 native Godot oracle frames preserve seven springs, contacts, expression, alpha-hit probes and complete checkpoint vertices (189.0965ms)
+✖ Both original tool contours fit the authored tray recesses after their pivot rotation and sixteen-step fitting (0.324167ms)
+✖ Responsive lamp follows automatic clock, reverses a tap continuously, settles in .22s and retains the .34s squish (1.602167ms)
+✖ Darkroom uses twenty-one authored independent three-joint plants, with at most two simultaneous source-amplitude pulses (0.103167ms)
+✔ Independent drag eye springs and face blend reproduce160 real native source oracle frames (3.266ms)
+✔ Invalid delta/body do not advance; invalid focus retains last target and fades only on valid ticks (1.1245ms)
+✔ Large elapsed caps at50ms; velocity and elliptical travel stay bounded and enlarged pupils remain inside their own domains (6.926458ms)
+✔ Opening never skips time while paused or accepts the final action before the full hold (0.587458ms)
+✔ Cancel is terminal, retries are owned once and a new entry starts blank (3.115583ms)
+✔ Loading mallet contacts the doll at all three authored strikes without sliding its support (3.013083ms)
+✔ Diagonal comic panels clip at the reveal edge and retain original texture coordinates (0.383333ms)
+✔ Long press waits .34 seconds; movement over 9 cancels hold but an out-and-back release still taps (4.223917ms)
+✔ Pin follows the original grabbed pixel, visual limits bound extremes, and settle evaluates once after the full .36 seconds (1.524167ms)
+✔ Cancellation ignores another pointer and immediate focus/page cancellation restores presentation without a tap, drop or late landing (0.771792ms)
+✔ Manual contact timing starts at the input event, avoiding consumption of the previous frame and duplicate rewards (14.913042ms)
+✔ Lift and landing use bounded springs, preserve ground contact, and let pupils follow the same face deformation (3.697666ms)
+✔ Forward mesh lookup inverts triangle picking and soft shadows project current vertices while contact lines stay on the floor (1.853458ms)
+✔ One established starter and one birth per earned minute; cap ten never retires or backfills offline time (1.129458ms)
+✔ Restoration is atomic, migrates only geometry and preserves empty bouquets and earned boundaries (0.301458ms)
+✔ Schema 2 legacy cap shrinks to ten after full validation; geometry v2 and fractional legacy integers retain source rules (0.379708ms)
+✔ Raw JSON recovery selects latest valid main/tmp/bak and ties prefer main; failed readback keeps a recoverable generation (4.222334ms)
+✔ Raw store guards UTF8 bytes, invalid saves/slots and silent storage failure without committed revision (1.968583ms)
+✔ External clock anchors once, rolls back without growth, accrues hidden Home time and limits drawing to 30 Hz (0.372333ms)
+✔ A failed flower save retries its earned generation and clears the warning only after verified recovery (0.286833ms)
+✔ Five bone transforms keep root and constant segment lengths while sun, night staggering and springs remain bounded (59.694583ms)
+✔ Virtual sun covers vase-centered semicircle; mesh uses exact cropped 13x13 source topology and matching tilt normal (2.366083ms)
+✔ Measured contact profiles use original alpha >= .5 and preserve separate feet (2.588917ms)
+✔ Grounded mesh projects each height from its measured support and preserves source coordinates (2.030166ms)
+✔ Legacy floor and wall passes retain their original affine projection behavior (0.520583ms)
+✔ Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains (4.139666ms)
+✔ Bowl tap starts one 2.8s drink; only valid finite capped ticks advance, completed context never settles a drop (7.540291ms)
+✔ Grabbed target invalidates the prior drink before capturing; content invalidation and fish handoff cannot credit a drink (0.510542ms)
+✔ Each prop owns a single pointer; drag is clamped to 12px including its lifted shape and settles once to fixed home (1.895167ms)
+✔ Doll tap only prepares; doll offer restores home and resumes exactly once, table cannot enter an offer (2.509209ms)
+✔ Bowl offered to fish uses the nearby pickup visual while releasing logical ownership at home (0.812667ms)
+✔ Cancellation clears capture and transient presentation in every phase without late drops, offers or drink credit (0.778416ms)
+✔ Original drink envelopes delimit exact lift, sip, lower, blink and mark windows (1.102125ms)
+✔ Home retains 720-wide world sampling on small screens and caps physical scale independently from logical height (0.472458ms)
+✔ Settings ignores moved contacts, waits for the full bounce, and cannot reopen after cancellation (0.428166ms)
+✔ Merit is tied to unique monotonic contacts, survives a pose reset, and expires after the authored full elapsed time (0.147125ms)
+✔ Merit one keeps its approved bitmap while arbitrary rewards remain centered and fit the original width (1.111792ms)
+✔ Credits retain every original artist, license paragraph and URL without text substitutions (5.029584ms)
+✔ Checkpoint SHA-256 matches independent Node vectors, including multi-block Unicode and invalid UTF-16 (4.954083ms)
+✔ Recovery chooses the latest validated generation, retains future schemas and refuses equal or stale writes (0.912542ms)
+✔ Failed commit readback retains temporary recovery and does not advance shared committed revision (0.427375ms)
+✔ Incense uses real monotonic and wall clocks, keeps one burn, and switches rewards exactly at expiry (1.067208ms)
+✔ Reload catches up elapsed time, a rollback expires the checkpoint, and restored duration resets for a new burn (0.558125ms)
+✔ Two live instances synchronize without extending the same stick or accepting a late older save (0.720959ms)
+✔ Hint pauses before entering, leaves over .18 seconds, and re-enters after the actual burn overshoot (1.036625ms)
+✔ Smoke is bounded, separates re-ignition generations and drains after long background intervals (12.086042ms)
+✔ Source noon geometry and latest Home gains remain distinct from shared light values (0.634084ms)
+✔ Night transition, moon positions and ambient accents preserve dawn/dusk boundaries (0.261083ms)
+✔ All 24h light samples remain finite, bounded, normalized and periodic (12.745ms)
+✔ Dust is confined to the approved projected window rather than a full-screen overlay (0.129125ms)
+✔ Each original piece has three local joints, immutable atlas UVs and exact nine-row source topology (496.027625ms)
+✔ Successive joints preserve the fixed root and reproduce an independently summed articulated tip (0.185459ms)
+✔ Long mixed-frame wind remains local, bounded to two pulses, and every child stays connected to its authored socket (3488.458583ms)
+✔ Removing wind lets each independent joint return to its own rest without atlas drift; invalid time changes nothing (480.623375ms)
+✔ Grabbed face stays fixed and the mat contact row cannot move during landing squash (0.483875ms)
+✔ Unheld rigid fin moves as one attachment without stretching its mallet (0.198458ms)
+✔ Neutral tail and fin retain source points regardless of parent pose (0.107917ms)
+✔ Jelly remains upper-body local and repeated identical deformation reuses geometry (0.100459ms)
+ℹ tests 115
+ℹ suites 0
+ℹ pass 112
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5651.685917
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/darkroom-doll.test.cjs:54:1
+✖ Both original tool contours fit the authored tray recesses after their pivot rotation and sixteen-step fitting (0.324167ms)
+  Error: ENOENT: no such file or directory, open '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/round2/doll_alpha_geometry.json'
+      at Object.readFileSync (node:fs:484:20)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/darkroom-doll.test.cjs:55:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/round2/doll_alpha_geometry.json'
+  }
+
+test at games/xiaoyu-cocos/test/darkroom-doll.test.cjs:58:1
+✖ Responsive lamp follows automatic clock, reverses a tap continuously, settles in .22s and retains the .34s squish (1.602167ms)
+  AssertionError [ERR_ASSERTION]: 0.9992640979989666 != 1, tolerance 0.0001
+      at near (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/darkroom-doll.test.cjs:11:33)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/darkroom-doll.test.cjs:59:323)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/darkroom-doll.test.cjs:61:1
+✖ Darkroom uses twenty-one authored independent three-joint plants, with at most two simultaneous source-amplitude pulses (0.103167ms)
+  Error: ENOENT: no such file or directory, open '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/round2/darkroom_plants_contract.json'
+      at Object.readFileSync (node:fs:484:20)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/darkroom-doll.test.cjs:62:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/round2/darkroom_plants_contract.json'
+  }

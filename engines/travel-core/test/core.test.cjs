@@ -51,6 +51,26 @@ function fakePointerEngine(){
  class Vec3 {constructor(x,y,z){Object.assign(this,{x,y,z});}}
  const queue=[];return {Node,Vec3,UITransform:class{},Director:{EVENT_AFTER_UPDATE:'frame'},director:{once:(e,f)=>queue.push(f)},flush(){while(queue.length)queue.shift()();}};
 }
+function fakeWrappedBubbleEngine(){
+ class Node {constructor(name){this.name=name;this.children=[];this.active=true;this.components=new Map();}addChild(child){child.parent=this;this.children.push(child);}addComponent(T){const value=new T();value.node=this;this.components.set(T,value);return value;}getComponent(T){return this.components.get(T);}setPosition(x,y){this.position=[x,y];}destroy(){this.destroyed=true;if(this.parent)this.parent.children=this.parent.children.filter(n=>n!==this);}}
+ class UITransform {setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}}
+ class Label {updateRenderData(){const ui=this.node.getComponent(UITransform),natural=this.string.length*this.fontSize;if(this.overflow===0)ui.width=natural;ui.height=(Math.ceil(natural/ui.width)+.26)*this.lineHeight;}}
+ Label.Overflow={NONE:0,RESIZE_HEIGHT:1,CLAMP:2};Label.HorizontalAlign={CENTER:0};Label.VerticalAlign={CENTER:0};
+ class Graphics {clear(){}moveTo(){}lineTo(){}close(){}fill(){}stroke(){}}
+ return {Node,UITransform,Label,Graphics,UIOpacity:class{},Color:class{constructor(...rgba){this.rgba=rgba;}}};
+}
+test('Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes',()=>{
+ const cc=fakeWrappedBubbleEngine(),host=new cc.Node('room'),bubble=core.registerUI(cc).infoBubble(host,{},'A long message that requires wrapping',[350,666],[24,28,672,1000],{fontSize:28,minWidth:220,maxWidth:330});
+ const wide=bubble.snapshot().card.slice();bubble.setSafe([240,28,220,1000]);const narrow=bubble.snapshot().card;
+ assert.ok(narrow[2]<wide[2]);assert.ok(narrow[3]>wide[3]);assert.ok(narrow[0]>=246&&narrow[0]+narrow[2]<=454);assert.ok(narrow[1]+narrow[3]<666);
+ for(let i=0;i<20;i++)bubble.setAnchor([350+i,666]);assert.equal(host.children.filter(n=>n.name==='BubbleMeasurement').length,0);
+ assert.throws(()=>bubble.setSafe([0,0,NaN,1000]),/Invalid bubble safe rect/);bubble.setSafe([24,28,672,1000]);assert.equal(bubble.snapshot().card[3],wide[3]);
+});
+test('A cancel-only waiting bubble cannot accept an entry and emits its cancellation once',()=>{
+ const cc=fakeWrappedBubbleEngine(),decisions=[],bubble=core.registerUI(cc).confirmationBubble(new cc.Node('room'),{},'Loading',[350,666],[24,28,672,1000],{cancelOnly:true,cancelText:'Cancel',minWidth:320,onDecision:x=>decisions.push(x)});
+ bubble.advance(.25);bubble.advance(.2);const state=bubble.snapshot();assert.equal(state.choices.yes,undefined);assert.ok(state.choices.no);
+ const r=state.choices.no,p=[r[0]+r[2]/2,r[1]+r[3]/2];bubble.down(1,p);bubble.up(1,p);bubble.down(1,p);bubble.up(1,p);assert.deepEqual(decisions,[false]);assert.equal(bubble.snapshot().phase,'closing');
+});
 test('Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal',()=>{
  const cc=fakePointerEngine(),node=new cc.Node(),events=[];let enabled=true;
  const binding=core.registerUI(cc).pointer(node,{down:(p,id)=>events.push(['down',id]),move:(p,id)=>events.push(['move',id]),up:(p,id)=>events.push(['up',id]),cancel:()=>events.push(['cancel'])},()=>enabled);

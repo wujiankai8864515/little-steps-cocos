@@ -5,12 +5,14 @@ import { HomeMusic } from './AudioBehavior';
 import { HomeClock } from './HomeClock';
 import { ComicPage } from './ComicPage';
 import { HomePage } from './HomePage';
+import { DarkroomPage } from './DarkroomPage';
+import { DARKROOM_EFFECTS } from './DarkroomLighting';
 import { HOME_EFFECTS } from './HomeLighting';
 import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
 import { nodeAt } from './Visual';
 
-type Page = LoadingPage | LoginPage | ComicPage | HomePage;
+type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
 export class Application {
     readonly assets = new GameAssets();
@@ -30,6 +32,11 @@ export class Application {
     private music:HomeMusic;
     private musicScope:Scope;
     private skipResumedClockFrame=false;
+    private homePage:Prepared<HomePage>;
+    private darkroomPage:Prepared<DarkroomPage>;
+    private darkroomLoading:Promise<Prepared<DarkroomPage>>;
+    private darkroomError='';private routeWaitAge=0;
+    private transitioning:Page;
     constructor(canvas: Node) {
         const size = canvas.getComponent(UITransform).contentSize;
         this.height = size.height;
@@ -107,6 +114,7 @@ export class Application {
             if(intent!==this.intent||!scope.active)return;
             if(!await this.present({page,scope},.52))return;
             page.resume();this.adoptMusic(preparedMusic);
+            this.bindHome({page,scope});
             this.entering=false;this.pendingScope=null;if(this.loginPage){this.loginPage.scope.dispose();this.loginPage=null;}
             console.info('[LittleSteps] PAGE_READY HOME; full Home product parity pending');
         } catch(error) {scope.dispose();if(intent===this.intent&&this.scope.active){this.entering=false;from.fail(String(error));console.error('[LittleSteps] Home prepare failed',error);}}
@@ -115,19 +123,59 @@ export class Application {
         const scope=lifetime(this.scope);await this.assets.acquireGroups(['home'],scope);
         await this.assets.acquireEffects(HOME_EFFECTS,scope);
         const preparedMusic=await this.prepareMusic(scope);
-        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);
+        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);this.bindHome({page,scope});
         director.once(Director.EVENT_AFTER_DRAW,()=>{if(scope.active)console.info('[LittleSteps] Home first draw');});
     }
     private async present(next: Prepared<Page>,duration:number,retainLogin=false) {
         const previous=this.current;
+        this.transitioning=next.page;
         const succeeded=await this.router.show(next.page.root,duration,()=>this.active);
-        if(!succeeded){next.scope.dispose();return false;}
+        this.transitioning=null;
+        if(!succeeded){if(next.scope!==this.homePage?.scope&&next.scope!==this.darkroomPage?.scope)next.scope.dispose();return false;}
         if(previous){
-            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage)previous.page.pause();
+            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage||previous.page instanceof DarkroomPage)previous.page.pause();
             previous.page.root.active=false;
-            if(!(retainLogin&&previous===this.loginPage))previous.scope.dispose();
+            if(!(retainLogin&&previous===this.loginPage)&&previous.scope!==this.homePage?.scope&&previous.scope!==this.darkroomPage?.scope)previous.scope.dispose();
         }
         this.current=next;this.page=next.page;return true;
+    }
+    private bindHome(prepared:Prepared<HomePage>){
+        this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active)this.prepareDarkroom();};
+        prepared.page.onDarkroomRequest=()=>{if(this.entering||!this.active||this.page!==prepared.page)return false;this.openDarkroom();return true;};
+        prepared.page.onCancelDarkroom=()=>this.cancelDarkroomEntry();
+    }
+    private prepareDarkroom(){
+        if(this.darkroomPage?.scope.active)return Promise.resolve(this.darkroomPage);
+        if(this.darkroomLoading)return this.darkroomLoading;
+        const scope=lifetime(this.scope);this.darkroomError='';
+        const request=(async()=>{
+            try{await this.assets.acquireGroups(['darkroom'],scope);await this.assets.acquireEffects(DARKROOM_EFFECTS,scope);
+                const page=await DarkroomPage.create(this.root,this.assets,scope,this.height,this.clock),prepared={page,scope};
+                if(!scope.active)throw new Error('Darkroom preparation cancelled');page.onBack=()=>this.returnHome();page.onFinished=result=>console.info('[LittleSteps] Darkroom completed '+JSON.stringify(result));
+                this.darkroomPage=prepared;console.info('[LittleSteps] Darkroom resources ready '+JSON.stringify(this.assets.snapshot()));return prepared;
+            }catch(error){scope.dispose();if(this.scope.active){this.darkroomError=String(error);console.error('[LittleSteps] Darkroom preparation failed',error);}throw error;}
+            finally{this.darkroomLoading=null;}
+        })();this.darkroomLoading=request;request.catch(()=>{});return request;
+    }
+    private async openDarkroom(){
+        if(this.entering||!this.active||this.page!==this.homePage?.page)return;
+        this.entering=true;this.routeWaitAge=0;const intent=++this.intent;this.homePage.page.showRouteWaiting();
+        try{const prepared=await this.prepareDarkroom();while(this.scope.active&&!this.active)await this.frame(this.scope);
+            if(intent!==this.intent||!this.scope.active||this.page!==this.homePage.page)return;
+            this.homePage.page.setInput(false);prepared.page.resume(false);
+            if(!await this.present(prepared,.42)){prepared.page.pause();if(intent===this.intent){this.entering=false;this.homePage.page.clearRouteWaiting();this.homePage.page.resume();}return;}
+            if(intent!==this.intent)return;this.entering=false;prepared.page.resume();console.info('[LittleSteps] PAGE_READY DARKROOM '+JSON.stringify(prepared.page.snapshot()));
+        }catch(error){if(intent===this.intent&&this.scope.active){this.entering=false;this.homePage.page.resume();this.homePage.page.showRouteError();console.error('[LittleSteps] Darkroom entry failed',error);}}
+    }
+    private cancelDarkroomEntry(){
+        if(!this.entering||this.page!==this.homePage?.page)return;this.intent++;this.entering=false;this.router.cancel();this.homePage.page.clearRouteWaiting();this.homePage.page.resume();
+        console.info('[LittleSteps] Darkroom entry cancelled; optional preparation retained');
+    }
+    private async returnHome(){
+        if(this.entering||!this.active||this.page!==this.darkroomPage?.page)return;
+        this.entering=true;const intent=++this.intent;this.darkroomPage.page.round.inputEnabled=false;this.darkroomPage.page.round.cancel();
+        try{this.homePage.page.clearRouteWaiting();this.homePage.page.resume(false);const succeeded=await this.present(this.homePage,.42);if(intent!==this.intent)return;this.entering=false;if(succeeded){this.homePage.page.resume();console.info('[LittleSteps] PAGE_READY HOME cached=true');}else this.darkroomPage.page.resume();}
+        catch(error){if(this.scope.active){this.entering=false;this.darkroomPage.page.resume();console.error('[LittleSteps] Home return failed',error);}}
     }
     private async prepareMusic(owner:Scope):Promise<{music:HomeMusic;scope:Scope}> {
         if(this.music)return {music:this.music,scope:this.musicScope};
@@ -142,14 +190,16 @@ export class Application {
     }
     private adoptMusic(prepared:{music:HomeMusic;scope:Scope}) {
         this.music=prepared.music;this.musicScope=prepared.scope;
-        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&this.page instanceof HomePage);
+        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage));
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
-    private interactive(active:boolean) {if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage){if(active)this.page.resume();else this.page.pause();}if(this.music)this.music.setActive(active&&this.page instanceof HomePage);}
+    private interactive(active:boolean) {if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage){if(active){if(this.page instanceof HomePage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage));}
     advance(delta:number) {
         if(!this.scope.active)return;this.router.advance(delta,this.active);
-        if(this.active&&this.page instanceof HomePage){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
+        if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage)){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
         if(this.active&&this.page)this.page.advance(delta);
+        if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage))this.transitioning.advance(delta);
+        if(this.active&&this.entering&&this.page===this.homePage?.page&&!this.transitioning){this.routeWaitAge+=delta;this.homePage.page.note.updateWaiting('暗室加载中'+'.'.repeat(1+Math.floor(this.routeWaitAge/.52)%3));}
     }
     dispose() {this.intent++;this.scope.dispose();}
 }
