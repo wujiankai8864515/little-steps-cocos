@@ -46,6 +46,7 @@ export class Application {
     private journalRequest:{scope:Scope;mode:'journal'|'archive'}=null;
     private darkroomPage:Prepared<DarkroomPage>;
     private darkroomLoading:Promise<Prepared<DarkroomPage>>;
+    private darkroomPreparing:DarkroomPage;
     private darkroomError='';private routeWaitAge=0;
     private transitioning:Page;
     constructor(canvas: Node) {
@@ -234,13 +235,17 @@ export class Application {
         this.entering=true;this.routeWaitAge=0;const intent=++this.intent;this.homePage.page.showRouteWaiting();
         try{const prepared=await this.prepareDarkroom();while(this.scope.active&&!this.active)await this.frame(this.scope);
             if(intent!==this.intent||!this.scope.active||this.page!==this.homePage.page)return;
+            this.fitPage(prepared.page);this.darkroomPreparing=prepared.page;
+            try{await prepared.page.prepareRender();}finally{if(intent===this.intent)this.darkroomPreparing=null;}
+            while(this.scope.active&&!this.active)await this.frame(this.scope);
+            if(intent!==this.intent||!this.scope.active||this.page!==this.homePage.page)return;
             this.homePage.page.setInput(false);prepared.page.resume(false);
-            if(!await this.present(prepared,.42)){prepared.page.pause();if(intent===this.intent){this.entering=false;this.homePage.page.clearRouteWaiting();this.homePage.page.resume();}return;}
+            if(!await this.present(prepared,.42)){if(intent===this.intent){prepared.page.pause();this.entering=false;this.homePage.page.clearRouteWaiting();this.homePage.page.resume();}return;}
             if(intent!==this.intent)return;this.entering=false;prepared.page.resume();console.info('[LittleSteps] PAGE_READY DARKROOM '+JSON.stringify(prepared.page.snapshot()));
-        }catch(error){if(intent===this.intent&&this.scope.active){this.entering=false;this.homePage.page.resume();this.homePage.page.showRouteError();console.error('[LittleSteps] Darkroom entry failed',error);}}
+        }catch(error){if(intent===this.intent&&this.scope.active){this.darkroomPage?.page.pause();this.entering=false;this.homePage.page.resume();this.homePage.page.showRouteError();console.error('[LittleSteps] Darkroom entry failed',error);}}
     }
     private cancelDarkroomEntry(){
-        if(!this.entering||this.page!==this.homePage?.page)return;this.intent++;this.entering=false;this.router.cancel();this.homePage.page.clearRouteWaiting();this.homePage.page.resume();
+        if(!this.entering||this.page!==this.homePage?.page)return;this.intent++;this.entering=false;this.router.cancel();this.darkroomPreparing=null;this.darkroomPage?.page.pause();this.homePage.page.clearRouteWaiting();this.homePage.page.resume();
         console.info('[LittleSteps] Darkroom entry cancelled; optional preparation retained');
     }
     private async returnHome(){
@@ -271,7 +276,7 @@ export class Application {
         this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||this.page instanceof TravelJournalPage));
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
-    private interactive(active:boolean) {if(!active){this.cancelJournalLoading();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||this.page instanceof TravelJournalPage){if(active){if(this.page instanceof HomePage||this.page instanceof TravelJournalPage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||this.transitioning instanceof TravelJournalPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||this.page instanceof TravelJournalPage));if(active)this.travel?.resume();}
+    private interactive(active:boolean) {this.darkroomPreparing?.setRenderActive(active);if(!active){this.cancelJournalLoading();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||this.page instanceof TravelJournalPage){if(active){if(this.page instanceof HomePage||this.page instanceof TravelJournalPage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||this.transitioning instanceof TravelJournalPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||this.page instanceof TravelJournalPage));if(active)this.travel?.resume();}
     private fitPage(page:Page){
         if(!page||(this.pageViewports&&this.pageViewports.get(page)===this.viewportKey))return;
         page.resize(this.height,this.physicalWidth);

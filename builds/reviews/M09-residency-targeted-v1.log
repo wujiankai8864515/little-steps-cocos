@@ -1,0 +1,44 @@
+✔ Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation (2.010084ms)
+✔ Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam (2.557625ms)
+✔ Packing independent feather meshes preserves coverage and rebases every index without joining their paths (0.920875ms)
+✔ Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage (1.232125ms)
+✔ Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills (2.599708ms)
+✔ Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance (0.173292ms)
+✔ Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger (0.202125ms)
+✔ Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision (3.062458ms)
+✔ Information bubbles stay in the safe area and reserve head clearance across moving anchors (0.283041ms)
+✔ Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time (0.895291ms)
+✔ Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes (0.675459ms)
+✔ A cancel-only waiting bubble cannot accept an entry and emits its cancellation once (0.314625ms)
+✔ Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal (0.332375ms)
+✔ Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal (0.217208ms)
+✔ A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once (0.0765ms)
+✔ Suspended paper feedback remains bounded and uses the original positive press impulse (5.651625ms)
+✔ Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice (1.253333ms)
+✔ Render-target admission includes color/depth before allocation and cancellation releases the late target once (0.558625ms)
+✔ Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners (0.31325ms)
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.602041ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (0.529208ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.114209ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.326666ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.15025ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.09075ms)
+✔ Disposed request rejects late completion and releases the late resource (0.104542ms)
+✔ Plugin namespace is frozen and nonwritable (0.035ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.196291ms)
+✔ Exclusive replacements enforce peak budget, free old values first and restore a failed allocation (0.259958ms)
+✔ Replacement targets preserve long-screen pixels and rebind the surface without resetting its world (0.25725ms)
+✔ Surface detach drops camera and frame references and each new target requires fresh completed draws (0.236209ms)
+✔ Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin (2.351542ms)
+✔ Budget rejection does not stop the application update loop or spam retries, and a later resize can recover (0.147375ms)
+✔ Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges (0.375ms)
+✔ Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once (0.676875ms)
+✔ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.3665ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 405.828625

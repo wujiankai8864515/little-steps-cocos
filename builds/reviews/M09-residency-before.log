@@ -1,0 +1,70 @@
+✔ Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation (2.396875ms)
+✔ Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam (1.429334ms)
+✔ Packing independent feather meshes preserves coverage and rebases every index without joining their paths (0.429375ms)
+✔ Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage (0.658417ms)
+✔ Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills (2.528583ms)
+✔ Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance (0.149916ms)
+✔ Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger (0.196459ms)
+✔ Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision (1.653583ms)
+✔ Information bubbles stay in the safe area and reserve head clearance across moving anchors (0.374791ms)
+✔ Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time (0.534ms)
+✔ Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes (0.562042ms)
+✔ A cancel-only waiting bubble cannot accept an entry and emits its cancellation once (0.281417ms)
+✔ Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal (0.285583ms)
+✔ Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal (0.403708ms)
+✔ A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once (0.085375ms)
+✔ Suspended paper feedback remains bounded and uses the original positive press impulse (7.18975ms)
+✔ Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice (1.0735ms)
+✔ Render-target admission includes color/depth before allocation and cancellation releases the late target once (0.615042ms)
+✔ Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners (0.291083ms)
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.543167ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (0.30125ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.09675ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.242916ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.09825ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.073208ms)
+✔ Disposed request rejects late completion and releases the late resource (0.081292ms)
+✔ Plugin namespace is frozen and nonwritable (0.030125ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.169416ms)
+✔ Exclusive replacements enforce peak budget, free old values first and restore a failed allocation (0.23975ms)
+✔ Replacement targets preserve long-screen pixels and rebind the surface without resetting its world (0.230084ms)
+✖ Surface detach drops camera and frame references and each new target requires fresh completed draws (0.589375ms)
+✔ Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin (2.707917ms)
+✔ Budget rejection does not stop the application update loop or spam retries, and a later resize can recover (0.159333ms)
+✔ Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges (0.333667ms)
+✔ Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once (0.491083ms)
+✖ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.216708ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 34
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 358.084125
+
+✖ failing tests:
+
+test at engines/travel-core/test/core.test.cjs:287:1
+✖ Surface detach drops camera and frame references and each new target requires fresh completed draws (0.589375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/core.test.cjs:291:107)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/viewport.test.cjs:41:1
+✖ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.216708ms)
+  TypeError: target.park is not a function
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:45:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

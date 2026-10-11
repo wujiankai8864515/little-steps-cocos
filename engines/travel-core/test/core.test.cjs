@@ -282,3 +282,15 @@ test('Replacement targets preserve long-screen pixels and rebind the surface wit
  assert.notEqual(next,target);assert.equal(target.destroyed,true);assert.equal(next.cameras.has(surface.camera),true);assert.equal(next.height,3380);assert.equal(next.width,1440);assert.equal(surface.camera.orthoHeight,845);assert.equal(surface.camera.targetTexture,next);assert.equal(world.parent,surface.content);
  assert.equal(JSON.stringify(surface.snapshot().pixels),'[1440,3380]');assert.equal(world.destroyCount,0);scope.dispose();assert.equal(next.destroyed,true);
 });
+
+// M09.04: hiding a cached room must free pixels without destroying its world.
+test('Surface detach drops camera and frame references and each new target requires fresh completed draws',async()=>{
+ const cc=fakeSurfaceEngine(),renderer=core.registerRenderSurface(cc),scope=new core.Lifetime(),host=new cc.Node('scene'),displayParent=new cc.Node('page');
+ const first=renderer.createTarget(720,1280,'room'),surface=renderer.create({host,displayParent,logicalSize:[720,1280],displayRect:[0,0,720,1280],target:first},scope),world=new cc.Node('doll');surface.content.addChild(world);
+ const oldReady=surface.ready;cc.director.draw();cc.director.draw();await oldReady;
+ surface.layout([720,1690],[0,-205,720,1690],null);assert.equal(surface.camera.targetTexture,null);assert.equal(surface.snapshot().active,false);surface.setActive(true);assert.equal(surface.snapshot().active,false);await assert.rejects(surface.ready,{name:'CancelledError'});
+ const next=renderer.createTarget(1440,3380,'room');surface.layout([720,1690],[0,-205,720,1690],next);assert.equal(surface.snapshot().readyFrames,0);assert.notEqual(surface.ready,oldReady);
+ let settled=false;const ready=surface.ready;ready.then(()=>settled=true);cc.director.draw();await Promise.resolve();assert.equal(settled,false);
+ surface.setActive(true);cc.director.draw();await Promise.resolve();assert.equal(settled,false);cc.director.draw();await ready;assert.equal(settled,true);assert.equal(world.parent,surface.content);assert.equal(world.destroyCount,0);
+ surface.layout([720,1280],[0,0,720,1280],first);const interrupted=surface.ready;scope.dispose();await assert.rejects(interrupted,{name:'CancelledError'});cc.director.draw();assert.equal(surface.snapshot().readyFrames,0);
+});

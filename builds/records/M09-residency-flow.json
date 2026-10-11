@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "id": "M09.04",
+  "status": "source_and_regression_verified_browser_and_device_pending",
+  "baseCommit": "d35dac45fe3d173ac3fe69feeac0cff2e133020f",
+  "turnClassification": "progress",
+  "problem": "Cached Darkroom retained a full render target and resized it while hidden; original catalog admission for Home + Darkroom + journal exceeds 256 MiB at a 1440 x 3380 target size.",
+  "changes": [
+    "Park the hidden Darkroom render target at zero reserved bytes while retaining its exclusive resource slot, original assets, actors, light state and round",
+    "Detach camera and SpriteFrame references before destroying the target; dormant viewport changes update layout without allocating pixels",
+    "Re-entry recreates a target with a new identity at the current full dimensions and waits for two completed draws",
+    "Cancelling an entry releases the prepared target; foreground/background changes suspend/resume its draw readiness; a resize during preparation waits for the replacement texture",
+    "Keep original 80 specs/batch, 128 entries and 256 MiB limits; preserve Boot and scene bytes"
+  ],
+  "budgetModel": {
+    "source": "Actual asset catalog, current Home/Darkroom effect exports, music streaming reservations, gradient and seven journal assets, tested with real ResourceGate",
+    "fixedReservedBytes": 163989211,
+    "fixedEntries": 119,
+    "journalBytes": 36796512,
+    "journalEntries": 7,
+    "targetPixels": [
+      1440,
+      3380
+    ],
+    "oneTargetReservedBytes": 38937600,
+    "beforeJournalTotal": 278660923,
+    "afterJournalTotal": 239723323,
+    "savedReservedBytes": 38937600,
+    "afterEntryCount": 128,
+    "maxBytes": 268435456,
+    "qualification": "Conservative admission accounting, not measured GPU residency, total process memory or device performance"
+  },
+  "validation": {
+    "regression": {
+      "tests": 194,
+      "pass": 194,
+      "fail": 0,
+      "log": "builds/reviews/M09-residency-regression-v1.log"
+    },
+    "targeted": "builds/reviews/M09-residency-targeted-v4.log",
+    "typecheck": {
+      "log": "builds/reviews/M09-residency-types-v3.log",
+      "command": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+      "status": "pass_game_source"
+    },
+    "browser": "not_run_this_turn_crash_mitigation",
+    "CreatorBuild": "not_run_this_turn",
+    "WeChatDevices": "pending",
+    "plugin": {
+      "link": "../../../../engines/travel-core/dist/travel-core.js",
+      "sha256": "987fe68cf6f5a48ee1aec7d4703d0967434fa11125e380e3f047cbcd69d7a824",
+      "targetMode": "0444",
+      "directoryMode": "0555"
+    },
+    "bootUnchangedAgainst": "d35dac4"
+  },
+  "failures": [
+    {
+      "evidence": "builds/reviews/M09-residency-before.log",
+      "result": "New tests on previous source: 34 pass / 2 fail, missing parked target and detached-surface readiness support"
+    },
+    {
+      "evidence": "builds/reviews/M09-residency-targeted-v2.log",
+      "result": "Route test fixture lacked imported other-page classes; added explicit substitutes"
+    },
+    {
+      "evidence": "builds/reviews/M09-residency-targeted-v3.log",
+      "result": "Home route fixture used real resize without constructing Home dependencies; provided fixture resize; no production code weakened"
+    },
+    {
+      "evidence": "builds/reviews/M09-residency-types-v1.log",
+      "result": "Unfiltered compiler reported 88 errors exclusively in installed Creator declaration files; game checking completed with skipLibCheck, declarations remain unverified"
+    }
+  ],
+  "sources": [
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "987fe68cf6f5a48ee1aec7d4703d0967434fa11125e380e3f047cbcd69d7a824"
+    },
+    {
+      "path": "engines/travel-core/src/cocos-surface.js",
+      "sha256": "bd7987076ee0a4121d9547a1738ea332627140d7394d3d389c525b7d8a245205"
+    },
+    {
+      "path": "engines/travel-core/src/resource-gate.js",
+      "sha256": "10b869fe91df99baf08c63cb77c031742e4e24d16462dd4f9202da3344cadced"
+    },
+    {
+      "path": "engines/travel-core/test/core.test.cjs",
+      "sha256": "3f76887d20ac3d8a58b48ed2f6553f492d4aae80f6172fefc48c0128fec42545"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "46a0d83ec2ebea98857ab84656af1c0fb647d41b1070f7303e2c8814750a4617"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "5c17c9fc3f10de302dc2bdc23091099eca37b1a30b080d47a751fc9b5376bc99"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "sha256": "f738d3e5a3b997104a78b094952df38b47666e2c97f475f83b8adf45b6ceb463"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/viewport.test.cjs",
+      "sha256": "f0df6783bc4ea5b0db827d45958736ef63e38bb7674a4fe322452a9e6841a028"
+    }
+  ],
+  "openIssues": [
+    "Actual independent-browser Darkroom -> Home -> journal -> Darkroom visual and input comparison, no black/blank first frames, and preserved round still pending",
+    "Source admission succeeds at the recorded size; wider/taller devices and simultaneous other optional resources require separate validation",
+    "Home+Darkroom+journal reaches exactly 128 entries: further optional pages need their own residency strategy",
+    "Home first-download budget remains over 19,000,000 bytes; not changed here",
+    "Earlier fourth Chrome console error remains unclassified; no new graphical session attempted",
+    "Map/encounter, collection/archive navigation, photo wall, wardrobe, full strict Godot visual comparison and formal WeChat delivery remain incomplete"
+  ],
+  "next": [
+    "Keep build and graphics serialized; never repeat the failing Codex in-app Godot screenshot path",
+    "Use one independent browser engine page only when the UI connection is responsive; first classify the prior unexpected error",
+    "Verify parked-room return at matched saved state and screen sizes; use explicit fresh-render readiness evidence",
+    "Proceed with remaining map/encounter and collection/archive source work when graphical tools are unavailable"
+  ]
+}

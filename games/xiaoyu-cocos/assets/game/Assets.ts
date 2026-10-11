@@ -72,13 +72,20 @@ export class GameAssets {
         const id='transient:'+key;
         const lease=await this.gate.acquire([{key:id,bytes:renderer.estimateTarget(width,height)}],()=>renderer.createTarget(width,height,key),(v:any)=>v.destroy(),scope);
         return {get texture(){return lease.get(id);},resize:(w:number,h:number)=>{
-            const current=lease.get(id);if(current.width===w&&current.height===h)return;
-            const previous=[current.width,current.height];
+            const current=lease.get(id);if(current&&current.width===w&&current.height===h)return;
+            const previous=current?[current.width,current.height]:null;
             // A new TextureBase identity also invalidates Creator's 2D sampler
             // descriptor cache. Reinitializing the same RenderTexture does not.
-            lease.replace(id,renderer.estimateTarget(w,h),()=>renderer.createTarget(w,h,key),()=>renderer.createTarget(previous[0],previous[1],key));
+            lease.replace(id,renderer.estimateTarget(w,h),()=>renderer.createTarget(w,h,key),()=>previous?renderer.createTarget(previous[0],previous[1],key):null);
+        },park:()=>{
+            const current=lease.get(id);if(!current)return;
+            const previous=[current.width,current.height];
+            // Keep the exclusive lease, but release every pixel. Callers detach
+            // camera/frame references first; the gameplay world stays alive.
+            lease.replace(id,0,()=>null,()=>renderer.createTarget(previous[0],previous[1],key));
         }};
     }
+
     private acquireSpecs(specs:any[],scope:Scope) {
         return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);

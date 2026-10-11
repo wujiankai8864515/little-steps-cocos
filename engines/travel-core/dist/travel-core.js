@@ -496,7 +496,7 @@ class ResourceGate {
                     // before creating the new one so peak admission stays bounded.
                     this.reservedBytes += difference; entry.bytes = bytes;
                     const old = entry.value; entry.value = null;
-                    try {entry.unload(old); entry.value = create();}
+                    try {if (old != null) entry.unload(old); entry.value = create();}
                     catch (error) {
                         this.reservedBytes -= difference; entry.bytes = previous;
                         entry.value = restore();
@@ -1012,17 +1012,23 @@ function registerRenderSurface(cc) {
         const canvas = canvasNode.addComponent(Canvas); canvas.alignCanvasWithScreen = false; canvas.cameraComponent = camera;
         const sprite = display.addComponent(Sprite); sprite.sizeMode = Sprite.SizeMode.CUSTOM;
         display.layer = displayParent.layer;
-        let frame = null, disposed = false, readyFrames = 0, settleReady;
-        const ready = new Promise((resolve, reject) => {settleReady = error => error ? reject(error) : resolve();});
-        // Consumers may dispose a prepared surface without adopting it. Keep
-        // cancellation handled even if that consumer never awaits readiness.
-        ready.catch(() => {});
+        let frame = null, disposed = false, readyFrames = 0, settleReady = null, ready = null;
         const afterDraw = () => {
-            if (!canvasNode.active || !camera.enabledInHierarchy || disposed) return;
+            if (!canvasNode.active || !camera.targetTexture || !camera.enabledInHierarchy || disposed) return;
             if (++readyFrames < 2) return;
-            director.off(Director.EVENT_AFTER_DRAW, afterDraw); settleReady();
+            director.off(Director.EVENT_AFTER_DRAW, afterDraw);
+            const settle = settleReady; settleReady = null; if (settle) settle();
         };
-        director.on(Director.EVENT_AFTER_DRAW, afterDraw);
+        function resetReady(hasTarget) {
+            director.off(Director.EVENT_AFTER_DRAW, afterDraw);
+            if (settleReady) settleReady(new CancelledError());
+            readyFrames = 0;
+            ready = new Promise((resolve, reject) => {settleReady = error => error ? reject(error) : resolve();});
+            // A parked or superseded target may have no readiness consumer.
+            ready.catch(() => {});
+            if (hasTarget) director.on(Director.EVENT_AFTER_DRAW, afterDraw);
+            else {settleReady(new CancelledError()); settleReady = null;}
+        }
         const watched = new Map();
         function exclude(node) {
             const record = watched.get(node); if (!record) return;
@@ -1046,11 +1052,16 @@ function registerRenderSurface(cc) {
             content.setPosition(-size[0] / 2, size[1] / 2);
             display.setPosition(rect[0], -rect[1]); displayUI.setContentSize(rect[2], rect[3]);
             camera.orthoHeight = size[1] / 2;
+            if (camera.targetTexture !== texture || !ready) resetReady(!!texture);
             // RenderTexture.reset destroys the window attachments AND clears
             // its cameras. The Camera setter skips identical targets, so detach
             // before reattaching after an in-place reset (including rollback).
             if (camera.targetTexture === texture) camera.targetTexture = null;
             camera.targetTexture = texture;
+            if (!texture) {
+                canvasNode.active = false; sprite.spriteFrame = null;
+                if (frame) frame.destroy(); frame = null; return true;
+            }
             if (!frame || frame.texture !== texture || frame.originalSize?.width !== texture.width || frame.originalSize?.height !== texture.height) {
                 const old = frame; frame = new SpriteFrame(); frame.texture = texture; frame.packable = false;
                 // Builtin Sprite's SAMPLE_FROM_RT handles the graphics backend's
@@ -1062,16 +1073,16 @@ function registerRenderSurface(cc) {
         function dispose() {
             if (disposed) return; disposed = true;
             director.off(Director.EVENT_AFTER_DRAW, afterDraw);
-            if (readyFrames < 2) settleReady(new CancelledError());
+            if (settleReady) {settleReady(new CancelledError()); settleReady = null;}
             canvasNode.active = false; camera.enabled = false; camera.targetTexture = null;
             exclude(canvasNode); sprite.spriteFrame = null;
             if (frame) frame.destroy(); frame = null;
             display.destroy(); canvasNode.destroy();
         }
         scope.own(dispose);
-        layout(logicalSize, displayRect, target); canvasNode.active = true;
-        return {content, display, camera, layout, dispose, ready,
-            setActive(value) {if (!disposed) canvasNode.active = !!value;},
+        layout(logicalSize, displayRect, target); canvasNode.active = !!target;
+        return {content, display, camera, layout, dispose, get ready() {return ready;},
+            setActive(value) {if (!disposed) canvasNode.active = !!value && !!camera.targetTexture;},
             snapshot() {return {logicalSize:[canvasUI.width,canvasUI.height],pixels:camera.targetTexture?[camera.targetTexture.width,camera.targetTexture.height]:null,layer,priority:camera.priority,active:canvasNode.active,disposed,cameraEnabled:camera.enabledInHierarchy,cameraPosition:camera.node.worldPosition,contentPosition:content.worldPosition,displayPosition:display.worldPosition,trackedNodes:watched.size,readyFrames};},
         };
     }

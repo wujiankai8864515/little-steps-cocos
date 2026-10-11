@@ -1,0 +1,216 @@
+✔ Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation (1.544875ms)
+✔ Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam (1.17475ms)
+✔ Packing independent feather meshes preserves coverage and rebases every index without joining their paths (0.359334ms)
+✔ Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage (0.763459ms)
+✔ Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills (3.131958ms)
+✔ Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance (0.155541ms)
+✔ Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger (0.186834ms)
+✔ Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision (1.846541ms)
+✔ Information bubbles stay in the safe area and reserve head clearance across moving anchors (0.17575ms)
+✔ Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time (0.578959ms)
+✔ Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes (0.526417ms)
+✔ A cancel-only waiting bubble cannot accept an entry and emits its cancellation once (0.287125ms)
+✔ Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal (0.301417ms)
+✔ Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal (0.363625ms)
+✔ A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once (0.213917ms)
+✔ Suspended paper feedback remains bounded and uses the original positive press impulse (5.32025ms)
+✔ Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice (1.053916ms)
+✔ Render-target admission includes color/depth before allocation and cancellation releases the late target once (0.490333ms)
+✔ Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners (0.276292ms)
+✔ UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity (0.568666ms)
+✔ Owned audio stops a queued late start and releases its clip exactly once (0.460333ms)
+✔ Nested parent rotation maps coordinates and inverse restores source pixels (0.128584ms)
+✔ Weighted skin uses rest inverse, retaining original geometry at bind pose (0.321208ms)
+✔ Deformed triangle hit returns original alpha coordinates, outside hit is rejected (0.116375ms)
+✔ Animation curves clamp endpoints, interpolate vectors, and step visibility (0.08425ms)
+✔ Disposed request rejects late completion and releases the late resource (0.093791ms)
+✔ Plugin namespace is frozen and nonwritable (0.029167ms)
+✔ Shared leases deduplicate loads and retain admission until cancelled late work settles (0.166833ms)
+✔ Exclusive replacements enforce peak budget, free old values first and restore a failed allocation (0.300417ms)
+✔ Replacement targets preserve long-screen pixels and rebind the surface without resetting its world (0.298625ms)
+✔ Surface detach drops camera and frame references and each new target requires fresh completed draws (0.358292ms)
+✔ Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin (1.995375ms)
+✔ Budget rejection does not stop the application update loop or spam retries, and a later resize can recover (0.135417ms)
+✔ Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges (0.295958ms)
+✔ Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once (0.554542ms)
+✔ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.341417ms)
+✔ Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes (0.658792ms)
+✖ Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely (1.970166ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 37
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 371.853958
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/viewport.test.cjs:69:1
+✖ Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely (1.970166ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  ... Skipped lines
+  
+  + HomePage {
+  +   clearRouteWaiting: [Function: clearRouteWaiting],
+  +   failed: true,
+  +   pause: [Function: pause],
+  +   resume: [Function: resume],
+  +   root: Node {
+  - DarkroomPage {
+  -   active: false,
+  -   bleedUpdate: [Function: bleedUpdate],
+  -   bubble: {
+  -     dismiss: [Function: dismiss],
+  -     setSafe: [Function: setSafe],
+  -     show: [Function: show]
+  -   },
+  -   hud: {
+  -     resize: [Function: resize]
+  -   },
+  -   plan: {
+  -     logical: [
+  -       720,
+  -       1280
+  -     ],
+  -     offset: 0,
+  -     pixels: [
+  -       720,
+  -       1280
+  -     ],
+  -     scale: 1
+  -   },
+  -   plaque: {
+  -     cancel: [Function: cancel],
+  -     root: Node {
+  -       children: [],
+  -       name: 'Back',
+  -       position: {
+  -         x: 23,
+  -         y: -10
+  -       },
+  -       scale: {
+  -         x: 1,
+  -         y: 1
+  -       },
+  -       ui: UITransform {
+  -         height: 1280,
+  -         width: 720
+  -       }
+  -     }
+  -   },
+  -   pointer: {
+  -     cancel: [Function: cancel]
+  -   },
+  -   pointerHost: Node {
+        children: [],
+  +     name: 'Home',
+  -     name: 'Pointer',
+        position: {
+          x: 0,
+          y: 0
+        },
+        scale: {
+  ...
+      },
+  +   setInput: [Function: setInput],
+  +   showRouteError: [Function: showRouteError],
+  +   showRouteWaiting: [Function: showRouteWaiting]
+  -   room: Node {
+  -     children: [],
+  -     name: 'World',
+  -     position: {
+  -       x: 0,
+  -       y: -0
+  -     },
+  -     scale: {
+  -       x: 1,
+  -       y: 1
+  -     },
+  -     ui: UITransform {
+  -       height: 1280,
+  -       width: 720
+  -     }
+  -   },
+  -   root: Node {
+  -     children: [],
+  -     name: 'Darkroom',
+  -     position: {
+  -       x: 0,
+  -       y: -0
+  -     },
+  -     scale: {
+  -       x: 1,
+  -       y: 1
+  -     },
+  -     ui: UITransform {
+  -       height: 1280,
+  -       width: 720
+  -     }
+  -   },
+  -   round: {
+  -     active: false,
+  -     cancel: [Function: cancel],
+  -     dragBounds: [
+  -       12,
+  -       12,
+  -       696,
+  -       1256
+  -     ],
+  -     held: null,
+  -     inputEnabled: false,
+  -     misfortune: 39,
+  -     phase: 'ready_full',
+  -     tool: 'slipper'
+  -   },
+  -   scope: Lifetime {
+  -     active: true,
+  -     disposers: [
+  -       [Function: release],
+  -       [Function (anonymous)]
+  -     ],
+  -     parent: null,
+  -     parentDisposer: null
+  -   },
+  -   shadows: {
+  -     sync: [Function: sync]
+  -   },
+  -   snapshot: [Function: snapshot],
+  -   surface: {
+  -     active: false,
+  -     layout: [Function: layout],
+  -     ready: [Getter] Promise {
+  -       <rejected> Error: parked
+  -           at Object.layout (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:55:346)
+  -           at DarkroomPage.parkRender (evalmachine.<anonymous>:159:22)
+  -           at DarkroomPage.pause (evalmachine.<anonymous>:205:168)
+  -           at Application.openDarkroom (evalmachine.<anonymous>:451:41)
+  -           at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:74:112)
+  -           at async Test.run (node:internal/test_runner/test:1389:7)
+  -           at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+  -       Symbol(async_id_symbol): 350,
+  -       Symbol(trigger_async_id_symbol): 348
+  -     },
+  -     setActive: [Function: setActive],
+  -     texture: null
+  -   },
+  -   sync: [Function: sync],
+  -   targetLease: {
+  -     park: [Function: park],
+  -     resize: [Function: resize],
+  -     texture: [Getter: null]
+  -   }
+    }
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:74:131)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [HomePage],
+    expected: [DarkroomPage],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

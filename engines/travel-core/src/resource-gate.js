@@ -56,7 +56,7 @@ class ResourceGate {
                     // before creating the new one so peak admission stays bounded.
                     this.reservedBytes += difference; entry.bytes = bytes;
                     const old = entry.value; entry.value = null;
-                    try {entry.unload(old); entry.value = create();}
+                    try {if (old != null) entry.unload(old); entry.value = create();}
                     catch (error) {
                         this.reservedBytes -= difference; entry.bytes = previous;
                         entry.value = restore();
