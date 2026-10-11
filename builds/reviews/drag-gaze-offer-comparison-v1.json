@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "inputKind": "real-pointer",
+  "reference": {
+    "path": "builds/reviews/drag-gaze-offer-godot-v1.jpg",
+    "sha256": "ca915dc6afa7f2e4364d634bc3c12b116c96f41ef815b159c58d70cb31927202"
+  },
+  "cocos": {
+    "path": "builds/reviews/drag-gaze-offer-cocos-v1.jpg",
+    "sha256": "e1d6e0e0b4fc93cb419fdfbff1360eb10b4ab22f832e2246483233cd9958d738"
+  },
+  "comparison": {
+    "path": "builds/reviews/drag-gaze-offer-comparison-v1.png",
+    "sha256": "3a8a45baec1a1e352e5382e1b66e2925d272e72f701b107f716cf6700402a08d",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.7122233653406493,
+      "RMSRGB": 5.429371972688572,
+      "maximumChannelDifference": 149
+    },
+    "wornBackpack": {
+      "rect": [
+        15,
+        405,
+        141,
+        535
+      ],
+      "meanAbsoluteRGB": 4.468274318274318,
+      "RMSRGB": 8.084711544229586,
+      "maximumChannelDifference": 80
+    },
+    "wornBackpackAndActor": {
+      "rect": [
+        12,
+        370,
+        333,
+        555
+      ],
+      "meanAbsoluteRGB": 2.209171788611041,
+      "RMSRGB": 5.950321790113626,
+      "maximumChannelDifference": 127
+    },
+    "floorProjection": {
+      "rect": [
+        0,
+        505,
+        405,
+        630
+      ],
+      "meanAbsoluteRGB": 2.5237135802469135,
+      "RMSRGB": 7.9648228253378655,
+      "maximumChannelDifference": 149
+    },
+    "confirmationPaperTextChoices": {
+      "rect": [
+        100,
+        278,
+        295,
+        380
+      ],
+      "meanAbsoluteRGB": 4.820177643707055,
+      "RMSRGB": 11.396505083322849,
+      "maximumChannelDifference": 121
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared clock/ambient/plant rest with actual browser pointer input; flowers/particles not synchronized. JPEG/raster and unresolved UI differences remain visible. All sizes/pages, full travel and WeChat device acceptance pending."
+}

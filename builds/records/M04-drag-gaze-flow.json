@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "id": "M04.14",
+  "status": "partial_backpack_drag_gaze_native_oracle_and_real_input_verified_complete_product_parity_pending",
+  "sourceCommit": "68339e3c4f0c0d1e9080824538dc840bbc1fd922",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DragGaze.ts",
+      "sha256": "f2e24aec7047134508972911bc9135f92d509af3194d8a79936730ed85db2201"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DragGaze.ts.meta",
+      "sha256": "f71421c1ba7d8a9deda2c8042d672e88e922b47038c65d763a6e48acbad76feb"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/EyeGeometry.ts",
+      "sha256": "015eec9a46ae8eaddfa85d055e760b70e6f8056ac5fbcfd2543f8ff9e712c240"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "sha256": "a8d478a2be18f0ac1c8b2944dd7641712f7c2ef9c23b2858363e17a8c17224d8"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "b3368930c4aabef8ea884d83309595fe7953950f753a6b2fa017520a62c2597a"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "home/behavior/drag_gaze.gd",
+      "sha256": "7ec37582bae6228540564e2db91c4d6a85d92bd9f1dbd007bbc14f5a6bd23eaa"
+    },
+    {
+      "path": "home/behavior/character_geometry.gd",
+      "sha256": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896"
+    },
+    {
+      "path": "home/behavior/eye_geometry.gd",
+      "sha256": "488c0ff3d2add469013fa8c3835bb5e19d0533009b4fbf4b9a66f6f44a196664"
+    },
+    {
+      "path": "home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "home/interaction/home_interaction_controller.gd",
+      "sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd"
+    }
+  ],
+  "implemented": [
+    "Independent original150 stiffness/23.5 damping springs,85 speed limit,120Hz substeps,50ms cap,7/s blend weight and ellipse12x5/7x3",
+    "Original float32 vector operations and divide-then-multiply length clamp;160 original runtime oracle frames exactly equal",
+    "Real bag visible-bounds center mapped from its current front-canvas frame into actual body source pixels, subtracting original jelly",
+    "Apply drag gaze after ambient sampling, before final rendering; original blink/closed-eye handling and no fish-as-prop gaze",
+    "Invalid/cleared target retains previous point while weight fades; page focus clears active target",
+    "Reuse existing independent pupils and eroded eye domains; no art substitution, additional actor or Spine"
+  ],
+  "verification": {
+    "tests": {
+      "suite": "builds/reviews/M04-drag-gaze-tests-v2.log",
+      "pass": 99,
+      "fail": 0,
+      "exactOracleAssertions": "builds/reviews/M04-drag-gaze-oracle-tests-v3-exact.log",
+      "nativeOracle": "games/xiaoyu-cocos/test/fixtures/drag-gaze-native.json",
+      "comparison": "builds/reviews/M04-drag-gaze-oracle-comparison-v2.json",
+      "limits": "Spring math uses actual native local_target to isolate solver; real matrix/eye-domain rendering measured separately"
+    },
+    "productionTypes": "builds/reviews/M04-drag-gaze-production-types-v2.log",
+    "candidateTypes": "builds/reviews/M04-drag-gaze-candidate-types-v2.log",
+    "candidateBuilds": 3,
+    "creatorExitCodes": [
+      36,
+      36,
+      36
+    ],
+    "actualBrowserErrors": {
+      "native8853": 0,
+      "native8855": 0,
+      "cocos8856": 0,
+      "cocos8857": 0
+    },
+    "realPointer": {
+      "native": "builds/reviews/M04-drag-gaze-native-pointer-public-v1.json",
+      "cocos": "builds/reviews/M04-drag-gaze-cocos-pointer-public-v1.json",
+      "cases": [
+        "Invalid wall release starts actual bag gaze and fades to0",
+        "Release on actor still wears/asks",
+        "No choice restores wall/hanging, inputIDLE and notehidden"
+      ],
+      "finalProxy": [
+        531,
+        379
+      ],
+      "dropEvaluations": 2,
+      "limits": "Physical gesture duration differs between engines; intermediate wall-clock poses are not declared frame-identical"
+    },
+    "screenshots": [
+      "builds/reviews/drag-gaze-noon-comparison-v2.png",
+      "builds/reviews/drag-gaze-offer-comparison-v1.png",
+      "builds/reviews/drag-gaze-cancel-wall-comparison-v1.png"
+    ],
+    "sameStateGaze": {
+      "bodyPixelGazeErrors": {
+        "left": 0.0,
+        "right": 4.76837158203125e-07,
+        "left_velocity": 1.52182110468857e-06,
+        "right_velocity": 0.0,
+        "target_world": 0.0
+      },
+      "maximumPupilDomainError": 9.87491184503142e-05,
+      "regions": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 1.1425045724737082,
+          "RMSRGB": 3.221635953183352,
+          "maximumChannelDifference": 138
+        },
+        "leftPupil": {
+          "rect": [
+            165,
+            442,
+            197,
+            467
+          ],
+          "meanAbsoluteRGB": 1.4145833333333335,
+          "RMSRGB": 2.116541515331749,
+          "maximumChannelDifference": 9
+        },
+        "rightPupil": {
+          "rect": [
+            234,
+            423,
+            263,
+            448
+          ],
+          "meanAbsoluteRGB": 1.1696551724137931,
+          "RMSRGB": 2.019362554693591,
+          "maximumChannelDifference": 9
+        },
+        "face": {
+          "rect": [
+            140,
+            405,
+            281,
+            483
+          ],
+          "meanAbsoluteRGB": 0.7164332909013761,
+          "RMSRGB": 1.3503444108891685,
+          "maximumChannelDifference": 10
+        }
+      }
+    },
+    "frameworkPlugin": {
+      "link": "../../../../engines/travel-core/dist/travel-core.js",
+      "sha256": "d984c2b2771843bb25337aecbb77bef59c87a599b69daf1d9b123295703d6e1a",
+      "targetMode": "0444",
+      "directoryMode": "0555",
+      "unchanged": true
+    },
+    "sourceIntegrity": [
+      "builds/reviews/M04-drag-gaze-source-integrity-v1.json",
+      "builds/reviews/M04-drag-gaze-source-integrity-v2.json",
+      "builds/reviews/M04-drag-gaze-input-source-integrity-v1.json"
+    ],
+    "inputCandidateTypes": "builds/reviews/M04-drag-gaze-input-candidate-types-v1.log"
+  },
+  "failuresRetained": [
+    "v1 solver used a multiplied length ratio; native velocity error1.7e-5 was detected; corrected exact source operation order",
+    "v1 test also exposed VM array-realm assertion issue; fixed test serialization, not product behavior",
+    "Initial Cocos viewport switched after construction; narrow/misaligned raw screenshot retained; reload at405x720 and final fresh navigation restored actual requested viewport",
+    "Initial offer comparison invocation omitted required label; CLI error retained in turn and review; rerun named log/output"
+  ],
+  "pending": [
+    "Existing float32 vs double pupil-domain edge error approximately9.87e-5 sourcepx; full raster/texture/lighting/glyph/particle and header parity",
+    "Other prop input, doll/darkroom, bowl/drink, low table and real travel acceptance/loading/departure",
+    "Night/other sizes, simultaneous pointers, actual focus/lifecycle and intermediate-frame physical gesture parity",
+    "Home first-download19MB gate remains exceeded in earlier36,841,329byte debug fixture; unchanged this item",
+    "All138 requirements, formal only-WeChat build and real device acceptance",
+    "Cancel wall native worn floor visible nodes0 vs Cocos active pass count5 at wear blend0; projection node lifetime/draw-cost parity needs separate audit"
+  ]
+}

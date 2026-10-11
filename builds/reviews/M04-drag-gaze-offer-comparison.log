@@ -1,0 +1,6 @@
+Reproduction of observed missing-label invocation; expected CLI refusal, exit2
+usage: compare_backpack_checkpoint.py [-h] --reference REFERENCE --cocos COCOS
+                                      --name NAME --label LABEL
+                                      [--region {hanging,worn,returning,offer}]
+                                      [--input-kind {fixed-step,real-pointer}]
+compare_backpack_checkpoint.py: error: the following arguments are required: --label

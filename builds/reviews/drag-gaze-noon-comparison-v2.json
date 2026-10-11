@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "id": "M04.14",
+  "scope": "Declared same body rest pose and fixed focus [619,528],120x1/60; native source oracle measured separately; not real physical input",
+  "reference": {
+    "path": "builds/reviews/drag-gaze-noon-godot-v1.jpg",
+    "sha256": "2062f756dbe0e929003267fd338eb68399e11281f17daddc5b5c77b4b6fecd2a",
+    "trace": "builds/reviews/M04-drag-gaze-native-public-v1.json",
+    "traceSHA256": "3d59f836101adbbb076fd61eac4516133b5322458a5e70872b0054a29dbf9f07"
+  },
+  "cocos": {
+    "path": "builds/reviews/drag-gaze-noon-cocos-v2.jpg",
+    "sha256": "2374a094231d607c71a322b2433786a8fa4bd5f511620a48a6d6fef2894103bc",
+    "trace": "builds/reviews/M04-drag-gaze-cocos-public-v2.json",
+    "traceSHA256": "804fde652f45b8a31e4fec687a1c8b45c67d7a93b01915161fe62855680692cc"
+  },
+  "comparison": {
+    "path": "builds/reviews/drag-gaze-noon-comparison-v2.png",
+    "sha256": "697da6e9a31c2e410f2c0077a2773d9406e14f07e34f6ec840c06940a1a7f7d0",
+    "method": "Unaligned, unscaled, unrecolored actual405x720 screenshots; unamplified RGB difference"
+  },
+  "nativeBodyFrame": [
+    1.0,
+    0.0,
+    1.1920928955078125e-07,
+    1.0,
+    14.999969482421875,
+    615.0
+  ],
+  "bodyPixelGazeErrors": {
+    "left": 0.0,
+    "right": 4.76837158203125e-07,
+    "left_velocity": 1.52182110468857e-06,
+    "right_velocity": 0.0,
+    "target_world": 0.0
+  },
+  "nativePupilOffsets": [
+    [
+      4.930699348449707,
+      -1.8777707815170288
+    ],
+    [
+      0.4035849869251251,
+      -0.22992219030857086
+    ]
+  ],
+  "cocosPupilOffsets": [
+    [
+      4.930600599331257,
+      -1.8777331986570314
+    ],
+    [
+      0.4035668369539618,
+      -0.22991191516779708
+    ]
+  ],
+  "maximumPupilDomainError": 9.87491184503142e-05,
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.1425045724737082,
+      "RMSRGB": 3.221635953183352,
+      "maximumChannelDifference": 138
+    },
+    "leftPupil": {
+      "rect": [
+        165,
+        442,
+        197,
+        467
+      ],
+      "meanAbsoluteRGB": 1.4145833333333335,
+      "RMSRGB": 2.116541515331749,
+      "maximumChannelDifference": 9
+    },
+    "rightPupil": {
+      "rect": [
+        234,
+        423,
+        263,
+        448
+      ],
+      "meanAbsoluteRGB": 1.1696551724137931,
+      "RMSRGB": 2.019362554693591,
+      "maximumChannelDifference": 9
+    },
+    "face": {
+      "rect": [
+        140,
+        405,
+        281,
+        483
+      ],
+      "meanAbsoluteRGB": 0.7164332909013761,
+      "RMSRGB": 1.3503444108891685,
+      "maximumChannelDifference": 10
+    }
+  },
+  "status": "same_state_gaze_measured_full_pixel_parity_pending",
+  "limits": "Whole frame lighting, texture filtering, glyphs, particles and header differ; native eye-domain float32 vs current Cocos double clamp remains measurable. Browser screenshot compression retained. Physical drag uses unsynchronized wall-clock ticks in independent observer fixture. Other props, travel, formalWeChat/device and19MB Home gate pending."
+}
