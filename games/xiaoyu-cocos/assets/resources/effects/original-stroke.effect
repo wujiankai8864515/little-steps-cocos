@@ -1,0 +1,34 @@
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: stroke-vs:vert
+      frag: stroke-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: one
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      properties:
+        strokeColor: { value: [1, 1, 1, 1] }
+}%
+CCProgram stroke-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  in vec3 a_position;
+  in vec4 a_color;
+  out vec2 coverage;
+  vec4 vert(){coverage=vec2(a_color.r,a_color.a);return cc_matViewProj*vec4(a_position,1.0);}
+}%
+CCProgram stroke-fs %{
+  precision highp float;
+  in vec2 coverage;
+  uniform StrokeState { vec4 strokeColor; };
+  vec4 frag(){float alpha=strokeColor.a*coverage.x*coverage.y;return vec4(strokeColor.rgb*alpha,alpha);}
+}%

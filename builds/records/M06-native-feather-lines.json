@@ -1,0 +1,578 @@
+{
+  "schema": 1,
+  "id": "M06.03",
+  "status": "native_feather_line_geometry_actual_browser_observed_strict_parity_pending",
+  "sourceCommitBeforeItem": "01a7f1dd64a1d8cbcaecf9ceab80fc7fc80d84d1",
+  "changes": [
+    {
+      "path": "engines/travel-core/src/drawing.js",
+      "sha256": "792f37dfc88bc069b238885d470770449efbee511d8b0d03d16865f543ee7100"
+    },
+    {
+      "path": "engines/travel-core/NOTICE.godot.txt",
+      "sha256": "cc295ec442c4ccf0f210222285fc5690b380ac495283c3e66815eb23244706ad"
+    },
+    {
+      "path": "engines/travel-core/tools/install-plugin.cjs",
+      "sha256": "05174187af53b338407549e4ab6de794b77c58c6aa17d3287e48bb6168b2f357"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "da7d2351c307d7920dfb3923ccadc7c78ae69dc8a0c5e0052a6704a377e57d38"
+    },
+    {
+      "path": "engines/travel-core/test/core.test.cjs",
+      "sha256": "20799d306ad47f0a562f2e45bdfed814d82dcf5f618437b39df3ca3b6778f875"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "dbea7678bbb324cb6fb518ff5ea654c2a19c3e1caf37998075c1762aeadd5c8f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Stroke2D.ts",
+      "sha256": "fc464d811a7538b6b575b3fd82d2496876345c75590bc74d837e3ef566d63c93"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Stroke2D.ts.meta",
+      "sha256": "097458bdd6910bf6d416c3a60905c7df65e371f3fd244ad5a645944a09b13c91"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomHUD.ts",
+      "sha256": "3fbcb37932364c4dd36630d7bf4a92fa12303ccf8cd747b62ba1652135169b6b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "sha256": "8798f00c0d7e5a3b2cf2e8456342e77c79d5617e6ab05c21ed2be1d508b17f59"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts",
+      "sha256": "e56a834fe3dfb0558c4fd82dee9851f99cb0520199b889fd8bbee545f5d78dd3"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/original-stroke.effect",
+      "sha256": "8a67928b5daa6f3c6d9a6150f807c737501164c873be46c9a599e99e26165215"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/original-stroke.effect.meta",
+      "sha256": "d6739995a31a289bd9814db19e91123d39991eb6640e9b92b7fad1243215b0ce"
+    },
+    {
+      "path": "builds/tools/create_darkroom_page_checkpoint.py",
+      "sha256": "ccdd481fe3c89072e545f921817e01f762505ca46d76abfe9ff5e340d91ff01a"
+    }
+  ],
+  "origin": {
+    "nativeRuntime": "Godot 4.5.2.stable.official.6ce3de25a",
+    "source": "https://github.com/godotengine/godot/blob/4.5.2-stable/servers/rendering/renderer_canvas_cull.cpp",
+    "gitBlob": "42ba93c0f2e5d4623400448b364d456611891e0a",
+    "sha256": "a980ed8c3edef57eb50a810d0b2fbd6c7312ae9f6691bbf763423b69178bf3ad",
+    "license": "MIT, engines/travel-core/NOTICE.godot.txt",
+    "FEATHER_SIZE": 1.25,
+    "coverage": "Authored positive-width body plus native outer transparent feather/caps; native miter clamp ±3; no fwidth alpha shortcut"
+  },
+  "framework": {
+    "link": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+    "target": "engines/travel-core/dist/travel-core.js",
+    "sha256": "da7d2351c307d7920dfb3923ccadc7c78ae69dc8a0c5e0052a6704a377e57d38",
+    "fileMode": "0o444",
+    "directoryMode": "0o555",
+    "metadata": {
+      "ver": "4.0.24",
+      "importer": "javascript",
+      "imported": true,
+      "uuid": "7d0bdc9d-6e8b-5ee4-a751-c655c245ba31",
+      "files": [],
+      "subMetas": {},
+      "userData": {
+        "isPlugin": true,
+        "loadPluginInEditor": false,
+        "loadPluginInWeb": true,
+        "loadPluginInNative": false,
+        "loadPluginInMiniGame": true,
+        "executionScope": "global"
+      }
+    }
+  },
+  "controls": {
+    "control": "Original installed Creator builtin Graphics effect unchanged, consumed through custom Material; actual screenshot still lacks the thin authored spirals",
+    "controlScreenshot": "builds/reviews/M06-cocos-darkroom-control-strokes-v1.jpg",
+    "flatDiagnostic": "M06.02 alpha-disabled diagnostic displayed spirals; never a fidelity candidate",
+    "inference": "Together with positive CPU geometry this isolates builtin Graphics alpha coverage behavior from the custom-material path. No unmeasured GPU numerical failure claim."
+  },
+  "validation": {
+    "unitTests": {
+      "tests": 120,
+      "pass": 120,
+      "fail": 0,
+      "log": "builds/reviews/M06-feather-tests-v4.log",
+      "meaningfulContracts": [
+        "Native authored solid line width, cap/feather support and independent coverage integral 37.083333333333336 for width2 length10",
+        "Coverage invariant under rigid rotation/translation",
+        "Native closed seam/duplicate/zero points, bounded joins and invalid input",
+        "Independent paths retain coverage and correctly rebase packed indices"
+      ]
+    },
+    "typescript": {
+      "command": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+      "exit": 0,
+      "engineDeclarationsSkipped": true,
+      "log": "builds/reviews/M06-feather-typecheck-v2.log"
+    },
+    "build": "Creator 3.8.8 isolated QA web-mobile v2; Finished and no EFX errors; not formal WeChat",
+    "freezeAudit": "builds/reviews/M06-darkroom-page-feather-noon-v2-audit.json",
+    "actualBrowser": {
+      "viewport": [
+        405,
+        720
+      ],
+      "target": [
+        720,
+        1280
+      ],
+      "entry": "Real Home doll drag → invitation → Yes → full Darkroom, ready with two actual draw events",
+      "ready": {
+        "active": true,
+        "input_enabled": true,
+        "surface": {
+          "logicalSize": [
+            720,
+            1280
+          ],
+          "pixels": [
+            720,
+            1280
+          ],
+          "layer": 262144,
+          "priority": -1,
+          "active": true,
+          "disposed": false,
+          "cameraEnabled": true,
+          "cameraPosition": {
+            "x": 0,
+            "y": 0,
+            "z": 1000
+          },
+          "contentPosition": {
+            "x": -360,
+            "y": 640,
+            "z": 0
+          },
+          "displayPosition": {
+            "x": 0,
+            "y": 1280,
+            "z": 0
+          },
+          "trackedNodes": 144,
+          "readyFrames": 2
+        },
+        "world": {
+          "state": "active",
+          "misfortune": 100,
+          "displayed_misfortune": 100,
+          "selected_tool": "needle",
+          "attack_time": -1,
+          "contacts": 0,
+          "round_serial": 1,
+          "completed_rounds": 0,
+          "gap_remaining": 0,
+          "clear_progress": 0,
+          "spawn_progress": 1,
+          "doll_visible": true,
+          "clear_time": -1,
+          "pointer_pressed": false,
+          "dragging": false,
+          "result_text": "晦气消除、乳腺通畅",
+          "economy_mutations": 0,
+          "rig": {
+            "parts": 7,
+            "face_nodes": 3,
+            "joint_angles": {
+              "torso": 0,
+              "left_arm": 0,
+              "right_arm": 0,
+              "head": 0,
+              "left_leg": 0,
+              "right_leg": 0,
+              "bow": 0
+            },
+            "velocities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "dragging": false,
+            "expression": "idle",
+            "substeps": 3,
+            "hit_serial": 0,
+            "last_hit_part": "torso",
+            "continuous_skin_vertices": 1089,
+            "continuous_skin_triangles": 980,
+            "neutral_source_scale": 0.74,
+            "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+            "runtime_readbacks": 0,
+            "head": [
+              379.28,
+              479.7
+            ],
+            "bounds": [
+              229.8,
+              477.48,
+              264.92,
+              330.78
+            ],
+            "feet": 808.26,
+            "ground_y": 808.26,
+            "support_lift": 0
+          },
+          "clock_hour": 12,
+          "lamp_override": -1,
+          "lamp_weight": 0,
+          "lighting": {
+            "hour": 12,
+            "day": 1,
+            "night": 0,
+            "nightScheduled": false,
+            "solarPhase": 0.5,
+            "moonPhase": 1,
+            "elevation": 1.2217304763960306,
+            "azimuth": 0,
+            "cast": [
+              0,
+              1
+            ],
+            "moonCast": [
+              -0.6331759213914504,
+              0.7740079150564856
+            ],
+            "cot": 0.36397023426620245,
+            "sunEnergy": 0.69,
+            "moonEnergy": 0,
+            "morning": 0,
+            "noon": 1,
+            "sunset": 0,
+            "afterglow": 0,
+            "ambient": [
+              0.43,
+              0.4600000000000001,
+              0.48
+            ],
+            "sunColor": [
+              1,
+              0.985,
+              0.9
+            ],
+            "sunVector": [
+              0,
+              -0.3420201433256689,
+              0.9396926207859084
+            ],
+            "sunPosition": [
+              180,
+              28
+            ],
+            "moonPosition": [
+              228,
+              94.99999999999999
+            ]
+          },
+          "receivers": 24,
+          "shadows": [
+            {
+              "source": "torso",
+              "alpha_profile_points": 53,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": false,
+              "visible": true
+            },
+            {
+              "source": "left_arm",
+              "alpha_profile_points": 25,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": false,
+              "visible": true
+            },
+            {
+              "source": "right_arm",
+              "alpha_profile_points": 27,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": false,
+              "visible": true
+            },
+            {
+              "source": "head",
+              "alpha_profile_points": 66,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": false,
+              "visible": true
+            },
+            {
+              "source": "left_leg",
+              "alpha_profile_points": 36,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": true,
+              "visible": true
+            },
+            {
+              "source": "right_leg",
+              "alpha_profile_points": 35,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": true,
+              "visible": true
+            },
+            {
+              "source": "bow",
+              "alpha_profile_points": 50,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": false,
+              "visible": true
+            },
+            {
+              "source": "Lantern",
+              "alpha_profile_points": 48,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": true,
+              "visible": true
+            },
+            {
+              "source": "needleTray",
+              "alpha_profile_points": 56,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": true,
+              "visible": true
+            },
+            {
+              "source": "slipperTray",
+              "alpha_profile_points": 53,
+              "physical_contact_paths": 1,
+              "passes": 1,
+              "draw_contact": true,
+              "visible": true
+            }
+          ],
+          "tools": {
+            "tray_fit": {
+              "needle": {
+                "position": [
+                  187,
+                  990
+                ],
+                "pivot": [
+                  874.2081736391885,
+                  683.506393709122
+                ],
+                "rotation": 0.43,
+                "scale": 0.10877734985351563,
+                "inside": true
+              },
+              "slipper": {
+                "position": [
+                  542,
+                  990
+                ],
+                "pivot": [
+                  747.5460254889624,
+                  573.7957258006661
+                ],
+                "rotation": 0.32,
+                "scale": 0.15422811889648438,
+                "inside": true
+              }
+            },
+            "attack_visible": false,
+            "receiver_visible": false
+          },
+          "plants": {
+            "parts": 21,
+            "bones": 63,
+            "vertices": 378,
+            "maxParts": 32,
+            "phase": 0,
+            "eventCount": 0,
+            "activePulses": 0,
+            "peakActivePulses": 0,
+            "maxActivePulses": 2
+          },
+          "plumes": {
+            "capacity": 6,
+            "created": 0,
+            "active": 0,
+            "idle": 0,
+            "release_time": -1
+          }
+        },
+        "bubble": {
+          "phase": "hidden"
+        }
+      },
+      "resourceBudget": {
+        "entries": 120,
+        "reservedBytes": 239752195,
+        "pending": 0
+      },
+      "needleContact": {
+        "contacts": 1,
+        "misfortune": 90,
+        "economyMutations": 0
+      },
+      "impactShotLimit": "Screenshot captures the tool wind-up at attack_time0, before contact; not proof of transient feedback lines",
+      "return": "Real return plaque → cached HOME observed, screenshot and PAGE_READY HOME cached=true",
+      "consoleErrors": 0
+    },
+    "strictStill": {
+      "report": "builds/reviews/M06-darkroom-noon-comparison-v4.json",
+      "method": "405x720 untouched screenshots, no image alignment/scaling/recoloring; unamplified absolute RGB differences",
+      "clockHour": 12,
+      "lampOverride": -1,
+      "neutralPlants": true,
+      "neutralDoll": true,
+      "meterMeanAbsoluteRGBBefore": 7.974931038287544,
+      "meterMeanAbsoluteRGBAfter": 6.913053072933907,
+      "wholeMeanAbsoluteRGBAfter": 2.757981252857796,
+      "dollMeanAbsoluteRGBAfter": 1.3356421821305842,
+      "status": "measured; strict acceptance pending"
+    }
+  },
+  "failures": [
+    {
+      "id": "v1-unit",
+      "evidence": "builds/reviews/M06-feather-tests-v1.log",
+      "cause": "Test expected the initial degenerate duplicate endpoint of a closed path to have the same join as its nondegenerate end. Native 4.5.2 computes the duplicate before assigning loop previous direction.",
+      "fix": "Correct test to check closed seam with a middle duplicate and separately assert native initial degenerate pair. Production geometry unchanged."
+    },
+    {
+      "id": "v2-test-command",
+      "evidence": "builds/reviews/M06-feather-tests-v2.log",
+      "cause": "Wrong plural test directory; no test ran.",
+      "fix": "Use actual game/test directory."
+    },
+    {
+      "id": "v3-test-command",
+      "evidence": "builds/reviews/M06-feather-tests-v3.log",
+      "cause": "Node not on the login shell PATH; no test ran.",
+      "fix": "Use configured absolute runtime executable."
+    },
+    {
+      "id": "v1-browser-entry",
+      "evidence": "builds/reviews/M06-cocos-darkroom-feather-noon-v1-public.json",
+      "cause": "Game Engine adapter did not forward featherLine/featherPolyline/mergeDrawingMeshes, despite correct readonly distribution.",
+      "fix": "Add runtime plugin forwarding, new frozen v2; actual entry/contact/return verified. Retain failed candidate/log/screenshot."
+    }
+  ],
+  "pending": [
+    "Native StyleBoxFlat meter rim/fill antialias geometry and recoil layering",
+    "Transient needle/slipper feedback line same-time screenshots",
+    "Text glyph coverage and exterior/plant differences",
+    "All day/night/lamp combinations and tall/short viewports",
+    "Cancellation/retry/late callback/lifecycle matrix and actual camera draw accounting",
+    "19,000,000-byte Home cold-load gate still not met",
+    "Remaining travel/map/journal/collection/wardrobe pages",
+    "WeChat formal packaging and device tests; user strict acceptance"
+  ],
+  "evidence": [
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-control-strokes-v1-public.json",
+      "sha256": "93c7b61bd4591fe64aeed56f168301ff05123e33cbf3d1f6a1cb7dca56c0e7fc"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-control-strokes-v1.jpg",
+      "sha256": "b999f6b1f3e8538f3a36249f3ab8d463642cf4ba03cd8f661b0c519c577a61b0"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-contact-v2-public.json",
+      "sha256": "53f1346a9814ba6bfc0130a96e781ad39480e1729a6fca547a99f68325167d30"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-impact-v2-public.json",
+      "sha256": "d2d553f368ae77deb26cea1796214f5ff38d7cce5597f6dc59e16a6722589db3"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-impact-v2.jpg",
+      "sha256": "751f65193b6db28e3b69202fad56429fe576c091a90b2189c78b19b4cb38f96d"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-noon-v1-public.json",
+      "sha256": "1edbeaab10ffbc88e9e9881096f70d90c68b45ef1142238d6cd33b4c0fdd8016"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-noon-v1.jpg",
+      "sha256": "41acd4dbf17ac0d41dd46d6a0f84f1d061de302d2a19cee96f63936d4fac6278"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-noon-v2-public.json",
+      "sha256": "27cf89d32a0669757faeeee03a5fc98572d07f80e89b83322bd5a28764b6947a"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-noon-v2.jpg",
+      "sha256": "be594912dc7518aed8e69e21b5e6c52ac1644d352c6b81c73eeed1aa35fc9594"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-return-v2-public.json",
+      "sha256": "9bff2621ee3c41745447b0dd1c0c3c1faea4a38a3db5e1e5f5651a2734ec19fe"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-feather-return-v2.jpg",
+      "sha256": "97f4fae9a101b9681a8898192a6b34bbbabf6b8ccb66c2014eee9e697f114b99"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v4.json",
+      "sha256": "c0d253b4983b6d37a077afbd3b3f5b63338415b4611861616327e2141f15411f"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v4.png",
+      "sha256": "c570b6a9a7cfa994643dbbf4c3cd7c1df17a96da0f2747ada94ad204364011ef"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-feather-noon-v1-audit.json",
+      "sha256": "ee9619d354ad3d12c1d4a2e23e91c9c86da38bec2ce560fcf42fc1d6182bae24"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-feather-noon-v1-build.log",
+      "sha256": "ed817a33ad3d15d24071511f36ef18c93adb46dec6ed2d8297c1d07ad7f3b85c"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-feather-noon-v2-audit.json",
+      "sha256": "1c20d5d2d0e798eb04a6fac08d99f3e550bb76dffcf081edcbf11a4fd63a405c"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-feather-noon-v2-build.log",
+      "sha256": "e97db7ec7968f87ce2b31427d6ca0c81e491e3dfa1949223191ac310d65384fa"
+    },
+    {
+      "path": "builds/reviews/M06-feather-tests-v1.log",
+      "sha256": "d7e48b1eba294d358c569df8f34d000c0f0222bfdccaac0e6b795f8f62fe588f"
+    },
+    {
+      "path": "builds/reviews/M06-feather-tests-v2.log",
+      "sha256": "cf992fc69eb74c933e23beec60fb7f902be9dd8d3ed3724d60e4725283525927"
+    },
+    {
+      "path": "builds/reviews/M06-feather-tests-v3.log",
+      "sha256": "3a9d0367e5fa698ee9fa6eb4c4cec41b38bd7550df50ae70421ab3302efb8995"
+    },
+    {
+      "path": "builds/reviews/M06-feather-tests-v4.log",
+      "sha256": "297757363ec1c16e128c935366e974e3feadb565f83962e0da1b11a9da564247"
+    },
+    {
+      "path": "builds/reviews/M06-feather-typecheck-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "builds/reviews/M06-feather-typecheck-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

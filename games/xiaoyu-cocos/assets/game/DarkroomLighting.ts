@@ -5,7 +5,7 @@ import { HomeClock } from './HomeClock';
 import { lightingSnapshot } from './LightingSnapshot';
 import { mix, ResponsiveLamp, smooth } from './DarkroomVisualRules';
 
-export const DARKROOM_EFFECTS=['darkroom-doll','darkroom-room','darkroom-sky','darkroom-beams','darkroom-selection','darkroom-shadow','darkroom-tool-receiver','darkroom-plume','home-part-shadow'];
+export const DARKROOM_EFFECTS=['darkroom-doll','darkroom-room','darkroom-sky','darkroom-beams','darkroom-selection','darkroom-shadow','darkroom-tool-receiver','darkroom-plume','home-part-shadow','original-stroke'];
 export function darkMaterial(assets:GameAssets,scope:Scope,name:string,spec?:ArtSpec){
     const material=new Material();material.initialize({effectAsset:assets.effect('darkroom-'+name),defines:{USE_TEXTURE:true}});scope.own(()=>material.destroy());
     if(spec){const c=spec.content,s=spec.size;material.setProperty('sourceUV',new Vec4(c[0]/s[0],c[1]/s[1],c[2]/s[0],c[3]/s[1]));material.setProperty('textureSize',new Vec4(s[0],s[1],0,0));}

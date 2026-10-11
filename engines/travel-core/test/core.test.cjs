@@ -6,6 +6,25 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+function coverageArea(mesh){let sum=0;for(let i=0;i<mesh.indices.length;i+=3){const ids=Array.from(mesh.indices.slice(i,i+3)),p=ids.map(n=>[mesh.vertices[n*2],mesh.vertices[n*2+1]]),area=Math.abs((p[1][0]-p[0][0])*(p[2][1]-p[0][1])-(p[1][1]-p[0][1])*(p[2][0]-p[0][0]))/2;sum+=area*ids.reduce((s,n)=>s+mesh.vertexData[n*3],0)/3;}return sum;}
+test('Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation',()=>{
+ const a=core.featherLine([0,0],[10,0],2);assert.equal(a.vertices.length/2,36);assert.equal(a.indices.length,54);assert.deepEqual(Array.from(a.vertexData.slice(0,12)),[1,0,0,1,0,0,1,0,0,1,0,0]);
+ const xs=Array.from(a.vertices).filter((_,i)=>i%2===0),ys=Array.from(a.vertices).filter((_,i)=>i%2===1);assert.equal(Math.min(...xs),-1.25);assert.equal(Math.max(...xs),11.25);assert.equal(Math.min(...ys),-2.25);assert.equal(Math.max(...ys),2.25);
+ assert.ok(Math.abs(coverageArea(a)-37.083333333333336)<1e-7);const angle=.73,rotate=p=>[80+p[0]*Math.cos(angle)-p[1]*Math.sin(angle),120+p[0]*Math.sin(angle)+p[1]*Math.cos(angle)],b=core.featherLine(rotate([0,0]),rotate([10,0]),2);assert.ok(Math.abs(coverageArea(a)-coverageArea(b))<.0002);
+});
+test('Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam',()=>{
+ const shape=[[0,0],[40,0],[40,0],[40,30],[0,30],[0,0]],m=core.featherPolyline(shape,1.6);assert.equal(m.vertices.length/2,shape.length*6);assert.ok(Array.from(m.vertices).every(Number.isFinite));assert.ok(Array.from(m.vertexData).every(v=>v===0||v===1));assert.ok(Math.min(...m.vertices)>=-6.15);assert.ok(Math.max(...m.vertices)<=46.15);
+ assert.deepEqual(Array.from(m.vertices.slice(0,4)),Array.from(m.vertices.slice((shape.length-1)*4,shape.length*4)));assert.ok(coverageArea(m)>140*1.6);assert.equal(core.featherPolyline([[10,20],[10,20]],1).indices.length,0);assert.equal(core.featherLine([10,20],[10,20],1).indices.length,0);
+ // Godot 4.5.2 computes the leading duplicate before replacing the loop's
+ // previous direction. Preserve that native degenerate first pair rather
+ // than incorrectly expecting it to equal a nondegenerate closing join.
+ const leading=core.featherPolyline([[0,0],[0,0],[40,0],[40,30],[0,30],[0,0]],1.6);assert.deepEqual(Array.from(leading.vertices.slice(0,4)),[0,0,0,0]);assert.ok(Array.from(leading.vertices).every(Number.isFinite));
+ for(const width of [NaN,-1,0,Infinity])assert.throws(()=>core.featherLine([0,0],[10,0],width),/Invalid/);assert.throws(()=>core.featherPolyline([[0,0],[NaN,1]],1),/Invalid/);
+});
+test('Packing independent feather meshes preserves coverage and rebases every index without joining their paths',()=>{
+ const a=core.featherLine([0,0],[10,0],2),b=core.featherPolyline([[30,0],[40,20],[50,0]],1.6),m=core.mergeDrawingMeshes([a,b]),offset=a.vertices.length/2;
+ assert.deepEqual(Array.from(m.indices.slice(0,a.indices.length)),Array.from(a.indices));assert.deepEqual(Array.from(m.indices.slice(a.indices.length)),Array.from(b.indices,n=>n+offset));assert.equal(m.source.length,m.vertices.length);assert.equal(m.vertexData.length,m.vertices.length/2*3);assert.ok(Math.abs(coverageArea(m)-coverageArea(a)-coverageArea(b))<1e-6);
+});
 test('Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance',()=>{
  const safe=[24,135,672,1025],options={confirmation:true,minWidth:320,maxWidth:430,aboveOnly:true},r=core.infoBubbleLayout([350,666],safe,240,28,options);
  assert.deepEqual(Array.from(r),[190,504,320,142]);assert.deepEqual(Array.from(core.infoBubbleLayout([350,308],safe,240,28,options)),[350,308,0,0]);

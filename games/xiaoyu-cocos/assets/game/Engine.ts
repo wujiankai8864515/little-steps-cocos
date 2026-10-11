@@ -20,6 +20,9 @@ export const core: any = {
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),
     clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
     bitMapContains: (...args:any[]) => installed().bitMapContains(...args),
+    featherLine: (...args:any[]) => installed().featherLine(...args),
+    featherPolyline: (...args:any[]) => installed().featherPolyline(...args),
+    mergeDrawingMeshes: (...args:any[]) => installed().mergeDrawingMeshes(...args),
 };
 export const sharedUI = () => installed().registerUI(cc);
 export const pageRouter = (owner: Scope) => installed().createPageRouter(cc, owner);
