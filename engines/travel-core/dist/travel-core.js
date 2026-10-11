@@ -1062,16 +1062,25 @@ function checkpointSHA256(text) {
     }
     return h.map(v=>('00000000'+(v>>>0).toString(16)).slice(-8)).join('');
 }
+function checkpointUTF8Length(text) {
+    let length=0;
+    for(let i=0;i<text.length;i++) {
+        const cp=text.charCodeAt(i);
+        if(cp>=0xd800&&cp<=0xdbff&&text.charCodeAt(i+1)>=0xdc00&&text.charCodeAt(i+1)<=0xdfff){length+=4;i++;}
+        else length+=cp<128?1:cp<2048?2:3;
+    }
+    return length;
+}
 function checkpointCanonical(value) {
     if(Array.isArray(value))return value.map(checkpointCanonical);
-    if(value&&typeof value==='object'){const out={};Object.keys(value).sort().forEach(k=>{out[k]=checkpointCanonical(value[k]);});return out;}
+    if(value&&typeof value==='object'){const out={};Object.keys(value).sort().forEach(k=>{Object.defineProperty(out,k,{value:checkpointCanonical(value[k]),writable:true,enumerable:true,configurable:true});});return out;}
     return value;
 }
 class CheckpointStore {
     constructor(storage,maxBytes=4096){this.storage=storage;this.maxBytes=maxBytes;this.lastError='';this.committed=false;}
     envelope(data){const payload=JSON.stringify(checkpointCanonical(data));return JSON.stringify({payload,sha256:checkpointSHA256(payload)});}
     decode(contents){
-        if(typeof contents!=='string'||checkpointUtf8(contents).length>this.maxBytes)return null;
+        if(typeof contents!=='string'||checkpointUTF8Length(contents)>this.maxBytes)return null;
         try{const box=JSON.parse(contents);if(typeof box.payload!=='string'||checkpointSHA256(box.payload)!==box.sha256)return null;const data=JSON.parse(box.payload);return data&&typeof data==='object'&&!Array.isArray(data)?data:null;}catch(_){return null;}
     }
     read(key){
@@ -1081,7 +1090,7 @@ class CheckpointStore {
     }
     write(key,data){
         this.lastError='';this.committed=false;const contents=this.envelope(data);
-        if(checkpointUtf8(contents).length>this.maxBytes){this.lastError='save_too_large';return false;}
+        if(checkpointUTF8Length(contents)>this.maxBytes){this.lastError='save_too_large';return false;}
         try {
             this.storage.setItem(key+'.tmp',contents);if(this.storage.getItem(key+'.tmp')!==contents)throw new Error('verify_temporary_save_failed');
             const before=this.storage.getItem(key);if(typeof before==='string')this.storage.setItem(key+'.bak',before);
@@ -1095,11 +1104,11 @@ class CheckpointStore {
 class RawJSONCheckpointStore extends CheckpointStore {
     envelope(data){return JSON.stringify(checkpointCanonical(data));}
     decode(contents){
-        if(typeof contents!=='string'||checkpointUtf8(contents).length>this.maxBytes)return null;
+        if(typeof contents!=='string'||checkpointUTF8Length(contents)>this.maxBytes)return null;
         try{const data=JSON.parse(contents);return data&&typeof data==='object'&&!Array.isArray(data)?data:null;}catch(_){return null;}
     }
 }
-Object.assign(api,{CheckpointStore,RawJSONCheckpointStore,checkpointSHA256});
+Object.assign(api,{CheckpointStore,RawJSONCheckpointStore,checkpointSHA256,checkpointUTF8Length});
 
 // Antialiased positive-width 2D lines. Feather geometry follows Godot 4.5.2
 // renderer_canvas_cull.cpp (MIT; see NOTICE.godot.txt), without screen derivatives.

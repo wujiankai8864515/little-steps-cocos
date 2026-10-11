@@ -15,6 +15,7 @@ export const core: any = {
     get BubblePointer() { return installed().BubblePointer; },
     get CheckpointStore() { return installed().CheckpointStore; },
     get RawJSONCheckpointStore() { return installed().RawJSONCheckpointStore; },
+    checkpointUTF8Length: (text:string) => installed().checkpointUTF8Length(text),
     createGrid: (...args: any[]) => installed().createGrid(...args),
     sourcePixelAt: (...args: any[]) => installed().sourcePixelAt(...args),
     renderedPointAt: (...args:any[]) => installed().renderedPointAt(...args),

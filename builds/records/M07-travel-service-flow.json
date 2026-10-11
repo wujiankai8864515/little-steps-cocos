@@ -1,0 +1,314 @@
+{
+  "schema": 1,
+  "id": "M07.02",
+  "status": "source_TravelService_and_TravelStore_native_and_Creator31_exact_API_traces_and_browser_reload_verified_product_UI_not_connected",
+  "sourceCommitBeforeItem": "f1ad6a7ad0b1b41adb8b12d9c99b4410d6bdf21c",
+  "changes": [
+    {
+      "path": "engines/travel-core/src/checkpoint.js",
+      "sha256": "ea8107011387506fae582e933238c9d5401d2f9197266b9290803f58ace9aad5"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "5f0af4ff410eee6fcd9acff20cccf0320fe7d569ebd96aba20709fd1eb22f2c3"
+    },
+    {
+      "path": "engines/travel-core/test/checkpoint.test.cjs",
+      "sha256": "33978676c8f95f97daa2dadb83e01ab9934dab2448e7f92f27673797083f83df"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "28a76023930905d9d601cc27d9271eb596453a0f446010831a87f785521dcde3"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelStore.ts",
+      "sha256": "9d34a493128928fba8ee65373e392e0dd092cda4fee866611154e5849ace9861"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelStore.ts.meta",
+      "sha256": "0cfbac2202f7b34b31094b44237a0bc8feed220563d30e361160c6fc976416a7"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelService.ts",
+      "sha256": "6cac80afd539bd631ff80b89ac16850a9fc762c8088e55ac1bf979c85ab1b86b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelService.ts.meta",
+      "sha256": "8c40d949f486d719ceb87935bbc8256ac3eb97d09133ca1f0a777e75f25c8075"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-service.test.cjs",
+      "sha256": "bd24f9fb1a960e232125b20a5be7c68151b53d621b7ba1d28af6d0c26b71a497"
+    },
+    {
+      "path": "builds/tools/create_travel_service_candidate.py",
+      "sha256": "1344914d2ab8670e9d4b7fa34f0275306dcc66c4162e1c58c30a3052f69e3c9f"
+    },
+    {
+      "path": "builds/tools/compare_travel_services.py",
+      "sha256": "e9a65aeca9921eaa95a6a1dccfdc4d1ffb6eb1d385cccf474456cee4edaf876b"
+    }
+  ],
+  "original": {
+    "commit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "files": {
+      "travel_model.gd": {
+        "path": "games/travel_woodfish/project/travel/travel_model.gd",
+        "sha256": "f88730ccd58dda6ec28077258fbb741e17b2a3de643ce00f4e6b15ecf44b562f"
+      },
+      "travel_service.gd": {
+        "path": "games/travel_woodfish/project/travel/travel_service.gd",
+        "sha256": "282d2597a45b5949e6697db3000ea9e376d6c96e92bdafbcda85703bd836d1fe"
+      },
+      "travel_store.gd": {
+        "path": "games/travel_woodfish/project/travel/travel_store.gd",
+        "sha256": "ab6bbc5b0488e49d3e275f300f747f8e1cd0ee3615a0f7086970cbc51281038c"
+      },
+      "travel_content.json": {
+        "path": "games/travel_woodfish/project/travel/travel_content.json",
+        "sha256": "3ef07b3fbf4983f685c28141fb0a955f4f6d708217a695bdea80c8e4ecd34455"
+      }
+    },
+    "precedence": "Current schema2/100 active-second route/terminal AI; source Store Web main-key authority; native filesystem backup code not a target shipping feature"
+  },
+  "implementation": {
+    "framework": "Generic UTF8 byte length and own-key-preserving canonical JSON, reusing checksummed codec only; no game slot/CAS/reward logic in framework",
+    "game": "TravelService whole transaction rollback; source failure/retry/token recovery; live readonly projection; original dismissal checkpoint retried; terminal/reward/learning/revision protections. TravelStore4MiB UTF8 envelope validation/migration, main key only, CAS recheck, throwing browser/WeChat sync calls and committed-write readback. No Travel page or Application/Home lifecycle integration yet.",
+    "platform": "Only WeChat shipping target; Web QA uses actual localStorage. WeChat API compatibility references installed official3.8.8 adapter; modeled API tests only, device unverified.",
+    "frameworkCompatibility": "Own __proto__/toString/constructor dictionary entries persist without inherited prototype mutation; malformed-surrogate UTF8 and hashes independently checked with Node Buffer/crypto."
+  },
+  "framework": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "5f0af4ff410eee6fcd9acff20cccf0320fe7d569ebd96aba20709fd1eb22f2c3",
+    "mode": "0444",
+    "directoryMode": "0555",
+    "candidateBuiltSHA256": "5f0af4ff410eee6fcd9acff20cccf0320fe7d569ebd96aba20709fd1eb22f2c3",
+    "candidateBuiltPath": "builds/work/cocos-travel-service-v1/output/preview/src/assets/plugins/travel-core.js"
+  },
+  "validation": {
+    "tests": {
+      "total": 143,
+      "pass": 143,
+      "fail": 0,
+      "log": "builds/reviews/M07-travel-service-full-tests-v2.txt",
+      "adapter": "Actual game Engine.ts forwards the installed readonly plugin; WeChat public synchronous API fake is a unit test, not a device"
+    },
+    "typescript": {
+      "exit": 0,
+      "log": "builds/reviews/M07-travel-service-typecheck-v2.txt",
+      "vendorDeclarationCheckSkipped": true,
+      "sourceTypeCheckSkipped": false
+    },
+    "creator": {
+      "candidate": "cocos-travel-service-v1",
+      "version": "3.8.8",
+      "FinishedSeconds": 7,
+      "CLIExitAfterFinished": 36,
+      "frozenFiles": 604,
+      "metadataChanges": 1,
+      "mismatches": 0,
+      "scope": "Declared direct Home QA helper only; production TravelService/Store/Model/plugin bytes unchanged"
+    },
+    "actualEngines": {
+      "Godot": "4.5.2 official Web, declared preload paths remapped to current QA copies only",
+      "Cocos": "3.8.8 QA Web",
+      "uniqueRows": 31,
+      "fullModelAndMemoryCheckpointAndProjection": true,
+      "numberComparison": "Exact finite equality, no rounding/tolerance",
+      "mismatches": 0,
+      "nativeV1": "Two reload executions of31 rows were identical; raw62 rows retained, selected complete last run explicitly",
+      "nativeV2": "Single31-row run plus three actual original Store.envelope outputs; no console errors",
+      "CocosConsoleErrors": 0,
+      "scope": "Direct service API calls, QA fixed clock and injected memory-write failures; native host remains Login. Product Travel page/button flow and measured real wall duration pending"
+    },
+    "legacyEnvelope": {
+      "fixtures": 3,
+      "schemas": [
+        2,
+        2,
+        1
+      ],
+      "nativeGodotEnvelopeGenerated": true,
+      "independentNodeSHA256": true,
+      "decodedViaProductionStore": true,
+      "noOwnedRewardReplay": true
+    },
+    "browserReload": {
+      "beforeRevision": 3,
+      "afterRevision": 4,
+      "beforeElapsed": 40,
+      "afterElapsed": 71,
+      "manualLearning": 0,
+      "inventory": 0,
+      "scope": "Real navigation/restore, QA clock1000/1040/1069/1100; not elapsed real-time measurement"
+    },
+    "comparison": "builds/reviews/M07-travel-service-comparison-v2.json"
+  },
+  "runtimeReferences": [
+    {
+      "path": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/adapter/minigame/wechat/web-adapter.js",
+      "sha256": "9f7befe73e3738c432744e07f72c28a56341385bd18f371215fbbb8da6669607",
+      "claim": "Installed adapter calls wx.getStorageInfoSync().keys/getStorageSync/setStorageSync; product wrapper distinguishes absent key from corrupt empty string and propagates errors"
+    },
+    {
+      "path": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/cocos/core/platform/sys.ts",
+      "sha256": "8f719ecd13e3ba3af399d95e551dce30c0c777facea838db2fa63e01c4ca564a",
+      "claim": "Unavailable sys.localStorage installs warning/noop fallback; TravelStore uses throwing public backend and explicit readback"
+    }
+  ],
+  "failures": [
+    {
+      "trigger": "Initial tsc invocation included bundled engine declarations",
+      "evidence": "builds/reviews/M07-travel-service-typecheck-v1.txt",
+      "observed": "88 errors in bundled jsb/cc declarations, no game source diagnostic",
+      "fix": "Use existing --skipLibCheck validation boundary, game source still checked; v2 exits0. Engine declaration defects are not claimed fixed",
+      "remaining": "Formal device/platform JS and runtime pending"
+    }
+  ],
+  "proofs": [
+    {
+      "path": "builds/reviews/M07-travel-service-audit-v1.json",
+      "sha256": "daee8e006cfab3d4b5ba05f724e1f9bebcbbe8e67c8a1a283497c05f6863c426"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-ax-v1.txt",
+      "sha256": "cf268095e15e4da191309258f8cf7a84cf4869e61a5e9b05074803902377f977"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-errors-v1.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-logs-v1.json",
+      "sha256": "c8fae17f43a25337a6926b16b48526f90ec2829845c28bb75c5710c5abdb9067"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-v1.jpg",
+      "sha256": "7765ec6cded7ccb74fa7afe0c9d583217a2b9846add1e82b7c0ca40653d4b37f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-v1.json",
+      "sha256": "bf7641063cdc605718b5a846d01a9e7607c3e13f56aeb0bb056f45e572212ffd"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-before-v1.jpg",
+      "sha256": "d6526f0f1941a35cb098e0f37afd5cd44e10ac6d4c1e14255effa82555ff71c9"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-before-v1.json",
+      "sha256": "f04ed3820e856b2c7af203b91c2f376ee8ceebb6ddd955bb86340b2f393ae0d5"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-build-v1.txt",
+      "sha256": "cf1867fcb50be7d3cc39922a12461051c13c17578e87609685d0e4a98894098d"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-errors-v1.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-fixture-v1.txt",
+      "sha256": "1bf599ce685a0be4cb84c47e2d5a3ed1768d3f8d27c0322bba57bd0949e3fe21"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-logs-v1.json",
+      "sha256": "fd0d41151d2b079613c81be26b1982d276ad56cfec95503b6573dbca2f4cc07d"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-rows-v1.json",
+      "sha256": "0964f4bfe2b0c40c235a64c24491ddd48b727dee7211d91be89efab652a58513"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-server-v1.txt",
+      "sha256": "b0bc8ba2f7119f525b8a3d84954987956d13d0f0448059321499b54be66aaa31"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-comparison-v1.json",
+      "sha256": "95999c1adc73ec7eeb03b36bd5c1a2d04d9b887fbbe29362ef3d0460dca6e06e"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-comparison-v2.json",
+      "sha256": "213db32e4a58b1af2ed1a179e1ad1f220f752923a99290b852eebb26e070137e"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-full-tests-v1.txt",
+      "sha256": "d350737878fe2d7eff3e6d55406300b18d66169764298e105fdc1b2ce6ad2e21"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-full-tests-v2.txt",
+      "sha256": "5d71957e2053fb648f5545d0d5366b28eac388e185ae3ac143603b0f13869a51"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-envelopes-v1.json",
+      "sha256": "72859b26b4184a912c469f2521a7c0c127479f667fd8025a887ed63e8ab70782"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-errors-v1.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-errors-v2.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-fixture-v1.txt",
+      "sha256": "dd07a587b645c6fc75801104dd156538c701d159d823e82b284bfa296d17cd16"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-fixture-v2.txt",
+      "sha256": "4ea72bf39a26b2adf97fd4124b1130e0fb91ae99ccc7727293cf74dd54bb0a2f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-logs-v1.json",
+      "sha256": "bbf0d9ca2cb6ad5d38013871e9ef0008bcc6e1d44b43175bcf96b4c6608151f3"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-logs-v2.json",
+      "sha256": "194a1a8a6e697dd83a359653d37c190f47aa6e0555d7d550fa8c3b97422fdd4f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-rows-v1.json",
+      "sha256": "ba1eddd115f30253450f922850c3b962c0aafaf5b425413be26c6266f2a3db52"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-rows-v2.json",
+      "sha256": "6e7e0d4cab0e15d614a1e921af9308542be965cdf4f0a7b9382bfa80ab490391"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-rows-v3.json",
+      "sha256": "af94345aaf42cf8c70c1d6bc9f81a1447f0341bf8021bbd7246dd4f9f3dc3056"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-server-v1.txt",
+      "sha256": "07eb9c6a3e56244a93c16c6efeaa22e51202b4dfe6126000351c7a9043b84b94"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-native-server-v2.txt",
+      "sha256": "afdf89358ac62188dd26dac83dfdf5e49dc31fe483212b8a6773011f9041f99a"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-tests-v1.txt",
+      "sha256": "016cf3e78c1810dcbe716843908bdf764ba4891e4b9e5c055f6ca8df21704536"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-typecheck-v1.txt",
+      "sha256": "d5da7c2c9d4ad59b156441a5fa0e3cda9d3ed8f029dcfc5b839f204bb58ccf2f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-typecheck-v2.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "boundaries": [
+    "TravelService/Store not yet connected to product Application/Home/page flow; no visual Travel acceptance",
+    "Clock input is fixed QA seconds; actual browser reload/persistence is real, elapsed real duration not measured",
+    "WeChat backend implementation and modeled errors tested, real MiniGame/device quota/RSS not verified",
+    "Current configured product slot main supported; optional custom Unicode save slot identifiers are not ported/verified (ASCII lowercase slots only)",
+    "Default fresh random seed entropy differs across engines by design; persisted chosen seed drives the previously verified identical PCG plan",
+    "Web main-key CAS recheck follows source sync transaction semantics; not a cross-tab distributed lock",
+    "Cocos verifies main-key readback after setItem; ambiguous backend write/read failures roll back publication and next revision check adopts committed state instead of granting twice",
+    "Home cold19,000,000-byte gate remains unresolved; hard80/128/256MiB gates unchanged; save size cap not memory proof",
+    "Native filesystem .bak/.tmp recovery is outside formal WeChat/Web storage target; no old browser-key import or public deployment performed",
+    "No user acceptance, all complete visual flows, WeChat formal packaging and M08/M10/M11 remain pending"
+  ]
+}

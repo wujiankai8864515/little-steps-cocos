@@ -1,0 +1,17 @@
+✔ Checkpoint UTF8 size and SHA256 agree with independent Node encodings, including malformed surrogates (5.935958ms)
+✔ Canonical checkpoint preserves own dictionary keys and rejects mutation of the checksummed payload (1.966791ms)
+✔ Failed entry/choice/arrival roll back the whole durable transaction; retry and every reward grant apply once (15.4085ms)
+✔ Failed cancellation keeps its original release time, projects without mutation and retries active time (2.358625ms)
+✔ Restart releases abandoned ownership, stale writers adopt the newer revision, and stale recovery cannot steal a new token (5.859459ms)
+✔ Browser main key is the sole authority; integrity/future/invalid slots/quota fail without resurrecting backups or advancing revisions (0.794083ms)
+✔ CAS recheck rejects a writer arriving between reads; real adapter exceptions are not hidden (0.336791ms)
+✔ Large UTF8 states and prototype-named learned tags are validated by exact byte capacity and preserve all own keys (98.291791ms)
+✔ Durable schema1 migration retains all owned rewards and never replays them; blocked corruption refuses departures (6.492834ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 404.746917

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "scope": "31 actual-engine direct TravelService API traces including full memory checkpoint and projection; browser reload uses real localStorage and explicit QA fixed clock/button. Product Travel UI and WeChat device unverified.",
+  "numberPolicy": "Exact finite equality; no tolerance/rounding",
+  "rows": 31,
+  "sources": [
+    {
+      "path": "builds/reviews/M07-travel-service-native-rows-v3.json",
+      "sha256": "af94345aaf42cf8c70c1d6bc9f81a1447f0341bf8021bbd7246dd4f9f3dc3056"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-cocos-rows-v1.json",
+      "sha256": "0964f4bfe2b0c40c235a64c24491ddd48b727dee7211d91be89efab652a58513"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-before-v1.json",
+      "sha256": "f04ed3820e856b2c7af203b91c2f376ee8ceebb6ddd955bb86340b2f393ae0d5"
+    },
+    {
+      "path": "builds/reviews/M07-travel-service-browser-after-v1.json",
+      "sha256": "bf7641063cdc605718b5a846d01a9e7607c3e13f56aeb0bb056f45e572212ffd"
+    }
+  ],
+  "browserReload": {
+    "beforeRevision": 3,
+    "afterRevision": 4,
+    "beforeElapsed": 40,
+    "afterElapsed": 71,
+    "manualLearning": 0,
+    "inventory": 0,
+    "scope": "Real navigation/restore, QA clock1000/1040/1069/1100; not elapsed real-time measurement"
+  },
+  "mismatches": [],
+  "status": "matches"
+}
