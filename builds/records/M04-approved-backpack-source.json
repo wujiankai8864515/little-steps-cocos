@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "source": {
+    "path": "home/secondary/articulated_backpack.gd",
+    "sha256": "16e84e97e67293b3220699def103264ef756347f9d2da982b64bb6e791431715"
+  },
+  "oracle": {
+    "path": "builds/oracles/approved-backpack-native.json",
+    "sha256": "8d8cd50393e32416baeabc7b8ca4b13b0e405297a70de2122b8a92d2931b795f",
+    "provenance": {
+      "candidate": "godot-backpack-noon-v2",
+      "timestamp": "2026-10-11T00:09:13.961Z",
+      "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+      "source": "home/secondary/articulated_backpack.gd",
+      "method": "Actual public Godot Web checkpoint via CUA; source UV polygon and fitted triangulation retained; fitted vertices regenerated from original formula"
+    }
+  },
+  "output": {
+    "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackData.ts",
+    "sha256": "9a71754b0c55982faa67b2af73476e4811f25b41c1a47c9e781a2cb491617519"
+  },
+  "method": "Native Geometry2D padded contours and fitted triangulation; exact original float32 Vector2 fit order",
+  "nativeFNV1a32Verified": {
+    "shell": 1723890190,
+    "handle": 121656004,
+    "upper_seam": 2095708665,
+    "lower_return": 3959878492,
+    "near_band": 3200223644
+  },
+  "parts": 5,
+  "vertices": 120,
+  "indices": 330,
+  "limits": "Native mesh transfer, not complete worn raster/input/device acceptance"
+}

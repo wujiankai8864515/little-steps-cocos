@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "id": "M04.12",
+  "status": "partial_approved_wear_native_mesh_mips_pose_and_selected_noon_return_night_browser_verified_full_parity_pending",
+  "sourceCommit": "24ad2f85b593df0a19e855447b5e86db852b8c3f",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "37d924e303f9ac080cb9840c15400f3425d817b711eb59092847d92f0510c582"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackData.ts",
+      "sha256": "9a71754b0c55982faa67b2af73476e4811f25b41c1a47c9e781a2cb491617519"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts",
+      "sha256": "37b35cfca2df79236489fbcce1342140e6901e8fd24139a3f96737b379927fca"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackWear.ts",
+      "sha256": "ed57c889ae4ff234174bc931cf437a1a8b3c933a09e80a27872a45f8ffb4c84c"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "2ad07738b6a50a1855aaa6a3c8c8067c473d252c41972bb92557af4c26192bba"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "d0ad917cb8cd52baa38b62051e1fdadd051d4ccae928d9223061904c20822b01"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "sha256": "a213f30de9ca19978385ebf6a9a54b15b3a7a705c395f3d5d55b88cf6299cfe3"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "home/room_props_controller.gd",
+      "sha256": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83"
+    },
+    {
+      "path": "home/secondary/articulated_backpack.gd",
+      "sha256": "16e84e97e67293b3220699def103264ef756347f9d2da982b64bb6e791431715"
+    },
+    {
+      "path": "home/secondary/part_receiver.gdshader",
+      "sha256": "270bf70e991e94a2365d8ef7efcc8e69c2c780f5ba53e036bc5fe5e4a78ea074"
+    },
+    {
+      "path": "shaders/home_grounded_shadow.gdshader",
+      "sha256": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557"
+    }
+  ],
+  "sourceRecords": [
+    "M04-approved-backpack-source.json",
+    "M04-backpack-mipmap-source.json",
+    "M04-backpack-shader-source.json"
+  ],
+  "validation": {
+    "tests": {
+      "passed": 88,
+      "failed": 0,
+      "log": "builds/reviews/M04-worn-all-tests-v3.log"
+    },
+    "productionTypes": "builds/reviews/M04-worn-production-types-v3.log",
+    "candidateTypes": [
+      "builds/reviews/M04-worn-candidate-types-v3.log",
+      "builds/reviews/M04-worn-return-candidate-types-v1.log"
+    ],
+    "browser": "builds/reviews/M04-worn-browser.json",
+    "sourceIntegrity": [
+      "builds/reviews/M04-worn-noon-source-integrity.json",
+      "builds/reviews/M04-worn-mipmap-source-integrity.json",
+      "builds/reviews/M04-worn-return-v2-source-integrity.json"
+    ],
+    "productionMetadataAudit": "builds/reviews/M04-worn-production-metadata-audit.json",
+    "nativeShaderPayloadAudit": "builds/reviews/M04-worn-native-shader-audit.json"
+  },
+  "limits": [
+    "Full pixel parity remains pending: noon worn ROI mean absolute RGB 4.468274318274318, returning union 1.1689719449753426",
+    "Projection differences compare CPU geometry with formulas evaluated from observed native uniforms/world vertices; no GPU vertex feedback or device proof",
+    "Noon capture is the pre float-alpha candidate; alpha is one in that state. Night final candidate actually built/rendered with float-alpha shader",
+    "Real prop pointer offers, complete return/cancellation/departure browser flows, cross-canvas carry, all hours/sizes and WeChat pending",
+    "Debug Home requested payload is 36841329 bytes, over 19000000; formal first-screen gate has not passed"
+  ],
+  "sourceGodotClean": true
+}

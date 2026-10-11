@@ -1,0 +1,15 @@
+{
+  "url": "https://api.github.com/repos/godotengine/godot/contents/drivers/gles3/storage/texture_storage.h?ref=4.5.2-stable",
+  "sha256": "2f828576adf41449151e9ac376a53a203664647882d0609e5e851df5a07c2c65",
+  "gitBlob": "373f35e924b36cb5100581356ecdb57e223cb80e",
+  "sections": [
+    {
+      "line": 289,
+      "excerpt": "\t\t\t\t[[fallthrough]];\n\t\t\tcase RS::CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS: {\n\t\t\t\tpmag = GL_LINEAR;\n\t\t\t\tif (mipmaps <= 1) {\n\t\t\t\t\tpmin = GL_LINEAR;\n\t\t\t\t\tmax_lod = 0;\n\t\t\t\t} else if (config->use_nearest_mip_filter) {\n\t\t\t\t\tpmin = GL_LINEAR_MIPMAP_NEAREST;\n\t\t\t\t\tmax_lod = 1000;\n\t\t\t\t} else {\n\t\t\t\t\tpmin = GL_LINEAR_MIPMAP_LINEAR;\n\t\t\t\t\tmax_lod = 1000;\n\t\t\t\t}\n\t\t\t} break;\n\t\t\tdefault: {"
+    },
+    {
+      "line": 292,
+      "excerpt": "\t\t\t\tif (mipmaps <= 1) {\n\t\t\t\t\tpmin = GL_LINEAR;\n\t\t\t\t\tmax_lod = 0;\n\t\t\t\t} else if (config->use_nearest_mip_filter) {\n\t\t\t\t\tpmin = GL_LINEAR_MIPMAP_NEAREST;\n\t\t\t\t\tmax_lod = 1000;\n\t\t\t\t} else {\n\t\t\t\t\tpmin = GL_LINEAR_MIPMAP_LINEAR;\n\t\t\t\t\tmax_lod = 1000;\n\t\t\t\t}\n\t\t\t} break;\n\t\t\tdefault: {\n\t\t\t\treturn;\n\t\t\t} break;\n\t\t}"
+    }
+  ]
+}

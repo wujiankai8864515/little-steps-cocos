@@ -39,6 +39,7 @@ export class HomePage {
     readonly backpack:HomeBackpack;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;
+    private roomLayers:Array<{z:number;order:number;node:Node}>=[];private backpackLayerRevision=-1;
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
         const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width);
         const target=await assets.acquireTransient('HomeRoom-'+(++roomSerial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'HomeRoom'),texture=>texture.destroy(),scope);
@@ -58,7 +59,7 @@ export class HomePage {
         this.shadows=new HomeShadows(this.roomRoot,assets,scope,clock);
         const scene = assets.scene('res://home/home_world.tscn');
         const resources = new Map(scene.sections.filter(s => s.kind === 'ext_resource').map(s => [s.id, s.path]));
-        const layers: Array<{z: number; order: number; node: Node}> = [];
+        const layers=this.roomLayers;
         const props:Array<{node:Node;resource:string;p:any;spec:any;anchor:number[];footprint:number[]}>=[];
         scene.sections.filter(s => s.kind === 'node' && s.type === 'Sprite2D').forEach((section, order) => {
             if (section.properties.visible === false) return;
@@ -88,7 +89,7 @@ export class HomePage {
         this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,height]);
         this.flowers=new HomeFlowers(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,clock);
         this.flowers.layers.forEach(layer=>layers.push(layer));
-        this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock);
+        this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock,this.rig,()=>this.fish?.ground[1]||951);
         this.backpack.layers.forEach(layer=>layers.push(layer));
         // Room RT and the user's main Canvas have different physical origins.
         // Actor coordinates remain canonical in either parent; map input and
@@ -97,7 +98,7 @@ export class HomePage {
         const world=(at:number[])=>{const p=frame().getComponent(UITransform).convertToWorldSpaceAR(new Vec3(at[0],-at[1]));return [p.x,p.y];},canonical=(at:number[])=>{const p=frame().getComponent(UITransform).convertToNodeSpaceAR(new Vec3(at[0],at[1]));return [p.x,-p.y];};
         const visible=()=>[this.hud.safe[0],this.hud.safe[1]-plan.offset,this.hud.safe[2],this.hud.safe[3]];
         this.fish=new FishInteraction({
-            hit:at=>{const point=world(at);if(props.some(prop=>prop.p.z_index>12&&(()=>{const local=prop.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(...point as [number,number]));return assets.contains(prop.resource,local.x,-local.y);})()))return false;return !!this.rig.hitAt(point);},
+            hit:at=>{const point=world(at);if(this.backpack.hit(point)||props.some(prop=>prop.p.z_index>12&&(()=>{const local=prop.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(...point as [number,number]));return assets.contains(prop.resource,local.x,-local.y);})()))return false;return !!this.rig.hitAt(point);},
             position:()=>[this.rig.root.position.x,-this.rig.root.position.y],bounds:()=>this.rig.visualBounds(frame()),visibleRect:visible,
             validDrop:at=>{if(Math.hypot(at[0]-350,at[1]-951)<.00001)return true;if(at[0]<270||at[0]>=432||at[1]<904||at[1]>=1000)return false;return !props.some(prop=>{if(!prop.p['metadata/floor'])return false;const dx=(at[0]-prop.anchor[0])/(145+prop.footprint[0]+8),dy=(at[1]-prop.anchor[1])/(30+prop.footprint[1]+8);return dx*dx+dy*dy<1;});},
             suspend:()=>{this.rig.suspend();this.knock.stop();},resume:()=>this.rig.resume(),tap:()=>this.rig.tap(),beginLift:at=>this.rig.beginLift(world(at)),lift:(amount,delta,lag)=>this.rig.lift(amount,delta,lag),grip:()=>canonical(this.rig.gripWorld()),
@@ -107,9 +108,9 @@ export class HomePage {
         });
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         let owner='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.incense.down(id,point(at))){owner='incense';console.info('[LittleSteps] incense input down');return true;}const accepted=this.fish.down(id,point(at));if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{if(owner==='incense')this.incense.move(id,point(at));else this.fish.move(id,point(at));},up:(at:number[],id:number)=>{if(owner==='incense'){this.incense.up(id,point(at));console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else{this.fish.up(id,point(at));report('up');}owner='';},cancel:()=>{this.incense.cancel();this.fish.cancel(false);owner='';report('cancel');}},()=>this.active&&!this.hud.blocked);
-        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){this.pointerBinding.cancel();this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
+        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){this.pointerBinding.cancel();this.fish.cancel(true);this.backpack.restore();this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
-        this.hud.onOpen=()=>{this.pointerBinding.cancel();this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
+        this.hud.onOpen=()=>{this.pointerBinding.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
         this.rig.onContact=()=>{if(!this.active)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
         layers.push({z:100,order:1003,node:this.meritArt.root});
         layers.push({z:90,order:1004,node:this.feedback.root});
@@ -117,7 +118,7 @@ export class HomePage {
         layers.push({z: 12, order: 1000, node: this.rig.root});
         layers.push({z:-40,order:1001,node:this.lighting.shafts()},{z:-39,order:1002,node:this.lighting.dustNode()});
         this.shadows.layers.forEach(layer=>layers.push(layer));
-        layers.sort((a, b) => a.z - b.z || a.order - b.order).forEach((layer, index) => layer.node.setSiblingIndex(index));
+        this.sortRoomLayers();
         this.lighting.update();
         this.shadows.update();
         console.info('[LittleSteps] Home lighting candidate '+JSON.stringify(this.lighting.snapshot()));
@@ -125,6 +126,7 @@ export class HomePage {
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
     resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(true);}
-    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
+    private sortRoomLayers(){this.roomLayers.filter(layer=>layer.node.parent===this.roomRoot).sort((a,b)=>a.z-b.z||a.order-b.order).forEach((layer,index)=>layer.node.setSiblingIndex(index));this.backpackLayerRevision=this.backpack.layerRevision;}
+    pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);if(this.backpack.layerRevision!==this.backpackLayerRevision)this.sortRoomLayers();this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
 }

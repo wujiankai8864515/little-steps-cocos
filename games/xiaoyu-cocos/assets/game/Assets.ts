@@ -1,4 +1,4 @@
-import { Asset, AssetManager, assetManager, AudioClip, EffectAsset, Font, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
+import { Asset, AssetManager, assetManager, AudioClip, EffectAsset, Font, ImageAsset, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
 import { core, Scope } from './Engine';
 
 // Same logical texture -> authored BitMap mapping as alpha_hit_cache.gd.
@@ -9,9 +9,10 @@ const hitMasks:Record<string,string>={
 };
 
 export interface ArtSpec {
-    kind: 'texture' | 'font' | 'json' | 'audio' | 'mask' | 'effect'; bundle: string; path: string;
+    kind: 'texture' | 'image' | 'font' | 'json' | 'audio' | 'mask' | 'effect'; bundle: string; path: string;
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
     fontMetrics?: {ascent:number;descent:number;height:number};
+    mipResources?:string[];
 }
 export class GameAssets {
     catalog: { assets: Record<string, ArtSpec>; groups: Record<string, any> };
@@ -69,13 +70,14 @@ export class GameAssets {
     private acquireSpecs(specs:any[],scope:Scope) {
         return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
-            const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
+            const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
             const asset = await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
             asset.addRef(); this.values.set(key, asset); return asset;
         }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) this.values.delete(key); asset.decRef(); }, scope);
     }
     effect(name:string) {const value=this.values.get('effect:'+name) as EffectAsset;if(!value)throw new Error(`材质尚未准入：${name}`);return value;}
     texture(resource:string) {const value=this.values.get(resource) as Texture2D;if(!value)throw new Error(`原图尚未准入：${resource}`);return value;}
+    image(resource:string) {const value=this.values.get(resource) as ImageAsset;if(!value)throw new Error(`原 mipmap 尚未准入：${resource}`);return value;}
     art(resource: string): ArtSpec {
         const spec = this.catalog.assets[resource];
         if (!spec || spec.kind !== 'texture') throw new Error(`缺少原图：${resource}`);

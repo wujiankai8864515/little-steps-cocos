@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "reference": {
+    "path": "builds/reviews/backpack-return-night-godot-v1.jpg",
+    "sha256": "553fd0ce88abca2a0c26d7844892023930e8544d0ad4928f8311acfd6e807547"
+  },
+  "cocos": {
+    "path": "builds/reviews/backpack-return-night-cocos-v2.jpg",
+    "sha256": "636d9f79bd7cc6bbd40e2dc15d76586e78b4d7e8a57745d5870c261daf4599a9"
+  },
+  "comparison": {
+    "path": "builds/reviews/backpack-return-night-comparison-v2.png",
+    "sha256": "1077d447862ea3e8c5e54bb75def0ae166955801bf9a356125e88f167651de68",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.1566037951531778,
+      "RMSRGB": 3.4394571347443677,
+      "maximumChannelDifference": 141
+    },
+    "wornBackpack": {
+      "rect": [
+        15,
+        405,
+        141,
+        535
+      ],
+      "meanAbsoluteRGB": 1.3957468457468458,
+      "RMSRGB": 2.151235774737915,
+      "maximumChannelDifference": 20
+    },
+    "wornBackpackAndActor": {
+      "rect": [
+        12,
+        370,
+        333,
+        555
+      ],
+      "meanAbsoluteRGB": 1.1537649799332044,
+      "RMSRGB": 1.9922877074462908,
+      "maximumChannelDifference": 55
+    },
+    "floorProjection": {
+      "rect": [
+        0,
+        505,
+        405,
+        630
+      ],
+      "meanAbsoluteRGB": 1.5119012345679013,
+      "RMSRGB": 4.734063640117548,
+      "maximumChannelDifference": 109
+    },
+    "returningBackpackUnion": {
+      "rect": [
+        15,
+        295,
+        292,
+        550
+      ],
+      "meanAbsoluteRGB": 1.1689719449753426,
+      "RMSRGB": 2.076665742122952,
+      "maximumChannelDifference": 42
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared fixed clock and actor/plant rest, original fixed-step returning backpack state. JPEG/raster and unresolved UI differences remain visible. Gestures, all sizes/pages and WeChat device acceptance pending."
+}

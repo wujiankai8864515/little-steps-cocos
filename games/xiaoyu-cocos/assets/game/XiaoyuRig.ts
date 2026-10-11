@@ -20,6 +20,7 @@ export class XiaoyuRig {
     private neutralBones:Array<{node:Node;position:Vec3;scale:Vec3;angle:number}>=[];
     private jelly=[0,0];
     private suspended=false;
+    private sourceDepth=new Map<Node,{z:number;relative:boolean}>();
     private liftMotion=new LiftMotion();
     readonly landing=new LandingSpring();
     liftHeight=0;
@@ -42,6 +43,7 @@ export class XiaoyuRig {
             const node = nodeAt(parentNode, section.name, position[0], position[1]);
             node.active = properties.visible !== false;
             this.nodes.set(path, node);
+            this.sourceDepth.set(node,{z:properties.z_index||0,relative:properties.z_as_relative!==false});
             if (section.type !== 'Sprite2D') continue;
             const resource = resources.get(properties.texture.value) as string;
             if (properties.region_enabled) {
@@ -127,6 +129,7 @@ export class XiaoyuRig {
     hitAt(worldPoint: number[]) {
         for (const name of ['OriginalFinAndRigidMallet','OriginalBody','OriginalTail']) {
             const part=this.meshes.find(p=>p.node.name===name);
+            if(!part.node.activeInHierarchy||!part.sprite.enabled)continue;
             const local = part.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(worldPoint[0], worldPoint[1]));
             const source = core.sourcePixelAt(part.mesh, [local.x, -local.y]);
             if (source && (name!=='OriginalBody'||bodyPixelVisible(source))&&this.assets.contains(part.resource, source[0], source[1])) return {source, part: part.node.name};
@@ -154,6 +157,8 @@ export class XiaoyuRig {
     setLightingOrigin(frame:Node){const p=frame.worldPosition,s=frame.worldScale;this.receivers.forEach(r=>{if(r.sprite.customMaterial)r.sprite.customMaterial.setProperty('roomOrigin',new Vec4(p.x,p.y,s.x,s.y));});}
     softPose():SoftPose {return {amount:this.liftMotion.amount,grab:this.grabSource,lag:this.liftMotion.lag,phase:this.liftMotion.elapsed,jelly:this.jelly,landing:this.landing.position,clearance:Math.max(0,this.liftHeight)*.9,heldPart:this.grabbed?.name,handGrab:this.grabPixel,handMotion:[.55*Math.sin(this.liftMotion.elapsed*7.2),3.8*Math.cos(this.liftMotion.elapsed*6.8)]};}
     softMeshes(){return this.meshes;}
+    backpackNodes(){return {body:this.nodes.get('Skeleton2D/Ground/Body/OriginalBody'),tail:this.nodes.get('Skeleton2D/Ground/Body/Tail/OriginalTail'),tailBone:this.nodes.get('Skeleton2D/Ground/Body/Tail'),shoulder:this.nodes.get('Skeleton2D/Ground/Shoulder'),grip:this.nodes.get('Skeleton2D/Ground/Shoulder/GripMallet')};}
+    coversBackpack(world:number[],depth:number){if(depth>12)return false;for(const part of this.meshes){if(!part.node.activeInHierarchy||!part.sprite.enabled||part.node.name.indexOf('Eye')>=0)continue;let actual=0,node=part.node;while(node!==this.root){const source=this.sourceDepth.get(node);actual+=source?.z||0;if(source?.relative===false)break;node=node.parent;}if(node===this.root)actual+=12;if(actual<depth)continue;const p=part.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1]));if(this.assets.contains(part.resource,p.x,-p.y))return true;}return false;}
     get softActive(){return this.liftMotion.amount>1e-5||this.landing.active;}
     resetSecondary(){this.behavior.resetPose();this.jelly=[0,0];this.liftMotion.reset();this.landing.reset();this.poseAt(0);const expression=this.nodes.get('Skeleton2D/Ground/Body/Expression');expression.active=false;this.pupils.forEach(p=>p.node.active=true);this.setMouthOpen(0);this.setEyeOffsets([0,0]);this.deform(this.softPose());}
     suspend(){if(!this.suspended)this.suspended=true;}
@@ -190,7 +195,7 @@ export class XiaoyuRig {
         const center=core.Math2D.transform(core.Math2D.multiply(inverse,this.affine(this.root)),335,0);return [center[0],top-10];
     }
     land(impact:number){this.liftMotion.amount=0;this.liftMotion.lag=[0,0];this.landing.begin(impact,this.behavior.secondary);}
-    visualBounds(relativeTo:Node){const inverse=core.Math2D.inverse(this.affine(relativeTo)),points:number[][]=[];this.meshes.forEach(part=>{const r=this.assets.art(part.resource).opaque,m=core.Math2D.multiply(inverse,this.affine(part.node));[[r[0],r[1]],[r[2],r[1]],[r[0],r[3]],[r[2],r[3]]].forEach(p=>points.push(core.Math2D.transform(m,...p)));});const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.min(...xs)-42,y=Math.min(...ys)-42;return [x,y,Math.max(...xs)+42-x,Math.max(...ys)+42-y];}
+    visualBounds(relativeTo:Node){const inverse=core.Math2D.inverse(this.affine(relativeTo)),points:number[][]=[];this.meshes.forEach(part=>{if(!part.node.activeInHierarchy||!part.sprite.enabled)return;const r=this.assets.art(part.resource).opaque,m=core.Math2D.multiply(inverse,this.affine(part.node));[[r[0],r[1]],[r[2],r[1]],[r[0],r[3]],[r[2],r[3]]].forEach(p=>points.push(core.Math2D.transform(m,...p)));});if(!points.length)return [0,0,0,0];const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.min(...xs)-42,y=Math.min(...ys)-42;return [x,y,Math.max(...xs)+42-x,Math.max(...ys)+42-y];}
     private affine(node:Node){const m=node.worldMatrix;return [m.m00,-m.m01,-m.m04,m.m05,m.m12,-m.m13];}
     deform(pose: SoftPose) {
         const body = this.nodes.get('Skeleton2D/Ground/Body/OriginalBody');

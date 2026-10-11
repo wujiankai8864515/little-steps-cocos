@@ -28,6 +28,7 @@ CCEffect %{
         weightsState: { value: [1, 0, 0, 1] }
         celestialState: { value: [147.5, 63.55, 228, 95] }
         maskRect: { value: [0, 0, 1, 1] }
+        partOpacityState: { value: [1, 0, 0, 0] }
         shared_outdoor_paint: { value: white }
 }%
 
@@ -96,6 +97,8 @@ CCProgram room-fs %{
   #define outdoor_enabled true
   #define use_shared_outdoor_paint true
   #define shared_outdoor_uv_rect vec4(0.0,0.0,1.0,1.0)
+
+  uniform PartOpacity {vec4 partOpacityState;};
 
   #pragma builtin(local)
   layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
@@ -245,10 +248,11 @@ vec3 outdoor_scene(vec2 p,vec3 original,float day,float h,float morning,float no
  return compose_window_glass(shared_outdoor_scene(p,original,day,h,morning,noon,sunset,afterglow),p,home_glass_distance(p),day,sunset);
 }
 
+vec4 sample_original(vec2 at){if(any(lessThan(at,vec2(0.0)))||any(greaterThan(at,vec2(1.0))))return vec4(0.0);return CCSampleWithAlphaSeparated(cc_spriteTexture,at);}
 vec4 frag(){
-vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);vec2 UV=sourceUV.xy+uv0*sourceUV.zw;vec4 source_albedo,result,part_tint=color;vec3 surf_normal;float exterior_mask;
+vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);vec2 UV=sourceUV.xy+uv0*sourceUV.zw;vec4 source_albedo,result,part_tint=vec4(color.rgb,color.a*partOpacityState.x);vec3 surf_normal;float exterior_mask;
 
-    source_albedo=CCSampleWithAlphaSeparated(cc_spriteTexture,uv0);
+    source_albedo=sample_original(uv0);
     vec2 q=(UV-visible_uv.xy)/max(visible_uv.zw,vec2(0.001));
     vec2 xy=(q-vec2(0.5,0.58))*2.0;
     vec3 normal=normalize(vec3(xy.x*0.68,xy.y*0.3,0.9));
