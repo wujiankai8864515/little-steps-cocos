@@ -11,6 +11,7 @@ export const core: any = {
     get Math2D() { return installed().Math2D; },
     get ResourceGate() { return installed().ResourceGate; },
     get SwingFeedback() { return installed().SwingFeedback; },
+    get BubblePointer() { return installed().BubblePointer; },
     get CheckpointStore() { return installed().CheckpointStore; },
     get RawJSONCheckpointStore() { return installed().RawJSONCheckpointStore; },
     createGrid: (...args: any[]) => installed().createGrid(...args),

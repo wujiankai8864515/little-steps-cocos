@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "id": "M04.13",
+  "status": "partial_bag_real_pointer_entry_offer_no_outside_and_ignored_escape_verified_full_product_parity_pending",
+  "sourceCommit": "2e13fa65a5a0d0af4add238f28ef6aebeebc25fc",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "changes": [
+    {
+      "path": "engines/travel-core/src/ui.js",
+      "sha256": "b4485ca483be392dc02ea335379186506391718e1efdb4023460f908219789a5"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "d984c2b2771843bb25337aecbb77bef59c87a599b69daf1d9b123295703d6e1a"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackInteraction.ts",
+      "sha256": "67f315e2ede251dfa065ef047630259b0e065aa7e050ac8558aef48a29dc3e3a"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeNote.ts",
+      "sha256": "1301407b0a7e8afd4a9f505a4ab1a85e16af828acdd289c3b73869f4556dcf3d"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "422469c505b44fd8b7764da64dc4f014c1b5077b8dd3ab6084dc6ada750cbc8d"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHUD.ts",
+      "sha256": "e8336aba56468066e4c281b271dfbc82e39a856776175d58ad8653fe68284923"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "0e4b52cbc1b76180a90c5a806925225bfbaf04fa14030b1769d97701585b13f0"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "431d0e64321125b476dd2acd72c2a8ac364c034095b0077b17e05cbf74ea332e"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "home/interaction/home_interaction_controller.gd",
+      "sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd"
+    },
+    {
+      "path": "home/interaction/anchor_registry.gd",
+      "sha256": "1a18592bc127e397ef6f280d4c2b8f2b7f04fc868b62f915002226e3bae41289"
+    },
+    {
+      "path": "home/interaction/home_note.gd",
+      "sha256": "bfd283f04d7e8bcf2ab7dba384de27e7ea11eb866673bfe7bc002e41ee3ee2fd"
+    },
+    {
+      "path": "home/interaction/character_bubble_anchor.gd",
+      "sha256": "e3122cd1cdc2ea31bb9d42a743decd45a57e5e6f0bbf2f633135c3da5a842a96"
+    },
+    {
+      "path": "home/room_props_controller.gd",
+      "sha256": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83"
+    },
+    {
+      "path": "home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "path": "home/secondary/articulated_backpack.gd",
+      "sha256": "16e84e97e67293b3220699def103264ef756347f9d2da982b64bb6e791431715"
+    },
+    {
+      "path": "home/behavior/drag_gaze.gd",
+      "sha256": "7ec37582bae6228540564e2db91c4d6a85d92bd9f1dbd007bbc14f5a6bd23eaa"
+    },
+    {
+      "path": "framework/addons/travel_core/ui/speech_bubble.gd",
+      "sha256": "9e155fac41eb1d1913333dc0ad80a7eb69c93f8b811fbc463ccf237d753bda0b"
+    },
+    {
+      "path": "framework/addons/travel_core/ui/speech_bubble_shape.gd",
+      "sha256": "90beefb9ead13dd9f66d52f463467b7264084cdf32b339b4a377fbb74a542bfb"
+    }
+  ],
+  "frameworkPlugin": {
+    "plugin": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+    "target": "engines/travel-core/dist/travel-core.js",
+    "sha256": "d984c2b2771843bb25337aecbb77bef59c87a599b69daf1d9b123295703d6e1a",
+    "targetMode": "0444",
+    "directoryMode": "0555",
+    "sourceFiles": [
+      "math.js",
+      "lifetime.js",
+      "resource-gate.js",
+      "cocos-mesh.js",
+      "ui.js",
+      "cocos-router.js",
+      "audio.js",
+      "bitmap.js",
+      "cocos-surface.js",
+      "checkpoint.js"
+    ]
+  },
+  "implemented": [
+    "Original alpha-aware bag entry and single pointer ownership; 9px immediate prop drag or .34s hold; no tap-to-wear shortcut",
+    "Actual active mesh bounds, 18px safe margin and .36s home/offer settle",
+    "Reuse existing five-part hanging/worn bag and original fish bones; reparent 20 existing artwork/wall-shadow frame nodes for front-canvas ownership, no second fish/bag",
+    "Shared measured confirmation: 62px choice row, original paper/tail/divider/font/choices and sticky pointer targets",
+    "Bag offer .24s wear and .24s wall return; correct ambient pause/resume and modal precedence over settings/world taps",
+    "Floor projections gated while bag presentation is outside room; original initial951 rebuild retained, no inactive floor rebuild",
+    "Original HomeNote automatic_input=false means bare question ignores Escape, verified after retaining v3 mismatch",
+    "Explicit ownership transfer API for future departure; full travel acceptance remains pending"
+  ],
+  "validation": {
+    "tests": {
+      "passed": 96,
+      "failed": 0,
+      "log": "builds/reviews/M04-bag-input-tests-v4.log"
+    },
+    "productionTypes": "builds/reviews/M04-bag-input-production-types-v4.log",
+    "candidateTypes": "builds/reviews/M04-bag-input-candidate-types-v4.log",
+    "browser": [
+      "builds/reviews/M04-bag-input-browser-v1.json",
+      "builds/reviews/M04-bag-cancel-browser-v1.json",
+      "builds/reviews/M04-bag-input-browser-v3.json",
+      "builds/reviews/M04-bag-input-browser-v4.json"
+    ],
+    "sourceIntegrity": [
+      "builds/reviews/M04-bag-input-source-integrity-v1.json",
+      "builds/reviews/M04-bag-input-source-integrity-v2.json",
+      "builds/reviews/M04-bag-input-source-integrity-v3.json",
+      "builds/reviews/M04-bag-input-source-integrity-v4.json"
+    ],
+    "actualScreenshots": [
+      "builds/reviews/bag-offer-noon-comparison-v4.json",
+      "builds/reviews/bag-cancel-wall-comparison-v4.json"
+    ]
+  },
+  "limits": [
+    "Full trip acceptance/route loading/departure remains pending; current original non-routing preparation info fallback is not a implemented travel page",
+    "Original drag_gaze.gd eye following is not yet connected; props gaze and other doll/bowl/table branches remain pending",
+    "Actual carried screenshot at a controlled identical intermediate frame and dynamic extrema/return interruption still pending; public render ownership/state traces only",
+    "Night screenshot/input, other sizes, devices, focus/page disposal/input multitouch/lifecycle still need real runtime verification",
+    "Font antialiasing, Home lighting/art pixels and unsynchronized flowers/particles remain visible in RGB diff; this is not full pixel parity",
+    "19,000,000 byte first Home gate is still not passed; previous debug fixture measured36,841,329 bytes (M04-worn-first-home-payload.json)",
+    "Official frozen WeChat package, device performance, all138 requirements and user acceptance still pending"
+  ]
+}

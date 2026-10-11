@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "inputKind": "real-pointer",
+  "reference": {
+    "path": "builds/reviews/bag-cancel-wall-godot-v4.jpg",
+    "sha256": "9991115bc843349e93387b34a1b9b6b86a0e425ac5bfdb113551716a11e23e48"
+  },
+  "cocos": {
+    "path": "builds/reviews/bag-cancel-wall-cocos-v4.jpg",
+    "sha256": "6b2250f03a90b76f14a90cf540899ef0f8beca8cbbd8ca6ac94c62d6b01ae919"
+  },
+  "comparison": {
+    "path": "builds/reviews/bag-cancel-wall-comparison-v4.png",
+    "sha256": "f390107ef96709e80f2867783e80fbbb63de4d515cf67feee973e0b46059a43c",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.575297210791038,
+      "RMSRGB": 6.519834107352995,
+      "maximumChannelDifference": 217
+    },
+    "hangingBackpackAndShadows": {
+      "rect": [
+        298,
+        225,
+        405,
+        342
+      ],
+      "meanAbsoluteRGB": 0.6146124557339511,
+      "RMSRGB": 1.0549018035619433,
+      "maximumChannelDifference": 9
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared clock/ambient/plant rest with actual browser pointer input; flowers/particles not synchronized. JPEG/raster and unresolved UI differences remain visible. All sizes/pages, full travel and WeChat device acceptance pending."
+}

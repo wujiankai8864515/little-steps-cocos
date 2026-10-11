@@ -6,6 +6,30 @@ const path = require('node:path');
 const context = vm.createContext({Float32Array, Uint16Array, console});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../dist/travel-core.js'), 'utf8'), context);
 const core = context.LittleStepsCore;
+test('Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance',()=>{
+ const safe=[24,135,672,1025],options={confirmation:true,minWidth:320,maxWidth:430,aboveOnly:true},r=core.infoBubbleLayout([350,666],safe,240,28,options);
+ assert.deepEqual(Array.from(r),[190,504,320,142]);assert.deepEqual(Array.from(core.infoBubbleLayout([350,308],safe,240,28,options)),[350,308,0,0]);
+ const long=core.infoBubbleLayout([350,666],safe,600,72,options);assert.equal(long[2],430);assert.equal(long[3],178);
+});
+test('Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger',()=>{
+ const owner=new core.BubblePointer(),card=[190,504,320,142],choices={yes:[208,592,136,44],no:[356,592,136,44]};
+ owner.down(1,[240,615],card,choices,'pop');assert.equal(owner.up(1,[240,615],card,choices,'hold'),'');
+ owner.down(1,[380,615],card,choices,'pop');assert.equal(owner.up(2,[380,615],card,choices,'pop'),null);assert.equal(owner.up(1,[380,615],card,choices,'pop'),'no');
+ owner.down(1,[240,615],card,choices,'hold');owner.move(1,[380,615],card);owner.move(1,[240,615],card);assert.equal(owner.up(1,[240,615],card,choices,'hold'),'');
+ owner.down(3,[50,50],card,choices,'reveal');owner.move(3,[300,550],card);owner.move(3,[50,50],card);assert.equal(owner.up(3,[50,50],card,choices,'hold'),'');
+ owner.down(3,[50,50],card,choices,'reveal');assert.equal(owner.up(3,[50,50],card,choices,'reveal'),'outside');owner.down(3,[240,615],card,choices,'hold');assert.equal(owner.up(3,[240,615],card,choices,'closing'),'');
+ owner.down(4,[240,615],card,choices,'hold');owner.cancel();assert.equal(owner.up(4,[240,615],card,choices,'hold'),null);
+});
+test('Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision',()=>{
+ class Node {constructor(name){this.name=name;this.children=[];this.active=true;this.components=new Map();}addChild(child){child.parent=this;this.children.push(child);}addComponent(T){const value=new T();value.node=this;this.components.set(T,value);return value;}getComponent(T){return this.components.get(T);}setPosition(x,y){this.position=[x,y];}destroy(){this.destroyed=true;}}
+ class UITransform {setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}}
+ class Label {updateRenderData(){const ui=this.node.getComponent(UITransform);if(this.overflow===0)ui.width=240;ui.height=this.lineHeight*1.26;}}
+ Label.Overflow={NONE:0,RESIZE_HEIGHT:1,CLAMP:2};Label.HorizontalAlign={CENTER:0};Label.VerticalAlign={CENTER:0};
+ class Graphics {clear(){}moveTo(){}lineTo(){}close(){}fill(){}stroke(){}}
+ const cc={Node,UITransform,Label,Graphics,UIOpacity:class{},Color:class{constructor(...rgba){this.rgba=rgba;}}},events=[],bubble=core.registerUI(cc).confirmationBubble(new Node('room'),{},'A confirmation',[350,100],[24,135,672,1025],{aboveOnly:true,minWidth:320,cancelLighten:.13,onDecision:value=>events.push(value)});
+ bubble.advance(5);assert.equal(bubble.snapshot().phase,'pop');bubble.setAnchor([350,666]);bubble.advance(.25);bubble.advance(.2);assert.equal(bubble.snapshot().phase,'hold');assert.equal(bubble.text.node.getComponent(UITransform).height,40);
+ const r=bubble.snapshot().choices.yes,p=[r[0]+r[2]/2,r[1]+r[3]/2];bubble.down(7,p);bubble.up(7,p);assert.deepEqual(events,[true]);assert.equal(bubble.snapshot().phase,'closing');bubble.down(7,p);bubble.up(7,p);assert.deepEqual(events,[true]);bubble.close();bubble.advance(.19);assert.equal(bubble.root.active,false);
+});
 test('Information bubbles stay in the safe area and reserve head clearance across moving anchors',()=>{
  const safe=[24,135,672,1025],options={minWidth:320,maxWidth:430,aboveOnly:true};
  assert.deepEqual(Array.from(core.infoBubbleLayout([350,100],safe,96,30,options)),[350,100,0,0]);

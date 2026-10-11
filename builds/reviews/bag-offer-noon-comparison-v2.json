@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "reference": {
+    "path": "builds/reviews/bag-offer-noon-godot-v2.jpg",
+    "sha256": "b7a477314e4e07b201d5fec9cceceb1559a072f08c55706269ef8386b41b34eb"
+  },
+  "cocos": {
+    "path": "builds/reviews/bag-offer-noon-cocos-v2.jpg",
+    "sha256": "fdbaf8f6c2405d2baad60f00efb9626f5cb55024ec5f3ae46bc91c73e49e7467"
+  },
+  "comparison": {
+    "path": "builds/reviews/bag-offer-noon-comparison-v2.png",
+    "sha256": "e8e97fd96451f695b5260b2dbb0a0dafc4f6c0a42f1858d4aa373ef28c768580",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.7963568815729312,
+      "RMSRGB": 5.976405879656725,
+      "maximumChannelDifference": 155
+    },
+    "wornBackpack": {
+      "rect": [
+        15,
+        405,
+        141,
+        535
+      ],
+      "meanAbsoluteRGB": 4.498860398860399,
+      "RMSRGB": 8.104989821064473,
+      "maximumChannelDifference": 80
+    },
+    "wornBackpackAndActor": {
+      "rect": [
+        12,
+        370,
+        333,
+        555
+      ],
+      "meanAbsoluteRGB": 2.400213297409559,
+      "RMSRGB": 7.144186609115571,
+      "maximumChannelDifference": 143
+    },
+    "floorProjection": {
+      "rect": [
+        0,
+        505,
+        405,
+        630
+      ],
+      "meanAbsoluteRGB": 2.972181069958848,
+      "RMSRGB": 9.864412262667622,
+      "maximumChannelDifference": 155
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared fixed clock and actor/plant rest, original fixed-step worn backpack state. JPEG/raster and unresolved UI differences remain visible. Gestures, all sizes/pages and WeChat device acceptance pending."
+}

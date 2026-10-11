@@ -56,11 +56,22 @@ class SwingFeedback {
         while(remaining>0){const step=Math.min(remaining,.016);this.clock+=step;const breeze=Math.sin(this.clock*.8)*.009;this.velocity+=(-18*(this.angle-breeze)-4.5*this.velocity)*step;this.angle=Math2D.clamp(this.angle+this.velocity*step,-.045,.045);remaining-=step;}
     }
 }
+// Captures one modal target. Leaving it cancels permanently, including an
+// outside press crossing the paper and returning outside before release.
+class BubblePointer {
+    constructor(){this.cancel();}
+    cancel(){this.owner=null;this.target='';this.valid=false;this.rect=[];}
+    down(id,at,card,choices,phase){if(this.owner!==null)return true;this.owner=id;this.target=this.targetAt(at,card,choices);if(phase==='closing'||phase!=='hold'&&this.target!=='outside'&&this.target!=='no')this.target='';this.valid=!!this.target;this.rect=(choices[this.target]||[]).slice();return true;}
+    move(id,at,card){if(id!==this.owner)return false;const stays=this.target==='outside'?!this.inside(at,card):this.inside(at,this.rect);if(!stays)this.valid=false;return true;}
+    up(id,at,card,choices,phase){if(id!==this.owner)return null;this.move(id,at,card);const accepted=this.valid&&phase!=='closing'&&(phase==='hold'||this.target==='outside'||this.target==='no')&&this.targetAt(at,card,choices)===this.target,target=accepted?this.target:'';this.cancel();return target;}
+    inside(at,r){return at.length===2&&at.every(Number.isFinite)&&r.length===4&&at[0]>=r[0]&&at[1]>=r[1]&&at[0]<r[0]+r[2]&&at[1]<r[1]+r[3];}
+    targetAt(at,card,choices){if(!at.every(Number.isFinite))return '';if(!this.inside(at,card))return 'outside';for(const name of Object.keys(choices))if(this.inside(at,choices[name]))return name;return '';}
+}
 function infoBubbleLayout(anchor,safe,naturalWidth,measuredHeight,options={}) {
     const r=safe.slice(),point=options.fontSize||24;
-    if(options.aboveOnly){r[3]=Math.min(r[1]+r[3],anchor[1]+6)-r[1];if(r[3]<130)return [anchor[0],anchor[1],0,0];}
+    if(options.aboveOnly){r[3]=Math.min(r[1]+r[3],anchor[1]+6)-r[1];if(r[3]<(options.confirmation?180:130))return [anchor[0],anchor[1],0,0];}
     const available=[r[0]+6,r[1]+6,r[2]-12,r[3]-12],max=Math.min(options.maxWidth||430,available[2]),min=Math.min(options.minWidth||270,max),w=Math2D.clamp(naturalWidth+56,min,max);
-    let h=Math.min(Math.max(Math.max(measuredHeight,point*1.5)+44,79),available[3]-24);
+    let h=Math.min(Math.max(Math.max(measuredHeight,point*1.5)+44+(options.confirmation?62:0),options.confirmation?130:79),available[3]-24);
     const above=Math2D.clamp(anchor[1]-available[1]-20,0,available[3]-24),below=Math2D.clamp(available[1]+available[3]-anchor[1]-20,0,available[3]-24),under=above<h&&below>above;
     h=Math.min(h,Math.max(under?below:above,80));
     return [Math2D.clamp(anchor[0]-w/2,available[0],available[0]+available[2]-w),Math2D.clamp(under?anchor[1]+20:anchor[1]-h-20,available[1],available[1]+available[3]-h),w,h];
@@ -133,7 +144,7 @@ function registerUI(cc) {
         text.color = color([.376470588,.231372549,.133333333,1]);
         text.enableWrapText = true; text.overflow = cc.Label.Overflow.RESIZE_HEIGHT;
         let size = options.fontSize || 24, minimum = options.minimumFontSize || Math.max(15,size-8), measured = [];
-        const bounds = content.getComponent(cc.UITransform), allowedHeight = card[3]-40;
+        const bounds = content.getComponent(cc.UITransform), allowedHeight = card[3]-40-(options.confirmation?62:0);
         while (true) {
             text.fontSize = size; text.lineHeight = size*(options.fontMetrics ? options.fontMetrics.height : 1.2);
             bounds.setContentSize(card[2]-56,allowedHeight);text.updateRenderData(true);
@@ -145,7 +156,7 @@ function registerUI(cc) {
         text.overflow = cc.Label.Overflow.CLAMP; bounds.setContentSize(card[2]-56,allowedHeight);
         if (options.fontMetrics) content.setPosition(card[0]+28,-(card[1]+20+(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*size/2));
         const shapeOpacity = shape.addComponent(cc.UIOpacity), contentOpacity = content.addComponent(cc.UIOpacity);
-        let phase = 'pop', time = 0, hold = 0;
+        let phase = 'pop', time = 0, hold = 0, contentAlpha = 0;
         const paint = scale => {
             const center=[card[0]+card[2]/2,card[1]+card[3]/2];
             graphics.clear();
@@ -155,7 +166,7 @@ function registerUI(cc) {
             polygon(graphics,contour.map(p=>[p[0],p[1]+4]),[.23,.12,.055,.12]);
             polygon(graphics,contour,[1,.945098039,.839215686,1],[.788235294,.654901961,.443137255,.58]);
         };
-        const api = {root, text, layout(next,at) {card.splice(0,4,...next);anchor.splice(0,2,...at);bounds.setContentSize(Math.max(1,card[2]-56),Math.max(1,card[3]-40));content.setPosition(card[0]+28,-(card[1]+20+(options.fontMetrics?(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*size/2:0)));}, close() {phase='closing';time=0;}, advance(delta) {
+        const api = {root, text, layout(next,at) {card.splice(0,4,...next);anchor.splice(0,2,...at);bounds.setContentSize(Math.max(1,card[2]-56),Math.max(1,card[3]-40-(options.confirmation?62:0)));content.setPosition(card[0]+28,-(card[1]+20+(options.fontMetrics?(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*size/2:0)));}, close() {if(phase==='closing'||phase==='hidden')return;phase='closing';time=0;}, advance(delta) {
             time += Math.max(0,delta);
             let scale = 1, alpha = 1, textAlpha = 1;
             if (phase === 'pop') {
@@ -172,8 +183,8 @@ function registerUI(cc) {
                 const t=Math2D.clamp(time/.19,0,1);scale=1-.07*t*t;alpha=1-t;textAlpha=Math.max(1-1.6*t,0);
                 if(t>=1) {phase='hidden';root.active=false;}
             }
-            paint(scale);shapeOpacity.opacity=255*alpha;contentOpacity.opacity=255*alpha*textAlpha;
-        }, snapshot: () => ({phase,fontSize:size,card:[...card],measured})};
+            paint(scale);shapeOpacity.opacity=255*alpha;contentAlpha=alpha*textAlpha;contentOpacity.opacity=255*contentAlpha;
+        }, snapshot: () => ({phase,fontSize:size,card:[...card],measured,contentAlpha})};
         api.advance(0); return api;
     }
     function infoBubble(parent,font,message,anchor,safe,options={}) {
@@ -184,6 +195,19 @@ function registerUI(cc) {
         let blocked=false;
         api.setAnchor=at=>{const rect=infoBubbleLayout(at,safe,natural,measured,options);blocked=rect[2]===0;api.layout(rect,at);api.root.children.forEach(child=>{child.active=!blocked;});};
         api.advance=delta=>{if(!blocked)advance(delta);};api.snapshot=()=>Object.assign(snapshot(),{speakerClearanceBlocked:blocked});api.setAnchor(anchor);return api;
+    }
+    function confirmationBubble(parent,font,message,anchor,safe,options={}) {
+        const settings=Object.assign({},options,{confirmation:true,persistent:true}),api=infoBubble(parent,font,message,anchor,safe,settings),choices=node(api.root,'Choices',[0,0,1,1]),opacity=choices.addComponent(cc.UIOpacity),owner=new BubblePointer(),buttons={},divider=node(choices,'Divider',[0,0,1,1]).addComponent(cc.Graphics);
+        let rects={},decided=false;
+        ['yes','no'].forEach((key,index)=>{const root=node(choices,key,[0,0,1,1]),text=root.addComponent(cc.Label);text.font=font;text.string=index?(options.cancelText===undefined?'Cancel':options.cancelText):(options.acceptText===undefined?'OK':options.acceptText);text.fontSize=options.fontSize||24;text.lineHeight=text.fontSize*(options.fontMetrics?options.fontMetrics.height:1.2);text.horizontalAlign=cc.Label.HorizontalAlign.CENTER;text.verticalAlign=cc.Label.VerticalAlign.CENTER;const ink=[.376470588,.231372549,.133333333],light=index?(options.cancelLighten||0):0;text.color=color([...ink.map(v=>v+(1-v)*light),1]);text.overflow=cc.Label.Overflow.CLAMP;buttons[key]=root;});
+        const setAnchor=api.setAnchor,advance=api.advance,snapshot=api.snapshot;
+        api.setAnchor=at=>{setAnchor(at);const state=snapshot(),r=state.card,w=Math.max(1,(r[2]-48)/2);rects={yes:[r[0]+18,r[1]+r[3]-54,w,44],no:[r[0]+30+w,r[1]+r[3]-54,w,44]};Object.keys(buttons).forEach(key=>{const node=buttons[key],r=rects[key];node.setPosition(r[0],-(r[1]+(options.fontMetrics?(options.fontMetrics.ascent-options.fontMetrics.descent-.74)*(options.fontSize||24)/2:0)));node.getComponent(cc.UITransform).setContentSize(r[2],r[3]);});divider.clear();divider.strokeColor=color([.376470588,.231372549,.133333333,.11]);divider.lineWidth=1;divider.moveTo(r[0]+29,-(r[1]+r[3]-60));divider.lineTo(r[0]+r[2]-29,-(r[1]+r[3]-60));divider.stroke();choices.active=!state.speakerClearanceBlocked;};
+        api.advance=delta=>{advance(delta);opacity.opacity=255*snapshot().contentAlpha;};
+        api.down=(id,at)=>owner.down(id,at,snapshot().card,choices.active?rects:{},snapshot().phase);
+        api.move=(id,at)=>owner.move(id,at,snapshot().card);
+        api.up=(id,at)=>{const target=owner.up(id,at,snapshot().card,choices.active?rects:{},snapshot().phase);if(target&&!decided){decided=true;api.close();if(options.onDecision)options.onDecision(target==='yes');}return target!==null;};
+        api.cancelPointer=()=>owner.cancel();
+        api.snapshot=()=>Object.assign(snapshot(),{choices:rects,decided,capturedPointer:owner.owner});api.setAnchor(anchor);return api;
     }
     function hangingReturn(parent, font, rect, callback, enabled = () => true) {
         const root = node(parent,'HangingReturn',rect), sx=rect[2]/78,sy=rect[3]/128;
@@ -216,6 +240,6 @@ function registerUI(cc) {
         hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
         return {root,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
-    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, hangingReturn});
+    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, confirmationBubble, hangingReturn});
 }
-Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback,infoBubbleLayout});
+Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback,infoBubbleLayout,BubblePointer});
