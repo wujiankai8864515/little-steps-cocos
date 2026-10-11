@@ -1,0 +1,7 @@
+{
+  "trigger": "Receipt generator derived an adjacent repo from relative Path dot parent",
+  "observed": "FileNotFoundError for little-steps/games/travel_woodfish/project/travel/travel_model.gd before any record write",
+  "cause": "Path dot parent is dot, not workspace parent",
+  "fix": "Resolve absolute repository root before locating adjacent source",
+  "scope": "Evidence generation only; model/runtime output unchanged"
+}

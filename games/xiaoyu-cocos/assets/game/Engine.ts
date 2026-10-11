@@ -8,6 +8,7 @@ function installed(): any {
 // Editor deserializes Boot without running runtime plugins. Resolve at runtime,
 // so class registration is independent of the current preview/plugin scope.
 export const core: any = {
+    get PCG32() { return installed().PCG32; },
     get Math2D() { return installed().Math2D; },
     get ResourceGate() { return installed().ResourceGate; },
     get SwingFeedback() { return installed().SwingFeedback; },

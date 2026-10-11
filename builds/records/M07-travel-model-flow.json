@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "id": "M07.01",
+  "status": "current_travel_model_native_and_Creator_full_state_parity_observed_not_connected_to_product_Travel_UI_or_storage_yet",
+  "sourceCommitBeforeItem": "3193d6ba4c4e744169ffe3219012325b00a12644",
+  "changes": [
+    {
+      "path": "engines/travel-core/src/random.js",
+      "sha256": "685d6703e964c985a502e47ce7223129273af9955d5ad215647d92844bffcb1c"
+    },
+    {
+      "path": "engines/travel-core/tools/install-plugin.cjs",
+      "sha256": "02a237c74387c9271a7c3c6e64be1bf1d93915b83de01a6e5206f28ea959eceb"
+    },
+    {
+      "path": "engines/travel-core/NOTICE.godot.txt",
+      "sha256": "d41a79c7fa6c91b0bd09e5546d17e839e8bc8d05a9407023ce829a626eac0d1d"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "d88af436d50ee4a41c4115492e5c4f1d1fa480f9c309ff758f664d142a838e8b"
+    },
+    {
+      "path": "engines/travel-core/test/random.test.cjs",
+      "sha256": "dfa02865655b752a778e7c2e598b829978660e0be202f87bef9ef559d9cf7856"
+    },
+    {
+      "path": "engines/travel-core/test/fixtures/pcg-godot-4.5.2.json",
+      "sha256": "304a4550f9520cbf2379100cd83a549626bfc3d6b60cdc7a4ce8e5ef7c0ad35f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "f85079e7ba0efc54aa8e08e34935ff0c188ac89775ce178894ffa54855fa372e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelModel.ts",
+      "sha256": "80bb2def0d339df23fb2492ad6b775cf23d7966d02dd4595e4bc6da19442488e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelModel.ts.meta",
+      "sha256": "fea84e94cb5f1a65335da9f7a7334679ee346d226205f5e051230b35c36b38a4"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-model.test.cjs",
+      "sha256": "5dd3fa6435a6418faea1212913ef04f9c3bf5f8d7d8f337ea46d68389d124ee7"
+    },
+    {
+      "path": "builds/tools/create_travel_state_reference.py",
+      "sha256": "41a2dcf27aec9cc37b9f300022295e6daf0bc9b7b101e88a84a1840bee0677ca"
+    },
+    {
+      "path": "builds/tools/create_cocos_travel_state.py",
+      "sha256": "a5c8489085d6a0b05093f0aed8dae7c84739f404a7cb68cfe53e0dc7239e8feb"
+    },
+    {
+      "path": "builds/tools/compare_travel_states.py",
+      "sha256": "59c17110491f4d9e85e142e74561c31163d38c65a84d2b37d9fd5b0bac2222cf"
+    },
+    {
+      "path": "builds/tools/verify_pcg_reference.py",
+      "sha256": "e64af7235d95227812403f93db12ad381341ee3d0bb1b9f12d1f98b910b8be00"
+    }
+  ],
+  "original": {
+    "commit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "model": {
+      "path": "games/travel_woodfish/project/travel/travel_model.gd",
+      "sha256": "f88730ccd58dda6ec28077258fbb741e17b2a3de643ce00f4e6b15ecf44b562f"
+    },
+    "content": {
+      "path": "games/travel_woodfish/project/travel/travel_content.json",
+      "sha256": "3ef07b3fbf4983f685c28141fb0a955f4f6d708217a695bdea80c8e4ecd34455"
+    },
+    "precedence": "Current100 active-second route and terminal AI rules; obsolete independent encounter deadlines not restored"
+  },
+  "implementation": {
+    "framework": "Generic PCG32 XSH-RR inclusive integer ranges/rejection sampling; exact two32-bit words, no BigInt; full MIT/Apache2.0 notices in actual readonly built plugin",
+    "game": "Current schema2 deterministic route/event/reward plans; safe clock; live choice tokens/pause; terminal batch once; manual/automatic learning; journal feedback once; FLOATING→FLYING→COLLECTED; migration preserves old grants. No Travel page yet.",
+    "tools": "Direct model APIs in native Godot Web and actual Creator QA. Original Godot model/content bytes unchanged; production Cocos model/plugin unchanged. Helpers call APIs, no copied product algorithm."
+  },
+  "framework": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "d88af436d50ee4a41c4115492e5c4f1d1fa480f9c309ff758f664d142a838e8b",
+    "mode": "0o444",
+    "directoryMode": "0o555",
+    "builtSHA256": "d88af436d50ee4a41c4115492e5c4f1d1fa480f9c309ff758f664d142a838e8b",
+    "fullNoticesPresent": true
+  },
+  "validation": {
+    "tests": {
+      "tests": 132,
+      "pass": 132,
+      "fail": 0,
+      "log": "builds/reviews/M07-travel-model-tests-v2.log",
+      "actualBridge": "Production Engine.ts consumes actual readonly plugin, not a raw-core substitute",
+      "PCG": {
+        "nativeCompilerVectors": 11,
+        "draws": 2816,
+        "ranges": "Rejection bound2147483649 and full unsigned32 range; singleton preserves native generator state"
+      }
+    },
+    "typescript": {
+      "exit": 0,
+      "log": "builds/reviews/M07-travel-model-typecheck-v3.log",
+      "engineDeclarationsSkipped": true
+    },
+    "creator": {
+      "version": "3.8.8",
+      "candidate": "cocos-travel-state-v2",
+      "Finished": true,
+      "EFXErrors": 0,
+      "frozenFiles": 598,
+      "metadataChanges": 1,
+      "mismatches": 0
+    },
+    "actualEngines": {
+      "Godot": "4.5.2-stable official Web",
+      "Cocos": "Creator3.8.8 QA Web",
+      "traces": 45,
+      "seeds": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        42,
+        65536,
+        2147483646
+      ],
+      "fullState": true,
+      "exactNumberEquality": true,
+      "mismatches": 0,
+      "CocosConsoleErrors": 0,
+      "scope": "Direct model APIs after prepared Home. Native host remains Login; Cocos intentionally enters Home directly. No Travel page/input, measured wall duration, storage or WeChat claim."
+    },
+    "comparison": "builds/reviews/M07-travel-state-comparison-v2.json"
+  },
+  "failures": [
+    {
+      "trigger": "Array.includes exceeds existing ES2015 library",
+      "evidence": "builds/reviews/M07-travel-model-typecheck-v1.log",
+      "fix": "Use indexOf helper, preserve tsconfig; v2/v3 pass",
+      "remaining": "Device JS/runtime pending"
+    },
+    {
+      "trigger": "Actual Engine.ts adapter lacked PCG32 getter while direct plugin tests passed",
+      "evidence": "builds/reviews/M07-travel-cocos-errors-v1.json",
+      "observed": "Build Finished but actual startup failed; zero model rows. Failed snapshots/logs retained.",
+      "fix": "Add lazy PCG32 resolver; tests use production Engine.ts; independent v2 emits all45 rows, no errors",
+      "remaining": "Formal WeChat startup/product flow pending"
+    },
+    {
+      "trigger": "Receipt generator derived an adjacent repo from relative Path dot parent",
+      "observed": "FileNotFoundError for little-steps/games/travel_woodfish/project/travel/travel_model.gd before any record write",
+      "cause": "Path dot parent is dot, not workspace parent",
+      "fix": "Resolve absolute repository root before locating adjacent source",
+      "scope": "Evidence generation only; model/runtime output unchanged"
+    }
+  ],
+  "proofs": [
+    {
+      "path": "builds/reviews/M07-pcg-native-reference-v1.log",
+      "sha256": "a2b4436be543c5bed66aeeee4fcdd10571189b5099646a1c203e2c7f9f05d402"
+    },
+    {
+      "path": "builds/reviews/M07-pcg-tests-v1.log",
+      "sha256": "ef97154d0e880dbf66a88f3b6758cfb563a325b0ef648d7e767fecb3f507e2db"
+    },
+    {
+      "path": "builds/reviews/M07-record-build-failure-v1.json",
+      "sha256": "5fa2efc6540281200c6bbd67167757a196b2521d772fefe58e7b9a4347babf05"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-audit-v1.json",
+      "sha256": "0371ed5e718c937c29a7992d575a2771a091a7e37c77fd32735ff9755d4d3aaf"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-audit-v2.json",
+      "sha256": "fe909236d973c2cc46d4e98bdc57531268504165093459f92eed18078d6724fc"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-browser-v1.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-browser-v2.json",
+      "sha256": "2f6117fb1723c89aa013c302ef5259fee4be046d8529b4f808767fa033e8d7e4"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-build-v1.log",
+      "sha256": "1591818f27bf20afbfc063ebe9cc7c865bd965fed66bcd16e7d3ed9889a4a498"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-build-v2.log",
+      "sha256": "9163a0a80fa3f3be4d89da19c46227b7d865e23b950ad55e3fbcd48b6b66be27"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-errors-v1.json",
+      "sha256": "e053c70415b7ebcc3bbe6e8677647c5a57402032d86156a7a4a089b45db8efd4"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-errors-v2.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-fixture-v1.log",
+      "sha256": "2fefe05f3cb8163c66d054c92c8a31cf00994a81f79a4c4f150c43f3ca07a61f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-fixture-v2.log",
+      "sha256": "3e33ebd6d3339bf1cb1fd0d2bfef968d2b2bfefac884a85ec461fc3d1b1d7417"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-host-v1.jpg",
+      "sha256": "519e2f028a0a8046bf8860d3ed03372de0408d88cf4f9b6894db7f164560f000"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-host-v2.jpg",
+      "sha256": "6ede0d0485dad035b758210ca1e72159645dd9e1eb694dbbe4e4a59f371200f4"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-rows-v1.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-rows-v2.json",
+      "sha256": "c95d9356338034ba9870b2382f441ffcfebcef6cbf40e844915d7ac7d682aaa3"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-server-v1.log",
+      "sha256": "986c006504086dddd59299575846a5562c7a356fcfb8e49fa81cf52776b2894f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-server-v2.log",
+      "sha256": "26e46215baa4e43b0e5ca490a976c920e9e5870bf8ebf1d58bf4c3c450c41e1c"
+    },
+    {
+      "path": "builds/reviews/M07-travel-model-tests-v1.log",
+      "sha256": "76f06ac89998614255f46089b70188ba0b617aa4cd9ca9b18a044959acfc87c2"
+    },
+    {
+      "path": "builds/reviews/M07-travel-model-tests-v2.log",
+      "sha256": "c33219a2b6150ea96d8df34744f5e922baff239e0d48dad77d17e1e332a697fe"
+    },
+    {
+      "path": "builds/reviews/M07-travel-model-typecheck-v1.log",
+      "sha256": "74bb19ef96226d09f5f4023b96567505be1ae1b07f5a8a7003acac604327b8a2"
+    },
+    {
+      "path": "builds/reviews/M07-travel-model-typecheck-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "builds/reviews/M07-travel-model-typecheck-v3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "builds/reviews/M07-travel-native-browser-v1.json",
+      "sha256": "52f991c8b074507a9d94696baab1d52f6e0149e09734ecb18e29eef21f40b98b"
+    },
+    {
+      "path": "builds/reviews/M07-travel-native-fixture-v1.log",
+      "sha256": "596d50a78ee74c983cab250956932419155614c47c7061f3eb86a98019dfce81"
+    },
+    {
+      "path": "builds/reviews/M07-travel-native-host-v1.jpg",
+      "sha256": "0a5ed8978c265761f244cb5bc28b9eb7463023056d986fc73dd3db86933c99b9"
+    },
+    {
+      "path": "builds/reviews/M07-travel-native-rows-v1.json",
+      "sha256": "4d4342c9c97a85128fd05717ceb92d90da6abb9dac516909b076883e277fb175"
+    },
+    {
+      "path": "builds/reviews/M07-travel-native-server-v1.log",
+      "sha256": "89794249b6a2dad3e923be2432071b191ef5dbe214b256049b5ae1fb2502d19f"
+    },
+    {
+      "path": "builds/reviews/M07-travel-state-comparison-v2.json",
+      "sha256": "e82db51fc5fc51a9f7b6dc602656619b119e83a383780daa9b7da5632b08a0dd"
+    },
+    {
+      "path": "builds/records/candidates/godot-travel-state-v1.json",
+      "sha256": "3818341a1f443e5e83012d10ad8fc80ff9259bb83a502e7b5cf47edc4d632e17"
+    },
+    {
+      "path": "builds/records/candidates/cocos-travel-state-v1.json",
+      "sha256": "561f7ca2e3170cfc3652ce644488f91a26fe6d4caa43d5d4f9c8fd3ec23bdbbe"
+    },
+    {
+      "path": "builds/records/candidates/cocos-travel-state-v2.json",
+      "sha256": "a6ca76bf994fc7ee464d62f5aaeab566b87037e81ee2dd060ba10fc1aa53d507"
+    }
+  ],
+  "pending": [
+    "Travel store/service durable commit, rollback, stale writers and failed cancellation projection",
+    "Actual departure/map/encounter/reward/navigation UI",
+    "Travel atmosphere/24-hour light/all screenshots/buttons",
+    "Actual100-second wall clock plus visible choice pauses",
+    "Other pages and cross-page128-entry closure",
+    "Formal WeChat package/real backend/device memory/lifecycle",
+    "Strict full-game/user acceptance"
+  ]
+}

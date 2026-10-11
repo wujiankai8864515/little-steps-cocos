@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "scope": "Actual engine direct TravelModel API traces; source state equality only, no Travel UI, actual pointer, save device or visual acceptance",
+  "rows": 45,
+  "numberPolicy": "Exact finite numeric equality, no tolerance/rounding",
+  "fullState": true,
+  "sources": [
+    {
+      "path": "builds/reviews/M07-travel-native-rows-v1.json",
+      "sha256": "4d4342c9c97a85128fd05717ceb92d90da6abb9dac516909b076883e277fb175"
+    },
+    {
+      "path": "builds/reviews/M07-travel-cocos-rows-v2.json",
+      "sha256": "c95d9356338034ba9870b2382f441ffcfebcef6cbf40e844915d7ac7d682aaa3"
+    }
+  ],
+  "mismatches": [],
+  "status": "matches"
+}
