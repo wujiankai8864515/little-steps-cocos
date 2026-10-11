@@ -1,0 +1,731 @@
+{
+  "schema": 1,
+  "name": "godot-doll-oracle-v1",
+  "kind": "QA-modified Godot reference; not the unchanged published runtime",
+  "publishedURL": "https://wujiankai8864515.github.io/little-steps-play/",
+  "releaseSourceCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "releaseSnapshot": "6871179852c38ab9bbd83fe20f8fc1a3b3219d8d407523af7a1caba7999b9e72",
+  "publishedFiles": [
+    {
+      "path": "host/actor_loading.js",
+      "bytes": 8185,
+      "sha256": "95ed251d88ca2301d30967b52408d0a2e94782802f46a49f802bf7fd51b8d96a",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/actor_body.png",
+      "bytes": 36824,
+      "sha256": "4b611ee4729dff0a77eee87c1e42b9378c66dfa28a7d7cdaeaf0828a710b6055",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/actor_fin_mallet.png",
+      "bytes": 8289,
+      "sha256": "4df47f48edfe02ea34c9c940a3c265ec5905fb9c7278140a27c2d738382978c4",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/doll_rig.png",
+      "bytes": 91342,
+      "sha256": "7bcc6cbb1efa0b929df5ee5ec654a233215f86de24e3031c7ccbda544cf0a678",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/preboot.js",
+      "bytes": 18455,
+      "sha256": "df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/resource_transport.js",
+      "bytes": 10237,
+      "sha256": "d5eeded650d16377f7c07f9f64d21e9e185965353221a8efe7090b538f861ba0",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/viewport.js",
+      "bytes": 5344,
+      "sha256": "faaea11e0862cee77b8d68ab0fdcd078cea95683931a9b4c6bb8c41d2f7d7736",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.html",
+      "bytes": 75215,
+      "sha256": "3484e83ba154db7a3006ec51d79f69b6d81f5b5174b528122076cdf8f09ec884",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.pck",
+      "bytes": 2314516,
+      "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.png",
+      "bytes": 41981,
+      "sha256": "00420fd23d465b53b309443fd7941d783b1a843243fe209032a2d91ef1b174a6",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.wasm",
+      "bytes": 38047590,
+      "sha256": "6ead2ac528d007fe9627aae650444f9187f89420d7603c22460d8f3279545240",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/LXGWWenKai-OFL.txt",
+      "bytes": 4448,
+      "sha256": "c38b1994a5e48ac30ac7d1da7d0409fd8fd8127dfe28a13d6e787d5b1ef34a5e",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/MaShanZheng-OFL.txt",
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/Noto-CJK-LICENSE.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/amacha-terms-20261005.html.txt",
+      "bytes": 16703,
+      "sha256": "e09681beb2e9845e6e6acf106e8d7f0d11d297bf79b9220a9a6ed1da825ef14b",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/snapshots.json",
+      "bytes": 1241,
+      "sha256": "2ee6e86e112670afa7db1fd86ff5d42934c978111e4f7c35fba2ba21d5231bd5",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/soundimage-attribution-20261005.txt",
+      "bytes": 2454,
+      "sha256": "b368375707be9f7538c9a98093d09047a98b6ae2e41d7ca5330a06237e18ecee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/soundimage-license-20261005.txt",
+      "bytes": 15231,
+      "sha256": "8ddec85a53d8ef108a98efa17a33b60dc184c381ab1228e85f385d732eb17dce",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/comic.pck",
+      "bytes": 2316192,
+      "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/darkroom.pck",
+      "bytes": 4396188,
+      "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/departure.pck",
+      "bytes": 1203888,
+      "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/entry.pck",
+      "bytes": 943108,
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/exterior.pck",
+      "bytes": 1494444,
+      "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/house.pck",
+      "bytes": 17026424,
+      "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/outfit.pck",
+      "bytes": 281448,
+      "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/photo.pck",
+      "bytes": 2754084,
+      "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/travel.pck",
+      "bytes": 13877768,
+      "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/wardrobe.pck",
+      "bytes": 2027864,
+      "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "resource_packs.host.json",
+      "bytes": 6011,
+      "sha256": "3b3340960272b4670794d42ff540fab35ee7716f1d7018868e17bd9b3bfa1771",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    }
+  ],
+  "overrides": [
+    {
+      "path": "index.html",
+      "publishedSHA256": "3484e83ba154db7a3006ec51d79f69b6d81f5b5174b528122076cdf8f09ec884",
+      "fixtureSHA256": "d30253b4c0a3a6c2cd7c19687f9761b3383184b1974056b20320d38170fb778a",
+      "args": [
+        "--",
+        "--review-hour=12.0"
+      ],
+      "purpose": "Original app set_review_hour freezes clock and actor; no game pack or engine changes"
+    },
+    {
+      "path": "index.pck",
+      "publishedSHA256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+      "fixtureSHA256": "e498407263f61e00b87308c87e64c16d2e5c2e2409188c99cb41b4363d86b36c",
+      "originalBytes": 2314516,
+      "fixtureBytes": 2388204,
+      "purpose": "Only HomeWorld remap and added plain source for review-mode plant freezing",
+      "originalEntries": 264,
+      "fixtureEntries": 265,
+      "unchangedEntries": 263,
+      "remapPath": "home/home_world.gd.remap",
+      "addedScript": "qa/home_world.gd",
+      "sourceSHA256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859",
+      "fixtureScriptSHA256": "166eca6cc69498fa58e1d7c5dcab2e7226780e48d95a66f2026436eff6a3bc70",
+      "roundTripMD5AndUntouchedPayloads": "verified"
+    },
+    {
+      "path": "resource_packs.host.json",
+      "originalSHA256": "3b3340960272b4670794d42ff540fab35ee7716f1d7018868e17bd9b3bfa1771",
+      "fixtureSHA256": "16dbb5d4f42fd93842b01b50b6d5077ef743337297487a2516a99839bfb4963f",
+      "purpose": "Declare actual QA core pack size and SHA; preserve integrity validation"
+    },
+    {
+      "path": "index.html",
+      "originalSHA256": "d30253b4c0a3a6c2cd7c19687f9761b3383184b1974056b20320d38170fb778a",
+      "fixtureSHA256": "73b8dd15785c7e4792f9def29d05160dc673f884f0e6bbb8224a18bc57feef11",
+      "purpose": "Declare actual QA pack byte count; preserve original review-hour argument"
+    },
+    {
+      "path": "resource_packs.host.json",
+      "beforeFixtureSHA256": "16dbb5d4f42fd93842b01b50b6d5077ef743337297487a2516a99839bfb4963f",
+      "fixtureSHA256": "ee9cff705a273ce074d9610e57fe47770155d6b82aeba3c6617877c6240f697c",
+      "purpose": "Declare actual QA core payload size and SHA"
+    },
+    {
+      "path": "index.html",
+      "beforeFixtureSHA256": "73b8dd15785c7e4792f9def29d05160dc673f884f0e6bbb8224a18bc57feef11",
+      "fixtureSHA256": "d70eb0642917c49931a5b33ce6932fb03915ecb4c77d314687fedfad6f90b2b5",
+      "purpose": "Declare actual QA core payload size and SHA"
+    },
+    {
+      "path": "index.pck",
+      "beforeFixtureSHA256": "e498407263f61e00b87308c87e64c16d2e5c2e2409188c99cb41b4363d86b36c",
+      "fixtureSHA256": "2f860f3061a3a70db065095f5ada5a36f6f13226587b00c35bb10ad2528d9bf3",
+      "beforeEntries": 265,
+      "fixtureEntries": 267,
+      "purpose": "Current original doll source with declared 160-frame bone/contact/spring trace; wait for real Darkroom entry, freeze only after trace",
+      "replacements": [
+        {
+          "path": "darkroom/helpers/articulated_doll.gd.remap",
+          "sha256": "a43ffbfe11b815b9ac45331ee32bed74d97253b1049e239368faf3e69186cdce"
+        },
+        {
+          "path": "qa/articulated_doll.gd",
+          "sha256": "2d324df635029c13c2115d7c343a47713de8ad02393893a5919fdd925cc16c77"
+        },
+        {
+          "path": "darkroom/darkroom_world.gd.remap",
+          "sha256": "31288dfc0d4f5157277838c7f23c0be9e94b023350fb4e85d6243ebfd3e55382"
+        },
+        {
+          "path": "qa/darkroom_world.gd",
+          "sha256": "cf3703400322e2e6b602e3517062b132ab8769685dbec84ca26472b8993b56d0"
+        }
+      ]
+    }
+  ],
+  "referenceState": {
+    "hour": 12.0,
+    "actorPose": "original set_review_hour still=true",
+    "plants": {
+      "phase": 0,
+      "steps": 0,
+      "stepSeconds": 0.016666666666666666,
+      "windAndProcess": "disabled after deterministic QA advance",
+      "browser": "pending"
+    },
+    "plantShadows": "refreshed at dt=0 after set_review_hour updates lighting; must verify actual logged room hour/context"
+  },
+  "browser": "pending",
+  "sameStateAcceptance": "pending actual browser and snapshot verification",
+  "reusedReference": "godot-reference-noon-v1",
+  "publishedMirrorBeforeQA": [
+    {
+      "path": "host/actor_loading.js",
+      "bytes": 8185,
+      "sha256": "95ed251d88ca2301d30967b52408d0a2e94782802f46a49f802bf7fd51b8d96a",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/actor_body.png",
+      "bytes": 36824,
+      "sha256": "4b611ee4729dff0a77eee87c1e42b9378c66dfa28a7d7cdaeaf0828a710b6055",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/actor_fin_mallet.png",
+      "bytes": 8289,
+      "sha256": "4df47f48edfe02ea34c9c940a3c265ec5905fb9c7278140a27c2d738382978c4",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/assets/compact/doll_rig.png",
+      "bytes": 91342,
+      "sha256": "7bcc6cbb1efa0b929df5ee5ec654a233215f86de24e3031c7ccbda544cf0a678",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/preboot.js",
+      "bytes": 18455,
+      "sha256": "df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/resource_transport.js",
+      "bytes": 10237,
+      "sha256": "d5eeded650d16377f7c07f9f64d21e9e185965353221a8efe7090b538f861ba0",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "host/viewport.js",
+      "bytes": 5344,
+      "sha256": "faaea11e0862cee77b8d68ab0fdcd078cea95683931a9b4c6bb8c41d2f7d7736",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.html",
+      "bytes": 75215,
+      "sha256": "3484e83ba154db7a3006ec51d79f69b6d81f5b5174b528122076cdf8f09ec884",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.pck",
+      "bytes": 2314516,
+      "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.png",
+      "bytes": 41981,
+      "sha256": "00420fd23d465b53b309443fd7941d783b1a843243fe209032a2d91ef1b174a6",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "index.wasm",
+      "bytes": 38047590,
+      "sha256": "6ead2ac528d007fe9627aae650444f9187f89420d7603c22460d8f3279545240",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/LXGWWenKai-OFL.txt",
+      "bytes": 4448,
+      "sha256": "c38b1994a5e48ac30ac7d1da7d0409fd8fd8127dfe28a13d6e787d5b1ef34a5e",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/MaShanZheng-OFL.txt",
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/Noto-CJK-LICENSE.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/amacha-terms-20261005.html.txt",
+      "bytes": 16703,
+      "sha256": "e09681beb2e9845e6e6acf106e8d7f0d11d297bf79b9220a9a6ed1da825ef14b",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/snapshots.json",
+      "bytes": 1241,
+      "sha256": "2ee6e86e112670afa7db1fd86ff5d42934c978111e4f7c35fba2ba21d5231bd5",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/soundimage-attribution-20261005.txt",
+      "bytes": 2454,
+      "sha256": "b368375707be9f7538c9a98093d09047a98b6ae2e41d7ca5330a06237e18ecee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "licenses/music/soundimage-license-20261005.txt",
+      "bytes": 15231,
+      "sha256": "8ddec85a53d8ef108a98efa17a33b60dc184c381ab1228e85f385d732eb17dce",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/comic.pck",
+      "bytes": 2316192,
+      "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/darkroom.pck",
+      "bytes": 4396188,
+      "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/departure.pck",
+      "bytes": 1203888,
+      "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/entry.pck",
+      "bytes": 943108,
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/exterior.pck",
+      "bytes": 1494444,
+      "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/house.pck",
+      "bytes": 17026424,
+      "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/outfit.pck",
+      "bytes": 281448,
+      "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/photo.pck",
+      "bytes": 2754084,
+      "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/travel.pck",
+      "bytes": 13877768,
+      "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "packs/wardrobe.pck",
+      "bytes": 2027864,
+      "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    },
+    {
+      "path": "resource_packs.host.json",
+      "bytes": 6011,
+      "sha256": "3b3340960272b4670794d42ff540fab35ee7716f1d7018868e17bd9b3bfa1771",
+      "manifestIdentity": true,
+      "laterHostSnapshot": false
+    }
+  ],
+  "reviewSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "fixtureFiles": [
+    {
+      "path": "host/actor_loading.js",
+      "bytes": 8185,
+      "sha256": "95ed251d88ca2301d30967b52408d0a2e94782802f46a49f802bf7fd51b8d96a"
+    },
+    {
+      "path": "host/assets/compact/actor_body.png",
+      "bytes": 36824,
+      "sha256": "4b611ee4729dff0a77eee87c1e42b9378c66dfa28a7d7cdaeaf0828a710b6055"
+    },
+    {
+      "path": "host/assets/compact/actor_fin_mallet.png",
+      "bytes": 8289,
+      "sha256": "4df47f48edfe02ea34c9c940a3c265ec5905fb9c7278140a27c2d738382978c4"
+    },
+    {
+      "path": "host/assets/compact/doll_rig.png",
+      "bytes": 91342,
+      "sha256": "7bcc6cbb1efa0b929df5ee5ec654a233215f86de24e3031c7ccbda544cf0a678"
+    },
+    {
+      "path": "host/preboot.js",
+      "bytes": 18455,
+      "sha256": "df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+    },
+    {
+      "path": "host/resource_transport.js",
+      "bytes": 10237,
+      "sha256": "d5eeded650d16377f7c07f9f64d21e9e185965353221a8efe7090b538f861ba0"
+    },
+    {
+      "path": "host/viewport.js",
+      "bytes": 5344,
+      "sha256": "faaea11e0862cee77b8d68ab0fdcd078cea95683931a9b4c6bb8c41d2f7d7736"
+    },
+    {
+      "path": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    {
+      "path": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    {
+      "path": "index.html",
+      "bytes": 75240,
+      "sha256": "d70eb0642917c49931a5b33ce6932fb03915ecb4c77d314687fedfad6f90b2b5"
+    },
+    {
+      "path": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f"
+    },
+    {
+      "path": "index.pck",
+      "bytes": 2468504,
+      "sha256": "2f860f3061a3a70db065095f5ada5a36f6f13226587b00c35bb10ad2528d9bf3"
+    },
+    {
+      "path": "index.png",
+      "bytes": 41981,
+      "sha256": "00420fd23d465b53b309443fd7941d783b1a843243fe209032a2d91ef1b174a6"
+    },
+    {
+      "path": "index.wasm",
+      "bytes": 38047590,
+      "sha256": "6ead2ac528d007fe9627aae650444f9187f89420d7603c22460d8f3279545240"
+    },
+    {
+      "path": "licenses/LXGWWenKai-OFL.txt",
+      "bytes": 4448,
+      "sha256": "c38b1994a5e48ac30ac7d1da7d0409fd8fd8127dfe28a13d6e787d5b1ef34a5e"
+    },
+    {
+      "path": "licenses/MaShanZheng-OFL.txt",
+      "bytes": 4397,
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+    },
+    {
+      "path": "licenses/Noto-CJK-LICENSE.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "licenses/music/amacha-terms-20261005.html.txt",
+      "bytes": 16703,
+      "sha256": "e09681beb2e9845e6e6acf106e8d7f0d11d297bf79b9220a9a6ed1da825ef14b"
+    },
+    {
+      "path": "licenses/music/snapshots.json",
+      "bytes": 1241,
+      "sha256": "2ee6e86e112670afa7db1fd86ff5d42934c978111e4f7c35fba2ba21d5231bd5"
+    },
+    {
+      "path": "licenses/music/soundimage-attribution-20261005.txt",
+      "bytes": 2454,
+      "sha256": "b368375707be9f7538c9a98093d09047a98b6ae2e41d7ca5330a06237e18ecee"
+    },
+    {
+      "path": "licenses/music/soundimage-license-20261005.txt",
+      "bytes": 15231,
+      "sha256": "8ddec85a53d8ef108a98efa17a33b60dc184c381ab1228e85f385d732eb17dce"
+    },
+    {
+      "path": "packs/comic.pck",
+      "bytes": 2316192,
+      "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+    },
+    {
+      "path": "packs/darkroom.pck",
+      "bytes": 4396188,
+      "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+    },
+    {
+      "path": "packs/departure.pck",
+      "bytes": 1203888,
+      "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+    },
+    {
+      "path": "packs/entry.pck",
+      "bytes": 943108,
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+    },
+    {
+      "path": "packs/exterior.pck",
+      "bytes": 1494444,
+      "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+    },
+    {
+      "path": "packs/house.pck",
+      "bytes": 17026424,
+      "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+    },
+    {
+      "path": "packs/outfit.pck",
+      "bytes": 281448,
+      "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+    },
+    {
+      "path": "packs/photo.pck",
+      "bytes": 2754084,
+      "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+    },
+    {
+      "path": "packs/travel.pck",
+      "bytes": 13877768,
+      "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+    },
+    {
+      "path": "packs/wardrobe.pck",
+      "bytes": 2027864,
+      "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+    },
+    {
+      "path": "resource_packs.host.json",
+      "bytes": 6011,
+      "sha256": "ee9cff705a273ce074d9610e57fe47770155d6b82aeba3c6617877c6240f697c"
+    }
+  ],
+  "packFormatSource": {
+    "url": "https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/core/io/file_access_pack.cpp",
+    "gitBlob": "244469e9d90c3e7663ae8eab4a941d7b2b1e92b1",
+    "gitBlobVerified": true,
+    "engineCommit": "6ce3de25aa58466e14ef354703ba8d9791a417da"
+  },
+  "dollCheckpoint": {
+    "steps": 160,
+    "browser": "pending",
+    "allPagesAndWechat": "pending",
+    "currentSourceSHA256": {
+      "rig": "240bd5bc42404c732704619731b64b90e898050becb727b3ba5166460bd5c8ba",
+      "world": "4bd46bb6a865eb4fb1128fa05f1f70b92ddc9035147febd580c39c974086ff87"
+    }
+  }
+}

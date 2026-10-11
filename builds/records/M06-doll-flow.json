@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "id": "M06.01",
+  "status": "partial_native_math_and_seven_pass_main_buffer_render_verified_full_darkroom_pending",
+  "sourceCommitBeforeItem": "ca20a5c57a57d3e3ed55025effa2bc19fe097144",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+      "sha256": "e34e473cb6c019c481e1a0eb04d2f3b090c48b4a0d4babfcebc8060c5ade1e9b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DollSkin.ts.meta",
+      "sha256": "25811f30e144e708fc82d71c9f910202bca957bf55b12e8b54d5684b9881801c"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomDoll.ts.meta",
+      "sha256": "8483febae38ff73fb99299883430752266bd1d6a46abf31b5c43c07c27245756"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomDoll.ts",
+      "sha256": "10109453c5c1b9fafc7d33b91b01953f1c43ad9a0acf0b79a465aaeb7e64e777"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomRound.ts.meta",
+      "sha256": "24de4ed14673c633f80df7e5e98a0c5243615aba19441cae2194e40bfccc59fb"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomRound.ts",
+      "sha256": "bad47a0bf275cba933e187a77c69147d2aec20fa8cb17c148849bbd7c51f409b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-doll.effect",
+      "sha256": "c01bc21b02386e99b9f04be8dad263b5c274ffed1dc7e8325a5dbc745af7a66e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-doll.effect.meta",
+      "sha256": "12eb4d5b41442c00149f9c75afee3ab87178c22c759f77d7183e5c084e246aff"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/darkroom-doll.test.cjs",
+      "sha256": "7be8bcd769cc689f97dc79a4e5535d285c3f4145ce842c8008dfe7660d8b6839"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fixtures/doll-native.json",
+      "sha256": "2d7447c8d45575af177133f0edd5d9a39671b93367043c6cd51007937ef47030"
+    },
+    {
+      "path": "builds/tools/compare_doll_checkpoint.cjs",
+      "sha256": "cdeeba58e92c8bb9eb115c07c2d9026ec7500d8d7aaa9d58583c5f3e79e76cdc"
+    },
+    {
+      "path": "builds/tools/compare_doll_screens.py",
+      "sha256": "bb4c5f878b3a6d7ee44369e9410a1f83b955151e69fffb2e51dd8badd8b5f02c"
+    },
+    {
+      "path": "builds/tools/create_cocos_doll_checkpoint.py",
+      "sha256": "7bd295341ddef570e1c766d6699c60d5de1639247fe0dc0cc0444320d5fefcd4"
+    },
+    {
+      "path": "builds/tools/create_doll_checkpoint.py",
+      "sha256": "dd2d425073528e3a631e892f79a65d6229faabaf092bde9271c5b77bcac42fda"
+    },
+    {
+      "path": "builds/tools/import_doll_shader.py",
+      "sha256": "4e1c6fe9a774a6a4801461059d05740546a118878e5fd4bb466d7444278b36ae"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "darkroom/helpers/articulated_doll.gd",
+      "sha256": "240bd5bc42404c732704619731b64b90e898050becb727b3ba5166460bd5c8ba"
+    },
+    {
+      "path": "darkroom/darkroom_world.gd",
+      "sha256": "4bd46bb6a865eb4fb1128fa05f1f70b92ddc9035147febd580c39c974086ff87"
+    },
+    {
+      "path": "darkroom/shaders/doll_release.gdshader",
+      "sha256": "43aac2ef5a6a462fab0240adf093185ca63bf2588967a2c17e0e4a8b920a8ee3"
+    },
+    {
+      "path": "darkroom/shaders/doll_source_mask.gdshaderinc",
+      "sha256": "54e7d9d6746518522184c76dec37d2efd5f14d6c3fd2bc84cedf8471fa5c186e"
+    }
+  ],
+  "implemented": [
+    "1089 source points, original visible cells, exact native two-triangle diagonal, original seven weights and ownership masks",
+    "Seven connected spring joints, bounded inertia, drag pendulums, actual deformed triangle inverse alpha hits and original expressions",
+    "Original manual needle/slipper impact paths, single contact/queued strike, drag cancellation and zero-economy clear/gap/spawn controller",
+    "Seven sorted shader passes on the same continuous mesh and original pixels, original face and dissolve formulas; no Spine"
+  ],
+  "verification": {
+    "tests": {
+      "pass": 112,
+      "fail": 0,
+      "log": "builds/reviews/M06-doll-tests.log"
+    },
+    "typecheck": "builds/reviews/M06-doll-typecheck.log",
+    "pythonTools": "py_compile passed",
+    "nativeMath": {
+      "frames": 160,
+      "fullVertexFrames": [
+        10,
+        30,
+        90,
+        159
+      ],
+      "maximum": {
+        "angle": 1.4901161193847656e-08,
+        "velocity": 1.246620686679023e-07,
+        "sample": 0.000244140625,
+        "fullVertex": 0.0001468658447265625,
+        "worldProbe": 0.00018664347919639113
+      },
+      "mismatches": [],
+      "report": "builds/reviews/M06-doll-comparison-v1.json"
+    },
+    "creator": {
+      "candidates": [
+        "cocos-doll-isolated-v1",
+        "cocos-doll-isolated-v2",
+        "cocos-doll-isolated-v3",
+        "cocos-doll-isolated-v4",
+        "cocos-doll-isolated-v5",
+        "cocos-doll-isolated-v6",
+        "cocos-doll-isolated-v7"
+      ],
+      "finishedExitCode": 36,
+      "actualVisualPass": [
+        "v3 main-buffer only"
+      ],
+      "shaderFailures": [
+        "v1 EFX2300",
+        "v2 EFX2406"
+      ],
+      "offscreenPresentation": "v4-v7 failed; not accepted",
+      "v3ToV7FreezeAudit": "550files, 1plugin meta files change, 0runtime drift"
+    },
+    "isolatedPixels": {
+      "kind": "Declared isolated continuous doll skin/render; not full Darkroom acceptance",
+      "native": {
+        "path": "builds/reviews/M06-godot-doll-isolated-v4.jpg",
+        "sha256": "ac49372b9a658f6b162442f4083979f56efce449e7dcfc075e29003998ced6cc"
+      },
+      "cocos": {
+        "path": "builds/reviews/M06-cocos-doll-isolated-v3.jpg",
+        "sha256": "c672c342efb17f4b02cc3662d81507bf4fbb89f070619ead064716eb39e07d7b",
+        "target": "main"
+      },
+      "board": {
+        "path": "builds/reviews/M06-doll-isolated-comparison-v1.png",
+        "sha256": "7157e3a2b07fc7608ffd5bcb86f6449b46a67508fcf4c44d0dbc4c95cbadaaf2"
+      },
+      "method": "405x720 original screenshots, no alignment/scaling/recoloring, unamplified absolute RGB difference",
+      "regions": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 0.22566986739826245,
+          "RMSRGB": 1.1413333754659571,
+          "maximumChannelDifference": 31
+        },
+        "doll": {
+          "rect": [
+            126,
+            260,
+            287,
+            460
+          ],
+          "meanAbsoluteRGB": 2.0384575569358176,
+          "RMSRGB": 3.433407031845786,
+          "maximumChannelDifference": 31
+        },
+        "head": {
+          "rect": [
+            148,
+            268,
+            275,
+            356
+          ],
+          "meanAbsoluteRGB": 2.381233595800525,
+          "RMSRGB": 3.7032718927051462,
+          "maximumChannelDifference": 31
+        },
+        "bow": {
+          "rect": [
+            155,
+            350,
+            243,
+            410
+          ],
+          "meanAbsoluteRGB": 3.3742424242424245,
+          "RMSRGB": 4.677244443153655,
+          "maximumChannelDifference": 27
+        },
+        "feet": {
+          "rect": [
+            130,
+            393,
+            272,
+            454
+          ],
+          "meanAbsoluteRGB": 2.377587931963365,
+          "RMSRGB": 3.6119488715828467,
+          "maximumChannelDifference": 30
+        }
+      },
+      "status": "measured; strict whole-game parity pending",
+      "limits": [
+        "Declared fixed160-frame APIs and fixed tint/background; not physical doll input",
+        "Native720x1280 offscreen target; Cocos draws directly into405x720 main buffer; sampling mismatch remains unverified",
+        "Screenshot encoding, GPU texture sampling and residual skin/raster differences retained",
+        "Other expressions, lamp/daylight, dissolve/spawn, all pages and WeChat device pending"
+      ]
+    },
+    "physicalInput": "Home-to-native-Darkroom entered by actual pointer; native160-frame and Cocos shader checkpoint then declared API harness, not actual doll interaction acceptance",
+    "diagnosticReadbacks": "v7 QA-only one explicit RenderTexture readPixels; game DollSkin performs zero GPU readbacks"
+  },
+  "failures": "builds/reviews/M06-doll-failures.json",
+  "pending": [
+    "Standalone offscreen presentation black despite target pixels; full-page render/integration not verified",
+    "All Darkroom room/window/lamp/plant/shadow/tool/selection/plume/HUD/bubble rendering and actual input/entry/return flows pending",
+    "Other expressions, dissolve/spawn states, size/day/night/lamp matrices and strict whole-page parity pending",
+    "Controller tests are not native World-round oracle or device input proof",
+    "Home download19,000,000bytes gate remains unmet in old debug36,841,329bytes candidate",
+    "WeChat device/runtime/formal packaging and user acceptance pending"
+  ],
+  "framework": {
+    "unchangedSHA256": "d984c2b2771843bb25337aecbb77bef59c87a599b69daf1d9b123295703d6e1a",
+    "fileMode": "0444",
+    "directoryMode": "0555",
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js"
+  },
+  "backup": "Ordinary append push and remote readback follows this source record; no formal release"
+}

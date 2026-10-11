@@ -1,0 +1,126 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        roomOrigin: { value: [0, 0, 1, 1] }
+        sourceUV: { value: [0, 0, 1, 1] }
+        dollState: { value: [0, 0, 1, 0] }
+        lightTint: { value: [1, 1, 1, 1] }
+        releaseBounds: { value: [474, 809, 0, 0] }
+        sourceDisplayMask: { value: white }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+  uniform DollState {
+    vec4 roomOrigin;
+    vec4 sourceUV;
+    vec4 dollState;
+    vec4 lightTint;
+    vec4 releaseBounds;
+  };
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+  uniform sampler2D sourceDisplayMask;
+
+
+  #define doll_part_id int(dollState.x)
+  #define mother_uv_rect vec4(0.0,0.0,1.0,1.0)
+  #define spawn_alpha dollState.z
+  #define face_reaction dollState.y
+  #define dissolve dollState.w
+  #define light_tint lightTint.rgb
+  #define release_top releaseBounds.x
+  #define release_bottom releaseBounds.y
+  vec4 sourceSample(vec2 sourceUVPoint) {
+    vec2 q=(sourceUVPoint-sourceUV.xy)/sourceUV.zw;
+    return CCSampleWithAlphaSeparated(cc_spriteTexture,q);
+  }
+// Shared by visible mother pieces, cast shadows and tool receiver clipping.
+// This resource contains engineering ownership masks, never replacement art.
+float doll_source_gate(vec2 uv, float source_alpha) {
+    if (doll_part_id < 0) { return 1.0; }
+    vec2 source_uv=(uv-mother_uv_rect.xy)/mother_uv_rect.zw;
+    vec2 data=texture(sourceDisplayMask,source_uv).rg;
+    int owner=int(floor(data.g*255.0+0.5))-1;
+    return owner == doll_part_id ? 1.0 : 0.0;
+}
+  vec4 frag() {
+    vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
+    vec2 world_position=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+    vec4 result;
+
+    // Every atlas part and face mark participates in ONE world-space dissolve.
+    // Never warp atlas UVs across cropped regions into neighboring body parts.
+    vec2 sample_uv=UV;
+    if (doll_part_id == 3 && abs(face_reaction)>0.0001) {
+        vec2 p=(UV-mother_uv_rect.xy)/mother_uv_rect.zw*512.0;
+        vec2 left=p-vec2(196.5,166.0);
+        vec2 right=p-vec2(305.5,179.5);
+        vec2 mouth=p-vec2(243.5,205.5);
+        // Compact smooth warp goes exactly to zero at ROI edges; it reuses
+        // approved marks and their own background, never a generated new face.
+        float wl=pow(max(0.0,1.0-dot(left/vec2(25.5,29.0),left/vec2(25.5,29.0))),2.0);
+        float wr=pow(max(0.0,1.0-dot(right/vec2(28.5,28.5),right/vec2(28.5,28.5))),2.0);
+        float wm=pow(max(0.0,1.0-dot(mouth/vec2(27.5,15.5),mouth/vec2(27.5,15.5))),2.0);
+        p.y+=face_reaction*(left.y*wl+right.y*wr-mouth.y*wm*0.4);
+        sample_uv=mother_uv_rect.xy+p/512.0*mother_uv_rect.zw;
+    }
+    vec4 base = sourceSample(sample_uv);
+    base.a*=doll_source_gate(UV,base.a);
+    float height=clamp((world_position.y-release_top)/max(release_bottom-release_top,1.0),0.0,1.0);
+    float wisp = sin(world_position.x*0.057+world_position.y*0.027)*0.055;
+    float boundary = dissolve*1.32-0.16;
+    float remain = smoothstep(boundary-0.14,boundary+0.17,height+wisp);
+    remain=mix(1.0,remain,smoothstep(0.0,0.08,dissolve));
+    float glow = (1.0-smoothstep(0.0,0.20,abs(height+wisp-boundary)))*smoothstep(0.0,0.2,dissolve);
+    result = vec4(base.rgb*light_tint+vec3(0.32,0.15,0.015)*glow,base.a*remain*(1.0-smoothstep(0.82,1.0,dissolve)));
+    result.a *= spawn_alpha;
+    result *= color;
+
+    return result;
+  }
+
+}%

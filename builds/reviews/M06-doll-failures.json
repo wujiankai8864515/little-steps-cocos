@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "id": "M06.01",
+  "failures": [
+    {
+      "trigger": "Native v1 remapped Rig and World scripts simultaneously; Godot failed to resolve the QA World script.",
+      "evidence": [
+        "M06-doll-native-oracle-v1-public.json"
+      ],
+      "confirmed": "QA replacement could not load; deeper dependency parse cause not established.",
+      "repair": "v2 only remaps Page; unchanged compiled native World and Rig provide actual APIs.",
+      "result": "160 native rows, no current URL errors"
+    },
+    {
+      "trigger": "Creator v1 rejects sampler macro alias with EFX2300.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v1-build.log",
+        "M06-cocos-doll-isolated-v1-failed.jpg",
+        "M06-cocos-doll-isolated-v1-public.json"
+      ],
+      "repair": "Use real sourceDisplayMask sampler identifier.",
+      "result": "v2 passes sampler validation but has the next compile failure"
+    },
+    {
+      "trigger": "Creator v2 GLES100 rejects round(float), EFX2406.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v2-build.log"
+      ],
+      "repair": "Unsigned ownership byte uses exact floor(v+.5).",
+      "result": "v3 compiles and actual seven-pass main-buffer drawing is visible"
+    },
+    {
+      "trigger": "Native isolated v3 keeps the default opaque gray SubViewport background.",
+      "evidence": [
+        "M06-godot-doll-isolated-v3.jpg",
+        "M06-godot-doll-isolated-v3-public.json"
+      ],
+      "repair": "Declare transparent native SubViewport over fixed RGB32/26/25 QA background, v4.",
+      "result": "v4 native draw visible, no errors"
+    },
+    {
+      "trigger": "Cocos isolated v4 nests Canvas inside main Canvas and raises growing MeshBuffer typed-array RangeErrors.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v4-build.log",
+        "M06-cocos-doll-isolated-v4-failed.jpg",
+        "M06-cocos-doll-isolated-v4-public.json"
+      ],
+      "confirmed": "Nested traversal is the suspected cause; moving host to Scene removes observed buffer exceptions.",
+      "repair": "Use scene host like existing Home, fresh v5.",
+      "result": "v5 no buffer errors; presentation is still black"
+    },
+    {
+      "trigger": "Cocos v5-v7 standalone offscreen diagnostic draws into target but presents black.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v5-failed.jpg",
+        "M06-cocos-doll-isolated-v5-public.json",
+        "M06-cocos-doll-isolated-v6-failed.jpg",
+        "M06-cocos-doll-isolated-v6-public.json",
+        "M06-cocos-doll-isolated-v7-failed.jpg",
+        "M06-cocos-doll-isolated-v7-public.json"
+      ],
+      "confirmed": "v7 declared QA readPixels samples contain background RGBA32/26/25/255 and bow RGBA187/12/1/255; live cameras and720x1280 frame. Display-chain root cause remains unknown.",
+      "repair": "Restore source-consistent negative Y origin after v6 diagnostic; keep optional offscreen fixture explicit. Investigate through full Application/page composition next.",
+      "result": "Unresolved; do not count any offscreen candidate as visual pass"
+    },
+    {
+      "trigger": "First v5 Creator invocation inside sandbox exits134 with no output.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v5-sandbox-abort.log"
+      ],
+      "repair": "Run installed Creator with approved sandbox escalation.",
+      "result": "Fresh completed build log preserved; no auto-review rejection"
+    },
+    {
+      "trigger": "Initial freeze audit invocation omitted required --output.",
+      "evidence": [
+        "M06-cocos-doll-isolated-v1-freeze-audit.json"
+      ],
+      "repair": "Use declared CLI arguments; retain failed shader import metadata evidence.",
+      "result": "v3-v7 each550files, one allowed plugin meta files change, zero runtime drift"
+    }
+  ]
+}

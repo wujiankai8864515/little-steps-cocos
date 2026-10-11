@@ -1,0 +1,81 @@
+{
+  "kind": "Declared isolated continuous doll skin/render; not full Darkroom acceptance",
+  "native": {
+    "path": "builds/reviews/M06-godot-doll-isolated-v4.jpg",
+    "sha256": "ac49372b9a658f6b162442f4083979f56efce449e7dcfc075e29003998ced6cc"
+  },
+  "cocos": {
+    "path": "builds/reviews/M06-cocos-doll-isolated-v3.jpg",
+    "sha256": "c672c342efb17f4b02cc3662d81507bf4fbb89f070619ead064716eb39e07d7b",
+    "target": "main"
+  },
+  "board": {
+    "path": "builds/reviews/M06-doll-isolated-comparison-v1.png",
+    "sha256": "7157e3a2b07fc7608ffd5bcb86f6449b46a67508fcf4c44d0dbc4c95cbadaaf2"
+  },
+  "method": "405x720 original screenshots, no alignment/scaling/recoloring, unamplified absolute RGB difference",
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 0.22566986739826245,
+      "RMSRGB": 1.1413333754659571,
+      "maximumChannelDifference": 31
+    },
+    "doll": {
+      "rect": [
+        126,
+        260,
+        287,
+        460
+      ],
+      "meanAbsoluteRGB": 2.0384575569358176,
+      "RMSRGB": 3.433407031845786,
+      "maximumChannelDifference": 31
+    },
+    "head": {
+      "rect": [
+        148,
+        268,
+        275,
+        356
+      ],
+      "meanAbsoluteRGB": 2.381233595800525,
+      "RMSRGB": 3.7032718927051462,
+      "maximumChannelDifference": 31
+    },
+    "bow": {
+      "rect": [
+        155,
+        350,
+        243,
+        410
+      ],
+      "meanAbsoluteRGB": 3.3742424242424245,
+      "RMSRGB": 4.677244443153655,
+      "maximumChannelDifference": 27
+    },
+    "feet": {
+      "rect": [
+        130,
+        393,
+        272,
+        454
+      ],
+      "meanAbsoluteRGB": 2.377587931963365,
+      "RMSRGB": 3.6119488715828467,
+      "maximumChannelDifference": 30
+    }
+  },
+  "status": "measured; strict whole-game parity pending",
+  "limits": [
+    "Declared fixed160-frame APIs and fixed tint/background; not physical doll input",
+    "Native720x1280 offscreen target; Cocos draws directly into405x720 main buffer; sampling mismatch remains unverified",
+    "Screenshot encoding, GPU texture sampling and residual skin/raster differences retained",
+    "Other expressions, lamp/daylight, dissolve/spawn, all pages and WeChat device pending"
+  ]
+}
