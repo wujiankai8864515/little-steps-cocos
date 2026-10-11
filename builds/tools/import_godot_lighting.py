@@ -217,9 +217,9 @@ def main():
     functions=shadow.split('float inside_source',1)[1].split('void fragment(){',1)[0]
     fragment=shadow.split('void fragment(){',1)[1].rsplit('}',1)[0].replace('texture(TEXTURE,','sample_shadow(').replace('COLOR=','vec4 result=')
     shadow_uniforms='''
-  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;};
+  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;vec4 shadowBounds;};
   #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
-  #define texture_bounds vec4(0.0,0.0,1.0,1.0)
+  #define texture_bounds shadowBounds
   #define cast_dir castState.xy
   #define cot_e shadowState.x
   #define strength shadowState.y
@@ -241,7 +241,7 @@ def main():
   vec2 source_world=sourcePayload.xy;float source_height=sourcePayload.z;
   vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
 '''+fragment+'result.a*=color.a;return result;}\n'
-    shadow_props={'roomOrigin':[0,0,1,1],'sourceUV':[0,0,1,1],'textureSize':[1,1,0,0],'castState':[0,1,0,0],'shadowState':[1,.35,1,.6],'shadowFlags':[1,1,0,1]}
+    shadow_props={'roomOrigin':[0,0,1,1],'sourceUV':[0,0,1,1],'textureSize':[1,1,0,0],'castState':[0,1,0,0],'shadowState':[1,.35,1,.6],'shadowFlags':[1,1,0,1],'shadowBounds':[0,0,1,1]}
     outputs.append(write('home-shadow',effect('home-shadow',shadow_body,uniforms=shadow_uniforms,properties=shadow_props,vertex=shadow_vertex)))
     part_shadow=read('home/secondary/part_wall_shadow.gdshader')
     part_fragment=part_shadow.split('void fragment(){',1)[1].rsplit('}',1)[0].replace('dark_room?','(partShadowState.y>0.5)?').replace('if(is_lamp)','if(partShadowState.z>0.5)').replace('texture(TEXTURE,UV)','CCSampleWithAlphaSeparated(cc_spriteTexture,uv0)').replace('alpha*strength*gate','alpha*partShadowState.x*gate').replace('COLOR=','vec4 result=')

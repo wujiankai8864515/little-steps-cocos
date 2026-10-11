@@ -1,0 +1,16 @@
+✔ Photo state keeps original identities, permits both home slots on one photo, validates duplicates and future/invalid states (5.150541ms)
+✔ Reward photos deduplicate durable UID and retain original 30 capacity and circular six-photo pages (1.233ms)
+✔ Failed writes preserve committed state, warn, and retry succeeds without replaying rewards (1.108ms)
+✔ Checksum corruption, future schema, unreadable storage and oversize data never overwrite the authoritative main key (0.815833ms)
+✔ Concurrent binding revisions and a write-time race reject stale changes instead of losing another session (0.600209ms)
+✔ Real native Godot oracle: all 27 paper deformation/light/shadow states and UTF-32 hashes match (18.507875ms)
+✔ Drag owns one pointer, drops only on current deformed contour, and cancellation cannot create a saved binding (0.7645ms)
+✔ Vines retain fixed roots and finite bounded spring geometry across suspend-sized deltas (717.485375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1065.601583

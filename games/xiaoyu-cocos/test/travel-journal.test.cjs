@@ -51,7 +51,17 @@ test('Actual diary view rebuilds scoped controls, pauses input, uses original re
 // Exercise the real Application entry transaction with controlled resource
 // completion, retaining the real journal view and Lifetime cancellation.
 class HomePage{constructor(){this.root=new Node('Home');this.loading=false;}setTravelLoading(v){this.loading=v;}setInput(){}resize(){}restoreTravelOffer(){this.restored=true;}resume(){}pause(){}clearRouteWaiting(){}}
-const appModules={...modules,TravelMapPage:{TravelMapPage:class{}},TravelCollectionPage:{TravelCollectionPage:class{}},HomePage:{HomePage},LoginPage:{LoginPage:class{}},ComicPage:{ComicPage:class{}},DarkroomPage:{DarkroomPage:class{}}},appExports={};
+// Rendering is verified by the real browser candidate; keep this route test
+// independent of GPU and control the two asynchronous admission stages.
+for(const name of ['PhotoLighting','PhotoPage']){
+ const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:key=>key==='cc'?cc:modules[key.slice(2)]||{},console});modules[name]=exports;
+}
+const photoViews=[];
+class PhotoRouteView{
+ constructor(parent,assets,owner,height,collection,clock,retained){this.root=new Node('Photo');this.retained=retained||{batch:0,elapsed:0,vines:[]};photoViews.push(this);owner.own(()=>this.root.destroy());}
+ resize(){}resume(allowed=true){this.active=allowed;}pause(){this.active=false;}retain(){return this.retained;}
+}
+const appModules={...modules,TravelMapPage:{TravelMapPage:class{}},TravelCollectionPage:{TravelCollectionPage:class{}},PhotoPage:{...modules.PhotoPage,PhotoPage:PhotoRouteView},HomePage:{HomePage},LoginPage:{LoginPage:class{}},ComicPage:{ComicPage:class{}},DarkroomPage:{DarkroomPage:class{}}},appExports={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game/Application.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports:appExports,require:key=>key==='cc'?cc:appModules[key.slice(2)]||{},console:{info(){},error(){}}});
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 function application(){
@@ -71,4 +81,30 @@ test('Journal cancellation rejects a late completion; failed loading can retry w
  assert.equal(f.app.page,f.home);assert.equal(f.requests[0].owner.active,false);assert.equal(f.app.entering,false);assert.equal(JSON.stringify(f.app.travel.service.model.data),before);
  const failed=f.app.openJournal('journal');f.requests[1].reject(Error('offline'));await failed;assert.ok(f.events.includes('日记加载失败，再试一次？'));assert.equal(f.app.page,f.home);assert.equal(f.requests[1].owner.active,false);
  f.app.cancelJournalLoading();const retry=f.app.openJournal('journal');f.requests[2].resolve();await retry;assert.ok(f.app.page instanceof TravelJournalPage);assert.equal(JSON.stringify(f.app.travel.service.model.data),before);f.scope.dispose();
+});
+
+function photoApplication(){
+ const f=application();f.effects=[];f.app.assets.acquireEffects=(names,owner)=>{const d=deferred();f.effects.push({...d,names,owner});return owner.guard(d.promise);};
+ return f;
+}
+const flushPromises=()=>new Promise(resolve=>setImmediate(resolve));
+test('Photo entry waits for both resource groups and first draw, then frees GPU ownership while retaining page state on Home return',async()=>{
+ const f=photoApplication(),draw=deferred(),before=JSON.stringify(f.app.travel.service.model.data);f.app.frame=()=>draw.promise;
+ const pending=f.app.openJournal('photo');assert.deepEqual(Array.from(f.requests[0].paths),Array.from(modules.PhotoPage.PHOTO_RESOURCES));
+ f.requests[0].resolve();await flushPromises();assert.equal(f.app.page,f.home);assert.deepEqual(Array.from(f.effects[0].names),Array.from(modules.PhotoLighting.PHOTO_EFFECTS));
+ f.effects[0].resolve();await flushPromises();assert.equal(f.app.page,f.home);assert.equal(f.app.entering,true);assert.equal(f.home.loading,true);
+ draw.resolve();await pending;const page=f.app.page;assert.ok(page instanceof PhotoRouteView);assert.equal(page.active,true);
+ page.retained={batch:2,elapsed:7.5,vines:[],actor:{clock:2,blinkElapsed:1,blinkIndex:0}};
+ await f.app.returnHome();assert.equal(f.app.page,f.home);assert.equal(page.root.destroyed,true);assert.equal(f.requests[0].owner.active,false);assert.equal(f.app.homePage.scope.active,true);
+ const reopen=f.app.openJournal('photo');f.requests[1].resolve();await flushPromises();f.effects[1].resolve();await reopen;
+ assert.equal(f.app.page.retained.batch,2);assert.equal(f.app.page.retained.elapsed,7.5);assert.equal(JSON.stringify(f.app.travel.service.model.data),before);f.scope.dispose();
+});
+test('Photo load cancellation and shader failure cannot publish a late page or mutate a save; retry uses fresh ownership',async()=>{
+ const f=photoApplication(),before=JSON.stringify(f.app.travel.service.model.data),views=photoViews.length,pending=f.app.openJournal('photo');
+ f.requests[0].resolve();await flushPromises();f.app.cancelJournalLoading();f.effects[0].resolve();await pending;
+ assert.equal(f.app.page,f.home);assert.equal(photoViews.length,views);assert.equal(f.effects[0].owner.active,false);
+ const failed=f.app.openJournal('photo');f.requests[1].resolve();await flushPromises();f.effects[1].reject(Error('shader offline'));await failed;
+ assert.ok(f.events.includes('照片加载失败，再试一次？'));assert.equal(f.app.page,f.home);assert.equal(f.effects[1].owner.active,false);
+ f.app.cancelJournalLoading();const retry=f.app.openJournal('photo');f.requests[2].resolve();await flushPromises();f.effects[2].resolve();await retry;
+ assert.ok(f.app.page instanceof PhotoRouteView);assert.notEqual(f.effects[1].owner,f.effects[2].owner);assert.equal(JSON.stringify(f.app.travel.service.model.data),before);f.scope.dispose();
 });

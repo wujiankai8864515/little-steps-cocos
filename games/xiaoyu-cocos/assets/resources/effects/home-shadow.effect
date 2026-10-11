@@ -22,6 +22,7 @@ CCEffect %{
         textureSize: { value: [1, 1, 0, 0] }
         castState: { value: [0, 1, 0, 0] }
         shadowState: { value: [1, 0.35, 1, 0.6] }
+        shadowBounds: { value: [0, 0, 1, 1] }
         shadowFlags: { value: [1, 1, 0, 1] }
 }%
 
@@ -55,9 +56,9 @@ CCProgram room-fs %{
   in vec4 color;
   in vec2 canvasPosition;
 
-  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;};
+  uniform ShadowState {vec4 roomOrigin;vec4 sourceUV;vec4 textureSize;vec4 castState;vec4 shadowState;vec4 shadowFlags;vec4 shadowBounds;};
   #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
-  #define texture_bounds vec4(0.0,0.0,1.0,1.0)
+  #define texture_bounds shadowBounds
   #define cast_dir castState.xy
   #define cot_e shadowState.x
   #define strength shadowState.y

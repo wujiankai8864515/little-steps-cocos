@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "item": "M08.04",
+  "updatedAt": "2026-10-11T17:00:36.743804+00:00",
+  "failures": [
+    {
+      "trigger": "First production TypeScript check",
+      "cause": "New Array.includes/flatMap calls exceed configured standard library.",
+      "fix": "Use indexOf and concat without changing algorithms.",
+      "evidence": "Initial compiler diagnostics in task tool output; final zero-exit check in M08-photo-types-final.log.",
+      "status": "fixed"
+    },
+    {
+      "trigger": "First full regression",
+      "cause": "Application now checks instanceof PhotoPage; old journal/viewport module mocks omitted that constructor.",
+      "evidence": "builds/reviews/M08-photo-regression-v1.log",
+      "fix": "Extend existing mocks and add real Application photo admission/retention/cancel/retry tests.",
+      "status": "248 tests pass in v3"
+    },
+    {
+      "trigger": "PhotoInk mesh setup review",
+      "cause": "Custom mesh vertexData contract is 3 RGB floats, not 4.",
+      "fix": "Use RGB data before v1 browser build.",
+      "status": "fixed before browser candidate"
+    },
+    {
+      "trigger": "v1 browser prompt inspection",
+      "cause": "Text root Mask also clipped its decorative glints.",
+      "fix": "Keep glyphs in masked child; decorative prompt root remains unclipped.",
+      "status": "v2 and v3 glints visible"
+    },
+    {
+      "trigger": "v2 daytime closed-eye observation",
+      "cause": "Closed-eye artwork used paper receiver while adjacent face used body lighting.",
+      "evidence": "builds/qa/cocos-photo-v2-blink-lighting-failure.png",
+      "fix": "Use body illumination for original closed-eye artwork; skip open-eye restoration only for that patch. Preserve original textures and blink timing.",
+      "after": [
+        "builds/qa/cocos-photo-v3-blink-fixed.png",
+        "builds/qa/cocos-photo-v3-night.png"
+      ],
+      "status": "day/night fix observed",
+      "limit": "No original Godot daytime closed-eye screenshot; do not claim the same visible defect was reproduced there."
+    },
+    {
+      "trigger": "v3 QA screenshot link click",
+      "cause": "QA-only download link and newly added last blink button overlap. Click activated blink, so state returned to 12 and no file downloaded.",
+      "fix": "Activate observed download link using keyboard, confirm actual files and capture state. Move future generator download link up 30px.",
+      "status": "v3 evidence downloaded and inspected; future QA layout source corrected, not rebuilt"
+    },
+    {
+      "trigger": "Creator CLI builds v1-v3",
+      "cause": "Creator prints Build Finished but exits 36 in this environment, same as prior candidates.",
+      "evidence": [
+        "builds/reviews/M08-photo-creator-v1.log",
+        "builds/reviews/M08-photo-creator-v2.log",
+        "builds/reviews/M08-photo-creator-v3.log"
+      ],
+      "status": "retain exact nonzero outcome; candidate outputs served and rendered. Not a zero-exit or formal-release claim."
+    }
+  ]
+}

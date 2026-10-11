@@ -1,0 +1,62 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        shadowState: { value: [2, 0.17, 0.00078125, 0.00078125] }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+uniform PhotoShadow {vec4 shadowState;};
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+
+vec4 frag(){
+    vec2 px=shadowState.zw*shadowState.x;
+    float a=texture(cc_spriteTexture,uv0).a*0.28;
+    a+=(texture(cc_spriteTexture,uv0+vec2(px.x,0)).a+texture(cc_spriteTexture,uv0-vec2(px.x,0)).a+texture(cc_spriteTexture,uv0+vec2(0,px.y)).a+texture(cc_spriteTexture,uv0-vec2(0,px.y)).a)*0.12;
+    a+=(texture(cc_spriteTexture,uv0+px).a+texture(cc_spriteTexture,uv0-px).a+texture(cc_spriteTexture,uv0+vec2(px.x,-px.y)).a+texture(cc_spriteTexture,uv0+vec2(-px.x,px.y)).a)*0.06;
+    return vec4(0.12,0.095,0.075,a*shadowState.y);
+}
+}%

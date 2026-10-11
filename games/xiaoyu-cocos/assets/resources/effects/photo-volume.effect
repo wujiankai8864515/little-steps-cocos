@@ -1,0 +1,99 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        pageOrigin: { value: [0, 0, 1, 1] }
+        lightState: { value: [-210, -160, 0.52, 0] }
+        lightAmbient: { value: [0.65, 0.61, 0.54, 0] }
+        lightTint: { value: [1, 0.95, 0.82, 0] }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform PhotoLight {vec4 pageOrigin;vec4 lightState;vec4 lightAmbient;vec4 lightTint;};
+  #define light_origin lightState.xy
+  #define light_energy lightState.z
+  #define night lightState.w
+  #define ambient_color lightAmbient.rgb
+  #define sun_color lightTint.rgb
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+
+
+float soft_ray(vec2 ray,vec2 axis,float width,float spread,float reach) {
+    float along=dot(ray,axis);
+    float across=ray.x*axis.y-ray.y*axis.x;
+    float radius=width+max(along,0.0)*spread;
+    float q=across/max(radius,1.0);
+    return exp(-q*q)*smoothstep(-40.0,110.0,along)*exp(-length(ray)/reach);
+}
+float soft_fan(vec2 p,vec2 source,vec2 axis) {
+    vec2 ray=p-source;
+    vec2 side=vec2(-axis.y,axis.x);
+    float a=soft_ray(ray,normalize(axis-side*0.32),17.0,0.044,2100.0);
+    float b=soft_ray(ray,axis,22.0,0.055,2200.0);
+    float c=soft_ray(ray,normalize(axis+side*0.34),16.0,0.044,1900.0);
+    return min(1.0,a*0.76+b+c*0.65);
+}
+float air_grain(vec2 p) {
+    // Stationary subpixel air texture: no new bitmap, temporal flicker or scan.
+    return 0.965+0.035*fract(sin(dot(floor(p*0.8),vec2(12.9898,78.233)))*43758.5453);
+}
+float wall_field(vec2 p) {
+    vec2 axis=normalize(vec2(440.0,810.0)-light_origin);
+    return 0.10+soft_fan(p,light_origin,axis)*0.90;
+}
+vec3 paper_light(vec2 p, vec3 n) {
+    vec3 l = normalize(vec3((light_origin-p)*0.001,1.25));
+    return ambient_color+sun_color*light_energy*wall_field(p)*(0.30+0.70*max(dot(n,l),0.0));
+}
+vec4 frag(){vec2 page_pos=vec2((canvasPosition.x-pageOrigin.x)/pageOrigin.z,(pageOrigin.y-canvasPosition.y)/pageOrigin.w);
+    float shafts=max(0.0,wall_field(page_pos)-0.10)/0.90;
+    float depth_fade=1.0-smoothstep(1020.0,1280.0,page_pos.y);
+    float title_safe=smoothstep(130.0,200.0,page_pos.y);
+    return vec4(sun_color,min(0.35,shafts*light_energy*mix(0.92,1.45,night))*depth_fade*title_safe*air_grain(page_pos));
+}
+}%

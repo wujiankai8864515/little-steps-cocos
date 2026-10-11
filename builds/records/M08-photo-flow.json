@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "item": "M08.04",
+  "updatedAt": "2026-10-11T17:00:36.743804+00:00",
+  "status": "photo_flow_layout_lighting_and_durable_home_binding_checkpoint_observed_full_first_version_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sourceFiles": [
+    {
+      "path": "games/travel_woodfish/project/photo/photo_actor.gd",
+      "sha256": "68d05c9fb87060732cc2985d350c3b5087842839312a8c2f6cd06a63bd9873e7"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_art.gd",
+      "sha256": "fc7aec0a60ac6afeb0d7974cfcfebbb1b971ab56382eef59f1ac3032bc3e015b"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_bridge.gd",
+      "sha256": "bd2b7dbeb45c7444159a45a22cca48595aa5511d31638902ea171bfd1884c871"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_collection.gd",
+      "sha256": "f01fa0d44bb7e976ea179da96922c2f1d9529fa08c1df17e3fffd2048100f1e9"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_config.gd",
+      "sha256": "39c07d2cecc99eafb7bbbefb2d2c19347a0103b40bc5d3f48523a5b2695236c8"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_ink.gd",
+      "sha256": "98a0aafff4b55d976ece9f8da6295a0b1acae5220756bd0fa0e1aef0a00eaa19"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_material.gd",
+      "sha256": "b1e95000b13fe645f327ebdcd5e6a44ac340cd34072c796a2b7c13f1722cd97f"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_page.gd",
+      "sha256": "a4c8f59fb682a9f3ffde10ed6a95f441942bd609d176025f71041bc4dc3ff885"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_paper.gd",
+      "sha256": "c67f291dbbe66b85341f588cea80bc3b1ead3799a5032ea3489e2a344c005db3"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_state.gd",
+      "sha256": "82d50cddb9ac2069ae0f80334c6dd3381db21630c66cc05837956155279b1099"
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/photo_store.gd",
+      "sha256": "073941eb453262d4a3de516be04f82f982ac062ae3489f19574a833c7b5869f6"
+    },
+    {
+      "path": "games/travel_woodfish/project/shared_room_lighting/soft_atmosphere.gd",
+      "sha256": "f92ca5136064d800521c56cc7d0a0b4d93031acfe757dcad839bd4c7561937a8"
+    },
+    {
+      "path": "games/travel_woodfish/project/shared_room_lighting/lighting_snapshot.gd",
+      "sha256": "0474847a22736db7e0426fd8318634554bdf2239c49c6c3a70fc212d3a6a2101"
+    }
+  ],
+  "implementation": [
+    "Original 30-photo collection, two legacy records, reward UID deduplication, six-per-batch circular pagination and both Home bindings.",
+    "Durable checked checkpoint storage, size/schema/corruption guards, revision re-read before commit, verify after write; failed saves do not adopt state.",
+    "Original layered page art, neutral background, glyph atlas, six hanging papers/clips, ropes, stack, selectors, return tag, glints and common save-error bubble.",
+    "Original 99-vertex paper deformation, light field, 36-point hit contour, four penumbrae, fourteen three-joint vines and shared actor bones with original blink rhythm.",
+    "Six Cocos shader variants derived from original source: receiver, Graphics receiver, paper, shadow, soft volume and face. Closed-eye patch illumination defect fixed with retained art.",
+    "Home photo entry intent/bounce/cancel and actual committed photo/shadow replacement, original dimensions retained.",
+    "On-demand resource/effect admission, first-draw routing, load cancel/retry, hidden Darkroom hibernation, retained page state without retained GPU and release on Home return."
+  ],
+  "tests": {
+    "file": "builds/reviews/M08-photo-regression-v3.log",
+    "pass": 248,
+    "fail": 0,
+    "productionTypecheck": "builds/reviews/M08-photo-types-final.log (exit 0)",
+    "targetedRoutes": "builds/reviews/M08-photo-routes-v3.log",
+    "checks": [
+      "schema/bindings/duplicate/capacity/no-op",
+      "write failure/restart/corruption/future schema/oversize/stale and write-time races",
+      "27 unmodified Godot native geometry/light/shadow samples including UTF32 emoji IDs",
+      "single pointer/drop-contour/cancel/batch movement and 1000 bounded vine frames",
+      "actual Application resources/effects/first draw/return/re-entry and cancel/shader-failure retry"
+    ]
+  },
+  "nativeMath": "builds/records/M08-photo-native-math.json",
+  "shaders": "builds/records/M08-photo-shaders.json",
+  "browser": "builds/reviews/M08-photo-browser.json",
+  "failures": "builds/reviews/M08-photo-failures.json",
+  "candidate": "builds/records/candidates/photo-complete-v3.json",
+  "frozenAudit": "builds/reviews/M08-photo-v3-frozen-audit.json",
+  "pluginSHA256": "e392ad32747e7825eb24e1ecda24aa13fbbe1dc468b36ece5437d02659153d01",
+  "homeShadowEffectSHA256": "42a15cabebbf87d54d9f6c42778dd1ce80b8853f896b99095a564f7138bfe257",
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-photo-v1-longscreen.png",
+      "sha256": "5a4b7594941a2cb477f20342ba72adcef982e3b9f154ff2ce73ab12b105ebbe8"
+    },
+    {
+      "path": "builds/qa/cocos-photo-v2-blink-lighting-failure.png",
+      "sha256": "a3f1df5191933e798b7e683658267871497d5e232c6ccc7f6ed48f7a0a8b929b"
+    },
+    {
+      "path": "builds/qa/cocos-photo-v3-blink-fixed.png",
+      "sha256": "65cc39c39b40cca68598094ee1fdf36954926da4f8951990faa1925337d3dcd7"
+    },
+    {
+      "path": "builds/qa/cocos-photo-v3-night.png",
+      "sha256": "c93b620ef52a87600da899ccf951d39b47057d3d92fa5276adfdc47fa6537f46"
+    }
+  ],
+  "pending": [
+    "Wardrobe full page, skin unlock/persistence and worn material propagation to Home/Photo",
+    "Collection keyboard/hover/pressed feedback",
+    "All-page real input/flow/interruption matrix",
+    "WeChat-only formal build and real-device acceptance",
+    "User full first-version acceptance; only numerical pixel-diff polishing deferred"
+  ]
+}

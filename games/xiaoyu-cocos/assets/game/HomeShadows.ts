@@ -30,6 +30,13 @@ export class HomeShadows {
         if(grounded)caster.contact=nodeAt(group,'MeasuredContact').addComponent(Graphics);
         this.casters.push(caster);this.layers.push({z:properties['metadata/shadow_z'],order:2000+this.casters.length,node:group});
     }
+    replaceRegion(source:Node,resource:string,region:number[],owner:Scope){
+        const caster=this.casters.find(c=>c.source===source);if(!caster)return;
+        if(caster.grounded||this.soft.has(source)||this.rigid.has(source))throw Error('Region replacement requires a rigid wall caster');
+        const original=this.assets.art(resource),c=original.content,size=original.size;
+        caster.spec={...original,size:region.slice(2),content:[c[0]-region[0],c[1]-region[1],c[2],c[3]]};
+        for(const pass of [caster.sun,caster.lamp]){if(!pass)continue;pass.mesh=shadowGeometry(region.slice(2));pass.sprite.configure(pass.mesh,caster.spec.size,caster.spec.content);pass.sprite.spriteFrame=this.assets.frame(resource,owner);pass.material.setProperty('sourceUV',new Vec4(c[0]/size[0],c[1]/size[1],c[2]/size[0],c[3]/size[1]));pass.material.setProperty('textureSize',new Vec4(size[0],size[1],0,0));pass.material.setProperty('shadowBounds',new Vec4(region[0]/size[0],region[1]/size[1],(region[0]+region[2])/size[0],(region[1]+region[3])/size[1]));}
+    }
     bindSoft(source:Node,grid:any,active:()=>boolean,lift:()=>number,ground:()=>number,frame=()=>this.root){const caster=this.casters.find(c=>c.source===source);if(!caster)throw new Error('软投影源未注册');this.soft.set(source,{grid,sun:softShadowGeometry(grid,caster.sun.mesh.contacts),lamp:softShadowGeometry(grid,caster.sun.mesh.contacts),active,lift,ground,frame,using:false,physical:0});}
     bindRigid(source:Node,binding:RigidBinding){if(!this.casters.some(c=>c.source===source))throw new Error('道具投影源未注册');this.rigid.set(source,binding);}
     bindOpacity(source:Node,value:()=>number){if(!this.casters.some(c=>c.source===source))throw new Error('投影透明度源未注册');this.opacities.set(source,value);}

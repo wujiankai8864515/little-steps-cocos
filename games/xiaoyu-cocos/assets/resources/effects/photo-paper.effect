@@ -1,0 +1,153 @@
+// Source formulas transferred by builds/tools/import_godot_lighting.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        pageOrigin: { value: [0, 0, 1, 1] }
+        lightState: { value: [-210, -160, 0.52, 0] }
+        lightAmbient: { value: [0.65, 0.61, 0.54, 0] }
+        lightTint: { value: [1, 0.95, 0.82, 0] }
+        frameUV: { value: [0.4421875, 0.0015625, 0.325, 0.4] }
+        frameCrop: { value: [0, 0, 1, 1] }
+        photoCrop: { value: [0, 0, 1, 1] }
+        photoTop: { value: [0, 0, 1, 0] }
+        photoBottom: { value: [1, 1, 0, 1] }
+        paperState: { value: [0, 0, 192, 222] }
+        frame_tex: { value: white }
+        photo_tex: { value: white }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+
+  uniform PhotoLight {vec4 pageOrigin;vec4 lightState;vec4 lightAmbient;vec4 lightTint;};
+  #define light_origin lightState.xy
+  #define light_energy lightState.z
+  #define night lightState.w
+  #define ambient_color lightAmbient.rgb
+  #define sun_color lightTint.rgb
+
+  uniform PhotoPaper {vec4 frameUV;vec4 frameCrop;vec4 photoCrop;vec4 photoTop;vec4 photoBottom;vec4 paperState;};
+  #define frame_uv frameUV
+  #define photo_tl photoTop.xy
+  #define photo_tr photoTop.zw
+  #define photo_br photoBottom.xy
+  #define photo_bl photoBottom.zw
+  #define phase paperState.x
+  #define stamp_mask paperState.y
+  #define paper_size paperState.zw
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+  uniform sampler2D frame_tex;
+  uniform sampler2D photo_tex;
+
+
+float soft_ray(vec2 ray,vec2 axis,float width,float spread,float reach) {
+    float along=dot(ray,axis);
+    float across=ray.x*axis.y-ray.y*axis.x;
+    float radius=width+max(along,0.0)*spread;
+    float q=across/max(radius,1.0);
+    return exp(-q*q)*smoothstep(-40.0,110.0,along)*exp(-length(ray)/reach);
+}
+float soft_fan(vec2 p,vec2 source,vec2 axis) {
+    vec2 ray=p-source;
+    vec2 side=vec2(-axis.y,axis.x);
+    float a=soft_ray(ray,normalize(axis-side*0.32),17.0,0.044,2100.0);
+    float b=soft_ray(ray,axis,22.0,0.055,2200.0);
+    float c=soft_ray(ray,normalize(axis+side*0.34),16.0,0.044,1900.0);
+    return min(1.0,a*0.76+b+c*0.65);
+}
+float air_grain(vec2 p) {
+    // Stationary subpixel air texture: no new bitmap, temporal flicker or scan.
+    return 0.965+0.035*fract(sin(dot(floor(p*0.8),vec2(12.9898,78.233)))*43758.5453);
+}
+float wall_field(vec2 p) {
+    vec2 axis=normalize(vec2(440.0,810.0)-light_origin);
+    return 0.10+soft_fan(p,light_origin,axis)*0.90;
+}
+vec3 paper_light(vec2 p, vec3 n) {
+    vec3 l = normalize(vec3((light_origin-p)*0.001,1.25));
+    return ambient_color+sun_color*light_energy*wall_field(p)*(0.30+0.70*max(dot(n,l),0.0));
+}
+float line_segment(vec2 p,vec2 a,vec2 b,float width){vec2 d=b-a;return 1.0-smoothstep(width,width+0.004,length(p-a-d*clamp(dot(p-a,d)/dot(d,d),0.0,1.0)));}
+float stamp(vec2 p,int n){
+    float ring=1.0-smoothstep(0.008,0.017,abs(length(p)-0.058));
+    float digit=0.0;
+    if(n==1){digit=max(line_segment(p,vec2(-0.014,-0.026),vec2(0.002,-0.037),0.006),line_segment(p,vec2(0.002,-0.037),vec2(0.002,0.036),0.006));}
+    else {
+        digit=max(line_segment(p,vec2(-0.024,-0.021),vec2(-0.014,-0.037),0.005),line_segment(p,vec2(-0.014,-0.037),vec2(0.010,-0.038),0.005));
+        digit=max(digit,line_segment(p,vec2(0.010,-0.038),vec2(0.024,-0.023),0.005));
+        digit=max(digit,line_segment(p,vec2(0.024,-0.023),vec2(0.021,-0.006),0.005));
+        digit=max(digit,line_segment(p,vec2(0.021,-0.006),vec2(-0.023,0.032),0.005));
+        digit=max(digit,line_segment(p,vec2(-0.023,0.032),vec2(0.024,0.032),0.005));
+    }
+    return max(ring,digit);
+}
+vec4 frag(){vec2 page_pos=vec2((canvasPosition.x-pageOrigin.x)/pageOrigin.z,(pageOrigin.y-canvasPosition.y)/pageOrigin.w);
+    vec2 q=uv0;
+    float grain=fract(sin(dot(floor(q*paper_size*1.7),vec2(12.9898,78.233)))*43758.5453);
+    vec3 albedo=vec3(0.98,0.923,0.80)*(0.97+grain*0.035);
+    vec4 frame=texture(frame_tex,(frame_uv.xy+q*frame_uv.zw-frameCrop.xy)/frameCrop.zw);
+    albedo=mix(albedo,frame.rgb,frame.a);
+    float alpha=frame.a;
+    vec2 p=(q-vec2(0.09375,0.08203125))/vec2(0.8173077,0.75390625);
+    if(p.x>=0.0&&p.x<=1.0&&p.y>=0.0&&p.y<=1.0){
+        vec4 photo=texture(photo_tex,(mix(mix(photo_tl,photo_tr,p.x),mix(photo_bl,photo_br,p.x),p.y)-photoCrop.xy)/photoCrop.zw);
+        albedo=mix(albedo,photo.rgb,photo.a);
+        alpha=1.0;
+    }
+    float corner=smoothstep(0.76,1.0,q.x)*smoothstep(0.76,1.0,q.y);
+    float crease=exp(-abs(q.y-(0.96-0.11*q.x))*160.0)*smoothstep(0.68,1.0,q.x);
+    albedo*=1.0-0.09*crease;
+    albedo+=vec3(0.055)*corner;
+    float mark=0.0;
+    if(mod(stamp_mask,2.0)>0.5){mark=max(mark,stamp((q-vec2(0.69,0.929))*vec2(1.0,1.14),1));}
+    if(stamp_mask>1.5){mark=max(mark,stamp((q-vec2(0.86,0.929))*vec2(1.0,1.14),2));}
+    albedo=mix(albedo,vec3(0.59,0.11,0.055),mark*0.91);
+    vec3 normal=normalize(vec3(-0.16*sin(q.y*3.14159+phase)*q.y,0.10*cos(phase+q.x*3.0)*q.y+corner*0.5,1.0));
+    float edge=1.0-smoothstep(0.005,0.016,min(min(q.x,1.0-q.x),min(q.y,1.0-q.y)));
+    return vec4(albedo*paper_light(page_pos,normal)*(1.0-edge*0.12),alpha);
+}
+
+}%

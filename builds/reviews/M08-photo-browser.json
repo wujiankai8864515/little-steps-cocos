@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "item": "M08.04",
+  "observedAt": "2026-10-11T17:00:36.743804+00:00",
+  "platform": "Independent Chrome through supported CUA, Cocos Creator 3.8.8 WebGL candidate",
+  "scope": "Actual page rendering and stated real input/state checkpoints. No numerical pixel difference acceptance or WeChat device acceptance.",
+  "fixture": "Only frozen Boot altered. Visible QA controls use 14 real TravelService trips/rewards/reviews: 36 inventory, 14 journals, revision 151, review count 37. Photo state persists on isolated candidate origins; travel fixture is isolated memory. Shipping Boot unchanged.",
+  "candidates": [
+    {
+      "name": "photo-complete-v1",
+      "origin": "http://127.0.0.1:8781",
+      "status": "function_flow_observed_visual_defects_fixed_later",
+      "observations": [
+        "Actual Home photo click enters PhotoPage; initial two source legacy photos and default bindings.",
+        "Drag Home selector 1 to legacy photo 2 commits photo revision 2. Forced write failure on selector 2 leaves revision/bindings unchanged and shows the original retry bubble. Restored write commits revision 3.",
+        "Return displays changed original frames at Home; 14-trip service fixture yields 13 unique photos and 3 circular batches.",
+        "Real next-batch clicks reach batches 2 and 3; browsing leaves both photo and travel revisions unchanged. Final batch contains reward:trip_14_14:reward:2.",
+        "Drag selector 1 to last reward commits revision 15. Home shows reward artwork; re-entry retains batch index 2 and animation state.",
+        "720x1600 uses original 720x1280 contained page with 160px vertical offsets, keeps actor, controls and photographs visible.",
+        "Reload keeps 13 photos and committed bindings/revision 15. Isolated QA travel fixture resets to revision 0/reviews 0 without deleting photo ownership."
+      ],
+      "resources": [
+        {
+          "route": "PhotoPage",
+          "viewport": [
+            720,
+            1280
+          ],
+          "entries": 102,
+          "reservedBytes": 145724798,
+          "pending": 0
+        },
+        {
+          "route": "PhotoPage",
+          "viewport": [
+            720,
+            1600
+          ],
+          "entries": 102,
+          "reservedBytes": 147567998,
+          "pending": 0
+        },
+        {
+          "route": "HomePage",
+          "viewport": [
+            720,
+            1600
+          ],
+          "entries": 93,
+          "reservedBytes": 131628185,
+          "pending": 0
+        }
+      ],
+      "ownWarningsOrErrorsObserved": [],
+      "screenshot": "builds/qa/cocos-photo-v1-longscreen.png"
+    },
+    {
+      "name": "photo-complete-v2",
+      "origin": "http://127.0.0.1:8782",
+      "status": "glints_fixed_visible_closed_eye_lighting_failure",
+      "observations": [
+        "Moving glyph clipping into a child leaves prompt glints visible outside text bounds.",
+        "Day/night paper, UI and actor rendering observed. Day closed-eye patch visibly differs from adjacent body illumination."
+      ],
+      "evidence": "builds/qa/cocos-photo-v2-blink-lighting-failure.png",
+      "captureState": {
+        "at": "2026-10-11T16:47:25.506Z",
+        "count": 13,
+        "revision": 12,
+        "batch": 0,
+        "batches": 3,
+        "elapsed": 9.68389999999852,
+        "entries": 102,
+        "reservedBytes": 145724798
+      }
+    },
+    {
+      "name": "photo-complete-v3",
+      "origin": "http://127.0.0.1:8783",
+      "status": "closed_eye_fix_and_binding_return_restart_observed",
+      "observations": [
+        "Declared visible blink control freezes original actor at clock=0, blinkElapsed=4.11, blinkIndex=0 and hour=12. Body and original closed-eye patches now share illumination, without reopening painted pupils.",
+        "Day and night (hour 23) closed-eye screenshots inspected. Original art, actor pose, shared soft light, hanging papers, title/count/hint/selector/batch/return layout retained.",
+        "Real drag [246,1192] to [577,356] binds photo1 to reward:trip_2_2:reward:0 and commits revision 13; photo2 remains home_legacy_2.",
+        "Original return tag returns Home and visually shows reward frame. Actual Home wall photo re-entry succeeds and retains page state.",
+        "Home settles from 102 entries / 145724798 bytes to 93 / 129784985 with pending 0.",
+        "Browser reload retains Home bindings and photo revision 13; isolated travel revision/reviews reset to 0 as declared.",
+        "Screenshot download link overlaps last QA-only blink button in v3; coordinate click invoked blink instead of download. Keyboard activation of observed link downloaded correct blobs; verified files and capture hours. Generator now places future download link 30px above buttons."
+      ],
+      "checkpoints": [
+        {
+          "at": "2026-10-11T16:53:53.610Z",
+          "route": "PhotoPage",
+          "count": 13,
+          "revision": 13,
+          "batch": 0,
+          "batches": 3,
+          "photo1": "reward:trip_2_2:reward:0",
+          "photo2": "home_legacy_2",
+          "travelRevision": 151,
+          "reviews": 37
+        },
+        {
+          "at": "2026-10-11T16:55:02.210Z",
+          "route": "PhotoPage",
+          "hour": 12,
+          "actor": {
+            "clock": 0,
+            "blinkElapsed": 4.11,
+            "blinkIndex": 0
+          },
+          "elapsed": 25.109699999995563,
+          "size": [
+            720,
+            1280
+          ],
+          "entries": 102,
+          "reservedBytes": 145724798,
+          "pending": 0,
+          "screenshot": "builds/qa/cocos-photo-v3-blink-fixed.png"
+        },
+        {
+          "at": "2026-10-11T16:55:23.667Z",
+          "route": "PhotoPage",
+          "hour": 23,
+          "actor": {
+            "clock": 0,
+            "blinkElapsed": 4.11,
+            "blinkIndex": 0
+          },
+          "elapsed": 25.109699999995563,
+          "size": [
+            720,
+            1280
+          ],
+          "entries": 102,
+          "reservedBytes": 145724798,
+          "pending": 0,
+          "screenshot": "builds/qa/cocos-photo-v3-night.png"
+        },
+        {
+          "at": "2026-10-11T16:56:03.768Z",
+          "route": "HomePage",
+          "photoRevision": 13,
+          "entries": 93,
+          "reservedBytes": 129784985,
+          "pending": 0,
+          "travelRevision": 151,
+          "reviews": 37
+        },
+        {
+          "at": "2026-10-11T16:56:25.199Z",
+          "route": "HomePage",
+          "photoRevision": 13,
+          "photo1": "reward:trip_2_2:reward:0",
+          "photo2": "home_legacy_2",
+          "entries": 93,
+          "reservedBytes": 129784985,
+          "pending": 0,
+          "travelRevision": 0,
+          "reviews": 0
+        }
+      ],
+      "ownWarningsOrErrorsObserved": [],
+      "errorReadScope": "Last 100 captured warn/error entries filtered to own 8783 URL; no matches. Also own-URL substring checks during route run."
+    }
+  ],
+  "reference": "../little-steps/build/reviews/20261007-wardrobe-w1w2/screens/13_photo_original.png (original night/open-eye layout reference inspected; no original daytime closed-eye capture)",
+  "cleanup": "All agent candidate tabs closed, viewport override reset, three local servers stopped; no concurrent Creator/Godot/Chrome engine-page workloads.",
+  "pending": [
+    "Wardrobe-dependent worn skin propagation into PhotoActor",
+    "All-page interruption/resize/device matrix",
+    "Real WeChat build/device performance and fidelity",
+    "Full first-version acceptance"
+  ]
+}

@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T16:09:46.122770+00:00",
-  "latestItem": "M08.03",
+  "updatedAt": "2026-10-11T17:00:36.743804+00:00",
+  "latestItem": "M08.04",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M08-collection-flow.json",
-    "builds/reviews/M08-collection-failures.json",
-    "builds/reviews/M08-collection-browser.json"
+    "builds/records/M08-photo-flow.json",
+    "builds/reviews/M08-photo-failures.json",
+    "builds/reviews/M08-photo-browser.json"
   ],
-  "nextPriority": "User clarified: pause numerical pixel-diff polishing ONLY. First version retains 1:1 ALL functions, navigation, elements, layout and interactions; no simplified MVP. Complete collection keyboard/hover/pressed control feedback, then full photo wall and wardrobe using original sources. Validate whole page flow, only WeChat shipping. V4 fixes real renderer index overflow and mask-type entry failure; retain crash guard.",
-  "pendingReadback": "builds/reviews/M08-collection-remote-readback.json (create after commit)",
+  "nextPriority": "Only numerical pixel-diff polishing deferred. ALL functions/navigation/elements/layout/interactions remain 1:1. Next implement complete wardrobe and unlock/save/worn skin propagation into Home and PhotoActor from original Godot; finish collection keyboard/hover/pressed feedback and remaining all-page flow matrix. Photo page browser checkpoint now supports reward sync, bind/save-failure/retry, batching, long-screen, return/re-entry and restart. 248 tests pass. No full first-version or WeChat-device acceptance yet.",
+  "pendingReadback": "builds/reviews/M08-photo-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -18,6 +18,7 @@
     "Use independent Chrome supported CUA; no repeated Codex in-app Godot screenshots; run GPU workloads serially",
     "Do not mark full migration or WeChat delivery complete from these checkpoints",
     "Use builds/tools/serve_candidate.py --name <frozen-candidate> --port <fresh-port>; avoid old same-origin cached assets",
-    "Freeze QA time with advance(0), not by skipping Application.advance; otherwise resize observations are invalid"
+    "Freeze QA time with advance(0), not by skipping Application.advance; otherwise resize observations are invalid",
+    "Photo candidates v1-v3 in builds/work; CUA screenshots saved under builds/qa/cocos-photo-*.png. All candidate servers and tabs stopped. v3 download link overlaps blink QA button: use keyboard link activation; future generator moves link above controls."
   ]
 }
