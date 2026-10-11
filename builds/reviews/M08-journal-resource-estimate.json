@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "kind": "static current catalog closure estimate, not measured device memory",
+  "limits": {
+    "entries": 128,
+    "estimatedBytes": 268435456,
+    "homeColdBytes": 19000000
+  },
+  "journalOptionalResources": 7,
+  "cases": [
+    {
+      "resident": [
+        "Home",
+        "journal",
+        "music"
+      ],
+      "entriesBeforeTargets": 98,
+      "bytesBeforeTargets": 159143161,
+      "transientEntries": 2
+    },
+    {
+      "resident": [
+        "Home",
+        "cached Darkroom",
+        "journal",
+        "music"
+      ],
+      "entriesBeforeTargets": 125,
+      "bytesBeforeTargets": 200720187,
+      "transientEntries": 3,
+      "at720x1280RenderScale2": {
+        "entries": 128,
+        "estimatedBytesIncludingTargets": 259768123,
+        "fits": true
+      },
+      "at720x1690RenderScale2": {
+        "entries": 128,
+        "estimatedBytesIncludingTargets": 278660923,
+        "fits": false
+      }
+    }
+  ],
+  "targetFormula": "2 room targets * 720*scale * logicalHeight*scale *8 +65536 incense gradient",
+  "pending": "Evict or suspend optional visual resources while retaining product state; never increase limits or lower approved rendering quality to hide failure"
+}

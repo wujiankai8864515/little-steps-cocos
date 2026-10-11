@@ -84,16 +84,16 @@ export class TravelLoadingPanel {
         text.string = message; text.overflow = Label.Overflow.CLAMP; bounds.setContentSize(w, 54); text.updateRenderData(true);
         this.clip.getComponent(UITransform).setContentSize(w, 54); this.shownDots = -1;
     }
-    show() {
+    show(message='行装加载中...') {
         this.bindings.forEach(b => b.cancel()); this.age = 0; this.failed = false;
         this.root.active = true; this.root.setSiblingIndex(this.root.parent.children.length - 1);
         this.cancel.setPosition((this.width - (this.width - 72) / 2) / 2, -105); this.retry.active = false;
-        this.setCaption('行装加载中...', true); this.advance(0);
+        this.setCaption(message, true); this.advance(0);
     }
-    failure() {
+    failure(message='行装加载失败，再试一次？') {
         this.failed = true; this.root.active = true;
         this.cancel.setPosition(30, -105); this.retry.setPosition(this.width * .5 + 6, -105); this.retry.active = true;
-        this.setCaption('行装加载失败，再试一次？', false); this.advance(0);
+        this.setCaption(message, false); this.advance(0);
     }
     hide() { this.bindings.forEach(b => b.cancel()); this.root.active = false; }
     advance(delta: number) {

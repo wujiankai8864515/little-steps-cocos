@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "id": "M08.01",
+  "status": "actual_page_and_application_source_flow_verified_browser_pending",
+  "baseCommit": "1ca88fc95e58e872cf926b047e318cf13d03ff84",
+  "implemented": [
+    "Original diary reference art with source-defined dynamic polygon patches, non-offer scenery/NPC/traveler and prose",
+    "Agreement-first review choices, explicit submit, previous/next, readonly archived entry rendering and close/back",
+    "Original review underline/pen light cue geometry and choice glints",
+    "Real TravelService review transactions: exactly-once learning, failure retains choice for retry, stale entry callbacks rejected",
+    "Application entry, seven-resource on-demand subset, cancel/late result rejection, retry, Home cache return, music/clock continuation and route input ownership",
+    "Per-refresh input/frame/material lifetime release; no editor drag-and-drop setup"
+  ],
+  "validation": {
+    "regression": {
+      "pass": 183,
+      "fail": 0,
+      "log": "builds/reviews/M08-journal-regression-v2.log"
+    },
+    "targeted": [
+      "actual saved model review/archival/re-entry",
+      "failed commit and retry",
+      "actual page construction, original texture contract and scope disposal",
+      "actual Application open/return, cancelled/failed/retried resource completion"
+    ],
+    "typecheck": "builds/reviews/M08-journal-types-v3.log",
+    "creatorBuild": "pending after client crash mitigation",
+    "browser": "pending",
+    "strictVisualComparison": "pending",
+    "WeChat": "pending"
+  },
+  "failureAndFix": {
+    "log": "builds/reviews/M08-journal-resource-contract-failure.log",
+    "cause": "New journal page used GameAssets.art for a font; the real method accepts textures only. Initial render stubs were too permissive.",
+    "fix": "Font metrics now read from catalog; page and Application tests invoke the real GameAssets.art contract."
+  },
+  "openIssues": [
+    "Travel map/encounter and collection entry remain unbound; archive rendering exists but collection-to-archive navigation remains pending",
+    "Photo wall and wardrobe remain unimplemented",
+    "Native polygon antialiasing, mip filters, glyph shaping/baselines, hover/focus cues and all touch targets require strict runtime comparison",
+    "Viewport size is currently captured at Application/page construction; original has dynamic set_viewport_size. Previously observed clipping after resize is unresolved.",
+    "Home cold download remains over 19,000,000 bytes; full resource closure remains unverified/failing. High-DPI long screen cached Home+Darkroom+journal targets can exceed 256MiB."
+  ],
+  "continuation": [
+    "Run one serialized independent Chrome journal candidate after lightweight checks; do not use the Codex IAB Godot screenshot path",
+    "Port Travel scene/map and encounter interaction, then collection/archive navigation, photo wall and wardrobe",
+    "Implement dynamic viewport and render-target resource ownership without losing gameplay state",
+    "Audit full page-transition residency, fix budgets, build only WeChat for formal delivery and verify on actual devices"
+  ],
+  "sourceReference": [
+    {
+      "path": "../little-steps/games/travel_woodfish/project/travel/travel_page.gd",
+      "sha256": "2459e676c31fc6e92bc23b7e6d87f6de045f946d532fd09fdae87cd7c9d649f8"
+    },
+    {
+      "path": "../little-steps/games/travel_woodfish/project/travel/page_resource_sets.gd",
+      "sha256": "9b0776504e12339feae4761c292cc791686a04e350365847b1b794b34122c202"
+    },
+    {
+      "path": "../little-steps/games/travel_woodfish/project/travel/travel_art.gd",
+      "sha256": "9533d7b2680b500a71b31352276c10752f3c5af3a17d78f58aa861bbcf1de5d5"
+    }
+  ],
+  "sources": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "09909b127070f0976593bdff25417b029eebf0393f08f9f26a13a7350e62fb56"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+      "sha256": "507c731aac2889399e4859e38516dd2e261f1e896d1a5108a0e7307b65796036"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalSession.ts",
+      "sha256": "d55b9f4b1b1f6dd3098dc0cc22dcf74fc9b344683c7d0320fe2e0bf0d948e066"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelLoadingPanel.ts",
+      "sha256": "c2babafc7a4e3b5eb8bde21e0ee5bf43532d152621c47a3552249ac9d020a915"
+    }
+  ]
+}
