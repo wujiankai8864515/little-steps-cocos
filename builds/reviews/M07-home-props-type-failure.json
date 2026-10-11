@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "source_typecheck_fixed_runtime_pending",
+  "failures": [
+    {
+      "cause": "New nested vector arrays used Array.flat, absent from Creator target lib",
+      "fix": "Use concat; compiler target unchanged",
+      "log": "M07-home-props-types-before.log"
+    },
+    {
+      "cause": "Editing the rehang shadow update omitted a statement separator",
+      "fix": "Restore separator",
+      "log": "M07-home-props-types-separator-failure.log"
+    }
+  ],
+  "afterExit": 0,
+  "afterLog": "M07-home-props-types-after.log"
+}

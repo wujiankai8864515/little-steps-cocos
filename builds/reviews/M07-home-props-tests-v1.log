@@ -1,0 +1,19 @@
+✔ Actual reward view cannot grant unopened/early rewards; the complete return loop unlocks one next departure (16.477791ms)
+✔ Failed start remains clickable; failed arrival retries the same durable flight, never a new award (4.768625ms)
+✔ Destroying the view in midflight and reloading storage completes each reward once (5.21025ms)
+✔ Collecting the first reward retains every survivor index, arc and click target (5.792583ms)
+✔ Invalid time and pointer coordinates cannot poison active view state (3.422209ms)
+✔ Drag-out never reactivates on return; another touch cannot release the owned travel prop (0.096417ms)
+✔ Cancelling an actual diary entry invalidates its delayed navigation and restores the artwork transform (1.800208ms)
+✔ Original entry feedback reaches its exact duration and does not open rewards before it finishes (2.699208ms)
+✔ Return ownership is acquired during the final durable grant, before world sync can reveal the wall bag (6.278709ms)
+✔ Finishing or suspending a rehang restores the same rig and rejects late ownership updates (0.293709ms)
+✔ Native tent topology retains contact vertices and original UVs while elevated points project (0.271583ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 489.690125

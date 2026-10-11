@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "id": "M07.04",
+  "status": "home_travel_props_source_and_partial_browser_flow_verified_full_Travel_pending",
+  "baseCommit": "d911cab842d2c8ef4b8b2babce6df06cbba42765",
+  "originalCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "implemented": [
+    "Original tent paper/contact geometry, source UV and three alpha projections",
+    "Original atlas map/diary/returned bag, alpha-mask input, cancel-on-drag and exclusive entry animations",
+    "Pooled original sparkle and harvest visuals, real TravelService reward state and stable fan placement",
+    "Exactly-once reward flight completion with retry after save failure and reload recovery",
+    "Actual hanging backpack mesh follows original 1.55-second curve with synchronous ownership handoff",
+    "Home world-depth, lighting, foreground cancellation and entry bindings"
+  ],
+  "validation": {
+    "regression": {
+      "pass": 174,
+      "fail": 0,
+      "log": "builds/reviews/M07-home-props-regression-v1.log",
+      "scope": "12 added real service/interaction/mesh lifecycle tests; full framework/game suite"
+    },
+    "typecheck": {
+      "status": "passed",
+      "log": "builds/reviews/M07-home-props-types-v2.log"
+    },
+    "candidate": "builds/records/candidates/cocos-travel-home-v1.json",
+    "audit": "builds/reviews/M07-home-props-candidate-audit-v1.json",
+    "browser": "builds/reviews/M07-home-props-runtime-v1.json",
+    "strictVisualComparison": "pending",
+    "WeChat": "pending"
+  },
+  "openIssues": [
+    "Open diary artwork and actual journal page are missing",
+    "Travel map, encounter and collection page bindings are pending",
+    "Native polygon anti-aliasing/mip filtering and wayfinding font embolden need comparison",
+    "Full resource residency and Home cold-download budgets remain failing; do not relax",
+    "Production high-volume rig/merit diagnostics need gating",
+    "Day/night/lamp, all interruption paths and real WeChat device acceptance remain pending"
+  ],
+  "continuation": [
+    "Port latest travel_open_diary_art.gd and bind actual Travel pages",
+    "Gate expensive diagnostic snapshots in production while retaining opt-in QA evidence",
+    "Continue M08/M09/M10/M11 without reducing scope"
+  ],
+  "sources": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeProps.ts",
+      "sha256": "da67174ee922151efb31041daa7a5de0b1a6fba3c28485f5b54543db982d6f58"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeRules.ts",
+      "sha256": "6122ca97364247ac474b6cd39208462e12642d43f3665562dd0e7a30d29c9082"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelRewardMotion.ts",
+      "sha256": "b0cd756af6ba3d3fe47f0ddfb7556e8ce8391cef911864f8fb42d483d899744b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelAtlasSprite.ts",
+      "sha256": "4915d6506a201583c0293742ab9822e83b7b93312395db99da6897e0bcf9f1df"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/WayfindingHint.ts",
+      "sha256": "b74a12778935b3241dd2be21cb72394caa0fde46b423eb00d5012ed7102bc9f2"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "2b52e6d42d5d908435077fcc06690f50151d4ba7ac013c70d2ad1e15ee3fe038"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "05924c21f257c9d0f93a8c64896aeb07f426aa4c812443f715d838183bbda703"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "2eff743c82d519ad9f78a72cbe239e55f2483e60953672d12a4c9e5a0376a214"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "207ed5705db7b6ed8cc8fd1f73609cad83fd5828542e179c38590b0b18163961"
+    }
+  ]
+}

@@ -29,6 +29,8 @@ let roomSerial=0;
 
 export class HomePage {
     readonly root: Node;
+    readonly viewportOffset:number;
+    travelInteractions:{busy:boolean;down(id:number,at:number[]):boolean;move(id:number,at:number[]):boolean;up(id:number,at:number[]):void;cancelPointer():void}=null;
     readonly rig: XiaoyuRig;
     readonly lighting:HomeLighting;
     readonly shadows:HomeShadows;
@@ -67,6 +69,7 @@ export class HomePage {
         return page;
     }
     private constructor(parent: Node, private assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic,gradient:any) {
+        this.viewportOffset=(height-1280)/2;
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.root.active=false;
         scope.own(() => { this.root.active = false; this.root.destroy(); });
@@ -149,8 +152,8 @@ export class HomePage {
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         const bagReport=(event:string)=>console.info('[LittleSteps] bag input '+JSON.stringify({event,...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));
         const propReport=(event:string)=>console.info('[LittleSteps] prop input '+JSON.stringify({event,...this.props.snapshot(),visual:this.propVisuals.snapshot(),note:this.note.snapshot()}));
-        let owner='';this.hud.worldOwnsInput=()=>this.travelLoading||!!this.departure||this.note.ownsInput||owner!=='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.departure||this.travelLoading)return false;const p=point(at);if(this.note.down(id,p)){owner='note';return true;}if(this.fish.state==='SETTLING'||this.bag.state==='SETTLING'||this.props.state==='SETTLING')return false;if(this.incense.down(id,p)){owner='incense';console.info('[LittleSteps] incense input down');return true;}if(!this.travelAway&&!this.travelFull&&this.bag.down(id,p)){owner='bag';bagReport('down');return true;}if(this.props.down(id,p)){owner='prop';propReport('down');return true;}const accepted=!this.travelAway&&this.fish.down(id,p);if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{const p=point(at);if(owner==='incense')this.incense.move(id,p);else if(owner==='bag')this.bag.move(id,p);else if(owner==='prop')this.props.move(id,p);else if(owner==='note')this.note.move(id,p);else if(owner==='fish')this.fish.move(id,p);},up:(at:number[],id:number)=>{const p=point(at);if(owner==='incense'){this.incense.up(id,p);console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else if(owner==='bag'){this.bag.up(id,p);bagReport('up');}else if(owner==='prop'){this.props.up(id,p);propReport('up');}else if(owner==='note')this.note.up(id,p);else if(owner==='fish'){this.fish.up(id,p);report('up');}owner='';},cancel:()=>{if(owner==='incense')this.incense.cancel();else if(owner==='bag')this.bag.cancel(false);else if(owner==='prop')this.props.cancel('pointer_cancelled',false);else if(owner==='note')this.note.cancelPointer();else if(owner==='fish')this.fish.cancel(false);owner='';}},()=>this.active&&!this.hud.blocked);
-        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.departure||this.travelLoading||this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
+        let owner='';this.hud.worldOwnsInput=()=>this.travelLoading||!!this.departure||!!this.travelInteractions?.busy||this.note.ownsInput||owner!=='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.departure||this.travelLoading)return false;const p=point(at);if(this.note.down(id,p)){owner='note';return true;}if(this.travelInteractions?.down(id,p)){owner='travel';return true;}if(this.fish.state==='SETTLING'||this.bag.state==='SETTLING'||this.props.state==='SETTLING')return false;if(this.incense.down(id,p)){owner='incense';console.info('[LittleSteps] incense input down');return true;}if(!this.travelAway&&!this.travelFull&&this.bag.down(id,p)){owner='bag';bagReport('down');return true;}if(this.props.down(id,p)){owner='prop';propReport('down');return true;}const accepted=!this.travelAway&&this.fish.down(id,p);if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{const p=point(at);if(owner==='travel')this.travelInteractions?.move(id,p);else if(owner==='incense')this.incense.move(id,p);else if(owner==='bag')this.bag.move(id,p);else if(owner==='prop')this.props.move(id,p);else if(owner==='note')this.note.move(id,p);else if(owner==='fish')this.fish.move(id,p);},up:(at:number[],id:number)=>{const p=point(at);if(owner==='travel')this.travelInteractions?.up(id,p);else if(owner==='incense'){this.incense.up(id,p);console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else if(owner==='bag'){this.bag.up(id,p);bagReport('up');}else if(owner==='prop'){this.props.up(id,p);propReport('up');}else if(owner==='note')this.note.up(id,p);else if(owner==='fish'){this.fish.up(id,p);report('up');}owner='';},cancel:()=>{if(owner==='travel')this.travelInteractions?.cancelPointer();else if(owner==='incense')this.incense.cancel();else if(owner==='bag')this.bag.cancel(false);else if(owner==='prop')this.props.cancel('pointer_cancelled',false);else if(owner==='note')this.note.cancelPointer();else if(owner==='fish')this.fish.cancel(false);owner='';}},()=>this.active&&!this.hud.blocked);
+        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.departure||this.travelLoading||this.travelInteractions?.busy||this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
         this.hud.onOpen=()=>{this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
         this.rig.onContact=()=>{if(!this.active||this.travelAway)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);this.onMeritChanged(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
@@ -194,7 +197,7 @@ export class HomePage {
     }
     restoreReturnedActor(){this.travelAway=false;this.finishDeparture();this.fish.ground=[350,951];this.rig.root.setPosition(15,-615);this.rig.root.active=true;const opacity=this.rig.root.getComponent(UIOpacity);if(opacity)opacity.opacity=255;this.actorProjectionAlpha=1;this.backpack.projectionAlpha=1;this.backpack.setDepartureAlpha(1);this.backpack.proxy.active=true;this.rig.resume();}
     get acceptsTravelInput(){return this.active&&!this.hud.blocked;}
-    get acceptsTravelNotice(){return this.acceptsTravelInput&&!this.travelLoading&&!this.departure&&!this.note.visible&&this.fish.state==='IDLE'&&this.bag.state==='IDLE'&&this.props.state==='IDLE'&&!this.props.drinking;}
+    get acceptsTravelNotice(){return this.acceptsTravelInput&&!this.travelLoading&&!this.departure&&!this.travelInteractions?.busy&&!this.note.visible&&this.fish.state==='IDLE'&&this.bag.state==='IDLE'&&this.props.state==='IDLE'&&!this.props.drinking;}
     setTravelLoading(loading:boolean){
         this.travelLoading=loading;
         if(loading){this.pointerBinding.cancel();this.props.cancel('departure_loading',true);this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();this.note.dismiss();this.knock.stop();this.rig.suspend();}
@@ -211,7 +214,7 @@ export class HomePage {
         this.travelAway=away;
         if(!this.departure){
             this.rig.root.active=!away;this.actorProjectionAlpha=away?0:1;
-            this.backpack.proxy.active=!away&&!full;this.backpack.projectionAlpha=away||full?0:1;
+            if(!this.backpack.travelRehanging)this.backpack.proxy.active=!away&&!full;this.backpack.projectionAlpha=away||full?0:1;
             if(away){this.rig.suspend();this.knock.stop();}
         }
     }
@@ -220,6 +223,8 @@ export class HomePage {
     showRouteError(){this.note.routeError();}
     clearRouteWaiting(){this.note.dismiss();this.incense.dismiss();}
     setInput(enabled:boolean){this.active=enabled;this.hud.setActive(enabled);if(!enabled){this.pointerBinding.cancel();this.knock.stop();}}
+    addWorldLayer(node:Node,z:number){this.roomLayers.push({node,z,order:3000+this.roomLayers.length});this.sortRoomLayers();}
+    syncWorldLayers(){if(this.backpack.layerRevision!==this.backpackLayerRevision||this.propVisuals.layerRevision!==this.propLayerRevision)this.sortRoomLayers();}
     private sortRoomLayers(){this.roomLayers.filter(layer=>layer.node.parent===this.roomRoot).sort((a,b)=>a.z-b.z||a.order-b.order).forEach((layer,index)=>layer.node.setSiblingIndex(index));this.backpackLayerRevision=this.backpack.layerRevision;this.propLayerRevision=this.propVisuals.layerRevision;}
     pause() {this.finishDeparture();this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
     advance(delta: number) {
@@ -231,7 +236,7 @@ export class HomePage {
         if(this.departure){this.advanceDeparture(this.departureAge+Math.max(0,delta));if(this.departureAge>=DEPARTURE_FINISH_AT)this.finishDeparture();}
         this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);this.note.advance(delta);
         this.lighting.update();if(this.presentedActor==='fish')this.rig.setLightingOrigin(this.dragCarrier);else if(this.props.state==='DRAGGING'||this.props.state==='SETTLING')this.lighting.syncPresentation(this.dragCarrier);this.backpack.syncLightingOrigin();this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();
-        if(this.backpack.layerRevision!==this.backpackLayerRevision||this.propVisuals.layerRevision!==this.propLayerRevision)this.sortRoomLayers();
+        this.syncWorldLayers();
         if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         if(bagBefore!==this.bag.state)console.info('[LittleSteps] bag transition '+JSON.stringify({...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));
         if(propBefore!==this.props.state||drinkBefore!==this.props.drinking)console.info('[LittleSteps] prop transition '+JSON.stringify({...this.props.snapshot(),visual:this.propVisuals.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot(),note:this.note.snapshot()}));

@@ -16,6 +16,7 @@ type Part={pose:BackpackPart;node:Node;sprite:any;joints:Node[];layer:Layer;shad
 type ApprovedPart={key:string;node:Node;sprite:any;passes:Array<{node:Node;sprite:any;material:Material}>};
 export class HomeBackpack {
     readonly geometry:BackpackGeometry;readonly layers:Layer[];readonly approved=new ApprovedBackpackGeometry();readonly wear:BackpackWear;
+    travelRehanging=false;
     layerRevision=0;depth=-10;projectionAlpha=1;
     private rendered:Part[]=[];private wornParts:ApprovedPart[]=[];private reported=false;private tailRest:boolean;private alpha=1;private floorPasses=0;
     private presentation:Node=null;private members:Array<{node:Node;index:number}>=[];private settleStart:{scale:number[];angle:number};
@@ -84,7 +85,22 @@ export class HomeBackpack {
         const active=!this.presentation&&this.approved.blend>.0001&&this.proxy.activeInHierarchy&&this.rig.root.activeInHierarchy&&this.rig.liftHeight<=.5&&this.rig.root.parent===this.room,opacity=this.approved.blend*Math.min(this.alpha,this.opacity(this.rig.root),this.projectionAlpha);if(active||this.approved.floorRebuilds===0)this.approved.project(this.bodyFrame(),directions,active?ground:951);this.floorPasses=0;
         this.wornParts.forEach(r=>r.passes.forEach((pass,i)=>{const strength=i?state.lampEnergy*.5:naturalEnergy*.72;pass.node.active=active&&strength>.001&&opacity>.0001;if(pass.node.active)this.floorPasses++;pass.sprite.geometryChanged();pass.material.setProperty('roomOrigin',new Vec4(origin.x,origin.y,scale.x,scale.y));pass.material.setProperty('castState',new Vec4(naturalDir[0],naturalDir[1],0,0));pass.material.setProperty('shadowState',new Vec4(cot,strength,i?1:penumbra,.72));pass.material.setProperty('shadowFlags',new Vec4(1,i?0:1,i?1:0,opacity));}));
     }
-    hit(world:number[]){if(!world.every(Number.isFinite)||!this.proxy.activeInHierarchy)return false;const room=(this.presentation||this.room).getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1])),covered=!this.presentation&&this.geometry.mode==='worn'&&this.rig.coversBackpack(world,10);if(this.approved.hit([room.x,-room.y],(x,y)=>this.assets.bitmapContains(APPROVED_MASK,x,y),covered))return true;for(const r of this.rendered){if(!r.node.activeInHierarchy||!this.presentation&&this.geometry.mode==='worn'&&this.rig.coversBackpack(world,r.layer.z))continue;const p=r.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1])),uv=backpackSample(r.pose.mesh.vertices,r.pose.mesh.source,r.pose.mesh.indices,[p.x,-p.y],true);if(uv&&this.assets.bitmapContains(MASK,Math.floor(uv[0]),Math.floor(uv[1])))return true;}return false;}
+    hit(world:number[]){if(this.travelRehanging)return false;if(!world.every(Number.isFinite)||!this.proxy.activeInHierarchy)return false;const room=(this.presentation||this.room).getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1])),covered=!this.presentation&&this.geometry.mode==='worn'&&this.rig.coversBackpack(world,10);if(this.approved.hit([room.x,-room.y],(x,y)=>this.assets.bitmapContains(APPROVED_MASK,x,y),covered))return true;for(const r of this.rendered){if(!r.node.activeInHierarchy||!this.presentation&&this.geometry.mode==='worn'&&this.rig.coversBackpack(world,r.layer.z))continue;const p=r.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(world[0],world[1])),uv=backpackSample(r.pose.mesh.vertices,r.pose.mesh.source,r.pose.mesh.indices,[p.x,-p.y],true);if(uv&&this.assets.bitmapContains(MASK,Math.floor(uv[0]),Math.floor(uv[1])))return true;}return false;}
+    beginTravelRehang(source:number[]){
+        this.restore(true);this.restoreWall();this.proxy.active=true;this.advance(0);
+        const end=core.Math2D.multiply(core.Math2D.inverse(this.affine(this.room)),this.affine(this.proxy)),anchor=this.geometry.hangingAnchor();
+        const points:number[][]=[];
+        for(const part of this.geometry.parts.values())if(part.visible)for(let i=0;i<part.mesh.vertices.length;i+=2){const p=part.transform([part.mesh.vertices[i],part.mesh.vertices[i+1]]);points.push(core.Math2D.transform(end,p[0],p[1]));}
+        const x=Math.min(...points.map(p=>p[0])),y=Math.min(...points.map(p=>p[1])),w=Math.max(...points.map(p=>p[0]))-x,h=Math.max(...points.map(p=>p[1]))-y;
+        const center=core.Math2D.transform(core.Math2D.inverse(end),x+w/2,y+h/2),factor=Math.min(source[2]/Math.max(w,1),source[3]/Math.max(h,1)),start=end.slice();
+        for(let i=0;i<4;i++)start[i]*=factor;start[4]=source[0]+source[2]/2-start[0]*center[0]-start[2]*center[1];start[5]=source[1]+source[3]/2-start[1]*center[0]-start[3]*center[1];
+        this.travelRehanging=true;this.depth=221;this.applyTravelRehang(start,0);
+        return {startTransform:start,endTransform:end,anchorLocal:anchor,start:core.Math2D.transform(start,...anchor),end:core.Math2D.transform(end,...anchor)};
+    }
+    applyTravelRehang(frame:number[],alpha:number){
+        if(!this.travelRehanging)return;this.proxy.setPosition(frame[4],-frame[5]);this.proxy.setScale(Math.hypot(frame[0],frame[1]),Math.hypot(frame[2],frame[3]),1);this.proxy.angle=-Math.atan2(frame[1],frame[0])*180/Math.PI;this.proxy.active=true;this.alpha=Math.max(0,Math.min(1,alpha));this.advance(0);this.updateShadows();
+    }
+    finishTravelRehang(){if(!this.travelRehanging)return;this.travelRehanging=false;this.alpha=1;this.proxy.active=true;this.restoreWall();}
     reset(){this.geometry.reset(this.roomPoint(this.proxy,[0,0]),this.depth);this.advance(0);this.updateShadows();}
     snapshot(){return {...this.geometry.snapshot(),proxy:this.roomPoint(this.proxy,[0,0]),wear:this.wear.snapshot(),approved:this.approved.snapshot(),tailVisible:this.rig.backpackNodes().tail.active,presentation:this.presentation?'front-canvas':'room',presentedMeshes:this.members.length,visualBounds:this.visualBounds(),shader:'home-part',mipmapLevels:this.assets.texture(APPROVED_BAG).mipmapLevel,shadowPasses:this.rendered.length*2,wornProjection:{meshes:5,passNodes:10,visiblePasses:this.floorPasses,floor:this.approved.floor,rebuilds:this.approved.floorRebuilds},limits:'Original hanging/worn rig and bag drag adapter; other props, departure/travel and device acceptance pending'};}
 }

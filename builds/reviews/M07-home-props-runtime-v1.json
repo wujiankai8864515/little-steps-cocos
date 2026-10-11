@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "candidate": "cocos-travel-home-v1",
+  "status": "partial_actual_Chrome_input_and_render_observed",
+  "browser": "Independent Google Chrome, native CUA input; no Codex in-app browser screenshot",
+  "fixture": {
+    "storage": "isolated memory",
+    "wallTime": "QA controlled 1000 then +100 seconds",
+    "lighting": "frozen noon",
+    "logicalSize": [
+      720,
+      1280
+    ],
+    "CSSViewport": [
+      360,
+      640
+    ],
+    "overlay": "visible QA panel; not release UI"
+  },
+  "observed": [
+    {
+      "step": "departure",
+      "input": "declared QA button invoking real Home callback and DepartureFlow",
+      "result": "traveling, idle departure flow, tent visible; actor and hanging bag absent"
+    },
+    {
+      "step": "return",
+      "input": "declared QA wall-time advance and real bridge.resume",
+      "result": "returned, unclaimed, closed ground bag and pending journal visible"
+    },
+    {
+      "step": "open bag",
+      "input": "canvas click at screenshot [811,1391]",
+      "result": "opened=true, inventory=0, four original reward art sprites in fan; original harvest cloud visible"
+    },
+    {
+      "step": "drag out",
+      "input": "reward 0 drag [674,1303] to [610,1200] then release",
+      "result": "inventory remains 0, all four rewards remain"
+    },
+    {
+      "step": "collect first three",
+      "input": "canvas clicks [674,1303], [754,1220], [870,1218]",
+      "result": "inventory=3, reward index 3 remains at original position; no fan recentering"
+    },
+    {
+      "step": "collect last",
+      "input": "canvas click [950,1303]",
+      "result": "claimed=true, inventory=4, no floating rewards; rehang age .15 observed then null; ground bag absent and actual mesh bag on wall"
+    },
+    {
+      "step": "journal entry",
+      "input": "canvas click [1020,1513]",
+      "result": "book opens with blank leaves; console pending Travel page binding journal; artwork and page remain incomplete"
+    }
+  ],
+  "console": {
+    "errorBadgeBefore": 2,
+    "errorBadgeAfter": 2,
+    "newGameExceptionObserved": false,
+    "limitation": "Not a complete console audit; two pre-existing extension analytics connection errors observed earlier"
+  },
+  "limits": [
+    "Not a side-by-side Godot comparison or final visual pass",
+    "No proof of native touch, WeChat device performance or durable disk storage from this memory fixture",
+    "Day/night/lamp matrix, resumed animation and all page interactions remain pending",
+    "QA state overlay exceeds narrow viewport; this is a test helper issue",
+    "Always-on rig/merit diagnostics observed repeatedly; reduce production logging in a separate change"
+  ],
+  "screenshots": [
+    {
+      "path": "builds/reviews/M07-home-props-away-chrome-v1.png",
+      "sha256": "4ee95ba4a23538793a3cc3146abf40d54fd36da15f51910691f4684c448a17c1"
+    },
+    {
+      "path": "builds/reviews/M07-home-props-open-chrome-v1.png",
+      "sha256": "8430d009b90941b305f1e6fc2342fe7c445e277c0aded7050b4fa74090fc4a80"
+    },
+    {
+      "path": "builds/reviews/M07-home-props-claimed-chrome-v1.png",
+      "sha256": "691934037631850713844c74bcbfd7c06e490c4d172b03193b3319ee193f2c1e"
+    }
+  ]
+}
