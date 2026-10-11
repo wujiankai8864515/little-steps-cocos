@@ -62,4 +62,15 @@ function mergeDrawingMeshes(meshes){
     if(b.vertices.length/2>65535)throw new Error('Drawing mesh exceeds 16-bit indices');
     return {vertices:new Float32Array(b.vertices),source:new Float32Array(b.source),vertexData:new Float32Array(b.vertexData),indices:new Uint16Array(b.indices)};
 }
-Object.assign(api,{featherLine,featherPolyline,mergeDrawingMeshes});
+// Godot 4.5.2 renderer_canvas_cull.cpp canvas_item_add_circle (MIT).
+// Filled non-antialiased 64-segment fan; the repeated last point and centre
+// match the native command, with feathering left to the caller when needed.
+function filledCircle(at,radius){
+    if(at.length!==2||!at.every(Number.isFinite)||!Number.isFinite(radius)||radius<0)throw new Error('Invalid filled circle');
+    const vertices=new Float32Array(66*2),vertexData=new Float32Array(66*3),indices=new Uint16Array(64*3);
+    for(let i=0;i<65;i++){const a=Math.fround(i*Math.fround(Math.PI*2/64));vertices[i*2]=at[0]+Math.cos(a)*radius;vertices[i*2+1]=at[1]+Math.sin(a)*radius;vertexData[i*3]=1;}
+    vertices[130]=at[0];vertices[131]=at[1];vertexData[195]=1;
+    for(let i=0;i<64;i++)indices.set([65,i,i+1],i*3);
+    return {vertices,source:new Float32Array(vertices.length),vertexData,indices};
+}
+Object.assign(api,{featherLine,featherPolyline,mergeDrawingMeshes,filledCircle});

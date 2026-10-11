@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "id": "M07.07",
+  "status": "production_scene_renderer_and_three_GPU_checkpoints_verified_with_residual_differences_full_map_page_pending",
+  "baseCommit": "2cfb73e4acebc71bff0c8f0c8ab473d3a140ddec",
+  "previousGoalTurnClassification": "progress: hidden Darkroom hibernation committed and remote bytes/modes verified",
+  "changes": [
+    "Add production TravelSceneView with original plate/atlas, route ink, footprint stamps, six boards, eighteen leaves, clouds, branch/bell springs and shared atmosphere",
+    "Reuse original shader functions and full float tint/alpha; three shared materials; route geometry retained in ten 3456-vertex batches within Creator default capacity",
+    "Reserve 12 MiB geometry explicitly; planned optional Map closure including full audio reservation remains within unchanged 128 entries / 256 MiB after hidden Darkroom hibernation",
+    "Correct CanvasItem scale_basis order for actor shadow, footprint press and halos using explicit T*S*R hierarchy/geometry",
+    "Add source-frozen scene QA, native Godot reference capture and PNG comparison without Codex in-app Godot screenshots"
+  ],
+  "source": {
+    "GodotCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "nativeVersion": "4.5.2-stable (official)",
+    "creatorVersion": "3.8.8",
+    "reference": "unmodified travel_scene_runtime.gd and configuration plus original assets; existing footprint import settings preserved from reference v2 onward",
+    "shippingBootChanged": false,
+    "userSceneChanged": false
+  },
+  "validation": {
+    "fullRegression": {
+      "tests": 217,
+      "failed": 0,
+      "log": "builds/reviews/M07-travel-view-regression-v2.log"
+    },
+    "latestRendererRegression": {
+      "tests": 7,
+      "failed": 0,
+      "log": "builds/reviews/M07-travel-view-targeted-v3.log"
+    },
+    "latestBudgetRegression": {
+      "tests": 8,
+      "failed": 0,
+      "log": "builds/reviews/M07-travel-view-budget-v3.log"
+    },
+    "types": {
+      "source": "builds/reviews/M07-travel-view-types-v3.log",
+      "QA": "builds/reviews/M07-travel-view-QA-types-v4.log",
+      "exit": 0,
+      "scope": "tsc --noEmit --skipLibCheck; engine declarations excluded, game checked"
+    },
+    "frozenAudits": [
+      "builds/reviews/M07-travel-view-v1-frozen-audit.json",
+      "builds/reviews/M07-travel-view-v2-frozen-audit.json",
+      "builds/reviews/M07-travel-view-v3-frozen-audit.json",
+      "builds/reviews/M07-travel-view-v4-frozen-audit.json"
+    ],
+    "nativeMatrices": "builds/reviews/M07-travel-scene-native-v2.json",
+    "browser": "independent Chrome via supported CUA; graph sessions/build/native captures serial; all owned QA tabs closed and viewport reset",
+    "browserWarningsOrErrors": 0,
+    "browserLogFiles": [
+      "builds/reviews/M07-travel-view-noon-browser-v3.json",
+      "builds/reviews/M07-travel-view-night-browser-v3.json",
+      "builds/reviews/M07-travel-view-press-browser-v4.json"
+    ],
+    "pixelCheckpoints": [
+      {
+        "hour": 12,
+        "age": 12,
+        "progress": 0.35,
+        "fromProgress": 0.35,
+        "comparison": "builds/qa/travel-scene-noon-after-v3.json",
+        "metrics": {
+          "rect": [
+            0,
+            0,
+            720,
+            1280
+          ],
+          "meanAbsoluteRGB": 0.22607855902777776,
+          "rootMeanSquareRGB": 0.6316572531180709,
+          "p95ChannelDifference": 1.0,
+          "maxChannelDifference": 38,
+          "pixelsAnyChannelOver16": 168,
+          "pixels": 921600
+        }
+      },
+      {
+        "hour": 22,
+        "age": 12,
+        "progress": 0.35,
+        "fromProgress": 0.35,
+        "comparison": "builds/qa/travel-scene-night-after-v3.json",
+        "metrics": {
+          "rect": [
+            0,
+            0,
+            720,
+            1280
+          ],
+          "meanAbsoluteRGB": 0.2121824363425926,
+          "rootMeanSquareRGB": 0.5734940272623208,
+          "p95ChannelDifference": 1.0,
+          "maxChannelDifference": 23,
+          "pixelsAnyChannelOver16": 68,
+          "pixels": 921600
+        }
+      },
+      {
+        "hour": 12,
+        "age": 0.43,
+        "progress": 0.1,
+        "fromProgress": 0,
+        "comparison": "builds/qa/travel-scene-press-v4.json",
+        "metrics": {
+          "rect": [
+            0,
+            0,
+            720,
+            1280
+          ],
+          "meanAbsoluteRGB": 0.2271462673611111,
+          "rootMeanSquareRGB": 0.6397162140283305,
+          "p95ChannelDifference": 1.0,
+          "maxChannelDifference": 44,
+          "pixelsAnyChannelOver16": 200,
+          "pixels": 921600
+        }
+      }
+    ],
+    "pressSnapshot": {
+      "age": 0.43,
+      "scale": [
+        1.13,
+        0.85
+      ],
+      "highlight": 0.995328,
+      "previousRoute": 0,
+      "currentRoute": 0.1
+    },
+    "resize": {
+      "physicalSize": [
+        720,
+        1690
+      ],
+      "sceneRect": [
+        0,
+        205,
+        720,
+        1280
+      ],
+      "croppedRGBMeanDifference": 3.2552083333333335e-06,
+      "paperPixel": [
+        236,
+        217,
+        179
+      ],
+      "status": "QA resize observed; full production map resize pending"
+    }
+  },
+  "budget": {
+    "standaloneObserved": {
+      "entries": 6,
+      "reservedBytes": 24151980,
+      "pending": 0
+    },
+    "modeledHomeAndOptionalMap": {
+      "entries": 118,
+      "reservedBytes": 206784968,
+      "hiddenDarkroomDataBytes": 471363,
+      "cycles": 6
+    },
+    "limits": {
+      "entries": 128,
+      "bytes": 268435456,
+      "batch": 80,
+      "homeFirstDownload": 19000000
+    },
+    "boundary": "ResourceGate estimates, not browser/GPU/process/device memory. Full Map entry remains unconnected; Home first-download remains unresolved."
+  },
+  "pending": [
+    "Connect actual TravelMapPage to Application with optional resource preparation/cancel/retry/first draw",
+    "Add original station text/traveler/glints/encounter bubble/choices/result ticket and audio",
+    "Complete same-state visual matrix including moving animation and all controls",
+    "Investigate residual boundary pixels: noon max38/168 pixels over16, night max23/68 pixels, press max44/200 pixels. No exact-pixel acceptance claimed.",
+    "Collection/photo/wardrobe full production behavior and visuals",
+    "Home cold download budget and true WeChat device/backend/performance validation",
+    "Formal WeChat package from remote-verified frozen source"
+  ],
+  "nextRequiredActions": [
+    "Continue TravelMapPage using original travel_page.gd and shared speech_bubble.gd/shape; preserve TravelEncounterSession durable ownership",
+    "Use M09 hibernation before Map admission and include TRAVEL_SCENE_BUFFER_BYTES; never bypass budgets",
+    "Rerun full page and original baseline comparisons; isolated scene evidence does not accept missing UI/input/audio"
+  ],
+  "remoteReadback": "pending for this item; append ordinary commit and fetch a fresh verification ref before reporting backup"
+}

@@ -23,6 +23,7 @@ export const core: any = {
     clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
     bitMapContains: (...args:any[]) => installed().bitMapContains(...args),
     featherLine: (...args:any[]) => installed().featherLine(...args),
+    filledCircle: (...args:any[]) => installed().filledCircle(...args),
     featherPolyline: (...args:any[]) => installed().featherPolyline(...args),
     mergeDrawingMeshes: (...args:any[]) => installed().mergeDrawingMeshes(...args),
     paperBubbleContour: (...args:any[]) => installed().paperBubbleContour(...args),

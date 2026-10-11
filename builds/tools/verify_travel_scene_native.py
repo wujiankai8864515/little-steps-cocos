@@ -41,6 +41,14 @@ func run()->void:
     var clock:=Clock.new()
     var scene=Runtime.new();root.add_child(scene);scene.configure(Config.DATA,clock,null);scene.set_process(false)
     var result:Dictionary={"engine":Engine.get_version_info().string,"config":packed(Config.DATA),"route":[],"motion":[],"light":[],"footprints":[],"flow":[],"pcm":[]}
+    result.drawingMatrices=[]
+    # draw_set_transform constructs a rotation then scale_basis (world axes).
+    for values:Array in [[0.1640449,1.0,0.30],[1.91,1.12,0.82],[-2.20,1.0,0.66]]:
+        var transform:=Transform2D(float(values[0]),Vector2.ZERO).scaled(Vector2(values[1],values[2]))
+        transform.origin=Vector2(71,22)
+        var points:Array=[]
+        for point:Vector2 in [Vector2(23,0),Vector2(0,23),Vector2(-13,-17.5),Vector2(13,17.5)]:points.append(packed(transform*point))
+        result.drawingMatrices.append({"angle":values[0],"scale":[values[1],values[2]],"at":[71,22],"source":[[23,0],[0,23],[-13,-17.5],[13,17.5]],"points":points})
     for i:int in range(201):result.route.append({"fraction":float(i)/200.0,"at":packed(Config.route_position(float(i)/200.0))})
     for seconds:float in [0.0,1.0,3.5,4.0,8.6,12.0,30.0,60.0,120.0]:
         step_to(scene,seconds);result.motion.append(snap(scene))

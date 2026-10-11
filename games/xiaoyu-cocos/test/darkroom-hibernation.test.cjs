@@ -82,9 +82,10 @@ test('Interrupted data pinning preserves the old visual cache and does not orpha
 test('Repeated optional-page eviction and restoration stays within original limits and releases every lease at application shutdown',async()=>{
  const f=await fixture(),map=['travel_brush.ttf','travel_paper_v1.png','travel_map_plate_v5.png','travel_offer_person_v5.png','travel_people_v5.png','travel_scene_layers_v1.png','travel_footprint_ink_v1.png','travel_map_actor_v5.png'].map(n=>'res://travel/assets/'+n);
  // Resolve the pinned source names from the catalog; these are the map page's
- // original resources, plus the planned atmospheric effect and two PCM clips.
+ // original resources, atmospheric effect, native 600000-byte sound reservation
+ // and the production scene renderer's separately reserved geometry buffers.
  const resolved=map.map(k=>{if(catalog.assets[k])return k;throw Error('Map source missing '+k);});
- const prepared=await f.app.prepareDarkroom();const before=plain(f.assets.snapshot());const estimate=resolved.map(key=>({key,bytes:catalog.assets[key].decodedBytes})).concat([{key:'effect:travel-atmosphere',bytes:524288},{key:'travel:chime',bytes:123480},{key:'travel:bell',bytes:34398}]);
+ const prepared=await f.app.prepareDarkroom();const before=plain(f.assets.snapshot());const estimate=resolved.map(key=>({key,bytes:catalog.assets[key].decodedBytes})).concat([{key:'effect:travel-atmosphere',bytes:524288},{key:'travel:bell',bytes:123480},{key:'travel:chime',bytes:34398},{key:'travel:playback',bytes:600000-123480-34398},{key:'travel:geometry',bytes:load('TravelSceneView').TRAVEL_SCENE_BUFFER_BYTES}]);
  await assert.rejects(f.assets.gate.acquire(estimate,s=>({key:s.key}),()=>{},new core.Lifetime(f.scope)),/budget/);
  let asleep,mapPeak;
  for(let round=0;round<6;round++){const request=new core.Lifetime(f.scope);await f.app.hibernateDarkroom(request);asleep=plain(f.assets.snapshot());await f.assets.gate.acquire(estimate,s=>({key:s.key}),()=>{},request);mapPeak=plain(f.assets.snapshot());assert.ok(mapPeak.entries<=128);assert.ok(mapPeak.reservedBytes<=268435456);request.dispose();await f.app.prepareDarkroom();assert.deepEqual(plain(f.assets.snapshot()),before);}

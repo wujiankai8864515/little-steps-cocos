@@ -1,0 +1,194 @@
+// Original Travel formulas transferred by builds/tools/import_travel_atmosphere.py.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: room-vs:vert
+      frag: room-fs:frag
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      rasterizerState:
+        cullMode: none
+      properties:
+        sceneOrigin: { value: [0, 0, 1, 1] }
+        castState: { value: [0, 1, 1, 1] }
+        lightState: { value: [1, 0.91, 0.72, 1] }
+        renderMode: { value: [0, 10, 1, 0] }
+        sceneTint: { value: [1, 1, 1, 1] }
+        portal0: { value: [0, 0, 0, 0] }
+        portal1: { value: [0, 0, 0, 0] }
+        portal2: { value: [0, 0, 0, 0] }
+        portal3: { value: [0, 0, 0, 0] }
+        width0: { value: [0, 0, 0, 0] }
+        width1: { value: [0, 0, 0, 0] }
+        width2: { value: [0, 0, 0, 0] }
+        width3: { value: [0, 0, 0, 0] }
+        exclusion0: { value: [0, 0, 0, 0] }
+        exclusion1: { value: [0, 0, 0, 0] }
+        exclusion2: { value: [0, 0, 0, 0] }
+        exclusion3: { value: [0, 0, 0, 0] }
+        exclusion4: { value: [0, 0, 0, 0] }
+        exclusion5: { value: [0, 0, 0, 0] }
+        exclusion6: { value: [0, 0, 0, 0] }
+        exclusion7: { value: [0, 0, 0, 0] }
+        exclusion8: { value: [0, 0, 0, 0] }
+        exclusion9: { value: [0, 0, 0, 0] }
+        exclusion10: { value: [0, 0, 0, 0] }
+        exclusion11: { value: [0, 0, 0, 0] }
+        exclusion12: { value: [0, 0, 0, 0] }
+        exclusion13: { value: [0, 0, 0, 0] }
+        exclusion14: { value: [0, 0, 0, 0] }
+        exclusion15: { value: [0, 0, 0, 0] }
+}%
+
+CCProgram room-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  out vec2 canvasPosition;
+  vec4 vert() {
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord; color=a_color; canvasPosition=pos.xy;
+    return cc_matViewProj*pos;
+  }
+}%
+
+CCProgram room-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  in vec2 canvasPosition;
+uniform TravelField {
+vec4 sceneOrigin;
+vec4 castState;
+vec4 lightState;
+vec4 renderMode;
+vec4 sceneTint;
+vec4 portal0;
+vec4 portal1;
+vec4 portal2;
+vec4 portal3;
+vec4 width0;
+vec4 width1;
+vec4 width2;
+vec4 width3;
+vec4 exclusion0;
+vec4 exclusion1;
+vec4 exclusion2;
+vec4 exclusion3;
+vec4 exclusion4;
+vec4 exclusion5;
+vec4 exclusion6;
+vec4 exclusion7;
+vec4 exclusion8;
+vec4 exclusion9;
+vec4 exclusion10;
+vec4 exclusion11;
+vec4 exclusion12;
+vec4 exclusion13;
+vec4 exclusion14;
+vec4 exclusion15;
+};
+#define volume_pass (renderMode.x>1.5)
+#define beams_enabled (renderMode.z>0.5)
+#define exclusion_count int(renderMode.y)
+#define cast_axis castState.xy
+#define daylight castState.z
+#define energy castState.w
+#define surface_energy lightState.w
+#define light_color lightState.rgb
+
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+
+vec4 portalAt(int i){if(i==0)return portal0;if(i==1)return portal1;if(i==2)return portal2;return portal3;}
+vec4 widthAt(int i){if(i==0)return width0;if(i==1)return width1;if(i==2)return width2;return width3;}
+vec4 exclusionAt(int i){if(i==0)return exclusion0;if(i==1)return exclusion1;if(i==2)return exclusion2;if(i==3)return exclusion3;if(i==4)return exclusion4;if(i==5)return exclusion5;if(i==6)return exclusion6;if(i==7)return exclusion7;if(i==8)return exclusion8;if(i==9)return exclusion9;if(i==10)return exclusion10;if(i==11)return exclusion11;if(i==12)return exclusion12;if(i==13)return exclusion13;if(i==14)return exclusion14;return exclusion15;}
+float soft_ray(vec2 ray,vec2 axis,float width,float spread,float reach) {
+    float along=dot(ray,axis);
+    float across=ray.x*axis.y-ray.y*axis.x;
+    float radius=width+max(along,0.0)*spread;
+    float q=across/max(radius,1.0);
+    return exp(-q*q)*smoothstep(-40.0,110.0,along)*exp(-length(ray)/reach);
+}
+float soft_fan(vec2 p,vec2 source,vec2 axis) {
+    vec2 ray=p-source;
+    vec2 side=vec2(-axis.y,axis.x);
+    float a=soft_ray(ray,normalize(axis-side*0.32),17.0,0.044,2100.0);
+    float b=soft_ray(ray,axis,22.0,0.055,2200.0);
+    float c=soft_ray(ray,normalize(axis+side*0.34),16.0,0.044,1900.0);
+    return min(1.0,a*0.76+b+c*0.65);
+}
+float air_grain(vec2 p) {
+    // Stationary subpixel air texture: no new bitmap, temporal flicker or scan.
+    return 0.965+0.035*fract(sin(dot(floor(p*0.8),vec2(12.9898,78.233)))*43758.5453);
+}
+float scene_field(vec2 p) {
+    float result=0.0;
+    for(int i=0;i<4;i++) {
+        vec2 source=portalAt(i).xy;
+        vec2 ray=p-source;
+        float along=dot(ray,cast_axis);
+        float depth=clamp(along/portalAt(i).z,0.0,1.0);
+        float spread=(widthAt(i).y-widthAt(i).x)/portalAt(i).z;
+        float beam=soft_ray(ray,cast_axis,widthAt(i).x*0.70,spread*0.70,1800.0);
+        // A long, continuous fan becomes visible through the shaded canopy.
+        beam*=smoothstep(0.0,0.12,depth)*(1.0-smoothstep(0.70,1.0,depth));
+        result+=beam*portalAt(i).w;
+    }
+    return min(result,1.0);
+}
+float content_mask(vec2 p) {
+    float mask=1.0;
+    for(int i=0;i<16;i++) {
+        if(i>=exclusion_count){break;}
+        vec4 r=exclusionAt(i);
+        vec2 outside=max(max(r.xy-p,p-r.xy-r.zw),vec2(0.0));
+        float feather=i<4?(volume_pass?12.0:72.0):9.0;
+        mask*=smoothstep(0.0,feather,length(outside));
+    }
+    return mask;
+}
+vec4 frag(){
+    vec2 scene_point=vec2((canvasPosition.x-sceneOrigin.x)/sceneOrigin.z,(sceneOrigin.y-canvasPosition.y)/sceneOrigin.w);
+    vec4 result=renderMode.x>0.5?vec4(uv0,color.r,color.g*color.a):CCSampleWithAlphaSeparated(cc_spriteTexture,uv0);
+    if(renderMode.x<0.5){
+        vec3 tint=mix(vec3(1.0),sceneTint.rgb,color.g);
+        tint=mix(tint,vec3(1.0),color.b);
+        result.rgb*=tint;
+        result.a*=color.r*color.a;
+    }
+
+    float mask=content_mask(scene_point);
+    float beam=beams_enabled?scene_field(scene_point):0.0;
+    if(volume_pass){
+        result=vec4(light_color,min(0.32,beam*energy*0.52)*mask*air_grain(scene_point));
+    }else{
+        // Surface response shares exactly the atmospheric field. Excluded
+        // plaques and conversation art retain their original contrast.
+        vec3 shade=vec3(mix(0.83,0.67,daylight));
+        vec3 lit=shade+light_color*beam*mix(0.30,0.63,daylight)*surface_energy;
+        result.rgb*=mix(vec3(1.0),lit,mask);
+    }
+    if(volume_pass)result.a*=color.a;
+    return result;
+}
+}%

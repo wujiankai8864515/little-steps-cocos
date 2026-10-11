@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "id": "M07.07",
+  "scope": "Travel scene renderer and evidence collection",
+  "items": [
+    {
+      "trigger": "720x1280 PNG difference local actor-shadow ROI",
+      "confirmedRootCause": "Godot CanvasItem.draw_set_transform applies scale_basis after rotation (T*S*R); Cocos node transform used T*R*S",
+      "fix": "Axis-scale parent and rotated child for footprint image; transformed halo/circle geometry uses T*S*R",
+      "verification": "Native drawingMatrices regression plus before/after GPU captures",
+      "before": {
+        "rect": [
+          310,
+          388,
+          385,
+          426
+        ],
+        "meanAbsoluteRGB": 1.3267836257309942,
+        "rootMeanSquareRGB": 4.669848539312272,
+        "p95ChannelDifference": 6.0,
+        "maxChannelDifference": 34,
+        "pixelsAnyChannelOver16": 100,
+        "pixels": 2850
+      },
+      "after": {
+        "rect": [
+          310,
+          388,
+          385,
+          426
+        ],
+        "meanAbsoluteRGB": 0.5387134502923977,
+        "rootMeanSquareRGB": 1.4059189831332752,
+        "p95ChannelDifference": 2.0,
+        "maxChannelDifference": 16,
+        "pixelsAnyChannelOver16": 0,
+        "pixels": 2850
+      },
+      "status": "corrected; other residual edge differences remain"
+    },
+    {
+      "trigger": "Resize standalone QA from wide initial window to portrait",
+      "confirmedRootCause": "QA Boot layout measured only at start",
+      "fix": "Update root/paper/canvas layout when UITransform dimensions change",
+      "verification": {
+        "physicalSize": [
+          720,
+          1690
+        ],
+        "sceneRect": [
+          0,
+          205,
+          720,
+          1280
+        ],
+        "croppedRGBMeanDifference": 3.2552083333333335e-06,
+        "paperPixel": [
+          236,
+          217,
+          179
+        ],
+        "status": "QA resize observed; full production map resize pending"
+      },
+      "status": "QA corrected; does not substitute production page verification"
+    },
+    {
+      "trigger": "PNG capture at age .15 with initial route .35",
+      "confirmedRootCause": "Original seed_route treats existing stations as already stamped; age alone does not trigger a new footprint",
+      "fix": "Add explicit fromProgress and seed then advance; actual pressure captured at age .43, route0 to .1",
+      "evidence": "builds/reviews/M07-travel-view-press-browser-v4.json",
+      "retainedEarlierRecord": "godot-travel-scene-landing-v1 is an early-age static existing-route reference ONLY, despite its name. No landing proof from that fixture.",
+      "status": "corrected evidence coverage"
+    },
+    {
+      "trigger": "Native first reference default texture importer for footprint",
+      "confirmedRootCause": "Original footprint .import uses fix_alpha_border=false; copied PNG alone would use default import settings",
+      "fix": "Preserve original .import when present; noon-v2 supersedes noon-v1 reference",
+      "status": "corrected fixture"
+    },
+    {
+      "trigger": "Supported browser blob download helper and download-event wait",
+      "evidence": "downloadMedia rejected blob URL; subsequent page click wrote the PNG into Downloads but event wait timed out and reset tool runtime",
+      "fix": "Use visible download link click and verify resulting file; no automation injection or browser reset",
+      "status": "artifact recovered; no Codex crash causality claimed"
+    }
+  ],
+  "buildNotes": "Creator exit36 and final build-complete markers confirmed. Debug SIGTERM of a script worker and trackTimeEnd diagnostics remain in logs; actual browser captures had no collected warnings/errors.",
+  "visualAcceptance": "pending complete matrix and residual difference review"
+}

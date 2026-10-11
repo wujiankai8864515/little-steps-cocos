@@ -1,0 +1,15 @@
+✔ Actual layered scene uses source atlas UVs, source draw order, bounded mesh batches and three shared materials (21.487291ms)
+✔ Actual Cocos node and atlas transforms follow nine native Godot checkpoints through 120 seconds (60.050458ms)
+✔ Incremental route recoloring matches full redraw across forward jumps and rewinds without rebuilding vertices (165.403959ms)
+✔ Footprint images keep native rotation, drop, scale, warm contact and un-tinted ink; all dynamic alpha avoids Color byte quantization (15.666708ms)
+✔ Shared field receives the current scene transform and all fourteen native day/night light states (15.582667ms)
+✔ Godot filled circle primitive uses 64 native fan triangles and rejects invalid input (0.325459ms)
+✔ Drawing transforms match native scale_basis order for actor shadows, footprint press and halo (19.616625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 597.911792

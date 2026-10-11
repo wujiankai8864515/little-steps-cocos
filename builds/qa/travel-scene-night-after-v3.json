@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "native": {
+    "path": "builds/qa/godot-travel-scene-night-v1.png",
+    "sha256": "50e15aa339df5e1eec4071aea76e34681346f6ed041ed548a5c9b372ff2dbdac"
+  },
+  "cocos": {
+    "path": "builds/qa/cocos-travel-night-v3.png",
+    "sha256": "290afd104699f1a1f12cee348d2530ac552edb601e63bdee2037b7a696f754c9"
+  },
+  "board": {
+    "path": "builds/qa/travel-scene-night-after-v3.png",
+    "sha256": "e764d26622ef8133092949dc16605fb478a102aefa2bd398ad91b4c0a77cae7c"
+  },
+  "method": "RGB difference of unmodified 720x1280 PNGs; no alignment, scaling, recoloring or excluded pixels. Heatmap is amplified 6x for display only.",
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        720,
+        1280
+      ],
+      "meanAbsoluteRGB": 0.2121824363425926,
+      "rootMeanSquareRGB": 0.5734940272623208,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 23,
+      "pixelsAnyChannelOver16": 68,
+      "pixels": 921600
+    },
+    "header": {
+      "rect": [
+        160,
+        30,
+        565,
+        145
+      ],
+      "meanAbsoluteRGB": 0.11219896224727142,
+      "rootMeanSquareRGB": 0.33560151544568445,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 5,
+      "pixelsAnyChannelOver16": 0,
+      "pixels": 46575
+    },
+    "landscape": {
+      "rect": [
+        0,
+        140,
+        720,
+        740
+      ],
+      "meanAbsoluteRGB": 0.24711805555555555,
+      "rootMeanSquareRGB": 0.6907797749868363,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 21,
+      "pixelsAnyChannelOver16": 67,
+      "pixels": 432000
+    },
+    "actorShadow": {
+      "rect": [
+        310,
+        388,
+        385,
+        426
+      ],
+      "meanAbsoluteRGB": 0.47391812865497074,
+      "rootMeanSquareRGB": 0.9414434605825696,
+      "p95ChannelDifference": 2.0,
+      "maxChannelDifference": 9,
+      "pixelsAnyChannelOver16": 0,
+      "pixels": 2850
+    },
+    "bell": {
+      "rect": [
+        64,
+        740,
+        134,
+        880
+      ],
+      "meanAbsoluteRGB": 0.3103401360544218,
+      "rootMeanSquareRGB": 0.7712962849538908,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 14,
+      "pixelsAnyChannelOver16": 0,
+      "pixels": 9800
+    },
+    "characterArt": {
+      "rect": [
+        200,
+        950,
+        445,
+        1110
+      ],
+      "meanAbsoluteRGB": 0.2659013605442177,
+      "rootMeanSquareRGB": 0.5796139930612277,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 23,
+      "pixelsAnyChannelOver16": 1,
+      "pixels": 39200
+    }
+  },
+  "status": "measured_scene_checkpoint_not_complete_visual_acceptance",
+  "pending": [
+    "remaining time/progress/size/animation matrix",
+    "full map UI/input/audio/save flows",
+    "WeChat device and user acceptance"
+  ]
+}

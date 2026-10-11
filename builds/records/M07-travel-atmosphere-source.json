@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "path": "travel/travel_atmosphere.gd",
+      "sha256": "dabb59a2d4f33a73a13b60528bf87c59d2082fb0b56128f430db4b5f3920e398"
+    },
+    {
+      "path": "shared_room_lighting/soft_atmosphere.gd",
+      "sha256": "f92ca5136064d800521c56cc7d0a0b4d93031acfe757dcad839bd4c7561937a8"
+    }
+  ],
+  "output": {
+    "path": "games/xiaoyu-cocos/assets/resources/effects/travel-atmosphere.effect",
+    "sha256": "f5b09e070380ec78c1b9ab458ce7f485dcb4dec772e46986b8503d222e825415"
+  },
+  "adaptations": [
+    "Original soft atmosphere functions, scene field and exclusion masks retained verbatim except uniform access",
+    "Four portals and sixteen exclusion slots use named vec4 properties for Creator uniform compatibility",
+    "Scene coordinates reconstruct Godot down-positive coordinates from Cocos world positions",
+    "One effect supports textured receiver, unquantized colored geometry and atmospheric volume; parent UI opacity is retained"
+  ],
+  "validation": "shader source transferred; Creator compile and pixels require separate evidence"
+}
