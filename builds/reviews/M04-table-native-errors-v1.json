@@ -1,0 +1,44 @@
+[
+  {
+    "level": "error",
+    "message": "ERROR: Node not found: \"Altar\" (relative to \"/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld\").",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "   at: get_node (scene/main/node.cpp:1908)",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "ERROR: The object does not have any 'meta' values with the key 'interaction_ground_y'.",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "   at: get_meta (core/object/object.cpp:1091)",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "ERROR: The object does not have any 'meta' values with the key 'interaction_lift_height'.",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "   at: get_meta (core/object/object.cpp:1091)",
+    "timestamp": "2026-10-11T02:12:50.539Z",
+    "url": "http://127.0.0.1:8862/host/preboot.js?host_revision=df385c65c755fe3351453e184f20883659799547c4260b12da63702f78c18d21"
+  },
+  {
+    "level": "error",
+    "message": "RuntimeError: memory access out of bounds\n    at wasm://wasm/09123d9a:wasm-function[59239]:0x1c905a9\n    at wasm://wasm/09123d9a:wasm-function[5660]:0x4137ae\n    at wasm://wasm/09123d9a:wasm-function[5511]:0x3fb95d\n    at wasm://wasm/09123d9a:wasm-function[66230]:0x1e5fd56\n    at wasm://wasm/09123d9a:wasm-function[59100]:0x1c79065\n    at wasm://wasm/09123d9a:wasm-function[66185]:0x1e5a2ed\n    at wasm://wasm/09123d9a:wasm-function[19565]:0xe8391e\n    at wasm://wasm/09123d9a:wasm-function[768]:0x9d0a2\n    at callUserCallback (http://127.0.0.1:8862/index.js?host_revision=continuous-loading-v7:7:81141)\n    at Object.runIter (http://127.0.0.1:8862/index.js?host_revision=continuous-loading-v7:7:87973)",
+    "timestamp": "2026-10-11T02:12:50.541Z",
+    "url": "http://127.0.0.1:8862/index.js?host_revision=continuous-loading-v7"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "kind": "table",
+  "inputKind": "fixed-step",
+  "reference": {
+    "path": "builds/reviews/table-held-godot-v2.jpg",
+    "sha256": "9c1065178be33b031560dff7a7f07f3fb75826324146ef5dbaa5e726cc7ce36e"
+  },
+  "cocos": {
+    "path": "builds/reviews/table-held-cocos-v1.jpg",
+    "sha256": "29e45be78daaa1ca3981d3e5b228782454a2266759eb61ab45ce782bfe19c53c"
+  },
+  "comparison": {
+    "path": "builds/reviews/table-held-comparison-v2.png",
+    "sha256": "29f86d05fe358d3e90abe2460af107421d3764dde855ad16cba90e8481df7d13",
+    "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 2.4979309556470053,
+      "RMSRGB": 9.698596304958839,
+      "maximumChannelDifference": 162
+    },
+    "tableAttachmentsAndFloor": {
+      "rect": [
+        0,
+        270,
+        405,
+        700
+      ],
+      "meanAbsoluteRGB": 3.3258685041630778,
+      "RMSRGB": 12.115934189844685,
+      "maximumChannelDifference": 162
+    }
+  },
+  "status": "measured_full_parity_pending",
+  "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+}

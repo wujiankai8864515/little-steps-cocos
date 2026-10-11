@@ -1,0 +1,460 @@
+{
+  "schema": 1,
+  "id": "M04.15",
+  "status": "partial_props_drink_and_projection_browser_verified_full_parity_pending",
+  "sourceCommitBeforeItem": "2229ad54d4334a20d847fb4cacf014bab173b632",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "changes": [
+    {
+      "path": "builds/tools/compare_prop_checkpoint.py",
+      "sha256": "cc576f3afdc1992300ca8e71f170bb6398290b27599cc8ecf707721a3fee410d"
+    },
+    {
+      "path": "builds/tools/create_drag_gaze_checkpoint.py",
+      "sha256": "3b002a2cb2401d025bb6ae79dfe65ac9a9e2ea3cfc679e5948b2685e23ba794d"
+    },
+    {
+      "path": "builds/tools/create_drink_checkpoint.py",
+      "sha256": "3057e4fd27fb919d5afbecd791e957dafaac8cda86d8ea32016231de5bf9feef"
+    },
+    {
+      "path": "builds/tools/create_table_checkpoint.py",
+      "sha256": "6d6864c577494e3b24e116c5349d1c45dedefe0cedfc5cc13522556a2f3431c1"
+    },
+    {
+      "path": "builds/tools/instrument_backpack_input.py",
+      "sha256": "35125bdafc1cf964d0b3241055c6991edc0dfe219d61169fb9938c6db9663409"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts",
+      "sha256": "644d02e4ab360a150984dce70c145dba565368b4a1e923468931bbbe4a5dd4ae"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts.meta",
+      "sha256": "6de3e3104c0ab36a4bb84bff0a038f866e63ff77b4b1a183b3972fcd93a81ad7"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMotion.ts",
+      "sha256": "83d0ced4c1882f7876040673e9a6700778e2135009cb0162bf115624d1772b50"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMotion.ts.meta",
+      "sha256": "83cbb7949e076c50db693ae88403600594b776c878c23f07684eb0596c69d1b9"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+      "sha256": "21aa5c9ef5115c17699933f4ad122d597678cf63b6ad7fa0bb5db1b3f049793b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+      "sha256": "65c5f32176b9f2d5638ffffbe0512f06cec22a9dfefc253f9f05722104e32ab3"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "91cfaa028830f076486a2b2dcf9969540296b637b47dafd883c50ae87fadc52d"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "92ba3a9a992d26de8bb73c612e78f5bcf9e9e0c68e7fb5061340106c63fcf0b2"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePropInteraction.ts",
+      "sha256": "4f260424e192602807c555341e6e1ad0b71518cc207a6e0f17d88207f7f911ca"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePropInteraction.ts.meta",
+      "sha256": "1e3d3165091fe58e7dd4a0bae5f9bb87143858af7b518f24f4d973ef12eef4c5"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeProps.ts",
+      "sha256": "d7a976eebc219babc323c243214267edd00dd1bb197d0537d23accb2c7483af0"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeProps.ts.meta",
+      "sha256": "adeac36def036ba3bc53baa72cbe679c1fd11e7e12017eba8e460d00aa69a098"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeShadows.ts",
+      "sha256": "b90e413c2d2144be84abd5bd0b3705a97991c5180471bcae9b0b1d7a6042e979"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "sha256": "a38d49be46131ee7c40246551e0f5a0887c432e2547e28bfacd29aae98b4048a"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/home-prop-input.test.cjs",
+      "sha256": "a210c00c3ba2fea242373e0a89a28b2a0f0e7984b9b44839b450288573ff2e04"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "home/home_world.gd",
+      "sha256": "b84be9db5e2507a3efaa6d147b0dfe1a2132e850c36d4f566289f6484f965859"
+    },
+    {
+      "path": "home/interaction/home_interaction_controller.gd",
+      "sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd"
+    },
+    {
+      "path": "home/action_marks.gd",
+      "sha256": "732441172deb491cd57597099a1053705483772fd8e071f4979a8c37d414ff1d"
+    },
+    {
+      "path": "home/behavior/character_geometry.gd",
+      "sha256": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896"
+    },
+    {
+      "path": "home/home_page.gd",
+      "sha256": "0cc5d4167b2860010ad8e13bd58d936aaea916b2cd51a74bd2de369bb63c3254"
+    },
+    {
+      "path": "home/home_world.tscn",
+      "sha256": "1ebd5056ef7f68614d5b20738f09cccf7712c898e7b6af859dda5f2458581e17"
+    }
+  ],
+  "implemented": [
+    "Doll/bowl/table real alpha and depth, single captured pointer,9px drag/.34s hold/.36s settle,12px actual geometry safe margin",
+    "Fixed-home ownership revisions and drink target generation/content tokens; logical bowl home separate from visual sip pickup",
+    "Actual existing table and seven attachments reparent to front canvas; shared lighting origins and rigid shadow ground/lift remain canonical",
+    "Original2.8s drink bones, secondary springs, jelly, closed-eye windows, mouth and water gaze; actual254/83back rim contact",
+    "Original drink mark glyph and face-safe placement/lifetime; other mark kinds remain pending",
+    "Doll confirmation and rejection restoration; prefetch and actual darkroom routing remain pending",
+    "Only fish dragging changes its shadow frame; other held props retain original actor grounding frame"
+  ],
+  "verification": {
+    "tests": {
+      "pass": 106,
+      "fail": 0,
+      "log": "builds/reviews/M04-props-drink-tests-v3.log"
+    },
+    "productionTypes": "builds/reviews/M04-props-production-types-v2.log",
+    "officialCreatorCandidates": [
+      "cocos-drink-noon-v1",
+      "cocos-props-pointer-noon-v1",
+      "cocos-table-held-noon-v1",
+      "cocos-props-pointer-noon-v2",
+      "cocos-table-held-noon-v2",
+      "cocos-props-pointer-noon-v3"
+    ],
+    "creatorExitCodes": [
+      36,
+      36,
+      36,
+      36,
+      36,
+      36
+    ],
+    "buildFinished": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "frozenSourceAudit": "Each540files;0runtime mismatches;1allowed plugin meta files field change",
+    "drinkFrames": 60,
+    "drinkContact": {
+      "frames": 60,
+      "maxAbsoluteDifference": {
+        "age": 0.0,
+        "rotation": 7.3461430827315155e-09,
+        "mouth": 7.541643094555184e-05,
+        "rim": 7.97661238038927e-05,
+        "rimGap": 7.971647417548411e-05,
+        "bowlPosition": 7.505365283577703e-05
+      },
+      "sipMaximumCocosGap": 1.2710574864626038e-13,
+      "sipMaximumGodotGap": 3.0517578125e-05,
+      "allPhaseEqual": true
+    },
+    "drinkPixels": {
+      "schema": 1,
+      "kind": "drink",
+      "inputKind": "fixed-step",
+      "reference": {
+        "path": "builds/reviews/drink-noon-godot-v1.jpg",
+        "sha256": "becd1de9079c320de4dd16b3b6f4ba82e0abcfe2f1fb095ba5109b732b635917"
+      },
+      "cocos": {
+        "path": "builds/reviews/drink-noon-cocos-v1.jpg",
+        "sha256": "a992534c1f8fde82eeeec59862db5216c36e63ec1719392912031a8226375196"
+      },
+      "comparison": {
+        "path": "builds/reviews/drink-noon-prop-comparison-v1.png",
+        "sha256": "3288d3d89f9feb537fe9c50fb98904305c13aa333bdf10f77ccb71037db3f579",
+        "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+      },
+      "regions": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 1.1373273891175126,
+          "RMSRGB": 3.148029190357267,
+          "maximumChannelDifference": 138
+        },
+        "actorAndBowl": {
+          "rect": [
+            65,
+            382,
+            330,
+            535
+          ],
+          "meanAbsoluteRGB": 1.0230772392814569,
+          "RMSRGB": 1.7954116189573142,
+          "maximumChannelDifference": 27
+        },
+        "mouthAndRim": {
+          "rect": [
+            190,
+            442,
+            252,
+            475
+          ],
+          "meanAbsoluteRGB": 1.5089605734767026,
+          "RMSRGB": 2.341875449733282,
+          "maximumChannelDifference": 12
+        },
+        "eyes": {
+          "rect": [
+            153,
+            430,
+            268,
+            468
+          ],
+          "meanAbsoluteRGB": 1.1376811594202898,
+          "RMSRGB": 1.9126469287070693,
+          "maximumChannelDifference": 12
+        }
+      },
+      "status": "measured_full_parity_pending",
+      "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+    },
+    "tablePixels": {
+      "schema": 1,
+      "kind": "table",
+      "inputKind": "fixed-step",
+      "reference": {
+        "path": "builds/reviews/table-held-godot-v2.jpg",
+        "sha256": "9c1065178be33b031560dff7a7f07f3fb75826324146ef5dbaa5e726cc7ce36e"
+      },
+      "cocos": {
+        "path": "builds/reviews/table-held-cocos-v2.jpg",
+        "sha256": "c9388a2c466abe06ed44f5cf0ddbaf2e1ab66dd2895e0b1e2358de21033c443d"
+      },
+      "comparison": {
+        "path": "builds/reviews/table-held-comparison-v3.png",
+        "sha256": "b26f2eff3910a56a154a13cd1f1324ca5b0085f294e7fcb0e443e9db738e7ee0",
+        "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+      },
+      "regions": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 1.2980864197530864,
+          "RMSRGB": 3.5880832716697295,
+          "maximumChannelDifference": 150
+        },
+        "tableAttachmentsAndFloor": {
+          "rect": [
+            0,
+            270,
+            405,
+            700
+          ],
+          "meanAbsoluteRGB": 1.3151670016269499,
+          "RMSRGB": 3.4239529975726053,
+          "maximumChannelDifference": 106
+        }
+      },
+      "status": "measured_full_parity_pending",
+      "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+    },
+    "dollPixels": {
+      "schema": 1,
+      "kind": "doll-offer",
+      "inputKind": "real-pointer",
+      "reference": {
+        "path": "builds/reviews/doll-offer-godot-v1.jpg",
+        "sha256": "42344e0e37e60ec278586133925aebb14defd85d7203bbeb12f67357fed75fec"
+      },
+      "cocos": {
+        "path": "builds/reviews/doll-offer-cocos-v1.jpg",
+        "sha256": "12d87bd94d0edbd0d4808b4ff2aa6a9906e543143d9007450831208d82d22ac2"
+      },
+      "comparison": {
+        "path": "builds/reviews/doll-offer-comparison-v1.png",
+        "sha256": "b89c912bacbdc3566fad894d80ef84fa206e30e4ebf5c48777693321ec80049b",
+        "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+      },
+      "regions": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            405,
+            720
+          ],
+          "meanAbsoluteRGB": 1.3663477366255143,
+          "RMSRGB": 4.135652377238247,
+          "maximumChannelDifference": 141
+        },
+        "confirmation": {
+          "rect": [
+            100,
+            278,
+            295,
+            380
+          ],
+          "meanAbsoluteRGB": 4.312569130216189,
+          "RMSRGB": 10.36518248212783,
+          "maximumChannelDifference": 98
+        },
+        "doll": {
+          "rect": [
+            340,
+            413,
+            405,
+            487
+          ],
+          "meanAbsoluteRGB": 1.0575190575190574,
+          "RMSRGB": 1.6828499570194728,
+          "maximumChannelDifference": 9
+        }
+      },
+      "status": "measured_full_parity_pending",
+      "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+    },
+    "tableGeometry": {
+      "nativePosition": [
+        226.0,
+        652.0
+      ],
+      "cocosPosition": [
+        225.99999999999997,
+        652
+      ],
+      "nativeGround": 1219.056640625,
+      "cocosGround": 1219.056640625,
+      "nativeLift": 325.0,
+      "cocosLift": 325,
+      "depth": 180,
+      "nativeBounds": [
+        239.412109375,
+        644.3137817382812,
+        300.17578125,
+        249.74285888671875
+      ],
+      "cocosBounds": [
+        239.41210989999996,
+        644.0026900783649,
+        300.17579299999994,
+        250.05396165663512
+      ]
+    },
+    "finalRealInput": {
+      "scope": "Final Cocos real pointer candidatev3; Godot real pointerv1 and fixed steps measured separately",
+      "final": {
+        "state": "IDLE",
+        "capturedPointer": null,
+        "selectedId": "",
+        "offeredId": "",
+        "dropEvaluations": 3,
+        "drinkCount": 1,
+        "context": null,
+        "lastContextStop": "player_press"
+      },
+      "logicalBowlAtHomeDuringVisualSip": true,
+      "decisions": [
+        {
+          "kind": "darkroom",
+          "accepted": false
+        },
+        {
+          "kind": "travel",
+          "accepted": false
+        }
+      ],
+      "browserErrors": 0,
+      "limits": "Pointer frame times differ; no complete route/all-size/WeChat acceptance"
+    }
+  },
+  "failuresRetained": [
+    {
+      "trigger": "Test used strict-0comparison for original negative-zero rotation",
+      "evidence": "M04-props-drink-tests-v1.log",
+      "repair": "Test zero magnitude; original math unchanged",
+      "result": "106pass0fail"
+    },
+    {
+      "trigger": "Comparison CLI used unsupported --godot/--out flags",
+      "evidence": "drink-noon-comparison-v1.json",
+      "repair": "Documented flags and prop-specific comparator; previous backpack comparison labels superseded"
+    },
+    {
+      "trigger": "Creator imported production plugin meta files field, making old audit reject expected candidate metadata",
+      "evidence": [
+        "M04-drink-candidate-audit-v1.json",
+        "M04-props-pointer-candidate-audit-v1.json",
+        "M04-table-candidate-audit-v1.json"
+      ],
+      "repair": "Restore only agent-observed metadata files[]fromHEAD; rerun with original source metadata",
+      "result": "540files,1metadatachange,0payload drift"
+    },
+    {
+      "trigger": "Native QA queried old World/Altar after real table reparent",
+      "evidence": [
+        "M04-table-native-errors-v1.json",
+        "table-held-godot-v1.jpg"
+      ],
+      "repair": "Use original controller registered node; new immutable v2",
+      "result": "Actual table rendering and0browsererrors"
+    },
+    {
+      "trigger": "Non-fish drag used shared carrier frame for fish ground shadows",
+      "evidence": "table-held-comparison-v2.json",
+      "repair": "Select front frame only for fish",
+      "result": "WholemeanRGB2.49793 to1.29809 in fresh v2Cocos"
+    },
+    {
+      "trigger": "Creator CLI GUI recovery sometimes reported truncated editor layout/window JSON despite build Finished/exit36",
+      "evidence": [
+        "M04-props-pointer-noon-v1-build.log",
+        "M04-props-pointer-noon-v2-build.log"
+      ],
+      "result": "Runtime payload and actual browser checked; GUI recovery not accepted by build success"
+    },
+    {
+      "trigger": "Immediate clicks after modal No were absorbed during closing, so first final-input assertion lacked player_press",
+      "evidence": "M04-props-cocos-pointer-v3-public.json",
+      "repair": "Wait through real modal lifecycle using observed Home, repeat actual bowl/fish/doll inputs",
+      "result": "M04-props-cocos-pointer-v3-public-final.json records player_press, drinkCount stays1"
+    }
+  ],
+  "pending": [
+    "Complete1:1pixel/product acceptance remains pending; captured merit ropes, font/raster and confirmation divider still differ",
+    "Table flower bounds top differs~.3111sourcepixel; current phase/import/geometry precision requires audit",
+    "Drink matrices and springs have small Godotfloat32 versus Cocosdouble differences; measured contacts are not exact equality",
+    "Concurrent drink/bag/doll modal ambient ownership combinations require original-controller consolidation/review",
+    "Doll prefetch and actual darkroom/travel/departure/arrival/photos/album and all other product branches remain pending",
+    "Other action marks, day/night/size matrices, background/cancel/retry/latecallback and full resource readiness pending",
+    "Home cold debug uncompressed36,841,329bytes still above19,000,000gate; resource/formal-package optimization pending",
+    "Native real-pointer bowl-to-fish offered drink not exercised this item; source and Cocos verified only",
+    "WeChat real device performance, formal three responsibilities package and user acceptance remain pending"
+  ],
+  "framework": {
+    "unchangedSHA256": "d984c2b2771843bb25337aecbb77bef59c87a599b69daf1d9b123295703d6e1a",
+    "fileMode": "0444",
+    "directoryMode": "0555",
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js"
+  },
+  "backup": "Ordinary append push and remote readback performed after this record; no formal release assertion"
+}

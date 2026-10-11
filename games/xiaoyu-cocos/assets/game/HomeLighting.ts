@@ -6,7 +6,7 @@ import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
 export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line','home-part'];
-type Receiver={material:Material;kind:string;surface:number};
+type Receiver={material:Material;kind:string;surface:number;node?:Node};
 export class HomeLighting {
     private receivers:Receiver[]=[];
     private dust:Graphics;
@@ -27,7 +27,7 @@ export class HomeLighting {
             material.setProperty('bodyState',new Vec4(0,eye,0,0));
             material.setProperty('faceOffset',new Vec4(offset[0],offset[1],0,0));
         }
-        sprite.customMaterial=material;const bound=sprite instanceof Graphics?sprite.getMaterialInstance(0):material;this.receivers.push({material:bound,kind,surface});
+        sprite.customMaterial=material;const bound=sprite instanceof Graphics?sprite.getMaterialInstance(0):material;this.receivers.push({material:bound,kind,surface,node:sprite.node});
         return bound;
     }
     shafts() {
@@ -67,5 +67,6 @@ export class HomeLighting {
             }
         }
     }
+    syncPresentation(frame:Node){const p=frame.worldPosition,s=frame.worldScale;for(const receiver of this.receivers){let node=receiver.node;while(node&&node!==frame)node=node.parent;if(node===frame)receiver.material.setProperty('roomOrigin',new Vec4(p.x,p.y,s.x,s.y));}}
     snapshot() {return {hour:this.clock.hour(),receivers:this.receivers.length,state:homeLighting(this.clock.hour(),this.clock.lampWeight()),resources:this.assets.snapshot(),limits:'grounded shadows, plants, prop/face variants and original GPU acceptance pending'};}
 }

@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "kind": "drink",
+  "inputKind": "fixed-step",
+  "reference": {
+    "path": "builds/reviews/drink-noon-godot-v1.jpg",
+    "sha256": "becd1de9079c320de4dd16b3b6f4ba82e0abcfe2f1fb095ba5109b732b635917"
+  },
+  "cocos": {
+    "path": "builds/reviews/drink-noon-cocos-v1.jpg",
+    "sha256": "a992534c1f8fde82eeeec59862db5216c36e63ec1719392912031a8226375196"
+  },
+  "comparison": {
+    "path": "builds/reviews/drink-noon-prop-comparison-v1.png",
+    "sha256": "3288d3d89f9feb537fe9c50fb98904305c13aa333bdf10f77ccb71037db3f579",
+    "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.1373273891175126,
+      "RMSRGB": 3.148029190357267,
+      "maximumChannelDifference": 138
+    },
+    "actorAndBowl": {
+      "rect": [
+        65,
+        382,
+        330,
+        535
+      ],
+      "meanAbsoluteRGB": 1.0230772392814569,
+      "RMSRGB": 1.7954116189573142,
+      "maximumChannelDifference": 27
+    },
+    "mouthAndRim": {
+      "rect": [
+        190,
+        442,
+        252,
+        475
+      ],
+      "meanAbsoluteRGB": 1.5089605734767026,
+      "RMSRGB": 2.341875449733282,
+      "maximumChannelDifference": 12
+    },
+    "eyes": {
+      "rect": [
+        153,
+        430,
+        268,
+        468
+      ],
+      "meanAbsoluteRGB": 1.1376811594202898,
+      "RMSRGB": 1.9126469287070693,
+      "maximumChannelDifference": 12
+    }
+  },
+  "status": "measured_full_parity_pending",
+  "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+}

@@ -16,13 +16,14 @@ export class HomeFlowers {
     private stems=new Map<number,RenderStem>();private vase:ReturnType<typeof picture>;private leafMaterial:Material=null;private mark:Graphics;
     private daylight=true;private sun=[-480,-46];private dayProgress=0;private sleepTime=0;private markAge=-1;private markOwner=-1;private markScale=.82;private markSerial=0;
     private frameBounds=new Map<number,number[]>();
+    private presentationFrame:Node=null;
     constructor(private room:Node,private table:Node,private assets:GameAssets,private scope:Scope,private lighting:HomeLighting,shadows:HomeShadows,private clock:HomeClock){
         this.root=nodeAt(room,'PersistentVaseFlowers');this.headsRoot=nodeAt(room,'BouquetHeads');this.frontRoot=nodeAt(room,'CeramicVaseFront');this.marksRoot=nodeAt(room,'BouquetSleepMark');
         this.layers=[{node:this.root,z:23,order:1100},{node:this.headsRoot,z:24,order:1101},{node:this.frontRoot,z:25,order:1102},{node:this.marksRoot,z:27,order:1103}];
         const p={centered:false,position:[-160*RATIO,-1182*389/1382*RATIO],scale:[RATIO,RATIO]};
         this.vase=picture(this.root,assets,scope,VASE,'CeramicVaseBack',p);this.receiver(this.vase.sprite,this.vase.spec,false);
         const front=picture(this.frontRoot,assets,scope,VASE,'CeramicVaseFrontLip',p);this.receiver(front.sprite,front.spec,false,.025,435*389/1382);
-        shadows.add(this.vase.root,VASE,{'metadata/floor':true,'metadata/shadow_z':21,'metadata/thickness':0,'metadata/table':table,'metadata/height_factor':.48,'metadata/spans':[[87,235]],'metadata/ground':()=>this.canonical(this.root,[0,0],room)[1]});
+        shadows.add(this.vase.root,VASE,{'metadata/floor':true,'metadata/shadow_z':21,'metadata/thickness':0,'metadata/table':table,'metadata/height_factor':.48,'metadata/spans':[[87,235]],'metadata/ground':()=>this.canonical(this.root,[0,0],this.presentationFrame||room)[1]});
         this.mark=this.marksRoot.addComponent(Graphics);
         this.bouquet=new FlowerBouquet(new FlowerStore(new core.RawJSONCheckpointStore({getItem:(k:string)=>sys.localStorage.getItem(k),setItem:(k:string,v:string)=>sys.localStorage.setItem(k,v)},65536)));
         this.bouquet.onWarning=reason=>console.warn('[LittleSteps] vase persistence '+reason);this.bouquet.isVisible=()=>this.root.activeInHierarchy;this.bouquet.onVisual=(step,snap)=>this.draw(step,snap);
@@ -31,7 +32,8 @@ export class HomeFlowers {
     }
     private receiver(component:Sprite|Graphics,spec:ArtSpec,small:boolean,cleanup=.025,clip=-1){const material=this.lighting.receiver(component,spec,1,[0,0,1,1],component instanceof Graphics?'flower-line':'flower');material.setProperty('flowerState',new Vec4(cleanup,clip,small?1:0,spec.size[1]));return material;}
     private canonical(node:Node,p:number[],target:Node){const world=node.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(p[0],-p[1])),local=target.getComponent(UITransform).convertToNodeSpaceAR(world);return [local.x,-local.y];}
-    private syncTransform(){const at=this.canonical(this.table,[174,203],this.room);for(const node of [this.root,this.headsRoot,this.frontRoot,this.marksRoot]){node.setPosition(at[0],-at[1]);node.setScale(this.table.scale);node.angle=this.table.angle;}}
+    setPresentationFrame(frame:Node=null){this.presentationFrame=frame;this.syncTransform();}
+    private syncTransform(){const at=this.canonical(this.table,[174,203],this.presentationFrame||this.room);for(const node of [this.root,this.headsRoot,this.frontRoot,this.marksRoot]){node.setPosition(at[0],-at[1]);node.setScale(this.table.scale);node.angle=this.table.angle;}}
     private syncClock(){const day=this.clock.position<this.clock.daySeconds;if(this.daylight!==day){this.clearMark();this.sleepTime=0;}this.daylight=day;this.dayProgress=clamp(this.clock.position/this.clock.daySeconds,0,1);this.sun=flowerVirtualSun(this.dayProgress);}
     private build(f:FlowerRecord):RenderStem {
         const stemRoot=nodeAt(this.root,'Flower_'+f.id,...ROOT as [number,number]),headRoot=nodeAt(this.headsRoot,'FlowerHead_'+f.id,...ROOT as [number,number]),pose=new FlowerPose(f),joints:Node[]=[];let parent=nodeAt(stemRoot,'StemSkeleton');

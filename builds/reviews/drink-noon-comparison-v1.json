@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "inputKind": "fixed-step",
+  "reference": {
+    "path": "builds/reviews/drink-noon-godot-v1.jpg",
+    "sha256": "becd1de9079c320de4dd16b3b6f4ba82e0abcfe2f1fb095ba5109b732b635917"
+  },
+  "cocos": {
+    "path": "builds/reviews/drink-noon-cocos-v1.jpg",
+    "sha256": "a992534c1f8fde82eeeec59862db5216c36e63ec1719392912031a8226375196"
+  },
+  "comparison": {
+    "path": "builds/reviews/drink-noon-comparison-v1.png",
+    "sha256": "3288d3d89f9feb537fe9c50fb98904305c13aa333bdf10f77ccb71037db3f579",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.1373273891175126,
+      "RMSRGB": 3.148029190357267,
+      "maximumChannelDifference": 138
+    },
+    "wornBackpack": {
+      "rect": [
+        15,
+        405,
+        141,
+        535
+      ],
+      "meanAbsoluteRGB": 1.0733414733414735,
+      "RMSRGB": 1.8680270517553563,
+      "maximumChannelDifference": 22
+    },
+    "wornBackpackAndActor": {
+      "rect": [
+        12,
+        370,
+        333,
+        555
+      ],
+      "meanAbsoluteRGB": 1.0357890600881257,
+      "RMSRGB": 1.904929906732783,
+      "maximumChannelDifference": 63
+    },
+    "floorProjection": {
+      "rect": [
+        0,
+        505,
+        405,
+        630
+      ],
+      "meanAbsoluteRGB": 1.4257382716049383,
+      "RMSRGB": 3.8681295987131854,
+      "maximumChannelDifference": 83
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared fixed clock and actor/plant rest, original fixed-step worn backpack state. JPEG/raster and unresolved UI differences remain visible. All sizes/pages, full travel and WeChat device acceptance pending."
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "doll-offer",
+  "inputKind": "real-pointer",
+  "reference": {
+    "path": "builds/reviews/doll-offer-godot-v1.jpg",
+    "sha256": "42344e0e37e60ec278586133925aebb14defd85d7203bbeb12f67357fed75fec"
+  },
+  "cocos": {
+    "path": "builds/reviews/doll-offer-cocos-v1.jpg",
+    "sha256": "12d87bd94d0edbd0d4808b4ff2aa6a9906e543143d9007450831208d82d22ac2"
+  },
+  "comparison": {
+    "path": "builds/reviews/doll-offer-comparison-v1.png",
+    "sha256": "b89c912bacbdc3566fad894d80ef84fa206e30e4ebf5c48777693321ec80049b",
+    "method": "Unaligned, unscaled, unrecolored405x720RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.3663477366255143,
+      "RMSRGB": 4.135652377238247,
+      "maximumChannelDifference": 141
+    },
+    "confirmation": {
+      "rect": [
+        100,
+        278,
+        295,
+        380
+      ],
+      "meanAbsoluteRGB": 4.312569130216189,
+      "RMSRGB": 10.36518248212783,
+      "maximumChannelDifference": 98
+    },
+    "doll": {
+      "rect": [
+        340,
+        413,
+        405,
+        487
+      ],
+      "meanAbsoluteRGB": 1.0575190575190574,
+      "RMSRGB": 1.6828499570194728,
+      "maximumChannelDifference": 9
+    }
+  },
+  "status": "measured_full_parity_pending",
+  "limits": "Declared noon/ambient/plant rest. Fixed controller steps are distinct from physical pointer input; pointer frame timing and flower/particle phases differ. Remaining UI/raster differences and all pages/sizes/WeChat device acceptance remain pending."
+}
