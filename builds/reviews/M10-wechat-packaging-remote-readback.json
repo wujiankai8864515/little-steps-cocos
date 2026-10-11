@@ -1,0 +1,119 @@
+{
+  "commit": "68d802e0da647f23282867dc60772076321d9a34",
+  "ref": "refs/verify/wechat-packaging-v4",
+  "at": "2026-10-11T23:42:10.232411+00:00",
+  "verifiedChangedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "0cb506034612c255cb9efd29752d5ca47b2e25ef7f59d7dafef8a5c43cb62906",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/M10-wechat-packaging-flow.json",
+      "sha256": "87126fe13c28c963f7104800e077e470adf881e2e4d5846ef8a85fb745c3777b",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/wechat-six-pages-v1.json",
+      "sha256": "0bf8b1e6a6ca88305d24917d6b9cda109c495b806c030b3261e8c89dcb2e0406",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/wechat-six-pages-v2.json",
+      "sha256": "007d24d1f9998ac5a33e0ead5ee84e31a5f2b1b13f74bcb86dfac80c940e705e",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/wechat-six-pages-v3.json",
+      "sha256": "f4d1c0586b31305313f90d21cab1fa20543a5c34e3361c3aa8169b4c2c657bb5",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/wechat-six-pages-v4.json",
+      "sha256": "4f464b0abbcf2107abc0149b1acc1a7a5e30b841a70d0cfcd1a8dc95408833f7",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/migration-plan.json",
+      "sha256": "4471062ab6d639808d79eb831ffc9e39dec39c7d3149c46d4c4313f009df3bed",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/resume.json",
+      "sha256": "af59320332e83bc335749fe34f6e99e3634f18679d65f580e9204f76657cdb18",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-packaging-failures.json",
+      "sha256": "e238345bcebc6759511d9076c49422773e48aed0030d28691d9ec4941018b31c",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-build-v1.log",
+      "sha256": "1f5b115f6425a1f337b95d91145e2a6c2e7aa6f4ae6f517b50401574a78bef4f",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-build-v2.log",
+      "sha256": "0ca3e57852b23a632c599938fbd77a3c53525df42d6e693824ad48bc7c9d7e86",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-build-v3.log",
+      "sha256": "fd935a7ea46fb387ac78257315b04a8ebe41912ec3ef85595abed2c49693f44a",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-build-v4.log",
+      "sha256": "3fb8fde56c1fb980817f7e71749c15a82d5eb7c849e4475e942b713b4baf4da2",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-delivery-v4.json",
+      "sha256": "8667cc53fa3e2f9eaaddbc0834c576c078c7c6a4aaccdd4e43ddff288dabbf45",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-package-v1.json",
+      "sha256": "0667735061719f46dcb09a74715a7a0b8a4253e9601d5546a96e16241a4a988e",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-package-v2.json",
+      "sha256": "92ad1eeea01cbe4914031f781924068ab41928abf399874c1129afd23af6f791",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-package-v3.json",
+      "sha256": "50c31696cf0b8ae86672604e7b3c789cea243787ba1d5f8c60283914a81082f2",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-six-pages-package-v4.json",
+      "sha256": "2a129a6c6633c97ed7d93910c115f3d73a83edc801275d616483d7cc2e3bccc5",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M11-six-pages-remote-readback.json",
+      "sha256": "a5f26b2f59b4ff8f351972e59f8077c70d2c7c550e77a908634934de6503a3d0",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/audit_wechat_candidate.py",
+      "sha256": "3c85afaa96cf80bfcf32e67d10c9de0a93201a4c93d9dd7c229fc3e3d13b3ad0",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/create_wechat_candidate.py",
+      "sha256": "25232ad9e3b4d2fd075c6416c4098d6b53b3b66dc1ca1f616bcf4bffd45e753c",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/stage_wechat_delivery.py",
+      "sha256": "f5a37727ee778f4856ce71fa552ac4c5a5676ae0fb70b6f7f9af03ac44d72f19",
+      "mode": "100644"
+    }
+  ],
+  "scope": "M10.01 packaging tools and evidence; frozen WeChat v4 source53d5e9e, browser review sourcec9629f8. Runtime, device and cold budget remain pending.",
+  "url": "http://127.0.0.1:8792/review"
+}

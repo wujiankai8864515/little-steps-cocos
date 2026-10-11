@@ -6,6 +6,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 from create_wechat_candidate import ROOT, TEST_APPID, sha
+from check_catalog_assets import check_catalog
 
 
 def audit(name):
@@ -58,6 +59,7 @@ def audit(name):
     plugin_meta = json.loads(plugin.with_suffix('.js.meta').read_text())
     plugin_data = plugin_meta['userData']
     checks = {
+        'sourceCatalogComplete': not check_catalog(stage / 'games/xiaoyu-cocos')['missing'],
         'wechatEntryFiles': all((output / p).is_file() for p in ['game.js', 'game.json', 'project.config.json']),
         'portrait': game.get('deviceOrientation') == 'portrait',
         'appidMatchesConfiguration': project.get('appid') == config['packages']['wechatgame']['appid'],
@@ -91,6 +93,7 @@ def audit(name):
         'checks': checks, 'rawBytesByBucket': dict(sorted(sizes.items())), 'rawLocalPackageBytes': package_bytes,
         'sizeMethod': 'Sum of exact output file bytes; remote/ excluded from local package. Not wire download, ZIP or device memory.',
         'runtimeSourceMismatches': runtime_mismatch, 'creatorMetadataChanges': metadata_changes,
+        'sourceCatalog': check_catalog(stage / 'games/xiaoyu-cocos'),
         'nativeAssets': {'count': len(native_sources), 'byteIdenticalInOutput': len(native_sources) - len(missing_native),
                          'missing': missing_native},
         'remoteScripts': remote_scripts, 'fileCount': len(inventory), 'files': inventory,

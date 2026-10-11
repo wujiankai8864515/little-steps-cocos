@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "item": "M10.02",
+  "problem": "Unanchored native ignore pattern silently excluded authored Loading character art from Git. Local-copy browser candidates contained it, git-archive WeChat candidates v1-v4 did not.",
+  "fixed": "Ignore only the project-root native export folder, add original three PNGs and their existing importer metadata, validate catalogue source completeness before freezing and in output audits.",
+  "invalidCandidates": [
+    "wechat-six-pages-v1",
+    "wechat-six-pages-v2",
+    "wechat-six-pages-v3",
+    "wechat-six-pages-v4"
+  ],
+  "oldAuditBoundary": "Native files present in snapshot were preserved, but the old audit did not verify the snapshot contained all catalogue assets. v4 is superseded and must not be treated as a complete package.",
+  "brokenV4": {
+    "catalogAssets": 129,
+    "sourceFiles": 141,
+    "missing": [
+      "bundles/loading/entry/assets/loading/native/actor_body.png",
+      "bundles/loading/entry/assets/loading/native/actor_body.png.meta",
+      "bundles/loading/entry/assets/loading/native/actor_fin_mallet.png",
+      "bundles/loading/entry/assets/loading/native/actor_fin_mallet.png.meta",
+      "bundles/loading/entry/assets/loading/native/doll_rig.png",
+      "bundles/loading/entry/assets/loading/native/doll_rig.png.meta"
+    ]
+  },
+  "currentSource": {
+    "catalogAssets": 129,
+    "sourceFiles": 141,
+    "missing": []
+  },
+  "restoredOriginalFiles": [
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_body.png",
+      "sha256": "1c92e39a3b8906ffc723fa9c53f9bd3bfba6101a6d5088caf0a8a4d44800f6ce",
+      "bytes": 166336
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_fin_mallet.png",
+      "sha256": "0922efad766b5b69a86b826f7e9bb5c46cfa9fd807774b4a8f8652caba5dca6f",
+      "bytes": 49659
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/doll_rig.png",
+      "sha256": "699a4524941f6961fafd15cbc67b0a9c6b72312ddc32e9a2f83e0cd2d5376248",
+      "bytes": 310687
+    }
+  ],
+  "acceptance": "Original M02 hashes and full local catalogue check passed; fresh remote archive and rebuild pending.",
+  "verification": {
+    "v4Reaudit": "builds/reviews/M10-wechat-v4-source-coverage-recheck.json",
+    "v4ReauditExit": 1,
+    "oldReadbackFreeze": "builds/reviews/M10-loading-missing-source-rejection.log",
+    "oldReadbackFreezeExit": 1,
+    "result": "The actual incomplete remote archive was rejected before running Creator."
+  }
+}

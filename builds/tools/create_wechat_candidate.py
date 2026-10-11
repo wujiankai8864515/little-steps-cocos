@@ -9,6 +9,7 @@ import subprocess
 import tarfile
 from pathlib import Path
 from urllib.parse import urlsplit
+from check_catalog_assets import check_catalog
 
 ROOT = Path(__file__).resolve().parents[2]
 BOOT = '8dacabd2-f20d-42ab-aa32-8ffb576527d7'
@@ -52,6 +53,9 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
                 raise ValueError('Archive symlink escapes candidate')
         tar.extractall(stage)
     project = stage / 'games/xiaoyu-cocos'
+    coverage = check_catalog(project)
+    if coverage['missing']:
+        raise ValueError('Frozen source is incomplete: ' + ', '.join(coverage['missing']))
     assert json.loads((project / 'assets/Boot.ts.meta').read_text())['uuid'] == BOOT
     assert json.loads((project / 'assets/scene.scene.meta').read_text())['uuid'] == SCENE
     # Restore OS read-only permissions, which Git alone does not preserve.
