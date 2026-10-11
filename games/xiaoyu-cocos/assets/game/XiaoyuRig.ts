@@ -1,3 +1,4 @@
+// Full runtime snapshots are opt-in; default play never serializes them for console output.
 import { game, Node, Sprite, UITransform, Vec3, Vec4 } from 'cc';
 import { GameAssets } from './Assets';
 import { core, meshSprite, Scope } from './Engine';
@@ -84,7 +85,7 @@ export class XiaoyuRig {
         for(const path of ['Skeleton2D/Ground/Body','Skeleton2D/Ground/Body/Tail','Skeleton2D/Ground/Shoulder','Skeleton2D/Ground/Shoulder/GripMallet']){
             const node=this.nodes.get(path);this.neutralBones.push({node,position:node.position.clone(),scale:node.scale.clone(),angle:node.angle});
         }
-        console.info('[LittleSteps] original rig constructed', {bones: sections.filter(s => s.type === 'Bone2D').length, tracks: 7, vertices: this.meshes.map(m => m.mesh.source.length / 2)});
+        (globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original rig constructed', {bones: sections.filter(s => s.type === 'Bone2D').length, tracks: 7, vertices: this.meshes.map(m => m.mesh.source.length / 2)});
     }
     poseAt(time: number) {
         this.neutralBones.forEach(pose=>{pose.node.setPosition(pose.position);pose.node.setScale(pose.scale);pose.node.angle=pose.angle;});
@@ -127,8 +128,8 @@ export class XiaoyuRig {
         this.landing.advance(delta);const land=landingOffset([365,177],this.landing.position);expression.setPosition(this.jelly[0]+land[0],-this.jelly[1]-land[1]);
         this.deform(this.softPose());
         this.setMouthOpen(frame.mouth);this.gazeBaseline=this.behavior.faceGaze(gaze,frame.step,frame.closed);this.setEyeOffsets(this.gazeBaseline);
-        if(frame.transition)console.info('[LittleSteps] original ambient transition '+JSON.stringify(this.behavior.snapshot()));
-        if(frame.contact){console.info('[LittleSteps] original rig contact '+JSON.stringify({poseTime:frame.poseTime,...this.behavior.snapshot()}));this.onContact();}
+        if(frame.transition)(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original ambient transition '+JSON.stringify(this.behavior.snapshot()));
+        if(frame.contact){(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] original rig contact '+JSON.stringify({poseTime:frame.poseTime,...this.behavior.snapshot()}));this.onContact();}
     }
     hitAt(worldPoint: number[]) {
         for (const name of ['OriginalFinAndRigidMallet','OriginalBody','OriginalTail']) {

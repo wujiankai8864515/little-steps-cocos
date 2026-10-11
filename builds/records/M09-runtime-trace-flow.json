@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "id": "M09.02",
+  "status": "source_behavior_verified_device_performance_pending",
+  "problem": "Every natural rig contact/merit award serialized snapshots and printed console messages during normal play and graphical QA. This overhead is demonstrated, but is not established as the Codex crash cause.",
+  "implemented": [
+    "18 diagnostic sites in actual HomePage/XiaoyuRig evaluate snapshots only when globalThis.__LITTLE_STEPS_TRACE__ is exactly true",
+    "Errors and page readiness remain available",
+    "create_candidate.py --trace declares opt-in Boot override; shipping Boot is unchanged"
+  ],
+  "validation": {
+    "testLog": "builds/reviews/M09-runtime-trace-tests-v1.log",
+    "typecheck": "builds/reviews/M09-runtime-trace-types-v1.log",
+    "contacts": 10000,
+    "awards": 10000,
+    "persistenceNotifications": 10000,
+    "audioPlays": 10000,
+    "diagnosticSnapshotsDefault": 0,
+    "diagnosticLogsDefault": 0,
+    "deviceFrameTime": "not measured",
+    "clientCrashRootCause": "unconfirmed"
+  },
+  "sources": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "889429414e8b9b313b2d6966f5a55fa54d8caead5daa4c0a2472b4831e007518"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "sha256": "8e8fda90defa5dc3baa51353a2c26700f2951b1c6433cc4a15ed5669d9dae6d3"
+    },
+    {
+      "path": "builds/tools/create_candidate.py",
+      "sha256": "7a30402e0f2f6976d408f35d764504e417df6946f3a3129a3d45bc7c5b22c83b"
+    }
+  ]
+}

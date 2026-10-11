@@ -19,6 +19,7 @@ def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', required=True)
+    parser.add_argument('--trace',action='store_true',help='Explicitly enable full runtime diagnostics in this QA candidate only')
     parser.add_argument('--route', choices=['login', 'home'], default='login')
     parser.add_argument('--hour',type=float,help='Explicit initial Home hour; freezes only with --freeze')
     parser.add_argument('--freeze',action='store_true',help='Freeze Home time and actor pose in this candidate only')
@@ -52,6 +53,11 @@ def main():
         boot.write_text(text.replace(point,f'this.application.clock.seekHour({args.hour});\n        '+point))
         overrides[0]['fixtureSHA256']=digest(boot)
         overrides.append({'file':'assets/Boot.ts','hour':args.hour,'fixtureSHA256':digest(boot),'purpose':'Declared initial Home hour; clock freezes only when --freeze is supplied'})
+    if args.trace:
+        text=boot.read_text(); before=digest(boot); point='    start() {'
+        assert text.count(point)==1, 'Boot trace injection point changed'
+        boot.write_text(text.replace(point,point+'\n        (globalThis as any).__LITTLE_STEPS_TRACE__ = true;'))
+        overrides.append({'file':'assets/Boot.ts','sourceSHA256':before,'fixtureSHA256':digest(boot),'purpose':'Explicit opt-in full runtime diagnostic snapshots; default production remains quiet'})
     if args.freeze or args.freeze_clock:
         replacements=[('Application.ts','this.clock.advance(delta)','this.clock.advance(0)')]
         if args.freeze:replacements.append(('HomePage.ts','this.rig.advance(delta,this.clock.nightProgress()>=0)','this.rig.poseAt(0)'))
