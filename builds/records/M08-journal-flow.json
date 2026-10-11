@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "M08.01",
-  "status": "actual_page_and_application_source_flow_verified_browser_pending",
+  "status": "actual_source_and_partial_browser_journal_flow_verified_strict_parity_pending",
   "baseCommit": "1ca88fc95e58e872cf926b047e318cf13d03ff84",
   "implemented": [
     "Original diary reference art with source-defined dynamic polygon patches, non-offer scenery/NPC/traveler and prose",
@@ -24,8 +24,8 @@
       "actual Application open/return, cancelled/failed/retried resource completion"
     ],
     "typecheck": "builds/reviews/M08-journal-types-v3.log",
-    "creatorBuild": "pending after client crash mitigation",
-    "browser": "pending",
+    "creatorBuild": "cocos-journal-v1: Creator Finished, exit 36; candidate audit verified",
+    "browser": "builds/reviews/M08-journal-runtime-v1.json",
     "strictVisualComparison": "pending",
     "WeChat": "pending"
   },
@@ -42,7 +42,7 @@
     "Home cold download remains over 19,000,000 bytes; full resource closure remains unverified/failing. High-DPI long screen cached Home+Darkroom+journal targets can exceed 256MiB."
   ],
   "continuation": [
-    "Run one serialized independent Chrome journal candidate after lightweight checks; do not use the Codex IAB Godot screenshot path",
+    "Journal canvas flow observed; continue strict Godot comparison, archive entry binding and remaining controls/background/device validation",
     "Port Travel scene/map and encounter interaction, then collection/archive navigation, photo wall and wardrobe",
     "Implement dynamic viewport and render-target resource ownership without losing gameplay state",
     "Audit full page-transition residency, fix budgets, build only WeChat for formal delivery and verify on actual devices"

@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "id": "M08.02",
+  "status": "partial_actual_browser_flow_observed_strict_comparison_pending",
+  "candidate": "cocos-journal-v1",
+  "sourceCommit": "177a1bbf17533436e0fa135bcb127f1901e676a0",
+  "browser": "Independent Google Chrome, native input and DevTools device screenshots; no Codex IAB screenshot",
+  "viewport": {
+    "css": [
+      360,
+      640
+    ],
+    "dpr": 2,
+    "initializedBeforeLoad": true
+  },
+  "fixtures": [
+    "memory storage",
+    "trip seed 321",
+    "wall time advanced via declared QA return control",
+    "clock frozen at noon",
+    "QA state panel reads real service/page state; departure/return setup API buttons are not canvas-input proof"
+  ],
+  "actualCanvasChecks": [
+    {
+      "action": "Home diary click",
+      "observed": "TravelJournalPage index 0; 3 unreviewed entries"
+    },
+    {
+      "action": "Submit without choosing",
+      "observed": "index 0 choice empty; reviewCount 0"
+    },
+    {
+      "action": "Choose first option and double-click submit",
+      "observed": "index 1; reviewCount 1; first entry reviewed wish"
+    },
+    {
+      "action": "Previous then next",
+      "observed": "first entry readonly, no review controls; next unreviewed entry with live non-offer illustration"
+    },
+    {
+      "action": "Choose chase on second entry, close diary",
+      "observed": "Home returned, reviewCount 1; second entry still unreviewed"
+    },
+    {
+      "action": "Reopen after QA server had been stopped",
+      "observed": "Real ERR_CONNECTION_REFUSED; source failure panel displayed; no lost review"
+    },
+    {
+      "action": "Restart same candidate server and click visible retry",
+      "observed": "index 1, choice empty, reviewCount 1"
+    },
+    {
+      "action": "Second review chase then final review rest; final submit double-click",
+      "observed": "HomePage; reviewCount 3; trip_1_321 archived true; all 3 entries reviewed once"
+    }
+  ],
+  "finalState": {
+    "page": "HomePage",
+    "reviewCount": 3,
+    "tripId": "trip_1_321",
+    "archived": true,
+    "entries": [
+      {
+        "uid": "trip_1_321:1",
+        "choice": "wish",
+        "reviewed": true
+      },
+      {
+        "uid": "trip_1_321:2",
+        "choice": "chase",
+        "reviewed": true
+      },
+      {
+        "uid": "trip_1_321:4",
+        "choice": "rest",
+        "reviewed": true
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "state": "offer",
+      "path": "builds/reviews/M08-journal-offer-chrome-v1.png",
+      "sha256": "31f9684e403e408bbd0279d442f5f0c7cdd0814d51433e945df9e501ff921f8c",
+      "pixels": [
+        720,
+        1280
+      ]
+    },
+    {
+      "state": "selected",
+      "path": "builds/reviews/M08-journal-selected-chrome-v1.png",
+      "sha256": "30e4ca0e8548134e45a49a330093f955002026e9c493a0a517b24f1f43863c5a",
+      "pixels": [
+        720,
+        1280
+      ]
+    },
+    {
+      "state": "reviewed",
+      "path": "builds/reviews/M08-journal-reviewed-chrome-v1.png",
+      "sha256": "f6ba74b1edf7bdea7401d56e3bddc807a7feafdf2ce1333e5470eba77db6085e",
+      "pixels": [
+        720,
+        1280
+      ]
+    },
+    {
+      "state": "second-entry",
+      "path": "builds/reviews/M08-journal-second-entry-chrome-v1.png",
+      "sha256": "b8467b2012f3b28e93a728e60e1c6509768ab05fc84dd8ed843e7e21c6b12366",
+      "pixels": [
+        720,
+        1280
+      ]
+    },
+    {
+      "state": "load-failure",
+      "path": "builds/reviews/M08-journal-load-failure-chrome-v1.png",
+      "sha256": "bc8f831774161377c0cf14fe7f37b7301d7815aeb684fbfbdf45a86f30a96a3b",
+      "pixels": [
+        720,
+        1280
+      ]
+    }
+  ],
+  "limitations": [
+    "No matched Godot screenshot in same state; no strict pixel/fidelity pass",
+    "Full archive entry via collection remains unbound",
+    "Canvas back plaque and all mobile/background permutations not covered",
+    "QA chrome/debug overlay remains in screenshots",
+    "Final Home screenshot download was not produced; final state is witnessed AX text, not screenshot evidence",
+    "No WeChat/device/FPS/memory validation",
+    "Initial viewport correct only; resizing remains open"
+  ],
+  "console": {
+    "baselineErrors": 3,
+    "baselineKinds": [
+      "favicon missing",
+      "browser extension telemetry connection errors"
+    ],
+    "expectedAdditionalErrors": "Resource import failures while own local QA server was stopped; recovery verified",
+    "afterRecovery": "No observed source journal exception"
+  },
+  "cleanup": {
+    "qaTabClosed": true,
+    "userBaiduTabPreserved": true
+  }
+}
