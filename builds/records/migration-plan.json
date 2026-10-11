@@ -192,8 +192,10 @@
     {
       "id": "M10",
       "description": "WeChat-only reproducible packaging and remote source readback",
-      "status": "pending",
-      "evidence": []
+      "status": "partial_wechat_candidate_3_07MB_remote_bundles_lossless_assets_static_verified_device_cold_download_pending",
+      "evidence": [
+        "M10-wechat-packaging-flow.json"
+      ]
     },
     {
       "id": "M11",
@@ -208,5 +210,5 @@
   "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
   "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance.",
   "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance.",
-  "currentPriority": "All six pages available in complete-entry browser candidate. Continue remaining original functional/input/failure cases and WeChat-only packaging; do not return to numerical pixel polishing before product completion."
+  "currentPriority": "Six-page full-entry browser candidate is available for user review. Complete remaining functional/input/failure cases, Home cold-download budget and WeChat runtime/device validation. Numerical pixel polishing remains deferred; no function/layout reduction."
 }

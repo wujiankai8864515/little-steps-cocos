@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "item": "M10.01",
+  "updatedAt": "2026-10-11T23:41:19.501947+00:00",
+  "status": "wechat_candidate_static_packaging_verified_runtime_pending",
+  "sourceCommit": "53d5e9e87b18bf1264a30b6cf9be1e0bdf597ff2",
+  "sourceReadback": "builds/reviews/M11-six-pages-remote-readback.json",
+  "scope": "Packaging tools and frozen configuration only; no game or framework source edits in this change. Browser full-six-pages-v1 remains the user review candidate.",
+  "candidate": "wechat-six-pages-v4",
+  "rawMainBytes": 3069060,
+  "remoteBundleCount": 11,
+  "nativeAssets": {
+    "count": 95,
+    "byteIdenticalInOutput": 95,
+    "missing": []
+  },
+  "checksPassed": 15,
+  "build": {
+    "creator": "3.8.8",
+    "exitCode": 36,
+    "result": "Finished",
+    "meaning": "Official documented BUILD SUCCESS, not a runtime assertion",
+    "log": "builds/reviews/M10-wechat-six-pages-build-v4.log",
+    "logSHA256": "3fb8fde56c1fb980817f7e71749c15a82d5eb7c849e4475e942b713b4baf4da2"
+  },
+  "delivery": {
+    "receipt": "builds/reviews/M10-wechat-six-pages-delivery-v4.json",
+    "localFiles": 47,
+    "all296CopiesRehashed": true,
+    "zipAllEntriesRehashed": true,
+    "archive": {
+      "path": "/Users/wkk/dotWorkers/little-steps-cocos/builds/output/wechat-six-pages-v4/wechat-candidate.zip",
+      "bytes": 1004298,
+      "sha256": "b1cd5662af21e4937303a5ea7a6408e6e2757fa3e02aa3075ffa850758b04f36"
+    },
+    "inventorySHA256": "0ad7faaf89393801b4dfc443d76c9917a09436d1aec6f0f3e1ab4164ad63017b"
+  },
+  "validation": {
+    "pythonCompile": "passed, workspace-local cache",
+    "staticAudit": "15/15 passed",
+    "trimGuardActualFrozenFilesScanned": 130,
+    "trimGuardRemovedReferenceExamplesRejected": 8,
+    "gameRegression": "No runtime source change. Prior M08.07 275 tests and typecheck evidence retained; not rerun or counted as WeChat acceptance."
+  },
+  "browserReview": {
+    "url": "http://127.0.0.1:8792/review",
+    "tab": "426065834",
+    "observed": "Login artwork and six-page guide visible; independent Chrome; marked deliverable after builds finished",
+    "fullFlowEvidence": "builds/reviews/M11-six-pages-browser.json"
+  },
+  "pending": [
+    "Cold Home 19,000,000-byte gate requires measured first-entry transfer; output size does not prove it.",
+    "WeChat DevTools, physical touch, audio, storage, background recovery and performance remain unverified.",
+    "Resources have not been uploaded and no production HTTPS/domain configuration has been verified.",
+    "Uses the documented Creator test AppID; not a production account build.",
+    "Full six-page failure/interruption/long-content input matrix and user review."
+  ],
+  "sources": [
+    "https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-in-command-line.html",
+    "https://docs.cocos.com/creator/3.8/manual/zh/asset/bundle.html",
+    "https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-wechatgame.html"
+  ]
+}

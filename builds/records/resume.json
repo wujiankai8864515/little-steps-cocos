@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T23:18:55.287475+00:00",
-  "latestItem": "M11.01",
+  "updatedAt": "2026-10-11T23:41:19.501947+00:00",
+  "latestItem": "M10.01",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
     "builds/records/M11-six-page-function-matrix.json",
-    "builds/reviews/M11-six-pages-browser.json",
-    "builds/reviews/M11-six-pages-failures.json"
+    "builds/records/M10-wechat-packaging-flow.json",
+    "builds/reviews/M10-wechat-packaging-failures.json"
   ],
-  "nextPriority": "All six pages available in complete-entry browser candidate. Continue remaining original functional/input/failure cases and WeChat-only packaging; do not return to numerical pixel polishing before product completion.",
-  "pendingReadback": "builds/reviews/M11-six-pages-remote-readback.json (create after commit)",
+  "nextPriority": "Six-page full-entry browser candidate is available for user review. Complete remaining functional/input/failure cases, Home cold-download budget and WeChat runtime/device validation. Numerical pixel polishing remains deferred; no function/layout reduction.",
+  "pendingReadback": "builds/reviews/M10-wechat-packaging-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -23,6 +23,9 @@
     "Wardrobe screenshots saved in builds/qa/cocos-wardrobe-*.png. V3 is latest candidate (per-attempt outfit lease cleanup), not release. Shipping Boot/scene unchanged.",
     "Latest wardrobe-surface-v1 candidate uses fixed 720x1280 RT. Browser main flow, night/short/long observations saved. Fresh Chrome session succeeded after previous control interruption; tab closed, viewport reset, server8789 stopped. No previous root-cause claim.",
     "Collection v3 browser flow done; tabs closed, viewport reset, servers8790/8791 stopped. Final screenshot builds/qa/cocos-collection-feedback-final.png.",
-    "User preview http://127.0.0.1:8792/review; source-unmodified full-six-pages-v1. Server session73973 kept for user review; tab426065830 marked deliverable, viewport reset. Native Chrome supplemental capture prohibited current URL: stopped path, do not repeat."
+    "User preview http://127.0.0.1:8792/review; source-unmodified full-six-pages-v1. Server session73973 kept for user review; tab426065834 marked deliverable, viewport reset. Native Chrome supplemental capture prohibited current URL: stopped path, do not repeat.",
+    "WeChat v4 static checks pass: source53d5e9e, main3069060bytes, 11 remote bundles, 95 native files byte-identical. Import builds/output/wechat-six-pages-v4/package only; CDN files separate. Test AppID and loopback8793 are QA placeholders, not production. No CDN service running or upload performed.",
+    "All task Creator CLI builds and isolated inspection editor stopped before reopening review tab. Preview server73973 retained for user; no other task engine page open.",
+    "Creator3.8 needs assets/bundles/*.meta bundleConfigID pointing to settings/v2/packages/builder.json bundleConfig.custom profiles. CLI isRemote alone and legacy isRemoteBundle maps were ineffective; v1/v2 failed evidence retained. Exit36 means official build success."
   ]
 }

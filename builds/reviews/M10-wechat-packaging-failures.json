@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "item": "M10.01",
+  "updatedAt": "2026-10-11T23:41:19.501947+00:00",
+  "failures": [
+    {
+      "candidate": "wechat-six-pages-v1",
+      "buildExitCode": 36,
+      "rawMainBytes": 77652699,
+      "failedChecks": [
+        "remoteBundlesMatch",
+        "allRemoteBundlesPresent",
+        "mainWithinConservative4MB"
+      ],
+      "finding": "CLI bundleConfigs.isRemote alone did not select Creator 3.8 named Bundle profiles.",
+      "log": "builds/reviews/M10-wechat-six-pages-build-v1.log",
+      "logSHA256": "1f5b115f6425a1f337b95d91145e2a6c2e7aa6f4ae6f517b50401574a78bef4f",
+      "audit": "builds/reviews/M10-wechat-six-pages-package-v1.json",
+      "next": "Evidence preserved; v4 supersedes this packaging configuration."
+    },
+    {
+      "candidate": "wechat-six-pages-v2",
+      "buildExitCode": 36,
+      "rawMainBytes": 77652699,
+      "failedChecks": [
+        "remoteBundlesMatch",
+        "allRemoteBundlesPresent",
+        "mainWithinConservative4MB"
+      ],
+      "finding": "Legacy isRemoteBundle metadata also did not select Creator 3.8 named Bundle profiles.",
+      "log": "builds/reviews/M10-wechat-six-pages-build-v2.log",
+      "logSHA256": "0ca3e57852b23a632c599938fbd77a3c53525df42d6e693824ad48bc7c9d7e86",
+      "audit": "builds/reviews/M10-wechat-six-pages-package-v2.json",
+      "next": "Evidence preserved; v4 supersedes this packaging configuration."
+    },
+    {
+      "candidate": "wechat-six-pages-v3",
+      "buildExitCode": 36,
+      "rawMainBytes": 4156290,
+      "failedChecks": [
+        "mainWithinConservative4MB"
+      ],
+      "finding": "Correct remote placement; original engine includes unused integrations and exceeds our conservative 4,000,000-byte main-package gate.",
+      "log": "builds/reviews/M10-wechat-six-pages-build-v3.log",
+      "logSHA256": "fd935a7ea46fb387ac78257315b04a8ebe41912ec3ef85595abed2c49693f44a",
+      "audit": "builds/reviews/M10-wechat-six-pages-package-v3.json",
+      "next": "Evidence preserved; v4 supersedes this packaging configuration."
+    },
+    {
+      "candidate": "wechat-six-pages-v4",
+      "buildExitCode": 36,
+      "rawMainBytes": 3069060,
+      "failedChecks": [],
+      "finding": "Named Bundle profiles plus removal of unused engine integrations passed all static checks.",
+      "log": "builds/reviews/M10-wechat-six-pages-build-v4.log",
+      "logSHA256": "3fb8fde56c1fb980817f7e71749c15a82d5eb7c849e4475e942b713b4baf4da2",
+      "audit": "builds/reviews/M10-wechat-six-pages-package-v4.json",
+      "next": "Runtime, device, CDN and cold-download validation pending."
+    }
+  ],
+  "correction": {
+    "priorObservation": "Creator exit36 recorded without a confirmed exit-code meaning in earlier reviews.",
+    "correctMeaning": "Creator 3.8 command-line documentation defines36 as BUILD SUCCESS. Earlier evidence remains intact; exit36 alone is not a failure.",
+    "source": "https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-in-command-line.html"
+  },
+  "otherObservations": [
+    "Native Creator UI did not bind the isolated project editor; stopped own launched process and continued documented CLI configuration. No user process killed.",
+    "Sandbox ps was denied; no process enumeration bypass attempted. Python cache default write denied; used workspace-local PYTHONPYCACHEPREFIX successfully.",
+    "Build logs contain worker SIGTERM and assetdb trackTime diagnostics; artifact outputs and exit36 verified. Runtime status remains pending.",
+    "Initial staged git diff --check reported Creator raw logs containing CR and trailing whitespace; commit did not run. Raw evidence bytes and hashes are preserved. Repeated whitespace check excludes only raw .log artifacts; source/JSON/README remain checked."
+  ],
+  "sizeBoundary": "The v3 rejection is our conservative decimal 4 MB gate, not an observed WeChat uploader rejection."
+}
