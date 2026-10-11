@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "native": {
+    "path": "builds/qa/godot-map-choice-noon-v4.png",
+    "sha256": "ae3a15777211d01c4cad48d3406dd52009d9af516b5724e6a4891c016ff2d4e1"
+  },
+  "cocos": {
+    "path": "builds/qa/cocos-map-choice-signs-v2.png",
+    "sha256": "034149cdc08301b034f6f663b5f7a29929845f246db84c26368873cfa9fdaae4"
+  },
+  "board": {
+    "path": "builds/qa/map-choice-signs-v2.png",
+    "sha256": "d0bd5d77992d7d6d3bc236ced472fe38f40a7646e820d037cf0a95d41b603610"
+  },
+  "method": "RGB difference of unmodified 720x1280 PNGs; no alignment, scaling, recoloring or excluded pixels. Heatmap is amplified 6x for display only.",
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        720,
+        1280
+      ],
+      "meanAbsoluteRGB": 0.811845703125,
+      "rootMeanSquareRGB": 5.780612984173991,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 203,
+      "pixelsAnyChannelOver16": 10873,
+      "pixels": 921600
+    },
+    "bubble": {
+      "rect": [
+        270,
+        458,
+        670,
+        738
+      ],
+      "meanAbsoluteRGB": 3.7995505952380952,
+      "rootMeanSquareRGB": 15.42638152723475,
+      "p95ChannelDifference": 21.0,
+      "maxChannelDifference": 203,
+      "pixelsAnyChannelOver16": 6969,
+      "pixels": 112000
+    },
+    "close": {
+      "rect": [
+        621,
+        461,
+        670,
+        510
+      ],
+      "meanAbsoluteRGB": 0.7249757045675413,
+      "rootMeanSquareRGB": 2.3212136403455106,
+      "p95ChannelDifference": 5.0,
+      "maxChannelDifference": 19,
+      "pixelsAnyChannelOver16": 2,
+      "pixels": 2401
+    },
+    "message": {
+      "rect": [
+        314,
+        494,
+        622,
+        579
+      ],
+      "meanAbsoluteRGB": 9.305755029284441,
+      "rootMeanSquareRGB": 27.297991523689067,
+      "p95ChannelDifference": 59.0,
+      "maxChannelDifference": 203,
+      "pixelsAnyChannelOver16": 3526,
+      "pixels": 26180
+    },
+    "choices": {
+      "rect": [
+        314,
+        591,
+        622,
+        649
+      ],
+      "meanAbsoluteRGB": 5.960535154500672,
+      "rootMeanSquareRGB": 17.842037871841097,
+      "p95ChannelDifference": 35.0,
+      "maxChannelDifference": 200,
+      "pixelsAnyChannelOver16": 2028,
+      "pixels": 17864
+    },
+    "hint": {
+      "rect": [
+        314,
+        653,
+        622,
+        679
+      ],
+      "meanAbsoluteRGB": 3.8454045954045952,
+      "rootMeanSquareRGB": 9.661697656126567,
+      "p95ChannelDifference": 23.0,
+      "maxChannelDifference": 142,
+      "pixelsAnyChannelOver16": 634,
+      "pixels": 8008
+    },
+    "station": {
+      "rect": [
+        220,
+        150,
+        510,
+        205
+      ],
+      "meanAbsoluteRGB": 2.6536886102403345,
+      "rootMeanSquareRGB": 6.700958305739262,
+      "p95ChannelDifference": 16.0,
+      "maxChannelDifference": 57,
+      "pixelsAnyChannelOver16": 1089,
+      "pixels": 15950
+    },
+    "progress": {
+      "rect": [
+        239,
+        1190,
+        478,
+        1232
+      ],
+      "meanAbsoluteRGB": 0.2613402404197383,
+      "rootMeanSquareRGB": 0.5112144759489292,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 1,
+      "pixelsAnyChannelOver16": 0,
+      "pixels": 10038
+    },
+    "landscape": {
+      "rect": [
+        0,
+        0,
+        720,
+        390
+      ],
+      "meanAbsoluteRGB": 0.5063473409306742,
+      "rootMeanSquareRGB": 3.1562790716835507,
+      "p95ChannelDifference": 1.0,
+      "maxChannelDifference": 163,
+      "pixelsAnyChannelOver16": 2369,
+      "pixels": 280800
+    }
+  },
+  "profile": "map",
+  "status": "measured_checkpoint_not_complete_visual_acceptance",
+  "pending": [
+    "remaining time/progress/size/animation matrix",
+    "full map UI/input/audio/save flows",
+    "WeChat device and user acceptance"
+  ]
+}

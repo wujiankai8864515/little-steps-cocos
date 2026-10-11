@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "id": "M07.09",
+  "baseCommit": "d74d797959bddca02b71cf3c8f77ed8bfadb2f4b",
+  "status": "native_sign_glyphs_integrated_actual_pixels_improved_full_map_fidelity_pending",
+  "changes": [
+    "Export exact original travel_ui.ttf native hinted glyph RGBA and shaped advances for11 stations and33 route state/count labels; preserve glyph crop hashes",
+    "Add generic framework shaped-run mesh, original integer horizontal center and separate GUI origin/glyph origin snapping",
+    "Map signs use owned static meshes, rebuild only on text or pixel-density tier change, release admitted atlas frames on leave",
+    "Add optional1x/2x glyph atlases with total2621440bytes decode/upload reservation; shipping Boot/scene/settings unchanged"
+  ],
+  "source": "builds/records/M07-sign-font-source.json",
+  "upstreamReferences": [
+    "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/gui/label.cpp",
+    "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/modules/text_server_adv/text_server_adv.cpp",
+    "https://docs.godotengine.org/en/4.5/classes/class_viewport.html#class-viewport-property-gui-snap-controls-to-pixels"
+  ],
+  "validation": {
+    "regression": {
+      "tests": 226,
+      "failed": 0,
+      "log": "builds/reviews/M07-map-signs-regression-v2.log"
+    },
+    "types": {
+      "exit": 0,
+      "log": "builds/reviews/M07-map-signs-types-v2.log"
+    },
+    "frozenAudits": [
+      "builds/reviews/M07-map-signs-v1-frozen-audit.json",
+      "builds/reviews/M07-map-signs-v2-frozen-audit.json"
+    ],
+    "browser": "builds/reviews/M07-map-signs-browser-v2.json",
+    "failures": "builds/reviews/M07-map-signs-failures.json",
+    "sameStatePixels": {
+      "before": "builds/qa/map-choice-noon-after-v4.json",
+      "firstAttempt": "builds/qa/map-choice-signs-v1.json",
+      "after": "builds/qa/map-choice-signs-v2.json",
+      "regions": {
+        "whole": {
+          "before": {
+            "rect": [
+              0,
+              0,
+              720,
+              1280
+            ],
+            "meanAbsoluteRGB": 0.980861183449074,
+            "rootMeanSquareRGB": 6.661434280210245,
+            "p95ChannelDifference": 1.0,
+            "maxChannelDifference": 203,
+            "pixelsAnyChannelOver16": 13349,
+            "pixels": 921600
+          },
+          "after": {
+            "rect": [
+              0,
+              0,
+              720,
+              1280
+            ],
+            "meanAbsoluteRGB": 0.811845703125,
+            "rootMeanSquareRGB": 5.780612984173991,
+            "p95ChannelDifference": 1.0,
+            "maxChannelDifference": 203,
+            "pixelsAnyChannelOver16": 10873,
+            "pixels": 921600
+          }
+        },
+        "station": {
+          "before": {
+            "rect": [
+              220,
+              150,
+              510,
+              205
+            ],
+            "meanAbsoluteRGB": 6.493145245559039,
+            "rootMeanSquareRGB": 16.45419531197686,
+            "p95ChannelDifference": 35.0,
+            "maxChannelDifference": 143,
+            "pixelsAnyChannelOver16": 2146,
+            "pixels": 15950
+          },
+          "after": {
+            "rect": [
+              220,
+              150,
+              510,
+              205
+            ],
+            "meanAbsoluteRGB": 2.6536886102403345,
+            "rootMeanSquareRGB": 6.700958305739262,
+            "p95ChannelDifference": 16.0,
+            "maxChannelDifference": 57,
+            "pixelsAnyChannelOver16": 1089,
+            "pixels": 15950
+          }
+        },
+        "progress": {
+          "before": {
+            "rect": [
+              239,
+              1190,
+              478,
+              1232
+            ],
+            "meanAbsoluteRGB": 9.67808992495185,
+            "rootMeanSquareRGB": 25.447830622989287,
+            "p95ChannelDifference": 66.0,
+            "maxChannelDifference": 164,
+            "pixelsAnyChannelOver16": 1419,
+            "pixels": 10038
+          },
+          "after": {
+            "rect": [
+              239,
+              1190,
+              478,
+              1232
+            ],
+            "meanAbsoluteRGB": 0.2613402404197383,
+            "rootMeanSquareRGB": 0.5112144759489292,
+            "p95ChannelDifference": 1.0,
+            "maxChannelDifference": 1,
+            "pixelsAnyChannelOver16": 0,
+            "pixels": 10038
+          }
+        }
+      },
+      "boundary": "Unmodified720x1280nativeandCocosPNG; no alignment or excluded pixels. Improvement is a checkpoint, not complete acceptance."
+    },
+    "regressionRetainedHomeDarkroomMapBudget": {
+      "entries": 120,
+      "reservedBytes": 204165340,
+      "limitEntries": 128,
+      "limitBytes": 268435456,
+      "semantics": "admission estimate, not measured device RAM"
+    },
+    "plugin": {
+      "link": "../../../../engines/travel-core/dist/travel-core.js",
+      "sha256": "055937b42ee4712292682af6e402f3154790c57740d0bd29fd5263a3e37b3670",
+      "targetMode": "0o444",
+      "directoryMode": "0o555"
+    },
+    "whitespaceCheck": "Source and records passed; raw Creator terminal logs excluded because their original CRLF/progress formatting is preserved",
+    "QATypes": {
+      "exit": 0,
+      "log": "builds/reviews/M07-map-signs-QA-types-v2.log"
+    }
+  },
+  "remaining": [
+    "Map brush text, landmark labels and station paper raster residuals",
+    "All5events/long-scroll/keyboard-hover/background/audio/browser and WeChat device matrix",
+    "Collection/photo/wardrobe pages",
+    "Home firstdownload19,000,000bytes and full WeChat delivery",
+    "Strict full product acceptance remains pending"
+  ],
+  "backup": "Commit then ordinary push and fresh remote byte/mode readback; readback file follows commit"
+}

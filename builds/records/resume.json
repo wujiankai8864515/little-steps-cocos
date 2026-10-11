@@ -1,20 +1,20 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T13:44:01.927174+00:00",
-  "latestItem": "M09.06",
+  "updatedAt": "2026-10-11T14:49:43.339579+00:00",
+  "latestItem": "M07.09",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M07-map-page-flow.json",
-    "builds/reviews/M07-map-page-failures.json",
-    "builds/records/M09-orientation-QA-flow.json"
+    "builds/records/M07-map-signs-flow.json",
+    "builds/reviews/M07-map-signs-failures.json",
+    "builds/records/M07-map-page-flow.json"
   ],
-  "nextPriority": "Map font/layout residuals and full encounter matrix, followed by remaining collection/photo/wardrobe pages",
-  "pendingReadback": "builds/reviews/M09-orientation-QA-remote-readback.json (created after commit)",
+  "nextPriority": "Map brush and remaining labels/paper raster residuals, full encounter matrix, then remaining collection/photo/wardrobe",
+  "pendingReadback": "builds/reviews/M07-map-signs-remote-readback.json (created after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
-    "Import original assets before running builds/tools/import_travel_map_assets.py, which restores derived PCM catalogue and native font metrics",
+    "After generic asset import run builds/tools/import_travel_map_assets.py then builds/tools/import_travel_sign_fonts.py to restore all derived resource catalogue entries",
     "Use independent Chrome supported CUA; no repeated Codex in-app Godot screenshots; run GPU workloads serially",
     "Do not mark full migration or WeChat delivery complete from these checkpoints",
     "Use builds/tools/serve_candidate.py --name <frozen-candidate> --port <fresh-port>; avoid old same-origin cached assets",

@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "item": "M07.09",
+  "candidate": "travel-map-signs-v2",
+  "url": "http://127.0.0.1:8141/",
+  "browser": "Independent Chrome via supported CUA",
+  "observedAt": "2026-10-11T14:49:43.339579+00:00",
+  "state": {
+    "source": "Actual Application/Home/Map route with visible QA same-state button",
+    "seed": 1,
+    "wall": 1040,
+    "hour": 12,
+    "sceneAge": 12,
+    "pageElapsed": 12,
+    "routeProgress": 0.4,
+    "mode": "CHOICE_PAUSED",
+    "bubblePhase": "hold",
+    "choiceToken": "trip_1_1:choice:1"
+  },
+  "observations": [
+    {
+      "action": "Open reference at720x1280, export PNG",
+      "size": [
+        720,
+        1280
+      ],
+      "density": 1,
+      "signs": [
+        "当前站：临水坡",
+        "选择暂停 · 4 / 10"
+      ],
+      "resources": {
+        "entries": 108,
+        "reservedBytes": 172129177,
+        "pending": 0
+      },
+      "image": "builds/qa/cocos-map-choice-signs-v2.png"
+    },
+    {
+      "action": "Resize to1440x2560, allow normal frame maintenance, print state and export PNG",
+      "size": [
+        1440,
+        2560
+      ],
+      "logicalHeight": 1280,
+      "density": 2,
+      "resources": {
+        "entries": 108,
+        "reservedBytes": 194247577,
+        "pending": 0
+      },
+      "image": "builds/qa/cocos-map-choice-signs-density2-v2.png"
+    },
+    {
+      "action": "Resize back to720x1280 and print state",
+      "density": 1,
+      "resources": {
+        "entries": 108,
+        "reservedBytes": 172129177,
+        "pending": 0
+      }
+    },
+    {
+      "action": "Click close icon at645,485",
+      "visibleResult": "Encounter portrait/modal closed, sign changed to 旅途中 · 4 / 10"
+    },
+    {
+      "action": "Click back at70,110 and print state",
+      "visibleResult": "HomePage, merit700, traveler absent and travel card visible",
+      "resources": {
+        "entries": 93,
+        "reservedBytes": 129784985,
+        "pending": 0
+      }
+    }
+  ],
+  "projectConsoleWarningsOrErrors": [],
+  "cleanup": {
+    "ownedTabsClosed": true,
+    "viewportReset": true,
+    "serverStopped": true
+  },
+  "limits": [
+    "Density2 observed for appearance and release only, no matching native1440x2560 capture",
+    "Not WeChat device memory/FPS measurement",
+    "Complete event input and page matrix still pending"
+  ]
+}

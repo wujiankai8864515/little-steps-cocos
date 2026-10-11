@@ -55,3 +55,10 @@ test('Real Home map route waits for admission and rejects cancelled/failed late 
  const f=await appFixture();f.app.openTravelPage('comic');assert.equal(f.requests.length,1);assert.deepEqual(Array.from(f.requests[0].keys),Array.from(MAP_RESOURCES));f.app.cancelJournalLoading();f.requests[0].resolve();await new Promise(setImmediate);assert.equal(f.app.page,f.home);assert.equal(f.app.entering,false);
  const bad=f.app.openJournal('map');f.requests[1].reject(Error('network'));await bad;assert.ok(f.events.includes('地图加载失败，再试一次？'));assert.equal(f.requests[1].owner.active,false);f.app.cancelJournalLoading();const success=f.app.openJournal('map');f.requests[2].resolve();await success;assert.ok(f.app.page instanceof TravelMapPage);assert.equal(f.app.entering,false);const page=f.app.page;await f.app.returnHome();assert.equal(f.app.page,f.home);assert.equal(page.root.isValid,false);assert.equal(f.requests[2].owner.active,false);f.scope.dispose();
 });
+
+test('Map native signs keep meshes while unchanged and switch admitted density without new frames',async()=>{
+ const f=await fixture(),station=f.page.arrival,progress=f.page.progress,frames=f.frames.length,a=station.sprite.mesh,b=progress.sprite.mesh;
+ for(let i=0;i<40;i++)f.page.advance(1/60);assert.equal(station.sprite.mesh,a);assert.equal(progress.sprite.mesh,b);assert.equal(station.string,'当前站：临水坡');
+ f.page.resize(1280,1440);assert.equal(station.snapshot().density,2);assert.notEqual(station.sprite.mesh,a);assert.equal(f.frames.length,frames);f.page.resize(1690,720);assert.equal(station.snapshot().density,1);assert.equal(f.frames.length,frames);
+ f.scope.dispose();assert.equal(station.sprite.spriteFrame,null);assert.ok(f.frames.every(x=>x.disposed));
+});

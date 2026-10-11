@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "item": "M07.09",
+  "failures": [
+    {
+      "trigger": "Initial /tmp native font probe without escalation",
+      "process": "standalone Godot4.5.2 headless, not Codex",
+      "exit": 134,
+      "cause": "Sandbox denied default Godot userdata/log directory; Godot RotatedFileLogger crashed during setup",
+      "fix": "Use an explicit per-probe log-file and approved narrow native diagnostic command",
+      "recheck": "Successful native font export; no application data reset or security changes"
+    },
+    {
+      "trigger": "M07-sign-font-export-v1 assertion then45sec timeout",
+      "evidence": "builds/reviews/M07-sign-font-export-v1.log",
+      "cause": "TextLine measurement inserts a virtual index0 glyph; exporter treated it as unsupported visible text",
+      "fix": "Skip index0 virtual/whitespace glyph while preserving advances; reject nonvirtual visible unsupported glyphs",
+      "recheck": "builds/reviews/M07-sign-font-export-v3.log"
+    },
+    {
+      "trigger": "M07-sign-font-export-v2 unsupported 当前站：山门",
+      "evidence": "builds/reviews/M07-sign-font-export-v2.log",
+      "cause": "Whitespace-only exception still did not handle GRAPHEME_IS_VIRTUAL (flags44)",
+      "fix": "Check the explicit TextServer virtual flag; all44 runs exported successfully"
+    },
+    {
+      "trigger": "Initial typecheck before successful generated data export",
+      "cause": "Missing generated module and ES2017 Object.values/entries unavailable in project lib",
+      "fix": "Generate source data first, use supported Object.keys APIs",
+      "recheck": "builds/reviews/M07-map-signs-types-v2.log"
+    },
+    {
+      "trigger": "Candidatev1 source glyphs but1px high in screenshot",
+      "evidence": "builds/qa/map-choice-signs-v1.json",
+      "cause": "Combined ink-baseline rounding omitted independent native GUI Control position snapping",
+      "fix": "Round translated Control origin first; floor glyph-local origin afterwards. Based on original PlateLabel and Godot4.5.2 Label/TextServer drawing rules.",
+      "recheck": "builds/qa/map-choice-signs-v2.json"
+    }
+  ],
+  "remaining": [
+    "Station paper/edge residual and other map labels",
+    "Brush message/options/hint raster/layout differences",
+    "Full event/input/audio/size/time matrix and WeChat device validation"
+  ]
+}

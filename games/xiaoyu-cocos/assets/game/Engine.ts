@@ -21,6 +21,7 @@ export const core: any = {
     renderedPointAt: (...args:any[]) => installed().renderedPointAt(...args),
     sampleTrack: (...args: any[]) => installed().sampleTrack(...args),
     clipPolygonBelow: (...args: any[]) => installed().clipPolygonBelow(...args),
+    shapedInkLineMesh: (...args:any[]) => installed().shapedInkLineMesh(...args),
     bitMapContains: (...args:any[]) => installed().bitMapContains(...args),
     featherLine: (...args:any[]) => installed().featherLine(...args),
     filledCircle: (...args:any[]) => installed().filledCircle(...args),
