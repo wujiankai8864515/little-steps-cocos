@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "method": "Actual IAB canvases and their public console traces via CUA; no hidden engine-state injection",
+  "viewport": [405,720],
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "noon": {
+    "godotCandidate": "godot-backpack-noon-v2",
+    "cocosCandidate": "cocos-backpack-noon-v1",
+    "godotURL": "http://127.0.0.1:8837/",
+    "cocosURL": "http://127.0.0.1:8836/",
+    "godotTimestamp": "2026-10-11T00:09:13.961Z",
+    "cocosTimestamp": "2026-10-11T00:09:12.649Z",
+    "hour": 12,
+    "phase": 0,
+    "vertices": 339,
+    "joints": 15,
+    "indices": {"scalars":1260,"allEqual":true},
+    "jointAngles": {"scalars":15,"allEqual":true},
+    "maximumVertexDifference": 0.000091552734375,
+    "maximumUVScalarDifference": 0.00006103515625,
+    "invertedTriangles": 0,
+    "currentURLErrors": 0,
+    "comparison": "builds/reviews/backpack-noon-comparison-v1.json",
+    "limits": "Before source Vector2 cast-order correction; observed UV rounding difference retained here"
+  },
+  "nightMotionV1": {
+    "godotCandidate": "godot-backpack-night-motion-v1",
+    "cocosCandidate": "cocos-backpack-night-motion-v1",
+    "hour":0.5,
+    "phase":1.2,
+    "maximumVertexDifference":0.00384521484375,
+    "maximumJointAngleDifference":0.00008120108395814896,
+    "maximumJointVelocityDifference":0.00043956050649285316,
+    "UVsAndIndicesEqual":true,
+    "status":"failed_joint_oracle_due_to_fixture_first_position_sample",
+    "comparison":"builds/reviews/backpack-night-motion-comparison-v1.json"
+  },
+  "nightMotionV2": {
+    "godotCandidate":"godot-backpack-night-motion-v1",
+    "cocosCandidate":"cocos-backpack-night-motion-v2",
+    "godotURL":"http://127.0.0.1:8838/",
+    "cocosURL":"http://127.0.0.1:8840/",
+    "godotTimestamp":"2026-10-11T00:11:43.749Z",
+    "cocosTimestamp":"2026-10-11T00:14:53.048Z",
+    "hour":0.5,
+    "motionSteps":72,
+    "stepSeconds":0.016666666666666666,
+    "godotPhase":1.2000000000000006,
+    "cocosPhase":1.2000000000000384,
+    "vertices":339,
+    "joints":15,
+    "allArrayLengthsMatch":true,
+    "allUVScalarsEqual":true,
+    "allIndexScalarsEqual":true,
+    "allJointAnglesEqual":true,
+    "allJointVelocitiesEqual":true,
+    "parts": [
+      {"key":"front_shell","vertices":18,"indices":48,"maximumVertexDifference":0,"maximumPositionDifference":0.000012207031261368684,"maximumScaleDifference":3.5762786843029915e-8},
+      {"key":"side_shell","vertices":18,"indices":48,"maximumVertexDifference":0,"maximumPositionDifference":0.000012207031261368684,"maximumScaleDifference":3.175735474592045e-8},
+      {"key":"near_strap","vertices":144,"indices":564,"maximumVertexDifference":0.00006103515625,"maximumPositionDifference":0.000012207031261368684,"maximumScaleDifference":0},
+      {"key":"far_strap","vertices":141,"indices":552,"maximumVertexDifference":0.0001220703125,"maximumPositionDifference":0.000024414062522737368,"maximumScaleDifference":0},
+      {"key":"top_loop","vertices":18,"indices":48,"maximumVertexDifference":0.0000152587890625,"maximumPositionDifference":0,"maximumScaleDifference":4.768371586472142e-9}
+    ],
+    "invertedTriangles":0,
+    "godotCurrentURLErrors":0,
+    "cocosCurrentURLErrors":0,
+    "actualCanvas":{"width":405,"height":720,"rect":{"x":0,"y":0,"width":405,"height":720}},
+    "comparison":"builds/reviews/backpack-night-motion-comparison-v2.json",
+    "status":"actual_same_state_joint_and_topology_oracle_observed_raster_parity_pending"
+  },
+  "approvedWornOracleOnly": [
+    {"key":"shell","vertices":32,"indices":90},
+    {"key":"handle","vertices":22,"indices":60},
+    {"key":"upper_seam","vertices":19,"indices":51},
+    {"key":"lower_return","vertices":24,"indices":66},
+    {"key":"near_band","vertices":23,"indices":63}
+  ],
+  "failures": [
+    {"candidate":"godot-backpack-noon-v1","timestamp":"2026-10-11T00:08:30.210Z","error":"SCRIPT ERROR: Parse Error: Identifier props not declared in the current scope.","root":"QA tool assumed a local variable from a different original function","repair":"Explicit get_node RoomPropsController; new v2 candidate; original v1 pack, HTTP log and record retained","status":"resolved_in_fixture_v2"},
+    {"log":"builds/reviews/cocos-backpack-noon-v1-http.log","error":"PermissionError: [Errno 1] Operation not permitted","root":"Sandbox denied local socket binding; first directory argument also did not match declared buildPath","repair":"Authorized escalation using actual build-config output path; new HTTP log v2","status":"resolved_no_exposure_beyond_loopback"},
+    {"candidate":"cocos-backpack-night-motion-v1","root":"Fixture advanced before sampling the actual root position, producing a spurious first-frame inertia impulse","repair":"Reset with actual proxy room position before declared motion steps, matching Godot fixture; v2 angles and velocities exactly equal","status":"resolved_in_fixture_v2"},
+    {"log":"builds/reviews/M04-backpack-night-v1-source-integrity.log","root":"Verifier incorrectly required Native plugin flag although the authorized shipping target is MiniGame and Native is intentionally disabled","repair":"Verify Web/MiniGame/global flags, Editor and Native disabled; readonly bytes/link preserved","status":"resolved_in_verifier_no_product_change"}
+  ],
+  "limits": [
+    "Fixed clock, actor and plants; direct Cocos Home candidate does not prove normal full entry/product flow",
+    "Two real screenshots compare selected same states only; daytime and night GPU/JPEG differences remain",
+    "Hanging mesh and shadows implemented; approved worn art, worn floor projections and prop gestures still pending",
+    "Actual alpha inverse-triangle hit method exists but complete pointer ownership and button/travel integration pending",
+    "WeChat devices, all sizes, remaining pages and all138 final requirements pending"
+  ]
+}

@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 1329, in <module>
+    test(
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 1276, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 457, in __init__
+    self.server_bind()
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 1323, in server_bind
+    return super().server_bind()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 140, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Users/wkk/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted

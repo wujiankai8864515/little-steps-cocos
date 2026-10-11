@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "id": "M04.11",
+  "status": "partial_hanging_original_mesh_joint_and_selected_day_night_browser_checkpoints_verified_worn_input_and_full_raster_parity_pending",
+  "sourceCommit": "434869ed48964478739161776dca6bd9d2ca7ba4",
+  "nativeSourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sourceGodotClean": true,
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackGeometry.ts",
+      "sha256": "f369fd4016ebc9ad109e42cf6550ca6e660404370e4a6c6c0e281806cbfcd7b9"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "8c952909c4aeda3b3a5e5c59684596496c1727fc233eb6dc848f9cca8eb95e40"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "5cae2998b731a983bd9a5a4b62a7cd87d31b5748cb30eef411c5681e412d3172"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "c4840753a04203d4b98c5183e98ab4301364b6700d2de6ce79f9c193d7c700ab"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part.effect",
+      "sha256": "c69b47c254553757c3970ce34ed4e58952810c239fcefc014b11fb2e5f3c59a6"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "home/secondary/articulated_backpack.gd",
+      "sha256": "16e84e97e67293b3220699def103264ef756347f9d2da982b64bb6e791431715"
+    },
+    {
+      "path": "home/secondary/spring_mesh_part.gd",
+      "sha256": "f6224376ae7ecba680647d6e6bbc63c6562f78f12281a9ae8dfee359cfed7e0f"
+    },
+    {
+      "path": "home/secondary/part_receiver.gdshader",
+      "sha256": "270bf70e991e94a2365d8ef7efcc8e69c2c780f5ba53e036bc5fe5e4a78ea074"
+    },
+    {
+      "path": "home/secondary/part_wall_shadow.gdshader",
+      "sha256": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526"
+    },
+    {
+      "path": "home/secondary/backpack_ribbon_profile.json",
+      "sha256": "b0a107d0fe2aea00fbe97a9b68be2e51dd5fb6a16c92ee1d094cffecf18dcb7b"
+    },
+    {
+      "path": "assets/round2/backpack_parts_contract.json",
+      "sha256": "94ba0b827f2685a085d40add359c45ce3101a84964c1730ae46c017739ddeda2"
+    }
+  ],
+  "validation": {
+    "tests": {
+      "passed": 82,
+      "failed": 0,
+      "log": "builds/reviews/M04-backpack-all-tests-v3.log"
+    },
+    "productionTypes": {
+      "status": "passed",
+      "log": "builds/reviews/M04-backpack-production-types-v3.log"
+    },
+    "candidateTypes": {
+      "status": "passed",
+      "log": "builds/reviews/M04-backpack-candidate-types-v1.log"
+    },
+    "sourceIntegrity": [
+      "builds/reviews/M04-backpack-source-integrity.json",
+      "builds/reviews/M04-backpack-noon-source-integrity.json"
+    ],
+    "browser": "builds/reviews/M04-backpack-browser.json",
+    "nativeRegressionOracle": "games/xiaoyu-cocos/test/fixtures/backpack-native-motion.json"
+  },
+  "selectedChecks": {
+    "parts": 5,
+    "joints": 15,
+    "vertices": 339,
+    "nearRibbonRows": 48,
+    "farRibbonRows": 47,
+    "motionSeconds": 1.2,
+    "nativeJointAnglesAndVelocitiesExact": true,
+    "UVsAndIndicesExactAfterVectorCastRepair": true,
+    "maximumMotionVertexDifference": 0.0001220703125,
+    "invertedTriangles": 0,
+    "readonlyFrameworkUnchanged": true,
+    "sceneAndBootMountUnchanged": true
+  },
+  "raster": [
+    {
+      "record": "builds/reviews/backpack-noon-comparison-v1.json",
+      "comparisonSHA256": "6b12ef46d2e9e1326397e64a97d9870e750ee29d3043313e000b11e57d52e302"
+    },
+    {
+      "record": "builds/reviews/backpack-night-motion-comparison-v1.json",
+      "comparisonSHA256": "7bedca9cd5646321b6bc59d541ad59940a19ed3dcc86731ba0444cd392a78b47"
+    },
+    {
+      "record": "builds/reviews/backpack-night-motion-comparison-v2.json",
+      "comparisonSHA256": "235a2da7fcfc35317947ed39154b3bd280d2fbe4116cb64e39300282ad075b31"
+    }
+  ],
+  "limits": [
+    "Candidate dirty-source direct Home with declared fixed clock, actor and plants, not formal delivery",
+    "Selected hanging states only; complete pixel parity, all hours and sizes pending",
+    "Approved worn layers and floor projections, prop input, wear/free drag/tail/occlusion and travel flows pending",
+    "Actual pointer alpha acceptance and WeChat devices pending",
+    "Remaining pages and all138 final requirements pending"
+  ]
+}

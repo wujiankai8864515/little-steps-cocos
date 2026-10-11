@@ -16,6 +16,7 @@ import { FishInteraction } from './FishInteraction';
 import { InteractionFeedback } from './InteractionFeedback';
 import { HomeIncense, makeIncenseGradient } from './HomeIncense';
 import { HomeFlowers } from './HomeFlowers';
+import { HomeBackpack } from './HomeBackpack';
 
 let roomSerial=0;
 
@@ -35,6 +36,7 @@ export class HomePage {
     readonly fish:FishInteraction;
     readonly incense:HomeIncense;
     readonly flowers:HomeFlowers;
+    readonly backpack:HomeBackpack;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
@@ -63,8 +65,11 @@ export class HomePage {
             const resource = resources.get(section.properties.texture.value) as string;
             const item = picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
             const p=section.properties;
-            if(p['metadata/surface']!==undefined)this.lighting.receiver(item.sprite,item.spec,p['metadata/surface'],p['metadata/visible_uv']||[0,0,1,1],section.name==='BedForeground'?'bed':section.name.indexOf('Bleed')>=0?'bleed':'receiver');
-            if(p['metadata/ground']!==undefined)this.shadows.add(item.root,resource,p,p.centered===undefined?true:p.centered);
+            if(section.name==='Bag')item.sprite.enabled=false;
+            else {
+                if(p['metadata/surface']!==undefined)this.lighting.receiver(item.sprite,item.spec,p['metadata/surface'],p['metadata/visible_uv']||[0,0,1,1],section.name==='BedForeground'?'bed':section.name.indexOf('Bleed')>=0?'bleed':'receiver');
+                if(p['metadata/ground']!==undefined)this.shadows.add(item.root,resource,p,p.centered===undefined?true:p.centered);
+            }
             const footprint={Bag:[50,24],Doll:[34,16],Bowl:[46,18],Altar:[125,30]}[section.name];
             if(footprint){const uv=p['metadata/visible_uv']||[0,0,1,1];props.push({node:item.root,resource,p,spec:item.spec,anchor:[p.position[0]+(uv[0]+uv[2]/2)*item.spec.size[0]*p.scale[0],p['metadata/ground']],footprint});}
             layers.push({z: section.properties.z_index || 0, order, node: item.root});
@@ -83,6 +88,8 @@ export class HomePage {
         this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,height]);
         this.flowers=new HomeFlowers(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,clock);
         this.flowers.layers.forEach(layer=>layers.push(layer));
+        this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock);
+        this.backpack.layers.forEach(layer=>layers.push(layer));
         // Room RT and the user's main Canvas have different physical origins.
         // Actor coordinates remain canonical in either parent; map input and
         // projection through the actor's current presentation frame.
@@ -119,5 +126,5 @@ export class HomePage {
     }
     resume() {this.active=true;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(true);}
     pause() {this.active=false;this.pointerBinding.cancel();this.fish.cancel(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
-    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
+    advance(delta: number) { const before=this.fish.state;this.feedback.advance(delta);this.fish.advance(delta);this.rig.advance(delta,this.clock.nightProgress()>=0);this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);this.lighting.update();if(this.dragCarrier)this.rig.setLightingOrigin(this.dragCarrier);this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();if(before!==this.fish.state)console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()})); }
 }

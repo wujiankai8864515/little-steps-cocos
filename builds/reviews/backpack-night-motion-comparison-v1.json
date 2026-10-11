@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "reference": {
+    "path": "builds/reviews/backpack-night-motion-godot-v1.jpg",
+    "sha256": "2b08c769662c4b2f98e266e3c5e65b486322a1e974b266d06aa22cbdc453cc9d"
+  },
+  "cocos": {
+    "path": "builds/reviews/backpack-night-motion-cocos-v1.jpg",
+    "sha256": "3e209a87d2eb7ba24068cbf97228ff77d525205f1ab72a5d722a685a2be1f2e4"
+  },
+  "comparison": {
+    "path": "builds/reviews/backpack-night-motion-comparison-v1.png",
+    "sha256": "7bedca9cd5646321b6bc59d541ad59940a19ed3dcc86731ba0444cd392a78b47",
+    "method": "Actual unaligned, unscaled, unrecolored RGB screenshots; unamplified absolute difference"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 1.143161865569273,
+      "RMSRGB": 3.526315179279385,
+      "maximumChannelDifference": 145
+    },
+    "hangingBackpackAndShadows": {
+      "rect": [
+        298,
+        225,
+        405,
+        342
+      ],
+      "meanAbsoluteRGB": 1.8134835050722902,
+      "RMSRGB": 3.4118867742162102,
+      "maximumChannelDifference": 32
+    }
+  },
+  "status": "measurement_only_full_parity_pending",
+  "limits": "Declared fixed clock and actor/plant rest, original fixed-step backpack state. JPEG/raster and unresolved UI differences remain visible. Worn art, gestures, all sizes/pages and WeChat device acceptance pending."
+}
