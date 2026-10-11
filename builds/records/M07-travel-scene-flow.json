@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "id": "M07.06",
+  "status": "scene_state_and_encounter_transactions_native_numeric_verified_production_view_not_yet_connected",
+  "baseCommit": "1979cc87c336c34bd9af2b49bb9cf9c150cc03d5",
+  "previousGoalTurnClassification": "progress: M09.04 committed and remote bytes/modes verified; 194 regression tests passed",
+  "changes": [
+    "Transfer the complete original autumn-temple configuration from native Godot serialization, including cropped regions and latest route/light/leaf/bell parameters",
+    "Port ten smooth route segments, station/story separation, bounded spring motion, wind-driven leaves/clouds, footprint stamping, 24-hour lighting and 48 analytic encounter glints",
+    "Port bounded original PCM16 synthesis and sound eligibility/cooldown/nonoverlap state",
+    "Port choice-panel ownership, saved choice retry, stale callback rejection, background release and four-second result feedback through the existing durable TravelService",
+    "Add isolated headless Godot numerical oracle so source comparisons do not require the suspect in-app browser path"
+  ],
+  "nativeTool": {
+    "url": "https://github.com/godotengine/godot-builds/releases/download/4.5.2-stable/Godot_v4.5.2-stable_macos.universal.zip",
+    "sha256": "2a3f35cf5813b0d26e3f4c15dabc5e7c58407fceec7bae5291740772f72d141a",
+    "bytes": 162276911,
+    "codesignExit": 0,
+    "version": "4.5.2-stable (official)",
+    "release": "https://github.com/godotengine/godot-builds/releases/tag/4.5.2-stable",
+    "installation": "builds/work/godot-native-4.5.2 (ignored local tools only)",
+    "systemChanges": false
+  },
+  "nativeOracle": {
+    "source": {
+      "schema": 1,
+      "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+      "sourceFiles": [
+        {
+          "path": "travel/travel_scene_config.gd",
+          "sha256": "db9c2b9a2944486dc0b0fff6132e601502477d3d7afecad61b3b22b7bfb427f2"
+        },
+        {
+          "path": "travel/travel_scene_runtime.gd",
+          "sha256": "9409f4132c95304c79646480bee858d526dc3c7e54b6857f694921a87ef705a9"
+        },
+        {
+          "path": "travel/travel_atmosphere.gd",
+          "sha256": "dabb59a2d4f33a73a13b60528bf87c59d2082fb0b56128f430db4b5f3920e398"
+        },
+        {
+          "path": "shared_room_lighting/soft_atmosphere.gd",
+          "sha256": "f92ca5136064d800521c56cc7d0a0b4d93031acfe757dcad839bd4c7561937a8"
+        },
+        {
+          "path": "travel/assets/travel_map_plate_v5.png",
+          "sha256": "e78c9865060013084adf635b9dda1575bdda2fcae11e054a3d5b3ba93273dc64"
+        },
+        {
+          "path": "travel/assets/travel_scene_layers_v1.png",
+          "sha256": "77119073bb0e8b7c6eceb45a79029c40f8fae81136b9c096520ab5e395cd4321"
+        },
+        {
+          "path": "travel/assets/travel_footprint_ink_v1.png",
+          "sha256": "ef24c2020f698479266ab3044ff7d186c0b974e265b33dcee785925b99cf0c0a"
+        },
+        {
+          "path": "travel/travel_page.gd",
+          "sha256": "2459e676c31fc6e92bc23b7e6d87f6de045f946d532fd09fdae87cd7c9d649f8",
+          "extraction": "EncounterFlow class body, unmodified"
+        }
+      ],
+      "engine": "4.5.2-stable (official)",
+      "headless": true,
+      "visualAcceptance": false,
+      "outputSHA256": "910d33f8f8b9f0e3fa88ffc1dc787b84da7a9915d7f43c434567b5aff2b12825"
+    },
+    "copiedSources": "Byte-identical scripts; EncounterFlow class extracted unchanged from travel_page.gd; original repository not used as an import/output directory",
+    "headless": true,
+    "importExit": 0,
+    "oracleExit": 0,
+    "successMarker": "TRAVEL_SCENE_ORACLE_OK",
+    "output": "builds/reviews/M07-travel-scene-native-v1.json",
+    "maxComparedAbsoluteError": 0.00030098832780822704,
+    "maxErrorPath": "flow.1690.1.2.at.1",
+    "numericTolerance": 0.0006,
+    "scope": {
+      "routeSamples": 201,
+      "motionSeconds": 120,
+      "motionCheckpoints": 9,
+      "leavesPerCheckpoint": 18,
+      "lightHours": 14,
+      "footprintCheckpoints": 6,
+      "footprintNodes": 11,
+      "glintsPerFrame": 48,
+      "glintFrames": 10,
+      "logicalViewports": [
+        [
+          720,
+          1280
+        ],
+        [
+          720,
+          1690
+        ]
+      ]
+    },
+    "pcm": [
+      {
+        "bytes": 123480,
+        "rate": 22050,
+        "sha256": "482c848b34fa9efa7a731039dffe87fc32d30cb1c62b0ecc91bd8b659ee93395",
+        "values": {
+          "bus": "Master",
+          "duration": 2.8,
+          "frequency": 392.0,
+          "partials": [
+            [
+              1.0,
+              0.62,
+              1.6
+            ],
+            [
+              2.756,
+              0.22,
+              0.85
+            ],
+            [
+              5.404,
+              0.1,
+              0.45
+            ],
+            [
+              8.933,
+              0.045,
+              0.23
+            ]
+          ],
+          "sample_rate": 22050,
+          "volume_db": -12.0
+        }
+      },
+      {
+        "bytes": 34398,
+        "rate": 22050,
+        "sha256": "95002079b4b03a04257a489ee01e99c21e2ce7cc1e6d3ab010dba75f012f2fba",
+        "values": {
+          "duration": 0.78,
+          "frequency": 784.0,
+          "partials": [
+            [
+              1.0,
+              0.65,
+              0.32
+            ],
+            [
+              1.5,
+              0.19,
+              0.23
+            ],
+            [
+              2.0,
+              0.1,
+              0.18
+            ]
+          ],
+          "sample_rate": 22050
+        }
+      }
+    ],
+    "PCMComparison": "both buffers match native SHA256 and every byte",
+    "notProven": [
+      "Rendered pixel parity",
+      "Cocos live audio playback",
+      "Actual buttons/page entry",
+      "GPU shaders or WeChat performance"
+    ]
+  },
+  "validation": {
+    "regression": {
+      "tests": 202,
+      "pass": 202,
+      "fail": 0,
+      "log": "builds/reviews/M07-travel-scene-regression-v1.log"
+    },
+    "targeted": "builds/reviews/M07-travel-scene-tests-v1.log",
+    "types": "builds/reviews/M07-travel-scene-types-v1.log",
+    "typeCommand": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+    "browser": "not started this turn",
+    "CreatorBuild": "not run",
+    "WeChatDevices": "pending"
+  },
+  "sourceFiles": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelSceneState.ts.meta",
+      "sha256": "6cf4d0ec505a519e7f80948f85dd695faf2be553bd681553d81816e1dbfca863"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelSceneData.ts.meta",
+      "sha256": "280c5b838679a7b9590924ecbc9354dc2c927d463887ddd47063f3a40d242894"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelSceneData.ts",
+      "sha256": "439f78401d9a719a6e13e17bc886ce4f5dfe91bde48d162232583dc8e9c018d5"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelSceneState.ts",
+      "sha256": "db93b69db48e17ea7a14a667b078e98344e360afc0f483c615154f4bf374f640"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelEncounterSession.ts",
+      "sha256": "f9325583a3ccf1b30b74d78d939081b48b30c0809d82b0aa0b7230d601926faf"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelEncounterSession.ts.meta",
+      "sha256": "edbd34e3cf0f9807db2af12cf0cecc9a7d27d0fad24285dd7bd0a868cca14942"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-scene.test.cjs",
+      "sha256": "7cca07ceb2868061624e94173d96f4d625c0d914ab1b088df02491f46d4fe806"
+    },
+    {
+      "path": "builds/tools/verify_travel_scene_native.py",
+      "sha256": "a8e618214d3254d53ed5b5b32f94b8dad6432f1e1faf7473afc388c6d17dcd2e"
+    }
+  ],
+  "openIssues": [
+    "Application still reports a pending map route; these source modules are intentionally not claimed as a functioning map page",
+    "Implement the actual layered travel scene renderer, shared atmosphere shader, original ink routes/footprints, moving atlas pieces, measured labels and shared ellipse choice bubble",
+    "Bind map, scene clock, foreground/background behavior, first-draw readiness, original sound transports and all real controls in Application",
+    "Cached Home + Darkroom already uses 121 admission entries including parked target; map assets, atmosphere effect and two sound resources would exceed 128 entries, requiring additional cache residency work that preserves Darkroom gameplay",
+    "Strict visual screenshot comparison and all actual navigation/choice/save-failure flows remain pending",
+    "M09.04 parked target fix also still requires independent-browser and device validation"
+  ],
+  "resume": [
+    "Read Application.openTravelPage and original travel_page.gd map/event methods; implement production TravelMapPage with these state modules",
+    "Reuse native config / all original atlas pixels; do not replace layered map with a static approximation",
+    "Preserve 128-entry and 256 MiB limits through proper optional cache ownership; do not raise limits",
+    "Native oracle reruns require a fresh name: python3 builds/tools/verify_travel_scene_native.py --name travel-scene-native-v2",
+    "Maintain browser crash guard; any visual acceptance must use a responsive independent browser with one engine page and serial builds"
+  ]
+}
