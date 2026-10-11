@@ -48,7 +48,8 @@
         "M07-travel-service-flow.json",
         "M01-lifetime-retention.json",
         "M07-map-page-flow.json",
-        "M08-wardrobe-surface-flow.json"
+        "M08-wardrobe-surface-flow.json",
+        "M08-collection-feedback-flow.json"
       ]
     },
     {
@@ -160,7 +161,8 @@
         "M08-photo-flow.json",
         "M08-wardrobe-flow.json",
         "M04-action-marks-flow.json",
-        "M08-wardrobe-surface-flow.json"
+        "M08-wardrobe-surface-flow.json",
+        "M08-collection-feedback-flow.json"
       ]
     },
     {
@@ -203,5 +205,6 @@
   "requirements": "requirements.json",
   "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
   "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance.",
-  "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance."
+  "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance.",
+  "currentPriority": "User 2026-10-12: finish all functions/pages/flows for travel, wardrobe, darkroom, journal, collection and photo wall; complete integrated playable candidate before pixel polish."
 }

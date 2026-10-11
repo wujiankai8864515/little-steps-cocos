@@ -1,0 +1,21 @@
+✔ Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count (7.645ms)
+✔ Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row (3.900416ms)
+✔ Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits (0.115291ms)
+✔ Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation (0.889291ms)
+✔ Archive waits for resources and draw, returns to the same collection selection, and cannot train twice (15.710334ms)
+✔ Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable (8.043083ms)
+✔ Collection resize cancels held controls and keeps source layout centered without rebuilding art (0.880833ms)
+✔ Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize (0.829666ms)
+✔ Save failure remains visible even when inventory has not changed and clears after recovery (0.6755ms)
+✔ Original collection selected/hover color stays above one in float payload without altering source alpha hits (0.829792ms)
+✔ Keyboard repeated downs are ignored until release; readonly navigation preserves row and save revision (1.010583ms)
+✔ Tab focus skips disabled controls, Shift reverses, keyboard activate releases once and pause revokes deferred action (1.5355ms)
+✔ Page press uses original darkening and sticky owner, archive line is enabled only on real hover/focus (4.587166ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 444.606375

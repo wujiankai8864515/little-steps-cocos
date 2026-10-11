@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "item": "M08.07",
+  "failures": [
+    {
+      "trigger": "Targeted tests v2",
+      "cause": "Expected 416 assertions but native reachable graph actually has 412; per-direction comparisons passed",
+      "fix": "Correct count to 412; final 275 tests pass"
+    },
+    {
+      "trigger": "Typecheck v1",
+      "cause": "Object.entries/fromEntries unavailable at project target lib",
+      "fix": "Use Object.keys; v2/v3/v4 passed without changing target"
+    },
+    {
+      "trigger": "Browser v2 rapid Return then Right",
+      "observed": "Selection stayed 0 while focus advanced to item_2",
+      "cause": "Deferred keyboard callback invalidated by same-frame focus change",
+      "fix": "Synchronous matching key-up activation after current ownership/focus/enabled checks",
+      "verification": "New rapid-confirm regression and real browser v3 selected1/focusitem2",
+      "preservedScreenshot": "builds/qa/cocos-collection-feedback-v2-confirm-cancelled.png"
+    }
+  ],
+  "diagnostics": [
+    {
+      "trigger": "Creator completed build then process exited 36",
+      "status": "Build Finished and v3 runtime verified; teardown return cause unconfirmed"
+    },
+    {
+      "trigger": "CUA binding absent after long interruption",
+      "status": "Rebound existing Chrome tab; not evidence of application crash"
+    }
+  ],
+  "pending": "Browser/device coverage remains limited as recorded"
+}

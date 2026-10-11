@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "item": "M08.07",
+  "updatedAt": "2026-10-11T23:06:35.390035+00:00",
+  "status": "collection_feedback_and_keyboard_flow_verified_full_acceptance_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "implementation": [
+    "Generic action supports hover/focus/press and keyboard ownership; touch remains single-owner and leave-cancelled",
+    "Collection original float highlight multipliers, focus arcs, archive underline, page press feedback",
+    "Native fixed-layout keyboard graph generated from original Godot hierarchy: 720 directions/40 configurations, 412 assertions on 22 reachable configurations",
+    "Keyboard activation survives rapid following navigation; archive read-only and resource cleanup observed"
+  ],
+  "tests": {
+    "pass": 275,
+    "fail": 0,
+    "log": "builds/reviews/M08-collection-feedback-regression-v4.log",
+    "typecheck": "builds/reviews/M08-collection-feedback-types-v4.log",
+    "typecheckExit": 0
+  },
+  "browser": "builds/reviews/M08-collection-feedback-browser.json",
+  "failures": "builds/reviews/M08-collection-feedback-failures.json",
+  "native": "builds/records/M08-collection-focus-native.json",
+  "candidate": "builds/records/candidates/collection-feedback-v3.json",
+  "pluginSHA256": "39b7562f1b0fc4448136d3b4d758a851eb494fa79159b681cb9905cc29a3253e",
+  "pending": [
+    "Complete all six page functions/navigation/layout before visual micro-tuning",
+    "Production full-entry flow and WeChat packaging/device verification"
+  ]
+}

@@ -738,35 +738,52 @@ function registerUI(cc) {
         target.on(cc.Node.EventType.TOUCH_START,start);target.on(cc.Node.EventType.TOUCH_MOVE,move);target.on(cc.Node.EventType.TOUCH_END,end);target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
         return {cancel,dispose(){cancel();target.off(cc.Node.EventType.TOUCH_START,start);target.off(cc.Node.EventType.TOUCH_MOVE,move);target.off(cc.Node.EventType.TOUCH_END,end);target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled);}};
     }
-    function action(target, callback, enabled = () => true, hitTest = null) {
-        let pointer = -1, armed = false, generation = 0;
+    function action(target, callback, enabled = () => true, hitTest = null, feedback = null) {
+        let pointer = -1, armed = false, generation = 0, hovered = false, focused = false, key = null;
+        const snapshot = () => ({hovered, focused, pressed: armed || key !== null, pointer});
+        const notify = () => { if (feedback) feedback(snapshot()); };
         const inside = (event) => {
             const p = event.getUILocation(), ui = target.getComponent(cc.UITransform);
             const local = ui.convertToNodeSpaceAR(new cc.Vec3(p.x,p.y,0));
             return local.x >= 0 && local.y <= 0 && local.x < ui.width && local.y > -ui.height && (!hitTest || hitTest([local.x, -local.y]));
         };
-        const cancel = () => { generation++; pointer = -1; armed = false; };
+        const activate = () => {
+            const intent = generation;
+            cc.director.once(cc.Director.EVENT_AFTER_UPDATE, () => {
+                if (intent === generation && target.isValid && target.activeInHierarchy && enabled()) callback();
+            });
+        };
+        const cancel = () => { generation++; pointer = -1; armed = false; key = null; hovered = false; notify(); };
         const start = event => {
-            if (pointer !== -1 || !enabled() || !inside(event)) return;
+            if (pointer !== -1 || key !== null || !enabled() || !inside(event)) return;
             pointer = event.getID(); armed = true; event.propagationStopped = true;
+            notify();
         };
         const move = event => {
             if (event.getID() !== pointer) return;
             if (!enabled() || !inside(event)) armed = false;
-            event.propagationStopped = true;
+            event.propagationStopped = true; notify();
         };
         const end = event => {
             if (event.getID() !== pointer) return;
-            const accepted = armed && enabled() && inside(event), intent = generation;
-            pointer = -1; armed = false; event.propagationStopped = true;
-            if (accepted) cc.director.once(cc.Director.EVENT_AFTER_UPDATE, () => {
-                if (intent === generation && target.isValid && target.activeInHierarchy && enabled()) callback();
-            });
+            const accepted = armed && enabled() && inside(event);
+            pointer = -1; armed = false; event.propagationStopped = true; notify();
+            if (accepted) activate();
         };
         const cancelled=event=>{if(event.getID()!==pointer)return;event.propagationStopped=true;cancel();};
-        target.on(cc.Node.EventType.TOUCH_START,start); target.on(cc.Node.EventType.TOUCH_MOVE,move);
-        target.on(cc.Node.EventType.TOUCH_END,end); target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
-        return {cancel, dispose() { cancel(); target.off(cc.Node.EventType.TOUCH_START,start); target.off(cc.Node.EventType.TOUCH_MOVE,move); target.off(cc.Node.EventType.TOUCH_END,end); target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled); }};
+        const hover=event=>{const next=enabled()&&inside(event);if(next!==hovered){hovered=next;notify();}};
+        const mouseFocus=event=>{if(enabled()&&inside(event)&&api.onFocus)api.onFocus();};
+        const leave=()=>{if(hovered){hovered=false;notify();}};
+        const api = {cancel, snapshot, onFocus:null,
+            setFocused(value) {const next=!!value&&enabled();if(next===focused)return;focused=next;if(!next){key=null;generation++;}notify();},
+            keyDown(code) {if(!focused||!enabled()||pointer!==-1||key!==null)return false;key=code;notify();return true;},
+            keyUp(code) {if(key!==code)return false;key=null;notify();if(focused&&enabled()&&target.isValid&&target.activeInHierarchy)callback();return true;},
+            dispose() {cancel();focused=false;notify();if(cc.Node.EventType.MOUSE_DOWN&&feedback)target.off(cc.Node.EventType.MOUSE_DOWN,mouseFocus);target.off(cc.Node.EventType.TOUCH_START,start);target.off(cc.Node.EventType.TOUCH_MOVE,move);target.off(cc.Node.EventType.TOUCH_END,end);target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled);for(const type of [cc.Node.EventType.MOUSE_ENTER,cc.Node.EventType.MOUSE_MOVE])if(type&&feedback)target.off(type,hover);if(cc.Node.EventType.MOUSE_LEAVE&&feedback)target.off(cc.Node.EventType.MOUSE_LEAVE,leave);}
+        };
+        target.on(cc.Node.EventType.TOUCH_START,start);target.on(cc.Node.EventType.TOUCH_MOVE,move);
+        target.on(cc.Node.EventType.TOUCH_END,end);target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
+        if(feedback){if(cc.Node.EventType.MOUSE_DOWN)target.on(cc.Node.EventType.MOUSE_DOWN,mouseFocus);for(const type of [cc.Node.EventType.MOUSE_ENTER,cc.Node.EventType.MOUSE_MOVE])if(type)target.on(type,hover);if(cc.Node.EventType.MOUSE_LEAVE)target.on(cc.Node.EventType.MOUSE_LEAVE,leave);}
+        return api;
     }
     function fixedBubble(parent, font, message, card, anchor, options = {}) {
         const root = node(parent, 'SpeechBubble', [0,0,1,1]), shape = node(root,'PaperShape',[0,0,1,1]);
@@ -880,10 +897,12 @@ function registerUI(cc) {
         // An offscreen visual can use an aligned onscreen logical input frame.
         // No render-target camera coordinates enter the pointer ownership code.
         const hit=node(inputParent || root,'FixedReturnHitArea',[(inputParent?rect[0]:0)+rect[2]*.09,(inputParent?rect[1]:0)+rect[3]*.23,rect[2]*.82,rect[3]*.76]);
-        const binding=action(hit,callback,enabled);
-        const press=()=>{if(enabled())swing.press();},release=()=>swing.release();
-        hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
-        return {root,motion:swing,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);if(inputParent)hit.destroy();},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
+        const focusInk=node(visual,'FocusRim',[0,0,1,1]),focusGraphics=focusInk.addComponent(cc.Graphics);focusInk.active=false;
+        focusGraphics.strokeColor=color([181/255,127/255,63/255,1]);focusGraphics.lineWidth=2.2;
+        const rim=outline.map(p=>[p[0]*.91,(p[1]-74)*.95+74]);focusGraphics.moveTo(rim[0][0],-rim[0][1]);rim.slice(1).forEach(p=>focusGraphics.lineTo(p[0],-p[1]));focusGraphics.close();focusGraphics.stroke();
+        let previous={pressed:false,hovered:false};
+        const binding=action(hit,callback,enabled,null,state=>{if(state.pressed&&!previous.pressed)swing.press();if(!state.pressed&&previous.pressed)swing.release();if(state.hovered&&!previous.hovered)swing.velocity+=.04;focusInk.active=state.focused;previous=state;});
+        return {root,motion:swing,input:binding,cancel:binding.cancel,dispose(){binding.dispose();if(inputParent)hit.destroy();},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
     return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, confirmationBubble, hangingReturn, choiceBubble:(...args)=>createChoiceBubble(cc,{node,color,polygon},...args)});
 }

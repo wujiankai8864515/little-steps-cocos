@@ -1,0 +1,45 @@
+✔ Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count (8.241458ms)
+✔ Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row (2.2805ms)
+✔ Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits (0.10475ms)
+✔ Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation (0.882792ms)
+✔ Archive waits for resources and draw, returns to the same collection selection, and cannot train twice (16.133708ms)
+✔ Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable (6.016167ms)
+✔ Collection resize cancels held controls and keeps source layout centered without rebuilding art (0.84ms)
+✔ Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize (0.768667ms)
+✔ Save failure remains visible even when inventory has not changed and clears after recovery (0.644667ms)
+✔ Original collection selected/hover color stays above one in float payload without altering source alpha hits (0.797917ms)
+✔ Keyboard repeated downs are ignored until release; readonly navigation preserves row and save revision (1.169708ms)
+✔ Tab focus skips disabled controls, Shift reverses, keyboard activate releases once and pause revokes deferred action (1.327917ms)
+✔ Page press uses original darkening and sticky owner, archive line is enabled only on real hover/focus (5.259708ms)
+✖ Actual page directional focus matches native Godot dispatch across every reachable row/paging/archive layout (25.537417ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 491.3965
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:74:1
+✖ Actual page directional focus matches native Godot dispatch across every reachable row/paging/archive layout (25.537417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  412 !== 416
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:87:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 412,
+    expected: 416,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "item": "M08.07",
+  "candidate": "collection-feedback-v3",
+  "status": "limited_real_flow_passed",
+  "viewport": [
+    720,
+    1280
+  ],
+  "browser": "independent Chrome, supported CUA",
+  "observations": [
+    {
+      "at": "2026-10-11T23:00:28.973Z",
+      "action": "Tab Tab Right Return Right in one batch",
+      "selectedIndex": 1,
+      "focus": "item_2",
+      "page": 0,
+      "inventoryCount": 12,
+      "archiveCount": 5,
+      "revision": 52,
+      "reviewCount": 13,
+      "entries": 96,
+      "estimatedBytes": 142731273,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T23:00:56.082Z",
+      "action": "Tab to next page then Space",
+      "page": 1,
+      "selectedIndex": 1,
+      "focus": "",
+      "entries": 96,
+      "estimatedBytes": 142731273,
+      "revision": 52,
+      "reviewCount": 13
+    },
+    {
+      "at": "2026-10-11T23:01:16.465Z",
+      "action": "Tab then ShiftTab then Return opens archive",
+      "archiveReadonly": true,
+      "trip": "trip_5_5",
+      "entryUid": "trip_5_5:2",
+      "entries": 100,
+      "estimatedBytes": 166581497,
+      "revision": 52,
+      "reviewCount": 13,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T23:01:25.185Z",
+      "action": "Click diary back plaque",
+      "page": 1,
+      "selectedIndex": 1,
+      "archive": null,
+      "entries": 96,
+      "estimatedBytes": 142731273,
+      "revision": 52,
+      "reviewCount": 13
+    },
+    {
+      "at": "2026-10-11T23:01:36.785Z",
+      "action": "Tab Return on collection back",
+      "page": "HomePage",
+      "entries": 93,
+      "estimatedBytes": 129784985,
+      "revision": 52,
+      "reviewCount": 13,
+      "pending": 0
+    }
+  ],
+  "runtimeErrors": [],
+  "screenshot": {
+    "path": "builds/qa/cocos-collection-feedback-final.png",
+    "sha256": "033c0d29a9329086096619557f815a3032465f260c750fbc4be4e2b03e900964"
+  },
+  "fixture": "Five trips seeded through real service into isolated in-memory save; production Boot unchanged. Not full production travel end-to-end.",
+  "pending": [
+    "Physical multi-pointer and mobile focus",
+    "Full interruption/resource failure matrix",
+    "All page lighting states and WeChat device validation"
+  ],
+  "cleanup": "Candidate tabs closed, viewport reset, servers on 8790 and 8791 stopped"
+}
