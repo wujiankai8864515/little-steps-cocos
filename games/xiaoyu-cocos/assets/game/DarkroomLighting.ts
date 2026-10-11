@@ -12,9 +12,9 @@ export function darkMaterial(assets:GameAssets,scope:Scope,name:string,spec?:Art
     return material;
 }
 export class DarkroomLighting {
-    readonly lamp=new ResponsiveLamp();state:ReturnType<typeof lightingSnapshot>;tint=[1,1,1];
+    readonly lamp:ResponsiveLamp;state:ReturnType<typeof lightingSnapshot>;tint=[1,1,1];
     private materials:Material[]=[];
-    constructor(private room:Node,private assets:GameAssets,private scope:Scope,readonly clock:HomeClock){this.update(0,-1);}
+    constructor(private room:Node,private assets:GameAssets,private scope:Scope,readonly clock:HomeClock,lamp=new ResponsiveLamp()){this.lamp=lamp;this.update(0,-1);}
     bind(sprite:Sprite,spec:ArtSpec,kind='room'){
         const material=darkMaterial(this.assets,this.scope,kind,spec);sprite.customMaterial=material;
         if(kind==='sky')material.setProperty('shared_outdoor_paint',this.assets.texture('res://assets/home_neutral.png'));

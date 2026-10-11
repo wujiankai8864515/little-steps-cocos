@@ -10,8 +10,8 @@ import { nodeAt } from './Visual';
 
 type Caster={name:string;root:Node;sprite:any;material:Material;contact:Graphics;profile:number[][];paths:number[][][];bounds:number[];region:number[];map:(at:number[])=>number[];doll:boolean;foot:boolean;clip:number[];mesh:any};
 export class DarkroomShadows {
-    readonly layers:Array<{node:Node;z:number}>=[];private casters:Caster[]=[];private accumulator=0;
-    constructor(private room:Node,assets:GameAssets,scope:Scope,private lighting:DarkroomLighting,private round:DarkroomRound,tools:DarkroomTools,lantern:Node){
+    readonly layers:Array<{node:Node;z:number}>=[];private casters:Caster[]=[];
+    constructor(private room:Node,assets:GameAssets,scope:Scope,private lighting:DarkroomLighting,private round:DarkroomRound,tools:DarkroomTools,lantern:Node,private accumulator=0){
         const data=round.rig.geometry;
         for(const id of DOLL_PARTS){const g=data.parts[id];this.add(assets,scope,id,'res://assets/doll_idle.png',g.profile,g.bounds,g.rect.slice(0,2),at=>round.rig.worldPoint([at[0]+g.rect[0],at[1]+g.rect[1]]),[100,745,520,160],2,true,id.indexOf('leg')>=0);}
         const profile:number[][]=[],bounds=[161,38,190,414],resource='res://darkroom/assets/round2/lantern_cranes.png';
@@ -36,6 +36,7 @@ export class DarkroomShadows {
         else {const c=spec.content,s=spec.size;material.setProperty('textureBounds',new Vec4(c[0]/s[0],c[1]/s[1],(c[0]+c[2])/s[0],(c[1]+c[3])/s[1]));}
         const contact=nodeAt(root,'PhysicalContactPaths').addComponent(Graphics);this.casters.push({name,root,sprite,material,contact,profile,paths,bounds,region,map,clip,mesh,doll,foot});this.layers.push({node:root,z});
     }
+    retainClock(){return this.accumulator;}
     advance(delta:number){this.accumulator+=delta;if(this.accumulator>=1/24||this.round.pointerDragged){this.accumulator=0;this.sync();}}
     sync(){const light=this.lighting.shadow(),r=this.round,o=this.room.worldPosition,z=this.room.worldScale;
         for(const s of this.casters){const fade=s.doll?(r.clearTime>=0?1-smooth(.2,1,r.clearProgress):1)*r.spawnAlpha*Number(r.dollVisible):1,strength=light.strength*fade,contact=light.contact*fade;

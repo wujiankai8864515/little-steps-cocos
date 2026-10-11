@@ -11,7 +11,7 @@ import { TravelService } from './TravelService';
 import { TravelJournalPage, JOURNAL_RESOURCES } from './TravelJournalPage';
 import { TravelLoadingPanel } from './TravelLoadingPanel';
 import { DEPARTURE_EFFECTS } from './HomeDepartureVisual';
-import { DarkroomPage } from './DarkroomPage';
+import { DarkroomPage, DarkroomRetainedState } from './DarkroomPage';
 import { DARKROOM_EFFECTS } from './DarkroomLighting';
 import { HOME_EFFECTS } from './HomeLighting';
 import { LoadingPage } from './LoadingPage';
@@ -45,6 +45,8 @@ export class Application {
     private travelLoading:TravelLoadingPanel;
     private journalRequest:{scope:Scope;mode:'journal'|'archive'}=null;
     private darkroomPage:Prepared<DarkroomPage>;
+    private darkroomRetained:DarkroomRetainedState;
+    private darkroomStateScope:Scope;
     private darkroomLoading:Promise<Prepared<DarkroomPage>>;
     private darkroomPreparing:DarkroomPage;
     private darkroomError='';private routeWaitAge=0;
@@ -155,7 +157,7 @@ export class Application {
         this.current=next;this.page=next.page;return true;
     }
     private bindHome(prepared:Prepared<HomePage>){
-        this.fitPage(prepared.page);this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active)this.prepareDarkroom();};
+        this.fitPage(prepared.page);this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active&&!this.entering)this.prepareDarkroom();};
         prepared.page.onDarkroomRequest=()=>{if(this.entering||!this.active||this.page!==prepared.page)return false;this.openDarkroom();return true;};
         prepared.page.onCancelDarkroom=()=>this.cancelDarkroomEntry();
         const home=prepared.page,owner=prepared.scope,service=new TravelService();
@@ -193,6 +195,7 @@ export class Application {
         this.entering=true;const scope=lifetime(this.scope),request={scope,mode};this.journalRequest=request;
         const home=this.homePage.page;home.setTravelLoading(true);this.travelLoading.show('日记加载中...');
         try{
+            if(this.darkroomPage?.scope.active||this.darkroomLoading)await this.hibernateDarkroom(scope);
             await this.assets.acquireResources(JOURNAL_RESOURCES,scope);
             if(this.journalRequest!==request||!scope.active||!this.active)return;
             this.travel.service.reconcile();
@@ -217,13 +220,36 @@ export class Application {
         this.travelLoading.hide();this.homePage.page.setTravelLoading(false);this.homePage.page.restoreTravelOffer();this.travelProps?.suspend();
         if(this.page===this.homePage.page)this.homePage.page.resume(this.active);
     }
+    private async hibernateDarkroom(requestScope:Scope){
+        // An optional preload can already be in flight. Join it before admitting
+        // another page; cancelled callers cannot evict or revive the cache later.
+        if(this.darkroomLoading)await requestScope.guard(this.darkroomLoading.catch(()=>null));
+        if(!requestScope.active)throw new Error('Page preparation cancelled');
+        const prepared=this.darkroomPage;
+        if(!prepared?.scope.active)return;
+        if(this.page===prepared.page||this.transitioning===prepared.page||this.darkroomPreparing===prepared.page)throw new Error('Cannot hibernate a visible Darkroom');
+        let stateScope=this.darkroomStateScope;
+        if(!stateScope){
+            stateScope=lifetime(this.scope);
+            const keys=Object.keys(this.assets.catalog.assets).filter(key=>{const s=this.assets.catalog.assets[key];return s.bundle==='darkroom'&&(s.kind==='json'||s.kind==='mask');});
+            try{await requestScope.guard(this.assets.acquireResources(keys,stateScope));}
+            catch(error){stateScope.dispose();throw error;}
+        }
+        try{
+            this.darkroomRetained=prepared.page.retain();
+            this.darkroomStateScope=stateScope;
+            this.darkroomPage=null;
+            prepared.scope.dispose();
+            console.info('[LittleSteps] Darkroom visuals hibernated '+JSON.stringify(this.assets.snapshot()));
+        }catch(error){if(this.darkroomStateScope!==stateScope)stateScope.dispose();throw error;}
+    }
     private prepareDarkroom(){
         if(this.darkroomPage?.scope.active)return Promise.resolve(this.darkroomPage);
         if(this.darkroomLoading)return this.darkroomLoading;
         const scope=lifetime(this.scope);this.darkroomError='';
         const request=(async()=>{
             try{await this.assets.acquireGroups(['darkroom'],scope);await this.assets.acquireEffects(DARKROOM_EFFECTS,scope);
-                const page=await DarkroomPage.create(this.root,this.assets,scope,this.height,this.clock),prepared={page,scope};
+                const page=await DarkroomPage.create(this.root,this.assets,scope,this.height,this.clock,this.darkroomRetained),prepared={page,scope};
                 if(!scope.active)throw new Error('Darkroom preparation cancelled');page.onBack=()=>this.returnHome();page.onFinished=result=>console.info('[LittleSteps] Darkroom completed '+JSON.stringify(result));
                 this.fitPage(page);this.darkroomPage=prepared;console.info('[LittleSteps] Darkroom resources ready '+JSON.stringify(this.assets.snapshot()));return prepared;
             }catch(error){scope.dispose();if(this.scope.active){this.darkroomError=String(error);console.error('[LittleSteps] Darkroom preparation failed',error);}throw error;}
@@ -302,5 +328,5 @@ export class Application {
         if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||this.transitioning instanceof TravelJournalPage))this.transitioning.advance(delta);
         if(this.active&&this.entering&&!this.journalRequest&&this.page===this.homePage?.page&&!this.transitioning){this.routeWaitAge+=delta;this.homePage.page.note.updateWaiting('暗室加载中'+'.'.repeat(1+Math.floor(this.routeWaitAge/.52)%3));}
     }
-    dispose() {this.intent++;this.scope.dispose();}
+    dispose() {this.intent++;try{this.scope.dispose();}finally{this.darkroomPage=null;this.darkroomRetained=null;this.darkroomStateScope=null;}}
 }

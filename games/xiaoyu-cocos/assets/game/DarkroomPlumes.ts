@@ -5,7 +5,9 @@ import { darkMaterial } from './DarkroomLighting';
 import { smooth } from './DarkroomVisualRules';
 import { nodeAt } from './Visual';
 
-type Plume={root:Node;sprite:Sprite;material:any;origin:number[];age:number;life:number;factor:number;gold:boolean;fade:number};
+type PlumeState={origin:number[];age:number;life:number;factor:number;gold:boolean;fade:number};
+type Plume=PlumeState&{root:Node;sprite:Sprite;material:any};
+export type DarkroomPlumeState={active:PlumeState[];releaseTime:number;releaseOrigin:number[];tint:number[];elapsed:number;releases:number};
 const DARK='res://darkroom/assets/smoke.png',GOLD='res://darkroom/assets/release.png';
 export class DarkroomPlumes {
     readonly root:Node;private active:Plume[]=[];private idle:Plume[]=[];private created=0;private releaseTime=-1;private releaseOrigin=[360,704];private sparkles:Graphics;private frames:SpriteFrame[]=[null,null];private tint=[1,1,1];private elapsed=0;private releases=0;
@@ -34,5 +36,13 @@ export class DarkroomPlumes {
     }
     clear(){this.active.forEach(p=>this.recycle(p));this.active=[];this.releaseTime=-1;this.sparkles.clear();}
     setTint(tint:number[]){if(tint.every((v,i)=>v===this.tint[i]))return;this.tint=tint.slice();this.active.forEach(p=>p.material.setProperty('plumeTint',new Vec4(...this.tint as [number,number,number],1)));this.advance(0);}
+    retain():DarkroomPlumeState{
+        return {active:this.active.map(p=>({origin:p.origin.slice(),age:p.age,life:p.life,factor:p.factor,gold:p.gold,fade:p.fade})),releaseTime:this.releaseTime,releaseOrigin:this.releaseOrigin.slice(),tint:this.tint.slice(),elapsed:this.elapsed,releases:this.releases};
+    }
+    restore(state:DarkroomPlumeState){
+        this.clear();this.tint=state.tint.slice();this.releaseTime=state.releaseTime;this.releaseOrigin=state.releaseOrigin.slice();this.elapsed=state.elapsed;this.releases=state.releases;
+        for(const saved of state.active){this.emit(saved.origin,saved.life,saved.factor,saved.gold);const plume=this.active[this.active.length-1];plume.age=saved.age;plume.fade=saved.fade;}
+        this.advance(0);
+    }
     snapshot(){return {capacity:6,created:this.created,active:this.active.length,idle:this.idle.length,release_time:this.releaseTime,elapsed:this.elapsed,releases:this.releases,frames:this.frames.map(frame=>!!frame)};}
 }

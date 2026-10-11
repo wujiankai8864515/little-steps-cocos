@@ -9,9 +9,9 @@ import { nodeAt } from './Visual';
 export class DarkroomPlants {
     readonly roots:Array<{node:Node;z:number}>;readonly forest:PlantForest;
     private items:Array<{part:SpringPlantPart;root:Node;sprite:any;revision:number;shadows:Array<{root:Node;sprite:any;material:Material}>}>=[];
-    constructor(private room:Node,assets:GameAssets,scope:Scope,private lighting:DarkroomLighting){
+    constructor(private room:Node,assets:GameAssets,scope:Scope,private lighting:DarkroomLighting,forest?:PlantForest){
         const c=assets.json('res://darkroom/assets/round2/darkroom_plants_contract.json'),spec=assets.art(c.texture);
-        this.forest=new PlantForest(c,DARK_PLANT_PARTS,true);const shadows=nodeAt(room,'IndependentPlantShadows'),plants=nodeAt(room,'IndependentRoomPlants');this.roots=[{node:shadows,z:2},{node:plants,z:3}];
+        this.forest=forest||new PlantForest(c,DARK_PLANT_PARTS,true);const shadows=nodeAt(room,'IndependentPlantShadows'),plants=nodeAt(room,'IndependentRoomPlants');this.roots=[{node:shadows,z:2},{node:plants,z:3}];
         for(const part of this.forest.parts){
             const make=(node:Node)=>{const s=node.addComponent(meshSprite());s.configure(part.mesh,spec.size,spec.content);s.sizeMode=Sprite.SizeMode.CUSTOM;s.spriteFrame=assets.frame(c.texture,scope);return s;};
             const root=nodeAt(plants,part.recipe[0]),sprite=make(nodeAt(root,'SkinnedAtlasPart'));lighting.bind(sprite,spec);
