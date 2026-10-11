@@ -1,14 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T23:06:35.390035+00:00",
-  "latestItem": "M08.07",
+  "updatedAt": "2026-10-11T23:18:55.287475+00:00",
+  "latestItem": "M11.01",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M08-collection-feedback-flow.json"
+    "builds/records/M11-six-page-function-matrix.json",
+    "builds/reviews/M11-six-pages-browser.json",
+    "builds/reviews/M11-six-pages-failures.json"
   ],
-  "nextPriority": "Complete all six page function points and integrated real entry/routes: travel, wardrobe, darkroom, journal, collection and photo wall. Prioritize missing behavior and a playable full candidate; numerical pixel polish deferred. Collection feedback batch finished with 275 tests and limited browser flow.",
-  "pendingReadback": "builds/reviews/M08-collection-feedback-remote-readback.json (create after commit)",
+  "nextPriority": "All six pages available in complete-entry browser candidate. Continue remaining original functional/input/failure cases and WeChat-only packaging; do not return to numerical pixel polishing before product completion.",
+  "pendingReadback": "builds/reviews/M11-six-pages-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -20,6 +22,7 @@
     "Wardrobe candidates v1-v3 in builds/work; sources frozen and QA-only controls declared. All test tabs and servers stopped. v1 initial black canvas did not reproduce when unchanged candidate reopened on 8787; root cause remains unconfirmed.",
     "Wardrobe screenshots saved in builds/qa/cocos-wardrobe-*.png. V3 is latest candidate (per-attempt outfit lease cleanup), not release. Shipping Boot/scene unchanged.",
     "Latest wardrobe-surface-v1 candidate uses fixed 720x1280 RT. Browser main flow, night/short/long observations saved. Fresh Chrome session succeeded after previous control interruption; tab closed, viewport reset, server8789 stopped. No previous root-cause claim.",
-    "Collection v3 browser flow done; tabs closed, viewport reset, servers8790/8791 stopped. Final screenshot builds/qa/cocos-collection-feedback-final.png."
+    "Collection v3 browser flow done; tabs closed, viewport reset, servers8790/8791 stopped. Final screenshot builds/qa/cocos-collection-feedback-final.png.",
+    "User preview http://127.0.0.1:8792/review; source-unmodified full-six-pages-v1. Server session73973 kept for user review; tab426065830 marked deliverable, viewport reset. Native Chrome supplemental capture prohibited current URL: stopped path, do not repeat."
   ]
 }

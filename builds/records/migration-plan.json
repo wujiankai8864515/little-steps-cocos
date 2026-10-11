@@ -198,13 +198,15 @@
     {
       "id": "M11",
       "description": "strict complete screenshot/button/flow acceptance",
-      "status": "pending",
-      "evidence": []
+      "status": "integrated_six_page_main_flow_and_save_reload_observed_complete_matrix_pending",
+      "evidence": [
+        "M11-six-page-function-matrix.json"
+      ]
     }
   ],
   "requirements": "requirements.json",
   "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
   "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance.",
   "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance.",
-  "currentPriority": "User 2026-10-12: finish all functions/pages/flows for travel, wardrobe, darkroom, journal, collection and photo wall; complete integrated playable candidate before pixel polish."
+  "currentPriority": "All six pages available in complete-entry browser candidate. Continue remaining original functional/input/failure cases and WeChat-only packaging; do not return to numerical pixel polishing before product completion."
 }

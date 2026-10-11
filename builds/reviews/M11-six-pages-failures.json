@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "candidate": "full-six-pages-v1",
+  "failures": [
+    {
+      "action": "Creator launch under sandbox",
+      "result": "exit134, empty log",
+      "cause": "unconfirmed; normal desktop launch succeeded under approved escalation",
+      "log": "builds/reviews/M11-six-pages-build-v1.log"
+    },
+    {
+      "action": "Loopback HTTP server under sandbox",
+      "result": "bind rejected",
+      "resolution": "Same loopback-only service started with escalation",
+      "log": "builds/reviews/M11-six-pages-server.log"
+    },
+    {
+      "action": "Supplemental native Chrome screenshot saving",
+      "result": "Computer Use denied on current browser URL and stopped session",
+      "resolution": "Stopped this UI path immediately; no retry, no browser-data reset, no crash claim. Already viewed browser screenshots and live preview retained."
+    },
+    {
+      "action": "Initial function-matrix record generation",
+      "result": "Python source rejected non-UTF-8 stdin",
+      "resolution": "No partial file written; regenerated JSON successfully from ASCII script"
+    }
+  ],
+  "notes": [
+    "Creator normal desktop build logged Finished and returned36; runtime started correctly.",
+    "Do not attribute empty launch log to confirmed engine defect."
+  ]
+}

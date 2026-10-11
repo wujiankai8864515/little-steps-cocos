@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "item": "M11.01",
+  "updatedAt": "2026-10-11T23:18:55.287475+00:00",
+  "candidate": "full-six-pages-v1",
+  "sourceCommit": "c9629f86940d6d65654fe8cd7faae41b66276eb0",
+  "baseline": "Godot b4f77afc02999a465757177794343eb3d531c5e6 and effective requirements",
+  "scope": "All six original pages, functions, elements, layout and flows. Only numerical pixel polishing deferred. This matrix is not full acceptance.",
+  "runtime": "Unmodified production Boot; zero fixture overrides. Real storage, real clock, visible UI actions in independent Chrome at 720x1280.",
+  "items": [
+    {
+      "id": "travel",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Backpack drag, confirmation, departure and Home map entry",
+        "Route progresses in real time",
+        "Encounter opens, pauses route, cancels and reopens",
+        "Manual blessing choice and result ticket",
+        "Return, open bag, four rewards individually collected"
+      ],
+      "pendingAcceptance": [
+        "All five encounter types, long prose scrolling and failure/interruption combinations"
+      ]
+    },
+    {
+      "id": "wardrobe",
+      "implementation": "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home cabinet entry",
+        "Peach preview, local unlock, equip and return",
+        "Outfit synchronized to Home and Photo",
+        "Outfit restored after full browser reload"
+      ],
+      "pendingAcceptance": [
+        "Moving hold-drag and physical multipointer matrix"
+      ]
+    },
+    {
+      "id": "darkroom",
+      "implementation": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Doll drag to actor, invitation and page entry",
+        "Needle and slipper selection with visible hits",
+        "Meter reduction, release cloud and automatic next round",
+        "Return to Home"
+      ],
+      "pendingAcceptance": [
+        "Full lighting and interruption matrix, physical-device touch and audio"
+      ]
+    },
+    {
+      "id": "journal",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home diary entry after return",
+        "Agree and alternate review choices",
+        "Submit advances to next unreviewed entry",
+        "Previous and next navigation; reviewed entry readonly",
+        "Complete journal archives and returns Home"
+      ],
+      "pendingAcceptance": [
+        "All story lengths and browser storage-failure retry"
+      ]
+    },
+    {
+      "id": "collection",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home treasure chest entry",
+        "Empty collection state",
+        "Four collected objects and details",
+        "Switch detail without rearranging objects",
+        "Archive opens readonly diary",
+        "M08.07 separate multi-page and keyboard evidence",
+        "After full reload, all four collected objects and one archived diary remained"
+      ],
+      "pendingAcceptance": [
+        "Physical multipointer and full interruption combinations"
+      ]
+    },
+    {
+      "id": "photo",
+      "implementation": "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home photo entry",
+        "Initial two photos",
+        "Drag first Home selector to second photo; Home updates",
+        "Outfit synchronized from wardrobe",
+        "After real reward and reload, three photos and binding restored"
+      ],
+      "pendingAcceptance": [
+        "More than six photos and all viewports under full integrated run; prior focused evidence separate"
+      ]
+    }
+  ],
+  "globalPending": [
+    "WeChat packaging and real-device validation",
+    "Cold Home download budget unresolved in earlier evidence",
+    "Complete failure/retry/background/multipointer matrix",
+    "User review"
+  ],
+  "entryURL": "http://127.0.0.1:8792/review",
+  "delivery": {
+    "url": "http://127.0.0.1:8792/review",
+    "direct": "http://127.0.0.1:8792/",
+    "candidate": "full-six-pages-v1",
+    "sourceOverrides": 0,
+    "server": "loopback only, kept running for requested user review",
+    "restart": "python3 builds/tools/serve_candidate.py --name full-six-pages-v1 --port 8792",
+    "browser": "Independent Chrome tab426065830 marked deliverable; temporary viewport override reset",
+    "packaging": "web-mobile local review candidate only; shipping target remains wechatgame"
+  }
+}

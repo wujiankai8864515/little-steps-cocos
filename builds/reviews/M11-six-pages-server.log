@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/serve_candidate.py", line 21, in <module>
+    if __name__=='__main__':main()
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/serve_candidate.py", line 16, in main
+    host=ThreadingHTTPServer(('127.0.0.1',a.port),functools.partial(CandidateHandler,directory=str(directory)))
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted

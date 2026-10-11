@@ -3,8 +3,19 @@
 import argparse,json,functools
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+from urllib.parse import urlsplit
 ROOT=Path(__file__).resolve().parents[2]
 class CandidateHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if urlsplit(self.path).path == '/review':
+            payload=(ROOT/'builds/preview.html').read_bytes()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+        super().do_GET()
     def end_headers(self):
         self.send_header('Cache-Control','no-store')
         super().end_headers()

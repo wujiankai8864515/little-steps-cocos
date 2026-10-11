@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "item": "M11.01",
+  "candidate": "full-six-pages-v1",
+  "sourceCommit": "c9629f86940d6d65654fe8cd7faae41b66276eb0",
+  "browser": "Independent Chrome via supported CUA",
+  "viewport": [
+    720,
+    1280
+  ],
+  "realProductionEntry": true,
+  "fixtureOverrides": [],
+  "startedAt": "2026-10-11T23:08:52.566Z",
+  "completedAt": "2026-10-11T23:17:41.082Z",
+  "pageReady": [
+    {
+      "page": "LOGIN",
+      "at": "2026-10-11T23:08:52.566Z"
+    },
+    {
+      "page": "COMIC",
+      "at": "2026-10-11T23:09:02.596Z"
+    },
+    {
+      "page": "HOME",
+      "at": "2026-10-11T23:09:20.254Z"
+    },
+    {
+      "page": "WARDROBE",
+      "at": "2026-10-11T23:09:30.008Z"
+    },
+    {
+      "page": "PHOTO",
+      "at": "2026-10-11T23:10:13.259Z"
+    },
+    {
+      "page": "DARKROOM",
+      "at": "2026-10-11T23:10:59.734Z"
+    },
+    {
+      "page": "MAP",
+      "at": "2026-10-11T23:12:07.913Z"
+    },
+    {
+      "page": "COLLECTION_EMPTY",
+      "at": "2026-10-11T23:13:36.242Z"
+    },
+    {
+      "page": "JOURNAL",
+      "at": "2026-10-11T23:14:20.293Z"
+    },
+    {
+      "page": "COLLECTION_POPULATED",
+      "at": "2026-10-11T23:14:48.592Z"
+    },
+    {
+      "page": "LOGIN_RELOAD",
+      "at": "2026-10-11T23:15:08.548Z"
+    },
+    {
+      "page": "HOME_RELOAD",
+      "at": "2026-10-11T23:16:33.323Z"
+    },
+    {
+      "page": "PHOTO_RELOAD",
+      "at": "2026-10-11T23:17:06.300Z"
+    },
+    {
+      "page": "COLLECTION_RELOAD",
+      "at": "2026-10-11T23:17:41.082Z"
+    }
+  ],
+  "flows": [
+    {
+      "id": "travel",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Backpack drag, confirmation, departure and Home map entry",
+        "Route progresses in real time",
+        "Encounter opens, pauses route, cancels and reopens",
+        "Manual blessing choice and result ticket",
+        "Return, open bag, four rewards individually collected"
+      ],
+      "pendingAcceptance": [
+        "All five encounter types, long prose scrolling and failure/interruption combinations"
+      ]
+    },
+    {
+      "id": "wardrobe",
+      "implementation": "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home cabinet entry",
+        "Peach preview, local unlock, equip and return",
+        "Outfit synchronized to Home and Photo",
+        "Outfit restored after full browser reload"
+      ],
+      "pendingAcceptance": [
+        "Moving hold-drag and physical multipointer matrix"
+      ]
+    },
+    {
+      "id": "darkroom",
+      "implementation": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Doll drag to actor, invitation and page entry",
+        "Needle and slipper selection with visible hits",
+        "Meter reduction, release cloud and automatic next round",
+        "Return to Home"
+      ],
+      "pendingAcceptance": [
+        "Full lighting and interruption matrix, physical-device touch and audio"
+      ]
+    },
+    {
+      "id": "journal",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home diary entry after return",
+        "Agree and alternate review choices",
+        "Submit advances to next unreviewed entry",
+        "Previous and next navigation; reviewed entry readonly",
+        "Complete journal archives and returns Home"
+      ],
+      "pendingAcceptance": [
+        "All story lengths and browser storage-failure retry"
+      ]
+    },
+    {
+      "id": "collection",
+      "implementation": "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home treasure chest entry",
+        "Empty collection state",
+        "Four collected objects and details",
+        "Switch detail without rearranging objects",
+        "Archive opens readonly diary",
+        "M08.07 separate multi-page and keyboard evidence",
+        "After full reload, all four collected objects and one archived diary remained"
+      ],
+      "pendingAcceptance": [
+        "Physical multipointer and full interruption combinations"
+      ]
+    },
+    {
+      "id": "photo",
+      "implementation": "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+      "status": "main_functions_implemented_and_real_browser_flow_observed",
+      "observed": [
+        "Home photo entry",
+        "Initial two photos",
+        "Drag first Home selector to second photo; Home updates",
+        "Outfit synchronized from wardrobe",
+        "After real reward and reload, three photos and binding restored"
+      ],
+      "pendingAcceptance": [
+        "More than six photos and all viewports under full integrated run; prior focused evidence separate"
+      ]
+    }
+  ],
+  "runtimeErrorsObserved": [],
+  "savePersistence": {
+    "outfit": "peach restored on Home and Photo",
+    "photoCount": 3,
+    "homePhotoBindings": "both slots retain second photo",
+    "collectionCount": 4,
+    "archivedJournals": 1
+  },
+  "screenshots": "All six pages and key state transitions visually viewed through CUA screenshots in chat. No numerical pixel diff. This integrated run screenshots were not persisted to repository; earlier focused screenshots remain separate evidence.",
+  "reviewPage": "Desktop review wrapper viewed at default viewport; portrait game plus six expandable instructions; one engine iframe",
+  "boundary": "Main flow and selected controls only. No full exception/device acceptance, no measured memory/fps claims."
+}
