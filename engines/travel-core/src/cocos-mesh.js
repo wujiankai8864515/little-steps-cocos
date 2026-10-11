@@ -68,6 +68,16 @@ function registerCocos(cc) {
             }
             rd.vertDirty = false;
             const buffer = chunk.meshBuffer, indices = sprite.mesh.indices;
+            // StaticVBAccessor reserves vertices, but dense 2D meshes can use
+            // more indices than its default four-per-vertex buffer. Match
+            // Creator's appendIndices growth before writing; an overflow would
+            // otherwise fail uploadBuffers and prevent the frame reset.
+            const required = buffer.indexOffset + indices.length;
+            if (buffer.iData.length < required) {
+                const expanded = new Uint16Array(Math.ceil(required * 1.25));
+                expanded.set(buffer.iData);
+                buffer.iData = expanded;
+            }
             let offset = buffer.indexOffset;
             for (let i = 0; i < indices.length; ++i) buffer.iData[offset++] = chunk.vertexOffset + indices[i];
             buffer.indexOffset += indices.length;

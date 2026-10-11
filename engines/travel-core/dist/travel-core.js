@@ -585,6 +585,16 @@ function registerCocos(cc) {
             }
             rd.vertDirty = false;
             const buffer = chunk.meshBuffer, indices = sprite.mesh.indices;
+            // StaticVBAccessor reserves vertices, but dense 2D meshes can use
+            // more indices than its default four-per-vertex buffer. Match
+            // Creator's appendIndices growth before writing; an overflow would
+            // otherwise fail uploadBuffers and prevent the frame reset.
+            const required = buffer.indexOffset + indices.length;
+            if (buffer.iData.length < required) {
+                const expanded = new Uint16Array(Math.ceil(required * 1.25));
+                expanded.set(buffer.iData);
+                buffer.iData = expanded;
+            }
             let offset = buffer.indexOffset;
             for (let i = 0; i < indices.length; ++i) buffer.iData[offset++] = chunk.vertexOffset + indices[i];
             buffer.indexOffset += indices.length;
@@ -728,12 +738,12 @@ function registerUI(cc) {
         target.on(cc.Node.EventType.TOUCH_START,start);target.on(cc.Node.EventType.TOUCH_MOVE,move);target.on(cc.Node.EventType.TOUCH_END,end);target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
         return {cancel,dispose(){cancel();target.off(cc.Node.EventType.TOUCH_START,start);target.off(cc.Node.EventType.TOUCH_MOVE,move);target.off(cc.Node.EventType.TOUCH_END,end);target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled);}};
     }
-    function action(target, callback, enabled = () => true) {
+    function action(target, callback, enabled = () => true, hitTest = null) {
         let pointer = -1, armed = false, generation = 0;
         const inside = (event) => {
             const p = event.getUILocation(), ui = target.getComponent(cc.UITransform);
             const local = ui.convertToNodeSpaceAR(new cc.Vec3(p.x,p.y,0));
-            return local.x >= 0 && local.y <= 0 && local.x < ui.width && local.y > -ui.height;
+            return local.x >= 0 && local.y <= 0 && local.x < ui.width && local.y > -ui.height && (!hitTest || hitTest([local.x, -local.y]));
         };
         const cancel = () => { generation++; pointer = -1; armed = false; };
         const start = event => {

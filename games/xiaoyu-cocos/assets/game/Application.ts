@@ -10,6 +10,7 @@ import { HomeTravelBridge } from './HomeTravelBridge';
 import { TravelService } from './TravelService';
 import { TravelJournalPage, JOURNAL_RESOURCES } from './TravelJournalPage';
 import { TravelMapPage, MAP_RESOURCES, MAP_EFFECTS } from './TravelMapPage';
+import { TravelCollectionPage, COLLECTION_RESOURCES } from './TravelCollectionPage';
 import { TravelLoadingPanel } from './TravelLoadingPanel';
 import { DEPARTURE_EFFECTS } from './HomeDepartureVisual';
 import { DarkroomPage, DarkroomRetainedState } from './DarkroomPage';
@@ -20,7 +21,7 @@ import { LoginPage } from './LoginPage';
 import { box } from './Viewport';
 import { nodeAt } from './Visual';
 
-type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage;
+type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
 export class Application {
     readonly assets = new GameAssets();
@@ -44,7 +45,7 @@ export class Application {
     private travel:HomeTravelBridge;
     private travelProps:TravelHomeProps;
     private travelLoading:TravelLoadingPanel;
-    private journalRequest:{scope:Scope;mode:'journal'|'archive'|'map'}=null;
+    private journalRequest:{scope:Scope;mode:'journal'|'archive'|'map'|'collection'}=null;
     private darkroomPage:Prepared<DarkroomPage>;
     private darkroomRetained:DarkroomRetainedState;
     private darkroomStateScope:Scope;
@@ -151,7 +152,7 @@ export class Application {
         if(!succeeded){if(next.scope!==this.homePage?.scope&&next.scope!==this.darkroomPage?.scope)next.scope.dispose();return false;}
         if(previous){
             if(previous.page instanceof HomePage)this.travelProps?.suspend();
-            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage||previous.page instanceof DarkroomPage||(previous.page instanceof TravelJournalPage||previous.page instanceof TravelMapPage))previous.page.pause();
+            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage||previous.page instanceof DarkroomPage||(previous.page instanceof TravelJournalPage||previous.page instanceof TravelMapPage||previous.page instanceof TravelCollectionPage))previous.page.pause();
             previous.page.root.active=false;
             if(!(retainLogin&&previous===this.loginPage)&&previous.scope!==this.homePage?.scope&&previous.scope!==this.darkroomPage?.scope)previous.scope.dispose();
         }
@@ -187,21 +188,19 @@ export class Application {
     }
     private openTravelPage(mode:TravelHomeMode){
         if(mode==='rewards'){this.travel.service.open_rewards();return;}
-        if(mode==='journal'||mode==='comic'){this.openJournal(mode==='comic'?'map':mode);return;}
-        // Collection and its archive route remain separate migration work.
-        console.info('[LittleSteps] pending Travel page binding '+mode);
+        if(mode==='journal'||mode==='comic'||mode==='collection'){this.openJournal(mode==='comic'?'map':mode);return;}
     }
-    private async openJournal(mode:'journal'|'archive'|'map'){
+    private async openJournal(mode:'journal'|'archive'|'map'|'collection'){
         if(this.entering||!this.active||this.page!==this.homePage?.page)return;
         this.entering=true;const scope=lifetime(this.scope),request={scope,mode};this.journalRequest=request;
-        const home=this.homePage.page;home.setTravelLoading(true);this.travelLoading.show(mode==='map'?'地图加载中...':'日记加载中...');
+        const home=this.homePage.page;home.setTravelLoading(true);this.travelLoading.show(mode==='map'?'地图加载中...':mode==='collection'?'百宝箱加载中...':'日记加载中...');
         try{
             if(this.darkroomPage?.scope.active||this.darkroomLoading)await this.hibernateDarkroom(scope);
-            await this.assets.acquireResources(mode==='map'?MAP_RESOURCES:JOURNAL_RESOURCES,scope);
+            await this.assets.acquireResources(mode==='map'?MAP_RESOURCES:mode==='collection'?COLLECTION_RESOURCES:JOURNAL_RESOURCES,scope);
             if(mode==='map')await this.assets.acquireEffects(MAP_EFFECTS,scope);
             if(this.journalRequest!==request||!scope.active||!this.active)return;
             this.travel.service.reconcile();
-            const page=mode==='map'?await TravelMapPage.create(this.root,this.assets,scope,this.height,this.travel.service,this.clock,()=>this.music?.isEnabled()||false,()=>this.gestureSeen):new TravelJournalPage(this.root,this.assets,scope,this.height,this.travel.service,mode==='archive');
+            const page=mode==='collection'?new TravelCollectionPage(this.root,this.assets,scope,this.height,this.travel.service):mode==='map'?await TravelMapPage.create(this.root,this.assets,scope,this.height,this.travel.service,this.clock,()=>this.music?.isEnabled()||false,()=>this.gestureSeen):new TravelJournalPage(this.root,this.assets,scope,this.height,this.travel.service,mode==='archive');
             page.onBack=()=>{if(this.page===page)this.returnHome();};
             await this.frame(scope);
             if(this.journalRequest!==request||!scope.active)return;
@@ -209,10 +208,10 @@ export class Application {
             if(!await this.present({page,scope},0)){if(this.journalRequest===request)this.cancelJournalLoading();return;}
             if(this.journalRequest!==request)return;
             this.journalRequest=null;this.entering=false;page.resume();
-            console.info('[LittleSteps] PAGE_READY '+(mode==='map'?'MAP':'JOURNAL'));
+            console.info('[LittleSteps] PAGE_READY '+(mode==='map'?'MAP':mode==='collection'?'COLLECTION':'JOURNAL'));
         }catch(error){
             scope.dispose();if(this.journalRequest!==request||!this.scope.active)return;
-            this.travelLoading.failure(mode==='map'?'地图加载失败，再试一次？':'日记加载失败，再试一次？');
+            this.travelLoading.failure(mode==='map'?'地图加载失败，再试一次？':mode==='collection'?'百宝箱加载失败，再试一次？':'日记加载失败，再试一次？');
             console.error('[LittleSteps] Travel page preparation failed',mode,error);
         }
     }
@@ -278,12 +277,12 @@ export class Application {
     }
     private async returnHome(){
         const from=this.page;
-        if(this.entering||!this.active||!(from instanceof DarkroomPage||(from instanceof TravelJournalPage||from instanceof TravelMapPage)))return;
+        if(this.entering||!this.active||!(from instanceof DarkroomPage||(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage)))return;
         this.entering=true;const intent=++this.intent;
         if(from instanceof DarkroomPage){from.round.inputEnabled=false;from.round.cancel();}else from.pause();
         try{
-            this.homePage.page.clearRouteWaiting();if((from instanceof TravelJournalPage||from instanceof TravelMapPage))this.homePage.page.restoreTravelOffer();this.homePage.page.resume(false);
-            const succeeded=await this.present(this.homePage,(from instanceof TravelJournalPage||from instanceof TravelMapPage)?0:.42);
+            this.homePage.page.clearRouteWaiting();if((from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage))this.homePage.page.restoreTravelOffer();this.homePage.page.resume(false);
+            const succeeded=await this.present(this.homePage,(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage)?0:.42);
             if(intent!==this.intent)return;this.entering=false;
             if(succeeded){this.homePage.page.resume();console.info('[LittleSteps] PAGE_READY HOME cached=true');}else from.resume();
         }catch(error){if(this.scope.active){this.entering=false;from.resume();console.error('[LittleSteps] Home return failed',error);}}
@@ -301,10 +300,10 @@ export class Application {
     }
     private adoptMusic(prepared:{music:HomeMusic;scope:Scope}) {
         this.music=prepared.music;this.musicScope=prepared.scope;
-        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage)));
+        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage)));
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
-    private interactive(active:boolean) {this.darkroomPreparing?.setRenderActive(active);if(!active){this.cancelJournalLoading();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage)){if(active){if(this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage))this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage))){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage)));if(active)this.travel?.resume();}
+    private interactive(active:boolean) {this.darkroomPreparing?.setRenderActive(active);if(!active){this.cancelJournalLoading();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage)){if(active){if(this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage))this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage))){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage)));if(active)this.travel?.resume();}
     private fitPage(page:Page){
         if(!page||(this.pageViewports&&this.pageViewports.get(page)===this.viewportKey))return;
         page.resize(this.height,this.physicalWidth);
@@ -323,11 +322,11 @@ export class Application {
     }
     advance(delta:number) {
         if(!this.scope.active)return;this.refreshViewport();this.router.advance(delta,this.active);
-        if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage))){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
+        if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage))){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
         if(this.active){this.travel?.advance(delta);if(this.page===this.homePage?.page)this.travelLoading?.advance(delta);}
         if(this.active&&this.page)this.page.advance(delta);
         if(this.active&&this.page===this.homePage?.page)this.travelProps?.advance(delta);
-        if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage)))this.transitioning.advance(delta);
+        if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage)))this.transitioning.advance(delta);
         if(this.active&&this.entering&&!this.journalRequest&&this.page===this.homePage?.page&&!this.transitioning){this.routeWaitAge+=delta;this.homePage.page.note.updateWaiting('暗室加载中'+'.'.repeat(1+Math.floor(this.routeWaitAge/.52)%3));}
     }
     dispose() {this.intent++;try{this.scope.dispose();}finally{this.darkroomPage=null;this.darkroomRetained=null;this.darkroomStateScope=null;}}

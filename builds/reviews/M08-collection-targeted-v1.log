@@ -1,0 +1,113 @@
+TAP version 13
+# Subtest: Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+ok 1 - Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+  ---
+  duration_ms: 7.295916
+  type: 'test'
+  ...
+# Subtest: Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+not ok 2 - Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+  ---
+  duration_ms: 1.69425
+  type: 'test'
+  location: '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:24:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Values have same structure but are not reference-equal:
+    
+    [
+      'item_4',
+      'item_5',
+      'item_6',
+      'item_7'
+    ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'item_4'
+    1: 'item_5'
+    2: 'item_6'
+    3: 'item_7'
+  actual:
+    0: 'item_4'
+    1: 'item_5'
+    2: 'item_6'
+    3: 'item_7'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:25:216)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+ok 3 - Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+  ---
+  duration_ms: 0.104833
+  type: 'test'
+  ...
+# Subtest: Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+ok 4 - Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+  ---
+  duration_ms: 0.775875
+  type: 'test'
+  ...
+# Subtest: Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+not ok 5 - Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+  ---
+  duration_ms: 10.529583
+  type: 'test'
+  location: '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:35:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'resolve')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:36:169)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+not ok 6 - Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+  ---
+  duration_ms: 4.577667
+  type: 'test'
+  location: '/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:38:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'resolve')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:39:100)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: Collection resize cancels held controls and keeps source layout centered without rebuilding art
+ok 7 - Collection resize cancels held controls and keeps source layout centered without rebuilding art
+  ---
+  duration_ms: 0.701708
+  type: 'test'
+  ...
+# Error: Test "Archive waits for resources and draw, returns to the same collection selection, and cannot train twice" at games/xiaoyu-cocos/test/travel-collection.test.cjs:35:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getScaleX')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+# Error: Test "Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable" at games/xiaoyu-cocos/test/travel-collection.test.cjs:38:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getScaleX')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+1..7
+# tests 7
+# suites 0
+# pass 4
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 386.805667

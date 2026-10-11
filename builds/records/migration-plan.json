@@ -147,9 +147,10 @@
     {
       "id": "M08",
       "description": "photo wall, journal, collections and wardrobe",
-      "status": "partial_journal_source_and_browser_flow_observed_strict_parity_collection_photos_and_wardrobe_pending",
+      "status": "partial_journal_and_collection_real_flow_layout_observed_collection_feedback_photos_wardrobe_and_full_acceptance_pending",
       "evidence": [
-        "M08-journal-flow.json"
+        "M08-journal-flow.json",
+        "M08-collection-flow.json"
       ]
     },
     {
@@ -190,5 +191,6 @@
   ],
   "requirements": "requirements.json",
   "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
-  "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance."
+  "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance.",
+  "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance."
 }

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "item": "M08.03",
+  "updatedAt": "2026-10-11T16:09:46.122770+00:00",
+  "status": "collection_functional_routes_and_layout_checkpoint_observed_full_first_version_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sourceFiles": [
+    {
+      "path": "games/travel_woodfish/project/travel/treasure_gallery.gd",
+      "sha256": "1cc7cbc0950d632d54975c60f9b5bc930faf16c66e17e0df22db4ba3534243c9"
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/treasure_gallery_hit_mask.gd",
+      "sha256": "69be63cc268c05e190dd38de9d7f87f848caadd4f5aeaf653db95c98b85a5c49"
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_page.gd",
+      "sha256": "2459e676c31fc6e92bc23b7e6d87f6de045f946d532fd09fdae87cd7c9d649f8"
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_home_bridge.gd",
+      "sha256": "62c1d5e09b17dae1c2836f1fd3c7bb1b9161b7a14e3835c3d0f69bd3066eac38"
+    },
+    {
+      "path": "framework/addons/travel_core/ui/hanging_return.gd",
+      "sha256": "968b9d4a993485b6ae4eedeef76b750f4be56cada7a59175409f33ab73a2d7c6"
+    },
+    {
+      "path": "games/travel_woodfish/project/home/feedback/prompt_sparkles.gd",
+      "sha256": "5b2fc543c98b0b78a01670249da884775262caa0f333ab8487a5b5f195760e29"
+    }
+  ],
+  "implementation": [
+    "Read-only inventory snapshot with selected UID continuity and four-item pagination",
+    "Source artwork, dimensions, captions, fixed alpha/polygon hit regions and source detail/entry animations",
+    "Original common return tag, prompt glints, long-screen edge art and save-failure notice",
+    "Latest archived journal admitted on demand, cancellation/retry guards, first-draw readiness and preserved collection on return",
+    "Actual Home chest mask and foreground actor occlusion",
+    "Generic custom UI action hit callback and renderer index-buffer growth under framework directory; readonly plugin regenerated"
+  ],
+  "tests": {
+    "file": "builds/reviews/M08-collection-regression-v6.log",
+    "pass": 238,
+    "fail": 0,
+    "productionTypecheck": "passed --noEmit --skipLibCheck",
+    "newChecks": [
+      "0/1/4/19 item states",
+      "UID preservation and read-only durable data",
+      "alpha hit/cross cancel/second finger/stale action",
+      "archive load, first draw, return, cancel, retry and pause",
+      "long-screen layout, return and save-failure notice",
+      "chest binary mask and actor occlusion",
+      "280ms entry bounce cancellation/single navigation",
+      "dense index growth and 1000-frame buffer reuse"
+    ]
+  },
+  "browser": "builds/reviews/M08-collection-browser.json",
+  "failures": "builds/reviews/M08-collection-failures.json",
+  "candidate": "builds/records/candidates/collection-stable-v4.json",
+  "frozenAudit": "builds/reviews/M08-collection-v4-frozen-audit.json",
+  "pluginSHA256": "e392ad32747e7825eb24e1ecda24aa13fbbe1dc468b36ece5437d02659153d01",
+  "pending": [
+    "Collection remaining keyboard/hover/pressed feedback fidelity",
+    "Photo wall complete page and durable photo binding",
+    "Wardrobe complete page and skin/unlock behavior",
+    "Full all-page real flow and WeChat release/device acceptance"
+  ]
+}

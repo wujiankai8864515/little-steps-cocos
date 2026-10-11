@@ -43,6 +43,7 @@ export class HomePage {
     private active=false;
     private knock:AudioPort;
     readonly roomRoot:Node;
+    private collectionObject:{node:Node;resource:string;centered:boolean;size:number[]};private collectionRest:{position:Vec3;scale:Vec3};
     private surface:any;private targetLease:any;private plan:ReturnType<typeof homeRenderPlan>;
     readonly fish:FishInteraction;
     readonly incense:HomeIncense;
@@ -88,6 +89,7 @@ export class HomePage {
             const resource = resources.get(section.properties.texture.value) as string;
             const item = picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
             const p=section.properties;
+            if(section.name==='Treasure')this.collectionObject={node:item.root,resource,centered:p.centered!==false,size:item.spec.size};
             if(section.name==='Bag')item.sprite.enabled=false;
             else {
                 if(p['metadata/surface']!==undefined)this.lighting.receiver(item.sprite,item.spec,p['metadata/surface'],p['metadata/visible_uv']||[0,0,1,1],section.name==='BedForeground'?'bed':section.name.indexOf('Bleed')>=0?'bleed':'receiver');
@@ -210,6 +212,10 @@ export class HomePage {
     }
     restoreReturnedActor(){this.travelAway=false;this.finishDeparture();this.fish.ground=[350,951];this.rig.root.setPosition(15,-615);this.rig.root.active=true;const opacity=this.rig.root.getComponent(UIOpacity);if(opacity)opacity.opacity=255;this.actorProjectionAlpha=1;this.backpack.projectionAlpha=1;this.backpack.setDepartureAlpha(1);this.backpack.proxy.active=true;this.rig.resume();}
     get acceptsTravelInput(){return this.active&&!this.hud.blocked;}
+    hitsCollection(at:number[]){const item=this.collectionObject;if(!item?.node.activeInHierarchy)return false;const w=this.roomRoot.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(at[0],-at[1],0));if(this.backpack.hit([w.x,w.y])||this.propVisuals.hit(at)||(!this.travelAway&&this.rig.hitAt([w.x,w.y])))return false;const p=item.node.getComponent(UITransform).convertToNodeSpaceAR(w),x=p.x+(item.centered?item.size[0]/2:0),y=-p.y+(item.centered?item.size[1]/2:0),mask='res://travel/assets/treasure_hit.res',size=this.assets.catalog.assets[mask].size;return x>=0&&y>=0&&x<item.size[0]&&y<item.size[1]&&this.assets.bitmapContains(mask,Math.floor(x/item.size[0]*size[0]),Math.floor(y/item.size[1]*size[1]));}
+    collectionFeedback(age:number){const n=this.collectionObject?.node;if(!n)return;if(!this.collectionRest)this.collectionRest={position:n.position.clone(),scale:n.scale.clone()};const rest=this.collectionRest,u=Math.max(0,Math.min(1,age/.28)),factor=1-.075*Math.sin(u*Math.PI*2)*(1-u);n.setScale(rest.scale.x*factor,rest.scale.y*factor,rest.scale.z);n.setPosition(580+(rest.position.x-580)*factor,-718+(rest.position.y+718)*factor,rest.position.z);}
+    cancelCollectionFeedback(){const n=this.collectionObject?.node,r=this.collectionRest;this.collectionRest=null;if(n&&r){n.setPosition(r.position);n.setScale(r.scale);}}
+
     get acceptsTravelNotice(){return this.acceptsTravelInput&&!this.travelLoading&&!this.departure&&!this.travelInteractions?.busy&&!this.note.visible&&this.fish.state==='IDLE'&&this.bag.state==='IDLE'&&this.props.state==='IDLE'&&!this.props.drinking;}
     setTravelLoading(loading:boolean){
         this.travelLoading=loading;

@@ -294,3 +294,10 @@ test('Surface detach drops camera and frame references and each new target requi
  surface.setActive(true);cc.director.draw();await Promise.resolve();assert.equal(settled,false);cc.director.draw();await ready;assert.equal(settled,true);assert.equal(world.parent,surface.content);assert.equal(world.destroyCount,0);
  surface.layout([720,1280],[0,0,720,1280],first);const interrupted=surface.ready;scope.dispose();await assert.rejects(interrupted,{name:'CancelledError'});cc.director.draw();assert.equal(surface.snapshot().readyFrames,0);
 });
+
+test('Dense UI meshes grow the shared index buffer before upload and preserve neighboring geometry across frames',()=>{
+ const Mesh=core.registerCocos({}),sprite=new Mesh(),mesh=core.createGrid([0,0,10,10],2);sprite.configure(mesh,[10,10]);sprite.node={worldMatrix:{m00:1,m04:0,m12:0,m01:0,m05:1,m13:0,m02:0,m06:0,m14:0,m03:0,m07:0,m15:1}};
+ const buffer={iData:new Uint16Array([1,2,3,0]),indexOffset:3},chunk=sprite.renderData.chunk;chunk.meshBuffer=buffer;chunk.vertexOffset=17;
+ sprite._assembler.fillBuffers(sprite);assert.equal(buffer.indexOffset,mesh.indices.length+3);assert.deepEqual(Array.from(buffer.iData.slice(0,3)),[1,2,3]);assert.deepEqual(Array.from(buffer.iData.slice(3,buffer.indexOffset)),Array.from(mesh.indices,i=>i+17));assert.doesNotThrow(()=>new Uint16Array(buffer.iData.buffer,0,buffer.indexOffset));
+ const storage=buffer.iData;for(let frame=0;frame<1000;frame++){buffer.indexOffset=3;sprite._assembler.fillBuffers(sprite);assert.equal(buffer.iData,storage);assert.equal(buffer.indexOffset,mesh.indices.length+3);}assert.equal(buffer.iData.length,Math.ceil((mesh.indices.length+3)*1.25));
+});

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "item": "M08.03",
+  "scope": "Complete collection/source routes; candidate checkpoints are not final full first-version acceptance",
+  "failures": [
+    {
+      "candidate": "initial typecheck",
+      "trigger": "TypeScript target lacks Array.flat",
+      "fix": "Use typed concat flattening, compatible with project tsconfig",
+      "verification": "Later production typecheck passed"
+    },
+    {
+      "evidence": [
+        "M08-collection-targeted-v1.log",
+        "M08-collection-regression-v1.log",
+        "M08-collection-regression-v3.log"
+      ],
+      "trigger": "Test harness lacked cc.view, cross-realm normalization, new page instanceof mock and active collection entry ownership",
+      "classification": "Test-fixture failures, not all production failures",
+      "fix": "Update mocks/ownership and assert real masking/entry behavior",
+      "verification": "M08-collection-regression-v6.log: 238 pass, 0 fail"
+    },
+    {
+      "candidate": "collection-first-v1",
+      "trigger": "Source/screenshot review found cropped diary tag substituted for common return, absent original prompt glints and long-screen edge art",
+      "evidence": [
+        "../qa/cocos-collection-v1-missing-return-and-cues.png"
+      ],
+      "fix": "Use shared native-shaped hangingReturn, original six cue animation, source edge pixels and save error notice",
+      "verification": "v3 browser observed/captured, v4 replay in progress"
+    },
+    {
+      "candidate": "collection-complete-v2",
+      "trigger": "Actual Home chest click at (600,685) raised Error: 缺少原图：res://travel/assets/treasure_hit.res",
+      "browserTime": "2026-10-11T15:51:12.035Z",
+      "rootCause": "GameAssets.art only accepts textures; mask is a separate admitted resource kind",
+      "fix": "Read mask dimensions from source catalog, use bitmapContains; add real asset/mask regression with actor occlusion",
+      "verification": "v3 actual Home click reached empty collection; nine viewport tests pass"
+    },
+    {
+      "candidate": "collection-route-v3",
+      "trigger": "Returning from collection to Home after journal/pagination and 720x1600 resize produced repeated RangeError: Invalid typed array length in MeshBuffer.uploadBuffers",
+      "browserTime": "2026-10-11T15:59:03.294Z",
+      "observedIndexCounts": [
+        2110650,
+        2118132,
+        2125614
+      ],
+      "rootCause": "Custom UI mesh assembler incremented indexOffset without checking index-buffer capacity. Dense meshes exceed StaticVBAccessor default capacity; upload exception prevents per-frame reset and subsequent offsets accumulate. Native appendIndices explicitly grows capacity.",
+      "reference": "Creator 3.8.8 cocos/2d/renderer/static-vb-accessor.ts appendIndices and mesh-buffer.ts uploadBuffers",
+      "fix": "Grow and copy the index buffer before custom mesh writes, matching native 1.25 growth policy. Regression exercises real assembler with undersized buffer and 1000 reused frames.",
+      "verification": "238 tests pass; v4 replayed journal/pagination/720x1600 return, Home visibly rendering, inspected own-source errors empty. Actual Home chest re-entry succeeded; second 720x1280 return stayed alive with automatic merit and no own-source error logs through 2026-10-11T16:10:46.913Z.",
+      "limitation": "This is a game renderer error; no evidence establishes it as the cause of previous Codex desktop SIGTRAP crashes."
+    }
+  ],
+  "pending": [
+    "Collection keyboard focus/hover decoration parity",
+    "Photo wall and wardrobe implementation",
+    "All-page input/state matrix and WeChat device delivery"
+  ]
+}

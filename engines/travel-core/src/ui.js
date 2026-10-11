@@ -105,12 +105,12 @@ function registerUI(cc) {
         target.on(cc.Node.EventType.TOUCH_START,start);target.on(cc.Node.EventType.TOUCH_MOVE,move);target.on(cc.Node.EventType.TOUCH_END,end);target.on(cc.Node.EventType.TOUCH_CANCEL,cancelled);
         return {cancel,dispose(){cancel();target.off(cc.Node.EventType.TOUCH_START,start);target.off(cc.Node.EventType.TOUCH_MOVE,move);target.off(cc.Node.EventType.TOUCH_END,end);target.off(cc.Node.EventType.TOUCH_CANCEL,cancelled);}};
     }
-    function action(target, callback, enabled = () => true) {
+    function action(target, callback, enabled = () => true, hitTest = null) {
         let pointer = -1, armed = false, generation = 0;
         const inside = (event) => {
             const p = event.getUILocation(), ui = target.getComponent(cc.UITransform);
             const local = ui.convertToNodeSpaceAR(new cc.Vec3(p.x,p.y,0));
-            return local.x >= 0 && local.y <= 0 && local.x < ui.width && local.y > -ui.height;
+            return local.x >= 0 && local.y <= 0 && local.x < ui.width && local.y > -ui.height && (!hitTest || hitTest([local.x, -local.y]));
         };
         const cancel = () => { generation++; pointer = -1; armed = false; };
         const start = event => {

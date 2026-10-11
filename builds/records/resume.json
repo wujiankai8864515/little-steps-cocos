@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T14:49:43.339579+00:00",
-  "latestItem": "M07.09",
+  "updatedAt": "2026-10-11T16:09:46.122770+00:00",
+  "latestItem": "M08.03",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M07-map-signs-flow.json",
-    "builds/reviews/M07-map-signs-failures.json",
-    "builds/records/M07-map-page-flow.json"
+    "builds/records/M08-collection-flow.json",
+    "builds/reviews/M08-collection-failures.json",
+    "builds/reviews/M08-collection-browser.json"
   ],
-  "nextPriority": "Map brush and remaining labels/paper raster residuals, full encounter matrix, then remaining collection/photo/wardrobe",
-  "pendingReadback": "builds/reviews/M07-map-signs-remote-readback.json (created after commit)",
+  "nextPriority": "User clarified: pause numerical pixel-diff polishing ONLY. First version retains 1:1 ALL functions, navigation, elements, layout and interactions; no simplified MVP. Complete collection keyboard/hover/pressed control feedback, then full photo wall and wardrobe using original sources. Validate whole page flow, only WeChat shipping. V4 fixes real renderer index overflow and mask-type entry failure; retain crash guard.",
+  "pendingReadback": "builds/reviews/M08-collection-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",

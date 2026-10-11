@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin
+ok 1 - Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin
+  ---
+  duration_ms: 2.523042
+  type: 'test'
+  ...
+# Subtest: Budget rejection does not stop the application update loop or spam retries, and a later resize can recover
+ok 2 - Budget rejection does not stop the application update loop or spam retries, and a later resize can recover
+  ---
+  duration_ms: 0.16075
+  type: 'test'
+  ...
+# Subtest: Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges
+ok 3 - Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges
+  ---
+  duration_ms: 0.306834
+  type: 'test'
+  ...
+# Subtest: Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once
+ok 4 - Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once
+  ---
+  duration_ms: 0.544209
+  type: 'test'
+  ...
+# Subtest: Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope
+ok 5 - Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope
+  ---
+  duration_ms: 0.33525
+  type: 'test'
+  ...
+# Subtest: Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes
+ok 6 - Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes
+  ---
+  duration_ms: 0.855667
+  type: 'test'
+  ...
+# Subtest: Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely
+ok 7 - Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely
+  ---
+  duration_ms: 0.614417
+  type: 'test'
+  ...
+# Subtest: Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked
+ok 8 - Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked
+  ---
+  duration_ms: 23.406875
+  type: 'test'
+  ...
+# Subtest: Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion
+ok 9 - Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion
+  ---
+  duration_ms: 0.628541
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 404.09975

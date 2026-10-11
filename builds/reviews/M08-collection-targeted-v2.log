@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+ok 1 - Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+  ---
+  duration_ms: 5.998834
+  type: 'test'
+  ...
+# Subtest: Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+ok 2 - Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+  ---
+  duration_ms: 1.748417
+  type: 'test'
+  ...
+# Subtest: Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+ok 3 - Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+  ---
+  duration_ms: 0.103583
+  type: 'test'
+  ...
+# Subtest: Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+ok 4 - Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+  ---
+  duration_ms: 1.05525
+  type: 'test'
+  ...
+# Subtest: Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+ok 5 - Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+  ---
+  duration_ms: 15.707041
+  type: 'test'
+  ...
+# Subtest: Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+ok 6 - Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+  ---
+  duration_ms: 5.805584
+  type: 'test'
+  ...
+# Subtest: Collection resize cancels held controls and keeps source layout centered without rebuilding art
+ok 7 - Collection resize cancels held controls and keeps source layout centered without rebuilding art
+  ---
+  duration_ms: 0.631625
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 419.235125

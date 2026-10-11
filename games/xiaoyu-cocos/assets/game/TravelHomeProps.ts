@@ -24,6 +24,7 @@ export class TravelHomeProps {
     private clouds:Array<{view:ReturnType<typeof picture>;material:Material}>=[];
     private rewardNodes=new Map<string,{view:TravelAtlasSprite;scope:Scope}>();
     private pointer=new TravelPropPointer();private entry:{key:PropKey;age:number;done:()=>void;generation:number}=null;private generation=0;
+    private collectionEntry=-1;
     private wasFull=false;private rehang:any=null;private clock=0;private departureAge=-1;private diaryOpen=false;private diaryRect=[503.5,1070,129,134];
     onNavigate=(mode:TravelHomeMode)=>{};
     constructor(private home:HomePage,private assets:GameAssets,private scope:Scope,private service:TravelService,private homeClock:HomeClock){
@@ -57,7 +58,7 @@ export class TravelHomeProps {
     private tentMesh(name:string,resource:string,uv:number[][]){const spec=this.assets.art(resource),n=nodeAt(this.tent,name),sprite:any=n.addComponent(meshSprite());sprite.configure({vertices:new Float32Array(([] as number[]).concat(...TENT_POINTS)),source:new Float32Array(([] as number[]).concat(...uv)),indices:new Uint16Array(TENT_TRIANGLES)},spec.size,spec.content);sprite.spriteFrame=this.assets.frame(resource,this.scope);sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.home.lighting.receiver(sprite,spec,1,[0,0,1,1]);}
     private away(){return this.service.model.trip().status==='traveling';}
     private full(){const t=this.service.model.trip();return t.status==='returned'&&!t.claimed;}
-    get busy(){return !!this.entry;}
+    get busy(){return !!this.entry||this.collectionEntry>=0;}
     get rehanging(){return !!this.rehang;}
     beginDeparture(){this.departureAge=0;this.advance(0);}
     finishDeparture(){this.departureAge=-1;this.advance(0);}
@@ -104,19 +105,20 @@ export class TravelHomeProps {
         if(!this.entry){this.sprites.diary.place(this.diaryRect);if(!this.rehang)this.sprites.full_bag.place(full&&trip.rewards_opened?OPEN_BAG_RECT:BAG_RECT);}
         this.mapHint.advance(delta,[491,1020+Math.sin(this.clock*1.45)*2.2],away&&trip.events.some(e=>e.state==='waiting'||e.state==='manual'));
         this.diaryHint.advance(delta,[away?296:472,(away?1028:1021)+Math.sin((this.clock+.8)*1.45)*2.2],journal&&!this.diaryOpen);
-        this.advanceEntry(delta);this.advanceRewards(delta);this.advanceRehang(delta);this.updateProjection();this.updateGlints();this.home.syncWorldLayers();
+        this.advanceCollectionEntry(delta);this.advanceEntry(delta);this.advanceRewards(delta);this.advanceRehang(delta);this.updateProjection();this.updateGlints();this.home.syncWorldLayers();
     }
+    private advanceCollectionEntry(delta:number){if(this.collectionEntry>=0){this.collectionEntry+=delta;this.home.collectionFeedback(this.collectionEntry);if(this.collectionEntry>=.28){this.collectionEntry=-1;this.home.cancelCollectionFeedback();this.onNavigate('collection');}}}
     private animate(key:PropKey,done:()=>void){if(this.entry)return false;this.entry={key,age:0,done,generation:++this.generation};if(key==='diary'){const c=[this.diaryRect[0]+this.diaryRect[2]/2,this.diaryRect[1]+this.diaryRect[3]/2];this.sprites.open_diary.place([c[0]-94,c[1]-62,188,130]);}return true;}
     private advanceEntry(delta:number){const e=this.entry;if(!e)return;e.age+=delta;const p:any=entryPose(e.key,e.age),v=this.sprites[e.key];if(e.key==='diary'){v.place(this.diaryRect);v.root.setScale(v.root.scale.x*p.closedScale,v.root.scale.y,1);v.setSkew(p.skew);this.diaryOpen=p.opened;v.root.active=!p.opened;const opened=this.sprites.open_diary;opened.root.active=true;opened.root.setScale(188/580*p.openedScale,130/402,1);}
         else{const r=e.key==='map'?MAP_RECT:this.service.model.trip().rewards_opened?OPEN_BAG_RECT:BAG_RECT;v.place(r);v.root.setScale(v.root.scale.x*p.scale,v.root.scale.y*p.scale,1);}
         if(p.finished){v.setSkew(0);this.entry=null;if(e.generation===this.generation)e.done();}
     }
     private opaque(key:PropKey,at:number[]){const v=this.sprites[key];if(!v.root.active)return false;const world=this.home.roomRoot.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(at[0],-at[1])),local=v.root.getComponent(UITransform).convertToNodeSpaceAR(world),r=v.region,x=local.x+r[2]/2,y=-local.y+r[3]/2;if(x<0||y<0||x>=r[2]||y>=r[3])return false;return this.assets.bitmapContains('res://travel/assets/travel_props_hit.res',Math.floor(x+r[0]),Math.floor(y+r[1]));}
-    private hit(at:number[]){const reward=this.rewards.hit(at);if(reward)return 'reward:'+reward;if(this.full()&&this.opaque('full_bag',at))return 'rewards';if(this.away()&&this.opaque('map',at))return 'comic';if(this.service.model.pending_journals().length&&this.opaque('diary',at))return 'journal';return '';}
-    down(id:number,at:number[]){if(this.entry)return true;return this.pointer.down(id,at,this.hit(at));}
+    private hit(at:number[]){const reward=this.rewards.hit(at);if(reward)return 'reward:'+reward;if(this.full()&&this.opaque('full_bag',at))return 'rewards';if(this.away()&&this.opaque('map',at))return 'comic';if(this.service.model.pending_journals().length&&this.opaque('diary',at))return 'journal';if(this.home.hitsCollection(at))return 'collection';return '';}
+    down(id:number,at:number[]){if(this.busy)return true;return this.pointer.down(id,at,this.hit(at));}
     move(id:number,at:number[]){return this.pointer.move(id,at);}
-    up(id:number,at:number[]){const target=this.pointer.up(id,at,this.hit(at));if(!target)return;if(target.startsWith('reward:')){this.rewards.collect(target.slice(7));return;}const mode=target as TravelHomeMode,key=({comic:'map',journal:'diary',rewards:'full_bag'} as const)[target];this.animate(key,()=>{if(mode==='rewards')this.service.open_rewards();else this.onNavigate(mode);});}
-    cancelPointer(){this.pointer.cancel();}
-    suspend(){this.pointer.cancel();this.generation++;this.entry=null;this.diaryOpen=false;this.finishRehang();this.sprites.open_diary.root.active=false;this.sprites.map.place(MAP_RECT);this.sprites.diary.setSkew(0);this.sprites.diary.place(this.diaryRect);this.sprites.full_bag.place(this.service.model.trip().rewards_opened?OPEN_BAG_RECT:BAG_RECT);}
+    up(id:number,at:number[]){const target=this.pointer.up(id,at,this.hit(at));if(!target)return;if(target.startsWith('reward:')){this.rewards.collect(target.slice(7));return;}if(target==='collection'){this.collectionEntry=0;this.home.collectionFeedback(0);return;}const mode=target as TravelHomeMode,key=({comic:'map',journal:'diary',rewards:'full_bag'} as const)[target];this.animate(key,()=>{if(mode==='rewards')this.service.open_rewards();else this.onNavigate(mode);});}
+    cancelPointer(){this.pointer.cancel();if(this.collectionEntry>=0){this.collectionEntry=-1;this.home.cancelCollectionFeedback();}}
+    suspend(){this.cancelPointer();this.generation++;this.entry=null;this.diaryOpen=false;this.finishRehang();this.sprites.open_diary.root.active=false;this.sprites.map.place(MAP_RECT);this.sprites.diary.setSkew(0);this.sprites.diary.place(this.diaryRect);this.sprites.full_bag.place(this.service.model.trip().rewards_opened?OPEN_BAG_RECT:BAG_RECT);}
     snapshot(){return {away:this.away(),full:this.full(),departureAge:this.departureAge,entry:this.entry?{key:this.entry.key,age:this.entry.age}:null,rehang:this.rehang?{age:this.rehang.age,start:this.rehang.start,end:this.rehang.end}:null,rewards:this.rewards.snapshot(),rewardNodes:this.rewardNodes.size,tentVisible:this.tent.active};}
 }

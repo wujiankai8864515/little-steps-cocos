@@ -51,7 +51,7 @@ test('Actual diary view rebuilds scoped controls, pauses input, uses original re
 // Exercise the real Application entry transaction with controlled resource
 // completion, retaining the real journal view and Lifetime cancellation.
 class HomePage{constructor(){this.root=new Node('Home');this.loading=false;}setTravelLoading(v){this.loading=v;}setInput(){}resize(){}restoreTravelOffer(){this.restored=true;}resume(){}pause(){}clearRouteWaiting(){}}
-const appModules={...modules,TravelMapPage:{TravelMapPage:class{}},HomePage:{HomePage},LoginPage:{LoginPage:class{}},ComicPage:{ComicPage:class{}},DarkroomPage:{DarkroomPage:class{}}},appExports={};
+const appModules={...modules,TravelMapPage:{TravelMapPage:class{}},TravelCollectionPage:{TravelCollectionPage:class{}},HomePage:{HomePage},LoginPage:{LoginPage:class{}},ComicPage:{ComicPage:class{}},DarkroomPage:{DarkroomPage:class{}}},appExports={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game/Application.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports:appExports,require:key=>key==='cc'?cc:appModules[key.slice(2)]||{},console:{info(){},error(){}}});
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 function application(){

@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-11T16:09:46.122770+00:00",
+  "browser": "independent Chrome through supported CUA",
+  "stableCandidate": "collection-stable-v4",
+  "url": "http://127.0.0.1:8145/",
+  "checks": [
+    {
+      "check": "Actual Home chest route",
+      "v3": "click (600,685) on 720x1280 opens empty collection",
+      "v4": "click (600,845) on 720x1600 reopens populated collection after returning Home",
+      "status": "observed"
+    },
+    {
+      "check": "Empty state",
+      "observed": "empty title/story, archive disabled, no page buttons, inventory 0 revision 0",
+      "candidate": "v3"
+    },
+    {
+      "check": "Reward fixture",
+      "observed": "Five real TravelService departure/reconcile/reward/review loops created 12 inventory items, 5 archived journals, revision 52 and review_count 13. Isolated memory QA store; no user save touched."
+    },
+    {
+      "check": "Read-only browsing and pagination",
+      "observed": "Actual click (298,916) selected item 1; next page showed items 4..7 while selection stayed item 1. Last page stopped at index 2 of 3. Previous page worked at long-screen offset. revision 52, review_count 13 unchanged while browsing.",
+      "candidate": "v3 and v4"
+    },
+    {
+      "check": "Archive roundtrip",
+      "observed": "Actual book click opened latest trip_5_5, readonly=true; next entry index 1. Return restored collection index 1/page 1. Active resource entries 96 -> 100 -> 96.",
+      "candidate": "v3 and v4"
+    },
+    {
+      "check": "Long screen and return",
+      "observed": "720x1600 kept original 720x1280 layout centered at y=160 with original edge extension. Return tag at (65,258) returned to Home, entries 93. v3 produced renderer error; v4 fixed and remained rendering during inspection.",
+      "candidate": "v4"
+    },
+    {
+      "check": "Original save semantics",
+      "observed": "Readonly collection/journal browsing did not alter revision/review count; after actual Home return, automatic merit contacts legitimately advanced revision.",
+      "status": "observed"
+    },
+    {
+      "check": "Budget/admission",
+      "observedBytes": {
+        "home720x1280": 129784985,
+        "collection720x1280": 142731273,
+        "archive720x1280": 166581497,
+        "collection720x1600": 144574473,
+        "home720x1600": 131628185
+      },
+      "entries": {
+        "home": 93,
+        "collection": 96,
+        "archive": 100
+      },
+      "pending": 0,
+      "interpretation": "Runtime reservation counters, not device memory/performance measurement."
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-collection-v1-missing-return-and-cues.png",
+      "sha256": "137ef9a4383d6dc8540c9caf3b6dd894f830a29062cded965bf19ffa187a5735"
+    },
+    {
+      "path": "builds/qa/cocos-collection-v3-archive.png",
+      "sha256": "57e6714571d1be8127a9b0cf389834b9b86fdd1656f57c8f6520ef28196b6a65"
+    },
+    {
+      "path": "builds/qa/cocos-collection-v3-detail.png",
+      "sha256": "227ef0e3fe0ac235d561fe22b00d9daa1b271aa340eaeba1e167bbcfe927b367"
+    },
+    {
+      "path": "builds/qa/cocos-collection-v3-long-screen.png",
+      "sha256": "399ee4cc6152f89de30405478360e6850688ab77bca4f7e6005799df61259a85"
+    },
+    {
+      "path": "builds/qa/cocos-collection-v4-detail.png",
+      "sha256": "8893dff57316dd66234196b5bfaeef7b63854822da4111b98548ca7c962fe08d"
+    },
+    {
+      "path": "builds/qa/cocos-collection-v4-returned-home.png",
+      "sha256": "33ec172e7f804360411c10fd23515f8d20021b717860caca1cd9f0b9e68d4b27"
+    }
+  ],
+  "firstVersionScope": "All pages, functions, navigation, elements, layout and interactions remain 1:1. Numerical pixel comparison deferred only.",
+  "limitations": [
+    "Candidate-only QA with visible memory fixture; not shipping build",
+    "Collection keyboard focus, hover warm tint/focus marks/pressed page tint still require parity completion",
+    "Offline archive load cancel/retry verified in regression; actual new collection route network outage not yet browser exercised",
+    "Photo wall and wardrobe not implemented",
+    "WeChat/device and all-page final acceptance pending"
+  ],
+  "finalStabilityCheck": {
+    "at": "2026-10-11T16:10:46.913Z",
+    "route": "HomePage",
+    "entries": 93,
+    "reservedBytes": 129784985,
+    "pending": 0,
+    "revision": 87,
+    "reviewCount": 13,
+    "ownSourceErrorLogs": [],
+    "observation": "Second return to Home remained alive with automatic merit updates. Viewport reset and owned tab/servers cleaned up after inspection."
+  }
+}

@@ -86,3 +86,9 @@ test('Real backpack rehang fits the original articulated bounds even while Home 
  const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),left=Math.min(...xs),top=Math.min(...ys),right=Math.max(...xs),bottom=Math.max(...ys);close((left+right)/2,359);close((top+bottom)/2,1017);assert.ok(right-left<=178.00001);assert.ok(bottom-top<=184.00001);assert.ok(Math.abs(right-left-178)<1e-5||Math.abs(bottom-top-184)<1e-5);
  assert.deepEqual(plain(result.endTransform),wall);assert.deepEqual(plain(result.end),plain(core.Math2D.transform(wall,...geometry.hangingAnchor())));assert.equal(applied.alpha,0);assert.equal(h.travelRehanging,true);assert.equal(h.depth,221);
 });
+
+test('Collection waits for its grounded 280ms entry bounce and cancelled entry never navigates',()=>{
+ const f=setup(),{p,events}=propHarness(f.service),poses=[];let restored=0;p.collectionEntry=-1;p.home={collectionFeedback:age=>poses.push(age),cancelCollectionFeedback:()=>restored++};p.hit=()=> 'collection';
+ p.down(1,[600,700]);p.up(1,[600,700]);assert.equal(p.busy,true);assert.deepEqual(events,[]);p.advanceCollectionEntry(.27);assert.deepEqual(events,[]);p.cancelPointer();p.advanceCollectionEntry(1);assert.deepEqual(events,[]);assert.equal(restored,1);
+ p.down(2,[600,700]);p.up(2,[600,700]);p.advanceCollectionEntry(.28);assert.deepEqual(events,['collection']);assert.equal(p.busy,false);assert.equal(restored,2);p.advanceCollectionEntry(1);assert.equal(events.length,1);assert.ok(poses.includes(.28));
+});

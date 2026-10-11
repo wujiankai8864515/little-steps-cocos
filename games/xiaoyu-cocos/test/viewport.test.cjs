@@ -3,10 +3,10 @@ const ts=require('/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Re
 let safeReads=0,safe={x:0,y:0,width:720,height:1280};
 class UITransform{constructor(){this.width=720;this.height=1280;}setContentSize(w,h){this.width=w;this.height=h;}get contentSize(){return {width:this.width,height:this.height};}}
 class Node{constructor(name){this.name=name;this.children=[];this.ui=new UITransform();this.position={x:0,y:0};this.scale={x:1,y:1};}getComponent(){return this.ui;}setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}getChildByName(name){return this.children.find(c=>c.name===name);}addChild(n){this.children.push(n);n.parent=this;}}
-const cc={Node,UITransform,screen:{windowSize:{width:720}},sys:{getSafeAreaRect(){safeReads++;return safe;}},Graphics:class{}};
+const cc={Vec3:class{constructor(x,y,z=0){Object.assign(this,{x,y,z});}},Node,UITransform,screen:{windowSize:{width:720}},sys:{getSafeAreaRect(){safeReads++;return safe;}},Graphics:class{}};
 const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.resolve(__dirname,'../../../engines/travel-core/dist/travel-core.js'),'utf8'),context);const core=context.LittleStepsCore;
 const mods={Engine:{core}},load=name=>{if(mods[name])return mods[name];const exports={};mods[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:k=>k==='cc'?cc:(mods[k.slice(2)]||{}),console:{info(){},error(){}}});return exports;};
-for(const name of ['LoginPage','ComicPage','TravelJournalPage','TravelMapPage'])mods[name]={[name]:class{}};
+for(const name of ['LoginPage','ComicPage','TravelJournalPage','TravelMapPage','TravelCollectionPage'])mods[name]={[name]:class{}};
 load('Viewport');load('HomeRenderPlan');const {GameAssets}=load('Assets'),{HomePage}=load('HomePage'),{DarkroomPage}=load('DarkroomPage'),{Application}=load('Application');
 test('Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin',()=>{
  const canvas=new Node('Canvas'),root=new Node('App'),calls=[];const page={resize:(...a)=>calls.push(['active',...a])},cached={resize:(...a)=>calls.push(['cached',...a])};
@@ -91,4 +91,10 @@ test('Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 2
  assert.equal(assets.snapshot().reservedBytes+journal.reduce((n,s)=>n+s.bytes,0),278660923);
  await assert.rejects(assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope),/budget/);
  dark.park();await assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope);assert.equal(assets.snapshot().entries,128);assert.equal(assets.snapshot().reservedBytes,239723323);scope.dispose();assert.equal(assets.snapshot().reservedBytes,0);assert.equal(assets.snapshot().entries,0);
+});
+
+test('Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion',()=>{
+ const page=Object.create(HomePage.prototype),assets=new GameAssets(),mask='res://travel/assets/treasure_hit.res',data=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/bundles/home/travel/assets/treasure_hit.json')));assets.catalog={assets:{[mask]:{kind:'mask',size:[512,512]}}};assets.values.set(mask,{json:data});let occluded=false;
+ Object.assign(page,{assets,travelAway:false,roomRoot:{getComponent:()=>({convertToWorldSpaceAR:v=>v})},collectionObject:{resource:'unused',size:[512,512],centered:false,node:{activeInHierarchy:true,getComponent:()=>({convertToNodeSpaceAR:v=>v})}},backpack:{hit:()=>false},propVisuals:{hit:()=>null},rig:{hitAt:()=>occluded?{part:'body'}:null}});
+ assert.equal(page.hitsCollection([0,0]),false);assert.equal(page.hitsCollection([256,256]),true);occluded=true;assert.equal(page.hitsCollection([256,256]),false);occluded=false;assert.equal(page.hitsCollection([512,256]),false);
 });

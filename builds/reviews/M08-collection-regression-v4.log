@@ -1,0 +1,1428 @@
+TAP version 13
+# Subtest: Checkpoint UTF8 size and SHA256 agree with independent Node encodings, including malformed surrogates
+ok 1 - Checkpoint UTF8 size and SHA256 agree with independent Node encodings, including malformed surrogates
+  ---
+  duration_ms: 8.877083
+  type: 'test'
+  ...
+# Subtest: Canonical checkpoint preserves own dictionary keys and rejects mutation of the checksummed payload
+ok 2 - Canonical checkpoint preserves own dictionary keys and rejects mutation of the checksummed payload
+  ---
+  duration_ms: 3.542167
+  type: 'test'
+  ...
+# Subtest: Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation
+ok 3 - Feathered straight lines retain the authored solid width, transparent caps and native coverage area under rotation
+  ---
+  duration_ms: 13.87475
+  type: 'test'
+  ...
+# Subtest: Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam
+ok 4 - Feathered polyline joins and duplicate endpoints remain finite, bounded and connected at the closing seam
+  ---
+  duration_ms: 3.46025
+  type: 'test'
+  ...
+# Subtest: Packing independent feather meshes preserves coverage and rebases every index without joining their paths
+ok 5 - Packing independent feather meshes preserves coverage and rebases every index without joining their paths
+  ---
+  duration_ms: 0.415584
+  type: 'test'
+  ...
+# Subtest: Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage
+ok 6 - Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage
+  ---
+  duration_ms: 0.803042
+  type: 'test'
+  ...
+# Subtest: Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills
+ok 7 - Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills
+  ---
+  duration_ms: 4.449417
+  type: 'test'
+  ...
+# Subtest: Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance
+ok 8 - Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance
+  ---
+  duration_ms: 0.401625
+  type: 'test'
+  ...
+# Subtest: Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger
+ok 9 - Modal choices keep a single sticky target, prohibit early accept, allow early cancel and reject another finger
+  ---
+  duration_ms: 0.535208
+  type: 'test'
+  ...
+# Subtest: Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision
+ok 10 - Confirmation renderer shares wrapping and head clearance with information bubbles, and emits one decision
+  ---
+  duration_ms: 2.0345
+  type: 'test'
+  ...
+# Subtest: Information bubbles stay in the safe area and reserve head clearance across moving anchors
+ok 11 - Information bubbles stay in the safe area and reserve head clearance across moving anchors
+  ---
+  duration_ms: 0.481375
+  type: 'test'
+  ...
+# Subtest: Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time
+ok 12 - Blocked speaker clearance pauses bubble entrance and resumes it without consuming its hold time
+  ---
+  duration_ms: 2.03675
+  type: 'test'
+  ...
+# Subtest: Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes
+ok 13 - Changing bubble safe width rewraps text, preserves anchor clearance and removes temporary measurement nodes
+  ---
+  duration_ms: 0.774875
+  type: 'test'
+  ...
+# Subtest: A cancel-only waiting bubble cannot accept an entry and emits its cancellation once
+ok 14 - A cancel-only waiting bubble cannot accept an entry and emits its cancellation once
+  ---
+  duration_ms: 0.378584
+  type: 'test'
+  ...
+# Subtest: Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal
+ok 15 - Shared pointer ownership ignores another finger and releases all callbacks on disabled capture and disposal
+  ---
+  duration_ms: 0.367292
+  type: 'test'
+  ...
+# Subtest: Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal
+ok 16 - Deferred button actions reject a wrong-finger cancel, a withdrawn contact and a late callback after disposal
+  ---
+  duration_ms: 0.244042
+  type: 'test'
+  ...
+# Subtest: A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once
+ok 17 - A transparent-pixel refusal neither owns nor consumes the pointer and a later accepted contact still releases once
+  ---
+  duration_ms: 0.083667
+  type: 'test'
+  ...
+# Subtest: Suspended paper feedback remains bounded and uses the original positive press impulse
+ok 18 - Suspended paper feedback remains bounded and uses the original positive press impulse
+  ---
+  duration_ms: 10.326083
+  type: 'test'
+  ...
+# Subtest: Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice
+ok 19 - Offscreen surface isolates newly attached descendants and restores detached layers without fading the presentation twice
+  ---
+  duration_ms: 2.0835
+  type: 'test'
+  ...
+# Subtest: Render-target admission includes color/depth before allocation and cancellation releases the late target once
+ok 20 - Render-target admission includes color/depth before allocation and cancellation releases the late target once
+  ---
+  duration_ms: 2.0665
+  type: 'test'
+  ...
+# Subtest: Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners
+ok 21 - Surface preparation waits for two completed draws, pauses inactive frames, and cancels without retaining listeners
+  ---
+  duration_ms: 0.457833
+  type: 'test'
+  ...
+# Subtest: UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity
+ok 22 - UI mesh custom payload preserves unclamped source coordinates and leaves alpha to UIOpacity
+  ---
+  duration_ms: 0.886041
+  type: 'test'
+  ...
+# Subtest: Owned audio stops a queued late start and releases its clip exactly once
+ok 23 - Owned audio stops a queued late start and releases its clip exactly once
+  ---
+  duration_ms: 0.408791
+  type: 'test'
+  ...
+# Subtest: Nested parent rotation maps coordinates and inverse restores source pixels
+ok 24 - Nested parent rotation maps coordinates and inverse restores source pixels
+  ---
+  duration_ms: 0.125458
+  type: 'test'
+  ...
+# Subtest: Weighted skin uses rest inverse, retaining original geometry at bind pose
+ok 25 - Weighted skin uses rest inverse, retaining original geometry at bind pose
+  ---
+  duration_ms: 0.277166
+  type: 'test'
+  ...
+# Subtest: Deformed triangle hit returns original alpha coordinates, outside hit is rejected
+ok 26 - Deformed triangle hit returns original alpha coordinates, outside hit is rejected
+  ---
+  duration_ms: 0.131333
+  type: 'test'
+  ...
+# Subtest: Animation curves clamp endpoints, interpolate vectors, and step visibility
+ok 27 - Animation curves clamp endpoints, interpolate vectors, and step visibility
+  ---
+  duration_ms: 0.113667
+  type: 'test'
+  ...
+# Subtest: Disposed request rejects late completion and releases the late resource
+ok 28 - Disposed request rejects late completion and releases the late resource
+  ---
+  duration_ms: 0.149542
+  type: 'test'
+  ...
+# Subtest: Plugin namespace is frozen and nonwritable
+ok 29 - Plugin namespace is frozen and nonwritable
+  ---
+  duration_ms: 0.033375
+  type: 'test'
+  ...
+# Subtest: Shared leases deduplicate loads and retain admission until cancelled late work settles
+ok 30 - Shared leases deduplicate loads and retain admission until cancelled late work settles
+  ---
+  duration_ms: 0.189208
+  type: 'test'
+  ...
+# Subtest: Exclusive replacements enforce peak budget, free old values first and restore a failed allocation
+ok 31 - Exclusive replacements enforce peak budget, free old values first and restore a failed allocation
+  ---
+  duration_ms: 0.252417
+  type: 'test'
+  ...
+# Subtest: Replacement targets preserve long-screen pixels and rebind the surface without resetting its world
+ok 32 - Replacement targets preserve long-screen pixels and rebind the surface without resetting its world
+  ---
+  duration_ms: 0.280584
+  type: 'test'
+  ...
+# Subtest: Surface detach drops camera and frame references and each new target requires fresh completed draws
+ok 33 - Surface detach drops camera and frame references and each new target requires fresh completed draws
+  ---
+  duration_ms: 0.242167
+  type: 'test'
+  ...
+# Subtest: Finished page scopes detach from a live application across 1000 entry/cancel cycles
+ok 34 - Finished page scopes detach from a live application across 1000 entry/cancel cycles
+  ---
+  duration_ms: 4.846125
+  type: 'test'
+  ...
+# Subtest: Parent teardown still runs live children in reverse order and cleans all children after a failure
+ok 35 - Parent teardown still runs live children in reverse order and cleans all children after a failure
+  ---
+  duration_ms: 2.127084
+  type: 'test'
+  ...
+# Subtest: Explicitly released resource leases detach and do not retain assets in a cached page
+ok 36 - Explicitly released resource leases detach and do not retain assets in a cached page
+  ---
+  duration_ms: 23.207167
+  type: 'test'
+  ...
+# Subtest: One unload failure cannot strand the other assets or admission reservations
+ok 37 - One unload failure cannot strand the other assets or admission reservations
+  ---
+  duration_ms: 0.267583
+  type: 'test'
+  ...
+# Subtest: Cancellation keeps pending capacity until settlement, disposes a late result once, and cannot revive a page
+ok 38 - Cancellation keeps pending capacity until settlement, disposes a late result once, and cannot revive a page
+  ---
+  duration_ms: 0.357167
+  type: 'test'
+  ...
+# Subtest: Paused transitions retain only the pending frame callback and still wait for a real draw
+ok 39 - Paused transitions retain only the pending frame callback and still wait for a real draw
+  ---
+  duration_ms: 12.016583
+  type: 'test'
+  ...
+# Subtest: Two-word PCG matches2816 independently compiled native uint64 draws including rejection and full unsigned ranges
+ok 40 - Two-word PCG matches2816 independently compiled native uint64 draws including rejection and full unsigned ranges
+  ---
+  duration_ms: 9.935666
+  type: 'test'
+  ...
+# Subtest: Inclusive native ranges reverse endpoints, preserve a singleton state and reject invalid seeds/bounds
+ok 41 - Inclusive native ranges reverse endpoints, preserve a singleton state and reject invalid seeds/bounds
+  ---
+  duration_ms: 0.963917
+  type: 'test'
+  ...
+# Subtest: Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment
+ok 42 - Every variable-tempo automatic strike crosses once at original contact pose and retains the authored moving segment
+  ---
+  duration_ms: 69.358875
+  type: 'test'
+  ...
+# Subtest: Night doze begins only after a complete strike, holds across night and wakes through the original dawn rest
+ok 43 - Night doze begins only after a complete strike, holds across night and wakes through the original dawn rest
+  ---
+  duration_ms: 29.9165
+  type: 'test'
+  ...
+# Subtest: Manual priority plays one full clip, recovers for 0.8 seconds, and focus loss discards an unseen strike
+ok 44 - Manual priority plays one full clip, recovers for 0.8 seconds, and focus loss discards an unseen strike
+  ---
+  duration_ms: 8.551916
+  type: 'test'
+  ...
+# Subtest: Spring integration caps slow frames at four substeps and keeps every bone within source motion bounds
+ok 45 - Spring integration caps slow frames at four substeps and keeps every bone within source motion bounds
+  ---
+  duration_ms: 152.158667
+  type: 'test'
+  ...
+# Subtest: Long day simulation produces cooldown-separated microdozes and bounded face motion, and invalid deltas leave the pose intact
+ok 46 - Long day simulation produces cooldown-separated microdozes and bounded face motion, and invalid deltas leave the pose intact
+  ---
+  duration_ms: 158.12175
+  type: 'test'
+  ...
+# Subtest: Comic reveals sound once per panel, and suspension never replays skipped panels
+ok 47 - Comic reveals sound once per panel, and suspension never replays skipped panels
+  ---
+  duration_ms: 21.08
+  type: 'test'
+  ...
+# Subtest: Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model
+ok 48 - Home music requires gesture, starts both loops once, and pauses/resumes without restarting the model
+  ---
+  duration_ms: 26.277583
+  type: 'test'
+  ...
+# Subtest: Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade
+ok 49 - Day/night gains use the original four second mix, smoothstep and 0.8 second entrance fade
+  ---
+  duration_ms: 0.191791
+  type: 'test'
+  ...
+# Subtest: Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries
+ok 50 - Shared clock retains exact dawn, dusk, lamp fades, active time and music transition boundaries
+  ---
+  duration_ms: 0.200792
+  type: 'test'
+  ...
+# Subtest: Bag alpha pick, single pointer and 9px/0.34s entry preserve tap-only feedback and do not tap the fish
+ok 51 - Bag alpha pick, single pointer and 9px/0.34s entry preserve tap-only feedback and do not tap the fish
+  ---
+  duration_ms: 0.805833
+  type: 'test'
+  ...
+# Subtest: Held geometry stays within the 18px safe margin, and outside release settles home once without an offer
+ok 52 - Held geometry stays within the 18px safe margin, and outside release settles home once without an offer
+  ---
+  duration_ms: 0.657917
+  type: 'test'
+  ...
+# Subtest: Drop enters the exact .36s fish offer, suspends ambient only when worn and rejects late duplicate resolutions
+ok 53 - Drop enters the exact .36s fish offer, suspends ambient only when worn and rejects late duplicate resolutions
+  ---
+  duration_ms: 0.57425
+  type: 'test'
+  ...
+# Subtest: Page/focus cancellation clears capture and an unfinished settle without manufacturing a drop or offer
+ok 54 - Page/focus cancellation clears capture and an unfinished settle without manufacturing a drop or offer
+  ---
+  duration_ms: 1.590125
+  type: 'test'
+  ...
+# Subtest: Travel acceptance transfers existing worn ownership without restoring a wall frame
+ok 55 - Travel acceptance transfers existing worn ownership without restoring a wall frame
+  ---
+  duration_ms: 0.476666
+  type: 'test'
+  ...
+# Subtest: Committed 11 mip PNGs decode to original native pixels and all image decode/upload memory is reserved
+ok 56 - Committed 11 mip PNGs decode to original native pixels and all image decode/upload memory is reserved
+  ---
+  duration_ms: 129.207958
+  type: 'test'
+  ...
+# Subtest: All five approved contours retain actual native float32 UV, fitted vertex and index bytes
+ok 57 - All five approved contours retain actual native float32 UV, fitted vertex and index bytes
+  ---
+  duration_ms: 7.444416
+  type: 'test'
+  ...
+# Subtest: Wear owns only existing bones for 0.24 seconds and restores captured bones before the return flight
+ok 58 - Wear owns only existing bones for 0.24 seconds and restores captured bones before the return flight
+  ---
+  duration_ms: 0.630583
+  type: 'test'
+  ...
+# Subtest: Cancellation during return finishes exactly once; rewear starts at the wall; free drag retains the interrupted pose
+ok 59 - Cancellation during return finishes exactly once; rewear starts at the wall; free drag retains the interrupted pose
+  ---
+  duration_ms: 0.259792
+  type: 'test'
+  ...
+# Subtest: Rendered worn triangles map back through shear to original alpha and reject occluded back layers during hit ownership
+ok 60 - Rendered worn triangles map back through shear to original alpha and reject occluded back layers during hit ownership
+  ---
+  duration_ms: 0.547416
+  type: 'test'
+  ...
+# Subtest: Floor projections share fitted source/UVs, preserve height payloads and rebuild only when encoded support changes
+ok 61 - Floor projections share fitted source/UVs, preserve height payloads and rebuild only when encoded support changes
+  ---
+  duration_ms: 1.062458
+  type: 'test'
+  ...
+# Subtest: Actual native Godot 72-frame oracle matches every joint angle/velocity and rounded atlas seam
+ok 62 - Actual native Godot 72-frame oracle matches every joint angle/velocity and rounded atlas seam
+  ---
+  duration_ms: 178.399958
+  type: 'test'
+  ...
+# Subtest: Five original atlas parts retain 15 joints, measured ribbon rows and authored seam UVs
+ok 63 - Five original atlas parts retain 15 joints, measured ribbon rows and authored seam UVs
+  ---
+  duration_ms: 3.50525
+  type: 'test'
+  ...
+# Subtest: Ribbon endpoints remain sewn through 0.24 second morph, and free drag preserves transition ownership
+ok 64 - Ribbon endpoints remain sewn through 0.24 second morph, and free drag preserves transition ownership
+  ---
+  duration_ms: 35.727541
+  type: 'test'
+  ...
+# Subtest: Independent bounded springs return to rest, and invalid steps do not mutate original parts
+ok 65 - Independent bounded springs return to rest, and invalid steps do not mutate original parts
+  ---
+  duration_ms: 533.446209
+  type: 'test'
+  ...
+# Subtest: Wear and free drag transitions retain the sampled room position without artificial inertia
+ok 66 - Wear and free drag transitions retain the sampled room position without artificial inertia
+  ---
+  duration_ms: 9.2615
+  type: 'test'
+  ...
+# Subtest: Rendered triangle hits map back to fixed atlas alpha; transparent holes and degenerate/outside triangles reject
+ok 67 - Rendered triangle hits map back to fixed atlas alpha; transparent holes and degenerate/outside triangles reject
+  ---
+  duration_ms: 1.266709
+  type: 'test'
+  ...
+# Subtest: Runtime interval hit queries reconstruct every defined bit of all 19 original masks
+ok 68 - Runtime interval hit queries reconstruct every defined bit of all 19 original masks
+  ---
+  duration_ms: 5218.341917
+  type: 'test'
+  ...
+# Subtest: Authored mother pixels use the exact neutral source origin, 1089 vertices and original visible-cell diagonal
+ok 69 - Authored mother pixels use the exact neutral source origin, 1089 vertices and original visible-cell diagonal
+  ---
+  duration_ms: 10.369375
+  type: 'test'
+  ...
+# Subtest: Every part remains connected and its original BitMap stays authoritative after bounded spring and drag deformation
+ok 70 - Every part remains connected and its original BitMap stays authoritative after bounded spring and drag deformation
+  ---
+  duration_ms: 246.317375
+  type: 'test'
+  ...
+# Subtest: Contact is credited at native impact once; rapid taps queue only one strike; pause and drag cancel without late credit
+ok 71 - Contact is credited at native impact once; rapid taps queue only one strike; pause and drag cancel without late credit
+  ---
+  duration_ms: 46.573375
+  type: 'test'
+  ...
+# Subtest: Five slipper impacts remove100 with zero reward, reveal one result, one-second empty gap and complete1.55s spawn
+ok 72 - Five slipper impacts remove100 with zero reward, reveal one result, one-second empty gap and complete1.55s spawn
+  ---
+  duration_ms: 1272.885083
+  type: 'test'
+  ...
+# Subtest: Native tool source pivots touch the captured target exactly at both impact boundaries
+ok 73 - Native tool source pivots touch the captured target exactly at both impact boundaries
+  ---
+  duration_ms: 0.285375
+  type: 'test'
+  ...
+# Subtest: 160 native Godot oracle frames preserve seven springs, contacts, expression, alpha-hit probes and complete checkpoint vertices
+ok 74 - 160 native Godot oracle frames preserve seven springs, contacts, expression, alpha-hit probes and complete checkpoint vertices
+  ---
+  duration_ms: 379.238916
+  type: 'test'
+  ...
+# Subtest: Both original tool contours fit the authored tray recesses after their pivot rotation and sixteen-step fitting
+ok 75 - Both original tool contours fit the authored tray recesses after their pivot rotation and sixteen-step fitting
+  ---
+  duration_ms: 16.534292
+  type: 'test'
+  ...
+# Subtest: Responsive lamp follows automatic clock, reverses a tap continuously, settles in .22s and retains the .34s squish
+ok 76 - Responsive lamp follows automatic clock, reverses a tap continuously, settles in .22s and retains the .34s squish
+  ---
+  duration_ms: 0.448458
+  type: 'test'
+  ...
+# Subtest: Darkroom uses twenty-one authored independent three-joint plants, with at most two simultaneous source-amplitude pulses
+ok 77 - Darkroom uses twenty-one authored independent three-joint plants, with at most two simultaneous source-amplitude pulses
+  ---
+  duration_ms: 511.203541
+  type: 'test'
+  ...
+# HIBERNATION_BUDGET {"before":{"entries":121,"reservedBytes":202926811,"pending":0},"asleep":{"entries":105,"reservedBytes":161821148,"pending":0},"mapPeak":{"entries":120,"reservedBytes":204165340,"pending":0},"pinnedDataBytes":471363}
+# Subtest: Hibernation frees hidden Darkroom resources and target slot, pins actual alpha/data, restores the same round, and never owns GPU objects
+ok 78 - Hibernation frees hidden Darkroom resources and target slot, pins actual alpha/data, restores the same round, and never owns GPU objects
+  ---
+  duration_ms: 442.170125
+  type: 'test'
+  ...
+# Subtest: Restored spring, plume, lamp and plaque curves continue exactly like an uninterrupted hidden cache
+ok 79 - Restored spring, plume, lamp and plaque curves continue exactly like an uninterrupted hidden cache
+  ---
+  duration_ms: 1992.824375
+  type: 'test'
+  ...
+# Subtest: Releasing during completion still honors replay-on-return and does not pay a second reward
+ok 80 - Releasing during completion still honors replay-on-return and does not pay a second reward
+  ---
+  duration_ms: 45.319916
+  type: 'test'
+  ...
+# Subtest: Visible or transitioning rooms cannot be evicted; a cancelled wait never evicts a late preload
+ok 81 - Visible or transitioning rooms cannot be evicted; a cancelled wait never evicts a late preload
+  ---
+  duration_ms: 22.234542
+  type: 'test'
+  ...
+# Subtest: Interrupted data pinning preserves the old visual cache and does not orphan its temporary data lease
+ok 82 - Interrupted data pinning preserves the old visual cache and does not orphan its temporary data lease
+  ---
+  duration_ms: 22.358916
+  type: 'test'
+  ...
+# Subtest: Repeated optional-page eviction and restoration stays within original limits and releases every lease at application shutdown
+ok 83 - Repeated optional-page eviction and restoration stays within original limits and releases every lease at application shutdown
+  ---
+  duration_ms: 260.503125
+  type: 'test'
+  ...
+# Subtest: A real Journal request cancelled during optional preload leaves Home usable; retry evicts first and returning restores the saved room
+ok 84 - A real Journal request cancelled during optional preload leaves Home usable; retry evicts first and returning restores the saved room
+  ---
+  duration_ms: 118.562875
+  type: 'test'
+  ...
+# Subtest: A failed visual reconstruction retains model/data leases and retries without resetting progress or leaving a broken cache
+ok 85 - A failed visual reconstruction retains model/data leases and retries without resetting progress or leaving a broken cache
+  ---
+  duration_ms: 119.10525
+  type: 'test'
+  ...
+# Subtest: Repeated confirmation owns one load and one durable trip; cancelling before ready rejects late success
+ok 86 - Repeated confirmation owns one load and one durable trip; cancelling before ready rejects late success
+  ---
+  duration_ms: 1.221292
+  type: 'test'
+  ...
+# Subtest: A failed load may retry; a late result from an older generation cannot hide or fail the new panel
+ok 87 - A failed load may retry; a late result from an older generation cannot hide or fail the new panel
+  ---
+  duration_ms: 4.440291
+  type: 'test'
+  ...
+# Subtest: Write failure leaves no trip or animation, releases prepared art and restores the offer; retry commits once
+ok 88 - Write failure leaves no trip or animation, releases prepared art and restores the offer; retry commits once
+  ---
+  duration_ms: 3.257
+  type: 'test'
+  ...
+# Subtest: Foreground recovery uses wall-clock state without replaying departure; parent destruction prevents late entry
+ok 89 - Foreground recovery uses wall-clock state without replaying departure; parent destruction prevents late entry
+  ---
+  duration_ms: 3.360084
+  type: 'test'
+  ...
+# Subtest: A post-commit visual failure preserves the saved trip and releases art; it cannot silently replay the farewell
+ok 90 - A post-commit visual failure preserves the saved trip and releases art; it cannot silently replay the farewell
+  ---
+  duration_ms: 3.029667
+  type: 'test'
+  ...
+# Subtest: Disabled input cannot request resources or change a saved trip
+ok 91 - Disabled input cannot request resources or change a saved trip
+  ---
+  duration_ms: 0.319791
+  type: 'test'
+  ...
+# Subtest: Already-owned loading stays idempotent after the panel blocks Home input; idle cancellation does not repeat restoration
+ok 92 - Already-owned loading stays idempotent after the panel blocks Home input; idle cancellation does not repeat restoration
+  ---
+  duration_ms: 0.306458
+  type: 'test'
+  ...
+# Subtest: A declined visual is reported after commit; thrown visual cleanup still releases the resource scope and synchronizes
+ok 93 - A declined visual is reported after commit; thrown visual cleanup still releases the resource scope and synchronizes
+  ---
+  duration_ms: 2.296333
+  type: 'test'
+  ...
+# Subtest: Actual Home bridge keeps first-session merit, marks the synchronous commit as departing and observes later merit
+ok 94 - Actual Home bridge keeps first-session merit, marks the synchronous commit as departing and observes later merit
+  ---
+  duration_ms: 1.915041
+  type: 'test'
+  ...
+# Subtest: Existing saved travel restores without a farewell and terminal return/notice happens once even across repeated foreground events
+ok 95 - Existing saved travel restores without a farewell and terminal return/notice happens once even across repeated foreground events
+  ---
+  duration_ms: 3.599
+  type: 'test'
+  ...
+# Subtest: Home bridge defers persistence warnings until local input/note is free and cancels in-flight art on app hide
+ok 96 - Home bridge defers persistence warnings until local input/note is free and cancels in-flight art on app hide
+  ---
+  duration_ms: 0.675208
+  type: 'test'
+  ...
+# Subtest: Home does not conceal or latch the actor during synchronous departure commit, but a restored away trip hides actor and bag
+ok 97 - Home does not conceal or latch the actor during synchronous departure commit, but a restored away trip hides actor and bag
+  ---
+  duration_ms: 0.291709
+  type: 'test'
+  ...
+# Subtest: Independent drag eye springs and face blend reproduce160 real native source oracle frames
+ok 98 - Independent drag eye springs and face blend reproduce160 real native source oracle frames
+  ---
+  duration_ms: 14.171625
+  type: 'test'
+  ...
+# Subtest: Invalid delta/body do not advance; invalid focus retains last target and fades only on valid ticks
+ok 99 - Invalid delta/body do not advance; invalid focus retains last target and fades only on valid ticks
+  ---
+  duration_ms: 1.13175
+  type: 'test'
+  ...
+# Subtest: Large elapsed caps at50ms; velocity and elliptical travel stay bounded and enlarged pupils remain inside their own domains
+ok 100 - Large elapsed caps at50ms; velocity and elliptical travel stay bounded and enlarged pupils remain inside their own domains
+  ---
+  duration_ms: 7.533375
+  type: 'test'
+  ...
+# Subtest: Opening never skips time while paused or accepts the final action before the full hold
+ok 101 - Opening never skips time while paused or accepts the final action before the full hold
+  ---
+  duration_ms: 0.641292
+  type: 'test'
+  ...
+# Subtest: Cancel is terminal, retries are owned once and a new entry starts blank
+ok 102 - Cancel is terminal, retries are owned once and a new entry starts blank
+  ---
+  duration_ms: 0.537708
+  type: 'test'
+  ...
+# Subtest: Loading mallet contacts the doll at all three authored strikes without sliding its support
+ok 103 - Loading mallet contacts the doll at all three authored strikes without sliding its support
+  ---
+  duration_ms: 1.495125
+  type: 'test'
+  ...
+# Subtest: Diagonal comic panels clip at the reveal edge and retain original texture coordinates
+ok 104 - Diagonal comic panels clip at the reveal edge and retain original texture coordinates
+  ---
+  duration_ms: 0.298875
+  type: 'test'
+  ...
+# Subtest: Long press waits .34 seconds; movement over 9 cancels hold but an out-and-back release still taps
+ok 105 - Long press waits .34 seconds; movement over 9 cancels hold but an out-and-back release still taps
+  ---
+  duration_ms: 1.394
+  type: 'test'
+  ...
+# Subtest: Pin follows the original grabbed pixel, visual limits bound extremes, and settle evaluates once after the full .36 seconds
+ok 106 - Pin follows the original grabbed pixel, visual limits bound extremes, and settle evaluates once after the full .36 seconds
+  ---
+  duration_ms: 0.765375
+  type: 'test'
+  ...
+# Subtest: Cancellation ignores another pointer and immediate focus/page cancellation restores presentation without a tap, drop or late landing
+ok 107 - Cancellation ignores another pointer and immediate focus/page cancellation restores presentation without a tap, drop or late landing
+  ---
+  duration_ms: 0.192208
+  type: 'test'
+  ...
+# Subtest: Manual contact timing starts at the input event, avoiding consumption of the previous frame and duplicate rewards
+ok 108 - Manual contact timing starts at the input event, avoiding consumption of the previous frame and duplicate rewards
+  ---
+  duration_ms: 3.825292
+  type: 'test'
+  ...
+# Subtest: Lift and landing use bounded springs, preserve ground contact, and let pupils follow the same face deformation
+ok 109 - Lift and landing use bounded springs, preserve ground contact, and let pupils follow the same face deformation
+  ---
+  duration_ms: 1.644625
+  type: 'test'
+  ...
+# Subtest: Forward mesh lookup inverts triangle picking and soft shadows project current vertices while contact lines stay on the floor
+ok 110 - Forward mesh lookup inverts triangle picking and soft shadows project current vertices while contact lines stay on the floor
+  ---
+  duration_ms: 2.10675
+  type: 'test'
+  ...
+# Subtest: One established starter and one birth per earned minute; cap ten never retires or backfills offline time
+ok 111 - One established starter and one birth per earned minute; cap ten never retires or backfills offline time
+  ---
+  duration_ms: 2.821292
+  type: 'test'
+  ...
+# Subtest: Restoration is atomic, migrates only geometry and preserves empty bouquets and earned boundaries
+ok 112 - Restoration is atomic, migrates only geometry and preserves empty bouquets and earned boundaries
+  ---
+  duration_ms: 0.3455
+  type: 'test'
+  ...
+# Subtest: Schema 2 legacy cap shrinks to ten after full validation; geometry v2 and fractional legacy integers retain source rules
+ok 113 - Schema 2 legacy cap shrinks to ten after full validation; geometry v2 and fractional legacy integers retain source rules
+  ---
+  duration_ms: 0.386666
+  type: 'test'
+  ...
+# Subtest: Raw JSON recovery selects latest valid main/tmp/bak and ties prefer main; failed readback keeps a recoverable generation
+ok 114 - Raw JSON recovery selects latest valid main/tmp/bak and ties prefer main; failed readback keeps a recoverable generation
+  ---
+  duration_ms: 0.816458
+  type: 'test'
+  ...
+# Subtest: Raw store guards UTF8 bytes, invalid saves/slots and silent storage failure without committed revision
+ok 115 - Raw store guards UTF8 bytes, invalid saves/slots and silent storage failure without committed revision
+  ---
+  duration_ms: 1.128541
+  type: 'test'
+  ...
+# Subtest: External clock anchors once, rolls back without growth, accrues hidden Home time and limits drawing to 30 Hz
+ok 116 - External clock anchors once, rolls back without growth, accrues hidden Home time and limits drawing to 30 Hz
+  ---
+  duration_ms: 0.396458
+  type: 'test'
+  ...
+# Subtest: A failed flower save retries its earned generation and clears the warning only after verified recovery
+ok 117 - A failed flower save retries its earned generation and clears the warning only after verified recovery
+  ---
+  duration_ms: 0.263291
+  type: 'test'
+  ...
+# Subtest: Five bone transforms keep root and constant segment lengths while sun, night staggering and springs remain bounded
+ok 118 - Five bone transforms keep root and constant segment lengths while sun, night staggering and springs remain bounded
+  ---
+  duration_ms: 87.117291
+  type: 'test'
+  ...
+# Subtest: Virtual sun covers vase-centered semicircle; mesh uses exact cropped 13x13 source topology and matching tilt normal
+ok 119 - Virtual sun covers vase-centered semicircle; mesh uses exact cropped 13x13 source topology and matching tilt normal
+  ---
+  duration_ms: 2.123
+  type: 'test'
+  ...
+# Subtest: Measured contact profiles use original alpha >= .5 and preserve separate feet
+ok 120 - Measured contact profiles use original alpha >= .5 and preserve separate feet
+  ---
+  duration_ms: 1.327583
+  type: 'test'
+  ...
+# Subtest: Grounded mesh projects each height from its measured support and preserves source coordinates
+ok 121 - Grounded mesh projects each height from its measured support and preserves source coordinates
+  ---
+  duration_ms: 0.635
+  type: 'test'
+  ...
+# Subtest: Legacy floor and wall passes retain their original affine projection behavior
+ok 122 - Legacy floor and wall passes retain their original affine projection behavior
+  ---
+  duration_ms: 0.099292
+  type: 'test'
+  ...
+# Subtest: Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains
+ok 123 - Pupil ray clamping keeps whole enlarged pupils inside the authored convex domains
+  ---
+  duration_ms: 3.373083
+  type: 'test'
+  ...
+# Subtest: Bowl tap starts one 2.8s drink; only valid finite capped ticks advance, completed context never settles a drop
+ok 124 - Bowl tap starts one 2.8s drink; only valid finite capped ticks advance, completed context never settles a drop
+  ---
+  duration_ms: 1.830167
+  type: 'test'
+  ...
+# Subtest: Grabbed target invalidates the prior drink before capturing; content invalidation and fish handoff cannot credit a drink
+ok 125 - Grabbed target invalidates the prior drink before capturing; content invalidation and fish handoff cannot credit a drink
+  ---
+  duration_ms: 0.633334
+  type: 'test'
+  ...
+# Subtest: Each prop owns a single pointer; drag is clamped to 12px including its lifted shape and settles once to fixed home
+ok 126 - Each prop owns a single pointer; drag is clamped to 12px including its lifted shape and settles once to fixed home
+  ---
+  duration_ms: 0.5245
+  type: 'test'
+  ...
+# Subtest: Doll tap only prepares; doll offer restores home and resumes exactly once, table cannot enter an offer
+ok 127 - Doll tap only prepares; doll offer restores home and resumes exactly once, table cannot enter an offer
+  ---
+  duration_ms: 0.234125
+  type: 'test'
+  ...
+# Subtest: Bowl offered to fish uses the nearby pickup visual while releasing logical ownership at home
+ok 128 - Bowl offered to fish uses the nearby pickup visual while releasing logical ownership at home
+  ---
+  duration_ms: 0.132083
+  type: 'test'
+  ...
+# Subtest: Cancellation clears capture and transient presentation in every phase without late drops, offers or drink credit
+ok 129 - Cancellation clears capture and transient presentation in every phase without late drops, offers or drink credit
+  ---
+  duration_ms: 0.194334
+  type: 'test'
+  ...
+# Subtest: Original drink envelopes delimit exact lift, sip, lower, blink and mark windows
+ok 130 - Original drink envelopes delimit exact lift, sip, lower, blink and mark windows
+  ---
+  duration_ms: 0.658209
+  type: 'test'
+  ...
+# Subtest: An absent traveler cannot drink or receive a dropped doll/bowl; ordinary prop dragging still works and return restores drinking
+ok 131 - An absent traveler cannot drink or receive a dropped doll/bowl; ordinary prop dragging still works and return restores drinking
+  ---
+  duration_ms: 0.167291
+  type: 'test'
+  ...
+# Subtest: Home retains 720-wide world sampling on small screens and caps physical scale independently from logical height
+ok 132 - Home retains 720-wide world sampling on small screens and caps physical scale independently from logical height
+  ---
+  duration_ms: 0.705417
+  type: 'test'
+  ...
+# Subtest: Settings ignores moved contacts, waits for the full bounce, and cannot reopen after cancellation
+ok 133 - Settings ignores moved contacts, waits for the full bounce, and cannot reopen after cancellation
+  ---
+  duration_ms: 1.500084
+  type: 'test'
+  ...
+# Subtest: Merit is tied to unique monotonic contacts, survives a pose reset, and expires after the authored full elapsed time
+ok 134 - Merit is tied to unique monotonic contacts, survives a pose reset, and expires after the authored full elapsed time
+  ---
+  duration_ms: 0.285791
+  type: 'test'
+  ...
+# Subtest: Merit one keeps its approved bitmap while arbitrary rewards remain centered and fit the original width
+ok 135 - Merit one keeps its approved bitmap while arbitrary rewards remain centered and fit the original width
+  ---
+  duration_ms: 0.831916
+  type: 'test'
+  ...
+# Subtest: Credits retain every original artist, license paragraph and URL without text substitutions
+ok 136 - Credits retain every original artist, license paragraph and URL without text substitutions
+  ---
+  duration_ms: 2.198417
+  type: 'test'
+  ...
+# Subtest: Checkpoint SHA-256 matches independent Node vectors, including multi-block Unicode and invalid UTF-16
+ok 137 - Checkpoint SHA-256 matches independent Node vectors, including multi-block Unicode and invalid UTF-16
+  ---
+  duration_ms: 7.351833
+  type: 'test'
+  ...
+# Subtest: Recovery chooses the latest validated generation, retains future schemas and refuses equal or stale writes
+ok 138 - Recovery chooses the latest validated generation, retains future schemas and refuses equal or stale writes
+  ---
+  duration_ms: 8.553334
+  type: 'test'
+  ...
+# Subtest: Failed commit readback retains temporary recovery and does not advance shared committed revision
+ok 139 - Failed commit readback retains temporary recovery and does not advance shared committed revision
+  ---
+  duration_ms: 0.516209
+  type: 'test'
+  ...
+# Subtest: Incense uses real monotonic and wall clocks, keeps one burn, and switches rewards exactly at expiry
+ok 140 - Incense uses real monotonic and wall clocks, keeps one burn, and switches rewards exactly at expiry
+  ---
+  duration_ms: 3.227166
+  type: 'test'
+  ...
+# Subtest: Reload catches up elapsed time, a rollback expires the checkpoint, and restored duration resets for a new burn
+ok 141 - Reload catches up elapsed time, a rollback expires the checkpoint, and restored duration resets for a new burn
+  ---
+  duration_ms: 0.741042
+  type: 'test'
+  ...
+# Subtest: Two live instances synchronize without extending the same stick or accepting a late older save
+ok 142 - Two live instances synchronize without extending the same stick or accepting a late older save
+  ---
+  duration_ms: 0.494917
+  type: 'test'
+  ...
+# Subtest: Hint pauses before entering, leaves over .18 seconds, and re-enters after the actual burn overshoot
+ok 143 - Hint pauses before entering, leaves over .18 seconds, and re-enters after the actual burn overshoot
+  ---
+  duration_ms: 0.320584
+  type: 'test'
+  ...
+# Subtest: Smoke is bounded, separates re-ignition generations and drains after long background intervals
+ok 144 - Smoke is bounded, separates re-ignition generations and drains after long background intervals
+  ---
+  duration_ms: 16.645333
+  type: 'test'
+  ...
+# Subtest: Source noon geometry and latest Home gains remain distinct from shared light values
+ok 145 - Source noon geometry and latest Home gains remain distinct from shared light values
+  ---
+  duration_ms: 4.794042
+  type: 'test'
+  ...
+# Subtest: Night transition, moon positions and ambient accents preserve dawn/dusk boundaries
+ok 146 - Night transition, moon positions and ambient accents preserve dawn/dusk boundaries
+  ---
+  duration_ms: 0.357375
+  type: 'test'
+  ...
+# Subtest: All 24h light samples remain finite, bounded, normalized and periodic
+ok 147 - All 24h light samples remain finite, bounded, normalized and periodic
+  ---
+  duration_ms: 27.261875
+  type: 'test'
+  ...
+# Subtest: Dust is confined to the approved projected window rather than a full-screen overlay
+ok 148 - Dust is confined to the approved projected window rather than a full-screen overlay
+  ---
+  duration_ms: 0.14175
+  type: 'test'
+  ...
+# Subtest: Each original piece has three local joints, immutable atlas UVs and exact nine-row source topology
+ok 149 - Each original piece has three local joints, immutable atlas UVs and exact nine-row source topology
+  ---
+  duration_ms: 1155.1685
+  type: 'test'
+  ...
+# Subtest: Successive joints preserve the fixed root and reproduce an independently summed articulated tip
+ok 150 - Successive joints preserve the fixed root and reproduce an independently summed articulated tip
+  ---
+  duration_ms: 0.170625
+  type: 'test'
+  ...
+# Subtest: Long mixed-frame wind remains local, bounded to two pulses, and every child stays connected to its authored socket
+ok 151 - Long mixed-frame wind remains local, bounded to two pulses, and every child stays connected to its authored socket
+  ---
+  duration_ms: 3677.601167
+  type: 'test'
+  ...
+# Subtest: Removing wind lets each independent joint return to its own rest without atlas drift; invalid time changes nothing
+ok 152 - Removing wind lets each independent joint return to its own rest without atlas drift; invalid time changes nothing
+  ---
+  duration_ms: 477.105875
+  type: 'test'
+  ...
+# Subtest: 10,000 actual contacts keep merit, persistence and sound while default diagnostics do no snapshot work
+ok 153 - 10,000 actual contacts keep merit, persistence and sound while default diagnostics do no snapshot work
+  ---
+  duration_ms: 96.443
+  type: 'test'
+  ...
+# Subtest: Explicit trace keeps the same contact behavior and string truthiness does not enable it
+ok 154 - Explicit trace keeps the same contact behavior and string truthiness does not enable it
+  ---
+  duration_ms: 82.062458
+  type: 'test'
+  ...
+# Subtest: Grabbed face stays fixed and the mat contact row cannot move during landing squash
+ok 155 - Grabbed face stays fixed and the mat contact row cannot move during landing squash
+  ---
+  duration_ms: 0.629583
+  type: 'test'
+  ...
+# Subtest: Unheld rigid fin moves as one attachment without stretching its mallet
+ok 156 - Unheld rigid fin moves as one attachment without stretching its mallet
+  ---
+  duration_ms: 0.254125
+  type: 'test'
+  ...
+# Subtest: Neutral tail and fin retain source points regardless of parent pose
+ok 157 - Neutral tail and fin retain source points regardless of parent pose
+  ---
+  duration_ms: 0.126417
+  type: 'test'
+  ...
+# Subtest: Jelly remains upper-body local and repeated identical deformation reuses geometry
+ok 158 - Jelly remains upper-body local and repeated identical deformation reuses geometry
+  ---
+  duration_ms: 0.110375
+  type: 'test'
+  ...
+# Subtest: Shared original streaming leases reserve encoded buffers, request DOM audio and release their clip once at the last owner
+ok 159 - Shared original streaming leases reserve encoded buffers, request DOM audio and release their clip once at the last owner
+  ---
+  duration_ms: 165.839917
+  type: 'test'
+  ...
+# Subtest: A full-PCM fallback fails and releases its remote asset; a cancelled late mini-game clip cannot remain resident
+ok 160 - A full-PCM fallback fails and releases its remote asset; a cancelled late mini-game clip cannot remain resident
+  ---
+  duration_ms: 178.530584
+  type: 'test'
+  ...
+# Subtest: Original streaming reservation cannot silently change and full-PCM estimates remain preserved
+ok 161 - Original streaming reservation cannot silently change and full-PCM estimates remain preserved
+  ---
+  duration_ms: 41.457417
+  type: 'test'
+  ...
+# Subtest: Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+ok 162 - Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count
+  ---
+  duration_ms: 8.203166
+  type: 'test'
+  ...
+# Subtest: Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+ok 163 - Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row
+  ---
+  duration_ms: 6.955333
+  type: 'test'
+  ...
+# Subtest: Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+ok 164 - Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits
+  ---
+  duration_ms: 0.154042
+  type: 'test'
+  ...
+# Subtest: Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+ok 165 - Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation
+  ---
+  duration_ms: 3.490375
+  type: 'test'
+  ...
+# Subtest: Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+ok 166 - Archive waits for resources and draw, returns to the same collection selection, and cannot train twice
+  ---
+  duration_ms: 31.334167
+  type: 'test'
+  ...
+# Subtest: Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+ok 167 - Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable
+  ---
+  duration_ms: 13.238
+  type: 'test'
+  ...
+# Subtest: Collection resize cancels held controls and keeps source layout centered without rebuilding art
+ok 168 - Collection resize cancels held controls and keeps source layout centered without rebuilding art
+  ---
+  duration_ms: 0.912083
+  type: 'test'
+  ...
+# Subtest: Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize
+ok 169 - Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize
+  ---
+  duration_ms: 0.665708
+  type: 'test'
+  ...
+# Subtest: Save failure remains visible even when inventory has not changed and clears after recovery
+ok 170 - Save failure remains visible even when inventory has not changed and clears after recovery
+  ---
+  duration_ms: 0.611375
+  type: 'test'
+  ...
+# Subtest: Native aligned route dashes reach both endpoints without adding AA fringes
+ok 171 - Native aligned route dashes reach both endpoints without adding AA fringes
+  ---
+  duration_ms: 2.122125
+  type: 'test'
+  ...
+# Subtest: Actual diary artwork stays attached to book and all ink shares room lighting without new textures
+ok 172 - Actual diary artwork stays attached to book and all ink shares room lighting without new textures
+  ---
+  duration_ms: 2.643709
+  type: 'test'
+  ...
+# Subtest: Actual reward view cannot grant unopened/early rewards; the complete return loop unlocks one next departure
+ok 173 - Actual reward view cannot grant unopened/early rewards; the complete return loop unlocks one next departure
+  ---
+  duration_ms: 45.263083
+  type: 'test'
+  ...
+# Subtest: Failed start remains clickable; failed arrival retries the same durable flight, never a new award
+ok 174 - Failed start remains clickable; failed arrival retries the same durable flight, never a new award
+  ---
+  duration_ms: 8.3915
+  type: 'test'
+  ...
+# Subtest: Destroying the view in midflight and reloading storage completes each reward once
+ok 175 - Destroying the view in midflight and reloading storage completes each reward once
+  ---
+  duration_ms: 7.3815
+  type: 'test'
+  ...
+# Subtest: Collecting the first reward retains every survivor index, arc and click target
+ok 176 - Collecting the first reward retains every survivor index, arc and click target
+  ---
+  duration_ms: 7.511584
+  type: 'test'
+  ...
+# Subtest: Invalid time and pointer coordinates cannot poison active view state
+ok 177 - Invalid time and pointer coordinates cannot poison active view state
+  ---
+  duration_ms: 27.37325
+  type: 'test'
+  ...
+# Subtest: Drag-out never reactivates on return; another touch cannot release the owned travel prop
+ok 178 - Drag-out never reactivates on return; another touch cannot release the owned travel prop
+  ---
+  duration_ms: 0.098875
+  type: 'test'
+  ...
+# Subtest: Cancelling an actual diary entry invalidates its delayed navigation and restores the artwork transform
+ok 179 - Cancelling an actual diary entry invalidates its delayed navigation and restores the artwork transform
+  ---
+  duration_ms: 5.254292
+  type: 'test'
+  ...
+# Subtest: Original entry feedback reaches its exact duration and does not open rewards before it finishes
+ok 180 - Original entry feedback reaches its exact duration and does not open rewards before it finishes
+  ---
+  duration_ms: 2.909959
+  type: 'test'
+  ...
+# Subtest: Return ownership is acquired during the final durable grant, before world sync can reveal the wall bag
+ok 181 - Return ownership is acquired during the final durable grant, before world sync can reveal the wall bag
+  ---
+  duration_ms: 9.250208
+  type: 'test'
+  ...
+# Subtest: Finishing or suspending a rehang restores the same rig and rejects late ownership updates
+ok 182 - Finishing or suspending a rehang restores the same rig and rejects late ownership updates
+  ---
+  duration_ms: 0.801167
+  type: 'test'
+  ...
+# Subtest: Native tent topology retains contact vertices and original UVs while elevated points project
+ok 183 - Native tent topology retains contact vertices and original UVs while elevated points project
+  ---
+  duration_ms: 0.333667
+  type: 'test'
+  ...
+# Subtest: Real backpack rehang fits the original articulated bounds even while Home is hidden
+ok 184 - Real backpack rehang fits the original articulated bounds even while Home is hidden
+  ---
+  duration_ms: 14.803417
+  type: 'test'
+  ...
+# Subtest: Collection waits for its grounded 280ms entry bounce and cancelled entry never navigates
+ok 185 - Collection waits for its grounded 280ms entry bounce and cancelled entry never navigates
+  ---
+  duration_ms: 1.810209
+  type: 'test'
+  ...
+# Subtest: Real saved diary orders agreement first, requires a selection and learns exactly once across re-entry
+ok 186 - Real saved diary orders agreement first, requires a selection and learns exactly once across re-entry
+  ---
+  duration_ms: 19.195417
+  type: 'test'
+  ...
+# Subtest: A save failure preserves the selected review for retry and stale page callbacks cannot grade another entry
+ok 187 - A save failure preserves the selected review for retry and stale page callbacks cannot grade another entry
+  ---
+  duration_ms: 8.992125
+  type: 'test'
+  ...
+# Subtest: Actual diary view rebuilds scoped controls, pauses input, uses original resources and closes only after durable archive
+ok 188 - Actual diary view rebuilds scoped controls, pauses input, uses original resources and closes only after durable archive
+  ---
+  duration_ms: 11.315458
+  type: 'test'
+  ...
+# Subtest: Actual Application journal entry admits only its subset, preserves Home and returns through the real router
+ok 189 - Actual Application journal entry admits only its subset, preserves Home and returns through the real router
+  ---
+  duration_ms: 3.002167
+  type: 'test'
+  ...
+# Subtest: Journal cancellation rejects a late completion; failed loading can retry without altering saves
+ok 190 - Journal cancellation rejects a late completion; failed loading can retry without altering saves
+  ---
+  duration_ms: 2.133417
+  type: 'test'
+  ...
+# Subtest: Actual map page consumes original resources, retained glint geometry and releases every scoped frame/material/audio on exit
+ok 191 - Actual map page consumes original resources, retained glint geometry and releases every scoped frame/material/audio on exit
+  ---
+  duration_ms: 86.47875
+  type: 'test'
+  ...
+# Subtest: Original choice pauses only scene motion; button is blocked before reveal, durable save failure retains retry and double tap settles once
+ok 192 - Original choice pauses only scene motion; button is blocked before reveal, durable save failure retains retry and double tap settles once
+  ---
+  duration_ms: 29.762417
+  type: 'test'
+  ...
+# Subtest: Background releases owned manual pause, cancels queued stale choice and resumes elapsed route without changing merit
+ok 193 - Background releases owned manual pause, cancels queued stale choice and resumes elapsed route without changing merit
+  ---
+  duration_ms: 27.158917
+  type: 'test'
+  ...
+# Subtest: Modal close/outside ignore crossing and other fingers; tall resize cancels capture and preserves the owned choice
+ok 194 - Modal close/outside ignore crossing and other fingers; tall resize cancels capture and preserves the owned choice
+  ---
+  duration_ms: 21.870542
+  type: 'test'
+  ...
+# Subtest: Strict glyph modal disables unsupported choices; long text scroll is clipped, bounded and pointer-owned
+ok 195 - Strict glyph modal disables unsupported choices; long text scroll is clipped, bounded and pointer-owned
+  ---
+  duration_ms: 1.269833
+  type: 'test'
+  ...
+# Subtest: Real Home map route waits for admission and rejects cancelled/failed late loads; success returns home and disposes the page
+ok 196 - Real Home map route waits for admission and rejects cancelled/failed late loads; success returns home and disposes the page
+  ---
+  duration_ms: 41.309875
+  type: 'test'
+  ...
+# Subtest: Map native signs keep meshes while unchanged and switch admitted density without new frames
+ok 197 - Map native signs keep meshes while unchanged and switch admitted density without new frames
+  ---
+  duration_ms: 38.505708
+  type: 'test'
+  ...
+# Subtest: Eight current native Godot plans and terminal transactions retain every route, event, reward and diary value
+ok 198 - Eight current native Godot plans and terminal transactions retain every route, event, reward and diary value
+  ---
+  duration_ms: 15.342625
+  type: 'test'
+  ...
+# Subtest: Native manual pause, terminal delay, individual grants, explicit learning and schema1 migration match the whole45-row oracle
+ok 199 - Native manual pause, terminal delay, individual grants, explicit learning and schema1 migration match the whole45-row oracle
+  ---
+  duration_ms: 6.536292
+  type: 'test'
+  ...
+# Subtest: Native cancellation tokens, abandoned choice recovery, rollback and offline overshoot are identical
+ok 200 - Native cancellation tokens, abandoned choice recovery, rollback and offline overshoot are identical
+  ---
+  duration_ms: 1.554417
+  type: 'test'
+  ...
+# Subtest: Boundary100 wins entry;99.999 owns its pause, partial rewards block departure and malformed nested saves fail safely
+ok 201 - Boundary100 wins entry;99.999 owns its pause, partial rewards block departure and malformed nested saves fail safely
+  ---
+  duration_ms: 7.255375
+  type: 'test'
+  ...
+# Subtest: Source dictionary tags do not inherit JavaScript prototype values or overwrite their prototype
+ok 202 - Source dictionary tags do not inherit JavaScript prototype values or overwrite their prototype
+  ---
+  duration_ms: 0.40625
+  type: 'test'
+  ...
+# Subtest: Actual layered scene uses source atlas UVs, source draw order, bounded mesh batches and three shared materials
+ok 203 - Actual layered scene uses source atlas UVs, source draw order, bounded mesh batches and three shared materials
+  ---
+  duration_ms: 42.542
+  type: 'test'
+  ...
+# Subtest: Actual Cocos node and atlas transforms follow nine native Godot checkpoints through 120 seconds
+ok 204 - Actual Cocos node and atlas transforms follow nine native Godot checkpoints through 120 seconds
+  ---
+  duration_ms: 137.721709
+  type: 'test'
+  ...
+# Subtest: Incremental route recoloring matches full redraw across forward jumps and rewinds without rebuilding vertices
+ok 205 - Incremental route recoloring matches full redraw across forward jumps and rewinds without rebuilding vertices
+  ---
+  duration_ms: 295.180625
+  type: 'test'
+  ...
+# Subtest: Footprint images keep native rotation, drop, scale, warm contact and un-tinted ink; all dynamic alpha avoids Color byte quantization
+ok 206 - Footprint images keep native rotation, drop, scale, warm contact and un-tinted ink; all dynamic alpha avoids Color byte quantization
+  ---
+  duration_ms: 21.90975
+  type: 'test'
+  ...
+# Subtest: Shared field receives the current scene transform and all fourteen native day/night light states
+ok 207 - Shared field receives the current scene transform and all fourteen native day/night light states
+  ---
+  duration_ms: 27.719417
+  type: 'test'
+  ...
+# Subtest: Godot filled circle primitive uses 64 native fan triangles and rejects invalid input
+ok 208 - Godot filled circle primitive uses 64 native fan triangles and rejects invalid input
+  ---
+  duration_ms: 0.434541
+  type: 'test'
+  ...
+# Subtest: Drawing transforms match native scale_basis order for actor shadows, footprint press and halo
+ok 209 - Drawing transforms match native scale_basis order for actor shadows, footprint press and halo
+  ---
+  duration_ms: 30.289375
+  type: 'test'
+  ...
+# [Travel scene native numeric maximum] {"error":0.00030098832780822704,"path":"flow.1690.1.2.at.1"}
+# Subtest: Native Godot scene export: all 201 smooth-route points and 14 day/night snapshots match
+ok 210 - Native Godot scene export: all 201 smooth-route points and 14 day/night snapshots match
+  ---
+  duration_ms: 4.393542
+  type: 'test'
+  ...
+# Subtest: Native Godot 120-second spring/cloud/leaf/bell trajectory and queued footprint arrivals match
+ok 211 - Native Godot 120-second spring/cloud/leaf/bell trajectory and queued footprint arrivals match
+  ---
+  duration_ms: 90.910708
+  type: 'test'
+  ...
+# Subtest: Native Godot 48 convergence glints preserve timed trajectories at both viewport heights
+ok 212 - Native Godot 48 convergence glints preserve timed trajectories at both viewport heights
+  ---
+  duration_ms: 9.197875
+  type: 'test'
+  ...
+# Subtest: Both bounded synthesized bell sounds match native Godot PCM bytes exactly
+ok 213 - Both bounded synthesized bell sounds match native Godot PCM bytes exactly
+  ---
+  duration_ms: 243.31475
+  type: 'test'
+  ...
+# Subtest: Scene audio obeys gesture, mute, pause, cooldown and nonoverlapping bell/cue ownership
+ok 214 - Scene audio obeys gesture, mute, pause, cooldown and nonoverlapping bell/cue ownership
+  ---
+  duration_ms: 9.84925
+  type: 'test'
+  ...
+# Subtest: Encounter selection pauses route time, handles save retry, charges only once and retains decided review
+ok 215 - Encounter selection pauses route time, handles save retry, charges only once and retains decided review
+  ---
+  duration_ms: 14.7965
+  type: 'test'
+  ...
+# Subtest: Encounter cancellation/stale callbacks cannot release or choose a newer token; failed cancellation keeps its original resume time
+ok 216 - Encounter cancellation/stale callbacks cannot release or choose a newer token; failed cancellation keeps its original resume time
+  ---
+  duration_ms: 4.250542
+  type: 'test'
+  ...
+# Subtest: Scene equations reject nonfinite frame deltas and declared data has bounded population
+ok 217 - Scene equations reject nonfinite frame deltas and declared data has bounded population
+  ---
+  duration_ms: 1.110542
+  type: 'test'
+  ...
+# Subtest: Failed entry/choice/arrival roll back the whole durable transaction; retry and every reward grant apply once
+ok 218 - Failed entry/choice/arrival roll back the whole durable transaction; retry and every reward grant apply once
+  ---
+  duration_ms: 35.290167
+  type: 'test'
+  ...
+# Subtest: Failed cancellation keeps its original release time, projects without mutation and retries active time
+ok 219 - Failed cancellation keeps its original release time, projects without mutation and retries active time
+  ---
+  duration_ms: 3.428583
+  type: 'test'
+  ...
+# Subtest: Restart releases abandoned ownership, stale writers adopt the newer revision, and stale recovery cannot steal a new token
+ok 220 - Restart releases abandoned ownership, stale writers adopt the newer revision, and stale recovery cannot steal a new token
+  ---
+  duration_ms: 14.275208
+  type: 'test'
+  ...
+# Subtest: Browser main key is the sole authority; integrity/future/invalid slots/quota fail without resurrecting backups or advancing revisions
+ok 221 - Browser main key is the sole authority; integrity/future/invalid slots/quota fail without resurrecting backups or advancing revisions
+  ---
+  duration_ms: 1.723208
+  type: 'test'
+  ...
+# Subtest: CAS recheck rejects a writer arriving between reads; real adapter exceptions are not hidden
+ok 222 - CAS recheck rejects a writer arriving between reads; real adapter exceptions are not hidden
+  ---
+  duration_ms: 1.604875
+  type: 'test'
+  ...
+# Subtest: Large UTF8 states and prototype-named learned tags are validated by exact byte capacity and preserve all own keys
+ok 223 - Large UTF8 states and prototype-named learned tags are validated by exact byte capacity and preserve all own keys
+  ---
+  duration_ms: 146.255208
+  type: 'test'
+  ...
+# Subtest: Durable schema1 migration retains all owned rewards and never replays them; blocked corruption refuses departures
+ok 224 - Durable schema1 migration retains all owned rewards and never replays them; blocked corruption refuses departures
+  ---
+  duration_ms: 16.094459
+  type: 'test'
+  ...
+# Subtest: WeChat synchronous adapter distinguishes absent keys from corrupt empty strings and propagates platform errors
+ok 225 - WeChat synchronous adapter distinguishes absent keys from corrupt empty strings and propagates platform errors
+  ---
+  duration_ms: 1.301667
+  type: 'test'
+  ...
+# Subtest: Current native Godot envelopes, including full-precision JSON and schema1 owned rewards, decode without data loss
+ok 226 - Current native Godot envelopes, including full-precision JSON and schema1 owned rewards, decode without data loss
+  ---
+  duration_ms: 4.043291
+  type: 'test'
+  ...
+# Subtest: Every source station and all route status/count combinations retain native shaping at both admitted densities
+ok 227 - Every source station and all route status/count combinations retain native shaping at both admitted densities
+  ---
+  duration_ms: 6.583667
+  type: 'test'
+  ...
+# Subtest: Native glyph atlases retain verified payloads, optional map ownership and conservative decode/upload reservation
+ok 228 - Native glyph atlases retain verified payloads, optional map ownership and conservative decode/upload reservation
+  ---
+  duration_ms: 3.538041
+  type: 'test'
+  ...
+# Subtest: Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin
+ok 229 - Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin
+  ---
+  duration_ms: 6.846125
+  type: 'test'
+  ...
+# Subtest: Budget rejection does not stop the application update loop or spam retries, and a later resize can recover
+ok 230 - Budget rejection does not stop the application update loop or spam retries, and a later resize can recover
+  ---
+  duration_ms: 0.192125
+  type: 'test'
+  ...
+# Subtest: Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges
+ok 231 - Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges
+  ---
+  duration_ms: 0.363042
+  type: 'test'
+  ...
+# Subtest: Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once
+ok 232 - Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once
+  ---
+  duration_ms: 0.561417
+  type: 'test'
+  ...
+# Subtest: Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope
+ok 233 - Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope
+  ---
+  duration_ms: 0.33575
+  type: 'test'
+  ...
+# Subtest: Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes
+ok 234 - Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes
+  ---
+  duration_ms: 0.606875
+  type: 'test'
+  ...
+# Subtest: Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely
+ok 235 - Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely
+  ---
+  duration_ms: 0.640375
+  type: 'test'
+  ...
+# Subtest: Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked
+ok 236 - Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked
+  ---
+  duration_ms: 30.2195
+  type: 'test'
+  ...
+1..236
+# tests 236
+# suites 0
+# pass 236
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6650.367666
