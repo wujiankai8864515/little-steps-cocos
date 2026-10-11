@@ -1,4 +1,4 @@
-import { EventKeyboard, input, Input, KeyCode, Node, screen, UITransform, Vec3 } from 'cc';
+import { EventKeyboard, input, Input, KeyCode, Node, screen, UIOpacity, UITransform, Vec3 } from 'cc';
 import { GameAssets } from './Assets';
 import { audioTransport, renderSurfaces, Scope, sharedUI } from './Engine';
 import { AudioPort, HomeMusic } from './AudioBehavior';
@@ -21,6 +21,9 @@ import { BackpackInteraction } from './BackpackInteraction';
 import { HomeNote } from './HomeNote';
 import { HomeProps } from './HomeProps';
 import { HomePropInteraction } from './HomePropInteraction';
+import { HomeDepartureVisual } from './HomeDepartureVisual';
+import { DEPARTURE_FINISH_AT } from './DepartureMotion';
+import { homeLighting } from './LightingSnapshot';
 
 let roomSerial=0;
 
@@ -47,9 +50,13 @@ export class HomePage {
     onPrepareDarkroom=()=>{};
     onCancelDarkroom=()=>{};
     onTravelRequest:()=>boolean=null;
+    onMeritChanged=(amount:number)=>{};
+    private travelLoading=false;private travelFull=false;
     private pointerBinding:any;private feedback:InteractionFeedback;
     private dragCarrier:Node=null;private restIndex=0;private presentedActor='';
     private roomLayers:Array<{z:number;order:number;node:Node}>=[];private backpackLayerRevision=-1;private propLayerRevision=-1;
+    private departure:HomeDepartureVisual=null;private departureScope:Scope=null;private departureAge=0;private departureSaved:any=null;private lastDeparture:any=null;private actorProjectionAlpha=1;private travelAway=false;
+    onDepartureFinished=()=>{};
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
         const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width);
         const target=await assets.acquireTransient('HomeRoom-'+(++roomSerial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'HomeRoom'),texture=>texture.destroy(),scope);
@@ -59,7 +66,7 @@ export class HomePage {
         console.info('[LittleSteps] Home room prepared '+JSON.stringify(page.surface.snapshot()));
         return page;
     }
-    private constructor(parent: Node, assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic,gradient:any) {
+    private constructor(parent: Node, private assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic,gradient:any) {
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.root.active=false;
         scope.own(() => { this.root.active = false; this.root.destroy(); });
@@ -88,6 +95,7 @@ export class HomePage {
         this.rig = new XiaoyuRig(this.roomRoot, assets, scope);
         this.rig.receivers.forEach(item=>this.lighting.receiver(item.sprite,item.spec,1,[.2,.15,.68,.72],item.node.name==='OriginalBody'||item.eye?'face':'receiver',item.eye||0,item.eye?this.rig.pupilOffsets()[item.eye-1]:[0,0]));
         this.rig.receivers.filter(item=>item.node.name.indexOf('Eye')<0).forEach(item=>this.shadows.add(item.node,item.resource,{'metadata/ground':951,'metadata/height_factor':.72,'metadata/floor':true,'metadata/shadow_z':1,'metadata/thickness':0}));
+        this.rig.receivers.filter(item=>item.node.name.indexOf('Eye')<0).forEach(item=>this.shadows.bindOpacity(item.node,()=>this.actorProjectionAlpha));
         this.rig.softMeshes().forEach(part=>this.shadows.bindSoft(part.node,part.mesh,()=>this.rig.softActive,()=>this.rig.liftHeight,()=>this.fish?.ground[1]||951,()=>this.presentedActor==='fish'&&this.dragCarrier?this.dragCarrier:this.roomRoot));
         this.plants=new HomePlants(this.roomRoot,assets,scope,this.lighting,this.clock);
         this.plants.roots.forEach(layer=>layers.push(layer));
@@ -129,7 +137,7 @@ export class HomePage {
         });
         this.propVisuals=new HomeProps(this.roomRoot,assets,scope,props,layers,this.shadows,this.rig,this.incense,this.flowers,()=>this.fish.ground,(id,active)=>{if(active&&!this.dragCarrier){this.dragCarrier=nodeAt(this.root,'PropDragPresentation');this.presentedActor=id;}else if(!active&&this.presentedActor===id){this.dragCarrier.destroy();this.dragCarrier=null;this.presentedActor='';this.sortRoomLayers();}return this.dragCarrier||this.roomRoot;});
         this.props=new HomePropInteraction({
-            hit:at=>this.propVisuals.hit(at),visibleRect:visible,home:id=>this.propVisuals.home(id),bounds:id=>this.propVisuals.visualBounds(id),fishGround:()=>this.fish.ground,
+            hit:at=>this.propVisuals.hit(at),visibleRect:visible,home:id=>this.propVisuals.home(id),bounds:id=>this.propVisuals.visualBounds(id),fishGround:()=>this.fish.ground,actorAvailable:()=>!this.travelAway,
             setAnchor:(id,at,lift,depth)=>this.propVisuals.setAnchor(id,at,lift,depth),validDrop:(id,at)=>this.propVisuals.validDrop(id,at),present:(id,active)=>this.propVisuals.present(id,active),
             captureSettle:id=>this.propVisuals.captureSettle(id),settleTransform:(id,e)=>this.propVisuals.settleTransform(id,e),restore:id=>this.propVisuals.restore(id),
             suspend:()=>{this.rig.suspend();this.rig.resetSecondary();this.knock.stop();},resume:()=>this.rig.resume(),resetFish:()=>this.propVisuals.resetFish(),
@@ -137,15 +145,15 @@ export class HomePage {
             offer:()=>{this.incense.dismiss();this.onPrepareDarkroom();this.note.ask('darkroom');},dismissOffer:immediate=>this.note.dismiss(immediate),prepareDoll:()=>this.onPrepareDarkroom(),
             pulse:(at,accepted)=>this.feedback.pulse(at,accepted),hold:(at,fraction)=>this.feedback.hold(at,fraction),clear:()=>{this.feedback.clear();this.propVisuals.clear();},
         });
-        this.note.onDecision=(kind,accepted)=>{if(kind==='travel'){if(accepted&&this.onTravelRequest&&this.onTravelRequest())this.bag.commitOffer();else{this.bag.resolveOffer();if(accepted)this.note.info('旅行还在准备中');}}else if(kind==='darkroom_wait'){if(!accepted)this.onCancelDarkroom();}else if(kind==='darkroom_retry'){if(accepted)this.onDarkroomRequest?.();}else{this.props.resolveOffer();if(accepted&&(!this.onDarkroomRequest||!this.onDarkroomRequest()))this.note.info('暗室还在准备中');}console.info('[LittleSteps] route decision '+JSON.stringify({kind,accepted,bag:this.bag.snapshot(),props:this.props.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));};
+        this.note.onDecision=(kind,accepted)=>{if(kind==='travel'){if(!accepted||!this.onTravelRequest?.()){this.bag.resolveOffer();if(accepted)this.note.info('旅行还在准备中');}}else if(kind==='darkroom_wait'){if(!accepted)this.onCancelDarkroom();}else if(kind==='darkroom_retry'){if(accepted)this.onDarkroomRequest?.();}else{this.props.resolveOffer();if(accepted&&(!this.onDarkroomRequest||!this.onDarkroomRequest()))this.note.info('暗室还在准备中');}console.info('[LittleSteps] route decision '+JSON.stringify({kind,accepted,bag:this.bag.snapshot(),props:this.props.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));};
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         const bagReport=(event:string)=>console.info('[LittleSteps] bag input '+JSON.stringify({event,...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));
         const propReport=(event:string)=>console.info('[LittleSteps] prop input '+JSON.stringify({event,...this.props.snapshot(),visual:this.propVisuals.snapshot(),note:this.note.snapshot()}));
-        let owner='';this.hud.worldOwnsInput=()=>this.note.ownsInput||owner!=='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{const p=point(at);if(this.note.down(id,p)){owner='note';return true;}if(this.fish.state==='SETTLING'||this.bag.state==='SETTLING'||this.props.state==='SETTLING')return false;if(this.incense.down(id,p)){owner='incense';console.info('[LittleSteps] incense input down');return true;}if(this.bag.down(id,p)){owner='bag';bagReport('down');return true;}if(this.props.down(id,p)){owner='prop';propReport('down');return true;}const accepted=this.fish.down(id,p);if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{const p=point(at);if(owner==='incense')this.incense.move(id,p);else if(owner==='bag')this.bag.move(id,p);else if(owner==='prop')this.props.move(id,p);else if(owner==='note')this.note.move(id,p);else if(owner==='fish')this.fish.move(id,p);},up:(at:number[],id:number)=>{const p=point(at);if(owner==='incense'){this.incense.up(id,p);console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else if(owner==='bag'){this.bag.up(id,p);bagReport('up');}else if(owner==='prop'){this.props.up(id,p);propReport('up');}else if(owner==='note')this.note.up(id,p);else if(owner==='fish'){this.fish.up(id,p);report('up');}owner='';},cancel:()=>{if(owner==='incense')this.incense.cancel();else if(owner==='bag')this.bag.cancel(false);else if(owner==='prop')this.props.cancel('pointer_cancelled',false);else if(owner==='note')this.note.cancelPointer();else if(owner==='fish')this.fish.cancel(false);owner='';}},()=>this.active&&!this.hud.blocked);
-        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
+        let owner='';this.hud.worldOwnsInput=()=>this.travelLoading||!!this.departure||this.note.ownsInput||owner!=='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.departure||this.travelLoading)return false;const p=point(at);if(this.note.down(id,p)){owner='note';return true;}if(this.fish.state==='SETTLING'||this.bag.state==='SETTLING'||this.props.state==='SETTLING')return false;if(this.incense.down(id,p)){owner='incense';console.info('[LittleSteps] incense input down');return true;}if(!this.travelAway&&!this.travelFull&&this.bag.down(id,p)){owner='bag';bagReport('down');return true;}if(this.props.down(id,p)){owner='prop';propReport('down');return true;}const accepted=!this.travelAway&&this.fish.down(id,p);if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{const p=point(at);if(owner==='incense')this.incense.move(id,p);else if(owner==='bag')this.bag.move(id,p);else if(owner==='prop')this.props.move(id,p);else if(owner==='note')this.note.move(id,p);else if(owner==='fish')this.fish.move(id,p);},up:(at:number[],id:number)=>{const p=point(at);if(owner==='incense'){this.incense.up(id,p);console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else if(owner==='bag'){this.bag.up(id,p);bagReport('up');}else if(owner==='prop'){this.props.up(id,p);propReport('up');}else if(owner==='note')this.note.up(id,p);else if(owner==='fish'){this.fish.up(id,p);report('up');}owner='';},cancel:()=>{if(owner==='incense')this.incense.cancel();else if(owner==='bag')this.bag.cancel(false);else if(owner==='prop')this.props.cancel('pointer_cancelled',false);else if(owner==='note')this.note.cancelPointer();else if(owner==='fish')this.fish.cancel(false);owner='';}},()=>this.active&&!this.hud.blocked);
+        const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.departure||this.travelLoading||this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
         this.hud.onOpen=()=>{this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
-        this.rig.onContact=()=>{if(!this.active)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
+        this.rig.onContact=()=>{if(!this.active||this.travelAway)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);this.onMeritChanged(this.merit.count);console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
         layers.push({z:100,order:1003,node:this.meritArt.root});
         layers.push({z:90,order:1004,node:this.feedback.root},{z:84,order:1008,node:this.propVisuals.marks.root});
         layers.push({z:22,order:1005,node:this.incense.root},{z:24,order:1006,node:this.incense.visual},{z:24,order:1007,node:this.incense.hint});
@@ -160,18 +168,67 @@ export class HomePage {
         console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
     }
     resume(allowInput=true) {this.active=allowInput;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(allowInput);}
+    // Call only after departure assets are ready and the trip commit succeeds.
+    beginDeparture(scope:Scope,text=''){
+        if(this.departure||this.travelAway||!scope.active)return false;
+        const foot=[this.rig.root.position.x+335,-this.rig.root.position.y+336],visual=new HomeDepartureVisual(this.roomRoot,this.assets,scope,foot),opacity=this.rig.root.getComponent(UIOpacity)||this.rig.root.addComponent(UIOpacity);
+        this.departureSaved={position:this.rig.root.position.clone(),rotation:this.rig.root.rotation.clone(),scale:this.rig.root.scale.clone(),opacity:opacity.opacity};this.departure=visual;this.departureScope=scope;this.departureAge=0;this.travelAway=true;
+        this.pointerBinding.cancel();this.feedback.clear();this.bag.commitOffer();this.props.cancel('travel_departed',true);this.fish.cancel(true);this.knock.stop();this.rig.suspend();
+        this.backpack.showWorn();this.backpack.proxy.active=true;
+        this.roomLayers.push({z:107,order:1009,node:visual.root});this.sortRoomLayers();
+        scope.own(()=>{if(this.departure===visual)this.finishDeparture();});this.advanceDeparture(0);
+        if(text)this.note.info(text,'res://travel/assets/travel_ui.ttf');
+        return true;
+    }
+    advanceDeparture(age:number){
+        if(!this.departure)return;this.departure.advance(age);this.departureAge=this.departure.motion.age;
+        const s=this.departure.motion.snapshot(),lighting=homeLighting(this.clock.hour(),this.clock.lampWeight());this.departure.setLighting(lighting.night,lighting.lampEnergy);
+        this.rig.root.active=s.nativeVisible;this.rig.root.getComponent(UIOpacity).opacity=s.nativeAlpha*255;this.backpack.setDepartureAlpha(s.nativeAlpha);this.actorProjectionAlpha=s.nativeAlpha;this.backpack.projectionAlpha=s.nativeAlpha;
+        if(!s.nativeVisible&&this.backpack.proxy.active){this.backpack.proxy.active=false;this.backpack.restore(true);this.backpack.setDepartureAlpha(1);}
+        this.lastDeparture=this.departure.snapshot();
+    }
+    finishDeparture(){
+        if(!this.departure)return false;const visual=this.departure,scope=this.departureScope,saved=this.departureSaved;this.lastDeparture=visual.snapshot();this.departure=null;this.departureScope=null;this.departureSaved=null;
+        visual.release();this.roomLayers=this.roomLayers.filter(layer=>layer.node!==visual.root);this.rig.root.active=false;this.rig.root.setPosition(saved.position);this.rig.root.setRotation(saved.rotation);this.rig.root.setScale(saved.scale);this.rig.root.getComponent(UIOpacity).opacity=saved.opacity;
+        this.backpack.proxy.active=false;this.backpack.restore(true);this.backpack.setDepartureAlpha(1);this.actorProjectionAlpha=0;this.backpack.projectionAlpha=0;this.rig.suspend();this.note.dismiss();scope.dispose();this.onDepartureFinished();return true;
+    }
+    restoreReturnedActor(){this.travelAway=false;this.finishDeparture();this.fish.ground=[350,951];this.rig.root.setPosition(15,-615);this.rig.root.active=true;const opacity=this.rig.root.getComponent(UIOpacity);if(opacity)opacity.opacity=255;this.actorProjectionAlpha=1;this.backpack.projectionAlpha=1;this.backpack.setDepartureAlpha(1);this.backpack.proxy.active=true;this.rig.resume();}
+    get acceptsTravelInput(){return this.active&&!this.hud.blocked;}
+    get acceptsTravelNotice(){return this.acceptsTravelInput&&!this.travelLoading&&!this.departure&&!this.note.visible&&this.fish.state==='IDLE'&&this.bag.state==='IDLE'&&this.props.state==='IDLE'&&!this.props.drinking;}
+    setTravelLoading(loading:boolean){
+        this.travelLoading=loading;
+        if(loading){this.pointerBinding.cancel();this.props.cancel('departure_loading',true);this.fish.cancel(true);this.incense.cancel();this.incense.dismiss();this.note.dismiss();this.knock.stop();this.rig.suspend();}
+    }
+    restoreTravelOffer(){this.bag.resolveOffer();if(!this.travelAway)this.rig.resume();}
+    setTravelMerit(amount:number){this.merit.count=Math.max(0,Math.trunc(amount));this.hud.merit.setValue(this.merit.count);}
+    syncTravelState(away:boolean,full:boolean,departing:boolean){
+        this.travelFull=full;
+        // Service emits changed inside depart(), before beginDeparture owns the
+        // outgoing rig. Do not hide it or set the away latch in that interval.
+        if(departing&&!this.departure)return;
+        if(!away&&this.travelAway)this.restoreReturnedActor();
+        else if(away&&!this.travelAway){this.pointerBinding.cancel();this.props.cancel('travel_restored',true);this.fish.cancel(true);this.bag.cancel(true);this.feedback.clear();this.knock.stop();this.propVisuals.marks.clear();}
+        this.travelAway=away;
+        if(!this.departure){
+            this.rig.root.active=!away;this.actorProjectionAlpha=away?0:1;
+            this.backpack.proxy.active=!away&&!full;this.backpack.projectionAlpha=away||full?0:1;
+            if(away){this.rig.suspend();this.knock.stop();}
+        }
+    }
+    departureSnapshot(){return {away:this.travelAway,active:!!this.departure,visual:this.departure?this.departure.snapshot():this.lastDeparture,rigVisible:this.rig.root.active,rigOpacity:(this.rig.root.getComponent(UIOpacity)?.opacity??255)/255,actorProjectionAlpha:this.actorProjectionAlpha,bagProjectionAlpha:this.backpack.projectionAlpha,bagVisible:this.backpack.proxy.active};}
     showRouteWaiting(){this.pointerBinding.cancel();this.props.cancel('route_wait',true);this.incense.dismiss();this.note.routeWaiting();}
     showRouteError(){this.note.routeError();}
     clearRouteWaiting(){this.note.dismiss();this.incense.dismiss();}
     setInput(enabled:boolean){this.active=enabled;this.hud.setActive(enabled);if(!enabled){this.pointerBinding.cancel();this.knock.stop();}}
     private sortRoomLayers(){this.roomLayers.filter(layer=>layer.node.parent===this.roomRoot).sort((a,b)=>a.z-b.z||a.order-b.order).forEach((layer,index)=>layer.node.setSiblingIndex(index));this.backpackLayerRevision=this.backpack.layerRevision;this.propLayerRevision=this.propVisuals.layerRevision;}
-    pause() {this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    pause() {this.finishDeparture();this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
     advance(delta: number) {
         const before=this.fish.state,bagBefore=this.bag.state,propBefore=this.props.state,drinkBefore=this.props.drinking;
         this.feedback.advance(delta);this.fish.advance(delta);this.bag.advance(delta);this.props.advance(delta);
         const dragId=this.bag.state==='DRAGGING'?'bag':this.props.state==='DRAGGING'?this.props.selected:'',dragBounds=dragId==='bag'?this.backpack.visualBounds():dragId?this.propVisuals.visualBounds(this.props.selected):null;
         this.rig.setActiveDragFocus(dragBounds?dragId:'',dragBounds?(dragId==='bag'?[dragBounds[0]+dragBounds[2]/2,dragBounds[1]+dragBounds[3]/2]:this.propVisuals.focusCenter(this.props.selected)):[0,0],this.dragCarrier||this.roomRoot);
-        this.rig.advance(delta,this.clock.nightProgress()>=0);this.rig.advanceDragGaze(delta);this.propVisuals.marks.advance(delta);
+        if(this.travelAway)this.rig.suspend();this.rig.advance(delta,this.clock.nightProgress()>=0);this.rig.advanceDragGaze(delta);this.propVisuals.marks.advance(delta);
+        if(this.departure){this.advanceDeparture(this.departureAge+Math.max(0,delta));if(this.departureAge>=DEPARTURE_FINISH_AT)this.finishDeparture();}
         this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);this.note.advance(delta);
         this.lighting.update();if(this.presentedActor==='fish')this.rig.setLightingOrigin(this.dragCarrier);else if(this.props.state==='DRAGGING'||this.props.state==='SETTLING')this.lighting.syncPresentation(this.dragCarrier);this.backpack.syncLightingOrigin();this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();
         if(this.backpack.layerRevision!==this.backpackLayerRevision||this.propVisuals.layerRevision!==this.propLayerRevision)this.sortRoomLayers();

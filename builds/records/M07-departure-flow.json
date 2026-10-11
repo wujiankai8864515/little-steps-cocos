@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "id": "M07.03",
+  "status": "departure_source_and_transaction_regressions_verified_runtime_visual_pending",
+  "baseCommit": "8010de31ed41210ccd3d046b542bf00e68ed4a4b",
+  "originalCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "implemented": [
+    "Real Home confirmation binds to TravelService and durable storage before animation",
+    "Departure-only resources, scoped cancellation, retry, stale completion guard and one committed farewell",
+    "Original fixed foot, 4.8 second sequence, native mesh opacity and once-only purification cloud",
+    "Dynamic original loading paper with resident font, cancel/retry and fixed-position three-dot reveal",
+    "Foreground wall-time reconciliation and saved merit/world restoration without farewell replay",
+    "Partial visual-construction cleanup; no squared backpack projection fade",
+    "Absent traveler cannot drink or accept dropped props; normal prop dragging remains available"
+  ],
+  "validation": {
+    "regression": {
+      "tests": 162,
+      "passed": 162,
+      "failed": 0,
+      "log": "builds/reviews/M07-departure-regression-v2.log",
+      "scope": "Framework/game Node tests; real TravelModel/Store/Service/Flow/Bridge and real Home state adapter with instrumented rendering ports"
+    },
+    "typecheck": {
+      "command": "Creator 3.8.8 bundled tsc --noEmit --skipLibCheck",
+      "status": "passed",
+      "log": "builds/reviews/M07-departure-types-v2.log"
+    },
+    "shaderGenerator": {
+      "plumeMatches": true,
+      "sha256": "06917ef2ccd028d3e928b7326614ac510b7747bbb6baabacef59905a4621b684"
+    },
+    "sourceAudit": {
+      "bootUnchanged": true,
+      "userBaselineUnchanged": [
+        "games/xiaoyu-cocos/.creator/asset-template/typescript/Custom Script Template Help Documentation.url",
+        "games/xiaoyu-cocos/.creator/default-meta.json",
+        "games/xiaoyu-cocos/.gitignore",
+        "games/xiaoyu-cocos/assets/Boot.ts.meta",
+        "games/xiaoyu-cocos/assets/scene.scene",
+        "games/xiaoyu-cocos/assets/scene.scene.meta",
+        "games/xiaoyu-cocos/package.json",
+        "games/xiaoyu-cocos/settings/v2/packages/builder.json",
+        "games/xiaoyu-cocos/settings/v2/packages/cocos-service.json",
+        "games/xiaoyu-cocos/settings/v2/packages/device.json",
+        "games/xiaoyu-cocos/settings/v2/packages/engine.json",
+        "games/xiaoyu-cocos/settings/v2/packages/information.json",
+        "games/xiaoyu-cocos/settings/v2/packages/program.json",
+        "games/xiaoyu-cocos/settings/v2/packages/project.json",
+        "games/xiaoyu-cocos/tsconfig.json"
+      ],
+      "pluginSHA256": "89983476708265f86364cb1b2ab528a8f2f3a651596053b5c8a1bc1f5484e5db",
+      "pluginTargetMode": "0444",
+      "pluginDirectoryMode": "0555"
+    },
+    "historicalViewCandidate": {
+      "name": "cocos-departure-v1",
+      "creatorFinished": true,
+      "appliesToCurrentBridge": false,
+      "scope": "Direct view API only, before latest framework/bridge edits",
+      "cocosAge0Screenshot": "builds/reviews/M07-departure-cocos-age0-v1.jpg",
+      "cocosRows": "builds/reviews/M07-departure-cocos-rows-v1.json",
+      "nativeRows": "not obtained; v1/v2 failures retained, v3 unverified"
+    },
+    "currentBuild": "pending; no graphical build performed in this turn after Codex crash mitigation",
+    "browserProductFlow": "pending",
+    "pixelComparison": "pending outside Codex in-app browser",
+    "wechat": "pending"
+  },
+  "resources": {
+    "limitsUnchanged": {
+      "specsPerBatch": 80,
+      "entries": 128,
+      "estimatedBytes": 268435456,
+      "homeColdBytes": 19000000
+    },
+    "closureDeclarations": [
+      {
+        "requested": [
+          "home"
+        ],
+        "assets": 71,
+        "masks": 3,
+        "effects": 15,
+        "entriesBeforeTransientTargets": 89,
+        "estimatedBytesBeforeTransientTargets": 121298073,
+        "within128BeforeTransientTargets": true,
+        "within256MiBBeforeTransientTargets": true
+      },
+      {
+        "requested": [
+          "home",
+          "darkroom",
+          "departure_visual"
+        ],
+        "assets": 91,
+        "masks": 5,
+        "effects": 24,
+        "entriesBeforeTransientTargets": 120,
+        "estimatedBytesBeforeTransientTargets": 170707069,
+        "within128BeforeTransientTargets": true,
+        "within256MiBBeforeTransientTargets": true
+      },
+      {
+        "requested": [
+          "loading",
+          "home",
+          "darkroom",
+          "departure_visual",
+          "travel_visual",
+          "photo_visual",
+          "wardrobe_visual",
+          "outfit_visual"
+        ],
+        "assets": 111,
+        "masks": 10,
+        "effects": 24,
+        "entriesBeforeTransientTargets": 145,
+        "estimatedBytesBeforeTransientTargets": 274544327,
+        "within128BeforeTransientTargets": false,
+        "within256MiBBeforeTransientTargets": false
+      }
+    ],
+    "limits": "Excludes transient render targets. The full game closure already exceeds both entry and estimated-byte caps with current effects; resolve actual ownership/residency without relaxing either limit. Existing Home cold-download gate remains failing."
+  },
+  "openIssues": [
+    "Application.openTravelPage is an explicit pending binding; map/encounter/rewards are not presented yet",
+    "Home tent, returned full bag, harvest, reward flight and bag rehang still need porting",
+    "Current product input/overlay interruption not yet verified in an actual browser",
+    "All departure ages, day/night/lamp matrices, native contact-circle tessellation, mip filtering and sparkle tint need strict runtime comparison",
+    "Loading font/mask baseline and touch hit targets require real Creator verification",
+    "Darkroom plume regression after shared tint/lazy frame change requires real browser verification",
+    "Full reachable resource closure and Home cold-download budget still not passing"
+  ],
+  "sources": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "29864c84b535f12ba58401ec51b424eb86ac3bb812c68d798ae82ed44a68f193"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureFlow.ts",
+      "sha256": "3c8d604a650e2c1e375dc0e49db029be8efd48177c45eac6fada206b93bb305b"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureMotion.ts",
+      "sha256": "06ad8aa460cb7421b141ab12371161e46e8398989828cb5c7ddeb158bfedbd99"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeDepartureVisual.ts",
+      "sha256": "babe2a67d9ae10846591e8bf57f1bb3ffcdfab0579d5d0718f999ecd1ac0e31d"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeTravelBridge.ts",
+      "sha256": "b63569ac331735a8103633be1bab8b5a413c618cdb0249a8c6f2ea3d32d9f155"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelLoadingPanel.ts",
+      "sha256": "93680f3b8e8ca0e79615909f4d5241765a1cdb119d49901ddd42b97dcc4f67db"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "eb55997736d53f6bce20b50dcf35cae45e86968286e4be8947d50640c059229f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeNote.ts",
+      "sha256": "ed0db6bbbccba21b454bb416a984b8c303cb9e6bae2ae080b3ab0b0832c99f1c"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePropInteraction.ts",
+      "sha256": "1709daec89e80c339aad43047a430887e98bb8ca375c90a36ac0a89dfc8d04f2"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "c02883ec377d4724fcd3a545f7af1b536edef997f2b687491d2f4e5bd565551f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeShadows.ts",
+      "sha256": "a4d7cfa96187df029d6d57fd3c735d9b9bd4839fa53bc0d6109eabaf187b00ce"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "ea4ef1f93fd1718bf18456d8792ff704a392018118dafd71c6cc97b54f5a6011"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPlumes.ts",
+      "sha256": "a227cea40ebdba1189b38c4cf09b5b7f9902e8310197ecfbc6c20a2a8409e187"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "f7d91cd6c4500670dcb25cc31f85879076d2ee1c633a844a207c4f2e755989ee"
+    }
+  ],
+  "continuation": [
+    "Port current travel_home_props.gd including tent geometry/light/shadow, map/diary hit masks, returned bag, reward state and rehang",
+    "Bind actual travel page/encounter/collection UI; remove the pending openTravelPage binding only when real views exist",
+    "Validate source in serial Creator candidate build, then independent browser one engine at a time",
+    "Continue M08/M09/M10/M11 to full objective; this is a partial source backup, not release acceptance"
+  ]
+}

@@ -36,6 +36,7 @@ CCEffect %{
         toolInverseOrigin: { value: [0, 0, 0, 0] }
         toolUVRect: { value: [0, 0, 1, 1] }
         toolRect: { value: [0, 0, 1, 1] }
+        plumeTint: { value: [1, 1, 1, 1] }
 }%
 
 CCProgram room-vs %{
@@ -131,6 +132,8 @@ CCProgram room-fs %{
   #define tool_uv_rect toolUVRect
   #define tool_rect toolRect
 
+  uniform PlumeTint { vec4 plumeTint; };
+
   #pragma builtin(local)
   layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
 
@@ -161,7 +164,7 @@ CCProgram room-fs %{
     vec4 tex = sourceSample(uv);
     float bounds = step(0.0,uv.x)*step(uv.x,1.0)*step(0.0,uv.y)*step(uv.y,1.0);
     result = vec4(tex.rgb,tex.a*alpha*bounds);
-    result *= color;
+    result *= color * plumeTint;
 
     return result;
  }

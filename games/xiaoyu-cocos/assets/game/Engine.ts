@@ -25,6 +25,7 @@ export const core: any = {
     featherLine: (...args:any[]) => installed().featherLine(...args),
     featherPolyline: (...args:any[]) => installed().featherPolyline(...args),
     mergeDrawingMeshes: (...args:any[]) => installed().mergeDrawingMeshes(...args),
+    paperBubbleContour: (...args:any[]) => installed().paperBubbleContour(...args),
     roundedStyleBox: (...args:any[]) => installed().roundedStyleBox(...args),
 };
 export const sharedUI = () => installed().registerUI(cc);

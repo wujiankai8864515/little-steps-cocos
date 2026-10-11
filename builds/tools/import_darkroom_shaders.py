@@ -67,7 +67,14 @@ def main():
         if 'sourceDisplayMask' in body:samplers.append('sourceDisplayMask')
         if name=='sky':samplers.append('shared_outdoor_paint')
         if name=='tool-receiver':samplers.append('tool_texture')
-        outputs.append(write('darkroom-'+name,effect(name,body,samplers,additive,uniforms=UNIFORMS+EXTRA,properties=PROPS,vertex=VERTEX)))
+        uniforms=UNIFORMS+EXTRA;props=PROPS.copy()
+        if name=='plume':
+            # Preserve HomeDepartureVisual's float CanvasItem ancestor tint;
+            # Creator Sprite.color stores only eight-bit channels.
+            uniforms+='\n  uniform PlumeTint { vec4 plumeTint; };\n'
+            props['plumeTint']=[1,1,1,1]
+            body=body.replace('result *= color;','result *= color * plumeTint;')
+        outputs.append(write('darkroom-'+name,effect(name,body,samplers,additive,uniforms=uniforms,properties=props,vertex=VERTEX)))
     report={'sources':sources,'outputs':outputs,'adaptations':['Cocos UBO vec4 packing','original normalized texture coordinates reconstructed for cropped PNG','native y-down world position reconstructed from canvas position','unsigned ownership byte floor(v+.5) for GLES100'],
         'pending':['Creator compile','native full-page screenshot matrix','WeChat physical device']}
     (ROOT/'builds/records/M06-darkroom-shaders.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')

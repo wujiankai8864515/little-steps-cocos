@@ -5,7 +5,7 @@ import { HomeClock } from './HomeClock';
 import { homeLighting, dustGate } from './LightingSnapshot';
 import { nodeAt } from './Visual';
 
-export const HOME_EFFECTS=['home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line','home-part'];
+export const HOME_EFFECTS=['original-stroke','home-receiver','home-bleed','home-bed','home-shafts','home-face','home-shadow','home-part-shadow','home-merit','home-incense','home-smoke','home-table-shadow','home-flower','home-flower-line','home-part'];
 type Receiver={material:Material;kind:string;surface:number;node?:Node};
 export class HomeLighting {
     private receivers:Receiver[]=[];

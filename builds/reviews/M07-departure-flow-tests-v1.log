@@ -1,0 +1,14 @@
+✔ Repeated confirmation owns one load and one durable trip; cancelling before ready rejects late success (1.456625ms)
+✔ A failed load may retry; a late result from an older generation cannot hide or fail the new panel (4.126625ms)
+✔ Write failure leaves no trip or animation, releases prepared art and restores the offer; retry commits once (2.424458ms)
+✔ Foreground recovery uses wall-clock state without replaying departure; parent destruction prevents late entry (3.090708ms)
+✔ A post-commit visual failure preserves the saved trip and releases art; it cannot silently replay the farewell (0.921583ms)
+✔ Disabled input cannot request resources or change a saved trip (0.09925ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 303.708083

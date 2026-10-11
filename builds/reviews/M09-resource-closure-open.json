@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "id": "M09-resource-closure-open",
+  "status": "open_static_declaration_exceeds_limits_actual_complete_game_not_yet_available",
+  "trigger": "M07 departure integration review of all mandatory reachable game pages",
+  "evidence": [
+    {
+      "requested": [
+        "home"
+      ],
+      "assets": 71,
+      "masks": 3,
+      "effects": 15,
+      "entriesBeforeTransientTargets": 89,
+      "estimatedBytesBeforeTransientTargets": 121298073,
+      "within128BeforeTransientTargets": true,
+      "within256MiBBeforeTransientTargets": true
+    },
+    {
+      "requested": [
+        "home",
+        "darkroom",
+        "departure_visual"
+      ],
+      "assets": 91,
+      "masks": 5,
+      "effects": 24,
+      "entriesBeforeTransientTargets": 120,
+      "estimatedBytesBeforeTransientTargets": 170707069,
+      "within128BeforeTransientTargets": true,
+      "within256MiBBeforeTransientTargets": true
+    },
+    {
+      "requested": [
+        "loading",
+        "home",
+        "darkroom",
+        "departure_visual",
+        "travel_visual",
+        "photo_visual",
+        "wardrobe_visual",
+        "outfit_visual"
+      ],
+      "assets": 111,
+      "masks": 10,
+      "effects": 24,
+      "entriesBeforeTransientTargets": 145,
+      "estimatedBytesBeforeTransientTargets": 274544327,
+      "within128BeforeTransientTargets": false,
+      "within256MiBBeforeTransientTargets": false
+    }
+  ],
+  "limits": {
+    "specsPerBatch": 80,
+    "entries": 128,
+    "estimatedBytes": 268435456,
+    "homeColdBytes": 19000000
+  },
+  "rootCause": "Retaining every declared asset group plus current effects already totals 145 entries and 274544327 estimated bytes, before transient targets. Current partial app only exposes Home/Darkroom/departure; its smaller set does not prove the complete product will pass.",
+  "next": [
+    "Inspect actual resource ownership at every page transition",
+    "Implement and verify destruction/release/trim where product state can be retained independently; hiding a page is not evidence of release",
+    "Remove redundant resource residency without changing approved pixels or frame quality",
+    "Recompute complete reachable transitions plus shaders and render targets; do not raise limits"
+  ],
+  "physicalMemoryOrFrameTimeMeasured": false
+}

@@ -4,6 +4,7 @@ export interface HomePropPort {
     hit(at:number[]):PropId;visibleRect():number[];home(id:PropId):number[];bounds(id:PropId):number[];
     setAnchor(id:PropId,at:number[],lift:number,depth:number):void;validDrop(id:PropId,at:number[]):boolean;fishGround():number[];
     present(id:PropId,active:boolean):void;captureSettle(id:PropId):void;settleTransform(id:PropId,amount:number):void;restore(id:PropId):void;
+    actorAvailable?():boolean;
     suspend():void;resume():void;resetFish():void;drinkStart():void;drinkAdvance(age:number,delta:number):void;drinkStop(preserveFish:boolean):void;
     offer(id:PropId):void;dismissOffer(immediate:boolean):void;prepareDoll():void;
     pulse(at:number[],accepted?:boolean):void;hold(at:number[],fraction:number):void;clear():void;
@@ -26,14 +27,14 @@ export class HomePropInteraction {
     }
     move(pointer:number,at:number[]){if(pointer!==this.captured||!finite(at))return false;this.pointer=at.slice();if(this.state==='PRESSED'&&Math.hypot(at[0]-this.press[0],at[1]-this.press[1])>9)this.startDrag();if(this.state==='DRAGGING')this.setAnchor(this.constrain(this.pressAnchor.map((v,i)=>v+at[i]-this.press[i])),5);return true;}
     up(pointer:number,at:number[]){if(pointer!==this.captured)return false;if(!finite(at))return this.cancelPointer(pointer);this.move(pointer,at);this.captured=null;this.port.hold(at,0);
-        if(this.state==='DRAGGING'){const fish=this.port.fishGround();this.dropOffer=this.selected!=='low_table'&&at[0]>=fish[0]-190&&at[0]<fish[0]+190&&at[1]>=fish[1]-270&&at[1]<fish[1]+20?this.selected:null;this.beginSettle(this.port.validDrop(this.selected,this.anchor(this.selected))&&!this.dropOffer);}
+        if(this.state==='DRAGGING'){const fish=this.port.fishGround();this.dropOffer=this.port.actorAvailable?.()!==false&&this.selected!=='low_table'&&at[0]>=fish[0]-190&&at[0]<fish[0]+190&&at[1]>=fish[1]-270&&at[1]<fish[1]+20?this.selected:null;this.beginSettle(this.port.validDrop(this.selected,this.anchor(this.selected))&&!this.dropOffer);}
         else{const id=this.selected,tapped=Math.hypot(at[0]-this.press[0],at[1]-this.press[1])<=9;this.state='IDLE';this.selected=null;if(tapped){this.port.pulse(at);if(id==='bowl')this.requestDrink();}}
         return true;
     }
     cancelPointer(pointer:number){if(pointer!==this.captured)return false;if(this.state==='PRESSED'&&!this.suspended){this.captured=null;this.selected=null;this.state='IDLE';this.port.hold(this.pointer,0);return true;}this.cancel('pointer_cancelled',false);return true;}
     cancel(reason='page_exit',immediate=true){this.captured=null;this.port.hold(this.pointer||[0,0],0);this.resolveOffer(true);this.dropOffer=null;this.cancelDrink(reason);if(!immediate&&(this.state==='DRAGGING'||this.state==='SETTLING')){this.beginSettle(false);return;}if(this.selected){const id=this.selected;this.port.present(id,false);this.state='IDLE';this.setAnchor(this.port.home(id),0);this.release(id);this.port.restore(id);}this.selected=null;this.state='IDLE';this.lift=0;if(immediate)this.port.clear();this.resume();}
     resolveOffer(immediate=false){if(!this.offered)return false;const id=this.offered;this.offered=null;this.port.dismissOffer(immediate);this.port.restore(id);this.resume();return true;}
-    requestDrink(){if(this.state!=='IDLE')return false;this.cancelDrink('new_drink');const a=this.anchors.get('bowl');if(a.owner!=='world')return false;this.suspend();this.port.resetFish();this.port.drinkStart();this.drink={age:0,generation:a.generation,ownership:a.ownership,content:a.content};return true;}
+    requestDrink(){if(this.state!=='IDLE'||this.port.actorAvailable?.()===false)return false;this.cancelDrink('new_drink');const a=this.anchors.get('bowl');if(a.owner!=='world')return false;this.suspend();this.port.resetFish();this.port.drinkStart();this.drink={age:0,generation:a.generation,ownership:a.ownership,content:a.content};return true;}
     cancelDrink(reason:string,preserveFish=false){if(!this.drink)return false;this.drink=null;this.lastContextStop=reason;this.port.drinkStop(preserveFish);if(preserveFish)this.suspended=false;else this.resume();return true;}
     invalidateContent(id:PropId){this.anchors.get(id).content++;if(id==='bowl'&&this.drink)this.cancelDrink('target_content');}
     get drinking(){return !!this.drink;}

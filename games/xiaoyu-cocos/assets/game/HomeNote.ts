@@ -12,8 +12,9 @@ export class HomeNote {
     routeError(){this.routeConfirmation('darkroom_retry','暗室加载失败，再试一次？',{acceptText:'重试',cancelText:'取消'});}
     private routeConfirmation(kind:string,text:string,options:any){this.dismiss();this.kind=kind;this.bubble=this.ui.confirmationBubble(this.room,this.assets.font('res://assets/bootstrap_ui.ttf'),text,this.anchor(),[24,135,672,1025],{fontSize:24,minWidth:320,maxWidth:430,aboveOnly:true,fontMetrics:this.assets.catalog.assets['res://assets/bootstrap_ui.ttf'].fontMetrics,...options,onDecision:(accepted:boolean)=>this.onDecision(kind,accepted)});this.front();}
     updateWaiting(text:string){if(this.kind==='darkroom_wait'&&this.bubble)this.bubble.text.string=text;}
-    info(text:string){this.dismiss();this.kind='';this.bubble=this.ui.infoBubble(this.room,this.assets.font('res://assets/bootstrap_ui.ttf'),text,this.anchor(),[24,135,672,1025],{fontSize:24,minWidth:320,maxWidth:430,aboveOnly:true,fontMetrics:this.assets.catalog.assets['res://assets/bootstrap_ui.ttf'].fontMetrics});this.front();}
+    info(text:string,font='res://assets/bootstrap_ui.ttf'){this.dismiss();this.kind='';this.bubble=this.ui.infoBubble(this.room,this.assets.font(font),text,this.anchor(),[24,135,672,1025],{fontSize:24,minWidth:320,maxWidth:430,aboveOnly:true,fontMetrics:this.assets.catalog.assets[font].fontMetrics});this.front();}
     private front(){this.bubble.root.setSiblingIndex(this.room.children.length-1);console.info('[LittleSteps] Home note '+JSON.stringify(this.snapshot()));}
+    get visible(){return !!this.bubble&&this.bubble.root.active&&this.bubble.snapshot().phase!=='hidden';}
     get ownsInput(){return !!this.bubble&&!!this.kind&&this.bubble.root.active&&this.bubble.snapshot().phase!=='hidden';}
     down(id:number,at:number[]){if(this.ownsInput)return this.bubble.down(id,at);if(!this.bubble||!this.bubble.root.active)return false;const s=this.bubble.snapshot();return this.infoPointer.inside(at,s.card)?this.infoPointer.down(id,at,s.card,{info:s.card},s.phase):false;}
     move(id:number,at:number[]){return this.ownsInput?this.bubble.move(id,at):this.bubble?this.infoPointer.move(id,at,this.bubble.snapshot().card):false;}

@@ -1,0 +1,19 @@
+✔ Repeated confirmation owns one load and one durable trip; cancelling before ready rejects late success (1.299125ms)
+✔ A failed load may retry; a late result from an older generation cannot hide or fail the new panel (3.918291ms)
+✔ Write failure leaves no trip or animation, releases prepared art and restores the offer; retry commits once (2.539041ms)
+✔ Foreground recovery uses wall-clock state without replaying departure; parent destruction prevents late entry (4.553625ms)
+✔ A post-commit visual failure preserves the saved trip and releases art; it cannot silently replay the farewell (0.987875ms)
+✔ Disabled input cannot request resources or change a saved trip (0.101ms)
+✔ Already-owned loading stays idempotent after the panel blocks Home input; idle cancellation does not repeat restoration (0.128958ms)
+✔ A declined visual is reported after commit; thrown visual cleanup still releases the resource scope and synchronizes (3.216166ms)
+✔ Actual Home bridge keeps first-session merit, marks the synchronous commit as departing and observes later merit (1.439334ms)
+✔ Existing saved travel restores without a farewell and terminal return/notice happens once even across repeated foreground events (2.289ms)
+✔ Home bridge defers persistence warnings until local input/note is free and cancels in-flight art on app hide (0.483459ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 309.183

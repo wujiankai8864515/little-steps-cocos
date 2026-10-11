@@ -5,6 +5,10 @@ import { HomeMusic } from './AudioBehavior';
 import { HomeClock } from './HomeClock';
 import { ComicPage } from './ComicPage';
 import { HomePage } from './HomePage';
+import { HomeTravelBridge } from './HomeTravelBridge';
+import { TravelService } from './TravelService';
+import { TravelLoadingPanel } from './TravelLoadingPanel';
+import { DEPARTURE_EFFECTS } from './HomeDepartureVisual';
 import { DarkroomPage } from './DarkroomPage';
 import { DARKROOM_EFFECTS } from './DarkroomLighting';
 import { HOME_EFFECTS } from './HomeLighting';
@@ -33,6 +37,8 @@ export class Application {
     private musicScope:Scope;
     private skipResumedClockFrame=false;
     private homePage:Prepared<HomePage>;
+    private travel:HomeTravelBridge;
+    private travelLoading:TravelLoadingPanel;
     private darkroomPage:Prepared<DarkroomPage>;
     private darkroomLoading:Promise<Prepared<DarkroomPage>>;
     private darkroomError='';private routeWaitAge=0;
@@ -143,6 +149,33 @@ export class Application {
         this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active)this.prepareDarkroom();};
         prepared.page.onDarkroomRequest=()=>{if(this.entering||!this.active||this.page!==prepared.page)return false;this.openDarkroom();return true;};
         prepared.page.onCancelDarkroom=()=>this.cancelDarkroomEntry();
+        const home=prepared.page,owner=prepared.scope,service=new TravelService();
+        service.model.content=this.assets.json('res://travel/travel_content.json');
+        const canInteract=()=>this.active&&!this.entering&&this.page===home&&home.acceptsTravelInput;
+        const loading=new TravelLoadingPanel(home.root,this.assets,owner,this.height,()=>this.active&&this.page===home);
+        const bridge=new HomeTravelBridge(service,{
+            canInteract,noticeAvailable:()=>canInteract()&&home.acceptsTravelNotice,
+            merit:()=>home.merit.count,fatigue:()=>home.rig.behavior.director.fatigue,
+            setMerit:value=>home.setTravelMerit(value),syncTravel:(away,full,departing)=>home.syncTravelState(away,full,departing),
+            prepare:async scope=>{await this.assets.acquireGroups(['departure_visual'],scope);await this.assets.acquireEffects(DEPARTURE_EFFECTS,scope);},
+            showLoading:()=>{home.setTravelLoading(true);loading.show();},
+            hideLoading:()=>{loading.hide();home.setTravelLoading(false);},
+            loadingFailed:error=>{loading.failure();console.error('[LittleSteps] departure resources failed',error);},
+            restoreOffer:()=>home.restoreTravelOffer(),begin:(scope,text)=>home.beginDeparture(scope,text),finish:()=>home.finishDeparture(),
+            info:text=>home.note.info(text,'res://travel/assets/travel_ui.ttf'),
+            openExisting:mode=>this.openTravelPage(mode),
+            visualFailed:error=>console.error('[LittleSteps] saved trip retained after departure visual failure',error),
+        },owner);
+        this.travel=bridge;this.travelLoading=loading;
+        home.onTravelRequest=()=>bridge.flow.request();home.onMeritChanged=value=>bridge.observeMerit(value);home.onDepartureFinished=()=>bridge.flow.finish();
+        loading.onCancel=()=>bridge.flow.cancelLoading();loading.onRetry=()=>bridge.flow.request();
+        bridge.configure();
+        owner.own(()=>{home.onTravelRequest=null;home.onMeritChanged=()=>{};home.onDepartureFinished=()=>{};if(this.travel===bridge){this.travel=null;this.travelLoading=null;}});
+    }
+    private openTravelPage(mode:'comic'|'rewards'){
+        // Travel page/prop migration is tracked separately in M07; do not
+        // consume a reward or invent an inventory UI before that view exists.
+        console.info('[LittleSteps] pending Travel page binding '+mode);
     }
     private prepareDarkroom(){
         if(this.darkroomPage?.scope.active)return Promise.resolve(this.darkroomPage);
@@ -193,10 +226,11 @@ export class Application {
         this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage));
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
-    private interactive(active:boolean) {if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage){if(active){if(this.page instanceof HomePage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage));}
+    private interactive(active:boolean) {if(!active)this.travel?.suspend();if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage){if(active){if(this.page instanceof HomePage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage));if(active)this.travel?.resume();}
     advance(delta:number) {
         if(!this.scope.active)return;this.router.advance(delta,this.active);
         if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage)){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
+        if(this.active){this.travel?.advance(delta);if(this.page===this.homePage?.page)this.travelLoading?.advance(delta);}
         if(this.active&&this.page)this.page.advance(delta);
         if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage))this.transitioning.advance(delta);
         if(this.active&&this.entering&&this.page===this.homePage?.page&&!this.transitioning){this.routeWaitAge+=delta;this.homePage.page.note.updateWaiting('暗室加载中'+'.'.repeat(1+Math.floor(this.routeWaitAge/.52)%3));}

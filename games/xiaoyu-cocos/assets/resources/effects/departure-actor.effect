@@ -1,0 +1,53 @@
+// Godot's unlit CanvasItem texture and floating-point ancestor modulate.
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: departure-vs:vert
+      frag: departure-fs:frag
+      depthStencilState: { depthTest: false, depthWrite: false }
+      rasterizerState: { cullMode: none }
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      properties:
+        departureTint: { value: [1, 1, 1, 1] }
+}%
+CCProgram departure-vs %{
+  precision highp float;
+  #include <builtin/uniforms/cc-global>
+  #if USE_LOCAL
+    #include <builtin/uniforms/cc-local>
+  #endif
+  in vec3 a_position;
+  in vec2 a_texCoord;
+  in vec4 a_color;
+  out vec2 uv0;
+  out vec4 color;
+  vec4 vert(){
+    vec4 pos=vec4(a_position,1.0);
+    #if USE_LOCAL
+      pos=cc_matWorld*pos;
+    #endif
+    uv0=a_texCoord;color=a_color;return cc_matViewProj*pos;
+  }
+}%
+CCProgram departure-fs %{
+  precision highp float;
+  #include <builtin/internal/embedded-alpha>
+  in vec2 uv0;
+  in vec4 color;
+  uniform DepartureState { vec4 departureTint; };
+  #pragma builtin(local)
+  layout(set = 2, binding = 12) uniform sampler2D cc_spriteTexture;
+  vec4 frag(){
+    vec4 tex=vec4(1.0);
+    #if USE_TEXTURE
+      tex=CCSampleWithAlphaSeparated(cc_spriteTexture,uv0);
+    #endif
+    return tex*color*departureTint;
+  }
+}%
