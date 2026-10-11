@@ -27,15 +27,22 @@ class ResourceGate {
             }
             ++entry.refs; owned.push(entry);
         }
+        const ready = Promise.all(owned.map(entry => entry.promise));
         let released = false;
         const release = () => {
             if (released) return;
             released = true;
-            for (const entry of owned) { --entry.refs; this.trim(entry); }
+            if (scope.disown) scope.disown(release);
+            const errors = [];
+            for (const entry of owned.splice(0)) {
+                --entry.refs;
+                try { this.trim(entry); } catch (error) { errors.push(error); }
+            }
+            if (errors.length) throw new Error(`Resource cleanup failed: ${errors.map(e => e.message).join('; ')}`);
         };
         scope.own(release);
         try {
-            await Promise.all(owned.map(entry => entry.promise));
+            await ready;
             if (!scope.active || released) throw new CancelledError();
             return {get: key => { if (released) throw new CancelledError(); const entry = owned.find(e => e.key === key); if (!entry) throw new Error('Resource not leased'); return entry.value; }, release};
         } catch (error) { release(); throw error; }

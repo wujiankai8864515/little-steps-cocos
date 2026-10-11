@@ -1,0 +1,14 @@
+✔ Finished page scopes detach from a live application across 1000 entry/cancel cycles (1.929708ms)
+✔ Parent teardown still runs live children in reverse order and cleans all children after a failure (0.697875ms)
+✔ Explicitly released resource leases detach and do not retain assets in a cached page (13.184291ms)
+✔ One unload failure cannot strand the other assets or admission reservations (0.2555ms)
+✔ Cancellation keeps pending capacity until settlement, disposes a late result once, and cannot revive a page (0.18ms)
+✔ Paused transitions retain only the pending frame callback and still wait for a real draw (8.927209ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.958667

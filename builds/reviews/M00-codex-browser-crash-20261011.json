@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "id": "M00-CRASH-20261011",
+  "status": "suspected_browser_trigger_root_cause_unconfirmed",
+  "observed": [
+    {
+      "report": "ChatGPT-2026-10-11-133337.ips",
+      "reportSHA256": "b57e3c799a3cc8c665057a96e4a735591b0aad36316cad4c99b1568d3a473b26",
+      "captureTime": "2026-10-11 13:33:19.8461 +0800",
+      "appVersion": "26.1007.21159",
+      "exception": "EXC_BREAKPOINT",
+      "signal": "SIGTRAP",
+      "thread": "Chrome_IOThread",
+      "topImage": "Codex Framework",
+      "topImageOffset": 150792188
+    },
+    {
+      "report": "ChatGPT-2026-10-11-141839.ips",
+      "reportSHA256": "1cbf92b327f8dba240e6f4a7c7cd65ab8192b8d8df4a73034e4ff55ec288c94e",
+      "captureTime": "2026-10-11 14:18:35.8148 +0800",
+      "appVersion": "26.1007.21159",
+      "exception": "EXC_BREAKPOINT",
+      "signal": "SIGTRAP",
+      "thread": "Chrome_IOThread",
+      "topImage": "Codex Framework",
+      "topImageOffset": 150792188
+    },
+    {
+      "report": "ChatGPT-2026-10-11-143004.ips",
+      "reportSHA256": "63f4951f204d7c6c9b6e112ecbda5a245a5a0b24543a9df4d0e22965da017379",
+      "captureTime": "2026-10-11 14:29:59.5334 +0800",
+      "appVersion": "26.1007.21159",
+      "exception": "EXC_BREAKPOINT",
+      "signal": "SIGTRAP",
+      "thread": "Chrome_IOThread",
+      "topImage": "Codex Framework",
+      "topImageOffset": 150792188
+    }
+  ],
+  "operationContext": [
+    "Cocos Creator candidate build",
+    "Cocos and Godot WebGL pages in Codex in-app browser",
+    "Repeated Godot screenshot timeouts followed by unavailable browser connection"
+  ],
+  "confirmed": [
+    "Three reports have EXC_BREAKPOINT/SIGTRAP in Chrome_IOThread at the same Codex Framework image offset",
+    "No remaining task Creator build or preview listeners on 8905/8907 at inspection"
+  ],
+  "notEstablished": [
+    "Specific browser/IPC defect without complete symbols",
+    "Out-of-memory as cause",
+    "Cocos build as cause",
+    "Reproduction isolated to screenshot rather than page runtime"
+  ],
+  "mitigation": [
+    "Do not repeat the suspect Godot screenshot in the in-app browser",
+    "Build and graphical QA sequentially with one active engine page",
+    "Continue source and unit validation while preparing browser QA outside the Codex in-app browser using supported tools",
+    "Do not reset user browser data or app settings"
+  ],
+  "officialDiagnostics": "https://learn.chatgpt.com/docs/reference/troubleshooting#feedback-and-logs",
+  "privacy": "Only a diagnostic summary and source hashes are saved; raw app logs and crash reports stay in their original local locations."
+}

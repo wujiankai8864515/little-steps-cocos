@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "id": "M01.05",
+  "status": "source_and_lifetime_regressions_verified_Creator_runtime_pending",
+  "problem": [
+    "Disposed child scopes remained reachable from long-lived parents",
+    "Released asset leases retained cleanup closures and entry arrays",
+    "One unload exception prevented subsequent assets in the same batch from releasing",
+    "Every completed foreground-wait frame left a callback until the transition ended"
+  ],
+  "fix": [
+    "Detach disposed children and released leases",
+    "Clear released owned-entry arrays",
+    "Attempt every unload before reporting cleanup exceptions",
+    "Detach completed frame callbacks while preserving two updates and an actual draw readiness gate"
+  ],
+  "sources": [
+    {
+      "path": "engines/travel-core/src/lifetime.js",
+      "sha256": "3dff6234f4cc0d4ac53473ad5cca4acc6295a60f848b3628a6912e930971a62d"
+    },
+    {
+      "path": "engines/travel-core/src/resource-gate.js",
+      "sha256": "ae5cfbff3eadefa21cecf7ca06d7595664b33b4aff674fcd98445be29f1a2077"
+    },
+    {
+      "path": "engines/travel-core/src/cocos-router.js",
+      "sha256": "ecc0c118c179b4519675a22fb5547f3418ca5f3c6bb0761afb0f99df848234db"
+    },
+    {
+      "path": "engines/travel-core/test/lifetime-retention.test.cjs",
+      "sha256": "a8cad513059c6a06f0e2db10147888f796b11545c33c8e6f5a34bed5bf975295"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "89983476708265f86364cb1b2ab528a8f2f3a651596053b5c8a1bc1f5484e5db"
+    }
+  ],
+  "plugin": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "89983476708265f86364cb1b2ab528a8f2f3a651596053b5c8a1bc1f5484e5db",
+    "targetMode": "0444",
+    "directoryMode": "0555",
+    "flags": {
+      "isPlugin": true,
+      "loadPluginInEditor": false,
+      "loadPluginInWeb": true,
+      "loadPluginInNative": false,
+      "loadPluginInMiniGame": true,
+      "executionScope": "global"
+    }
+  },
+  "validation": {
+    "before": {
+      "tests": 5,
+      "pass": 1,
+      "fail": 4,
+      "log": "builds/reviews/M01-lifetime-retention-before.log"
+    },
+    "fullRegression": {
+      "pass": 148,
+      "fail": 0,
+      "log": "builds/reviews/M01-lifetime-retention-after.log"
+    },
+    "targetedFinal": {
+      "pass": 6,
+      "fail": 0,
+      "log": "builds/reviews/M01-lifetime-retention-targeted.log",
+      "covers": [
+        "1000 disposed page scopes do not accumulate parent callbacks",
+        "1000 early-released leases do not accumulate callbacks or entries",
+        "Parent disposal still visits live children in reverse order and continues after exceptions",
+        "Failed resource destruction does not strand other reservations",
+        "Late cancelled loads unload once and cannot revive a disposed page",
+        "1000 paused transition frames retain only pending callback and preserve actual draw gate"
+      ]
+    },
+    "candidate": {
+      "name": "core-lifetime-home-v1",
+      "containsOtherUncommittedDepartureWork": true,
+      "buildFinishedMarker": false,
+      "processHandle": "missing after client crash",
+      "result": "interrupted; not accepted as a successful build",
+      "sourceAudit": "builds/reviews/M01-lifetime-candidate-audit.json",
+      "log": "builds/reviews/M01-lifetime-creator.log"
+    },
+    "browser": "pending outside Codex in-app browser",
+    "wechat": "pending",
+    "RSS_and_frameTime": "not measured; callback/lease counts are not heap/RSS/60fps proof"
+  },
+  "failureReview": {
+    "rootCauses": "Retained ownership callbacks and abort-on-first-unload-error verified by before/after tests",
+    "clientCrash": "builds/reviews/M00-codex-browser-crash-20261011.json",
+    "distinction": "Framework game lifetime bugs do not establish the cause of the Codex client crashes"
+  },
+  "gatesUnchanged": {
+    "maxSpecs": 80,
+    "maxEntries": 128,
+    "maxBytes": 268435456,
+    "homeColdBytes": 19000000
+  }
+}

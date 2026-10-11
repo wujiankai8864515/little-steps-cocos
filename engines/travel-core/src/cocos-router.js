@@ -3,9 +3,10 @@ function createPageRouter(cc, owner) {
     let request=null, fade=null, generation=0;
     const event = (type, scope) => new Promise((resolve,reject)=>{
         let settled=false;
-        const ready=()=>{if(settled)return;settled=true;resolve();};
+        const cleanup=()=>{cc.director.off(type,ready);if(!settled){settled=true;reject(new CancelledError());}};
+        const ready=()=>{if(settled)return;settled=true;scope.disown(cleanup);resolve();};
         cc.director.once(type,ready);
-        scope.own(()=>{cc.director.off(type,ready);if(!settled){settled=true;reject(new CancelledError());}});
+        scope.own(cleanup);
     });
     const cancel=()=>{generation++;if(request)request.dispose();request=null;fade=null;};owner.own(cancel);
     return {cancel, async show(root,duration,canRun=()=>true) {

@@ -45,7 +45,8 @@
         "M06-native-feather-lines.json",
         "M06-native-rounded-meter.json",
         "M07-travel-model-flow.json",
-        "M07-travel-service-flow.json"
+        "M07-travel-service-flow.json",
+        "M01-lifetime-retention.json"
       ]
     },
     {
@@ -150,7 +151,8 @@
         "M06-darkroom-page-flow.json",
         "M09-streaming-music-source.json",
         "M09-streaming-music-flow.json",
-        "M07-travel-service-flow.json"
+        "M07-travel-service-flow.json",
+        "M01-lifetime-retention.json"
       ]
     },
     {
@@ -167,5 +169,6 @@
     }
   ],
   "requirements": "requirements.json",
-  "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity."
+  "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
+  "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance."
 }

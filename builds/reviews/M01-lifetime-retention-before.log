@@ -1,0 +1,89 @@
+✖ Finished page scopes detach from a live application across 1000 entry/cancel cycles (0.715375ms)
+✔ Parent teardown still runs live children in reverse order and cleans all children after a failure (0.5015ms)
+✖ Explicitly released resource leases detach and do not retain assets in a cached page (0.296708ms)
+✖ One unload failure cannot strand the other assets or admission reservations (0.721583ms)
+✖ Cancellation keeps pending capacity until settlement, disposes a late result once, and cannot revive a page (0.149416ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 1
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47.62525
+
+✖ failing tests:
+
+test at engines/travel-core/test/lifetime-retention.test.cjs:7:1
+✖ Finished page scopes detach from a live application across 1000 entry/cancel cycles (0.715375ms)
+  AssertionError [ERR_ASSERTION]: application retains a finished page
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/lifetime-retention.test.cjs:9:117)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at engines/travel-core/test/lifetime-retention.test.cjs:18:1
+✖ Explicitly released resource leases detach and do not retain assets in a cached page (0.296708ms)
+  AssertionError [ERR_ASSERTION]: cached page retains released leases
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/lifetime-retention.test.cjs:20:233)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at engines/travel-core/test/lifetime-retention.test.cjs:23:1
+✖ One unload failure cannot strand the other assets or admission reservations (0.721583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'bad',
+  -   'good'
+    ]
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/lifetime-retention.test.cjs:26:64)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'bad' ],
+    expected: [ 'bad', 'good' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at engines/travel-core/test/lifetime-retention.test.cjs:28:1
+✖ Cancellation keeps pending capacity until settlement, disposes a late result once, and cannot revive a page (0.149416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/engines/travel-core/test/lifetime-retention.test.cjs:31:135)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -397,12 +397,22 @@ class Lifetime {
     constructor(parent) {
         this.active = true;
         this.disposers = [];
-        if (parent) parent.own(() => this.dispose());
+        this.parent = parent || null;
+        this.parentDisposer = parent ? () => this.dispose() : null;
+        if (parent) parent.own(this.parentDisposer);
     }
     own(dispose) {
         if (!this.active) dispose();
         else this.disposers.push(dispose);
         return dispose;
+    }
+    // Remove ownership without running cleanup. A completed request must not
+    // remain reachable through the long-lived application or cached page.
+    disown(dispose) {
+        const index = this.disposers.lastIndexOf(dispose);
+        if (index < 0) return false;
+        this.disposers.splice(index, 1);
+        return true;
     }
     async guard(promise, lateDispose) {
         const value = await promise;
@@ -415,6 +425,9 @@ class Lifetime {
     dispose() {
         if (!this.active) return;
         this.active = false;
+        if (this.parent) this.parent.disown(this.parentDisposer);
+        this.parent = null;
+        this.parentDisposer = null;
         const errors = [];
         for (const dispose of this.disposers.splice(0).reverse()) {
             try { dispose(); } catch (e) { errors.push(e); }
@@ -454,15 +467,22 @@ class ResourceGate {
             }
             ++entry.refs; owned.push(entry);
         }
+        const ready = Promise.all(owned.map(entry => entry.promise));
         let released = false;
         const release = () => {
             if (released) return;
             released = true;
-            for (const entry of owned) { --entry.refs; this.trim(entry); }
+            if (scope.disown) scope.disown(release);
+            const errors = [];
+            for (const entry of owned.splice(0)) {
+                --entry.refs;
+                try { this.trim(entry); } catch (error) { errors.push(error); }
+            }
+            if (errors.length) throw new Error(`Resource cleanup failed: ${errors.map(e => e.message).join('; ')}`);
         };
         scope.own(release);
         try {
-            await Promise.all(owned.map(entry => entry.promise));
+            await ready;
             if (!scope.active || released) throw new CancelledError();
             return {get: key => { if (released) throw new CancelledError(); const entry = owned.find(e => e.key === key); if (!entry) throw new Error('Resource not leased'); return entry.value; }, release};
         } catch (error) { release(); throw error; }
@@ -844,9 +864,10 @@ function createPageRouter(cc, owner) {
     let request=null, fade=null, generation=0;
     const event = (type, scope) => new Promise((resolve,reject)=>{
         let settled=false;
-        const ready=()=>{if(settled)return;settled=true;resolve();};
+        const cleanup=()=>{cc.director.off(type,ready);if(!settled){settled=true;reject(new CancelledError());}};
+        const ready=()=>{if(settled)return;settled=true;scope.disown(cleanup);resolve();};
         cc.director.once(type,ready);
-        scope.own(()=>{cc.director.off(type,ready);if(!settled){settled=true;reject(new CancelledError());}});
+        scope.own(cleanup);
     });
     const cancel=()=>{generation++;if(request)request.dispose();request=null;fade=null;};owner.own(cancel);
     return {cancel, async show(root,duration,canRun=()=>true) {
