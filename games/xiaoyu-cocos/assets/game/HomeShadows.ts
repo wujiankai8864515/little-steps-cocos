@@ -15,7 +15,7 @@ export class HomeShadows {
     private soft=new Map<Node,{grid:any;sun:ShadowGeometry;lamp:ShadowGeometry;active:()=>boolean;lift:()=>number;ground:()=>number;frame:()=>Node;using:boolean;physical:number}>();
     private rigid=new Map<Node,RigidBinding>();
     private opacities=new Map<Node,()=>number>();
-    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
+    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock,private useWindow=true) {}
     add(source:Node,resource:string,properties:any,centered=false,custom?:{spec:ArtSpec;frame:()=>SpriteFrame}) {
         const spec=custom?custom.spec:this.assets.art(resource),name=source.name,grounded=!!(properties['metadata/spans']||SUPPORT_SPANS[name])&&properties['metadata/floor'];
         const contacts=grounded?contactProfile(name,spec.size,(x,y)=>this.assets.alpha(resource,x,y),properties['metadata/spans']||SUPPORT_SPANS[name]).contacts:[];
@@ -63,7 +63,7 @@ export class HomeShadows {
                 else projectShadow(pass.mesh,matrix,directions[index],ground,caster.grounded,floor,lift,[cast[0]*cot*p['metadata/thickness'],cast[1]*cot*p['metadata/thickness']]);
                 pass.sprite.geometryChanged();const material=pass.material;
                 material.setProperty('roomOrigin',new Vec4(origin.x,origin.y,scale.x,scale.y));material.setProperty('castState',new Vec4(cast[0],cast[1],0,0));
-                material.setProperty('shadowState',new Vec4(cot,energy,penumbra,factor));material.setProperty('shadowFlags',new Vec4(floor&&!p['metadata/table']?1:0,index===0?1:0,index===1?1:0,alpha));
+                material.setProperty('shadowState',new Vec4(cot,energy,penumbra,factor));material.setProperty('shadowFlags',new Vec4(floor&&!p['metadata/table']?1:0,index===0&&this.useWindow?1:0,index===1?1:0,alpha));
                 if(p['metadata/table']){const m=core.Math2D.multiply(core.Math2D.inverse(this.affine(p['metadata/table'])),this.affine(rigid?rigid.frame():this.root));material.setProperty('tableOrigin',new Vec4(m[4],m[5],0,0));material.setProperty('tableAxes',new Vec4(m[0],m[1],m[2],m[3]));}
             });
             if(caster.contact) {

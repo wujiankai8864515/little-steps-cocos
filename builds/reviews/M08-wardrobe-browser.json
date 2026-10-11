@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "item": "M08.05",
+  "observedAt": "2026-10-11T17:58:06.311287+00:00",
+  "platform": "Independent Chrome through supported CUA, Creator 3.8.8",
+  "scope": "Actual visible layout and stated input/save checkpoints; numerical pixel differences deferred, full function/layout scope unchanged. Not full first-version or WeChat-device acceptance.",
+  "fixture": "Only frozen QA Boot changed: visible page/capture/save-failure buttons and fixed selected Home clock. Real page coordinate clicks used for wardrobe entry, clothes, choices, return and Photo entry. Save slots persist on isolated localhost origins. Shipping Boot and scene unchanged.",
+  "candidates": [
+    {
+      "name": "wardrobe-complete-v1",
+      "origin": "http://127.0.0.1:8784",
+      "result": "black canvas; retained failure"
+    },
+    {
+      "name": "wardrobe-complete-v2",
+      "origin": "http://127.0.0.1:8785",
+      "result": "flow, layout, day/night, restart, longscreen, long-press landing observed; additional QA-only camera diagnostics"
+    },
+    {
+      "name": "wardrobe-complete-v3",
+      "origin": "http://127.0.0.1:8786",
+      "result": "fixed transaction lease cleanup verified on failure and return to original"
+    },
+    {
+      "name": "wardrobe-complete-v1",
+      "origin": "http://127.0.0.1:8787",
+      "result": "unchanged v1 output reopened and real Home/Wardrobe render now visible; first black root cause unconfirmed"
+    }
+  ],
+  "sourceVisualReference": "../little-steps/build/reviews/20261007-wardrobe-w1w2/screens/03_after_crown_idle_day.png",
+  "checkpoints": [
+    {
+      "at": "2026-10-11T17:44:04.144Z",
+      "case": "v2 real Home wardrobe click, select peach preview",
+      "route": "WardrobePage",
+      "worn": "original",
+      "selected": "peach",
+      "unlocked": [
+        "original"
+      ],
+      "revision": 0,
+      "labels": [
+        "原皮 · 已穿上",
+        "桃花 · 试穿"
+      ],
+      "choices": [
+        "直接解锁",
+        "先不换"
+      ]
+    },
+    {
+      "at": "2026-10-11T17:44:17.960Z",
+      "case": "v2 cancel preview",
+      "worn": "original",
+      "selected": "original",
+      "revision": 0
+    },
+    {
+      "at": "2026-10-11T17:44:31.619Z",
+      "case": "v2 explicit local unlock, separate equip confirmation",
+      "worn": "original",
+      "selected": "peach",
+      "revision": 1,
+      "unlocked": [
+        "original",
+        "peach"
+      ],
+      "choices": [
+        "穿上",
+        "先不换"
+      ]
+    },
+    {
+      "at": "2026-10-11T17:44:44.056Z",
+      "case": "v2 forced storage write failure",
+      "worn": "original",
+      "revision": 1,
+      "error": "web_write_failed",
+      "message": "这次没有保存好，先保留原来的衣服。请稍后重试。"
+    },
+    {
+      "at": "2026-10-11T17:45:12.448Z",
+      "case": "v2 retry equip",
+      "worn": "peach",
+      "revision": 2,
+      "labels": [
+        "原皮",
+        "桃花 · 已穿上"
+      ],
+      "entries": 96,
+      "reservedBytes": 142079733,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T17:45:55.574Z",
+      "case": "v2 return via hanging tag, visible Home peach",
+      "route": "HomePage",
+      "worn": "peach",
+      "revision": 2,
+      "entries": 94,
+      "reservedBytes": 131515125,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T17:46:25.158Z",
+      "case": "v2 real Home photo entry, visible PhotoActor peach",
+      "route": "PhotoPage",
+      "worn": "peach",
+      "hour": 23,
+      "revision": 2,
+      "entries": 103,
+      "reservedBytes": 147454938,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T17:46:49.222Z",
+      "case": "v2 reload while 720x1280, visible Home peach restored",
+      "route": "HomePage",
+      "worn": "peach",
+      "revision": 2,
+      "entries": 94,
+      "reservedBytes": 131515125
+    },
+    {
+      "at": "2026-10-11T17:48:32.815Z",
+      "case": "v2 re-enter, 720x1600 contained page with 160px top/bottom fill",
+      "route": "WardrobePage",
+      "worn": "peach",
+      "revision": 2,
+      "entries": 96,
+      "reservedBytes": 143922933
+    },
+    {
+      "at": "2026-10-11T17:49:08.646Z",
+      "case": "v2 actual 700ms actor press then release",
+      "landing": true,
+      "spring": {
+        "active": true,
+        "position": 5.813659499939324,
+        "velocity": 125.17108644203722,
+        "age": 0.03340000000596047
+      },
+      "worn": "peach",
+      "revision": 2
+    },
+    {
+      "at": "2026-10-11T17:53:39.756Z",
+      "case": "v3 failed equip and return releases uncommitted outfit lease",
+      "route": "HomePage",
+      "worn": "original",
+      "revision": 1,
+      "error": "web_write_failed",
+      "entries": 93,
+      "reservedBytes": 129784985,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T17:54:38.164Z",
+      "case": "v3 restore write, re-enter and explicitly equip",
+      "route": "WardrobePage",
+      "worn": "peach",
+      "revision": 2,
+      "error": "",
+      "entries": 96,
+      "reservedBytes": 142079733,
+      "pending": 0
+    },
+    {
+      "at": "2026-10-11T17:55:14.692Z",
+      "case": "v3 explicitly equip original and return, release peach lease",
+      "route": "HomePage",
+      "worn": "original",
+      "revision": 3,
+      "unlocked": [
+        "original",
+        "peach"
+      ],
+      "entries": 93,
+      "reservedBytes": 129784985,
+      "pending": 0
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-wardrobe-v1-black.png",
+      "sha256": "f5c9c4123c97920a9f5a21a5ac2cd207de3eb96a8fdf3130f3da712449b18a7a"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v1-reopened.png",
+      "sha256": "5feae4ca95a79fe299ef11543889b6694eb6432e9bfdf3c62715e685727f0007"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-longscreen.png",
+      "sha256": "214ff1cc26dd8d10d2a2df1bced63b70ff4bdc2ef32caaafe01231b67b9779b0"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-peach-day.png",
+      "sha256": "41f480a549e767ccb3b66bce847f868a8d694fe43696accc9ae875bd30917738"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-peach-night.png",
+      "sha256": "1d3c065d0942b8914500188fc0a04b704c51c6277b7d78a31cc9d97b109e2cbb"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-photo-sync.png",
+      "sha256": "699685176d92aaaca435704fdccf1e4fc83e2f057cedb3715f357133aabe1633"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v3-peach-day.png",
+      "sha256": "31035e42fbe070444c2a013158d7588c1a1b2463d381fa39db17f2bf4d14492a"
+    }
+  ],
+  "warningsOrErrorsObservedV2V3": [],
+  "pending": [
+    "Full moving drag path: short browser drag ended before hold threshold; only long-press/release landing is observed.",
+    "All interruption/resource-failure/retry and multi-pointer route matrix.",
+    "Original tap/doze/lift action marks remain missing in shared Home/Wardrobe.",
+    "Fixed 720x1280 offscreen wardrobe surface versus current contained direct canvas: render target architecture/performance still to reconcile.",
+    "Initial v1 black root cause not identified; no claim of a source rendering fix.",
+    "WeChat-device performance and full first-version acceptance."
+  ]
+}

@@ -5,6 +5,11 @@ import { HomeMusic } from './AudioBehavior';
 import { HomeClock } from './HomeClock';
 import { ComicPage } from './ComicPage';
 import { HomePage } from './HomePage';
+import { HomeWardrobe } from './HomeWardrobe';
+import { WardrobeLoading } from './WardrobeLoading';
+import { WardrobePage, WardrobeRetained, WARDROBE_EFFECTS, WARDROBE_RESOURCES } from './WardrobePage';
+import { WardrobeStore, OUTFIT_TEXTURE, SkinId } from './WardrobeStore';
+import { applyOutfit } from './OutfitBinding';
 import { HomePhotos } from './HomePhotos';
 import { PhotoCollection } from './PhotoCollection';
 import { PhotoPage, PHOTO_RESOURCES, PhotoRetained } from './PhotoPage';
@@ -25,7 +30,7 @@ import { LoginPage } from './LoginPage';
 import { box } from './Viewport';
 import { nodeAt } from './Visual';
 
-type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage;
+type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage | WardrobePage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
 export class Application {
     readonly assets = new GameAssets();
@@ -47,10 +52,11 @@ export class Application {
     private skipResumedClockFrame=false;
     private homePage:Prepared<HomePage>;
     private travel:HomeTravelBridge;
+    private skins=new WardrobeStore();private outfitScope:Scope;private wardrobeLoading:WardrobeLoading;private wardrobeRetained:WardrobeRetained;
     private photos:PhotoCollection;private homePhotos:HomePhotos;private photoRetained:PhotoRetained;
     private travelProps:TravelHomeProps;
     private travelLoading:TravelLoadingPanel;
-    private journalRequest:{scope:Scope;mode:'journal'|'archive'|'map'|'collection'|'photo'}=null;
+    private journalRequest:{scope:Scope;mode:'journal'|'archive'|'map'|'collection'|'photo'|'wardrobe'}=null;
     private darkroomPage:Prepared<DarkroomPage>;
     private darkroomRetained:DarkroomRetainedState;
     private darkroomStateScope:Scope;
@@ -129,10 +135,10 @@ export class Application {
         this.entering=true;const intent=++this.intent,scope=lifetime(this.scope);this.pendingScope=scope;
         try {
             await this.assets.acquireGroups(['home'],scope);
-            await this.assets.acquireEffects(HOME_EFFECTS,scope);
+            await this.assets.acquireEffects(HOME_EFFECTS,scope);await this.prepareSavedOutfit(scope);
             while(scope.active&&!this.active)await this.frame(scope);
             if(intent!==this.intent||!scope.active)return;
-            const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);page.root.active=false;
+            const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);applyOutfit(page.rig,this.assets,this.skins.worn);page.root.active=false;
             const preparedMusic=await this.prepareMusic(scope);
             if(intent!==this.intent||!scope.active)return;
             if(!await this.present({page,scope},.52))return;
@@ -144,11 +150,30 @@ export class Application {
     }
     private async directHome() {
         const scope=lifetime(this.scope);await this.assets.acquireGroups(['home'],scope);
-        await this.assets.acquireEffects(HOME_EFFECTS,scope);
+        await this.assets.acquireEffects(HOME_EFFECTS,scope);await this.prepareSavedOutfit(scope);
         const preparedMusic=await this.prepareMusic(scope);
-        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);this.bindHome({page,scope});
+        const page=await HomePage.create(this.root,this.assets,scope,this.height,()=>this.gestureSeen,this.clock,()=>this.music);applyOutfit(page.rig,this.assets,this.skins.worn);this.current={page,scope};this.page=page;page.root.active=true;page.resume();this.adoptMusic(preparedMusic);this.bindHome({page,scope});
         director.once(Director.EVENT_AFTER_DRAW,()=>{if(scope.active)console.info('[LittleSteps] Home first draw');});
     }
+    private async prepareSavedOutfit(owner:Scope){
+        this.skins.configure();if(this.skins.worn==='original')return;
+        const scope=lifetime(owner);
+        try{await this.assets.acquireResources([OUTFIT_TEXTURE],scope);this.outfitScope=scope;}
+        catch(error){scope.dispose();throw error;}
+    }
+    private async equipOutfit(id:SkinId,current:()=>boolean){
+        const home=this.homePage,lease=lifetime(home.scope);
+        try{
+            // Each attempt owns its lease until the durable selection wins.
+            // A late cancelled attempt must not release a newer wear request.
+            if(id!=='original')await this.assets.acquireResources([OUTFIT_TEXTURE],lease);
+            if(!current()||!home.scope.active||!this.skins.equip(id))return false;
+            applyOutfit(home.page.rig,this.assets,this.skins.worn);
+            const previous=this.outfitScope;this.outfitScope=id==='original'?null:lease;previous?.dispose();return true;
+        }catch(_){return false;}
+        finally{if(this.outfitScope!==lease)lease.dispose();}
+    }
+    private pageLoading(mode:string){return mode==='wardrobe'?this.wardrobeLoading:this.travelLoading;}
     private async present(next: Prepared<Page>,duration:number,retainLogin=false) {
         this.fitPage(next.page);const previous=this.current;
         this.transitioning=next.page;
@@ -157,7 +182,7 @@ export class Application {
         if(!succeeded){if(next.scope!==this.homePage?.scope&&next.scope!==this.darkroomPage?.scope)next.scope.dispose();return false;}
         if(previous){
             if(previous.page instanceof HomePage)this.travelProps?.suspend();
-            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage||previous.page instanceof DarkroomPage||(previous.page instanceof TravelJournalPage||previous.page instanceof TravelMapPage||previous.page instanceof TravelCollectionPage||previous.page instanceof PhotoPage))previous.page.pause();
+            if(previous.page instanceof LoginPage||previous.page instanceof ComicPage||previous.page instanceof HomePage||previous.page instanceof DarkroomPage||(previous.page instanceof TravelJournalPage||previous.page instanceof TravelMapPage||previous.page instanceof TravelCollectionPage||previous.page instanceof PhotoPage||previous.page instanceof WardrobePage))previous.page.pause();
             previous.page.root.active=false;
             if(!(retainLogin&&previous===this.loginPage)&&previous.scope!==this.homePage?.scope&&previous.scope!==this.darkroomPage?.scope)previous.scope.dispose();
         }
@@ -189,6 +214,7 @@ export class Application {
         home.onTravelRequest=()=>bridge.flow.request();home.onMeritChanged=value=>bridge.observeMerit(value);home.onDepartureFinished=()=>bridge.flow.finish();
         loading.onCancel=()=>this.journalRequest?this.cancelJournalLoading():bridge.flow.cancelLoading();loading.onRetry=()=>{if(this.journalRequest){const mode=this.journalRequest.mode;this.cancelJournalLoading();this.openJournal(mode);}else bridge.flow.request();};
         bridge.configure();
+        const wardrobe=new HomeWardrobe(home,this.assets);home.wardrobeInteractions=wardrobe;wardrobe.onOpen=()=>this.openJournal('wardrobe');this.wardrobeLoading=new WardrobeLoading(home.root,this.assets,owner,()=>this.active&&this.page===home);this.wardrobeLoading.resize(this.height);this.wardrobeLoading.onCancel=()=>this.cancelJournalLoading();this.wardrobeLoading.onRetry=()=>{this.cancelJournalLoading();this.openJournal('wardrobe');};owner.own(()=>{home.wardrobeInteractions=null;this.wardrobeLoading=null;});
         const photos=new PhotoCollection();this.photos=photos;photos.configure();photos.syncInventory(service.model.data.inventory);this.homePhotos=new HomePhotos(home,this.assets,owner,photos);home.photoInteractions=this.homePhotos;this.homePhotos.onOpen=()=>this.openJournal('photo');owner.own(service.subscribe(()=>photos.syncInventory(service.model.data.inventory)));owner.own(()=>{home.photoInteractions=null;this.homePhotos=null;this.photos=null;});
         owner.own(()=>{home.travelInteractions=null;if(this.travelProps===travelProps)this.travelProps=null;home.onTravelRequest=null;home.onMeritChanged=()=>{};home.onDepartureFinished=()=>{};if(this.travel===bridge){this.travel=null;this.travelLoading=null;}});
     }
@@ -196,36 +222,38 @@ export class Application {
         if(mode==='rewards'){this.travel.service.open_rewards();return;}
         if(mode==='journal'||mode==='comic'||mode==='collection'){this.openJournal(mode==='comic'?'map':mode);return;}
     }
-    private async openJournal(mode:'journal'|'archive'|'map'|'collection'|'photo'){
+    private async openJournal(mode:'journal'|'archive'|'map'|'collection'|'photo'|'wardrobe'){
         if(this.entering||!this.active||this.page!==this.homePage?.page)return;
         this.entering=true;const scope=lifetime(this.scope),request={scope,mode};this.journalRequest=request;
-        const home=this.homePage.page;home.setTravelLoading(true);this.travelLoading.show(mode==='photo'?'照片加载中...':mode==='map'?'地图加载中...':mode==='collection'?'百宝箱加载中...':'日记加载中...');
+        const home=this.homePage.page,panel=this.pageLoading(mode);home.setTravelLoading(true);panel.show(mode==='photo'?'照片加载中...':mode==='map'?'地图加载中...':mode==='collection'?'百宝箱加载中...':'日记加载中...');
         try{
             if(this.darkroomPage?.scope.active||this.darkroomLoading)await this.hibernateDarkroom(scope);
-            await this.assets.acquireResources(mode==='photo'?PHOTO_RESOURCES:mode==='map'?MAP_RESOURCES:mode==='collection'?COLLECTION_RESOURCES:JOURNAL_RESOURCES,scope);
+            await this.assets.acquireResources(mode==='wardrobe'?WARDROBE_RESOURCES:mode==='photo'?PHOTO_RESOURCES:mode==='map'?MAP_RESOURCES:mode==='collection'?COLLECTION_RESOURCES:JOURNAL_RESOURCES,scope);
+            if(mode==='wardrobe')await this.assets.acquireEffects(WARDROBE_EFFECTS,scope);
             if(mode==='photo')await this.assets.acquireEffects(PHOTO_EFFECTS,scope);
             if(mode==='map')await this.assets.acquireEffects(MAP_EFFECTS,scope);
             if(this.journalRequest!==request||!scope.active||!this.active)return;
             this.travel.service.reconcile();
-            const page=mode==='photo'?new PhotoPage(this.root,this.assets,scope,this.height,this.photos,this.clock,this.photoRetained):mode==='collection'?new TravelCollectionPage(this.root,this.assets,scope,this.height,this.travel.service):mode==='map'?await TravelMapPage.create(this.root,this.assets,scope,this.height,this.travel.service,this.clock,()=>this.music?.isEnabled()||false,()=>this.gestureSeen):new TravelJournalPage(this.root,this.assets,scope,this.height,this.travel.service,mode==='archive');
+            const page=mode==='wardrobe'?new WardrobePage(this.root,this.assets,scope,this.height,this.skins,this.clock,()=>this.gestureSeen,this.wardrobeRetained):mode==='photo'?new PhotoPage(this.root,this.assets,scope,this.height,this.photos,this.clock,this.photoRetained,this.skins):mode==='collection'?new TravelCollectionPage(this.root,this.assets,scope,this.height,this.travel.service):mode==='map'?await TravelMapPage.create(this.root,this.assets,scope,this.height,this.travel.service,this.clock,()=>this.music?.isEnabled()||false,()=>this.gestureSeen):new TravelJournalPage(this.root,this.assets,scope,this.height,this.travel.service,mode==='archive');
+            if(page instanceof WardrobePage)page.onEquip=(id,current)=>this.equipOutfit(id,current);
             page.onBack=()=>{if(this.page===page)this.returnHome();};
             await this.frame(scope);
             if(this.journalRequest!==request||!scope.active)return;
-            this.travelLoading.hide();home.setTravelLoading(false);home.setInput(false);
+            panel.hide();home.setTravelLoading(false);home.setInput(false);
             if(!await this.present({page,scope},0)){if(this.journalRequest===request)this.cancelJournalLoading();return;}
             if(this.journalRequest!==request)return;
             this.journalRequest=null;this.entering=false;page.resume();
-            console.info('[LittleSteps] PAGE_READY '+(mode==='photo'?'PHOTO':mode==='map'?'MAP':mode==='collection'?'COLLECTION':'JOURNAL'));
+            console.info('[LittleSteps] PAGE_READY '+(mode==='wardrobe'?'WARDROBE':mode==='photo'?'PHOTO':mode==='map'?'MAP':mode==='collection'?'COLLECTION':'JOURNAL'));
         }catch(error){
             scope.dispose();if(this.journalRequest!==request||!this.scope.active)return;
-            this.travelLoading.failure(mode==='photo'?'照片加载失败，再试一次？':mode==='map'?'地图加载失败，再试一次？':mode==='collection'?'百宝箱加载失败，再试一次？':'日记加载失败，再试一次？');
+            panel.failure(mode==='photo'?'照片加载失败，再试一次？':mode==='map'?'地图加载失败，再试一次？':mode==='collection'?'百宝箱加载失败，再试一次？':'日记加载失败，再试一次？');
             console.error('[LittleSteps] Travel page preparation failed',mode,error);
         }
     }
     private cancelJournalLoading(){
         const request=this.journalRequest;if(!request)return;
         this.journalRequest=null;request.scope.dispose();this.router.cancel();this.entering=false;
-        this.travelLoading.hide();this.homePage.page.setTravelLoading(false);this.homePage.page.restoreTravelOffer();this.travelProps?.suspend();
+        this.pageLoading(request.mode).hide();this.homePage.page.setTravelLoading(false);this.homePage.page.restoreTravelOffer();this.travelProps?.suspend();
         if(this.page===this.homePage.page)this.homePage.page.resume(this.active);
     }
     private async hibernateDarkroom(requestScope:Scope){
@@ -284,13 +312,14 @@ export class Application {
     }
     private async returnHome(){
         const from=this.page;
-        if(this.entering||!this.active||!(from instanceof DarkroomPage||(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage)))return;
+        if(this.entering||!this.active||!(from instanceof DarkroomPage||(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage||from instanceof WardrobePage)))return;
         this.entering=true;const intent=++this.intent;
         if(from instanceof PhotoPage)this.photoRetained=from.retain();
+        if(from instanceof WardrobePage)this.wardrobeRetained=from.retain();
         if(from instanceof DarkroomPage){from.round.inputEnabled=false;from.round.cancel();}else from.pause();
         try{
-            this.homePage.page.clearRouteWaiting();if((from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage))this.homePage.page.restoreTravelOffer();this.homePage.page.resume(false);
-            const succeeded=await this.present(this.homePage,(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage)?0:.42);
+            this.homePage.page.clearRouteWaiting();if((from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage||from instanceof WardrobePage))this.homePage.page.restoreTravelOffer();this.homePage.page.resume(false);
+            const succeeded=await this.present(this.homePage,(from instanceof TravelJournalPage||from instanceof TravelMapPage||from instanceof TravelCollectionPage||from instanceof PhotoPage||from instanceof WardrobePage)?0:.42);
             if(intent!==this.intent)return;this.entering=false;
             if(succeeded){this.homePage.page.resume();console.info('[LittleSteps] PAGE_READY HOME cached=true');}else from.resume();
         }catch(error){if(this.scope.active){this.entering=false;from.resume();console.error('[LittleSteps] Home return failed',error);}}
@@ -308,10 +337,10 @@ export class Application {
     }
     private adoptMusic(prepared:{music:HomeMusic;scope:Scope}) {
         this.music=prepared.music;this.musicScope=prepared.scope;
-        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage)));
+        this.music.setNightMix(this.clock.nightMix());this.music.setActive(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage||this.page instanceof WardrobePage)));
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
-    private interactive(active:boolean) {this.darkroomPreparing?.setRenderActive(active);if(!active){this.cancelJournalLoading();this.homePhotos?.cancelPointer();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage)){if(active){if(this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage))this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage||this.transitioning instanceof PhotoPage))){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage)));if(active)this.travel?.resume();}
+    private interactive(active:boolean) {this.darkroomPreparing?.setRenderActive(active);if(!active){this.cancelJournalLoading();this.homePhotos?.cancelPointer();this.homePage?.page.wardrobeInteractions?.cancelPointer();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage||this.page instanceof WardrobePage)){if(active){if(this.page instanceof HomePage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage||this.page instanceof WardrobePage))this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage||this.transitioning instanceof PhotoPage||this.transitioning instanceof WardrobePage))){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage||this.page instanceof WardrobePage)));if(active)this.travel?.resume();}
     private fitPage(page:Page){
         if(!page||(this.pageViewports&&this.pageViewports.get(page)===this.viewportKey))return;
         page.resize(this.height,this.physicalWidth);
@@ -324,18 +353,18 @@ export class Application {
         if(!this.viewportDirty&&dimensions===this.viewportDimensions)return;
         this.viewportDirty=false;this.viewportDimensions=dimensions;const safe=sys.getSafeAreaRect(false);
         const key=[dimensions,safe.x,safe.y,safe.width,safe.height].join(':');
-        if(key!==this.viewportKey){this.viewportKey=key;this.height=size.height;this.physicalWidth=physical;box(this.root,-size.width/2,-size.height/2,size.width,size.height);this.travelLoading?.resize(this.height);}
+        if(key!==this.viewportKey){this.viewportKey=key;this.height=size.height;this.physicalWidth=physical;box(this.root,-size.width/2,-size.height/2,size.width,size.height);this.travelLoading?.resize(this.height);this.wardrobeLoading?.resize(this.height);}
         const pages=new Set<Page>([this.page,this.transitioning,this.homePage?.page,this.darkroomPage?.page,this.loginPage?.page]);
         pages.forEach(page=>{try{this.fitPage(page);}catch(error){if(this.viewportFailures.get(page)!==key){this.viewportFailures.set(page,key);console.error('[LittleSteps] viewport resize failed',error);}}});
     }
     advance(delta:number) {
         if(!this.scope.active)return;this.refreshViewport();this.router.advance(delta,this.active);
-        if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage))){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
-        if(this.active){this.travel?.advance(delta);if(this.page===this.homePage?.page)this.travelLoading?.advance(delta);}
+        if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||(this.page instanceof TravelJournalPage||this.page instanceof TravelMapPage||this.page instanceof TravelCollectionPage||this.page instanceof PhotoPage||this.page instanceof WardrobePage))){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
+        if(this.active){this.travel?.advance(delta);if(this.page===this.homePage?.page){this.travelLoading?.advance(delta);this.wardrobeLoading?.advance(delta);}}
         if(this.active&&this.page)this.page.advance(delta);
         if(this.active&&this.page===this.homePage?.page)this.travelProps?.advance(delta);
         if(this.active&&this.page===this.homePage?.page)this.homePhotos?.advance(delta);
-        if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage||this.transitioning instanceof PhotoPage)))this.transitioning.advance(delta);
+        if(this.active&&this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||(this.transitioning instanceof TravelJournalPage||this.transitioning instanceof TravelMapPage||this.transitioning instanceof TravelCollectionPage||this.transitioning instanceof PhotoPage||this.transitioning instanceof WardrobePage)))this.transitioning.advance(delta);
         if(this.active&&this.entering&&!this.journalRequest&&this.page===this.homePage?.page&&!this.transitioning){this.routeWaitAge+=delta;this.homePage.page.note.updateWaiting('暗室加载中'+'.'.repeat(1+Math.floor(this.routeWaitAge/.52)%3));}
     }
     dispose() {this.intent++;try{this.scope.dispose();}finally{this.darkroomPage=null;this.darkroomRetained=null;this.darkroomStateScope=null;}}

@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T17:00:36.743804+00:00",
-  "latestItem": "M08.04",
+  "updatedAt": "2026-10-11T17:58:06.311287+00:00",
+  "latestItem": "M08.05",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M08-photo-flow.json",
-    "builds/reviews/M08-photo-failures.json",
-    "builds/reviews/M08-photo-browser.json"
+    "builds/records/M08-wardrobe-flow.json",
+    "builds/reviews/M08-wardrobe-failures.json",
+    "builds/reviews/M08-wardrobe-browser.json"
   ],
-  "nextPriority": "Only numerical pixel-diff polishing deferred. ALL functions/navigation/elements/layout/interactions remain 1:1. Next implement complete wardrobe and unlock/save/worn skin propagation into Home and PhotoActor from original Godot; finish collection keyboard/hover/pressed feedback and remaining all-page flow matrix. Photo page browser checkpoint now supports reward sync, bind/save-failure/retry, batching, long-screen, return/re-entry and restart. 248 tests pass. No full first-version or WeChat-device acceptance yet.",
-  "pendingReadback": "builds/reviews/M08-photo-remote-readback.json (create after commit)",
+  "nextPriority": "Complete first version with ALL original functions/navigation/elements/layout/interactions; only numerical pixel diffs deferred. Next: source home/action_marks.gd tap/doze/lift currently missing in shared Home/Wardrobe (DrinkMarks exists); reconcile fixed Wardrobe 720x1280 offscreen surface, complete real drag/interruption/retry matrix; finish collection keyboard/hover/pressed feedback and all-page user-flow audit; then WeChat-only build delivery. Wardrobe main page, preview/local unlock/equip/cancel, save failure/retry, Home and Photo outfit sync, reload and longscreen observed. 257 tests pass. Still not complete first version.",
+  "pendingReadback": "builds/reviews/M08-wardrobe-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -19,6 +19,7 @@
     "Do not mark full migration or WeChat delivery complete from these checkpoints",
     "Use builds/tools/serve_candidate.py --name <frozen-candidate> --port <fresh-port>; avoid old same-origin cached assets",
     "Freeze QA time with advance(0), not by skipping Application.advance; otherwise resize observations are invalid",
-    "Photo candidates v1-v3 in builds/work; CUA screenshots saved under builds/qa/cocos-photo-*.png. All candidate servers and tabs stopped. v3 download link overlaps blink QA button: use keyboard link activation; future generator moves link above controls."
+    "Wardrobe candidates v1-v3 in builds/work; sources frozen and QA-only controls declared. All test tabs and servers stopped. v1 initial black canvas did not reproduce when unchanged candidate reopened on 8787; root cause remains unconfirmed.",
+    "Wardrobe screenshots saved in builds/qa/cocos-wardrobe-*.png. V3 is latest candidate (per-attempt outfit lease cleanup), not release. Shipping Boot/scene unchanged."
   ]
 }

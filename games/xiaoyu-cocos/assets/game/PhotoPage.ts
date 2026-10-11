@@ -1,6 +1,8 @@
 import { EventKeyboard, Graphics, input, Input, KeyCode, Mask, Node, Sprite, UITransform, Vec4 } from 'cc';
 import { GameAssets } from './Assets';
 import { lifetime, Scope, sharedUI } from './Engine';
+import { WardrobeStore } from './WardrobeStore';
+import { applyOutfit } from './OutfitBinding';
 import { HomeClock } from './HomeClock';
 import { lightingSnapshot } from './LightingSnapshot';
 import { PhotoCollection } from './PhotoCollection';
@@ -20,7 +22,7 @@ export class PhotoPage {
     private lighting:PhotoLighting;private furniture:Graphics;private paperScope:Scope;private papers:PhotoPaperView[]=[];private clips:Array<{view:TravelAtlasSprite;shadow:TravelAtlasSprite;material:any}>=[];private stack:any;
     private vines:Array<{geometry:PhotoVineGeometry;view:any;visible:boolean}>=[];private inks:PhotoInk[]=[];private counter:PhotoInk;private batchInk:PhotoInk;private batchArt:TravelAtlasSprite;private selectors:Node[]=[];private returnTag:any;private sparkles:PromptSparkles[]=[];
     private binding:any;private pointer=new PhotoPointer();private pointerPosition:number[]=null;private bubble:any;private bubbleOwner:number|null=null;private refreshNeeded=false;private dirtyWarnings:string[]=[];
-    constructor(parent:Node,private assets:GameAssets,private scope:Scope,private height:number,readonly collection:PhotoCollection,private clock:HomeClock,retained?:PhotoRetained){
+    constructor(parent:Node,private assets:GameAssets,private scope:Scope,private height:number,readonly collection:PhotoCollection,private clock:HomeClock,retained?:PhotoRetained,skins?:WardrobeStore){
         this.elapsed=retained?.elapsed||0;this.batch=retained?.batch||0;this.root=nodeAt(parent,'PhotoPage',0,0,720,height);this.root.active=false;panel(this.root,'PhotoLetterbox',[0,0,720,height],inkRGB('443422'));
         this.clip=nodeAt(this.root,'PhotoContentViewport',0,0,720,1280);this.clip.addComponent(Mask);this.canvas=nodeAt(this.clip,'OriginalPhotoCanvas',0,0,720,1280);this.lighting=new PhotoLighting(this.canvas,assets);
         const bg=picture(this.canvas,assets,scope,PHOTO_PLATE,'NeutralPhotoPlate',{centered:false,scale:[720/assets.art(PHOTO_PLATE).size[0],1280/assets.art(PHOTO_PLATE).size[1]]});this.lighting.bind(bg.sprite,'receiver',scope);
@@ -35,7 +37,7 @@ export class PhotoPage {
         for(let i=0;i<2;i++){const root=nodeAt(this.decor,'HomePhotoSelector_'+(i+1),...PHOTO_SELECTORS[i] as [number,number]);this.selectors.push(root);this.piece(root,'clip',[-72,-40,144,80],scope);this.piece(root,'tag',[-45,20,150,101],scope);this.ink(root,'tag',i?'小屋②':'小屋①',[-45,20,150,101],25);}
         this.returnTag=sharedUI().hangingReturn(this.decor,assets.font(TRAVEL_FONT),[25,25,77,139],()=>this.onBack(),()=>this.active&&this.scope.active&&this.pointer.owner===null);
         const volume=photoMesh(this.canvas,assets,scope,{vertices:new Float32Array([0,0,720,0,720,1280,0,1280]),source:new Float32Array([0,0,1,0,1,1,0,1]),indices:new Uint16Array([0,1,2,0,2,3])},'SharedPhotoSoftVolume',PHOTO_ATLAS,true);this.lighting.bind(volume.sprite,'volume',scope);
-        this.actor=new PhotoActor(this.canvas,assets,scope,this.lighting);if(retained?.actor)this.actor.restore(retained.actor);this.front=nodeAt(this.canvas,'HeldSelectorAndSpeech');
+        this.actor=new PhotoActor(this.canvas,assets,scope,this.lighting);if(skins){applyOutfit(this.actor.rig,assets,skins.worn);scope.own(skins.subscribe(()=>applyOutfit(this.actor.rig,assets,skins.worn)));}if(retained?.actor)this.actor.restore(retained.actor);this.front=nodeAt(this.canvas,'HeldSelectorAndSpeech');
         this.binding=sharedUI().pointer(this.canvas,{down:(at:number[],id:number)=>{if(this.bubble){const r=this.bubble.snapshot().card;if(at[0]>=r[0]&&at[1]>=r[1]&&at[0]<r[0]+r[2]&&at[1]<r[1]+r[3]){this.bubbleOwner=id;return true;}}const accepted=this.pointer.down(id,at,collection.count>6);if(accepted&&this.pointer.held>=0){this.pointerPosition=null;this.selectors[this.pointer.held].setParent(this.front);}return accepted;},move:(at:number[],id:number)=>{if(id===this.pointer.owner&&this.pointer.held>=0){this.pointerPosition=[at[0],at[1]-22];this.selectors[this.pointer.held].setPosition(at[0],-at[1]+22);}},up:(at:number[],id:number)=>{if(this.bubbleOwner===id){this.bubble?.close();this.bubbleOwner=null;return;}const result=this.pointer.up(id,at,this.papers.map(p=>p.geometry));this.restoreSelectors();if(result?.photo)collection.bind(result.slot,result.photo);else if(result?.batch)this.nextBatch();},cancel:()=>this.cancelPointer()},()=>this.active&&scope.active);
         const key=(event:EventKeyboard)=>{if(!this.active||event.keyCode!==KeyCode.ESCAPE)return;if(this.pointer.held>=0)this.cancelPointer();else this.onBack();};input.on(Input.EventType.KEY_DOWN,key);
         scope.own(collection.subscribe(()=>this.refreshNeeded=true));scope.own(collection.onFailure(reason=>this.dirtyWarnings.push(reason)));

@@ -185,11 +185,17 @@ def main():
   if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
   return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
 }\n'''
-            fragment=fragment.replace('texture(TEXTURE,','face_sample(')
+            fragment=fragment.replace('texture(TEXTURE,','face_sample(').replace('texture(outfit_texture,','outfit_sample(')
+            extra+='''vec4 outfit_sample(vec2 uv){
+  vec2 p=(uv-outfitCrop.xy)/outfitCrop.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return texture(outfit_texture,p);
+}
+'''
             samplers.append('outfit_texture')
-            properties.update({'textureSize':[670,402,0,0],'faceOffset':[0,0,0,0],'bodyState':[0,0,0,0],'outfitBand':[150,385,190,78],'outfitCrown':[0,0,0,0]})
+            properties.update({'textureSize':[670,402,0,0],'faceOffset':[0,0,0,0],'bodyState':[0,0,0,0],'outfitBand':[150,385,190,78],'outfitCrown':[0,0,0,0],'outfitCrop':[0,0,1,1]})
             uniforms+='''
-  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;};
+  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;vec4 outfitCrop;};
   #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
   #define eye_layer int(bodyState.y)
   #define mouth_open_px bodyState.x

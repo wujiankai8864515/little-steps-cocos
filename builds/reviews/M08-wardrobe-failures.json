@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-11T17:58:06.311287+00:00",
+  "failures": [
+    {
+      "id": "M08-WF01",
+      "trigger": "First v1 browser run on 8784 rendered black although page state advanced and no console warnings/errors were captured.",
+      "evidence": "builds/qa/cocos-wardrobe-v1-black.png",
+      "rootCause": "unconfirmed",
+      "resolution": "Reopened the unchanged frozen v1 output on fresh origin 8787; both Home and Wardrobe visibly render. v2/v3 also rendered and v2 reloaded at 720x1280 successfully. No rendering code fix is claimed.",
+      "status": "not_reproduced_on_serial_reopen_monitor",
+      "followup": "Retain evidence and run complete entry/device soak; do not attribute to Codex crash or memory without evidence."
+    },
+    {
+      "id": "M08-WF02",
+      "trigger": "Code review found cancelled/failed outfit requests adopted Home-owned resources before their durable result. Late overlapping requests could retain or replace another request lease.",
+      "rootCause": "Shared ensureOutfit scope adopted before current/commit checks.",
+      "resolution": "Each equip attempt now owns its own child lease. Successful current durable selection alone replaces previous lease; finally disposes all losers.",
+      "verification": [
+        "Two real Application transaction regression cases, including late cancelled callback after newer success.",
+        "v3 failed equip/return and original equip/return both restore 93 entries,129784985 reserved bytes."
+      ],
+      "status": "fixed_verified"
+    },
+    {
+      "id": "M08-WF03",
+      "trigger": "First build wrapper used nonexistent manifest creatorCommand key; KeyError before Creator ran.",
+      "rootCause": "Wrapper field mismatch.",
+      "resolution": "Read manifest command key; all three frozen builds finished.",
+      "status": "fixed"
+    },
+    {
+      "id": "M08-WF04",
+      "trigger": "Source comparison found retained cloth impulse was not cleared on closing Wardrobe.",
+      "rootCause": "Retained motion object preserved impulses across page recreation.",
+      "resolution": "retain() calls original motion.cancel() before returning retained wind state.",
+      "verification": "Motion cancel test, 257-test regression, v3 re-entry.",
+      "status": "fixed_verified"
+    }
+  ]
+}

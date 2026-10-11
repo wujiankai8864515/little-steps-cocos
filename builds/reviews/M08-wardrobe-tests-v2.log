@@ -1,0 +1,17 @@
+✔ Latest source local-unlock policy persists ownership separately from worn skin and restores across instances and slots (5.641375ms)
+✔ Wardrobe failed writes roll back unlock and equip, while corruption/read failures never overwrite existing saves (0.362375ms)
+✔ Wardrobe stale writers and future save schemas fail closed, and disabled persistence does not touch storage (0.263625ms)
+✔ Preview, unlock and explicit equip follow original choices; cancel and closing preserve committed clothing (0.389209ms)
+✔ Verified-provider policy never falls back to local unlock and discards delayed success after close (0.263125ms)
+✔ Outfit binding keeps the same rig/material and animated mouth, maps trimmed source pixels, then disables safely (0.223167ms)
+✔ Cloth impulses and seven vines remain bounded; original particle lifetime is finite across repeated selection (22.6395ms)
+✔ Actual outfit transaction releases a failed or cancelled lease without touching the committed body (0.468625ms)
+✔ A late cancelled outfit attempt cannot release a newer successful wear lease; original releases the winner (0.27125ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 343.499625

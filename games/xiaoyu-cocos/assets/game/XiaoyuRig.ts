@@ -217,6 +217,7 @@ export class XiaoyuRig {
         const center=core.Math2D.transform(core.Math2D.multiply(inverse,this.affine(this.root)),335,0);return [center[0],top-10];
     }
     land(impact:number){this.liftMotion.amount=0;this.liftMotion.lag=[0,0];this.landing.begin(impact,this.behavior.secondary);}
+    advanceLanding(delta:number){this.landing.advance(delta);const land=landingOffset([365,177],this.landing.position),expression=this.nodes.get('Skeleton2D/Ground/Body/Expression');expression.setPosition(this.jelly[0]+land[0],-this.jelly[1]-land[1]);this.deform(this.softPose());this.setEyeOffsets(this.gazeBaseline);return this.landing.active;}
     visualBounds(relativeTo:Node){const inverse=core.Math2D.inverse(this.affine(relativeTo)),points:number[][]=[];this.meshes.forEach(part=>{if(!part.node.activeInHierarchy||!part.sprite.enabled)return;const r=this.assets.art(part.resource).opaque,m=core.Math2D.multiply(inverse,this.affine(part.node));[[r[0],r[1]],[r[2],r[1]],[r[0],r[3]],[r[2],r[3]]].forEach(p=>points.push(core.Math2D.transform(m,...p)));});if(!points.length)return [0,0,0,0];const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.min(...xs)-42,y=Math.min(...ys)-42;return [x,y,Math.max(...xs)+42-x,Math.max(...ys)+42-y];}
     private affine(node:Node){const m=node.worldMatrix;return [m.m00,-m.m01,-m.m04,m.m05,m.m12,-m.m13];}
     deform(pose: SoftPose) {

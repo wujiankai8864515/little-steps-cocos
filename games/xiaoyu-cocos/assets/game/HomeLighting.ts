@@ -49,8 +49,9 @@ export class HomeLighting {
     }
     dustNode() {const node=nodeAt(this.root,'SunlitDust');this.dust=node.addComponent(Graphics);return node;}
     private material(name:string,local=false) {const material=new Material();material.initialize({effectAsset:this.assets.effect(name),defines:{USE_TEXTURE:true,USE_LOCAL:local}});this.scope.own(()=>material.destroy());return material;}
-    update() {
+    update(override?:{ambient:number[];sun:number}) {
         const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),origin=this.root.worldPosition,scale=this.root.worldScale;
+        if(override){state.receiverAmbient=override.ambient;state.receiverSun=override.sun;}
         for(const receiver of this.receivers) {
             const material=receiver.material,shaft=receiver.kind==='shafts';
             material.setProperty('roomOrigin',new Vec4(origin.x,origin.y,scale.x,scale.y));

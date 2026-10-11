@@ -32,6 +32,7 @@ CCEffect %{
         faceOffset: { value: [0, 0, 0, 0] }
         bodyState: { value: [0, 0, 0, 0] }
         outfitBand: { value: [150, 385, 190, 78] }
+        outfitCrop: { value: [0, 0, 1, 1] }
         outfitCrown: { value: [0, 0, 0, 0] }
         shared_outdoor_paint: { value: white }
         outfit_texture: { value: white }
@@ -103,7 +104,7 @@ CCProgram room-fs %{
   #define use_shared_outdoor_paint true
   #define shared_outdoor_uv_rect vec4(0.0,0.0,1.0,1.0)
 
-  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;};
+  uniform FaceState {vec4 textureSize;vec4 faceOffset;vec4 bodyState;vec4 outfitBand;vec4 outfitCrown;vec4 outfitCrop;};
   #define TEXTURE_PIXEL_SIZE (1.0 / textureSize.xy)
   #define eye_layer int(bodyState.y)
   #define mouth_open_px bodyState.x
@@ -313,6 +314,12 @@ vec4 face_sample(vec2 uv){
   return CCSampleWithAlphaSeparated(cc_spriteTexture,p);
 }
 
+vec4 outfit_sample(vec2 uv){
+  vec2 p=(uv-outfitCrop.xy)/outfitCrop.zw;
+  if(any(lessThan(p,vec2(0.0)))||any(greaterThan(p,vec2(1.0))))return vec4(0.0);
+  return texture(outfit_texture,p);
+}
+
   vec4 frag(){
     vec2 world_pos=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
     vec2 UV=sourceUV.xy+uv0*sourceUV.zw;
@@ -327,7 +334,7 @@ vec2 face_pixel=UV*textureSize.xy;
     // Only the generated pink textile is composited. Original IP face, outlines,
     // fins and silhouette remain the authoritative original texture.
     if (outfit_enabled && eye_layer == 0) {
-        vec4 cloth = texture(outfit_texture, source_pixel / vec2(670.0,402.0));
+        vec4 cloth = outfit_sample(source_pixel / vec2(670.0,402.0));
         float band_phase=clamp((source_pixel.x-outfit_band.x)/outfit_band.y,0.0,1.0);
         float edge=outfit_band.z+outfit_band.w*sin(band_phase*3.14159265);
         float lower=smoothstep(edge-1.2,edge+1.2,source_pixel.y);
@@ -347,7 +354,7 @@ vec2 face_pixel=UV*textureSize.xy;
             float rim=(1.0-outer_alpha)*upper*(1.0-face_keep)*(1.0-fin_keep);
             // The donor strip is the existing pink lower garment, not its face.
             vec2 donor=vec2(mix(220.0,500.0,clamp((source_pixel.x-180.0)/355.0,0.0,1.0)),290.0+(source_pixel.y-70.0)*0.06);
-            vec4 crown_cloth=texture(outfit_texture,donor/vec2(670.0,402.0));
+            vec4 crown_cloth=outfit_sample(donor/vec2(670.0,402.0));
             float keep_ink=smoothstep(0.20,0.48,max(source_albedo.r,max(source_albedo.g,source_albedo.b)));
             source_albedo.rgb=mix(source_albedo.rgb,crown_cloth.rgb,rim*crown_cloth.a*keep_ink);
         }

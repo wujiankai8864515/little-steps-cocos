@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "item": "M08.05",
+  "updatedAt": "2026-10-11T17:58:06.311287+00:00",
+  "status": "wardrobe_main_flow_layout_outfit_save_home_photo_sync_observed_shared_action_marks_and_full_acceptance_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "sourceFiles": [
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_binding.gd",
+      "sha256": "3089df6b585bc98030f0d7ade2bf7d3ec4e02b8d4e99aff021c5759a3db867cf"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_catalog.gd",
+      "sha256": "eb959bd9c8010949e5e9435465ffe8acff31cb1e67320488b51b84e6e120c7b3"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_store.gd",
+      "sha256": "32bb99c9de302a8383330d19acc277c6a2851a341460c5fb2354350992c1bd8a"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/unlock_policy.gd",
+      "sha256": "091505b3d35199c6e799bedb7e3946ecb8dd795a433c496281330bf4ba0cc8a2"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_art.gd",
+      "sha256": "13d6e6921d10340a8d6b93ff06e1ba6f2006ccce8114b7d28abaf5040929fb45"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_bridge.gd",
+      "sha256": "c12c19b842cb22b95a74cb2355d39335bf7c95deb49e32815e19b15ff7b61650"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_material.gd",
+      "sha256": "e91e4785e30d05de99c3cb115c72c5ccc2625fd32af90c0e33be33408cd6a0b9"
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_page.gd",
+      "sha256": "4904c0dfaf4233272d257bb1b7522fdb413558dc73eccd2867b01958fab5fae5"
+    }
+  ],
+  "implementation": [
+    "Original runtime atlas, two pinned 6x14 fabric grids, seven spring vines, original light/shadow shader, original plaques and hanging return, shared bubble and glints.",
+    "Same XiaoyuRig bones/curves/source UV and soft deformation; peach band/crown samples original trimmed pixels through explicit source crop conversion. No Spine/new art.",
+    "Latest original temporary_local policy, explicit preview/cancel/unlock/equip, verified_reward interface fails closed; no fabricated ad completion.",
+    "Durable schema/checksum/capacity/stale-writer/read/write verification, failed writes preserve committed ownership/wear.",
+    "Home authentic wardrobe entry, speech loading/cancel/retry, on-demand page subset, cached Home return, saved outfit loaded before visible Home, PhotoActor clothing subscription.",
+    "Reusable bounded 22-particle pool and retained wind motion; original cloth impulse reset on close.",
+    "Per-attempt outfit asset leases with cancelled/failed/late callback cleanup; original equip drops extra outfit resource."
+  ],
+  "tests": {
+    "regression": "builds/reviews/M08-wardrobe-regression-final.log",
+    "pass": 257,
+    "fail": 0,
+    "typecheck": "builds/reviews/M08-wardrobe-types-final.log (exit 0)",
+    "targeted": "games/xiaoyu-cocos/test/wardrobe.test.cjs (9 cases)"
+  },
+  "shader": "builds/records/M08-wardrobe-shader.json",
+  "browser": "builds/reviews/M08-wardrobe-browser.json",
+  "failures": "builds/reviews/M08-wardrobe-failures.json",
+  "candidate": "builds/records/candidates/wardrobe-complete-v3.json",
+  "frozenAudit": "builds/reviews/M08-wardrobe-v3-frozen-audit.json",
+  "pluginSHA256": "e392ad32747e7825eb24e1ecda24aa13fbbe1dc468b36ece5437d02659153d01",
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-wardrobe-v1-black.png",
+      "sha256": "f5c9c4123c97920a9f5a21a5ac2cd207de3eb96a8fdf3130f3da712449b18a7a"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v1-reopened.png",
+      "sha256": "5feae4ca95a79fe299ef11543889b6694eb6432e9bfdf3c62715e685727f0007"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-longscreen.png",
+      "sha256": "214ff1cc26dd8d10d2a2df1bced63b70ff4bdc2ef32caaafe01231b67b9779b0"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-peach-day.png",
+      "sha256": "41f480a549e767ccb3b66bce847f868a8d694fe43696accc9ae875bd30917738"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-peach-night.png",
+      "sha256": "1d3c065d0942b8914500188fc0a04b704c51c6277b7d78a31cc9d97b109e2cbb"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v2-photo-sync.png",
+      "sha256": "699685176d92aaaca435704fdccf1e4fc83e2f057cedb3715f357133aabe1633"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-v3-peach-day.png",
+      "sha256": "31035e42fbe070444c2a013158d7588c1a1b2463d381fa39db17f2bf4d14492a"
+    }
+  ],
+  "scopeRule": "Only numerical pixel comparisons deferred. All original functions/navigation/elements/layout/interactions remain mandatory. This checkpoint is not the complete first version.",
+  "pending": [
+    "Full moving drag path: short browser drag ended before hold threshold; only long-press/release landing is observed.",
+    "All interruption/resource-failure/retry and multi-pointer route matrix.",
+    "Original tap/doze/lift action marks remain missing in shared Home/Wardrobe.",
+    "Fixed 720x1280 offscreen wardrobe surface versus current contained direct canvas: render target architecture/performance still to reconcile.",
+    "Initial v1 black root cause not identified; no claim of a source rendering fix.",
+    "WeChat-device performance and full first-version acceptance."
+  ]
+}
