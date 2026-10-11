@@ -1,0 +1,14 @@
+✔ Actual map page consumes original resources, retained glint geometry and releases every scoped frame/material/audio on exit (77.285792ms)
+✔ Original choice pauses only scene motion; button is blocked before reveal, durable save failure retains retry and double tap settles once (24.268792ms)
+✔ Background releases owned manual pause, cancels queued stale choice and resumes elapsed route without changing merit (20.504833ms)
+✔ Modal close/outside ignore crossing and other fingers; tall resize cancels capture and preserves the owned choice (18.626959ms)
+✔ Strict glyph modal disables unsupported choices; long text scroll is clipped, bounded and pointer-owned (1.811125ms)
+✔ Real Home map route waits for admission and rejects cancelled/failed late loads; success returns home and disposes the page (34.807667ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 854.015125

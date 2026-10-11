@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "candidate": "travel-map-page-v4",
+  "transport": "Independent Chrome via supported CUA; original canvas PNG downloaded using visible fixture controls",
+  "reference": {
+    "native": "godot-map-choice-noon-v4",
+    "hour": 12,
+    "sceneAge": 12,
+    "pageElapsed": 12,
+    "seed": 1,
+    "routeElapsed": 40,
+    "progress": 0.4,
+    "tripId": "trip_1_1",
+    "eventUid": "trip_1_1:1",
+    "choiceToken": "trip_1_1:choice:1",
+    "mode": "CHOICE_PAUSED",
+    "bubblePhase": "hold",
+    "fontSize": 28,
+    "body": [
+      273,
+      464,
+      390,
+      245
+    ],
+    "text": [
+      314,
+      494,
+      308,
+      85
+    ]
+  },
+  "observed": [
+    "Candidate begins through actual Application/Home",
+    "Same-state comparison control opens real TravelMapPage and advances its real state to the matching checkpoint",
+    "Painted close X cancels manual ownership: event/token cleared, service RUNNING",
+    "Resume fixture animation, click painted event again, select right-hand blessing option: original result 小余认真地说了声：好运连连。 is visible",
+    "Painted back returns to Home; merit stays700 for the free option; owned Map leases are released"
+  ],
+  "resources": {
+    "home": {
+      "entries": 93,
+      "reservedBytes": 129784985,
+      "pending": 0
+    },
+    "map": {
+      "entries": 106,
+      "reservedBytes": 169507737,
+      "pending": 0
+    },
+    "homeAfter": {
+      "entries": 93,
+      "reservedBytes": 129784985,
+      "pending": 0
+    }
+  },
+  "sourceConsole": {
+    "warnings": 0,
+    "errors": 0,
+    "filter": "own http://127.0.0.1:8137 source only; browser extension logs excluded"
+  },
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-map-choice-noon-v4.png",
+      "bytes": 1680417,
+      "sha256": "53ab43abcc388e79814c93cdb060e8c8103e7cd7a873ccf89e025364cf7461e6"
+    },
+    {
+      "path": "builds/qa/map-blessing-result-browser-v4.png",
+      "bytes": 1571681,
+      "sha256": "7c111eaa6fa280acdc7e55678e089b0a5a741d92c59951264b0d99a738f811a4"
+    }
+  ],
+  "cleanup": {
+    "ownedTabClosed": true,
+    "viewportReset": true,
+    "serverStopped": true
+  },
+  "boundary": "Same-state fixture freezes app advance for capture; normal Home/Map flow additionally covered by v1 and post-capture real clicks. This is a checkpoint, not a complete visual/device acceptance."
+}

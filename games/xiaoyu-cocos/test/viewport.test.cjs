@@ -6,7 +6,7 @@ class Node{constructor(name){this.name=name;this.children=[];this.ui=new UITrans
 const cc={Node,UITransform,screen:{windowSize:{width:720}},sys:{getSafeAreaRect(){safeReads++;return safe;}},Graphics:class{}};
 const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.resolve(__dirname,'../../../engines/travel-core/dist/travel-core.js'),'utf8'),context);const core=context.LittleStepsCore;
 const mods={Engine:{core}},load=name=>{if(mods[name])return mods[name];const exports={};mods[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:k=>k==='cc'?cc:(mods[k.slice(2)]||{}),console:{info(){},error(){}}});return exports;};
-for(const name of ['LoginPage','ComicPage','TravelJournalPage'])mods[name]={[name]:class{}};
+for(const name of ['LoginPage','ComicPage','TravelJournalPage','TravelMapPage'])mods[name]={[name]:class{}};
 load('Viewport');load('HomeRenderPlan');const {GameAssets}=load('Assets'),{HomePage}=load('HomePage'),{DarkroomPage}=load('DarkroomPage'),{Application}=load('Application');
 test('Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin',()=>{
  const canvas=new Node('Canvas'),root=new Node('App'),calls=[];const page={resize:(...a)=>calls.push(['active',...a])},cached={resize:(...a)=>calls.push(['cached',...a])};

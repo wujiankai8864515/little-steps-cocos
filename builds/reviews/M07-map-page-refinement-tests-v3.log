@@ -1,0 +1,23 @@
+HIBERNATION_BUDGET {"before":{"entries":121,"reservedBytes":202926811,"pending":0},"asleep":{"entries":105,"reservedBytes":161821148,"pending":0},"mapPeak":{"entries":118,"reservedBytes":201543900,"pending":0},"pinnedDataBytes":471363}
+✔ Hibernation frees hidden Darkroom resources and target slot, pins actual alpha/data, restores the same round, and never owns GPU objects (211.616958ms)
+✔ Restored spring, plume, lamp and plaque curves continue exactly like an uninterrupted hidden cache (1411.957458ms)
+✔ Releasing during completion still honors replay-on-return and does not pay a second reward (43.597084ms)
+✔ Visible or transitioning rooms cannot be evicted; a cancelled wait never evicts a late preload (20.440334ms)
+✔ Interrupted data pinning preserves the old visual cache and does not orphan its temporary data lease (22.407334ms)
+✔ Repeated optional-page eviction and restoration stays within original limits and releases every lease at application shutdown (234.857458ms)
+✔ A real Journal request cancelled during optional preload leaves Home usable; retry evicts first and returning restores the saved room (110.590541ms)
+✔ A failed visual reconstruction retains model/data leases and retries without resetting progress or leaving a broken cache (110.913208ms)
+✔ Actual map page consumes original resources, retained glint geometry and releases every scoped frame/material/audio on exit (85.266416ms)
+✔ Original choice pauses only scene motion; button is blocked before reveal, durable save failure retains retry and double tap settles once (32.343375ms)
+✔ Background releases owned manual pause, cancels queued stale choice and resumes elapsed route without changing merit (23.991375ms)
+✔ Modal close/outside ignore crossing and other fingers; tall resize cancels capture and preserves the owned choice (20.688166ms)
+✔ Strict glyph modal disables unsupported choices; long text scroll is clipped, bounded and pointer-owned (1.458042ms)
+✔ Real Home map route waits for admission and rejects cancelled/failed late loads; success returns home and disposes the page (37.337709ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2683.16125

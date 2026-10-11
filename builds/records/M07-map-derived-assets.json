@@ -1,0 +1,25 @@
+{
+  "source": "native Godot 4.5.2, original committed runtime/config/fonts",
+  "uiFontSHA256": "81ec06440652d81fea948f26088155bea905b72b9ca79c61c4306e0a1e06712a",
+  "brushFontSHA256": "e575cf498f871802a2d59f1f696a97a4858b3940a552d47b161afbebadf4b7c0",
+  "audio": [
+    {
+      "resource": "derived://travel/travel_bell.wav",
+      "source": "builds/reviews/M07-travel-scene-native-v2.json.0.pcm",
+      "pcmSHA256": "482c848b34fa9efa7a731039dffe87fc32d30cb1c62b0ecc91bd8b659ee93395",
+      "wavSHA256": "1b03d3c631ce704c6895021c2215a212168ffb42ccf6ad0be074372992c09674",
+      "frames": 61740,
+      "reservationBytes": 246960
+    },
+    {
+      "resource": "derived://travel/travel_encounter.wav",
+      "source": "builds/reviews/M07-travel-scene-native-v2.json.1.pcm",
+      "pcmSHA256": "95002079b4b03a04257a489ee01e99c21e2ce7cc1e6d3ab010dba75f012f2fba",
+      "wavSHA256": "8d3ce75c9dba7633e0c252f1211390422513180de30d1e35eb51fe7b2dc47902",
+      "frames": 17199,
+      "reservationBytes": 68796
+    }
+  ],
+  "audioAdditionalPlaybackReservation": 284244,
+  "boundary": "lossless WAV wrapper around verified native PCM; playback and visual font alignment still need runtime verification"
+}

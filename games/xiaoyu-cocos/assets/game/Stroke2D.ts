@@ -7,10 +7,10 @@ import { nodeAt } from './Visual';
 // Coverage uses the mesh payload, so Creator's UI alpha cannot erase it.
 export class Stroke2D {
     readonly root:Node;private sprite:any;private material:Material;
-    constructor(parent:Node,assets:GameAssets,scope:Scope,name:string){
+    constructor(parent:Node,assets:GameAssets,scope:Scope,name:string,textureKey="res://assets/home_neutral.png"){
         this.root=nodeAt(parent,name,0,0,720,1280);this.sprite=this.root.addComponent(meshSprite());
         this.material=new Material();this.material.initialize({effectAsset:assets.effect('original-stroke')});scope.own(()=>this.material.destroy());this.sprite.customMaterial=this.material;
-        this.sprite.configure(core.featherLine([0,0],[1,0],1),[1,1]);this.sprite.spriteFrame=assets.frame('res://assets/home_neutral.png',scope);this.sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.root.active=false;
+        this.sprite.configure(core.featherLine([0,0],[1,0],1),[1,1]);this.sprite.spriteFrame=assets.frame(textureKey,scope);this.sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.root.active=false;
     }
     draw(mesh:any,color:number[]){
         this.root.active=mesh.indices.length>0&&(color[3]??1)>0;if(!this.root.active)return;

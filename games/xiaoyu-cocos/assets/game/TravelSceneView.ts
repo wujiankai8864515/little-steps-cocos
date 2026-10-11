@@ -58,7 +58,7 @@ export class TravelSceneView {
         p.at=at;p.extent=extent;p.origin=origin;p.angle=angle;p.pivot.setPosition(at[0],-at[1]);p.rotation.angle=-angle*180/Math.PI;p.image.place([-origin[0],-origin[1],extent[0],extent[1]]);
     }
     private ink(name:string,mesh:TravelInkMesh,mode=1){
-        const node=nodeAt(this.root,name),sprite:any=node.addComponent(meshSprite());sprite.configure(mesh,[1,1]);sprite.spriteFrame=this.assets.frame('res://assets/home_neutral.png',this.scope);sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.lighting.bind(sprite,mode);node.active=mesh.indices.length>0;return sprite;
+        const node=nodeAt(this.root,name),sprite:any=node.addComponent(meshSprite());sprite.configure(mesh,[1,1]);sprite.spriteFrame=this.assets.frame(this.state.config.atlas,this.scope);sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.lighting.bind(sprite,mode);node.active=mesh.indices.length>0;return sprite;
     }
     private redraw(sprite:any,mesh:TravelInkMesh){const old=sprite.mesh;if(old.vertices.length===mesh.vertices.length&&old.indices.length===mesh.indices.length){old.vertices.set(mesh.vertices);old.vertexUV.set(mesh.vertexUV);old.vertexData.set(mesh.vertexData);old.indices.set(mesh.indices);sprite.geometryChanged();}else sprite.configure(mesh,[1,1]);sprite.node.active=mesh.indices.length>0;}
     advance(delta:number){this.state.advance(delta);this.render();}

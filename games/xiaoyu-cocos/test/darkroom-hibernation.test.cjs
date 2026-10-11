@@ -25,7 +25,7 @@ function load(name){if(mods[name])return mods[name];const exports={};mods[name]=
 // actual Page construction/restoration and Application routing remain real.
 mods.DarkroomHUD={DarkroomHUD:class{advance(){}resize(){}snapshot(){return {};}}};
 mods.DarkroomBubble={DarkroomBubble:class{dismiss(){}show(){}setSafe(){}advance(){}snapshot(){return {};}}};
-for(const name of ['LoginPage','ComicPage','HomePage','TravelJournalPage','TravelHomeProps','HomeTravelBridge','TravelService','TravelLoadingPanel','HomeDepartureVisual','LoadingPage','AudioBehavior'])mods[name]={[name]:class{}};
+for(const name of ['LoginPage','ComicPage','HomePage','TravelJournalPage','TravelMapPage','TravelHomeProps','HomeTravelBridge','TravelService','TravelLoadingPanel','HomeDepartureVisual','LoadingPage','AudioBehavior'])mods[name]={[name]:class{}};
 const {GameAssets}=load('Assets'),{DarkroomPage}=load('DarkroomPage'),{Application}=load('Application'),{HomeClock}=load('HomeClock'),{HOME_EFFECTS}=load('HomeLighting'),{DARKROOM_EFFECTS}=load('DarkroomLighting');
 const catalog=JSON.parse(fs.readFileSync(path.join(GAME,'resources/source-catalog.json'))),dataCache=new Map();
 function makeAssets(){
@@ -80,12 +80,10 @@ test('Interrupted data pinning preserves the old visual cache and does not orpha
  const request=new core.Lifetime(f.scope),pending=f.app.hibernateDarkroom(request);while(!release)await Promise.resolve();request.dispose();release();await assert.rejects(pending,/cancelled/i);assert.equal(prepared.scope.active,true);assert.equal(f.app.darkroomPage,prepared);assert.equal(f.app.darkroomStateScope,undefined);assert.deepEqual(plain(f.assets.snapshot()),before);f.app.dispose();
 });
 test('Repeated optional-page eviction and restoration stays within original limits and releases every lease at application shutdown',async()=>{
- const f=await fixture(),map=['travel_brush.ttf','travel_paper_v1.png','travel_map_plate_v5.png','travel_offer_person_v5.png','travel_people_v5.png','travel_scene_layers_v1.png','travel_footprint_ink_v1.png','travel_map_actor_v5.png'].map(n=>'res://travel/assets/'+n);
- // Resolve the pinned source names from the catalog; these are the map page's
- // original resources, atmospheric effect, native 600000-byte sound reservation
- // and the production scene renderer's separately reserved geometry buffers.
- const resolved=map.map(k=>{if(catalog.assets[k])return k;throw Error('Map source missing '+k);});
- const prepared=await f.app.prepareDarkroom();const before=plain(f.assets.snapshot());const estimate=resolved.map(key=>({key,bytes:catalog.assets[key].decodedBytes})).concat([{key:'effect:travel-atmosphere',bytes:524288},{key:'travel:bell',bytes:123480},{key:'travel:chime',bytes:34398},{key:'travel:playback',bytes:600000-123480-34398},{key:'travel:geometry',bytes:load('TravelSceneView').TRAVEL_SCENE_BUFFER_BYTES}]);
+ const f=await fixture(),stub=mods.TravelMapPage;delete mods.TravelMapPage;const map=load('TravelMapPage');mods.TravelMapPage=stub;
+ // Admit the production page catalogue/effects and its exact playback/UI/scene
+ // reservations, including shared Home resources under their original keys.
+ const prepared=await f.app.prepareDarkroom();const before=plain(f.assets.snapshot());const estimate=map.MAP_RESOURCES.map(key=>({key,bytes:catalog.assets[key].decodedBytes})).concat(map.MAP_EFFECTS.map(name=>({key:'effect:'+name,bytes:524288})),[{key:'travel:playback',bytes:map.MAP_PLAYBACK_BYTES+map.MAP_UI_BUFFER_BYTES},{key:'travel:geometry',bytes:load('TravelSceneView').TRAVEL_SCENE_BUFFER_BYTES}]);
  await assert.rejects(f.assets.gate.acquire(estimate,s=>({key:s.key}),()=>{},new core.Lifetime(f.scope)),/budget/);
  let asleep,mapPeak;
  for(let round=0;round<6;round++){const request=new core.Lifetime(f.scope);await f.app.hibernateDarkroom(request);asleep=plain(f.assets.snapshot());await f.assets.gate.acquire(estimate,s=>({key:s.key}),()=>{},request);mapPeak=plain(f.assets.snapshot());assert.ok(mapPeak.entries<=128);assert.ok(mapPeak.reservedBytes<=268435456);request.dispose();await f.app.prepareDarkroom();assert.deepEqual(plain(f.assets.snapshot()),before);}

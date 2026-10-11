@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/capture_travel_map_native.py", line 61, in <module>
+    if __name__=='__main__':main()
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/capture_travel_map_native.py", line 58, in main
+    with log.open('w') as f:result=subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,timeout=60)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1134, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 2005, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1189, in wait
+    return self._wait(timeout=timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1909, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/wkk/dotWorkers/little-steps-cocos/builds/work/godot-native-4.5.2/Godot.app/Contents/MacOS/Godot', '--path', '/Users/wkk/dotWorkers/little-steps-cocos/builds/work/godot-map-choice-noon-v2', '--rendering-method', 'gl_compatibility', '--script', 'res://capture.gd', '--', '/Users/wkk/dotWorkers/little-steps-cocos/builds/qa/godot-map-choice-noon-v2.png']' timed out after 59.99994525 seconds

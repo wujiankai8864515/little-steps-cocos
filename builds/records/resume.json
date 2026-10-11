@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-11T13:19:54.345538+00:00",
+  "latestItem": "M07.08",
+  "entry": [
+    "AGENTS.md",
+    "builds/records/migration-plan.json",
+    "builds/records/M07-map-page-flow.json",
+    "builds/reviews/M07-map-page-failures.json"
+  ],
+  "nextPriority": "Reproduce Home live landscape-to-portrait rendering defect; then map text fidelity/full encounters and remaining pages",
+  "pendingReadback": "builds/reviews/M07-map-page-remote-readback.json (created after commit)",
+  "recovery": [
+    "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
+    "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
+    "Import original assets before running builds/tools/import_travel_map_assets.py, which restores derived PCM catalogue and native font metrics",
+    "Use independent Chrome supported CUA; no repeated Codex in-app Godot screenshots; run GPU workloads serially",
+    "Do not mark full migration or WeChat delivery complete from these checkpoints"
+  ]
+}

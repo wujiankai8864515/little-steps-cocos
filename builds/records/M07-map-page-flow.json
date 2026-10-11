@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "id": "M07.08",
+  "baseCommit": "ceee31566caba2fee127a67bdbc85a2ecf8d2f9b",
+  "status": "production_map_route_and_offer_flow_observed_same_state_visual_measured_residual_font_and_full_matrix_pending",
+  "source": {
+    "GodotCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "creator": "3.8.8",
+    "native": "4.5.2-stable official",
+    "shippingBootChanged": false,
+    "userSceneChanged": false,
+    "previousRemoteReadback": "builds/reviews/M07-travel-view-remote-readback.json"
+  },
+  "changes": [
+    "Connect actual Home map route through optional resource admission, hidden Darkroom hibernation, cancel/retry and first-draw preparation",
+    "Port original map labels, traveler, fixed-capacity glints, manual encounter portraits, shared choice modal, result ticket and owned audio ports",
+    "Keep framework geometry/strict glyph checking/layout/scroll/pointer/alpha general; game supplies prose, portrait, actions and admitted drawing renderer",
+    "Preserve durable choice token, background release, one-time settlement, read-only decided events and queued callback scope checks",
+    "Avoid repeated static bubble geometry rebuild and unchanged station/progress text measurement",
+    "Reuse native anti-aliased close/outline geometry; eliminate implicit Home texture dependency from map ink"
+  ],
+  "validation": {
+    "regression": {
+      "tests": 223,
+      "failed": 0,
+      "log": "builds/reviews/M07-map-page-regression-v4.log"
+    },
+    "types": [
+      "builds/reviews/M07-map-page-types-v4.log",
+      "builds/reviews/M07-map-page-QA-types-v5.log"
+    ],
+    "typeExit": 0,
+    "candidateAudits": [
+      "builds/reviews/M07-map-page-v1-frozen-audit.json",
+      "builds/reviews/M07-map-page-v2-frozen-audit.json",
+      "builds/reviews/M07-map-page-v3-frozen-audit.json",
+      "builds/reviews/M07-map-page-v4-frozen-audit.json"
+    ],
+    "browser": [
+      "builds/reviews/M07-map-page-browser-v1.json",
+      "builds/reviews/M07-map-page-browser-v4.json"
+    ],
+    "native": "builds/records/candidates/godot-map-choice-noon-v4.json",
+    "failures": "builds/reviews/M07-map-page-failures.json",
+    "pixelComparison": {
+      "before": "builds/qa/map-choice-noon-before-v2.json",
+      "after": "builds/qa/map-choice-noon-after-v4.json",
+      "wholeBefore": {
+        "rect": [
+          0,
+          0,
+          720,
+          1280
+        ],
+        "meanAbsoluteRGB": 1.1191279658564814,
+        "rootMeanSquareRGB": 7.261029958753875,
+        "p95ChannelDifference": 1.0,
+        "maxChannelDifference": 203,
+        "pixelsAnyChannelOver16": 16837,
+        "pixels": 921600
+      },
+      "wholeAfter": {
+        "rect": [
+          0,
+          0,
+          720,
+          1280
+        ],
+        "meanAbsoluteRGB": 0.980861183449074,
+        "rootMeanSquareRGB": 6.661434280210245,
+        "p95ChannelDifference": 1.0,
+        "maxChannelDifference": 203,
+        "pixelsAnyChannelOver16": 13349,
+        "pixels": 921600
+      },
+      "closeAfter": {
+        "rect": [
+          621,
+          461,
+          670,
+          510
+        ],
+        "meanAbsoluteRGB": 0.7249757045675413,
+        "rootMeanSquareRGB": 2.3212136403455106,
+        "p95ChannelDifference": 5.0,
+        "maxChannelDifference": 19,
+        "pixelsAnyChannelOver16": 2,
+        "pixels": 2401
+      },
+      "acceptance": "Measured same-state checkpoint only; nonzero text/edge differences remain"
+    }
+  },
+  "budget": {
+    "limits": {
+      "entries": 128,
+      "bytes": 268435456,
+      "batch": 80,
+      "homeFirstDownload": 19000000
+    },
+    "modeledMapWithRetainedDarkroomData": {
+      "entries": 118,
+      "reservedBytes": 201543900
+    },
+    "observedHomeMap": {
+      "entries": 106,
+      "reservedBytes": 169507737
+    },
+    "reservation": "Travel scene12MiB + mapUI512KiB + total audio600000 bytes; borrowed shader effect already present in Home closure",
+    "boundary": "ResourceGate estimates, not physical process/GPU/device memory; Home first-download limit unresolved"
+  },
+  "plugin": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "0116ffb498b1dbd8ce4169d37f8c4c1265b7595f1a799772494c1d39fc0a9831",
+    "targetMode": "0o444",
+    "directoryMode": "0o555"
+  },
+  "pending": [
+    "Strict font rasterization/line wrapping parity and residual contour pixels",
+    "All five event types, long-text scrolling, hover/keyboard focus, background interruption and cancellation on actual engine/device",
+    "Full map time/progress/size/moving-frame matrix; current noon offer checkpoint is not full acceptance",
+    "Real-device bell/cue audibility, latency and non-overlap",
+    "Home live landscape-to-portrait render target defect observed in v1",
+    "Collection/photo/wardrobe complete migration",
+    "Home cold download budget; WeChat build/device/performance/backend; user acceptance"
+  ],
+  "nextRequiredActions": [
+    "Reproduce and fix Home live orientation defect with before/after image evidence",
+    "Continue map shared text fidelity, other encounters and complete acceptance matrix",
+    "Continue remaining collection/photo/wardrobe pages under same architecture and original asset constraints"
+  ],
+  "remoteReadback": "Append ordinary Chinese commit and push; fresh verification ref plus changed bytes/modes readback recorded separately after commit"
+}

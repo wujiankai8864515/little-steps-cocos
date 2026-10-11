@@ -250,6 +250,6 @@ function registerUI(cc) {
         hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
         return {root,motion:swing,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
-    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, confirmationBubble, hangingReturn});
+    return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, confirmationBubble, hangingReturn, choiceBubble:(...args)=>createChoiceBubble(cc,{node,color,polygon},...args)});
 }
 Object.assign(api, {clipPolygonBelow, paperBubbleContour, registerUI, SwingFeedback,infoBubbleLayout,BubblePointer});

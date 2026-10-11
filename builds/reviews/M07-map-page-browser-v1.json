@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "candidate": "travel-map-page-v1",
+  "browser": "independent Chrome supported CUA; real clicks on painted Home map and canvas event/choice/back, explicit candidate memory slot",
+  "observed": [
+    "Home map click led to PAGE_READY MAP",
+    "Manual event opened original offer portrait and two choices; clock CHOICE_PAUSED at40sec/.4; scene age froze while page clock continued",
+    "Choosing 500 merit option displayed original result text and clock RUNNING",
+    "Painted back returned to cached Home; visible merit 700 -> 200",
+    "Re-entry showed decided event without any choices or duplicate debit",
+    "Live 720x1280 -> 720x1690 map resize centered original canvas at y205; actual event at y578 remained clickable"
+  ],
+  "resourceSnapshots": {
+    "home720x1280": {
+      "entries": 93,
+      "reservedBytes": 129784985,
+      "pending": 0
+    },
+    "map720x1280": {
+      "entries": 106,
+      "reservedBytes": 169507737,
+      "pending": 0
+    },
+    "map720x1690": {
+      "entries": 106,
+      "reservedBytes": 171869337,
+      "pending": 0
+    }
+  },
+  "event": {
+    "tripId": "trip_1_1",
+    "uid": "trip_1_1:1",
+    "token": "trip_1_1:choice:1",
+    "fontSize": 28,
+    "contentSupported": true,
+    "card": [
+      273,
+      464,
+      390,
+      245
+    ],
+    "choices": [
+      [
+        314,
+        591,
+        148,
+        58
+      ],
+      [
+        474,
+        591,
+        148,
+        58
+      ]
+    ],
+    "close": [
+      622,
+      462,
+      46,
+      46
+    ]
+  },
+  "sourceWarnings": {
+    "errors": 0,
+    "warnings": 10,
+    "reason": "LabelOutline.color/width deprecation",
+    "resolution": "production map now uses Label.enableOutline/outlineColor/outlineWidth; v1 evidence retained"
+  },
+  "screenshots": [
+    {
+      "path": "builds/qa/map-choice-browser-v1.png",
+      "bytes": 1674160,
+      "sha256": "4bd1cbe159a3359577c390dafc09fccf3e7d84fc9d796171cd19abec719c4eda"
+    },
+    {
+      "path": "builds/qa/map-result-browser-v1.png",
+      "bytes": 1761230,
+      "sha256": "1f00211d708e2676eabb326d793c68d04382ea4b855490c635c79d01c93e6ab8"
+    },
+    {
+      "path": "builds/qa/map-return-home-browser-v1.png",
+      "bytes": 1186780,
+      "sha256": "6ac1facb48415ddea22096c4f5f556972e07454eb459723a14d830a870cb7446"
+    },
+    {
+      "path": "builds/qa/map-decided-tall-browser-v1.png",
+      "bytes": 1683605,
+      "sha256": "ff7bdd77a73c9100aa4095bdadc82a0c216a7788c2ba38c5a5e62831276c1077"
+    }
+  ],
+  "additionalObservation": "Home initially started in desktop landscape then live resized to portrait showed black bands; fresh portrait load and subsequent map tall resize worked. Home landscape-to-portrait renderer handling remains pending, not accepted.",
+  "pending": [
+    "same-state native full-page visual diff",
+    "all encounter types and scrolling on real engine",
+    "live background/manual ownership release on actual browser and WeChat",
+    "WeChat audio, memory, performance and device matrix"
+  ],
+  "cleanup": {
+    "ownedTabClosed": true,
+    "viewportReset": true
+  }
+}

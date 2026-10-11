@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "id": "M07.08",
+  "failures": [
+    {
+      "trigger": "initial source typecheck",
+      "evidence": "builds/reviews/M07-map-page-types-v1.log",
+      "cause": "Home route is named comic, not map; target TypeScript lib lacks Array.includes",
+      "fix": "Map comic route to map preparation; use indexOf for arrays",
+      "recheck": "builds/reviews/M07-map-page-types-v4.log"
+    },
+    {
+      "trigger": "full regression v1",
+      "evidence": "builds/reviews/M07-map-page-regression-v1.log",
+      "cause": "viewport harness lacked TravelMapPage export used by instanceof, preventing mocked returnHome",
+      "fix": "Add page constructor mock without relaxing production assertions",
+      "recheck": "builds/reviews/M07-map-page-regression-v2.log"
+    },
+    {
+      "trigger": "native capture v1 staging",
+      "cause": "Framework source lives in sibling framework, not game project/addons",
+      "fix": "Explicitly resolve framework res:// paths from original framework directory; fresh v2-v4 stages"
+    },
+    {
+      "trigger": "native capture v2 timeout and v3 failed departure",
+      "evidence": [
+        "builds/reviews/M07-map-native-launch-v2.log",
+        "builds/reviews/M07-godot-map-choice-noon-v2-capture.log",
+        "builds/reviews/M07-map-native-launch-v3.log",
+        "builds/reviews/M07-godot-map-choice-noon-v3-capture.log"
+      ],
+      "cause": "Single-line GDScript lambda followed by semicolon placed configure after return inside lambda; service remained unconfigured",
+      "fix": "Place wall_clock lambda and configure on separate lines; explicit departure/save result checks",
+      "recheck": "builds/records/candidates/godot-map-choice-noon-v4.json"
+    },
+    {
+      "trigger": "browser v1 warnings",
+      "evidence": "builds/reviews/M07-map-page-browser-v1.json",
+      "cause": "LabelOutline.color/width deprecated",
+      "fix": "Use Label.enableOutline/outlineColor/outlineWidth",
+      "recheck": "builds/reviews/M07-map-page-browser-v4.json"
+    },
+    {
+      "trigger": "same-state v2 visual difference",
+      "evidence": "builds/qa/map-choice-noon-before-v2.json",
+      "cause": "Generic Graphics stroke differs from native feathered line shape and close X coverage; font raster differences also remain",
+      "fix": "Inject admitted generic drawing into shared bubble; reuse native featherLine/featherPolyline and filledCircle, preserve independent shape/text alpha",
+      "recheck": "builds/qa/map-choice-noon-after-v4.json",
+      "remaining": "Font rasterization and residual edges still pending"
+    },
+    {
+      "trigger": "full regression v3 after enforcing resource closure",
+      "evidence": "builds/reviews/M07-map-page-regression-v3.log",
+      "cause": "TravelSceneView.ink requested home_neutral.png without declaring it in map resources",
+      "fix": "Use admitted scene atlas as unused sampler backing; Stroke2D supports caller-supplied admitted texture too",
+      "recheck": "builds/reviews/M07-map-page-regression-v4.log"
+    },
+    {
+      "trigger": "frozen candidate QA typecheck v4",
+      "evidence": "builds/reviews/M07-map-page-QA-types-v4.log",
+      "cause": "Typecheck started before Creator generated temp/tsconfig.cocos.json",
+      "fix": "Run dependent typecheck only after Creator completes",
+      "recheck": "builds/reviews/M07-map-page-QA-types-v5.log"
+    },
+    {
+      "trigger": "v2 preview initial404",
+      "cause": "Server used build/preview instead of build-config output/preview",
+      "fix": "Read config buildPath; stop old server and restart correct directory; no source mutation"
+    },
+    {
+      "trigger": "Home live landscape-to-portrait observation",
+      "evidence": "builds/reviews/M07-map-page-browser-v1.json",
+      "cause": "Unresolved; rendered room showed black bands/crop after live resize, fresh portrait load correct",
+      "status": "pending",
+      "next": "Reproduce live orientation and inspect render-target/output quad/camera viewport ordering; retain before/after screenshots"
+    }
+  ],
+  "crashPolicy": "No Codex in-app Godot screenshot used. Creator/native capture/independent Chrome graphical phases serial. No new crash observed in these checks; prior Codex crash root cause remains unproven."
+}
