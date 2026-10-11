@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "item": "M08.06",
+  "updatedAt": "2026-10-11T18:34:17.771608+00:00",
+  "events": [
+    {
+      "trigger": "Initial targeted test run",
+      "evidence": "builds/reviews/M08-wardrobe-surface-tests-v1.log",
+      "cause": "Missing closing parenthesis in fake audio adapter in new test harness",
+      "fix": "Correct syntax; targeted rerun and full 269-test suite pass."
+    },
+    {
+      "trigger": "Creator CLI exits 36",
+      "evidence": "builds/reviews/M08-wardrobe-surface-build-v1.log",
+      "result": "Log says preview Finished in 8 seconds. Candidate loads and flows observed in Chrome. Teardown exit not used alone to establish failure/success.",
+      "pending": "CLI teardown exit cause remains unconfirmed."
+    },
+    {
+      "trigger": "Prior action-marks browser control/export interruption",
+      "evidence": "builds/reviews/M04-action-marks-failures.json",
+      "result": "This turn Chrome inventory reported prior agent tab gone; new independent Chrome tab succeeds. PNG downloaded by visible download link, without blob downloadMedia/waitForEvent. Tab closed and viewport reset.",
+      "pending": "Previous interruption root cause not established; no Codex crash asserted."
+    },
+    {
+      "trigger": "Staged diff whitespace check",
+      "cause": "Raw Creator log contains CR and trailing spaces; source check is clean.",
+      "fix": "Preserve raw diagnostic bytes and scope whitespace check to non-log files. No production code change."
+    }
+  ]
+}

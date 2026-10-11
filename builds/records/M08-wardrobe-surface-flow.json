@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "item": "M08.06",
+  "updatedAt": "2026-10-11T18:34:17.771608+00:00",
+  "status": "fixed_surface_and_main_flow_observed_full_page_acceptance_pending",
+  "sourceCommit": "b4f77afc02999a465757177794343eb3d531c5e6",
+  "source": {
+    "path": "games/travel_woodfish/project/wardrobe/wardrobe_page.gd",
+    "sha256": "4904c0dfaf4233272d257bb1b7522fdb413558dc73eccd2867b01958fab5fae5"
+  },
+  "implementation": [
+    "Fixed 720x1280 offscreen target, original contain/letterbox calculation; no physical pixel or screen-size target scaling.",
+    "Onscreen logical input frame maps real pointers to offscreen content, including alpha pick and fixed return hit area. Generic framework adds optional independent input parent; game owns layout.",
+    "Async page creation waits for two content draws; durable outfit bound before first draw. Target deactivated after preparation and during pause.",
+    "Transient target accounted as 7,372,800 bytes through actual asset gate; cancellation/construction failure/retry release target, listeners and child scope.",
+    "User Boot/scene and three-warehouse separation preserved; readonly plugin reinstalled with unchanged symlink metadata."
+  ],
+  "tests": {
+    "regression": "builds/reviews/M08-wardrobe-surface-regression-v1.log",
+    "pass": 269,
+    "fail": 0,
+    "targeted": "games/xiaoyu-cocos/test/wardrobe-surface.test.cjs",
+    "targetedCases": 5,
+    "typecheck": "builds/reviews/M08-wardrobe-surface-types-v2.log (exit 0)",
+    "boundaries": "Actual Page/Session/Store/GameAssets/framework control and surface lifecycle; CC graphics/art/rig adapter substitutes in tests. GPU effects covered only by limited browser observations."
+  },
+  "browser": "builds/reviews/M08-wardrobe-surface-browser.json",
+  "failures": "builds/reviews/M08-wardrobe-surface-failures.json",
+  "candidate": "builds/records/candidates/wardrobe-surface-v1.json",
+  "frozenAudit": "builds/reviews/M08-wardrobe-surface-v1-frozen-audit.json",
+  "pluginSHA256": "0489c010d1dd3ec0ff3ac9e28d5faab9d801c04d2703ad5705c08cd1ad4c1677",
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-wardrobe-surface-longscreen.png",
+      "sha256": "3c1ae5247afb026a5ddeb6a623625aa298e70847fba412974ef6c606b910ff11"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-surface-short-night.png",
+      "sha256": "1d64cad28b86c94625407e7b8eb697e0bb539cf1a6412d4b3cfc2e74a28773c0"
+    }
+  ],
+  "scopeRule": "Only numerical pixel differences deferred. Every original function/navigation/element/layout remains mandatory. Not complete first version.",
+  "pending": [
+    "Wardrobe moving drag, physical multi-pointer and browser interruption/resource failure/retry matrix.",
+    "Other action glyphs and complete original lighting/state matrix.",
+    "Collection keyboard/hover/pressed feedback, global page/function/layout audit.",
+    "WeChat-only frozen delivery and real-device verification."
+  ]
+}

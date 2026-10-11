@@ -220,7 +220,7 @@ function registerUI(cc) {
         api.cancelPointer=()=>owner.cancel();
         api.snapshot=()=>Object.assign(snapshot(),{choices:rects,decided,capturedPointer:owner.owner});api.setAnchor(anchor);return api;
     }
-    function hangingReturn(parent, font, rect, callback, enabled = () => true, swing = new SwingFeedback()) {
+    function hangingReturn(parent, font, rect, callback, enabled = () => true, swing = new SwingFeedback(), inputParent = null) {
         const root = node(parent,'HangingReturn',rect), sx=rect[2]/78,sy=rect[3]/128;
         const visual = node(root,'Swing',[39*sx,4*sy,1,1]); visual.setScale(sx,sy,1);
         const g = visual.addComponent(cc.Graphics);
@@ -244,11 +244,13 @@ function registerUI(cc) {
         g.fillColor=color([.548392157,.346352941,.198431373,1]);g.circle(0,-119,2.3);g.fill();
         const pin=node(root,'Pin',[39*sx,4*sy,1,1]).addComponent(cc.Graphics);
         pin.fillColor=color([.488784314,.308705882,.176862745,1]);pin.circle(0,0,2.6);pin.fill();
-        const hit=node(root,'FixedReturnHitArea',[rect[2]*.09,rect[3]*.23,rect[2]*.82,rect[3]*.76]);
+        // An offscreen visual can use an aligned onscreen logical input frame.
+        // No render-target camera coordinates enter the pointer ownership code.
+        const hit=node(inputParent || root,'FixedReturnHitArea',[(inputParent?rect[0]:0)+rect[2]*.09,(inputParent?rect[1]:0)+rect[3]*.23,rect[2]*.82,rect[3]*.76]);
         const binding=action(hit,callback,enabled);
         const press=()=>{if(enabled())swing.press();},release=()=>swing.release();
         hit.on(cc.Node.EventType.TOUCH_START,press);hit.on(cc.Node.EventType.TOUCH_END,release);hit.on(cc.Node.EventType.TOUCH_CANCEL,release);
-        return {root,motion:swing,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
+        return {root,motion:swing,cancel:binding.cancel,dispose(){binding.dispose();hit.off(cc.Node.EventType.TOUCH_START,press);hit.off(cc.Node.EventType.TOUCH_END,release);hit.off(cc.Node.EventType.TOUCH_CANCEL,release);if(inputParent)hit.destroy();},advance(delta){swing.advance(delta);visual.angle=-swing.angle*180/Math.PI;visual.setScale(sx*swing.scale,sy*swing.scale,1);}};
     }
     return Object.freeze({node, color, polygon, pointer, action, fixedBubble, infoBubble, confirmationBubble, hangingReturn, choiceBubble:(...args)=>createChoiceBubble(cc,{node,color,polygon},...args)});
 }

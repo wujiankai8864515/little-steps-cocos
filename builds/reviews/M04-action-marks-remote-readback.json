@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-10-11T18:17:22.988301+00:00",
+  "commit": "e6564a4a39237db487f2407195e071ffe5884193",
+  "remoteCommit": "e6564a4a39237db487f2407195e071ffe5884193",
+  "remoteTree": "955d58749ab4814ba254eeb04821853904108112",
+  "method": "Normal push followed by fresh named-ref fetch; changed files/deletions and baseline/plugin byte and Git modes compared",
+  "files": [
+    {
+      "path": "builds/qa/cocos-action-marks-home-tap.png",
+      "mode": "100644",
+      "sha256": "93d06574af35da88b8fc4b8fd86f320956bafad0c7e7c2cad52970bf76ee9e73",
+      "matches": true
+    },
+    {
+      "path": "builds/records/M04-action-marks-flow.json",
+      "mode": "100644",
+      "sha256": "51cecc12d9313df3a3521f32d3df7a3879a71ee3844a2c795c4657b03adcf15d",
+      "matches": true
+    },
+    {
+      "path": "builds/records/M04-action-marks-native.json",
+      "mode": "100644",
+      "sha256": "1dfece89a34b4d12e130c7b210e9e1f35cfaeb87bac39caba4c2df464177fdcc",
+      "matches": true
+    },
+    {
+      "path": "builds/records/candidates/action-marks-v1.json",
+      "mode": "100644",
+      "sha256": "4d254ea9dc30e983c7c88acbef249c49516e0611c2ca87d3e5d14f047bb44fe0",
+      "matches": true
+    },
+    {
+      "path": "builds/records/migration-plan.json",
+      "mode": "100644",
+      "sha256": "a45cfcbb848f2c73f8febd0f799f45e3472cc4544b17d1169c8b765302df0c69",
+      "matches": true
+    },
+    {
+      "path": "builds/records/resume.json",
+      "mode": "100644",
+      "sha256": "3d34be6d81d3187d419deddf1c5c9d5a7be530d4956bbd8bd8fe9722d3977c48",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-browser.json",
+      "mode": "100644",
+      "sha256": "dc2e8341629a909a6733aa6963f1a26d716e821da8688cb1accf60a5437c52bb",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-failures.json",
+      "mode": "100644",
+      "sha256": "a0268e8d9cccaeef640eac196584470059ea5141e675fae20290d0d0d7f9f43d",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-native-v1.log",
+      "mode": "100644",
+      "sha256": "00950a079fe08da8ac4e6b5ed189d5c359bfd48353775522163e0fe3593e08f7",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-regression-v1.log",
+      "mode": "100644",
+      "sha256": "c11a9dc12e537ecab4735367f4045c9af6940cbe18ead2e642e635a5604b98a5",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-tests-v1.log",
+      "mode": "100644",
+      "sha256": "aad4fa8cf7b5abb1896570a4f4872f02526335ff2ec72348642ec5592fd6d69f",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-tests-v2.log",
+      "mode": "100644",
+      "sha256": "f89ffa168a8f280a3f0d8be176e05b982ab03409fb74c05281a701f95c7bd45a",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-types-v1.log",
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-types-v2.log",
+      "mode": "100644",
+      "sha256": "d5da7c2c9d4ad59b156441a5fa0e3cda9d3ed8f029dcfc5b839f204bb58ccf2f",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-types-v3.log",
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-v1-build.log",
+      "mode": "100644",
+      "sha256": "0f3f602cced8cf016e13c6cc9556729e8c53bf41cf9ea3251f61c2861d455f8a",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-v1-frozen-audit.json",
+      "mode": "100644",
+      "sha256": "60ace81594657df32bcd0ce3938caba2ea94e9d6a806c12a08b62d857983e528",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M04-action-marks-v1-server.log",
+      "mode": "100644",
+      "sha256": "735d01e53f009a8ff1be32a98c1998d059bdfbe4e9036e2e83680c8a47ee28f3",
+      "matches": true
+    },
+    {
+      "path": "builds/reviews/M08-wardrobe-remote-readback.json",
+      "mode": "100644",
+      "sha256": "abe9b22b9bd2d0e0afb1bd76ccd1261dc58e631cee15c2710b842d5263187ec3",
+      "matches": true
+    },
+    {
+      "path": "builds/tools/capture_action_marks_native.py",
+      "mode": "100644",
+      "sha256": "3e51afd12a186d7526577dfe277ab05d32c4a2c21ab472b7f7270db539ff67f8",
+      "matches": true
+    },
+    {
+      "path": "builds/tools/create_action_marks_candidate.py",
+      "mode": "100644",
+      "sha256": "389bd85d9bd6509cf3a12ced8195216a5fcf78b29b1ad56400c4c03042881aaa",
+      "matches": true
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "mode": "100644",
+      "sha256": "e392ad32747e7825eb24e1ecda24aa13fbbe1dc468b36ece5437d02659153d01",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/.creator/asset-template/typescript/Custom Script Template Help Documentation.url",
+      "mode": "100644",
+      "sha256": "d9195c36f763bcca97d0f6eef1b3c9632918c7e8279258758b421b19579fea4a",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/.creator/default-meta.json",
+      "mode": "100644",
+      "sha256": "b52800a6063e26378a7ed6610800cbec4261614c507e7b5a1afc0c0b696605f3",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/.gitignore",
+      "mode": "100644",
+      "sha256": "67d1bf5270ff8e6655818839339d3d311b52d6316d1f075859772510fed80517",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/Boot.ts",
+      "mode": "100644",
+      "sha256": "da36011f73d3811f0b1b347074e2c02dbcd34adabf7f205dd5628d75f10e0d5a",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/Boot.ts.meta",
+      "mode": "100644",
+      "sha256": "0ee38f868a3688c57fb16d7b28cf0e16c0c846b77fa3b08f7323530603dfb7d4",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ActionMarkState.ts",
+      "mode": "100644",
+      "sha256": "25111c4dede9e30aa9f7d9d616135de208faba2a96cfd01ceea975382ccaf2f9",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ActionMarkState.ts.meta",
+      "mode": "100644",
+      "sha256": "e3d5ad1f2ae7e9faa9ccaf52194e3b4b5e08fb6c10a959087f2d4882bb7656f2",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ActionMarks.ts",
+      "mode": "100644",
+      "sha256": "c5f0621be2d9f9b0548424ce87cd8f4c77b9645774f6701cea6c5459f2f031cb",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ActionMarks.ts.meta",
+      "mode": "100644",
+      "sha256": "8b6286c1fc475daba720a67cfe76651c056323b2d65062bee6ad539d1dc7e74e",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts",
+      "deleted": true,
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts.meta",
+      "deleted": true,
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FishInteraction.ts",
+      "mode": "100644",
+      "sha256": "a4abc4c28412fe6d8e83bd96cfa5d3cfab78808ac4ab8c15e94c74169616da93",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "mode": "100644",
+      "sha256": "e9e2bb12562e02ee8425136160b730a98aa881c270b7f35d5b489b95280bdd36",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeProps.ts",
+      "mode": "100644",
+      "sha256": "8c0971107d6175761a0e2ee5c13464b6f270757228f87cf26c56d3aea5eca9ec",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+      "mode": "100644",
+      "sha256": "6d9718a1d4cf614ef8b29f769e9c9f7e0d9289ae6b722bf0c257d5c94f637bea",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "mode": "100644",
+      "sha256": "0fd5cd7fd304677eb1480968648f5c1081436fd5ad963c2102bf6f9e5a122499",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+      "mode": "120000",
+      "sha256": "f224b26fbaa877053c87e138c1729dda78edf5d431313ef7473d4ea74406ee80",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+      "mode": "100644",
+      "sha256": "0cd866439d4ae7a0696b1d08b64c32423b54ada11117086c641038d0559eb997",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/scene.scene",
+      "mode": "100644",
+      "sha256": "95d3251274653614557153d6c82d974f860bed97e05a3417d0f6ee8a7870a28d",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/scene.scene.meta",
+      "mode": "100644",
+      "sha256": "cb0d22499d388d6346215c1ddce01e4a9134c8574f3e360e93469e30da087b2c",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/package.json",
+      "mode": "100755",
+      "sha256": "36b1cd22e56dbda29b50cca41779c8f849b5fe9012cd3221d6fec58a5309e2ce",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/builder.json",
+      "mode": "100644",
+      "sha256": "a3e1a8df580b6ebec15ad16c9bbef785806567bfbc093821852bb3606028e702",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/cocos-service.json",
+      "mode": "100644",
+      "sha256": "2a29ba978e872c20bb7d01117c003fd6c6ebfbdb450196f45e56846b5d4b09eb",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/device.json",
+      "mode": "100644",
+      "sha256": "93af91e0b90038cedc84d08651f845e1c2e2ae460321c19f083c27a178e451f8",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/engine.json",
+      "mode": "100644",
+      "sha256": "4f3ab4457fee5624da55da063d3e3025a58fb590309833155e1d28b891157121",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/information.json",
+      "mode": "100644",
+      "sha256": "295baa75f67775a21ba642577d88a3e3ccd1f8da91b55bcf0a91d0f88cca7d94",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/program.json",
+      "mode": "100644",
+      "sha256": "d914f9f19ffe02724337936d8c7907798c8666566902b78243eb1aa8da0baedd",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/project.json",
+      "mode": "100644",
+      "sha256": "6cb23a2127c3376e5940168a37a4d48b09d0113fe4a871ff77aec09ab5203673",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/action-marks.test.cjs",
+      "mode": "100644",
+      "sha256": "53ed8c88f24a09ff6c616701e227dc4cc4361dc3bfeffef7c5a3de3709666a20",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fish-interaction.test.cjs",
+      "mode": "100644",
+      "sha256": "a880dca7ed94a1d6ed5095bc51274193d142aeebcaf95106401dbc593d47e700",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fixtures/action-marks-native.json",
+      "mode": "100644",
+      "sha256": "ef4314952359b1f1afca8a983f8ba4588a57bc3cb789999ddfca8301bc5a0fe9",
+      "matches": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/tsconfig.json",
+      "mode": "100644",
+      "sha256": "5b905d615fb49c5214cb704126fd885f1f1c1f17f23426b084f32c7881b640fc",
+      "matches": true
+    }
+  ],
+  "plugin": {
+    "sha256": "e392ad32747e7825eb24e1ecda24aa13fbbe1dc468b36ece5437d02659153d01",
+    "targetMode": "0444",
+    "directoryMode": "0555"
+  },
+  "acceptance": "Remote source backup verified; full migration/visual/device acceptance still pending"
+}

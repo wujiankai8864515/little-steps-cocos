@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-11T18:16:21.088263+00:00",
-  "latestItem": "M04.16",
+  "updatedAt": "2026-10-11T18:34:17.771608+00:00",
+  "latestItem": "M08.06",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
-    "builds/records/M04-action-marks-flow.json",
-    "builds/reviews/M04-action-marks-failures.json",
-    "builds/reviews/M04-action-marks-browser.json"
+    "builds/records/M08-wardrobe-surface-flow.json",
+    "builds/reviews/M08-wardrobe-surface-browser.json",
+    "builds/reviews/M08-wardrobe-surface-failures.json"
   ],
-  "nextPriority": "All original functions/navigation/elements/layout remain 1:1. Shared action marks now implemented; 52 native cases and 264 tests pass, Home tap glyph PNG observed. Complete remaining real glyph/route/interruption verification only when browser tools permit. Reconcile Wardrobe fixed 720x1280 render target, real moving drag; collection keyboard/hover/pressed feedback; all-page audit and WeChat-only build delivery remain. Still not complete first version.",
-  "pendingReadback": "builds/reviews/M04-action-marks-remote-readback.json (create after commit)",
+  "nextPriority": "All original functions/navigation/elements/layout remain 1:1. Wardrobe fixed 720x1280 render surface and scaled input/main flow verified at 900/1280/1600 heights; 269 tests pass. Continue full page/function/layout audit, collection keyboard/hover/pressed feedback, remaining action glyphs and moving drag/interruption matrix; WeChat-only build/device delivery remains. Not complete first version.",
+  "pendingReadback": "builds/reviews/M08-wardrobe-surface-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -21,6 +21,6 @@
     "Freeze QA time with advance(0), not by skipping Application.advance; otherwise resize observations are invalid",
     "Wardrobe candidates v1-v3 in builds/work; sources frozen and QA-only controls declared. All test tabs and servers stopped. v1 initial black canvas did not reproduce when unchanged candidate reopened on 8787; root cause remains unconfirmed.",
     "Wardrobe screenshots saved in builds/qa/cocos-wardrobe-*.png. V3 is latest candidate (per-attempt outfit lease cleanup), not release. Shipping Boot/scene unchanged.",
-    "action-marks-v1 candidate and PNG preserved; server 8788 stopped. CUA export wait timed out then native entry point stopped Computer Use because current URL is restricted. Do not bypass. Tab closure/viewport reset unconfirmed. Browser marks other than Home tap remain pending; paused manual case does not establish real-time cadence."
+    "Latest wardrobe-surface-v1 candidate uses fixed 720x1280 RT. Browser main flow, night/short/long observations saved. Fresh Chrome session succeeded after previous control interruption; tab closed, viewport reset, server8789 stopped. No previous root-cause claim."
   ]
 }

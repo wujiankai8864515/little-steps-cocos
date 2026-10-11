@@ -1,6 +1,6 @@
-import { Color, EventKeyboard, input, Input, KeyCode, Label, Material, Mask, Node, Sprite, UITransform, Vec3, Vec4 } from 'cc';
+import { Color, EventKeyboard, input, Input, KeyCode, Label, Material, Node, Sprite, UITransform, Vec3, Vec4 } from 'cc';
 import { GameAssets } from './Assets';
-import { audioTransport, core, meshSprite, Scope, sharedUI } from './Engine';
+import { audioTransport, core, lifetime, meshSprite, Scope, sharedUI } from './Engine';
 import { HomeClock } from './HomeClock';
 import { HomeLighting } from './HomeLighting';
 import { HomeShadows } from './HomeShadows';
@@ -9,8 +9,8 @@ import { applyOutfit } from './OutfitBinding';
 import { PromptSparkles } from './PromptSparkles';
 import { TravelAtlasSprite } from './TravelAtlasSprite';
 import { TRAVEL_FONT, TRAVEL_GLINT } from './TravelHomeRules';
-import { label, nodeAt, panel } from './Visual';
-import { box, repaintPanel } from './Viewport';
+import { label, nodeAt } from './Visual';
+import { WardrobeViewport } from './WardrobeViewport';
 import { deformWardrobe, wardrobeMesh, WardrobeMotion, wardrobeParticle, WARDROBE_ATLAS, WARDROBE_REGIONS, WARDROBE_VINES } from './WardrobeGeometry';
 import { WardrobeSession } from './WardrobeSession';
 import { OUTFIT_TEXTURE, SkinId, WardrobeStore } from './WardrobeStore';
@@ -21,12 +21,20 @@ export const WARDROBE_EFFECTS=['wardrobe-room'];
 export interface WardrobeRetained {motion:WardrobeMotion;}
 export class WardrobePage {
     readonly root:Node;readonly canvas:Node;readonly rig:XiaoyuRig;readonly session:WardrobeSession;onBack=()=>{};onEquip:(id:SkinId,current:()=>boolean)=>Promise<boolean>=async()=>false;
-    readonly marks:ActionMarks;private active=false;private clip:Node;private decor:Node;private lighting:HomeLighting;private shadows:HomeShadows;private materials:Array<{material:Material;pass:number}>=[];private motion:WardrobeMotion;
+    readonly marks:ActionMarks;private active=false;private decor:Node;private lighting:HomeLighting;private shadows:HomeShadows;private materials:Array<{material:Material;pass:number}>=[];private motion:WardrobeMotion;
     private cloths:any[]=[];private vines:any[]=[];private labels:Label[]=[];private sparkles:PromptSparkles[]=[];private particles:TravelAtlasSprite[]=[];private particleAge=-1;private bubble:any;private infoPointer=new core.BubblePointer();private bubbleChoices=false;
     private returnControl:any;private pointer:any;private captured:number|null=null;private press:{at:number[];age:number};private previous:number[];private held=false;private landing=false;private knock:any;
-    constructor(parent:Node,private assets:GameAssets,private scope:Scope,height:number,readonly store:WardrobeStore,private clock:HomeClock,gestureSeen:()=>boolean,retained?:WardrobeRetained,policy='temporary_local',reward?:(id:SkinId)=>Promise<boolean>){
-        this.motion=retained?.motion||new WardrobeMotion();this.root=nodeAt(parent,'WardrobePage',0,0,720,height);this.root.active=false;panel(this.root,'WardrobeLetterbox',[0,0,720,height],[129/255,83/255,52/255]);
-        this.clip=nodeAt(this.root,'WardrobeViewport',0,0,720,1280);this.clip.addComponent(Mask);this.canvas=nodeAt(this.clip,'OriginalWardrobeCanvas',0,0,720,1280);
+    static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,store:WardrobeStore,clock:HomeClock,gestureSeen:()=>boolean,retained?:WardrobeRetained,policy='temporary_local',reward?:(id:SkinId)=>Promise<boolean>){
+        const owner=lifetime(scope);
+        try{
+            const viewport=await WardrobeViewport.create(parent,assets,owner,height);
+            const page=new WardrobePage(assets,owner,viewport,store,clock,gestureSeen,retained,policy,reward);
+            // The full content must have drawn before the route can replace Home.
+            await owner.guard(viewport.ready);viewport.setActive(false);return page;
+        }catch(error){owner.dispose();throw error;}
+    }
+    private constructor(private assets:GameAssets,private scope:Scope,private viewport:WardrobeViewport,readonly store:WardrobeStore,private clock:HomeClock,gestureSeen:()=>boolean,retained?:WardrobeRetained,policy='temporary_local',reward?:(id:SkinId)=>Promise<boolean>){
+        this.motion=retained?.motion||new WardrobeMotion();this.root=viewport.root;this.canvas=viewport.canvas;
         this.painted('backdrop',[0,0,720,1280],0);
         const glass=this.mesh('WindowGlass',wardrobeMesh([0,0,141,667]),1);glass.mesh.vertices.set([0,0,141,72,141,667,0,603]);glass.sprite.geometryChanged();
         for(let i=0;i<2;i++){const key=i?'peach':'original',region=WARDROBE_REGIONS[key],create=(shadow:boolean)=>{const v=this.mesh((shadow?'ClothShadow_':'PinnedCloth_')+key,wardrobeMesh(region,6,14),shadow?3:0);v.root.setPosition(242+180*i,-273);v.root.setScale(151/region[2],289/region[3],1);return v;};this.cloths.push({region,shadow:create(true),view:create(false)});this.labels.push(this.paperLabel(key,[239+180*i,554,158,56],true));}
@@ -39,11 +47,12 @@ export class WardrobePage {
         this.knock=audioTransport().player(this.root,scope,'WardrobeOriginalKnock');this.knock.gain(Math.pow(10,-8/20));this.rig.onContact=()=>{if(this.active&&gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
         this.mesh('WardrobeSoftLightVolume',wardrobeMesh([0,0,720,1280]),2);this.shadows.layers.forEach(v=>v.node.setSiblingIndex(this.canvas.children.length-1));this.rig.root.setSiblingIndex(this.canvas.children.length-1);
         this.marks=new ActionMarks(this.canvas,assets,scope,()=>this.rig.faceBounds(this.canvas));this.rig.onActionMark=(kind,pixel,offset)=>{if(this.active){const at=this.rig.actionMarkPoint(pixel,this.canvas);this.marks.emit(kind,at.map((v,i)=>v+offset[i]));}};this.rig.onClearActionMarks=()=>this.marks.clear();
-        this.decor=nodeAt(this.canvas,'WardrobeOverlay');this.returnControl=sharedUI().hangingReturn(this.decor,assets.font(TRAVEL_FONT),[24,35,77,139],()=>this.onBack(),()=>this.active&&scope.active);this.paperLabel('小余的衣柜',[248,72,310,70],false,this.decor);
+        this.decor=nodeAt(this.canvas,'WardrobeOverlay');this.returnControl=sharedUI().hangingReturn(this.decor,assets.font(TRAVEL_FONT),[24,35,77,139],()=>this.onBack(),()=>this.active&&scope.active,undefined,viewport.input);this.paperLabel('小余的衣柜',[248,72,310,70],false,this.decor);
         this.session=new WardrobeSession(store,{preview:id=>applyOutfit(this.rig,assets,id),equip:(id,current)=>this.onEquip(id,current),reward},policy);
-        this.pointer=sharedUI().pointer(this.canvas,{down:(at:number[],id:number)=>this.down(at,id),move:(at:number[],id:number)=>this.move(at,id),up:(at:number[],id:number)=>this.up(at,id),cancel:()=>this.cancelPointer()},()=>this.active&&scope.active);
+        if(!applyOutfit(this.rig,assets,store.worn))throw new Error('Wardrobe outfit is not ready');
+        this.pointer=sharedUI().pointer(viewport.input,{down:(at:number[],id:number)=>this.down(at,id),move:(at:number[],id:number)=>this.move(at,id),up:(at:number[],id:number)=>this.up(at,id),cancel:()=>this.cancelPointer()},()=>this.active&&scope.active);
         const key=(e:EventKeyboard)=>{if(!this.active||e.keyCode!==KeyCode.ESCAPE)return;if(this.bubble){this.session.cancelPreview();this.clearBubble();this.syncLabels();}else this.onBack();};input.on(Input.EventType.KEY_DOWN,key);
-        scope.own(store.subscribe(()=>this.syncLabels()));scope.own(()=>{this.pause();this.session.close();this.pointer.dispose();this.returnControl.dispose();input.off(Input.EventType.KEY_DOWN,key);this.root.destroy();});this.resize(height);this.syncLabels();this.render(0);
+        scope.own(store.subscribe(()=>this.syncLabels()));scope.own(()=>{this.pause();this.session.close();this.pointer.dispose();this.returnControl.dispose();input.off(Input.EventType.KEY_DOWN,key);});this.syncLabels();this.render(0);
     }
     private bind(sprite:Sprite,pass:number){const material=new Material();material.initialize({effectAsset:this.assets.effect('wardrobe-room'),defines:{USE_TEXTURE:true}});sprite.customMaterial=material;this.materials.push({material,pass});this.scope.own(()=>material.destroy());}
     private mesh(name:string,mesh:any,pass:number){const root=nodeAt(this.canvas,name),sprite:any=root.addComponent(meshSprite()),spec=this.assets.art(WARDROBE_ATLAS);sprite.configure(mesh,spec.size,spec.content);sprite.spriteFrame=this.assets.frame(WARDROBE_ATLAS,this.scope);sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.bind(sprite,pass);return {root,sprite,mesh};}
@@ -74,11 +83,11 @@ export class WardrobePage {
         this.lighting.update({ambient:[.78,.73,.65].map((v,i)=>v+([.38,.43,.59][i]-v)*light.night),sun:.25*(1-light.night)});this.shadows.update();this.returnControl.advance(delta);this.sparkles.forEach(v=>v.advance(delta));this.updateParticles(delta);
     }
     retain():WardrobeRetained{this.motion.cancel();return {motion:this.motion};}
-    resize(height:number,_physicalWidth?:number){this.pointer?.cancel();this.cancelPointer();this.returnControl.cancel();box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('WardrobeLetterbox'),720,height);const scale=Math.min(1,height/1280);box(this.clip,(720-720*scale)/2,(height-1280*scale)/2,720*scale,1280*scale);this.canvas.setScale(scale,scale,1);}
-    resume(allowInput=true){this.active=allowInput;this.root.active=true;if(!this.session.active){this.session.open();this.syncLabels();if(this.store.error){this.session.notice('这次没有保存好，先保留原来的衣服。请稍后重试。');this.showBubble();}}this.render(0);}
-    pause(){this.active=false;this.pointer?.cancel();this.cancelPointer();this.knock.stop();this.rig.focusLost();this.returnControl.cancel();}
+    resize(height:number,_physicalWidth?:number){this.pointer?.cancel();this.cancelPointer();this.returnControl.cancel();this.viewport.resize(height);}
+    resume(allowInput=true){this.active=allowInput;this.root.active=true;this.viewport.setActive(true);if(!this.session.active){this.session.open();this.syncLabels();if(this.store.error){this.session.notice('这次没有保存好，先保留原来的衣服。请稍后重试。');this.showBubble();}}this.render(0);}
+    pause(){this.active=false;this.viewport.setActive(false);this.pointer?.cancel();this.cancelPointer();this.knock.stop();this.rig.focusLost();this.returnControl.cancel();}
     advance(delta:number){if(!this.active)return;const dt=Number.isFinite(delta)?Math.max(0,delta):0;this.marks.advance(dt);this.motion.advance(dt);if(this.press){this.press.age+=Math.min(dt,.1);if(!this.held&&this.press.age>.32){this.held=true;this.rig.suspend();const body=this.rig.backpackNodes().body,p=body.getComponent(UITransform).convertToWorldSpaceAR(new Vec3(330,-175));this.rig.beginLift([p.x,p.y]);this.rig.root.setSiblingIndex(this.canvas.children.length-2);}}
         this.rig.liftHeight=Math.max(0,615+this.rig.root.position.y);if(this.held)this.rig.lift(1,dt,[0,0]);else if(this.landing){const p=this.rig.root.position,gain=1-Math.exp(-dt*12);this.rig.root.setPosition(p.x+(15-p.x)*gain,p.y+(-615-p.y)*gain);if(!this.rig.advanceLanding(dt)){this.landing=false;this.rig.root.setPosition(15,-615);this.rig.root.setSiblingIndex(this.marks.root.getSiblingIndex());this.rig.resume();}}else this.rig.advance(dt,this.clock.nightMix()>.5);
         this.marks.render();this.render(dt);if(this.bubble){this.bubble.advance(dt);if(this.bubble.snapshot().phase==='hidden')this.clearBubble();}}
-    snapshot(){return {...this.session.snapshot(),elapsed:this.motion.elapsed,hour:this.clock.hour(),marks:this.marks.snapshot(),held:this.held,landing:this.landing,particlePool:this.particles.length,particles:this.particleAge>=0?22:0,cloth:this.motion.cloth.slice(),labels:this.labels.map(v=>v.string),bubble:this.bubble?.snapshot(),rig:this.rig.snapshot()};}
+    snapshot(){return {...this.session.snapshot(),surface:this.viewport.snapshot(),elapsed:this.motion.elapsed,hour:this.clock.hour(),marks:this.marks.snapshot(),held:this.held,landing:this.landing,particlePool:this.particles.length,particles:this.particleAge>=0?22:0,cloth:this.motion.cloth.slice(),labels:this.labels.map(v=>v.string),bubble:this.bubble?.snapshot(),rig:this.rig.snapshot()};}
 }

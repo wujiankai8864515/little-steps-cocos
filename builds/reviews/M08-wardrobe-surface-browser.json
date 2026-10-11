@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "item": "M08.06",
+  "updatedAt": "2026-10-11T18:34:17.771608+00:00",
+  "candidate": "wardrobe-surface-v1",
+  "browser": "Independent Chrome via supported CUA, one engine tab; no Codex in-app Godot capture",
+  "url": "http://127.0.0.1:8789/",
+  "observations": [
+    {
+      "timestamp": "2026-10-11T18:26:43.016Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        1280
+      ],
+      "revision": 0,
+      "worn": "original",
+      "entries": 97,
+      "reservedBytes": 149452533,
+      "observed": "Real Home wardrobe hotspot entered; fixed target ready after 2 draws; tap mark visible and faceSafe=true.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:27:05.825Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 0,
+      "worn": "original",
+      "entries": 97,
+      "reservedBytes": 147263733,
+      "observed": "Real peach cloth selected. Preview peach; durable original. Direct unlock/cancel choices.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:27:27.244Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 0,
+      "worn": "original",
+      "entries": 97,
+      "reservedBytes": 147263733,
+      "observed": "Real cancel button restores original, clears choices, no save revision.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:27:34.964Z",
+      "route": "HomePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 0,
+      "worn": "original",
+      "entries": 93,
+      "reservedBytes": 127596185,
+      "observed": "Real hanging return releases wardrobe target and page leases.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:27:58.159Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        1600
+      ],
+      "revision": 1,
+      "worn": "original",
+      "entries": 97,
+      "reservedBytes": 151295733,
+      "observed": "QA route reentry then real cloth/direct unlock. Ownership includes peach; now wear/cancel choices.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:28:07.362Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        1600
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 97,
+      "reservedBytes": 151295733,
+      "observed": "Real wear choice updates labels and durable outfit.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:28:24.670Z",
+      "route": "HomePage",
+      "viewport": [
+        720,
+        1600
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 94,
+      "reservedBytes": 133358325,
+      "observed": "Real hanging return, Home retains peach and releases wardrobe resources.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:28:32.820Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        1600
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 97,
+      "reservedBytes": 151295733,
+      "observed": "QA reentry, peach visible with fresh actor and zero contacts, longscreen PNG captured.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:29:00.122Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 97,
+      "reservedBytes": 147263733,
+      "observed": "Resize while advance(0) continues; QA hour 23; short night PNG captured.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:29:39.172Z",
+      "route": "WardrobePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 97,
+      "reservedBytes": 147263733,
+      "observed": "Unpaused real 700 ms actor press/release triggers landing; age .0334, position 5.7888, velocity125.5332.",
+      "pending": 0
+    },
+    {
+      "timestamp": "2026-10-11T18:32:22.963Z",
+      "route": "HomePage",
+      "viewport": [
+        720,
+        900
+      ],
+      "revision": 2,
+      "worn": "peach",
+      "entries": 94,
+      "reservedBytes": 129326325,
+      "observed": "Final real hanging return; zero pending loads, peach preserved.",
+      "pending": 0
+    }
+  ],
+  "fixedSurface": {
+    "logicalSize": [
+      720,
+      1280
+    ],
+    "pixels": [
+      720,
+      1280
+    ],
+    "readyFrames": 2,
+    "targetReservationBytes": 7372800,
+    "layouts": [
+      {
+        "viewport": [
+          720,
+          900
+        ],
+        "displayRect": [
+          106.875,
+          0,
+          506.25,
+          900
+        ],
+        "inputScale": 0.703125
+      },
+      {
+        "viewport": [
+          720,
+          1280
+        ],
+        "displayRect": [
+          0,
+          0,
+          720,
+          1280
+        ],
+        "inputScale": 1
+      },
+      {
+        "viewport": [
+          720,
+          1600
+        ],
+        "displayRect": [
+          0,
+          160,
+          720,
+          1280
+        ],
+        "inputScale": 1
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "path": "builds/qa/cocos-wardrobe-surface-longscreen.png",
+      "sha256": "3c1ae5247afb026a5ddeb6a623625aa298e70847fba412974ef6c606b910ff11"
+    },
+    {
+      "path": "builds/qa/cocos-wardrobe-surface-short-night.png",
+      "sha256": "1d64cad28b86c94625407e7b8eb697e0bb539cf1a6412d4b3cfc2e74a28773c0"
+    }
+  ],
+  "consoleErrorsObserved": [],
+  "reference": {
+    "path": "/Users/wkk/dotWorkers/little-steps/build/reviews/20261007-wardrobe-w1w2/screens/03_after_crown_idle_day.png",
+    "sha256": "0c5cf88f4cd5f8becbab963ffa2bf14aecb6807f7c0b1263c3a4d860ea87702a",
+    "observation": "Original title, return, two fabrics/labels, vines, actor/crown and basket composition compared qualitatively. Original reference appears warmer/sharper; no numerical pixel or complete lighting parity claim."
+  },
+  "limits": [
+    "Reentry uses visible QA wardrobe route button; initial entry and returns use actual game hotspots.",
+    "First-draw outfit ordering established by unit/integration test; screenshot after reentry alone cannot establish first-frame timing.",
+    "Long press/release observed; moving drag path and physical multi-pointer remain pending.",
+    "Only tap glyph observed here; complete marks/dynamic lighting matrix pending.",
+    "QA candidate has visible capture/route/hour/save-failure controls and fixed selected hour; not shipping build."
+  ],
+  "cleanup": {
+    "tabClosed": true,
+    "viewportReset": true,
+    "serverStopped": true
+  }
+}
