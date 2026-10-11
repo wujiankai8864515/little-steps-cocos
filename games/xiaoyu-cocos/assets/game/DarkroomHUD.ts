@@ -21,6 +21,11 @@ export class DarkroomHUD {
         const text=(name:string,word:string,x:number,y:number,px:number,color:number[])=>label(this.root,assets,name,word,[x-180,y-px*1.37],[360,px*2],px,color);
         text('MisfortuneLabel','晦气',360,barY-24,30,[1,.94117647,.77647058]);text('NeedleLabel','绣花针',175,1094,28,[.38823529,.23137255,.14117647]);text('SlipperLabel','拖鞋',548,1094,28,[.38823529,.23137255,.14117647]);this.hint=text('DollHint','轻点布偶',360,888,21,[.98,.88,.69]);this.hint.color=new Color(.98*255,.88*255,.69*255,.85*255);this.advance();
     }
+    resize(barY:number){
+        this.barY=barY;this.scale=NaN;this.amount=-1;
+        const paths=[];for(const sign of [-1,1]){const points=[];for(let i=0;i<33;i++){const t=i/32,radius=13*(1-t*.65);points.push([372.5+sign*217+Math.cos(t*Math.PI*2*1.23)*radius*sign,barY+14+Math.sin(t*Math.PI*2*1.23)*radius]);}paths.push(core.featherPolyline(points,1.6));}this.ends.draw(core.mergeDrawingMeshes(paths),[.78,.6,.35,.82]);
+        this.root.getChildByName('MisfortuneLabel').setPosition(180,-(barY-24-30*1.37));this.advance();
+    }
     advance(){const r=this.round,y=this.barY;this.feedback.clear();
         // Native StyleBoxFlat adjusts its one-pixel AA size by the root's
         // stretch scale, even when the world itself uses an offscreen target.

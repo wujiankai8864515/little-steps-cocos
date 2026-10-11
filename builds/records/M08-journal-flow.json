@@ -38,13 +38,13 @@
     "Travel map/encounter and collection entry remain unbound; archive rendering exists but collection-to-archive navigation remains pending",
     "Photo wall and wardrobe remain unimplemented",
     "Native polygon antialiasing, mip filters, glyph shaping/baselines, hover/focus cues and all touch targets require strict runtime comparison",
-    "Viewport size is currently captured at Application/page construction; original has dynamic set_viewport_size. Previously observed clipping after resize is unresolved.",
+    "Dynamic viewport source now wired and partial Home runtime observed in M09-viewport-flow.json; journal/all-page runtime and strict comparison still pending.",
     "Home cold download remains over 19,000,000 bytes; full resource closure remains unverified/failing. High-DPI long screen cached Home+Darkroom+journal targets can exceed 256MiB."
   ],
   "continuation": [
     "Journal canvas flow observed; continue strict Godot comparison, archive entry binding and remaining controls/background/device validation",
     "Port Travel scene/map and encounter interaction, then collection/archive navigation, photo wall and wardrobe",
-    "Implement dynamic viewport and render-target resource ownership without losing gameplay state",
+    "Complete all-page viewport verification and budget-respecting cached visual ownership without losing gameplay state",
     "Audit full page-transition residency, fix budgets, build only WeChat for formal delivery and verify on actual devices"
   ],
   "sourceReference": [

@@ -8,6 +8,7 @@ const intersects=(a:number[],b:number[])=>a[0]<b[0]+b[2]&&a[0]+a[2]>b[0]&&a[1]<b
 export class DarkroomBubble {
     private bubble:any=null;
     constructor(private root:Node,private assets:GameAssets,scope:Scope,private safe:number[],private anchor:()=>number[]){scope.own(()=>this.dismiss());}
+    setSafe(safe:number[]){this.safe=safe;this.layout();}
     show(text:string,seconds:number){this.dismiss();this.bubble=sharedUI().infoBubble(this.root,this.assets.font('res://assets/bootstrap_ui.ttf'),text,this.anchor(),this.safe,{fontSize:28,minWidth:220,maxWidth:330,minimumFontSize:20,holdSeconds:seconds,fontMetrics:this.assets.catalog.assets['res://assets/bootstrap_ui.ttf'].fontMetrics});this.bubble.root.name='CreamResultBubble';this.layout();}
     private layout(){
         if(!this.bubble)return;const at=this.anchor(),protectedRect=grow(LAMP_RECT,12),full=this.safe;

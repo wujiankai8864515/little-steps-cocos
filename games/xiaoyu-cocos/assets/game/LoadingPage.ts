@@ -1,4 +1,5 @@
 import { Color, Graphics, Node } from 'cc';
+import { box } from './Viewport';
 import { GameAssets } from './Assets';
 import { core, Scope, sharedUI } from './Engine';
 import { loadingPose } from './LoadingMotion';
@@ -33,6 +34,7 @@ export class LoadingPage {
         this.action=sharedUI().action(this.retry,()=>{this.retry.active=false;this.onRetry();},()=>this.retry.activeInHierarchy);
         scope.own(()=>{this.action.dispose();this.root.active=false;this.root.destroy();});this.advance(0);
     }
+    resize(height:number,_physicalWidth?:number){box(this.root,0,0,720,height);this.root.getChildByName('BleedBackground').setPosition(0,-(height-1600)/2);this.root.getChildByName('Composition').setPosition(0,-(height-1280)/2);this.action.cancel();}
     setStage(message: string, fraction = 0) {
         this.status.string=message; const amount=core.Math2D.clamp(fraction,0,.99),g=this.progress;
         g.clear(); if(amount<=0)return;

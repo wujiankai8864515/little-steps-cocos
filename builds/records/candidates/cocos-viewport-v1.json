@@ -1,0 +1,3290 @@
+{
+  "schema": 1,
+  "name": "cocos-viewport-v1",
+  "kind": "QA candidate, not formal release",
+  "sourceCommit": "b3a0f354a6e88c49e8dc9d98f393606370231c47",
+  "sourceDirty": true,
+  "creator": "3.8.8",
+  "route": "home",
+  "overrides": [
+    {
+      "file": "assets/Boot.ts",
+      "sourceSHA256": "da36011f73d3811f0b1b347074e2c02dbcd34adabf7f205dd5628d75f10e0d5a",
+      "fixtureSHA256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "purpose": "Explicit direct Home route to validate the real source rig; not full entry-flow acceptance"
+    },
+    {
+      "file": "assets/Boot.ts",
+      "hour": 12.0,
+      "fixtureSHA256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "purpose": "Declared initial Home hour; clock freezes only when --freeze is supplied"
+    },
+    {
+      "file": "assets/game/Application.ts",
+      "sourceSHA256": "190778cfa21a8cd1b9297150f4c95894e4cac9a36ea2085a33197d8a896a095a",
+      "fixtureSHA256": "978ef8537988e0e1b993c4861e0f4bc4b1977e23e7fb35418cd44061f5bac28e",
+      "purpose": "Freeze product clock only"
+    },
+    {
+      "file": "assets/game/Application.ts",
+      "sourceSHA256": "978ef8537988e0e1b993c4861e0f4bc4b1977e23e7fb35418cd44061f5bac28e",
+      "fixtureSHA256": "bfa23545673efb85f650d7bf2a5e6d883c2e70c8d58c33179a30783b28a64847",
+      "purpose": "Attach visible QA controls after actual Application.bindHome"
+    },
+    {
+      "file": "assets/game/QA_TravelHome.ts",
+      "fixtureSHA256": "ddc70dafc8149e5c98b35d0a22ec8ec4a1b776624b7176dddd5107c22c8c4e92",
+      "purpose": "Isolated memory storage, controlled wall time, declared seed 321 and direct API controls; real prop rendering and persisted transactions unchanged; API buttons do not prove canvas input"
+    }
+  ],
+  "files": [
+    {
+      "path": "engines/travel-core/NOTICE.godot.txt",
+      "sha256": "d41a79c7fa6c91b0bd09e5546d17e839e8bc8d05a9407023ce829a626eac0d1d",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "ae27c91c88578a77ce04c151be03194da3a79f8b1866330fa8cafaeba8e75b54",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/package.json",
+      "sha256": "c0c5e4f03c8c4cd13d4c5cc52e50a0ac8fdf1570ead5d54e48e9ef27de355cc3",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/audio.js",
+      "sha256": "6de13c6ca80f1cdfc5f258b41659b6dad21b10143ae6e10d72a3f08d3462f609",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/bitmap.js",
+      "sha256": "952a889a83ae85700aeee60e8ebfe3d80b1b576e849a2b7e008ddad322f610ea",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/checkpoint.js",
+      "sha256": "ea8107011387506fae582e933238c9d5401d2f9197266b9290803f58ace9aad5",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/cocos-mesh.js",
+      "sha256": "3f589e513c8982eebc17547f81aa5817139b7d253a477471309741fb30d269ba",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/cocos-router.js",
+      "sha256": "ecc0c118c179b4519675a22fb5547f3418ca5f3c6bb0761afb0f99df848234db",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/cocos-surface.js",
+      "sha256": "acbb9fe13eecbfce48c24589f22cd260655e84df5a2d8b43ebaf6e2b509e6daf",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/drawing.js",
+      "sha256": "792f37dfc88bc069b238885d470770449efbee511d8b0d03d16865f543ee7100",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/lifetime.js",
+      "sha256": "3dff6234f4cc0d4ac53473ad5cca4acc6295a60f848b3628a6912e930971a62d",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/math.js",
+      "sha256": "b9e3953f546bee5d9c1063f9322691aaa5d64da70f22eee15f559109e65225f4",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/random.js",
+      "sha256": "685d6703e964c985a502e47ce7223129273af9955d5ad215647d92844bffcb1c",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/resource-gate.js",
+      "sha256": "6937b9d30a7602b1289d29336f88fbfbf47e8da751cf36f507fa74aebe2334cf",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/stylebox.js",
+      "sha256": "2926b4dcfcdb34a4120da3f2fa9827a2776ea8c70a4fada11f3c6a556e734ab9",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/src/ui.js",
+      "sha256": "8887395deb21018671a65b2206a51c948706f44b92ae9a6494b9fe5d9a00bdf1",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/test/checkpoint.test.cjs",
+      "sha256": "33978676c8f95f97daa2dadb83e01ab9934dab2448e7f92f27673797083f83df",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/test/core.test.cjs",
+      "sha256": "6bd869d67fe1006a67837590f4a349d10e8170e7aadf7cfcc37adfa85d5cc37b",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/test/fixtures/pcg-godot-4.5.2.json",
+      "sha256": "304a4550f9520cbf2379100cd83a549626bfc3d6b60cdc7a4ce8e5ef7c0ad35f",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/test/lifetime-retention.test.cjs",
+      "sha256": "a8cad513059c6a06f0e2db10147888f796b11545c33c8e6f5a34bed5bf975295",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/test/random.test.cjs",
+      "sha256": "dfa02865655b752a778e7c2e598b829978660e0be202f87bef9ef559d9cf7856",
+      "symlink": null
+    },
+    {
+      "path": "engines/travel-core/tools/install-plugin.cjs",
+      "sha256": "02a237c74387c9271a7c3c6e64be1bf1d93915b83de01a6e5206f28ea959eceb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/.creator/asset-template/typescript/Custom Script Template Help Documentation.url",
+      "sha256": "d9195c36f763bcca97d0f6eef1b3c9632918c7e8279258758b421b19579fea4a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/.creator/default-meta.json",
+      "sha256": "b52800a6063e26378a7ed6610800cbec4261614c507e7b5a1afc0c0b696605f3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/.gitignore",
+      "sha256": "67d1bf5270ff8e6655818839339d3d311b52d6316d1f075859772510fed80517",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/Boot.ts",
+      "sha256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/Boot.ts.meta",
+      "sha256": "0ee38f868a3688c57fb16d7b28cf0e16c0c846b77fa3b08f7323530603dfb7d4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json",
+      "sha256": "32f4cef5ea4f48c514596197e2c591535523f4606773813855ee41fc19bc8aa4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json.meta",
+      "sha256": "7629b669c652c1d6d677ca094cbbd29227f3f2b891817577c465a78bf7e7473e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf",
+      "sha256": "af76e16b0d00dae36b31cc411ccfb024ea95136a0f4e35516416addc512af873",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/assets/comic_story_ui.ttf.meta",
+      "sha256": "c4236e242ae40a09b25c9918ac35ce773ac7ceedc08cf1b14cda85db18300087",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/assets.meta",
+      "sha256": "1a5bf4889d159eccc890bba08cf908d95934a8d96f64c1e68529d99b092793e8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav",
+      "sha256": "e979d3f64921616134a2aea12c8e5b21e6c5aec0ccf5e3a1d47518807c7629ca",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/paper_puff_v2.wav.meta",
+      "sha256": "6049d3b1db7e8515006f9fa2a8244ce61d4c9c59d53a53895c1b4253a45e7df6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav",
+      "sha256": "5aedd0f9ef7f374d07a83ef9b3bf3bad41f6805f3381e15cf7d837c6c01e4d3e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/tiny_joy_v2.wav.meta",
+      "sha256": "735a7bd318bc59878aaab54c27d9f6e9ecdf0f2b83caabc78b5d14f3dda85342",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav",
+      "sha256": "316387c866debb01cea3eb8570b3820d1259d3e0812f36c9c94a15488652a649",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio/water_sip_v2.wav.meta",
+      "sha256": "2853cf664038f07e9d9de0901ad10cf136c6bad737dadac25b7eca22537c3995",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/audio.meta",
+      "sha256": "e565ceb6255d203079d71628f04922b171254d7a9778df34a94c2bb6e1e8b2db",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/comic_paper_v2.png",
+      "sha256": "d8aa3c983b5475a0768341c6a609648c4b23e688e10ce19ef6b6239011dd4ec3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/comic_paper_v2.png.meta",
+      "sha256": "dcf1f506046dcf47a44302af515ec2b0b1195881d3d1d154db3978d3258ca3c6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic.meta",
+      "sha256": "aede68a9d4afc385e19e0500c053e418f740a5e3aa168ea3f8f88ac567e4d31e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets.meta",
+      "sha256": "febf7ba53a6e849223a2f35404015972043f14a0051d5a4fe4890e3ced84870a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry.meta",
+      "sha256": "e90d79df8ff43d45218dad1e92d487ae94f88bfa59f80cceb9e2b935107524d9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic.meta",
+      "sha256": "7b70a22d052a8d47ef7e8467d944d7221a7709f653fa17e57603c359d93852d5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json",
+      "sha256": "1887917dda7dbf78600b4dbdf9e08a30f2a131093a602f0793ff6e0c64dcda5e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/core_code/config/opening_story.json.meta",
+      "sha256": "f7e9c95b4fd347eaf5cb7a5b4a28ec87859ce6b65a6b931a62735e66148b1681",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/core_code/config.meta",
+      "sha256": "62aebb04fbc454f9b7b93b65b7f6f5ff8a2545c274c4c32c517e5e858f2483e2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/core_code.meta",
+      "sha256": "ec0ad2219f9c932fa43005ac5d2719bff29dfa089f7d75da3368ea1b99c33c6d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json",
+      "sha256": "df559e1e90b4666792f7e80ab5c85d9d1f5de88e73e5a3db02083ee4b697867e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json.meta",
+      "sha256": "bf52eeeb0530d808964ab307757b8f749d56fdf5212a974087ee8a4ce726811a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/needle.png",
+      "sha256": "eee5406f56385288262a4fcc047ab44f77057aaa74faa104459aedc2a92bdee3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/needle.png.meta",
+      "sha256": "07e58e088362b446fd808f58647413a14687bd1ac3d6a14407d99300363d7430",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_atlas.png",
+      "sha256": "46dd21a1651ce7769eae4a472aa121c5b2d90dc74bffa4c80e8e3c09919d892a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_atlas.png.meta",
+      "sha256": "225b5676eac16beb9e1b76547e6fedd12ac3f7c6e40ca91801c02bfb2cdb2007",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json",
+      "sha256": "a2588306c16aaafcff153baa93657d899dab5c5e269eee7cfe3a21ac46e490da",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/darkroom_plants_contract.json.meta",
+      "sha256": "4d4f78847683be068aa36bfeb1a4632c38a3bd3abbd4ad0f586f3d49c85954f1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json",
+      "sha256": "e967f4c117d934aff3bfd687a4240f7a0c765e28341986c5f44783a8817d124c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/doll_alpha_geometry.json.meta",
+      "sha256": "1350bca33f128a46ac2007c36cade1caf37fd849851ba93a356b03a3c3f6f4d3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/lantern_cranes.png",
+      "sha256": "3756ccc6e8314ab844fc0a5039886c3089e918b9c8824a640fd6fd6e61110ca7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/lantern_cranes.png.meta",
+      "sha256": "66b4446eaec3f7934db45da22fc1a6f857c77e9c8abbc0d4d5399af2d094aa8c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/room_no_plants.png",
+      "sha256": "c7531a286009b0b246a699f089a78e3d30ed7f087c6a9aa0fb0d3df0e840afc8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2/room_no_plants.png.meta",
+      "sha256": "e75283a78165d83c728d7e7da6e960f447673ae2ed228f69c380b1eb49cd7d9f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round2.meta",
+      "sha256": "365dfdebccd98fccb2f39b132d1414f0e66bf81a9de47bf104bfbf85cf15abe7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json",
+      "sha256": "83470bd3a185b8e97efdb994d33faef3138e3cec7141b2a7572492e56e717f28",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_bow_hit.json.meta",
+      "sha256": "1d5ae0d8cf613ee9adfb16926d685a262947ae8595b6972c5d51f46a79dc5c52",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json",
+      "sha256": "35fbb87c0c5647a12bd0b26112e80d28462f44cf1cc2f4f35c56ae7b93f8eaad",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_head_hit.json.meta",
+      "sha256": "582ea8fb40fa1dfd4070613555c7057965ad9157fbc042ee8151a8d966292c77",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json",
+      "sha256": "3ebe20625bafca23906aa545b47fb02a904ba24ee4786d56b76b52b4ca762587",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_arm_hit.json.meta",
+      "sha256": "dc11b73d7cc95e8946fb48dbccdb678ce12d1333730c90f75b132a9b18705130",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json",
+      "sha256": "e8f58032ed88371ee247d6635cc03de4c64cb42365660a45a8759cb3ac92db84",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_left_leg_hit.json.meta",
+      "sha256": "5f147945f06f6261be2577a1d8152722ecff80e38efdde767f1b7c8bfe68a4b1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json",
+      "sha256": "6b8bf28057fdb6634bd53ac64a30c7d39c3463170ee96d47c3424c2b25511309",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_arm_hit.json.meta",
+      "sha256": "25214acf3840b3dd211d82ec6bdf58f44f91f3761f1cb3bb56bf53c30e26d22e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json",
+      "sha256": "a61b99cfadb968a9c7ca2218822c370f6697c8a3e716f225c39e456723183a23",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_right_leg_hit.json.meta",
+      "sha256": "3b591ae0523b1701a1cf3bed66462c4cd874213fbe27a03dce68921a2ee4c3d1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json",
+      "sha256": "d8467a662566fb68a2cb76e0e85906750258f74cb4bece6b1ab9ef25a8f7f47a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_alpha.json.meta",
+      "sha256": "cefb72e983eb97f37b727d9939db273eee035e1addb886d88375ba2f3867a79f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json",
+      "sha256": "45e7de5e994d960c5afa20ac08cb09ce2f997efc811d46f7e4ad7b58506c3487",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_contract.json.meta",
+      "sha256": "6a2d7cd25443314a884f93a66bdb831464541e71e58b3fda10174aa3929d46fe",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_display_mask.png",
+      "sha256": "906f9342811ac09a1d411daeb75d5e5ac132489495d3f34701125b7a4199c344",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_display_mask.png.meta",
+      "sha256": "c81a3165d0921f375d863c6964e8323fc3d17d00cce1ddcff4cf9604aa13b12f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json",
+      "sha256": "033d8abc3d61429031f5202e25ffc67b7b5b5fb7245b976a6c9868aa5c8a3946",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_geometry.json.meta",
+      "sha256": "91270f255e51f40cba872885def365d1132e256c31f39a35982e98143243d705",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json",
+      "sha256": "6d2020b49dbeb495c1c37be272a3f320304281c0be26a502d6b22ec9af90c516",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_torso_hit.json.meta",
+      "sha256": "5cb0944a142ba3a3ddadbd12af1cd95a477bfd0de3adfbaa1e02801d490dc096",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3.meta",
+      "sha256": "29a2b09c71dae7c318e67269b4a718f738213d229e7bfbbe73b5d4a61b3d7054",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/slipper.png",
+      "sha256": "fab57477151da53424b32613d4133733de4f601e9cbfd9522d6225760b0b3435",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/slipper.png.meta",
+      "sha256": "18eb1c7b4d5ff22c02fe4bfdf9b37f3e3cfeec3982b49641c383c652e0785b81",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/smoke.png",
+      "sha256": "ee5823ad5d5aba5687839f3bd3305e628bee6d10fc6c8a0c4f7d315eaa89ddce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/smoke.png.meta",
+      "sha256": "02e7ecc97bff40a0d8e791e624c224589d6277cf6e645507e521b81f3df2350d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets.meta",
+      "sha256": "cf1e3f0fd131af42fc2361f2752f3a62fca0422aa02e5ecd8157e649b42c271b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom.meta",
+      "sha256": "fb739b47cf22c9ecce9cf496dd98177999e3c47bcbe70f54850abcac5cfb196f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom.meta",
+      "sha256": "ff3f941069b76cddd2916911820a325440c1c4bec3006648a2946decd0a3a747",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json",
+      "sha256": "041a6df6a7ccfd36140dff91e06bd06fc10fe3c670c8af9c49a50152c5a766d7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json.meta",
+      "sha256": "329d4b64fb2a286e07c5abc0ededf1aa00f884f9ddf16be9ecbe642815091437",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/travel/assets/travel_map_actor_v5.png",
+      "sha256": "8dbe95470342250f10b1145d5e427cf0c7a521c281c3baddcb9b31f98e008019",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/travel/assets/travel_map_actor_v5.png.meta",
+      "sha256": "1229e9976dbfba55a424010b38a3caa9b1660bfa15593af144209aa6464ba33c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/travel/assets.meta",
+      "sha256": "9bc97958ae1acac0b09127261ff0772a449495aeb5c1a0ebdde93e65090c27c1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/travel.meta",
+      "sha256": "3c210ffc7195be482c5545bda80b3f5269c69eb5abcf09fc534a41e721a9e57b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual.meta",
+      "sha256": "77ded55ddd4e51e16b368b9d319f659eb121833e490bf65e4a16a5002a972c63",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json",
+      "sha256": "73f9af2c2ec5e679438dca285396abdb73d97f799aaacf7d0b34b8a9118a1be8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json.meta",
+      "sha256": "a727764fe787d7dfb5d9197e9ae95fe59618f410a0834dd746bb002a5d9a4f9a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/altar_neutral.png",
+      "sha256": "2a3c4478ea6985d9f8c5fa42ae2aae2f055c63f567160df7a6647571d1c67ba5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/altar_neutral.png.meta",
+      "sha256": "2d0c5aae641e647c6768ecfe2dda2857064b8099b354cca518f5e921158d3830",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/bed_occlusion_mask.png",
+      "sha256": "64499cec6319924a3f339fa4519bdcf4d3431b354c2928b114fcb68946f64500",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/bed_occlusion_mask.png.meta",
+      "sha256": "ff7cde2d6079f07cbc682d6e8f70d647d966e4c40630f36e902a860a0c084fc7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/body.png",
+      "sha256": "07be8e9632179d1192dac75889ef36875b153a085c36aa4bf384f81ded85cf69",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/body.png.meta",
+      "sha256": "dcdff530b998fc170ee7dd176040c5aceed0325f4fb3e404d0a47271839bdd64",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/eyes_closed.png",
+      "sha256": "beb89d401d771f2264192b6c2aaf3d62c4a6a388ee5a2fa37130835c1c784373",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/eyes_closed.png.meta",
+      "sha256": "d2188be263ea0abdde476e43bd2004e36e7dba88e78bf83d9cb79427d0c715db",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/fin_mallet.png",
+      "sha256": "8dc4c4c19cbf476a434b54cbca73696529b11dd62eb97b78b3182c7aaa8d9a32",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/fin_mallet.png.meta",
+      "sha256": "ba70e929367ab92946a4bae58e12f1e8070fac5dcbe1e59de13e546b2b6faa51",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf",
+      "sha256": "c7ee8bfb4f358f21d74e34cdf5c14d83695a54db5d0c761ff4e1aefa6272317a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/font.ttf.meta",
+      "sha256": "5670e1305a5acc59c5c4e5fa89e572dc521a679b1bea8db77dcb82184245e941",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json",
+      "sha256": "4b5043bbd0058541a2841e3f9002989a3f39ef6afcc968f285fd0076ee8d4bc7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/home_layout.json.meta",
+      "sha256": "d13f4d39de49a8766a3baa8112cde0338a8325ec4f00b6652c951dca0a63b2e5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/lamp_sconce.png",
+      "sha256": "18fb9b38f5bd5753c0ffb2f9f987940710d2a1f8709ad814fff75b5b16a577dc",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/lamp_sconce.png.meta",
+      "sha256": "3d174af513fbd3492cecfe30bdc3df724e897419c75a556d4082a5dce1f38bef",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/mat_flat.png",
+      "sha256": "66f6f43b742f81db2bf8ebd9cfcfaf2d0952536b4045c349aaa8f73ed02f9603",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/mat_flat.png.meta",
+      "sha256": "426f44b7b8206ad1a2bd138d526c29960fff0b97f809c8bd5385716d547761f2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/merit_box.png",
+      "sha256": "1094954b77f4c87b5fe06531268f7ae432ca0bcfec64aaaed86e41fd6906092b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/merit_box.png.meta",
+      "sha256": "cbb88c36ce433275175aef9f4a35cec8ac0c3c979b03b5b8e5a305b9c825e471",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/merit_reward_14.png",
+      "sha256": "f4da7a3c256d0c62f3befc62daa8784b88f934ee12c8a261aed1df169354765a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/merit_reward_14.png.meta",
+      "sha256": "a5d16a01ff5c239e4c7b85b6561b73a62bc30a5e808b1a67a9ee8770647d5b30",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_clip.png",
+      "sha256": "adcbb767f0e87c2de5c9e177b93653db5e688ba1f394837f1581a15bb3bdae6f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_clip.png.meta",
+      "sha256": "a25be3c2afc8e0cad0ca792a61e3179a3776d053d8927e4f12af7f9a1c59650e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_frame_01_travel.png",
+      "sha256": "0304152bd202ac0caf6bd844b1453f4d355cae96130e3a8a4ba0cde33e787ec6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_frame_01_travel.png.meta",
+      "sha256": "c1e224ae12bc87bbaf9ec0f5aaddd6cb6b94cd8b43e05639a832fa135d4c4e95",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_frame_02_travel.png",
+      "sha256": "bb85455177182cf7fb3b5c1e433de13ae09e3d2479c2e5441af80cf91313bdb3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/photo_frame_02_travel.png.meta",
+      "sha256": "72f18ad30c54b3dc137f552f4c05364ecf51d74a908bae060eb675aaf7d320e7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_atlas.png",
+      "sha256": "cabe8b2a91eb1a6ef6b6020ea2cced369c84d45c453b3a2297bdd4af884e0921",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_atlas.png.meta",
+      "sha256": "f0192af4b5dd7c2cd4cdf807f1c434014cba8d9740025dd244808126f0713ca5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json",
+      "sha256": "94ba0b827f2685a085d40add359c45ce3101a84964c1730ae46c017739ddeda2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/backpack_parts_contract.json.meta",
+      "sha256": "2e7c853ca814d051cd378e548cea838ffcd9bf10c19ae2e841733bbbabcf6c91",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_bleed_no_plants.png",
+      "sha256": "c5f7ae7601f8e3652a6e6514b1641c0a570c21d4c41ff10d51e4999eed8642d8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_bleed_no_plants.png.meta",
+      "sha256": "45f90d4ead07ba79903551a9e42f99f7b2c64c8e6f28957cba2f584f71109d66",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_no_plants.png",
+      "sha256": "994c7b99e2a9c5163e0563ee6f615d470d387b3f29cb1973ec531e38fe625c6a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_no_plants.png.meta",
+      "sha256": "6b1c8f261c5d69c4ea37d6d8f81a9b542602b95d8a4377fb2d8b689825718777",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_atlas.png",
+      "sha256": "7c99280fa42fba8e76ba9bb4b912b723931a80baa257a14bfa4836d4d0edd00b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_atlas.png.meta",
+      "sha256": "11daf33f81603bbd2acd6e3a7515481feab215cc6853d5393b08520917151ed8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json",
+      "sha256": "f208f732544e063db0f680e321ec89c24c23ae0f70cefb98e2cd69c7d5fa48f2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_plants_contract.json.meta",
+      "sha256": "f9e1d3ea4ed657b5a633ce9f466fdb6dc0ed886798422cc88529295517e2e8c9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/incense_ceramic.png",
+      "sha256": "28a815c8d2ec5e45f9390a4590b40c88f724d6f69817aa0d229b68063097bc4b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/incense_ceramic.png.meta",
+      "sha256": "fcf84054148847af8601272a58c3f6a940ad7a139a042737787a3d5afe5e7857",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json",
+      "sha256": "ddb8b3398869a3313138dc594e0282024efad6ecd0728154740d0b5fc347aa3a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/props_contract.json.meta",
+      "sha256": "188d424488a787b164f73cf9112c5f545ec19b4004c62b008adaf4a3ba56ada2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/water_bowl_clean.png",
+      "sha256": "fb842fcce4d7e18646d93552acb29ac01f86951421a9ef8d6a6f6e211e42e231",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/water_bowl_clean.png.meta",
+      "sha256": "b214006b3de54fce4e64809f9d3590c10d3626b4e13c48bef54ca34915f00e61",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2.meta",
+      "sha256": "98a8f2a59d104b6de16d47772c8d378de25dd27478e9407ab8d89160ff0bcce7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/tail.png",
+      "sha256": "1b2fa52cdf1bfa9bd95484ca13fafcf3b01c6685379bbbc04e2924ea8fe151a3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/tail.png.meta",
+      "sha256": "683b6a211aaedb56046c119bca4fc9f57262930a85df5c59c76d2e4e12df82ea",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/travelbag_closed.png",
+      "sha256": "3ab8447f9cfcc52dced570f648821f25fe778d87e54d83408d21b486773c7992",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/travelbag_closed.png.meta",
+      "sha256": "00a98f1ed8513b091ccff11be78a7b0204770d0453693e3f2a72a077b03335fb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/treasure_open_filled.png",
+      "sha256": "00a4dfe2a47ba188e355ec1a58d9bc0d441d03ec538ae16a7f4606924c2e1e97",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/treasure_open_filled.png.meta",
+      "sha256": "1f469a944b1993f88c5dc846eea90be17bf947dbdc4b36ab95d714ca61656ed2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wall_hook.png",
+      "sha256": "eb292acf975aed2d756c7963588cc93b6699a69592fdbdaff0140276ba0dcd3b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wall_hook.png.meta",
+      "sha256": "c92c8b08ac801ed85cb34f2d236d126fe0175d1646e91fd20071a408dab4f283",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wardrobe_neutral.png",
+      "sha256": "c4f07029c6354743d9687ae4d7cea2859f5ad7c081793dae06d3f5b5a7941643",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wardrobe_neutral.png.meta",
+      "sha256": "4ac80f935f93641b6642d82de023f480b3e7849b51b3e35f13eb08b29d31b5b6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav",
+      "sha256": "4d7b367b3e196ffc5f883789422953c88facefb4cfb6952a65c7e195b21897e6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/wood_knock.wav.meta",
+      "sha256": "4fbc017bb2cbf9a34da1986b200bc224e4848a5bc11d3b086cd0f97c986d2d40",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets.meta",
+      "sha256": "f5b430bfd9251f02e105330329a40497364e6681c8413927f772ae5671fb9162",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3",
+      "sha256": "8ad48fe73d1e5af5118f074044dee90d49db881f03da6df7f0f46a718bcfb7a7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/day_harp_mouse.mp3.meta",
+      "sha256": "c821d940e1d489b7118cc16cfa1874bc0e1b2715e3e1734576db4c14b343a878",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3",
+      "sha256": "7830e17eaeae936c67e07109e4e75fe9c9b054275069ad54663b327163a6a336",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks/night_peaceful_mind.mp3.meta",
+      "sha256": "52a59777c573c86332dedaaecf61a513de5f8b6d8e07e7a3151a43c968446121",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio/tracks.meta",
+      "sha256": "084b82674fdbbead756096b8c455c78e6491a21e25f65df597f5277ece27cae8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/audio.meta",
+      "sha256": "53d609237bf74b52aa77d03e1d323361b375c9672532ce2b07e3cb9ea9475d66",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback/assets/merit_digits_thin_gold.png",
+      "sha256": "e1b5686c0191b62e9045b1bba9027862b0996c7c7199c8fe706d8c2b1e0a497f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback/assets/merit_digits_thin_gold.png.meta",
+      "sha256": "f43cf55848fb5d4c0053384e28aec2ef5d2923415c39fc74cf915c8e23beea56",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback/assets/returned_bag_diamond.png",
+      "sha256": "1f8d960554408ba60453df5e31e3ac8531a65cf57086455e72b78e321416fa85",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback/assets/returned_bag_diamond.png.meta",
+      "sha256": "f4c4c34da4474659e5ef40a7589012d82dc5fd74b6c7d6821decf022a2ccb6e5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback/assets.meta",
+      "sha256": "64d4f15d66b71b0266960efed124f6f26df8c99205f8bb9453885f1f2a4956e2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/feedback.meta",
+      "sha256": "d0c71bfdb66327dd75f2be0d83f5dadb649e46194444196b393ab1480879eb08",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/daisy_heads_candidate.png",
+      "sha256": "15cc0925c4c1a16553d58670efa05bb5d0bc881eba1d40cc1a7687e6f066b23f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/daisy_heads_candidate.png.meta",
+      "sha256": "8bac5f458eb7aa50f03e5a4e6bc1e438f73f51d1d6c61082e6718b74609f6716",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/daisy_leaf_candidate.png",
+      "sha256": "3328671a245edd3377a256fd947a5e1c7232f64622deb4f4f4bfa89a2ab31e92",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/daisy_leaf_candidate.png.meta",
+      "sha256": "1e428174edf052508e7dcbe8a606b51d8c80ba6a6519340dc6a7e5e69c5e7833",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/empty_vase_candidate.png",
+      "sha256": "02dca3b41af741d37e4330277e85103b54405bdbdcf9473fcea1cbf2bb1d366a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets/empty_vase_candidate.png.meta",
+      "sha256": "53d7fa74c9a0607435675e91ce927179016e15e97b9b8bb2405f54f267935355",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers/assets.meta",
+      "sha256": "60e11234e48c15a66fce99477ef00402151fb561150d31f2a14f1498e9621465",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/flowers.meta",
+      "sha256": "ff3c9ce28966388c5a1ca6c8d46403eb05d7132c96ea410b65e5aeec48476317",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json",
+      "sha256": "674531a9a253d28c82c34994762eea64cf1d82626c01f7deb00095a11823dbf5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/altar.json.meta",
+      "sha256": "556df5ef664ec0cc621b5bb4642383ffa5319db880872126f570c2d9a119ab8a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json",
+      "sha256": "e49977e6f170d742c4900c54cb69a8925f210a36ad53e0fe58ca5299bf766aef",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts-sub0.json.meta",
+      "sha256": "1eb029d3fff418128905a9c0a876608570cca3be14f73b9c1721f5b21bd204ee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json",
+      "sha256": "990b9e6872019979a5f38f409f6f0813192f7cbd6bb2ca1d74de6bc9d35a7953",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/backpack_parts.json.meta",
+      "sha256": "a3cdb27dbb1289a2321038014c2375b0ea1c129be73ce7b60d0456422077a96a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json",
+      "sha256": "91853ff67f54e7f41c7e306bbc2b3b6cb942e31bd4ed4846361ba5ebcf783a37",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bag.json.meta",
+      "sha256": "8477ca267651bfeed33a5d2a81309a1e288dc5cb088c37b6f3a75cbc7c643a7b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json",
+      "sha256": "2e14f3e50ca97d401a34b0b6fb4fb91084fb916f090a51a35d8e7a6982d374b8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/body.json.meta",
+      "sha256": "929a37d07f1c0418565cdcaf55b13d1761b62c219362c84ada52deef13883780",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json",
+      "sha256": "abee93fb0079475a5f9ee656dde8322ed001d9dbe03d21671e77d3809deaf5b2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/bowl.json.meta",
+      "sha256": "e93d2705b5867696c9a3694900e7434de057c3a0bbb5ae1bc118699a3fbfd12a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json",
+      "sha256": "ed80d3212d952215bd63e6e3dac4c1a69787a15d228d80ed4c0c72f16ec171b7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/doll.json.meta",
+      "sha256": "8fc8450a20a8f59a2d1b54ff528aa7dc379a2dfc9114fb4c5763521c6060f1d7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json",
+      "sha256": "6975f6000a1b843db187028cf29e92158bb2a08016a6345de738c3352a1ee7ae",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/fin_mallet.json.meta",
+      "sha256": "a65ed469e1ff6ecebc81c1f2370906f7445bfd436c734b1f3fbf2475507d8758",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json",
+      "sha256": "5994eb0c8e64aabe3ea01640ebb6527227762f2ea83e35a6950c98060f2017ef",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks/tail.json.meta",
+      "sha256": "ff42075b203bbe33465045ca95dba6e1890b43d477e579e1c5d973e23816b034",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction/alpha_masks.meta",
+      "sha256": "612f14312116efdf9a214722b3468c30750f3c1c6dd968f891801d60476b4575",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/interaction.meta",
+      "sha256": "d1407e883b62a80ff2b99cec4033151ee5692aaba57d532ef02dd5edd9fdfe5e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json",
+      "sha256": "b0a107d0fe2aea00fbe97a9b68be2e51dd5fb6a16c92ee1d094cffecf18dcb7b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary/backpack_ribbon_profile.json.meta",
+      "sha256": "03a3c74e17be3594ded76eb19b71bc6b19a18325b74eccb6050733731e0ae8db",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home/secondary.meta",
+      "sha256": "32b13162cb075340f02fe0149981b1ebccdab9585308e421aaae13127d604267",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/home.meta",
+      "sha256": "1d56738dcb60947067b6aedfa4d2026e6ccac3dedc8df9930303859283b71a80",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_tent_hd_v1.png",
+      "sha256": "15e214161b7405421f4b5cfbc7ab40a7ddfff9817bbd4ec5420a59949a152246",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_tent_hd_v1.png.meta",
+      "sha256": "dcda101d2cb09f52c2263fbd1f173009e9e919694edb8b0f3179438d40dce28c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_tent_pixels.png",
+      "sha256": "d18f8e2f4394484b969dcb4886ea7b7dd49d52ffd26baa3f9fd2ac4e38b940e1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_tent_pixels.png.meta",
+      "sha256": "133a8b3e061de3bcded8f417eb541b815e2bb0bce99daf59f09d37770eab8fde",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels.png",
+      "sha256": "c08ee2ffe7a4f34ba17143c664e74078c30fa8a3fb3098a75dbf7970dbdf2162",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels.png.meta",
+      "sha256": "65ac8b5c4f9b1f45a135672e2e448d5736c4d7a8ca439bf81211a8d6d3dfa99d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip1.png",
+      "sha256": "51fae5de64e937fe5a5680701be207efacc22ac732afa77bc1c9f176828d8582",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip1.png.meta",
+      "sha256": "0d28f589625d783d340cfb7fb1ee44d96addd2a47e9a767f04134c680714144d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip10.png",
+      "sha256": "9065a4fb498cccfedee0b9b59f16f9e1fe1cdfd91ffa24c5ce8f1b1adb3d0aaf",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip10.png.meta",
+      "sha256": "3f45062922382285da89d7c8e2384c3dabd16c6a51015c03147616866748c34c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip2.png",
+      "sha256": "92b4e43053ef31cc3cfb17ba59f9c654e8eefc35f8e1f48ddecc441352d23565",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip2.png.meta",
+      "sha256": "a3602e7356a17afa4ee72a0ec97fee309d9833a81e7ac4d019afb67af56067fb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip3.png",
+      "sha256": "ce8409520ba849e8e508399fde99c184e454065e29fa1fa6fbb0dd9efa5e716b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip3.png.meta",
+      "sha256": "f0fa02679b2184ad5cf8ad7658929b081558733228bcce6d418e8bb8470f4122",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip4.png",
+      "sha256": "14dda718e3f1678c3ac25bef41c6b7be15fdacd02fa87d60a1e302dc8c5e6cb3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip4.png.meta",
+      "sha256": "9b998361d2637fe14277f82f4fbcea5c470f4be60ce86237a7cdae239b1afca3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip5.png",
+      "sha256": "47d4a91cfd368309b84eee911decdb56bf4a960731b3770b0b7c83cf61a21259",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip5.png.meta",
+      "sha256": "5f3fed6e1f85a97f2642a60c1fd77d08bba5c728da41ee036781181972a5f44f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip6.png",
+      "sha256": "4154bc651badd1053feb40c5262df62290273092f9202c165b3a90a8c224873f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip6.png.meta",
+      "sha256": "0c79b845f420ec05adef41a1e0de18fc5c13967998b728ce93aa1a0b8f7262ef",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip7.png",
+      "sha256": "e888df928801e9bbd2de1b0ef1b877793284936516d577240fe740f8423d4cb1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip7.png.meta",
+      "sha256": "2a00249ec98826238677e8b016e86dc3cda5635fc2033ce882c012ff22586e3d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip8.png",
+      "sha256": "c617d263264b96244a506d2796a87e1eb7e84e67b2b36991d388fd04bd220324",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip8.png.meta",
+      "sha256": "f777af9d1670a9beb38f62d26e48035e1c157ca2f651865d83222c37f410ff42",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip9.png",
+      "sha256": "c46fd400ed84746ff12389bd61c5c860c2f81ac2dc8399b80372a1a1df7f4b4a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_worn_bag_pixels_mip9.png.meta",
+      "sha256": "d68c063331fe5a4525a2480044174f71d4fbed036f2eb5ed55173353c09b9ce0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json",
+      "sha256": "12ef47483ef8c68e7ab863a6777b8d4bb458a488f1b10484bd7711c70bb49036",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_hit.json.meta",
+      "sha256": "3661ba283b5dae4b43e8089ee5d8d776f40c09987720d5c7c8f09c4bf16f9a0f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_v1.png",
+      "sha256": "d103710129176753fcdc40e288964dce35e597842ce9d71e83fc75d20d23be86",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_props_v1.png.meta",
+      "sha256": "e414989662b21e90c106b90fe566b3c56657ab7f5ac7cfc8ae22488d2d76fe18",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_rewards_v1.png",
+      "sha256": "aa0234deb1b27725488bb89389b1933e6cfed024bf2fa3b2d3d094574003c79a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_rewards_v1.png.meta",
+      "sha256": "33b03c7d56897cf5c4cac50e5ad72ae5b453cd67e3aadad2c3e0b6e7c3f1289b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf",
+      "sha256": "81ec06440652d81fea948f26088155bea905b72b9ca79c61c4306e0a1e06712a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/travel_ui.ttf.meta",
+      "sha256": "db116fde2a9aeb0b9b786aab0de355c0551c7a7726b9d4a0b1f3b76d025cf9b0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json",
+      "sha256": "4af9c5f579edcb7bfc0c77c0493c016af67c019de1df6f502d81a97d07e06e0f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/treasure_hit.json.meta",
+      "sha256": "debe24e96540093a326808f1b7eb6e83f028d960fb3f4b46c0af3bb6da6df7d0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets.meta",
+      "sha256": "46b87a3527835cd3e2dd980252d3ce299fc0c34c56dfea6de33a8fa3c0dbf02f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json",
+      "sha256": "3ef07b3fbf4983f685c28141fb0a955f4f6d708217a695bdea80c8e4ecd34455",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/travel_content.json.meta",
+      "sha256": "15340bf8c461019a49c7d89d92299d45506c7b819e0bf4227073418b37f0fafb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel.meta",
+      "sha256": "479ef56057dd862ec8f053a26f2be4e2717d75574979e11696872dbf15b61dee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home.meta",
+      "sha256": "6f1d07f71cda7b6bbdfe8dab30b413540edd8902fc1d025ecfb9feca0837365a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json",
+      "sha256": "a916333e3c1a6a6a88e51574288eb9d9525e1415d96ee986d868196d12bed8f8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json.meta",
+      "sha256": "e91b144f9debff7a03b0f32fb58beae6db8470409253d30430bf513687773b79",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/backgrounds/loading_clean_bleed_720x1600.png",
+      "sha256": "6ffa0efd11c3056b4c496bef09cc9d73055d16c46fdc47989ea9d925d56dfe8b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/backgrounds/loading_clean_bleed_720x1600.png.meta",
+      "sha256": "06e67f09f7a999224ad54a5631bcf4ac14902c899bf131faa6b5952fb763c784",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/backgrounds.meta",
+      "sha256": "fd9b8975ce7476c147a02b8ca4ceb54f09e8f7725db22ef7efe0581441fac1ec",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/ground_shadows.png",
+      "sha256": "b7ddd807db9f763d4f46c922b1cd7f2392e17ceb1cc84b7441017760af08a807",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/ground_shadows.png.meta",
+      "sha256": "905c4594f4359570eeea5ce0fcf9b7beab1d0dacf00bc292aa7c5d1fc9bea8d1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_body.png",
+      "sha256": "1c92e39a3b8906ffc723fa9c53f9bd3bfba6101a6d5088caf0a8a4d44800f6ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_body.png.meta",
+      "sha256": "5adbd1b1b030fb37ecb068d748d3b5ba4d01325f82f8b1a78695ed4ee7c088f4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_fin_mallet.png",
+      "sha256": "0922efad766b5b69a86b826f7e9bb5c46cfa9fd807774b4a8f8652caba5dca6f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_fin_mallet.png.meta",
+      "sha256": "a7f07964fccefcaa5c4dcdd378a36fd45a65f2c8af505315223b3bb75d7c7be8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/doll_rig.png",
+      "sha256": "699a4524941f6961fafd15cbc67b0a9c6b72312ddc32e9a2f83e0cd2d5376248",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/doll_rig.png.meta",
+      "sha256": "6787e4f6d4f23d52abb1df6751a2a26ad1af0007d938f16715ea562f5aed6530",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native.meta",
+      "sha256": "8759c108df3b5744e4f10c9b72059b453bdd7cc7e437b5375c894890a42a2dee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading.meta",
+      "sha256": "b58f75cd3dd7a4851860487c556bd16bba30b6b518f118731fa6cc18db404005",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets.meta",
+      "sha256": "3098063072a7c10770222b5d8927e693b44391da3e7c8c10e51d5dcb0a09a948",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry.meta",
+      "sha256": "36919ffff73752bdeaa038b16cd455cbb1862145bdaa0e455ba5110ef8694fd0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading.meta",
+      "sha256": "f8ad2233b3d4a29c84f2d2b2551ff15f79c8517fe6ff048f54162bf4edc0a6c1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json",
+      "sha256": "9f3d6e1719d7ec4069d35a5a432d543a818412281fec6f08b51a393a74225f43",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json.meta",
+      "sha256": "e66e799c63e05c5854d9446d1337d42f696cd5e884ecba49f6a17ee06ba8f8e3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/backgrounds/login_clean_bleed_720x1600.png",
+      "sha256": "adf3c8e5c3acab87e747d0d327780f2ae2c99724c4e0275f6fd69a5b11190be2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/backgrounds/login_clean_bleed_720x1600.png.meta",
+      "sha256": "d573b12fe5ebf357673962152d0c861071a12f60c3ba511d7eaeb47ea6f4ea86",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/backgrounds.meta",
+      "sha256": "5b21d761726a247a58f8f2cef72ec60f39ab49df9464030bc82ed2d9c7098a1b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/door_ajar.png",
+      "sha256": "f04ea26fff1111152b0d943dd98c0dcf9b8706e2d141be6655b2d538455dac08",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/door_ajar.png.meta",
+      "sha256": "d1b62a0e794bee58ef7d3e17638cf7a077e74be34dd75cabbedd2ce5aeae12de",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/doorframe.png",
+      "sha256": "52ccb9774f27f41de6e69f5defd635234b9d9242aa792bad74e1e70fb356dd0d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/doorframe.png.meta",
+      "sha256": "06a89170c2578994f966f674edd18964a1fb307c51dc0d870edf08c9ea028aa4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/doorway_glow.png",
+      "sha256": "9ef803ddec463e7e15ee9359c6b4a3ff469561984fcfe2d4e34946d582da71d0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/doorway_glow.png.meta",
+      "sha256": "ef5e307cfb569775fa45ae4e03b80390833983b579a5684a57131f8e5243ea2d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_accents.png",
+      "sha256": "d9418fc186f372e0d219793b6a36a11361f8fd18b61b255e6b17e5283084175e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_accents.png.meta",
+      "sha256": "d1f3bfd855f4275fe07ee35cadbf82cbf121d4fb9b0cc62503f9955c56f8204a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_enter_wood_sign.png",
+      "sha256": "3e4e70af4d5912195189bc0f1023a57764e2d9c9f8e637fefaa787c1c048d7fa",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_enter_wood_sign.png.meta",
+      "sha256": "87baba77321932e6e2608c99ee9f97747a46d265b1e62200a118d232e69bf070",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_greeting_fin.png",
+      "sha256": "8914db66ca5fa44a4b1ed8c36b3cacd0d8fd71ddac4b30b968500f2a44bd0a04",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_greeting_fin.png.meta",
+      "sha256": "6af4437ad3ccaf56ec8bd4c01e5b4879c4940718e6bfc2cdeea6cea210247d05",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_peek_source.png",
+      "sha256": "2e6f4ef52c437a25ae55e3cf95658222b82fc590610b8392f09f6d9e63e6a5e8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/login_peek_source.png.meta",
+      "sha256": "4ce6b0c97f61d70a047520f61a5145b4654f2d2643cc113d64fd52a4ef161579",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/logo_subtitle.png",
+      "sha256": "c6f143a68ad034d3ace25156779a57c6786ffc512e07c443a2278aac4cdbf27b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login/logo_subtitle.png.meta",
+      "sha256": "c3a45d07a23d5bd82b97ebebd967d1199986cb655e42d6c8a96e06210deac538",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/login.meta",
+      "sha256": "f8c848308cac099cdc7893d794725879c0d10b80f86da760f60d6434a82df482",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets.meta",
+      "sha256": "b820d300ccea99612df1162930fe3b9f26c2807fdbaee79b6e31d74ec36d378b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry.meta",
+      "sha256": "41fe7783fac6e3982c6ff924baac64ea11b1a45e607f4668d59cae112b9e0fe0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login.meta",
+      "sha256": "4428e99c1a1f8adeccf6e9d68ce5194695ccf517f4ab37b0936bcd9178fe662e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json",
+      "sha256": "2ba8c8b6176b4ce3df6746fd5745779a5626561d62fc9deeb0d263bf070e96a4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json.meta",
+      "sha256": "5119ebd0d01b2021b7388b8cfc3412fc2b5b1cfb14dd4e1bae6a361d85df79fb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/wardrobe/assets/peach_material.png",
+      "sha256": "d1b655d643080180f835f268973d111d850ba3809db7eea06ef73b507d569547",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/wardrobe/assets/peach_material.png.meta",
+      "sha256": "54dfe73f3efde8cd42fc686e4ebc27d7bef0a64a7a56db38bde7eef08b24d433",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/wardrobe/assets.meta",
+      "sha256": "760647389422c5918fb06827a862120b892580cec22157e2187d90e241591f82",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/wardrobe.meta",
+      "sha256": "0d7aee6a6768f392974e38fa4458cc6f41ada6b1a8b2ba8297397181d0883de3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual.meta",
+      "sha256": "99835fcee62e7d87cf7df06d823bf8982c584c35c67204622e6da833c34e21a3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json",
+      "sha256": "52e2dbe57b597e9d8522325dad923abdaa247b9690b02f4c242bfc5c9ba04245",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json.meta",
+      "sha256": "8cdf811b3d32db826a436d3c053b651b3aa40adf72b37191caeabfff28891717",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json",
+      "sha256": "ccc86be33e424453306f0ba30975873f647abeb1bb7158ec60a4362ca510d6e7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/atlas_regions.json.meta",
+      "sha256": "5534c42143bebf91b64a4cd7d9b2521566baa8af2872e3210fdf0af89ff9ecff",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/photo_wall_material_atlas_v3.png",
+      "sha256": "63ebd0d1376684ebb080e54a7f60ea516f73fbc5db37711d2d98bf3961c3859b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/photo_wall_material_atlas_v3.png.meta",
+      "sha256": "0a357698bd9c184ceeb48f19ecd50a3245a230f1e8a85a3b4b233bcdd51c3fc2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/photo_wall_neutral_plate_v1.png",
+      "sha256": "dc888fa16d6bde23281a023cfb77692ad91d3a1a428370a08fb7cc1aee5799a2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/photo_wall_neutral_plate_v1.png.meta",
+      "sha256": "16197b3f96fc5cfe7db443e58eb74dfc1ad9828ac89bd5d1dd1cd5680e8ebed1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets.meta",
+      "sha256": "0c386de7849f9da87f4129df24057be63a02c911b857f2583c362154428890bb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo.meta",
+      "sha256": "baaa34a980b5a36cc69697e36116b163d3e3b79c0e68fdf86eb386ce9b3548bc",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual.meta",
+      "sha256": "bf149e82bcf049b1b0b078b3af0e82a74b62b5fee8d9bdeb38d4b6c44e0715e8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json",
+      "sha256": "1cb04a2d1c64192a5ef076e5dd2af047afbc9a0d20978dac06cb9c57efa0832a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json.meta",
+      "sha256": "13e34b3f6d3d00d2511b7482cf49b770dd89e1fce38bd4be23364ce7bcda4088",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf",
+      "sha256": "ed3a8b651f9aa1bc6816748d4768788b540a98aef94e0f3f30b39cd5eaf7b58b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf.meta",
+      "sha256": "2b57d634d318b78cf627e3f02542ce3595601986aa45379e31911c0eecd4d137",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets.meta",
+      "sha256": "82db0077c81f072029f279d398120bf5befeebc3559403adced5b6b1e95c7d75",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/entry/assets/login/logo_title.png",
+      "sha256": "dcf1c9e22e0d323be3a68b410305f8d8d14c17b1344257de5490b1fb5ec95164",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/entry/assets/login/logo_title.png.meta",
+      "sha256": "cb481ec6a75f3bda2470bb5fcfebe5b366d5040c179c3277c5fea7c503a05ae7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/entry/assets/login.meta",
+      "sha256": "555a8206907f1af8b0023f7ae72882c42e23d76a08dddc231e54bc18c08e494e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/entry/assets.meta",
+      "sha256": "09f6fa6c6e7e016032154546df622f5ea1e7bce7512ee0701093ad7cb5617832",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/entry.meta",
+      "sha256": "13055af70eda4e061ca2b5823c174142c6203e5648c51d09af67a7c7f4aeb1da",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui.meta",
+      "sha256": "5b0e4481d4c87845fc48bd102d976bfb8d126cab1a9d8672c43a2d70c802dd3c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json",
+      "sha256": "8d2ef5311b3ae139f0e1cd64de9440c122db39e2ba15166315f2432be13ce1c7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json.meta",
+      "sha256": "1150c4158b6e3c2b9be596f9cf87044f54bf73eec51767c6952e639a09a78e87",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets/doll_idle.png",
+      "sha256": "f28f6b84e186511233c7c7a1432d2ea53017a4d3be7e354658257da6dd34b4bb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets/doll_idle.png.meta",
+      "sha256": "8885da638e5e9d75b9025916e9ab109e13e8e929aa0f76c13d4a758945ee9a29",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets/home_neutral.png",
+      "sha256": "690a7e50323e262a64bc8c5235f87c6b93a59c562b06125b91006a7e9f64deac",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets/home_neutral.png.meta",
+      "sha256": "0054b10417ea80dc04953e89ddd6cc16fd70c5224933db2bb155eebde8d6eb07",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets.meta",
+      "sha256": "d2e3c5446313f9f24d19593b63ed6aaae7d507faac4d04a99630647e6945ed4d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/darkroom/assets/release.png",
+      "sha256": "e2998197b6d3a5505f2312a4903dd9d555d6da3e76022cd9c942d079e40f9513",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/darkroom/assets/release.png.meta",
+      "sha256": "db14db7b361a979a34884137b5dd40a07e86d0a791f94ca1c1138916c4c5ab44",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/darkroom/assets.meta",
+      "sha256": "0a89e34f49cc8fe107e9ff18bbca28f6bc3e46dc461aa8819560b4a11e8cc531",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/darkroom.meta",
+      "sha256": "0d1336a1019fa80a83b57ca8d44525c01532cc105880e7ddb52b8a49b5d7b28c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual.meta",
+      "sha256": "2a00983de1360e262b0850c6b4b1c4638cab4229589d8ea4e5f62ad9d05d9acf",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json",
+      "sha256": "d994d8b2447fa611a8ab33550adb26aa34363944c5afb08bd7e26ec212b74454",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json.meta",
+      "sha256": "d3586de3ca225b2e4cd48fbfab4ec1b6fb14fa9e9349904a5c5dce31755e031d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf",
+      "sha256": "e575cf498f871802a2d59f1f696a97a4858b3940a552d47b161afbebadf4b7c0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_brush.ttf.meta",
+      "sha256": "e62131f1eb50845bf83ae5aee50dca6a0866f7b372dc68f561f25372caba1a64",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_plate_v5.png",
+      "sha256": "b55e58845b50d9c88c2ad2f2c748e8b9a3239aa49b3274be404ed110009d7091",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_plate_v5.png.meta",
+      "sha256": "dbf530dbaff1e4ba424a3d79d6a9b607369b9dd00fd224c7b394a4d8d6405eed",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_reference_v5.png",
+      "sha256": "4da1d258a3d6fbc1751f14b6e499e506d504615555b7d967c2686ac359d23d5d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_reference_v5.png.meta",
+      "sha256": "7f2b1d88654248e5408903680d6efdb6b6a32234338ddad33f01d20340e8100b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_footprint_ink_v1.png",
+      "sha256": "96286cd9a3cc4dbd31fc1445ed2c7a78d713c09790ba452a18610bfd7fc93c64",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_footprint_ink_v1.png.meta",
+      "sha256": "7ba5af3c370f362c27f930544b869c6878a338ef595be4bf7e4e3b3997819aa2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_map_plate_v5.png",
+      "sha256": "43b0558e549363c54bacdc3dd58c54332da5c3600460ec8f1886842a8f552c4a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_map_plate_v5.png.meta",
+      "sha256": "eca2b2567b71fe06fdba33ec0ef52b1d86bbc8a77e406aa682174a33adcc1b74",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_offer_person_v5.png",
+      "sha256": "3d34a5261a9977b59273c8544ba599c0d80016caa1e678641c5915f428623712",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_offer_person_v5.png.meta",
+      "sha256": "ab1a72330437b3eb4044957cf9facb210f42f39855b5c4ab3870776f43bca7dd",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_paper_v1.png",
+      "sha256": "497ae4b6a7d9c2d8542fc550b825a03f097cf23258ba4491add4b360cb4308f1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_paper_v1.png.meta",
+      "sha256": "4dccce1e323e48fe064cf6ca05f35310171960fdbb261d0cf59f30e146a034fc",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_people_v5.png",
+      "sha256": "5e7d2db45c08a07b9964cd0afbe758c9c6848077afe30edccce7d57e267fa5f8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_people_v5.png.meta",
+      "sha256": "66c8a3f5ad840d3e6e63a309d3db0f06778b651aa7ae30a96e8bf78743811833",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_scene_layers_v1.png",
+      "sha256": "1f8cb9b66b44c04775d9689263da9006dd3acb7ab693e2b72dde538b0f537697",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_scene_layers_v1.png.meta",
+      "sha256": "e6da389731d0e53a26b634a88fe5edc94b23abedfff4d454ead548f9f0debc06",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_scenery_v1.png",
+      "sha256": "2d9801c4feb2765df6fd6b5ae93567416470242c98175ecd0c4d618f7f4512ba",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_scenery_v1.png.meta",
+      "sha256": "c1b76ec5448ff05d60dc3260918d0ea91deedc1c69142b1d5aca0423608e0323",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets.meta",
+      "sha256": "27005c58e16c6d12d3e1dc9cf4d7ef4ce8ec77892c80132bca089c873ef031f7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel.meta",
+      "sha256": "3f83a3a102167f88312dd84b786879e388b9ad9af79b20c6bb5c4b9db1758602",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual.meta",
+      "sha256": "65b23223e754d3246c4adcc7bdc478c816bae3c53289463c17d8a620cd6da862",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json",
+      "sha256": "b880fd8d6fc61bd1e7289b8ec63f0b38861263653c95c03c80d7088f18062418",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json.meta",
+      "sha256": "e5e2ad19c65bc4c232d6e464b3a5a20eec68dc0b595459477f69de47bc68deba",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/wardrobe/assets/wardrobe_runtime_atlas.png",
+      "sha256": "f62d4343eb46aed8e94398af3bc07a8d5f5cd82b891ab245ac90be6a6796cff2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/wardrobe/assets/wardrobe_runtime_atlas.png.meta",
+      "sha256": "015bdf62b46ebfca0bfbe8cb7d21dc4f23b032422d54b64a9952e4ecfcc80756",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/wardrobe/assets.meta",
+      "sha256": "66d35efd356f82542498e9951e6289da318f7297f333e27abfbaa6f55278dd81",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/wardrobe.meta",
+      "sha256": "727b9cf24557e8b66ae9e369321f402c09cd685da7e28e2060b0520a7ad5b9de",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual.meta",
+      "sha256": "54a78d2ff1d90d92db43bc557545f322492e5d1407548a83ca4d82253f2741ae",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles.meta",
+      "sha256": "240f7c107b3ae83897ff3bda3e2c64c8e817a1dff5a11b0dc8dfc283b21ba7a5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/AmbientBehavior.ts",
+      "sha256": "c3315a7e6b8d905f66b9a8d0c9380f28b099bbf777077a7b46b8d6bf87969e0c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/AmbientBehavior.ts.meta",
+      "sha256": "37d23f1586ae1edb3f01840ed22ccb679a4519c5e8b500ab5e4972f030d89ecf",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "bfa23545673efb85f650d7bf2a5e6d883c2e70c8d58c33179a30783b28a64847",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts.meta",
+      "sha256": "c6cbf545c0d2fb9aa69da7e90797c248d5399d7c9993aafad37b8cdb47c9fbee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackData.ts",
+      "sha256": "9a71754b0c55982faa67b2af73476e4811f25b41c1a47c9e781a2cb491617519",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackData.ts.meta",
+      "sha256": "f95db9273e6fafe78aaeee2f04d0376998e0e908e6dca77185def71463af2678",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts",
+      "sha256": "37b35cfca2df79236489fbcce1342140e6901e8fd24139a3f96737b379927fca",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts.meta",
+      "sha256": "c1b7384906562d974981318e4b3cc6dc9a808864a554bc5a5c279b7644ee5689",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "2848b8a747d2ab4216679d963c7a9fa7e2b60b38cb3afc1b6334fb6d063852eb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts.meta",
+      "sha256": "d9d0cde93774ab8422d7535773d2184d745217f9272851a90329ef9953b991bc",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/AudioBehavior.ts",
+      "sha256": "82cd2d2356876f12cec2cf4e3b88818ea33d1acfaa28d2683344e82956580b90",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/AudioBehavior.ts.meta",
+      "sha256": "82abe67c487360353e1e376253cbae2898a02674388f9ad8d3aa69949f9947c6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackGeometry.ts",
+      "sha256": "f369fd4016ebc9ad109e42cf6550ca6e660404370e4a6c6c0e281806cbfcd7b9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackGeometry.ts.meta",
+      "sha256": "dab60f239322b1abf979b00c40d1526629fd5da8bcf79984354c35f91704998a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackInteraction.ts",
+      "sha256": "67f315e2ede251dfa065ef047630259b0e065aa7e050ac8558aef48a29dc3e3a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackInteraction.ts.meta",
+      "sha256": "9047e7bc2bef408fa5ce95fad984e59b0270c29cb0bacfe8333177452941642d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackWear.ts",
+      "sha256": "ed57c889ae4ff234174bc931cf437a1a8b3c933a09e80a27872a45f8ffb4c84c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/BackpackWear.ts.meta",
+      "sha256": "30024a46584d2b9fd393e5d4da46c20a3db41855f657e4ab932e8c4fe28c59c3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+      "sha256": "ba9bec0971dadd49cbe47ad7b53c0a8989f67f694615eeb2736f5fdae9f45017",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ComicPage.ts.meta",
+      "sha256": "896c645faaaf3b371495814c23effd485cebebfccc4f59ece5db21ec3891573b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomBubble.ts",
+      "sha256": "085417d9e27b0f0ec6a9f150b513e827d437e2660707d8e148619fc955aa367c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomBubble.ts.meta",
+      "sha256": "f70021cb9ee702d5edd70aa366a2fcd2a6f238c01895db0cf775563d4112136f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomDoll.ts",
+      "sha256": "10109453c5c1b9fafc7d33b91b01953f1c43ad9a0acf0b79a465aaeb7e64e777",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomDoll.ts.meta",
+      "sha256": "8483febae38ff73fb99299883430752266bd1d6a46abf31b5c43c07c27245756",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomHUD.ts",
+      "sha256": "2b1318cc3ca5858a58e0cd36a7c93fa998a6f3055c30f921c9d63be580d47c36",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomHUD.ts.meta",
+      "sha256": "412c56f89dcdfdaf81561e31744eb2c61219c902661af0b6f53aa48582e01e8d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts",
+      "sha256": "e56a834fe3dfb0558c4fd82dee9851f99cb0520199b889fd8bbee545f5d78dd3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts.meta",
+      "sha256": "4fb9c17aa21529e629dc0ea8777974ebfd87b62c8bbb58fd1cca196e3167d01d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "sha256": "33894d8804818e226979c4d88ac0fd46d19bac8c7613a78c4e7c00824e5fbf18",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts.meta",
+      "sha256": "97598140d7bfdb1af77a2401862db57640d747ed72d70413c6fe8d50b51712d5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPlants.ts",
+      "sha256": "79f628d6587ba8754deff9d93ec7b98b0bac43e227dee13c3f20f39987bf9f6f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPlants.ts.meta",
+      "sha256": "8b6e819aa93a29fe2bd432152b4fbb7de1822947764f5368aab8754a938c1325",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPlumes.ts",
+      "sha256": "a227cea40ebdba1189b38c4cf09b5b7f9902e8310197ecfbc6c20a2a8409e187",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPlumes.ts.meta",
+      "sha256": "e8945a53301f36d34f1fea27955e126cbed9dcda6c10220be5b0cca6d9465d7c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomRound.ts",
+      "sha256": "bad47a0bf275cba933e187a77c69147d2aec20fa8cb17c148849bbd7c51f409b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomRound.ts.meta",
+      "sha256": "24de4ed14673c633f80df7e5e98a0c5243615aba19441cae2194e40bfccc59fb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomShadows.ts",
+      "sha256": "291001ce5f9b4f5277e05dec789373f30ec73e25411f7162eb5a0dc3b06ef11c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomShadows.ts.meta",
+      "sha256": "ce31ef1837c7cb39fce5477943eb864a5bcd14633df780b4bc7754c96649c33c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomTools.ts",
+      "sha256": "fc1c0a25502aef6e39bf3a2edf47aa0de8cd09e2ea997bbb5676b52faa5836f8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomTools.ts.meta",
+      "sha256": "f6d3c10e293334e6747ee826a9c835d51199c262f5ac7109a194ca8cae125c13",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomVisualRules.ts",
+      "sha256": "1ea7d2cf6cf51ee4f5611a023f1de9677f9dbac94649888f7810f57bf444a4da",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomVisualRules.ts.meta",
+      "sha256": "4b8d9b788db1320398cffc137e7f57980dff23e6f081a2e00c00eb9697814d7a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureFlow.ts",
+      "sha256": "3c8d604a650e2c1e375dc0e49db029be8efd48177c45eac6fada206b93bb305b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureFlow.ts.meta",
+      "sha256": "9138714b1533fee723776aeef1ffcce7bca7a7556f5d469c6474f96d5c22d060",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureMotion.ts",
+      "sha256": "06ad8aa460cb7421b141ab12371161e46e8398989828cb5c7ddeb158bfedbd99",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DepartureMotion.ts.meta",
+      "sha256": "b75aa8b3691f95903bac4858142244ce44b1a8af439ff8e2744abcf627c51e17",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+      "sha256": "e34e473cb6c019c481e1a0eb04d2f3b090c48b4a0d4babfcebc8060c5ade1e9b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DollSkin.ts.meta",
+      "sha256": "25811f30e144e708fc82d71c9f910202bca957bf55b12e8b54d5684b9881801c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DragGaze.ts",
+      "sha256": "f2e24aec7047134508972911bc9135f92d509af3194d8a79936730ed85db2201",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DragGaze.ts.meta",
+      "sha256": "f71421c1ba7d8a9deda2c8042d672e88e922b47038c65d763a6e48acbad76feb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts",
+      "sha256": "644d02e4ab360a150984dce70c145dba565368b4a1e923468931bbbe4a5dd4ae",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMarks.ts.meta",
+      "sha256": "6de3e3104c0ab36a4bb84bff0a038f866e63ff77b4b1a183b3972fcd93a81ad7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMotion.ts",
+      "sha256": "83d0ced4c1882f7876040673e9a6700778e2135009cb0162bf115624d1772b50",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DrinkMotion.ts.meta",
+      "sha256": "83cbb7949e076c50db693ae88403600594b776c878c23f07684eb0596c69d1b9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "f7d91cd6c4500670dcb25cc31f85879076d2ee1c633a844a207c4f2e755989ee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts.meta",
+      "sha256": "2e144bab55c5a7f012eb917b6c6a143da9f9be6cb491aeea634e9cc5a09e880d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/EyeGeometry.ts",
+      "sha256": "015eec9a46ae8eaddfa85d055e760b70e6f8056ac5fbcfd2543f8ff9e712c240",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/EyeGeometry.ts.meta",
+      "sha256": "1e48732a4208a707e82b8965a12cdb79df968f4dd16693b2f34d1e7b5818cc7c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FishInteraction.ts",
+      "sha256": "31507a39e2b74f486e34a33ee433a0597d4c6c314dd700760bc5c742b7c279c8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FishInteraction.ts.meta",
+      "sha256": "387f7a0452dbb3a2e496c63846780cad9d8ffaf1c61f4006b8d6fe4a249debe9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FlowerLife.ts",
+      "sha256": "54dd8662a78627275c2c885e5271cfedfcc36a13e212b74b37bfe43aa8107f57",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FlowerLife.ts.meta",
+      "sha256": "71a07e31888c1470c9c87fb9bfc2b52bc5df64f72d9a5b83e9ca3faf534c2d7f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FlowerPose.ts",
+      "sha256": "d2cf9070321fddacbf8cb31eff6d01d68e2040f946a2449e1e428c0a0974518e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/FlowerPose.ts.meta",
+      "sha256": "bc78c4df1ebfdd5f6e44dc2df1d86775a762f7c54614a6e64cd4544a9ee920f6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/GroundingGeometry.ts",
+      "sha256": "b508d980c5425d6b57d6711caa2a1aa513182653694fdd43429dcbcd10b3b305",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/GroundingGeometry.ts.meta",
+      "sha256": "77ccc5034bee2eb5c38d09aa1b45aac1b2d95e58c6658a4963611749aabe05f4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+      "sha256": "2eff743c82d519ad9f78a72cbe239e55f2483e60953672d12a4c9e5a0376a214",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeBackpack.ts.meta",
+      "sha256": "83cdc250aac93ddcdd30e4c3c8a64c465fca20fc4538d4b580604841ae493fb0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeClock.ts",
+      "sha256": "cd2f2babb0451beea5d9a6849dd44ed54e242cd0dc24829f28fd7a8712f0586c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeClock.ts.meta",
+      "sha256": "438c6eab89deaaad5e79439b3e3f194470a6e3d85848b9a3410c8a6b4bdbb0e2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeCreditsText.ts",
+      "sha256": "017ebb5487d1a8cf0c8c39b5394e50f211faaf90d95e4a1ea6ace154a10c14f7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeCreditsText.ts.meta",
+      "sha256": "507ce460ddc4a6cebaf390117ce6ba06b83cd8ed6ff073609a9a10c6379a9792",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeDepartureVisual.ts",
+      "sha256": "babe2a67d9ae10846591e8bf57f1bb3ffcdfab0579d5d0718f999ecd1ac0e31d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeDepartureVisual.ts.meta",
+      "sha256": "d5e925a4eacdc9f9d129a41459852f7df12121443f18a08a8844f5714b34795b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeEntryIntent.ts",
+      "sha256": "6297bb62f2cf60dbda8fcf1b46d44a78136c0b1d9f2517d8a26841526e580228",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeEntryIntent.ts.meta",
+      "sha256": "bcc65288f385f7e5bc5b39d15ddd54333ebd47b5e7c25619b3f2b230ed541deb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+      "sha256": "21aa5c9ef5115c17699933f4ad122d597678cf63b6ad7fa0bb5db1b3f049793b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeFlowers.ts.meta",
+      "sha256": "2ddfe1911c000baf32edd21e7a635fbd9d08c0edc851d72ca99a31aa96216e9b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHUD.ts",
+      "sha256": "0248c4556d34c03b1885ddc64354f856436519192609c0fe4dca50e64273c97a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHUD.ts.meta",
+      "sha256": "1470fa3b11f03a0f7f3102e15e6ebc76f205d2ed87f93686ced4637a402e7380",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHeaderTag.ts",
+      "sha256": "9481e4631cdd929a8be109a83ef8210535f4b097c5a18862f54b7de88aa73dfb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHeaderTag.ts.meta",
+      "sha256": "e83ef57912883e37e6487eb06dd3fda9b6876955108b77e6525569a4d425d9b2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+      "sha256": "65c5f32176b9f2d5638ffffbe0512f06cec22a9dfefc253f9f05722104e32ab3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeIncense.ts.meta",
+      "sha256": "43da6c838826b7226ee789549403aef5b853a543b4574ead99c395021d8195fa",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts",
+      "sha256": "481e1133016871043f109b097a66c2f747ef08a7b078535c994caf45df464dac",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeLighting.ts.meta",
+      "sha256": "650bbd7aab1db5836217510595896e36bdf2f6bbd77d041f3195ee449a45007a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeNote.ts",
+      "sha256": "ed0db6bbbccba21b454bb416a984b8c303cb9e6bae2ae080b3ab0b0832c99f1c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeNote.ts.meta",
+      "sha256": "97f8919638557624156af232b14efb89b71e65c1fb07e360ff1813d22632e2bb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "1336de9ac65706655b39b573b990f2dd5f6387f456d4bd0e9b5c125947bd2bf5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts.meta",
+      "sha256": "611372ae10ea04126862e9af1bd147be7f3064fbc098ad204a0b6a313e4e896a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePlants.ts",
+      "sha256": "be9fcd2834f1c597b960a383843efef5047e897711d07e9e2d1652460506aede",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePlants.ts.meta",
+      "sha256": "2b434dda2e820d1185efe77cd829ec44e290faa1fe3fb0e7942f34576e86cbc5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePropInteraction.ts",
+      "sha256": "1709daec89e80c339aad43047a430887e98bb8ca375c90a36ac0a89dfc8d04f2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePropInteraction.ts.meta",
+      "sha256": "1e3d3165091fe58e7dd4a0bae5f9bb87143858af7b518f24f4d973ef12eef4c5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeProps.ts",
+      "sha256": "d7a976eebc219babc323c243214267edd00dd1bb197d0537d23accb2c7483af0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeProps.ts.meta",
+      "sha256": "adeac36def036ba3bc53baa72cbe679c1fd11e7e12017eba8e460d00aa69a098",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeRenderPlan.ts",
+      "sha256": "5152d460cc014058b234003069ba545de2429786e504f3dcfaacb4b9a7b5ad72",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeRenderPlan.ts.meta",
+      "sha256": "a9eb9ac369a45b38bbf0bcadc27b4312d5037b2915c7ae3f48e928f9d3889b69",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeShadows.ts",
+      "sha256": "a4d7cfa96187df029d6d57fd3c735d9b9bd4839fa53bc0d6109eabaf187b00ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeShadows.ts.meta",
+      "sha256": "883af32959b306f3d22c6ade62ce1b26e9d986aadb475bb9fcc72ff4f7021ce4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeTravelBridge.ts",
+      "sha256": "b63569ac331735a8103633be1bab8b5a413c618cdb0249a8c6f2ea3d32d9f155",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeTravelBridge.ts.meta",
+      "sha256": "41ec854e0194bfc7fdf9078eca700e325ac981ba1949733072dc30c932825457",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/IncenseSmoke.ts",
+      "sha256": "e01f09b4df114e54674e58b1c02fc3d1646aac2947fc7445567bd1b2acd381b8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/IncenseSmoke.ts.meta",
+      "sha256": "2945c1e3c903d6f7524ef83757a742a07f1567b33c24918db3f2ff39b5ce6328",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/IncenseState.ts",
+      "sha256": "84da18b4d3d2ad5090dd539000b34025c861e9c4deed9f36e81c41c5a1c22010",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/IncenseState.ts.meta",
+      "sha256": "7f077a1ab77f2682004d2ab8b136b1770d8bac92209b3720e982a22d92bcaf4b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/InteractionFeedback.ts",
+      "sha256": "dcb6a523be341d3a9f229ad89e409a6f9a4be673b37efcf501f920b39b4a55ab",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/InteractionFeedback.ts.meta",
+      "sha256": "01d568848b866c9fe2fa52ef099c72dca21343699fc32f761fa6b8ba088de323",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LiftMotion.ts",
+      "sha256": "43bab6746a3d65bd9bfbd4074308c6b94d0905ca0bd0aef83cdc7130328a457b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LiftMotion.ts.meta",
+      "sha256": "413e0d8d7b6320a62baccab84e40da626aef8774c7546da896a75f0942f74438",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LightingSnapshot.ts",
+      "sha256": "dac6507932c3f11003e4b908cb97fddd199871c823b41ca33b438750788e4557",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LightingSnapshot.ts.meta",
+      "sha256": "05c0f8707b8de545c8ea6128be699ee781ab497c1b9020712d5a388291332b06",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoadingMotion.ts",
+      "sha256": "d68f4d62564627b03115f8673fcd144d4d5121f78868952f1bd1bdc681b059a3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoadingMotion.ts.meta",
+      "sha256": "3315c395e682f102bdc10790e1d4c4a6bb1c5fddff9e2ab68960b97adfc087c5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoadingPage.ts",
+      "sha256": "ac4ba9b24bb5ce69623b07cc266f18eab43779cead5b0f86cac579847d6c4937",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoadingPage.ts.meta",
+      "sha256": "5460321537a44c7d2e7dcf383ed96801066c4acda4463a9be03990ba842481a8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoginPage.ts",
+      "sha256": "0581983924874d705505b216da0814d7cc3fe225a3e06a29aa108b300cbec187",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoginPage.ts.meta",
+      "sha256": "f71718bd1732bb873f3b79b7d7600be35831a32015104bb190e9abb553be28c9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MeritArtView.ts",
+      "sha256": "28c4bba19eac4dc84503e55abfeae6f794de33e527c2f19bc0c66969926419ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MeritArtView.ts.meta",
+      "sha256": "a995db7a6e25e6ffc024df6316989701a5a7756085e720c2984222e27ade0c77",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MeritFeedback.ts",
+      "sha256": "b9b8f2bff64059f49ab6f8ebcf14a5e2e02506847e7599198b15dafc9b3a07af",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MeritFeedback.ts.meta",
+      "sha256": "dedeea7d3aaf2c0252895dd3ba953e9c442b1efc350248100790d9837d396999",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MusicCreditsView.ts",
+      "sha256": "e8812a4e12a6e3cbb8aa79b1790007057ccc6d70f2179b70cdd353db2e7eed17",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MusicCreditsView.ts.meta",
+      "sha256": "1d43aa54eaea3e73d467ab09193836d14d864438ad3e39b063d95dc5c963bb7e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/OpeningClock.ts",
+      "sha256": "3b453245538c91e550861aaabb5af985c65ff0042389206c70012115f0bb9a6f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/OpeningClock.ts.meta",
+      "sha256": "c5decee35037c8914ea03c6072571a2117d94eaa34507b9d8fa04139efce39a6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/PlantGeometry.ts",
+      "sha256": "29e472d1e1e0290dc794bf59d61ad1f3ab63d28e992b7bbd86b88116b6928100",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/PlantGeometry.ts.meta",
+      "sha256": "f997ad2acf58f36b7d1aacecfc008c93588593cfd796a4724f6be1d23892f51a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/QA_TravelHome.ts",
+      "sha256": "ddc70dafc8149e5c98b35d0a22ec8ec4a1b776624b7176dddd5107c22c8c4e92",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/QA_TravelHome.ts.meta",
+      "sha256": "56a71ff0272d49bc30695728ef5493c802fce83c2de084781699a898c31946ef",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/SoftGeometry.ts",
+      "sha256": "a6c6ac3c853dd81f12a20abbf4707668cd2865267da3e41619af2feedb112308",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/SoftGeometry.ts.meta",
+      "sha256": "331d66c0eab722d4ff88e3e22ec6315b4265ee8b5bd921dacfcaf3986208a39c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Stroke2D.ts",
+      "sha256": "d38c1986964fd2b2be70353599ca57369f8aebf387805de2ac0d5e9e93396a26",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Stroke2D.ts.meta",
+      "sha256": "097458bdd6910bf6d416c3a60905c7df65e371f3fd244ad5a645944a09b13c91",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelAtlasSprite.ts",
+      "sha256": "4915d6506a201583c0293742ab9822e83b7b93312395db99da6897e0bcf9f1df",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelAtlasSprite.ts.meta",
+      "sha256": "e44390a1a89b4f708890798d30afe60ba4307f5238705198b8e38536d1226793",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts",
+      "sha256": "35aba456928176546c2daab535dbcf9aa2d7a5dc5521ad4dd1b1871db75e7e25",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts.meta",
+      "sha256": "b3e99cebdf4c90c27ce5225f30c9286682d82a0ad74d042c3b84f9e13f206be9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryDrawing.ts",
+      "sha256": "e46b63a0a8f7547b332fd9e749393131be6ef2c581ca36cfc705fdb8321365b0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelDiaryDrawing.ts.meta",
+      "sha256": "18be62bc557561e3bcf634adc2dc08006e9228885ccd324d34e3d8b422a920b1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeProps.ts",
+      "sha256": "295999c6243f5805673e6890274a04af8cbbfc619450af5101133bdad902ec37",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeProps.ts.meta",
+      "sha256": "c6d71f337c42b46beecd6e32987a721af0aa7a15bec9e0b74fda565c42da0d8b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeRules.ts",
+      "sha256": "6122ca97364247ac474b6cd39208462e12642d43f3665562dd0e7a30d29c9082",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelHomeRules.ts.meta",
+      "sha256": "876d32ad55fbb0326c02dd812bd6065c6f547f01900236bc9088f11632ae03e3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+      "sha256": "513ceec28c16f0ecf82f776ad7bf2c78550fcf9ecc17b01fbd435d91a043e4af",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts.meta",
+      "sha256": "0f8b8c94d419434a92fbfc38013ba070aea1bf55bd4d518e4296fc6dcc64f43c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalSession.ts",
+      "sha256": "d55b9f4b1b1f6dd3098dc0cc22dcf74fc9b344683c7d0320fe2e0bf0d948e066",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalSession.ts.meta",
+      "sha256": "fa114da8f48c97a3109ee2a76861bfe498bc96f97b37a2be81b8f91a289c5ff8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelLoadingPanel.ts",
+      "sha256": "cb0d2145513dd421a5621515525a6f4b6a3a64854bc2d920f1c444f9cffbdb60",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelLoadingPanel.ts.meta",
+      "sha256": "1a01782e1e647c081b6a70a21e9dd5f25248c941eeaf706e133646f8ebe993a0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelModel.ts",
+      "sha256": "80bb2def0d339df23fb2492ad6b775cf23d7966d02dd4595e4bc6da19442488e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelModel.ts.meta",
+      "sha256": "fea84e94cb5f1a65335da9f7a7334679ee346d226205f5e051230b35c36b38a4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelRewardMotion.ts",
+      "sha256": "b0cd756af6ba3d3fe47f0ddfb7556e8ce8391cef911864f8fb42d483d899744b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelRewardMotion.ts.meta",
+      "sha256": "b57fcb561fc2681264f84cbe77ec4c7fd6ece96891b4c4852a74cd20d50df9fa",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelService.ts",
+      "sha256": "6cac80afd539bd631ff80b89ac16850a9fc762c8088e55ac1bf979c85ab1b86b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelService.ts.meta",
+      "sha256": "8c40d949f486d719ceb87935bbc8256ac3eb97d09133ca1f0a777e75f25c8075",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelStore.ts",
+      "sha256": "9d34a493128928fba8ee65373e392e0dd092cda4fee866611154e5849ace9861",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelStore.ts.meta",
+      "sha256": "0cfbac2202f7b34b31094b44237a0bc8feed220563d30e361160c6fc976416a7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Viewport.ts",
+      "sha256": "87bc358b55d05e5df676913e53f653fd3f86d5dd7e5cf8a5b0d7551fc6ece5da",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Viewport.ts.meta",
+      "sha256": "2e4b6be9d3823f7e7be796470a3e19db49f347a72708026d2e76903ec8e08373",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Visual.ts",
+      "sha256": "c8c67135f1f66a68cc47b246b6d320de6aca04bbcc3311d7aa1b3d95b25bf932",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Visual.ts.meta",
+      "sha256": "e2769f2a205647ca9524be05b832d5adb8bbd42b7011c875f41dd6623f565755",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/WayfindingHint.ts",
+      "sha256": "b74a12778935b3241dd2be21cb72394caa0fde46b423eb00d5012ed7102bc9f2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/WayfindingHint.ts.meta",
+      "sha256": "46eb93105b27581d99cfc22be2642ff93e1acf77815f2a7403438336d117618c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts",
+      "sha256": "8e8fda90defa5dc3baa51353a2c26700f2951b1c6433cc4a15ed5669d9dae6d3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/XiaoyuRig.ts.meta",
+      "sha256": "157e9e84521d3466eb26656012a93f8b3a935764b78cd3c930d4709501808b72",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game.meta",
+      "sha256": "92cac135895cd694d6b0e9bb8e424c08a233eef2c5c81b02acb121eb35a2e70a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+      "sha256": "ae27c91c88578a77ce04c151be03194da3a79f8b1866330fa8cafaeba8e75b54",
+      "symlink": "../../../../engines/travel-core/dist/travel-core.js"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+      "sha256": "0cd866439d4ae7a0696b1d08b64c32423b54ada11117086c641038d0559eb997",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins.meta",
+      "sha256": "0ac0a84d5327b80c7b75dadbdbf68316636d366079411b7710beadba7ac35bac",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-beams.effect",
+      "sha256": "ccd3da5c80b0baabc35342b023eb2c6a26418e1d51acc4c7e90cecf909e6f24f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-beams.effect.meta",
+      "sha256": "29f614027092a0e87a1cf2047bc071fa26a5f7dc787ad669ee40fb4d121f65eb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-doll.effect",
+      "sha256": "c01bc21b02386e99b9f04be8dad263b5c274ffed1dc7e8325a5dbc745af7a66e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-doll.effect.meta",
+      "sha256": "12eb4d5b41442c00149f9c75afee3ab87178c22c759f77d7183e5c084e246aff",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-plume.effect",
+      "sha256": "06917ef2ccd028d3e928b7326614ac510b7747bbb6baabacef59905a4621b684",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-plume.effect.meta",
+      "sha256": "6e94346c3ede6439d0ece1f2d4c36d23ca43372eee61835f54f89515359b0f08",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-room.effect",
+      "sha256": "be635c56ef9b67e1a8a0787f3d5d2c7a49da52042875252cf94edff092764d7e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-room.effect.meta",
+      "sha256": "96db540148496bffb905c1c593053653e03dffad1c64b912b2089164d784e3b3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-selection.effect",
+      "sha256": "1b4c71bd05d5deca255232413781b81295304c075d78d1fa5ec3af1c522b51c3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-selection.effect.meta",
+      "sha256": "692097471a1696bc3b76680513374c7838ee0bfe4ca6cf1e5e47e8ae37f678f9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-shadow.effect",
+      "sha256": "9c29314bbfc8f661748cd77914cad7692f65b9c6af009a1d6c5eaf792460bdfe",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-shadow.effect.meta",
+      "sha256": "51fa16d2b1d1a68e175e4b3961e309d1aeb3041cfc50f93f1183cee1163275c3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-sky.effect",
+      "sha256": "2d76c694483361a351bb25ad508b85ccc7fb8eb6cd4290f4b0b34ecec310d048",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-sky.effect.meta",
+      "sha256": "e59da8ee3d5de1847f42eeab47a1d527b0b5471a95922a8128eec5137d024eea",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-tool-receiver.effect",
+      "sha256": "9bc13ea67e435f046836dbacfa3e6cbdf1e66d8cff13807c31247d3eaeb14f04",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/darkroom-tool-receiver.effect.meta",
+      "sha256": "9ef51b215054f41ec0d7c8c7cce3348ee919ba97da391272691715d3b3ccfcce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/departure-actor.effect",
+      "sha256": "08ad08fae6f9650531840413c7da20beff6b4413e9d0f4fce78e392464619023",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/departure-actor.effect.meta",
+      "sha256": "7e36eaa6d6fe510455edd96c7f4855a9c1893e6bd62b4bb9cc3bd0e578cfdf27",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bed.effect",
+      "sha256": "28192b8d212ad6bf633d79fda83307cac992837b7146fbff0d37839f49dd2995",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bed.effect.meta",
+      "sha256": "de4e989ad33ef1554e12abce4804e7a28bd8ac6ca65a1235f8d53c44133356a1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bleed.effect",
+      "sha256": "430497018093b1fbd3972ead3788089f97a6f1314b3b15e5b44a1b656e91d9fd",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-bleed.effect.meta",
+      "sha256": "724222f00a5aaf5dd8fb3276f72df0a47301ffebd9622a1cbb034bf0a8385662",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-diary-ink.effect",
+      "sha256": "b75a7e5cfcab35b08804bc8953c8c13a062d47627d5bb9f8c2f45ea6b05864b0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-diary-ink.effect.meta",
+      "sha256": "3e009b6fd58a0d467079f560fedbe3ccf16c4cea867b1feadbdf4d1d9e483fab",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-face.effect",
+      "sha256": "21624fb39809902ed3d6561a069651baf77edb1909a91aeb6d94f10ad16d8961",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-face.effect.meta",
+      "sha256": "8e898384da74d9de402d257fab4f754f5d9bfb0d8296509a9caf00a68eb210aa",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower-line.effect",
+      "sha256": "295875447dce94de3a66d634545d616912c187d82fbc3828eada8144dd06e540",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower-line.effect.meta",
+      "sha256": "8a63e213d4230eab0b9f07be80cff8078530ea6ad02a26b461d4690079e026e9",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower.effect",
+      "sha256": "504c8e4d21a317b3fc2a3fca33b9a9c813cd5e19e1066f27bebd6f4f1996d37f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-flower.effect.meta",
+      "sha256": "97d92cf51cc423053b28be1a795e0ff6dba42d35a755bc084de622e64f541277",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-incense.effect",
+      "sha256": "c4d665ca3582c10084c7c762915bad6d59abc29ade7eabd8f406e0d2e0fe8295",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-incense.effect.meta",
+      "sha256": "dee852bc3f538b2c0aa68dbf81316a3be3cb09949c03bcba54c14005cab49438",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect",
+      "sha256": "e4919751840a8de61d7cc8b9f8d56a4bc1396ab974d6ee67593f6efc1ec11026",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-merit.effect.meta",
+      "sha256": "1ca8454b63f0b0b95dadf4f08a5f7f59e68f927a5b061e0da418b1c15795d595",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part-shadow.effect",
+      "sha256": "a088f2343b4cdd7d0a24573fd237656fef3632dfb768e9e4100c858a4c547be3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part-shadow.effect.meta",
+      "sha256": "04b9f16d5ac9f18e45a1cfca7e7018185f13f9bb202f8449a7aa0250a56ab45b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part.effect",
+      "sha256": "cf2dd6a05984ad832f50e5eaf1978c73fb5a81d1b68975b5fd6c4cbdc0466820",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-part.effect.meta",
+      "sha256": "bf8cb6bf0b52daf741abeae2c18028900624e47207fc7ffb18b6e579a22da45c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-receiver.effect",
+      "sha256": "8df34cb8a33b7cb24805db9a981f071467b0edd4c899e33d96d077d1b0fb8015",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-receiver.effect.meta",
+      "sha256": "6d6c10f514512b214bef10ae0891488b4aa8e414e01193475ee781b3ace0454b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-shadow.effect",
+      "sha256": "7698e324fad97564cf1af10b314517368c07cde97ed70cf6ee461faa1df000fb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-shadow.effect.meta",
+      "sha256": "124531ec9924060d415ec31bc9b26df29f747e9e903ad971f87a548e98074f9a",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-shafts.effect",
+      "sha256": "0cdf75819759f46bec9ed3eb8430b31c74858234ffbd855ad1c87ca3934a6132",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-shafts.effect.meta",
+      "sha256": "a613cdb960ee53b383f40c64ff2e5ae6d82cf427cb80f48f41566ebc6881ef9c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-smoke.effect",
+      "sha256": "eee1d6813f9f89902c5b829cbf74bc43563cc3f35f4ea17bd3c9800b582948cb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-smoke.effect.meta",
+      "sha256": "01c1ac84c49b1e48e37d1eb161befb0f1f29e5b0293e6d515881b271869bc738",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-table-shadow.effect",
+      "sha256": "90c4791f4fbe7c088e37993ed9278dae56aeec63f2d4584a17ff248646ccf3e8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/home-table-shadow.effect.meta",
+      "sha256": "9ff8dc13211d1c34cc8c5be0daeea3a97a78feb0c847b58ee79435888ef0aed6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/login-peek.effect",
+      "sha256": "57bd4788cf97f7ec49520241736178be4fcfaa1559a64f14c14e85e620d66c65",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/login-peek.effect.meta",
+      "sha256": "b8e0e2b719889b188aee8b68faff4445826b472616ff4fb78e8814bec7d84a30",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/original-stroke.effect",
+      "sha256": "9df61ae63fa95c3d6f75381597e4d8c6703903667a725f70fa454756e200d61e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/original-stroke.effect.meta",
+      "sha256": "d6739995a31a289bd9814db19e91123d39991eb6640e9b92b7fad1243215b0ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects.meta",
+      "sha256": "f701c8aeb3fee56d131edd4ff2cfa5d6fdba75564f4d71d1376e798b97ab17f3",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json",
+      "sha256": "bcbfc0873d999d6fd88b3ee4d8d537c3535f709e4d6da53c7f61be0281f813f0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json.meta",
+      "sha256": "9e85d1ff9cd60e9f25d8c776782f8621f104a42fef0f50105730a0cf6afb2dc0",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json",
+      "sha256": "a8963360836786509ce3905bde49ef847c1a5fd574bb19fa17f9eb51f0153c02",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-scenes.json.meta",
+      "sha256": "6696d0516edfe78e2c4835161af28c6aa5034c87a18b89f066aedccb6119d4ad",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources.meta",
+      "sha256": "78cbcf10cfe29a9e24330d59b2ea2b3ec7a5dc1cadc63e6975262758279783a8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/scene.scene",
+      "sha256": "95d3251274653614557153d6c82d974f860bed97e05a3417d0f6ee8a7870a28d",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/scene.scene.meta",
+      "sha256": "cb0d22499d388d6346215c1ddce01e4a9134c8574f3e360e93469e30da087b2c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/fonts/LXGWWenKai-OFL.txt",
+      "sha256": "c38b1994a5e48ac30ac7d1da7d0409fd8fd8127dfe28a13d6e787d5b1ef34a5e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/fonts/MaShanZheng-OFL.txt",
+      "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/fonts/Noto-CJK-LICENSE.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/music/amacha-terms-20261005.html.txt",
+      "sha256": "e09681beb2e9845e6e6acf106e8d7f0d11d297bf79b9220a9a6ed1da825ef14b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/music/snapshots.json",
+      "sha256": "2ee6e86e112670afa7db1fd86ff5d42934c978111e4f7c35fba2ba21d5231bd5",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/music/soundimage-attribution-20261005.txt",
+      "sha256": "b368375707be9f7538c9a98093d09047a98b6ae2e41d7ca5330a06237e18ecee",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/music/soundimage-license-20261005.txt",
+      "sha256": "8ddec85a53d8ef108a98efa17a33b60dc184c381ab1228e85f385d732eb17dce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/music/source-credits.txt",
+      "sha256": "555eefcb3bd0a237e69907f5e6a09ce55034e7cd96a0042a1ec48028cb86c7b8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/licenses/source-font-manifest.json",
+      "sha256": "ee7dd796699442d832fe3b98376293f502674a9899e4e5ecce4f5c682ccea0e4",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/package.json",
+      "sha256": "36b1cd22e56dbda29b50cca41779c8f849b5fe9012cd3221d6fec58a5309e2ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/builder.json",
+      "sha256": "a3e1a8df580b6ebec15ad16c9bbef785806567bfbc093821852bb3606028e702",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/cocos-service.json",
+      "sha256": "2a29ba978e872c20bb7d01117c003fd6c6ebfbdb450196f45e56846b5d4b09eb",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/device.json",
+      "sha256": "93af91e0b90038cedc84d08651f845e1c2e2ae460321c19f083c27a178e451f8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/engine.json",
+      "sha256": "4f3ab4457fee5624da55da063d3e3025a58fb590309833155e1d28b891157121",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/information.json",
+      "sha256": "295baa75f67775a21ba642577d88a3e3ccd1f8da91b55bcf0a91d0f88cca7d94",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/program.json",
+      "sha256": "d914f9f19ffe02724337936d8c7907798c8666566902b78243eb1aa8da0baedd",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/settings/v2/packages/project.json",
+      "sha256": "6cb23a2127c3376e5940168a37a4d48b09d0113fe4a871ff77aec09ab5203673",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/ambient-behavior.test.cjs",
+      "sha256": "244c3439219b0c20f4009665867169e56d32d5344f7e48dad0b149dfad1ca168",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/audio-behavior.test.cjs",
+      "sha256": "355c7b13a701a4bc5694d79fc914c9bc258048398fa489569c3b3661b44439f8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/backpack-input.test.cjs",
+      "sha256": "1bccd2fcdb5482d77a1435d2a2738fd0731745a8fadc80571d6fb8609890005b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/backpack-mipmaps.test.cjs",
+      "sha256": "6756246ae3166a1a5ce3417d807b83858472f79c84b57e38571f4501ed2c87e8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/backpack-wear.test.cjs",
+      "sha256": "7b701b238475d77855f770876f60a9c7e63988a7135dcd58216cdb6d6638d13b",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/backpack.test.cjs",
+      "sha256": "c82ff3c3b5ef03f2681474a5c33beb4a547fcfdc29064f6a5dc719d4b5bd507c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/bitmap-transfer.test.cjs",
+      "sha256": "1836fc8d9a5a145948cd6f4d056add16f71d267751a55b15c3baf13250ec76ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/darkroom-doll.test.cjs",
+      "sha256": "a9db8e400a3774d11cccbd46d7211ef8104ca5e565fa63f435d619a13e3a1b9f",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/departure-flow.test.cjs",
+      "sha256": "81b8bc877c33cb456035a0b755f2767ad99a29ed688b24ce8ba8bd3ffb8ba493",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/drag-gaze.test.cjs",
+      "sha256": "6599982f959594fe07d7881c83bb8706ea25acdd611db9120d59d29996bc394c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/entry-flow.test.cjs",
+      "sha256": "0594dffdf862024642467082ab313d2c11ad88e7ae58d0b0819a2ddd8fdcccde",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fish-interaction.test.cjs",
+      "sha256": "c19e944b7017c27ecdfb8dca048fcf3a59a5628e767e8177359e791a3aaf56d1",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fixtures/backpack-native-motion.json",
+      "sha256": "98c251d3050af6e17b499a842ff3a377187ae679b372a79407c9d43f6db7033e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fixtures/doll-native.json",
+      "sha256": "2d7447c8d45575af177133f0edd5d9a39671b93367043c6cd51007937ef47030",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/fixtures/drag-gaze-native.json",
+      "sha256": "59a23718c118b465edb8077df8cdf1358f4b00d2b8e79e7bf723e72ab4cd60be",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/flowers.test.cjs",
+      "sha256": "7fa01779778f01c597bb4b630f8240be7b7459780d889a05195c78722b500945",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/grounding-eye.test.cjs",
+      "sha256": "c3ccebdc62f019aba904340df214be532dfb33fddd7e11da9fa249b09f49ab25",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/home-prop-input.test.cjs",
+      "sha256": "c06b80866bde9eb445f852c025f4503749d1ea20046b21acb1d16a0f969fa4ce",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/home-render-plan.test.cjs",
+      "sha256": "0f3cdfd23e32b4785371a867e5297a60da3044ae8713f5dbf6ae49f84717d877",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/home-ui.test.cjs",
+      "sha256": "9407c18483ef6ac082dd7f93a3dfaf25b9b4bed23d63c0fe49508a1608a8c2d6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/incense.test.cjs",
+      "sha256": "da3c6d057a297d200a44f0ca9e5542ee8e58187d208c41115bcc8ad4a0ec2c91",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/lighting.test.cjs",
+      "sha256": "71a3a63979a530b184c1491ccf086f0bd38e8152fca42899f03891289038776e",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/plant-geometry.test.cjs",
+      "sha256": "d99b34e10af6374180c67a180038e48b0158be9ef407bc96479b7b11aed8afb8",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/runtime-trace.test.cjs",
+      "sha256": "bc6d425921e6e8f5687d0c606e0fe653a62257c1db392110068b9b662f4ab461",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/soft-geometry.test.cjs",
+      "sha256": "208bf43e46d2b7e23ff3d25c441b6e49979254f35780efdef0c34ac8cb53b721",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/streaming-assets.test.cjs",
+      "sha256": "6c5ae4e08f58f973f9dd011cbe68e86f0b060ed9aec28a98c0c9bce4d8d7da2c",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-diary-artwork.test.cjs",
+      "sha256": "8b88840a1ec283ef05fa84c3d46d92c8675b1957ccf507e14e42a8c359b5b0d6",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-home-props.test.cjs",
+      "sha256": "4c97e381922951552537502a98eeb41bd5470576c6efc92afd64c4c974c97b69",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-journal.test.cjs",
+      "sha256": "b82fd4aa64c9c9acfbfb81d28383a8354e3dc43b23b9131ed699881e1db9a602",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-model.test.cjs",
+      "sha256": "5dd3fa6435a6418faea1212913ef04f9c3bf5f8d7d8f337ea46d68389d124ee7",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-service.test.cjs",
+      "sha256": "bd24f9fb1a960e232125b20a5be7c68151b53d621b7ba1d28af6d0c26b71a497",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/viewport.test.cjs",
+      "sha256": "ee2aac0f428f60ab8e5a2d8432ea11340ce60975cd34e8be2aadd18809d0b2fc",
+      "symlink": null
+    },
+    {
+      "path": "games/xiaoyu-cocos/tsconfig.json",
+      "sha256": "5b905d615fb49c5214cb704126fd885f1f1c1f17f23426b084f32c7881b640fc",
+      "symlink": null
+    }
+  ],
+  "snapshotSHA256": "9d635a68db3604c546de804bda4b568d53f7e4c967951d3451a2c48705b2953a",
+  "build": {
+    "status": "Creator Finished",
+    "exitCode": 36,
+    "log": "builds/reviews/M09-viewport-creator-v1.log",
+    "audit": "builds/reviews/M09-viewport-candidate-audit-v1.json",
+    "formalRelease": false
+  },
+  "visual": "failed: black offscreen room after resize",
+  "wechat": "not covered by this fixture",
+  "command": [
+    "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator",
+    "--project",
+    "/Users/wkk/dotWorkers/little-steps-cocos/builds/work/cocos-viewport-v1/games/xiaoyu-cocos",
+    "--build",
+    "configPath=/Users/wkk/dotWorkers/little-steps-cocos/builds/work/cocos-viewport-v1/build-config.json"
+  ],
+  "homeTravelQA": {
+    "runtime": "Viewport candidate only; no new full travel acceptance",
+    "canvasInput": "pending",
+    "comparison": "pending",
+    "WeChat": "pending"
+  }
+}

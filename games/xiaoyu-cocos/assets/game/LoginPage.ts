@@ -1,4 +1,5 @@
 import { Color, EffectAsset, Material, Node, Vec4 } from 'cc';
+import { box } from './Viewport';
 import { GameAssets } from './Assets';
 import { core, Scope, sharedUI } from './Engine';
 import { label, nodeAt, picture } from './Visual';
@@ -50,6 +51,7 @@ export class LoginPage {
         this.peek(0);
         console.info('[LittleSteps] login title stage');
     }
+    resize(height:number,_physicalWidth?:number){box(this.root,0,0,720,height);this.root.getChildByName('BleedBackground').setPosition(0,-(height-1600)/2);this.root.getChildByName('Composition').setPosition(0,-(height-1280)/2);this.root.getChildByName('FooterCopy').setPosition(185,-height+86);this.status.node.setPosition(80,-height+143);this.action.cancel();this.back.cancel();}
     private setAlpha(item: ReturnType<typeof picture>, value: number) { item.sprite.color = new Color(255, 255, 255, value * 255); }
     private peek(amount: number) {
         const offset = 96 * (1 - core.Math2D.clamp(amount, 0, 1));

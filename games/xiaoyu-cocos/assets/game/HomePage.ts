@@ -3,6 +3,7 @@ import { EventKeyboard, input, Input, KeyCode, Node, screen, UIOpacity, UITransf
 import { GameAssets } from './Assets';
 import { audioTransport, renderSurfaces, Scope, sharedUI } from './Engine';
 import { AudioPort, HomeMusic } from './AudioBehavior';
+import { box } from './Viewport';
 import { nodeAt, picture } from './Visual';
 import { XiaoyuRig } from './XiaoyuRig';
 import { HomeClock } from './HomeClock';
@@ -30,7 +31,7 @@ let roomSerial=0;
 
 export class HomePage {
     readonly root: Node;
-    readonly viewportOffset:number;
+    get viewportOffset(){return this.plan.offset;}
     travelInteractions:{busy:boolean;down(id:number,at:number[]):boolean;move(id:number,at:number[]):boolean;up(id:number,at:number[]):void;cancelPointer():void}=null;
     readonly rig: XiaoyuRig;
     readonly lighting:HomeLighting;
@@ -42,7 +43,7 @@ export class HomePage {
     private active=false;
     private knock:AudioPort;
     readonly roomRoot:Node;
-    private surface:any;
+    private surface:any;private targetLease:any;private plan:ReturnType<typeof homeRenderPlan>;
     readonly fish:FishInteraction;
     readonly incense:HomeIncense;
     readonly flowers:HomeFlowers;
@@ -62,15 +63,15 @@ export class HomePage {
     onDepartureFinished=()=>{};
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,gestureSeen=()=>false,clock=new HomeClock(),music:()=>HomeMusic=()=>null) {
         const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width);
-        const target=await assets.acquireTransient('HomeRoom-'+(++roomSerial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'HomeRoom'),texture=>texture.destroy(),scope);
+        const targetLease=await assets.acquireResizableTarget('HomeRoom-'+(++roomSerial),plan.pixels[0],plan.pixels[1],renderer,scope),target=targetLease.texture;
         const gradient=await assets.acquireTransient('IncenseRodGradient',65536,makeIncenseGradient,texture=>texture.destroy(),scope);
         const page=new HomePage(parent,assets,scope,height,gestureSeen,clock,target,plan,music,gradient);
-        await scope.guard(page.surface.ready);
+        page.targetLease=targetLease;page.resize(height,screen.windowSize.width);await scope.guard(page.surface.ready);
         (globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] Home room prepared '+JSON.stringify(page.surface.snapshot()));
         return page;
     }
     private constructor(parent: Node, private assets: GameAssets, scope: Scope, height: number, gestureSeen:()=>boolean,private clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>,music:()=>HomeMusic,gradient:any) {
-        this.viewportOffset=(height-1280)/2;
+        this.plan=plan;
         this.root = nodeAt(parent, 'HomePage', 0, (height - 1280) / 2, 720, 1280);
         this.root.active=false;
         scope.own(() => { this.root.active = false; this.root.destroy(); });
@@ -83,7 +84,7 @@ export class HomePage {
         const layers=this.roomLayers;
         const props:Array<{node:Node;resource:string;p:any;spec:any;anchor:number[];footprint:number[]}>=[];
         scene.sections.filter(s => s.kind === 'node' && s.type === 'Sprite2D').forEach((section, order) => {
-            if (section.properties.visible === false) return;
+            if (section.properties.visible === false && ['UpperBleedEdge','LowerBleedEdge'].indexOf(section.name)<0) return;
             const resource = resources.get(section.properties.texture.value) as string;
             const item = picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
             const p=section.properties;
@@ -108,7 +109,7 @@ export class HomePage {
         this.meritArt=new MeritArtView(this.roomRoot,assets,scope);
         this.hud=new HomeHUD(this.root,assets,scope,height,music);
         this.feedback=new InteractionFeedback(this.roomRoot,scope);
-        this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,height]);
+        this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,plan.logical[1]]);
         this.flowers=new HomeFlowers(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,clock);
         this.flowers.layers.forEach(layer=>layers.push(layer));
         this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock,this.rig,()=>this.fish?.ground[1]||951);
@@ -170,6 +171,17 @@ export class HomePage {
         (globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] Home lighting candidate '+JSON.stringify(this.lighting.snapshot()));
         (globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] Home shadow candidate '+JSON.stringify(this.shadows.snapshot()));
         (globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] Home render surface '+JSON.stringify(this.surface.snapshot()));
+    }
+    resize(height:number,physicalWidth:number){
+        const next=homeRenderPlan(height,physicalWidth);
+        try{this.targetLease.resize(next.pixels[0],next.pixels[1]);}catch(error){this.surface.layout(this.plan.logical,[0,-this.plan.offset,720,this.plan.logical[1]],this.targetLease.texture);throw error;}
+        this.pointerBinding.cancel();this.travelInteractions?.cancelPointer();
+        Object.assign(this.plan,next);
+        box(this.root,0,next.offset,720,1280);this.roomRoot.setPosition(0,-next.offset);
+        this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);
+        this.hud.resize(height);
+        const extra=Math.max(0,(height-1600)/2);
+        for(const name of ['UpperBleedEdge','LowerBleedEdge']){const n=this.roomRoot.getChildByName(name);if(n){n.active=extra>0;if(extra>0){if(name==='UpperBleedEdge')n.setPosition(0,160+extra);n.setScale(n.scale.x,extra/64,1);}}}
     }
     resume(allowInput=true) {this.active=allowInput;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(allowInput);}
     // Call only after departure assets are ready and the trip commit succeeds.

@@ -1,0 +1,264 @@
+{
+  "schema": 1,
+  "id": "M09.03",
+  "status": "source_and_partial_Home_browser_resize_verified_full_resize_acceptance_pending",
+  "previousTurnClassification": "progress: crash reports revalidated, own preview stopped and automation guard updated",
+  "baseCommit": "b3a0f354a6e88c49e8dc9d98f393606370231c47",
+  "changes": [
+    "Synchronize root Canvas geometry and retained/transitioning/late-created pages without rebuilding gameplay state",
+    "Dynamic layout for currently implemented loading/login/comic/Home/Darkroom/journal pages, HUD, credits, loading panel and safe areas",
+    "Update shared world-input offset, room render target, drag bounds and bleed artwork",
+    "Exclusive admitted render-target replacement releases the old GPU allocation before creating the new object; failure restores prior dimensions when allocation succeeds",
+    "Use new texture identity to avoid stale Creator 2D descriptor caches and preserve exact long-screen pixels without RenderTexture.resize 2048 clamp",
+    "Skip safe-area query and page relayout on stable dimensions; no every-frame shader/texture rebuilding"
+  ],
+  "validation": {
+    "regression": {
+      "pass": 189,
+      "fail": 0,
+      "log": "builds/reviews/M09-viewport-regression-v5.log"
+    },
+    "typecheck": "builds/reviews/M09-viewport-types-v5.log",
+    "candidate": "cocos-viewport-v3",
+    "candidateAudit": "builds/reviews/M09-viewport-candidate-audit-v3.json",
+    "creator": {
+      "status": "Finished",
+      "exitCode": 36,
+      "formalRelease": false
+    },
+    "browser": "independent Google Chrome, one task page, build and graphics serialized",
+    "observations": [
+      {
+        "step": "v3 initial phone",
+        "observed": {
+          "height": 1280,
+          "physicalWidth": 720,
+          "origin": [
+            -360,
+            640
+          ],
+          "offset": 0,
+          "logical": [
+            720,
+            1280
+          ],
+          "pixels": [
+            720,
+            1280
+          ],
+          "safe": [
+            0,
+            0,
+            720,
+            1280
+          ],
+          "merit": 11,
+          "sameHome": true,
+          "settings": false
+        }
+      },
+      {
+        "step": "height changed without reloading",
+        "observed": {
+          "height": 1604,
+          "physicalWidth": 720,
+          "origin": [
+            -360,
+            802
+          ],
+          "offset": 162,
+          "logical": [
+            720,
+            1604
+          ],
+          "pixels": [
+            720,
+            1604
+          ],
+          "safe": [
+            0,
+            0,
+            720,
+            1604
+          ],
+          "merit": 37,
+          "sameHome": true,
+          "settings": false
+        }
+      },
+      {
+        "step": "later state on same page",
+        "observed": {
+          "height": 1604,
+          "pixels": [
+            720,
+            1604
+          ],
+          "merit": 117,
+          "sameHome": true
+        }
+      },
+      {
+        "step": "native Chrome screenshot after resize",
+        "observed": "Room fills the observed 720x1604 canvas with room lighting, plants, actor and lower/upper bleed; image viewed in tool output, not saved as a local screenshot"
+      },
+      {
+        "step": "canvas settings click at native screen [503,439]",
+        "observed": "Console music credits opened"
+      },
+      {
+        "step": "restore device height to 640 while settings open",
+        "observed": "Toolbar changed to 640; actual app dimensions/settings layout not read back; console error count increased from 3 to 4, new error not classified"
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "builds/reviews/M09-viewport-home-phone-v3.png",
+        "sha256": "1860daa27aaf8b100e336973d69609ce67cd53154b1ac5397eee60ae5f2cdb80",
+        "pixels": [
+          720,
+          1280
+        ]
+      }
+    ],
+    "strictGodotComparison": "pending",
+    "WeChatAndDevices": "pending"
+  },
+  "failures": [
+    {
+      "candidate": "cocos-viewport-v1",
+      "evidence": [
+        "builds/reviews/M09-viewport-black-room-failure-v1.png",
+        "builds/reviews/M09-viewport-camera-failure.log"
+      ],
+      "cause": "In-place RenderTexture.reset destroys RenderWindow and clears cameras; same-target setter skips binding",
+      "fixAttempt": "Force camera detach/rebind; insufficient alone"
+    },
+    {
+      "candidate": "cocos-viewport-v2",
+      "evidence": [
+        "builds/reviews/M09-viewport-stale-sampler-failure-v2.png"
+      ],
+      "cause": "Reusing TextureBase identity leaves Creator 2D descriptor cache keyed to the old GPU texture; inference from actual black image and installed engine cache code",
+      "fix": "Exclusive new RenderTexture allocation and frame/camera rebind. v3 displayed room after resize"
+    },
+    {
+      "stage": "late browser validation",
+      "cause": "Tool automatic approval review exceeded its deadline; subsequent cleanup eventually completed",
+      "result": "QA tab closed to existing Baidu tab; local server stopped; no repeated graphics attempts"
+    }
+  ],
+  "openIssues": [
+    "New fourth Chrome console error during final resize was not classified before tool timeout; inspect first on next independent browser session without sharing extension secrets",
+    "Home settings reflow after returning to short screen, all other implemented pages, all interruptions and touch targets need actual browser verification",
+    "Toolbar showed 845 while actual app viewport was 1604 logical pixels; acceptance uses observed app dimensions, not requested toolbar value",
+    "High-DPI >2048 exact allocation verified by unit/source only, not a device screenshot",
+    "Full cached Home+Darkroom+journal on long high-DPI screens still exceeds original resource budget; optional visual residency/eviction remains necessary",
+    "If viewport admission fails, old layout remains and failure is logged once; need tested resource-eviction recovery rather than raising budgets",
+    "Home cold download remains over 19,000,000 bytes; map/encounter, collection/archive entry, photos, wardrobe and formal WeChat delivery remain incomplete"
+  ],
+  "next": [
+    "Resume independent browser error classification only if tool connection is responsive; otherwise continue source work",
+    "Finish map/encounter and collection/archive navigation, then photos and wardrobe",
+    "Implement budget-respecting optional cached visual release preserving gameplay state",
+    "Verify all pages and settings resizing with original Godot at matching state, then WeChat/device gates"
+  ],
+  "sources": [
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "23734abdacef65eb1f0c3e46e61a75c3513cd9d9020e65477f7f82845355cbe2"
+    },
+    {
+      "path": "engines/travel-core/src/cocos-surface.js",
+      "sha256": "2d3d314f5936b5c13f528fb650de5c97c6254ffd7a9578972e73562738298e5c"
+    },
+    {
+      "path": "engines/travel-core/src/resource-gate.js",
+      "sha256": "06061a550efc0cccb521fc9391aece025824b6f9ae64b2fb5903cb35008a987a"
+    },
+    {
+      "path": "engines/travel-core/test/core.test.cjs",
+      "sha256": "ae5e0d6b20b7a20ff95e29403b3909d7cfa5aa5dd3b9bf17e804cbf4416255e3"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Application.ts",
+      "sha256": "0ca742ecccf77a88b9f374f6f7a2f97061fe895ff7f6adedd836658254eb136e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "4c6a674229b648b75895528dbce4f22199bd432f4672dd2a10b598d87a263035"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+      "sha256": "ba9bec0971dadd49cbe47ad7b53c0a8989f67f694615eeb2736f5fdae9f45017"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomBubble.ts",
+      "sha256": "085417d9e27b0f0ec6a9f150b513e827d437e2660707d8e148619fc955aa367c"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomHUD.ts",
+      "sha256": "2b1318cc3ca5858a58e0cd36a7c93fa998a6f3055c30f921c9d63be580d47c36"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "sha256": "5d6b1d6e78a9a30872e612ee5b6bc2d0742f527fc45a254b5d901a91f81004cd"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomeHUD.ts",
+      "sha256": "0248c4556d34c03b1885ddc64354f856436519192609c0fe4dca50e64273c97a"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/HomePage.ts",
+      "sha256": "851e0ec6e4bf6aae712bd29b573dbca787b58ca55496c741fab2ecd02fec61af"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoadingPage.ts",
+      "sha256": "ac4ba9b24bb5ce69623b07cc266f18eab43779cead5b0f86cac579847d6c4937"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/LoginPage.ts",
+      "sha256": "0581983924874d705505b216da0814d7cc3fe225a3e06a29aa108b300cbec187"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/MusicCreditsView.ts",
+      "sha256": "e8812a4e12a6e3cbb8aa79b1790007057ccc6d70f2179b70cdd353db2e7eed17"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+      "sha256": "513ceec28c16f0ecf82f776ad7bf2c78550fcf9ecc17b01fbd435d91a043e4af"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelLoadingPanel.ts",
+      "sha256": "cb0d2145513dd421a5621515525a6f4b6a3a64854bc2d920f1c444f9cffbdb60"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-journal.test.cjs",
+      "sha256": "b82fd4aa64c9c9acfbfb81d28383a8354e3dc43b23b9131ed699881e1db9a602"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Viewport.ts",
+      "sha256": "87bc358b55d05e5df676913e53f653fd3f86d5dd7e5cf8a5b0d7551fc6ece5da"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Viewport.ts.meta",
+      "sha256": "2e4b6be9d3823f7e7be796470a3e19db49f347a72708026d2e76903ec8e08373"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/viewport.test.cjs",
+      "sha256": "cbe6c7e0b987e733dcff7f152312d880afe8a68d1d063e74971341be7d611f30"
+    }
+  ],
+  "plugin": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "23734abdacef65eb1f0c3e46e61a75c3513cd9d9020e65477f7f82845355cbe2",
+    "targetMode": "0o444",
+    "directoryMode": "0o555"
+  },
+  "bootPreserved": {
+    "games/xiaoyu-cocos/assets/Boot.ts": "da36011f73d3811f0b1b347074e2c02dbcd34adabf7f205dd5628d75f10e0d5a",
+    "games/xiaoyu-cocos/assets/Boot.ts.meta": "0ee38f868a3688c57fb16d7b28cf0e16c0c846b77fa3b08f7323530603dfb7d4",
+    "games/xiaoyu-cocos/assets/scene.scene": "95d3251274653614557153d6c82d974f860bed97e05a3417d0f6ee8a7870a28d",
+    "games/xiaoyu-cocos/assets/scene.scene.meta": "cb0d22499d388d6346215c1ddce01e4a9134c8574f3e360e93469e30da087b2c"
+  }
+}

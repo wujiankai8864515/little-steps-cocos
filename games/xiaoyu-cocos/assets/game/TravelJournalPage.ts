@@ -1,4 +1,5 @@
 import { Color, EventKeyboard, Graphics, input, Input, KeyCode, Label, LabelOutline, Mask, Node, Sprite, UITransform } from 'cc';
+import { box, repaintPanel } from './Viewport';
 import { GameAssets } from './Assets';
 import { core, lifetime, meshSprite, Scope, sharedUI } from './Engine';
 import { Stroke2D } from './Stroke2D';
@@ -40,6 +41,7 @@ export class TravelJournalPage {
         scope.own(()=>{this.pause();this.bindings.forEach(b=>b.dispose());this.bindings=[];input.off(Input.EventType.KEY_DOWN,key);this.root.active=false;this.root.destroy();});
         this.refresh();
     }
+    resize(height:number,_physicalWidth?:number){this.bindings.forEach(b=>b.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);this.canvas.setPosition(0,-Math.max(0,(height-1280)/2));}
     private texture(parent:Node,path:string,rect:number[],scope:Scope,contain=true,region?:number[],angle=0){
         const spec=this.assets.art(path),r=region||[0,0,...spec.size],pivot=nodeAt(parent,'OriginalImage',rect[0],rect[1],rect[2],rect[3]);pivot.angle=-angle*180/Math.PI;
         const sprite=new TravelAtlasSprite(pivot,this.assets,scope,path,r,'OriginalPixels');

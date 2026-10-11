@@ -1,4 +1,5 @@
-import { Color, input, Input, KeyCode, Label, Node, UIOpacity } from 'cc';
+import { Color, input, Input, KeyCode, Label, Node, UIOpacity, UITransform } from 'cc';
+import { box, repaintPanel } from './Viewport';
 import { GameAssets } from './Assets';
 import { audioTransport, core, meshSprite, Scope, sharedUI } from './Engine';
 import { ComicAudio } from './AudioBehavior';
@@ -70,6 +71,16 @@ export class ComicPage {
         this.clock.onFinished=()=>this.onEnter();this.clock.onRetry=()=>this.onRetry();
         console.info('[LittleSteps] comic typography '+JSON.stringify(this.panels.map(p=>p.bubble.snapshot())));
         scope.own(()=>{input.off(Input.EventType.KEY_DOWN,key);this.actions.forEach(a=>a.dispose());this.root.active=false;this.root.destroy();});this.refresh();
+    }
+    resize(height:number,_physicalWidth?:number){
+        this.actions.forEach(a=>a.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('Background'),720,height);
+        const margin=24,header=Math.min(114,height*.13),frameH=height-header-margin,actionH=Math.min(78,height*.1),paperH=frameH-32-actionH-16,paperW=672;
+        const factor=Math.min(paperW/1024,paperH/1536),x=margin+(paperW-1024*factor)/2,y=header+(paperH-1536*factor)/2;
+        const paper=this.root.getChildByName('Paper');paper.setPosition(x,-y);paper.setScale(factor,factor,1);
+        const shadow=this.root.getChildByName('PaperShadow');shadow.setPosition(x+4,-y-6);repaintPanel(shadow,1024*factor,1536*factor,5);
+        const statusY=header+paperH+8,actionY=statusY+40;box(this.status.node,margin,statusY,paperW,32);box(this.enterHit,260,actionY,200,actionH);
+        box(this.prompt.node.parent,100,actionH/2,200,actionH);box(this.prompt.node,-100,-actionH/2,200,actionH);box(this.caption,0,0,200,actionH);
+        this.dots.forEach(n=>{const ui=n.getComponent(UITransform);ui.setContentSize(ui.width,actionH);});this.retryHit.setPosition(285,-actionY);
     }
     start() {this.active=true;this.audio.setActive(true);this.clock.start();this.refresh();}
     pause() {this.active=false;this.audio.setActive(false);this.actions.forEach(a=>a.cancel());}

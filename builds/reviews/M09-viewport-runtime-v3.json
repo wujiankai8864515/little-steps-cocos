@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "candidate": "cocos-viewport-v3",
+  "observations": [
+    {
+      "step": "v3 initial phone",
+      "observed": {
+        "height": 1280,
+        "physicalWidth": 720,
+        "origin": [
+          -360,
+          640
+        ],
+        "offset": 0,
+        "logical": [
+          720,
+          1280
+        ],
+        "pixels": [
+          720,
+          1280
+        ],
+        "safe": [
+          0,
+          0,
+          720,
+          1280
+        ],
+        "merit": 11,
+        "sameHome": true,
+        "settings": false
+      }
+    },
+    {
+      "step": "height changed without reloading",
+      "observed": {
+        "height": 1604,
+        "physicalWidth": 720,
+        "origin": [
+          -360,
+          802
+        ],
+        "offset": 162,
+        "logical": [
+          720,
+          1604
+        ],
+        "pixels": [
+          720,
+          1604
+        ],
+        "safe": [
+          0,
+          0,
+          720,
+          1604
+        ],
+        "merit": 37,
+        "sameHome": true,
+        "settings": false
+      }
+    },
+    {
+      "step": "later state on same page",
+      "observed": {
+        "height": 1604,
+        "pixels": [
+          720,
+          1604
+        ],
+        "merit": 117,
+        "sameHome": true
+      }
+    },
+    {
+      "step": "native Chrome screenshot after resize",
+      "observed": "Room fills the observed 720x1604 canvas with room lighting, plants, actor and lower/upper bleed; image viewed in tool output, not saved as a local screenshot"
+    },
+    {
+      "step": "canvas settings click at native screen [503,439]",
+      "observed": "Console music credits opened"
+    },
+    {
+      "step": "restore device height to 640 while settings open",
+      "observed": "Toolbar changed to 640; actual app dimensions/settings layout not read back; console error count increased from 3 to 4, new error not classified"
+    }
+  ],
+  "acceptance": "partial Home resize observation only",
+  "limitations": [
+    "New fourth Chrome console error during final resize was not classified before tool timeout; inspect first on next independent browser session without sharing extension secrets",
+    "Home settings reflow after returning to short screen, all other implemented pages, all interruptions and touch targets need actual browser verification",
+    "Toolbar showed 845 while actual app viewport was 1604 logical pixels; acceptance uses observed app dimensions, not requested toolbar value",
+    "High-DPI >2048 exact allocation verified by unit/source only, not a device screenshot",
+    "Full cached Home+Darkroom+journal on long high-DPI screens still exceeds original resource budget; optional visual residency/eviction remains necessary",
+    "If viewport admission fails, old layout remains and failure is logged once; need tested resource-eviction recovery rather than raising budgets",
+    "Home cold download remains over 19,000,000 bytes; map/encounter, collection/archive entry, photos, wardrobe and formal WeChat delivery remain incomplete"
+  ],
+  "cleanup": {
+    "taskTabClosed": true,
+    "ownServerStopped": true
+  }
+}

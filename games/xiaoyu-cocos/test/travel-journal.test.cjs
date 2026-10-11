@@ -7,13 +7,13 @@ const components=[],bindings=[];
 class Color{constructor(r=255,g=255,b=255,a=255){Object.assign(this,{r,g,b,a});}}
 class Vec4{constructor(x=0,y=0,z=0,w=0){Object.assign(this,{x,y,z,w});}}
 class UITransform{setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}}
-class Node{constructor(name){this.name=name;this.children=[];this.components=new Map();this.active=true;this.position={x:0,y:0};this.scale={x:1,y:1};}addChild(n){this.children.push(n);n.parent=this;}addComponent(T){const c=new T();c.node=this;this.components.set(T,c);components.push(c);return c;}getComponent(T){return this.components.get(T);}setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}setSiblingIndex(){}destroy(){this.destroyed=true;this.children.forEach(c=>c.destroy());}on(){}off(){}}
+class Node{constructor(name){this.name=name;this.children=[];this.components=new Map();this.active=true;this.position={x:0,y:0};this.scale={x:1,y:1};}addChild(n){this.children.push(n);n.parent=this;}addComponent(T){const c=new T();c.node=this;this.components.set(T,c);components.push(c);return c;}getComponent(T){return this.components.get(T);}getChildByName(name){return this.children.find(c=>c.name===name);}setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}setSiblingIndex(){}destroy(){this.destroyed=true;this.children.forEach(c=>c.destroy());}on(){}off(){}}
 class Sprite{static SizeMode={CUSTOM:1};configure(mesh){this.mesh=mesh;}geometryChanged(){}}
 class Label{static Overflow={CLAMP:1,RESIZE_HEIGHT:2};static HorizontalAlign={CENTER:0,LEFT:1};static VerticalAlign={CENTER:0,TOP:1};updateRenderData(){}}
-class Graphics{moveTo(){}lineTo(){}close(){}fill(){}roundRect(){}stroke(){}}
+class Graphics{clear(){}moveTo(){}lineTo(){}close(){}fill(){}roundRect(){}stroke(){}}
 class Material{initialize(){}setProperty(){}destroy(){this.destroyed=true;}}
 const cc={Node,Sprite,UITransform,Color,Vec4,Label,LabelOutline:class{},Graphics,Material,Mask:class{},KeyCode:{ESCAPE:1},Input:{EventType:{KEY_DOWN:1}},input:{on(){},off(){}}};
-for(const name of ['Engine','Assets','TravelModel','TravelStore','TravelService','TravelJournalSession','Visual','TravelAtlasSprite','TravelHomeRules','Stroke2D','TravelJournalPage']){
+for(const name of ['Engine','Viewport','Assets','TravelModel','TravelStore','TravelService','TravelJournalSession','Visual','TravelAtlasSprite','TravelHomeRules','Stroke2D','TravelJournalPage']){
  const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:key=>key==='cc'?cc:modules[key.slice(2)],LittleStepsCore:core,console});modules[name]=exports;
  if(name==='Engine')Object.assign(exports,{meshSprite:()=>Sprite,sharedUI:()=>({action(node,fn,enabled){const b={node,fn,enabled,cancel(){this.cancelled=true;},dispose(){this.disposed=true;}};bindings.push(b);return b;}})});
 }
@@ -50,13 +50,13 @@ test('Actual diary view rebuilds scoped controls, pauses input, uses original re
 
 // Exercise the real Application entry transaction with controlled resource
 // completion, retaining the real journal view and Lifetime cancellation.
-class HomePage{constructor(){this.root=new Node('Home');this.loading=false;}setTravelLoading(v){this.loading=v;}setInput(){}restoreTravelOffer(){this.restored=true;}resume(){}pause(){}clearRouteWaiting(){}}
+class HomePage{constructor(){this.root=new Node('Home');this.loading=false;}setTravelLoading(v){this.loading=v;}setInput(){}resize(){}restoreTravelOffer(){this.restored=true;}resume(){}pause(){}clearRouteWaiting(){}}
 const appModules={...modules,HomePage:{HomePage},LoginPage:{LoginPage:class{}},ComicPage:{ComicPage:class{}},DarkroomPage:{DarkroomPage:class{}}},appExports={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game/Application.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports:appExports,require:key=>key==='cc'?cc:appModules[key.slice(2)]||{},console:{info(){},error(){}}});
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 function application(){
  const {service}=fixture(),app=Object.create(appExports.Application.prototype),requests=[],events=[],scope=new core.Lifetime(),home=new HomePage();
- Object.assign(app,{scope,active:true,entering:false,intent:0,height:1280,page:home,current:{page:home,scope:new core.Lifetime(scope)},root:new Node('App'),travel:{service},travelProps:{suspend(){events.push('props-suspended');}},travelLoading:{show(t){events.push(t);},hide(){events.push('hide');},failure(t){events.push(t);}},router:{cancel(){},show:async()=>true},frame:async()=>{}});app.homePage=app.current;
+ Object.assign(app,{scope,active:true,entering:false,intent:0,height:1280,physicalWidth:720,viewportKey:"720:1280",pageViewports:new WeakMap(),page:home,current:{page:home,scope:new core.Lifetime(scope)},root:new Node('App'),travel:{service},travelProps:{suspend(){events.push('props-suspended');}},travelLoading:{show(t){events.push(t);},hide(){events.push('hide');},failure(t){events.push(t);}},router:{cancel(){},show:async()=>true},frame:async()=>{}});app.homePage=app.current;
  app.assets={catalog,art:modules.Assets.GameAssets.prototype.art,font:p=>({p}),effect:p=>({p}),frame:()=>({}),acquireResources(paths,owner){const d=deferred();requests.push({...d,paths,owner});return owner.guard(d.promise);}};
  return {app,scope,requests,events,home};
 }

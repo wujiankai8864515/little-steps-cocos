@@ -1,4 +1,5 @@
 import { EventKeyboard, input, Input, KeyCode, Node, screen, Sprite, sys, UITransform } from 'cc';
+import { box, safeViewport } from './Viewport';
 import { GameAssets } from './Assets';
 import { meshSprite, renderSurfaces, Scope, sharedUI } from './Engine';
 import { HomeClock } from './HomeClock';
@@ -19,21 +20,22 @@ import { nodeAt, picture } from './Visual';
 let serial=0;
 export class DarkroomPage {
     readonly root:Node;readonly room:Node;readonly round:DarkroomRound;readonly lighting:DarkroomLighting;readonly doll:DarkroomDoll;readonly tools:DarkroomTools;readonly shadows:DarkroomShadows;readonly plants:DarkroomPlants;readonly plumes:DarkroomPlumes;
-    readonly bubble:DarkroomBubble;readonly hud:DarkroomHUD;private surface:any;private pointer:any;private plaque:any;private lantern:ReturnType<typeof picture>;private active=false;private replay=false;
+    readonly bubble:DarkroomBubble;readonly hud:DarkroomHUD;private surface:any;private targetLease:any;private plan:ReturnType<typeof homeRenderPlan>;private pointerHost:Node;private bleedUpdate:(height:number)=>void;private pointer:any;private plaque:any;private lantern:ReturnType<typeof picture>;private active=false;private replay=false;
     onBack=()=>{};onFinished=(result:any)=>{};
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,clock:HomeClock){
-        const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width),target=await assets.acquireTransient('Darkroom-'+(++serial),renderer.estimateTarget(...plan.pixels),()=>renderer.createTarget(...plan.pixels,'Darkroom'),v=>v.destroy(),scope);
-        const page=new DarkroomPage(parent,assets,scope,height,clock,target,plan);await scope.guard(page.surface.ready);page.pause();console.info('[LittleSteps] Darkroom prepared '+JSON.stringify(page.snapshot()));return page;
+        const renderer=renderSurfaces(),plan=homeRenderPlan(height,screen.windowSize.width),targetLease=await assets.acquireResizableTarget('Darkroom-'+(++serial),plan.pixels[0],plan.pixels[1],renderer,scope),target=targetLease.texture;
+        const page=new DarkroomPage(parent,assets,scope,height,clock,target,plan);page.targetLease=targetLease;page.resize(height,screen.windowSize.width);await scope.guard(page.surface.ready);page.pause();console.info('[LittleSteps] Darkroom prepared '+JSON.stringify(page.snapshot()));return page;
     }
     private constructor(parent:Node,assets:GameAssets,scope:Scope,height:number,clock:HomeClock,target:any,plan:ReturnType<typeof homeRenderPlan>){
-        this.root=nodeAt(parent,'DarkroomPage',0,plan.offset,720,1280);this.root.active=false;scope.own(()=>{this.root.active=false;this.root.destroy();});
+        this.plan=plan;this.root=nodeAt(parent,'DarkroomPage',0,plan.offset,720,1280);this.root.active=false;scope.own(()=>{this.root.active=false;this.root.destroy();});
         this.surface=renderSurfaces().create({host:parent.scene,displayParent:this.root,logicalSize:plan.logical,displayRect:[0,-plan.offset,720,height],target,name:'DarkroomRenderSurface'},scope);
         this.room=nodeAt(this.surface.content,'DarkroomWorld',0,plan.offset,720,1280);this.lighting=new DarkroomLighting(this.room,assets,scope,clock);
         const layers:Array<{node:Node;z:number}>=[];const background='res://darkroom/assets/round2/room_no_plants.png',spec=assets.art(background);
         const rectMesh=(name:string,rect:number[],source:number[])=>{const node=nodeAt(this.room,name),sprite=node.addComponent(meshSprite()),mesh={vertices:new Float32Array([rect[0],rect[1],rect[0]+rect[2],rect[1],rect[0],rect[1]+rect[3],rect[0]+rect[2],rect[1]+rect[3]]),source:new Float32Array([source[0],source[1],source[0]+source[2],source[1],source[0],source[1]+source[3],source[0]+source[2],source[1]+source[3]]),indices:new Uint16Array([0,1,2,1,3,2])};sprite.configure(mesh,spec.size,spec.content);sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=assets.frame(background,scope);return {node,sprite};};
         const shaderRect=(name:string,kind:string,z:number)=>{const node=nodeAt(this.room,name,0,0,720,1280),sprite=node.addComponent(Sprite);sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=assets.frame('res://assets/home_neutral.png',scope);this.lighting.bind(sprite,assets.art('res://assets/home_neutral.png'),kind);layers.push({node,z});};
         shaderRect('SharedExterior','sky',-1);const room=rectMesh('OriginalRoom',[0,0,720,1280],[0,0,941,1672]);this.lighting.bind(room.sprite,spec);layers.push({node:room.node,z:0});
-        const extra=Math.max(0,plan.offset);if(extra>0){const sourceHeight=139*Math.min(1,extra/256);for(const [name,r,s]of [['UpperBleed',[0,-extra,720,extra],[0,1811-sourceHeight,941,sourceHeight]],['LowerBleed',[0,1280,720,extra],[0,1811,941,sourceHeight]]] as Array<[string,number[],number[]]>){const item=rectMesh(name,r,s);this.lighting.bind(item.sprite,spec);layers.push({node:item.node,z:-2});}}
+        const bleeds=['UpperBleed','LowerBleed'].map(name=>{const item=rectMesh(name,[0,0,720,1],[0,1811,941,1]);this.lighting.bind(item.sprite,spec);layers.push({node:item.node,z:-2});return item;});
+        this.bleedUpdate=(height:number)=>{const extra=Math.max(0,(height-1280)/2),sh=139*Math.min(1,extra/256);bleeds.forEach((b,i)=>{b.node.active=extra>0;if(!extra)return;const y=i?1280:-extra,sy=i?1811:1811-sh;b.sprite.configure({vertices:new Float32Array([0,y,720,y,0,y+extra,720,y+extra]),source:new Float32Array([0,sy,941,sy,0,sy+sh,941,sy+sh]),indices:new Uint16Array([0,1,2,1,3,2])},spec.size,spec.content);});};this.bleedUpdate(height);
         const data='res://darkroom/assets/round3/',skin=new DollSkin(assets.json(data+'doll_source_contract.json'),assets.json(data+'doll_source_geometry.json'),(part,x,y)=>assets.bitmapContains(data+'doll_'+part+'_hit.res',x,y));
         this.round=new DarkroomRound(skin);this.doll=new DarkroomDoll(this.room,assets,scope,skin);layers.push({node:this.doll.root,z:5});
         this.lantern=picture(this.room,assets,scope,'res://darkroom/assets/round2/lantern_cranes.png','Lantern',{position:[83,673],scale:[.53,.53],centered:false});this.lantern.child.setPosition(this.lantern.spec.content[0]-256,-this.lantern.spec.content[1]+455);layers.push({node:this.lantern.root,z:5});
@@ -46,8 +48,14 @@ export class DarkroomPage {
         this.plaque=sharedUI().hangingReturn(this.root,assets.font('res://assets/bootstrap_ui.ttf'),[safe[0]+23,safe[1]+10,78,128],()=>this.back(),()=>this.active&&this.round.inputEnabled);
         const host=nodeAt(this.root,'WorldPointerInput',0,-plan.offset,720,height),point=(p:number[])=>[p[0],p[1]-plan.offset];this.pointer=sharedUI().pointer(host,{down:(p:number[],id:number)=>{const at=point(p);if(inside(at,LAMP_RECT)){const enabled=this.lighting.lamp.toggle();if(this.round.dollVisible&&this.round.phase!=='spawn_in')this.bubble.show(enabled?'灯已开':'灯已关',1.6);this.sync(0);this.report('lamp');return true;}if(inside(at,NEEDLE_RECT)){const ok=this.round.select('needle');this.tools.sync();this.report('needle');return ok;}if(inside(at,SLIPPER_RECT)){const ok=this.round.select('slipper');this.tools.sync();this.report('slipper');return ok;}return this.round.beginPointer(id,at);},move:(p:number[],id:number)=>this.round.movePointer(id,point(p)),up:(p:number[],id:number)=>{this.round.endPointer(id,point(p));this.report('up');},cancel:()=>{this.round.cancel();this.report('cancel');}},()=>this.active&&this.round.inputEnabled);
         // Input catcher precedes the plaque in the main Canvas draw/event order.
-        host.setSiblingIndex(1);this.plaque.root.setSiblingIndex(this.root.children.length-1);
+        this.pointerHost=host;host.setSiblingIndex(1);this.plaque.root.setSiblingIndex(this.root.children.length-1);
         const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE)this.back();};input.on(Input.EventType.KEY_DOWN,escape);scope.own(()=>{this.active=false;this.round.cancel();this.pointer.dispose();this.plaque.dispose();input.off(Input.EventType.KEY_DOWN,escape);});this.sync(0);
+    }
+    resize(height:number,physicalWidth:number){
+        const next=homeRenderPlan(height,physicalWidth);try{this.targetLease.resize(next.pixels[0],next.pixels[1]);}catch(error){this.surface.layout(this.plan.logical,[0,-this.plan.offset,720,this.plan.logical[1]],this.targetLease.texture);throw error;}this.pointer.cancel();this.round.cancel();Object.assign(this.plan,next);
+        box(this.root,0,next.offset,720,1280);this.room.setPosition(0,-next.offset);this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);this.bleedUpdate(height);box(this.pointerHost,0,-next.offset,720,height);
+        const safe=safeViewport(height);safe[1]-=next.offset;const top=Math.max(28,safe[1]+28);
+        this.round.dragBounds=[safe[0]+12,safe[1]+12,safe[2]-24,safe[3]-24];this.hud.resize(Math.max(178,safe[1]+170));this.bubble.setSafe([safe[0]+24,top,safe[2]-48,Math.max(180,safe[1]+safe[3]-top-190)]);this.plaque.cancel();this.plaque.root.setPosition(safe[0]+23,-safe[1]-10);
     }
     private back(){if(!this.active||!this.round.inputEnabled)return;this.replay=!this.round.acceptsInput();this.round.cancel();this.bubble.dismiss();this.onBack();}
     private sync(delta:number){this.lighting.update(delta,this.round.clearTime);const scale=this.lighting.lamp.scale();this.lantern.root.setScale(.53*scale[0],.53*scale[1],1);this.lantern.sprite.color=this.lighting.color(this.lighting.lanternTint());this.doll.sync(this.lighting.tint,this.round.spawnAlpha,this.round.dissolve,this.round.dollVisible);this.tools.sync();this.plants.advance(delta);this.hud.advance();}

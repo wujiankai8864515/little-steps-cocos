@@ -5,6 +5,7 @@ import { Scope, sharedUI } from './Engine';
 import { HomeHeaderTag } from './HomeHeaderTag';
 import { HomeEntryIntent } from './HomeEntryIntent';
 import { MusicCreditsView } from './MusicCreditsView';
+import { box, safeViewport } from './Viewport';
 import { nodeAt } from './Visual';
 
 export class HomeHUD {
@@ -28,6 +29,12 @@ export class HomeHUD {
         this.binding=sharedUI().pointer(this.settings.root,{down:(p:number[])=>{if(this.entry.down(p))this.settings.swing.press();},move:(p:number[])=>this.entry.move(p),up:(p:number[])=>{this.settings.swing.release();this.entry.up(p);},cancel:()=>{this.settings.swing.release();this.entry.cancel();}},()=>this.active&&!this.credits.visible&&!this.entry.busy&&!this.worldOwnsInput());
         const key=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){this.entry.cancel();this.binding.cancel();}};input.on(Input.EventType.KEY_DOWN,key);
         scope.own(()=>{this.active=false;this.entry.cancel();this.binding.dispose();input.off(Input.EventType.KEY_DOWN,key);this.root.destroy();});
+    }
+    resize(height:number){
+        this.binding.cancel();box(this.root,0,-(height-1280)/2,720,height);
+        this.safe.splice(0,4,...safeViewport(height));const s=this.safe;
+        this.settings.root.setPosition(s[0]+16,-s[1]-8);this.merit.root.setPosition(s[0]+s[2]-202,-s[1]-8);
+        this.credits.resize(height,s);
     }
     get blocked(){return !this.active||this.credits.visible||this.entry.busy;}
     setActive(active:boolean){this.active=active;if(!active){this.entry.cancel();this.binding.cancel();this.credits.dismiss();}}

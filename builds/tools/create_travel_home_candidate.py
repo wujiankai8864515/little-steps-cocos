@@ -18,6 +18,7 @@ HELPER='''export function reviewTravelHome(app:any){
  button('QA 开包',()=>{service.open_rewards();props.advance(0);});button('QA 收一件',()=>{const target=Array.from(props.rewards.poses.values()).find((p:any)=>p.flightAge<0) as any;if(target)props.rewards.collect(target.uid);});
  button('QA 切后台恢复',()=>{props.suspend();bridge.suspend();home.pause();home.resume();bridge.resume();});button('QA 状态',sample);
  let compact=false;const collapse=button('QA 收起',()=>{compact=!compact;Array.from(panel.children).forEach((n:any)=>{if(n!==collapse)n.style.display=compact?'none':'';});collapse.textContent=compact?'QA 展开':'QA 收起';panel.style.top=compact?'auto':'4px';panel.style.bottom=compact?'4px':'auto';panel.style.left=compact?'auto':'4px';panel.style.right=compact?'4px':'auto';});
+ const viewport=document.createElement('button');viewport.textContent='QA 视口';viewport.onclick=()=>{const s=home.surface.snapshot();status.textContent=JSON.stringify({height:app.height,physicalWidth:app.physicalWidth,origin:[app.root.position.x,app.root.position.y],offset:home.viewportOffset,logical:s.logicalSize,pixels:s.pixels,safe:home.hud.safe,merit:home.merit.count,sameHome:app.homePage.page===home,settings:home.hud.credits.visible});};panel.appendChild(viewport);
  panel.appendChild(status);document.body.appendChild(panel);app.scope.own(()=>panel.remove());sample();
 }'''
 def main():

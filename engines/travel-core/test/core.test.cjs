@@ -139,9 +139,9 @@ function fakeSurfaceEngine() {
     class UITransform {setAnchorPoint(...value){this.anchor=value;}setContentSize(width,height){this.width=width;this.height=height;}}
     class Sprite {} Sprite.SizeMode={CUSTOM:1};
     class SpriteFrame {constructor(){this.destroyCount=0;}destroy(){this.destroyCount++;}}
-    class Camera {constructor(){this.enabledInHierarchy=true;}} Camera.ProjectionType={ORTHO:0};Camera.ClearFlag={SOLID_COLOR:1};
+    class Camera {constructor(){this.enabledInHierarchy=true;}get targetTexture(){return this.target;}set targetTexture(v){if(this.target===v)return;this.target?.cameras?.delete(this);this.target=v;v?.cameras?.add(this);}} Camera.ProjectionType={ORTHO:0};Camera.ClearFlag={SOLID_COLOR:1};
     class Canvas {} class Color {constructor(...rgba){this.rgba=rgba;}}
-    class RenderTexture {initialize(info){Object.assign(this,info);}setFilters(){}setMipFilter(){}setWrapMode(){}destroy(){this.destroyed=true;}}
+    class RenderTexture {constructor(){this.cameras=new Set();}initialize(info){Object.assign(this,info);}reset(info){this.cameras.clear();this.resets=(this.resets||0)+1;this.initialize(info);}setFilters(){}setMipFilter(){}setWrapMode(){}destroy(){this.destroyed=true;}}
     RenderTexture.Filter={LINEAR:2,NONE:0};RenderTexture.WrapMode={CLAMP_TO_EDGE:2};
     const drawListeners=new Set(),director={on(event,callback){drawListeners.add(callback);},off(event,callback){drawListeners.delete(callback);},draw(){for(const callback of drawListeners)callback();}},Director={EVENT_AFTER_DRAW:'draw'};
     return {Node,UITransform,Sprite,SpriteFrame,Camera,Canvas,Color,RenderTexture,director,Director};
@@ -260,4 +260,25 @@ test('Shared leases deduplicate loads and retain admission until cancelled late 
     const leased = await b;
     assert.equal(loaded, 1); assert.ok(leased.get('shared'));
     two.dispose(); assert.equal(unloaded, 1); assert.equal(gate.snapshot().reservedBytes, 0);
+});
+
+test('Exclusive replacements enforce peak budget, free old values first and restore a failed allocation',async()=>{
+ const owner=new core.Lifetime(),gate=new core.ResourceGate({maxBytes:100});let live=0,unloaded=0;
+ const create=bytes=>{assert.equal(live,0);live++;return {bytes};};
+ const lease=await gate.acquire([{key:'target',bytes:40}],()=>create(40),()=>{live--;unloaded++;},owner);
+ lease.replace('target',90,()=>{assert.equal(gate.snapshot().reservedBytes,90);return create(90);},()=>create(40));assert.equal(lease.get('target').bytes,90);
+ let changes=0;assert.throws(()=>lease.replace('target',101,()=>changes++,()=>{}),/budget/);assert.equal(changes,0);assert.equal(gate.snapshot().reservedBytes,90);
+ assert.throws(()=>lease.replace('target',80,()=>{throw Error('allocation failed');},()=>create(90)),/allocation/);assert.equal(gate.snapshot().reservedBytes,90);assert.equal(lease.get('target').bytes,90);assert.equal(live,1);
+ const otherOwner=new core.Lifetime(),other=await gate.acquire([{key:'target',bytes:90}],()=>assert.fail('must reuse'),()=>{},otherOwner);
+ assert.throws(()=>lease.replace('target',50,()=>changes++,()=>{}),/exclusively/);other.release();lease.replace('target',30,()=>create(30),()=>create(90));assert.equal(gate.snapshot().reservedBytes,30);
+ owner.dispose();assert.equal(gate.snapshot().reservedBytes,0);assert.equal(live,0);assert.equal(unloaded,4);assert.throws(()=>lease.replace('target',0,()=>{},()=>{}),{name:'CancelledError'});otherOwner.dispose();
+});
+test('Replacement targets preserve long-screen pixels and rebind the surface without resetting its world',async()=>{
+ const cc=fakeSurfaceEngine(),renderer=core.registerRenderSurface(cc),scope=new core.Lifetime(),host=new cc.Node('scene'),display=new cc.Node('display'),gate=new core.ResourceGate();
+ const lease=await gate.acquire([{key:'target',bytes:renderer.estimateTarget(720,1280)}],()=>renderer.createTarget(720,1280,'room'),v=>v.destroy(),scope);
+ const target=lease.get('target'),surface=renderer.create({host,displayParent:display,logicalSize:[720,1280],displayRect:[0,0,720,1280],target},scope),world=new cc.Node('world');surface.content.addChild(world);
+ lease.replace('target',renderer.estimateTarget(1440,3380),()=>renderer.createTarget(1440,3380,'room'),()=>renderer.createTarget(720,1280,'room'));
+ const next=lease.get('target');surface.layout([720,1690],[0,-205,720,1690],next);
+ assert.notEqual(next,target);assert.equal(target.destroyed,true);assert.equal(next.cameras.has(surface.camera),true);assert.equal(next.height,3380);assert.equal(next.width,1440);assert.equal(surface.camera.orthoHeight,845);assert.equal(surface.camera.targetTexture,next);assert.equal(world.parent,surface.content);
+ assert.equal(JSON.stringify(surface.snapshot().pixels),'[1440,3380]');assert.equal(world.destroyCount,0);scope.dispose();assert.equal(next.destroyed,true);
 });

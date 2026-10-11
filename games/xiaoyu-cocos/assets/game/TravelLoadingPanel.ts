@@ -58,6 +58,7 @@ export class TravelLoadingPanel {
         this.root.active = false;
         scope.own(() => { this.hide(); this.bindings.forEach(b => b.dispose()); this.root.destroy(); });
     }
+    resize(height:number){this.bindings.forEach(b=>b.cancel());this.root.setPosition((720-this.width)/2,-(height*.42-(height-1280)/2));}
     get visible() { return this.root.active; }
     private alignFont(text: Label, x: number, y: number, size: number) {
         const m = this.assets.catalog.assets[FONT].fontMetrics;

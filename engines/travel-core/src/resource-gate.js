@@ -44,7 +44,26 @@ class ResourceGate {
         try {
             await ready;
             if (!scope.active || released) throw new CancelledError();
-            return {get: key => { if (released) throw new CancelledError(); const entry = owned.find(e => e.key === key); if (!entry) throw new Error('Resource not leased'); return entry.value; }, release};
+            return {get: key => { if (released) throw new CancelledError(); const entry = owned.find(e => e.key === key); if (!entry) throw new Error('Resource not leased'); return entry.value; }, release,
+                replace: (key, bytes, create, restore) => {
+                    if (released || !scope.active) throw new CancelledError();
+                    const entry = owned.find(e => e.key === key);
+                    if (!entry || !entry.settled || entry.refs !== 1) throw new Error('Replacement requires an exclusively leased resource');
+                    if (!Number.isSafeInteger(bytes) || bytes < 0) throw new Error('Invalid replacement resource estimate');
+                    const previous = entry.bytes, difference = bytes - previous;
+                    if (this.reservedBytes + difference > this.maxBytes) throw new Error('Resource admission budget exceeded');
+                    // Synchronous, exclusive replacement. Free the old allocation
+                    // before creating the new one so peak admission stays bounded.
+                    this.reservedBytes += difference; entry.bytes = bytes;
+                    const old = entry.value; entry.value = null;
+                    try {entry.unload(old); entry.value = create();}
+                    catch (error) {
+                        this.reservedBytes -= difference; entry.bytes = previous;
+                        entry.value = restore();
+                        throw error;
+                    }
+                },
+            };
         } catch (error) { release(); throw error; }
     }
     trim(entry) {

@@ -1,4 +1,4 @@
-import { Director, director, EffectAsset, EventMouse, Game, game, input, Input, Node, resources, UITransform } from 'cc';
+import { Director, director, EffectAsset, EventMouse, Game, game, input, Input, Node, resources, screen, sys, UITransform, view } from 'cc';
 import { GameAssets } from './Assets';
 import { audioTransport, lifetime, pageRouter, Scope } from './Engine';
 import { HomeMusic } from './AudioBehavior';
@@ -16,6 +16,7 @@ import { DARKROOM_EFFECTS } from './DarkroomLighting';
 import { HOME_EFFECTS } from './HomeLighting';
 import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
+import { box } from './Viewport';
 import { nodeAt } from './Visual';
 
 type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage;
@@ -27,7 +28,7 @@ export class Application {
     private current: Prepared<Page>;
     private loginPage: Prepared<LoginPage>;
     private root: Node;
-    private height: number;
+    private height: number;private viewportKey='';private viewportDirty=true;private viewportDimensions='';private viewportFailures=new WeakMap<Page,string>();private canvas:Node;private physicalWidth=720;private pageViewports=new WeakMap<Page,string>();
     private active = true;
     private intent = 0;
     private entering = false;
@@ -48,11 +49,13 @@ export class Application {
     private darkroomError='';private routeWaitAge=0;
     private transitioning:Page;
     constructor(canvas: Node) {
-        const size = canvas.getComponent(UITransform).contentSize;
+        this.canvas=canvas;const size = canvas.getComponent(UITransform).contentSize;
         this.height = size.height;
         this.root = nodeAt(canvas, 'LittleSteps', -size.width / 2, -size.height / 2, size.width, size.height);
         const hide=()=>{this.active=false;this.interactive(false);console.info('[LittleSteps] application suspended '+JSON.stringify(this.music?this.music.snapshot():{}));};
-        const show=()=>{this.active=true;this.skipResumedClockFrame=true;this.interactive(true);console.info('[LittleSteps] application resumed '+JSON.stringify(this.music?this.music.snapshot():{}));};
+        const show=()=>{this.viewportDirty=true;this.active=true;this.skipResumedClockFrame=true;this.interactive(true);console.info('[LittleSteps] application resumed '+JSON.stringify(this.music?this.music.snapshot():{}));};
+        const resize=()=>{this.viewportDirty=true;};canvas.on(Node.EventType.SIZE_CHANGED,resize);view.on('canvas-resize',resize);
+        this.scope.own(()=>{canvas.off(Node.EventType.SIZE_CHANGED,resize);view.off('canvas-resize',resize);});
         game.on(Game.EVENT_HIDE,hide);game.on(Game.EVENT_SHOW,show);
         const gesture=()=>{this.gestureSeen=true;if(this.music)this.music.notifyGesture();};
         const mouse=(event:EventMouse)=>{if(event.getButton()===EventMouse.BUTTON_LEFT)gesture();};
@@ -65,7 +68,7 @@ export class Application {
         const loadingScope=lifetime(this.scope);
         await this.assets.acquireGroups(['loading'],loadingScope);
         const loading=new LoadingPage(this.root,this.assets,loadingScope,this.height);
-        this.current={page:loading,scope:loadingScope};this.page=loading;
+        this.current={page:loading,scope:loadingScope};this.page=loading;this.fitPage(loading);
         const launch=async()=>{
             loading.setStage('正在准备登录页面…');
             try{await this.login();}catch(error){if(this.scope.active){console.error('[LittleSteps] login prepare failed',error);loading.failure();}}
@@ -137,7 +140,7 @@ export class Application {
         director.once(Director.EVENT_AFTER_DRAW,()=>{if(scope.active)console.info('[LittleSteps] Home first draw');});
     }
     private async present(next: Prepared<Page>,duration:number,retainLogin=false) {
-        const previous=this.current;
+        this.fitPage(next.page);const previous=this.current;
         this.transitioning=next.page;
         const succeeded=await this.router.show(next.page.root,duration,()=>this.active);
         this.transitioning=null;
@@ -151,7 +154,7 @@ export class Application {
         this.current=next;this.page=next.page;return true;
     }
     private bindHome(prepared:Prepared<HomePage>){
-        this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active)this.prepareDarkroom();};
+        this.fitPage(prepared.page);this.homePage=prepared;prepared.page.onPrepareDarkroom=()=>{if(this.page===prepared.page&&this.active)this.prepareDarkroom();};
         prepared.page.onDarkroomRequest=()=>{if(this.entering||!this.active||this.page!==prepared.page)return false;this.openDarkroom();return true;};
         prepared.page.onCancelDarkroom=()=>this.cancelDarkroomEntry();
         const home=prepared.page,owner=prepared.scope,service=new TravelService();
@@ -221,7 +224,7 @@ export class Application {
             try{await this.assets.acquireGroups(['darkroom'],scope);await this.assets.acquireEffects(DARKROOM_EFFECTS,scope);
                 const page=await DarkroomPage.create(this.root,this.assets,scope,this.height,this.clock),prepared={page,scope};
                 if(!scope.active)throw new Error('Darkroom preparation cancelled');page.onBack=()=>this.returnHome();page.onFinished=result=>console.info('[LittleSteps] Darkroom completed '+JSON.stringify(result));
-                this.darkroomPage=prepared;console.info('[LittleSteps] Darkroom resources ready '+JSON.stringify(this.assets.snapshot()));return prepared;
+                this.fitPage(page);this.darkroomPage=prepared;console.info('[LittleSteps] Darkroom resources ready '+JSON.stringify(this.assets.snapshot()));return prepared;
             }catch(error){scope.dispose();if(this.scope.active){this.darkroomError=String(error);console.error('[LittleSteps] Darkroom preparation failed',error);}throw error;}
             finally{this.darkroomLoading=null;}
         })();this.darkroomLoading=request;request.catch(()=>{});return request;
@@ -269,8 +272,24 @@ export class Application {
         console.info('[LittleSteps] music ready '+JSON.stringify(this.music.snapshot()));
     }
     private interactive(active:boolean) {if(!active){this.cancelJournalLoading();this.travelProps?.suspend();this.travel?.suspend();}if(this.page instanceof DarkroomPage){if(active)this.page.restore(!this.transitioning);else this.page.suspend();}else if(this.page instanceof LoginPage||this.page instanceof ComicPage||this.page instanceof HomePage||this.page instanceof TravelJournalPage){if(active){if(this.page instanceof HomePage||this.page instanceof TravelJournalPage)this.page.resume(!this.transitioning);else this.page.resume();}else this.page.pause();}if(this.transitioning&&this.transitioning!==this.page&&(this.transitioning instanceof HomePage||this.transitioning instanceof DarkroomPage||this.transitioning instanceof TravelJournalPage)){if(this.transitioning instanceof DarkroomPage){if(active)this.transitioning.restore(false);else this.transitioning.suspend();}else if(active)this.transitioning.resume(false);else this.transitioning.pause();}if(this.music)this.music.setActive(active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||this.page instanceof TravelJournalPage));if(active)this.travel?.resume();}
+    private fitPage(page:Page){
+        if(!page||(this.pageViewports&&this.pageViewports.get(page)===this.viewportKey))return;
+        page.resize(this.height,this.physicalWidth);
+        this.pageViewports?.set(page,this.viewportKey);
+    }
+    private refreshViewport(){
+        const size=this.canvas.getComponent(UITransform).contentSize,physical=screen.windowSize.width;
+        if(!(size.width>0&&size.height>0&&physical>0))return;
+        const dimensions=[size.width,size.height,physical].join(':');
+        if(!this.viewportDirty&&dimensions===this.viewportDimensions)return;
+        this.viewportDirty=false;this.viewportDimensions=dimensions;const safe=sys.getSafeAreaRect(false);
+        const key=[dimensions,safe.x,safe.y,safe.width,safe.height].join(':');
+        if(key!==this.viewportKey){this.viewportKey=key;this.height=size.height;this.physicalWidth=physical;box(this.root,-size.width/2,-size.height/2,size.width,size.height);this.travelLoading?.resize(this.height);}
+        const pages=new Set<Page>([this.page,this.transitioning,this.homePage?.page,this.darkroomPage?.page,this.loginPage?.page]);
+        pages.forEach(page=>{try{this.fitPage(page);}catch(error){if(this.viewportFailures.get(page)!==key){this.viewportFailures.set(page,key);console.error('[LittleSteps] viewport resize failed',error);}}});
+    }
     advance(delta:number) {
-        if(!this.scope.active)return;this.router.advance(delta,this.active);
+        if(!this.scope.active)return;this.refreshViewport();this.router.advance(delta,this.active);
         if(this.active&&(this.page instanceof HomePage||this.page instanceof DarkroomPage||this.page instanceof TravelJournalPage)){if(this.skipResumedClockFrame)this.skipResumedClockFrame=false;else this.clock.advance(delta);if(this.music){this.music.setNightMix(this.clock.nightMix());this.music.advance(delta);}}
         if(this.active){this.travel?.advance(delta);if(this.page===this.homePage?.page)this.travelLoading?.advance(delta);}
         if(this.active&&this.page)this.page.advance(delta);

@@ -76,8 +76,13 @@ function registerRenderSurface(cc) {
             canvasUI.setContentSize(size[0], size[1]); contentUI.setContentSize(size[0], size[1]);
             content.setPosition(-size[0] / 2, size[1] / 2);
             display.setPosition(rect[0], -rect[1]); displayUI.setContentSize(rect[2], rect[3]);
-            camera.orthoHeight = size[1] / 2; camera.targetTexture = texture;
-            if (!frame || frame.texture !== texture) {
+            camera.orthoHeight = size[1] / 2;
+            // RenderTexture.reset destroys the window attachments AND clears
+            // its cameras. The Camera setter skips identical targets, so detach
+            // before reattaching after an in-place reset (including rollback).
+            if (camera.targetTexture === texture) camera.targetTexture = null;
+            camera.targetTexture = texture;
+            if (!frame || frame.texture !== texture || frame.originalSize?.width !== texture.width || frame.originalSize?.height !== texture.height) {
                 const old = frame; frame = new SpriteFrame(); frame.texture = texture; frame.packable = false;
                 // Builtin Sprite's SAMPLE_FROM_RT handles the graphics backend's
                 // render-texture orientation. Never apply another manual flip.
