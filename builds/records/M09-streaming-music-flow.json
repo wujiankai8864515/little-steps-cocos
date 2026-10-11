@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "id": "M09.01",
+  "status": "original_MP3_streamed_admission_and_real_dual_play_pause_resume_browser_observed_device_memory_full_lifecycle_pending",
+  "sourceCommitBeforeItem": "0a2c62094a068b805855aac253b444572d254923",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "3844425b8ad67b8ce8205643a325fd85c8bbc830b29622212f7cb70caedb1f0e"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json",
+      "sha256": "bcbfc0873d999d6fd88b3ee4d8d537c3535f709e4d6da53c7f61be0281f813f0"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/streaming-assets.test.cjs",
+      "sha256": "6c5ae4e08f58f973f9dd011cbe68e86f0b060ed9aec28a98c0c9bce4d8d7da2c"
+    },
+    {
+      "path": "builds/tools/configure_streaming_music.py",
+      "sha256": "d35c982f3a8fcb9c8bd10d86fc03b1c567fec6111bac51302b647885f30dab20"
+    },
+    {
+      "path": "builds/tools/serve_preview.py",
+      "sha256": "cf1146648cd405b143655822ad5801986440e86d2e087e4c40b329d239ce8707"
+    },
+    {
+      "path": "builds/tools/test_serve_preview.py",
+      "sha256": "766167abb00b6fc2ec1a7ccffbf2f53d4a35230167f6ef41f69a9981bb663832"
+    }
+  ],
+  "sourceDeclaration": "M09-streaming-music-source.json",
+  "implementation": {
+    "game": "Explicit loadRemote native UUID URL requests DOM_AUDIO; only actual DOM_AUDIO0 or MINIGAME_AUDIO2 accepted for the original stream reservation. Reject/release full-PCM fallback. Both original MP3 payloads unchanged; full decoded estimate preserved separately.",
+    "tools": "Local readonly QA media server supports bounded, suffix and open byte ranges with 206; HEAD preserves length, malformed/multiple/unsatisfied ranges return416. Normal media cancellation closes reads without traceback. No shipping server added.",
+    "ownership": "Existing shared ResourceGate and scope leases own clips; deduplicate concurrent requests, reject late cancelled owner and release once at final owner. No new game rules in framework or builds."
+  },
+  "framework": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "967f498609c79e1766cbfd8bbb7475f66fc48c56b2939f65ec6d3ca73f395a8f",
+    "mode": "0o444",
+    "directoryMode": "0o555"
+  },
+  "validation": {
+    "tests": {
+      "gameAndFramework": 125,
+      "pass": 125,
+      "fail": 0,
+      "streamTests": "Shared original admission, one release at final owner, fallback rejection/release, late cancelled mini-game clip cleanup and fixed source formula",
+      "HTTPIntegration": {
+        "tests": 2,
+        "pass": 2,
+        "coverage": "Untouched full payload, exact seek/suffix/end-clamped ranges even with stale cache date, HEAD with zero response body and416 invalid requests"
+      }
+    },
+    "typescript": {
+      "exit": 0,
+      "log": "builds/reviews/M09-streaming-typecheck-v2.log",
+      "command": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+      "engineDeclarationsSkipped": true
+    },
+    "creator": {
+      "version": "3.8.8",
+      "candidate": "cocos-streaming-music-noon-v2",
+      "Finished": true,
+      "EFXErrors": 0,
+      "auditFiles": 590,
+      "metadataChanges": 1,
+      "mismatches": 0,
+      "formalWeChat": "pending"
+    },
+    "actualBrowser": {
+      "viewport": [
+        405,
+        720
+      ],
+      "target": [
+        720,
+        1280
+      ],
+      "fixture": "Explicit direct Home and frozen clock12; Home invitations and page input remain real.",
+      "server": "Range-enabled localhost8897",
+      "loaded": [
+        {
+          "resource": "res://home/audio/tracks/day_harp_mouse.mp3",
+          "type": 0,
+          "duration": 126.040813,
+          "reservedBytes": 6138970,
+          "fullPCMBytes": 44467200,
+          "payloadSHA256": "8ad48fe73d1e5af5118f074044dee90d49db881f03da6df7f0f46a718bcfb7a7"
+        },
+        {
+          "resource": "res://home/audio/tracks/night_peaceful_mind.mp3",
+          "type": 0,
+          "duration": 83.3072,
+          "reservedBytes": 8775294,
+          "fullPCMBytes": 31988736,
+          "payloadSHA256": "7830e17eaeae936c67e07109e4e75fe9c9b054275069ad54663b327163a6a336"
+        }
+      ],
+      "pause": {
+        "gestureSeen": true,
+        "pageActive": true,
+        "enabled": false,
+        "disposed": false,
+        "started": true,
+        "canPlay": false,
+        "targetMix": 0,
+        "mix": 0,
+        "envelope": 0,
+        "startCount": 1,
+        "pauseWrites": 2,
+        "resumeWrites": 0,
+        "stopCount": 0,
+        "players": [
+          {
+            "name": "DayMusic",
+            "disposed": false,
+            "wanted": "paused",
+            "playing": false,
+            "seconds": 10.672841,
+            "volume": 0,
+            "playRequests": 1,
+            "actualStarts": 1,
+            "actualEnds": 0,
+            "pauses": 1,
+            "stops": 0,
+            "lateStartsStopped": 0
+          },
+          {
+            "name": "NightMusic",
+            "disposed": false,
+            "wanted": "paused",
+            "playing": false,
+            "seconds": 10.620099,
+            "volume": 0,
+            "playRequests": 1,
+            "actualStarts": 1,
+            "actualEnds": 0,
+            "pauses": 1,
+            "stops": 0,
+            "lateStartsStopped": 0
+          }
+        ]
+      },
+      "resumeRequest": {
+        "gestureSeen": true,
+        "pageActive": true,
+        "enabled": true,
+        "disposed": false,
+        "started": true,
+        "canPlay": true,
+        "targetMix": 0,
+        "mix": 0,
+        "envelope": 0,
+        "startCount": 1,
+        "pauseWrites": 2,
+        "resumeWrites": 2,
+        "stopCount": 0,
+        "players": [
+          {
+            "name": "DayMusic",
+            "disposed": false,
+            "wanted": "playing",
+            "playing": false,
+            "seconds": 10.672845,
+            "volume": 0,
+            "playRequests": 2,
+            "actualStarts": 1,
+            "actualEnds": 0,
+            "pauses": 1,
+            "stops": 0,
+            "lateStartsStopped": 0
+          },
+          {
+            "name": "NightMusic",
+            "disposed": false,
+            "wanted": "playing",
+            "playing": false,
+            "seconds": 10.620099,
+            "volume": 0,
+            "playRequests": 2,
+            "actualStarts": 1,
+            "actualEnds": 0,
+            "pauses": 1,
+            "stops": 0,
+            "lateStartsStopped": 0
+          }
+        ]
+      },
+      "actualResumeEvents": [
+        {
+          "name": "DayMusic",
+          "disposed": false,
+          "wanted": "playing",
+          "playing": true,
+          "seconds": 10.734004,
+          "volume": 0,
+          "playRequests": 2,
+          "actualStarts": 2,
+          "actualEnds": 0,
+          "pauses": 1,
+          "stops": 0,
+          "lateStartsStopped": 0
+        },
+        {
+          "name": "NightMusic",
+          "disposed": false,
+          "wanted": "playing",
+          "playing": true,
+          "seconds": 10.68127,
+          "volume": 0,
+          "playRequests": 2,
+          "actualStarts": 2,
+          "actualEnds": 0,
+          "pauses": 1,
+          "stops": 0,
+          "lateStartsStopped": 0
+        }
+      ],
+      "routes": [
+        "actualHomeDollInvite",
+        "Yes",
+        "Darkroom actual PAGE_READY/first draw",
+        "hangingReturn",
+        "Home cached PAGE_READY"
+      ],
+      "budget": {
+        "entries": 120,
+        "reservedBytes": 178210523,
+        "pending": 0
+      },
+      "routeDidNotRestartMusic": true,
+      "consoleErrors": 0,
+      "limits": "Playback event and time evidence is not auditory, device or RAM measurement. Bright/dark crossover, focus and release in real WeChat remain pending."
+    },
+    "reservation": {
+      "fullPCMBytes": 76455936,
+      "originalStreamReservedBytes": 14914264,
+      "admissionReductionBytes": 61541672,
+      "bothPageEstimatedBytesBefore": 239752195,
+      "bothPageEstimatedBytesAfter": 178210523,
+      "measuredMemory": false,
+      "hardLimitsUnchanged": true,
+      "HomeFirstDownload": {
+        "threshold": 19000000,
+        "priorExactAuditBytes": 36841329,
+        "status": "fails; stream retains exact compressed bytes and does not resolve cold download"
+      }
+    }
+  },
+  "failures": [
+    {
+      "evidence": "builds/reviews/M09-streaming-typecheck-v1.log",
+      "trigger": "Using AudioClip.duration as a getter",
+      "cause": "Creator public clip API exposes getDuration; duration is a setter-only member",
+      "fix": "Use public getDuration, v2 typecheck passes",
+      "unverified": "Runtime device duration remains pending"
+    },
+    {
+      "evidence": "builds/reviews/M09-streaming-plain-server-browser-v2.json",
+      "trigger": "Python SimpleHTTPServer media preview uses200/304 rather than media206 ranges",
+      "observed": "Day starts/resumes, Night start/time remain0; do not mark dual playback accepted",
+      "fixEvidence": "Exact frozen v2 source on range-enabled server: both source STARTED events, advancing positive times and actual resumes; retained original failed observation",
+      "boundary": "Server correlation and actual fixed transport observed, WeChat engine backend separately pending"
+    }
+  ],
+  "proofs": [
+    {
+      "path": "builds/reviews/M09-streaming-tests-v1.log",
+      "sha256": "44749bb649897863b933b20a80713af5357af1ee42e88abc1b55048044ae0b74"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-typecheck-v1.log",
+      "sha256": "5f58fb10d8111c7f4e91b87cd04c07a840531725d2fb812518ad8a45c954177a"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-typecheck-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-range-tests-v1.log",
+      "sha256": "7a588399ba8ea164fdce257cec65821bb7bfbfeddb06ec3be97432c7810bc9ad"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-range-browser-v2.json",
+      "sha256": "7634e84742deed9e1b54a4e97a698a067502009a4ca11c74219f7b89816de55e"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-plain-server-browser-v2.json",
+      "sha256": "8bdb43fec138a43950b441ad3e8a404d453f090f6853553cce16abb4222e7257"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-range-off-settled-v2.jpg",
+      "sha256": "3d94f8e18c9b0a6ea0f00fbbcaf335a0a5c30df9336a44b95ba9de14feaa89bd"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-darkroom-v2.jpg",
+      "sha256": "39dda69b336ae01eee39a0ccc20cb7037119496f278340594558f6d309d29b10"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-home-return-v2.jpg",
+      "sha256": "973e9c428a8617b7ecf6878be2d60167649efc4a96882a76fefcb90d40caa175"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-music-noon-v2-build.log",
+      "sha256": "a67af94106691ba01d57ed83a4affca810867da06a2d39df16b295c8e8aeca69"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-music-noon-v2-audit.json",
+      "sha256": "84de09b58fa468f2c037a93451b6bc8e90a0a71b7964554b4486d993e5b752fc"
+    },
+    {
+      "path": "builds/records/candidates/cocos-streaming-music-noon-v2.json",
+      "sha256": "b5cab8160a46ee438c0f57ebde0e5eb8dcca6d4f9e1c5ed66bb6b1a267588b2c"
+    },
+    {
+      "path": "builds/reviews/M09-streaming-range-server-v1.log",
+      "sha256": "1852578ad6b52807d5281c3251b186b9e8c5e168126ed20dfcef086589c9624b"
+    }
+  ],
+  "pending": [
+    "Home19MB cold download",
+    "full optional-page closure at128 entries",
+    "night audible mix and four-second crossover actual run",
+    "focus/background and actual browser application disposal/release",
+    "WeChat mode2, music interruptions, measured peak memory and device runtime",
+    "Full screenshot/button/page strict acceptance"
+  ]
+}

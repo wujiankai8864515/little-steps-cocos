@@ -13,6 +13,7 @@ export interface ArtSpec {
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
     fontMetrics?: {ascent:number;descent:number;height:number};
     mipResources?:string[];
+    streaming?: {extension:string;encodedBytes:number;reservedBytes:number;payloadSHA256:string};
 }
 export class GameAssets {
     catalog: { assets: Record<string, ArtSpec>; groups: Record<string, any> };
@@ -47,7 +48,7 @@ export class GameAssets {
             groups.add(name); (group.depends_on || []).forEach(include);
         };
         names.forEach(include);
-        const specs: any[] = Object.keys(this.catalog.assets).filter(key => groups.has(this.catalog.assets[key].bundle)).map(key => ({key, bytes: this.catalog.assets[key].decodedBytes, spec: this.catalog.assets[key]}));
+        const specs: any[] = Object.keys(this.catalog.assets).filter(key => groups.has(this.catalog.assets[key].bundle)).map(key => ({key, bytes: this.reservedBytes(this.catalog.assets[key]), spec: this.catalog.assets[key]}));
         for (const name of groups) {
             const mask = this.catalog.groups[name].cocosAlpha;
             if (mask) specs.push({key: `alpha:${name}`, bytes: mask.decodedBytes, spec: {kind: 'json', bundle: name, path: 'alpha-masks'}});
@@ -57,7 +58,7 @@ export class GameAssets {
         return leased;
     }
     acquireResources(keys:string[],scope:Scope) {
-        return this.acquireSpecs(keys.map(key=>{const spec=this.catalog.assets[key];if(!spec)throw new Error(`缺少资源：${key}`);return {key,bytes:spec.decodedBytes,spec};}),scope);
+        return this.acquireSpecs(keys.map(key=>{const spec=this.catalog.assets[key];if(!spec)throw new Error(`缺少资源：${key}`);return {key,bytes:this.reservedBytes(spec),spec};}),scope);
     }
     acquireEffects(names:string[],scope:Scope) {
         // Conservative shader/pipeline reservation; these join the same page gate.
@@ -71,9 +72,22 @@ export class GameAssets {
         return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
             const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
-            const asset = await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
+            const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle) : await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
             asset.addRef(); this.values.set(key, asset); return asset;
         }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) this.values.delete(key); asset.decRef(); }, scope);
+    }
+    private reservedBytes(spec:ArtSpec){
+        const stream=spec.streaming;if(!stream)return spec.decodedBytes;
+        if(spec.kind!=='audio'||stream.extension!=='.mp3'||!Number.isSafeInteger(stream.encodedBytes)||stream.encodedBytes<=0||stream.reservedBytes!==stream.encodedBytes*2+2*1024*1024)throw new Error('Invalid original streamed-audio reservation');
+        return stream.reservedBytes;
+    }
+    private async streamingAudio(key:string,spec:ArtSpec,bundle:AssetManager.Bundle){
+        const info=bundle.getInfoWithPath(spec.path,AudioClip);if(!info)throw new Error(`缺少流式音乐目录：${key}`);
+        const url=assetManager.utils.getUrlWithUuid(info.uuid,{isNative:true,nativeExt:spec.streaming.extension});
+        const audio=await new Promise<AudioClip>((resolve,reject)=>assetManager.loadRemote<AudioClip>(url,{ext:spec.streaming.extension,audioLoadMode:AudioClip.AudioType.DOM_AUDIO},(error,clip)=>error?reject(error):resolve(clip)));
+        if(audio.loadMode!==AudioClip.AudioType.DOM_AUDIO&&audio.loadMode!==AudioClip.AudioType.MINIGAME_AUDIO){assetManager.releaseAsset(audio);throw new Error(`音乐未按原版流式加载：${key}`);}
+        console.info('[LittleSteps] audio transport '+JSON.stringify({resource:key,type:audio.loadMode,duration:audio.getDuration(),reservedBytes:spec.streaming.reservedBytes,fullPCMBytes:spec.decodedBytes,payloadSHA256:spec.streaming.payloadSHA256}));
+        return audio;
     }
     effect(name:string) {const value=this.values.get('effect:'+name) as EffectAsset;if(!value)throw new Error(`材质尚未准入：${name}`);return value;}
     texture(resource:string) {const value=this.values.get(resource) as Texture2D;if(!value)throw new Error(`原图尚未准入：${resource}`);return value;}

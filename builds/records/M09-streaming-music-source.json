@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "id": "M09.01",
+  "status": "source_streamed_transport_declared_actual_engine_backend_and_lifecycle_pending",
+  "source": {
+    "path": "games/travel_woodfish/project/config/resource_groups.json",
+    "sha256": "9e41297a2f883b452916e7194c26dbf2afb5bb3d6d3acc55fcc652e589e39f81"
+  },
+  "music": [
+    {
+      "resource": "res://home/audio/tracks/day_harp_mouse.mp3",
+      "fullDecodedPCMBytes": 44467200,
+      "extension": ".mp3",
+      "encodedBytes": 2020909,
+      "reservedBytes": 6138970,
+      "payloadSHA256": "8ad48fe73d1e5af5118f074044dee90d49db881f03da6df7f0f46a718bcfb7a7"
+    },
+    {
+      "resource": "res://home/audio/tracks/night_peaceful_mind.mp3",
+      "fullDecodedPCMBytes": 31988736,
+      "extension": ".mp3",
+      "encodedBytes": 3339071,
+      "reservedBytes": 8775294,
+      "payloadSHA256": "7830e17eaeae936c67e07109e4e75fe9c9b054275069ad54663b327163a6a336"
+    }
+  ],
+  "reservation": "Original Godot estimate: two encoded payload copies +2MiB stream/player buffers. Full PCM estimate remains stored separately; low reservation requires actual DOM_AUDIO or MINIGAME_AUDIO, otherwise load fails. Estimate is not measured browser/device memory.",
+  "unchangedLimits": {
+    "entries": 128,
+    "bytes": 268435456,
+    "specsPerBatch": 80,
+    "homeFirstDownload": 19000000
+  },
+  "audioBytes": "Original embedded MP3 bytes unchanged; no recoding",
+  "pending": [
+    "actual requested native URLs and load types",
+    "actual play, gains, pause/resume, cancellation and release",
+    "Home cold download budget still separate",
+    "WeChat device/backend and memory"
+  ]
+}
