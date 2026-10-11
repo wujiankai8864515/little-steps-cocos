@@ -9,6 +9,8 @@ def sha(value):return hashlib.sha256(value).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--engine',choices=['godot','cocos'],required=True);p.add_argument('--hour',type=float,default=12);p.add_argument('--inspect-strokes',action='store_true');p.add_argument('--flat-strokes',action='store_true');p.add_argument('--custom-strokes',action='store_true');a=p.parse_args()
     if a.flat_strokes and a.custom_strokes:raise ValueError('Select one Graphics diagnostic')
+    if a.engine=='cocos' and (a.inspect_strokes or a.flat_strokes or a.custom_strokes) and 'addComponent(Graphics)' not in (ROOT/'games/xiaoyu-cocos/assets/game/DarkroomHUD.ts').read_text():
+        p.error('Legacy Graphics diagnostics require the frozen M06.02 HUD; current HUD uses native mesh geometry')
     if not a.name or not all(c.isalnum() or c in '-_' for c in a.name):raise ValueError('Invalid checkpoint name')
     if a.engine=='cocos':
         subprocess.run([sys.executable,str(ROOT/'builds/tools/create_candidate.py'),'--name',a.name,'--route','home','--hour',str(a.hour),'--freeze-clock'],check=True)
@@ -48,6 +50,7 @@ func _process(_delta: float) -> void:
         plants.set_process(false)
         plants.advance(0.0)
         print("[LittleSteps QA] native full Darkroom ",JSON.stringify(debug_snapshot(),"",true,true))
+        print("[LittleSteps QA] native root stretch ",JSON.stringify({"final_scale":get_tree().root.get_final_transform().get_scale(),"window_size":get_tree().root.size,"content_scale_size":get_tree().root.content_scale_size,"content_scale_factor":get_tree().root.content_scale_factor},"",true,true))
 '''
         page=page.replace('var _review_full_started := false','var _review_full_hour := '+str(a.hour)+'\nvar _review_full_started := false')
         replacements={'darkroom/darkroom_page.gd.remap':b'[remap]\n\npath="res://qa/darkroom_page.gd"\n','qa/darkroom_page.gd':page.encode()}

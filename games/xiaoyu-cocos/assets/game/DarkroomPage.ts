@@ -62,5 +62,5 @@ export class DarkroomPage {
     suspend(){this.active=false;this.round.active=false;this.round.inputEnabled=false;this.round.cancel();this.pointer.cancel();this.surface.setActive(false);}
     restore(allowInput=true){this.active=true;this.round.active=true;this.round.inputEnabled=allowInput;this.surface.setActive(true);this.sync(0);this.shadows.sync();}
     private report(event:string){console.info('[LittleSteps] Darkroom '+event+' '+JSON.stringify(this.snapshot()));}
-    snapshot(){return {active:this.active,input_enabled:this.round.inputEnabled,surface:this.surface.snapshot(),world:{...this.round.snapshot(),...this.lighting.snapshot(),shadows:this.shadows.snapshot(),tools:this.tools.snapshot(),plants:this.plants.snapshot(),plumes:this.plumes.snapshot()},bubble:this.bubble.snapshot()};}
+    snapshot(){return {active:this.active,input_enabled:this.round.inputEnabled,surface:this.surface.snapshot(),world:{...this.round.snapshot(),...this.lighting.snapshot(),shadows:this.shadows.snapshot(),tools:this.tools.snapshot(),plants:this.plants.snapshot(),plumes:this.plumes.snapshot()},hud:this.hud.snapshot(),bubble:this.bubble.snapshot()};}
 }

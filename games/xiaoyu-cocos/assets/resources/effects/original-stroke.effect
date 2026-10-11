@@ -17,18 +17,22 @@ CCEffect %{
           blendDstAlpha: one_minus_src_alpha
       properties:
         strokeColor: { value: [1, 1, 1, 1] }
+        drawingMode: { value: [0, 0, 0, 0] }
 }%
 CCProgram stroke-vs %{
   precision highp float;
   #include <builtin/uniforms/cc-global>
   in vec3 a_position;
   in vec4 a_color;
+  in vec2 a_texCoord;
   out vec2 coverage;
-  vec4 vert(){coverage=vec2(a_color.r,a_color.a);return cc_matViewProj*vec4(a_position,1.0);}
+  out vec4 shapeColor;
+  vec4 vert(){coverage=vec2(a_color.r,a_color.a);shapeColor=vec4(a_color.rgb,a_texCoord.x);return cc_matViewProj*vec4(a_position,1.0);}
 }%
 CCProgram stroke-fs %{
   precision highp float;
   in vec2 coverage;
-  uniform StrokeState { vec4 strokeColor; };
-  vec4 frag(){float alpha=strokeColor.a*coverage.x*coverage.y;return vec4(strokeColor.rgb*alpha,alpha);}
+  in vec4 shapeColor;
+  uniform StrokeState { vec4 strokeColor; vec4 drawingMode; };
+  vec4 frag(){vec4 color=mix(vec4(strokeColor.rgb,strokeColor.a*coverage.x),shapeColor,drawingMode.x);float alpha=color.a*coverage.y;return vec4(color.rgb*alpha,alpha);}
 }%

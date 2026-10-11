@@ -1,0 +1,344 @@
+{
+  "schema": 1,
+  "id": "M06.04",
+  "status": "native_rounded_meter_mesh_and_real_round_browser_observed_strict_parity_pending",
+  "sourceCommitBeforeItem": "2db4397d3543c83db748d130e34afc6b9755e345",
+  "changes": [
+    {
+      "path": "engines/travel-core/src/stylebox.js",
+      "sha256": "2926b4dcfcdb34a4120da3f2fa9827a2776ea8c70a4fada11f3c6a556e734ab9"
+    },
+    {
+      "path": "engines/travel-core/src/cocos-mesh.js",
+      "sha256": "3f589e513c8982eebc17547f81aa5817139b7d253a477471309741fb30d269ba"
+    },
+    {
+      "path": "engines/travel-core/NOTICE.godot.txt",
+      "sha256": "0a987e4bae54d9d57ad88ed09b68359553c3514e09c14f1396d4ebb77dff8ee3"
+    },
+    {
+      "path": "engines/travel-core/tools/install-plugin.cjs",
+      "sha256": "2c976271bf25c8740da96942b9e8487f8b4e368b3f6c7c2a37fa635c86e9d863"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "967f498609c79e1766cbfd8bbb7475f66fc48c56b2939f65ec6d3ca73f395a8f"
+    },
+    {
+      "path": "engines/travel-core/test/core.test.cjs",
+      "sha256": "9769d8c75ee8b27ca0dc082b1b1ef425ec22480fba26da2890dbac9cec863f72"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "38ac633bed2124e4cf75cfd4521acea192363e66170383da93a252c49af9353f"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Stroke2D.ts",
+      "sha256": "d38c1986964fd2b2be70353599ca57369f8aebf387805de2ac0d5e9e93396a26"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomHUD.ts",
+      "sha256": "18e90bfcb5a4d118041b4ec00a371daca7404fff95c66105bf491333ddf8ee06"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+      "sha256": "d2baf16b41272e3a3db2d48d9a93b1906e054a0aef4a0e7a8571129d668a9729"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/effects/original-stroke.effect",
+      "sha256": "9df61ae63fa95c3d6f75381597e4d8c6703903667a725f70fa454756e200d61e"
+    },
+    {
+      "path": "builds/tools/create_darkroom_page_checkpoint.py",
+      "sha256": "702b297c74eb3f9d395d253468d06e3a3acb87a86e80a04331c35a158b2b29e4"
+    }
+  ],
+  "origin": {
+    "source": "https://github.com/godotengine/godot/blob/4.5.2-stable/scene/resources/style_box_flat.cpp",
+    "gitBlob": "3562f6641f75c85029387e22db906c136f960405",
+    "sha256": "11c658db519fb71326fd6b53618c280016425a2268f0fc47d7bc16d5c4e05947",
+    "header": {
+      "gitBlob": "7bb29937c67250fc99f573f0ee23a63416df9469",
+      "sha256": "4ace97e116a91d05b6a67a7ab995cbf2ad4128179a7e76a74e0f4057b357ef2c"
+    },
+    "nativeRuntime": "Godot4.5.2.stable.official.6ce3de25a",
+    "license": "MIT, full notice embedded in readonly distribution and actual built JS"
+  },
+  "implementation": {
+    "framework": "Generic positive-size rounded fill/border tessellation with four radii/borders, inside/outside AA, native corner scaling and color interpolation; explicit raw vertexUV channel independent of texture frame and UIOpacity",
+    "supportedStyleScope": "center, uniform or four radii/border widths, corner detail1..20, AA size; shadow/skew/blended border outside explicit API",
+    "game": "Original meter geometry, colors and eight segments; aaSize=1/min(rootScaleX,rootScaleY); recoil flash layered after shine, spirals remain original featherPolyline",
+    "diagnostics": "Legacy Graphics-only flags fail explicitly before creating a fixture for a mesh HUD. Historical diagnostic candidates remain frozen."
+  },
+  "framework": {
+    "link": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+    "target": "engines/travel-core/dist/travel-core.js",
+    "sha256": "967f498609c79e1766cbfd8bbb7475f66fc48c56b2939f65ec6d3ca73f395a8f",
+    "fileMode": "0o444",
+    "directoryMode": "0o555",
+    "metadata": {
+      "ver": "4.0.24",
+      "importer": "javascript",
+      "imported": true,
+      "uuid": "7d0bdc9d-6e8b-5ee4-a751-c655c245ba31",
+      "files": [],
+      "subMetas": {},
+      "userData": {
+        "isPlugin": true,
+        "loadPluginInEditor": false,
+        "loadPluginInWeb": true,
+        "loadPluginInNative": false,
+        "loadPluginInMiniGame": true,
+        "executionScope": "global"
+      }
+    },
+    "fullLicensePresentInBuiltPlugin": true,
+    "builtPluginSHA256": "967f498609c79e1766cbfd8bbb7475f66fc48c56b2939f65ec6d3ca73f395a8f"
+  },
+  "validation": {
+    "tests": {
+      "tests": 122,
+      "pass": 122,
+      "fail": 0,
+      "log": "builds/reviews/M06-stylebox-tests-v2.log",
+      "contracts": [
+        "Independent analytic area for native eight-segment rounded corners",
+        "Straight RGB retained independently of per-vertex alpha",
+        "Native inside/outside feather support for two AA sizes, valid narrow fills and invalid options",
+        "Raw vertex UV bypasses nonidentity frame UVs without replacing UI alpha"
+      ]
+    },
+    "typescript": {
+      "exit": 0,
+      "command": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+      "log": "builds/reviews/M06-stylebox-typecheck-v2.log",
+      "engineDeclarationsSkipped": true
+    },
+    "creator": "3.8.8 QA web-mobile v1/v2/v3 Finished; no EFX errors; formal WeChat still pending",
+    "freezeAudit": "builds/reviews/M06-darkroom-page-stylebox-noon-v3-audit.json",
+    "actualBrowser": {
+      "viewport": [
+        405,
+        720
+      ],
+      "target": [
+        720,
+        1280
+      ],
+      "nativeViewportDrawCalls": 84,
+      "nativeRootStretch": {
+        "content_scale_factor": 1.0,
+        "content_scale_size": "(720, 1280)",
+        "final_scale": "(0.5625, 0.5625)",
+        "window_size": "(405, 720)"
+      },
+      "cocosHUD": {
+        "geometrySource": "Godot4.5.2 StyleBoxFlat",
+        "rootStretch": 0.5625,
+        "aaSize": 1.7777777777777777,
+        "cornerDetail": 8,
+        "displayedAmount": 1,
+        "rimRect": [
+          170,
+          178,
+          405,
+          29
+        ],
+        "fillRect": [
+          174,
+          182,
+          397,
+          21
+        ],
+        "flashAboveShine": true
+      },
+      "actualEntry": "Real Home doll invitation and Yes; full Darkroom ready; two actual draw events",
+      "budget": {
+        "entries": 120,
+        "reservedBytes": 239752195,
+        "pending": 0
+      },
+      "consoleErrors": 0,
+      "roundCandidate": "v2 gameplay/shader/geometry identical to v3; only framework copyright banner added to v3",
+      "roundContacts": [
+        {
+          "contacts": 1,
+          "misfortune": 80,
+          "economyMutations": 0
+        },
+        {
+          "contacts": 2,
+          "misfortune": 60,
+          "economyMutations": 0
+        },
+        {
+          "contacts": 3,
+          "misfortune": 40,
+          "economyMutations": 0
+        },
+        {
+          "contacts": 4,
+          "misfortune": 20,
+          "economyMutations": 0
+        },
+        {
+          "contacts": 5,
+          "misfortune": 0,
+          "economyMutations": 0
+        }
+      ],
+      "roundPhases": [
+        "clear_out",
+        "gap_1s",
+        "spawn_in",
+        "ready_full"
+      ],
+      "screenshots": "Neutral full scene, actual 80/40/20 bars and ready_full after respawn retained; transient impact/clear still not matched native"
+    },
+    "strictStill": {
+      "report": "builds/reviews/M06-darkroom-noon-comparison-v7.json",
+      "method": "405x720 untouched screenshots, no image alignment/scaling/recoloring; unamplified absolute RGB differences",
+      "clockHour": 12,
+      "lampOverride": -1,
+      "neutralPlants": true,
+      "neutralDoll": true,
+      "meterMeanAbsoluteRGBBefore": 6.913053072933907,
+      "meterMeanAbsoluteRGBAfter": 2.7699878627386076,
+      "wholeMeanAbsoluteRGBAfter": 2.4952972107910383,
+      "dollMeanAbsoluteRGBAfter": 1.3356421821305842,
+      "status": "measured; strict acceptance pending"
+    }
+  },
+  "failures": [],
+  "pending": [
+    "Text glyph coverage and remaining static pixels",
+    "Native same-time impact/flash/smoke/clear/respawn checkpoints",
+    "All day/night/lamp combinations and tall/short viewports",
+    "Cancellation/retry/late callback/lifecycle and actual camera draw accounting",
+    "Home cold first-load19,000,000-byte gate still not met",
+    "All travel/map/journal/collection/photo/wardrobe pages",
+    "Formal WeChat bundle closure, packing/device performance and user approval"
+  ],
+  "evidence": [
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-20-v2.jpg",
+      "sha256": "f45780a0d03a93376c670605ba4703bb10ee6b30fab96625f6d3b5e81a3b35e7"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-40-v2.jpg",
+      "sha256": "4b2c412e5a69d77165a64d7add588adc0a108114de517eecbc6783ed1617615b"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-80-v2-public.json",
+      "sha256": "291c5807dc6dfb4cd16b91932f319ff3bc643942f17dd25d26f3c30edb73cde0"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-80-v2.jpg",
+      "sha256": "59e88a001f35bdb1099ba242786d0c6e123038094396531c35338b3191a08d9e"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v1-public.json",
+      "sha256": "40822b3b9b751e0e7945c9fe7c678f88706bba7dec2580e6b4e51f115e09a9b7"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v1.jpg",
+      "sha256": "b9f0d54ddec2a630760cc76f5f039acf95c96b5e6bebb3e3f1b00c5a98196c16"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v2-public.json",
+      "sha256": "2ce791e3925bc47a4863a72d587860a5ff39cd1421ae77dfda45919a1f63e078"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v2.jpg",
+      "sha256": "95de62f002235c2e7ce0eb3ee8a6dfe44749fd01fe0c6bfa91557e667fd89d9c"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v3-public.json",
+      "sha256": "5ec572679d5f5ad091ded276a040d92c7cdf4b9e41457b3bca1a6196734a5ae0"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v3.jpg",
+      "sha256": "9be4c1bf396bb6afc5c0d234e15863d1e4ee3db97f1ad18380574f0e2dafd01a"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-respawn-v2.jpg",
+      "sha256": "211d14ce5f4715a1b55adeff44d6a53a55c0d3ad8bbe914c4e7089cba66d8321"
+    },
+    {
+      "path": "builds/reviews/M06-cocos-darkroom-stylebox-round-v2-public.json",
+      "sha256": "c8a6aa153f825aa80e87a17c98bc9af7184c00ab9f7f3d3ede5d458876c87072"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v5.json",
+      "sha256": "f301ab67ec511015854bb5729b9be0e028ddf3c0bed173da02f280ff1cb0c2d5"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v5.png",
+      "sha256": "e71e5971d98721fda1fdf561292b11e389b96d04ed901cf19c1dca6a7d408d3a"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v6.json",
+      "sha256": "316a63c14b9a4e96d714f7e66c7acaa45682d1de453568edf70671b69dd9f435"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v6.png",
+      "sha256": "a21bbc85b1ed4bf87f65541e8d630241d472e70cb67bdc31d31573e774063448"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v7.json",
+      "sha256": "3640f5fb5e5d9d34c6dcf38074068dc7d109c0ed8ca47b858bb963a2b4e9cddd"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-noon-comparison-v7.png",
+      "sha256": "b347a05579c5ff404f6d89be4559cf6a55bda9d4e2bf5aa4ee36584fd08d1250"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v1-audit.json",
+      "sha256": "ce6342864a54e484388191245ca138881e01e7f0a04e64da093b40d580c36a8e"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v1-build.log",
+      "sha256": "b28a3d353342315587bbf8224d8f7d63c428c18b9e5a24fbe78a56f310f3adcd"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v2-audit.json",
+      "sha256": "8e1f5b4dd75968b384a91ad2e27c79043cd4a9c72c86599ba5ccf534e8d0d85e"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v2-build.log",
+      "sha256": "643378ed8ea7e4c9d2b0b211b81b6fdef09d8a074ac9b81111ad3c012e9d391e"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v3-audit.json",
+      "sha256": "ccfa24db177e4780aa5c5239c8c0127708156de0a3ed337fbbba7b7ddd673cb6"
+    },
+    {
+      "path": "builds/reviews/M06-darkroom-page-stylebox-noon-v3-build.log",
+      "sha256": "b66db9a30fe95a9d295a7fabfdfcfe304539565aaf4dca43ebf43a83d8f0b25a"
+    },
+    {
+      "path": "builds/reviews/M06-native-darkroom-stylebox-noon-v1-public.json",
+      "sha256": "576d7e50e9e610c0f8c791b442ab7055e795b422571309bb25e6e33dbce3f5cc"
+    },
+    {
+      "path": "builds/reviews/M06-native-darkroom-stylebox-noon-v1.jpg",
+      "sha256": "9100d98e855140623502044d37c76d3572272a9234d8997c583015c29f1b955d"
+    },
+    {
+      "path": "builds/reviews/M06-stylebox-tests-v1.log",
+      "sha256": "0f0c5f9e1b06f63fb2995191e17a7cbf18420a5e216f77118eb7fe2ed6a1c99e"
+    },
+    {
+      "path": "builds/reviews/M06-stylebox-tests-v2.log",
+      "sha256": "ac227f712772e5415c903f32a06586a1894058a78e8d79c037cc24b60699c216"
+    },
+    {
+      "path": "builds/reviews/M06-stylebox-typecheck-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "builds/reviews/M06-stylebox-typecheck-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

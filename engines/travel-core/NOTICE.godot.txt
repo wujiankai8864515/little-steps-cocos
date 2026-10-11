@@ -4,6 +4,15 @@ Source: https://github.com/godotengine/godot/blob/4.5.2-stable/servers/rendering
 Git blob: 42ba93c0f2e5d4623400448b364d456611891e0a
 SHA-256: a980ed8c3edef57eb50a810d0b2fbd6c7312ae9f6691bbf763423b69178bf3ad
 
+The rounded fill/border geometry in src/stylebox.js is adapted from the same
+Godot Engine 4.5.2-stable release, scene/resources/style_box_flat.cpp.
+Source: https://github.com/godotengine/godot/blob/4.5.2-stable/scene/resources/style_box_flat.cpp
+Git blob: 3562f6641f75c85029387e22db906c136f960405
+SHA-256: 11c658db519fb71326fd6b53618c280016425a2268f0fc47d7bc16d5c4e05947
+Defaults verified against scene/resources/style_box_flat.h:
+Git blob: 7bb29937c67250fc99f573f0ee23a63416df9469
+SHA-256: 4ace97e116a91d05b6a67a7ab995cbf2ad4128179a7e76a74e0f4057b357ef2c
+
 Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
 Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
 

@@ -23,6 +23,7 @@ export const core: any = {
     featherLine: (...args:any[]) => installed().featherLine(...args),
     featherPolyline: (...args:any[]) => installed().featherPolyline(...args),
     mergeDrawingMeshes: (...args:any[]) => installed().mergeDrawingMeshes(...args),
+    roundedStyleBox: (...args:any[]) => installed().roundedStyleBox(...args),
 };
 export const sharedUI = () => installed().registerUI(cc);
 export const pageRouter = (owner: Scope) => installed().createPageRouter(cc, owner);

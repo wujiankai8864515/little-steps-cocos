@@ -25,6 +25,19 @@ test('Packing independent feather meshes preserves coverage and rebases every in
  const a=core.featherLine([0,0],[10,0],2),b=core.featherPolyline([[30,0],[40,20],[50,0]],1.6),m=core.mergeDrawingMeshes([a,b]),offset=a.vertices.length/2;
  assert.deepEqual(Array.from(m.indices.slice(0,a.indices.length)),Array.from(a.indices));assert.deepEqual(Array.from(m.indices.slice(a.indices.length)),Array.from(b.indices,n=>n+offset));assert.equal(m.source.length,m.vertices.length);assert.equal(m.vertexData.length,m.vertices.length/2*3);assert.ok(Math.abs(coverageArea(m)-coverageArea(a)-coverageArea(b))<1e-6);
 });
+test('Rounded fill area follows the native eight-segment corners and keeps straight vertex colors independent of coverage',()=>{
+ const mesh=core.roundedStyleBox([10,20,50,20],{radius:10,fill:[.2,.4,.8,.3],antialiased:false});let area=0;
+ for(let i=0;i<mesh.indices.length;i+=3){const p=Array.from(mesh.indices.slice(i,i+3),n=>[mesh.vertices[n*2],mesh.vertices[n*2+1]]);area+=Math.abs((p[1][0]-p[0][0])*(p[2][1]-p[0][1])-(p[1][1]-p[0][1])*(p[2][0]-p[0][0]))/2;}
+ const expected=50*20-4*10*10+2*8*Math.sin(Math.PI/16)*10*10;assert.ok(Math.abs(area-expected)<.001);assert.equal(mesh.vertices.length/2,36);
+ assert.ok(Array.from(mesh.vertexUV).every((v,i)=>Math.abs(v-(i%2?0:.3))<1e-7));for(let i=0;i<mesh.vertexData.length;i++)assert.ok(Math.abs(mesh.vertexData[i]-[.2,.4,.8][i%3])<1e-7);
+});
+test('Native rounded borders retain inside/outside feather support, independent color gradients and finite narrow fills',()=>{
+ const r=[170,178,405,29],opts={radius:15,borderWidth:2,fill:[.11,.085,.075,.88],border:[.85,.72,.47,1],aaSize:1},a=core.roundedStyleBox(r,opts),b=core.roundedStyleBox(r,{...opts,aaSize:2});
+ for(const [m,aa]of [[a,1],[b,2]]){assert.equal(m.vertices.length/2,324);assert.equal(m.indices.length,966);assert.ok(Array.from(m.vertices).every(Number.isFinite));const xs=Array.from(m.vertices).filter((_,i)=>i%2===0);assert.equal(Math.min(...xs),170-aa/2);assert.equal(Math.max(...xs),575+aa/2);assert.ok(Array.from(m.vertexUV).some(v=>v===0));assert.ok(Array.from(m.vertexUV).some(v=>v===1));assert.ok(Array.from(m.vertexData).some(v=>Math.abs(v-.85)<1e-7));}
+ for(const width of [1,2.5,7,397]){const m=core.roundedStyleBox([174,182,width,21],{radius:11,fill:[1,.96,.73,.45],aaSize:2});assert.ok(Array.from(m.vertices).every(Number.isFinite));assert.ok(Array.from(m.indices).every(n=>n<m.vertices.length/2));}
+ assert.equal(core.roundedStyleBox([0,0,0,21]).indices.length,0);assert.equal(core.roundedStyleBox([0,0,10,21],{drawCenter:false}).indices.length,0);
+ for(const opts of [{radius:-1},{aaSize:NaN},{borderWidth:[1,2]},{fill:[1,1,1,2]},{cornerDetail:21}])assert.throws(()=>core.roundedStyleBox([0,0,10,21],opts),/Invalid/);
+});
 test('Confirmation layout reserves the original 62px choice row, minimum paper height and stricter head clearance',()=>{
  const safe=[24,135,672,1025],options={confirmation:true,minWidth:320,maxWidth:430,aboveOnly:true},r=core.infoBubbleLayout([350,666],safe,240,28,options);
  assert.deepEqual(Array.from(r),[190,504,320,142]);assert.deepEqual(Array.from(core.infoBubbleLayout([350,308],safe,240,28,options)),[350,308,0,0]);
@@ -176,6 +189,8 @@ test('UI mesh custom payload preserves unclamped source coordinates and leaves a
     const vb=sprite._renderData.chunk.vb;near(Array.from(vb.slice(5,8)),[-10,1100,256]);assert.ok(Math.abs(vb[8]-128/255)<1e-7);
     assert.throws(()=>sprite.configure({...mesh,vertexData:new Float32Array(2)},[10,10]),/payload/);
     assert.throws(()=>sprite.configure({...mesh,vertexData:new Float32Array(mesh.vertexData.length).fill(NaN)},[10,10]),/payload/);
+    const rawUV=new Float32Array(mesh.source.length).fill(.25);rawUV[1]=.75;sprite.spriteFrame={uv:[.2,.9,.8,.9,.2,.1,.8,.1]};sprite.configure({...mesh,vertexUV:rawUV},[10,10]);const raw=sprite._renderData.chunk.vb;near(Array.from(raw.slice(3,5)),[.25,.75]);assert.ok(Math.abs(raw[8]-128/255)<1e-7);
+    assert.throws(()=>sprite.configure({...mesh,vertexUV:new Float32Array(2)},[10,10]),/vertex UV/);assert.throws(()=>sprite.configure({...mesh,vertexUV:new Float32Array(mesh.source.length).fill(NaN)},[10,10]),/vertex UV/);
 });
 test('Owned audio stops a queued late start and releases its clip exactly once',()=>{
     class Node {constructor(name){this.name=name;this.events=new Map();}addChild(n){n.parent=this;}addComponent(){return this.source={clip:null,playOnAwake:true,playing:false,volume:1,currentTime:0,plays:0,stops:0,pauses:0,play(){this.plays++;},stop(){this.playing=false;this.stops++;},pause(){this.playing=false;this.pauses++;}};}on(e,f){this.events.set(e,f);}off(e){this.events.delete(e);}destroy(){this.destroyed=true;}}

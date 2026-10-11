@@ -1,0 +1,122 @@
+{
+  "native": {
+    "path": "builds/reviews/M06-native-darkroom-stylebox-noon-v1.jpg",
+    "sha256": "9100d98e855140623502044d37c76d3572272a9234d8997c583015c29f1b955d"
+  },
+  "cocos": {
+    "path": "builds/reviews/M06-cocos-darkroom-stylebox-noon-v3.jpg",
+    "sha256": "9be4c1bf396bb6afc5c0d234e15863d1e4ee3db97f1ad18380574f0e2dafd01a"
+  },
+  "board": {
+    "path": "builds/reviews/M06-darkroom-noon-comparison-v7.png",
+    "sha256": "b347a05579c5ff404f6d89be4559cf6a55bda9d4e2bf5aa4ee36584fd08d1250"
+  },
+  "regions": {
+    "whole": {
+      "rect": [
+        0,
+        0,
+        405,
+        720
+      ],
+      "meanAbsoluteRGB": 2.4952972107910383,
+      "RMSRGB": 4.724295785401039,
+      "maximumChannelDifference": 139
+    },
+    "exterior": {
+      "rect": [
+        194,
+        20,
+        352,
+        215
+      ],
+      "meanAbsoluteRGB": 2.9412852969814995,
+      "RMSRGB": 7.334190736076331,
+      "maximumChannelDifference": 82
+    },
+    "room": {
+      "rect": [
+        0,
+        130,
+        405,
+        263
+      ],
+      "meanAbsoluteRGB": 2.1809400043318172,
+      "RMSRGB": 4.382708101951896,
+      "maximumChannelDifference": 58
+    },
+    "lantern": {
+      "rect": [
+        13,
+        260,
+        85,
+        385
+      ],
+      "meanAbsoluteRGB": 1.2612222222222222,
+      "RMSRGB": 1.8280780301729875,
+      "maximumChannelDifference": 11
+    },
+    "doll": {
+      "rect": [
+        126,
+        263,
+        286,
+        457
+      ],
+      "meanAbsoluteRGB": 1.3356421821305842,
+      "RMSRGB": 2.035524749078601,
+      "maximumChannelDifference": 19
+    },
+    "meter": {
+      "rect": [
+        75,
+        65,
+        340,
+        122
+      ],
+      "meanAbsoluteRGB": 2.7699878627386076,
+      "RMSRGB": 5.767805622262913,
+      "maximumChannelDifference": 70
+    },
+    "needle": {
+      "rect": [
+        0,
+        520,
+        200,
+        635
+      ],
+      "meanAbsoluteRGB": 2.9848115942028985,
+      "RMSRGB": 5.043443959770827,
+      "maximumChannelDifference": 81
+    },
+    "slipper": {
+      "rect": [
+        206,
+        520,
+        405,
+        635
+      ],
+      "meanAbsoluteRGB": 2.6726239895127812,
+      "RMSRGB": 4.501438907551562,
+      "maximumChannelDifference": 81
+    },
+    "plants": {
+      "rect": [
+        80,
+        0,
+        167,
+        201
+      ],
+      "meanAbsoluteRGB": 1.8792626903795202,
+      "RMSRGB": 2.6243863334861,
+      "maximumChannelDifference": 23
+    }
+  },
+  "method": "405x720 untouched screenshots, no image alignment/scaling/recoloring; unamplified absolute RGB differences",
+  "status": "measured; strict acceptance pending",
+  "requiredState": "same clock, lamp, neutral doll, plant phase and720x1280 target; verify public logs separately",
+  "limits": [
+    "JPEG screenshot encoding and GPU/TTF rasterization differences retained",
+    "All buttons, motion/light/size matrix and WeChat device require separate evidence"
+  ]
+}

@@ -27,6 +27,12 @@ function registerCocos(cc) {
             const uv = frame.uv, vb = rd.chunk.vb, points = sprite.mesh.source;
             const rect = sprite.sourceRect;
             for (let i = 0; i < rd.dataLength; ++i) {
+                if (sprite.mesh.vertexUV) {
+                    const offset = i * rd.floatStride;
+                    vb[offset + 3] = sprite.mesh.vertexUV[i * 2];
+                    vb[offset + 4] = sprite.mesh.vertexUV[i * 2 + 1];
+                    continue;
+                }
                 const x = (points[i * 2] - rect[0]) / rect[2], y = (points[i * 2 + 1] - rect[1]) / rect[3], offset = i * rd.floatStride;
                 // Bilinear frame UVs also preserve vertical texture conventions.
                 vb[offset + 3] = (uv[4] + (uv[6] - uv[4]) * x) * (1 - y) + (uv[0] + (uv[2] - uv[0]) * x) * y;
@@ -73,6 +79,7 @@ function registerCocos(cc) {
             if (!(mesh.vertices instanceof Float32Array) || mesh.vertices.length !== mesh.source.length) throw new Error('Invalid UI mesh');
             if (sourceSize.some(x => !(x > 0))) throw new Error('Invalid source dimensions');
             if (mesh.vertexData && (!(mesh.vertexData instanceof Float32Array) || mesh.vertexData.length !== mesh.source.length / 2 * 3 || mesh.vertexData.some(x => !Number.isFinite(x)))) throw new Error('Invalid UI vertex payload');
+            if (mesh.vertexUV && (!(mesh.vertexUV instanceof Float32Array) || mesh.vertexUV.length !== mesh.source.length || mesh.vertexUV.some(x => !Number.isFinite(x)))) throw new Error('Invalid UI vertex UV');
             this.destroyRenderData();
             this.mesh = mesh; this.sourceRect = [...contentRect];
             this._flushAssembler();
