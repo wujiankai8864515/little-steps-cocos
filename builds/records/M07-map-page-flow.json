@@ -119,14 +119,17 @@
     "All five event types, long-text scrolling, hover/keyboard focus, background interruption and cancellation on actual engine/device",
     "Full map time/progress/size/moving-frame matrix; current noon offer checkpoint is not full acceptance",
     "Real-device bell/cue audibility, latency and non-overlap",
-    "Home live landscape-to-portrait render target defect observed in v1",
     "Collection/photo/wardrobe complete migration",
     "Home cold download budget; WeChat build/device/performance/backend; user acceptance"
   ],
   "nextRequiredActions": [
-    "Reproduce and fix Home live orientation defect with before/after image evidence",
     "Continue map shared text fidelity, other encounters and complete acceptance matrix",
     "Continue remaining collection/photo/wardrobe pages under same architecture and original asset constraints"
   ],
-  "remoteReadback": "Append ordinary Chinese commit and push; fresh verification ref plus changed bytes/modes readback recorded separately after commit"
+  "remoteReadback": "Append ordinary Chinese commit and push; fresh verification ref plus changed bytes/modes readback recorded separately after commit",
+  "followup": {
+    "record": "builds/records/M09-orientation-QA-flow.json",
+    "orientationObservation": "reproduced as QA freeze/layout problem; normal production update path validated at two sizes",
+    "remoteReadback": "builds/reviews/M07-map-page-remote-readback.json"
+  }
 }

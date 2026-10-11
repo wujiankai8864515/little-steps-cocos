@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "id": "M09.06",
+  "baseCommit": "cacf46e73cdb962b47c9fd229534d02819287920",
+  "status": "persistent_resize_bands_reproduced_in_QA_freeze_only_and_fixed_no_shipping_renderer_change",
+  "finding": "Old map capture fixture skipped Application.advance entirely while frozen, including refreshViewport. Live window changes retained the old narrow landscape target and root layout. Resuming real updates immediately restored the full room. Normal production update path handled both tested resize sequences.",
+  "changes": [
+    "QA freeze now calls Application.advance(0), freezing time while preserving viewport/readiness maintenance",
+    "Add visible read-only Home orientation diagnostics in isolated QA candidates",
+    "Add loopback-only candidate server that reads build-config output path and sends Cache-Control:no-store; use fresh ports per candidate to avoid previously cached builds"
+  ],
+  "validation": {
+    "productionCodeChanged": false,
+    "shippingBootChanged": false,
+    "userSceneChanged": false,
+    "normalProductionPath": [
+      {
+        "sequence": [
+          [
+            1728,
+            889
+          ],
+          [
+            720,
+            1280
+          ]
+        ],
+        "logical": [
+          720,
+          1280
+        ],
+        "pixels": [
+          720,
+          1280
+        ],
+        "orthoHeight": 640,
+        "entries": 93,
+        "reservedBytes": 129784985,
+        "blackRows": 0
+      },
+      {
+        "sequence": [
+          [
+            720,
+            1280
+          ],
+          [
+            1440,
+            900
+          ],
+          [
+            720,
+            1690
+          ]
+        ],
+        "logical": [
+          720,
+          1690
+        ],
+        "pixels": [
+          720,
+          1690
+        ],
+        "orthoHeight": 845,
+        "entries": 93,
+        "reservedBytes": 132146585,
+        "blackRows": 0
+      }
+    ],
+    "fixtureReproduction": {
+      "candidate": "travel-map-page-v4",
+      "actions": [
+        "Initial Home at1728x889",
+        "Click Pause frame (stops app updates)",
+        "Resize720x1280",
+        "Persistent 908 fully-black RGB rows in downloaded canvas",
+        "Resume app updates; full room returns with0 black rows"
+      ]
+    },
+    "fixtureAfter": {
+      "candidate": "travel-map-page-v5",
+      "actions": [
+        "Initial Home at1728x889",
+        "Click Pause frame (advance0)",
+        "Resize720x1280",
+        "After engine layout update, full room,0 fully-black RGB rows; no resume click needed"
+      ],
+      "observation": "Immediate first screenshot after resize can still show a pre-layout frame; this check verifies recovery after engine update, not a zero-transient-frame or device-rotation guarantee"
+    },
+    "mapPixelStability": {
+      "before": "builds/qa/cocos-map-choice-noon-v4.png",
+      "after": "builds/qa/cocos-map-choice-noon-v5.png",
+      "size": [
+        720,
+        1280
+      ],
+      "changedPixels": 0,
+      "maxChannelDifference": 0,
+      "meanAbsoluteRGBA": 0.0,
+      "sha256": [
+        "53ab43abcc388e79814c93cdb060e8c8103e7cd7a873ccf89e025364cf7461e6",
+        "53ab43abcc388e79814c93cdb060e8c8103e7cd7a873ccf89e025364cf7461e6"
+      ],
+      "method": "Unmodified downloaded PNGs; same noon/sceneAge12/route.4/manual offer. No alignment, scaling or exclusions."
+    },
+    "types": [
+      "builds/reviews/M09-home-orientation-before-v1-types.log",
+      "builds/reviews/M09-frozen-viewport-v5-types.log"
+    ],
+    "typeExit": 0,
+    "frozenAudits": [
+      "builds/reviews/M09-home-orientation-before-v1-frozen-audit.json",
+      "builds/reviews/M09-frozen-viewport-v5-frozen-audit.json"
+    ],
+    "sourceConsoleWarnings": 0,
+    "sourceConsoleErrors": 0,
+    "browser": "independent Chrome through supported CUA; GPU phases serial; all owned tabs closed and viewport reset",
+    "screenshots": [
+      {
+        "path": "builds/qa/home-paused-fixture-bands-v4.png",
+        "bytes": 371913,
+        "sha256": "16b3c137588756c563a75bd43357055ffcb7ba2dad00db93c19d69a82c89596e",
+        "fullyBlackRGBRows": 908
+      },
+      {
+        "path": "builds/qa/home-resumed-fixture-restored-v4.png",
+        "bytes": 1533283,
+        "sha256": "e4c8e495281691c64f8973b36c4b3681e41d86d6a62b12d3eea1caad22f1a8ca",
+        "fullyBlackRGBRows": 0
+      },
+      {
+        "path": "builds/qa/home-paused-fixture-layout-fixed-v5.png",
+        "bytes": 1482146,
+        "sha256": "41894e42b52084819f3e604ea89fe8d986ffd479000ff6b3bba12e06c93bec43",
+        "fullyBlackRGBRows": 0
+      },
+      {
+        "path": "builds/qa/home-live-orientation-portrait-v1.png",
+        "bytes": 1490229,
+        "sha256": "2fcb8901e663f736232e61635776e19fc0845711d10c7491f9f55d5450ab17c7",
+        "fullyBlackRGBRows": 0
+      },
+      {
+        "path": "builds/qa/home-live-orientation-tall-v1.png",
+        "bytes": 1836170,
+        "sha256": "2a43a1344f3da6af466326ddd20be05d2b7fff053bf3d809d97a078f3207210c",
+        "fullyBlackRGBRows": 0
+      }
+    ]
+  },
+  "additionalFailure": {
+    "trigger": "Switching an existing loopback port from newer orientation build back to older map build",
+    "evidence": "Visible orientation controls appeared instead of map controls, so that page was not used as map evidence",
+    "cause": "Cached same-URL candidate assets reused across changed server roots",
+    "fix": "Close wrong page; fresh8138 then8139 origins with explicit candidate no-store server. All reported map freeze evidence came from confirmed map controls on those fresh origins"
+  },
+  "reclassification": "M07.08 Home live orientation observation is explained by QA freeze reproduction; it is not a confirmed shipping Home defect. Historical images and observations retained. No production patch made.",
+  "pending": [
+    "Frame-by-frame resize transition and full device orientation/background matrix",
+    "Strict map font/layout pixels, other encounters, scrolling, hover/focus and audio",
+    "Remaining collection/photo/wardrobe, cold-download budget and WeChat delivery"
+  ],
+  "nextRequiredActions": [
+    "Continue map font/layout residuals using native/cocos region measurements; verify text layout before changing asset strategy",
+    "Complete other encounter types and original full-page matrix",
+    "Keep candidate hosting isolated and capture only after real layout/render readiness"
+  ],
+  "remoteReadback": "Ordinary commit/push then fresh verification ref; bytes and modes recorded separately"
+}

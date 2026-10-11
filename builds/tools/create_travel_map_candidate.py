@@ -21,7 +21,8 @@ export class Boot extends Component {
             console.info('[LittleSteps QA] MAP_HOME_READY '+JSON.stringify({source:'actual Application/Home route, isolated in-memory travel slot, fixed wall clock 1040 and seed1',resources:app.assets.snapshot()}));
         }catch(e){console.error('[LittleSteps QA] MAP_FAILED',e);}
     }
-    update(delta:number){if(this.app&&!this.frozen)this.app.advance(delta);}
+    // Freeze time, not viewport/readiness maintenance.
+    update(delta:number){if(this.app)this.app.advance(this.frozen?0:delta);}
     onDestroy(){this.app?.dispose();}
 }
 '''
