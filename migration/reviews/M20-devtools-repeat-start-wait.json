@@ -1,0 +1,32 @@
+{
+  "item": "M20.06",
+  "candidate": "wechat-loading-isolated-v5",
+  "trigger": "DevTools ordinary recompile after successful callback/render smoke test",
+  "observed": [
+    "COMPLETE_LOADING_FIRST_DRAW",
+    "M20_FINAL {busy:true,loading:true,loaded:[]}",
+    "M20_WAIT {downloads:1,queue:[]}",
+    "Independent wx.loadSubpackage(framework_code) diagnostic had no immediate success/fail/progress callback."
+  ],
+  "scope": "Awaiting first native framework_code package; no game application instance constructed. Earlier same candidate successfully reached LOGIN/COMIC/HOME/PHOTO.",
+  "rootCause": "Native request callbacks did not arrive in the earlier recompile session, then succeeded after project reopen. Concrete internal cause unconfirmed; do not claim a game or SDK fix from reopening alone.",
+  "pending": [
+    "Repeat startup stability",
+    "Physical device startup"
+  ],
+  "reopenResult": {
+    "method": "DevTools Project > Reopen this project; unchanged candidate/source/settings; no cache clear or security change",
+    "observedOrder": [
+      "COMPLETE_LOADING_FIRST_DRAW",
+      "source catalog ready",
+      "PAGE_READY LOGIN",
+      "login greeting ready"
+    ],
+    "startupErrorCount": 0,
+    "warningCount": 1,
+    "remainingWarning": "Official SDK HarmonyOS notice",
+    "freshRuntimePort": "37251"
+  },
+  "cliOpenDiagnostic": "Official CLI open refused because the IDE service port is disabled; no security setting was enabled.",
+  "status": "Project reopen restores normal startup; hot-recompile stability and physical-device startup remain pending."
+}
