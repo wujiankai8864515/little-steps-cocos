@@ -1,0 +1,55 @@
+{
+  "item": "M12.01-M12.02",
+  "candidate": "wechat-workspace-v7",
+  "status": "fixed-workspace-and-wechat-devtools-home-entry-verified-not-release",
+  "sourceCommit": "01a071339effeb57b149b7234b07f27ea5081161",
+  "sourceTree": "89b532c9398db781ba739f37f6443b49e5a2061c",
+  "remoteReadback": "builds/reviews/M12-wechat-mipmap-readback-v1.json",
+  "sourceMode": "remote-readback",
+  "appid": "wx4d41972686e54c11",
+  "projectDirectory": "builds/wechatgame",
+  "templateDirectory": "builds/templates/wechatgame",
+  "creatorTemplateLink": "games/xiaoyu-cocos/build-templates -> ../../builds/templates",
+  "resourceDirectory": "builds/cdn/wechatgame/remote",
+  "resourceServer": "http://127.0.0.1:8794/",
+  "update": {
+    "directoryInodePreserved": 39061662,
+    "copiedFiles": 341,
+    "copiedFileHashMismatches": [],
+    "personalConfigurationPreserved": "project.private.config.json",
+    "oldGeneratedFiles": "清单清理，固定目录本身不替换",
+    "previousWorkspaceBackup": "builds/work/wechat-workspace-v7/previous-wechatgame"
+  },
+  "validation": {
+    "workspaceRegression": "9项通过",
+    "frozenAssetAndDarkroomRegression": "16项通过",
+    "creatorBuildExitCode": 36,
+    "staticChecks": "17/18通过；Home19MB输出门槛仍失败",
+    "rawLocalPackageBytes": 3640135,
+    "homeDependencyOutputBytes": 22948245,
+    "httpRemoteBundleConfigurationsVerified": 11,
+    "audioRangeResponse": "206，原字节0-31完整返回"
+  },
+  "wechatRuntime": {
+    "tool": "Stable 2.02.2608080",
+    "baseLibrary": "3.17.3",
+    "simulator": "iPhone 12/13 (Pro)",
+    "userConfirmation": "已进入小屋",
+    "observedLogs": [
+      "[LittleSteps] original backpack ready",
+      "[LittleSteps] PAGE_READY HOME; full Home product parity pending",
+      "[LittleSteps] PAGE_READY HOME cached=true"
+    ],
+    "consoleErrors": 0,
+    "warnings": 21,
+    "observedVisibleState": "小屋完整画面、衣柜、照片、灯、桌面、背包/旅行离家状态正常绘制；并非全部功能验收",
+    "observedResourceAdmission": {"entries": 124, "reservedBytes": 189327381, "pending": 0},
+    "homeMipmapFailure": "修复后未再出现原mipmapLevelDataSize空对象异常；用户确认进屋，工具日志和实际画面回读一致"
+  },
+  "remaining": [
+    "Home资源输出仍比19,000,000 bytes门槛多3,948,245 bytes；不生成正式交付物",
+    "本机资源地址供开发者工具使用；微信真机/发布需要合法HTTPS资源域名和对应CDN部署",
+    "真实手机触控、音乐、存档、切后台、冷下载和性能尚未验收",
+    "控制台有缓存目录已存在等警告；无运行错误不等于完整产品验收"
+  ]
+}

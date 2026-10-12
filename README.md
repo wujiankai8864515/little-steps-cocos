@@ -28,6 +28,8 @@ python3 builds/tools/serve_candidate.py --name opaque-png-v1 --port 8792
 
 默认构建当前本地源码的隔离候选；远端冻结构建使用 `--readback`。本机候选与正式发布门禁分开记录，Home预算和微信设备的待验范围不改变。完整命令、模板定制与电脑重启后的资源服务恢复见 [打包仓说明](builds/README.md)。
 
+固定入口当前为 `wechat-workspace-v7`，从远端回读的 `01a0713` 源码构建，本地包 3,640,135 bytes。已用微信开发者工具验证登录、开场和进入小屋，用户确认“已进入小屋”，运行日志显示 `PAGE_READY HOME` 且无错误。模板/目录更新9项及冻结资源/暗室生命周期16项回归通过。已修复微信图片缓存清理导致背包原始 mipmap 基础图像提前释放的问题，额外原图内存纳入原预算；Home输出仍22,948,245 bytes，正式交付继续受19MB门禁限制。完整证据见 `builds/reviews/M12-workspace-delivery-v1.json`。
+
 ## 历史微信候选打包
 
 工具只在 `builds/work` 创建冻结镜像：游戏源码、原美术、Boot 和场景不改；分包位置和引擎裁剪作为明确记录的构建配置。先准备远端回读记录，再运行：
