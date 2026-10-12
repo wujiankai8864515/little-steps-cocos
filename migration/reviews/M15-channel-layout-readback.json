@@ -1,0 +1,49 @@
+{
+  "item": "M15.02",
+  "commit": "fffa3a9ceba611801b3fb7dba82bd047303f8932",
+  "ref": "refs/verify/M15-channel-layout-v1",
+  "remote": "github.com/wujiankai8864515/little-steps-cocos",
+  "branch": "main",
+  "remoteCommitMatches": true,
+  "tree": "b983e4bc0cbe81bc18e30cf3ae0ee4515a56d251",
+  "fullTreeMatches": true,
+  "keyFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "42f3f3cd7d006c111f8c662e20bfa20a60da7497558d527af115190706fad1ff"
+    },
+    {
+      "path": "builds/build.py",
+      "sha256": "3d1bea2b1296600fd7e68bbf4f5ebbfcec96d776b15e201c5a20de551ec197f2"
+    },
+    {
+      "path": "builds/common.py",
+      "sha256": "3f3c4201907acd9e3e770acb03ad6a7b54184454d9e72c83ce62165ced17a70e"
+    },
+    {
+      "path": "builds/wechatgame/config.json",
+      "sha256": "6db2ba3834f549bf3ffca0ec3fc79ba4d5e0f9a4e106ebe6444cddf031abc662"
+    },
+    {
+      "path": "builds/wechatgame/prepare.py",
+      "sha256": "3a9791a4265c3cf6e6970ef409e9b6027ebc746d58bd3dca76587aeb0d38d293"
+    },
+    {
+      "path": "builds/wechatgame/templates/project.config.json",
+      "sha256": "9b6fb12990047e0743e785e24168c0a1922435a023dd39b2e7f61026811bef9a"
+    },
+    {
+      "path": "tests/builds/test_wechat.py",
+      "sha256": "c40a844be606429430a955a681474fda6c400c37d06b86ef50795bb257e65a70"
+    },
+    {
+      "path": "migration/reviews/M15-channel-layout-and-latest.json",
+      "sha256": "90de40b22fcc3821b5e5270cec131d6b1543db626df1ab97e012ac750a3647b4"
+    }
+  ],
+  "latestBuildCandidate": "wechat-channel-latest-v2",
+  "sourceMode": "local-working-copy",
+  "gameBusinessWorkingChangesPreservedAndExcluded": true,
+  "workspaceInstruction": "/Users/wkk/dotWorkers/AGENTS.md: local workspace rule; project AGENTS version backed up remotely",
+  "failureRecord": "M12-build-workspace-failure-20261012T021129512544Z.json: actual M15 template-symlink failed attempt, kept unchanged"
+}
