@@ -17,10 +17,10 @@
 第一版候选包含旅行、衣柜、暗室、日记本、收藏馆和照片墙。启动本机预览：
 
 ```sh
-python3 builds/tools/serve_candidate.py --name full-six-pages-v1 --port 8792
+python3 builds/tools/serve_candidate.py --name alpha-transport-v2 --port 8792
 ```
 
-打开 `http://127.0.0.1:8792/review`，页面旁有操作说明。该候选来自 `c9629f8` 的真实入口，无测试存档或时间替换。主流程和刷新恢复已观察；完整异常及微信设备验收仍以功能矩阵中的待验项为准。
+打开 `http://127.0.0.1:8792/review`，页面旁有操作说明。当前候选 `alpha-transport-v2` 的全部运行代码和资源已与远端回读 `4aba881` 核对一致，无测试存档或时间替换。六页完整主流程及刷新恢复的前次证据保留；本次无损透明度优化另验登录、开场、小屋、衣柜、暗室和照片加载。完整异常及微信设备验收仍以功能矩阵中的待验项为准。
 
 ## 微信候选打包
 
@@ -32,8 +32,8 @@ python3 builds/tools/create_wechat_candidate.py --name wechat-review-new --readb
 
 按生成清单的 `command` 调用 Creator；退出码 36 是官方规定的构建成功。构建完成后运行 `audit_wechat_candidate.py --name NAME --out REPORT.json`，再运行 `stage_wechat_delivery.py --name NAME --receipt RECEIPT.json`。工具拒绝覆盖旧候选；任意检查失败不会生成交付目录。
 
-`wechat-six-pages-v4` 的历史静态打包检查曾通过：本地包 3,069,060 bytes，11 个资源包单独输出到 CDN 目录，95 个原始图像/音频/字体文件字节不变。`builds/output/wechat-six-pages-v4/package` 才是微信开发者工具导入目录；`cdn/remote` 不在上传包里。ZIP 只是候选备份。
+最新候选 `wechat-six-pages-v5` 从远端回读 `4aba881` 构建，本地包 3,056,214 bytes，11 个资源包单独输出到 CDN 目录。129 项资源目录及 141 个源文件没有缺失，98 个原始图像/音频/字体文件在产物中字节不变。`builds/output/wechat-six-pages-v5/package` 是微信开发者工具导入目录；`cdn/remote` 不在上传包里。ZIP 是候选备份。
 
-**M10.02 更正：v4 冻结源码遗漏了被 `native` 忽略规则误排除的三张 Loading 角色图，因此 v1–v4 均不能作为完整交付。** 已将忽略范围限定为工程根目录 `/native/`、补入原图和元数据，并加入完整资源目录检查；后续须从新回读源码重新构建。
+**v1–v4 已撤回完整性判断，不得用于交付。** M10.02 查出旧 `native` 忽略规则漏掉三张 Loading 角色图，v5 已补齐，并由新目录门禁核验。旧失败产物和记录保留。
 
 当前使用 Creator 官方测试 AppID 和回环资源地址，资源未上传。正式账号、HTTPS 资源域名、19,000,000 bytes 的 Home 首屏下载和微信真机验证仍待完成；主包体积通过不等于首屏或性能通过。

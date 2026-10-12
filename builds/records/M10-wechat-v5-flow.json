@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "item": "M10.03",
+  "updatedAt": "2026-10-12T00:05:50.852752+00:00",
+  "candidate": "wechat-six-pages-v5",
+  "sourceCommit": "4aba8810e113ba49625eb1835b20f601a9aafb06",
+  "sourceReadback": "builds/reviews/M09-alpha-remote-readback.json",
+  "status": "source_complete_static_package_verified_not_release",
+  "changes": [
+    "Fresh remote-readback source contains all Loading PNGs and metadata",
+    "Lossless compressed CPU alpha transport included; original images/audio/fonts unchanged",
+    "Frozen source covers129 catalogue entries and141 files, no missing source/meta",
+    "WeChat raw local package and11 CDN bundles separated, no remote scripts"
+  ],
+  "rawMainBytes": 3056214,
+  "nativeAssets": {
+    "count": 98,
+    "byteIdenticalInOutput": 98,
+    "missing": []
+  },
+  "allStaticChecks": 16,
+  "buildExit": 36,
+  "buildLog": "builds/reviews/M10-wechat-six-pages-build-v5.log",
+  "packageAudit": "builds/reviews/M10-wechat-six-pages-package-v5.json",
+  "deliveryReceipt": "builds/reviews/M10-wechat-six-pages-delivery-v5.json",
+  "archiveEntriesIndependentlyRehashed": 47,
+  "supersedes": [
+    "wechat-six-pages-v1",
+    "wechat-six-pages-v2",
+    "wechat-six-pages-v3",
+    "wechat-six-pages-v4"
+  ],
+  "pending": [
+    "Cold Home 19,000,000-byte gate requires measured first-entry transfer; output size does not prove it.",
+    "WeChat DevTools, physical touch, audio, storage, background recovery and performance remain unverified.",
+    "Resources have not been uploaded and no production HTTPS/domain configuration has been verified.",
+    "Uses the documented Creator test AppID; not a production account build."
+  ]
+}

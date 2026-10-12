@@ -1,16 +1,17 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-12T00:01:19.617093+00:00",
-  "latestItem": "M09.08 + M10.02",
+  "updatedAt": "2026-10-12T00:05:50.852752+00:00",
+  "latestItem": "M10.03",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
     "builds/records/M09-alpha-transport.json",
+    "builds/records/M10-wechat-v5-flow.json",
     "builds/records/M10-loading-asset-coverage.json",
     "builds/records/M11-six-page-function-matrix.json"
   ],
   "nextPriority": "Six-page full-entry browser candidate is available for user review. Complete remaining functional/input/failure cases, Home cold-download budget and WeChat runtime/device validation. Numerical pixel polishing remains deferred; no function/layout reduction.",
-  "pendingReadback": "builds/reviews/M09-alpha-remote-readback.json (create after commit)",
+  "pendingReadback": "builds/reviews/M10-wechat-v5-remote-readback.json (create after commit)",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -23,11 +24,13 @@
     "Wardrobe screenshots saved in builds/qa/cocos-wardrobe-*.png. V3 is latest candidate (per-attempt outfit lease cleanup), not release. Shipping Boot/scene unchanged.",
     "Latest wardrobe-surface-v1 candidate uses fixed 720x1280 RT. Browser main flow, night/short/long observations saved. Fresh Chrome session succeeded after previous control interruption; tab closed, viewport reset, server8789 stopped. No previous root-cause claim.",
     "Collection v3 browser flow done; tabs closed, viewport reset, servers8790/8791 stopped. Final screenshot builds/qa/cocos-collection-feedback-final.png.",
-    "User preview http://127.0.0.1:8792/review; source-unmodified full-six-pages-v1. Server session73973 kept for user review; tab426065834 marked deliverable, viewport reset. Native Chrome supplemental capture prohibited current URL: stopped path, do not repeat.",
     "All task Creator CLI builds and isolated inspection editor stopped before reopening review tab. Preview server73973 retained for user; no other task engine page open.",
     "Creator3.8 needs assets/bundles/*.meta bundleConfigID pointing to settings/v2/packages/builder.json bundleConfig.custom profiles. CLI isRemote alone and legacy isRemoteBundle maps were ineffective; v1/v2 failed evidence retained. Exit36 means official build success.",
     "M10.02: v1-v4 WeChat source archive lacked3 Loading PNGs and6source/meta files due to unanchored native ignore rule. DO NOT deliver those packages. Original PNGs now in Git; full catalogue129assets/141sourcefiles guard rejects old archive before build.",
     "M09.08:73 CPU alpha planes now zlib-u8-base64. Original45573782bytes preserved; frame samplingO(1), Home alpha1.36MB versus6.68MB. All98native files byte-identical. Framework plugin contains pinned pako2.1.0 inflate and full notices; installer verifies vendor hashes then restores0444/0555.",
-    "Alpha QA v2 built successfully(exit36),750frozen files runtime unchanged;279tests pass, typecheck(skipLibCheck)passes. Browser login/comic/Home/wardrobe/darkroom/photo observed; tab closed, viewport reset, server8794 stopped. Prior six-page preview8792 retained for user."
+    "Alpha QA v2 built successfully(exit36),750frozen files runtime unchanged;279tests pass, typecheck(skipLibCheck)passes. Browser login/comic/Home/wardrobe/darkroom/photo observed; tab closed, viewport reset, server8794 stopped. Prior six-page preview8792 retained for user.",
+    "Latest WeChat candidate v5: source4aba881 remote readback, Creatorexit36,16static checks pass,129catalogue assets/141source files complete,98original native files preserved. Rawmain3056214bytes,47localfiles and255remote files; ZIP1009980bytes. Device/CDN/productionAppID/cold budget pending.",
+    "User preview http://127.0.0.1:8792/review now serves alpha-transport-v2, all750frozen files match source4aba881 except non-runtime .gitignore. Server17963 retained; Chrome tab426065842 marked deliverable. Old server73973 stopped and previous tabs closed.",
+    "Raw full entry debug browser requests total37977263bytes (includes engine/login/comic/Home); not comparable with prior direct-Home fixture36841329bytes. New WeChat Home bundle alone21257228bytes plus shared_room2144011bytes; further mandatory-resource optimization and actual platform transfer measurement required."
   ]
 }

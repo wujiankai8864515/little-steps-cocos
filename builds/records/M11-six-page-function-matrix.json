@@ -109,11 +109,18 @@
   "delivery": {
     "url": "http://127.0.0.1:8792/review",
     "direct": "http://127.0.0.1:8792/",
-    "candidate": "full-six-pages-v1",
+    "candidate": "alpha-transport-v2",
     "sourceOverrides": 0,
     "server": "loopback only, kept running for requested user review",
-    "restart": "python3 builds/tools/serve_candidate.py --name full-six-pages-v1 --port 8792",
-    "browser": "Independent Chrome tab426065830 marked deliverable; temporary viewport override reset",
+    "restart": "python3 builds/tools/serve_candidate.py --name alpha-transport-v2 --port 8792",
+    "browser": "Independent Chrome426065842; default viewport; server17963",
     "packaging": "web-mobile local review candidate only; shipping target remains wechatgame"
+  },
+  "currentPreview": {
+    "candidate": "alpha-transport-v2",
+    "sourceCommit": "4aba8810e113ba49625eb1835b20f601a9aafb06",
+    "url": "http://127.0.0.1:8792/review",
+    "evidence": "builds/reviews/M09-alpha-preview-source-readback-match.json",
+    "scope": "Existing six-page flow record above remains from original full-six-pages-v1. Current lossless resource optimization has separate targeted browser checks in M09-alpha-browser-v2.json."
   }
 }

@@ -1,0 +1,353 @@
+{
+  "commit": "4aba8810e113ba49625eb1835b20f601a9aafb06",
+  "ref": "refs/verify/alpha-transport-v2",
+  "at": "2026-10-12T00:02:14.391206+00:00",
+  "verifiedChangedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "2f5ab9d76519fa3a4b4c33c4f9affbe6a256b21b8c2527731212d64f8d1abbee",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/M09-alpha-transport.json",
+      "sha256": "f24687cf170e52fa87484a8a3b01682950dac675c81e31ad6ed7b97fcfe49116",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/M10-loading-asset-coverage.json",
+      "sha256": "8c6720ade8c2fb84dc6ce2b667c2c773e97fe7462949af28cd1b8cc886b6494c",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/alpha-transport-v1.json",
+      "sha256": "6f0b89e58dba0832e1c4f9d543e05f98736f2d3150ae8e0e9772d186cf9302f4",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/candidates/alpha-transport-v2.json",
+      "sha256": "7d95e7badb0830297f747b775a554585a1164afa82b65f3801360ead4cfec507",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/migration-plan.json",
+      "sha256": "b0a00a4de61990528603a2ab5160258d8433d6928b28ae41481a405322cafb59",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/records/resume.json",
+      "sha256": "101debf9e40b5fcdb5df1a3b0dd46eb68a18f2a34bce57da76fac84b86b24abd",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-browser-v2.json",
+      "sha256": "ea2174ad0386e2311e50ca28ad3ac6280b895732d03635f36904077bbb65a889",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-build-v1.log",
+      "sha256": "c030fc4a65abac22b09ab79725ef400223f7d8419ad04669cf0c457ca82510b8",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-build-v2.log",
+      "sha256": "f556fc1d0701af8729a0b298d47b966c803de4ea02a52f77424307e2ef27727f",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification-v2.json",
+      "sha256": "586be45bae6a152697af03b5490117c2f59d362010a7f4d5f3f49a48dc42bfc0",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification-v2.log",
+      "sha256": "e32038ae68655aee0e5b20167ae9cb334debf8590d6aee17220595b2103dde21",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification-v3.json",
+      "sha256": "e810b58287495098e2dd229f564bf43b64cacf9812614cd4371732698f3dd4c8",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification-v3.log",
+      "sha256": "43214785c6b4e88423a6ef1c417b412e89891169167835e6592550538b712562",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification.json",
+      "sha256": "c8b3b68cac141ff3592fa925864b409ca098d5400f4182c21d0d554f5c4313ea",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-decoder-verification.log",
+      "sha256": "880a0e9217c113f39705bcb81a7a54c558aeda2c4108bab3cff18ced8ab41e24",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-failures.json",
+      "sha256": "5fe08c81499446c4e0e6324566cb80c75e3924e922c8ea8b15691310da759b60",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-frozen-audit-v2.json",
+      "sha256": "2600010e62f7d0c958e0240cce86eb0badb1954128387072db7dade90ff45106",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-preserved-assets.json",
+      "sha256": "0c1e4dd87eaf83b8114dbc3c62c6fe035adf5f7ae027419f1c5295ad54b6148a",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-regression-v1.log",
+      "sha256": "1576ce527ae061d2a15914cc143bd55cfa0c3207ac8df557016bb5b4d06e86d4",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-regression-v2-viewport.log",
+      "sha256": "a21c0301d47d3ced4ebdf4a898094a4cdb3fa47d722a1b67b33e8e1217b38005",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-regression-v3-codec.log",
+      "sha256": "d675381d79c021810152dcb7ed46ad5312fd28214e3fff40f6b7b83a1b92e2f6",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-regression-v4-final.log",
+      "sha256": "7138c137ce772124fc034f0fb16f5556a92f0cf889675c61c7821bd14037d9c5",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-typecheck-v1.log",
+      "sha256": "d5da7c2c9d4ad59b156441a5fa0e3cda9d3ed8f029dcfc5b839f204bb58ccf2f",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M09-alpha-typecheck-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-loading-missing-source-rejection.log",
+      "sha256": "022bf416ab91426098faa22aea3957779b117261ae1599f6718c00196845cee8",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-packaging-remote-readback.json",
+      "sha256": "f0fd6f969b37fb2f8fa6a30ad3df2a8e0491f9a1587ebfbb519f433e4e7129ae",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-v4-source-coverage-recheck.json",
+      "sha256": "f634e6c369ed26be6874a11d77370286cf79d438aea5c79f63ab59cda6dc9b11",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/reviews/M10-wechat-v4-source-coverage-recheck.log",
+      "sha256": "1fca1ed6a70a3d1cfe4144f620a04d24a662f631ebb46e0fae3fa17eff9233f4",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/alpha_codec.py",
+      "sha256": "8dbf5a7a8057602d48537098c40d8b175cc012ed6ee318df382797c62af969e5",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/audit_wechat_candidate.py",
+      "sha256": "242d2122ccc684238b3adb9b8cfbb3418a7fefbba4ea6458e1bbb88ab355b345",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/check_catalog_assets.py",
+      "sha256": "b4b79e4682395c8baca69147fc33d25fa0b7653eca9bbac32321cd68f63b78cd",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/compact_alpha_masks.py",
+      "sha256": "0116d4cb740717ec2c6bb1bf1a9605ec90c430a018e63d58323ceeaff59f8f69",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/create_wechat_candidate.py",
+      "sha256": "e3170c2cd0781ac9ef4d859a5db3e6fcca58ff835566fda19fd5bf04ebcdab8a",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/import_godot_assets.py",
+      "sha256": "c15196df77ca57feea1a40332b9d24c53ffac7c03ac0dde9aaf30791b7e7611d",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/verify_alpha_transport.cjs",
+      "sha256": "4aca1c048e2f46d7ceab2b3eb27e3a95914824a45c219f6270ccb53c06a06b37",
+      "mode": "100644"
+    },
+    {
+      "path": "builds/tools/verify_candidate.py",
+      "sha256": "f9e28e255095fc340787d2c018771b02799812071d8d224d9d634bb3f182a217",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/dist/travel-core.js",
+      "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/src/alpha.js",
+      "sha256": "5c18644f3d780cddd5e6e4817157c5ae2552a6617e4229c245dd37bbdf36c08e",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/test/alpha.test.cjs",
+      "sha256": "821e1f4676d81a122bb97d835c771fb1ccdae4e8e2075bbea37c932bf21e7ef9",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/tools/install-plugin.cjs",
+      "sha256": "4b938c955eed3322aed83808c0580f5777e0911285ed438805b9effe5101ef0a",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/vendor/pako/LICENSE",
+      "sha256": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/vendor/pako/LICENSE.zlib",
+      "sha256": "976b1cf2dcf7d71ad4dd7799d30da84d19323983500e4bb123d0d5414db876b3",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/vendor/pako/pako_inflate.min.js",
+      "sha256": "fa226c8e1e3556993260e6a5c1fe94e225da59b3418a06811fdc51d308f8bb43",
+      "mode": "100644"
+    },
+    {
+      "path": "engines/travel-core/vendor/pako/provenance.json",
+      "sha256": "5b3b0a724ecdb8790e189b81f5a9db2d946c58459110f165de7a31ec27d3dbf7",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/.gitignore",
+      "sha256": "543234b297093b3ce6573fc0426894711821bb862a0e30d09e2336d8355ef905",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/alpha-masks.json",
+      "sha256": "18f519cea3e510809daf49aea772d8b3194fc08d1ebc02e0226b608c873b99c2",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/alpha-masks.json",
+      "sha256": "c2204c63154ea8a3db205a93b1b47b8b7c36173838e0be16601c181ea9f2c65d",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/departure_visual/alpha-masks.json",
+      "sha256": "f522f1f5cf3a6eec9bc071a51f6521186741fd626641e531dcd9ba99e65b0c2d",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/alpha-masks.json",
+      "sha256": "16ef27cc9353b4baf963850f87d4dd4b55f21695487905a5997212815a2cb5d5",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/alpha-masks.json",
+      "sha256": "8f74e5d635bf2797964864d19067c2c36a7a7a434d6a5916b57aaf427b09e18a",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_body.png",
+      "sha256": "1c92e39a3b8906ffc723fa9c53f9bd3bfba6101a6d5088caf0a8a4d44800f6ce",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_body.png.meta",
+      "sha256": "5adbd1b1b030fb37ecb068d748d3b5ba4d01325f82f8b1a78695ed4ee7c088f4",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_fin_mallet.png",
+      "sha256": "0922efad766b5b69a86b826f7e9bb5c46cfa9fd807774b4a8f8652caba5dca6f",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/actor_fin_mallet.png.meta",
+      "sha256": "a7f07964fccefcaa5c4dcdd378a36fd45a65f2c8af505315223b3bb75d7c7be8",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/doll_rig.png",
+      "sha256": "699a4524941f6961fafd15cbc67b0a9c6b72312ddc32e9a2f83e0cd2d5376248",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/loading/native/doll_rig.png.meta",
+      "sha256": "6787e4f6d4f23d52abb1df6751a2a26ad1af0007d938f16715ea562f5aed6530",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/alpha-masks.json",
+      "sha256": "e1879522c39e8012830f0381801d820878ae385588a44aabaa3eda1d732f64c0",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/outfit_visual/alpha-masks.json",
+      "sha256": "cee43df679a010187861e011cf6ae3acdbd7753df4376d5e24faac2957341142",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/alpha-masks.json",
+      "sha256": "1c0251392842152796daee67faaadaf2c9bed76fd3cd444f6cc1275eca5b92d6",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_boot_ui/alpha-masks.json",
+      "sha256": "3ffe4fba37ff06768c29f8df2bd50ed564494a2a242450a8595bc0fdca190948",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/alpha-masks.json",
+      "sha256": "c5bd3950b07cdc75c553945aff2a5f8e35aac91a92932a6982b015b4221b511a",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/alpha-masks.json",
+      "sha256": "205601f92cba71a0a0391073619bac576b2c92ae879a43e78e8779acc2613d88",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/wardrobe_visual/alpha-masks.json",
+      "sha256": "cad76f8c5c2a8ab4c1cf6d07ce9d78f5945a4b8c2856170bcc87b93fdd1fbbbb",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Assets.ts",
+      "sha256": "4261e302037065b7da476924e907af1b97a9b275a2f6351541faf183d61afd9f",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/game/Engine.ts",
+      "sha256": "7dc2d45d090ff3226454f1d78130c51737185efba9550f3c97604a28b4aad3b0",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/resources/source-catalog.json",
+      "sha256": "130d465df3f7a59c51853baab45c0b6660de3f69d270a961210ba37ab94e15c9",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/alpha-assets.test.cjs",
+      "sha256": "a1ad31300c55aea6d18f5eaadc2fc31d4348572100907a89f80797a8791aa6cc",
+      "mode": "100644"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/viewport.test.cjs",
+      "sha256": "eacf93119f2ad62926012bbe6d764f961ab8a85b5fa8bc402e051267106f62c0",
+      "mode": "100644"
+    }
+  ],
+  "scope": "M10.02 Loading source completeness and M09.08 lossless alpha transport. Browser candidate v2 from declared working snapshot; fresh WeChat candidate to use this remote-readback commit."
+}

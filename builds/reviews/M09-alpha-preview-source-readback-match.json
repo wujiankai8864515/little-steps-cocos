@@ -1,0 +1,23 @@
+{
+  "candidate": "alpha-transport-v2",
+  "sourceReadback": "builds/reviews/M09-alpha-remote-readback.json",
+  "remoteCommit": "4aba8810e113ba49625eb1835b20f601a9aafb06",
+  "filesCompared": 750,
+  "allGameFrameworkRuntimeAndAssetsMatch": true,
+  "nonRuntimeDifferences": [
+    {
+      "path": "games/xiaoyu-cocos/.gitignore",
+      "remoteSHA256": "543234b297093b3ce6573fc0426894711821bb862a0e30d09e2336d8355ef905",
+      "candidateSHA256": "67d1bf5270ff8e6655818839339d3d311b52d6316d1f075859772510fed80517"
+    }
+  ],
+  "verifiedSymlinks": [
+    {
+      "path": "games/xiaoyu-cocos/assets/plugins/travel-core.js",
+      "relativeTarget": "../../../../engines/travel-core/dist/travel-core.js",
+      "resolvedTarget": "engines/travel-core/dist/travel-core.js"
+    }
+  ],
+  "note": "QA was frozen before git-ignore correction; it already contained original Loading images. All runtime bytes match the pushed and fetched source.",
+  "initialAuditCorrection": "Initial comparison hashed Git symlink text as content and therefore failed; corrected audit independently checks relative link text and resolved target content. No source/runtime difference was present."
+}
