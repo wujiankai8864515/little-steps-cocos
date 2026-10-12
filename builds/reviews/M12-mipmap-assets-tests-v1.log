@@ -1,0 +1,16 @@
+✔ Decoded alpha shares the original asset lease and releases at the last owner, then reloads cleanly (164.979666ms)
+✔ Late cancellation and corrupt alpha cannot leave decoded pixels or resource reservations resident (110.731417ms)
+✔ WeChat image cleanup cannot invalidate authored level zero; shared owners release CPU and GPU at the last owner (161.544125ms)
+✔ Cancellation before a raw-image load completes frees the late texture and its pinned image (54.5605ms)
+✔ Failed GPU allocation releases the raw image and keeps no admission reservation (53.355583ms)
+✔ Shared original streaming leases reserve encoded buffers, request DOM audio and release their clip once at the last owner (155.403208ms)
+✔ A full-PCM fallback fails and releases its remote asset; a cancelled late mini-game clip cannot remain resident (110.247041ms)
+✔ Original streaming reservation cannot silently change and full-PCM estimates remain preserved (32.990917ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 565.804375

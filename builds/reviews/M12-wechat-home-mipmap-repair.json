@@ -1,0 +1,30 @@
+{
+  "item": "M12.02",
+  "trigger": "微信小游戏开发者工具点击登录进屋，出现小屋准备失败和重试",
+  "userEvidence": "[LittleSteps] Home prepare failed TypeError: Cannot read properties of null (reading 'mipmapLevelDataSize'), at ImageAsset.extractMipmap0, Texture2D.mipmaps, HomeBackpack constructor",
+  "rootCause": "微信构建的cleanupImageCache默认开启；导入Texture2D上传后释放基础ImageAsset。HomeBackpack随后设置11层原始mipmap时再次提取已释放的基础图像，原生数据为空。浏览器默认未触发同一清理路径。",
+  "engineEvidence": [
+    "Creator 3.8.8 cocos/asset/assets/simple-texture.ts _assignImage: CLEANUP_IMAGE_CACHE开启时移除图像依赖并decRef",
+    "Creator 3.8.8 cocos/asset/assets/texture-2d.ts mipmaps setter: 多层图像逐项extractMipmap0",
+    "Creator 3.8.8 cocos/asset/assets/image-asset.ts mipmapLevelDataSize getter: 读取_nativeData.mipmapLevelDataSize"
+  ],
+  "repair": "只对声明原始mipResources的纹理直接加载基础ImageAsset、创建独立Texture2D并保留基础图像引用。最后资源所有者离开时同时释放GPU纹理和基础图像；不关闭全局微信图片缓存清理。原始11层像素、采样方式和文件保持不变。",
+  "memory": {
+    "additionalBaseImageReservationBytes": 6290064,
+    "resourceEntriesAdded": 0,
+    "maxEntries": 128,
+    "maxEstimatedBytes": 268435456,
+    "method": "基础原图CPU存储和GPU第0层均计入准入；其余原mip层沿用原先解码+上传预算"
+  },
+  "validation": {
+    "targetedAssetTests": "8项通过，覆盖共享所有权、微信原图释放路径、晚回调取消、无效原图、alpha和流式音乐",
+    "localGameRegression": "257项通过；该次本地树含并行小屋灯光工作，冻结版本另行核验",
+    "typecheck": "--skipLibCheck通过，保留直接检查引擎声明失败日志"
+  },
+  "testFailures": [
+    "完整回归首次9项失败：暗室资源测试的旧Asset替身没有ImageAsset.data与Texture2D接口；补齐原生图片和纹理替身后257项通过，未放宽准入",
+    "直接tsc首次失败来自官方引擎声明的TypedArray/WebGPU/私有命名空间，与Assets.ts无关；按现有项目检查方式skipLibCheck核游戏源码通过"
+  ],
+  "runtime": "pending rebuilt WeChat DevTools Home verification",
+  "boundaries": ["微信真机触控、音乐、存档和性能待验", "Home19MB输出门槛仍失败，不属于此次原图生命周期修复"]
+}

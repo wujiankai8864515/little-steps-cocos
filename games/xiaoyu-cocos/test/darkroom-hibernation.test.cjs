@@ -3,6 +3,8 @@ const ROOT=path.resolve(__dirname,'../../..'),GAME=path.join(ROOT,'games/xiaoyu-
 const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(ROOT,'engines/travel-core/dist/travel-core.js'),'utf8'),context);const core=context.LittleStepsCore;
 const plain=v=>JSON.parse(JSON.stringify(v));
 class Asset{constructor(json){this.json=json;this.refs=0;}addRef(){this.refs++;}decRef(){assert.ok(this.refs>0);this.refs--;}}
+class ImageAsset extends Asset{constructor(json){super(json);this.data=new Uint8Array(4);}}
+class Texture2D extends Asset{static Filter={LINEAR:2};static WrapMode={CLAMP_TO_EDGE:2};set image(value){assert.ok(value.data);this.base=value;}get image(){return this.base;}setFilters(){}setMipFilter(){}setWrapMode(){}destroy(){this.destroyed=true;}}
 class UITransform{constructor(){this.width=1;this.height=1;}setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}get contentSize(){return {width:this.width,height:this.height};}}
 class Node{
  static EventType={TOUCH_START:'start',TOUCH_MOVE:'move',TOUCH_END:'end',TOUCH_CANCEL:'cancel'};
@@ -17,7 +19,7 @@ class SpriteFrame{destroy(){this.destroyed=true;}}
 class Label{static Overflow={CLAMP:0};static HorizontalAlign={CENTER:0};static VerticalAlign={CENTER:0};}
 class Vec4{constructor(...v){this.values=v;}}
 class AudioClip extends Asset{static AudioType={DOM_AUDIO:1,MINIGAME_AUDIO:2};loadMode=1;}
-const input={on(){},off(){}},cc={Asset,Node,Sprite,Graphics,Material,SpriteFrame,Label,Vec4,Color:Vec4,UITransform,input,Input:{EventType:{KEY_DOWN:'key'}},KeyCode:{ESCAPE:27},screen:{windowSize:{width:1440}},sys:{getSafeAreaRect:()=>({x:0,y:0,width:720,height:1690})},AudioClip,resources:{load:(p,t,cb)=>cb(null,new Asset())}};
+const input={on(){},off(){}},cc={Asset,Node,Sprite,Graphics,Material,SpriteFrame,Label,Vec4,Color:Vec4,UITransform,input,Input:{EventType:{KEY_DOWN:'key'}},KeyCode:{ESCAPE:27},screen:{windowSize:{width:1440}},sys:{getSafeAreaRect:()=>({x:0,y:0,width:720,height:1690})},AudioClip,ImageAsset,Texture2D,resources:{load:(p,t,cb)=>cb(null,new Asset())}};
 const renderer={estimateTarget:(w,h)=>w*h*8,createTarget:(w,h)=>({width:w,height:h,destroy(){this.destroyed=true;}}),create(options,scope){const content=new Node('Surface');scope.own(()=>content.destroy());return {content,ready:Promise.resolve(),layout(){},setActive(){},snapshot(){return {};}};}};
 const mods={Engine:{core,lifetime:parent=>new core.Lifetime(parent),meshSprite:()=>Sprite,sharedUI:()=>core.registerUI(cc),renderSurfaces:()=>renderer}};
 require('./viewport-mocks.cjs').installViewportMocks(cc);
@@ -30,7 +32,7 @@ for(const name of ['LoginPage','ComicPage','HomePage','TravelJournalPage','Trave
 const {GameAssets}=load('Assets'),{DarkroomPage}=load('DarkroomPage'),{Application}=load('Application'),{HomeClock}=load('HomeClock'),{HOME_EFFECTS}=load('HomeLighting'),{DARKROOM_EFFECTS}=load('DarkroomLighting');
 const catalog=JSON.parse(fs.readFileSync(path.join(GAME,'resources/source-catalog.json'))),dataCache=new Map();
 function makeAssets(){
- const assets=new GameAssets();assets.catalog=catalog;assets.bundle=async name=>({load(p,t,cb){const filename=path.join(GAME,'bundles',name,p+'.json');let json={};if(fs.existsSync(filename)){if(!dataCache.has(filename))dataCache.set(filename,JSON.parse(fs.readFileSync(filename)));json=dataCache.get(filename);}cb(null,new Asset(json));}});
+ const assets=new GameAssets();assets.catalog=catalog;assets.bundle=async name=>({load(p,t,cb){const filename=path.join(GAME,'bundles',name,p+'.json');let json={};if(fs.existsSync(filename)){if(!dataCache.has(filename))dataCache.set(filename,JSON.parse(fs.readFileSync(filename)));json=dataCache.get(filename);}cb(null,t===ImageAsset?new ImageAsset(json):new Asset(json));}});
  // Music streaming transport is unrelated to this test, keep the real authored
  // reservation and gate while substituting only native audio construction.
  assets.streamingAudio=async()=>new AudioClip();return assets;

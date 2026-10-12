@@ -22,6 +22,7 @@ export class GameAssets {
     private gate = new core.ResourceGate();
     private values = new Map<string, Asset>();
     private alphaValues = new Map<string, Map<string, any>>();
+    private textureImages = new Map<Texture2D, ImageAsset>();
 
     async initialize(scope: Scope) {
         const load = (name: string) => new Promise<JsonAsset>((resolve, reject) => resources.load(name, JsonAsset, (e, value) => e ? reject(e) : resolve(value)));
@@ -91,7 +92,9 @@ export class GameAssets {
         return this.gate.acquire(specs, async ({key, spec}) => {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
             const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
-            const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle) : await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
+            const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle)
+                : spec.kind==='texture'&&spec.mipResources?.length ? await this.authoredMipmapTexture(key,spec,bundle)
+                : await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
             asset.addRef();
             try {
                 if(spec.kind==='alpha') {
@@ -99,10 +102,35 @@ export class GameAssets {
                     this.alphaValues.set(key,core.decodeAlphaMasks((asset as JsonAsset).json,spec.pixelBytes));
                 }
                 this.values.set(key, asset); return asset;
-            } catch(error) {asset.decRef();throw error;}
-        }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) {this.values.delete(key);this.alphaValues.delete(key);} asset.decRef(); }, scope);
+            } catch(error) {this.release(asset);throw error;}
+        }, (asset: Asset) => this.release(asset), scope);
+    }
+    private async authoredMipmapTexture(key:string,spec:ArtSpec,bundle:AssetManager.Bundle) {
+        if(!spec.path.endsWith('/texture'))throw new Error(`原 mipmap 纹理路径无效：${key}`);
+        // Creator's mini-game image cleanup destroys the imported Texture2D's
+        // level-zero ImageAsset immediately after upload. Load the raw image
+        // first and own it explicitly for later authored mipmap assembly.
+        const image=await new Promise<ImageAsset>((resolve,reject)=>bundle.load(spec.path.slice(0,-8),ImageAsset,(error,value)=>error?reject(error):resolve(value)));
+        image.addRef();let texture:Texture2D=null;
+        try {
+            if(!image.data)throw new Error(`原 mipmap 基础图像已释放：${key}`);
+            texture=new Texture2D();texture.image=image;
+            texture.setFilters(Texture2D.Filter.LINEAR,Texture2D.Filter.LINEAR);
+            texture.setMipFilter(Texture2D.Filter.LINEAR);
+            texture.setWrapMode(Texture2D.WrapMode.CLAMP_TO_EDGE,Texture2D.WrapMode.CLAMP_TO_EDGE);
+            this.textureImages.set(texture,image);return texture;
+        } catch(error) {texture?.destroy();image.decRef();throw error;}
+    }
+    private release(asset:Asset) {
+        for(const [key,value] of this.values)if(value===asset){this.values.delete(key);this.alphaValues.delete(key);}
+        const image=this.textureImages.get(asset as Texture2D);
+        if(image){this.textureImages.delete(asset as Texture2D);asset.decRef(false);asset.destroy();image.decRef();}
+        else asset.decRef();
     }
     private reservedBytes(spec:ArtSpec){
+        // This one raw image remains available for mipmaps alongside its GPU
+        // level zero. Other textures keep Creator's normal image cleanup.
+        if(spec.kind==='texture'&&spec.mipResources?.length)return spec.decodedBytes*2;
         const stream=spec.streaming;if(!stream)return spec.decodedBytes;
         if(spec.kind!=='audio'||stream.extension!=='.mp3'||!Number.isSafeInteger(stream.encodedBytes)||stream.encodedBytes<=0||stream.reservedBytes!==stream.encodedBytes*2+2*1024*1024)throw new Error('Invalid original streamed-audio reservation');
         return stream.reservedBytes;
