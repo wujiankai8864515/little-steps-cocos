@@ -16,7 +16,7 @@ from audit import audit
 from common import install_templates as install, relocate_path, require_current_inputs
 from prepare import ROOT, freeze, sha
 from serve import DIRECTORY, HEALTH_PATH
-from startup import finalize
+from startup import finalize, install_extras
 
 CACHE = ROOT / 'migration/.cache/wechatgame'
 DESTINATION = ROOT / 'builds/wechatgame/project'
@@ -221,6 +221,7 @@ def run(args):
             raise RuntimeError('Creator build failed; see ' + str(log_path))
         if settings.get('earlyLoading'):
             finalize(ROOT / 'migration/work' / name / 'output/wechatgame')
+        install_extras(ROOT / 'migration/work' / name / 'output/wechatgame')
     report = audit(name)
     write_json(ROOT / 'migration/reviews' / (name + '-package.json'), report)
     require_current_inputs(manifest, ROOT)

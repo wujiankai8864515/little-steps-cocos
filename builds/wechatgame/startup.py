@@ -1,5 +1,10 @@
 """Apply a guarded, minimal hook to Creator's generated entry; never hardcode MD5 paths."""
 import re
+import shutil
+
+def install_extras(output):
+    source=output.parents[1]/'builds/wechatgame/templates/platform.js'
+    if source.is_file():shutil.copyfile(source,output/'platform.js')
 
 
 def finalize(output):

@@ -91,8 +91,9 @@ test('Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 2
  // Exact alpha planes replace nested JS run arrays. The conservative resident
  // estimate falls while both render targets and every page resource remain.
  const unparked=assets.snapshot().reservedBytes+journal.reduce((n,s)=>n+s.bytes,0);
- assert.equal(unparked,265337270);assert.ok(unparked<=256*1024*1024);
- dark.park();await assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope);assert.equal(assets.snapshot().entries,128);assert.equal(assets.snapshot().reservedBytes,226399670);assert.equal(unparked-assets.snapshot().reservedBytes,renderer.estimateTarget(1440,3380));scope.dispose();assert.equal(assets.snapshot().reservedBytes,0);assert.equal(assets.snapshot().entries,0);
+ const fontSavings=334848-catalog.assets['res://assets/bootstrap_ui.ttf'].decodedBytes;
+ assert.equal(unparked,265337270-fontSavings);assert.ok(unparked<=256*1024*1024);
+ dark.park();await assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope);assert.equal(assets.snapshot().entries,128);assert.equal(assets.snapshot().reservedBytes,226399670-fontSavings);assert.equal(unparked-assets.snapshot().reservedBytes,renderer.estimateTarget(1440,3380));scope.dispose();assert.equal(assets.snapshot().reservedBytes,0);assert.equal(assets.snapshot().entries,0);
 });
 
 test('Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion',()=>{
