@@ -1,0 +1,67 @@
+✔ Failed entry/choice/arrival roll back the whole durable transaction; retry and every reward grant apply once (15.435083ms)
+✔ Failed cancellation keeps its original release time, projects without mutation and retries active time (2.228791ms)
+✔ Restart releases abandoned ownership, stale writers adopt the newer revision, and stale recovery cannot steal a new token (5.753625ms)
+✔ Browser main key is the sole authority; integrity/future/invalid slots/quota fail without resurrecting backups or advancing revisions (1.365959ms)
+✔ CAS recheck rejects a writer arriving between reads; real adapter exceptions are not hidden (0.36875ms)
+✔ Large UTF8 states and prototype-named learned tags are validated by exact byte capacity and preserve all own keys (94.500167ms)
+✔ Durable schema1 migration retains all owned rewards and never replays them; blocked corruption refuses departures (6.08ms)
+✔ WeChat synchronous adapter distinguishes absent keys from corrupt empty strings and propagates platform errors (0.265334ms)
+✔ Current native Godot envelopes, including full-precision JSON and schema1 owned rewards, decode without data loss (2.933666ms)
+✖ A stale cancellation cannot project a newer owned choice as running, even while storage fails again (3.218375ms)
+✖ Reconfiguring from unreadable storage to a valid empty trip clears stale failure status without writing (0.216709ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 408.837375
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/travel-service.test.cjs:61:1
+✖ A stale cancellation cannot project a newer owned choice as running, even while storage fails again (3.218375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'RUNNING'
+  - 'CHOICE_PAUSED'
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-service.test.cjs:65:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'RUNNING',
+    expected: 'CHOICE_PAUSED',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/travel-service.test.cjs:70:1
+✖ Reconfiguring from unreadable storage to a valid empty trip clears stale failure status without writing (0.216709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'invalid_saved_data'
+  - ''
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-service.test.cjs:74:39)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'invalid_saved_data',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

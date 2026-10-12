@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "item": "M11.01",
-  "updatedAt": "2026-10-12T00:24:36.518684+00:00",
+  "updatedAt": "2026-10-12T01:04:44.978716+00:00",
   "candidate": "full-six-pages-v1",
   "sourceCommit": "c9629f86940d6d65654fe8cd7faae41b66276eb0",
   "baseline": "Godot b4f77afc02999a465757177794343eb3d531c5e6 and effective requirements",
@@ -21,7 +21,11 @@
       ],
       "pendingAcceptance": [
         "All five encounter types, long prose scrolling and failure/interruption combinations"
-      ]
+      ],
+      "automatedBehaviorCoverage": {
+        "evidence": "builds/records/M09-travel-recovery.json",
+        "scope": "All5original encounter types/bothchoices through actual page/service/storage with Cocos stubs;cancel/reopen,save-failure retry,single settlement,readonly revisits. Browser matrix remains pending."
+      }
     },
     {
       "id": "wardrobe",

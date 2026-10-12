@@ -58,3 +58,18 @@ test('Current native Godot envelopes, including full-precision JSON and schema1 
  const rows=JSON.parse(fs.readFileSync(path.join(root,'builds/reviews/M07-travel-service-native-envelopes-v1.json')));assert.equal(rows.length,3);
  for(const row of rows){const storage=new MemoryStorage();storage.data.set(PREFIX+'main',row.envelope);const store=new Store(storage),expected=plain(Model.migrate(row.data));assert.deepEqual(plain(store.load_state()),expected,row.label);assert.equal(store.error,'');assert.equal(store.needs_migration,row.data.schema===1);const box=JSON.parse(row.envelope);assert.equal(box.sha256,crypto.createHash('sha256').update(box.payload).digest('hex'));}
 });
+test('A stale cancellation cannot project a newer owned choice as running, even while storage fails again',()=>{
+ const {s,at}=fresh(),uid=s.model.trip().events[0].uid;at(1040);assert.equal(s.enter(uid),true);const oldToken=s.model.trip().choice_token;
+ at(1050);const newer=new Service();newer.store=s.store;newer.wall_clock=s.wall_clock;newer.model.content=plain(content);newer.configure('test_main',true);assert.equal(newer.enter(uid),true);const token=newer.model.trip().choice_token;assert.notEqual(token,oldToken);
+ at(1060);assert.equal(s.cancel_event(uid,oldToken),false);assert.equal(s.last_error,'stale_revision');assert.equal(s.model.trip().choice_token,token);
+ assert.equal(s.route_snapshot().clock_mode,'CHOICE_PAUSED');const elapsed=s.route_snapshot().route_elapsed_seconds;
+ s.store.failNext=true;assert.equal(s.reconcile(),false);at(1065);assert.equal(s.route_snapshot().clock_mode,'CHOICE_PAUSED');assert.equal(s.route_snapshot().route_elapsed_seconds,elapsed);assert.equal(s.model.trip().choice_token,token);
+ assert.equal(s.reconcile(),true);assert.equal(s.model.trip().choice_token,token);assert.equal(s.model.data.manual_count,0);
+ assert.equal(s.choose(uid,0,oldToken),false);assert.equal(s.choose(uid,0,token),true);assert.equal(s.model.data.manual_count,1);
+});
+test('Reconfiguring from unreadable storage to a valid empty trip clears stale failure status without writing',()=>{
+ const storage=new MemoryStorage(),key=PREFIX+'main',s=new Service();s.store=new Store(storage);s.wall_clock=()=>1000;
+ storage.data.set(key,'corrupt');s.configure();assert.equal(s.blocked,true);assert.equal(s.last_error,'invalid_saved_data');
+ storage.data.set(key,Store.envelope({...plain(Model.fresh()),revision:7}));const before=storage.data.get(key),writes=storage.writes.length;s.configure();
+ assert.equal(s.blocked,false);assert.equal(s.last_error,'');assert.equal(s.route_snapshot().persistence_pending,false);assert.equal(s.model.data.revision,7);assert.equal(storage.data.get(key),before);assert.equal(storage.writes.length,writes);
+});

@@ -23,16 +23,18 @@ export class TravelService {
     configure(slot='main',memoryOnly=false){
         this.store.slot=slot;this.store.memory_only=memoryOnly;
         const saved=this.store.load_state();this.model.data=empty(saved)?TravelModel.fresh():saved;
-        this.blocked=!!this.store.error;this.loaded=true;this.pendingRelease={};this.lastAttemptAt=-Infinity;
+        this.blocked=!!this.store.error;this.loaded=true;this.last_error='';this.pendingRelease={};this.lastAttemptAt=-Infinity;
+        this.recoveryPending=false;this.recoveryTripId='';this.recoveryChoiceToken='';
         if(this.blocked){this.last_error=this.store.error;this.failed.forEach(handler=>handler(this.last_error));return;}
         const t=this.model.trip();this.recoveryPending=this.store.needs_migration||(!empty(t)&&t.clock_mode==='CHOICE_PAUSED');
         this.recoveryTripId=t.id||'';this.recoveryChoiceToken=t.choice_token||'';this.reconcile();
     }
     now(){return this.wall_clock();}
+    private ownsPendingRelease(){return !empty(this.pendingRelease)&&this.model.owns_choice(this.pendingRelease.uid,this.pendingRelease.token);}
     route_snapshot(){
-        const at=this.now(),t=this.model.trip();let elapsed=this.model.elapsed_at(at);
-        if(!empty(this.pendingRelease)&&this.pendingRelease.token===(t.choice_token||''))elapsed=Math.max(0,Math.min(TRAVEL_TOTAL_SECONDS,t.route_elapsed_seconds+Math.max(0,at-this.pendingRelease.at)));
-        return {route_elapsed_seconds:elapsed,route_progress:elapsed/TRAVEL_TOTAL_SECONDS,clock_mode:!empty(this.pendingRelease)?'RUNNING':t.clock_mode||'RUNNING',active_event_uid:t.active_event_uid||'',choice_token:t.choice_token||'',persistence_pending:this.recoveryPending||!empty(this.pendingRelease)||!!this.last_error};
+        const at=this.now(),t=this.model.trip(),releasing=this.ownsPendingRelease();let elapsed=this.model.elapsed_at(at);
+        if(releasing)elapsed=Math.max(0,Math.min(TRAVEL_TOTAL_SECONDS,t.route_elapsed_seconds+Math.max(0,at-this.pendingRelease.at)));
+        return {route_elapsed_seconds:elapsed,route_progress:elapsed/TRAVEL_TOTAL_SECONDS,clock_mode:releasing?'RUNNING':t.clock_mode||'RUNNING',active_event_uid:t.active_event_uid||'',choice_token:t.choice_token||'',persistence_pending:this.recoveryPending||releasing||!!this.last_error};
     }
     snapshot(){const projection=this.route_snapshot(),trip=copy(this.model.trip());Object.assign(trip,{route_elapsed_seconds:projection.route_elapsed_seconds,route_progress:projection.route_progress,clock_mode:projection.clock_mode});return Object.assign({trip,data:copy(this.model.data)},projection);}
     private commit(before:any,mutated:boolean){
@@ -45,7 +47,12 @@ export class TravelService {
         this.last_error='';this.changed.forEach(handler=>handler());return true;
     }
     private available(){return this.loaded&&!this.blocked;}
-    private applyRelease(){return !empty(this.pendingRelease)&&this.model.cancel_event(this.pendingRelease.uid,this.pendingRelease.at,this.pendingRelease.token);}
+    private applyRelease(){
+        // A failed CAS can adopt a new choice owned by another page/session.
+        // The old dismissal must not release it or make its route look running.
+        if(!this.ownsPendingRelease()){this.pendingRelease={};return false;}
+        return this.model.cancel_event(this.pendingRelease.uid,this.pendingRelease.at,this.pendingRelease.token);
+    }
     reconcile(){
         if(!this.available())return false;const at=this.now();if(!Number.isFinite(at))return false;
         const t=this.model.trip(),stageDue=!empty(t)&&Math.floor(this.model.elapsed_at(at)/TRAVEL_CELL_SECONDS)>Math.trunc(t.revealed);
@@ -68,7 +75,8 @@ export class TravelService {
     cancel_event(uid='',token=''){
         if(!this.available())return false;if(!empty(this.pendingRelease))return this.reconcile();const t=this.model.trip(),target=uid||t.active_event_uid||'';if(!target||!this.model.owns_choice(target,token))return false;
         const at=this.now(),before=copy(this.model.data),captured=t.choice_token;
-        if(this.commit(before,this.model.cancel_event(target,at,captured)))return true;this.pendingRelease={uid:target,token:captured,at};return false;
+        if(this.commit(before,this.model.cancel_event(target,at,captured)))return true;
+        this.pendingRelease=this.model.owns_choice(target,captured)?{uid:target,token:captured,at}:{};return false;
     }
     suspend(){return this.cancel_event();}
     private action(change:()=>boolean){if(!this.prepareAction())return false;const before=copy(this.model.data);return this.commit(before,change());}

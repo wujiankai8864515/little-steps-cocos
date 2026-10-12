@@ -15,7 +15,7 @@ require('./viewport-mocks.cjs').installViewportMocks(cc);
 const load=name=>{if(modules[name])return modules[name];const exports={};modules[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(GAME,'game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:k=>k==='cc'?cc:load(k.slice(2)),LittleStepsCore:core,console:{info(){},error(){}}});if(name==='Engine')exports.meshSprite=()=>Sprite;return exports;};
 const {TravelMapPage,MAP_RESOURCES,MAP_EFFECTS}=load('TravelMapPage'),{TravelService}=load('TravelService'),{HomeClock}=load('HomeClock'),catalog=JSON.parse(fs.readFileSync(path.join(GAME,'resources/source-catalog.json'))),content=JSON.parse(fs.readFileSync(path.join(GAME,'bundles/home/travel/travel_content.json')));
 const flush=()=>{while(queue.length)queue.shift()();},plain=v=>JSON.parse(JSON.stringify(v));
-async function fixture(){let at=1000;const service=new TravelService();service.model.content=plain(content);service.wall_clock=()=>at;service.configure('map_page_test',true);assert.equal(service.depart(700,.3,1),true);at=1040;service.reconcile();const scope=new core.Lifetime(),gate=new core.ResourceGate(),frames=[],root=new Node('App');
+async function fixture(seed=1,eventId=''){let at=1000;const service=new TravelService();service.model.content=plain(content);service.wall_clock=()=>at;service.configure('map_page_test',true);assert.equal(service.depart(700,.3,seed),true);at=eventId?1000+service.model.trip().events.find(e=>e.id===eventId).reached_seconds:1040;service.reconcile();const scope=new core.Lifetime(),gate=new core.ResourceGate(),frames=[],root=new Node('App');
  const assets={catalog,art:k=>catalog.assets[k],font:k=>({k}),effect:k=>({k}),audio:k=>({k}),frame(k,scope){assert.ok(MAP_RESOURCES.includes(k),k);const f={k};frames.push(f);scope.own(()=>f.disposed=true);return f;},async acquireTransient(key,bytes,create,dispose,scope){const lease=await gate.acquire([{key,bytes}],create,dispose,scope);return lease.get(key);}};
  const page=await TravelMapPage.create(root,assets,scope,1280,service,new HomeClock(),()=>true,()=>true);page.resume();return {page,service,scope,gate,assets,frames,root,at:v=>at=v};}
 const center=r=>[r[0]+r[2]/2,r[1]+r[3]/2];
@@ -62,4 +62,34 @@ test('Map native signs keep meshes while unchanged and switch admitted density w
  for(let i=0;i<40;i++)f.page.advance(1/60);assert.equal(station.sprite.mesh,a);assert.equal(progress.sprite.mesh,b);assert.equal(station.string,'当前站：临水坡');
  f.page.resize(1280,1440);assert.equal(station.snapshot().density,2);assert.notEqual(station.sprite.mesh,a);assert.equal(f.frames.length,frames);f.page.resize(1690,720);assert.equal(station.snapshot().density,1);assert.equal(f.frames.length,frames);
  f.scope.dispose();assert.equal(station.sprite.spriteFrame,null);assert.ok(f.frames.every(x=>x.disposed));
+});
+
+// Find naturally generated trips; do not inject fabricated encounters into the model.
+const {TravelModel}=load('TravelModel'),encounterSeeds=new Map();
+for(let seed=1;seed<=256&&encounterSeeds.size<content.events.length;seed++){
+ const model=new TravelModel();model.content=plain(content);assert.equal(model.begin(1000,seed,700,.3),true);
+ for(const event of model.trip().events)if(!encounterSeeds.has(event.id))encounterSeeds.set(event.id,seed);
+}
+for(const definition of content.events)for(let choice=0;choice<definition.options.length;choice++)test(`Actual ${definition.id} option ${choice}: cancel, retry failed save, single settlement and readonly revisit`,async()=>{
+ assert.ok(encounterSeeds.has(definition.id),'A real generated trip covers '+definition.id);
+ const f=await fixture(encounterSeeds.get(definition.id),definition.id),event=f.service.model.trip().events.find(e=>e.id===definition.id),uid=event.uid;
+ try{
+  const enter=()=>{click(f.page.controls['event_'+uid]);assert.equal(f.page.session.eventUid,uid);hold(f);};
+  enter();const firstToken=f.page.session.choiceToken,before=plain(f.service.model.data),paused=f.service.route_snapshot().route_elapsed_seconds;
+  assert.equal(f.page.bubble.snapshot().contentSupported,true);assert.equal(f.page.bubble.snapshot().choices.length,2);
+  f.at(1000+event.reached_seconds+10);f.service.reconcile();f.page.advance(.2);
+  assert.equal(f.service.route_snapshot().route_elapsed_seconds,paused);assert.equal(f.service.route_snapshot().clock_mode,'CHOICE_PAUSED');
+  bubbleClick(f,'close');assert.equal(f.page.session.eventUid,'');assert.equal(f.service.route_snapshot().clock_mode,'RUNNING');assert.equal(f.service.model.data.manual_count,0);
+  enter();assert.notEqual(f.page.session.choiceToken,firstToken);
+  const commit=f.service.store.commit.bind(f.service.store);f.service.store.commit=()=>{f.service.store.error='injected_quota';return false;};
+  bubbleClick(f,choice);assert.equal(f.page.session.eventUid,uid);assert.equal(f.service.model.data.merit,before.merit);assert.equal(f.service.model.data.manual_count,0);assert.equal(f.service.model.event_by_uid(uid).settled,false);
+  f.service.store.commit=commit;hold(f);bubbleClick(f,choice,false);bubbleClick(f,choice,false);flush();
+  const after=f.service.model.data,chosen=f.service.model.event_by_uid(uid),option=definition.options[choice];
+  assert.equal(chosen.choice,option.id);assert.equal(chosen.source,'manual');assert.equal(chosen.merit_spent,Math.min(before.merit,option.cost));assert.equal(after.merit,before.merit-Math.min(before.merit,option.cost));
+  assert.equal(after.manual_count,1);assert.deepEqual(Array.from(after.active.settlement_order),[uid]);assert.equal(after.active.clock_mode,'RUNNING');assert.equal(f.page.session.feedback,option.result);assert.equal(f.service.last_error,'');
+  for(const tag of option.tags)assert.equal(after.manual_tags[tag],1);
+  const durable=plain(f.service.store.load_state());assert.equal(durable.active.events.find(e=>e.uid===uid).choice,option.id);assert.equal(durable.manual_count,1);
+  enter();assert.equal(f.page.bubble.snapshot().contentSupported,true);assert.equal(f.page.bubble.snapshot().choices.length,0);assert.equal(f.service.route_snapshot().clock_mode,'RUNNING');
+  bubbleClick(f,'close');assert.equal(f.page.session.eventUid,'');assert.equal(f.service.model.data.manual_count,1);assert.equal(f.service.model.data.merit,after.merit);
+ }finally{f.scope.dispose();assert.equal(f.gate.snapshot().entries,0);}
 });

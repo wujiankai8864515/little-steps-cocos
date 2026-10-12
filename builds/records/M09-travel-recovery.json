@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "item": "M09.10",
+  "updatedAt": "2026-10-12T01:04:44.978716+00:00",
+  "status": "source_and_behavior_verified_browser_fixture_pending",
+  "baselineCommit": "d4bf53880e50f970f2e8ca2bcf9e2044840b5394",
+  "original": "Godot b4f77afc02999a465757177794343eb3d531c5e6 travel_service.gd configure/route_snapshot/cancel_event contain the same stale-error and unconditional pending-release projection conditions; original repository is unchanged. User authorized fixing demonstrated defects.",
+  "defects": [
+    {
+      "trigger": "An old page cancels token1 after another session persisted token2. CAS adopts token2; the cancellation then queues an obsolete release.",
+      "before": "route_snapshot reports RUNNING even though durable state owns token2 and remains CHOICE_PAUSED.",
+      "repair": "Queue/apply/project a pending release only while the current model owns the exact event and token. Preserve the newer pause across subsequent save failures and reject stale choices."
+    },
+    {
+      "trigger": "Configure fails reading a corrupt save, then is called again after valid empty-trip data is restored.",
+      "before": "Old last_error and persistence_pending survive a successful load that needs no write.",
+      "repair": "Reset transient error/recovery ownership on each configure before handling the current load. Valid reload leaves durable bytes/revision unchanged."
+    }
+  ],
+  "validation": {
+    "preFix": {
+      "tests": 11,
+      "pass": 9,
+      "fail": 2,
+      "log": "builds/reviews/M09-travel-recovery-before-v1.log"
+    },
+    "targetedAfter": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "log": "builds/reviews/M09-travel-recovery-after-v1.log"
+    },
+    "allEncounterOptions": {
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "log": "builds/reviews/M07-all-encounter-options-v1.log",
+      "scope": "Actual TravelMapPage/EncounterSession/Service/Store and original content with Cocos rendering stubs. Naturally generated trips cover offer/vampire/rain/postcard/osmanthus, both options each. Covers pause, close/reopen, failed save/retry, duplicate queued clicks, single merit/tag settlement, durable readback, readonly revisits and scope cleanup. This is not browser or physical touch acceptance."
+    },
+    "workingCopyRegressionBeforeConcurrentLayoutUpdate": {
+      "tests": 291,
+      "pass": 291,
+      "fail": 0,
+      "log": "builds/reviews/M09-travel-recovery-full-regression-v1.log"
+    },
+    "workingCopyRegressionAfterLayoutCommit": {
+      "tests": 294,
+      "pass": 294,
+      "fail": 0,
+      "log": "builds/reviews/M09-travel-recovery-full-regression-v2.log"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "command": "tsc --noEmit --skipLibCheck --project games/xiaoyu-cocos/tsconfig.json",
+      "log": "builds/reviews/M09-travel-recovery-typecheck-v2.log"
+    },
+    "fixtureGeneratorSyntax": "python compile passed; no Creator build or browser execution yet"
+  },
+  "sourceHashes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/game/TravelService.ts",
+      "sha256": "5e0d95921022bd844839ab9ea3cde772c9fb0de93497b73bf20ecf9381d22421"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-service.test.cjs",
+      "sha256": "c7eced32691920b79a22cca26dcd89e60426df4ca65a037f9288d71882c74116"
+    },
+    {
+      "path": "games/xiaoyu-cocos/test/travel-map-page.test.cjs",
+      "sha256": "b6eadcc5fed0a9fd703c0f02a3e53585cfbac67e90ce35546488318633048784"
+    },
+    {
+      "path": "builds/tools/create_encounter_matrix_candidate.py",
+      "sha256": "b46e3823d2f03e0e9632019bf9c29991576646a51e41040c4af2d7ef4a51d424"
+    }
+  ],
+  "fixture": {
+    "tool": "builds/tools/create_encounter_matrix_candidate.py",
+    "status": "prepared_not_built",
+    "scope": "Candidate Boot only; generated original encounters, isolated memory store, fixed reach time, visible write-failure and status controls. Production Boot unchanged. Base freezer manifest preserved including any packaging templates."
+  },
+  "browserBoundary": "No new graphical verification this checkpoint. Independent Chrome inventory shows a user-open Creator preview on localhost:7456; did not close it or start competing graphics/build workloads. Previous task preview at8792 retained.",
+  "pending": [
+    "All-five encounter browser options and storage-failure visual retry",
+    "Complete six-page interruptions, physical touch/audio and viewport matrix",
+    "Home non-startup closure remains22,948,245bytes above19,000,000; no budget waiver",
+    "WeChat actual runtime/device/CDN acceptance",
+    "Build and publish updated user preview after isolated graphical verification"
+  ],
+  "concurrentWork": "Existing layout commit d4bf538 and unrelated in-progress packaging/config/template changes preserved. Only explicitly listed migration repair files and evidence are included in this checkpoint."
+}
