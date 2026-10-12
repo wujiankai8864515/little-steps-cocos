@@ -13,18 +13,19 @@ export function darkMaterial(assets:GameAssets,scope:Scope,name:string,spec?:Art
 }
 export class DarkroomLighting {
     readonly lamp:ResponsiveLamp;state:ReturnType<typeof lightingSnapshot>;tint=[1,1,1];
-    private materials:Material[]=[];
+    private materials:Material[]=[];private beams=new Set<Material>();private viewport=new Vec4(0,1280,1280,1);
     constructor(private room:Node,private assets:GameAssets,private scope:Scope,readonly clock:HomeClock,lamp=new ResponsiveLamp()){this.lamp=lamp;this.update(0,-1);}
     bind(sprite:Sprite,spec:ArtSpec,kind='room'){
         const material=darkMaterial(this.assets,this.scope,kind,spec);sprite.customMaterial=material;
         if(kind==='sky')material.setProperty('shared_outdoor_paint',this.assets.texture('res://assets/home_neutral.png'));
-        this.materials.push(material);return material;
+        this.materials.push(material);if(kind==='beams')this.beams.add(material);return material;
     }
+    resize(height:number){const offset=(height-1280)/2;this.viewport=new Vec4(-offset,1280+offset,height,1);}
     update(delta:number,clearTime:number){
         this.state=lightingSnapshot(this.clock.hour());this.lamp.advance(delta,this.clock.lampWeight());
         this.tint=mix(mix([.61,.63,.77],[1,.97,.91],this.state.day),[1,.88,.67],this.lamp.value*.56);
         const s=this.state,o=this.room.worldPosition,z=this.room.worldScale,glow=clearTime>=0?smooth(.1,.55,clearTime)*(1-smooth(1.5,2.8,clearTime)):0;
-        for(const m of this.materials){
+        for(const m of this.materials){if(this.beams.has(m))m.setProperty('viewportState',this.viewport);
             m.setProperty('roomOrigin',new Vec4(o.x,o.y,z.x,z.y));m.setProperty('ambientState',new Vec4(...s.ambient as [number,number,number],s.sunEnergy));
             m.setProperty('sunState',new Vec4(...s.sunColor as [number,number,number],s.moonEnergy));m.setProperty('sunVectorState',new Vec4(...s.sunVector as [number,number,number],s.cot));
             m.setProperty('castState',new Vec4(s.cast[0],s.cast[1],s.moonCast[0],s.moonCast[1]));m.setProperty('timeState',new Vec4(s.hour,s.day,s.noon,s.afterglow));

@@ -9,8 +9,9 @@ import { TravelJournalPage, JOURNAL_RESOURCES } from './TravelJournalPage';
 import { TravelLoadingPanel } from './TravelLoadingPanel';
 import { REWARD_REGIONS, TRAVEL_FONT, TRAVEL_GLINT, TRAVEL_REWARDS } from './TravelHomeRules';
 import { TravelService } from './TravelService';
-import { box, repaintPanel } from './Viewport';
+import { box, pageLayout, pinTop, repaintPanel, safeViewport } from './Viewport';
 import { label, nodeAt, panel } from './Visual';
+import { PageBackground } from './PageBackground';
 const PAPER='res://travel/assets/travel_paper_v1.png',DIARY='res://travel/assets/travel_diary_plate_v5.png',BRUSH='res://travel/assets/travel_brush.ttf';
 export const COLLECTION_RESOURCES=[PAPER,DIARY,BRUSH,TRAVEL_FONT,TRAVEL_REWARDS,TRAVEL_GLINT];
 const rgb=(hex:string)=>[0,2,4].map(i=>parseInt(hex.slice(i,i+2),16)/255);
@@ -19,20 +20,20 @@ const TAG=[[11,9],[51,9],[59,18],[59,124],[52,133],[8,133],[1,126],[1,20]],BOOK=
 export class TravelCollectionPage {
     readonly root:Node;readonly session=new TravelCollectionSession();onBack=()=>{};
     private canvas:Node;private content:Node;private detail:Node;private owner:Scope;private detailOwner:Scope;private bindings:any[]=[];private controls:Record<string,Node>={};
-    private returnTag:any;private sparkles:PromptSparkles[]=[];private edges:TravelAtlasSprite[]=[];private error='';
+    private background:PageBackground;private returnTag:any;private sparkles:PromptSparkles[]=[];private error='';
     private active=false;private age=0;private refreshAge=0;private dirty=true;private hero:Node;private heroOpacity:UIOpacity;private fade=1;private objects:Array<{view:TravelAtlasSprite;shadow:TravelAtlasSprite;rect:number[];phase:number;index:number}>=[];
     private focusName='';private keysHeld=new Set<number>();private actions:Record<string,{binding:any;enabled:boolean}>={};private focusMarks:Record<string,Node>={};private pagePaint:Record<string,any>={};
     private loading:TravelLoadingPanel;private pending:Scope;private archive:{page:TravelJournalPage;scope:Scope};private archiveWanted='';
     constructor(parent:Node,private assets:GameAssets,private scope:Scope,private height:number,private service:TravelService){
         this.root=nodeAt(parent,'TravelCollectionPage',0,0,720,height);this.root.active=false;panel(this.root,'PaperBackdrop',[0,0,720,height],rgb('d5b77c'));
         this.canvas=nodeAt(this.root,'OriginalCollectionCanvas',0,Math.max(0,(height-1280)/2),720,1280);
-        this.texture(this.canvas,PAPER,[0,0,720,1280],scope,false);
-        const size=assets.art(PAPER).size;this.edges=[this.texture(this.canvas,PAPER,[0,0,720,1],scope,false,[0,0,size[0],48],'UpperPaperEdge'),this.texture(this.canvas,PAPER,[0,1280,720,1],scope,false,[0,size[1]-48,size[0],48],'LowerPaperEdge')];this.layoutEdges();
+        this.background=new PageBackground(this.canvas,assets,scope,PAPER,'CollectionBackground');
+        this.background.resize(height);
         this.loading=new TravelLoadingPanel(this.canvas,assets,scope,height,()=>this.active);this.loading.onCancel=()=>this.cancelArchive();this.loading.onRetry=()=>{const id=this.archiveWanted;this.cancelArchive();this.openArchive(id);};
         scope.own(service.subscribe(()=>this.dirty=true));
         const key=(e:EventKeyboard)=>this.keyDown(e.keyCode),release=(e:EventKeyboard)=>{this.keysHeld.delete(e.keyCode);if(this.active&&!this.archive&&!this.pending)this.actions[this.focusName]?.binding.keyUp(e.keyCode);};
         input.on(Input.EventType.KEY_DOWN,key);input.on(Input.EventType.KEY_UP,release);
-        scope.own(()=>{this.pause();this.bindings.forEach(b=>b.dispose());input.off(Input.EventType.KEY_DOWN,key);input.off(Input.EventType.KEY_UP,release);this.root.active=false;this.root.destroy();});this.sync();
+        scope.own(()=>{this.pause();this.bindings.forEach(b=>b.dispose());input.off(Input.EventType.KEY_DOWN,key);input.off(Input.EventType.KEY_UP,release);this.root.active=false;this.root.destroy();});this.sync();this.resize(height);
     }
     private texture(parent:Node,path:string,rect:number[],scope:Scope,contain=true,region?:number[],name='OriginalPixels'){
         const r=region||[0,0,...this.assets.art(path).size],s=contain?Math.min(rect[2]/r[2],rect[3]/r[3]):1,w=contain?r[2]*s:rect[2],h=contain?r[3]*s:rect[3],v=new TravelAtlasSprite(parent,this.assets,scope,path,r,name);v.place([rect[0]+(rect[2]-w)/2,rect[1]+(rect[3]-h)/2,w,h]);return v;
@@ -98,11 +99,12 @@ export class TravelCollectionPage {
         const titlePivot=nodeAt(content,'ArchiveTagPivot',520.5,1131);titlePivot.angle=.29*180/Math.PI;this.text(titlePivot,'ArchiveTag','旅\n行\n日\n记',[-26.5,-59,53,118],24,'593315');
         const caption=this.text(content,'ArchiveCount',this.session.archives?this.session.archives+' 本已收好':'暂无收好的日记',[487,1204,211,38],19,'fff0cb',false);caption.enableOutline=true;caption.outlineColor=new Color(68,35,17,255);caption.outlineWidth=5;this.lightShadow(caption);
         if(this.service.last_error){const failure=this.text(content,'SaveFailure','保存暂时不可用，这一步还没有完成。',[74,1135,572,58],23,'fff4da');failure.enableOutline=true;failure.outlineColor=new Color(112,63,34,255);failure.outlineWidth=4;}
-        this.loading.root.setSiblingIndex(this.canvas.children.length-1);this.animate(0);
+        this.loading.root.setSiblingIndex(this.canvas.children.length-1);this.layoutHeader();this.animate(0);
     }
     private lightShadow(text:Label){text.enableShadow=true;text.shadowColor=new Color(33.15,12.75,2.55,216.75);text.shadowOffset=new Vec2(0,-2);}
     private addSparkles(target:Node,text?:Label){this.sparkles.push(new PromptSparkles(target,this.assets,this.owner,this.canvas,()=>[0,-Math.max(0,(this.height-1280)/2),720,this.height],text));}
-    private layoutEdges(){const extra=Math.max(0,(this.height-1280)/2);this.edges.forEach((v,i)=>{v.root.active=extra>0;v.place([0,i?1280:-extra,720,Math.max(1,extra)]);});}
+    private layoutHeader(){if(this.returnTag){const safe=safeViewport(this.height);pinTop(this.returnTag.root,this.root,safe[0]+26,safe[1]+24);}}
+
     private updateDetail(){
         this.detailOwner?.dispose();this.detailOwner=lifetime(this.owner);const content=nodeAt(this.detail,'CurrentStory'),scope=this.detailOwner;scope.own(()=>content.destroy());this.hero=null;
         const shape=[[0,.05],[.03,0],[.95,.01],[1,.04],[.99,.90],[.98,.96],[.94,1],[.04,.98],[0,.94]],source=[[146,448],[168,430],[740,366],[771,377],[936,1260],[932,1305],[902,1327],[213,1366],[192,1348]];this.polygon(content,shape.map(p=>[100+p[0]*520,244+p[1]*538]),source,scope);
@@ -121,7 +123,7 @@ export class TravelCollectionPage {
         }catch(error){owner.dispose();if(this.archive?.scope===owner)this.archive=null;if(this.pending!==owner||!this.scope.active)return;this.canvas.active=true;this.loading.failure('日记加载失败，再试一次？');console.error('[LittleSteps] collection archive preparation failed',error);}
     }
     private cancelArchive(){const owner=this.pending;this.pending=null;if(owner){if(this.archive?.scope===owner)this.archive=null;owner.dispose();}this.loading.hide();this.canvas.active=!this.archive;}
-    resize(height:number,_physicalWidth?:number){this.height=height;this.bindings.forEach(b=>b.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);this.canvas.setPosition(0,-Math.max(0,(height-1280)/2));this.layoutEdges();this.loading.resize(height);this.archive?.page.resize(height);}
+    resize(height:number,_physicalWidth?:number){this.height=height;this.bindings.forEach(b=>b.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);const layout=pageLayout(height);this.canvas.setPosition(layout.x,-layout.offset);this.canvas.setScale(layout.scale,layout.scale,1);this.background.resize(height,layout);this.layoutHeader();this.loading.resize(height);this.archive?.page.resize(height);}
     advance(delta:number){if(!this.active)return;this.loading.advance(delta);if(this.archive){this.archive.page.advance(delta);return;}this.refreshAge+=delta;if(this.dirty||this.refreshAge>=.25){this.refreshAge=0;this.sync();}this.animate(Math.max(0,Number.isFinite(delta)?delta:0));}
     resume(allowInput=true){this.active=allowInput;this.root.active=true;this.archive?.page.resume(allowInput);if(this.dirty)this.sync();}
     pause(){this.active=false;this.focus('');this.keysHeld.clear();this.bindings.forEach(b=>b.cancel());this.cancelArchive();this.archive?.page.pause();}

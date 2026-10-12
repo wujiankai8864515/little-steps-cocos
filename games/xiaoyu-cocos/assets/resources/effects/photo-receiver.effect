@@ -18,6 +18,7 @@ CCEffect %{
         cullMode: none
       properties:
         pageOrigin: { value: [0, 0, 1, 1] }
+        pageState: { value: [0, 1280, 1280, 1] }
         lightState: { value: [-210, -160, 0.52, 0] }
         lightAmbient: { value: [0.65, 0.61, 0.54, 0] }
         lightTint: { value: [1, 0.95, 0.82, 0] }
@@ -52,7 +53,7 @@ CCProgram room-fs %{
   in vec4 color;
   in vec2 canvasPosition;
 
-  uniform PhotoLight {vec4 pageOrigin;vec4 lightState;vec4 lightAmbient;vec4 lightTint;};
+  uniform PhotoLight {vec4 pageOrigin;vec4 pageState;vec4 lightState;vec4 lightAmbient;vec4 lightTint;};
   #define light_origin lightState.xy
   #define light_energy lightState.z
   #define night lightState.w
@@ -68,7 +69,7 @@ float soft_ray(vec2 ray,vec2 axis,float width,float spread,float reach) {
     float across=ray.x*axis.y-ray.y*axis.x;
     float radius=width+max(along,0.0)*spread;
     float q=across/max(radius,1.0);
-    return exp(-q*q)*smoothstep(-40.0,110.0,along)*exp(-length(ray)/reach);
+    return exp(-q*q)*smoothstep(-40.0,110.0,along)*exp(-length(ray)/(reach*max(1.0,pageState.z/1280.0)));
 }
 float soft_fan(vec2 p,vec2 source,vec2 axis) {
     vec2 ray=p-source;

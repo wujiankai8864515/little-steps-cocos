@@ -7,7 +7,7 @@ class UITransform{constructor(){this.width=1;this.height=1;}setAnchorPoint(){}se
 class Node{
  static EventType={TOUCH_START:'start',TOUCH_MOVE:'move',TOUCH_END:'end',TOUCH_CANCEL:'cancel'};
  constructor(name){this.name=name;this.children=[];this.components=new Map();this.position={x:0,y:0};this.scale={x:1,y:1};this.angle=0;this.active=true;this.isValid=true;this.listeners=new Map();}
- addChild(n){this.children.push(n);n.parent=this;}addComponent(Type){const c=new Type();c.node=this;this.components.set(Type,c);return c;}getComponent(Type){return this.components.get(Type)||this.addComponent(Type);}
+ addChild(n){this.children.push(n);n.parent=this;}getChildByName(name){return this.children.find(n=>n.name===name);}addComponent(Type){const c=new Type();c.node=this;this.components.set(Type,c);return c;}getComponent(Type){return this.components.get(Type)||this.addComponent(Type);}
  setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}setSiblingIndex(){}on(name,fn){if(!this.listeners.has(name))this.listeners.set(name,new Set());this.listeners.get(name).add(fn);}off(name,fn){this.listeners.get(name)?.delete(fn);}destroy(){this.isValid=false;this.children.forEach(n=>n.destroy());this.listeners.clear();}get worldPosition(){return this.position;}get worldScale(){return this.scale;}get scene(){return this.parent?.scene||this;}
 }
 class Sprite{static SizeMode={CUSTOM:0};configure(mesh){this.mesh=mesh;}geometryChanged(){}}
@@ -20,6 +20,7 @@ class AudioClip extends Asset{static AudioType={DOM_AUDIO:1,MINIGAME_AUDIO:2};lo
 const input={on(){},off(){}},cc={Asset,Node,Sprite,Graphics,Material,SpriteFrame,Label,Vec4,Color:Vec4,UITransform,input,Input:{EventType:{KEY_DOWN:'key'}},KeyCode:{ESCAPE:27},screen:{windowSize:{width:1440}},sys:{getSafeAreaRect:()=>({x:0,y:0,width:720,height:1690})},AudioClip,resources:{load:(p,t,cb)=>cb(null,new Asset())}};
 const renderer={estimateTarget:(w,h)=>w*h*8,createTarget:(w,h)=>({width:w,height:h,destroy(){this.destroyed=true;}}),create(options,scope){const content=new Node('Surface');scope.own(()=>content.destroy());return {content,ready:Promise.resolve(),layout(){},setActive(){},snapshot(){return {};}};}};
 const mods={Engine:{core,lifetime:parent=>new core.Lifetime(parent),meshSprite:()=>Sprite,sharedUI:()=>core.registerUI(cc),renderSurfaces:()=>renderer}};
+require('./viewport-mocks.cjs').installViewportMocks(cc);
 function load(name){if(mods[name])return mods[name];const exports={};mods[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(GAME,'game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:k=>k==='cc'?cc:load(k.slice(2)),console:{info(){},error(){}},setTimeout});return exports;}
 // Rendering adapters are substitutes; gameplay, resource admission, ownership,
 // actual Page construction/restoration and Application routing remain real.

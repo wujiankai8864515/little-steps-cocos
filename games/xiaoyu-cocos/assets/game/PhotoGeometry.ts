@@ -7,9 +7,9 @@ export const rotate=(p:number[],a:number)=>[p[0]*Math.cos(a)-p[1]*Math.sin(a),p[
 const normal=(p:number[])=>{const l=Math.hypot(...p);return l?p.map(v=>v/l):[0,0];};
 export function photoHash(id:string){let hash=5381;for(const ch of id)hash=(Math.imul(hash,33)+(ch.codePointAt(0)||0))>>>0;return hash;}
 export function anchor(index:number,time:number){const p=PHOTO_ANCHORS[index];return [p[0]+Math.sin(time*.47+index*1.31)*.65,p[1]+Math.sin(time*.73+index*1.71)*1.65];}
-export function photoLight(snapshot:{hour:number;night:number;afterglow:number}){
+export function photoLight(snapshot:{hour:number;night:number;afterglow:number},pageTop=0){
     const {hour,night}=snapshot,s=(hour-12)*Math.PI/16,m=(((hour-20)%24+24)%24-4)*Math.PI/8,cs=Math.max(0,Math.cos(s)),cm=Math.max(0,Math.cos(m)),warm=(1-cs)**2;
-    const origin=[mix(-210+Math.sin(s)*1000,-210+Math.sin(m)*660,night),mix(-85-cs*75,-95-cm*65,night)];
+    const origin=[mix(-210+Math.sin(s)*1000,-210+Math.sin(m)*660,night),mix(-85-cs*75,-95-cm*65,night)+pageTop];
     return {origin,cast:normal([360-origin[0],700-origin[1]]),elevation:mix(cs,cm,night),energy:mix(.52+snapshot.afterglow*.20,.34,night),color:[1,.95,.82].map((v,i)=>mix(mix(v,[1,.76,.49][i],warm),[.52,.67,1][i],night)),ambient:[.65,.61,.54].map((v,i)=>mix(v,[.28,.35,.50][i],night)),night};
 }
 export type PhotoLight=ReturnType<typeof photoLight>;

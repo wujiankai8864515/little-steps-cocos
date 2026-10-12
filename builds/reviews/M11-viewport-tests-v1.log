@@ -1,0 +1,431 @@
+✔ Source noon geometry and latest Home gains remain distinct from shared light values (0.702667ms)
+✔ Night transition, moon positions and ambient accents preserve dawn/dusk boundaries (0.273958ms)
+✔ All 24h light samples remain finite, bounded, normalized and periodic (9.649542ms)
+✔ Dust is confined to the approved projected window rather than a full-screen overlay (0.133208ms)
+✔ Photo state keeps original identities, permits both home slots on one photo, validates duplicates and future/invalid states (3.207667ms)
+✔ Reward photos deduplicate durable UID and retain original 30 capacity and circular six-photo pages (1.441583ms)
+✔ Failed writes preserve committed state, warn, and retry succeeds without replaying rewards (1.838875ms)
+✔ Checksum corruption, future schema, unreadable storage and oversize data never overwrite the authoritative main key (1.602833ms)
+✔ Concurrent binding revisions and a write-time race reject stale changes instead of losing another session (0.472875ms)
+✔ Real native Godot oracle: all 27 paper deformation/light/shadow states and UTF-32 hashes match (27.216958ms)
+✔ Drag owns one pointer, drops only on current deformed contour, and cancellation cannot create a saved binding (0.756375ms)
+✔ Vines retain fixed roots and finite bounded spring geometry across suspend-sized deltas (826.751792ms)
+✖ Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count (8.835708ms)
+✖ Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row (1.519042ms)
+✔ Live inventory snapshots preserve selected UID across same-count replacements and never leak consumer edits (0.166959ms)
+✖ Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation (0.885083ms)
+✖ Archive waits for resources and draw, returns to the same collection selection, and cannot train twice (0.612125ms)
+✖ Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable (0.52575ms)
+✖ Collection resize cancels held controls and keeps source layout centered without rebuilding art (1.117458ms)
+✖ Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize (2.801917ms)
+✖ Save failure remains visible even when inventory has not changed and clears after recovery (4.141541ms)
+✖ Original collection selected/hover color stays above one in float payload without altering source alpha hits (1.204667ms)
+✖ Keyboard repeated downs are ignored until release; readonly navigation preserves row and save revision (0.770416ms)
+✖ Tab focus skips disabled controls, Shift reverses, keyboard activate releases once and pause cancels a held key (1.35475ms)
+✖ Page press uses original darkening and sticky owner, archive line is enabled only on real hover/focus (1.698875ms)
+✖ Actual page directional focus matches native Godot dispatch across every reachable row/paging/archive layout (1.5015ms)
+✖ Keyboard confirm takes effect before a following focus move in the same frame, as native Button does (0.582167ms)
+✔ Real saved diary orders agreement first, requires a selection and learns exactly once across re-entry (18.648958ms)
+✔ A save failure preserves the selected review for retry and stale page callbacks cannot grade another entry (4.308208ms)
+✖ Actual diary view rebuilds scoped controls, pauses input, uses original resources and closes only after durable archive (2.083959ms)
+✖ Actual Application journal entry admits only its subset, preserves Home and returns through the real router (5.805333ms)
+✖ Journal cancellation rejects a late completion; failed loading can retry without altering saves (2.769792ms)
+✔ Photo entry waits for both resource groups and first draw, then frees GPU ownership while retaining page state on Home return (5.7295ms)
+✔ Photo load cancellation and shader failure cannot publish a late page or mutate a save; retry uses fresh ownership (3.545125ms)
+✔ Actual layered scene uses source atlas UVs, source draw order, bounded mesh batches and three shared materials (37.084333ms)
+✔ Actual Cocos node and atlas transforms follow nine native Godot checkpoints through 120 seconds (136.8165ms)
+✔ Incremental route recoloring matches full redraw across forward jumps and rewinds without rebuilding vertices (201.983083ms)
+✔ Footprint images keep native rotation, drop, scale, warm contact and un-tinted ink; all dynamic alpha avoids Color byte quantization (18.400708ms)
+✔ Shared field receives the current scene transform and all fourteen native day/night light states (16.255792ms)
+✔ Godot filled circle primitive uses 64 native fan triangles and rejects invalid input (0.227125ms)
+✔ Drawing transforms match native scale_basis order for actor shadows, footprint press and halo (20.936083ms)
+✔ Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin (3.003125ms)
+✔ Budget rejection does not stop the application update loop or spam retries, and a later resize can recover (0.175333ms)
+✔ Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges (0.293667ms)
+✔ Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once (0.952875ms)
+✔ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.454416ms)
+✖ Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes (0.63875ms)
+✖ Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely (0.783166ms)
+✔ Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked (26.488375ms)
+✔ Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion (2.060917ms)
+✖ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (15.865792ms)
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (2.049917ms)
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (0.920792ms)
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (1.043292ms)
+✖ Saved peach is bound during preparation, before the first visible render target frame (4.907042ms)
+ℹ Error: Test "Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates" at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:41:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ Error: Test "Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners" at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:52:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ Error: Test "Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws" at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:58:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ Error: Test "Budget and constructor failures release partial pages and allow later retry under the original owner" at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:62:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ Error: Test "Saved peach is bound during preparation, before the first visible render target frame" at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:68:1 generated asynchronous activity after the test ended. This activity created the error "TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ tests 55
+ℹ suites 0
+ℹ pass 31
+ℹ fail 24
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1580.145917
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:21:1
+✖ Collection supports empty, single, four and nineteen rewards without mutating inventory or archive count (8.835708ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:22:41)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:24:1
+✖ Explicit pagination keeps selected detail; arrows browse inventory without moving the current object row (1.519042ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:25:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:30:1
+✖ Object actions use exact fixed source alpha, sticky crossing cancellation, one finger and stale-action invalidation (0.885083ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:31:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:35:1
+✖ Archive waits for resources and draw, returns to the same collection selection, and cannot train twice (0.612125ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:38:1
+✖ Cancelled, failed and backgrounded archive loads never revive a closed page and remain retryable (0.52575ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:39:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:42:1
+✖ Collection resize cancels held controls and keeps source layout centered without rebuilding art (1.117458ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:43:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:46:1
+✖ Source return tag, conditional actionable sparkles and stretched edge art survive long-screen resize (2.801917ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:47:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:49:1
+✖ Save failure remains visible even when inventory has not changed and clears after recovery (4.141541ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:50:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:54:1
+✖ Original collection selected/hover color stays above one in float payload without altering source alpha hits (1.204667ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:55:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:62:1
+✖ Keyboard repeated downs are ignored until release; readonly navigation preserves row and save revision (0.770416ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:63:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:65:1
+✖ Tab focus skips disabled controls, Shift reverses, keyboard activate releases once and pause cancels a held key (1.35475ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:66:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:69:1
+✖ Page press uses original darkening and sticky owner, archive line is enabled only on real hover/focus (1.698875ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:70:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:74:1
+✖ Actual page directional focus matches native Godot dispatch across every reachable row/paging/archive layout (1.5015ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:78:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-collection.test.cjs:90:1
+✖ Keyboard confirm takes effect before a following focus move in the same frame, as native Button does (0.582167ms)
+  TypeError: Cannot read properties of undefined (reading 'getSafeAreaRect')
+      at safeViewport (evalmachine.<anonymous>:10:52)
+      at TravelCollectionPage.layoutHeader (evalmachine.<anonymous>:261:50)
+      at TravelCollectionPage.build (evalmachine.<anonymous>:255:14)
+      at TravelCollectionPage.sync (evalmachine.<anonymous>:178:14)
+      at new TravelCollectionPage (evalmachine.<anonymous>:66:14)
+      at fixture (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:19:737)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-collection.test.cjs:91:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+
+test at games/xiaoyu-cocos/test/travel-journal.test.cjs:37:1
+✖ Actual diary view rebuilds scoped controls, pauses input, uses original resources and closes only after durable archive (2.083959ms)
+  TypeError: Cannot read properties of undefined (reading 'PageBackground')
+      at new TravelJournalPage (evalmachine.<anonymous>:39:48)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-journal.test.cjs:40:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at games/xiaoyu-cocos/test/travel-journal.test.cjs:73:1
+✖ Actual Application journal entry admits only its subset, preserves Home and returns through the real router (5.805333ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(f.app.page instanceof TravelJournalPage)
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-journal.test.cjs:76:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/travel-journal.test.cjs:79:1
+✖ Journal cancellation rejects a late completion; failed loading can retry without altering saves (2.769792ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(f.app.page instanceof TravelJournalPage)
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/travel-journal.test.cjs:83:115)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/viewport.test.cjs:61:1
+✖ Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes (0.63875ms)
+  TypeError: Cannot read properties of undefined (reading 'AlignMode')
+      at pinTop (evalmachine.<anonymous>:18:165)
+      at DarkroomPage.resize (evalmachine.<anonymous>:144:31)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:63:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at games/xiaoyu-cocos/test/viewport.test.cjs:70:1
+✖ Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely (0.783166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/viewport.test.cjs:73:94)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:41:1
+✖ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (15.865792ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fn())
+  
+      at tickUntil (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:37:89)
+      at async create (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:40:188)
+      at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:42:28)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:52:1
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (2.049917ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fn())
+  
+      at tickUntil (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:37:89)
+      at async create (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:40:188)
+      at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:53:28)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:58:1
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (0.920792ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fn())
+  
+      at tickUntil (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:37:89)
+      at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:59:134)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:62:1
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (1.043292ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fn())
+  
+      at tickUntil (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:37:89)
+      at async create (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:40:188)
+      at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:65:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:68:1
+✖ Saved peach is bound during preparation, before the first visible render target frame (4.907042ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fn())
+  
+      at tickUntil (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:37:89)
+      at async TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:69:229)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -5,8 +5,11 @@ import { core, Scope, sharedUI } from './Engine';
 import { loadingPose } from './LoadingMotion';
 import { label, nodeAt, panel, picture } from './Visual';
 
+import { PageBackground } from './PageBackground';
+
 export class LoadingPage {
     readonly root: Node;
+    private background:PageBackground;
     private clock = 0;
     private actors: ReturnType<typeof picture>[];
     private ticks: Graphics;
@@ -17,7 +20,7 @@ export class LoadingPage {
     onRetry = () => {};
     constructor(parent: Node, assets: GameAssets, scope: Scope, height: number) {
         this.root=nodeAt(parent,'LoadingPage',0,0,720,height);
-        picture(this.root,assets,scope,'res://entry/assets/backgrounds/loading_clean_bleed_720x1600.png','BleedBackground',{position:[0,(height-1600)/2],centered:false});
+        this.background=new PageBackground(this.root,assets,scope,'res://entry/assets/backgrounds/loading_clean_bleed_720x1600.png','BleedBackground',undefined,-160,1600);
         const composition=nodeAt(this.root,'Composition',0,(height-1280)/2,720,1280);
         picture(composition,assets,scope,'res://entry/assets/loading/ground_shadows.png','GroundShadows',{centered:false});
         const doll=picture(composition,assets,scope,'res://entry/assets/loading/native/doll_rig.png','Doll',{centered:false});
@@ -34,7 +37,7 @@ export class LoadingPage {
         this.action=sharedUI().action(this.retry,()=>{this.retry.active=false;this.onRetry();},()=>this.retry.activeInHierarchy);
         scope.own(()=>{this.action.dispose();this.root.active=false;this.root.destroy();});this.advance(0);
     }
-    resize(height:number,_physicalWidth?:number){box(this.root,0,0,720,height);this.root.getChildByName('BleedBackground').setPosition(0,-(height-1600)/2);this.root.getChildByName('Composition').setPosition(0,-(height-1280)/2);this.action.cancel();}
+    resize(height:number,_physicalWidth?:number){box(this.root,0,0,720,height);this.background.root.setPosition(0,-(height-1280)/2);this.background.resize(height,{scale:1,x:0,offset:(height-1280)/2,top:-(height-1280)/2,bottom:1280+(height-1280)/2});this.root.getChildByName('Composition').setPosition(0,-(height-1280)/2);this.action.cancel();}
     setStage(message: string, fraction = 0) {
         this.status.string=message; const amount=core.Math2D.clamp(fraction,0,.99),g=this.progress;
         g.clear(); if(amount<=0)return;

@@ -13,7 +13,7 @@ import { TravelSceneView, TRAVEL_SCENE_RESOURCES } from './TravelSceneView';
 import { TRAVEL_SCENE } from './TravelSceneData';
 import { TravelSceneState, narrativeMapping, routePosition, travelLight } from './TravelSceneState';
 import { TravelService } from './TravelService';
-import { box, repaintPanel } from './Viewport';
+import { box, pageLayout, pinTop, repaintPanel, safeViewport } from './Viewport';
 import { label, nodeAt, panel } from './Visual';
 const ART='res://travel/assets/',BRUSH=ART+'travel_brush.ttf',ATLAS=ART+'travel_scene_layers_v1.png';
 export const MAP_AUDIO=['derived://travel/travel_bell.wav','derived://travel/travel_encounter.wav'];
@@ -29,7 +29,7 @@ export class TravelMapPage {
     static async create(parent:Node,assets:GameAssets,scope:Scope,height:number,service:TravelService,clock:HomeClock,soundEnabled:()=>boolean,gestureSeen:()=>boolean){
         await assets.acquireTransient('TravelMapPlayback-'+(++serial),MAP_PLAYBACK_BYTES+MAP_UI_BUFFER_BYTES,()=>true,()=>{},scope);
         const page=new TravelMapPage(parent,assets,scope,height,service,clock,soundEnabled,gestureSeen);
-        page.scene=await TravelSceneView.create(page.canvas,assets,scope,clock,page.state);page.scene.root.setSiblingIndex(0);page.refresh();page.render(0);return page;
+        page.scene=await TravelSceneView.create(page.canvas,assets,scope,clock,page.state);page.scene.root.setSiblingIndex(0);page.scene.resize(height);page.refresh();page.render(0);return page;
     }
     private constructor(parent:Node,private assets:GameAssets,private scope:Scope,height:number,private service:TravelService,private clock:HomeClock,soundEnabled:()=>boolean,gestureSeen:()=>boolean){
         this.height=height;this.session=new TravelEncounterSession(service);this.root=nodeAt(parent,'TravelMapPage',0,0,720,height);this.root.active=false;
@@ -40,7 +40,8 @@ export class TravelMapPage {
         scope.own(()=>{this.pause();this.bindings.forEach(b=>b.dispose());this.bindings=[];input.off(Input.EventType.KEY_DOWN,key);this.root.active=false;this.root.destroy();});
     }
     private get offset(){return Math.max(0,(this.height-1280)/2);}
-    resize(height:number,physicalWidth=720){this.physicalWidth=physicalWidth;this.progress?.resize(physicalWidth);this.arrival?.resize(physicalWidth);this.bindings.forEach(b=>b.cancel());this.bubble?.cancelPointer();this.height=height;box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);this.canvas.setPosition(0,-this.offset);if(this.ui){this.ui.setPosition(0,this.offset);box(this.ui,0,-this.offset,720,height);}if(this.scene)this.render(0);}
+    resize(height:number,physicalWidth=720){this.physicalWidth=physicalWidth;this.progress?.resize(physicalWidth);this.arrival?.resize(physicalWidth);this.bindings.forEach(b=>b.cancel());this.bubble?.cancelPointer();this.height=height;box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);const layout=pageLayout(height);this.canvas.setPosition(layout.x,-layout.offset);this.canvas.setScale(layout.scale,layout.scale,1);if(this.ui){this.ui.setPosition(0,this.offset);box(this.ui,0,-this.offset,720,height);}this.layoutHeader();if(this.scene){this.scene.resize(height,safeViewport(height)[1]);this.render(0);}}
+    private layoutHeader(){const back=this.controls.back;if(back){const safe=safeViewport(this.height);const scale=pageLayout(this.height).scale;back.setScale(1/scale,1,1);pinTop(back,this.root,safe[0]+27,safe[1]+44*scale);}}
     private texture(parent:Node,path:string,rect:number[],scope:Scope,contain=true,region?:number[]){const r=region||[0,0,...this.assets.art(path).size],sprite=new TravelAtlasSprite(parent,this.assets,scope,path,r,'OriginalPixels'),s=contain?Math.min(rect[2]/r[2],rect[3]/r[3]):0;const w=contain?r[2]*s:rect[2],h=contain?r[3]*s:rect[3];sprite.place([rect[0]+(rect[2]-w)/2,rect[1]+(rect[3]-h)/2,w,h]);return sprite;}
     private plate(parent:Node,name:string,value:string,rect:number[],size:number,color=INK){const l=label(parent,this.assets,name,value,rect.slice(0,2),rect.slice(2),size,color,TRAVEL_FONT);l.lineHeight=size*this.assets.catalog.assets[TRAVEL_FONT].fontMetrics.height;this.alignInk(l,rect);return l;}
     private alignInk(l:Label,rect:number[]){const table=TRAVEL_FONT_DATA.ui[String(l.fontSize)];if(!table)return;const bounds=Array.from(l.string).map(c=>table.glyphs[c]).filter(Boolean);if(!bounds.length)return;const top=Math.min(...bounds.map(p=>p[0])),bottom=Math.max(...bounds.map(p=>p[1]));const baseline=(rect[3]-table.height)/2+table.ascent,shift=rect[3]/2-(top+bottom)/2-baseline,m=this.assets.catalog.assets[TRAVEL_FONT].fontMetrics;l.node.setPosition(rect[0],-(rect[1]+shift+(m.ascent-m.descent-.74)*l.fontSize/2));}
@@ -60,7 +61,7 @@ export class TravelMapPage {
         if(this.session.feedback&&!this.session.eventUid)this.result(overlay,owner);
         if(this.session.eventUid)this.event(overlay,owner);
         if(this.service.last_error){const l=label(overlay,this.assets,'SaveFailure','保存暂时不可用，这一步还没有完成。',[74,1135],[572,58],23,[1,244/255,218/255],TRAVEL_FONT);l.enableOutline=true;l.outlineColor=new Color(112,63,34,255);l.outlineWidth=4;}
-        this.signature=this.key();
+        this.layoutHeader();this.signature=this.key();
     }
     private event(parent:Node,owner:Scope){
         const e=this.session.event;if(!e)return;this.texture(parent,ART+(e.id==='offer'?'travel_offer_person_v5.png':'travel_people_v5.png'),[57,390,256,333],owner,true,e.id==='offer'?[205,43,853,1233]:NPC[e.id]||NPC.vampire);

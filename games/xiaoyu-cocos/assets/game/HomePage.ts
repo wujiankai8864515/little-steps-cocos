@@ -184,7 +184,7 @@ export class HomePage {
         Object.assign(this.plan,next);
         box(this.root,0,next.offset,720,1280);this.roomRoot.setPosition(0,-next.offset);
         this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);
-        this.hud.resize(height);
+        this.hud.resize(height);const beams=this.roomRoot.getChildByName('WindowLightShafts2D');if(beams)box(beams,0,-next.offset,720,height);this.lighting?.resize(height);
         const extra=Math.max(0,(height-1600)/2);
         for(const name of ['UpperBleedEdge','LowerBleedEdge']){const n=this.roomRoot.getChildByName(name);if(n){n.active=extra>0;if(extra>0){if(name==='UpperBleedEdge')n.setPosition(0,160+extra);n.setScale(n.scale.x,extra/64,1);}}}
     }

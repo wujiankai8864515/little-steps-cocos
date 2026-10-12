@@ -13,7 +13,8 @@ class Label{static Overflow={CLAMP:1,RESIZE_HEIGHT:2};static HorizontalAlign={CE
 class Graphics{clear(){}moveTo(){}lineTo(){}close(){}fill(){}roundRect(){}stroke(){}}
 class Material{initialize(){}setProperty(){}destroy(){this.destroyed=true;}}
 const cc={Node,Sprite,UITransform,Color,Vec4,Label,LabelOutline:class{},Graphics,Material,Mask:class{},KeyCode:{ESCAPE:1},Input:{EventType:{KEY_DOWN:1}},input:{on(){},off(){}}};
-for(const name of ['Engine','Viewport','Assets','TravelModel','TravelStore','TravelService','TravelJournalSession','Visual','TravelAtlasSprite','TravelHomeRules','Stroke2D','TravelJournalPage']){
+require('./viewport-mocks.cjs').installViewportMocks(cc);
+for(const name of ['Engine','Viewport','Assets','TravelModel','TravelStore','TravelService','TravelJournalSession','Visual','TravelAtlasSprite','PageBackground','TravelHomeRules','Stroke2D','TravelJournalPage']){
  const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:key=>key==='cc'?cc:modules[key.slice(2)],LittleStepsCore:core,console});modules[name]=exports;
  if(name==='Engine')Object.assign(exports,{meshSprite:()=>Sprite,sharedUI:()=>({action(node,fn,enabled){const b={node,fn,enabled,cancel(){this.cancelled=true;},dispose(){this.disposed=true;}};bindings.push(b);return b;}})});
 }

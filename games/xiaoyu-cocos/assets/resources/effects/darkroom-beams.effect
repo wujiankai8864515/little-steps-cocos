@@ -18,6 +18,7 @@ CCEffect %{
         cullMode: none
       properties:
         roomOrigin: { value: [0, 0, 1, 1] }
+        viewportState: { value: [0, 1280, 1280, 1] }
         sourceUV: { value: [0, 0, 1, 1] }
         visibleUV: { value: [0, 0, 1, 1] }
         ambientState: { value: [0.55, 0.59, 0.63, 0.43] }
@@ -69,6 +70,7 @@ CCProgram room-fs %{
 
   uniform RoomState {
     vec4 roomOrigin;
+    vec4 viewportState;
     vec4 sourceUV;
     vec4 visibleUV;
     vec4 ambientState;
@@ -194,7 +196,8 @@ vec4 shared_window_beam(float u,float sun_gate,float moon_gate,float fade,float 
     vec2 world_position=world_pos;
     vec4 result;
 
- vec2 p=UV*vec2(720.0,1280.0);
+ vec2 p=vec2((canvasPosition.x-roomOrigin.x)/roomOrigin.z,(roomOrigin.y-canvasPosition.y)/roomOrigin.w);
+ p.y=850.0+min(p.y-850.0,0.0)+max(p.y-850.0,0.0)*(1280.0-850.0)/max(1280.0-850.0,viewportState.y-850.0);
  float u=shared_window_u(p,cast_dir,vec4(491.0,370.0,146.0,0.38),850.0);
  float fade=smoothstep(365.0,465.0,p.y)*(1.0-smoothstep(960.0,1260.0,p.y));
  result=shared_window_beam(u,dark_window_field(p,cast_dir,cot_e),dark_window_field(p,moon_cast_dir,1.6),fade,sun_energy,moon_energy,noon_weight,afterglow_energy,sun_color)*color;

@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "item": "M11.01",
+  "request": "所有页面背景宽度完整展示，背景上下预留延展空间适配不同高度手机；顶部按钮用Widget；光效来源适配高度。",
+  "sourceBefore": "47a206d088147bd51f3ec899e3a48a06b77af5fe",
+  "kind": "responsive source fix and local browser candidate; not a formal WeChat release",
+  "rootCause": {
+    "photo": "1280-high masked content was contained and centred inside a taller solid-colour page, exposing upper and lower bars.",
+    "wardrobe": "Fixed 720x1280 render target and display rect left the surrounding page uncovered.",
+    "journalAndTravel": "Fixed-height reference/background left only a solid-colour backing outside the illustration.",
+    "light": "Volumes used 1280-high geometry and UV-derived model positions; photo/wardrobe origins and fade ends ignored added height."
+  },
+  "changes": {
+    "backgrounds": "Reuse each original texture, retain the full source width and central illustration, extend border pixels into top/bottom bleed; no bitmap asset changes or added texture downloads.",
+    "photo": "Full-screen clip and independent safe-area header, original scene content and pointer coordinates retained; vines and volume reach the bleed.",
+    "wardrobe": "One admitted resizable design-width target; full-screen display, separate illustration/input frame and Widget header. Detach old camera/frame before resizing, restore on failure.",
+    "topControls": "Widget ancestor targets for photo/wardrobe/Home/Darkroom/login/collection; preserved painted headers and matching inputs for diary/travel.",
+    "lighting": "Photo/wardrobe sources and fades use viewport top/bottom; travel portals remain shared by receivers and volume; Home/Darkroom window rays use actual model coordinates with height-aware reach."
+  },
+  "verification": {
+    "unitAndRouteTests": {
+      "passed": 250,
+      "failed": 0,
+      "log": "M11-all-tests-final.log",
+      "boundary": "Real logic/ownership and stubbed Cocos transforms; not GPU/phone visual acceptance."
+    },
+    "types": {
+      "status": "pass",
+      "skipLibCheck": true,
+      "log": "M11-viewport-types-final.log",
+      "reason": "Creator vendor declarations contain unrelated WebGPU/private type errors."
+    },
+    "creator": {
+      "version": "3.8.8",
+      "exitCode": 36,
+      "log": "M11-responsive-build-v2.log",
+      "status": "pass"
+    },
+    "frozenAudit": {
+      "status": "pass",
+      "runtimeMismatches": 0,
+      "files": 756,
+      "report": "M11-responsive-frozen-audit.json",
+      "allCurrentGameAndEffectPayloadsMatchFrozen": 296
+    },
+    "visual": {
+      "loginCurrentChrome": "Observed the extended login background after reload, with no browser console warnings/errors.",
+      "allPageResponsiveScreenshots": "pending",
+      "reason": "Browser coordinate and locator clicks repeatedly timed out. Native Chrome fallback ended the Computer Use session due to current URL access policy; no later UI interaction attempted."
+    },
+    "wechatDevice": "pending",
+    "catalogue": {
+      "catalogAssets": 129,
+      "sourceFiles": 141,
+      "missing": [],
+      "status": "pass",
+      "report": "M11-responsive-assets.json"
+    }
+  },
+  "candidate": {
+    "name": "responsive-height-v1",
+    "fixtureOverrides": [],
+    "sourceDirtyAtFreeze": true,
+    "snapshotSHA256": "4ec7d277ecb25643e952654ee9ed99d6abae78b44c316be4dca16c23520a4f83",
+    "note": "Includes pre-existing working-tree TravelService recovery edits; not included in the responsive fix commit. Only a test adapter syntax repair differs from the frozen test source; runtime game/effect payloads match.",
+    "preview": "http://127.0.0.1:8795/"
+  },
+  "failures": [
+    {
+      "evidence": "M11-viewport-tests-v1.log",
+      "cause": "Old UI mocks omitted Widget/sys and the newly shared background import; updated adapters without changing gameplay assertions."
+    },
+    {
+      "evidence": "M11-wardrobe-timeout-v1.log",
+      "cause": "Resize attempted to free a render target while a camera still referenced it; detaching before allocation fixes this. Cascading tests timed out after the first failed test left ownership alive."
+    },
+    {
+      "evidence": "M11-all-tests-v2.log",
+      "cause": "New geometry regression caught a header/bleed source-row discontinuity; two reflected bands now share both edge source rows. A strict floating equality in the light test required numerical tolerance."
+    },
+    {
+      "evidence": "M11-all-tests-v4.log",
+      "cause": "Bulk fixture edit introduced syntax into a mock getComponent call; repaired the fixture, reran all 250 tests."
+    },
+    {
+      "evidence": "M11-responsive-build-v1.log",
+      "trigger": "Creator CLI inside the restricted execution sandbox exited 134 before producing diagnostics.",
+      "confirmedCause": "unknown",
+      "resolution": "Same frozen project built successfully outside the execution sandbox with exit 36; no system protections changed."
+    },
+    {
+      "trigger": "Loopback preview bind in restricted execution",
+      "confirmedCause": "Filesystem execution sandbox denied binding a listening socket.",
+      "resolution": "Started the same loopback-only server under reviewed escalation; no external network binding."
+    }
+  ],
+  "preserved": "User Boot UUID, scene UUID, 720x1280 design size, resource gates, saved-state rules and original bitmap files are unchanged by this item."
+}

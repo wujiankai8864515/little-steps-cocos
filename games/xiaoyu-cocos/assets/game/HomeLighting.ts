@@ -9,7 +9,7 @@ export const HOME_EFFECTS=['original-stroke','home-diary-ink','darkroom-plume','
 type Receiver={material:Material;kind:string;surface:number;node?:Node};
 export class HomeLighting {
     private receivers:Receiver[]=[];
-    private dust:Graphics;
+    private dust:Graphics;private viewport=new Vec4(0,1280,1280,1);
     constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
     receiver(sprite:Sprite|Graphics,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver',eye=0,offset=[0,0]) {
         const material=this.material('home-'+kind,sprite instanceof Graphics),crop=spec.content,size=spec.size;
@@ -49,11 +49,12 @@ export class HomeLighting {
     }
     dustNode() {const node=nodeAt(this.root,'SunlitDust');this.dust=node.addComponent(Graphics);return node;}
     private material(name:string,local=false) {const material=new Material();material.initialize({effectAsset:this.assets.effect(name),defines:{USE_TEXTURE:true,USE_LOCAL:local}});this.scope.own(()=>material.destroy());return material;}
+    resize(height:number){const offset=(height-1280)/2;this.viewport=new Vec4(-offset,1280+offset,height,1);}
     update(override?:{ambient:number[];sun:number}) {
         const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),origin=this.root.worldPosition,scale=this.root.worldScale;
         if(override){state.receiverAmbient=override.ambient;state.receiverSun=override.sun;}
         for(const receiver of this.receivers) {
-            const material=receiver.material,shaft=receiver.kind==='shafts';
+            const material=receiver.material,shaft=receiver.kind==='shafts';if(shaft)material.setProperty('viewportState',this.viewport);
             material.setProperty('roomOrigin',new Vec4(origin.x,origin.y,scale.x,scale.y));
             material.setProperty('ambientState',new Vec4(...state.receiverAmbient as [number,number,number],shaft?state.shaftSun:state.receiverSun));
             material.setProperty('sunState',new Vec4(...state.sunColor as [number,number,number],shaft?state.shaftMoon:state.receiverMoon));

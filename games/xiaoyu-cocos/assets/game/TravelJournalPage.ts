@@ -1,5 +1,5 @@
 import { Color, EventKeyboard, Graphics, input, Input, KeyCode, Label, LabelOutline, Mask, Node, Sprite, UITransform } from 'cc';
-import { box, repaintPanel } from './Viewport';
+import { box, pageLayout, pinTop, repaintPanel, safeViewport } from './Viewport';
 import { GameAssets } from './Assets';
 import { core, lifetime, meshSprite, Scope, sharedUI } from './Engine';
 import { Stroke2D } from './Stroke2D';
@@ -17,11 +17,13 @@ const NPC_REGIONS:Record<string,number[]>={vampire:[70,0,552,663],rain:[668,0,48
 
 // The approved reference supplies the brush lettering, seal, divider, pen and
 // leaf. Only source-defined polygons and live event prose cover it.
+import { PageBackground } from './PageBackground';
+
 export class TravelJournalPage {
     readonly root:Node;
     readonly session:TravelJournalSession;
     onBack=()=>{};
-    private canvas:Node;
+    private canvas:Node;private background:PageBackground;private height=1280;
     private contentScope:Scope;
     private bindings:any[]=[];
     private active=false;
@@ -35,13 +37,14 @@ export class TravelJournalPage {
         this.root=nodeAt(parent,'TravelJournalPage',0,0,720,height);this.root.active=false;
         panel(this.root,'PaperBackdrop',[0,0,720,height],[236/255,217/255,179/255]);
         this.canvas=nodeAt(this.root,'ApprovedDiaryCanvas',0,Math.max(0,(height-1280)/2),720,1280);
-        this.texture(this.canvas,REFERENCE,[0,0,720,1280],scope,false);
+        this.background=new PageBackground(this.canvas,assets,scope,REFERENCE,'DiaryBackground',undefined,0,1280,230);
         scope.own(service.subscribe(()=>{this.dirty=true;}));
         const key=(e:EventKeyboard)=>{if(this.active&&e.keyCode===KeyCode.ESCAPE)this.onBack();};input.on(Input.EventType.KEY_DOWN,key);
         scope.own(()=>{this.pause();this.bindings.forEach(b=>b.dispose());this.bindings=[];input.off(Input.EventType.KEY_DOWN,key);this.root.active=false;this.root.destroy();});
-        this.refresh();
+        this.refresh();this.resize(height);
     }
-    resize(height:number,_physicalWidth?:number){this.bindings.forEach(b=>b.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);this.canvas.setPosition(0,-Math.max(0,(height-1280)/2));}
+    resize(height:number,_physicalWidth?:number){this.bindings.forEach(b=>b.cancel());box(this.root,0,0,720,height);repaintPanel(this.root.getChildByName('PaperBackdrop'),720,height);this.height=height;const layout=pageLayout(height);this.canvas.setPosition(layout.x,-layout.offset);this.canvas.setScale(layout.scale,layout.scale,1);this.background.resize(height,layout,safeViewport(height)[1]);this.layoutHeader();}
+    private layoutHeader(){const back=this.controls.back;if(back){const safe=safeViewport(this.height);const scale=pageLayout(this.height).scale;back.setScale(1/scale,1,1);pinTop(back,this.root,safe[0]+27,safe[1]+44*scale);}}
     private texture(parent:Node,path:string,rect:number[],scope:Scope,contain=true,region?:number[],angle=0){
         const spec=this.assets.art(path),r=region||[0,0,...spec.size],pivot=nodeAt(parent,'OriginalImage',rect[0],rect[1],rect[2],rect[3]);pivot.angle=-angle*180/Math.PI;
         const sprite=new TravelAtlasSprite(pivot,this.assets,scope,path,r,'OriginalPixels');
@@ -69,7 +72,7 @@ export class TravelJournalPage {
         this.session.sync();this.controls={};this.cue=()=>{};
         const content=nodeAt(this.canvas,'CurrentEntry');owner.own(()=>{content.active=false;content.destroy();});
         this.button(content,'back','返回',[27,44,93,174],()=>this.onBack(),true,true);
-        const j=this.session.journal,e=this.session.entry;
+        this.layoutHeader();const j=this.session.journal,e=this.session.entry;
         if(!j||!e)this.text(content,'EmptyDiary','日记已经收好了。',[160,740,475,90],27);
         else{
             const uid=e.uid,readonly=this.session.readonly;

@@ -1,0 +1,95 @@
+debug after draws [ [ 720, 900, [ [Object] ] ] ] Map(0) {}
+debug after draws [ [ 720, 900, [ [Object] ] ], [ 720, 900, [] ], [ 720, 900, [] ] ] Map(0) {}
+✖ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (8.906333ms)
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (8001.381ms)
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (4.441125ms)
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (1.801334ms)
+✖ Saved peach is bound during preparation, before the first visible render target frame (3.739208ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8352.610125
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/.viewport-debug.test.cjs:42:1
+✖ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (8.906333ms)
+  AssertionError [ERR_ASSERTION]: detach surface before freeing target
+  
+  1 !== 0
+  
+      at RenderTexture.destroy (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/.viewport-debug.test.cjs:20:258)
+      at Object.unload (evalmachine.<anonymous>:72:167)
+      at Object.replace (evalmachine.<anonymous>:547:49)
+      at Object.resize (evalmachine.<anonymous>:80:23)
+      at WardrobeViewport.resize (evalmachine.<anonymous>:33:21)
+      at WardrobePage.resize (evalmachine.<anonymous>:262:127)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/.viewport-debug.test.cjs:49:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/.viewport-debug.test.cjs:53:1
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (8001.381ms)
+  'test timed out after 8000ms'
+
+test at games/xiaoyu-cocos/test/.viewport-debug.test.cjs:59:1
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (4.441125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/.viewport-debug.test.cjs:60:304)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/.viewport-debug.test.cjs:63:1
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (1.801334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/.viewport-debug.test.cjs:65:371)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/.viewport-debug.test.cjs:69:1
+✖ Saved peach is bound during preparation, before the first visible render target frame (3.739208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 6
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/.viewport-debug.test.cjs:70:281)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 6,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

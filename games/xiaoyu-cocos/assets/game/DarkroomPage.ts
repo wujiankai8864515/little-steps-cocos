@@ -1,5 +1,5 @@
 import { EventKeyboard, input, Input, KeyCode, Node, screen, Sprite, sys, UITransform } from 'cc';
-import { box, safeViewport } from './Viewport';
+import { box, pinTop, safeViewport } from './Viewport';
 import { GameAssets } from './Assets';
 import { meshSprite, renderSurfaces, Scope, sharedUI } from './Engine';
 import { HomeClock } from './HomeClock';
@@ -63,7 +63,7 @@ export class DarkroomPage {
         const next=homeRenderPlan(height,physicalWidth);try{if(this.targetLease.texture)this.targetLease.resize(next.pixels[0],next.pixels[1]);}catch(error){this.surface.layout(this.plan.logical,[0,-this.plan.offset,720,this.plan.logical[1]],this.targetLease.texture);throw error;}this.pointer.cancel();this.round.cancel();Object.assign(this.plan,next);
         box(this.root,0,next.offset,720,1280);this.room.setPosition(0,-next.offset);this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);this.bleedUpdate(height);box(this.pointerHost,0,-next.offset,720,height);
         const safe=safeViewport(height);safe[1]-=next.offset;const top=Math.max(28,safe[1]+28);
-        this.round.dragBounds=[safe[0]+12,safe[1]+12,safe[2]-24,safe[3]-24];this.hud.resize(Math.max(178,safe[1]+170));this.bubble.setSafe([safe[0]+24,top,safe[2]-48,Math.max(180,safe[1]+safe[3]-top-190)]);this.plaque.cancel();this.plaque.root.setPosition(safe[0]+23,-safe[1]-10);
+        this.round.dragBounds=[safe[0]+12,safe[1]+12,safe[2]-24,safe[3]-24];this.hud.resize(Math.max(178,safe[1]+170));this.bubble.setSafe([safe[0]+24,top,safe[2]-48,Math.max(180,safe[1]+safe[3]-top-190)]);this.plaque.cancel();pinTop(this.plaque.root,this.root.parent,safe[0]+23,safe[1]+next.offset+10);const beam=this.room.getChildByName('SharedWindowLightBeams');if(beam)box(beam,0,-next.offset,720,height);this.lighting.resize(height);
     }
     setRenderActive(active:boolean){this.surface.setActive(active);}
     async prepareRender(){

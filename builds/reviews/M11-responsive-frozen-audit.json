@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "candidate": "responsive-height-v1",
+  "sourceCommit": "47a206d088147bd51f3ec899e3a48a06b77af5fe",
+  "sourceDirtyAtFreeze": true,
+  "fileCount": 756,
+  "metadataChanges": [],
+  "runtimeMismatches": [],
+  "plugin": {
+    "link": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "targetMode": "0o444",
+    "directoryMode": "0o555"
+  },
+  "userBaseline": {
+    "unchanged": [
+      "games/xiaoyu-cocos/.creator/asset-template/typescript/Custom Script Template Help Documentation.url",
+      "games/xiaoyu-cocos/.creator/default-meta.json",
+      "games/xiaoyu-cocos/assets/Boot.ts.meta",
+      "games/xiaoyu-cocos/assets/scene.scene",
+      "games/xiaoyu-cocos/assets/scene.scene.meta",
+      "games/xiaoyu-cocos/package.json",
+      "games/xiaoyu-cocos/settings/v2/packages/builder.json",
+      "games/xiaoyu-cocos/settings/v2/packages/cocos-service.json",
+      "games/xiaoyu-cocos/settings/v2/packages/device.json",
+      "games/xiaoyu-cocos/settings/v2/packages/engine.json",
+      "games/xiaoyu-cocos/settings/v2/packages/information.json",
+      "games/xiaoyu-cocos/settings/v2/packages/program.json",
+      "games/xiaoyu-cocos/settings/v2/packages/project.json",
+      "games/xiaoyu-cocos/tsconfig.json"
+    ],
+    "declaredAuthoringChanges": [
+      {
+        "path": "games/xiaoyu-cocos/.gitignore",
+        "sha256": "543234b297093b3ce6573fc0426894711821bb862a0e30d09e2336d8355ef905",
+        "reason": "Anchor native export ignore to project root so authored nested Loading assets enter Git."
+      }
+    ],
+    "bootChangedThisItem": false,
+    "bootUUID": "8dacabd2-f20d-42ab-aa32-8ffb576527d7",
+    "sceneUUID": "de1d350c-133c-4d0e-9d2a-1df4d6992aaa"
+  }
+}

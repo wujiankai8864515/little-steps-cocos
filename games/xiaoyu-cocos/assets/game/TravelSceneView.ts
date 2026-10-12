@@ -7,6 +7,8 @@ import { TravelSceneState, routePosition } from './TravelSceneState';
 import { TravelSceneLighting } from './TravelSceneLighting';
 import { TravelInkMesh, TravelRouteInk, polygonInk, travelLandmarks, travelShadows, footprintHighlight } from './TravelSceneGeometry';
 import { nodeAt } from './Visual';
+import { PageBackground } from './PageBackground';
+import { pageLayout } from './Viewport';
 
 type Piece={pivot:Node;rotation:Node;image:TravelAtlasSprite;at:number[];extent:number[];origin:number[];angle:number};
 const FOOTPRINT='res://travel/assets/travel_footprint_ink_v1.png';
@@ -19,7 +21,7 @@ export const TRAVEL_SCENE_BUFFER_BYTES=12*1024*1024;
 let serial=0;
 export class TravelSceneView {
     readonly root:Node;readonly lighting:TravelSceneLighting;readonly route:TravelRouteInk;
-    private base:Piece;private clouds:Piece[]=[];private branches:Piece[]=[];private leaves:Piece[]=[];private bell:{chain?:Piece;body:Piece;tongue:Piece;cover?:Piece};
+    private background:PageBackground;private volume:any;private clouds:Piece[]=[];private branches:Piece[]=[];private leaves:Piece[]=[];private bell:{chain?:Piece;body:Piece;tongue:Piece;cover?:Piece};
     private routeSprites:any[]=[];private shadow:any;private footprints:Array<{image:Piece;halo:any;at:number[];angle:number;highlight:number}>=[];
     private lastShadow='';private renders=0;
     static async create(parent:Node,assets:GameAssets,scope:Scope,clock:HomeClock,state:TravelSceneState){
@@ -30,7 +32,7 @@ export class TravelSceneView {
     }
     private constructor(parent:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock,readonly state:TravelSceneState,route:TravelRouteInk){
         const c=state.config;this.route=route;this.root=nodeAt(parent,'ConfiguredTravelScene',0,0,c.canvas[0],c.canvas[1]);scope.own(()=>{this.root.active=false;this.root.destroy();});this.lighting=new TravelSceneLighting(this.root,assets,scope,c);
-        this.base=this.piece('OriginalMapBase',c.base,[0,0,...assets.art(c.base).size],[0,0],c.canvas,[0,0]);
+        this.background=new PageBackground(this.root,assets,scope,c.base,'OriginalMapBase',undefined,0,1280,225);this.lighting.bind(this.background.sprite);
         this.clouds=c.clouds.map((v:any,i:number)=>{const p=this.atlas('Cloud'+i,v.region,v.at,v.size);this.lighting.tint(p.image.sprite,v.opacity);return p;});
         this.shadow=this.ink('SceneShadows',travelShadows(state,this.lighting.update(clock.hour())));
         const leaf=(i:number)=>{const depth=state.leaves[i].depth,region=depth>.7?['leaf_foreground_left','leaf_foreground_right','leaf_foreground_middle'][Math.floor(i/3)%3]:c.leaves.regions[i%c.leaves.regions.length];this.leaves[i]=this.atlas('FallingLeaf'+i,region,[0,0],[1,1]);};
@@ -46,7 +48,7 @@ export class TravelSceneView {
         this.branches=c.branches.map((v:any,i:number)=>this.atlas('Branch'+i,v.region,v.at,v.size,v.pivot));
         const b=c.bell,chain=b.chain?this.atlas('BellChain',b.chain.region,b.chain.at,b.chain.size):undefined,body=this.atlas('BellBody',b.body_region,b.position,b.body_size,b.body_pivot),tongue=this.atlas('BellTongue',b.clapper_region,b.position,b.clapper_size,b.clapper_pivot),cover=b.occluder?this.atlas('BellOccluder',b.occluder.region,b.occluder.at,b.occluder.size):undefined;this.bell={chain,body,tongue,cover};
         for(let i=0;i<state.leaves.length;i++)if(state.leaves[i].depth>.7)leaf(i);
-        this.ink('SharedAtmosphericVolume',polygonInk([[0,0],[c.canvas[0],0],c.canvas,[0,c.canvas[1]]],[1,1,1,1]),2);
+        this.volume=this.ink('SharedAtmosphericVolume',polygonInk([[0,0],[c.canvas[0],0],c.canvas,[0,c.canvas[1]]],[1,1,1,1]),2);
         this.render();
     }
     private piece(name:string,resource:string,region:number[],at:number[],extent:number[],origin:number[],drawingScale=false):Piece{
@@ -61,6 +63,7 @@ export class TravelSceneView {
         const node=nodeAt(this.root,name),sprite:any=node.addComponent(meshSprite());sprite.configure(mesh,[1,1]);sprite.spriteFrame=this.assets.frame(this.state.config.atlas,this.scope);sprite.sizeMode=Sprite.SizeMode.CUSTOM;this.lighting.bind(sprite,mode);node.active=mesh.indices.length>0;return sprite;
     }
     private redraw(sprite:any,mesh:TravelInkMesh){const old=sprite.mesh;if(old.vertices.length===mesh.vertices.length&&old.indices.length===mesh.indices.length){old.vertices.set(mesh.vertices);old.vertexUV.set(mesh.vertexUV);old.vertexData.set(mesh.vertexData);old.indices.set(mesh.indices);sprite.geometryChanged();}else sprite.configure(mesh,[1,1]);sprite.node.active=mesh.indices.length>0;}
+    resize(height:number,headerInset=0){this.background.resize(height,pageLayout(height),headerInset);const l=pageLayout(height),left=-l.x/l.scale,right=(720-l.x)/l.scale;this.redraw(this.volume,polygonInk([[left,l.top],[right,l.top],[right,l.bottom],[left,l.bottom]],[1,1,1,1]));this.lighting.resize(height);}
     advance(delta:number){this.state.advance(delta);this.render();}
     render(){
         if(!this.scope.active||this.state.disposed)return;this.renders++;const c=this.state.config,s=this.state,light=this.lighting.update(this.clock.hour());

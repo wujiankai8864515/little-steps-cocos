@@ -1,0 +1,70 @@
+✔ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (7.60825ms)
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (1.508042ms)
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (0.339458ms)
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (10001.340125ms)
+✖ Saved peach is bound during preparation, before the first visible render target frame (3.507708ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10323.516959
+
+✖ failing tests:
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:53:1
+✖ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (1.508042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:55:135)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:59:1
+✖ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (0.339458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:60:304)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:63:1
+✖ Budget and constructor failures release partial pages and allow later retry under the original owner (10001.340125ms)
+  'test timed out after 10000ms'
+
+test at games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:69:1
+✖ Saved peach is bound during preparation, before the first visible render target frame (3.507708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  8 !== 9
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/xiaoyu-cocos/test/wardrobe-surface.test.cjs:70:281)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 8,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

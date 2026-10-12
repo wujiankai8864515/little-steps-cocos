@@ -18,6 +18,7 @@ CCEffect %{
         cullMode: none
       properties:
         pageOrigin: { value: [0, 0, 1, 1] }
+        pageState: { value: [0, 1280, 1280, 1] }
         wardrobeState: { value: [0, 0.5, 0, 1] }
 }%
 
@@ -49,7 +50,7 @@ CCProgram room-fs %{
   in vec2 uv0;
   in vec4 color;
   in vec2 canvasPosition;
-uniform WardrobeLight {vec4 pageOrigin;vec4 wardrobeState;};
+uniform WardrobeLight {vec4 pageOrigin;vec4 pageState;vec4 wardrobeState;};
 #define night wardrobeState.x
 #define solar_phase wardrobeState.y
 #define glass_pass (wardrobeState.z>0.5 && wardrobeState.z<1.5)
@@ -67,7 +68,7 @@ vec4 frag(){vec2 point=vec2((canvasPosition.x-pageOrigin.x)/pageOrigin.z,(pageOr
  }
  else if(shadow_pass){result=vec4(vec3(0.11,0.065,0.07),result.a*0.24);}
  else {
- vec2 origin=vec2(-90.0,mix(110.0,330.0,solar_phase));
+ vec2 origin=vec2(-90.0,pageState.x+mix(110.0,330.0,solar_phase));
  vec2 axis=normalize(vec2(mix(0.85,1.4,solar_phase),0.92));
  vec2 relative=point-origin;
  float distance_along=dot(relative,axis);
@@ -85,9 +86,9 @@ vec4 frag(){vec2 point=vec2((canvasPosition.x-pageOrigin.x)/pageOrigin.z,(pageOr
   float a=exp(-0.5*pow((angle+0.19)/0.052,2.0));
   float b=exp(-0.5*pow((angle-0.015)/0.075,2.0));
   float c=exp(-0.5*pow((angle-0.235)/0.058,2.0));
-  float depth=exp(-length(relative)/1900.0);
+  float depth=exp(-length(relative)/(1900.0*max(1.0,pageState.z/1280.0)));
   float entry=smoothstep(-30.0,145.0,distance_along);
-  float floor_fade=1.0-smoothstep(860.0,1280.0,point.y);
+  float floor_fade=1.0-smoothstep(pageState.y-420.0,pageState.y,point.y);
   float volume=(a*0.78+b+c*0.70)*depth*entry*floor_fade;
   result=vec4(tint,min(0.34,volume*mix(0.42,0.27,night))*volume_gain);
  }

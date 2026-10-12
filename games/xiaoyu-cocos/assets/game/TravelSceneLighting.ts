@@ -26,6 +26,7 @@ export class TravelSceneLighting {
         if(mesh.vertexData[0]===Math.fround(alpha)&&mesh.vertexData[1]===Number(tinted)&&mesh.vertexData[2]===Math.fround(lightened))return;
         for(let i=0;i<count;i++)mesh.vertexData.set([alpha,Number(tinted),lightened],i*3);sprite.geometryChanged();
     }
+    resize(height:number){const top=-Math.max(0,(height-1280)/2);for(const m of this.materials.values())this.config.light.beam_portals.forEach((p:any,i:number)=>m.setProperty('portal'+i,new Vec4(p.at[0],p.at[1]+top,p.length-top,p.strength*1.65)));}
     update(hour:number){
         this.light=travelLight(hour,this.config);const s=this.light,o=this.root.worldPosition,z=this.root.worldScale;
         const origin=new Vec4(o.x,o.y,z.x,z.y),cast=new Vec4(-s.direction[0],-s.direction[1],s.daylight,s.daylight+.60*s.moon_weight),light=new Vec4(.56+.44*s.daylight,.70+.21*s.daylight,1-.28*s.daylight,s.daylight+s.moon_weight);

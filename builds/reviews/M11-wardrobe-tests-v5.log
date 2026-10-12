@@ -1,0 +1,13 @@
+✔ Wardrobe waits for full content draws, fits fixed pixels, and maps screen presses into unchanged source coordinates (7.676291ms)
+✔ Offscreen hanging return owns an onscreen hit area, rejects another finger and withdrawn/stale actions, and cleans listeners (1.597709ms)
+✔ Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws (8.457041ms)
+✔ Budget and constructor failures release partial pages and allow later retry under the original owner (1.076209ms)
+✔ Saved peach is bound during preparation, before the first visible render target frame (1.562167ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.416542
