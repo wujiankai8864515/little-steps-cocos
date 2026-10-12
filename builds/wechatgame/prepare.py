@@ -110,7 +110,7 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False, res
         name_ = data['bundleName']
         # Keep code and small shared startup resources local. Remote data keeps
         # optional pages lazy; do not zip a whole optional atlas bundle on entry.
-        optional = name_ not in ('resources', 'core_code', 'shared_boot_ui')
+        optional = name_ not in ('resources', 'core_code', 'shared_boot_ui', 'loading')
         remote = resource_mode == 'remote' and optional
         compression = 'subpackage' if resource_mode == 'subpackage' and optional else 'merge_dep'
         # Creator 3.8 resolves a named project Bundle configuration. Older
@@ -180,6 +180,7 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False, res
         'outputName': 'wechatgame', 'buildPath': str(stage / 'output'),
         'startScene': SCENE, 'scenes': [{'url': 'db://assets/scene.scene', 'uuid': SCENE}],
         'debug': False, 'sourceMaps': False, 'md5Cache': True,
+        'useSplashScreen': False,
         'server': server.rstrip('/') + '/' if server else '', 'mainBundleIsRemote': False,
         'startSceneAssetBundle': False, 'bundleConfigs': bundles,
         'packages': {'wechatgame': {'appid': appid, 'orientation': 'portrait',

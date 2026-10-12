@@ -49,7 +49,7 @@ python3 -B builds/build.py wechatgame
 
 首次安装减包依赖：`python3 -m pip install --target migration/.cache/python -r builds/wechatgame/requirements.txt`。缓存不进入打包仓或 Git。
 
-首屏由渠道 `first-screen.js` 直接用 WebGL 绘制暖色 loading，入口在 SystemJS 和引擎初始化前调用；Cocos 场景使用同色底和无资源 loading 衔接。官方 `separateEngine` 保留兼容回退，实际主包门槛仍检查生成字节；不移除必要引擎模块来伪造插件体积。平台配置、入口钩子和音频/纹理转换脚本都在本渠道。
+首屏界面使用原来的完整 Cocos `LoadingPage`，所需约 300 KB 资源放在本地主包 Bundle，避免先等待微信 loading 分包。引擎初始化期间只有同色底，没有另外一套简陋进度界面；`useSplashScreen=false` 关闭 Cocos 标志页。官方 `separateEngine` 使用已授权的 CocosCreatorV3 3.8.8 插件，保留兼容回退；实际主包门槛仍检查生成字节。平台配置、音频/纹理转换和模板都在本渠道。
 
 公共资源 Bundle 优先级高于页面 Bundle，但低于引擎内置包。运行时先完成公共依赖的 `loadBundle`，随后按页面取得具体资源；不把可选页面资源全部塞入启动公共包。每次审计记录实际 Bundle 依赖、清单开销及 native 内容重复字节。原生主包仍按 4 MB、完整代码包按 30 MB、Home 依赖闭包按 19 MB 保守检查，静态通过不代表手机性能或画质验收。
 

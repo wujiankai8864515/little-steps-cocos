@@ -1,4 +1,5 @@
-// Native WeChat loading before SystemJS/engine startup. One draw, no logo,
+// Neutral canvas during engine startup; the complete loading UI is Cocos.
+// One draw, no logo,
 // images, fonts, downloads, timer loop or new 2D context on the game canvas.
 let gl, program, buffer, progress = 0, ready;
 function draw() {
@@ -23,10 +24,6 @@ function start(alpha, antialias, useWebgl2) {
     void main(){
       float glow=max(0.,1.-length((uv-vec2(.5,.52))*vec2(1.5,1.1)));
       vec3 color=mix(vec3(.974,.865,.677),vec3(.999,.958,.845),glow*glow);
-      vec2 p=vec2(uv.x,1.-uv.y);
-      if(p.y>.728&&p.y<.744&&p.x>.253&&p.x<.747){
-        color=vec3(.86,.76,.58);if(p.x<.253+.494*progress)color=vec3(.87,.65,.25);
-      }
       gl_FragColor=vec4(color,1.);
     }`;
     if (gl2) {
@@ -43,7 +40,7 @@ function start(alpha, antialias, useWebgl2) {
     gl.deleteShader(vertex);gl.deleteShader(fragment);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
     buffer = gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER, buffer);gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
-    draw();console.info('[LittleSteps] NATIVE_LOADING_FIRST_DRAW ' + Date.now());
+    draw();console.info('[LittleSteps] ENGINE_INIT_BACKGROUND ' + Date.now());
     return ready = Promise.resolve();
 }
 function setProgress(value) {progress=Math.min(.99,Math.max(0,value));draw();return Promise.resolve();}

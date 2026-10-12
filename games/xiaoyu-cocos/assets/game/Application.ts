@@ -29,7 +29,6 @@ import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
 import { box } from './Viewport';
 import { nodeAt } from './Visual';
-import { BootstrapLoading } from './BootstrapLoading';
 
 type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage | WardrobePage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
@@ -80,13 +79,11 @@ export class Application {
         this.scope.own(()=>{input.off(Input.EventType.TOUCH_START,gesture);input.off(Input.EventType.MOUSE_DOWN,mouse);input.off(Input.EventType.KEY_DOWN,gesture);game.off(Game.EVENT_HIDE,hide);game.off(Game.EVENT_SHOW,show);this.root.active=false;this.root.destroy();});
     }
     async start(route: 'login' | 'home' = 'login') {
-        const bootstrap=new BootstrapLoading(this.root,this.height);this.scope.own(()=>bootstrap.root.isValid&&bootstrap.dispose());
         await this.assets.initialize(this.scope);
-        if(route==='home'){bootstrap.dispose();return this.directHome();}
+        if(route==='home')return this.directHome();
         const loadingScope=lifetime(this.scope);
         await this.assets.acquireGroups(['loading'],loadingScope);
         const loading=new LoadingPage(this.root,this.assets,loadingScope,this.height);
-        bootstrap.dispose();
         this.current={page:loading,scope:loadingScope};this.page=loading;this.fitPage(loading);
         const launch=async()=>{
             loading.setStage('正在准备登录页面…');
