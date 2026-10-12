@@ -15,6 +15,7 @@ from urllib.parse import urlsplit
 from common import check_catalog, relocate_path, capture_inputs
 from common import install_templates
 from assets import optimize
+from isolation import prepare as isolate_loading
 
 ROOT = Path(__file__).resolve().parents[2]
 BOOT = '8dacabd2-f20d-42ab-aa32-8ffb576527d7'
@@ -98,11 +99,13 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False, res
     assert linked.stat().st_mode & 0o222 == 0
     bundles, packaging_overrides = [], []
     packaging_overrides.extend(optimize(project, stage, asset_policy or {}))
+    packaging_overrides.extend(isolate_loading(project,stage))
+    isolated_loading=(project/'assets/bundles/runtime_data').is_dir()
     priority = {'core_code': 6, 'shared_boot_ui': 6, 'shared_room_visual': 5,
                 'loading': 4, 'login': 4, 'comic': 4, 'home': 3, 'outfit_visual': 3}
     # resources.load() uses dynamic paths, so the built-in resources bundle
     # must be explicitly included alongside the game's custom bundles.
-    for meta in [project / 'assets/resources.meta', *sorted((project / 'assets/bundles').glob('*.meta'))]:
+    for meta in [p for p in [project/'assets/resources.meta',project/'assets/game.meta',project/'assets/plugins.meta',*sorted((project/'assets/bundles').glob('*.meta'))] if p.is_file()]:
         metadata = json.loads(meta.read_text())
         data = metadata['userData']
         if not data.get('isBundle'):
@@ -110,8 +113,8 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False, res
         name_ = data['bundleName']
         # Keep code and small shared startup resources local. Remote data keeps
         # optional pages lazy; do not zip a whole optional atlas bundle on entry.
-        optional = name_ not in ('resources', 'core_code', 'shared_boot_ui', 'loading')
-        remote = resource_mode == 'remote' and optional
+        optional = name_!='loading' if isolated_loading else name_ not in ('resources', 'core_code', 'shared_boot_ui', 'loading')
+        remote = resource_mode == 'remote' and optional and name_ not in ('gameplay_code','framework_code')
         compression = 'subpackage' if resource_mode == 'subpackage' and optional else 'merge_dep'
         # Creator 3.8 resolves a named project Bundle configuration. Older
         # isRemoteBundle maps and CLI IBundleOptions do not select that profile.

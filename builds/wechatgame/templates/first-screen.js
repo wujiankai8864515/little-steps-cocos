@@ -1,4 +1,8 @@
-require('./platform.js');
+// Load channel/game capabilities only after the complete Cocos loading draws.
+globalThis.LittleStepsLoadPlatform=()=>{
+    const config=require('./runtime-framework.js');
+    require('./'+config.platform)(config);
+};
 // Neutral canvas during engine startup; the complete loading UI is Cocos.
 // One draw, no logo,
 // images, fonts, downloads, timer loop or new 2D context on the game canvas.

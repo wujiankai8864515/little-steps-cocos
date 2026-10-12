@@ -1,10 +1,10 @@
-import { core } from './Engine';
+import { loadingMath } from './LoadingMath';
 const KEYS = [[0,-12,-26],[7,-27,-32],[10,-27,-32],[14,9,-27],[15,9,-27],[18,-19,-31],[24,-22,-32],[28,9,-27],[29,9,-27],[32,-20,-31],[36,-24,-32],[40,9,-27],[41,9,-27],[44,-19,-30],[51,-15,-28],[58,-12,-26],[65,-12,-26]];
 const HITS = [14,28,40];
 const RESPONSE = [[0,0],[1,.72],[2,1],[3,.76],[4,.38],[5,.08],[6,-.15],[8,-.14],[10,.055],[12,0]];
 export function loadingPose(frame: number) {
     frame = ((frame % 66) + 66) % 66;
-    const m = core.Math2D, T = (p: number[]) => m.trs(p), S = (s: number[]) => m.trs([0,0],0,s), R = (d: number) => m.trs([0,0],d*Math.PI/180);
+    const m = loadingMath, T = (p: number[]) => m.trs(p), S = (s: number[]) => m.trs([0,0],0,s), R = (d: number) => m.trs([0,0],d*Math.PI/180);
     const chain = (...matrices: number[][]) => matrices.reduce((a,b) => m.multiply(a,b),m.identity());
     let motion = [-12,-26], spring = 0, weight = 0;
     for (let i=0;i<KEYS.length-1;i++) {

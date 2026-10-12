@@ -1,6 +1,12 @@
 // Channel capabilities consumed by the game through a small optional port.
 const host = typeof wx === 'undefined' ? null : wx;
+module.exports = function install(config) {
 globalThis.LittleStepsPlatform = {
+    runtimeDataBundle: 'runtime_data',
+    installFramework() {
+        const load=globalThis.__wxRequire||require;
+        for(const path of config.scripts)load('./'+path);
+    },
     haptics: {
         supported: () => !!host && typeof host.vibrateShort === 'function',
         pulse(kind) {
@@ -14,4 +20,5 @@ globalThis.LittleStepsPlatform = {
             }
         }
     }
+};
 };

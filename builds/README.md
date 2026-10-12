@@ -12,7 +12,8 @@ builds/
     ├── build.py               # 微信构建与固定项目更新
     ├── prepare.py             # 微信构建镜像及平台配置
     ├── assets.py              # 仅构建镜像的背景/音频减包
-    ├── startup.py             # 校验并提前绘制原生loading
+    ├── startup.py             # 同色启动底和额外渠道文件安装
+    ├── isolation.py           # Loading独立及游戏代码延迟分包
     ├── audit.py               # 微信包检查
     ├── stage.py               # 正式交付暂存，保留全部门禁
     ├── serve.py               # 微信本机资源服务
@@ -49,7 +50,7 @@ python3 -B builds/build.py wechatgame
 
 首次安装减包依赖：`python3 -m pip install --target migration/.cache/python -r builds/wechatgame/requirements.txt`。缓存不进入打包仓或 Git。
 
-首屏界面使用原来的完整 Cocos `LoadingPage`，所需约 300 KB 资源放在本地主包 Bundle，避免先等待微信 loading 分包。引擎初始化期间只有同色底，没有另外一套简陋进度界面；`useSplashScreen=false` 关闭 Cocos 标志页。官方 `separateEngine` 使用已授权的 CocosCreatorV3 3.8.8 插件，保留兼容回退；实际主包门槛仍检查生成字节。平台配置、音频/纹理转换和模板都在本渠道。
+首屏保留完整 Cocos Loading 的美术、动作和进度界面，由独立的 `assets/startup` 代码及 `loading` 本地 Bundle 实现；只引用四张动画图片、独立的小字体和小清单，不依赖游戏框架、公共 UI 或全量资源目录。第一帧实际绘制后，才加载 `framework_code`、`runtime_data` 和 `gameplay_code`，再进入登录/小屋。渠道构建把全量 resources 移至隔离镜像的 runtime_data，不改变原工程资源位置。游戏页面代码在首屏之后加载，页面图片仍按需加载。引擎初始化期间只有同色底，没有另一套简陋进度界面；完整 Cocos 界面需要引擎初始化后才能绘制。`useSplashScreen=false` 关闭 Cocos 标志页。官方 `separateEngine` 使用已授权的 CocosCreatorV3 3.8.8 插件，保留兼容回退；实际主包门槛仍检查生成字节。
 
 公共资源 Bundle 优先级高于页面 Bundle，但低于引擎内置包。运行时先完成公共依赖的 `loadBundle`，随后按页面取得具体资源；不把可选页面资源全部塞入启动公共包。每次审计记录实际 Bundle 依赖、清单开销及 native 内容重复字节。原生主包仍按 4 MB、完整代码包按 30 MB、Home 依赖闭包按 19 MB 保守检查，静态通过不代表手机性能或画质验收。
 
@@ -63,7 +64,7 @@ python3 -B builds/build.py wechatgame --readback migration/reviews/READBACK.json
 
 ## 模板和渠道扩展
 
-微信固定配置和额外文件放 `wechatgame/templates/`，按最终包中的相对路径组织。Creator原生合并 `game.json`、`project.config.json`；普通文件按路径复制。需要额外脚本自动执行时，通过 `game.ejs` 显式引入，不把旧的生成入口和带哈希资源作为模板。
+微信固定配置和额外文件放 `wechatgame/templates/`，按最终包中的相对路径组织。Creator原生合并 `game.json`、`project.config.json`；渠道脚本显式复制额外的 `platform.js`，随后移入 framework_code 分包，不能假定 Creator 自动复制任意 JS 文件。需要额外脚本自动执行时，通过 `game.ejs` 显式引入，不把旧的生成入口和带哈希资源作为模板。
 
 每次打包从渠道模板同步出真实的 `games/xiaoyu-cocos/build-templates/wechatgame`，并在隔离镜像中同步一次。Creator 3.8.8 的模板复制不能直接使用平台目录软链接，因此这里使用自动生成且不进 Git 的真实目录；只编辑渠道内的 `templates/`。新增渠道时，将该渠道自己的 `build.py`、`config.json`、`templates/` 放在新渠道目录；公共入口调用该渠道脚本。
 

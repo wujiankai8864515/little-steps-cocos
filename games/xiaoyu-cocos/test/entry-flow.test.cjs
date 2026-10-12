@@ -8,8 +8,8 @@ const context = vm.createContext({Float32Array, Uint16Array});
 vm.runInContext(fs.readFileSync(path.resolve(__dirname,'../../../engines/travel-core/dist/travel-core.js'),'utf8'),context);
 const core = context.LittleStepsCore;
 function load(name) {
-    const output={},source=fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8');
-    vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2015}}).outputText,{exports:output,require:()=>({core}),Math,Number});return output;
+    const output={},source=fs.readFileSync(path.join(__dirname,name==='LoadingMotion'||name==='LoadingMath'?'../assets/startup':'../assets/game',name+'.ts'),'utf8');
+    vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2015}}).outputText,{exports:output,require:specifier=>specifier==='./LoadingMath'?load('LoadingMath'):{core},Math,Number});return output;
 }
 const {OpeningClock}=load('OpeningClock'),{loadingPose}=load('LoadingMotion');
 test('Opening never skips time while paused or accepts the final action before the full hold',()=>{

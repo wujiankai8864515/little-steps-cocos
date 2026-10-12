@@ -100,9 +100,14 @@ def install_templates(root=ROOT):
     return project_templates / 'wechatgame'
 
 
+def catalog_path(project):
+    assets=Path(project)/'assets'
+    original=assets/'resources/source-catalog.json'
+    return original if original.is_file() else assets/'bundles/runtime_data/source-catalog.json'
+
 def check_catalog(project):
     assets = Path(project) / 'assets'
-    catalog = json.loads((assets / 'resources/source-catalog.json').read_text())
+    catalog = json.loads(catalog_path(project).read_text())
     expected = set()
     for key, spec in catalog['assets'].items():
         kind, path = spec['kind'], spec['path']
@@ -144,7 +149,8 @@ OPTIONAL = frozenset(('travel_visual', 'departure_visual', 'darkroom', 'photo_vi
 
 
 def audit_home_payload(project, output, remote_bundles):
-    groups = json.loads((Path(project) / 'assets/resources/source-catalog.json').read_text())['groups']
+    groups = json.loads(catalog_path(project).read_text())['groups']
+    startup = frozenset(('main','loading','internal')) if 'runtime_data' in groups else STARTUP
     output = Path(output)
     remote = set(remote_bundles)
     visiting, visited, bundles, excluded, errors = set(), set(), [], [], []
@@ -177,7 +183,7 @@ def audit_home_payload(project, output, remote_bundles):
             raise ValueError('Missing or escaping output bundle: ' + name)
         row = {'name': name, 'directory': root.relative_to(output).as_posix(),
                'fileCount': len(paths), 'rawBytes': sum(p.stat().st_size for p in paths)}
-        (excluded if name in STARTUP else bundles).append(row)
+        (excluded if name in startup else bundles).append(row)
         visiting.remove(name)
         visited.add(name)
 
@@ -192,7 +198,7 @@ def audit_home_payload(project, output, remote_bundles):
             'passed': passed, 'limitBytes': HOME_LIMIT, 'rawDeferredBytes': total,
             'excessBytes': max(0, total - HOME_LIMIT), 'bundles': bundles,
             'excludedStartupBundles': excluded, 'forbiddenDependencies': forbidden,
-            'errors': errors, 'method': 'Exact output bytes of the transitive Home bundle closure; only core_code/shared_boot_ui excluded as startup. Not network transfer, startup time or memory.',
+            'errors': errors, 'method': 'Exact output bytes of the transitive Home bundle closure; excluded startup bundles: '+','.join(sorted(startup))+'. Not network transfer, startup time or memory.',
             'sourceContract': 'little-steps/build/check_loading_contract.py: Home non-startup dependency packs <= 19,000,000 bytes; no travel/departure dependency.'}
 
 class PreviewHandler(SimpleHTTPRequestHandler):

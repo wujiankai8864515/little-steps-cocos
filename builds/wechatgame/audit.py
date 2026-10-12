@@ -13,12 +13,27 @@ from common import audit_home_payload
 
 
 def startup_resources_present(output):
-    configs = list((output / 'assets/resources').glob('config*.json'))
+    root=output/'assets/resources'
+    if not root.is_dir():root=output/'subpackages/runtime_data'
+    if not root.is_dir():root=output/'assets/runtime_data'
+    if not root.is_dir():root=output/'remote/runtime_data'
+    configs = list(root.glob('config*.json'))
     if len(configs) != 1:
         return False
     config = json.loads(configs[0].read_text())
     paths = {item[0] for item in config.get('paths', {}).values()}
     return {'source-catalog', 'source-scenes', 'effects/login-peek'} <= paths
+
+def loading_isolated(output,settings):
+    if 'runtime_data' not in settings['assets'].get('projectBundles',[]):return True
+    preload={x['bundle'] for x in settings['assets'].get('preloadBundles',[])}
+    forbidden={'framework_code','gameplay_code','runtime_data','shared_boot_ui','core_code'}
+    main='\n'.join(p.read_text() for p in (output/'assets/main').glob('*.js'))
+    config=json.loads(next((output/'assets/loading').glob('config*.json')).read_text())
+    return (not(preload&forbidden) and not settings['plugins']['jsList']
+            and not(config.get('deps',[]) and set(config['deps'])&forbidden)
+            and not any(name in main for name in ['Application.ts','HomePage.ts','PhotoPage.ts','WardrobePage.ts','DarkroomPage.ts','LittleStepsCore'])
+            and not(output/'platform.js').exists())
 
 
 def audit(name):
@@ -77,6 +92,7 @@ def audit(name):
         'sourceCatalogComplete': not check_catalog(stage / 'games/xiaoyu-cocos')['missing'],
         'wechatEntryFiles': all((output / p).is_file() for p in ['game.js', 'game.json', 'project.config.json']),
         'startupResourcesBundlePresent': startup_resources_present(output),
+        'loadingIndependentFromGameplay': loading_isolated(output,settings),
         'portrait': game.get('deviceOrientation') == 'portrait',
         'appidMatchesConfiguration': project.get('appid') == config['packages']['wechatgame']['appid'],
         'remoteBundlesMatch': set(assets.get('remoteBundles', [])) == expected_remote,

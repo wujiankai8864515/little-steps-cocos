@@ -17,6 +17,7 @@ from common import install_templates as install, relocate_path, require_current_
 from prepare import ROOT, freeze, sha
 from serve import DIRECTORY, HEALTH_PATH
 from startup import finalize, install_extras
+from isolation import finalize as finalize_isolation
 
 CACHE = ROOT / 'migration/.cache/wechatgame'
 DESTINATION = ROOT / 'builds/wechatgame/project'
@@ -222,6 +223,8 @@ def run(args):
         if settings.get('earlyLoading'):
             finalize(ROOT / 'migration/work' / name / 'output/wechatgame')
         install_extras(ROOT / 'migration/work' / name / 'output/wechatgame')
+        manifest['isolation']=finalize_isolation(ROOT / 'migration/work' / name / 'output/wechatgame')
+        write_json(record,manifest)
     report = audit(name)
     write_json(ROOT / 'migration/reviews' / (name + '-package.json'), report)
     require_current_inputs(manifest, ROOT)

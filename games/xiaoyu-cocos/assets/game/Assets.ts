@@ -25,9 +25,10 @@ export class GameAssets {
     private values = new Map<string, Asset>();
     private alphaValues = new Map<string, Map<string, any>>();
     private textureImages = new Map<Texture2D, ImageAsset>();
+    get dataBundle(){return assetManager?.getBundle?.('runtime_data')||resources;}
 
     async initialize(scope: Scope) {
-        const load = (name: string) => new Promise<JsonAsset>((resolve, reject) => resources.load(name, JsonAsset, (e, value) => e ? reject(e) : resolve(value)));
+        const load = (name: string) => new Promise<JsonAsset>((resolve, reject) => this.dataBundle.load(name, JsonAsset, (e, value) => e ? reject(e) : resolve(value)));
         const [catalog, scenes] = await scope.guard(Promise.all([load('source-catalog'), load('source-scenes')]));
         this.catalog = catalog.json as any;
         this.scenes = scenes.json.scenes;
@@ -113,7 +114,7 @@ export class GameAssets {
                 try {texture.image=image;texture.setFilters(Texture2D.Filter.LINEAR,Texture2D.Filter.LINEAR);texture.setWrapMode(Texture2D.WrapMode.CLAMP_TO_EDGE,Texture2D.WrapMode.CLAMP_TO_EDGE);texture.addRef();this.textureImages.set(texture,image);this.values.set(key,texture);return texture;}
                 catch(error){texture.destroy();image.decRef();throw error;}
             }
-            const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
+            const bundle = spec.kind==='effect'?this.dataBundle:await this.bundle(spec.bundle);
             const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
             const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle)
                 : spec.kind==='texture'&&spec.mipResources?.length ? await this.authoredMipmapTexture(key,spec,bundle)

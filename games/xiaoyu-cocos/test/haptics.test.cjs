@@ -14,7 +14,7 @@ test('Repeated callbacks cannot turn into a continuous vibration and unavailable
  for(const port of [undefined,{supported(){throw Error('device');}},{supported:()=>true,pulse(){throw Error('driver');}}]){const h=new HapticFeedback(port,broken);assert.doesNotThrow(()=>h.setEnabled(true));assert.equal(h.pulse('light'),false);}
 });
 test('WeChat channel dispatches light/heavy short feedback and long feedback without requesting permission',()=>{
- const calls=[],context={wx:{vibrateShort:o=>calls.push(['short',o.type]),vibrateLong:()=>calls.push(['long'])},globalThis:{}};
+ const calls=[],context={wx:{vibrateShort:o=>calls.push(['short',o.type]),vibrateLong:()=>calls.push(['long'])},globalThis:{},module:{exports:{}}};
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../../..','builds/wechatgame/templates/platform.js'),'utf8'),context);
- const port=context.globalThis.LittleStepsPlatform.haptics;assert.equal(port.supported(),true);['light','heavy','long'].forEach(kind=>port.pulse(kind));assert.deepEqual(calls,[['short','light'],['short','heavy'],['long']]);
+ assert.equal(context.globalThis.LittleStepsPlatform,undefined);context.module.exports({scripts:[]});const port=context.globalThis.LittleStepsPlatform.haptics;assert.equal(port.supported(),true);['light','heavy','long'].forEach(kind=>port.pulse(kind));assert.deepEqual(calls,[['short','light'],['short','heavy'],['long']]);
 });

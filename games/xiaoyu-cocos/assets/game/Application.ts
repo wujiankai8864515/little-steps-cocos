@@ -25,13 +25,12 @@ import { DEPARTURE_EFFECTS } from './HomeDepartureVisual';
 import { DarkroomPage, DarkroomRetainedState } from './DarkroomPage';
 import { DARKROOM_EFFECTS } from './DarkroomLighting';
 import { HOME_EFFECTS } from './HomeLighting';
-import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
 import { box } from './Viewport';
 import { nodeAt } from './Visual';
 import { bindHaptics, haptics } from './Haptics';
 
-type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage | WardrobePage;
+type Page = LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage | WardrobePage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
 export class Application {
     readonly assets = new GameAssets();
@@ -83,21 +82,14 @@ export class Application {
     async start(route: 'login' | 'home' = 'login') {
         await this.assets.initialize(this.scope);
         if(route==='home')return this.directHome();
-        const loadingScope=lifetime(this.scope);
-        await this.assets.acquireGroups(['loading'],loadingScope);
-        const loading=new LoadingPage(this.root,this.assets,loadingScope,this.height);
-        this.current={page:loading,scope:loadingScope};this.page=loading;this.fitPage(loading);
-        const launch=async()=>{
-            loading.setStage('正在准备登录页面…');
-            try{await this.login();}catch(error){if(this.scope.active){console.error('[LittleSteps] login prepare failed',error);loading.failure();}}
-        };
-        loading.onRetry=()=>{launch();};await launch();
+        return this.login();
     }
+    startFromBoot(){return this.start();}
     private async login() {
         const scope=lifetime(this.scope);
         try {
             await this.assets.acquireGroups(['login'],scope);
-            const effect=await scope.guard(new Promise<EffectAsset>((resolve,reject)=>resources.load('effects/login-peek',EffectAsset,(e,v)=>e?reject(e):resolve(v))));
+            const effect=await scope.guard(new Promise<EffectAsset>((resolve,reject)=>this.assets.dataBundle.load('effects/login-peek',EffectAsset,(e,v)=>e?reject(e):resolve(v))));
             const page=new LoginPage(this.root,this.assets,scope,effect,this.height);page.root.active=false;
             const prepared={page,scope};this.loginPage=prepared;
             page.onEnter=()=>{this.openComic();};page.onCancel=()=>this.cancelEntry();
