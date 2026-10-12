@@ -11,6 +11,7 @@ import json
 import math
 import shutil
 import subprocess
+from build_templates import install as install_templates
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -36,7 +37,8 @@ def main():
     stage = ROOT / 'builds/work' / args.name
     if stage.exists(): raise FileExistsError('Use a new candidate name; retain previous evidence')
     stage.mkdir(parents=True)
-    for directory in ['engines/travel-core', 'games/xiaoyu-cocos']:
+    install_templates(ROOT)
+    for directory in ['engines/travel-core', 'games/xiaoyu-cocos', 'builds/templates']:
         shutil.copytree(ROOT / directory, stage / directory, symlinks=True, ignore=shutil.ignore_patterns('.git', 'library', 'temp', 'local', 'build', 'profiles', 'node_modules', '.DS_Store'))
     project = stage / 'games/xiaoyu-cocos'
     boot = project / 'assets/Boot.ts'
@@ -81,7 +83,7 @@ def main():
     }
     (stage / 'build-config.json').write_text(json.dumps(config, indent=2) + '\n')
     files = []
-    for directory in ['engines/travel-core', 'games/xiaoyu-cocos']:
+    for directory in ['engines/travel-core', 'games/xiaoyu-cocos', 'builds/templates']:
         for path in sorted((stage / directory).rglob('*')):
             if path.is_file(): files.append({'path': str(path.relative_to(stage)), 'sha256': digest(path), 'symlink': str(path.readlink()) if path.is_symlink() else None})
     manifest = {

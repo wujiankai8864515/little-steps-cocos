@@ -1,0 +1,49 @@
+{
+  "item": "M12.01",
+  "scope": "按平台维护模板、微信固定输出目录与开发者工具入口",
+  "failures": [
+    {
+      "trigger": "wechat-workspace-v1在受限环境启动Creator",
+      "evidence": "Creator进程退出码-6，构建日志为空；同命令允许桌面程序运行后v2构建退出36",
+      "rootCause": "受限执行中桌面程序启动失败；具体崩溃根因未证实",
+      "repair": "按已授权本机打包请求使用允许桌面程序运行的执行环境；保留v1镜像、清单和失败记录"
+    },
+    {
+      "trigger": "微信开发者工具CLI打开固定目录",
+      "evidence": "IDE service port disabled / 工具的服务端口已关闭，CLI退出246",
+      "rootCause": "工具当前安全设置没有开启命令行服务端口",
+      "repair": "通过工具原生导入界面打开固定目录，不修改安全设置；--open失败仅提示手动打开，不把已完成构建记成失败"
+    },
+    {
+      "trigger": "在微信小游戏模拟器第一次运行v2/v3",
+      "evidence": "[LittleSteps] startup failed: Can not parse this input: path source-catalog, bundle empty",
+      "rootCause": "原create_wechat_candidate只列出assets/bundles下自定义包，漏掉resources动态加载包，输出中没有assets/resources",
+      "repair": "显式加入resources本地包配置；审计实际输出config中的source-catalog、source-scenes及effects/login-peek，缺少即拒绝更新",
+      "regression": "v4起微信构建包含resources；v5真实模拟器读取129 assets / 9 scenes并显示登录画面"
+    },
+    {
+      "trigger": "开发者工具保持打开时整目录替换v3/v4",
+      "evidence": "新输出只有src/settings.22856.json，模拟器重新编译仍请求旧src/settings.726bf.json并报not found；重新打开同项目后恢复",
+      "rootCause": "开发者工具监听和编译缓存仍关联被替换的旧目录",
+      "repair": "固定目录本身不替换；逐文件原子替换，依赖先更新、入口最后更新；备份与回滚也保留目录本身",
+      "regression": "8项回归覆盖目录inode不变、旧生成文件清理、用户额外文件和个人配置保留、失败回滚；v4到v5目录inode均39061662"
+    }
+  ],
+  "observedRuntime": {
+    "candidate": "wechat-workspace-v5",
+    "appid": "wx4d41972686e54c11",
+    "devtools": "Stable 2.02.2608080",
+    "baseLibrary": "3.17.3",
+    "simulator": "iPhone 12/13 (Pro)",
+    "at": "2026-10-12 09:06:58 Asia/Shanghai",
+    "visible": "旅行木鱼登录标题、门和进屋入口",
+    "logs": ["[LittleSteps] source catalog ready: assets 129, scenes 9", "[LittleSteps] PAGE_READY LOGIN"],
+    "consoleErrors": 0,
+    "warnings": "HarmonyOS接口公告、本机资源域名校验关闭提示"
+  },
+  "boundaries": [
+    "本记录核验打包目录和微信模拟器启动，不是全部页面、交互、手机性能或真机验收",
+    "Home依赖输出仍22,948,245 bytes，超过19,000,000门槛，正式交付继续拒绝",
+    "本机远程资源服务只能用于开发者工具，正式HTTPS资源部署仍待完成"
+  ]
+}

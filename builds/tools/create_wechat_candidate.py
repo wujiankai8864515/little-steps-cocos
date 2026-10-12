@@ -5,11 +5,13 @@ import hashlib
 import io
 import json
 import re
+import shutil
 import subprocess
 import tarfile
 from pathlib import Path
 from urllib.parse import urlsplit
 from check_catalog_assets import check_catalog
+from build_templates import install as install_templates
 
 ROOT = Path(__file__).resolve().parents[2]
 BOOT = '8dacabd2-f20d-42ab-aa32-8ffb576527d7'
@@ -30,28 +32,42 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         raise ValueError('Use an HTTP(S) resource root without credentials/query/fragment')
     if not re.fullmatch(r'wx[0-9a-f]{16}', appid):
         raise ValueError('Invalid WeChat appid')
-    readback = json.loads(readback_path.read_text())
-    commit, ref = readback['commit'], readback['ref']
-    if not re.fullmatch(r'[0-9a-f]{40}', commit) or not ref.startswith('refs/verify/'):
-        raise ValueError('Expected a recorded remote read-back commit/ref')
-    actual = subprocess.check_output(['git', 'rev-parse', '--verify', ref + '^{commit}'], cwd=ROOT, text=True).strip()
-    if actual != commit:
-        raise ValueError('Remote read-back ref no longer matches the recorded commit')
+    if readback_path is not None:
+        readback = json.loads(readback_path.read_text())
+        commit, ref = readback['commit'], readback['ref']
+        if not re.fullmatch(r'[0-9a-f]{40}', commit) or not ref.startswith('refs/verify/'):
+            raise ValueError('Expected a recorded remote read-back commit/ref')
+        actual = subprocess.check_output(['git', 'rev-parse', '--verify', ref + '^{commit}'], cwd=ROOT, text=True).strip()
+        if actual != commit:
+            raise ValueError('Remote read-back ref no longer matches the recorded commit')
+    else:
+        commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    source_dirty = bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip()) if readback_path is None else False
     stage = ROOT / 'builds/work' / name
     if stage.exists():
         raise FileExistsError('Use a new name; previous candidates are retained')
-    archive = subprocess.check_output(['git', 'archive', commit, 'engines/travel-core', 'games/xiaoyu-cocos'], cwd=ROOT)
     stage.mkdir(parents=True)
-    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
-        # A Git archive cannot contain absolute or parent-traversing entry names.
-        # Still verify links because the framework deliberately uses a relative link.
-        for entry in tar.getmembers():
-            target = stage / entry.name
-            if not target.resolve().is_relative_to(stage.resolve()):
-                raise ValueError('Archive path escapes candidate')
-            if entry.issym() and not (target.parent / entry.linkname).resolve().is_relative_to(stage.resolve()):
-                raise ValueError('Archive symlink escapes candidate')
-        tar.extractall(stage)
+    if readback_path is None:
+        install_templates(ROOT)
+        for folder in ['engines/travel-core', 'games/xiaoyu-cocos', 'builds/templates', 'builds/configs']:
+            shutil.copytree(ROOT / folder, stage / folder, symlinks=True,
+                            ignore=shutil.ignore_patterns('.git', 'library', 'temp', 'local', 'build', 'profiles', 'node_modules', '__pycache__', '.DS_Store'))
+    else:
+        folders = ['engines/travel-core', 'games/xiaoyu-cocos']
+        for folder in ['builds/templates', 'builds/configs']:
+            if subprocess.check_output(['git', 'ls-tree', commit, folder], cwd=ROOT):
+                folders.append(folder)
+        archive = subprocess.check_output(['git', 'archive', commit, *folders], cwd=ROOT)
+        with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+            for entry in tar.getmembers():
+                target = stage / entry.name
+                if not target.resolve().is_relative_to(stage.resolve()):
+                    raise ValueError('Archive path escapes candidate')
+                if entry.issym() and not (target.parent / entry.linkname).resolve().is_relative_to(stage.resolve()):
+                    raise ValueError('Archive symlink escapes candidate')
+            tar.extractall(stage)
+    if (stage / 'builds/templates').is_dir():
+        install_templates(stage)
     project = stage / 'games/xiaoyu-cocos'
     coverage = check_catalog(project)
     if coverage['missing']:
@@ -68,7 +84,9 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
     assert linked.resolve().is_relative_to(plugin.resolve())
     assert linked.stat().st_mode & 0o222 == 0
     bundles, packaging_overrides = [], []
-    for meta in sorted((project / 'assets/bundles').glob('*.meta')):
+    # resources.load() uses dynamic paths, so the built-in resources bundle
+    # must be explicitly included alongside the game's custom bundles.
+    for meta in [project / 'assets/resources.meta', *sorted((project / 'assets/bundles').glob('*.meta'))]:
         metadata = json.loads(meta.read_text())
         data = metadata['userData']
         if not data.get('isBundle'):
@@ -76,7 +94,7 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         name_ = data['bundleName']
         # Keep code and small shared startup resources local. Remote data keeps
         # optional pages lazy; do not zip a whole optional atlas bundle on entry.
-        remote = name_ not in ('core_code', 'shared_boot_ui')
+        remote = name_ not in ('resources', 'core_code', 'shared_boot_ui')
         # Creator 3.8 resolves a named project Bundle configuration. Older
         # isRemoteBundle maps and CLI IBundleOptions do not select that profile.
         # Only the packaging copy changes; authoring metadata stays intact.
@@ -85,7 +103,8 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         meta.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n')
         packaging_overrides.append({'file': str(meta.relative_to(stage)), 'sourceSHA256': before,
                                     'packagingSHA256': sha(meta), 'purpose': 'WeChat bundle placement only'})
-        bundles.append({'root': 'db://assets/bundles/' + meta.stem, 'name': name_,
+        bundle_root = meta.with_suffix('').relative_to(project / 'assets').as_posix()
+        bundles.append({'root': 'db://assets/' + bundle_root, 'name': name_,
                         'priority': data.get('priority', 0), 'compressionType': 'merge_dep',
                         'isRemote': remote, 'output': True})
     builder_path = project / 'settings/v2/packages/builder.json'
@@ -145,15 +164,17 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
     config_path = stage / 'build-config.json'
     config_path.write_text(json.dumps(config, ensure_ascii=False, indent=2) + '\n')
     files = []
-    for folder in ['engines/travel-core', 'games/xiaoyu-cocos']:
+    for folder in ['engines/travel-core', 'games/xiaoyu-cocos', 'builds/templates', 'builds/configs']:
         for path in sorted((stage / folder).rglob('*')):
             if path.is_file():
                 files.append({'path': str(path.relative_to(stage)), 'sha256': sha(path),
                               'symlink': str(path.readlink()) if path.is_symlink() else None})
     manifest = {
         'schema': 1, 'name': name, 'kind': 'WeChat packaging candidate, not release',
-        'sourceCommit': commit, 'sourceReadback': str(readback_path.relative_to(ROOT)),
-        'sourceReadbackSHA256': sha(readback_path), 'gameSourceOverrides': [],
+        'sourceCommit': commit, 'sourceMode': 'remote-readback' if readback_path else 'local-working-copy',
+        'sourceDirty': source_dirty,
+        'sourceReadback': str(readback_path.relative_to(ROOT)) if readback_path else None,
+        'sourceReadbackSHA256': sha(readback_path) if readback_path else None, 'gameSourceOverrides': [],
         'packagingOverrides': packaging_overrides,
         'creator': '3.8.8', 'platform': 'wechatgame', 'testAppid': appid == TEST_APPID,
         'resourceServer': config['server'], 'resourcesUploaded': False,
@@ -163,6 +184,7 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         'command': [CREATOR, '--project', str(project), '--build', 'configPath=' + str(config_path)],
     }
     record = ROOT / 'builds/records/candidates' / (name + '.json')
+    record.parent.mkdir(parents=True, exist_ok=True)
     record.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return {'project': str(project), 'config': str(config_path), 'manifest': str(record),
             'files': len(files), 'sourceCommit': commit, 'remoteBundles': sum(b['isRemote'] for b in bundles)}

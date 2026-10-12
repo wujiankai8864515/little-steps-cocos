@@ -10,6 +10,15 @@ from check_catalog_assets import check_catalog
 from audit_home_payload import audit_home_payload
 
 
+def startup_resources_present(output):
+    configs = list((output / 'assets/resources').glob('config*.json'))
+    if len(configs) != 1:
+        return False
+    config = json.loads(configs[0].read_text())
+    paths = {item[0] for item in config.get('paths', {}).values()}
+    return {'source-catalog', 'source-scenes', 'effects/login-peek'} <= paths
+
+
 def audit(name):
     record = ROOT / 'builds/records/candidates' / (name + '.json')
     manifest = json.loads(record.read_text())
@@ -64,6 +73,7 @@ def audit(name):
         'homeDeferredClosureWithin19MB': home_payload['passed'],
         'sourceCatalogComplete': not check_catalog(stage / 'games/xiaoyu-cocos')['missing'],
         'wechatEntryFiles': all((output / p).is_file() for p in ['game.js', 'game.json', 'project.config.json']),
+        'startupResourcesBundlePresent': startup_resources_present(output),
         'portrait': game.get('deviceOrientation') == 'portrait',
         'appidMatchesConfiguration': project.get('appid') == config['packages']['wechatgame']['appid'],
         'remoteBundlesMatch': set(assets.get('remoteBundles', [])) == expected_remote,

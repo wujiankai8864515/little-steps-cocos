@@ -1,0 +1,18 @@
+{
+  "item": "M12.01",
+  "trigger": "三仓固定微信目录的首次回归与Python语法检查",
+  "failures": [
+    {
+      "evidence": "py_compile: PermissionError at /Users/wkk/Library/Caches/com.apple.python/...",
+      "rootCause": "系统Python默认字节码缓存位于工作区之外，受当前文件权限限制",
+      "repair": "验证命令显式使用工作区内PYTHONPYCACHEPREFIX，正常执行脚本也可使用python3 -B"
+    },
+    {
+      "evidence": "test_relative_template_link_survives_snapshot_and_is_idempotent: is_relative_to(snapshot) failed",
+      "rootCause": "macOS临时目录存在/var与/private/var别名；测试只规范化了链接目标，没有规范化比较根目录",
+      "repair": "测试两侧均resolve后比较；相对软链接本身不需修改"
+    }
+  ],
+  "verification": "重新执行7项打包目录回归，日志见M12-workspace-tests-v2.log",
+  "pending": ["微信开发者工具真实运行", "微信设备验证", "Home首屏19MB门槛"]
+}
