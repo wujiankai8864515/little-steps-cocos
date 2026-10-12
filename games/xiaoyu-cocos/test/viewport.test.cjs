@@ -23,14 +23,13 @@ test('Budget rejection does not stop the application update loop or spam retries
  const page={resize(){attempts++;if(fail)throw Error('budget');}};Object.assign(app,{canvas,root:new Node('App'),page,viewportKey:'',viewportDimensions:'',viewportDirty:true,pageViewports:new WeakMap(),viewportFailures:new WeakMap()});
  app.refreshViewport();for(let i=0;i<30;i++)app.refreshViewport();assert.equal(attempts,1);fail=false;canvas.ui.setContentSize(720,1440);app.refreshViewport();assert.equal(attempts,2);assert.equal(app.pageViewports.get(page),app.viewportKey);
 });
-test('Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges',()=>{
+test('Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and border mesh',()=>{
  const plan=mods.HomeRenderPlan.homeRenderPlan(1280,720),page=Object.create(HomePage.prototype),events=[],root=new Node('Home'),world=new Node('World');
- for(const n of ['UpperBleedEdge','LowerBleedEdge'])world.addChild(new Node(n));
  const actor={merit:91,pose:123,trip:'saved'};
- Object.assign(page,{plan,root,roomRoot:world,rig:actor,targetLease:{texture:{},resize:(w,h)=>events.push(['target',w,h])},pointerBinding:{cancel:()=>events.push(['cancel'])},travelInteractions:{cancelPointer:()=>events.push(['travelCancel'])},surface:{layout:(...a)=>events.push(['layout',...a])},hud:{resize:h=>events.push(['hud',h])}});
+ Object.assign(page,{plan,root,roomRoot:world,rig:actor,background:{resize:(h,layout)=>events.push(['background',h,JSON.parse(JSON.stringify(layout))])},targetLease:{texture:{},resize:(w,h)=>events.push(['target',w,h])},pointerBinding:{cancel:()=>events.push(['cancel'])},travelInteractions:{cancelPointer:()=>events.push(['travelCancel'])},surface:{layout:(...a)=>events.push(['layout',...a])},hud:{resize:h=>events.push(['hud',h])}});
  page.resize(1800,1440);assert.equal(page.viewportOffset,260);assert.equal(plan.offset,260);assert.deepEqual(Array.from(plan.logical),[720,1800]);assert.equal(page.rig,actor);assert.equal(actor.merit,91);assert.deepEqual(world.position,{x:0,y:-260});
- assert.equal(world.getChildByName('UpperBleedEdge').active,true);assert.deepEqual(world.getChildByName('UpperBleedEdge').position,{x:0,y:260});assert.equal(world.getChildByName('LowerBleedEdge').scale.y,100/64);assert.deepEqual(events[0],['target',1440,3600]);
- page.resize(1280,720);assert.equal(world.getChildByName('UpperBleedEdge').active,false);assert.equal(page.viewportOffset,0);assert.equal(page.rig,actor);
+ assert.deepEqual(events.at(-1),['background',1800,{scale:1,x:0,offset:260,top:-260,bottom:1540}]);assert.deepEqual(events[0],['target',1440,3600]);
+ page.resize(1280,720);assert.deepEqual(events.at(-1),['background',1280,{scale:1,x:0,offset:0,top:0,bottom:1280}]);assert.equal(page.viewportOffset,0);assert.equal(page.rig,actor);
 });
 test('Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once',async()=>{
  const assets=new GameAssets(),scope=new core.Lifetime();let destroyed=0,created=0;

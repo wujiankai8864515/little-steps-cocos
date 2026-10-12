@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "item": "M14.01",
+  "request": "窗户外景与光效修复，延续背景高度适配要求",
+  "rootCauses": [
+    "Shared exterior paint clamps negative y to its first row. Extended Home glass displays that row as vertical leaf stripes; the indoor seam blend also repeats it.",
+    "Wardrobe copies clockwise Godot vertices into row-major Cocos grid indices, producing overlapping glass triangles and distorted source sampling.",
+    "Wardrobe adds pageLayout.top to the light origin, moving the emitter away from the illustration window on taller displays.",
+    "Visual.picture ignores the source region/flip flags of Home edge sprites. Above 1600 logical height each narrow edge compresses a whole 1600-high background, producing a ceiling seam."
+  ],
+  "repairs": [
+    "Shared outdoor sampling retains authored bleed/fallback outside the original paint; Home glass bypasses the clamped indoor seam blend.",
+    "Wardrobe glass keeps consistent triangle winding and source coordinates matching actual pixel positions; cool exterior paint gates reflection away from wood.",
+    "Wardrobe uses original window-relative emitter with height-aware volume depth and floor fade.",
+    "Home PageBackground preserves the full original 720x1600 image at y=-160 and mirrors only its 48-pixel border beyond it, with no extra textures or entries.",
+    "Source import adapters retain the new sampling and reproduce the Wardrobe effect exactly."
+  ],
+  "validation": {
+    "tests": {
+      "pass": 263,
+      "fail": 0,
+      "log": "M14-window-regression-v3.log",
+      "newCoverage": [
+        "Glass winding, polygon area and source sampling",
+        "Original full Home bleed plus bounded border rows",
+        "Actual Home resize forwards full-screen background layout"
+      ]
+    },
+    "types": {
+      "passed": true,
+      "log": "M14-window-types-v3.log",
+      "boundary": "Official Creator TypeScript --noEmit --skipLibCheck; existing vendor declaration issues excluded"
+    },
+    "build": {
+      "creator": "3.8.8",
+      "exitCode": 36,
+      "successful": true,
+      "log": "M14-window-build-v3.log"
+    },
+    "candidate": {
+      "files": 760,
+      "metadataChanges": 0,
+      "mismatches": [],
+      "report": "M14-window-candidate-v3.json"
+    },
+    "browser": {
+      "independentChrome": true,
+      "v3HomeSizes": [
+        [
+          390,
+          693
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          390,
+          926
+        ]
+      ],
+      "v3HomeHours": [
+        12,
+        23
+      ],
+      "v3WardrobeDarkroomSizes": [
+        [
+          390,
+          844
+        ]
+      ],
+      "v3WardrobeDarkroomHours": [
+        12,
+        23
+      ],
+      "v1UnchangedWardrobeDarkroomAdditionalSizes": [
+        [
+          390,
+          693
+        ]
+      ],
+      "v1HomeAdditionalTimes": {
+        "size": [
+          430,
+          932
+        ],
+        "hours": [
+          7,
+          18
+        ]
+      },
+      "errorsAndWarnings": 0,
+      "diagnostics": "M14-browser-diagnostics.json",
+      "screenshots": [
+        "M14-darkroom-day-390x844-v3.jpg",
+        "M14-darkroom-night-390x844-v3.jpg",
+        "M14-home-day-390x693-v3.jpg",
+        "M14-home-day-390x844-v3.jpg",
+        "M14-home-day-390x926-v3.jpg",
+        "M14-home-night-390x693-v3.jpg",
+        "M14-home-night-390x844-v3.jpg",
+        "M14-home-night-390x926-v3.jpg",
+        "M14-wardrobe-day-390x844-v3.jpg",
+        "M14-wardrobe-night-390x844-v3.jpg"
+      ],
+      "boundary": "Rendered scenes and real route methods; clock/route selection via declared visible QA toolbar. Not physical touch, WeChat or full-game acceptance."
+    },
+    "assets": {
+      "catalogAssets": 129,
+      "sourceFiles": 141,
+      "missing": [],
+      "bitmapChanges": 0,
+      "additionalTextures": 0
+    },
+    "unchangedBudgets": {
+      "specsPerBatch": 80,
+      "entries": 128,
+      "estimatedBytes": 268435456,
+      "homeFirstScreenBytes": 19000000
+    },
+    "plugin": {
+      "targetMode": "0444",
+      "directoryMode": "0555",
+      "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+      "changedByThisItem": false
+    }
+  },
+  "failuresPreserved": [
+    {
+      "candidate": "windows-responsive-v1",
+      "issue": "Window fixes passed, but extra-tall visual QA discovered existing ceiling seam; repaired in v3. Original screenshots retained."
+    },
+    {
+      "candidate": "windows-responsive-v2",
+      "issue": "Typecheck failed on missing child in unified renderer result; old viewport mock lacked background adapter. No engine build attempted.",
+      "repair": "Used actual mesh renderer node as child and updated viewport fixture. Full suite/typecheck passed in v3.",
+      "logs": [
+        "M14-window-regression-v2.log",
+        "M14-window-types-v2.log"
+      ]
+    }
+  ],
+  "relocation": {
+    "observed": "Concurrent workspace reorganization moved tools, work, records and reviews from builds to migration after v3 validation. Original passing logs retained.",
+    "frozenCandidateReadback": "M14-window-relocation-v3.json",
+    "mismatches": [],
+    "preview": "Same loopback server restarted against migration/work/windows-responsive-v3/output/preview; actual browser reload succeeded."
+  },
+  "candidate": "windows-responsive-v3",
+  "preview": "http://127.0.0.1:8800/",
+  "formalRelease": false,
+  "pending": [
+    "WeChat physical devices",
+    "User visual acceptance",
+    "Full product screenshot/input matrix beyond this fix",
+    "Remote verified formal release"
+  ]
+}

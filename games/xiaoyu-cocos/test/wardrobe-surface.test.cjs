@@ -56,6 +56,16 @@ test('Offscreen hanging return owns an onscreen hit area, rejects another finger
  touch(hit,'down',8,at);touch(hit,'move',8,worldAt(frame,[200,400]));touch(hit,'move',8,at);touch(hit,'up',8,at);director.emit('update');assert.equal(backs,1);
  touch(hit,'down',8,at);touch(hit,'up',8,at);page.pause();director.emit('update');assert.equal(backs,1);page.resume();touch(hit,'down',8,at);touch(hit,'up',8,at);f.scope.dispose();director.emit('update');assert.equal(backs,1);assert.equal(hit.isValid,false);assert.equal(hit.events.size,0);
 });
+test('Window glass triangles cover the original polygon without overlapping and sample the actual window pixels after resizing',async()=>{
+ const f=fixture(),page=await create(f),glass=page.canvas.getChildByName('WindowGlass').getComponent(Sprite),mesh=glass.mesh;
+ const triangleArea=(a,b,c)=>{const p=mesh.vertices;return ((p[b*2]-p[a*2])*(p[c*2+1]-p[a*2+1])-(p[b*2+1]-p[a*2+1])*(p[c*2]-p[a*2]))/2;};
+ const areas=[];for(let i=0;i<mesh.indices.length;i+=3)areas.push(triangleArea(...mesh.indices.slice(i,i+3)));
+ assert.ok(areas.every(v=>v>0),'both triangles must share winding; crossed Godot order overlaps the glass');
+ assert.equal(areas.reduce((a,b)=>a+b,0),141*(603+595)/2);
+ assert.deepEqual(plain(mesh.source),plain(mesh.vertices),'reflection mask must sample underlying wood and glass at the same position');
+ for(const height of [900,1280,1600,2160]){page.resize(height);assert.deepEqual(plain(mesh.source),plain(mesh.vertices));}
+ f.scope.dispose();
+});
 test('Cancellation before first draw destroys target/listeners without presenting; each repeated page needs two fresh draws',async()=>{
  const f=fixture();const cancelled=WardrobePage.create(f.parent,f.assets,f.scope,1280,new WardrobeStore(),new HomeClock(),()=>false);await tickUntil(()=>input.events.has('key'));f.scope.dispose();await assert.rejects(cancelled,{name:'CancelledError'});assert.equal(f.assets.snapshot().entries,0);assert.equal(input.events.size,0);assert.equal(director.events.size,0);
  for(let i=0;i<8;i++){const next=fixture(i%2?900:1600),page=await create(next);page.resume();page.resize(1280,2160);page.pause();next.scope.dispose();assert.equal(next.assets.snapshot().entries,0);assert.equal(next.parent.children.length,0);}assert.equal(director.events.size,0);assert.ok(targets.every(t=>t.destroyed));

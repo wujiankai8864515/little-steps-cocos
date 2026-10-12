@@ -1,0 +1,2 @@
+games/xiaoyu-cocos/assets/game/HomePage.ts(97,77): error TS2322: Type '{ root: Node; child: Node; sprite: Sprite; spec: ArtSpec; } | { root: Node; sprite: any; spec: ArtSpec; }' is not assignable to type '{ root: Node; child: Node; sprite: Sprite; spec: ArtSpec; }'.
+  Property 'child' is missing in type '{ root: Node; sprite: any; spec: ArtSpec; }' but required in type '{ root: Node; child: Node; sprite: Sprite; spec: ArtSpec; }'.

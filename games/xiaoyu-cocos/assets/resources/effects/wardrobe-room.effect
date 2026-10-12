@@ -63,12 +63,16 @@ uniform WardrobeLight {vec4 pageOrigin;vec4 pageState;vec4 wardrobeState;};
 
 vec4 frag(){vec2 point=vec2((canvasPosition.x-pageOrigin.x)/pageOrigin.z,(pageOrigin.y-canvasPosition.y)/pageOrigin.w);vec4 result=CCSampleWithAlphaSeparated(cc_spriteTexture,uv0)*color;
  if(glass_pass){
+  // The atlas already separates cool exterior paint from warm wooden mullions.
+  // Sample at the actual pane position; reflection must not wash over the frame.
+  float glass_gate=smoothstep(0.0,0.025,result.g-result.r)*smoothstep(-0.12,0.02,result.b-result.r);
   float sheen=exp(-pow((point.x*0.72+point.y*0.16-90.0-solar_phase*34.0)/24.0,2.0));
-  result=vec4(mix(vec3(0.89,0.95,1.0),vec3(0.53,0.72,1.0),night),0.045+sheen*0.14);
+  result=vec4(mix(vec3(0.89,0.95,1.0),vec3(0.53,0.72,1.0),night),(0.045+sheen*0.14)*glass_gate);
  }
  else if(shadow_pass){result=vec4(vec3(0.11,0.065,0.07),result.a*0.24);}
  else {
- vec2 origin=vec2(-90.0,pageState.x+mix(110.0,330.0,solar_phase));
+ // The window moves with the illustration. Only volume reach follows the view.
+ vec2 origin=vec2(-90.0,mix(110.0,330.0,solar_phase));
  vec2 axis=normalize(vec2(mix(0.85,1.4,solar_phase),0.92));
  vec2 relative=point-origin;
  float distance_along=dot(relative,axis);

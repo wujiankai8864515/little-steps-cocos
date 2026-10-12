@@ -27,6 +27,7 @@ import { HomePropInteraction } from './HomePropInteraction';
 import { HomeDepartureVisual } from './HomeDepartureVisual';
 import { DEPARTURE_FINISH_AT } from './DepartureMotion';
 import { homeLighting } from './LightingSnapshot';
+import { PageBackground } from './PageBackground';
 
 let roomSerial=0;
 
@@ -48,6 +49,7 @@ export class HomePage {
     readonly roomRoot:Node;
     private collectionObject:{node:Node;resource:string;centered:boolean;size:number[]};private collectionRest:{position:Vec3;scale:Vec3};
     private surface:any;private targetLease:any;private plan:ReturnType<typeof homeRenderPlan>;
+    private background:PageBackground;
     readonly fish:FishInteraction;
     readonly incense:HomeIncense;
     readonly flowers:HomeFlowers;
@@ -88,9 +90,10 @@ export class HomePage {
         const layers=this.roomLayers;let lampFixture:ReturnType<typeof picture>,lampProperties:any;
         const props:Array<{node:Node;resource:string;p:any;spec:any;anchor:number[];footprint:number[]}>=[];
         scene.sections.filter(s => s.kind === 'node' && s.type === 'Sprite2D').forEach((section, order) => {
-            if (section.properties.visible === false && ['UpperBleedEdge','LowerBleedEdge'].indexOf(section.name)<0) return;
+            if (section.properties.visible === false) return;
             const resource = resources.get(section.properties.texture.value) as string;
-            const item = picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
+            if(section.name==='ExtendedRoomBleed')this.background=new PageBackground(this.roomRoot,assets,scope,resource,section.name,undefined,-160,1600);
+            const item = section.name==='ExtendedRoomBleed'?{root:this.background.root,child:this.background.root,sprite:this.background.sprite,spec:assets.art(resource)}:picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
             const p=section.properties;if(section.name==='WallLampFixture'){lampFixture=item;lampProperties=p;}
             if(section.name==='Treasure')this.collectionObject={node:item.root,resource,centered:p.centered!==false,size:item.spec.size};
             if(section.name==='Bag')item.sprite.enabled=false;
@@ -188,8 +191,7 @@ export class HomePage {
         box(this.root,0,next.offset,720,1280);this.roomRoot.setPosition(0,-next.offset);
         this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);
         this.hud.resize(height);const beams=this.roomRoot.getChildByName('WindowLightShafts2D');if(beams)box(beams,0,-next.offset,720,height);this.lighting?.resize(height);
-        const extra=Math.max(0,(height-1600)/2);
-        for(const name of ['UpperBleedEdge','LowerBleedEdge']){const n=this.roomRoot.getChildByName(name);if(n){n.active=extra>0;if(extra>0){if(name==='UpperBleedEdge')n.setPosition(0,160+extra);n.setScale(n.scale.x,extra/64,1);}}}
+        this.background.resize(height,{scale:1,x:0,offset:next.offset,top:-next.offset,bottom:1280+next.offset});
     }
     resume(allowInput=true) {this.active=allowInput;this.incense.setActive(true);this.surface.setActive(true);this.flowers.setActive(true);this.hud.setActive(allowInput);}
     // Call only after departure assets are ready and the trip commit succeeds.

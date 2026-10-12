@@ -25,6 +25,18 @@ test('Widgets keep the return control at the real safe top while its illustratio
  const screen=nodeAt(new Node('Scene'),'Screen',0,0,720,1690),art=nodeAt(screen,'Art',0,205,720,1280),tag=nodeAt(art,'Return',26,24,78,128);pinTop(tag,screen,32,68);assert.equal(tag.worldPosition.x,32);assert.equal(tag.worldPosition.y,-68);art.setPosition(100,-140);art.setScale(.7,.7);pinTop(tag,screen,32,68);assert.equal(tag.worldPosition.x,32);assert.ok(Math.abs(tag.worldPosition.y+68)<1e-9);
  cc.sys.getSafeAreaRect=()=>({x:0,y:0,width:0,height:0});assert.deepEqual(Array.from(safeViewport(1800)),[0,0,720,1800]);
 });
+test('Home preserves the whole authored 1600-high bleed and samples only its narrow border on extra-tall screens',()=>{
+ const resource='res://assets/round2/home_neutral_bleed_no_plants.png',assets={art:k=>catalog.assets[k],frame:()=>({})},root=nodeAt(new Node('Scene'),'HomeWorld');
+ const background=new PageBackground(root,assets,scope,resource,'ExtendedRoomBleed',undefined,-160,1600);
+ for(const height of [1280,1560,1600,1710,2160]){const offset=(height-1280)/2;background.resize(height,{scale:1,x:0,offset,top:-offset,bottom:1280+offset});const mesh=background.sprite.mesh,bands=mesh.vertices.length/8;
+ assert.equal(mesh.source.length,mesh.vertices.length);let centre=0;
+ for(let i=0;i<bands;i++){const from=mesh.vertices[i*8+1],to=mesh.vertices[i*8+5],sourceFrom=mesh.source[i*8+1],sourceTo=mesh.source[i*8+5];
+  if(from===-160&&to===1440){centre++;assert.deepEqual([sourceFrom,sourceTo],[0,1600]);}
+  else {assert.ok(Math.abs(sourceTo-sourceFrom)<=48,'an extension must not squeeze the full background into a narrow band');assert.ok(to<=-160||from>=1440);}
+ }
+ assert.equal(centre,1);assert.ok(Math.min(...Array.from(mesh.vertices).filter((_,i)=>i%2))<=-offset);assert.ok(Math.max(...Array.from(mesh.vertices).filter((_,i)=>i%2))>=1280+offset);
+ }
+});
 test('Photo light starts above the visible top and updates the same receiver and volume extent after resizing, in day and night',()=>{
  const screen=nodeAt(new Node('Scene'),'Screen'),canvas=nodeAt(screen,'Canvas'),assets={effect:()=>({})},lighting=new PhotoLighting(canvas,assets),renderer=new Sprite(),m=lighting.bind(renderer,'volume',scope);
  for(const h of [1280,1560,1800])for(const hour of [12,23]){const layout=pageLayout(h),snapshot=load('LightingSnapshot').lightingSnapshot(hour),base=photoLight(snapshot),light=photoLight(snapshot,layout.top);assert.ok(light.origin[1]<layout.top);assert.ok(Math.abs(light.origin[1]-layout.top-base.origin[1])<1e-9);assert.ok(Math.abs(Math.hypot(...light.cast)-1)<1e-9);canvas.setPosition(0,-layout.offset);lighting.update(light,layout);assert.equal(m.properties.lightState.y,light.origin[1]);assert.equal(m.properties.pageState.x,layout.top);assert.equal(m.properties.pageState.y,layout.bottom);assert.equal(m.properties.pageState.z,h);}

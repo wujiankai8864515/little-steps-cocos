@@ -38,7 +38,8 @@ export class WardrobePage {
     private constructor(private assets:GameAssets,private scope:Scope,private viewport:WardrobeViewport,readonly store:WardrobeStore,private clock:HomeClock,gestureSeen:()=>boolean,retained?:WardrobeRetained,policy='temporary_local',reward?:(id:SkinId)=>Promise<boolean>){
         this.motion=retained?.motion||new WardrobeMotion();this.root=viewport.root;this.canvas=viewport.canvas;
         this.background=new PageBackground(this.canvas,assets,scope,WARDROBE_ATLAS,'WardrobeBackdrop',WARDROBE_REGIONS.backdrop);this.bind(this.background.sprite,0);
-        const glass=this.mesh('WindowGlass',wardrobeMesh([0,0,141,667]),1);glass.mesh.vertices.set([0,0,141,72,141,667,0,603]);glass.sprite.geometryChanged();
+        // Mesh grids use TL, TR, BL, BR, unlike Godot's clockwise Polygon2D.
+        const glass=this.mesh('WindowGlass',wardrobeMesh([0,0,141,667]),1);glass.mesh.vertices.set([0,0,141,72,0,603,141,667]);glass.mesh.source.set(glass.mesh.vertices);glass.sprite.geometryChanged();
         for(let i=0;i<2;i++){const key=i?'peach':'original',region=WARDROBE_REGIONS[key],create=(shadow:boolean)=>{const v=this.mesh((shadow?'ClothShadow_':'PinnedCloth_')+key,wardrobeMesh(region,6,14),shadow?3:0);v.root.setPosition(242+180*i,-273);v.root.setScale(151/region[2],289/region[3],1);return v;};this.cloths.push({region,shadow:create(true),view:create(false)});this.labels.push(this.paperLabel(key,[239+180*i,554,158,56],true));}
         WARDROBE_VINES.forEach((at,i)=>{const create=(shadow:boolean)=>{const v=this.mesh((shadow?'VineShadow_':'Vine_')+i,wardrobeMesh(WARDROBE_REGIONS.vine),shadow?3:0);v.root.setPosition(at[0],-at[1]);v.root.setScale(.25+i%3*.035,.40+i%2*.04,1);return v;};this.vines.push({shadow:create(true),view:create(false)});});
         this.rig=new XiaoyuRig(this.canvas,assets,scope);this.lighting=new HomeLighting(this.canvas,assets,scope,clock);this.shadows=new HomeShadows(this.canvas,assets,scope,clock,false);

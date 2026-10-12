@@ -22,7 +22,14 @@ def read(path):
 
 def include(path):
     value=read(path)
-    return re.sub(r'#include "res://([^"]+)"',lambda m:include(m[1]),value)
+    value=re.sub(r'#include "res://([^"]+)"',lambda m:include(m[1]),value)
+    return outdoor_sampling(value) if path=='shared_room_lighting/outdoor_scene.gdshaderinc' else value
+
+def outdoor_sampling(value):
+    # The shared paint has no pixels above its top. Home's authored bleed
+    # supplies that exterior; clamping y extrudes leaves into vertical stripes.
+    return value.replace('if(use_shared_outdoor_paint){',
+        '// Outside the shared paint, retain the authored bleed/fallback sky.\n if(use_shared_outdoor_paint && p.y>=0.0){')
 
 UNIFORMS='''
   uniform RoomState {
@@ -98,7 +105,7 @@ def effect(name,body,samplers=(),additive=False,uniforms=UNIFORMS,properties=Non
     props+=''.join(f'        {sampler}: {{ value: white }}\n' for sampler in samplers)
     declarations=''.join(f'  uniform sampler2D {sampler};\n' for sampler in samplers)
     dst='one' if additive else 'one_minus_src_alpha'
-    return f'''// Source formulas transferred by builds/tools/import_godot_lighting.py.
+    return f'''// Source formulas transferred by migration/tools/import_godot_lighting.py.
 CCEffect %{{
   techniques:
   - passes:
@@ -165,7 +172,10 @@ def main():
         extra=''
         samplers=['shared_outdoor_paint']
         uniforms=UNIFORMS;properties=PROPERTIES.copy()
-        if kind=='bleed':samplers.append('neutral_center')
+        if kind=='bleed':
+            samplers.append('neutral_center')
+            fragment=fragment.replace('float edge_mix=1.0-smoothstep(0.0,24.0,max(outside_distance,0.0));',
+                'float edge_mix=1.0-smoothstep(0.0,24.0,max(outside_distance,0.0));\n    // Glass uses its real upper bleed, never the clamped indoor seam row.\n    edge_mix*=1.0-outdoor_aperture(world_pos);')
         if kind=='bed':
             samplers.append('occlusion_alpha')
             extra='''float bed_alpha(vec2 uv){
@@ -263,7 +273,7 @@ def main():
         'status':'source formula transfer; browser evidence and acceptance tracked separately','sources':sources,'outputs':outputs,
         'godotCanvasReference':{'url':'https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/drivers/gles3/shaders/canvas.glsl','gitBlob':'37d851a3c00336b254b17d3c41b9e84539ce5ef4','exactPublished4_5_2CommitVerified':True},
         'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','animated face, outfit and prop variants still require full input/flow verification','soft-mesh lift/landing and articulated backpack shadows pending; independent Home plant checkpoints tracked separately','full same-state screenshot matrix and WeChat true-device acceptance pending']}
-    (ROOT/'builds/records/M05-lighting-transfer.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'migration/records/M05-lighting-transfer.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'effects':len(outputs),'sourceFiles':len(sources)}))
 
 if __name__=='__main__':main()
