@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Explicit fixed-step eye checkpoint and native source oracle; no physical-input claim."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 from freeze_godot_plants import read_pack,replace_entries
-ROOT=Path(__file__).resolve().parents[2];SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+ROOT=Path(__file__).resolve().parents[2];SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(v):return hashlib.sha256(v).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--engine',choices=['godot','cocos'],required=True);a=p.parse_args()

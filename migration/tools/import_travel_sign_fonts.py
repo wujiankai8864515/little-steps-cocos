@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Transfer native hinted sign glyphs and shaped runs; never rasterize with PIL."""
+from legacy_source import legacy_reference
 from pathlib import Path
 import hashlib,json,subprocess,uuid
 from PIL import Image
@@ -107,6 +108,6 @@ def main():
     (ASSETS/'game/TravelSignFontData.ts').write_text('// Generated native shaped sign runs and original hinted glyphs. See M07-sign-font-source.json.\nexport const TRAVEL_SIGN_FONTS:any = '+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';\n')
     write(ASSETS/'game/TravelSignFontData.ts.meta',{'ver':'4.0.24','importer':'typescript','imported':True,'uuid':str(uuid.uuid5(uuid.NAMESPACE_URL,'little-steps-cocos/TravelSignFontData')),'files':[],'subMetas':{},'userData':{}})
     catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,separators=(',',':'))+'\n')
-    write(ROOT/'migration/records/M07-sign-font-source.json',{'schema':1,'engine':data['engine'],'fontSHA256':sha(font),'sceneDataSHA256':sha(scene),'sourceGodotCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT.parent/'little-steps',text=True).strip(),'shapedRuns':{s:len(t['runs']) for s,t in data['sizes'].items()},'atlases':atlases,'glyphCrops':sources,'method':'Native FontFile/TextLine/FreeType hinted glyph crops and shaped advances; no new rasterization, resampling or hand-tuned kerning. Original label integer center and ink-center baseline. Density 2 reuses logical shaping with native double-size glyphs.','boundary':'Only dynamic current-station and progress signs. Browser, other densities and WeChat device require separate validation.'})
+    write(ROOT/'migration/records/M07-sign-font-source.json',{'schema':1,'engine':data['engine'],'fontSHA256':sha(font),'sceneDataSHA256':sha(scene),'sourceGodotCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=legacy_reference(),text=True).strip(),'shapedRuns':{s:len(t['runs']) for s,t in data['sizes'].items()},'atlases':atlases,'glyphCrops':sources,'method':'Native FontFile/TextLine/FreeType hinted glyph crops and shaped advances; no new rasterization, resampling or hand-tuned kerning. Original label integer center and ink-center baseline. Density 2 reuses logical shaping with native double-size glyphs.','boundary':'Only dynamic current-station and progress signs. Browser, other densities and WeChat device require separate validation.'})
     print(json.dumps({'runs':sum(len(t['runs']) for t in data['sizes'].values()),'crops':len(sources),'atlases':atlases},ensure_ascii=False))
 if __name__=='__main__':main()

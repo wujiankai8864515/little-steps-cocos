@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Native Godot doll oracle, declared source-only QA injection; no pointer claim."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 from freeze_godot_plants import read_pack,replace_entries
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(value):return hashlib.sha256(value).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--isolate',action='store_true');a=p.parse_args()

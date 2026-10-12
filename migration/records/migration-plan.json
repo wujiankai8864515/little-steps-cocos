@@ -221,10 +221,14 @@
     {
       "id": "M21",
       "description": "Retire sibling Godot directory and maintain current Cocos documents and source dependencies",
-      "status": "migration_ready_retirement_validation_pending",
+      "status": "completed_local_retirement_and_current_docs_verified",
       "evidence": [
         "../records/M21-document-transfer.json",
-        "../archives/godot-history.json"
+        "../archives/godot-history.json",
+        "../reviews/M21-retirement-complete.json",
+        "../reviews/M21-no-godot-regressions.json",
+        "../reviews/M21-typescript-validation.json",
+        "../reviews/M21-active-path-validation.json"
       ]
     }
   ],

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Explicit same-time incense fixtures in the two real engines; QA only."""
+from legacy_source import legacy_reference
 import argparse
 import hashlib
 import json
@@ -48,7 +49,7 @@ def main():
         report['snapshotSHA256']=sha(json.dumps(report['files'],sort_keys=True).encode())
     else:
         web=stage/'web';pack=web/'index.pck';before=pack.read_bytes()
-        source=ROOT.parent/'little-steps/games/travel_woodfish/project/home/independent_incense.gd'
+        source=legacy_reference() / 'games/travel_woodfish/project/home/independent_incense.gd'
         text=source.read_text()
         for old,new in [
             ('return float ( wall_clock . call ( ) ) if wall_clock . is_valid ( ) else Time . get_unix_time_from_system ( )','return 1000.0'),

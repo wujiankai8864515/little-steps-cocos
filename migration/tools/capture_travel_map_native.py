@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Capture unmodified Godot map page with deterministic native service and clock."""
+from legacy_source import legacy_reference
 from pathlib import Path
 import re,json,hashlib,subprocess,shutil,argparse
-ROOT=Path(__file__).resolve().parents[2];SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+ROOT=Path(__file__).resolve().parents[2];SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 SCRIPT='''extends SceneTree
 const Page=preload("res://travel/travel_page.gd")
 const Service=preload("res://travel/travel_service.gd")
@@ -47,7 +48,7 @@ def main():
  stage=ROOT/'migration/work'/a.name;assert not stage.exists();stage.mkdir(parents=True);done=set();records=[]
  def copy(name):
   if name in done:return
-  done.add(name);source=(ROOT.parent/'little-steps/framework'/name) if name.startswith('addons/travel_core/') else SOURCE/name;assert source.is_file(),name;target=stage/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target);records.append({'path':name,'sha256':sha(target)})
+  done.add(name);source=(legacy_reference() / 'framework'/name) if name.startswith('addons/travel_core/') else SOURCE/name;assert source.is_file(),name;target=stage/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target);records.append({'path':name,'sha256':sha(target)})
   if source.suffix=='.gd':
    text=source.read_text()
    for path in re.findall(r'(?:preload|load)\s*\(\s*[\"\']([^\"\']+\.gd)[\"\']',text)+re.findall(r'extends\s+[\"\']([^\"\']+\.gd)[\"\']',text):

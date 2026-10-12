@@ -18,5 +18,5 @@ test('Merit one keeps its approved bitmap while arbitrary rewards remain centere
  assert.throws(()=>meritLayout(Infinity));
 });
 test('Credits retain every original artist, license paragraph and URL without text substitutions',()=>{
- const source=fs.readFileSync(path.resolve(__dirname,'../../../../little-steps/games/travel_woodfish/project/home/audio/music_credits.gd'),'utf8'),literal=source.match(/const CREDITS_TEXT\s*:\s*=\s*("(?:[^"\\]|\\.)*")/)[1];assert.equal(load('HomeCreditsText').HOME_CREDITS_TEXT,JSON.parse(literal));
+ const original=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/music-credits-original.json'),'utf8'));assert.equal(load('HomeCreditsText').HOME_CREDITS_TEXT,original.text);
 });

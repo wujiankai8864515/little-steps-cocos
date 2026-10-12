@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Declared direct-API service traces; neither product Travel UI nor device QA."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,subprocess,sys,uuid
 from pathlib import Path
 from freeze_godot_plants import read_pack,replace_entries
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 
 GD='''

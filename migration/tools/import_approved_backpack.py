@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Preserve native padded polygons/triangles and source float32 fit order."""
+from legacy_source import legacy_reference
 import hashlib,json,struct,uuid
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project/home/secondary/articulated_backpack.gd'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project/home/secondary/articulated_backpack.gd'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def f32(v):return struct.unpack('<f',struct.pack('<f',v))[0]
 def main():

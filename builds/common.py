@@ -199,7 +199,7 @@ def audit_home_payload(project, output, remote_bundles):
             'excessBytes': max(0, total - HOME_LIMIT), 'bundles': bundles,
             'excludedStartupBundles': excluded, 'forbiddenDependencies': forbidden,
             'errors': errors, 'method': 'Exact output bytes of the transitive Home bundle closure; excluded startup bundles: '+','.join(sorted(startup))+'. Not network transfer, startup time or memory.',
-            'sourceContract': 'little-steps/build/check_loading_contract.py: Home non-startup dependency packs <= 19,000,000 bytes; no travel/departure dependency.'}
+            'sourceContract': 'games/xiaoyu-cocos/docs/requirements.json COCOS:BOOT-BUDGET: Home non-startup dependencies <= 19,000,000 bytes; no travel/departure dependency.'}
 
 class PreviewHandler(SimpleHTTPRequestHandler):
     def send_head(self):

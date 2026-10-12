@@ -4,6 +4,7 @@
 These drive the original controller interfaces in saved fixture source. They
 prove a fixed rendered pose, never physical touch/device or complete parity.
 """
+from legacy_source import legacy_reference
 import argparse
 import hashlib
 import json
@@ -64,7 +65,7 @@ func _review_fish_checkpoint ( ) -> void :
     update_lighting ( )
     print ( "[LittleSteps QA] fish checkpoint ", JSON . stringify ( {{ "part" : "{args.part}" , "phase" : {args.phase} , "input" : controller . debug_snapshot ( ) , "rig_position" : rig . position , "grab_pixel" : _grab_attachment_pixel , "grab_part" : _grab_attachment . name , "lift_amount" : _lift_amount , "lift_elapsed" : _lift_elapsed , "drag_lag" : _drag_lag , "secondary" : secondary_motion . offset , "mouth" : face_motion . mouth_open_px , "pupil_left" : left_pupil_offset , "pupil_right" : right_pupil_offset }} ) )
 '''
-        source=ROOT.parent/'little-steps/games/travel_woodfish/project/home/home_page.gd';page=source.read_text();old='interaction . update ( delta )';assert page.count(old)==1;page=page.replace(old,'interaction . update ( 0.0 )')
+        source=legacy_reference() / 'games/travel_woodfish/project/home/home_page.gd';page=source.read_text();old='interaction . update ( delta )';assert page.count(old)==1;page=page.replace(old,'interaction . update ( 0.0 )')
         point='func _process ( delta : float ) -> void :\n';assert page.count(point)==1
         page=page.replace(point,'var _review_fish_started : bool = false\n\n'+point+'    if input_enabled and not _review_fish_started :\n        _review_fish_started = true\n        world . call_deferred ( "_review_fish_checkpoint" )\n')
         replacements={'qa/home_world.gd':world.encode(),'home/home_page.gd.remap':b'[remap]\n\npath="res://qa/home_page.gd"\n','qa/home_page.gd':page.encode()}
@@ -76,7 +77,7 @@ func _review_fish_checkpoint ( ) -> void :
             else:
                 point='"index.pck":'+str(len(before));text=raw.decode();assert text.count(point)==1;path.write_text(text.replace(point,'"index.pck":'+str(len(after))))
             overrides.append({'path':filename,'beforeFixtureSHA256':sha(raw),'fixtureSHA256':sha(path.read_bytes()),'purpose':'Declare exact fixed-pose QA pack size and SHA'})
-        overrides.append({'path':'index.pck','beforeFixtureSHA256':sha(before),'fixtureSHA256':sha(after),'purpose':'Drive original Home controller in fixed steps and freeze its update; only QA source/remaps change','beforeEntries':original_count,'fixtureEntries':fixture_count,'untouchedPriorEntries':original_count-2,'sourceHomePageSHA256':sha(source.read_bytes()),'sourceHomePageCommit':subprocess.check_output(['git','-C',str(ROOT.parent/'little-steps'),'rev-parse','HEAD'],text=True).strip(),'replacements':[{'path':path,'sha256':sha(value)} for path,value in replacements.items()]})
+        overrides.append({'path':'index.pck','beforeFixtureSHA256':sha(before),'fixtureSHA256':sha(after),'purpose':'Drive original Home controller in fixed steps and freeze its update; only QA source/remaps change','beforeEntries':original_count,'fixtureEntries':fixture_count,'untouchedPriorEntries':original_count-2,'sourceHomePageSHA256':sha(source.read_bytes()),'sourceHomePageCommit':subprocess.check_output(['git','-C',str(legacy_reference()),'rev-parse','HEAD'],text=True).strip(),'replacements':[{'path':path,'sha256':sha(value)} for path,value in replacements.items()]})
         report['fixtureFiles']=[{'path':str(f.relative_to(web)),'bytes':f.stat().st_size,'sha256':sha(f.read_bytes())} for f in sorted(web.rglob('*')) if f.is_file()]
     report['overrides'].extend(overrides);report['kind']='Deterministic controller-driven fish QA checkpoint; not physical touch or a formal release'
     report['fishCheckpoint']={'part':args.part,'pointer':246,'down':at,'longPressSteps':21,'move':to,'liftSteps':steps,'stepSeconds':1/60,'phase':args.phase,'release':False,'browser':'pending','scope':'Fixed lift pose, mesh, face, render space and projection only; action marks, physical drag and complete product parity pending'}

@@ -11,7 +11,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 assets=ROOT/'games/xiaoyu-cocos/assets'
 source=assets/'bundles/shared_boot_ui/assets/bootstrap_ui.ttf'
-upstream=ROOT.parent/'little-steps/build/fonts/sources/LXGWWenKai-Regular-v1.522.ttf'
+upstream=ROOT/'games/xiaoyu-cocos/source/fonts/sources/LXGWWenKai-Regular-v1.522.ttf'
 assert hashlib.sha256(upstream.read_bytes()).hexdigest()=='39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009'
 font=TTFont(upstream,recalcTimestamp=False)
 text='正在准备资源…游戏登录页面失败，请重试。'

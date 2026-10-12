@@ -1,6 +1,7 @@
+from legacy_source import legacy_reference
 from pathlib import Path
 import re,json,hashlib
-r=Path(__file__).resolve().parents[2];src=r.parent/'little-steps/games/travel_woodfish/project';import argparse,subprocess
+r=Path(__file__).resolve().parents[2];src=legacy_reference() / 'games/travel_woodfish/project';import argparse,subprocess
 a=argparse.ArgumentParser();a.add_argument('--name',required=True);args=a.parse_args();assert all(c.isalnum() or c in '-_' for c in args.name)
 stage=r/'migration/work'/args.name;stage.mkdir(exist_ok=False)
 files=['photo/photo_paper.gd','photo/photo_art.gd','photo/photo_config.gd','photo/photo_material.gd','shared_room_lighting/soft_atmosphere.gd','shared_room_lighting/lighting_snapshot.gd']

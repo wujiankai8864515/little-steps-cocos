@@ -2,6 +2,7 @@
 """Capture the unmodified Godot Travel runtime in a fixed native SubViewport.
 This is a scene-only reference, not a full travel page or input acceptance.
 """
+from legacy_source import legacy_reference
 import argparse,hashlib,json,math,shutil,subprocess
 from pathlib import Path
 from verify_travel_scene_native import ROOT,SOURCE,FILES
@@ -57,7 +58,7 @@ def main():
  assert result.returncode==0,import_log
  command=[str(engine),'--path',str(stage),'--rendering-method','gl_compatibility','--script','res://capture.gd','--',str(output),str(a.hour),str(a.age),str(a.progress),str(a.from_progress)]
  with capture_log.open('w') as log:result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)
- record={'schema':1,'scope':'native scene reference; UI/navigation/audio/input not covered','command':command,'exitCode':result.returncode,'originalFiles':originals,'captureScriptSHA256':digest(stage/'capture.gd'),'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT.parent/'little-steps',text=True).strip(),'image':str(output.relative_to(ROOT)),'status':'failed'}
+ record={'schema':1,'scope':'native scene reference; UI/navigation/audio/input not covered','command':command,'exitCode':result.returncode,'originalFiles':originals,'captureScriptSHA256':digest(stage/'capture.gd'),'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=legacy_reference(),text=True).strip(),'image':str(output.relative_to(ROOT)),'status':'failed'}
  if result.returncode==0 and output.exists():record.update({'status':'captured_pixels_not_visual_acceptance','imageSHA256':digest(output),'runtime':json.loads(output.with_suffix('.png.json').read_text())})
  (ROOT/'migration/records/candidates'/f'{a.name}.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n');print(json.dumps(record,ensure_ascii=False));assert record['status']!='failed',capture_log
 if __name__=='__main__':main()

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Declare observer-only input traces and a plant rest pose in QA mirrors."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json
 from pathlib import Path
 from freeze_godot_plants import read_pack,replace_entries
-ROOT=Path(__file__).resolve().parents[2];SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+ROOT=Path(__file__).resolve().parents[2];SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(v):return hashlib.sha256(v).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--engine',choices=['cocos','godot'],required=True);a=p.parse_args()

@@ -5,6 +5,7 @@ Keep the published engine and all other pack entries byte-identical. Redirect
 only HomeWorld's script remap to its current source plus a review-mode reset.
 This is a modified QA reference, never an unchanged published release.
 """
+from legacy_source import legacy_reference
 import argparse
 import base64
 import hashlib
@@ -16,7 +17,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project/home/home_world.gd'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project/home/home_world.gd'
 ENGINE_COMMIT='6ce3de25aa58466e14ef354703ba8d9791a417da'
 ENGINE_METADATA=Path('/private/tmp/little-steps-godot-pack-exact.json')
 ENGINE_BLOB='244469e9d90c3e7663ae8eab4a941d7b2b1e92b1'
@@ -122,7 +123,7 @@ func set_cycle_position'''
     index.write_text(text.replace(point,'"index.pck":'+str(len(new_pack))))
     overrides.append({'path':'index.html','originalSHA256':sha(before),'fixtureSHA256':sha(index.read_bytes()),'purpose':'Declare actual QA pack byte count; preserve original review-hour argument'})
     record=ROOT/'migration/records/candidates'/f'{args.name}.json';report=json.loads(record.read_text())
-    report.update(kind='QA-modified Godot reference; not the unchanged published runtime',publishedMirrorBeforeQA=report['publishedFiles'],reviewSourceCommit=subprocess.check_output(['git','-C',str(ROOT.parent/'little-steps'),'rev-parse','HEAD'],text=True).strip())
+    report.update(kind='QA-modified Godot reference; not the unchanged published runtime',publishedMirrorBeforeQA=report['publishedFiles'],reviewSourceCommit=subprocess.check_output(['git','-C',str(legacy_reference()),'rev-parse','HEAD'],text=True).strip())
     report['overrides'].extend([{'path':'index.pck','publishedSHA256':sha(original_pack),'fixtureSHA256':sha(new_pack),'originalBytes':len(original_pack),'fixtureBytes':len(new_pack),'purpose':'Only HomeWorld remap and added plain source for review-mode plant freezing','originalEntries':original_count,'fixtureEntries':new_count,'unchangedEntries':original_count-1,'remapPath':'home/home_world.gd.remap','addedScript':'qa/home_world.gd','sourceSHA256':sha(SOURCE.read_bytes()),'fixtureScriptSHA256':sha(fixture_source),'roundTripMD5AndUntouchedPayloads':'verified'},*overrides])
     report['referenceState']['plants']={'phase':args.plant_time,'steps':round(args.plant_time*60),'stepSeconds':1/60,'windAndProcess':'disabled after deterministic QA advance','browser':'pending'}
     report['referenceState']['plantShadows']='refreshed at dt=0 after set_review_hour updates lighting; must verify actual logged room hour/context'

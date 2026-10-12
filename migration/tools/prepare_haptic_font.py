@@ -9,7 +9,7 @@ sys.path.insert(0, str(ROOT / 'migration/.cache/python'))
 from fontTools import subset
 from fontTools.ttLib import TTFont
 
-source = ROOT.parent / 'little-steps/build/fonts/sources/LXGWWenKai-Regular-v1.522.ttf'
+source = ROOT / 'games/xiaoyu-cocos/source/fonts/sources/LXGWWenKai-Regular-v1.522.ttf'
 assert hashlib.sha256(source.read_bytes()).hexdigest() == '39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009'
 target = ROOT / 'games/xiaoyu-cocos/assets/bundles/shared_boot_ui/assets/bootstrap_ui.ttf'
 before = hashlib.sha256(target.read_bytes()).hexdigest()

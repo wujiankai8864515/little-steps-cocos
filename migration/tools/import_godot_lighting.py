@@ -3,6 +3,7 @@
 
 Shader adaptation belongs to game assets. This tool performs no gameplay.
 """
+from legacy_source import legacy_reference
 import hashlib
 import json
 import re
@@ -11,7 +12,7 @@ import uuid
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 ASSETS=ROOT/'games/xiaoyu-cocos/assets'
 sources={}
 
@@ -269,7 +270,7 @@ def main():
 '''+part_fragment+'return result*color;}\n'
     outputs.append(write('home-part-shadow',effect('home-part-shadow',part_body,uniforms=UNIFORMS+'\n  uniform PartShadowState {vec4 partShadowState;};\n',properties={**PROPERTIES,'partShadowState':[0,0,0,0]})))
     read('shared_room_lighting/lighting_snapshot.gd');read('home/room_props_controller.gd');read('scripts/approved_lighting_v3.gd');read('home/grounding/alpha_grounding.gd');read('home/behavior/eye_geometry.gd')
-    report={'schema':1,'sourceCommit':subprocess.check_output(['git','-C',str(ROOT.parent/'little-steps'),'rev-parse','HEAD'],text=True).strip(),
+    report={'schema':1,'sourceCommit':subprocess.check_output(['git','-C',str(legacy_reference()),'rev-parse','HEAD'],text=True).strip(),
         'status':'source formula transfer; browser evidence and acceptance tracked separately','sources':sources,'outputs':outputs,
         'godotCanvasReference':{'url':'https://github.com/godotengine/godot/blob/6ce3de25aa58466e14ef354703ba8d9791a417da/drivers/gles3/shaders/canvas.glsl','gitBlob':'37d851a3c00336b254b17d3c41b9e84539ce5ef4','exactPublished4_5_2CommitVerified':True},
         'limits':['native lamp analytic ramp not yet verified pixel-by-pixel against original GradientTexture2D','animated face, outfit and prop variants still require full input/flow verification','soft-mesh lift/landing and articulated backpack shadows pending; independent Home plant checkpoints tracked separately','full same-state screenshot matrix and WeChat true-device acceptance pending']}

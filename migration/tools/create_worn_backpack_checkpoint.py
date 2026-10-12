@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Select the actual original wear/return API; retain every declared QA override."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,math,subprocess,sys
 from pathlib import Path
 from freeze_godot_plants import read_pack,replace_entries
-ROOT=Path(__file__).resolve().parents[2];SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+ROOT=Path(__file__).resolve().parents[2];SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(value):return hashlib.sha256(value).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--engine',choices=['cocos','godot'],required=True);p.add_argument('--name',required=True);p.add_argument('--hour',type=float,default=12);p.add_argument('--wear-seconds',type=float,default=.25);p.add_argument('--return-seconds',type=float,default=-1);a=p.parse_args()

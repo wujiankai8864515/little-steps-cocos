@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Same earned-time bouquets in the two engines, with explicit QA overrides."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,math,re,subprocess,sys
 from pathlib import Path
 from freeze_godot_plants import replace_entries
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(v):return hashlib.sha256(v).hexdigest()
 def main():
     p=argparse.ArgumentParser();p.add_argument('--engine',choices=['cocos','godot'],required=True);p.add_argument('--name',required=True);p.add_argument('--hour',type=float,default=12);p.add_argument('--earned',type=float,default=0);args=p.parse_args()

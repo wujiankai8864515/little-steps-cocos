@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Run current unmodified Godot TravelModel in a declared Web QA overlay."""
+from legacy_source import legacy_reference
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 from freeze_godot_plants import replace_entries
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 ORACLE='''
 var _review_travel_done = false

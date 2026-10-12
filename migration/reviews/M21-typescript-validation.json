@@ -1,0 +1,15 @@
+{
+  "item": "M21.03",
+  "initialCommand": "tsc --noEmit -p games/xiaoyu-cocos/tsconfig.json",
+  "initialExitCode": 2,
+  "diagnostics": 88,
+  "cause": "Standalone tsc checks Creator-generated engine ambient declarations, which reference unresolved engine-internal/WebGPU names. Every diagnostic is in installed Creator .d.ts; no game-source diagnostics.",
+  "repair": "Run project noEmit with --skipLibCheck to skip checking dependency declaration bodies, while retaining game TypeScript checking. No game, engine, or compiler configuration modified.",
+  "projectCommand": "tsc --noEmit --skipLibCheck -p games/xiaoyu-cocos/tsconfig.json",
+  "projectExitCode": 0,
+  "logs": [
+    "migration/reviews/M21-no-godot-typescript.log",
+    "migration/reviews/M21-no-godot-typescript-project.log"
+  ],
+  "scope": "Project source type check passed; standalone engine declaration integrity is not asserted."
+}

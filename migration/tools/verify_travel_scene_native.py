@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Export deterministic data from the unmodified Godot travel scene, headless."""
+from legacy_source import legacy_reference
 import argparse, hashlib, json, shutil, subprocess, textwrap
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps/games/travel_woodfish/project'
+SOURCE=legacy_reference() / 'games/travel_woodfish/project'
 FILES=['travel/travel_scene_config.gd','travel/travel_scene_runtime.gd','travel/travel_atmosphere.gd','shared_room_lighting/soft_atmosphere.gd','travel/assets/travel_map_plate_v5.png','travel/assets/travel_scene_layers_v1.png','travel/assets/travel_footprint_ink_v1.png']
 ORACLE=r'''extends SceneTree
 const Config=preload("res://travel/travel_scene_config.gd")
@@ -97,6 +98,6 @@ def main():
         print(json.dumps({'phase':phase,'exit':r.returncode,'log':str(log)}),flush=True)
         if r.returncode or 'SCRIPT ERROR' in log.read_text():raise SystemExit(1)
     data=json.loads(output.read_text());assert 'TRAVEL_SCENE_ORACLE_OK' in (ROOT/f'migration/reviews/M07-{args.name}-oracle.log').read_text()
-    (ROOT/f'migration/reviews/M07-{args.name}-source.json').write_text(json.dumps({'schema':1,'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT.parent/'little-steps').decode().strip(),'sourceFiles':hashes,'engine':data['engine'],'headless':True,'visualAcceptance':False,'outputSHA256':hashlib.sha256(output.read_bytes()).hexdigest()},ensure_ascii=False,indent=2)+'\n')
+    (ROOT/f'migration/reviews/M07-{args.name}-source.json').write_text(json.dumps({'schema':1,'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=legacy_reference()).decode().strip(),'sourceFiles':hashes,'engine':data['engine'],'headless':True,'visualAcceptance':False,'outputSHA256':hashlib.sha256(output.read_bytes()).hexdigest()},ensure_ascii=False,indent=2)+'\n')
     target=ROOT/'games/xiaoyu-cocos/assets/game/TravelSceneData.ts';target.write_text('// Generated from unmodified Godot travel_scene_config.gd by the native oracle.\nexport const TRAVEL_SCENE:any = '+json.dumps(data['config'],ensure_ascii=False,indent=2)+';\n')
 if __name__=='__main__':main()

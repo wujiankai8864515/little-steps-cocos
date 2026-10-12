@@ -1,0 +1,36 @@
+{
+  "item": "M21.03",
+  "oldDirectoryAbsent": true,
+  "results": [
+    {
+      "check": "game",
+      "exitCode": 0,
+      "elapsedSeconds": 53.499,
+      "log": "migration/reviews/M21-no-godot-game.log"
+    },
+    {
+      "check": "builds",
+      "exitCode": 0,
+      "elapsedSeconds": 2.534,
+      "log": "migration/reviews/M21-no-godot-builds.log"
+    },
+    {
+      "check": "channel",
+      "exitCode": 0,
+      "elapsedSeconds": 0.88,
+      "log": "migration/reviews/M21-no-godot-channel.log"
+    },
+    {
+      "check": "typescript",
+      "exitCode": 2,
+      "elapsedSeconds": 5.786,
+      "log": "migration/reviews/M21-no-godot-typescript.log"
+    }
+  ],
+  "scope": "272 game + 19 build + 9 channel tests passed without old directory. Project TypeScript noEmit passed with skipLibCheck; initial engine .d.ts diagnostic log preserved. No new engine build or physical-device acceptance.",
+  "initialAllPassed": false,
+  "projectChecksPassed": true,
+  "typescriptProjectRecheck": "migration/reviews/M21-typescript-validation.json",
+  "allTestsPassed": true,
+  "projectTypeCheckPassed": true
+}

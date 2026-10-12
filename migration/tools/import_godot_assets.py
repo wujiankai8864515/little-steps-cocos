@@ -5,6 +5,7 @@ Use the bundled Python/Pillow runtime. Godot remains read-only. A cropped textur
 retains its logical size/source origin; the game restores that origin at runtime.
 """
 from __future__ import annotations
+from legacy_source import legacy_reference
 import argparse
 import hashlib
 import io
@@ -22,7 +23,7 @@ from alpha_codec import encode_masks
 from png_transport import exact_png
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT.parent / 'little-steps'
+SOURCE = legacy_reference()
 PROJECT = SOURCE / 'games/travel_woodfish/project'
 CACHE = SOURCE / 'games/travel_woodfish/runtime_cache'
 ASSETS = ROOT / 'games/xiaoyu-cocos/assets'

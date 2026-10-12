@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Pin unchanged MP3 payloads and Godot's existing streamed reservations."""
+from legacy_source import legacy_reference
 from pathlib import Path
 import hashlib,json
 ROOT=Path(__file__).resolve().parents[2]
-SOURCE=ROOT.parent/'little-steps'
+SOURCE=legacy_reference()
 def main():
     source=SOURCE/'games/travel_woodfish/project/config/resource_groups.json'
     original=json.loads(source.read_text());path=ROOT/'games/xiaoyu-cocos/assets/resources/source-catalog.json';catalog=json.loads(path.read_text());rows=[]
