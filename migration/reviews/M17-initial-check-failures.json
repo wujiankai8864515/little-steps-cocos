@@ -1,0 +1,19 @@
+{
+  "issues": [
+    {
+      "trigger": "Responsive background regression",
+      "actual": "4 frames instead of 1 for new layered background",
+      "fix": "Assert expected base + detail count and unchanged reuse across resize"
+    },
+    {
+      "trigger": "TypeScript compile",
+      "actual": "cc.PixelFormat not exported",
+      "fix": "Use public Texture2D.PixelFormat"
+    },
+    {
+      "trigger": "PNG palette budget",
+      "actual": "Darkroom alpha gradient still exceeded 500 KB with RGB-only palette",
+      "fix": "Quantize colour+display alpha together; CPU hit masks unchanged"
+    }
+  ]
+}

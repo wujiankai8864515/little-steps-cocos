@@ -11,13 +11,13 @@ function load(name){if(mods[name])return mods[name];const exports={};mods[name]=
 const {pageLayout,pinTop,safeViewport}=load('Viewport'),{nodeAt}=load('Visual'),{PageBackground}=load('PageBackground'),{photoLight}=load('PhotoGeometry'),{PhotoLighting}=load('PhotoLighting');
 const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/resources/source-catalog.json'))),scope={own(){}};
 const entries=[['res://photo/assets/photo_wall_neutral_plate_v1.png'],['res://travel/assets/travel_diary_reference_v5.png',undefined,0,1280,230],['res://travel/assets/travel_paper_v1.png'],['res://travel/assets/travel_map_plate_v5.png',undefined,0,1280,225],['res://wardrobe/assets/wardrobe_runtime_atlas.png',[0,0,720,1280]],['res://entry/assets/backgrounds/login_clean_bleed_720x1600.png',undefined,-160,1600],['res://entry/assets/backgrounds/loading_clean_bleed_720x1600.png',undefined,-160,1600]];
-test('Every original background covers the whole width and height at short, standard, 19.5:9, 20:9 and extra-tall sizes using one retained texture',()=>{
+test('Backgrounds cover every viewport and retain their admitted base and detail textures across resize',()=>{
  for(const [resource,region,top=0,artHeight=1280,pinned=0] of entries){let frames=0;const assets={art:k=>catalog.assets[k],frame:()=>{frames++;return {};}};
  const root=nodeAt(new Node('Scene'),'Screen',0,0,720,1280),canvas=nodeAt(root,'Art',0,0,720,1280),bg=new PageBackground(canvas,assets,scope,resource,'Backdrop',region,top,artHeight,pinned);
  for(const h of [900,1200,1280,1440,1560,1600,1690,1800,2160,1280]){const l=pageLayout(h);canvas.setPosition(l.x,-l.offset);canvas.setScale(l.scale,l.scale);bg.resize(h,l);const m=bg.sprite.mesh,points=Array.from({length:m.vertices.length/2},(_,i)=>[l.x+m.vertices[i*2]*l.scale,l.offset+m.vertices[i*2+1]*l.scale]);assert.ok(points.flat().every(Number.isFinite));assert.equal(Math.min(...points.map(p=>p[0])),0);assert.equal(Math.max(...points.map(p=>p[0])),720);assert.ok(Math.min(...points.map(p=>p[1]))<=0);assert.ok(Math.max(...points.map(p=>p[1]))>=h);
  // All adjacent bands meet geometrically and share the exact edge source row.
  for(let i=0;i<m.vertices.length/8-1;i++){assert.equal(m.vertices[i*8+5],m.vertices[(i+1)*8+1]);assert.equal(m.source[i*8+5],m.source[(i+1)*8+1]);}
- assert.ok(m.vertices.length/2<=20);assert.equal(frames,1);
+ assert.ok(m.vertices.length/2<=20);assert.equal(frames,1+(catalog.assets[resource].layers||[]).length);
  } }
 });
 test('Widgets keep the return control at the real safe top while its illustration parent moves and scales',()=>{

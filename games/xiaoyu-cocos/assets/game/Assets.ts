@@ -1,5 +1,6 @@
 import { Asset, AssetManager, assetManager, AudioClip, EffectAsset, Font, ImageAsset, JsonAsset, resources, SpriteFrame, Texture2D } from 'cc';
 import { core, Scope } from './Engine';
+import { paperPixels, PaperRecipe } from './PaperPixels';
 
 // Same logical texture -> authored BitMap mapping as alpha_hit_cache.gd.
 const hitMasks:Record<string,string>={
@@ -9,7 +10,8 @@ const hitMasks:Record<string,string>={
 };
 
 export interface ArtSpec {
-    kind: 'texture' | 'image' | 'font' | 'json' | 'audio' | 'mask' | 'effect'; bundle: string; path: string;
+    kind: 'texture' | 'procedural' | 'image' | 'font' | 'json' | 'audio' | 'mask' | 'effect'; bundle: string; path: string;
+    procedural?:PaperRecipe; layers?:string[];
     size?: number[]; content?: number[]; opaque?: number[]; alpha?: string; decodedBytes: number;
     fontMetrics?: {ascent:number;descent:number;height:number};
     mipResources?:string[];
@@ -35,7 +37,10 @@ export class GameAssets {
     private bundle(name: string) {
         let request = this.bundles.get(name);
         if (!request) {
-            request = new Promise<AssetManager.Bundle>((resolve, reject) => assetManager.loadBundle(name, (e, b) => e ? reject(e) : resolve(b)));
+            request = (async()=>{
+                for(const dependency of this.catalog.groups[name]?.depends_on||[])await this.bundle(dependency);
+                return new Promise<AssetManager.Bundle>((resolve,reject)=>assetManager.loadBundle(name,(e,b)=>e?reject(e):resolve(b)));
+            })();
             this.bundles.set(name, request);
             request.catch(() => this.bundles.delete(name));
         }
@@ -50,6 +55,9 @@ export class GameAssets {
             groups.add(name); (group.depends_on || []).forEach(include);
         };
         names.forEach(include);
+        // Bundle priority controls build ownership, not runtime load order.
+        // Resolve the catalogue dependency graph before admitting page assets.
+        for(const name of groups)await scope.guard(this.bundle(name));
         const specs: any[] = Object.keys(this.catalog.assets).filter(key => groups.has(this.catalog.assets[key].bundle)).map(key => ({key, bytes: this.reservedBytes(this.catalog.assets[key]), spec: this.catalog.assets[key]}));
         for (const name of groups) {
             const mask = this.catalog.groups[name].cocosAlpha;
@@ -90,6 +98,12 @@ export class GameAssets {
 
     private acquireSpecs(specs:any[],scope:Scope) {
         return this.gate.acquire(specs, async ({key, spec}) => {
+            if(spec.kind==='procedural'){
+                const [width,height]=spec.procedural.size,image=new ImageAsset({_data:paperPixels(spec.procedural),width,height,format:Texture2D.PixelFormat.RGBA8888,_compressed:false});
+                image.addRef();const texture=new Texture2D();
+                try {texture.image=image;texture.setFilters(Texture2D.Filter.LINEAR,Texture2D.Filter.LINEAR);texture.setWrapMode(Texture2D.WrapMode.CLAMP_TO_EDGE,Texture2D.WrapMode.CLAMP_TO_EDGE);texture.addRef();this.textureImages.set(texture,image);this.values.set(key,texture);return texture;}
+                catch(error){texture.destroy();image.decRef();throw error;}
+            }
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
             const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
             const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle)
@@ -148,7 +162,7 @@ export class GameAssets {
     image(resource:string) {const value=this.values.get(resource) as ImageAsset;if(!value)throw new Error(`原 mipmap 尚未准入：${resource}`);return value;}
     art(resource: string): ArtSpec {
         const spec = this.catalog.assets[resource];
-        if (!spec || spec.kind !== 'texture') throw new Error(`缺少原图：${resource}`);
+        if (!spec || (spec.kind !== 'texture'&&spec.kind !== 'procedural')) throw new Error(`缺少原图：${resource}`);
         return spec;
     }
     frame(resource: string, scope: Scope) {
