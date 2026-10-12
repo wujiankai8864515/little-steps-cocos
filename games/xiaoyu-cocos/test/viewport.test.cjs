@@ -88,9 +88,11 @@ test('Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 2
  const renderer={estimateTarget:(w,h)=>w*h*8,createTarget:(w,h)=>({width:w,height:h,destroy(){}})};
  await assets.acquireResizableTarget('budget-home',1440,3380,renderer,scope);const dark=await assets.acquireResizableTarget('budget-dark',1440,3380,renderer,scope);
  const journal=['travel_brush.ttf','travel_paper_v1.png','travel_diary_plate_v5.png','travel_diary_reference_v5.png','travel_scenery_v1.png','travel_people_v5.png','travel_map_actor_v5.png'].map(n=>'res://travel/assets/'+n).map(key=>({key,bytes:catalog.assets[key].decodedBytes}));
- assert.equal(assets.snapshot().reservedBytes+journal.reduce((n,s)=>n+s.bytes,0),278660923);
- await assert.rejects(assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope),/budget/);
- dark.park();await assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope);assert.equal(assets.snapshot().entries,128);assert.equal(assets.snapshot().reservedBytes,239723323);scope.dispose();assert.equal(assets.snapshot().reservedBytes,0);assert.equal(assets.snapshot().entries,0);
+ // Exact alpha planes replace nested JS run arrays. The conservative resident
+ // estimate falls while both render targets and every page resource remain.
+ const unparked=assets.snapshot().reservedBytes+journal.reduce((n,s)=>n+s.bytes,0);
+ assert.equal(unparked,265337270);assert.ok(unparked<=256*1024*1024);
+ dark.park();await assets.gate.acquire(journal,s=>({key:s.key}),()=>{},scope);assert.equal(assets.snapshot().entries,128);assert.equal(assets.snapshot().reservedBytes,226399670);assert.equal(unparked-assets.snapshot().reservedBytes,renderer.estimateTarget(1440,3380));scope.dispose();assert.equal(assets.snapshot().reservedBytes,0);assert.equal(assets.snapshot().entries,0);
 });
 
 test('Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion',()=>{

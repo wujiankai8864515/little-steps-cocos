@@ -21,6 +21,7 @@ export class GameAssets {
     private bundles = new Map<string, Promise<AssetManager.Bundle>>();
     private gate = new core.ResourceGate();
     private values = new Map<string, Asset>();
+    private alphaValues = new Map<string, Map<string, any>>();
 
     async initialize(scope: Scope) {
         const load = (name: string) => new Promise<JsonAsset>((resolve, reject) => resources.load(name, JsonAsset, (e, value) => e ? reject(e) : resolve(value)));
@@ -51,7 +52,7 @@ export class GameAssets {
         const specs: any[] = Object.keys(this.catalog.assets).filter(key => groups.has(this.catalog.assets[key].bundle)).map(key => ({key, bytes: this.reservedBytes(this.catalog.assets[key]), spec: this.catalog.assets[key]}));
         for (const name of groups) {
             const mask = this.catalog.groups[name].cocosAlpha;
-            if (mask) specs.push({key: `alpha:${name}`, bytes: mask.decodedBytes, spec: {kind: 'json', bundle: name, path: 'alpha-masks'}});
+            if (mask) specs.push({key: `alpha:${name}`, bytes: mask.decodedBytes, spec: {kind: 'alpha', bundle: name, path: mask.path, pixelBytes: mask.pixelBytes}});
         }
         const leased = await this.acquireSpecs(specs,scope);
         console.info('[LittleSteps] page resources admitted '+JSON.stringify({groups:Array.from(groups),...this.gate.snapshot()}));
@@ -91,8 +92,15 @@ export class GameAssets {
             const bundle = spec.kind==='effect'?resources:await this.bundle(spec.bundle);
             const type = spec.kind === 'texture' ? Texture2D : spec.kind === 'image' ? ImageAsset : spec.kind === 'font' ? Font : spec.kind === 'audio' ? AudioClip : spec.kind==='effect'?EffectAsset:JsonAsset;
             const asset = spec.streaming ? await this.streamingAudio(key,spec,bundle) : await new Promise<Asset>((resolve, reject) => bundle.load(spec.path, type as any, (e, a: Asset) => e ? reject(e) : resolve(a)));
-            asset.addRef(); this.values.set(key, asset); return asset;
-        }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) this.values.delete(key); asset.decRef(); }, scope);
+            asset.addRef();
+            try {
+                if(spec.kind==='alpha') {
+                    if(!Number.isSafeInteger(spec.pixelBytes)||spec.pixelBytes<=0)throw new Error('缺少 Alpha 准入上限');
+                    this.alphaValues.set(key,core.decodeAlphaMasks((asset as JsonAsset).json,spec.pixelBytes));
+                }
+                this.values.set(key, asset); return asset;
+            } catch(error) {asset.decRef();throw error;}
+        }, (asset: Asset) => { for (const [key, value] of this.values) if (value === asset) {this.values.delete(key);this.alphaValues.delete(key);} asset.decRef(); }, scope);
     }
     private reservedBytes(spec:ArtSpec){
         const stream=spec.streaming;if(!stream)return spec.decodedBytes;
@@ -131,20 +139,16 @@ export class GameAssets {
     json(resource: string) { const value = this.values.get(resource) as JsonAsset; if (!value) throw new Error(`数据尚未准入：${resource}`); return value.json; }
     scene(resource: string) { const value = this.scenes.find(s => s.resource === resource); if (!value) throw new Error(`缺少源场景：${resource}`); return value; }
     alpha(resource: string, x: number, y: number) {
-        const spec = this.art(resource), masks = this.values.get(`alpha:${spec.bundle}`) as JsonAsset;
-        if (!masks) throw new Error(`Alpha 尚未准入：${resource}`);
-        const mask = masks.json[resource];
-        const px = Math.floor(x - mask.origin[0]), py = Math.floor(y - mask.origin[1]);
-        if (px < 0 || py < 0 || px >= mask.size[0] || py >= mask.size[1]) return 0;
-        const row = mask.rows[py]; let end = 0;
-        for (let i = 0; i < row.length; i += 2) { end += row[i]; if (px < end) return row[i + 1] / 255; }
-        throw new Error('Alpha 行数据损坏');
+        return core.alphaSample(this.alphaMask(resource),x,y);
     }
     snapshot() { return this.gate.snapshot(); }
     alphaBounds(resource:string,rect:number[]){
-        const spec=this.art(resource),masks=this.values.get(`alpha:${spec.bundle}`) as JsonAsset;if(!masks)throw new Error(`Alpha 尚未准入：${resource}`);const mask=masks.json[resource];let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
-        for(let y=Math.max(Math.floor(rect[1]),mask.origin[1]);y<Math.min(Math.ceil(rect[1]+rect[3]),mask.origin[1]+mask.size[1]);y++){const row=mask.rows[y-mask.origin[1]];let x=mask.origin[0];for(let i=0;i<row.length;i+=2){const end=x+row[i],a=Math.max(x,rect[0]),b=Math.min(end,rect[0]+rect[2]);if(row[i+1]>0&&b>a){left=Math.min(left,a);right=Math.max(right,b);top=Math.min(top,y);bottom=Math.max(bottom,y+1);}x=end;}}
-        return Number.isFinite(left)?[left,top,right-left,bottom-top]:[rect[0],rect[1],0,0];
+        return core.alphaBounds(this.alphaMask(resource),rect);
+    }
+    private alphaMask(resource:string) {
+        const mask=this.alphaValues.get(`alpha:${this.art(resource).bundle}`)?.get(resource);
+        if(!mask)throw new Error(`Alpha 尚未准入：${resource}`);
+        return mask;
     }
     bitmapContains(resource:string,x:number,y:number) {return core.bitMapContains(this.json(resource),x,y);}
     contains(resource:string,x:number,y:number) {

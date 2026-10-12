@@ -1,0 +1,80 @@
+{
+  "item": "M09.08",
+  "sourceBaseline": "68d802e0da647f23282867dc60772076321d9a34",
+  "decodedPlanes": 73,
+  "verifiedPixels": 45573782,
+  "groups": [
+    {
+      "group": "comic",
+      "masks": 1,
+      "decodeMs": 7.539292000000003
+    },
+    {
+      "group": "darkroom",
+      "masks": 7,
+      "decodeMs": 31.078875
+    },
+    {
+      "group": "departure_visual",
+      "masks": 1,
+      "decodeMs": 3.9551659999999984
+    },
+    {
+      "group": "home",
+      "masks": 33,
+      "decodeMs": 59.167833
+    },
+    {
+      "group": "loading",
+      "masks": 5,
+      "decodeMs": 5.502667000000017
+    },
+    {
+      "group": "login",
+      "masks": 9,
+      "decodeMs": 3.804791999999992
+    },
+    {
+      "group": "outfit_visual",
+      "masks": 1,
+      "decodeMs": 1.89308299999999
+    },
+    {
+      "group": "photo_visual",
+      "masks": 2,
+      "decodeMs": 13.076457999999974
+    },
+    {
+      "group": "shared_boot_ui",
+      "masks": 1,
+      "decodeMs": 0.685750000000013
+    },
+    {
+      "group": "shared_room_visual",
+      "masks": 3,
+      "decodeMs": 5.325166999999993
+    },
+    {
+      "group": "travel_visual",
+      "masks": 9,
+      "decodeMs": 33.21979200000001
+    },
+    {
+      "group": "wardrobe_visual",
+      "masks": 1,
+      "decodeMs": 11.091707999999983
+    }
+  ],
+  "exactSampleComparisons": 49500,
+  "exactBoundsComparisons": 1056,
+  "microbenchmark": {
+    "oldMs": 120.81762500000002,
+    "newMs": 191.93679200000008,
+    "queriesPerMethod": 495000,
+    "checksum": 562584.7058830007,
+    "boundary": "Node synthetic CPU only; not browser first-draw, FPS or device acceptance"
+  },
+  "globalExports": [
+    "console"
+  ]
+}

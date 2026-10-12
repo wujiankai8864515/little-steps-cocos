@@ -4,14 +4,22 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const core = path.resolve(__dirname, '..');
 const root = path.resolve(core, '../..');
-const sources = ['math.js', 'lifetime.js', 'resource-gate.js', 'cocos-mesh.js', 'ui.js', 'choice-ui.js', 'cocos-router.js', 'audio.js', 'bitmap.js', 'bitmap-text.js', 'cocos-surface.js', 'checkpoint.js', 'drawing.js', 'stylebox.js', 'random.js'];
+const sources = ['math.js', 'lifetime.js', 'resource-gate.js', 'cocos-mesh.js', 'ui.js', 'choice-ui.js', 'cocos-router.js', 'audio.js', 'bitmap.js', 'bitmap-text.js', 'cocos-surface.js', 'checkpoint.js', 'drawing.js', 'stylebox.js', 'random.js', 'alpha.js'];
 const dist = path.join(core, 'dist');
 const target = path.join(dist, 'travel-core.js');
 const plugins = path.join(root, 'games/xiaoyu-cocos/assets/plugins');
 const link = path.join(plugins, 'travel-core.js');
 const notice = fs.readFileSync(path.join(core, 'NOTICE.godot.txt'), 'utf8');
 if (notice.includes('*/')) throw new Error('License notice must fit the distribution comment');
-const built = `/* Creator 3.8.8 plugin; generated from engines/travel-core/src. */\n/*!\n${notice}*/\n(function(root) {\n'use strict';\nconst api = Object.create(null);\n${sources.map(name => fs.readFileSync(path.join(core, 'src', name), 'utf8')).join('\n')}\nObject.defineProperty(root, 'LittleStepsCore', {value: Object.freeze(api), writable: false, configurable: false});\n})(globalThis);\n`;
+const vendor = path.join(core, 'vendor/pako');
+const provenance = JSON.parse(fs.readFileSync(path.join(vendor, 'provenance.json'), 'utf8'));
+for (const [name, expected] of Object.entries(provenance.files)) {
+    if (crypto.createHash('sha256').update(fs.readFileSync(path.join(vendor, name))).digest('hex') !== expected) throw new Error('Pinned pako bytes changed: ' + name);
+}
+const inflateNotice = ['LICENSE', 'LICENSE.zlib'].map(name => fs.readFileSync(path.join(vendor, name), 'utf8')).join('\n');
+if (inflateNotice.includes('*/')) throw new Error('License notice must fit the distribution comment');
+const inflateSource = `/*! Pako ${provenance.version}, unmodified inflate-only distribution.\n${inflateNotice}*/\nconst alphaInflate = (function() { const module = {exports:{}}; const exports = module.exports;\n${fs.readFileSync(path.join(vendor, 'pako_inflate.min.js'), 'utf8')}\nreturn module.exports; })();\n`;
+const built = `/* Creator 3.8.8 plugin; generated from engines/travel-core/src. */\n/*!\n${notice}*/\n(function(root) {\n'use strict';\nconst api = Object.create(null);\n${inflateSource}\n${sources.map(name => fs.readFileSync(path.join(core, 'src', name), 'utf8')).join('\n')}\nObject.defineProperty(root, 'LittleStepsCore', {value: Object.freeze(api), writable: false, configurable: false});\n})(globalThis);\n`;
 fs.mkdirSync(dist, {recursive: true});
 fs.chmodSync(dist, 0o755);
 if (fs.existsSync(target)) fs.chmodSync(target, 0o644);

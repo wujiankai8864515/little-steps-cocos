@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "item": "M09.08",
+  "events": [
+    {
+      "action": "License extraction",
+      "failure": "First matched block was not a license; next validation expected Copyright, but upstream uses (C).",
+      "resolution": "Saved the complete MIT and zlib notices from official pinned source header, with hashes enforced during plugin generation."
+    },
+    {
+      "action": "Initial alpha transfer validation",
+      "failure": "Worn bag mask is cropped at [24,20], but texture later restored to full1254x1254 mipmap canvas. No masks were written.",
+      "resolution": "Compare reconstructed coverage at logical origin and every transparent exterior pixel with the full PNG."
+    },
+    {
+      "action": "Initial codec tests",
+      "failure": "All4 failed: decoder absent in old dist because prior converter failure prevented regeneration.",
+      "resolution": "Regenerated readonly plugin;4 targeted tests passed."
+    },
+    {
+      "action": "Full regression v1",
+      "failure": "278/279 passed; viewport test expected old higher resource reservation.",
+      "resolution": "Updated exact reservation and retained unchanged entry/budget checks plus target parking/release;9 targeted tests passed, then all279 passed finalv4."
+    },
+    {
+      "action": "Typecheck v1",
+      "failure": "Installed Creator ambient declarations report missing platform types; no game source errors.",
+      "resolution": "Reran --skipLibCheck, preserving prior validation scope; v2 passed."
+    },
+    {
+      "action": "Lookup timing v1/v2",
+      "failure": "v1 host-vs-VM timing invalid; v2 same-realm direct lookup slower from extra builtin lookups.",
+      "resolution": "Use validated nonnegative bounds then exact integer truncation; v3 same-realm495000queries old121.48ms/new14.81ms. Synthetic CPU evidence only."
+    },
+    {
+      "action": "Native-byte preservation audit",
+      "failure": "Found untracked Loading art ignored by native pattern, revealing missing files in remote WeChat archive.",
+      "resolution": "Separate M10.02 commit restores3 original images/metadata and complete catalog guard; all98 native files now match Git."
+    },
+    {
+      "action": "Frozen candidate audit after M10.02",
+      "failure": "Initial baseline assertion included user-created .gitignore and rejected the intentional anchored-ignore fix.",
+      "resolution": "Recorded its exact new SHA and reason in M10.02 authoringChanges; verifier accepts only that declared file/hash while keeping Boot, scene and remaining baseline checks. Final frozen audit750files no runtime drift."
+    }
+  ],
+  "logs": [
+    "M09-alpha-regression-v1.log",
+    "M09-alpha-regression-v2-viewport.log",
+    "M09-alpha-regression-v3-codec.log",
+    "M09-alpha-regression-v4-final.log",
+    "M09-alpha-typecheck-v1.log",
+    "M09-alpha-typecheck-v2.log",
+    "M09-alpha-decoder-verification.json",
+    "M09-alpha-decoder-verification-v2.json",
+    "M09-alpha-decoder-verification-v3.json"
+  ]
+}

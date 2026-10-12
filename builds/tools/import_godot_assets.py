@@ -18,6 +18,7 @@ import wave
 from pathlib import Path
 from PIL import Image
 from godot_binary import read_resource, qoa_pcm16
+from alpha_codec import encode_masks
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT.parent / 'little-steps'
@@ -352,9 +353,10 @@ def main():
         basic_meta(folder, 'directory', '1.2.0', {'isBundle': True, 'bundleName': name, 'priority': groups[name].get('priority', 0), 'compressionType': {}, 'isRemoteBundle': False})
         if name in group_masks:
             masks = folder / 'alpha-masks.json'
-            write_json(masks, group_masks[name])
+            encoded, reservation = encode_masks(group_masks[name])
+            masks.write_text(encoded)
             basic_meta(masks, 'json', '1.0.1')
-            groups[name]['cocosAlpha'] = {'path': 'alpha-masks', 'decodedBytes': masks.stat().st_size * 2 + sum(m['size'][0] * m['size'][1] for m in group_masks[name].values())}
+            groups[name]['cocosAlpha'] = reservation
     data_path = ASSETS / 'resources' / 'source-catalog.json'
     write_json(data_path, {'schema': 1, 'groups': groups, 'assets': catalog, 'untransferred': unsupported})
     basic_meta(data_path, 'json', '1.0.1')

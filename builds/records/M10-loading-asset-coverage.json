@@ -51,5 +51,12 @@
     "oldReadbackFreeze": "builds/reviews/M10-loading-missing-source-rejection.log",
     "oldReadbackFreezeExit": 1,
     "result": "The actual incomplete remote archive was rejected before running Creator."
-  }
+  },
+  "authoringChanges": [
+    {
+      "path": "games/xiaoyu-cocos/.gitignore",
+      "sha256": "543234b297093b3ce6573fc0426894711821bb862a0e30d09e2336d8355ef905",
+      "reason": "Anchor native export ignore to project root so authored nested Loading assets enter Git."
+    }
+  ]
 }

@@ -186,15 +186,17 @@
         "M07-travel-view-flow.json",
         "M07-map-page-flow.json",
         "M09-orientation-QA-flow.json",
-        "M08-photo-flow.json"
+        "M08-photo-flow.json",
+        "M09-alpha-transport.json"
       ]
     },
     {
       "id": "M10",
       "description": "WeChat-only reproducible packaging and remote source readback",
-      "status": "partial_wechat_candidate_3_07MB_remote_bundles_lossless_assets_static_verified_device_cold_download_pending",
+      "status": "source_coverage_corrected_v1_to_v4_incomplete_fresh_wechat_build_pending",
       "evidence": [
-        "M10-wechat-packaging-flow.json"
+        "M10-wechat-packaging-flow.json",
+        "M10-loading-asset-coverage.json"
       ]
     },
     {

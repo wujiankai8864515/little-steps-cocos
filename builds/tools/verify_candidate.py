@@ -25,11 +25,15 @@ def main():
     assert all(metadata['userData'].get(k) for k in ['isPlugin','loadPluginInWeb','loadPluginInMiniGame'])
     assert metadata['userData'].get('loadPluginInEditor') is False and metadata['userData'].get('loadPluginInNative') is False
     assert metadata['userData'].get('executionScope')=='global'
-    baseline=json.loads((ROOT/'builds/records/M00-editor-baseline.json').read_text());unchanged=[]
+    baseline=json.loads((ROOT/'builds/records/M00-editor-baseline.json').read_text());unchanged=[];declared=[]
+    coverage=json.loads((ROOT/'builds/records/M10-loading-asset-coverage.json').read_text())
+    exceptions={e['path']:e for e in coverage['authoringChanges']}
     for entry in baseline['files']:
         if entry['path'].endswith('/Boot.ts'):continue
+        if entry['path']=='games/xiaoyu-cocos/.gitignore':
+            change=exceptions[entry['path']];assert sha((ROOT/entry['path']).read_bytes())==change['sha256'];declared.append(change);continue
         assert sha((ROOT/entry['path']).read_bytes())==entry['sha256'],entry['path'];unchanged.append(entry['path'])
     boot='games/xiaoyu-cocos/assets/Boot.ts';previous=subprocess.check_output(['git','show',report['sourceCommit']+':'+boot],cwd=ROOT);assert sha(previous)==sha((ROOT/boot).read_bytes())
-    result={'schema':1,'candidate':args.name,'sourceCommit':report['sourceCommit'],'sourceDirtyAtFreeze':report['sourceDirty'],'fileCount':len(report['files']),'metadataChanges':changes,'runtimeMismatches':mismatches,'plugin':{'link':str(plugin.readlink()),'sha256':sha(target.read_bytes()),'targetMode':oct(stat.S_IMODE(target.stat().st_mode)),'directoryMode':oct(stat.S_IMODE(target.parent.stat().st_mode))},'userBaseline':{'unchanged':unchanged,'bootChangedThisItem':False,'bootUUID':baseline['boot_uuid'],'sceneUUID':baseline['scene_uuid']}}
+    result={'schema':1,'candidate':args.name,'sourceCommit':report['sourceCommit'],'sourceDirtyAtFreeze':report['sourceDirty'],'fileCount':len(report['files']),'metadataChanges':changes,'runtimeMismatches':mismatches,'plugin':{'link':str(plugin.readlink()),'sha256':sha(target.read_bytes()),'targetMode':oct(stat.S_IMODE(target.stat().st_mode)),'directoryMode':oct(stat.S_IMODE(target.parent.stat().st_mode))},'userBaseline':{'unchanged':unchanged,'declaredAuthoringChanges':declared,'bootChangedThisItem':False,'bootUUID':baseline['boot_uuid'],'sceneUUID':baseline['scene_uuid']}}
     output=ROOT/args.output;output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'candidate':args.name,'files':len(report['files']),'metadataChanges':len(changes),'mismatches':mismatches}));assert not mismatches
 if __name__=='__main__':main()

@@ -1,0 +1,17 @@
+✔ Application resizes active and retained pages exactly once per changed viewport and moves the top-left origin (2.426416ms)
+✔ Budget rejection does not stop the application update loop or spam retries, and a later resize can recover (0.195833ms)
+✔ Home viewport changes retain live actors while updating the actual shared input plan, renderer, HUD and bleed edges (0.357125ms)
+✔ Real GameAssets keeps one admitted target slot across repeated resize, corrects byte reservation and releases once (0.465917ms)
+✔ Cached target parking frees its full reservation; failed restoration remains empty and can retry without losing the scope (0.305417ms)
+✔ Actual cached Darkroom pause releases pixels, dormant resize allocates nothing and re-entry preserves the round until new drawing completes (0.566ms)
+✔ Real Darkroom route waits for rendering, cancellation frees pixels, and a later request reuses gameplay safely (0.528958ms)
+✔ Authored Home, cached Darkroom and journal fit the unchanged 128-entry / 256 MiB limits when the hidden target is parked (20.111208ms)
+✔ Collection entry uses the original binary hit mask rather than the texture-only asset accessor, respecting actor occlusion (0.521333ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 357.699375

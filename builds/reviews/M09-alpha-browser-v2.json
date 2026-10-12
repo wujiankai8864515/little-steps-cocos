@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "item": "M09.08",
+  "candidate": "alpha-transport-v2",
+  "platform": "web-mobile QA only",
+  "viewport": [
+    720,
+    1280
+  ],
+  "engineOverrides": 0,
+  "actualVisualObservations": [
+    "Login door, actor peek and accents visible",
+    "Comic complete and enter action visible",
+    "Home actor, flowers, props, measured contact shadows and daylight/night lighting visible",
+    "Wardrobe opened, peach preview and direct local-unlock confirmation visible",
+    "Returned Home; doll drag to actor opened confirmation",
+    "Darkroom entered, lantern contact/shadows and articulated doll visible; needle hit reduced misfortune meter",
+    "Returned Home, Photo opened with2/30 photos and Home binding selectors"
+  ],
+  "scopeBoundary": "This run exercises changed decoding and representative page transitions; does not repeat all previously recorded six-page feature cases. Unlock action was performed but no claim of equipped-outfit persistence in this run. No screenshot files exported; screenshots were inspected through supported independent Chrome tool.",
+  "runtimeErrors": [],
+  "pageReadyTimes": {
+    "LOGIN": "2026-10-11T23:54:44.367Z",
+    "COMIC": "2026-10-11T23:54:58.648Z",
+    "HOME": "2026-10-11T23:55:50.999Z",
+    "WARDROBE": "2026-10-11T23:56:09.554Z",
+    "DARKROOM": "2026-10-11T23:57:35.163Z"
+  },
+  "resourceAdmissions": [
+    {
+      "group": "loading",
+      "entries": 10,
+      "reservedBytes": 9987937
+    },
+    {
+      "group": "login",
+      "entries": 20,
+      "reservedBytes": 19664613
+    },
+    {
+      "group": "comic",
+      "entries": 20,
+      "reservedBytes": 19658311
+    },
+    {
+      "group": "home",
+      "entries": 90,
+      "reservedBytes": 122417173
+    },
+    {
+      "group": "darkroom",
+      "entries": 113,
+      "reservedBytes": 154368342
+    }
+  ],
+  "cleanup": "Tab426065838 closed, viewport reset, task server88238 on8794 stopped. Builds and browser engine workload serial."
+}
