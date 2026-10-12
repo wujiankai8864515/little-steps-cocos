@@ -1,0 +1,27 @@
+{
+  "item": "M16.01",
+  "trigger": "微信小游戏工具真机调试启动失败",
+  "sourceLog": "migration/reviews/M16-device-debug-user-log.txt",
+  "sourceLogSHA256": "b63c0bbdc8ea4a668097aae968d98667a310ab34033a3d4f2fe8ba00d127b3c1",
+  "fatalError": "downloadFile:fail net::ERR_CONNECTION_REFUSED",
+  "url": "http://127.0.0.1:8794/remote/loading/config.4f860.json",
+  "evidenceLines": [
+    487,
+    1050,
+    1643
+  ],
+  "finding": "手机回环地址不能连接Mac资源服务器。source catalog ready出现在文件系统提示之后；本次startup failed来自远程loading包下载失败。",
+  "previousValidationBoundary": "M15最新包仅核验电脑模拟器登录，未声称真机通过。",
+  "repair": "增加微信渠道真机局域网模式，保留HTTPS外部资源地址覆盖；服务可用性在固定产物更新前检查。",
+  "device": "pending",
+  "sameWifiQuestion": "pending",
+  "home19MB": "unchanged-failed",
+  "formalRelease": "not-created",
+  "automaticApprovalRejection": {
+    "action": "启动Mac私有局域网192.168.11.193:8795生成资源服务",
+    "reason": "用户尚未明确授权把非公开资源暴露到局域网，且同Wi-Fi问题未回答",
+    "serviceStarted": false,
+    "fixedProjectUpdated": false,
+    "alternative": "先构建与检查，不激活产物或启动服务，完成后请求明确授权"
+  }
+}

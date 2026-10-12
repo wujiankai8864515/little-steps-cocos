@@ -16,6 +16,7 @@ from audit import audit
 from common import install_templates as install, relocate_path, require_current_inputs
 from prepare import ROOT, freeze, sha
 from serve import DIRECTORY, HEALTH_PATH
+from startup import finalize
 
 CACHE = ROOT / 'migration/.cache/wechatgame'
 DESTINATION = ROOT / 'builds/wechatgame/project'
@@ -106,6 +107,7 @@ def refresh(name, report):
     backup_local, backup_cdn = stage / 'previous-wechatgame', stage / 'previous-remote'
     remote = DIRECTORY / 'remote'
     prepared_remote = cdn / 'remote'
+    prepared_remote.mkdir(exist_ok=True)
     DIRECTORY.parent.mkdir(parents=True, exist_ok=True)
     had_local, had_cdn = DESTINATION.exists(), remote.exists()
     launcher_path = DESTINATION.parent / 'project.config.json'
@@ -187,8 +189,12 @@ def run(args):
     settings_path = ROOT / 'builds/wechatgame/config.json'
     settings_hash = sha(settings_path)
     settings = json.loads(settings_path.read_text())
-    server = args.server or settings['server']
+    resource_mode = args.resource_mode or ('remote' if args.server else settings.get('resourceMode', 'remote'))
+    server = (args.server or settings['server']) if resource_mode == 'remote' else ''
     if args.serve_only:
+        previous = json.loads(STATE.read_text()) if STATE.exists() else {}
+        if previous.get('resourceMode', resource_mode) == 'subpackage':
+            return {'project': str(DESTINATION), 'resourceServer': {'mode': 'not-needed-native-subpackages'}}
         return {'project': str(DESTINATION), 'resourceServer': ensure_server(server)}
     install()
     name = args.name or datetime.now(timezone.utc).strftime('wechat-%Y%m%dT%H%M%S%fZ')
@@ -197,9 +203,11 @@ def run(args):
     if args.stage_existing:
         manifest = json.loads(record.read_text())
         server = manifest['resourceServer']
+        resource_mode = manifest.get('resourceMode', 'remote')
     else:
         result = freeze(name, relocate_path(args.readback) if args.readback else None,
-                        server, args.appid or settings['appid'], settings['trimUnused'])
+                        server, args.appid or settings['appid'], settings['trimUnused'], resource_mode,
+                        settings.get('assetPolicy'), settings.get('separateEngine', False))
         manifest = json.loads(Path(result['manifest']).read_text())
         if not args.readback and settings_hash != sha(settings_path):
             raise ValueError('读取期间渠道配置已改变，请重新打包。')
@@ -211,11 +219,23 @@ def run(args):
         write_json(record, manifest)
         if completed.returncode != 36:
             raise RuntimeError('Creator build failed; see ' + str(log_path))
+        if settings.get('earlyLoading'):
+            finalize(ROOT / 'migration/work' / name / 'output/wechatgame')
     report = audit(name)
     write_json(ROOT / 'migration/reviews' / (name + '-package.json'), report)
     require_current_inputs(manifest, ROOT)
+    if args.build_only:
+        return {'candidate': name, 'status': 'built-not-activated', 'resourceMode': resource_mode,
+                'project': str(ROOT / 'migration/work' / name / 'output/wechatgame'),
+                'checks': report['checks'], 'rawLocalPackageBytes': report['rawLocalPackageBytes']}
+    resource_server = (ensure_server(server) if resource_mode == 'remote' else
+                       {'mode': 'not-needed-native-subpackages'})
+    require_current_inputs(manifest, ROOT)
     state = refresh(name, report)
-    state['resourceServer'] = ensure_server(server)
+    state['resourceMode'] = resource_mode
+    write_json(STATE, state)
+    state['resourceServer'] = resource_server
+    write_json(ROOT / 'migration/reviews' / (name + '-workspace.json'), state)
     if args.open:
         completed = subprocess.run([CLI, 'open', '--project', str(DESTINATION.parent)], cwd=ROOT)
         state['devtoolsOpen'] = 'opened' if completed.returncode == 0 else 'manual-import-required'
@@ -230,11 +250,14 @@ def main():
     parser.add_argument('--readback', type=Path, help='Build the recorded remote revision; default is local working copy')
     parser.add_argument('--appid', help='Override builds/wechatgame/config.json')
     parser.add_argument('--server', help='Override the remote resource root')
+    parser.add_argument('--resource-mode', choices=['subpackage', 'remote'], help='Native WeChat subpackages or external remote resources')
+    parser.add_argument('--device', dest='resource_mode', action='store_const', const='subpackage', help='Bundle resources for device debugging without a resource server')
+    parser.add_argument('--build-only', action='store_true', help='Build and audit without activating the fixed project')
     parser.add_argument('--stage-existing', action='store_true', help='Refresh from an already built named candidate')
     parser.add_argument('--serve-only', action='store_true', help='Restart resource server after reboot without rebuilding')
     parser.add_argument('--open', action='store_true', help='Open fixed project using installed WeChat DevTools CLI')
     args = parser.parse_args()
-    if args.stage_existing and (not args.name or args.readback or args.appid or args.server):
+    if args.stage_existing and (not args.name or args.readback or args.appid or args.server or args.resource_mode):
         parser.error('--stage-existing requires --name and no build overrides')
     if args.name and (not args.name.isascii() or not all(c.isalnum() or c in '-_' for c in args.name)):
         parser.error('Invalid candidate name')

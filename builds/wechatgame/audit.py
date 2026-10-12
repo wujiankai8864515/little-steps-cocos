@@ -37,6 +37,7 @@ def audit(name):
     settings = json.loads(settings_files[0].read_text())
     assets = settings['assets']
     expected_remote = {b['name'] for b in config['bundleConfigs'] if b['isRemote']}
+    expected_subpackages = {b['name'] for b in config['bundleConfigs'] if b['compressionType'] == 'subpackage'}
     subpackages = game.get('subpackages', game.get('subPackages', []))
     roots = {item['name']: item['root'].rstrip('/') + '/' for item in subpackages}
     inventory, sizes = [], defaultdict(int)
@@ -82,9 +83,14 @@ def audit(name):
         'remoteServerMatches': assets.get('server') == config['server'],
         'remoteScriptsAbsent': not remote_scripts,
         'allRemoteBundlesPresent': all((output / 'remote' / n).is_dir() for n in expected_remote),
+        'nativeSubpackagesMatch': set(roots) == expected_subpackages == set(assets.get('subpackages', [])),
+        'allNativeSubpackagesPresent': all((output / roots[n]).is_dir() for n in expected_subpackages),
+        'noExternalDependencyInNativeMode': (manifest.get('resourceMode') != 'subpackage' or
+                                            (not expected_remote and not assets.get('server') and
+                                             not any(f['path'].startswith('remote/') for f in inventory))),
         'frozenRuntimeSourceUnchanged': not runtime_mismatch,
         'onlyPluginImporterMetadataChanged': not unexpected_metadata,
-        'originalNativeAssetBytesPreserved': not missing_native,
+        'frozenNativePayloadBytesPreserved': not missing_native,
         'configMatchesFrozenHash': sha(stage / 'build-config.json') == manifest['buildConfigSHA256'],
         'mainWithinConservative4MB': sizes['main'] <= 4_000_000,
         'noSourceMaps': not any(f['path'].endswith('.map') for f in inventory),
@@ -97,21 +103,47 @@ def audit(name):
                                   and plugin_data.get('loadPluginInMiniGame') is True),
     }
     package_bytes = sum(v for k, v in sizes.items() if not k.startswith('remote/'))
+    native_by_hash = defaultdict(list)
+    bundle_details = []
+    for item in inventory:
+        if '/native/' in item['path']:
+            native_by_hash[item['sha256']].append(item['path'])
+    for b in config['bundleConfigs']:
+        root = output / (roots[b['name']] if b['name'] in roots else
+                         ('remote/' if b['isRemote'] else 'assets/') + b['name'])
+        for path in root.glob('config*.json'):
+            data = json.loads(path.read_text())
+            # Numeric UUID indexes/redirects are references, not duplicate
+            # payloads. Raw native byte hashes independently prove duplication.
+            bundle_details.append({'name': b['name'], 'priority': b['priority'],
+                                   'dependencies': data.get('deps', []),
+                                   'configBytes': path.stat().st_size})
+    duplicates = [paths for paths in native_by_hash.values() if len(paths) > 1]
+    transforms = manifest.get('packagingOverrides', [])
     limits = ['Cold Home 19,000,000-byte gate requires measured first-entry transfer; output size does not prove it.',
               'WeChat DevTools, physical touch, audio, storage, background recovery and performance remain unverified.',
-              'Resources have not been uploaded and no production HTTPS/domain configuration has been verified.']
+              'Visual/audio quality of lossy packaging transforms still requires user acceptance.']
+    if manifest.get('resourceMode') != 'subpackage':
+        limits.append('Remote resources have not been uploaded and production HTTPS/domain configuration remains unverified.')
     if project.get('appid') == TEST_APPID:
         limits.append('Uses the documented Creator test AppID; not a production account build.')
     return {
         'schema': 1, 'item': 'M10.01', 'candidate': name, 'sourceCommit': manifest['sourceCommit'],
         'status': 'static_packaging_checks_passed_not_release' if all(checks.values()) else 'packaging_checks_failed_not_release',
         'checks': checks, 'rawBytesByBucket': dict(sorted(sizes.items())), 'rawLocalPackageBytes': package_bytes,
+        'subpackageBudget': {'rawBytes': sum(v for k, v in sizes.items() if k.startswith('subpackage/')),
+                             'totalCodePackageBytes': package_bytes,
+                             'limitBytes': 30_000_000,
+                             'withinFormal30MB': package_bytes <= 30_000_000},
         'sizeMethod': 'Sum of exact output file bytes; remote/ excluded from local package. Not wire download, ZIP or device memory.',
         'runtimeSourceMismatches': runtime_mismatch, 'creatorMetadataChanges': metadata_changes,
         'sourceCatalog': check_catalog(stage / 'games/xiaoyu-cocos'),
         'homePayload': home_payload,
         'nativeAssets': {'count': len(native_sources), 'byteIdenticalInOutput': len(native_sources) - len(missing_native),
                          'missing': missing_native},
+        'bundleOwnership': {'bundles': bundle_details, 'duplicateNativePayloads': duplicates,
+                            'extraDuplicateBytes': sum(next(f['bytes'] for f in inventory if f['path'] == paths[0]) * (len(paths)-1) for paths in duplicates)},
+        'packagingTransforms': [{k: v for k, v in row.items() if k != 'channelRMSE'} for row in transforms if 'packagingBytes' in row],
         'remoteScripts': remote_scripts, 'fileCount': len(inventory), 'files': inventory,
         'inventorySHA256': hashlib.sha256(json.dumps(inventory, sort_keys=True).encode()).hexdigest(),
         'pending': limits,

@@ -12,7 +12,8 @@ import build as build_wechat
 import audit as audit_wechat_candidate
 from common import relocate_path, capture_inputs, require_current_inputs
 from common import install_templates as install
-from common import sha
+from common import sha, audit_home_payload
+from types import SimpleNamespace
 
 
 class WorkspaceTest(unittest.TestCase):
@@ -223,6 +224,51 @@ class WorkspaceTest(unittest.TestCase):
         config.write_text(json.dumps({'paths': {'0': ['source-catalog', 0], '1': ['source-scenes', 0],
                                                 '2': ['effects/login-peek', 1]}}))
         self.assertTrue(audit_wechat_candidate.startup_resources_present(output))
+
+    def test_native_refresh_clears_old_remote_resources_and_installs_subpackages(self):
+        build_wechat.refresh('first', self.candidate('first'))
+        report = self.candidate('native', {'subpackages/home/config.json': b'native-home',
+                                          'subpackages/home/game.js': b'native-entry'})
+        report['files'] = [f for f in report['files'] if not f['bucket'].startswith('remote/')]
+        state = build_wechat.refresh('native', report)
+        self.assertEqual((self.destination / 'subpackages/home/config.json').read_bytes(), b'native-home')
+        self.assertFalse((self.cdn / 'remote/home/config.json').exists())
+        self.assertEqual((self.root / 'migration/work/native/previous-remote/home/config.json').read_bytes(), b'new-assets-first')
+        self.assertIn('subpackages/home/game.js', state['generatedFiles'])
+
+    def test_home_budget_follows_native_subpackages_instead_of_remote_paths(self):
+        project = self.root / 'games/xiaoyu-cocos'
+        catalog = project / 'assets/resources/source-catalog.json'
+        catalog.parent.mkdir(parents=True)
+        catalog.write_text(json.dumps({'groups': {'home': {'depends_on': ['shared_room_visual']},
+                                                'shared_room_visual': {'depends_on': []}}}))
+        output = self.root / 'output'
+        for name in ['home', 'shared_room_visual']:
+            bundle = output / 'subpackages' / name
+            bundle.mkdir(parents=True)
+            (bundle / 'config.hash.json').write_text(json.dumps({'name': name, 'deps': []}))
+            (bundle / 'original.png').write_bytes(b'original-pixels')
+        report = audit_home_payload(project, output, [])
+        self.assertTrue(report['passed'], report['errors'])
+        self.assertEqual({b['directory'] for b in report['bundles']}, {'subpackages/home', 'subpackages/shared_room_visual'})
+
+    def test_native_build_only_never_starts_a_server_or_updates_fixed_project(self):
+        build_wechat.refresh('first', self.candidate('first'))
+        report = self.candidate('second')
+        report['rawLocalPackageBytes'] = 100
+        record = self.root / 'migration/records/candidates/second.json'
+        record.parent.mkdir(parents=True)
+        record.write_text(json.dumps({'sourceMode': 'remote-readback', 'resourceMode': 'subpackage', 'resourceServer': ''}))
+        (self.root / 'builds/wechatgame/config.json').write_text('{"server":"http://127.0.0.1:8794/"}')
+        args = SimpleNamespace(serve_only=False, stage_existing=True, name='second', readback=None,
+                               resource_mode=None, server=None, open=False, build_only=True)
+        with patch.object(build_wechat, 'install'), patch.object(build_wechat, 'audit', return_value=report), \
+             patch.object(build_wechat, 'ensure_server') as server, patch.object(build_wechat, 'refresh') as refresh:
+            result = build_wechat.run(args)
+        self.assertEqual(result['resourceMode'], 'subpackage')
+        server.assert_not_called()
+        refresh.assert_not_called()
+        self.assertEqual((self.destination / 'game.js').read_bytes(), b'new-first')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,1967 @@
+init **** success
+Arguments:
+  /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator: true
+  project: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos
+  build: configPath=/Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/build-config.json
+  dev: false
+  home: /Users/wkk/.CocosCreator
+ 
+[Package] metrics@1.0.0 enable
+[Package] menu@1.0.0 enable
+[Package] profile@1.0.0 enable
+[Package] project@1.0.6 enable
+[Package] messages@1.0.0 enable
+[Package] utils@1.0.0 enable
+[Package] program@1.0.4 enable
+[Package] tester@1.0.0 enable
+[Package] information@1.0.1 enable
+[Package] preferences@1.0.0 enable
+[EditorQuickCompiler]Version information looks good.
+Note, quick compiler does not get launched.
+engine:compile-builtin-engine-success (82ms)
+Load engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine
+Register native engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native
+[Package] engine@1.0.12 enable
+[Package] programming@1.0.0 enable
+[Package] window@1.0.0 enable
+Request namespace: device-list
+[Package] Profile migrateLocal: device(0.0.0)...
+[Package] device@1.0.1 enable
+[Package] ui-kit@1.0.1 enable
+[Package] asset-db@1.0.0 enable
+[Package] scene@1.0.3 enable
+[Package] server@1.0.0 enable
+[Package] preview@1.0.1 enable
+Preview import map: {
+  "imports": {
+    "cc": "cce:/internal/x/cc",
+    "cc/env": "cc/editor/populate-internal-constants",
+    "cce.env": "cc/editor/populate-internal-constants",
+    "cc/userland/macro": "./userland/macro"
+  }
+}
+[Package] animator@1.0.0 enable
+[Build] internalRegister pkg(scene) in android platform success!
+[Package] builder@1.3.9 enable
+[Build] internalRegister pkg(scene) in google-play platform success!
+[Build] internalRegister pkg(scene) in ohos platform success!
+[Build] internalRegister pkg(scene) in harmonyos-next platform success!
+[Build] internalRegister pkg(scene) in huawei-agc platform success!
+[Build] internalRegister pkg(scene) in ios platform success!
+[Build] internalRegister pkg(scene) in windows platform success!
+[Build] internalRegister pkg(scene) in mac platform success!
+[Build] internalRegister pkg(scene) in linux platform success!
+[Build] internalRegister pkg(scene) in openpaas platform success!
+[Build] internalRegister pkg(scene) in alipay-mini-game platform success!
+[Build] internalRegister pkg(scene) in taobao-creative-app platform success!
+[Build] internalRegister pkg(scene) in taobao-mini-game platform success!
+[Build] internalRegister pkg(scene) in bytedance-mini-game platform success!
+[Build] internalRegister pkg(scene) in oppo-mini-game platform success!
+[Build] internalRegister pkg(scene) in huawei-quick-game platform success!
+[Build] internalRegister pkg(scene) in migu-mini-game platform success!
+[Build] internalRegister pkg(scene) in honor-mini-game platform success!
+[Build] internalRegister pkg(scene) in vivo-mini-game platform success!
+[Build] internalRegister pkg(scene) in xiaomi-quick-game platform success!
+[Build] internalRegister pkg(scene) in baidu-mini-game platform success!
+[Build] internalRegister pkg(scene) in wechatgame platform success!
+[Build] internalRegister pkg(scene) in wechatprogram platform success!
+[Build] internalRegister pkg(scene) in link-sure platform success!
+[Build] internalRegister pkg(scene) in qtt platform success!
+[Build] internalRegister pkg(scene) in fb-instant-games platform success!
+[Build] internalRegister pkg(scene) in web-desktop platform success!
+[Build] internalRegister pkg(scene) in web-mobile platform success!
+[Build] internalRegister pkg(scene) in cocos-runtime platform success!
+[Build] internalRegister pkg(scene) in platform-example platform success!
+[Build] internalRegister pkg(scene) in online platform success!
+[Build] internalRegister pkg(scene) in xr-meta platform success!
+[Build] internalRegister pkg(scene) in xr-huaweivr platform success!
+[Build] internalRegister pkg(scene) in xr-pico platform success!
+[Build] internalRegister pkg(scene) in xr-rokid platform success!
+[Build] internalRegister pkg(scene) in xr-monado platform success!
+[Build] internalRegister pkg(scene) in xr-spaces platform success!
+[Build] internalRegister pkg(scene) in xr-seed platform success!
+[Build] internalRegister pkg(scene) in ar-android platform success!
+[Build] internalRegister pkg(scene) in ar-ios platform success!
+[Build] internalRegister pkg(scene) in xr-gsxr platform success!
+[Build] internalRegister pkg(scene) in xr-yvr platform success!
+[Build] internalRegister pkg(scene) in xr-htc platform success!
+[Build] internalRegister pkg(scene) in xr-iqiyi platform success!
+[Build] internalRegister pkg(scene) in xr-skyworth platform success!
+[Build] internalRegister pkg(scene) in xr-ffalcon platform success!
+[Build] internalRegister pkg(scene) in xr-nreal platform success!
+[Build] internalRegister pkg(scene) in xr-inmo platform success!
+[Build] internalRegister pkg(scene) in xr-lenovo platform success!
+[Build] internalRegister pkg(scene) in android-hmi platform success!
+[Build-plugin] register pkg scene: 14ms
+Builder PluginManager init: 14ms
+[Package] shortcuts@1.0.1 enable
+[Package] animation-graph@1.0.0 enable
+[Package] about@1.0.0 enable
+[Package] assets@1.0.0 enable
+[Package] console@1.0.0 enable
+[Package] crash-reporter@1.0.0 enable
+[Package] extension@3.1.4 enable
+[Package] feedback@1.0.0 enable
+[Package] hierarchy@1.0.0 enable
+[Package] inspector@1.0.0 enable
+[Package] light-probe@1.0.4 enable
+[Package] lightmap@1.0.4 enable
+[Package] node-library@1.0.1 enable
+[Package] package-asset@1.0.3 enable
+[Package] process@1.0.0 enable
+[Package] reference-image@1.0.0 enable
+[Package] reflection-probe@1.0.4 enable
+[Package] engine-extends@1.0.0 enable
+[Package] adsense-h5g-plugin@1.0.1 enable
+[Build] internalRegister pkg(adsense-h5g-plugin) in android platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in google-play platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in ohos platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in harmonyos-next platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in huawei-agc platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in ios platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in windows platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in mac platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in linux platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in openpaas platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in alipay-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in taobao-creative-app platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in taobao-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in bytedance-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in oppo-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in huawei-quick-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in migu-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in honor-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in vivo-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xiaomi-quick-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in baidu-mini-game platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in wechatgame platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in wechatprogram platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in link-sure platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in qtt platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in fb-instant-games platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in web-desktop platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in web-mobile platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in cocos-runtime platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in platform-example platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in online platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-meta platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-huaweivr platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-pico platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-rokid platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-monado platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-spaces platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-seed platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in ar-android platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in ar-ios platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-gsxr platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-yvr platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-htc platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-iqiyi platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-skyworth platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-ffalcon platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-nreal platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-inmo platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in xr-lenovo platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in android-hmi platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in web-desktop platform success!
+[Build] internalRegister pkg(adsense-h5g-plugin) in web-mobile platform success!
+[Build-plugin] register pkg adsense-h5g-plugin: 2ms
+[Package] alipay-mini-game@1.0.2 enable
+[Build] internalRegister pkg(alipay-mini-game) in alipay-mini-game platform success!
+[Build-plugin] register pkg alipay-mini-game: 2ms
+[Package] android@1.0.1 enable
+[Build] internalRegister pkg(android) in android platform success!
+[Build] internalRegister pkg(android) in huawei-agc platform success!
+[Build-plugin] register pkg android: 3ms
+[Package] bytedance-mini-game@1.0.3 enable
+[Build] internalRegister pkg(bytedance-mini-game) in bytedance-mini-game platform success!
+[Build-plugin] register pkg bytedance-mini-game: 2ms
+[Package] certificate@1.0.0 enable
+[Package] channel-upload-tools@1.0.0 enable
+[Package] fb-instant-games@1.0.0 enable
+[Build] internalRegister pkg(fb-instant-games) in fb-instant-games platform success!
+[Build-plugin] register pkg fb-instant-games: 3ms
+[Package] google-play@1.0.1 enable
+[Build] internalRegister pkg(google-play) in google-play platform success!
+[Build-plugin] register pkg google-play: 2ms
+[Package] harmonyos-next@1.0.0 enable
+[Build] internalRegister pkg(harmonyos-next) in harmonyos-next platform success!
+[Build-plugin] register pkg harmonyos-next: 2ms
+[Package] honor-mini-game@1.0.0 enable
+[Build] internalRegister pkg(honor-mini-game) in honor-mini-game platform success!
+[Build-plugin] register pkg honor-mini-game: 2ms
+[Package] huawei-agc@1.0.0 enable
+[Build] internalRegister pkg(huawei-agc) in huawei-agc platform success!
+[Build-plugin] register pkg huawei-agc: 1ms
+[Package] huawei-quick-game@1.0.3 enable
+[Build] internalRegister pkg(huawei-quick-game) in huawei-quick-game platform success!
+[Build-plugin] register pkg huawei-quick-game: 2ms
+[Package] ios@1.0.1 enable
+[Build] internalRegister pkg(ios) in ios platform success!
+[Build-plugin] register pkg ios: 2ms
+[Package] linux@1.0.0 enable
+平台 linux 不存在，无法添加该平台
+[Package] mac@1.0.0 enable
+[Build] internalRegister pkg(mac) in mac platform success!
+[Build-plugin] register pkg mac: 1ms
+[Package] migu-mini-game@1.0.0 enable
+[Build] internalRegister pkg(migu-mini-game) in migu-mini-game platform success!
+[Build-plugin] register pkg migu-mini-game: 2ms
+[Package] native@1.0.2 enable
+[Build] internalRegister pkg(native) in ios platform success!
+[Build] internalRegister pkg(native) in android platform success!
+[Build] internalRegister pkg(native) in huawei-agc platform success!
+[Build] internalRegister pkg(native) in windows platform success!
+[Build] internalRegister pkg(native) in mac platform success!
+[Build] internalRegister pkg(native) in google-play platform success!
+[Build] internalRegister pkg(native) in ohos platform success!
+[Build] internalRegister pkg(native) in harmonyos-next platform success!
+平台 linux 不存在，不支持向该平台注册任何内容
+[Build] internalRegister pkg(native) in xr-huaweivr platform success!
+[Build] internalRegister pkg(native) in xr-meta platform success!
+[Build] internalRegister pkg(native) in xr-pico platform success!
+[Build] internalRegister pkg(native) in xr-rokid platform success!
+[Build] internalRegister pkg(native) in xr-monado platform success!
+[Build] internalRegister pkg(native) in ar-android platform success!
+[Build] internalRegister pkg(native) in ar-ios platform success!
+[Build] internalRegister pkg(native) in xr-spaces platform success!
+[Build] internalRegister pkg(native) in xr-seed platform success!
+[Build] internalRegister pkg(native) in xr-gsxr platform success!
+[Build] internalRegister pkg(native) in xr-yvr platform success!
+[Build] internalRegister pkg(native) in xr-htc platform success!
+[Build] internalRegister pkg(native) in xr-iqiyi platform success!
+[Build] internalRegister pkg(native) in xr-skyworth platform success!
+[Build] internalRegister pkg(native) in xr-ffalcon platform success!
+[Build] internalRegister pkg(native) in xr-nreal platform success!
+[Build] internalRegister pkg(native) in xr-inmo platform success!
+[Build] internalRegister pkg(native) in xr-lenovo platform success!
+[Build-plugin] register pkg native: 2ms
+[Package] ohos@1.0.0 enable
+[Build] internalRegister pkg(ohos) in ohos platform success!
+[Build-plugin] register pkg ohos: 1ms
+[Package] oppo-mini-game@1.0.3 enable
+[Build] internalRegister pkg(oppo-mini-game) in oppo-mini-game platform success!
+[Build-plugin] register pkg oppo-mini-game: 1ms
+[Package] runtime-dev-tools@1.0.0 enable
+[Package] taobao-mini-game@1.0.1 enable
+[Build] internalRegister pkg(taobao-mini-game) in taobao-mini-game platform success!
+[Build-plugin] register pkg taobao-mini-game: 2ms
+[Package] vivo-mini-game@1.0.3 enable
+[Build] internalRegister pkg(vivo-mini-game) in vivo-mini-game platform success!
+[Build-plugin] register pkg vivo-mini-game: 2ms
+[Package] web-desktop@1.0.1 enable
+[Build] internalRegister pkg(web-desktop) in web-desktop platform success!
+[Build-plugin] register pkg web-desktop: 1ms
+[Package] web-mobile@1.0.1 enable
+[Build] internalRegister pkg(web-mobile) in web-mobile platform success!
+[Build-plugin] register pkg web-mobile: 2ms
+[Package] wechatgame@1.0.4 enable
+[Build] internalRegister pkg(wechatgame) in wechatgame platform success!
+[Build-plugin] register pkg wechatgame: 1ms
+[Package] wechatprogram@1.0.2 enable
+平台 wechatprogram 不存在，无法添加该平台
+[Package] windows@1.0.1 enable
+[Build-plugin] register pkg windows: 2ms
+[Package] xiaomi-quick-game@1.0.2 enable
+[Build] internalRegister pkg(xiaomi-quick-game) in xiaomi-quick-game platform success!
+[Build-plugin] register pkg xiaomi-quick-game: 1ms
+[builder-ui] card-page 本地服务已启动: http://127.0.0.1:58208/builder-home/
+[builder-ui][ota] {"stage":"schedule","status":"started","env":"prod","intervalMs":3600000,"id":1,"at":"2026-10-12T10:31:18.555+08:00"}
+[Package] builder-ui@1.1.16 enable
+[Package] cocos-service@3.0.9 enable
+[Build] internalRegister pkg(cocos-service) in android platform success!
+[Build] internalRegister pkg(cocos-service) in google-play platform success!
+[Build] internalRegister pkg(cocos-service) in ohos platform success!
+[Build] internalRegister pkg(cocos-service) in harmonyos-next platform success!
+[Build] internalRegister pkg(cocos-service) in huawei-agc platform success!
+[Build] internalRegister pkg(cocos-service) in ios platform success!
+[Build] internalRegister pkg(cocos-service) in windows platform success!
+[Build] internalRegister pkg(cocos-service) in mac platform success!
+[Build] internalRegister pkg(cocos-service) in linux platform success!
+[Build] internalRegister pkg(cocos-service) in openpaas platform success!
+[Build] internalRegister pkg(cocos-service) in alipay-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in taobao-creative-app platform success!
+[Build] internalRegister pkg(cocos-service) in taobao-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in bytedance-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in oppo-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in huawei-quick-game platform success!
+[Build] internalRegister pkg(cocos-service) in migu-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in honor-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in vivo-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in xiaomi-quick-game platform success!
+[Build] internalRegister pkg(cocos-service) in baidu-mini-game platform success!
+[Build] internalRegister pkg(cocos-service) in wechatgame platform success!
+[Build] internalRegister pkg(cocos-service) in wechatprogram platform success!
+[Build] internalRegister pkg(cocos-service) in link-sure platform success!
+[Build] internalRegister pkg(cocos-service) in qtt platform success!
+[Build] internalRegister pkg(cocos-service) in fb-instant-games platform success!
+[Build] internalRegister pkg(cocos-service) in web-desktop platform success!
+[Build] internalRegister pkg(cocos-service) in web-mobile platform success!
+[Build] internalRegister pkg(cocos-service) in cocos-runtime platform success!
+[Build] internalRegister pkg(cocos-service) in platform-example platform success!
+[Build] internalRegister pkg(cocos-service) in online platform success!
+[Build] internalRegister pkg(cocos-service) in xr-meta platform success!
+[Build] internalRegister pkg(cocos-service) in xr-huaweivr platform success!
+[Build] internalRegister pkg(cocos-service) in xr-pico platform success!
+[Build] internalRegister pkg(cocos-service) in xr-rokid platform success!
+[Build] internalRegister pkg(cocos-service) in xr-monado platform success!
+[Build] internalRegister pkg(cocos-service) in xr-spaces platform success!
+[Build] internalRegister pkg(cocos-service) in xr-seed platform success!
+[Build] internalRegister pkg(cocos-service) in ar-android platform success!
+[Build] internalRegister pkg(cocos-service) in ar-ios platform success!
+[Build] internalRegister pkg(cocos-service) in xr-gsxr platform success!
+[Build] internalRegister pkg(cocos-service) in xr-yvr platform success!
+[Build] internalRegister pkg(cocos-service) in xr-htc platform success!
+[Build] internalRegister pkg(cocos-service) in xr-iqiyi platform success!
+[Build] internalRegister pkg(cocos-service) in xr-skyworth platform success!
+[Build] internalRegister pkg(cocos-service) in xr-ffalcon platform success!
+[Build] internalRegister pkg(cocos-service) in xr-nreal platform success!
+[Build] internalRegister pkg(cocos-service) in xr-inmo platform success!
+[Build] internalRegister pkg(cocos-service) in xr-lenovo platform success!
+[Build] internalRegister pkg(cocos-service) in android-hmi platform success!
+[Build-plugin] register pkg cocos-service: 2ms
+[Package] im-plugin@3.0.14 enable
+[builder-ui][ota] {"stage":"check","status":"success","url":"https://download.sudden.ltd/restricted-assets/pink-ide-web/prod/R008/builder-home-0.1.24.zip","version":"1.0.7","channel":"stable","durationMs":286,"id":2,"at":"2026-10-12T10:31:18.841+08:00"}
+[builder-ui][ota] {"stage":"download","status":"started","url":"https://download.sudden.ltd/restricted-assets/pink-ide-web/prod/R008/builder-home-0.1.24.zip","version":"1.0.7","channel":"stable","id":3,"at":"2026-10-12T10:31:18.842+08:00"}
+init builder manager success
+[Package] openpaas@1.0.0 enable
+[Build] internalRegister pkg(openpaas) in openpaas platform success!
+[Build-plugin] register pkg openpaas: 2ms
+[Package] placeholder@1.0.0 enable
+Start enter command build with options {"configPath":"/Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/build-config.json"}
+Read config from path /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/build-config.json...
+wechatgame 插件构建配置无版本号，将跳过数据迁移
+[builder-ui][ota] {"stage":"download","status":"success","url":"https://download.sudden.ltd/restricted-assets/pink-ide-web/prod/R008/builder-home-0.1.24.zip","version":"1.0.7","channel":"stable","durationMs":223,"bytes":1966879,"id":4,"at":"2026-10-12T10:31:19.065+08:00"}
+[builder-ui][ota] {"stage":"verify","status":"success","version":"1.0.7","channel":"stable","id":5,"at":"2026-10-12T10:31:19.070+08:00"}
+[builder-ui][ota] {"stage":"activate","status":"success","version":"1.0.7","channel":"stable","durationMs":345,"id":6,"at":"2026-10-12T10:31:19.187+08:00"}
+[[Facet.reload]], before lock, count: 1
+[[Facet.reload]], after lock, count: 1
+[[Facet.reload]], before unlock, count: 1
+[[Facet.reload]], after unlock, count: 1
+auto refresh because script compiled or scene changed
+trackTimeEnd failed! Can not find the track time asset-db:worker-startup-database[internal] start
+trackTimeEnd failed! Can not find the track time asset-db:worker-startup-database[assets] start
+asset-db is ready!
+Check and complete build options {
+  platform: 'wechatgame',
+  name: 'Little Steps WeChat candidate',
+  outputName: 'wechatgame',
+  buildPath: '/Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/output',
+  startScene: 'de1d350c-133c-4d0e-9d2a-1df4d6992aaa',
+  scenes: [
+    {
+      url: 'db://assets/scene.scene',
+      uuid: 'de1d350c-133c-4d0e-9d2a-1df4d6992aaa'
+    }
+  ],
+  debug: false,
+  sourceMaps: false,
+  md5Cache: true,
+  server: 'http://192.168.11.193:8795/',
+  mainBundleIsRemote: false,
+  startSceneAssetBundle: false,
+  bundleConfigs: [
+    {
+      root: 'db://assets/resources',
+      name: 'resources',
+      priority: 8,
+      compressionType: 'merge_dep',
+      isRemote: false,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/comic',
+      name: 'comic',
+      priority: 85,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/core_code',
+      name: 'core_code',
+      priority: 100,
+      compressionType: 'merge_dep',
+      isRemote: false,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/darkroom',
+      name: 'darkroom',
+      priority: 55,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/departure_visual',
+      name: 'departure_visual',
+      priority: 60,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/home',
+      name: 'home',
+      priority: 60,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/loading',
+      name: 'loading',
+      priority: 100,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/login',
+      name: 'login',
+      priority: 90,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/outfit_visual',
+      name: 'outfit_visual',
+      priority: 40,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/photo_visual',
+      name: 'photo_visual',
+      priority: 40,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/shared_boot_ui',
+      name: 'shared_boot_ui',
+      priority: 100,
+      compressionType: 'merge_dep',
+      isRemote: false,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/shared_room_visual',
+      name: 'shared_room_visual',
+      priority: 65,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/travel_visual',
+      name: 'travel_visual',
+      priority: 60,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    },
+    {
+      root: 'db://assets/bundles/wardrobe_visual',
+      name: 'wardrobe_visual',
+      priority: 40,
+      compressionType: 'merge_dep',
+      isRemote: true,
+      output: true
+    }
+  ],
+  packages: {
+    wechatgame: {
+      appid: 'wx4d41972686e54c11',
+      orientation: 'portrait',
+      separateEngine: false,
+      buildOpenDataContextTemplate: false
+    }
+  },
+  engineModulesConfigKey: 'littleStepsWeChat',
+  taskName: 'wechatgame',
+  buildMode: 'normal'
+}
+构建参数 mainBundleCompressionType (merge_dep) 校验失败,  compression type(undefined) is invalid for this platform!, 将会使用默认值 "merge_dep"
+start preview settings manager
+2026-10-12 10:31:33 - debug: =================================== build Task (wechatgame) Start ================================
+
+2026-10-12 10:31:33 - debug: Start build task, options:{"platform":"wechatgame","name":"Little Steps WeChat candidate","outputName":"wechatgame","buildPath":"/Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/output","startScene":"de1d350c-133c-4d0e-9d2a-1df4d6992aaa","scenes":[{"url":"db://assets/scene.scene","uuid":"de1d350c-133c-4d0e-9d2a-1df4d6992aaa"}],"debug":false,"sourceMaps":false,"md5Cache":true,"server":"http://192.168.11.193:8795/","mainBundleIsRemote":false,"startSceneAssetBundle":false,"bundleConfigs":[{"root":"db://assets/resources","name":"resources","priority":8,"compressionType":"merge_dep","isRemote":false,"output":true},{"root":"db://assets/bundles/comic","name":"comic","priority":85,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/core_code","name":"core_code","priority":100,"compressionType":"merge_dep","isRemote":false,"output":true},{"root":"db://assets/bundles/darkroom","name":"darkroom","priority":55,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/departure_visual","name":"departure_visual","priority":60,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/home","name":"home","priority":60,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/loading","name":"loading","priority":100,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/login","name":"login","priority":90,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/outfit_visual","name":"outfit_visual","priority":40,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/photo_visual","name":"photo_visual","priority":40,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/shared_boot_ui","name":"shared_boot_ui","priority":100,"compressionType":"merge_dep","isRemote":false,"output":true},{"root":"db://assets/bundles/shared_room_visual","name":"shared_room_visual","priority":65,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/travel_visual","name":"travel_visual","priority":60,"compressionType":"merge_dep","isRemote":true,"output":true},{"root":"db://assets/bundles/wardrobe_visual","name":"wardrobe_visual","priority":40,"compressionType":"merge_dep","isRemote":true,"output":true}],"packages":{"wechatgame":{"appid":"wx4d41972686e54c11","orientation":"portrait","separateEngine":false,"buildOpenDataContextTemplate":false,"highPerformanceMode":false}},"engineModulesConfigKey":"littleStepsWeChat","taskName":"wechatgame","buildMode":"normal","mainBundleCompressionType":"merge_dep","mangleProperties":false,"skipCompressTexture":false,"overwriteProjectSettings":{"macroConfig":{"cleanupImageCache":"on"},"includeModules":{"physics":"inherit-project-setting","physics-2d":"inherit-project-setting","gfx-webgl2":"off"}},"nativeCodeBundleMode":"wasm","polyfills":{"asyncFunctions":false},"experimentalEraseModules":false,"inlineEnum":true,"useBuiltinServer":false,"md5CacheOptions":{"excludes":[],"includes":[],"replaceOnly":[],"handleTemplateMd5Link":true},"useSplashScreen":true,"bundleCommonChunk":false,"packAutoAtlas":true,"wasmCompressionMode":false,"binGroupConfig":{"threshold":16,"enable":false},"logDest":"project://temp/builder/log/wechatgame10-12-2026 10-31.log"}
+
+2026-10-12 10:31:33 - debug: Build with Cocos Creator 3.8.8
+
+[[Facet.reload]], before lock, count: 2
+[[Facet.reload]], after lock, count: 2
+[[Facet.reload]], before unlock, count: 2
+[[Facet.reload]], after unlock, count: 2
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBuild) start..., progress: 0%
+
+2026-10-12 10:31:33 - debug: // ---- build task wechatgame：onBeforeBuild ----
+
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBuild) in 0 ms ✓, progress: 2%
+
+2026-10-12 10:31:33 - debug: cocos-service:(onBeforeBuild) start..., progress: 2%
+
+2026-10-12 10:31:33 - debug: // ---- build task cocos-service：onBeforeBuild ----
+
+2026-10-12 10:31:33 - debug: // ---- build task cocos-service：onBeforeBuild ---- (1ms)
+
+2026-10-12 10:31:33 - debug: cocos-service:(onBeforeBuild) in 1 ms ✓, progress: 4%
+
+2026-10-12 10:31:33 - debug: scene:(onBeforeBuild) start..., progress: 4%
+
+2026-10-12 10:31:33 - debug: // ---- build task scene：onBeforeBuild ----
+
+2026-10-12 10:31:33 - debug: // ---- build task scene：onBeforeBuild ---- (1ms)
+
+2026-10-12 10:31:33 - debug: scene:(onBeforeBuild) in 1 ms ✓, progress: 5%
+
+2026-10-12 10:31:33 - debug: Start lock asset db..., progress: 5%
+
+2026-10-12 10:31:33 - log: Asset DB is paused with build!
+
+2026-10-12 10:31:33 - debug: Query all assets info in project
+
+2026-10-12 10:31:33 - debug: init custom config: keepNodeUuid: false, useCache: true
+
+2026-10-12 10:31:33 - debug: wechatgame:(onAfterInit) start..., progress: 5%
+
+2026-10-12 10:31:33 - debug: // ---- build task wechatgame：onAfterInit ----
+
+2026-10-12 10:31:33 - debug: wechatgame:(onAfterInit) in 0 ms ✓, progress: 7%
+
+2026-10-12 10:31:33 - debug: cocos-service:(onAfterInit) start..., progress: 7%
+
+2026-10-12 10:31:33 - debug: // ---- build task cocos-service：onAfterInit ----
+
+2026-10-12 10:31:33 - debug: // ---- build task cocos-service：onAfterInit ---- (1ms)
+
+2026-10-12 10:31:33 - debug: cocos-service:(onAfterInit) in 1 ms ✓, progress: 9%
+
+2026-10-12 10:31:33 - debug: Skip compress image, progress: 0%
+
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBundleInit) start..., progress: 9%
+
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBundleInit) start..., progress: 0%
+
+2026-10-12 10:31:33 - debug: // ---- build task wechatgame：onBeforeBundleInit ----
+
+2026-10-12 10:31:33 - debug: // ---- build task wechatgame：onBeforeBundleInit ---- (1ms)
+
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBundleInit) in 1 ms ✓, progress: 9%
+
+2026-10-12 10:31:33 - debug: wechatgame:(onBeforeBundleInit) in 1 ms ✓, progress: 7%
+
+2026-10-12 10:31:33 - debug: adsense-h5g-plugin:(onBeforeBundleInit) start..., progress: 9%
+
+2026-10-12 10:31:33 - debug: adsense-h5g-plugin:(onBeforeBundleInit) start..., progress: 7%
+
+2026-10-12 10:31:33 - debug: // ---- build task adsense-h5g-plugin：onBeforeBundleInit ----
+
+2026-10-12 10:31:33 - debug: [adsense-h5g-plugin] remove script success
+
+2026-10-12 10:31:33 - debug: // ---- build task adsense-h5g-plugin：onBeforeBundleInit ---- (1ms)
+
+2026-10-12 10:31:33 - debug: adsense-h5g-plugin:(onBeforeBundleInit) in 1 ms ✓, progress: 9%
+
+2026-10-12 10:31:33 - debug: adsense-h5g-plugin:(onBeforeBundleInit) in 1 ms ✓, progress: 13%
+
+2026-10-12 10:31:33 - debug: Init all bundles start..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Init all bundles start..., progress: 13%
+
+2026-10-12 10:31:33 - debug: Num of bundles: 16..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Num of bundles: 16..., progress: 13%
+
+2026-10-12 10:31:33 - debug: 查询 Asset Bundle start, progress: 9%
+
+2026-10-12 10:31:33 - debug: // ---- build task 查询 Asset Bundle ----
+
+2026-10-12 10:31:33 - debug: Init bundle root assets start..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Init bundle root assets start..., progress: 13%
+
+2026-10-12 10:31:33 - debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1,5c601d96-e4c7-4698-991b-7ee674b11079
+
+2026-10-12 10:31:33 - debug:   Number of all scenes: 1
+
+2026-10-12 10:31:33 - debug:   Number of all scripts: 122
+
+2026-10-12 10:31:33 - debug:   Number of other assets: 564
+
+2026-10-12 10:31:33 - debug: Init bundle root assets success..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Init bundle root assets success..., progress: 13%
+
+2026-10-12 10:31:33 - debug: reload all scripts.
+
+2026-10-12 10:31:33 - log: creating executor ...
+
+2026-10-12 10:31:33 - debug: [[Executor]] reload before lock
+
+2026-10-12 10:31:33 - debug: Set detail map pack:///resolution-detail-map.json: {}
+
+2026-10-12 10:31:33 - groupCollapsed: Invalidate all modules
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/base" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgl" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgl2" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-empty" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgpu" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/3d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/animation" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/skeletal-animation" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/sorting" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/rich-text" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/mask" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/graphics" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/ui-skew" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/ui" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/affine-transform" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/sorting-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/particle" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/particle-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-framework" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-cannon" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-physx" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-ammo" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-builtin" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-framework" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d-jsb" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-builtin" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d-wasm" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/intersection-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/primitive" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/profiler" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/geometry-renderer" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/audio" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/video" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/xr" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/light-probe" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/terrain" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/webview" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/tween" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/tiled-map" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/vendor-google" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/spine" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/dragon-bones" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/custom-pipeline" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/custom-pipeline-post-process" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/legacy-pipeline" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/base" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgl" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgl2" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-empty" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/gfx-webgpu" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/3d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/animation" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/skeletal-animation" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/sorting" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/rich-text" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/mask" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/graphics" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/ui-skew" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/ui" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/affine-transform" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/sorting-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/particle" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/particle-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-framework" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-cannon" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-physx" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-ammo" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-builtin" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-framework" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-builtin" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d-wasm" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/intersection-2d" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/primitive" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/profiler" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/geometry-renderer" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/audio" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/video" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/xr" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/light-probe" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/terrain" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/webview" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/tween" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/tiled-map" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/spine" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/dragon-bones" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/custom-pipeline" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/custom-pipeline-post-process" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/legacy-pipeline" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/vendor-google" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/cc-fu/physics-2d-box2d-jsb" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js" loaded.
+
+2026-10-12 10:31:33 - debug: Invalidating 'pack:///chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js'
+
+2026-10-12 10:31:33 - groupEnd: Invalidate all modules
+
+2026-10-12 10:31:33 - groupCollapsed: Imports all modules
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/93/93ba276ea7b26ffcdc433fab14afc1ed6f05647b.js" loaded.
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js" loaded.
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3a/3af2b99d9d250d0c94e80c615712be1d07b4cf47.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3a/3af2b99d9d250d0c94e80c615712be1d07b4cf47.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6a/6a5019a719a9014c047e67aa1cf34453ab8392ce.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6a/6a5019a719a9014c047e67aa1cf34453ab8392ce.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/87/87c4b5d58115ee6102b02680ea6b39d34083b342.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/87/87c4b5d58115ee6102b02680ea6b39d34083b342.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4f/4fd3d121a4e148a0cab634e8b8fe61cad0fda6b5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4f/4fd3d121a4e148a0cab634e8b8fe61cad0fda6b5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/86/86b8638a66ab4c727e439f4d8cdd7595bd7cb611.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/86/86b8638a66ab4c727e439f4d8cdd7595bd7cb611.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/13/13619a4d60fbb6416edf8ba7ec0b195f2fcda55a.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/13/13619a4d60fbb6416edf8ba7ec0b195f2fcda55a.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/6a/6a5019a719a9014c047e67aa1cf34453ab8392ce.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/engine-export-to-editor/cc/editor/populate-internal-constants" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/13/13619a4d60fbb6416edf8ba7ec0b195f2fcda55a.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "cce:/internal/x/engine-export-to-editor/cc/editor/populate-internal-constants" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Register BuiltinPipelineSettings
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/87/87c4b5d58115ee6102b02680ea6b39d34083b342.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/86/86b8638a66ab4c727e439f4d8cdd7595bd7cb611.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Register BuiltinPipelinePassBuilder
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/4f/4fd3d121a4e148a0cab634e8b8fe61cad0fda6b5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Register BuiltinDepthOfFieldPass
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3a/3af2b99d9d250d0c94e80c615712be1d07b4cf47.js" loaded.
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9c/9c8e4ae02cd522e18faba9e72e8803c8bdb97382.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9c/9c8e4ae02cd522e18faba9e72e8803c8bdb97382.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: [[Executor]] Register DebugViewRuntimeControl
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/9c/9c8e4ae02cd522e18faba9e72e8803c8bdb97382.js" loaded.
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f8/f810311736a1f5f1fc81a9c488c72fac882a2f46.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f8/f810311736a1f5f1fc81a9c488c72fac882a2f46.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/83/83cdedae23ce7e18eff07a46d85ab60fd2492ee5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/83/83cdedae23ce7e18eff07a46d85ab60fd2492ee5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ee/ee6a19a2b353b2c9b7aa98bc3d02196d227c9d3c.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ee/ee6a19a2b353b2c9b7aa98bc3d02196d227c9d3c.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/85/85ca70dc1657deb787c80f528ff3ac4efef914bd.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/85/85ca70dc1657deb787c80f528ff3ac4efef914bd.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3b/3b7e481871ea2c93e31e56fadfb1e7a8e88eb4fa.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3b/3b7e481871ea2c93e31e56fadfb1e7a8e88eb4fa.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c1/c15fa9eed1d31add00b76b11c7b183ee01751e08.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c1/c15fa9eed1d31add00b76b11c7b183ee01751e08.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c0/c061f2a4557bbd214ddb34131e5654036b46fd91.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c0/c061f2a4557bbd214ddb34131e5654036b46fd91.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7d/7df0b4899c635f2fb53ec297d1bf3c0cf6e2df22.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7d/7df0b4899c635f2fb53ec297d1bf3c0cf6e2df22.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4a/4a57c9933fc67e11051c2ae892163d00cacf39d7.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4a/4a57c9933fc67e11051c2ae892163d00cacf39d7.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/60/60ff34dd6133571cc248b1206239dc7d2dd69c22.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/60/60ff34dd6133571cc248b1206239dc7d2dd69c22.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3db06d10db2db62bd56b462431910765fa51990c.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3db06d10db2db62bd56b462431910765fa51990c.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5a/5a5530241817cc94da2bebc2af1ebf58c7112d69.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5a/5a5530241817cc94da2bebc2af1ebf58c7112d69.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/83/83573f0eb626cbc322f82d0b4cf107f26f10d7c7.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/83/83573f0eb626cbc322f82d0b4cf107f26f10d7c7.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ed/ed9abb958f6666e739e9907f5054441e63ba0fab.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ed/ed9abb958f6666e739e9907f5054441e63ba0fab.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/57/579113adfee935c4def7cb367e30a75c87a04ea4.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/57/579113adfee935c4def7cb367e30a75c87a04ea4.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9b/9b3b19ea2df4cecda4a0cb4db8898934460d2a7f.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9b/9b3b19ea2df4cecda4a0cb4db8898934460d2a7f.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/84/84e424685b1aa7af8acefd85908435306fa150d8.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/84/84e424685b1aa7af8acefd85908435306fa150d8.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0f/0f8a1458da55d3e2cb31aec92782dfa47cd46206.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0f/0f8a1458da55d3e2cb31aec92782dfa47cd46206.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/06/06f9648b63ab10d480247459e35f24dfb1419ae6.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/06/06f9648b63ab10d480247459e35f24dfb1419ae6.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fe/fead5b234e39fa8a4af16a7a7c780b7e6ccc69ca.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fe/fead5b234e39fa8a4af16a7a7c780b7e6ccc69ca.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/94/94fb469d4b4770859ad764172842fc6371105b20.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/94/94fb469d4b4770859ad764172842fc6371105b20.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f8/f86cba94b4b9c5a2dc0645d48544314ce1e10d1d.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f8/f86cba94b4b9c5a2dc0645d48544314ce1e10d1d.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/76/763375d9a33d172494470f1a2b24114dedbce7ef.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/76/763375d9a33d172494470f1a2b24114dedbce7ef.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/48/485205ae35f8cd50b73323bdb3a83f4efd396ec1.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/48/485205ae35f8cd50b73323bdb3a83f4efd396ec1.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3a/3a8d8d47934b09367ba82db89f31862a57ac21ad.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3a/3a8d8d47934b09367ba82db89f31862a57ac21ad.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/bb/bb6f6edc047e45f3c866f457c98eb2590496e76c.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/bb/bb6f6edc047e45f3c866f457c98eb2590496e76c.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b4/b40ae5092e08e06ae915d0e8efb6807946354afc.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b4/b40ae5092e08e06ae915d0e8efb6807946354afc.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/de/de00831989879356d3c44476adbc14ed90d66cd2.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/de/de00831989879356d3c44476adbc14ed90d66cd2.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/efe2434b6a2f23d8dab878b8dd1ecaf2287a995b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/efe2434b6a2f23d8dab878b8dd1ecaf2287a995b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/17/17f79a90945b4109d4f6797c9bd5c372841a44fe.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/17/17f79a90945b4109d4f6797c9bd5c372841a44fe.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/78/78cbc441fd72758be9b3ac320977f0f3ca058ca6.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/78/78cbc441fd72758be9b3ac320977f0f3ca058ca6.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/39/394b3ccfe6a58a47e7a0ab00ce383b7d07b16e46.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/39/394b3ccfe6a58a47e7a0ab00ce383b7d07b16e46.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/95/95b4c43df13da1ce5141c59d8add86f256edc8f5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/95/95b4c43df13da1ce5141c59d8add86f256edc8f5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/70/70639ad04866f05ea814e5ee7fafbad22c2d9ad1.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/70/70639ad04866f05ea814e5ee7fafbad22c2d9ad1.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0a/0aba684f64f55c3c401da0411bcb27484ade8e57.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0a/0aba684f64f55c3c401da0411bcb27484ade8e57.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f9/f917d0e2e3bb0d05d0ed16e49d0fa1da1de47881.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f9/f917d0e2e3bb0d05d0ed16e49d0fa1da1de47881.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dcd7771c26d7b8880b43206065e5bcbc6c97cc4b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dcd7771c26d7b8880b43206065e5bcbc6c97cc4b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/be/be7fb4d9a609868ca1b4227982cc0c0211b26ab0.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/be/be7fb4d9a609868ca1b4227982cc0c0211b26ab0.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ec/ec0d82bb41d61afe6def6304f612e1893e34be36.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ec/ec0d82bb41d61afe6def6304f612e1893e34be36.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0e/0ec8684e1cdda5c9f543b3f00d4135c9a746cb06.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0e/0ec8684e1cdda5c9f543b3f00d4135c9a746cb06.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f9/f91c1153c8ade86c185ff9d57b5cabd43989136c.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f9/f91c1153c8ade86c185ff9d57b5cabd43989136c.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e6/e6f7653c75fdd73539041a25e404dfa9c0504277.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e6/e6f7653c75fdd73539041a25e404dfa9c0504277.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0b/0bc047e3f97cffd5bb0a0303efb6ea7552c3a90a.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0b/0bc047e3f97cffd5bb0a0303efb6ea7552c3a90a.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ad/ad6f6dd9c5c37695da386d6ebdfcb7b0e10ad18b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ad/ad6f6dd9c5c37695da386d6ebdfcb7b0e10ad18b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cb/cbc5c24c78162266525666316ba9054b9d9a2da3.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cb/cbc5c24c78162266525666316ba9054b9d9a2da3.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/76/76427b190f764beb28d34571d4a354bbdceb6554.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/76/76427b190f764beb28d34571d4a354bbdceb6554.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/2c/2c40cc6e3d6de46282c53bfe6f39790ee009a7c7.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/2c/2c40cc6e3d6de46282c53bfe6f39790ee009a7c7.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7c/7cfb962c0065ec5de1106ba01b7900f394af97bc.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7c/7cfb962c0065ec5de1106ba01b7900f394af97bc.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/a2/a29c55fd657204db33281aef5ef180a57d5ca3cc.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/a2/a29c55fd657204db33281aef5ef180a57d5ca3cc.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/71/71664a4f4311c872d53934811c5909db3ffe62d5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/71/71664a4f4311c872d53934811c5909db3ffe62d5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7f/7fb7f0953c28ad8e4cccc1afded74db1a615b330.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/7f/7fb7f0953c28ad8e4cccc1afded74db1a615b330.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/39/394c8f898787478cb40cfd76768befd7b2235286.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/39/394c8f898787478cb40cfd76768befd7b2235286.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/bd/bd916f0faba22d7e3511dffc751dd54f2e42db61.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/bd/bd916f0faba22d7e3511dffc751dd54f2e42db61.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/47/47120de9b8a8742eb3037bd3544c1ce7fb752688.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/47/47120de9b8a8742eb3037bd3544c1ce7fb752688.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/df/df5744d682a882578f2e35b84a558b0cbc8f2e29.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/df/df5744d682a882578f2e35b84a558b0cbc8f2e29.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f7/f74f498f62a154c9e8f2539bbdfb6581f8e79038.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f7/f74f498f62a154c9e8f2539bbdfb6581f8e79038.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/27/276deb0f56c5802f38779e866c4ce10d27d52721.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/27/276deb0f56c5802f38779e866c4ce10d27d52721.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/ef2896d8d1f97202aa0fb38d97fbe2867ca1611e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/ef2896d8d1f97202aa0fb38d97fbe2867ca1611e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fc/fc445bee5a969ed23977ed892839374a0fbe782b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fc/fc445bee5a969ed23977ed892839374a0fbe782b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cd/cdd0040f548fdae1a7cdd375362518fef22ef159.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cd/cdd0040f548fdae1a7cdd375362518fef22ef159.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4d/4d0041cb11ff0a04ab79074afec0854cd879b382.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4d/4d0041cb11ff0a04ab79074afec0854cd879b382.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4f/4f069a49dfa1ce87d5e6f36ec079b9182a4e10eb.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/4f/4f069a49dfa1ce87d5e6f36ec079b9182a4e10eb.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5c/5c330e585fe07fb742e227d08ad1d75875b51e0a.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5c/5c330e585fe07fb742e227d08ad1d75875b51e0a.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/91/91bc6356701fe2e7232b36fd457e147de8e73d44.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/91/91bc6356701fe2e7232b36fd457e147de8e73d44.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c0/c0793f1989c0afab1da3140787db33d1f68bc5bd.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c0/c0793f1989c0afab1da3140787db33d1f68bc5bd.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/16/16ae43df79c8b2292ba8609a118d18255f293818.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/16/16ae43df79c8b2292ba8609a118d18255f293818.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dc256b10ef3513d8b8cf8fa2d3362f2c7c1ecb4b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dc256b10ef3513d8b8cf8fa2d3362f2c7c1ecb4b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c5/c5a3606a9a23ee84b7073da906aa8a7e1b6c10e0.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c5/c5a3606a9a23ee84b7073da906aa8a7e1b6c10e0.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f7/f713deb71f9577a09a90ef99d518a23f877ae78b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f7/f713deb71f9577a09a90ef99d518a23f877ae78b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/11/111710531f0d6c48f0af6164fa0097c95452930e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/11/111710531f0d6c48f0af6164fa0097c95452930e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/43/437cfa8d4b6d35e56a79e1ba09983e8093be468f.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/43/437cfa8d4b6d35e56a79e1ba09983e8093be468f.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3d862c8abeb7bb663426a69866820a1820a0280e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3d862c8abeb7bb663426a69866820a1820a0280e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fe/fe8140851a5b903337e36b5e3f28771dcae070de.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/fe/fe8140851a5b903337e36b5e3f28771dcae070de.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/80/8009a856d99a133c48b5e8384653b599f3e1635e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/80/8009a856d99a133c48b5e8384653b599f3e1635e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/71/716e8babeb9d84d08f186914f3bf8b79d26cec03.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/71/716e8babeb9d84d08f186914f3bf8b79d26cec03.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f6/f68f14ffc8feb11617d4ff5aaff8b077b454bfd5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/f6/f68f14ffc8feb11617d4ff5aaff8b077b454bfd5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9c/9cac7f33e2799e910f090e7c2052dbb412348c9f.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/9c/9cac7f33e2799e910f090e7c2052dbb412348c9f.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/79/7902a2b3f00d7fb0f3f34284dd4e0d8bb4ccefbf.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/79/7902a2b3f00d7fb0f3f34284dd4e0d8bb4ccefbf.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e2/e2d74be73d8ec3b09623dfab7e01a26133e9c772.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e2/e2d74be73d8ec3b09623dfab7e01a26133e9c772.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c4/c43fbb7b10a4342a08fbe54598e357bc4374b417.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c4/c43fbb7b10a4342a08fbe54598e357bc4374b417.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/08/089102ad01f014fa59afbe9822a55fb3b7124310.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/08/089102ad01f014fa59afbe9822a55fb3b7124310.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cd/cd350962a826b7171660ea34399d787ea43edfb2.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cd/cd350962a826b7171660ea34399d787ea43edfb2.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/69/699a0dd9927ffbced4961edb486fca68c8ef0cd4.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/69/699a0dd9927ffbced4961edb486fca68c8ef0cd4.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/be/bead6a313e58fae4b2840634bc288e9b1143846c.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/be/bead6a313e58fae4b2840634bc288e9b1143846c.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/26/2606dccf747c907014535859f62dd7a21eb106ef.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/26/2606dccf747c907014535859f62dd7a21eb106ef.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/59/5925b27423b9092e45427fae7cad26addac3514e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/59/5925b27423b9092e45427fae7cad26addac3514e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e3/e346445f9177749df5757aa94c97d652a8e77913.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e3/e346445f9177749df5757aa94c97d652a8e77913.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6d/6d2ed6acd1ea553ecf0542a4b1bb8c16dc7f80d5.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/6d/6d2ed6acd1ea553ecf0542a4b1bb8c16dc7f80d5.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/82/82f6b318fb25899305ef87571275abe6213b22b2.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/82/82f6b318fb25899305ef87571275abe6213b22b2.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3c/3c1699b4064bc065fac033b7a726f40335382cad.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3c/3c1699b4064bc065fac033b7a726f40335382cad.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/efd12494fbeef6ec1c5ee238e6b5598cb4a219a3.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/ef/efd12494fbeef6ec1c5ee238e6b5598cb4a219a3.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/19/191222b1cebd92db56f42fa6b709fdef77330279.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/19/191222b1cebd92db56f42fa6b709fdef77330279.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/57/57fb9cad56b4bf1d08b719a86313375438813dca.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/57/57fb9cad56b4bf1d08b719a86313375438813dca.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3de26deb598c1c524229c6959ae978cba94946b1.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3de26deb598c1c524229c6959ae978cba94946b1.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/19/19e0bbacb86c4b9e0358ab24c21fc1fae2f1c2ec.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/19/19e0bbacb86c4b9e0358ab24c21fc1fae2f1c2ec.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b8/b89187e12bb3d4ec7ae4bb767776d4934f75df51.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b8/b89187e12bb3d4ec7ae4bb767776d4934f75df51.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/a9/a9a115c548077981427639cd25e48e6c71c12747.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/a9/a9a115c548077981427639cd25e48e6c71c12747.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e1/e14eb6cc5b2b8fbd54771d4370f5bc9b07b66d93.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e1/e14eb6cc5b2b8fbd54771d4370f5bc9b07b66d93.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cc/cce6025d9381ec5b564e0a3c5c634fb6270a8d20.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/cc/cce6025d9381ec5b564e0a3c5c634fb6270a8d20.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/2d/2df9f13361fbe2d419a9e834cef821d0a547e493.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/2d/2df9f13361fbe2d419a9e834cef821d0a547e493.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dc1134e8235cfadb942ca822938f198ee87305aa.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/dc/dc1134e8235cfadb942ca822938f198ee87305aa.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e8/e8c3bb7b1c13cae26c2c8328fbfbf608634db1b9.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e8/e8c3bb7b1c13cae26c2c8328fbfbf608634db1b9.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b4/b44bc86ba9df11c41f5d06da4a82d7452206b150.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b4/b44bc86ba9df11c41f5d06da4a82d7452206b150.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3d8b1c7856a32b102702e0b2f048c9ff60fab243.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/3d/3d8b1c7856a32b102702e0b2f048c9ff60fab243.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e4/e4cfc315bb8e00ceb449caf936ee526da72c2ccf.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e4/e4cfc315bb8e00ceb449caf936ee526da72c2ccf.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e2/e230dfb310d4e3555c06f0b1a8bfa7c97ff75f3d.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e2/e230dfb310d4e3555c06f0b1a8bfa7c97ff75f3d.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c4/c4a14efc96fb80f55a23dbb48cf4354c59559a82.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/c4/c4a14efc96fb80f55a23dbb48cf4354c59559a82.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/d0/d05aed5cc9733f3189c7539630d6d1c6baa2984e.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/d0/d05aed5cc9733f3189c7539630d6d1c6baa2984e.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0d/0d39640760df885c8910a2dec4544132f27fe7be.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/0d/0d39640760df885c8910a2dec4544132f27fe7be.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e6/e6c9d888d2c9ae1c5cab026e3d7ab6709e6c1182.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/e6/e6c9d888d2c9ae1c5cab026e3d7ab6709e6c1182.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/18/18d37d4b3ff968f4b4b316f5b5aab50321b684bf.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/18/18d37d4b3ff968f4b4b316f5b5aab50321b684bf.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b3/b39f4c33e869794fc7f1926e25d725723249f114.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/b3/b39f4c33e869794fc7f1926e25d725723249f114.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5d/5d29d2cf19f1f78e593c6c1065804badc1c56a9b.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/5d/5d29d2cf19f1f78e593c6c1065804badc1c56a9b.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/12/12734d21d60ee9b87d3d4cb69716b92479256111.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/12/12734d21d60ee9b87d3d4cb69716b92479256111.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/68/6804f92e12dd075fcda3e58bc8334925e363de82.js resolved to /Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/games/xiaoyu-cocos/temp/programming/packer-driver/targets/editor/chunks/68/6804f92e12dd075fcda3e58bc8334925e363de82.js is not in module cache!
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3b/3b7e481871ea2c93e31e56fadfb1e7a8e88eb4fa.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ee/ee6a19a2b353b2c9b7aa98bc3d02196d227c9d3c.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/85/85ca70dc1657deb787c80f528ff3ac4efef914bd.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c1/c15fa9eed1d31add00b76b11c7b183ee01751e08.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/78/78cbc441fd72758be9b3ac320977f0f3ca058ca6.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/70/70639ad04866f05ea814e5ee7fafbad22c2d9ad1.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/39/394b3ccfe6a58a47e7a0ab00ce383b7d07b16e46.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/7d/7df0b4899c635f2fb53ec297d1bf3c0cf6e2df22.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3d/3de26deb598c1c524229c6959ae978cba94946b1.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/19/19e0bbacb86c4b9e0358ab24c21fc1fae2f1c2ec.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e1/e14eb6cc5b2b8fbd54771d4370f5bc9b07b66d93.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/a9/a9a115c548077981427639cd25e48e6c71c12747.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/b8/b89187e12bb3d4ec7ae4bb767776d4934f75df51.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/cc/cce6025d9381ec5b564e0a3c5c634fb6270a8d20.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ec/ec0d82bb41d61afe6def6304f612e1893e34be36.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/08/089102ad01f014fa59afbe9822a55fb3b7124310.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/bd/bd916f0faba22d7e3511dffc751dd54f2e42db61.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/0a/0aba684f64f55c3c401da0411bcb27484ade8e57.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/de/de00831989879356d3c44476adbc14ed90d66cd2.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/57/57fb9cad56b4bf1d08b719a86313375438813dca.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/dc/dcd7771c26d7b8880b43206065e5bcbc6c97cc4b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/19/191222b1cebd92db56f42fa6b709fdef77330279.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f9/f917d0e2e3bb0d05d0ed16e49d0fa1da1de47881.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/be/be7fb4d9a609868ca1b4227982cc0c0211b26ab0.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/2d/2df9f13361fbe2d419a9e834cef821d0a547e493.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/95/95b4c43df13da1ce5141c59d8add86f256edc8f5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/12/12734d21d60ee9b87d3d4cb69716b92479256111.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/dc/dc1134e8235cfadb942ca822938f198ee87305aa.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/0e/0ec8684e1cdda5c9f543b3f00d4135c9a746cb06.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f9/f91c1153c8ade86c185ff9d57b5cabd43989136c.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e6/e6f7653c75fdd73539041a25e404dfa9c0504277.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/0b/0bc047e3f97cffd5bb0a0303efb6ea7552c3a90a.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ad/ad6f6dd9c5c37695da386d6ebdfcb7b0e10ad18b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e2/e230dfb310d4e3555c06f0b1a8bfa7c97ff75f3d.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3d/3d8b1c7856a32b102702e0b2f048c9ff60fab243.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/76/76427b190f764beb28d34571d4a354bbdceb6554.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e8/e8c3bb7b1c13cae26c2c8328fbfbf608634db1b9.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/b4/b44bc86ba9df11c41f5d06da4a82d7452206b150.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/cb/cbc5c24c78162266525666316ba9054b9d9a2da3.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/d0/d05aed5cc9733f3189c7539630d6d1c6baa2984e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/68/6804f92e12dd075fcda3e58bc8334925e363de82.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e4/e4cfc315bb8e00ceb449caf936ee526da72c2ccf.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c4/c4a14efc96fb80f55a23dbb48cf4354c59559a82.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/a2/a29c55fd657204db33281aef5ef180a57d5ca3cc.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/2c/2c40cc6e3d6de46282c53bfe6f39790ee009a7c7.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/7c/7cfb962c0065ec5de1106ba01b7900f394af97bc.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/0d/0d39640760df885c8910a2dec4544132f27fe7be.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f7/f713deb71f9577a09a90ef99d518a23f877ae78b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/4d/4d0041cb11ff0a04ab79074afec0854cd879b382.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/71/71664a4f4311c872d53934811c5909db3ffe62d5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/7f/7fb7f0953c28ad8e4cccc1afded74db1a615b330.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/bb/bb6f6edc047e45f3c866f457c98eb2590496e76c.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/cd/cd350962a826b7171660ea34399d787ea43edfb2.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/39/394c8f898787478cb40cfd76768befd7b2235286.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3a/3a8d8d47934b09367ba82db89f31862a57ac21ad.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/47/47120de9b8a8742eb3037bd3544c1ce7fb752688.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/4a/4a57c9933fc67e11051c2ae892163d00cacf39d7.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c0/c061f2a4557bbd214ddb34131e5654036b46fd91.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/60/60ff34dd6133571cc248b1206239dc7d2dd69c22.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/11/111710531f0d6c48f0af6164fa0097c95452930e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/df/df5744d682a882578f2e35b84a558b0cbc8f2e29.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/5a/5a5530241817cc94da2bebc2af1ebf58c7112d69.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3d/3db06d10db2db62bd56b462431910765fa51990c.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/cd/cdd0040f548fdae1a7cdd375362518fef22ef159.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f7/f74f498f62a154c9e8f2539bbdfb6581f8e79038.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/27/276deb0f56c5802f38779e866c4ce10d27d52721.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ef/ef2896d8d1f97202aa0fb38d97fbe2867ca1611e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/4f/4f069a49dfa1ce87d5e6f36ec079b9182a4e10eb.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/fc/fc445bee5a969ed23977ed892839374a0fbe782b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/83/83573f0eb626cbc322f82d0b4cf107f26f10d7c7.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/06/06f9648b63ab10d480247459e35f24dfb1419ae6.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ed/ed9abb958f6666e739e9907f5054441e63ba0fab.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/57/579113adfee935c4def7cb367e30a75c87a04ea4.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/5c/5c330e585fe07fb742e227d08ad1d75875b51e0a.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c0/c0793f1989c0afab1da3140787db33d1f68bc5bd.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/9b/9b3b19ea2df4cecda4a0cb4db8898934460d2a7f.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e6/e6c9d888d2c9ae1c5cab026e3d7ab6709e6c1182.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/16/16ae43df79c8b2292ba8609a118d18255f293818.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c5/c5a3606a9a23ee84b7073da906aa8a7e1b6c10e0.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/dc/dc256b10ef3513d8b8cf8fa2d3362f2c7c1ecb4b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/0f/0f8a1458da55d3e2cb31aec92782dfa47cd46206.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/91/91bc6356701fe2e7232b36fd457e147de8e73d44.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/84/84e424685b1aa7af8acefd85908435306fa150d8.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/fe/fead5b234e39fa8a4af16a7a7c780b7e6ccc69ca.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/c4/c43fbb7b10a4342a08fbe54598e357bc4374b417.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/48/485205ae35f8cd50b73323bdb3a83f4efd396ec1.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/43/437cfa8d4b6d35e56a79e1ba09983e8093be468f.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/18/18d37d4b3ff968f4b4b316f5b5aab50321b684bf.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3d/3d862c8abeb7bb663426a69866820a1820a0280e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/fe/fe8140851a5b903337e36b5e3f28771dcae070de.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/71/716e8babeb9d84d08f186914f3bf8b79d26cec03.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/9c/9cac7f33e2799e910f090e7c2052dbb412348c9f.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/80/8009a856d99a133c48b5e8384653b599f3e1635e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/b3/b39f4c33e869794fc7f1926e25d725723249f114.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/5d/5d29d2cf19f1f78e593c6c1065804badc1c56a9b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f6/f68f14ffc8feb11617d4ff5aaff8b077b454bfd5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/94/94fb469d4b4770859ad764172842fc6371105b20.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/79/7902a2b3f00d7fb0f3f34284dd4e0d8bb4ccefbf.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e2/e2d74be73d8ec3b09623dfab7e01a26133e9c772.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f8/f86cba94b4b9c5a2dc0645d48544314ce1e10d1d.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/76/763375d9a33d172494470f1a2b24114dedbce7ef.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/26/2606dccf747c907014535859f62dd7a21eb106ef.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/69/699a0dd9927ffbced4961edb486fca68c8ef0cd4.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/be/bead6a313e58fae4b2840634bc288e9b1143846c.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/59/5925b27423b9092e45427fae7cad26addac3514e.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/e3/e346445f9177749df5757aa94c97d652a8e77913.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/6d/6d2ed6acd1ea553ecf0542a4b1bb8c16dc7f80d5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/3c/3c1699b4064bc065fac033b7a726f40335382cad.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/82/82f6b318fb25899305ef87571275abe6213b22b2.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/b4/b40ae5092e08e06ae915d0e8efb6807946354afc.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ef/efd12494fbeef6ec1c5ee238e6b5598cb4a219a3.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/ef/efe2434b6a2f23d8dab878b8dd1ecaf2287a995b.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/17/17f79a90945b4109d4f6797c9bd5c372841a44fe.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/83/83cdedae23ce7e18eff07a46d85ab60fd2492ee5.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Register Boot
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/f8/f810311736a1f5f1fc81a9c488c72fac882a2f46.js" loaded.
+
+2026-10-12 10:31:33 - debug: [[Executor]] Module "pack:///chunks/6d/6d8fd2b0177941b032ddc0733af48a561fb60657.js" loaded.
+
+2026-10-12 10:31:33 - groupEnd: Imports all modules
+
+2026-10-12 10:31:33 - debug: [[Executor]] after unlock
+
+2026-10-12 10:31:33 - debug: Incremental keys: regeneratorRuntime,b2jsb
+
+2026-10-12 10:31:33 - debug: Init bundle share assets start..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Init bundle share assets start..., progress: 13%
+
+2026-10-12 10:31:33 - debug: Init bundle share assets success..., progress: 9%
+
+2026-10-12 10:31:33 - debug: Init bundle share assets success..., progress: 13%
+
+2026-10-12 10:31:33 - debug: handle json group in bundle core_code
+
+2026-10-12 10:31:33 - debug: handle json group in bundle loading
+
+2026-10-12 10:31:33 - debug: handle json group in bundle shared_boot_ui
+
+2026-10-12 10:31:33 - debug: handle json group in bundle login
+
+2026-10-12 10:31:33 - debug: handle json group in bundle comic
+
+2026-10-12 10:31:33 - debug: handle json group in bundle shared_room_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle departure_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle home
+
+2026-10-12 10:31:33 - debug: handle json group in bundle travel_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle darkroom
+
+2026-10-12 10:31:33 - debug: handle json group in bundle outfit_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle photo_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle wardrobe_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle internal
+
+2026-10-12 10:31:33 - debug: handle json group in bundle internal success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle resources
+
+2026-10-12 10:31:33 - debug: handle json group in bundle main
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle internal
+
+2026-10-12 10:31:33 - debug: handle json group in bundle core_code success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle core_code
+
+2026-10-12 10:31:33 - debug: handle json group in bundle departure_visual success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle outfit_visual success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle wardrobe_visual success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle departure_visual
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle outfit_visual
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle wardrobe_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle shared_boot_ui success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle main success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle shared_boot_ui
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle main
+
+2026-10-12 10:31:33 - debug: handle json group in bundle shared_room_visual success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle photo_visual success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle shared_room_visual
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle photo_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle loading success
+
+2026-10-12 10:31:33 - debug: handle json group in bundle comic success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle loading
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle comic
+
+2026-10-12 10:31:33 - debug: handle json group in bundle login success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle login
+
+2026-10-12 10:31:33 - debug: handle json group in bundle travel_visual success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle travel_visual
+
+2026-10-12 10:31:33 - debug: handle json group in bundle darkroom success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle darkroom
+
+2026-10-12 10:31:33 - debug: handle json group in bundle resources success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle resources
+
+2026-10-12 10:31:33 - debug: handle json group in bundle home success
+
+2026-10-12 10:31:33 - debug: init image compress task 0 in bundle home
+
+2026-10-12 10:31:33 - debug: // ---- build task 查询 Asset Bundle ---- (111ms)
+
+2026-10-12 10:31:33 - log: run build task 查询 Asset Bundle success in 111 ms√, progress: 14%
+
+2026-10-12 10:31:33 - debug: [Build Memory track]: 查询 Asset Bundle start:237.27MB, end 243.71MB, increase: 6.44MB
+
+2026-10-12 10:31:33 - debug: 查询 Asset Bundle start, progress: 14%
+
+2026-10-12 10:31:33 - debug: // ---- build task 查询 Asset Bundle ----
+
+2026-10-12 10:31:33 - debug: // ---- build task 查询 Asset Bundle ---- (3ms)
+
+2026-10-12 10:31:33 - log: run build task 查询 Asset Bundle success in 3 ms√, progress: 19%
+
+2026-10-12 10:31:33 - debug: [Build Memory track]: 查询 Asset Bundle start:243.74MB, end 243.92MB, increase: 183.14KB
+
+2026-10-12 10:31:33 - debug: 打包脚本 start, progress: 19%
+
+2026-10-12 10:31:33 - debug: // ---- build task 打包脚本 ----
+
+2026-10-12 10:31:33 - log: [buildPolyfillsCommand]enter sub process 44230, 9229, see: chrome://inspect/#devices
+
+auto refresh because script compiled or scene changed
+2026-10-12 10:31:34 - debug: execute-script-end with buildPolyfillsCommand 1785ms
+
+2026-10-12 10:31:34 - debug: Generate systemJs..., progress: 19%
+
+2026-10-12 10:31:36 - debug: execute-script-end with buildSystemJsCommand 1083ms
+
+2026-10-12 10:31:36 - debug: 构建项目脚本 start..., progress: 19%
+
+2026-10-12 10:31:36 - debug: 构建项目脚本 start..., progress: 13%
+
+2026-10-12 10:31:40 - log: [buildScriptCommand]Number of non-entry chunks: 16
+
+2026-10-12 10:31:40 - debug: execute-script-end with buildScriptCommand 4436ms
+
+2026-10-12 10:31:40 - debug: Copy externalScripts success!
+
+2026-10-12 10:31:40 - debug: 构建项目脚本 in (4481 ms) √, progress: 19%
+
+2026-10-12 10:31:40 - debug: 构建项目脚本 in (4481 ms) √, progress: 13%
+
+2026-10-12 10:31:40 - debug: 构建引擎脚本 start..., progress: 19%
+
+2026-10-12 10:31:40 - debug: mangleProperties is enabled, found engine-mangle-config.json, use it
+
+2026-10-12 10:31:40 - debug: Error: Exit process with code:null, signal:SIGTERM in task build-script    at ChildProcess.<anonymous> (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/builder/dist/worker/worker-pools/sub-process-manager.ccc:1:2409)    at ChildProcess.emit (node:events:519:28)    at Process.ChildProcess._handle.onexit (node:internal/child_process:294:12)
+
+2026-10-12 10:31:40 - debug: Use cache engine: {link(/var/folders/t5/9b262zb53335xk3sp939dqtm0000gn/T/CocosCreator/3.8.8/builder/engine/086598e0fd96c88b29c996784fbaa4b9)}
+
+2026-10-12 10:31:40 - debug: Use cache, md5String: debug=false,sourceMaps=false,includeModules=["2d","affine-transform","animation","audio","base","custom-pipeline","gfx-webgl","graphics","intersection-2d","mask","profiler","rich-text","tween","ui","custom-pipeline-builtin-scripts"],engineVersion="3.8.8",platformType="WECHAT",split=undefined,nativeCodeBundleMode="wasm",targets=undefined,entry="/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine",noDeprecatedFeatures=undefined,loose=true,assetURLFormat="relative-from-out",flags={"DEBUG":false,"LOAD_BULLET_MANUALLY":false,"LOAD_SPINE_MANUALLY":false},preserveType=undefined,wasmCompressionMode=false,enableNamedRegisterForSystemJSModuleFormat=undefined,mangleProperties=false,inlineEnum=true,
+
+2026-10-12 10:31:40 - debug: Use cache, options: {  "entry": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine",  "debug": false,  "mangleProperties": false,  "inlineEnum": true,  "sourceMaps": false,  "includeModules": [    "2d",    "affine-transform",    "animation",    "audio",    "base",    "custom-pipeline",    "gfx-webgl",    "graphics",    "intersection-2d",    "mask",    "profiler",    "rich-text",    "tween",    "ui",    "custom-pipeline-builtin-scripts"  ],  "engineVersion": "3.8.8",  "md5Map": [],  "engineName": "cocos-js",  "output": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/wechat-device-network-v1/output/wechatgame/cocos-js",  "platformType": "WECHAT",  "useCache": true,  "nativeCodeBundleMode": "wasm",  "wasmCompressionMode": false,  "assetURLFormat": "relative-from-out",  "flags": {    "DEBUG": false,    "LOAD_BULLET_MANUALLY": false,    "LOAD_SPINE_MANUALLY": false  }}
+
+2026-10-12 10:31:40 - debug: 构建引擎脚本 in (34 ms) √, progress: 19%
+
+2026-10-12 10:31:40 - debug: Copy plugin script ..., progress: 19%
+
+2026-10-12 10:31:40 - debug: Generate import-map..., progress: 19%
+
+2026-10-12 10:31:40 - debug: // ---- build task 打包脚本 ---- (7421ms)
+
+2026-10-12 10:31:40 - log: run build task 打包脚本 success in 7 s√, progress: 24%
+
+2026-10-12 10:31:40 - debug: [Build Memory track]: 打包脚本 start:244.04MB, end 248.82MB, increase: 4.78MB
+
+2026-10-12 10:31:40 - debug: Build Assets start, progress: 24%
+
+2026-10-12 10:31:40 - debug: // ---- build task Build Assets ----
+
+2026-10-12 10:31:40 - debug: Build bundles..., progress: 24%
+
+2026-10-12 10:31:40 - debug: Pack Images start, progress: 24%
+
+2026-10-12 10:31:40 - debug: Pack Images start, progress: 13%
+
+2026-10-12 10:31:40 - debug: Number of pac assets: 1
+
+2026-10-12 10:31:40 - debug: No pack results
+
+2026-10-12 10:31:40 - debug: Compress image start..., progress: 24%
+
+2026-10-12 10:31:40 - debug: Compress image start..., progress: 13%
+
+2026-10-12 10:31:40 - group: Compress image...
+
+2026-10-12 10:31:40 - debug: sort compress task {}
+
+2026-10-12 10:31:40 - debug: Num of all image compress task 0, really: 0, configTasks: 0
+
+2026-10-12 10:31:40 - debug: No image need to compress
+
+2026-10-12 10:31:40 - groupEnd: Compress image...
+
+2026-10-12 10:31:40 - debug: Compress image success..., progress: 24%
+
+2026-10-12 10:31:40 - debug: Compress image success..., progress: 13%
+
+2026-10-12 10:31:40 - debug: Output asset in bundles start, progress: 24%
+
+2026-10-12 10:31:40 - debug: Output asset in bundles start, progress: 13%
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle core_code
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle loading
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle shared_boot_ui
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle login
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle comic
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle shared_room_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle departure_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle home
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle travel_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle darkroom
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle outfit_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle photo_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle wardrobe_visual
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle internal
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle resources
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Handle all json groups in bundle main
+
+2026-10-12 10:31:40 - debug: handle json group
+
+2026-10-12 10:31:40 - debug(8): handle single json
+
+2026-10-12 10:31:40 - debug: Json group(0b0f7a282) compile success，json number: 6
+
+2026-10-12 10:31:40 - debug: handle single json
+
+2026-10-12 10:31:40 - debug: Output asset in bundles success, progress: 24%
+
+2026-10-12 10:31:40 - debug: Output asset in bundles success, progress: 13%
+
+2026-10-12 10:31:40 - debug: Output asset in bundles start, progress: 24%
+
+2026-10-12 10:31:40 - debug: Output asset in bundles start, progress: 13%
+
+2026-10-12 10:31:40 - debug: add md5 to bundle core_code...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle loading...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle shared_boot_ui...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle login...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle comic...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle shared_room_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle departure_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle home...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle travel_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle darkroom...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle outfit_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle photo_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle wardrobe_visual...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle internal...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle resources...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle main...
+
+2026-10-12 10:31:40 - debug: add md5 to bundle core_code success
+
+2026-10-12 10:31:40 - debug: compress config of bundle core_code...
+
+2026-10-12 10:31:40 - debug: compress config of bundle core_code success
+
+2026-10-12 10:31:40 - debug: output config of bundle core_code
+
+2026-10-12 10:31:40 - debug: output config of bundle core_code success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle internal success
+
+2026-10-12 10:31:40 - debug: compress config of bundle internal...
+
+2026-10-12 10:31:40 - debug: compress config of bundle internal success
+
+2026-10-12 10:31:40 - debug: output config of bundle internal
+
+2026-10-12 10:31:40 - debug: output config of bundle internal success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle main success
+
+2026-10-12 10:31:40 - debug: compress config of bundle main...
+
+2026-10-12 10:31:40 - debug: compress config of bundle main success
+
+2026-10-12 10:31:40 - debug: output config of bundle main
+
+2026-10-12 10:31:40 - debug: output config of bundle main success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle outfit_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle outfit_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle outfit_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle outfit_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle outfit_visual success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle departure_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle departure_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle departure_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle departure_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle departure_visual success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle shared_boot_ui success
+
+2026-10-12 10:31:40 - debug: compress config of bundle shared_boot_ui...
+
+2026-10-12 10:31:40 - debug: compress config of bundle shared_boot_ui success
+
+2026-10-12 10:31:40 - debug: output config of bundle shared_boot_ui
+
+2026-10-12 10:31:40 - debug: output config of bundle shared_boot_ui success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle wardrobe_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle wardrobe_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle wardrobe_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle wardrobe_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle wardrobe_visual success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle shared_room_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle shared_room_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle shared_room_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle shared_room_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle shared_room_visual success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle photo_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle photo_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle photo_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle photo_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle photo_visual success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle loading success
+
+2026-10-12 10:31:40 - debug: compress config of bundle loading...
+
+2026-10-12 10:31:40 - debug: compress config of bundle loading success
+
+2026-10-12 10:31:40 - debug: output config of bundle loading
+
+2026-10-12 10:31:40 - debug: output config of bundle loading success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle comic success
+
+2026-10-12 10:31:40 - debug: compress config of bundle comic...
+
+2026-10-12 10:31:40 - debug: compress config of bundle comic success
+
+2026-10-12 10:31:40 - debug: output config of bundle comic
+
+2026-10-12 10:31:40 - debug: output config of bundle comic success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle login success
+
+2026-10-12 10:31:40 - debug: compress config of bundle login...
+
+2026-10-12 10:31:40 - debug: compress config of bundle login success
+
+2026-10-12 10:31:40 - debug: output config of bundle login
+
+2026-10-12 10:31:40 - debug: output config of bundle login success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle darkroom success
+
+2026-10-12 10:31:40 - debug: compress config of bundle darkroom...
+
+2026-10-12 10:31:40 - debug: compress config of bundle darkroom success
+
+2026-10-12 10:31:40 - debug: output config of bundle darkroom
+
+2026-10-12 10:31:40 - debug: output config of bundle darkroom success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle resources success
+
+2026-10-12 10:31:40 - debug: compress config of bundle resources...
+
+2026-10-12 10:31:40 - debug: compress config of bundle resources success
+
+2026-10-12 10:31:40 - debug: output config of bundle resources
+
+2026-10-12 10:31:40 - debug: output config of bundle resources success
+
+2026-10-12 10:31:40 - debug: add md5 to bundle travel_visual success
+
+2026-10-12 10:31:40 - debug: compress config of bundle travel_visual...
+
+2026-10-12 10:31:40 - debug: compress config of bundle travel_visual success
+
+2026-10-12 10:31:40 - debug: output config of bundle travel_visual
+
+2026-10-12 10:31:40 - debug: output config of bundle travel_visual success
+
+2026-10-12 10:31:41 - debug: add md5 to bundle home success
+
+2026-10-12 10:31:41 - debug: compress config of bundle home...
+
+2026-10-12 10:31:41 - debug: compress config of bundle home success
+
+2026-10-12 10:31:41 - debug: output config of bundle home
+
+2026-10-12 10:31:41 - debug: output config of bundle home success
+
+2026-10-12 10:31:41 - debug: Output asset in bundles success, progress: 24%
+
+2026-10-12 10:31:41 - debug: Output asset in bundles success, progress: 13%
+
+2026-10-12 10:31:41 - debug: // ---- build task Build Assets ---- (449ms)
+
+2026-10-12 10:31:41 - log: run build task Build Assets success in 449 ms√, progress: 29%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: Build Assets start:248.85MB, end 236.86MB, increase: -12275.59KB
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBundleBuildTask) start..., progress: 29%
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBundleBuildTask) start..., progress: 13%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBundleBuildTask ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBundleBuildTask ---- (1ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBundleBuildTask) in 1 ms ✓, progress: 29%
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBundleBuildTask) in 1 ms ✓, progress: 20%
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBuildAssets) start..., progress: 29%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBuildAssets ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBuildAssets ---- (1ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBuildAssets) in 1 ms ✓, progress: 31%
+
+2026-10-12 10:31:41 - debug: 整理部分构建选项内数据到 settings.json start, progress: 31%
+
+2026-10-12 10:31:41 - debug: // ---- build task 整理部分构建选项内数据到 settings.json ----
+
+2026-10-12 10:31:41 - log: run build task 整理部分构建选项内数据到 settings.json success in √, progress: 33%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: 整理部分构建选项内数据到 settings.json start:237.10MB, end 237.13MB, increase: 28.64KB
+
+2026-10-12 10:31:41 - debug: 填充脚本数据到 settings.json start, progress: 33%
+
+2026-10-12 10:31:41 - debug: // ---- build task 填充脚本数据到 settings.json ----
+
+2026-10-12 10:31:41 - debug: // ---- build task 填充脚本数据到 settings.json ---- (1ms)
+
+2026-10-12 10:31:41 - log: run build task 填充脚本数据到 settings.json success in 1 ms√, progress: 34%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: 填充脚本数据到 settings.json start:237.16MB, end 237.20MB, increase: 36.28KB
+
+2026-10-12 10:31:41 - debug: 整理部分构建选项内数据到 settings.json start, progress: 34%
+
+2026-10-12 10:31:41 - debug: // ---- build task 整理部分构建选项内数据到 settings.json ----
+
+2026-10-12 10:31:41 - debug: // ---- build task 整理部分构建选项内数据到 settings.json ---- (3ms)
+
+2026-10-12 10:31:41 - log: run build task 整理部分构建选项内数据到 settings.json success in 3 ms√, progress: 36%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: 整理部分构建选项内数据到 settings.json start:237.24MB, end 237.38MB, increase: 150.48KB
+
+2026-10-12 10:31:41 - debug: wechatgame:(onBeforeCompressSettings) start..., progress: 36%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onBeforeCompressSettings ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onBeforeCompressSettings ---- (1ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onBeforeCompressSettings) in 1 ms ✓, progress: 38%
+
+2026-10-12 10:31:41 - debug: cocos-service:(onBeforeCompressSettings) start..., progress: 38%
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onBeforeCompressSettings ----
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onBeforeCompressSettings ---- (1ms)
+
+2026-10-12 10:31:41 - debug: cocos-service:(onBeforeCompressSettings) in 1 ms ✓, progress: 40%
+
+2026-10-12 10:31:41 - debug: 整理静态模板文件 start, progress: 40%
+
+2026-10-12 10:31:41 - debug: // ---- build task 整理静态模板文件 ----
+
+2026-10-12 10:31:41 - debug: // ---- build task 整理静态模板文件 ---- (18ms)
+
+2026-10-12 10:31:41 - log: run build task 整理静态模板文件 success in 18 ms√, progress: 45%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: 整理静态模板文件 start:237.58MB, end 243.15MB, increase: 5.57MB
+
+2026-10-12 10:31:41 - debug: cocos-service:(onAfterCompressSettings) start..., progress: 45%
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onAfterCompressSettings ----
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onAfterCompressSettings ---- (2ms)
+
+2026-10-12 10:31:41 - debug: cocos-service:(onAfterCompressSettings) in 2 ms ✓, progress: 46%
+
+2026-10-12 10:31:41 - debug: wechatgame:(onBeforeCopyBuildTemplate) start..., progress: 46%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onBeforeCopyBuildTemplate ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onBeforeCopyBuildTemplate ---- (4ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onBeforeCopyBuildTemplate) in 4 ms ✓, progress: 48%
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterCopyBuildTemplate) start..., progress: 48%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterCopyBuildTemplate ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterCopyBuildTemplate ---- (1ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterCopyBuildTemplate) in 1 ms ✓, progress: 50%
+
+2026-10-12 10:31:41 - debug: 给所有的资源加上 MD5 后缀 start, progress: 50%
+
+2026-10-12 10:31:41 - debug: // ---- build task 给所有的资源加上 MD5 后缀 ----
+
+2026-10-12 10:31:41 - debug: add suffix to assets(10) success!
+
+2026-10-12 10:31:41 - debug: // ---- build task 给所有的资源加上 MD5 后缀 ---- (44ms)
+
+2026-10-12 10:31:41 - log: run build task 给所有的资源加上 MD5 后缀 success in 44 ms√, progress: 60%
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: 给所有的资源加上 MD5 后缀 start:243.73MB, end 246.21MB, increase: 2.49MB
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBuild) start..., progress: 60%
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBuild ----
+
+2026-10-12 10:31:41 - debug: // ---- build task wechatgame：onAfterBuild ---- (188ms)
+
+2026-10-12 10:31:41 - debug: wechatgame:(onAfterBuild) in 188 ms ✓, progress: 62%
+
+2026-10-12 10:31:41 - debug: cocos-service:(onAfterBuild) start..., progress: 62%
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onAfterBuild ----
+
+2026-10-12 10:31:41 - debug: // ---- build task cocos-service：onAfterBuild ---- (1ms)
+
+2026-10-12 10:31:41 - debug: cocos-service:(onAfterBuild) in 1 ms ✓, progress: 64%
+
+2026-10-12 10:31:41 - debug: adsense-h5g-plugin:(onAfterBuild) start..., progress: 64%
+
+2026-10-12 10:31:41 - debug: // ---- build task adsense-h5g-plugin：onAfterBuild ----
+
+2026-10-12 10:31:41 - debug: adsense-h5g-plugin:(onAfterBuild) in 0 ms ✓, progress: 65%
+
+2026-10-12 10:31:41 - log: Asset DB is resume!
+
+2026-10-12 10:31:41 - debug: builder:build-project-total (8285ms)
+
+2026-10-12 10:31:41 - debug: build task(wechatgame) in 8285!
+
+2026-10-12 10:31:41 - debug: [Build Memory track]: builder:build-project-total start:237.86MB, end 240.73MB, increase: 2.87MB
+
+2026-10-12 10:31:41 - debug: ================================ build Task (wechatgame) Finished in (8 s)ms ================================
+

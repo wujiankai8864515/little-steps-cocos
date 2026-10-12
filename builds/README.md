@@ -11,6 +11,8 @@ builds/
     ├── config.json            # 微信AppID、资源地址和构建选项
     ├── build.py               # 微信构建与固定项目更新
     ├── prepare.py             # 微信构建镜像及平台配置
+    ├── assets.py              # 仅构建镜像的背景/音频减包
+    ├── startup.py             # 校验并提前绘制原生loading
     ├── audit.py               # 微信包检查
     ├── stage.py               # 正式交付暂存，保留全部门禁
     ├── serve.py               # 微信本机资源服务
@@ -37,13 +39,21 @@ python3 -B builds/build.py wechatgame
 
 默认包含游戏仓已保存但未提交的代码和资源，不复用旧候选包。复制前后以及更新产物前均核对实际源码、资源、框架和模板；若构建期间又修改了它们，停止更新并提示重新打包。只有显式传 `--readback` 才会构建指定历史版本。
 
-电脑重启后无需重建，启动本机资源服务：
+默认为微信原生分包，不需要同 Wi-Fi 或资源服务器。`--device` 显式选择这一模式。微信工具的自动真机调试会传输完整代码包和分包，运行时按页面加载。
 
-```sh
-python3 -B builds/build.py wechatgame --serve-only
-```
+`--build-only --name NAME` 只生成并审计候选；`--stage-existing --name NAME` 更新固定项目，仍会检查源码是否改变。`--open` 尝试通过已安装工具的 CLI 打开项目，不修改安全设置。
 
-`--open` 尝试通过开发者工具CLI打开渠道目录；工具未开启CLI服务端口时，直接在工具中打开已有项目即可。脚本不会修改安全设置。`--appid`、`--server` 可单次覆盖 `config.json`。
+已有 HTTPS 资源服务时，可显式执行 `--resource-mode remote --server https://域名/目录/`，并自行部署 `remote/`；`--serve-only` 仅在远程资源模式下恢复本机模拟器服务。原生分包模式不启动任何资源服务。
+
+渠道配置启用均衡减包：大背景保持原设计几何，显示纹理以 720 宽采样，保留原纵向比例，每张不超过 500,000 bytes；大插画采用 256 色 PNG，小图、字形、数据掩码与原生背包 mipmap 保留。音乐为 44.1 kHz / 48 kbps 单声道 MP3；短音效保持单声道 PCM，避免 MP3 启动延迟破坏敲击。转换只在隔离镜像内进行，原素材保留于游戏仓。
+
+首次安装减包依赖：`python3 -m pip install --target migration/.cache/python -r builds/wechatgame/requirements.txt`。缓存不进入打包仓或 Git。
+
+首屏由渠道 `first-screen.js` 直接用 WebGL 绘制暖色 loading，入口在 SystemJS 和引擎初始化前调用；Cocos 场景使用同色底和无资源 loading 衔接。官方 `separateEngine` 保留兼容回退，实际主包门槛仍检查生成字节；不移除必要引擎模块来伪造插件体积。平台配置、入口钩子和音频/纹理转换脚本都在本渠道。
+
+公共资源 Bundle 优先级高于页面 Bundle，但低于引擎内置包。运行时先完成公共依赖的 `loadBundle`，随后按页面取得具体资源；不把可选页面资源全部塞入启动公共包。每次审计记录实际 Bundle 依赖、清单开销及 native 内容重复字节。原生主包仍按 4 MB、完整代码包按 30 MB、Home 依赖闭包按 19 MB 保守检查，静态通过不代表手机性能或画质验收。
+
+参考：[Asset Bundle 规则](https://docs.cocos.com/creator/3.8/manual/zh/asset/bundle.html)、[微信引擎插件](https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/wechatgame-plugin.html)、[纹理压缩](https://docs.cocos.com/creator/3.8/manual/zh/asset/compress-texture.html)。ASTC 支持微信真机，但开发者工具模拟器不支持；当前默认使用普通 PNG 兼容包，不额外附带一整套 ASTC + PNG 重复纹理。
 
 从已远端回读的源码构建：
 
@@ -61,4 +71,4 @@ python3 -B builds/build.py wechatgame --readback migration/reviews/READBACK.json
 
 资源导入、对照工具、截图、验收记录、旧候选及缓存统一放在仓库根目录的 `migration/`，不放在打包仓。打包测试位于 `tests/builds/`。记录保留原文件内容和哈希，旧路径由读取工具映射到新位置，不改写历史清单。
 
-当前本机资源地址为 `http://127.0.0.1:8794/`，打包命令自动启动服务。真机或发布需要合法HTTPS资源域名及对应资源部署。Home19MB门槛、源码冻结和微信真机验收仍按原规则执行。
+原素材、候选与失败记录均可追溯回退；日常打包始终读取最新已保存源码。

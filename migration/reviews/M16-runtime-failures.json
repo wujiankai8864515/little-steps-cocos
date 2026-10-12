@@ -1,0 +1,26 @@
+{
+  "item": "M16.02",
+  "observations": [
+    {
+      "candidate": "wechat-native-subpackages-v1",
+      "source": "WeChat DevTools automatic Android device debugging",
+      "error": "80051,source size 61637KB exceed max limit 30MB",
+      "rootCause": "Original native payload exceeds WeChat full code-package upload limit",
+      "fix": "Balanced frozen-copy image/audio optimization; candidate v4 totals 22217838 raw bytes"
+    },
+    {
+      "candidate": "wechat-balanced-v4",
+      "source": "WeChat DevTools simulator and preview, 2026-10-12 11:48-11:50",
+      "errors": [
+        "summer-compiler miss project/ js file, __context__/__plugin__/wx0446ba2621dda60a/plugin.js",
+        "module '__plugin__/wx0446ba2621dda60a/2d.js' is not defined",
+        "wx0446ba2621dda60a 插件未授权使用",
+        "80082,get plugin(id: wx0446ba2621dda60a, version: 3.8.8) failed, permission deny"
+      ],
+      "rootCause": "AppID does not currently authorize the official Cocos engine plugin",
+      "nativeLoadingObserved": "[LittleSteps] NATIVE_LOADING_FIRST_DRAW 1791776934796",
+      "pluginResolution": "pending",
+      "deviceStartup": "not verified"
+    }
+  ]
+}

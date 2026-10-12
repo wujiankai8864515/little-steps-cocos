@@ -17,6 +17,8 @@ def stage_delivery(name):
     report = audit(name)
     if not all(report['checks'].values()):
         raise ValueError('Packaging audit failed; refusing to stage a delivery')
+    if not report['subpackageBudget']['withinFormal30MB']:
+        raise ValueError('Native subpackages exceed the formal 30MB limit; refusing release delivery')
     destination = ROOT / 'migration/output' / name
     if destination.exists():
         raise FileExistsError('Do not replace previous delivery evidence')

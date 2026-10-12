@@ -106,6 +106,10 @@ def check_catalog(project):
     expected = set()
     for key, spec in catalog['assets'].items():
         kind, path = spec['kind'], spec['path']
+        if kind == 'procedural':
+            if not spec.get('procedural'):
+                raise ValueError('Missing procedural recipe: ' + key)
+            continue
         if kind == 'texture':
             if not path.endswith('/texture'):
                 raise ValueError('Unexpected texture subasset: ' + key)
@@ -158,6 +162,8 @@ def audit_home_payload(project, output, remote_bundles):
         for dependency in groups[name].get('depends_on', []):
             visit(dependency)
         root = output / ('remote' if name in remote else 'assets') / name
+        if name not in remote and (output / 'subpackages' / name).is_dir():
+            root = output / 'subpackages' / name
         configs = list(root.glob('config*.json'))
         if len(configs) != 1:
             raise ValueError('Expected one output bundle config: ' + name)

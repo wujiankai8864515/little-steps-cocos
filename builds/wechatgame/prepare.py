@@ -14,6 +14,7 @@ import tarfile
 from urllib.parse import urlsplit
 from common import check_catalog, relocate_path, capture_inputs
 from common import install_templates
+from assets import optimize
 
 ROOT = Path(__file__).resolve().parents[2]
 BOOT = '8dacabd2-f20d-42ab-aa32-8ffb576527d7'
@@ -26,11 +27,15 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
+def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False, resource_mode='remote', asset_policy=None, separate_engine=False):
     if not re.fullmatch(r'[a-zA-Z0-9_-]+', name):
         raise ValueError('Invalid candidate name')
+    if resource_mode not in ('remote', 'subpackage'):
+        raise ValueError('Unknown resource packaging mode')
+    if resource_mode == 'subpackage':
+        server = ''
     address = urlsplit(server)
-    if address.scheme not in ('http', 'https') or not address.netloc or address.query or address.fragment or address.username:
+    if resource_mode == 'remote' and (address.scheme not in ('http', 'https') or not address.netloc or address.query or address.fragment or address.username):
         raise ValueError('Use an HTTP(S) resource root without credentials/query/fragment')
     if not re.fullmatch(r'wx[0-9a-f]{16}', appid):
         raise ValueError('Invalid WeChat appid')
@@ -92,6 +97,9 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
     assert linked.resolve().is_relative_to(plugin.resolve())
     assert linked.stat().st_mode & 0o222 == 0
     bundles, packaging_overrides = [], []
+    packaging_overrides.extend(optimize(project, stage, asset_policy or {}))
+    priority = {'core_code': 6, 'shared_boot_ui': 6, 'shared_room_visual': 5,
+                'loading': 4, 'login': 4, 'comic': 4, 'home': 3, 'outfit_visual': 3}
     # resources.load() uses dynamic paths, so the built-in resources bundle
     # must be explicitly included alongside the game's custom bundles.
     for meta in [project / 'assets/resources.meta', *sorted((project / 'assets/bundles').glob('*.meta'))]:
@@ -102,18 +110,22 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         name_ = data['bundleName']
         # Keep code and small shared startup resources local. Remote data keeps
         # optional pages lazy; do not zip a whole optional atlas bundle on entry.
-        remote = name_ not in ('resources', 'core_code', 'shared_boot_ui')
+        optional = name_ not in ('resources', 'core_code', 'shared_boot_ui')
+        remote = resource_mode == 'remote' and optional
+        compression = 'subpackage' if resource_mode == 'subpackage' and optional else 'merge_dep'
         # Creator 3.8 resolves a named project Bundle configuration. Older
         # isRemoteBundle maps and CLI IBundleOptions do not select that profile.
         # Only the packaging copy changes; authoring metadata stays intact.
         before = sha(meta)
-        data['bundleConfigID'] = 'little-steps-remote' if remote else 'little-steps-local'
+        data['priority'] = priority.get(name_, 2) if name_ != 'resources' else data.get('priority', 8)
+        data['bundleConfigID'] = ('little-steps-subpackage' if compression == 'subpackage' else
+                                'little-steps-remote' if remote else 'little-steps-local')
         meta.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n')
         packaging_overrides.append({'file': str(meta.relative_to(stage)), 'sourceSHA256': before,
                                     'packagingSHA256': sha(meta), 'purpose': 'WeChat bundle placement only'})
         bundle_root = meta.with_suffix('').relative_to(project / 'assets').as_posix()
         bundles.append({'root': 'db://assets/' + bundle_root, 'name': name_,
-                        'priority': data.get('priority', 0), 'compressionType': 'merge_dep',
+                        'priority': data.get('priority', 0), 'compressionType': compression,
                         'isRemote': remote, 'output': True})
     builder_path = project / 'settings/v2/packages/builder.json'
     before = sha(builder_path)
@@ -127,6 +139,12 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
             'native': {'preferredOptions': {'isRemote': False, 'compressionType': 'merge_dep'}},
             'web': {'preferredOptions': {'isRemote': False, 'compressionType': 'merge_dep'}},
         }}
+    profiles['little-steps-subpackage'] = {'displayName': 'little-steps-subpackage', 'configs': {
+        'miniGame': {'preferredOptions': {'isRemote': False, 'compressionType': 'subpackage'},
+                     'fallbackOptions': {'isRemote': False, 'compressionType': 'subpackage'}, 'configMode': 'auto'},
+        'native': {'preferredOptions': {'isRemote': False, 'compressionType': 'merge_dep'}},
+        'web': {'preferredOptions': {'isRemote': False, 'compressionType': 'merge_dep'}},
+    }}
     builder_path.write_text(json.dumps(builder, ensure_ascii=False, indent=2) + '\n')
     packaging_overrides.append({'file': str(builder_path.relative_to(stage)), 'sourceSHA256': before,
                                 'packagingSHA256': sha(builder_path), 'purpose': 'Creator 3.8 named Bundle configurations'})
@@ -162,10 +180,10 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         'outputName': 'wechatgame', 'buildPath': str(stage / 'output'),
         'startScene': SCENE, 'scenes': [{'url': 'db://assets/scene.scene', 'uuid': SCENE}],
         'debug': False, 'sourceMaps': False, 'md5Cache': True,
-        'server': server.rstrip('/') + '/', 'mainBundleIsRemote': False,
+        'server': server.rstrip('/') + '/' if server else '', 'mainBundleIsRemote': False,
         'startSceneAssetBundle': False, 'bundleConfigs': bundles,
         'packages': {'wechatgame': {'appid': appid, 'orientation': 'portrait',
-                                   'separateEngine': False, 'buildOpenDataContextTemplate': False}},
+                                   'separateEngine': separate_engine, 'buildOpenDataContextTemplate': False}},
     }
     if trim_unused:
         config['engineModulesConfigKey'] = 'littleStepsWeChat'
@@ -181,6 +199,8 @@ def freeze(name, readback_path, server, appid=TEST_APPID, trim_unused=False):
         'schema': 1, 'name': name, 'kind': 'WeChat packaging candidate, not release',
         'sourceCommit': commit, 'sourceMode': 'remote-readback' if readback_path else 'local-working-copy',
         'sourceDirty': source_dirty,
+        'resourceMode': resource_mode,
+        'assetPolicy': asset_policy or {}, 'separateEngine': separate_engine,
         'workingInputs': working_inputs,
         'sourceReadback': str(readback_path.relative_to(ROOT)) if readback_path else None,
         'sourceReadbackSHA256': sha(readback_path) if readback_path else None, 'gameSourceOverrides': [],

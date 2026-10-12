@@ -1,5 +1,14 @@
 {
   "appid": "wx4d41972686e54c11",
   "server": "http://127.0.0.1:8794/",
-  "trimUnused": true
+  "trimUnused": true,
+  "resourceMode": "subpackage",
+  "separateEngine": true,
+  "earlyLoading": true,
+  "assetPolicy": {
+    "enabled": true,
+    "backgroundWidth": 720,
+    "backgroundMaxBytes": 500000,
+    "musicBitrate": 48000
+  }
 }
