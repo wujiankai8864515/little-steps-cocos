@@ -9,7 +9,8 @@ export const inside=(at:number[],r:number[])=>at[0]>=r[0]&&at[0]<r[0]+r[2]&&at[1
 export class ResponsiveLamp {
     value=0;target=0;private from=0;private age=.22;private feedbackAge=.34;override=-1;
     reset(current:number){this.value=clamp(current,0,1);this.target=this.value;this.from=this.value;this.age=.22;}
-    toggle(){const on=this.override>=0?this.override===1:this.value>=.5;this.override=on?0:1;this.from=this.value;this.target=this.override;this.age=0;this.feedbackAge=0;return this.override===1;}
+    tap(next:number){this.override=clamp(next,0,1);this.from=this.value;this.target=this.override;this.age=0;this.feedbackAge=0;}
+    toggle(){const on=this.override>=0?this.override===1:this.value>=.5;this.tap(on?0:1);return this.override===1;}
     advance(delta:number,automatic:number){
         if(!Number.isFinite(delta))return;
         if(this.override<0){this.reset(automatic);return;}

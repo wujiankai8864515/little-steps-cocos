@@ -15,7 +15,7 @@ export class HomeShadows {
     private soft=new Map<Node,{grid:any;sun:ShadowGeometry;lamp:ShadowGeometry;active:()=>boolean;lift:()=>number;ground:()=>number;frame:()=>Node;using:boolean;physical:number}>();
     private rigid=new Map<Node,RigidBinding>();
     private opacities=new Map<Node,()=>number>();
-    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock,private useWindow=true) {}
+    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock,private useWindow=true,private lampEnergy?:()=>number) {}
     add(source:Node,resource:string,properties:any,centered=false,custom?:{spec:ArtSpec;frame:()=>SpriteFrame}) {
         const spec=custom?custom.spec:this.assets.art(resource),name=source.name,grounded=!!(properties['metadata/spans']||SUPPORT_SPANS[name])&&properties['metadata/floor'];
         const contacts=grounded?contactProfile(name,spec.size,(x,y)=>this.assets.alpha(resource,x,y),properties['metadata/spans']||SUPPORT_SPANS[name]).contacts:[];
@@ -43,7 +43,7 @@ export class HomeShadows {
     bindTableFrame(table:Node,frame:()=>Node){for(const c of this.casters)if(c.properties['metadata/table']===table)this.rigid.set(c.source,{frame,ground:()=>typeof c.properties['metadata/ground']==='function'?c.properties['metadata/ground']():c.properties['metadata/ground'],lift:()=>0,carried:()=>false});}
     private affine(node:Node) {const m=node.worldMatrix;return [m.m00,-m.m01,-m.m04,m.m05,m.m12,-m.m13];}
     update() {
-        const s=homeLighting(this.clock.hour(),this.clock.lampWeight()),origin=this.root.worldPosition,scale=this.root.worldScale;
+        const s=homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lampEnergy?.()),origin=this.root.worldPosition,scale=this.root.worldScale;
         const inverse=core.Math2D.inverse(this.affine(this.root)),naturalEnergy=s.sunEnergy>0?s.sunEnergy:s.moonEnergy*.34;
         const cast=s.sunEnergy>0?s.cast:s.moonCast,cot=s.sunEnergy>0?s.cot:1.6,penumbra=s.sunEnergy>0?1.35+(.7-1.35)*s.noon:1.25;
         for(const caster of this.casters) {

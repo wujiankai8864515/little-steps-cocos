@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "item": "M13.01",
+  "request": "主页和暗室点击灯没有反应",
+  "sourceBefore": "01a071339effeb57b149b7234b07f27ea5081161",
+  "candidate": "lamps-responsive-v2",
+  "rootCause": {
+    "homeConfirmed": "HomePage never bound manual lamp input. All receivers and projections used night-gated automatic energy. Original Godot manual .72 energy, responsive fade and fixture feedback were missing.",
+    "darkroomConfirmed": "The lamp depended entirely on the full-screen pointer callback and had no dedicated on-screen action node.",
+    "darkroomLimit": "The exact cause of the failed event in the user's existing Creator preview is not proved. Coordinate clicks against that preview timed out; do not claim a proven wrong LAMP_RECT or shader."
+  },
+  "fix": {
+    "home": "Dedicated hit node from original visible-UV bounds plus native 12px padding. Independent manual override, .72 daytime/nighttime energy, .22s fade and .34s feedback around the fixture pivot. Room, face/prop materials and plant/backpack/travel-object projections share effective room energy.",
+    "darkroom": "Dedicated lamp action above world input; independent of doll attacks, with held/queued actions cancelled by resize, suspend and pause. Existing binary override and fade retained.",
+    "shared": "Explicit target tap reuses the original response while preserving Darkroom binary toggles."
+  },
+  "verification": {
+    "currentSourceTests": {
+      "pass": 257,
+      "fail": 0,
+      "log": "M13-all-tests-current.log"
+    },
+    "earlierSourceTests": {
+      "pass": 254,
+      "fail": 0,
+      "log": "M13-all-tests-v2.log"
+    },
+    "types": {
+      "status": "pass",
+      "skipLibCheck": true,
+      "log": "M13-lamp-types-current.log"
+    },
+    "creator": {
+      "version": "3.8.8",
+      "exitCode": 36,
+      "status": "pass",
+      "log": "M13-lamp-build-v2.log"
+    },
+    "frozen": {
+      "status": "pass",
+      "runtimeMismatches": 0,
+      "report": "M13-lamp-frozen-audit-v2.json",
+      "matchingCurrentGameAndEffectPayloads": 297
+    },
+    "catalogue": {
+      "catalogAssets": 129,
+      "sourceFiles": 141,
+      "missing": []
+    },
+    "browser": {
+      "status": "pass",
+      "browser": "Independent Chrome",
+      "realCanvasClicks": true,
+      "pages": [
+        "Home",
+        "Darkroom"
+      ],
+      "hours": [
+        12,
+        23
+      ],
+      "viewports": [
+        [
+          390,
+          693
+        ],
+        [
+          390,
+          844
+        ]
+      ],
+      "observed": "Both lamps brighten/dim and change actual room light. Overrides survive day/night, resize and route return; Home settles at .72 and Darkroom at 0/1.",
+      "logs": "M13-browser-lamp-states-final.json",
+      "consoleWarningsAndErrors": [],
+      "latestRebuildSmoke": "After concurrent M12 Assets.ts changes, reran current tests, rebuilt v2 and repeated actual Home and Darkroom lamp clicks. Saved M13-latest-browser-states.json and M13-latest-darkroom-lamp-on.jpg.",
+      "screenshots": [
+        "builds/reviews/M13-darkroom-day-off.jpg",
+        "builds/reviews/M13-darkroom-day-on.jpg",
+        "builds/reviews/M13-darkroom-night-final-390x844.jpg",
+        "builds/reviews/M13-darkroom-night-off-390x844.jpg",
+        "builds/reviews/M13-darkroom-night-on-390x693.jpg",
+        "builds/reviews/M13-darkroom-night-on-390x844.jpg",
+        "builds/reviews/M13-home-day-on-390x693.jpg",
+        "builds/reviews/M13-home-lamp-on.jpg",
+        "builds/reviews/M13-home-night-on-390x693.jpg",
+        "builds/reviews/M13-home-night-on-390x844.jpg",
+        "builds/reviews/M13-latest-darkroom-lamp-on.jpg"
+      ]
+    },
+    "wechatDevice": "pending",
+    "userAcceptance": "pending"
+  },
+  "overrides": [
+    {
+      "file": "assets/Boot.ts",
+      "sourceSHA256": "da36011f73d3811f0b1b347074e2c02dbcd34adabf7f205dd5628d75f10e0d5a",
+      "fixtureSHA256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "purpose": "Explicit direct Home route to validate the real source rig; not full entry-flow acceptance"
+    },
+    {
+      "file": "assets/Boot.ts",
+      "hour": 12.0,
+      "fixtureSHA256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "purpose": "Declared initial Home hour; clock freezes only when --freeze is supplied"
+    },
+    {
+      "file": "assets/game/Application.ts",
+      "sourceSHA256": "2430d9b99965426fdc271f5407b7137d4d893e03ecb0fee1bba02e1c31b216a3",
+      "fixtureSHA256": "9bcadc81d4d7e8c421fd9dd58ebd699f023e05d1ff3f41d18fbfc6464f247644",
+      "purpose": "Freeze product clock only"
+    },
+    {
+      "file": "assets/Boot.ts",
+      "sourceSHA256": "d93665f3d1a1bec92f347df52ff47a9a92ae05ab9e5ebfb922f57c4501f6b4d5",
+      "fixtureSHA256": "847959053e1bf0a28c78e49fe4f914ab712e9de337cda1f873b76e31ea40a7f5",
+      "purpose": "Same visible QA route/day-night/state buttons as v1, on latest source including the concurrent M12 resource-loading fix. Production Boot unchanged; no direct lamp-toggle button."
+    }
+  ],
+  "preview": "http://127.0.0.1:8798/",
+  "scope": "No original bitmap modifications or new texture admission; shared clock and independent room manual states retained.",
+  "failures": [
+    {
+      "log": "M13-lamp-tests-v1.log",
+      "cause": "New mock nodes lacked activeInHierarchy; the direct Darkroom fixture had not presented its root. Correct deferred action guards blocked callbacks. Corrected adapters/presentation then reran all tests."
+    },
+    {
+      "trigger": "Concurrent M12 resource-loading commit changed Assets.ts after v1 freeze.",
+      "resolution": "Retained v1 evidence, reran current source (257 pass), created a fresh v2 frozen candidate rather than overwriting v1, rebuilt and browser-tested latest source."
+    }
+  ],
+  "backup": "Local atomic commit to follow. Remote push awaiting authorization after prior automatic review rejection; no retry or workaround."
+}

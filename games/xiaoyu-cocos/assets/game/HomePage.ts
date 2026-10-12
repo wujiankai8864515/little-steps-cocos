@@ -7,6 +7,7 @@ import { box } from './Viewport';
 import { nodeAt, picture } from './Visual';
 import { XiaoyuRig } from './XiaoyuRig';
 import { HomeClock } from './HomeClock';
+import { HomeLamp } from './HomeLamp';
 import { HomeLighting } from './HomeLighting';
 import { HomeShadows } from './HomeShadows';
 import { HomePlants } from './HomePlants';
@@ -40,7 +41,7 @@ export class HomePage {
     readonly shadows:HomeShadows;
     readonly plants:HomePlants;
     readonly hud:HomeHUD;
-    readonly merit=new SessionMerit();
+    readonly merit=new SessionMerit();readonly lamp:HomeLamp;
     private meritArt:MeritArtView;
     private active=false;
     private knock:AudioPort;
@@ -80,17 +81,17 @@ export class HomePage {
         scope.own(() => { this.root.active = false; this.root.destroy(); });
         this.surface=renderSurfaces().create({host:parent.scene,displayParent:this.root,logicalSize:plan.logical,displayRect:[0,-plan.offset,720,height],target,name:'HomeRoom'},scope);
         this.roomRoot=nodeAt(this.surface.content,'HomeWorld',0,plan.offset,720,1280);
-        this.lighting=new HomeLighting(this.roomRoot,assets,scope,clock);
-        this.shadows=new HomeShadows(this.roomRoot,assets,scope,clock);
+        this.lighting=new HomeLighting(this.roomRoot,assets,scope,clock,()=>this.lamp.energy);
+        this.shadows=new HomeShadows(this.roomRoot,assets,scope,clock,true,()=>this.lamp.energy);
         const scene = assets.scene('res://home/home_world.tscn');
         const resources = new Map(scene.sections.filter(s => s.kind === 'ext_resource').map(s => [s.id, s.path]));
-        const layers=this.roomLayers;
+        const layers=this.roomLayers;let lampFixture:ReturnType<typeof picture>,lampProperties:any;
         const props:Array<{node:Node;resource:string;p:any;spec:any;anchor:number[];footprint:number[]}>=[];
         scene.sections.filter(s => s.kind === 'node' && s.type === 'Sprite2D').forEach((section, order) => {
             if (section.properties.visible === false && ['UpperBleedEdge','LowerBleedEdge'].indexOf(section.name)<0) return;
             const resource = resources.get(section.properties.texture.value) as string;
             const item = picture(this.roomRoot, assets, scope, resource, section.name, section.properties);
-            const p=section.properties;
+            const p=section.properties;if(section.name==='WallLampFixture'){lampFixture=item;lampProperties=p;}
             if(section.name==='Treasure')this.collectionObject={node:item.root,resource,centered:p.centered!==false,size:item.spec.size};
             if(section.name==='Bag')item.sprite.enabled=false;
             else {
@@ -101,12 +102,13 @@ export class HomePage {
             if(footprint){const uv=p['metadata/visible_uv']||[0,0,1,1];props.push({node:item.root,resource,p,spec:item.spec,anchor:[p.position[0]+(uv[0]+uv[2]/2)*item.spec.size[0]*p.scale[0],p['metadata/ground']],footprint});}
             layers.push({z: section.properties.z_index || 0, order, node: item.root});
         });
+        if(!lampFixture)throw new Error('Approved Home lamp is missing');this.lamp=new HomeLamp(clock,lampFixture,lampProperties);
         this.rig = new XiaoyuRig(this.roomRoot, assets, scope);
         this.rig.receivers.forEach(item=>this.lighting.receiver(item.sprite,item.spec,1,[.2,.15,.68,.72],item.node.name==='OriginalBody'||item.eye?'face':'receiver',item.eye||0,item.eye?this.rig.pupilOffsets()[item.eye-1]:[0,0]));
         this.rig.receivers.filter(item=>item.node.name.indexOf('Eye')<0).forEach(item=>this.shadows.add(item.node,item.resource,{'metadata/ground':951,'metadata/height_factor':.72,'metadata/floor':true,'metadata/shadow_z':1,'metadata/thickness':0}));
         this.rig.receivers.filter(item=>item.node.name.indexOf('Eye')<0).forEach(item=>this.shadows.bindOpacity(item.node,()=>this.actorProjectionAlpha));
         this.rig.softMeshes().forEach(part=>this.shadows.bindSoft(part.node,part.mesh,()=>this.rig.softActive,()=>this.rig.liftHeight,()=>this.fish?.ground[1]||951,()=>this.presentedActor==='fish'&&this.dragCarrier?this.dragCarrier:this.roomRoot));
-        this.plants=new HomePlants(this.roomRoot,assets,scope,this.lighting,this.clock);
+        this.plants=new HomePlants(this.roomRoot,assets,scope,this.lighting,this.clock,()=>this.lamp.energy);
         this.plants.roots.forEach(layer=>layers.push(layer));
         this.knock=audioTransport().player(this.root,scope,'WoodKnock',(event:string,state:any)=>(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] knock audio '+event+' '+JSON.stringify(state)));
         this.knock.gain(Math.pow(10,-8/20));
@@ -116,7 +118,7 @@ export class HomePage {
         this.incense=new HomeIncense(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,gradient,()=>this.rig.noteAnchor(this.roomRoot),()=>[0,-plan.offset,720,plan.logical[1]]);
         this.flowers=new HomeFlowers(this.roomRoot,props.find(p=>p.node.name==='Altar').node,assets,scope,this.lighting,this.shadows,clock);
         this.flowers.layers.forEach(layer=>layers.push(layer));
-        this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock,this.rig,()=>this.fish?.ground[1]||951);
+        this.backpack=new HomeBackpack(this.roomRoot,props.find(p=>p.node.name==='Bag').node,assets,scope,this.lighting,clock,this.rig,()=>this.fish?.ground[1]||951,()=>this.lamp.energy);
         this.backpack.layers.forEach(layer=>layers.push(layer));
         // Room RT and the user's main Canvas have different physical origins.
         // Actor coordinates remain canonical in either parent; map input and
@@ -159,6 +161,7 @@ export class HomePage {
         const point=(at:number[])=>[at[0],at[1]-plan.offset],report=(event:string)=>(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] fish input '+JSON.stringify({event,...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         const bagReport=(event:string)=>(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] bag input '+JSON.stringify({event,...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));
         const propReport=(event:string)=>(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] prop input '+JSON.stringify({event,...this.props.snapshot(),visual:this.propVisuals.snapshot(),note:this.note.snapshot()}));
+        this.lamp.onToggle=()=>console.info('[LittleSteps] HOME_LAMP_TOGGLE '+JSON.stringify(this.lamp.snapshot()));this.lamp.bindInput(this.root,scope,()=>this.active&&!this.hud.blocked&&!this.hud.worldOwnsInput());
         let owner='';this.hud.worldOwnsInput=()=>this.travelLoading||!!this.departure||!!this.travelInteractions?.busy||!!this.photoInteractions?.busy||this.note.ownsInput||owner!=='';this.pointerBinding=sharedUI().pointer(this.hud.root,{down:(at:number[],id:number)=>{if(this.departure||this.travelLoading)return false;if(this.photoInteractions?.busy)return true;const p=point(at);if(this.note.down(id,p)){owner='note';return true;}if(this.travelInteractions?.down(id,p)){owner='travel';return true;}if(this.fish.state==='SETTLING'||this.bag.state==='SETTLING'||this.props.state==='SETTLING')return false;if(this.incense.down(id,p)){owner='incense';(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] incense input down');return true;}if(!this.travelAway&&!this.travelFull&&this.bag.down(id,p)){owner='bag';bagReport('down');return true;}if(this.props.down(id,p)){owner='prop';propReport('down');return true;}if(this.wardrobeInteractions?.down(id,p)){owner='wardrobe';return true;}if(this.photoInteractions?.down(id,p)){owner='photo';return true;}const accepted=!this.travelAway&&this.fish.down(id,p);if(accepted){owner='fish';report('down');}return accepted;},move:(at:number[],id:number)=>{const p=point(at);if(owner==='wardrobe')this.wardrobeInteractions?.move(id,p);else if(owner==='photo')this.photoInteractions?.move(id,p);else if(owner==='travel')this.travelInteractions?.move(id,p);else if(owner==='incense')this.incense.move(id,p);else if(owner==='bag')this.bag.move(id,p);else if(owner==='prop')this.props.move(id,p);else if(owner==='note')this.note.move(id,p);else if(owner==='fish')this.fish.move(id,p);},up:(at:number[],id:number)=>{const p=point(at);if(owner==='wardrobe')this.wardrobeInteractions?.up(id,p);else if(owner==='photo')this.photoInteractions?.up(id,p);else if(owner==='travel')this.travelInteractions?.up(id,p);else if(owner==='incense'){this.incense.up(id,p);(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] incense input up '+JSON.stringify(this.incense.snapshot()));}else if(owner==='bag'){this.bag.up(id,p);bagReport('up');}else if(owner==='prop'){this.props.up(id,p);propReport('up');}else if(owner==='note')this.note.up(id,p);else if(owner==='fish'){this.fish.up(id,p);report('up');}owner='';},cancel:()=>{if(owner==='wardrobe')this.wardrobeInteractions?.cancelPointer();else if(owner==='photo')this.photoInteractions?.cancelPointer();else if(owner==='travel')this.travelInteractions?.cancelPointer();else if(owner==='incense')this.incense.cancel();else if(owner==='bag')this.bag.cancel(false);else if(owner==='prop')this.props.cancel('pointer_cancelled',false);else if(owner==='note')this.note.cancelPointer();else if(owner==='fish')this.fish.cancel(false);owner='';}},()=>this.active&&!this.hud.blocked);
         const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.photoInteractions?.busy){this.photoInteractions.cancelPointer();return;}if(this.departure||this.travelLoading||this.travelInteractions?.busy||this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
@@ -180,7 +183,7 @@ export class HomePage {
     resize(height:number,physicalWidth:number){
         const next=homeRenderPlan(height,physicalWidth);
         try{this.targetLease.resize(next.pixels[0],next.pixels[1]);}catch(error){this.surface.layout(this.plan.logical,[0,-this.plan.offset,720,this.plan.logical[1]],this.targetLease.texture);throw error;}
-        this.pointerBinding.cancel();this.travelInteractions?.cancelPointer();this.photoInteractions?.cancelPointer();this.wardrobeInteractions?.cancelPointer();
+        this.pointerBinding.cancel();this.lamp?.cancel();this.travelInteractions?.cancelPointer();this.photoInteractions?.cancelPointer();this.wardrobeInteractions?.cancelPointer();
         Object.assign(this.plan,next);
         box(this.root,0,next.offset,720,1280);this.roomRoot.setPosition(0,-next.offset);
         this.surface.layout(next.logical,[0,-next.offset,720,height],this.targetLease.texture);
@@ -203,7 +206,7 @@ export class HomePage {
     }
     advanceDeparture(age:number){
         if(!this.departure)return;this.departure.advance(age);this.departureAge=this.departure.motion.age;
-        const s=this.departure.motion.snapshot(),lighting=homeLighting(this.clock.hour(),this.clock.lampWeight());this.departure.setLighting(lighting.night,lighting.lampEnergy);
+        const s=this.departure.motion.snapshot(),lighting=homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lamp.energy);this.departure.setLighting(lighting.night,lighting.lampEnergy);
         this.rig.root.active=s.nativeVisible;this.rig.root.getComponent(UIOpacity).opacity=s.nativeAlpha*255;this.backpack.setDepartureAlpha(s.nativeAlpha);this.actorProjectionAlpha=s.nativeAlpha;this.backpack.projectionAlpha=s.nativeAlpha;
         if(!s.nativeVisible&&this.backpack.proxy.active){this.backpack.proxy.active=false;this.backpack.restore(true);this.backpack.setDepartureAlpha(1);}
         this.lastDeparture=this.departure.snapshot();
@@ -244,11 +247,11 @@ export class HomePage {
     showRouteWaiting(){this.pointerBinding.cancel();this.props.cancel('route_wait',true);this.incense.dismiss();this.note.routeWaiting();}
     showRouteError(){this.note.routeError();}
     clearRouteWaiting(){this.note.dismiss();this.incense.dismiss();}
-    setInput(enabled:boolean){this.active=enabled;this.hud.setActive(enabled);if(!enabled){this.pointerBinding.cancel();this.knock.stop();}}
+    setInput(enabled:boolean){this.active=enabled;if(!enabled)this.lamp.cancel();this.hud.setActive(enabled);if(!enabled){this.pointerBinding.cancel();this.knock.stop();}}
     addWorldLayer(node:Node,z:number){this.roomLayers.push({node,z,order:3000+this.roomLayers.length});this.sortRoomLayers();}
     syncWorldLayers(){if(this.backpack.layerRevision!==this.backpackLayerRevision||this.propVisuals.layerRevision!==this.propLayerRevision)this.sortRoomLayers();}
     private sortRoomLayers(){this.roomLayers.filter(layer=>layer.node.parent===this.roomRoot).sort((a,b)=>a.z-b.z||a.order-b.order).forEach((layer,index)=>layer.node.setSiblingIndex(index));this.backpackLayerRevision=this.backpack.layerRevision;this.propLayerRevision=this.propVisuals.layerRevision;}
-    pause() {this.photoInteractions?.cancelPointer();this.wardrobeInteractions?.cancelPointer();this.finishDeparture();this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
+    pause() {this.lamp.cancel();this.photoInteractions?.cancelPointer();this.wardrobeInteractions?.cancelPointer();this.finishDeparture();this.active=false;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.setActive(false);this.flowers.setActive(false);this.hud.setActive(false);this.surface.setActive(false);this.rig.focusLost();this.knock.stop();}
     advance(delta: number) {
         const before=this.fish.state,bagBefore=this.bag.state,propBefore=this.props.state,drinkBefore=this.props.drinking;
         this.propVisuals.marks.advance(delta);this.feedback.advance(delta);this.fish.advance(delta);this.bag.advance(delta);this.props.advance(delta);
@@ -257,7 +260,7 @@ export class HomePage {
         if(this.travelAway)this.rig.suspend();this.rig.advance(delta,this.clock.nightProgress()>=0);this.rig.advanceDragGaze(delta);this.propVisuals.marks.render();
         if(this.departure){this.advanceDeparture(this.departureAge+Math.max(0,delta));if(this.departureAge>=DEPARTURE_FINISH_AT)this.finishDeparture();}
         this.incense.advance(delta);this.flowers.syncActiveElapsed(this.clock.totalActive);this.merit.advance(delta);this.meritArt.update(this.merit.snapshot(),[this.fish.ground[0]-350,this.fish.ground[1]-951]);this.hud.advance(delta);this.plants.advance(delta);this.backpack.advance(delta);this.note.advance(delta);
-        this.lighting.update();if(this.presentedActor==='fish')this.rig.setLightingOrigin(this.dragCarrier);else if(this.props.state==='DRAGGING'||this.props.state==='SETTLING')this.lighting.syncPresentation(this.dragCarrier);this.backpack.syncLightingOrigin();this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();
+        this.lamp.advance(delta);this.lighting.update();if(this.presentedActor==='fish')this.rig.setLightingOrigin(this.dragCarrier);else if(this.props.state==='DRAGGING'||this.props.state==='SETTLING')this.lighting.syncPresentation(this.dragCarrier);this.backpack.syncLightingOrigin();this.shadows.update();this.plants.updateShadows();this.backpack.updateShadows();
         this.syncWorldLayers();
         if(before!==this.fish.state)(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] fish transition '+JSON.stringify({...this.fish.snapshot(),rig:this.rig.snapshot(),shadow:this.shadows.snapshot()}));
         if(bagBefore!==this.bag.state)(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] bag transition '+JSON.stringify({...this.bag.snapshot(),backpack:this.backpack.snapshot(),note:this.note.snapshot()}));

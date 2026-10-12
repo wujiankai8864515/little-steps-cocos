@@ -28,10 +28,10 @@ export function lightingSnapshot(hour:number) {
         sunPosition:[mix(128,232,screenPhase),108-Math.sin(screenPhase*Math.PI)*80],
         moonPosition:[mix(132,228,moonPhase),95-Math.sin(moonPhase*Math.PI)*66]};
 }
-export function homeLighting(hour:number,lampWeight:number) {
+export function homeLighting(hour:number,lampWeight:number,lampEnergy?:number) {
     const s=lightingSnapshot(hour);
     return {...s,receiverAmbient:s.ambient.map(v=>v*mix(1,.94,s.night)),receiverSun:Math.min(s.sunEnergy*1.12,.84),receiverMoon:Math.min(s.moonEnergy*1.28,.9),
-        shaftSun:Math.min(s.sunEnergy,.96),shaftMoon:Math.min(s.moonEnergy,.98),lampEnergy:s.night*.78*clamp(lampWeight)};
+        shaftSun:Math.min(s.sunEnergy,.96),shaftMoon:Math.min(s.moonEnergy,.98),lampEnergy:Number.isFinite(lampEnergy)?clamp(lampEnergy,0,.78):s.night*.78*clamp(lampWeight)};
 }
 // Dust uses the source CPU gate without the fragment-only leaf breakup.
 export function dustGate(p:number[],cast:number[],cot:number) {

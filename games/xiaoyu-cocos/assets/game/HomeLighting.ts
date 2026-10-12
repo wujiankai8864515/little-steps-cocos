@@ -10,7 +10,7 @@ type Receiver={material:Material;kind:string;surface:number;node?:Node};
 export class HomeLighting {
     private receivers:Receiver[]=[];
     private dust:Graphics;private viewport=new Vec4(0,1280,1280,1);
-    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock) {}
+    constructor(private root:Node,private assets:GameAssets,private scope:Scope,private clock:HomeClock,private lampEnergy?:()=>number) {}
     receiver(sprite:Sprite|Graphics,spec:ArtSpec,surface:number,visibleUV:number[],kind='receiver',eye=0,offset=[0,0]) {
         const material=this.material('home-'+kind,sprite instanceof Graphics),crop=spec.content,size=spec.size;
         material.setProperty('sourceUV',new Vec4(crop[0]/size[0],crop[1]/size[1],crop[2]/size[0],crop[3]/size[1]));
@@ -51,7 +51,7 @@ export class HomeLighting {
     private material(name:string,local=false) {const material=new Material();material.initialize({effectAsset:this.assets.effect(name),defines:{USE_TEXTURE:true,USE_LOCAL:local}});this.scope.own(()=>material.destroy());return material;}
     resize(height:number){const offset=(height-1280)/2;this.viewport=new Vec4(-offset,1280+offset,height,1);}
     update(override?:{ambient:number[];sun:number}) {
-        const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),origin=this.root.worldPosition,scale=this.root.worldScale;
+        const state=homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lampEnergy?.()),origin=this.root.worldPosition,scale=this.root.worldScale;
         if(override){state.receiverAmbient=override.ambient;state.receiverSun=override.sun;}
         for(const receiver of this.receivers) {
             const material=receiver.material,shaft=receiver.kind==='shafts';if(shaft)material.setProperty('viewportState',this.viewport);
@@ -79,5 +79,5 @@ export class HomeLighting {
         }
     }
     syncPresentation(frame:Node){const p=frame.worldPosition,s=frame.worldScale;for(const receiver of this.receivers){let node=receiver.node;while(node&&node!==frame)node=node.parent;if(node===frame)receiver.material.setProperty('roomOrigin',new Vec4(p.x,p.y,s.x,s.y));}}
-    snapshot() {return {hour:this.clock.hour(),receivers:this.receivers.length,state:homeLighting(this.clock.hour(),this.clock.lampWeight()),resources:this.assets.snapshot(),limits:'grounded shadows, plants, prop/face variants and original GPU acceptance pending'};}
+    snapshot() {return {hour:this.clock.hour(),receivers:this.receivers.length,state:homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lampEnergy?.()),resources:this.assets.snapshot(),limits:'grounded shadows, plants, prop/face variants and original GPU acceptance pending'};}
 }

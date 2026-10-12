@@ -5,12 +5,14 @@ const plain=v=>JSON.parse(JSON.stringify(v));
 class Asset{constructor(json){this.json=json;this.refs=0;}addRef(){this.refs++;}decRef(){assert.ok(this.refs>0);this.refs--;}}
 class ImageAsset extends Asset{constructor(json){super(json);this.data=new Uint8Array(4);}}
 class Texture2D extends Asset{static Filter={LINEAR:2};static WrapMode={CLAMP_TO_EDGE:2};set image(value){assert.ok(value.data);this.base=value;}get image(){return this.base;}setFilters(){}setMipFilter(){}setWrapMode(){}destroy(){this.destroyed=true;}}
-class UITransform{constructor(){this.width=1;this.height=1;}setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}get contentSize(){return {width:this.width,height:this.height};}}
+class Vec3{constructor(x,y,z=0){Object.assign(this,{x,y,z});}}
+const lampQueue=[];
+class UITransform{constructor(){this.width=1;this.height=1;}convertToNodeSpaceAR(p){const q=this.node.worldPosition,s=this.node.worldScale;return {x:(p.x-q.x)/s.x,y:(p.y-q.y)/s.y};}convertToWorldSpaceAR(p){const q=this.node.worldPosition,s=this.node.worldScale;return {x:q.x+p.x*s.x,y:q.y+p.y*s.y};}setAnchorPoint(){}setContentSize(w,h){this.width=w;this.height=h;}get contentSize(){return {width:this.width,height:this.height};}}
 class Node{
  static EventType={TOUCH_START:'start',TOUCH_MOVE:'move',TOUCH_END:'end',TOUCH_CANCEL:'cancel'};
  constructor(name){this.name=name;this.children=[];this.components=new Map();this.position={x:0,y:0};this.scale={x:1,y:1};this.angle=0;this.active=true;this.isValid=true;this.listeners=new Map();}
  addChild(n){this.children.push(n);n.parent=this;}getChildByName(name){return this.children.find(n=>n.name===name);}addComponent(Type){const c=new Type();c.node=this;this.components.set(Type,c);return c;}getComponent(Type){return this.components.get(Type)||this.addComponent(Type);}
- setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}setSiblingIndex(){}on(name,fn){if(!this.listeners.has(name))this.listeners.set(name,new Set());this.listeners.get(name).add(fn);}off(name,fn){this.listeners.get(name)?.delete(fn);}destroy(){this.isValid=false;this.children.forEach(n=>n.destroy());this.listeners.clear();}get worldPosition(){return this.position;}get worldScale(){return this.scale;}get scene(){return this.parent?.scene||this;}
+ setPosition(x,y){this.position={x,y};}setScale(x,y){this.scale={x,y};}setSiblingIndex(){}on(name,fn){if(!this.listeners.has(name))this.listeners.set(name,new Set());this.listeners.get(name).add(fn);}off(name,fn){this.listeners.get(name)?.delete(fn);}destroy(){this.isValid=false;this.children.forEach(n=>n.destroy());this.listeners.clear();}get activeInHierarchy(){return this.active&&this.isValid&&(!this.parent||this.parent.activeInHierarchy);}get worldPosition(){const p=this.parent?.worldPosition||{x:0,y:0},s=this.parent?.worldScale||{x:1,y:1};return {x:p.x+this.position.x*s.x,y:p.y+this.position.y*s.y};}get worldScale(){const s=this.parent?.worldScale||{x:1,y:1};return {x:s.x*this.scale.x,y:s.y*this.scale.y};}get scene(){return this.parent?.scene||this;}
 }
 class Sprite{static SizeMode={CUSTOM:0};configure(mesh){this.mesh=mesh;}geometryChanged(){}}
 class Graphics{clear(){}moveTo(){}lineTo(){}close(){}fill(){}stroke(){}circle(){}roundRect(){}}
@@ -19,7 +21,7 @@ class SpriteFrame{destroy(){this.destroyed=true;}}
 class Label{static Overflow={CLAMP:0};static HorizontalAlign={CENTER:0};static VerticalAlign={CENTER:0};}
 class Vec4{constructor(...v){this.values=v;}}
 class AudioClip extends Asset{static AudioType={DOM_AUDIO:1,MINIGAME_AUDIO:2};loadMode=1;}
-const input={on(){},off(){}},cc={Asset,Node,Sprite,Graphics,Material,SpriteFrame,Label,Vec4,Color:Vec4,UITransform,input,Input:{EventType:{KEY_DOWN:'key'}},KeyCode:{ESCAPE:27},screen:{windowSize:{width:1440}},sys:{getSafeAreaRect:()=>({x:0,y:0,width:720,height:1690})},AudioClip,ImageAsset,Texture2D,resources:{load:(p,t,cb)=>cb(null,new Asset())}};
+const input={on(){},off(){}},cc={Vec3,Director:{EVENT_AFTER_UPDATE:'update'},director:{once:(e,f)=>lampQueue.push(f)},Asset,Node,Sprite,Graphics,Material,SpriteFrame,Label,Vec4,Color:Vec4,UITransform,input,Input:{EventType:{KEY_DOWN:'key'}},KeyCode:{ESCAPE:27},screen:{windowSize:{width:1440}},sys:{getSafeAreaRect:()=>({x:0,y:0,width:720,height:1690})},AudioClip,ImageAsset,Texture2D,resources:{load:(p,t,cb)=>cb(null,new Asset())}};
 const renderer={estimateTarget:(w,h)=>w*h*8,createTarget:(w,h)=>({width:w,height:h,destroy(){this.destroyed=true;}}),create(options,scope){const content=new Node('Surface');scope.own(()=>content.destroy());return {content,ready:Promise.resolve(),layout(){},setActive(){},snapshot(){return {};}};}};
 const mods={Engine:{core,lifetime:parent=>new core.Lifetime(parent),meshSprite:()=>Sprite,sharedUI:()=>core.registerUI(cc),renderSurfaces:()=>renderer}};
 require('./viewport-mocks.cjs').installViewportMocks(cc);
@@ -112,4 +114,11 @@ test('A failed visual reconstruction retains model/data leases and retries witho
  renderer.createTarget=()=>{throw Error('simulated GPU allocation failure');};try{await assert.rejects(f.app.prepareDarkroom(),/allocation/);}finally{renderer.createTarget=original;}
  assert.equal(f.app.darkroomPage,null);assert.equal(f.app.darkroomLoading,null);assert.equal(f.app.darkroomRetained.round,round);assert.deepEqual(plain(f.assets.snapshot()),before);assert.equal(JSON.stringify(round.snapshot()),state);
  const restored=await f.app.prepareDarkroom();assert.equal(restored.page.round,round);assert.equal(round.misfortune,80);f.app.dispose();assert.equal(f.assets.snapshot().entries,0);
+});
+
+test('Actual Darkroom lamp hit node switches day/night independently, keeps round progress and cancels pending actions across resizing and suspend',async()=>{
+ const f=await fixture(),page=(await f.app.prepareDarkroom()).page;page.root.active=true;page.resume();const hit=page.root.getChildByName('DarkroomLampHitArea'),ui=hit.getComponent(UITransform),touch=(type,id)=>{const w=ui.convertToWorldSpaceAR(new Vec3(ui.width/2,-ui.height/2));for(const cb of hit.listeners.get(type)||[])cb({getID:()=>id,getUILocation:()=>w});},flush=()=>{while(lampQueue.length)lampQueue.shift()();};
+ assert.ok(hit);assert.equal(page.lighting.lamp.override,-1);touch('start',1);touch('end',9);flush();assert.equal(page.lighting.lamp.override,-1);touch('end',1);flush();assert.equal(page.lighting.lamp.override,1);page.advance(.22);assert.equal(page.lighting.lamp.value,1);assert.equal(page.round.contacts,0);assert.equal(page.round.misfortune,100);
+ touch('start',2);page.resize(1800,1440);touch('end',2);flush();assert.equal(page.lighting.lamp.override,1);touch('start',3);touch('end',3);page.suspend();page.restore();flush();assert.equal(page.lighting.lamp.override,1);
+ touch('start',4);touch('end',4);flush();page.advance(.22);assert.equal(page.lighting.lamp.override,0);assert.equal(page.lighting.lamp.value,0);assert.equal(page.round.contacts,0);f.app.dispose();
 });

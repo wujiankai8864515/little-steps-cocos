@@ -78,7 +78,7 @@ export class TravelHomeProps {
     private finishRehang(){if(!this.rehang)return;this.rehang=null;this.home.backpack.finishTravelRehang();this.sprites.full_bag.root.active=false;this.sprites.full_bag.root.angle=0;this.sprites.full_bag.sprite.color=Color.WHITE;}
     private updateProjection(){
         this.shadowRoot.active=this.tent.active;if(!this.tent.active)return;
-        const s=homeLighting(this.homeClock.hour(),this.homeClock.lampWeight()),day=s.sunEnergy>0,dir=day?s.cast:s.moonCast,cot=day?s.cot:1.6,energy=day?s.sunEnergy:s.moonEnergy*.34,p=this.home.roomRoot.worldPosition,scale=this.home.roomRoot.worldScale;
+        const s=homeLighting(this.homeClock.hour(),this.homeClock.lampWeight(),this.home.lamp?.energy),day=s.sunEnergy>0,dir=day?s.cast:s.moonCast,cot=day?s.cot:1.6,energy=day?s.sunEnergy:s.moonEnergy*.34,p=this.home.roomRoot.worldPosition,scale=this.home.roomRoot.worldScale;
         const directions=[[dir[0]*cot*.72,dir[1]*.72*cot*.72],[(359-465)/420*.72,(926-888)*.8/420*.72],[0,-.035]];
         this.projection.forEach(({sprite,material},i)=>{const strength=i===0?energy*.72:i===1?s.lampEnergy*.5:.18;sprite.node.active=strength>.001;if(!sprite.node.active)return;const m=tentProjection(directions[i]);sprite.mesh.vertices.set(m.vertices);sprite.mesh.vertexData.set(m.vertexData);sprite.geometryChanged();material.setProperty('roomOrigin',new Vec4(p.x,p.y,scale.x,scale.y));material.setProperty('castState',new Vec4(dir[0],dir[1],0,0));material.setProperty('shadowState',new Vec4(cot,strength,i===0?1.15:.85,.72));material.setProperty('shadowFlags',new Vec4(1,i===0?1:0,i===1?1:0,1));});
     }

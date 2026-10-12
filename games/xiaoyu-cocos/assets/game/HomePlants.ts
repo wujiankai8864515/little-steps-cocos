@@ -12,7 +12,7 @@ export class HomePlants {
     readonly roots:Array<{node:Node;z:number;order:number}>;readonly forest:PlantForest;
     private rendered:RenderPart[]=[];
     private windReported=false;
-    constructor(private home:Node,assets:GameAssets,scope:Scope,lighting:HomeLighting,private clock:HomeClock){
+    constructor(private home:Node,assets:GameAssets,scope:Scope,lighting:HomeLighting,private clock:HomeClock,private lampEnergy?:()=>number){
         const contract=assets.json('res://assets/round2/home_plants_contract.json'),resource=contract.texture,spec=assets.art(resource);
         this.forest=new PlantForest(contract);
         const shadows=nodeAt(home,'IndependentPlantShadows'),plants=nodeAt(home,'IndependentRoomPlants');
@@ -43,7 +43,7 @@ export class HomePlants {
         }
     }
     updateShadows(){
-        const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),moon=state.moonEnergy>state.sunEnergy,direction=moon?state.moonCast:state.cast,extent=moon?1.6:state.cot;
+        const state=homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lampEnergy?.()),moon=state.moonEnergy>state.sunEnergy,direction=moon?state.moonCast:state.cast,extent=moon?1.6:state.cot;
         const origin=this.home.worldPosition,scale=this.home.worldScale;
         for(const item of this.rendered){
             const p=item.part,dx=p.position[0]-465,dy=p.position[1]-468,length=Math.hypot(dx,dy),lamp=length?[dx/length,dy/length]:[0,0];

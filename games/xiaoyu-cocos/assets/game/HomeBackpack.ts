@@ -20,7 +20,7 @@ export class HomeBackpack {
     layerRevision=0;depth=-10;projectionAlpha=1;
     private rendered:Part[]=[];private wornParts:ApprovedPart[]=[];private reported=false;private tailRest:boolean;private alpha=1;private floorPasses=0;
     private presentation:Node=null;private members:Array<{node:Node;index:number}>=[];private settleStart:{scale:number[];angle:number};
-    constructor(private room:Node,readonly proxy:Node,private assets:GameAssets,scope:Scope,lighting:HomeLighting,private clock:HomeClock,private rig:XiaoyuRig,private floor=()=>951){
+    constructor(private room:Node,readonly proxy:Node,private assets:GameAssets,scope:Scope,lighting:HomeLighting,private clock:HomeClock,private rig:XiaoyuRig,private floor=()=>951,private lampEnergy?:()=>number){
         this.geometry=new BackpackGeometry(assets.json('res://assets/round2/backpack_parts_contract.json'),assets.json('res://home/secondary/backpack_ribbon_profile.json'));
         this.wear=new BackpackWear({position:[proxy.position.x,-proxy.position.y],scale:[proxy.scale.x,proxy.scale.y],rotation:-proxy.angle*Math.PI/180});
         this.tailRest=rig.backpackNodes().tail.active;scope.own(()=>{rig.backpackNodes().tail.active=this.tailRest;});
@@ -75,7 +75,7 @@ export class HomeBackpack {
         if(!this.reported&&this.geometry.phase>=1.2){this.reported=true;console.info('[LittleSteps] original backpack motion '+JSON.stringify(this.snapshot()));}
     }
     updateShadows(){
-        const state=homeLighting(this.clock.hour(),this.clock.lampWeight()),moon=state.moonEnergy>state.sunEnergy,dir=moon?state.moonCast:state.cast,extent=moon?1.6:state.cot,origin=this.room.worldPosition,scale=this.room.worldScale,wallOrigin=(this.presentation||this.room).worldPosition,wallScale=(this.presentation||this.room).worldScale;
+        const state=homeLighting(this.clock.hour(),this.clock.lampWeight(),this.lampEnergy?.()),moon=state.moonEnergy>state.sunEnergy,dir=moon?state.moonCast:state.cast,extent=moon?1.6:state.cot,origin=this.room.worldPosition,scale=this.room.worldScale,wallOrigin=(this.presentation||this.room).worldPosition,wallScale=(this.presentation||this.room).worldScale;
         for(const r of this.rendered){const at=this.roomPoint(r.node,[0,0]),lamp=[at[0]-465,at[1]-468],n=Math.hypot(...lamp),lampDir=n?lamp.map(v=>v/n):[0,0],shifts=[dir.map(v=>v*Math.min(extent,2.4)*16),lampDir.map(v=>v*16*1.1)],strengths=[Math.max(state.sunEnergy,state.moonEnergy)*.28,state.lampEnergy/.78*.24];
             r.shadows.forEach((pass,i)=>{pass.node.active=this.geometry.mode==='hanging'&&r.node.activeInHierarchy&&strengths[i]>.001;this.setFrame(pass.node,r.pose,shifts[i]);pass.sprite.color=new Color(255,255,255,r.pose.opacity*this.alpha*this.opacity(this.proxy)*255);pass.material.setProperty('roomOrigin',new Vec4(wallOrigin.x,wallOrigin.y,wallScale.x,wallScale.y));pass.material.setProperty('castState',new Vec4(dir[0],dir[1],0,0));pass.material.setProperty('sunVectorState',new Vec4(0,0,0,extent));pass.material.setProperty('partShadowState',new Vec4(strengths[i],0,i,0));});
         }
