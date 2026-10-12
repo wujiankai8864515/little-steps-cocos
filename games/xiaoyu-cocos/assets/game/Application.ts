@@ -204,7 +204,7 @@ export class Application {
             canInteract,noticeAvailable:()=>canInteract()&&home.acceptsTravelNotice,
             merit:()=>home.merit.count,fatigue:()=>home.rig.behavior.director.fatigue,
             setMerit:value=>home.setTravelMerit(value),syncTravel:(away,full,departing)=>{travelProps.syncRehangState();home.syncTravelState(away,full,departing);},
-            prepare:async scope=>{await this.assets.acquireGroups(['departure_visual'],scope);await this.assets.acquireEffects(DEPARTURE_EFFECTS,scope);},
+            prepare:async scope=>{await this.assets.acquireEffects(DEPARTURE_EFFECTS,scope);},
             showLoading:()=>{home.setTravelLoading(true);loading.show();},
             hideLoading:()=>{loading.hide();home.setTravelLoading(false);},
             loadingFailed:error=>{loading.failure();console.error('[LittleSteps] departure resources failed',error);},
