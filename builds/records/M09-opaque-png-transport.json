@@ -2,7 +2,7 @@
   "schema": 1,
   "item": "M09.09",
   "sourceCommit": "5102d078a54218406e33ff094bede63a1ce9e259",
-  "status": "Creator_v6_preserves98_native_assets_hasAlpha_metadata_repaired_rebuild_pending",
+  "status": "lossless_pixels_frozen_creator_outputs_and_targeted_browser_verified_home_budget_failed",
   "images": [
     {
       "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/comic_paper_v2.png",
@@ -190,21 +190,36 @@
   "savedBytes": 2817308,
   "invariants": [
     "RGBA pixel bytes and dimensions exact",
-    "No texture metadata, UUID, crop/UV or mipmap changes",
+    "UUID/crop/UV/sampling/mipmaps unchanged; initial metadata stayed unchanged, then14hasAlpha fields corrected to match official RGB import (followup evidence)",
     "No lossy encoding, rescaling or new image format",
     "Decoded GPU reservation unchanged"
   ],
   "pending": [
-    "Fresh remote-frozen Creator rebuild after hasAlpha correction",
-    "Browser rendering and WeChat device validation",
+    "Full visual/interaction acceptance including remaining six-page edge cases",
+    "WeChat device and production CDN/AppID validation",
     "Home closure22,948,245bytes remains above19MB"
   ],
   "homeClosureSourceSavings": 452994,
   "evidence": [
     "builds/reviews/M09-opaque-png-pixel-audit.json",
     "builds/reviews/M09-opaque-png-alpha-recheck.json",
-    "builds/reviews/M09-opaque-png-tests-v1.log"
+    "builds/reviews/M09-opaque-png-tests-v1.log",
+    "builds/reviews/M09-opaque-png-preview-source-match.json",
+    "builds/reviews/M09-opaque-png-frozen-audit-final.json",
+    "builds/reviews/M09-opaque-png-browser-v1.json",
+    "builds/reviews/M10-wechat-six-pages-package-v7.json"
   ],
   "toolCorrection": "Alpha verifier used a hard-coded historical output path. Rerun result moved to unique M09-opaque-png-alpha-recheck.json, historical v3 restored byte-for-byte from Git; verifier now defaults to stdout and optional --out rejects existing files.",
-  "followup": "builds/reviews/M09-opaque-png-metadata-repair.json"
+  "followup": "builds/reviews/M09-opaque-png-metadata-repair.json",
+  "updatedAt": "2026-10-12T00:24:36.518684+00:00",
+  "output": {
+    "candidate": "wechat-six-pages-v7",
+    "sourceCommit": "fc616678a921fffaf117d9c08ec99a82ffd524f7",
+    "nativeAssetsMatchingCurrentSource": 98,
+    "totalBytesSavedVsV5": 2817308,
+    "homeDeferredBytes": 22948245,
+    "homeSavedBytes": 452994,
+    "homeBudgetExcessBytes": 3948245,
+    "status": "not_staged_budget_failed"
+  }
 }

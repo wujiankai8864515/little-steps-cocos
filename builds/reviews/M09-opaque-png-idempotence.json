@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "item": "M09.09",
+  "sourceCommit": "fc616678a921fffaf117d9c08ec99a82ffd524f7",
+  "status": "inspection_only",
+  "images": [],
+  "savedBytes": 0,
+  "invariants": [
+    "RGBA pixel bytes and dimensions exact",
+    "Only hasAlpha metadata follows encoded channel format; UUID, crop/UV, sampling and mipmaps unchanged",
+    "No lossy encoding, rescaling or new image format",
+    "Decoded GPU reservation unchanged"
+  ],
+  "pending": [
+    "Frozen Creator import/export and browser rendering",
+    "Home 19MB gate still requires output audit",
+    "WeChat device validation"
+  ]
+}

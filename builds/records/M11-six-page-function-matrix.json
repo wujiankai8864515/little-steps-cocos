@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "item": "M11.01",
-  "updatedAt": "2026-10-11T23:18:55.287475+00:00",
+  "updatedAt": "2026-10-12T00:24:36.518684+00:00",
   "candidate": "full-six-pages-v1",
   "sourceCommit": "c9629f86940d6d65654fe8cd7faae41b66276eb0",
   "baseline": "Godot b4f77afc02999a465757177794343eb3d531c5e6 and effective requirements",
@@ -109,18 +109,18 @@
   "delivery": {
     "url": "http://127.0.0.1:8792/review",
     "direct": "http://127.0.0.1:8792/",
-    "candidate": "alpha-transport-v2",
+    "candidate": "opaque-png-v1",
     "sourceOverrides": 0,
     "server": "loopback only, kept running for requested user review",
-    "restart": "python3 builds/tools/serve_candidate.py --name alpha-transport-v2 --port 8792",
-    "browser": "Independent Chrome426065842; default viewport; server17963",
+    "restart": "python3 builds/tools/serve_candidate.py --name opaque-png-v1 --port 8792",
+    "browser": "Independent Chrome426065842; default viewport; server65141",
     "packaging": "web-mobile local review candidate only; shipping target remains wechatgame"
   },
   "currentPreview": {
-    "candidate": "alpha-transport-v2",
-    "sourceCommit": "4aba8810e113ba49625eb1835b20f601a9aafb06",
+    "candidate": "opaque-png-v1",
+    "sourceCommit": "fc616678a921fffaf117d9c08ec99a82ffd524f7",
     "url": "http://127.0.0.1:8792/review",
-    "evidence": "builds/reviews/M09-alpha-preview-source-readback-match.json",
-    "scope": "Existing six-page flow record above remains from original full-six-pages-v1. Current lossless resource optimization has separate targeted browser checks in M09-alpha-browser-v2.json."
+    "evidence": "builds/reviews/M09-opaque-png-preview-source-match.json",
+    "scope": "Six-page full-flow evidence above stays from original full-six-pages-v1. Lossless opaque PNG candidate has targeted login/comic/Home day-night-lamp/photo checks in M09-opaque-png-browser-v1.json."
   }
 }

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "item": "M09.09",
+  "candidate": "opaque-png-v1",
+  "sourceCommit": "fc616678a921fffaf117d9c08ec99a82ffd524f7",
+  "at": "2026-10-12T00:24:36.518684+00:00",
+  "runtime": "Independent Chrome3, fresh origin127.0.0.1:8795,720x1280, real clock/storage and no source overrides",
+  "observed": [
+    "Login original background and peeking actor",
+    "Clicked entry door, all four comic panels and native speech bubbles visible",
+    "Entered Home with daylight, background, plants, actor, shadows and effects visible",
+    "Entered photo wall: initial two photos, native paper background, actor and selectors visible",
+    "Returned Home; natural clock advanced to night and original moonlight visible",
+    "Clicked wall lamp, warm illumination visibly added to wall and props"
+  ],
+  "consoleErrors": [],
+  "screenshots": "Viewed in supported CUA tool only; no screenshot file export available in this path. No numeric pixel-difference claim.",
+  "coverageBoundary": [
+    "Targeted PNG-import smoke verification only; not a new six-page full-flow acceptance",
+    "Loading animation, darkroom data mask and all travel pages not visually rechecked in this pass",
+    "Exact offline RGBA proof covers all14 re-encoded images",
+    "No physical-device, frame-time, audio or complete error/interruption acceptance"
+  ],
+  "cleanup": {
+    "qaTab426065845": "closed",
+    "viewport": "reset",
+    "qaServer50444port8795": "stopped",
+    "previousPreviewServer17963": "stopped"
+  },
+  "delivery": {
+    "url": "http://127.0.0.1:8792/review",
+    "candidate": "opaque-png-v1",
+    "serverSession": 65141,
+    "tab": "426065842",
+    "markedDeliverable": true,
+    "storage": "same8792origin preserved"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-12T00:19:35.475834+00:00",
-  "latestItem": "M09.09b",
+  "updatedAt": "2026-10-12T00:24:36.518684+00:00",
+  "latestItem": "M09.09c",
   "entry": [
     "AGENTS.md",
     "builds/records/migration-plan.json",
@@ -13,7 +13,7 @@
     "builds/records/M11-six-page-function-matrix.json"
   ],
   "nextPriority": "Six-page full-entry browser candidate is available for user review. Complete remaining functional/input/failure cases, Home cold-download budget and WeChat runtime/device validation. Numerical pixel polishing remains deferred; no function/layout reduction.",
-  "pendingReadback": "Push metadata correction and fresh readback before WeChat v7 rebuild.",
+  "pendingReadback": "After evidence commit, push/fetch and save builds/reviews/M09-opaque-png-final-readback.json.",
   "recovery": [
     "Install readonly plugin via node engines/travel-core/tools/install-plugin.cjs after Git checkout",
     "User Boot and scene are preserved; browser QA uses separate frozen builds/work candidates",
@@ -36,6 +36,7 @@
     "Raw full entry debug browser requests total37977263bytes (includes engine/login/comic/Home); not comparable with prior direct-Home fixture36841329bytes. New WeChat Home bundle alone21257228bytes plus shared_room2144011bytes; further mandatory-resource optimization and actual platform transfer measurement required.",
     "M10.04: enforce original non-startup Home closure19MB on actual Creator output, following product and Creator deps. v5 home+shared_room=23401239, exceeds by4401239. New audit and staging reject it; old output retained as QA only. Prior full-entry37.98MB includes startup and is a different scope.",
     "M09.09:14 opaque PNGs now use smaller lossless PNG representation,2,817,308bytes saved across all pages (Home closure452,994bytes); all RGBA pixels/dimensions and PNGmeta unchanged.84other native assets byte-identical. Creator build/output/runtime pending; current8792 remains verified alpha-transport-v2. Need fresh remote-frozen WeChat v6 and budget audit; expected still over19MB, no delivery waiver.",
-    "M09.09b: WeChat v6 official buildexit36,98nativefiles matchcurrent source; output reduced2,817,308bytes exactly, Home22,948,245bytes (3,948,245over). Audit rejects14hasAlpha image-meta corrections andbudget. Source metadata corrected onlyhasAlpha after comparing fullJSON with officialimport; nextfreshremotev7required. v6 not staged."
+    "M09.09b: WeChat v6 official buildexit36,98nativefiles matchcurrent source; output reduced2,817,308bytes exactly, Home22,948,245bytes (3,948,245over). Audit rejects14hasAlpha image-meta corrections andbudget. Source metadata corrected onlyhasAlpha after comparing fullJSON with officialimport; nextfreshremotev7required. v6 not staged.",
+    "M09.09c: WeChat v7 from remotefc61667 buildexit36;98native assets preserved,16non-budgetchecks pass, Home22,948,245stillfails19MB (no delivery staging). Browser opaque-png-v1 source750files matchesremote, zerooverrides, targetedlogin/comic/Home day-night+lamp/photo+return observed,noerrors. QA8795/tab426065845closed,viewportreset. Originalreview8792nowservesopaque-png-v1:server65141,Chrome426065842deliverable. Old17963stopped; userstoragepreserved."
   ]
 }
