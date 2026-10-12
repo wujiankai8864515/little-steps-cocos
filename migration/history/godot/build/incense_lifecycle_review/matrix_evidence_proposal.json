@@ -1,0 +1,232 @@
+{
+  "schema": 2,
+  "read_only_source_matrix": "/workspace/scratch/3f82ff2b3f81/audit_repeated_visual_failures/release_reaudit_561/requirements_matrix.json",
+  "rows": [
+    {
+      "canonical_id": "A019",
+      "topic": "点香交互与30秒生命周期",
+      "latest_requirement": "香炉独立交互\n凳子上香炉独立燃烧；未燃尽提示，燃尽后点击重新点香。\n验收：不重复叠香，不要求小余参与。",
+      "sources": [
+        {
+          "source_key": "B26-19",
+          "batch": "B26",
+          "item": 19,
+          "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+          "date": "2026-10-05T05:13:54.265936+00:00",
+          "text": "香炉独立交互\n凳子上香炉独立燃烧；未燃尽提示，燃尽后点击重新点香。\n验收：不重复叠香，不要求小余参与。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A019"
+        }
+      ],
+      "current_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "e394 v6已发布（主题实现继承或本组更新，不代表验收通过）",
+          "basis": "root确认发布终态2026-10-06T18:46:34Z",
+          "evidence": "darkroom_entry_site_qa/darkroom_entry_e394bda_v6_final_qa.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/darkroom-entry-e394bda/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "proposed_native_evidence": {
+        "state": "本组有限原生实际PCK场景通过，非整主题验收",
+        "evidence": "/workspace/shared/incense_lifecycle_qa/verdict.json",
+        "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+        "whole_topic_accepted": false,
+        "Web_user": "仍未验Web真刷新/用户认可"
+      }
+    },
+    {
+      "canonical_id": "A020",
+      "topic": "香炉香实际材质投影",
+      "latest_requirement": "花瓶、香炉、香的光影：补实际受光、接触阴影与随光源变化的投影。",
+      "sources": [
+        {
+          "source_key": "B26-20",
+          "batch": "B26",
+          "item": 20,
+          "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+          "date": "2026-10-05T05:13:54.265936+00:00",
+          "text": "香与烟的质感\n香更长、有纹理；点燃有明火表现，火头下降、香逐渐缩短；烟卷曲漂移并消散。\n验收：燃烧过程可见，烟不僵直，投影随香长度与光照变化。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A020"
+        },
+        {
+          "source_key": "B27-19",
+          "batch": "B27",
+          "item": 19,
+          "message_id": "Sentinel_301864a8e740819189081d5907ebd62c",
+          "date": "2026-10-05T08:47:49.053161+00:00",
+          "text": "花瓶、香炉、香的光影：补实际受光、接触阴影与随光源变化的投影。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A020"
+        }
+      ],
+      "current_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "e394 v6已发布（主题实现继承或本组更新，不代表验收通过）",
+          "basis": "root确认发布终态2026-10-06T18:46:34Z",
+          "evidence": "darkroom_entry_site_qa/darkroom_entry_e394bda_v6_final_qa.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/darkroom-entry-e394bda/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "proposed_native_evidence": {
+        "state": "本组有限原生实际PCK场景通过，非整主题验收",
+        "evidence": "/workspace/shared/incense_lifecycle_qa/verdict.json",
+        "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+        "whole_topic_accepted": false,
+        "Web_user": "仍未验Web真刷新/用户认可"
+      }
+    },
+    {
+      "canonical_id": "A042",
+      "topic": "香烟飘散",
+      "latest_requirement": "香烟：点燃初期就有柔和飘烟，燃尽时自然扩散淡去，去掉硬直裁切边。",
+      "sources": [
+        {
+          "source_key": "B27-21",
+          "batch": "B27",
+          "item": 21,
+          "message_id": "Sentinel_301864a8e740819189081d5907ebd62c",
+          "date": "2026-10-05T08:47:49.053161+00:00",
+          "text": "香烟：点燃初期就有柔和飘烟，燃尽时自然扩散淡去，去掉硬直裁切边。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A042"
+        }
+      ],
+      "current_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "e394 v6已发布（主题实现继承或本组更新，不代表验收通过）",
+          "basis": "root确认发布终态2026-10-06T18:46:34Z",
+          "evidence": "darkroom_entry_site_qa/darkroom_entry_e394bda_v6_final_qa.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/darkroom-entry-e394bda/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "proposed_native_evidence": {
+        "state": "本组有限原生实际PCK场景通过，非整主题验收",
+        "evidence": "/workspace/shared/incense_lifecycle_qa/verdict.json",
+        "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+        "whole_topic_accepted": false,
+        "Web_user": "仍未验Web真刷新/用户认可"
+      }
+    },
+    {
+      "canonical_id": "A045",
+      "topic": "香30秒功德加成",
+      "latest_requirement": "点香加成（新增优化）\n用户点燃才开始：一根香30秒，期间每次敲击功德+2，燃尽恢复+1；不重复叠加。\n验收：实际结算与显示一致；预加载不提前点燃，刷新恢复时间与加成一致。",
+      "sources": [
+        {
+          "source_key": "B16-3",
+          "batch": "B16",
+          "item": 3,
+          "message_id": "Sentinel_03f5b896aa448191a2c44d369fd38a18",
+          "date": "2026-10-05T12:00:35.253615+00:00",
+          "text": "点香加成（新增优化）\n用户点燃才开始：一根香30秒，期间每次敲击功德+2，燃尽恢复+1；不重复叠加。\n验收：实际结算与显示一致；预加载不提前点燃，刷新恢复时间与加成一致。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A045"
+        }
+      ],
+      "current_status": {
+        "summary": "生产实现已定位，符合性待验",
+        "implementation_assessment": "生产实现存在，完整符合性待核",
+        "code": {
+          "state": "已定位源码，未逐项审完",
+          "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+        },
+        "resource": {
+          "state": "已有来源/包定位，主题依赖闭包待验",
+          "not_claimed": "包内存在不等于生产可见或美术达标"
+        },
+        "actual_native_pack": {
+          "state": "尚未充分验证，不能判未实施",
+          "latest_relevant_commit": null,
+          "whole_topic_accepted": false
+        },
+        "deployed": {
+          "state": "e394 v6已发布（主题实现继承或本组更新，不代表验收通过）",
+          "basis": "root确认发布终态2026-10-06T18:46:34Z",
+          "evidence": "darkroom_entry_site_qa/darkroom_entry_e394bda_v6_final_qa.json",
+          "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/darkroom-entry-e394bda/"
+        },
+        "Web_user": {
+          "web": "未取得该主题充分实景证据",
+          "user_acceptance": "待用户认可",
+          "latest_user_rejection_preserved": true
+        },
+        "evidence": [],
+        "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+      },
+      "proposed_native_evidence": {
+        "state": "本组有限原生实际PCK场景通过，非整主题验收",
+        "evidence": "/workspace/shared/incense_lifecycle_qa/verdict.json",
+        "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+        "whole_topic_accepted": false,
+        "Web_user": "仍未验Web真刷新/用户认可"
+      }
+    }
+  ]
+}

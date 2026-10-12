@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "profile": "web",
+  "group_to_pack": {
+    "core_code": "core",
+    "shared_boot_ui": "core",
+    "loading": "core",
+    "login": "entry",
+    "home": "house",
+    "comic": "comic",
+    "darkroom": "darkroom",
+    "shared_room_visual": "exterior",
+    "travel_visual": "travel"
+  },
+  "mount_order": [
+    "core",
+    "comic",
+    "exterior",
+    "darkroom",
+    "entry",
+    "travel",
+    "house"
+  ],
+  "groups": {
+    "core_code": {
+      "depends_on": [],
+      "priority": 100,
+      "readiness": "boot"
+    },
+    "shared_boot_ui": {
+      "depends_on": [],
+      "priority": 100,
+      "readiness": "boot"
+    },
+    "loading": {
+      "depends_on": [
+        "core_code",
+        "shared_boot_ui"
+      ],
+      "priority": 100,
+      "readiness": "first_draw"
+    },
+    "login": {
+      "depends_on": [
+        "core_code",
+        "shared_boot_ui"
+      ],
+      "priority": 90,
+      "readiness": "whole_page_first_draw"
+    },
+    "home": {
+      "depends_on": [
+        "core_code",
+        "shared_boot_ui",
+        "shared_room_visual",
+        "travel_visual"
+      ],
+      "priority": 60,
+      "readiness": "whole_page_first_draw"
+    },
+    "comic": {
+      "depends_on": [
+        "core_code",
+        "shared_boot_ui"
+      ],
+      "priority": 85,
+      "readiness": "single_comic_paper_native_bubbles_short_audio_tree_and_first_draw"
+    },
+    "darkroom": {
+      "depends_on": [
+        "core_code",
+        "shared_boot_ui",
+        "shared_room_visual"
+      ],
+      "priority": 55,
+      "readiness": "whole_page_first_draw"
+    },
+    "shared_room_visual": {
+      "depends_on": [
+        "core_code"
+      ],
+      "priority": 65,
+      "readiness": "shared_exterior_texture_and_shader_includes"
+    },
+    "travel_visual": {
+      "depends_on": [
+        "core_code"
+      ],
+      "priority": 60,
+      "readiness": "home_travel_props_and_all_paper_pages_complete"
+    }
+  },
+  "packs": {
+    "comic": {
+      "path": "packs/comic.pck",
+      "startup": false,
+      "groups": [
+        "comic"
+      ],
+      "depends_on": [
+        "core"
+      ],
+      "bytes": 2089664,
+      "sha256": "242475ae15de9c6a50c0b40159dfb48f1f06306657e02293c4571e17507335b3"
+    },
+    "core": {
+      "path": "index.pck",
+      "startup": true,
+      "groups": [
+        "core_code",
+        "loading",
+        "shared_boot_ui"
+      ],
+      "depends_on": []
+    },
+    "darkroom": {
+      "path": "packs/darkroom.pck",
+      "startup": false,
+      "groups": [
+        "darkroom"
+      ],
+      "depends_on": [
+        "core",
+        "exterior"
+      ],
+      "bytes": 4534208,
+      "sha256": "2be6fad9ca762c4611a057b967106c0ace9f67d3b50db5eeca26f43963afe88b"
+    },
+    "entry": {
+      "path": "packs/entry.pck",
+      "startup": false,
+      "groups": [
+        "login"
+      ],
+      "depends_on": [
+        "core"
+      ],
+      "bytes": 941508,
+      "sha256": "675792383a5b6741303b1290a27dd3c191c9a1b759494a9f3e99c7dde921c54a"
+    },
+    "exterior": {
+      "path": "packs/exterior.pck",
+      "startup": false,
+      "groups": [
+        "shared_room_visual"
+      ],
+      "depends_on": [
+        "core"
+      ],
+      "bytes": 1107208,
+      "sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+    },
+    "house": {
+      "path": "packs/house.pck",
+      "startup": false,
+      "groups": [
+        "home"
+      ],
+      "depends_on": [
+        "core",
+        "exterior"
+      ],
+      "bytes": 11448216,
+      "sha256": "d61758c1214062eeecbe2945818a05da624170e0e468f56704f93f011b5128b8"
+    },
+    "travel": {
+      "path": "packs/travel.pck",
+      "startup": false,
+      "groups": [
+        "travel_visual"
+      ],
+      "depends_on": [
+        "core",
+        "house"
+      ],
+      "bytes": 8282068,
+      "sha256": "3274a1fd76e7b34f6a08b1a0cc6ebf4eb42d2521b3ea6d23c7a91aa866e00d55"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "engine": "Godot 4.5.2 official non-thread Web",
+  "inspected_runtime": "round8_web_6327bdb/web/index.js",
+  "runtime_sha256_unchanged": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+  "verified_from_local_pinned_file": {
+    "lines_157_173": "loadFetch calls fetch(file) without cache overrides; HTTP identity is the URL supplied.",
+    "lines_718_750": "init(basePath) caches its promise and obtains the WASM size at fileSizes[basePath + '.wasm'].",
+    "lines_771_773": "preloadFile(file,path) passes the URL, independent FS destination, and fileSizes[file] to the preloader.",
+    "lines_787_820": "start() reuses initialization, copies each preloaded buffer to its destination path, then invokes callMain(config.args).",
+    "lines_837_850": "startGame prepends --main-pack canonical pack to args and awaits parallel init(executable), preloadFile(pack,pack), then start()."
+  },
+  "host_replacement": "Same public API sequence, with preloadFile(same-origin core URL + ?sha256=manifest core hash, canonical core.path). Explicit canonical --main-pack args, URL-keyed file size, failed/closed guard before start().",
+  "integrity_scope": "Hash query provides content-versioned HTTP identity. This patch does not add downloaded-core cryptographic verification beyond the existing official loader.",
+  "boundary": "Local official API inspection and deterministic mock regression; actual browser/CDN cache behavior pending deployment verification. Official runtime bytes were not edited."
+}

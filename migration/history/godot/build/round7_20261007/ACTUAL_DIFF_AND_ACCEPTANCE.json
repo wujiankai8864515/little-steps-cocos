@@ -1,0 +1,901 @@
+{
+  "scope": "原26关联候选已核；第27衣柜未完成；非正式构建部署或用户审美通过",
+  "source_checkpoint": "f43522b",
+  "rows": [
+    {
+      "id": "N01",
+      "scope": "按入口对象显示加载文案",
+      "group": "loading",
+      "actual_fixes": [
+        {
+          "commit": "864065c34a756ba088b40400105362c7703993f9",
+          "subject": "修复N01：统一入口对象加载与失败文案，桥接取消重试30项候选验证",
+          "production_diff": [
+            "framework/addons/travel_core/ui/speech_bubble.gd",
+            "games/travel_woodfish/project/home/home_page.gd",
+            "games/travel_woodfish/project/photo/photo_bridge.gd",
+            "games/travel_woodfish/project/scripts/app.gd",
+            "games/travel_woodfish/project/travel/travel_home_bridge.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        },
+        {
+          "commit": "f093ed85fef373fd4750d4cbd23f3982879a8ef9",
+          "subject": "修复N01资源：固定源重建四字体补地图缺字，官方导入与GL实图验证",
+          "production_diff": [
+            "games/travel_woodfish/project/assets/bootstrap_ui.ttf",
+            "games/travel_woodfish/project/assets/comic_story_ui.ttf",
+            "games/travel_woodfish/project/assets/font.ttf",
+            "games/travel_woodfish/project/travel/assets/travel_ui.ttf"
+          ],
+          "code_modified": false,
+          "asset_modified": true
+        }
+      ],
+      "evidence": [
+        "build/round7_loading/actual_darkroom_results.json",
+        "build/round7_loading/actual_optional_results.json",
+        "build/round7_loading/01_actual_slow_loading_crop.png"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N02",
+      "scope": "动态省略号不触发布局抖动",
+      "group": "loading",
+      "actual_fixes": [
+        {
+          "commit": "475dd55e04d8528e12318919cbfbe46f86c91323",
+          "subject": "修复N02：共享三点定宽揭示，保循环且多屏气泡像素稳定候选验证",
+          "production_diff": [
+            "framework/addons/travel_core/ui/speech_bubble.gd",
+            "games/travel_woodfish/project/home/home_page.gd",
+            "games/travel_woodfish/project/home/interaction/home_note.gd",
+            "games/travel_woodfish/project/photo/photo_bridge.gd",
+            "games/travel_woodfish/project/travel/travel_home_bridge.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_loading/actual_darkroom_results.json",
+        "build/round7_loading/actual_optional_results.json",
+        "build/round7_loading/01_actual_slow_loading_crop.png"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N03",
+      "scope": "照片墙光束柔和体积层次",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "21b8a63d715045cdc63fb4b95a705579f2df42b0",
+          "subject": "修复N03照片柔光体积：统一宽高斯光场和纸面受光并移除硬边射线；候选实际包晨昏夜画面核验，用户审美待验",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_material.gd",
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N04",
+      "scope": "照片页小余尾鳍缺失",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "cdbdd578380dc14184d2b46198a6b401eb3c2971",
+          "subject": "修复N04照片角色尾鳍被墙底遮挡：抬高局部角色层并保留原IP前后关系",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_actor.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N05",
+      "scope": "照片页小余影子随姿态与日月",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "836163e38e68011458325959e11d1ceff356f251",
+          "subject": "修复N05角色投影：真实身体尾鳍木槌alpha随姿态和共享日月投射；候选空res实帧与动态断言通过，Web待验",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_actor.gd",
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N06",
+      "scope": "底部两枚小屋夹子独立轻摆",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "8239e72ab5902d9d0ffb8c8a49c74aeac1e8e266",
+          "subject": "修复N06底部两枚小屋夹：整组独立错相轻摆且抓取时停止；候选真实拖拽绑定取消和逐帧运动通过",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N07",
+      "scope": "照片纸摆幅与独立错相",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "5a564b2ac5c5423f39439bc0fef53d198e5fc5a7",
+          "subject": "修复N07纸面独立摆动：按照片身份稳定错相变频并增大连续弯曲；候选网格夹点与多帧变形通过",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_paper.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N08",
+      "scope": "每张照片投影随纸面与光",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "99dae23431bb43b3f1b0e7f8874ff59c37997459",
+          "subject": "修复N08纸面投影：动态轮廓四层软影随卷曲光源高度变化；候选实际PCK投影开关帧和形变跟随通过",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_paper.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N09",
+      "scope": "挂夹与绳子投影适配数量",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "8c4dc3058fd7fdbcda4b043ff96e32c7e37f1785",
+          "subject": "修复N09挂绳夹纸联动：数量驱动绳段与共同移动夹点及日月软投影；候选真实入口连接点一致与输入回归通过",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N10",
+      "scope": "照片墙背景叶/藤拆分持续物理轻摆",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "3e6e209cb3dd664c0bfbfb07e4a1e0965f2e033e",
+          "subject": "修复N10背景叶藤：清除烘焙植物并接入十四组独立弹簧关节与atlas正确UV；官方无损像素及候选实帧根点运动通过",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/assets/atlas_regions.json",
+            "games/travel_woodfish/project/photo/assets/photo_wall_material_atlas_v3.png",
+            "games/travel_woodfish/project/photo/assets/photo_wall_neutral_plate_v1.png",
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": true
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N11",
+      "scope": "照片墙昼夜/光效频繁闪抖",
+      "group": "photo",
+      "actual_fixes": [
+        {
+          "commit": "a8225a1781c0eba52cb8534ee95ec6b4d2135436",
+          "subject": "修复N11照片昼夜硬切：共享时钟连续画外轨迹统一投影和材质",
+          "production_diff": [
+            "games/travel_woodfish/project/photo/photo_material.gd",
+            "games/travel_woodfish/project/photo/photo_page.gd",
+            "games/travel_woodfish/project/photo/photo_paper.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N12",
+      "scope": "动态功德+N暗边",
+      "group": "home",
+      "actual_fixes": [
+        {
+          "commit": "ed6a0ca05bc738455739a921837273f574b9b875",
+          "subject": "N12 清除功德位图烘焙棕暗边，保原字形并实测候选冷包昼夜12数值",
+          "production_diff": [
+            "games/travel_woodfish/project/home/feedback/merit_amount_art.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N13",
+      "scope": "旅途各牌面文案垂直居中",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "a9eac5df847dcdbde7b5c07c355cf9957965f894",
+          "subject": "N13 公共牌文按字体实际字形上下界垂直居中，保固定地名与横向排版；解析通过实帧待验",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N14",
+      "scope": "旅行钟摆频率与钟声清楚可闻",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "d2e85414ca0b65b40af18268a4cf6b0867653e5d",
+          "subject": "N14 缩短旅行钟阵风与接触冷却并校准合成声电平；保单声部手势静音生命周期，听音待验",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_config.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N15",
+      "scope": "本旅行场景隐藏太阳/月亮实体保光效",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "2609ac34d06ef5106b3490bfac0020a3a7753f1e",
+          "subject": "N15 旅行隐藏日月实体与光晕，保虚拟轨迹和共享光照；官方解析通过，实帧待组验",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N16",
+      "scope": "旅行页面清晰动态柔光束",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "041243748b646f0bd9938705cd13095553922a5b",
+          "subject": "N16 旅行昼夜柔束加入月光能量与高斯软边，扩大真实缝隙光束；解析通过实帧待验",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_config.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N18",
+      "scope": "奇遇全屏层次引导与华丽菱形闪光",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "bc32ef2ef7cd9ca0b2f1a4952b9d9efe093881a3",
+          "subject": "N18 奇遇改分层四尖材质与全页缓流导向真实热点，移除局部硬圈；解析通过待实帧",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        },
+        {
+          "commit": "681b1bab510c3e3b1133a23b7707d021783cdeec",
+          "subject": "N18 据真实夜景帧加宽全页引导柔流和低频光粒，保持热点与弹窗层级；解析通过待复帧",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N19",
+      "scope": "全屏落叶近大远小景深",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "1ea4c6941aa0311133062030e1d1fe59d316873b",
+          "subject": "N19 落叶按景深关联大小速度透明和绘制层，近景复用高清叶片；18片预算不变解析通过",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_config.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N20",
+      "scope": "奇遇等待点击时同步提示音",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "f0c0c4429a13905eff03ce8bd7344dad1694e5d4",
+          "subject": "N20 奇遇出现增加温柔短提示音与UID去重，手势静音焦点释放及钟声互斥；解析通过待实机听音",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_page.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N21",
+      "scope": "旅行页地点/故事文案合理载体与位置",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "55f65d060aaf72b30b6e2b1c149e91526a7ae0f6",
+          "subject": "N21 删除浮空故事冗文，标题下手绘票签仅显示真实当前站；新透明材质已实看解析通过",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/assets/travel_station_materials_v1.png",
+            "games/travel_woodfish/project/travel/travel_page.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": true
+        },
+        {
+          "commit": "d3bef10627b527e39622ae4aede181a1d28c8c21",
+          "subject": "N21/N22 材质编译入原512图集空区，撤销新增运行贴图；原region逐像素不变且条目解码不增",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/assets/travel_scene_layers_v1.png",
+            "games/travel_woodfish/project/travel/assets/travel_station_materials_v1.png",
+            "games/travel_woodfish/project/travel/travel_page.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": true
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N22",
+      "scope": "旅途路线贝塞尔手绘与真实材质节点",
+      "group": "travel",
+      "actual_fixes": [
+        {
+          "commit": "0cd748472194fcdc0025593b44eaee1ee5f38f55",
+          "subject": "N22 路线共用连续三次贝塞尔与手绘颜料纹理，石块山门替代几何点；保十段端点解析通过",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_config.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        },
+        {
+          "commit": "d3bef10627b527e39622ae4aede181a1d28c8c21",
+          "subject": "N21/N22 材质编译入原512图集空区，撤销新增运行贴图；原region逐像素不变且条目解码不增",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/assets/travel_scene_layers_v1.png",
+            "games/travel_woodfish/project/travel/assets/travel_station_materials_v1.png",
+            "games/travel_woodfish/project/travel/travel_page.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": true
+        },
+        {
+          "commit": "9aad8e8bb10d8263c9c5d68e9cbe4a793b223406",
+          "subject": "N22 缓存静态贝塞尔采样避免每帧640次数组分配；保相同曲线与端点，解析通过",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N23",
+      "scope": "收藏底部物件选择不重排",
+      "group": "collection",
+      "actual_fixes": [
+        {
+          "commit": "c53763050f3110a5afb328c79484f7d0aff03416",
+          "subject": "修复N23收藏选择重排：隔离详情更新保持底部节点，真实冷入口鼠标连续选择验证",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N24",
+      "scope": "收藏实物分页与保留归档旅行日记",
+      "group": "collection",
+      "actual_fixes": [
+        {
+          "commit": "a89adb238171fa31a87435f63f6fcac93fe44340",
+          "subject": "修复N24收藏实体分页：四件固定批次与手绘吊牌，11件真实入口点击边界回归通过",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N25",
+      "scope": "收藏详情小型日记纸质衬底",
+      "group": "collection",
+      "actual_fixes": [
+        {
+          "commit": "c7b443df0f4f59b2b11743c7aba508edcdf35657",
+          "subject": "修复N25收藏说明纸衬：复用日记材质保小面积，实帧修正越界并回归分页选择",
+          "production_diff": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N26",
+      "scope": "主页两03艺术提示占比收小",
+      "group": "home",
+      "actual_fixes": [
+        {
+          "commit": "6d9976d3b4ccb6e4eb134fbc68054e0076c8e604",
+          "subject": "N26 缩小两03位图提示与轻引导，保物件中心并通过冷Home双屏昼夜候选实帧",
+          "production_diff": [
+            "games/travel_woodfish/project/home/feedback/bitmap_hint.gd",
+            "games/travel_woodfish/project/home/independent_incense.gd",
+            "games/travel_woodfish/project/travel/travel_home_props.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N27",
+      "scope": "归来开包柔软云朵扩散",
+      "group": "home",
+      "actual_fixes": [
+        {
+          "commit": "e94fcce56dff44fd830cf718680bd8c3c232c063",
+          "subject": "N27 用暗室原画软云卷替换开包硬喷射，保星光奖励逻辑并实测冷包与去重收纳",
+          "production_diff": [
+            "games/travel_woodfish/project/config/resource_groups.json",
+            "games/travel_woodfish/project/config/resource_pack_manifest.json",
+            "games/travel_woodfish/project/travel/travel_home_props.gd"
+          ],
+          "code_modified": true,
+          "asset_modified": false
+        }
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ],
+      "status": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    },
+    {
+      "id": "N28",
+      "scope": "正式接入精简衣柜与通用粉色换肤",
+      "group": "wardrobe",
+      "actual_fixes": [
+        "0e552cf",
+        "a676c3d",
+        "7ec6b1b",
+        "6f6c911"
+      ],
+      "evidence": [
+        "build/wardrobe/README.md",
+        "build/wardrobe/subviewport/REPORT.json",
+        "build/wardrobe/subviewport/admission.json"
+      ],
+      "status": {
+        "code": "integrated_candidate",
+        "resources_connected": "source_connected_formal_pack_pending",
+        "visible_style_spec": "native_multi_aspect_partial_user_pending",
+        "regression": "candidate_lifecycle_and_input_pass_formal_cold_pending",
+        "remote_source": "push_in_progress",
+        "formal_build": "pending",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      }
+    }
+  ]
+}

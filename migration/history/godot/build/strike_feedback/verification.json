@@ -1,0 +1,259 @@
+{
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "source_baseline": "46205a17f462a23f7333a53f0efbb7ddcabc1461",
+  "dedicated_input": {
+    "checks": [
+      {
+        "name": "one root click restarts a complete user strike",
+        "pass": true
+      },
+      {
+        "name": "press/release never awards before contact",
+        "pass": true
+      },
+      {
+        "name": "one contact earns one merit",
+        "pass": true
+      },
+      {
+        "name": "contact arrives in 200ms plus at most one rendered frame",
+        "pass": true
+      },
+      {
+        "name": "contact emits one impact mark",
+        "pass": true
+      },
+      {
+        "name": "contact event displays original exact impact pose",
+        "pass": true
+      },
+      {
+        "name": "contact expression is a mild reaction",
+        "pass": true
+      },
+      {
+        "name": "full wind-up contact rebound completes in 580ms plus frame quantization",
+        "pass": true
+      },
+      {
+        "name": "settle has no duplicate award or lingering mark",
+        "pass": true
+      },
+      {
+        "name": "six rapid root clicks each restart once",
+        "pass": true
+      },
+      {
+        "name": "canceled wind-ups cannot earn phantom merit",
+        "pass": true
+      },
+      {
+        "name": "last rapid click reaches exactly one contact",
+        "pass": true
+      },
+      {
+        "name": "four repeat clicks after contact produce four hits without queued duplicates",
+        "pass": true
+      },
+      {
+        "name": "touch plus emulated mouse requests one strike",
+        "pass": true
+      },
+      {
+        "name": "holding and dragging takes priority over pending strike",
+        "pass": true
+      },
+      {
+        "name": "drag cancels pending hit with no merit or impact",
+        "pass": true
+      },
+      {
+        "name": "release restores interaction after interrupted strike",
+        "pass": true
+      },
+      {
+        "name": "backgrounding discards pending strike and accrues no hidden contacts",
+        "pass": true
+      },
+      {
+        "name": "background blocks strike requests and clears contact ink",
+        "pass": true
+      },
+      {
+        "name": "foreground accepts a fresh complete strike",
+        "pass": true
+      },
+      {
+        "name": "page pause cancels in-flight strike",
+        "pass": true
+      },
+      {
+        "name": "real bag drag opens travel invitation",
+        "pass": true
+      },
+      {
+        "name": "real invitation input starts departure",
+        "pass": true
+      },
+      {
+        "name": "departure ownership blocks a competing woodfish strike",
+        "pass": true
+      },
+      {
+        "name": "departure animation reaches terminal state on real clock",
+        "pass": true
+      },
+      {
+        "name": "departed actor has no hidden contact or merit",
+        "pass": true
+      },
+      {
+        "name": "hidden traveling actor refuses strike",
+        "pass": true
+      },
+      {
+        "name": "travel clock return restores original actor",
+        "pass": true
+      },
+      {
+        "name": "returned actor accepts one fresh root click and one contact",
+        "pass": true
+      },
+      {
+        "name": "ambient cadence keeps the original 3.2-second cycle",
+        "pass": true
+      }
+    ],
+    "display": "headless",
+    "failed": 0,
+    "fixed_fps": false,
+    "passed": 30,
+    "real_duration_ms": 29162,
+    "root_input_events": 46,
+    "time_scale": 1.0,
+    "timing": {
+      "complete_ms": 606,
+      "contact_ms": 222
+    },
+    "travel_clock": "injected only after real departure completes"
+  },
+  "existing_production_input": {
+    "checks": [
+      {
+        "name": "empty room does not capture pointer",
+        "pass": true
+      },
+      {
+        "name": "fish actual alpha target exists",
+        "pass": true
+      },
+      {
+        "name": "mouse captures actual fish",
+        "pass": true
+      },
+      {
+        "name": "fish click starts one complete manual tap",
+        "pass": true
+      },
+      {
+        "name": "manual merit is not awarded on pointer press",
+        "pass": true
+      },
+      {
+        "name": "manual tap records one contact hit",
+        "pass": true
+      },
+      {
+        "name": "real touch hold enters fish drag",
+        "pass": true
+      },
+      {
+        "name": "touch cancellation releases capture",
+        "pass": true
+      },
+      {
+        "name": "touch cancellation returns fixed fish home",
+        "pass": true
+      },
+      {
+        "name": "bag actual alpha target exists",
+        "pass": true
+      },
+      {
+        "name": "mouse captures actual bag",
+        "pass": true
+      },
+      {
+        "name": "drag bag to fish opens real travel invitation",
+        "pass": true
+      },
+      {
+        "name": "invitation reached real hold phase",
+        "pass": true
+      },
+      {
+        "name": "actual Cancel clears offer and route",
+        "pass": true
+      },
+      {
+        "name": "Cancel does not depart",
+        "pass": true
+      },
+      {
+        "name": "bag actual alpha target exists",
+        "pass": true
+      },
+      {
+        "name": "mouse captures actual bag",
+        "pass": true
+      },
+      {
+        "name": "drag bag to fish opens real travel invitation",
+        "pass": true
+      },
+      {
+        "name": "outside click consumes gesture and cancels invitation",
+        "pass": true
+      },
+      {
+        "name": "outside cancellation does not capture underlying world",
+        "pass": true
+      },
+      {
+        "name": "actual darkroom return button emits one route request",
+        "pass": true
+      }
+    ],
+    "engine": "4.5.2.stable.official.6ce3de25a",
+    "failed": 0,
+    "passed": 21,
+    "root_push_input_events": 18,
+    "scope": "Native headless production input dispatch smoke; no GPU or browser touch/feel claim; no16-itemfixes."
+  },
+  "native_rendered_comparison": {
+    "before": {
+      "first_rendered_contact_ms": 1253,
+      "first_rendered_complete_ms": 2952,
+      "rendered_frames": 46,
+      "duration_ms": 3467,
+      "display": "Mesa llvmpipe software renderer"
+    },
+    "after": {
+      "first_rendered_contact_ms": 396,
+      "first_rendered_complete_ms": 749,
+      "rendered_frames": 14,
+      "duration_ms": 1224,
+      "display": "Mesa llvmpipe software renderer"
+    }
+  },
+  "capture_method": "Actual wall timestamps, Engine.time_scale=1, max-fps60, no fixed-fps. In-memory viewport capture; PNG compression after recording. MP4 preserves capture timestamps.",
+  "limits": "Mesa llvmpipe software renderer at roughly 11-14 captured frames/sec, including input-to-render latency. Headless action measurements are 222/606 ms; recorded native visual contact is 396 ms and full settle 749 ms. No hardware GPU/browser/audio-listening claim.",
+  "runtime_errors": 0,
+  "evidence_files": [
+    "strike_before_after_1x.mp4",
+    "strike_ink_before_after.png",
+    "strike_real_frame_sequence.png",
+    "baseline_frames2/capture.json",
+    "final_frames/capture.json"
+  ]
+}

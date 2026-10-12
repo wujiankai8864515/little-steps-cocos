@@ -1,0 +1,103 @@
+{
+  "boundary": "Explicit source App candidate against immutable6327bdb native core and actual delayedPCK mounts,headless:no GPU/browser first-draw claim.",
+  "checks": {
+    "login_resource_batch_ready": true,
+    "ordered_presentation_starts_at_title": true,
+    "real_login_node_ready": true,
+    "required_only_packs_at_login": true
+  },
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "login_presentation": {
+    "accents_visible": false,
+    "fin_visible": false,
+    "fish_visible": false,
+    "generation": 1,
+    "ready": false,
+    "stage": "TITLE",
+    "stage_elapsed": 0.0,
+    "subtitle_complete": false,
+    "title_complete": false
+  },
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 1,
+      "peak_active": 1,
+      "peak_queue": 1,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 1,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 261260,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3716,
+          "loaded": 943108,
+          "mount_usec": 286,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/entry.pck",
+          "request_id": "p33420215692-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "page": "LOGIN",
+  "startup": {
+    "godot_loading_first_draw_usec": 43483,
+    "loading_clock": "native_first_draw",
+    "loading_visible_msec": 233,
+    "login_visible_msec": 677,
+    "opening_story_errors": [],
+    "opening_story_status": "REQUIRED",
+    "stage": "login_ready",
+    "stage_completed": 1,
+    "stage_total": 1
+  }
+}

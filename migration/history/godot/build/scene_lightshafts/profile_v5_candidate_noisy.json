@@ -1,0 +1,21 @@
+{
+  "failed": 0,
+  "overlay": "/workspace/scratch/3f82ff2b3f81/scene_lightshaft_qa/candidate.pck",
+  "samples": [
+    {
+      "draw_calls": 106.0,
+      "frames": 60,
+      "median_frame_ms": 51.743,
+      "name": "Photo_720x1280",
+      "p95_frame_ms": 118.828
+    },
+    {
+      "draw_calls": 85.0,
+      "frames": 60,
+      "median_frame_ms": 45.431,
+      "name": "Travel_720x1280",
+      "p95_frame_ms": 98.25
+    }
+  ],
+  "scope": "Steady-frame native Mesa GL, same frozen scene/clock; 20 warm plus60 sampled frames; no PNG or readback during timing, not hardware/Web performance"
+}

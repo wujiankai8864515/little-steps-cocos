@@ -1,0 +1,2 @@
+# 归档补验fixture时钟故障
+2026-10-07首轮seed返回9项失败。生产无错误；真实depart成功，但fixture局部float被lambda按值捕获，随后stamp+=101未改变service.now，行程自然未结束，库存/归档均空。确认源码与失败日志保留于shared round7_collection_archive_qa/seed。修正仅测试为成员fixture_now，重跑全新state_v2槽；不修改生产及既有失败证据。原失败不能用于判断收藏生产缺陷。

@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen image edit",
+  "reference": "games/travel_woodfish/project/travel/assets/travel_map_actor_v5.png",
+  "reference_sha256": "b5309a87ea154d7464c684b784d9c3ed76f96b39f58dda0dec31a4470e6b5711",
+  "prompt": "Use case: background-extraction / precise-object-edit. Edit the supplied approved game character image into a transparent GAME BACKPACK ASSET, square 1024x1024 canvas. Keep ONLY its exact orange-brown leather backpack, golden rectangular buckle, golden stitched borders, beige round fish emblem, small gold loop fasteners, arched carrying handle, and the shoulder strap loop as seen on the LEFT of the supplied fish. Remove ALL fish body, ALL fins, face, tail, background and cast shadow. Do not put a fish inside the opening. The entire opening bounded by the backpack and its shoulder strap must be truly transparent. Reconstruct only the small leather strap portions hidden by the fish fin, so the shoulder strap forms a continuous empty loop matching the reference perspective, with upper diagonal strap, thicker front curved strap on the right, and short lower return joining the bag. Retain the reference three-quarter perspective, silhouette, orange-brown hand-painted texture and gold hardware exactly; no redesign, no changed emblem. Center and fit this one assembled backpack with its open strap loop on the transparent square canvas, about 80% canvas height. No extra parts, no text, no grid, no labels, no body/fin-colored fill between straps. This image will be split by code into foreground and background layers around the existing game fish's own fin. Preserve fine dark outlines and clean genuine alpha edges.",
+  "transparent_background": true,
+  "actual_generated_dimensions": [
+    1254,
+    1254
+  ],
+  "requested_canvas_dimensions": [
+    1024,
+    1024
+  ],
+  "source": "design/backpack_layers/approved_traveler_backpack_extracted.png",
+  "source_sha256": "ef4ecf8668b3e22a60e1dcc5f65f1a7ed9d008b087f80ea4e86a5ad3842ef1a0",
+  "runtime": "games/travel_woodfish/project/travel/assets/home_worn_bag_pixels.png",
+  "runtime_is_exact_source_copy": true,
+  "status": "candidate, not user visually approved",
+  "previous_published_source_dimensions": [
+    118,
+    140
+  ],
+  "decoded_with_mips_reservation": 8449608,
+  "net_reserved_increase": 8317992,
+  "gate_entries": 128
+}

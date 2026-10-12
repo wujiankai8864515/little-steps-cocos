@@ -1,0 +1,55 @@
+{
+  "scope": "A004 candidate validation only; grouped formal build and Web still pending",
+  "base_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+  "production_file": "games/travel_woodfish/project/home/interaction/home_interaction_controller.gd",
+  "production_source_sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd",
+  "candidate_core_sha256": "4beee15a5da4e604136e62f71aadbb4a3ad60a9b83dfd90997243bf54a2d258c",
+  "changed_pck_entries": [
+    "home/interaction/home_interaction_controller.gdc"
+  ],
+  "new_runtime_resources": 0,
+  "runs": [
+    {
+      "run": "red",
+      "assertions": 256,
+      "failed": 63,
+      "pack_label": "frozen-e394-A004-red",
+      "test_sha256": "dc10ebd837a543a5242fddc3c0421f503f38ed1032d61f76601b4909ee83cd6d"
+    },
+    {
+      "run": "green",
+      "assertions": 255,
+      "failed": 0,
+      "pack_label": "A004-test-only-single-script-candidate",
+      "test_sha256": "dc10ebd837a543a5242fddc3c0421f503f38ed1032d61f76601b4909ee83cd6d"
+    },
+    {
+      "run": "regression",
+      "assertions": 148,
+      "failed": 0,
+      "pack_label": "A004-test-only-single-script-candidate",
+      "test_sha256": "5770df20607efa3c88ee08ef3ac6e1983f2f66cab4f17931617af6d3fe6e3b53"
+    },
+    {
+      "run": "drink",
+      "assertions": 16,
+      "failed": 0,
+      "pack_label": "A004-test-only-single-script-candidate",
+      "test_sha256": "5824e346e6ea213264ff60640a1573eca8337762414283be023adf8772fd35a0"
+    }
+  ],
+  "green_runtime_assertions": 419,
+  "reviewed_images": 45,
+  "all_18_held_visual_transforms_unchanged": true,
+  "airborne_settle_samples_with_active_canvas": 43,
+  "baseline_review": "baseline/BASELINE_REPORT.md; four formal-pack runs/221 assertions/34 viewed images kept as bounded evidence, not a five-topic blanket pass",
+  "unverified": [
+    "grouped formal PCKs",
+    "Web/browser",
+    "hardware GPU",
+    "mobile feel",
+    "audio",
+    "60fps",
+    "user visual approval"
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "created_utc_date": "2026-10-06",
+  "tool": "built-in image_gen.imagegen",
+  "pillow_version_for_deterministic_packing": "12.3.0",
+  "prompt_file": "design/photo_wall/generation_prompts.json",
+  "source_reference_role": "Approved static design used for composition and painted material style. Generated assets are reference-edited candidates, not a claim of original pixel extraction or complete runtime implementation.",
+  "reference_files": [
+    {
+      "path": "design/photo_wall/approved_single_page_neutral_reference.png",
+      "sha256": "4835595f2f6c39bfb4975aa331061ad4f21b37bc81a04dd669b5f3fa6c343d20",
+      "bytes": 2474288,
+      "size_px": [
+        941,
+        1671
+      ],
+      "rgba8_sha256": "fc3b35183da1185426403302111df5a658d96180d6a32f3579979c7b00198207",
+      "decoded_rgba8_bytes": 6289644,
+      "alpha": {
+        "zero_pixels": 0,
+        "partial_pixels": 0,
+        "opaque_pixels": 1572411
+      }
+    },
+    {
+      "path": "design/photo_wall/approved_interactions_reference.png",
+      "sha256": "58c8bcf877bf90b92ea5ae841f724c2cfbc26307e4dbb34cbd6e9a830bb9c3a5",
+      "bytes": 2600759,
+      "size_px": [
+        1672,
+        941
+      ],
+      "rgba8_sha256": "097d950fee831ca6581ab547671baec8cb446679f1567c325cf30b47ac53b1ff",
+      "decoded_rgba8_bytes": 6293408,
+      "alpha": {
+        "zero_pixels": 0,
+        "partial_pixels": 0,
+        "opaque_pixels": 1573352
+      }
+    }
+  ],
+  "source_files": [
+    {
+      "path": "design/photo_wall/sources/photo_wall_neutral_plate_source.png",
+      "sha256": "49a92e905fe159e6c293d82af66673f1d55b58a2d681a8f27ddaa73bec10845b",
+      "bytes": 2219447,
+      "size_px": [
+        941,
+        1672
+      ],
+      "rgba8_sha256": "5deb5957a30e2acf0e7a9cc55e265351b1708d08dc329e4bb51bef74e793edf1",
+      "decoded_rgba8_bytes": 6293408,
+      "alpha": {
+        "zero_pixels": 0,
+        "partial_pixels": 0,
+        "opaque_pixels": 1573352
+      }
+    },
+    {
+      "path": "design/photo_wall/sources/photo_wall_wooden_clip_source.png",
+      "sha256": "fc9e109d559f80fbd4938d718892425688169f3b21b77189a87d2f8952c7baaf",
+      "bytes": 1130942,
+      "size_px": [
+        1448,
+        1086
+      ],
+      "rgba8_sha256": "9d49147c2ef8cd0452a67f17368eb4b7660617a6f9a061d377be7a8330cead9c",
+      "decoded_rgba8_bytes": 6290112,
+      "alpha": {
+        "zero_pixels": 949326,
+        "partial_pixels": 622133,
+        "opaque_pixels": 1069
+      }
+    },
+    {
+      "path": "design/photo_wall/sources/photo_wall_paper_frame_source.png",
+      "sha256": "3937a3b8b412a7efc5e259448c00d27cfccc1fbd5680635974b0b7ade3befdd2",
+      "bytes": 826181,
+      "size_px": [
+        1122,
+        1402
+      ],
+      "rgba8_sha256": "c873690376e100a299339e3bf0b5c69326a8d7f15143aebcfd99ef6eea01d04b",
+      "decoded_rgba8_bytes": 6292176,
+      "alpha": {
+        "zero_pixels": 1109723,
+        "partial_pixels": 463017,
+        "opaque_pixels": 304
+      }
+    }
+  ],
+  "runtime_files": [
+    {
+      "path": "games/travel_woodfish/project/photo/assets/photo_wall_neutral_plate_v1.png",
+      "sha256": "49a92e905fe159e6c293d82af66673f1d55b58a2d681a8f27ddaa73bec10845b",
+      "bytes": 2219447,
+      "size_px": [
+        941,
+        1672
+      ],
+      "rgba8_sha256": "5deb5957a30e2acf0e7a9cc55e265351b1708d08dc329e4bb51bef74e793edf1",
+      "decoded_rgba8_bytes": 6293408,
+      "alpha": {
+        "zero_pixels": 0,
+        "partial_pixels": 0,
+        "opaque_pixels": 1573352
+      }
+    },
+    {
+      "path": "games/travel_woodfish/project/photo/assets/photo_wall_material_atlas_v1.png",
+      "sha256": "4fac694bdcd65c9554fe48bed927dae9dc3b005b2f517de7c50c6ae9b2154b86",
+      "bytes": 215545,
+      "size_px": [
+        768,
+        544
+      ],
+      "rgba8_sha256": "a500bbd292417810c29a500c4a664f2316bf7a470bde12ef48f87c7ae669d05e",
+      "decoded_rgba8_bytes": 1671168,
+      "alpha": {
+        "zero_pixels": 313592,
+        "partial_pixels": 101411,
+        "opaque_pixels": 2789
+      }
+    }
+  ],
+  "atlas_entries": [
+    {
+      "name": "paper_frame",
+      "source": "sources/photo_wall_paper_frame_source.png",
+      "crop_xyxy": [
+        40,
+        64,
+        1080,
+        1344
+      ],
+      "atlas_rect_xywh": [
+        16,
+        16,
+        416,
+        512
+      ],
+      "display_max_at_dpr2": [
+        208,
+        256
+      ],
+      "photo_underlay_rect_local_xywh": [
+        39,
+        42,
+        340,
+        386
+      ],
+      "stamp_area_local_xywh": [
+        64,
+        438,
+        288,
+        52
+      ],
+      "note": "Outside and inner aperture use generated real alpha. Draw photo under the aperture; the bottom border remains blank for runtime stamps. No runtime curl, shadow, stamp, or text is painted here.",
+      "source_sha256": "3937a3b8b412a7efc5e259448c00d27cfccc1fbd5680635974b0b7ade3befdd2",
+      "resampling": "Pillow LANCZOS, straight RGBA result, no background matte or alpha threshold",
+      "packed_region_rgba8_sha256": "0b22985b5daa6e6910133841c5f2c1e32d6626b4941319ea70021dfbaf070d92"
+    },
+    {
+      "name": "wooden_selector_clip",
+      "source": "sources/photo_wall_wooden_clip_source.png",
+      "crop_xyxy": [
+        72,
+        52,
+        1408,
+        1054
+      ],
+      "atlas_rect_xywh": [
+        464,
+        16,
+        288,
+        216
+      ],
+      "display_max_at_dpr2": [
+        144,
+        108
+      ],
+      "note": "One complete wooden spring clothespin, diagonal lower-left to upper-right. No tag, string, text, floor or cast shadow. Draw the two Home slot labels separately.",
+      "source_sha256": "fc9e109d559f80fbd4938d718892425688169f3b21b77189a87d2f8952c7baaf",
+      "resampling": "Pillow LANCZOS, straight RGBA result, no background matte or alpha threshold",
+      "packed_region_rgba8_sha256": "fac312a5a5ae21769e7de8f7f115f625afa53fe2aedc7313ddd85c61da791702"
+    }
+  ],
+  "base_plate": {
+    "transformation": "Byte-identical PNG copy, no resize or recompression.",
+    "canvas_display_reference": [
+      720,
+      1280
+    ],
+    "native_dpr2_display": [
+      470.5,
+      836
+    ],
+    "note": "At 720x1280 logical canvas this is 1.307 image pixels per logical pixel; the base alone does not establish full-canvas DPR2. It supports DPR2 up to approximately 470 logical pixels wide without upscaling.",
+    "composition_720x1280": {
+      "mat_center_approx": [
+        214,
+        943
+      ],
+      "floor_top_approx_y": 891,
+      "fish_center_integration_suggestion": [
+        205,
+        880
+      ]
+    },
+    "contents": "Warm plaster, white-flowered green vines, low wooden trim, wooden plank floor, one empty braided straw mat. No window, photograph, photo rope, clip, typography, plaque, character or paper stack.",
+    "lighting": "Soft neutral warm material appearance. No directional light beam or hard sun shaft. Restrained intrinsic ambient/material shading remains; runtime directional lighting and shadows belong to the integrator."
+  },
+  "package_intent": "photo_visual; integrator must assign to the actual delayed photo pack and ensure Home first load does not depend on this namespace.",
+  "budget": {
+    "runtime_png_count": 2,
+    "decoded_rgba8_base_bytes": 7964576,
+    "mipmaps_requested": false,
+    "mipmap_bytes": 0,
+    "admission_bytes_with_64k_each": 8095648,
+    "browser_heap_gpu_memory_measured": false
+  },
+  "visual_inspection": {
+    "date_utc": "2026-10-06",
+    "references_viewed": true,
+    "all_generated_sources_viewed": true,
+    "packed_atlas_viewed": true,
+    "packed_atlas_viewed_sha256": "4fac694bdcd65c9554fe48bed927dae9dc3b005b2f517de7c50c6ae9b2154b86",
+    "packed_atlas_inspection": "Viewed after assembly with view_image. Frame aperture and empty atlas space are truly alpha=0; sample wooden clip interior alpha=253. No matte was introduced. Atlas-region RGBA hashes match the independently resized input regions.",
+    "finding": "Generated plate removes baked UI, photo content and fish while preserving the approved vine/white-flower/plaster/floor/mat composition. Clip is complete with wood and metal spring. Paper frame has a transparent aperture and no text or content."
+  },
+  "official_godot_4_5_2_lossless_import": {
+    "status": "pending_integrator_verification",
+    "required": "Import both runtime PNGs with pinned official engine, mipmaps disabled, no size limit; compare decoded RGBA8 base with runtime_files rgba8_sha256. This asset preparation does not claim importer, rendered game or dynamic light acceptance."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Targeted ellipse interior/perimeter sample, 1.05x antialias fringe + 0.35 source pixel filter clearance, exact decoded formal d1 body. Source PNG missing; no claim of reimport/source PNG equality. Domains and white shader unchanged. Software GL inspected separately.",
+  "body_decoded_png_sha256": "50d05afe49897503bf3f8ef7aafbd9d0dd7e9c18be236596036778ffb50b3532",
+  "white_reference_sha256": "dab3bc2467ed2429f91c7d18b5fdafd0b38c382a78912beafc9fe8ff56a53c98",
+  "geometry_sha256": "9b806cb0792a653d05037e0dc2f0ea226ee9648321bf1c66efa1ab7cbfbc623d",
+  "eyes": [
+    {
+      "eye": 1,
+      "returned_centers": 106,
+      "support_samples_per_center": 1025,
+      "pupil_radii": [
+        12.0,
+        9.11999988555908
+      ],
+      "support_radii": [
+        12.950000000000001,
+        9.925999879837034
+      ],
+      "minimum_restored_white": 1.0,
+      "passed": true
+    },
+    {
+      "eye": 2,
+      "returned_centers": 82,
+      "support_samples_per_center": 1025,
+      "pupil_radii": [
+        10.8000001907349,
+        7.92000007629395
+      ],
+      "support_radii": [
+        11.690000200271646,
+        8.666000080108647
+      ],
+      "minimum_restored_white": 1.0,
+      "passed": true
+    }
+  ]
+}

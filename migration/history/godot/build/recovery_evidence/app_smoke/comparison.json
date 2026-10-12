@@ -1,0 +1,14 @@
+{
+  "changes": "New build metadata uses layout monorepo with explicit reconstruction field; native source assembly uses profile local with no remote packs; Web PCK manifest retains profile web. No production .gd changes.",
+  "original_app_smoke": "PASS: actual Loading/Login/Comic/Home; originalApp printsBUILD_METADATA_PASS andGAME_SMOKE_PASS;34realkeyboardevents",
+  "baseline_comparison": "Exact originalGDC andbinaryscenes withoriginalbuild_info ran same production path andalsoPASS.",
+  "known_headless_exit_diagnostic": {
+    "original_export_reproduced": true,
+    "objects": [
+      "2 AudioStreamMP3",
+      "2 AudioStreamPlaybackMP3"
+    ],
+    "status": "NOT_A_MEMORY_PASS; no claim of cleanup or browser audio verification"
+  },
+  "product16_fixes_applied": false
+}

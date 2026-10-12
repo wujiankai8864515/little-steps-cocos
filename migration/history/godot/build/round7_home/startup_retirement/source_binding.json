@@ -1,0 +1,15 @@
+{
+  "source_commit_before_QA": "1037021b09b82fcb6ad275bf48ffc2abb02e6d3c",
+  "production_source_commit": "44bb2eb",
+  "candidate_source_hashes": {
+    "home/feedback/merit_amount_art.gd": "4b34185a63df8ce737d42c0b6c7b57d904b2724ce46e9aa52c111d5ceb9bdc35",
+    "home/feedback/bitmap_hint.gd": "f28b8e7de5430d7c6e538d9a0cdbdaec518e7c81635080992212bb44f16a048d",
+    "home/independent_incense.gd": "5497657b1cb1588a2f3e5634bba41afbe01ccde5deb0e2a53e310803d7a5d1af",
+    "travel/travel_home_props.gd": "50f1014a805a29220c2050d19b72e72a08c4f34aa00010fad87e4661adc2503d",
+    "config/resource_groups.json": "8067056ed62425f88f722b6535d2eb26fdd3b1fcad9e2288214fe876a432d2d1",
+    "config/resource_pack_manifest.json": "ab3271439ff4d4b64c5778d40255180689c398925d30fff5a1898cb5cc57d4cf"
+  },
+  "core_sha256": "bfa8645cd4cfc08edd29f23224543afbcbc13cf7ad9a562ed8b8c08547d3540b",
+  "candidate_details": "N27 existing actual PCKs, linked unchanged formal baseline packs plus release texture migration. This is NOT the later integrated photo/travel asset closure.",
+  "runtime_changes": "QA calls actual routing/overlay actions and watches WeakRefs. No production source changes; no direct release/free/trim by test; normal Comic reveal and advance."
+}

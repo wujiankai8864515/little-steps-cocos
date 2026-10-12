@@ -1,0 +1,1278 @@
+[
+  {
+    "canonical_id": "A015",
+    "topic": "物件询问入口",
+    "sources": [
+      {
+        "source_key": "B26-15",
+        "batch": "B26",
+        "item": 15,
+        "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+        "date": "2026-10-05T05:13:54.265936+00:00",
+        "text": "物件询问与照片\n背包触发旅行询问，娃娃触发暗室询问，照片触发对应入口。\n验收：用自然气泡或场景载体，不堆生硬按钮；确认、取消、返回有效。",
+        "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+        "canonical_id": "A015"
+      }
+    ],
+    "latest_requirement": "物件询问与照片\n背包触发旅行询问，娃娃触发暗室询问，照片触发对应入口。\n验收：用自然气泡或场景载体，不堆生硬按钮；确认、取消、返回有效。",
+    "status": "生产实现已定位，符合性待验",
+    "code": {
+      "level": "生产源码定位，未因存在而判通过",
+      "files": [
+        {
+          "path": "home/home_page.gd",
+          "exists": true,
+          "sha256": "5c3bdfaa2f1bf1eec06afc84bbb25353eb3112bf0d812bea87073b06d1a1edc4",
+          "frozen_pack_members": [
+            {
+              "path": "home/home_page.gd.remap",
+              "pack": "index.pck",
+              "bytes": 41,
+              "sha256": "7e57b6e93303e20ec7e0781f04cd0fd8a3ab9fcc319c0ef7a32b7517f90413f7"
+            },
+            {
+              "path": "home/home_page.gdc",
+              "pack": "index.pck",
+              "bytes": 19056,
+              "sha256": "ab0753fe11b2538d3d7e703b8318187e9a3ed926d7c475ba3eb546eeeb6b6259"
+            }
+          ]
+        },
+        {
+          "path": "home/interaction/home_note.gd",
+          "exists": true,
+          "sha256": "9398e1a26c3194f2ba38770fd71feac73510a73f8c1aee68c58e75bf24acd5fa",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_note.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "589a84b71471bb1bb6a7e8dc75100ad5d470603ef9651541eb5a467d223e6349"
+            },
+            {
+              "path": "home/interaction/home_note.gdc",
+              "pack": "index.pck",
+              "bytes": 6710,
+              "sha256": "ec68140e77d048a961c298bcf8b404e2ea7c665bd63fdb4550f426f14ffd6699"
+            }
+          ]
+        }
+      ],
+      "function_names_observed": [
+        "_ready",
+        "set_viewport_size",
+        "_on_merit",
+        "pause_page",
+        "resume_page",
+        "_process",
+        "_world_pointer",
+        "_input",
+        "_begin_world_press",
+        "_notification",
+        "_exit_tree",
+        "set_input_enabled",
+        "_on_incense_save_warning",
+        "_show_pending_incense_warning",
+        "_on_intent",
+        "_on_note_decision",
+        "_route_note_anchor",
+        "show_route_waiting",
+        "update_route_waiting",
+        "show_route_error",
+        "clear_route_waiting",
+        "_dismiss_local_ui",
+        "_on_incense_tip",
+        "_handle_local_input",
+        "_capture_entry",
+        "_incense_entry_hit",
+        "play_entry_feedback",
+        "_advance_entry_bounce",
+        "_set_entry_transform",
+        "cancel_entry_feedback",
+        "_open_music_credits",
+        "_open_album_invitation",
+        "begin_drag_presentation",
+        "_lift_drag_member",
+        "_sync_drag_canvas",
+        "end_drag_presentation",
+        "begin_departure_actor",
+        "advance_departure_actor",
+        "finish_departure_actor",
+        "restore_returned_actor",
+        "record_audio_gesture",
+        "_ready",
+        "ask",
+        "show_info",
+        "update_route_waiting",
+        "show_photos",
+        "_album_label",
+        "dismiss",
+        "click",
+        "_close_album",
+        "_start_entrance",
+        "_exit_tree",
+        "owns_world_input",
+        "cancel_pointer",
+        "pointer_down",
+        "pointer_move",
+        "pointer_up",
+        "_target_at",
+        "_target_rect",
+        "_layout",
+        "advance_animation",
+        "snapshot"
+      ],
+      "production_callsite_caveat": "函数/包内路径已定位；此表不自动证明每个入口真的调用，必须运行记录补证"
+    },
+    "resource": {
+      "level": "尚未逐项建立精确PCK闭包",
+      "required_check": "源文件/实际导入/包内path与依赖/空res首次加载",
+      "literal_dependencies": [
+        {
+          "resource": "res://travel/travel_home_bridge.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_home_bridge.gd.remap",
+              "pack": "index.pck",
+              "bytes": 52,
+              "sha256": "6c25ddcc32d8513759a05354f09decd2e694cd7df2ac1558090a065598936ad9"
+            },
+            {
+              "path": "travel/travel_home_bridge.gdc",
+              "pack": "index.pck",
+              "bytes": 11589,
+              "sha256": "18c72a6bb50f0836dc2f4412e157537716927888d687dbd3f626dac4ac27faf5"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_interaction_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_interaction_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 71,
+              "sha256": "8ad2ce2ecde41cebbd558444aeeba371f6bfe06df219403c213e8e774905cae5"
+            },
+            {
+              "path": "home/interaction/home_interaction_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 26824,
+              "sha256": "c2a004320bab53d4e1d53dc6fcda92d1b5d63a711f7ac296a15a5e264dac1904"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_note.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_note.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "589a84b71471bb1bb6a7e8dc75100ad5d470603ef9651541eb5a467d223e6349"
+            },
+            {
+              "path": "home/interaction/home_note.gdc",
+              "pack": "index.pck",
+              "bytes": 6710,
+              "sha256": "ec68140e77d048a961c298bcf8b404e2ea7c665bd63fdb4550f426f14ffd6699"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/character_bubble_anchor.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/character_bubble_anchor.gd.remap",
+              "pack": "index.pck",
+              "bytes": 67,
+              "sha256": "ddebcdf96816d6fbbec96d64dfd6fee452d6aa2e3897ed0916baa8096f36188d"
+            },
+            {
+              "path": "home/interaction/character_bubble_anchor.gdc",
+              "pack": "index.pck",
+              "bytes": 2503,
+              "sha256": "f679fdcd299b4fb6cf353b44b9c52292c54a7b89588af96defae71c340417bb9"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/room_props_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/room_props_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "e57f8076276c545a6ae03e185da085646e4201576a81e90febc5ba3db8e372ca"
+            },
+            {
+              "path": "home/room_props_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 10925,
+              "sha256": "f0521171eea012e0850ede1016402a31aacf8e9be405f7626450f02ac2426597"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/home_music.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/home_music.gd.remap",
+              "pack": "index.pck",
+              "bytes": 48,
+              "sha256": "d91de0c028a4629c3c79060af121b9a57a543f6b07ea17a5093f0031227cabdd"
+            },
+            {
+              "path": "home/audio/home_music.gdc",
+              "pack": "index.pck",
+              "bytes": 5541,
+              "sha256": "85a874ae158ed0eacbfe0f819dc7c4852f88277ba323bd83de1bc0ef69527586"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/music_credits.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/music_credits.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "b1b042bcc9a5467c5ca082cc7c0866c61584734798038f71d668b98c2152b6ff"
+            },
+            {
+              "path": "home/audio/music_credits.gdc",
+              "pack": "index.pck",
+              "bytes": 4565,
+              "sha256": "3d6d4f1a41d378ece1f7ba49757988faee3f740a42ef72d41b99a184939102e0"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/flowers/persistent_vase.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/flowers/persistent_vase.gd.remap",
+              "pack": "index.pck",
+              "bytes": 55,
+              "sha256": "f516f4b813644dd5f1ec0f9172dcd3a63138b7ed5ef4c21c9e6b1500adfff8c1"
+            },
+            {
+              "path": "home/flowers/persistent_vase.gdc",
+              "pack": "index.pck",
+              "bytes": 10266,
+              "sha256": "1adad7f90a7247406402ca6094c9c2917e4c40ef10f1603a50b9c4af93b70ac7"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://shared_room_lighting/lighting_snapshot.gd",
+          "frozen_pack_members": [
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gd.remap",
+              "pack": "index.pck",
+              "bytes": 65,
+              "sha256": "5da9c7759ef08ea4628d382684438c4931ab8d5e9328e01dbf22448f6eab6d91"
+            },
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gdc",
+              "pack": "index.pck",
+              "bytes": 2886,
+              "sha256": "65157d478c8bbcaf03a2b1d67bc9a9cabdcef444c67ade18ad6aae372edfebbc"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/independent_incense.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/independent_incense.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "98dc6ae9849e110ae4921c6707537fec85caf91ede6fd8d3622c1a9c06e6298d"
+            },
+            {
+              "path": "home/independent_incense.gdc",
+              "pack": "index.pck",
+              "bytes": 20989,
+              "sha256": "9c65182b786ded68b4a7700dc0e8e7a7aebe113ba60472936b801838e57465b2"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://addons/travel_core/ui/speech_bubble.gd",
+          "frozen_pack_members": [
+            {
+              "path": "addons/travel_core/ui/speech_bubble.gd.remap",
+              "pack": "index.pck",
+              "bytes": 62,
+              "sha256": "006d62eb4290ffc6d4e98f18343e88476c608ae19fe8b9a5316d60705f10e6f4"
+            },
+            {
+              "path": "addons/travel_core/ui/speech_bubble.gdc",
+              "pack": "index.pck",
+              "bytes": 23612,
+              "sha256": "38a5bbeebb40222ba16b11249d9b7cfef2a483d1317a34e9809d57d7be6f4ecc"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://addons/travel_core/ui/hanging_return.gd",
+          "frozen_pack_members": [
+            {
+              "path": "addons/travel_core/ui/hanging_return.gd.remap",
+              "pack": "index.pck",
+              "bytes": 63,
+              "sha256": "cfda21c72391cdcc7df83ede7c3e25e6230e2c9bd6aa662b0212dd0e33101956"
+            },
+            {
+              "path": "addons/travel_core/ui/hanging_return.gdc",
+              "pack": "index.pck",
+              "bytes": 5544,
+              "sha256": "84b9723143034af7f28948cf60ce325a1bca6c59d1623696ebfd7bfc7ed6c6f3"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://assets/photo_frame_01_travel.png",
+          "frozen_pack_members": [
+            {
+              "path": ".godot/imported/photo_frame_01_travel.png-998bb568f8976d47283b91ad792fcd4b.ctex",
+              "pack": "packs/house.pck",
+              "bytes": 65926,
+              "sha256": "8df45b39739fa24e9d51773115db333d048d7f1e862dfc74616db80f18355dbe"
+            },
+            {
+              "path": "assets/photo_frame_01_travel.png.import",
+              "pack": "packs/house.pck",
+              "bytes": 210,
+              "sha256": "229e2efa1ba7b0f63c208bf1aadc441dbd09b20beb6d05def45a48105258db0b"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://assets/photo_frame_02_travel.png",
+          "frozen_pack_members": [
+            {
+              "path": ".godot/imported/photo_frame_02_travel.png-3f3b1c286455fa5d0ee7f67e6f004772.ctex",
+              "pack": "packs/house.pck",
+              "bytes": 61608,
+              "sha256": "68086a1d2edcd3e8e49c991ad64f4ecbf26eb26c1f2e2503c344bde4c7a977a2"
+            },
+            {
+              "path": "assets/photo_frame_02_travel.png.import",
+              "pack": "packs/house.pck",
+              "bytes": 209,
+              "sha256": "d6d3054b073843df25804b8ba27b0f79ca46fbb2b37d707984e74b1cc421d521"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://assets/bootstrap_ui.ttf",
+          "frozen_pack_members": [
+            {
+              "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+              "pack": "index.pck",
+              "bytes": 228396,
+              "sha256": "c2f29d066c7486d74cf76b45b5e8d08cb4345bfc1b361bbc0861e960b89ec5b1"
+            },
+            {
+              "path": "assets/bootstrap_ui.ttf.import",
+              "pack": "index.pck",
+              "bytes": 769,
+              "sha256": "af60089c2bca85f9b36da51ec6b45b48d61ce543bac7e8a65b16dedc8a426072"
+            }
+          ],
+          "literal_only": true
+        }
+      ],
+      "dependency_caveat": "只列直接字符串依赖和实际包inventory，变量/Art helper/动态路径须另查；不是完整闭包验证",
+      "entry_scene_pack": "house"
+    },
+    "runtime": {
+      "level": "按原子场景待重验",
+      "missing_gate": "包/娃娃/照片真实入口与取消返回"
+    },
+    "release": {
+      "audited_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "user_screenshot_instance": "URL及实际commit未确认",
+      "published_evidence": "既有freeze标识；不代替实际用户实例",
+      "pack_root": "/tmp/travel_scene_formal_56193b7/native_packs"
+    },
+    "owner": "主工程",
+    "superseded": [],
+    "priority": "normal",
+    "user_visual_accepted": false,
+    "effective_scope_note": "最新同题修正覆盖相冲突旧要求；旧来源中不冲突的约束仍保留。不能只看最后一句删掉仍有效子项。",
+    "latest_source_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+    "baseline_status": {
+      "commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "status": "未验证",
+      "meaning": "当时发布审计结论；保留用户否定及旧缺陷，不作为当前排工字段"
+    },
+    "current_status": {
+      "summary": "生产实现已定位，符合性待验",
+      "implementation_assessment": "生产实现存在，完整符合性待核",
+      "code": {
+        "state": "已定位源码，未逐项审完",
+        "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+      },
+      "resource": {
+        "state": "已有来源/包定位，主题依赖闭包待验",
+        "not_claimed": "包内存在不等于生产可见或美术达标"
+      },
+      "actual_native_pack": {
+        "state": "尚未充分验证，不能判未实施",
+        "latest_relevant_commit": null,
+        "whole_topic_accepted": false
+      },
+      "deployed": {
+        "state": "d1 v7已发布（不代表本主题全部验收）",
+        "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+        "evidence": "d1部署终态记录.json",
+        "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+      },
+      "Web_user": {
+        "web": "未取得该主题充分实景证据",
+        "user_acceptance": "待用户认可",
+        "latest_user_rejection_preserved": true
+      },
+      "evidence": [],
+      "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+    }
+  },
+  {
+    "canonical_id": "A037",
+    "topic": "设置开关关闭",
+    "sources": [
+      {
+        "source_key": "B27-15",
+        "batch": "B27",
+        "item": 15,
+        "message_id": "Sentinel_301864a8e740819189081d5907ebd62c",
+        "date": "2026-10-05T08:47:49.053161+00:00",
+        "text": "设置无法关闭：修触摸、关闭路由与遮罩，保证可关、可重开。",
+        "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+        "canonical_id": "A037"
+      }
+    ],
+    "latest_requirement": "设置无法关闭：修触摸、关闭路由与遮罩，保证可关、可重开。",
+    "status": "生产实现已定位，符合性待验",
+    "code": {
+      "level": "生产源码定位，未因存在而判通过",
+      "files": [
+        {
+          "path": "home/home_page.gd",
+          "exists": true,
+          "sha256": "5c3bdfaa2f1bf1eec06afc84bbb25353eb3112bf0d812bea87073b06d1a1edc4",
+          "frozen_pack_members": [
+            {
+              "path": "home/home_page.gd.remap",
+              "pack": "index.pck",
+              "bytes": 41,
+              "sha256": "7e57b6e93303e20ec7e0781f04cd0fd8a3ab9fcc319c0ef7a32b7517f90413f7"
+            },
+            {
+              "path": "home/home_page.gdc",
+              "pack": "index.pck",
+              "bytes": 19056,
+              "sha256": "ab0753fe11b2538d3d7e703b8318187e9a3ed926d7c475ba3eb546eeeb6b6259"
+            }
+          ]
+        }
+      ],
+      "function_names_observed": [
+        "_ready",
+        "set_viewport_size",
+        "_on_merit",
+        "pause_page",
+        "resume_page",
+        "_process",
+        "_world_pointer",
+        "_input",
+        "_begin_world_press",
+        "_notification",
+        "_exit_tree",
+        "set_input_enabled",
+        "_on_incense_save_warning",
+        "_show_pending_incense_warning",
+        "_on_intent",
+        "_on_note_decision",
+        "_route_note_anchor",
+        "show_route_waiting",
+        "update_route_waiting",
+        "show_route_error",
+        "clear_route_waiting",
+        "_dismiss_local_ui",
+        "_on_incense_tip",
+        "_handle_local_input",
+        "_capture_entry",
+        "_incense_entry_hit",
+        "play_entry_feedback",
+        "_advance_entry_bounce",
+        "_set_entry_transform",
+        "cancel_entry_feedback",
+        "_open_music_credits",
+        "_open_album_invitation",
+        "begin_drag_presentation",
+        "_lift_drag_member",
+        "_sync_drag_canvas",
+        "end_drag_presentation",
+        "begin_departure_actor",
+        "advance_departure_actor",
+        "finish_departure_actor",
+        "restore_returned_actor",
+        "record_audio_gesture"
+      ],
+      "production_callsite_caveat": "函数/包内路径已定位；此表不自动证明每个入口真的调用，必须运行记录补证"
+    },
+    "resource": {
+      "level": "尚未逐项建立精确PCK闭包",
+      "required_check": "源文件/实际导入/包内path与依赖/空res首次加载",
+      "literal_dependencies": [
+        {
+          "resource": "res://travel/travel_home_bridge.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_home_bridge.gd.remap",
+              "pack": "index.pck",
+              "bytes": 52,
+              "sha256": "6c25ddcc32d8513759a05354f09decd2e694cd7df2ac1558090a065598936ad9"
+            },
+            {
+              "path": "travel/travel_home_bridge.gdc",
+              "pack": "index.pck",
+              "bytes": 11589,
+              "sha256": "18c72a6bb50f0836dc2f4412e157537716927888d687dbd3f626dac4ac27faf5"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_interaction_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_interaction_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 71,
+              "sha256": "8ad2ce2ecde41cebbd558444aeeba371f6bfe06df219403c213e8e774905cae5"
+            },
+            {
+              "path": "home/interaction/home_interaction_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 26824,
+              "sha256": "c2a004320bab53d4e1d53dc6fcda92d1b5d63a711f7ac296a15a5e264dac1904"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_note.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_note.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "589a84b71471bb1bb6a7e8dc75100ad5d470603ef9651541eb5a467d223e6349"
+            },
+            {
+              "path": "home/interaction/home_note.gdc",
+              "pack": "index.pck",
+              "bytes": 6710,
+              "sha256": "ec68140e77d048a961c298bcf8b404e2ea7c665bd63fdb4550f426f14ffd6699"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/character_bubble_anchor.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/character_bubble_anchor.gd.remap",
+              "pack": "index.pck",
+              "bytes": 67,
+              "sha256": "ddebcdf96816d6fbbec96d64dfd6fee452d6aa2e3897ed0916baa8096f36188d"
+            },
+            {
+              "path": "home/interaction/character_bubble_anchor.gdc",
+              "pack": "index.pck",
+              "bytes": 2503,
+              "sha256": "f679fdcd299b4fb6cf353b44b9c52292c54a7b89588af96defae71c340417bb9"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/room_props_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/room_props_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "e57f8076276c545a6ae03e185da085646e4201576a81e90febc5ba3db8e372ca"
+            },
+            {
+              "path": "home/room_props_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 10925,
+              "sha256": "f0521171eea012e0850ede1016402a31aacf8e9be405f7626450f02ac2426597"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/home_music.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/home_music.gd.remap",
+              "pack": "index.pck",
+              "bytes": 48,
+              "sha256": "d91de0c028a4629c3c79060af121b9a57a543f6b07ea17a5093f0031227cabdd"
+            },
+            {
+              "path": "home/audio/home_music.gdc",
+              "pack": "index.pck",
+              "bytes": 5541,
+              "sha256": "85a874ae158ed0eacbfe0f819dc7c4852f88277ba323bd83de1bc0ef69527586"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/music_credits.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/music_credits.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "b1b042bcc9a5467c5ca082cc7c0866c61584734798038f71d668b98c2152b6ff"
+            },
+            {
+              "path": "home/audio/music_credits.gdc",
+              "pack": "index.pck",
+              "bytes": 4565,
+              "sha256": "3d6d4f1a41d378ece1f7ba49757988faee3f740a42ef72d41b99a184939102e0"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/flowers/persistent_vase.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/flowers/persistent_vase.gd.remap",
+              "pack": "index.pck",
+              "bytes": 55,
+              "sha256": "f516f4b813644dd5f1ec0f9172dcd3a63138b7ed5ef4c21c9e6b1500adfff8c1"
+            },
+            {
+              "path": "home/flowers/persistent_vase.gdc",
+              "pack": "index.pck",
+              "bytes": 10266,
+              "sha256": "1adad7f90a7247406402ca6094c9c2917e4c40ef10f1603a50b9c4af93b70ac7"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://shared_room_lighting/lighting_snapshot.gd",
+          "frozen_pack_members": [
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gd.remap",
+              "pack": "index.pck",
+              "bytes": 65,
+              "sha256": "5da9c7759ef08ea4628d382684438c4931ab8d5e9328e01dbf22448f6eab6d91"
+            },
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gdc",
+              "pack": "index.pck",
+              "bytes": 2886,
+              "sha256": "65157d478c8bbcaf03a2b1d67bc9a9cabdcef444c67ade18ad6aae372edfebbc"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/independent_incense.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/independent_incense.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "98dc6ae9849e110ae4921c6707537fec85caf91ede6fd8d3622c1a9c06e6298d"
+            },
+            {
+              "path": "home/independent_incense.gdc",
+              "pack": "index.pck",
+              "bytes": 20989,
+              "sha256": "9c65182b786ded68b4a7700dc0e8e7a7aebe113ba60472936b801838e57465b2"
+            }
+          ],
+          "literal_only": true
+        }
+      ],
+      "dependency_caveat": "只列直接字符串依赖和实际包inventory，变量/Art helper/动态路径须另查；不是完整闭包验证",
+      "entry_scene_pack": "house"
+    },
+    "runtime": {
+      "level": "按原子场景待重验",
+      "missing_gate": "触摸关闭/重开、遮罩不吞后续点击"
+    },
+    "release": {
+      "audited_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "user_screenshot_instance": "URL及实际commit未确认",
+      "published_evidence": "既有freeze标识；不代替实际用户实例",
+      "pack_root": "/tmp/travel_scene_formal_56193b7/native_packs"
+    },
+    "owner": "主工程",
+    "superseded": [],
+    "priority": "normal",
+    "user_visual_accepted": false,
+    "effective_scope_note": "最新同题修正覆盖相冲突旧要求；旧来源中不冲突的约束仍保留。不能只看最后一句删掉仍有效子项。",
+    "latest_source_id": "Sentinel_301864a8e740819189081d5907ebd62c",
+    "existing_test_coverage": {
+      "scripts": [
+        "build/checks/test_home_header.gd"
+      ],
+      "actual_scope": "真实开/连点/触摸关闭/取消/拖离/失焦/Escape/窄屏关闭及关闭后鱼点击",
+      "next_step": "复用到空res正式包；无需新建重复设置测试或新增永久偏好要求"
+    },
+    "baseline_status": {
+      "commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "status": "未验证",
+      "meaning": "当时发布审计结论；保留用户否定及旧缺陷，不作为当前排工字段"
+    },
+    "current_status": {
+      "summary": "生产实现已定位，符合性待验",
+      "implementation_assessment": "生产实现存在，完整符合性待核",
+      "code": {
+        "state": "已定位源码，未逐项审完",
+        "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+      },
+      "resource": {
+        "state": "已有来源/包定位，主题依赖闭包待验",
+        "not_claimed": "包内存在不等于生产可见或美术达标"
+      },
+      "actual_native_pack": {
+        "state": "尚未充分验证，不能判未实施",
+        "latest_relevant_commit": null,
+        "whole_topic_accepted": false
+      },
+      "deployed": {
+        "state": "d1 v7已发布（不代表本主题全部验收）",
+        "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+        "evidence": "d1部署终态记录.json",
+        "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+      },
+      "Web_user": {
+        "web": "未取得该主题充分实景证据",
+        "user_acceptance": "待用户认可",
+        "latest_user_rejection_preserved": true
+      },
+      "evidence": [],
+      "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+    }
+  },
+  {
+    "canonical_id": "A080",
+    "topic": "入口短弹后触发",
+    "sources": [
+      {
+        "source_key": "D16-16",
+        "batch": "D16",
+        "item": 16,
+        "message_id": null,
+        "date": "2026-10-06",
+        "text": "入口反馈：地图/包/照片/设置/燃香等短弹完再触发；日记翻开完再进入；触摸取消、连点及合成鼠标去重；灯即时光渐变",
+        "authority": "工程实现摘要，非用户逐字原文",
+        "path": "build/round5/验收与验证边界.md",
+        "canonical_id": "A080"
+      }
+    ],
+    "latest_requirement": "入口反馈：地图/包/照片/设置/燃香等短弹完再触发；日记翻开完再进入；触摸取消、连点及合成鼠标去重；灯即时光渐变",
+    "status": "生产实现已定位，符合性待验",
+    "code": {
+      "level": "生产源码定位，未因存在而判通过",
+      "files": [
+        {
+          "path": "home/home_page.gd",
+          "exists": true,
+          "sha256": "5c3bdfaa2f1bf1eec06afc84bbb25353eb3112bf0d812bea87073b06d1a1edc4",
+          "frozen_pack_members": [
+            {
+              "path": "home/home_page.gd.remap",
+              "pack": "index.pck",
+              "bytes": 41,
+              "sha256": "7e57b6e93303e20ec7e0781f04cd0fd8a3ab9fcc319c0ef7a32b7517f90413f7"
+            },
+            {
+              "path": "home/home_page.gdc",
+              "pack": "index.pck",
+              "bytes": 19056,
+              "sha256": "ab0753fe11b2538d3d7e703b8318187e9a3ed926d7c475ba3eb546eeeb6b6259"
+            }
+          ]
+        },
+        {
+          "path": "travel/travel_home_bridge.gd",
+          "exists": true,
+          "sha256": "dbb2f79cc61d1738e78d68b38e1c41495cac67d1a66dd197552e29baaecaee67",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_home_bridge.gd.remap",
+              "pack": "index.pck",
+              "bytes": 52,
+              "sha256": "6c25ddcc32d8513759a05354f09decd2e694cd7df2ac1558090a065598936ad9"
+            },
+            {
+              "path": "travel/travel_home_bridge.gdc",
+              "pack": "index.pck",
+              "bytes": 11589,
+              "sha256": "18c72a6bb50f0836dc2f4412e157537716927888d687dbd3f626dac4ac27faf5"
+            }
+          ]
+        }
+      ],
+      "function_names_observed": [
+        "_ready",
+        "set_viewport_size",
+        "_on_merit",
+        "pause_page",
+        "resume_page",
+        "_process",
+        "_world_pointer",
+        "_input",
+        "_begin_world_press",
+        "_notification",
+        "_exit_tree",
+        "set_input_enabled",
+        "_on_incense_save_warning",
+        "_show_pending_incense_warning",
+        "_on_intent",
+        "_on_note_decision",
+        "_route_note_anchor",
+        "show_route_waiting",
+        "update_route_waiting",
+        "show_route_error",
+        "clear_route_waiting",
+        "_dismiss_local_ui",
+        "_on_incense_tip",
+        "_handle_local_input",
+        "_capture_entry",
+        "_incense_entry_hit",
+        "play_entry_feedback",
+        "_advance_entry_bounce",
+        "_set_entry_transform",
+        "cancel_entry_feedback",
+        "_open_music_credits",
+        "_open_album_invitation",
+        "begin_drag_presentation",
+        "_lift_drag_member",
+        "_sync_drag_canvas",
+        "end_drag_presentation",
+        "begin_departure_actor",
+        "advance_departure_actor",
+        "finish_departure_actor",
+        "restore_returned_actor",
+        "record_audio_gesture",
+        "configure",
+        "_process",
+        "_on_changed",
+        "_sync_world",
+        "is_away",
+        "overlay_open",
+        "depart",
+        "intercept_intent",
+        "open_page",
+        "_show_loading_panel",
+        "_loading_action",
+        "report_loading_progress",
+        "_fit_loading_label",
+        "cancel_page_loading",
+        "_on_closed",
+        "suspend",
+        "resume",
+        "observe_merit",
+        "cancel_pointer",
+        "handle_input",
+        "_activate",
+        "_hit",
+        "_notification",
+        "_exit_tree"
+      ],
+      "production_callsite_caveat": "函数/包内路径已定位；此表不自动证明每个入口真的调用，必须运行记录补证"
+    },
+    "resource": {
+      "level": "尚未逐项建立精确PCK闭包",
+      "required_check": "源文件/实际导入/包内path与依赖/空res首次加载",
+      "literal_dependencies": [
+        {
+          "resource": "res://travel/travel_home_bridge.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_home_bridge.gd.remap",
+              "pack": "index.pck",
+              "bytes": 52,
+              "sha256": "6c25ddcc32d8513759a05354f09decd2e694cd7df2ac1558090a065598936ad9"
+            },
+            {
+              "path": "travel/travel_home_bridge.gdc",
+              "pack": "index.pck",
+              "bytes": 11589,
+              "sha256": "18c72a6bb50f0836dc2f4412e157537716927888d687dbd3f626dac4ac27faf5"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_interaction_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_interaction_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 71,
+              "sha256": "8ad2ce2ecde41cebbd558444aeeba371f6bfe06df219403c213e8e774905cae5"
+            },
+            {
+              "path": "home/interaction/home_interaction_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 26824,
+              "sha256": "c2a004320bab53d4e1d53dc6fcda92d1b5d63a711f7ac296a15a5e264dac1904"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/home_note.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/home_note.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "589a84b71471bb1bb6a7e8dc75100ad5d470603ef9651541eb5a467d223e6349"
+            },
+            {
+              "path": "home/interaction/home_note.gdc",
+              "pack": "index.pck",
+              "bytes": 6710,
+              "sha256": "ec68140e77d048a961c298bcf8b404e2ea7c665bd63fdb4550f426f14ffd6699"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/interaction/character_bubble_anchor.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/interaction/character_bubble_anchor.gd.remap",
+              "pack": "index.pck",
+              "bytes": 67,
+              "sha256": "ddebcdf96816d6fbbec96d64dfd6fee452d6aa2e3897ed0916baa8096f36188d"
+            },
+            {
+              "path": "home/interaction/character_bubble_anchor.gdc",
+              "pack": "index.pck",
+              "bytes": 2503,
+              "sha256": "f679fdcd299b4fb6cf353b44b9c52292c54a7b89588af96defae71c340417bb9"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/room_props_controller.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/room_props_controller.gd.remap",
+              "pack": "index.pck",
+              "bytes": 53,
+              "sha256": "e57f8076276c545a6ae03e185da085646e4201576a81e90febc5ba3db8e372ca"
+            },
+            {
+              "path": "home/room_props_controller.gdc",
+              "pack": "index.pck",
+              "bytes": 10925,
+              "sha256": "f0521171eea012e0850ede1016402a31aacf8e9be405f7626450f02ac2426597"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/home_music.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/home_music.gd.remap",
+              "pack": "index.pck",
+              "bytes": 48,
+              "sha256": "d91de0c028a4629c3c79060af121b9a57a543f6b07ea17a5093f0031227cabdd"
+            },
+            {
+              "path": "home/audio/home_music.gdc",
+              "pack": "index.pck",
+              "bytes": 5541,
+              "sha256": "85a874ae158ed0eacbfe0f819dc7c4852f88277ba323bd83de1bc0ef69527586"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/audio/music_credits.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/audio/music_credits.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "b1b042bcc9a5467c5ca082cc7c0866c61584734798038f71d668b98c2152b6ff"
+            },
+            {
+              "path": "home/audio/music_credits.gdc",
+              "pack": "index.pck",
+              "bytes": 4565,
+              "sha256": "3d6d4f1a41d378ece1f7ba49757988faee3f740a42ef72d41b99a184939102e0"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/flowers/persistent_vase.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/flowers/persistent_vase.gd.remap",
+              "pack": "index.pck",
+              "bytes": 55,
+              "sha256": "f516f4b813644dd5f1ec0f9172dcd3a63138b7ed5ef4c21c9e6b1500adfff8c1"
+            },
+            {
+              "path": "home/flowers/persistent_vase.gdc",
+              "pack": "index.pck",
+              "bytes": 10266,
+              "sha256": "1adad7f90a7247406402ca6094c9c2917e4c40ef10f1603a50b9c4af93b70ac7"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://shared_room_lighting/lighting_snapshot.gd",
+          "frozen_pack_members": [
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gd.remap",
+              "pack": "index.pck",
+              "bytes": 65,
+              "sha256": "5da9c7759ef08ea4628d382684438c4931ab8d5e9328e01dbf22448f6eab6d91"
+            },
+            {
+              "path": "shared_room_lighting/lighting_snapshot.gdc",
+              "pack": "index.pck",
+              "bytes": 2886,
+              "sha256": "65157d478c8bbcaf03a2b1d67bc9a9cabdcef444c67ade18ad6aae372edfebbc"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://home/independent_incense.gd",
+          "frozen_pack_members": [
+            {
+              "path": "home/independent_incense.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "98dc6ae9849e110ae4921c6707537fec85caf91ede6fd8d3622c1a9c06e6298d"
+            },
+            {
+              "path": "home/independent_incense.gdc",
+              "pack": "index.pck",
+              "bytes": 20989,
+              "sha256": "9c65182b786ded68b4a7700dc0e8e7a7aebe113ba60472936b801838e57465b2"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://travel/travel_service.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_service.gd.remap",
+              "pack": "index.pck",
+              "bytes": 48,
+              "sha256": "50f1f4a5ffe5ab027cde120f95b0930feaf34d7725e4327168ab2d76fd2bf5b5"
+            },
+            {
+              "path": "travel/travel_service.gdc",
+              "pack": "index.pck",
+              "bytes": 5882,
+              "sha256": "7bd6f154943a830b828ec46ad313dcfecccb3b1f6d8c62e320403b039dfe0055"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://travel/travel_home_props.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_home_props.gd.remap",
+              "pack": "index.pck",
+              "bytes": 51,
+              "sha256": "84feacf3e485807c5cd47e970894ba0c662520bbdc7d1b38ff1242398e6e287d"
+            },
+            {
+              "path": "travel/travel_home_props.gdc",
+              "pack": "index.pck",
+              "bytes": 15582,
+              "sha256": "24c87bcb556862ba2391def59b5075feb620a3cda6825d35c7e8e009d6cb3317"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://travel/travel_page.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_page.gd.remap",
+              "pack": "index.pck",
+              "bytes": 45,
+              "sha256": "ea9624c48a4dc5f774566b9418b72f846e38406e4486e50e3a7a1943ae92658b"
+            },
+            {
+              "path": "travel/travel_page.gdc",
+              "pack": "index.pck",
+              "bytes": 26957,
+              "sha256": "a0a63421af23320d6e0f62a0b568826385e46cf3d5f0fb26abdf8aaccd7b3d28"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://travel/travel_art.gd",
+          "frozen_pack_members": [
+            {
+              "path": "travel/travel_art.gd.remap",
+              "pack": "index.pck",
+              "bytes": 44,
+              "sha256": "29833b38deb1ba054fa0339a15fbcf96c28cc4f12f3e922dcf2e68b45aec0aea"
+            },
+            {
+              "path": "travel/travel_art.gdc",
+              "pack": "index.pck",
+              "bytes": 2503,
+              "sha256": "ed3d27cfb8fa82d190fd453f3fb08cc068542385c6ae82dcbe849dc88ad43dcd"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://addons/travel_core/ui/speech_bubble_shape.gd",
+          "frozen_pack_members": [
+            {
+              "path": "addons/travel_core/ui/speech_bubble_shape.gd.remap",
+              "pack": "index.pck",
+              "bytes": 68,
+              "sha256": "6fa8ea3501a02631e946f8c26bd7daa426dd73b0dfc34fbd0ab37eb1e396e374"
+            },
+            {
+              "path": "addons/travel_core/ui/speech_bubble_shape.gdc",
+              "pack": "index.pck",
+              "bytes": 3388,
+              "sha256": "ef9d7f3af0f4380198af737d454b6a4d28da31ff4da40f88c18ea2413c035887"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://travel/assets/treasure_hit.res",
+          "frozen_pack_members": [
+            {
+              "path": "travel/assets/treasure_hit.res",
+              "pack": "packs/house.pck",
+              "bytes": 33287,
+              "sha256": "6a54aa324573361a959b13bf72303e153e28b988b5ab7d9875860235e1b6b0cc"
+            }
+          ],
+          "literal_only": true
+        },
+        {
+          "resource": "res://assets/bootstrap_ui.ttf",
+          "frozen_pack_members": [
+            {
+              "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+              "pack": "index.pck",
+              "bytes": 228396,
+              "sha256": "c2f29d066c7486d74cf76b45b5e8d08cb4345bfc1b361bbc0861e960b89ec5b1"
+            },
+            {
+              "path": "assets/bootstrap_ui.ttf.import",
+              "pack": "index.pck",
+              "bytes": 769,
+              "sha256": "af60089c2bca85f9b36da51ec6b45b48d61ce543bac7e8a65b16dedc8a426072"
+            }
+          ],
+          "literal_only": true
+        }
+      ],
+      "dependency_caveat": "只列直接字符串依赖和实际包inventory，变量/Art helper/动态路径须另查；不是完整闭包验证",
+      "entry_scene_pack": "house"
+    },
+    "runtime": {
+      "level": "按原子场景待重验",
+      "missing_gate": "照片/包/地图/设置/香真实输入，灯例外即时响应"
+    },
+    "release": {
+      "audited_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "user_screenshot_instance": "URL及实际commit未确认",
+      "published_evidence": "既有freeze标识；不代替实际用户实例",
+      "pack_root": "/tmp/travel_scene_formal_56193b7/native_packs"
+    },
+    "owner": "主工程",
+    "superseded": [],
+    "priority": "normal",
+    "user_visual_accepted": false,
+    "effective_scope_note": "最新同题修正覆盖相冲突旧要求；旧来源中不冲突的约束仍保留。不能只看最后一句删掉仍有效子项。",
+    "latest_source_id": null,
+    "baseline_status": {
+      "commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+      "status": "未验证",
+      "meaning": "当时发布审计结论；保留用户否定及旧缺陷，不作为当前排工字段"
+    },
+    "current_status": {
+      "summary": "生产实现已定位，符合性待验",
+      "implementation_assessment": "生产实现存在，完整符合性待核",
+      "code": {
+        "state": "已定位源码，未逐项审完",
+        "reference": "原code字段为561定位；后续修复按证据列表与正式包成员补充"
+      },
+      "resource": {
+        "state": "已有来源/包定位，主题依赖闭包待验",
+        "not_claimed": "包内存在不等于生产可见或美术达标"
+      },
+      "actual_native_pack": {
+        "state": "尚未充分验证，不能判未实施",
+        "latest_relevant_commit": null,
+        "whole_topic_accepted": false
+      },
+      "deployed": {
+        "state": "d1 v7已发布（不代表本主题全部验收）",
+        "basis": "parent确认终态2026-10-06T20:27:54Z，经主工程转交",
+        "evidence": "d1部署终态记录.json",
+        "url": "https://travelling-woodfish-home-loading.wujiankai886451590.chatgpt.site/home-grounding-d1bfcaa/"
+      },
+      "Web_user": {
+        "web": "未取得该主题充分实景证据",
+        "user_acceptance": "待用户认可",
+        "latest_user_rejection_preserved": true
+      },
+      "evidence": [],
+      "next_action": "只补尚缺验收；发现具体不符合再修，禁止按561旧未做字段重复实现"
+    }
+  }
+]

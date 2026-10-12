@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check": "real service starts trip",
+      "pass": true
+    },
+    {
+      "check": "actual first encounter matches uploaded offer result",
+      "pass": true
+    },
+    {
+      "check": "real marker pointer opens choice and pauses route",
+      "pass": true
+    },
+    {
+      "check": "real choice pointer settles and closes encounter",
+      "pass": true
+    },
+    {
+      "check": "actual uploaded result string emitted",
+      "pass": true
+    },
+    {
+      "check": "manual settlement once and route resumes",
+      "pass": true
+    },
+    {
+      "check": "actual offer spends merit once",
+      "pass": true
+    },
+    {
+      "check": "standard: baseline reproduces result without a paper parent",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "scope": "Exact R9 formal asset packs with explicitly declared optional single-script candidate. Real Native GL pointer events and service/model behavior; not grouped final pack, WebGL2, phone or user visual acceptance.",
+  "screenshots": [
+    "manual_choice",
+    "result_standard"
+  ]
+}

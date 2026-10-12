@@ -66,11 +66,12 @@
     {
       "id": "M03",
       "description": "loading/login/comic transitions and readiness",
-      "status": "partial_entry_flow_actual_browser_observed_full_parity_pending",
+      "status": "independent_complete_loading_first_draw_before_gameplay_verified_full_entry_and_device_acceptance_pending",
       "evidence": [
         "M03-runtime-foundation.json",
         "M03-entry-flow.json",
-        "M03-audio-flow.json"
+        "M03-audio-flow.json",
+        "M20-final-local-validation.json"
       ]
     },
     {
@@ -196,14 +197,18 @@
     {
       "id": "M10",
       "description": "WeChat-only reproducible packaging and remote source readback",
-      "status": "partial_v7_source_complete_and_assets_reduced_home_budget_failed_and_enforced_device_CDN_pending",
+      "status": "native_wechat_main_total_home_static_budgets_passed_engine_plugin_enabled_physical_acceptance_pending",
       "evidence": [
         "M10-wechat-packaging-flow.json",
         "M10-loading-asset-coverage.json",
         "M10-wechat-v5-flow.json",
         "M10-home-budget-flow.json",
-        "M09-opaque-png-transport.json"
-      ]
+        "M09-opaque-png-transport.json",
+        "M20-final-local-validation.json",
+        "wechat-loading-isolated-v5-package.json",
+        "M20-devtools-repeat-start-wait.json"
+      ],
+      "previousStatus": "partial_v7_source_complete_and_assets_reduced_home_budget_failed_and_enforced_device_CDN_pending"
     },
     {
       "id": "M11",
@@ -212,11 +217,27 @@
       "evidence": [
         "M11-six-page-function-matrix.json"
       ]
+    },
+    {
+      "id": "M21",
+      "description": "Retire sibling Godot directory and maintain current Cocos documents and source dependencies",
+      "status": "migration_ready_retirement_validation_pending",
+      "evidence": [
+        "../records/M21-document-transfer.json",
+        "../archives/godot-history.json"
+      ]
     }
   ],
   "requirements": "requirements.json",
   "completion_policy": "Each explicit requirement needs real current evidence. Source/typecheck/build does not prove rendered, interactive or device fidelity.",
   "qualityGoal": "User authorized 2026-10-11: preserve product/art intent while improving demonstrated performance, visual, logic and interaction defects; verify changes against original and retain pending acceptance.",
   "firstVersionScope": "2026-10-11 clarification: all original functions, navigation, page elements, layout and interactions remain 1:1; only numerical pixel-difference polishing is deferred. No simplified MVP acceptance.",
-  "currentPriority": "Six-page full-entry browser candidate is available for user review. Complete remaining functional/input/failure cases, Home cold-download budget and WeChat runtime/device validation. Numerical pixel polishing remains deferred; no function/layout reduction."
+  "currentPriority": "Current Cocos 3.8.8 native WeChat candidate passes static budgets and 300 aggregate regressions. Complete physical startup, touch, haptics and visual acceptance; investigate hot-recompile and mipmap issues. Historical Godot source is archived.",
+  "currentDocuments": {
+    "requirements": "games/xiaoyu-cocos/docs/requirements.json",
+    "gameArchitecture": "games/xiaoyu-cocos/docs/architecture.md",
+    "frameworkArchitecture": "engines/travel-core/docs/architecture.md",
+    "packaging": "builds/README.md"
+  },
+  "retiredSource": "migration/archives/godot-history.json"
 }

@@ -1,0 +1,87 @@
+{
+  "method": "built-in image_gen precise-object-edit clean backdrop and transparent background-extraction botanical sprites; inspected actual generated pixels; Pillow used only for atlas packing/size fitting",
+  "source_files": {
+    "/workspace/scratch/3f82ff2b3f81/generated_images/exec-f47229b7-21b2-4db7-9f4e-927e3bffc2ca.png": "1897f47f93cc2b0c9b685e48b44d6840809553a946c938ae38f87120a4a5a742",
+    "/workspace/scratch/3f82ff2b3f81/generated_images/exec-a8827e39-0f1a-40f1-a34e-d89881d745a6.png": "233529971648d752a6b6768276ff8ca624793eb45b9439cdf52cafc4294b393a"
+  },
+  "atlas_before_after": [
+    [
+      1280,
+      1280
+    ],
+    [
+      1280,
+      1280
+    ]
+  ],
+  "background_before_after": [
+    [
+      941,
+      1672
+    ],
+    [
+      941,
+      1672
+    ]
+  ],
+  "new_resource_entries": 0,
+  "additional_decoded_pixel_bytes": 0,
+  "vines": [
+    {
+      "region": [
+        510,
+        872,
+        250,
+        375
+      ],
+      "source_crop_size": [
+        418,
+        627
+      ],
+      "display_max": [
+        190,
+        360
+      ]
+    },
+    {
+      "region": [
+        766,
+        872,
+        250,
+        375
+      ],
+      "source_crop_size": [
+        418,
+        627
+      ],
+      "display_max": [
+        190,
+        360
+      ]
+    },
+    {
+      "region": [
+        1022,
+        872,
+        250,
+        385
+      ],
+      "source_crop_size": [
+        406,
+        625
+      ],
+      "display_max": [
+        190,
+        360
+      ]
+    }
+  ],
+  "import_pixels": "verified official Godot 4.5.2 lossless RGBA equality; pixel_import.json",
+  "pack": "photo.pck, lazy loaded on entering photo wall; no additional Home entry dependency",
+  "mips": "No mip allocation added; fixed 1280x1280 atlas and 941x1672 backdrop retain existing decoded budget",
+  "inspection": "Actual group v2 and v3 rendered frames inspected; no baked plant duplicate or atlas bleed. Display at DPR2 upscales authored leaf crop; hardware/mobile sharpness acceptance pending.",
+  "persisted_source_files": {
+    "design/photo_wall/round7_sources/clean_wall.png": "1897f47f93cc2b0c9b685e48b44d6840809553a946c938ae38f87120a4a5a742",
+    "design/photo_wall/round7_sources/transparent_vines.png": "233529971648d752a6b6768276ff8ca624793eb45b9439cdf52cafc4294b393a"
+  }
+}

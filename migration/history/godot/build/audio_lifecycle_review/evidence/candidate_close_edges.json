@@ -1,0 +1,411 @@
+{
+  "checks": [
+    {
+      "check": "TEST ONLY single-script override mounted",
+      "elapsed": 0.0327843333333333,
+      "pass": true
+    },
+    {
+      "check": "cold Home preparation terminates",
+      "elapsed": 2.550971,
+      "pass": true
+    },
+    {
+      "check": "actual router owns active Home",
+      "elapsed": 3.10627011111112,
+      "pass": true
+    },
+    {
+      "check": "cold Home has no delayed page packs",
+      "elapsed": 3.10627011111112,
+      "pass": true
+    },
+    {
+      "check": "real photo failure reaches retry/cancel UI",
+      "elapsed": 3.46666666666669,
+      "pass": true
+    },
+    {
+      "check": "failure cancellation preserves Home sound/input ownership",
+      "elapsed": 3.95000000000003,
+      "pass": true
+    },
+    {
+      "check": "actual photo load request is delayed",
+      "elapsed": 4.23510666666669,
+      "pass": true
+    },
+    {
+      "check": "real loading cancel preserves Home sound/input ownership",
+      "elapsed": 4.72105311111113,
+      "pass": true
+    },
+    {
+      "check": "late photo load cannot reopen canceled page",
+      "elapsed": 4.85555555555558,
+      "pass": true
+    },
+    {
+      "check": "warm retry opens photo page",
+      "elapsed": 5.17641866666669,
+      "pass": true
+    },
+    {
+      "check": "ordinary Esc restores active Home effects",
+      "elapsed": 5.21386133333336,
+      "pass": true
+    },
+    {
+      "check": "photo opens before focus/escape path",
+      "elapsed": 5.5003586666667,
+      "pass": true
+    },
+    {
+      "check": "focus recovery plus Esc restores effects",
+      "elapsed": 5.5421876666667,
+      "pass": true
+    },
+    {
+      "check": "music setting is off before photo lifecycle",
+      "elapsed": 5.8494047619048,
+      "pass": true
+    },
+    {
+      "check": "photo opens while music is off",
+      "elapsed": 6.13412698412703,
+      "pass": true
+    },
+    {
+      "check": "return closes photo with music off",
+      "elapsed": 6.13412698412703,
+      "pass": true
+    },
+    {
+      "check": "photo close preserves existing music-only setting and restores independent effects",
+      "elapsed": 6.13412698412703,
+      "pass": true
+    },
+    {
+      "check": "photo opens before background cancellation",
+      "elapsed": 6.41884920634926,
+      "pass": true
+    },
+    {
+      "check": "production photo cancel while unfocused cannot reenable sound",
+      "elapsed": 6.44662698412704,
+      "pass": true
+    },
+    {
+      "check": "returning focus after background cancel restores eligible Home effects",
+      "elapsed": 6.47440476190482,
+      "pass": true
+    },
+    {
+      "check": "photo opens before app-pause/resume path",
+      "elapsed": 6.75912698412705,
+      "pass": true
+    },
+    {
+      "check": "app pause leaves shared music paused",
+      "elapsed": 6.75912698412705,
+      "pass": true
+    },
+    {
+      "check": "foreground close after app resume returns Home",
+      "elapsed": 6.75912698412705,
+      "pass": true
+    },
+    {
+      "check": "app resume/close restores effects while preserving disabled music",
+      "elapsed": 6.75912698412705,
+      "pass": true
+    },
+    {
+      "check": "App teardown frees page caches, both actual music players and duplicated streams",
+      "elapsed": 6.84305555555562,
+      "pass": true
+    }
+  ],
+  "cmdline": [
+    "--script",
+    "/workspace/scratch/3f82ff2b3f81/audio_lifecycle_followup/photo_close_edges_actual_packs.gd"
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "pack_metrics": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 1,
+      "invalid_callbacks": 0,
+      "mounts": 5,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 1,
+      "stale_callbacks": 0,
+      "starts": 7,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "photo"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 231470,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3593,
+          "loaded": 943108,
+          "mount_usec": 300,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/entry.pck",
+          "request_id": "p29964109194-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1622327,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8511,
+          "loaded": 2313888,
+          "mount_usec": 267,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/comic.pck",
+          "request_id": "p29964109194-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1628962,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4178,
+          "loaded": 1107208,
+          "mount_usec": 251,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/exterior.pck",
+          "request_id": "p29964109194-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1687485,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 57450,
+          "loaded": 17019800,
+          "mount_usec": 564,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/house.pck",
+          "request_id": "p29964109194-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 3756284,
+        "details": {
+          "error": "missing_pack"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "retry"
+      },
+      {
+        "at_usec": 3762059,
+        "details": {
+          "error": "missing_pack"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "failed"
+      },
+      {
+        "at_usec": 5045012,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 18777,
+          "loaded": 2858372,
+          "mount_usec": 456,
+          "pack_id": "photo",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/photo.pck",
+          "request_id": "p29964109194-e1-r7",
+          "state": "ready",
+          "total": 2858372,
+          "verified_sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "root_input_events": 31,
+  "samples": [
+    {
+      "elapsed": 6.75912698412705,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103783860599,
+        "day_stream": -9223371933104469643,
+        "music": 103699974516,
+        "night_bytes": 3339071,
+        "night_player": 103817415033,
+        "night_stream": -9223371933087692426
+      },
+      "knock_enabled": true,
+      "label": "focused_close_edges",
+      "music": {
+        "application_paused": false,
+        "can_play": false,
+        "configured": true,
+        "day_gain": 0.0,
+        "day_paused": true,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": false,
+        "envelope": 0.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": true,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 4,
+        "resume_write_count": 2,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 500,
+      "objects": 2749.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96871647288,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96905201722,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": 0
+        },
+        {
+          "id": 103783860599,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": true,
+          "playback": -9223371921310087700,
+          "playing": false,
+          "polyphony": 1,
+          "stream": -9223371933104469643
+        },
+        {
+          "id": 103817415033,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": true,
+          "playback": -9223371921293310487,
+          "playing": false,
+          "polyphony": 1,
+          "stream": -9223371933087692426
+        }
+      ],
+      "resources": 172.0,
+      "static_bytes": 205952734.0
+    }
+  ],
+  "scope": "Native actual AudioStreamPlayer state/identity and root input; injected application notifications; no Web audio unlock, actual listening, OS focus event, or browser memory evidence.",
+  "teardown": {
+    "app_freed": true,
+    "day_player_freed": true,
+    "day_stream_freed": true,
+    "home_freed": true,
+    "music_freed": true,
+    "night_player_freed": true,
+    "night_stream_freed": true,
+    "photo_freed": true
+  }
+}

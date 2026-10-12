@@ -1,0 +1,20 @@
+{
+  "item": "M21.01",
+  "initialWholeDiffCheckExitCode": 2,
+  "historicalFilesWithWhitespace": [
+    "games/xiaoyu-cocos/source/fonts/licenses/LXGWWenKai-OFL.txt",
+    "games/xiaoyu-cocos/source/fonts/licenses/MaShanZheng-OFL.txt",
+    "migration/history/godot/build/first_draw_profile/engine_help.txt",
+    "migration/history/godot/build/followup_20261006/history_matrix_current_status.csv",
+    "migration/history/godot/build/fonts/licenses/LXGWWenKai-OFL.txt",
+    "migration/history/godot/build/fonts/licenses/MaShanZheng-OFL.txt",
+    "migration/history/godot/build/performance_r9/final_5c37fb3/entry_rows.csv",
+    "migration/history/godot/build/performance_r9/final_5c37fb3/frame_rows.csv",
+    "migration/history/godot/build/round8_20261007/ACTUAL_DIFF.md",
+    "migration/history/godot/build/startup_ready_review/static/frozen_index_sanitized.html.txt"
+  ],
+  "cause": "Copied original CSV CRLF, historical console text, and original license paragraphs include preexisting trailing whitespace. Preserve immutable raw bytes instead of rewriting history or licenses.",
+  "currentEditedFilesDiffCheckPassed": true,
+  "all1409IndexedBlobsMatchVerifiedOriginalCopies": true,
+  "rawLog": "migration/reviews/M21-historical-whitespace-check.log"
+}

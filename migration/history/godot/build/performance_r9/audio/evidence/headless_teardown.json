@@ -1,0 +1,150 @@
+{
+  "case": "teardown",
+  "checks": [
+    {
+      "label": "explicit source candidate is active",
+      "pass": true
+    },
+    {
+      "label": "App owns normal close handling",
+      "pass": true
+    },
+    {
+      "label": "real App reaches login",
+      "pass": true
+    },
+    {
+      "label": "real App reaches comic",
+      "pass": true
+    },
+    {
+      "label": "real App reaches Home",
+      "pass": true
+    },
+    {
+      "label": "valid input started exactly two shared streams once",
+      "pass": true
+    },
+    {
+      "label": "nonquit App teardown restores preexisting auto-accept false",
+      "pass": true
+    },
+    {
+      "label": "explicit App free retires all shared audio nodes streams and playbacks",
+      "pass": true
+    },
+    {
+      "label": "App free leaves no orphan nodes",
+      "pass": true
+    },
+    {
+      "label": "explicit source candidate is active",
+      "pass": true
+    },
+    {
+      "label": "App owns normal close handling",
+      "pass": true
+    },
+    {
+      "label": "real App reaches login",
+      "pass": true
+    },
+    {
+      "label": "real App reaches comic",
+      "pass": true
+    },
+    {
+      "label": "real App reaches Home",
+      "pass": true
+    },
+    {
+      "label": "valid input started exactly two shared streams once",
+      "pass": true
+    },
+    {
+      "label": "nonquit App teardown restores preexisting auto-accept false",
+      "pass": true
+    },
+    {
+      "label": "explicit App free retires all shared audio nodes streams and playbacks",
+      "pass": true
+    },
+    {
+      "label": "App free leaves no orphan nodes",
+      "pass": true
+    },
+    {
+      "label": "explicit source candidate is active",
+      "pass": true
+    },
+    {
+      "label": "App owns normal close handling",
+      "pass": true
+    },
+    {
+      "label": "real App reaches login",
+      "pass": true
+    },
+    {
+      "label": "real App reaches comic",
+      "pass": true
+    },
+    {
+      "label": "real App reaches Home",
+      "pass": true
+    },
+    {
+      "label": "valid input started exactly two shared streams once",
+      "pass": true
+    },
+    {
+      "label": "nonquit App teardown restores preexisting auto-accept false",
+      "pass": true
+    },
+    {
+      "label": "explicit App free retires all shared audio nodes streams and playbacks",
+      "pass": true
+    },
+    {
+      "label": "App free leaves no orphan nodes",
+      "pass": true
+    }
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "scope": "Explicit candidate raw-App remap over exact 6327 formal PCK set. Headless notifications are injected; os_close alone uses real X11 WM_DELETE_WINDOW. No Web/hardware/listening claim.",
+  "shutdown": {
+
+  },
+  "teardown_observations": [
+    {
+      "cycle": 1,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    },
+    {
+      "cycle": 2,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    },
+    {
+      "cycle": 3,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    }
+  ]
+}

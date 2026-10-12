@@ -1,0 +1,5 @@
+{
+  "cause": "Mistaken empty --overlay parsed as current directory, so PCK load failed and phase expectations did not apply. Source candidate and formal packs unchanged. A later command could not see the old runner PID from its separate process namespace; no signal was sent by that command. Runner owns a 300-second timeout.",
+  "engine_pid_in_original_namespace": 5,
+  "termination": "Original exec session interrupted by Ctrl-C; tool returned exit_code 130. No retry of a signal to an unverified PID."
+}

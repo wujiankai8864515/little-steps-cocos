@@ -1,0 +1,172 @@
+{
+  "checks": [
+    {
+      "check": "actual App resource spec admits atlas plus procedural PCM reservation",
+      "pass": true
+    },
+    {
+      "check": "existing Home settings button toggles the actual shared music controller",
+      "pass": true
+    },
+    {
+      "check": "map bell inherits the actual muted Home setting",
+      "pass": true
+    },
+    {
+      "check": "actual shared gesture and enabled music unlock bell",
+      "pass": true
+    },
+    {
+      "check": "production bridge binds App/Home/Travel to exactly one clock",
+      "pass": true
+    },
+    {
+      "check": "opening map does not pause Home/App clock owner",
+      "pass": true
+    },
+    {
+      "check": "3600 actual App process ticks advance one 60-second cycle, never double",
+      "pass": true
+    },
+    {
+      "check": "cycle returns to same dawn after 60 active seconds",
+      "pass": true
+    },
+    {
+      "check": "Home and Travel hours match on every tested frame",
+      "pass": true
+    },
+    {
+      "check": "App background notification freezes shared clock and scene together",
+      "pass": true
+    },
+    {
+      "check": "App resume skips first possibly huge frame",
+      "pass": true
+    },
+    {
+      "check": "following frame advances normally after resume",
+      "pass": true
+    },
+    {
+      "check": "map cancel releases scene before Home return",
+      "pass": true
+    },
+    {
+      "check": "returning Home continues the same clock",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "samples": [
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 4.00888888888889,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 4.00888888888889,
+      "active_seconds": 0.0166666666666667,
+      "frame": 0
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 6.67555555555544,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 6.67555555555544,
+      "active_seconds": 5.01666666666665,
+      "frame": 300
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 9.34222222222225,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 9.34222222222225,
+      "active_seconds": 10.0166666666667,
+      "frame": 600
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 12.0088888888893,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 12.0088888888893,
+      "active_seconds": 15.016666666667,
+      "frame": 900
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 14.675555555556,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 14.675555555556,
+      "active_seconds": 20.0166666666668,
+      "frame": 1200
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 17.3422222222228,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 17.3422222222228,
+      "active_seconds": 25.0166666666665,
+      "frame": 1500
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 20.0044444444449,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 20.0044444444449,
+      "active_seconds": 30.0166666666662,
+      "frame": 1800
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 21.3377777777785,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 21.3377777777785,
+      "active_seconds": 35.016666666666,
+      "frame": 2100
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 22.671111111112,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 22.671111111112,
+      "active_seconds": 40.0166666666657,
+      "frame": 2400
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 0.00444444444553938,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 0.00444444444553938,
+      "active_seconds": 45.0166666666654,
+      "frame": 2700
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 1.33777777777908,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 1.33777777777908,
+      "active_seconds": 50.0166666666651,
+      "frame": 3000
+    },
+    {
+      "App_clock_id": -9223372008367061646,
+      "Home_clock_id": -9223372008367061646,
+      "Home_hour": 2.67111111111262,
+      "Travel_clock_id": -9223372008367061646,
+      "Travel_hour": 2.67111111111262,
+      "active_seconds": 55.0166666666648,
+      "frame": 3300
+    }
+  ],
+  "scope": "Production App _process and Home/bridge component fixture. Simulated fixed timesteps; distinct from real-time hardware or browser clock measurement."
+}

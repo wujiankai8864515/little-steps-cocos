@@ -1,0 +1,18 @@
+{
+  "requirement": "R8-04",
+  "shared_component": "home/feedback/prompt_sparkles.gd",
+  "call_sites": [
+    "Home enquiry/incense/journal",
+    "photo select-clip guidance and change-batch",
+    "wardrobe two selectable fabrics",
+    "collection actionable footer, enabled prev/next and archive"
+  ],
+  "existing_equivalent_retained": [
+    "Diary review uses same diamond texture with enabled-state ReviewInkCue gating; no second duplicate layer"
+  ],
+  "excluded": [
+    "Ordinary body text/item names/station signs",
+    "Disabled navigation/archive controls"
+  ],
+  "evidence": "154 explicit-candidate checks with real collection entry and multi-screen frames; not formal group or Web acceptance"
+}

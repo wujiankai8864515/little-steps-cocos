@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "check": "original session starts durable trip",
+      "passed": true
+    },
+    {
+      "check": "original session persists token1",
+      "passed": true
+    },
+    {
+      "check": "configure release failure retains exact retry intent",
+      "passed": true
+    },
+    {
+      "check": "replacement first releases old abandoned choice",
+      "passed": true
+    },
+    {
+      "check": "replacement acquires newer choice",
+      "passed": true
+    },
+    {
+      "check": "replacement has distinct durable token2",
+      "passed": true
+    },
+    {
+      "check": "first retry notices newer revision",
+      "passed": true
+    },
+    {
+      "check": "stale recovery adopts replacement token",
+      "passed": true
+    },
+    {
+      "check": "second recovery retry cannot release replacement live choice",
+      "passed": true
+    },
+    {
+      "check": "new choice keeps manual event and owner identity",
+      "passed": true
+    },
+    {
+      "check": "obsolete recovery intent clears after reconciliation",
+      "passed": true
+    },
+    {
+      "check": "second trip fixture persists",
+      "passed": true
+    },
+    {
+      "check": "second fixture has abandoned choice",
+      "passed": true
+    },
+    {
+      "check": "isolated release initially fails",
+      "passed": true
+    },
+    {
+      "check": "same original token release retries successfully",
+      "passed": true
+    },
+    {
+      "check": "abandoned original choice returns to running",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "scope": "Native shared durable store, injected one failed recovery write; no Web cross-tab claim"
+}

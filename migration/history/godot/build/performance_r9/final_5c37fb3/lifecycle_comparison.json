@@ -1,0 +1,4419 @@
+{
+  "scope": "Exact supplied PCK native headless lifecycle; same fixture, one warmup plus 20 measured page loops. No production edits. No browser/GPU/target-device claims.",
+  "verdict": "NATIVE_RESOURCE_GATE_AND_TEARDOWN_BOUNDED; OBJECT_GROWTH_RESOLVED_TO_DEFAULT_BOUNDED_TEXT_LRU_AND_NATURAL_FLOWERS; NO_UNBOUNDED_GROWTH_OBSERVED_IN_THIS_SCOPE; RSS_OBSERVED_FLAT",
+  "fixture_sha256": "78f697284ac00fc3979f715d298e4375bf7822951fc9d900b489303280ce07e1",
+  "builds": {
+    "final5c37fb3": {
+      "failed": 2,
+      "checks_count": 269,
+      "failed_checks": [
+        "20 post-warmup loops observed exact settled pool tree_nodes",
+        "20 post-warmup loops observed exact settled pool objects"
+      ],
+      "stats": {
+        "RssAnon": {
+          "count": 20,
+          "first": 332926976,
+          "last": 332926976,
+          "max": 332926976,
+          "min": 332926976
+        },
+        "RssFile": {
+          "count": 20,
+          "first": 73236480,
+          "last": 73236480,
+          "max": 73236480,
+          "min": 73236480
+        },
+        "VmHWM": {
+          "count": 20,
+          "first": 406163456,
+          "last": 406163456,
+          "max": 406163456,
+          "min": 406163456
+        },
+        "VmRSS": {
+          "count": 20,
+          "first": 406163456,
+          "last": 406163456,
+          "max": 406163456,
+          "min": 406163456
+        },
+        "direct_static_bytes": {
+          "count": 20,
+          "first": 347939372,
+          "last": 348248020,
+          "max": 348248020,
+          "min": 347939372
+        },
+        "gate_batches": {
+          "count": 20,
+          "first": 7,
+          "last": 7,
+          "max": 7,
+          "min": 7
+        },
+        "gate_entries": {
+          "count": 20,
+          "first": 107,
+          "last": 107,
+          "max": 107,
+          "min": 107
+        },
+        "gate_estimated_reserved_bytes": {
+          "count": 20,
+          "first": 241557892,
+          "last": 241557892,
+          "max": 241557892,
+          "min": 241557892
+        },
+        "gate_owners": {
+          "count": 20,
+          "first": 1,
+          "last": 1,
+          "max": 1,
+          "min": 1
+        },
+        "objects": {
+          "count": 20,
+          "first": 3921,
+          "last": 3962,
+          "max": 3962,
+          "min": 3921
+        },
+        "orphans": {
+          "count": 20,
+          "first": 248,
+          "last": 248,
+          "max": 248,
+          "min": 248
+        },
+        "resources": {
+          "count": 20,
+          "first": 236,
+          "last": 236,
+          "max": 236,
+          "min": 236
+        },
+        "static_bytes": {
+          "count": 20,
+          "first": 347939372,
+          "last": 348248020,
+          "max": 348248020,
+          "min": 347939372
+        },
+        "tree_nodes": {
+          "count": 20,
+          "first": 829,
+          "last": 842,
+          "max": 842,
+          "min": 829
+        }
+      },
+      "teardown": {
+        "tree_nodes": 1,
+        "objects": 1545,
+        "resources": 125,
+        "orphans": 0,
+        "static_bytes": 69775776,
+        "direct_static_bytes": 69775776,
+        "process_memory": {
+          "RssAnon": 310747136,
+          "RssFile": 73236480,
+          "VmHWM": 405950464,
+          "VmRSS": 383983616
+        }
+      },
+      "engine_errors": [
+        "ERROR: 20 post-warmup loops observed exact settled pool tree_nodes",
+        "ERROR: 20 post-warmup loops observed exact settled pool objects"
+      ],
+      "all_pack_files": [
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/index.pck",
+          "bytes": 2308476,
+          "sha256": "86afd0ad53ab72d6d1cc008564e7fa9acba24462b31c4c76105b2fc5472c6a93"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/comic.pck",
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/darkroom.pck",
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/departure.pck",
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/entry.pck",
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/exterior.pck",
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/house.pck",
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/outfit.pck",
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/photo.pck",
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/travel.pck",
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        {
+          "path": "r9_verified_formal_5c37fb3/native_packs/packs/wardrobe.pck",
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      ],
+      "pack_hashes_unchanged": true,
+      "empty_res_before": [],
+      "empty_res_after": [],
+      "per_page": {
+        "wardrobe": {
+          "tree_nodes": {
+            "min": 829,
+            "max": 829
+          },
+          "objects": {
+            "min": 3919,
+            "max": 3938
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347950356,
+            "max": 348118532
+          }
+        },
+        "collection": {
+          "tree_nodes": {
+            "min": 841,
+            "max": 841
+          },
+          "objects": {
+            "min": 3952,
+            "max": 3971
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 348125936,
+            "max": 348294048
+          }
+        },
+        "photo": {
+          "tree_nodes": {
+            "min": 841,
+            "max": 841
+          },
+          "objects": {
+            "min": 3953,
+            "max": 3972
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 348131768,
+            "max": 348299880
+          }
+        },
+        "travel": {
+          "tree_nodes": {
+            "min": 832,
+            "max": 832
+          },
+          "objects": {
+            "min": 3923,
+            "max": 3942
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 349457560,
+            "max": 349639712
+          }
+        },
+        "journal": {
+          "tree_nodes": {
+            "min": 829,
+            "max": 829
+          },
+          "objects": {
+            "min": 3918,
+            "max": 3937
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347941420,
+            "max": 348123572
+          }
+        },
+        "darkroom": {
+          "tree_nodes": {
+            "min": 257,
+            "max": 257
+          },
+          "objects": {
+            "min": 3916,
+            "max": 3935
+          },
+          "resources": {
+            "min": 236,
+            "max": 236
+          },
+          "orphans": {
+            "min": 819,
+            "max": 819
+          },
+          "direct_static_bytes": {
+            "min": 347654716,
+            "max": 347836852
+          }
+        }
+      }
+    },
+    "restoredR8": {
+      "failed": 2,
+      "checks_count": 269,
+      "failed_checks": [
+        "20 post-warmup loops observed exact settled pool tree_nodes",
+        "20 post-warmup loops observed exact settled pool objects"
+      ],
+      "stats": {
+        "RssAnon": {
+          "count": 20,
+          "first": 332423168,
+          "last": 332423168,
+          "max": 332423168,
+          "min": 332423168
+        },
+        "RssFile": {
+          "count": 20,
+          "first": 73236480,
+          "last": 73236480,
+          "max": 73236480,
+          "min": 73236480
+        },
+        "VmHWM": {
+          "count": 20,
+          "first": 405659648,
+          "last": 405659648,
+          "max": 405659648,
+          "min": 405659648
+        },
+        "VmRSS": {
+          "count": 20,
+          "first": 405659648,
+          "last": 405659648,
+          "max": 405659648,
+          "min": 405659648
+        },
+        "direct_static_bytes": {
+          "count": 20,
+          "first": 347612078,
+          "last": 347899798,
+          "max": 347899798,
+          "min": 347612078
+        },
+        "gate_batches": {
+          "count": 20,
+          "first": 5,
+          "last": 5,
+          "max": 5,
+          "min": 5
+        },
+        "gate_entries": {
+          "count": 20,
+          "first": 107,
+          "last": 107,
+          "max": 107,
+          "min": 107
+        },
+        "gate_estimated_reserved_bytes": {
+          "count": 20,
+          "first": 241557892,
+          "last": 241557892,
+          "max": 241557892,
+          "min": 241557892
+        },
+        "gate_owners": {
+          "count": 20,
+          "first": 1,
+          "last": 1,
+          "max": 1,
+          "min": 1
+        },
+        "objects": {
+          "count": 20,
+          "first": 3957,
+          "last": 3998,
+          "max": 3998,
+          "min": 3957
+        },
+        "orphans": {
+          "count": 20,
+          "first": 248,
+          "last": 248,
+          "max": 248,
+          "min": 248
+        },
+        "resources": {
+          "count": 20,
+          "first": 233,
+          "last": 233,
+          "max": 233,
+          "min": 233
+        },
+        "static_bytes": {
+          "count": 20,
+          "first": 347612078,
+          "last": 347899798,
+          "max": 347899798,
+          "min": 347612078
+        },
+        "tree_nodes": {
+          "count": 20,
+          "first": 829,
+          "last": 842,
+          "max": 842,
+          "min": 829
+        }
+      },
+      "teardown": {
+        "tree_nodes": 1,
+        "objects": 1527,
+        "resources": 116,
+        "orphans": 0,
+        "static_bytes": 69193010,
+        "direct_static_bytes": 69193010,
+        "process_memory": {
+          "RssAnon": 310243328,
+          "RssFile": 73236480,
+          "VmHWM": 405225472,
+          "VmRSS": 383479808
+        }
+      },
+      "engine_errors": [
+        "ERROR: Invalid polygon data, triangulation failed.",
+        "ERROR: 20 post-warmup loops observed exact settled pool tree_nodes",
+        "ERROR: 20 post-warmup loops observed exact settled pool objects"
+      ],
+      "all_pack_files": [
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/index.pck",
+          "bytes": 2291928,
+          "sha256": "4916d735cd15fe63045af866ccd1e4096c5401c8acc1122de35347236d8460d1"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/comic.pck",
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/darkroom.pck",
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/departure.pck",
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/entry.pck",
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/exterior.pck",
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/house.pck",
+          "bytes": 17024952,
+          "sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/outfit.pck",
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/photo.pck",
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/travel.pck",
+          "bytes": 13874440,
+          "sha256": "c6fe0c747d64aabde17cd6e638adf276b065376632c7a369b67b0a302051e442"
+        },
+        {
+          "path": "persist_performance_r9_recovery/r8_web_6327bdb/packs/wardrobe.pck",
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      ],
+      "pack_hashes_unchanged": true,
+      "empty_res_before": [],
+      "empty_res_after": [],
+      "per_page": {
+        "wardrobe": {
+          "tree_nodes": {
+            "min": 829,
+            "max": 842
+          },
+          "objects": {
+            "min": 3954,
+            "max": 3995
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347622390,
+            "max": 347892342
+          }
+        },
+        "collection": {
+          "tree_nodes": {
+            "min": 841,
+            "max": 854
+          },
+          "objects": {
+            "min": 3988,
+            "max": 4029
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347798194,
+            "max": 348068082
+          }
+        },
+        "photo": {
+          "tree_nodes": {
+            "min": 841,
+            "max": 854
+          },
+          "objects": {
+            "min": 3988,
+            "max": 4029
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347789774,
+            "max": 348089654
+          }
+        },
+        "travel": {
+          "tree_nodes": {
+            "min": 832,
+            "max": 845
+          },
+          "objects": {
+            "min": 3961,
+            "max": 4002
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 349274440,
+            "max": 349574320
+          }
+        },
+        "journal": {
+          "tree_nodes": {
+            "min": 829,
+            "max": 842
+          },
+          "objects": {
+            "min": 3954,
+            "max": 3995
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 248,
+            "max": 248
+          },
+          "direct_static_bytes": {
+            "min": 347598174,
+            "max": 347898054
+          }
+        },
+        "darkroom": {
+          "tree_nodes": {
+            "min": 257,
+            "max": 257
+          },
+          "objects": {
+            "min": 3952,
+            "max": 3993
+          },
+          "resources": {
+            "min": 233,
+            "max": 233
+          },
+          "orphans": {
+            "min": 819,
+            "max": 832
+          },
+          "direct_static_bytes": {
+            "min": 347311294,
+            "max": 347603326
+          }
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "natural_flower_added_nodes": [
+      {
+        "class": "Node2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1",
+        "script": "res://home/flowers/flower_stem.gd"
+      },
+      {
+        "class": "Line2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/@Line2D@186",
+        "script": ""
+      },
+      {
+        "class": "Line2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/@Line2D@187",
+        "script": ""
+      },
+      {
+        "class": "Polygon2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/DayNightHead",
+        "script": "res://home/flowers/flower_head.gd"
+      },
+      {
+        "class": "Polygon2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/DayNightHeadBlend",
+        "script": "res://home/flowers/flower_head.gd"
+      },
+      {
+        "class": "Sprite2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/SpringLeaf_0",
+        "script": ""
+      },
+      {
+        "class": "Sprite2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/SpringLeaf_1",
+        "script": ""
+      },
+      {
+        "class": "Skeleton2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton",
+        "script": ""
+      },
+      {
+        "class": "Bone2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton/StemSegment_0",
+        "script": ""
+      },
+      {
+        "class": "Bone2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton/StemSegment_0/StemSegment_1",
+        "script": ""
+      },
+      {
+        "class": "Bone2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton/StemSegment_0/StemSegment_1/StemSegment_2",
+        "script": ""
+      },
+      {
+        "class": "Bone2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton/StemSegment_0/StemSegment_1/StemSegment_2/StemSegment_3",
+        "script": ""
+      },
+      {
+        "class": "Bone2D",
+        "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/PersistentVaseFlowers/Flower_1/StemSkeleton/StemSegment_0/StemSegment_1/StemSegment_2/StemSegment_3/StemSegment_4",
+        "script": ""
+      }
+    ],
+    "natural_flower_added_node_count": 13,
+    "repeat_settled_samples": [
+      {
+        "cycle": 0,
+        "direct_static_bytes": 347973152,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 92,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348216368,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3920,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332943360,
+          "RssFile": 73236480,
+          "VmHWM": 406179840,
+          "VmRSS": 406179840
+        },
+        "resources": 236,
+        "static_bytes": 347973152,
+        "ticks_msec": 11955,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 1,
+        "direct_static_bytes": 347953612,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 97,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348195996,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3921,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 347953612,
+        "ticks_msec": 14707,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 2,
+        "direct_static_bytes": 347983460,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 99,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348225524,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3922,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 347983460,
+        "ticks_msec": 17501,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 3,
+        "direct_static_bytes": 347992752,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 103,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348234048,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3923,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 347992752,
+        "ticks_msec": 20250,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 4,
+        "direct_static_bytes": 347994604,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 107,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348235196,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3924,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 347994604,
+        "ticks_msec": 23015,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 5,
+        "direct_static_bytes": 347996872,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 107,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348237464,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3925,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 347996872,
+        "ticks_msec": 25790,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 6,
+        "direct_static_bytes": 348031908,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 107,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348272500,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3926,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348031908,
+        "ticks_msec": 28556,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 7,
+        "direct_static_bytes": 348032224,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 107,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348272816,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348032224,
+        "ticks_msec": 31305,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 8,
+        "direct_static_bytes": 348036356,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 109,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348276756,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3928,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348036356,
+        "ticks_msec": 34044,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 9,
+        "direct_static_bytes": 348038448,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 109,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348278848,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3929,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348038448,
+        "ticks_msec": 36786,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 10,
+        "direct_static_bytes": 348040412,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 111,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348280428,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3930,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348040412,
+        "ticks_msec": 39533,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 11,
+        "direct_static_bytes": 348047088,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 111,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348287104,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3931,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348047088,
+        "ticks_msec": 42283,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 12,
+        "direct_static_bytes": 348048284,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 118,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348287148,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3932,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348048284,
+        "ticks_msec": 45036,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 13,
+        "direct_static_bytes": 348084452,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 127,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348321716,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3933,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348084452,
+        "ticks_msec": 48036,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 14,
+        "direct_static_bytes": 348107940,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 128,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348345076,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3934,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348107940,
+        "ticks_msec": 50962,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 15,
+        "direct_static_bytes": 348110288,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 128,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348347424,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3935,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348110288,
+        "ticks_msec": 53695,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 16,
+        "direct_static_bytes": 348111964,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 131,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348348652,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3936,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348111964,
+        "ticks_msec": 56451,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 17,
+        "direct_static_bytes": 348108192,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 138,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348343728,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3937,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348108192,
+        "ticks_msec": 59300,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 18,
+        "direct_static_bytes": 348123436,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 140,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348358588,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3938,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348123436,
+        "ticks_msec": 62028,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 19,
+        "direct_static_bytes": 348126912,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 143,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348361552,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3939,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348126912,
+        "ticks_msec": 64781,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 20,
+        "direct_static_bytes": 348255604,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 146,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348489860,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3962,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348255604,
+        "ticks_msec": 68066,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 22,
+        "direct_static_bytes": 348411580,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 148,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348645388,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "post_loops_2s",
+        "objects": 3962,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348411580,
+        "ticks_msec": 70091,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 23,
+        "direct_static_bytes": 348412152,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 149,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 1226864,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348645832,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "post_loops_5s",
+        "objects": 3962,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332951552,
+          "RssFile": 73236480,
+          "VmHWM": 406188032,
+          "VmRSS": 406188032
+        },
+        "resources": 236,
+        "static_bytes": 348412152,
+        "ticks_msec": 73108,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 21,
+        "direct_static_bytes": 69788848,
+        "label": "after_teardown",
+        "objects": 1545,
+        "orphans": 0,
+        "process_memory": {
+          "RssAnon": 310771712,
+          "RssFile": 73236480,
+          "VmHWM": 405762048,
+          "VmRSS": 384008192
+        },
+        "resources": 125,
+        "static_bytes": 69788848,
+        "ticks_msec": 74333,
+        "tree_nodes": 1
+      }
+    ],
+    "idle_settled_samples": [
+      {
+        "cycle": 0,
+        "direct_static_bytes": 347972128,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 97,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348214704,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3920,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 347972128,
+        "ticks_msec": 12211,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 1,
+        "direct_static_bytes": 348141804,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 104,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348383100,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3921,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348141804,
+        "ticks_msec": 15041,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 2,
+        "direct_static_bytes": 348172448,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 108,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348413040,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3922,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348172448,
+        "ticks_msec": 17861,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 3,
+        "direct_static_bytes": 348171684,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 110,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348412084,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3922,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348171684,
+        "ticks_msec": 20686,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 4,
+        "direct_static_bytes": 348185240,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 114,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348424808,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3924,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348185240,
+        "ticks_msec": 23639,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 5,
+        "direct_static_bytes": 348175500,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 115,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348415068,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3924,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348175500,
+        "ticks_msec": 26473,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 6,
+        "direct_static_bytes": 348210408,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 116,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348449848,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3925,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348210408,
+        "ticks_msec": 29290,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 7,
+        "direct_static_bytes": 348212796,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 116,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348452236,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3926,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348212796,
+        "ticks_msec": 32123,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 8,
+        "direct_static_bytes": 348215168,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 116,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348454608,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348215168,
+        "ticks_msec": 34962,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 9,
+        "direct_static_bytes": 348221120,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 117,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348460304,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348221120,
+        "ticks_msec": 37779,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 10,
+        "direct_static_bytes": 348219592,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 117,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348458776,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348219592,
+        "ticks_msec": 40595,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 11,
+        "direct_static_bytes": 348219656,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 117,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348458840,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348219656,
+        "ticks_msec": 43416,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 12,
+        "direct_static_bytes": 348219080,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 120,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348457752,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348219080,
+        "ticks_msec": 46234,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 13,
+        "direct_static_bytes": 348253320,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 125,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348491160,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348253320,
+        "ticks_msec": 49049,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 14,
+        "direct_static_bytes": 348251528,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 135,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348487640,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348251528,
+        "ticks_msec": 51875,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 15,
+        "direct_static_bytes": 348251076,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 142,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348486036,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348251076,
+        "ticks_msec": 54685,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 16,
+        "direct_static_bytes": 348248836,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 143,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348483668,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348248836,
+        "ticks_msec": 57502,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 17,
+        "direct_static_bytes": 348247880,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 144,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348482520,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348247880,
+        "ticks_msec": 60328,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 18,
+        "direct_static_bytes": 348247760,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 145,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348482400,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3927,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348247760,
+        "ticks_msec": 63145,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 19,
+        "direct_static_bytes": 348251592,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 148,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348485592,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3929,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348251592,
+        "ticks_msec": 65978,
+        "tree_nodes": 829
+      },
+      {
+        "cycle": 20,
+        "direct_static_bytes": 348379716,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 154,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348612820,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "settled_home",
+        "objects": 3952,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348379716,
+        "ticks_msec": 68806,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 22,
+        "direct_static_bytes": 348377808,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 154,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348610912,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "post_loops_2s",
+        "objects": 3953,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348377808,
+        "ticks_msec": 70832,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 23,
+        "direct_static_bytes": 348380744,
+        "gate": {
+          "backend": "ResourceLoader",
+          "batches": 7,
+          "clock": "monotonic_usec",
+          "counters": {
+            "admission_rejections": 0,
+            "batches_failed": 0,
+            "batches_ready": 9,
+            "budget_overruns": 154,
+            "cache_hits": 18,
+            "cancelled": 0,
+            "consumes": 124,
+            "deduplicated": 18,
+            "evictions": 17,
+            "max_process_usec": 600094,
+            "peak_batches": 7,
+            "peak_entries": 107,
+            "peak_in_flight": 1,
+            "peak_reserved_bytes": 241557892,
+            "requests": 9,
+            "retries": 0,
+            "starts": 124,
+            "timeouts": 0
+          },
+          "effective_max_concurrent": 1,
+          "entries": 107,
+          "estimated_ready_bytes": 241557892,
+          "estimated_reserved_bytes": 241557892,
+          "fallback_reason": "godot_4_5_2_loader_lifetime",
+          "in_flight": 0,
+          "limits": {
+            "default_estimated_bytes": 1048576,
+            "frame_budget_usec": 2000,
+            "max_batches": 32,
+            "max_concurrent": 2,
+            "max_entries": 128,
+            "max_estimated_bytes": 268435456,
+            "max_finishes_per_frame": 8,
+            "max_owners": 64,
+            "max_specs_per_batch": 80,
+            "max_starts_per_frame": 8,
+            "metrics_capacity": 256,
+            "mode": "auto"
+          },
+          "memory": {
+            "godot_static_memory_bytes": 348613848,
+            "per_resource_decode_usec": null,
+            "per_resource_gpu_upload_usec": null,
+            "render_texture_memory_bytes": null,
+            "render_video_memory_bytes": null,
+            "whole_process_rss_bytes": null
+          },
+          "mode": "sequential",
+          "owners": 1,
+          "queue_entries": 0,
+          "requested_mode": "auto"
+        },
+        "label": "post_loops_5s",
+        "objects": 3954,
+        "orphans": 248,
+        "process_memory": {
+          "RssAnon": 332775424,
+          "RssFile": 73236480,
+          "VmHWM": 406011904,
+          "VmRSS": 406011904
+        },
+        "resources": 236,
+        "static_bytes": 348380744,
+        "ticks_msec": 73849,
+        "tree_nodes": 842
+      },
+      {
+        "cycle": 21,
+        "direct_static_bytes": 69795440,
+        "label": "after_teardown",
+        "objects": 1545,
+        "orphans": 0,
+        "process_memory": {
+          "RssAnon": 310595584,
+          "RssFile": 73236480,
+          "VmHWM": 405233664,
+          "VmRSS": 383832064
+        },
+        "resources": 125,
+        "static_bytes": 69795440,
+        "ticks_msec": 75077,
+        "tree_nodes": 1
+      }
+    ],
+    "repeat_all_processed_tweens_zero": true,
+    "reference_graph_counts": [
+      {
+        "label": "settled_home",
+        "cycle": 0,
+        "reachable_objects": 1471,
+        "classes": {
+          "Tween": 1,
+          "RefCounted": 37,
+          "ShaderMaterial": 176,
+          "ArrayMesh": 30,
+          "PackedScene": 2,
+          "Shader": 22,
+          "CompressedTexture2D": 57,
+          "BitMap": 19,
+          "ImageTexture": 1,
+          "WeakRef": 18,
+          "FontFile": 4,
+          "AtlasTexture": 41,
+          "FontVariation": 3,
+          "ViewportTexture": 1,
+          "AudioStreamMP3": 2,
+          "AudioStreamWAV": 1,
+          "FileAccess": 1,
+          "Node2D": 154,
+          "Skeleton2D": 66,
+          "Bone2D": 206,
+          "Polygon2D": 237,
+          "Button": 33,
+          "MeshInstance2D": 67,
+          "Node": 10,
+          "AudioStreamPlayer": 6,
+          "Control": 40,
+          "ColorRect": 7,
+          "PanelContainer": 1,
+          "VBoxContainer": 1,
+          "Label": 26,
+          "RichTextLabel": 1,
+          "ScrollContainer": 7,
+          "Sprite2D": 175,
+          "Line2D": 2,
+          "SubViewportContainer": 1,
+          "SubViewport": 3,
+          "AnimationPlayer": 4,
+          "PointLight2D": 2,
+          "TextureRect": 2,
+          "Marker2D": 3,
+          "SceneTree": 1
+        }
+      },
+      {
+        "label": "settled_home",
+        "cycle": 1,
+        "reachable_objects": 1471,
+        "classes": {
+          "Tween": 1,
+          "RefCounted": 37,
+          "ShaderMaterial": 176,
+          "ArrayMesh": 30,
+          "PackedScene": 2,
+          "Shader": 22,
+          "CompressedTexture2D": 57,
+          "BitMap": 19,
+          "ImageTexture": 1,
+          "WeakRef": 18,
+          "FontFile": 4,
+          "AtlasTexture": 41,
+          "FontVariation": 3,
+          "ViewportTexture": 1,
+          "AudioStreamMP3": 2,
+          "AudioStreamWAV": 1,
+          "FileAccess": 1,
+          "Node2D": 154,
+          "Skeleton2D": 66,
+          "Bone2D": 206,
+          "Polygon2D": 237,
+          "Button": 33,
+          "MeshInstance2D": 67,
+          "Node": 10,
+          "AudioStreamPlayer": 6,
+          "Control": 40,
+          "ColorRect": 7,
+          "PanelContainer": 1,
+          "VBoxContainer": 1,
+          "Label": 26,
+          "RichTextLabel": 1,
+          "ScrollContainer": 7,
+          "Sprite2D": 175,
+          "Line2D": 2,
+          "SubViewportContainer": 1,
+          "SubViewport": 3,
+          "AnimationPlayer": 4,
+          "PointLight2D": 2,
+          "TextureRect": 2,
+          "Marker2D": 3,
+          "SceneTree": 1
+        }
+      },
+      {
+        "label": "settled_home",
+        "cycle": 2,
+        "reachable_objects": 1471,
+        "classes": {
+          "Tween": 1,
+          "RefCounted": 37,
+          "ShaderMaterial": 176,
+          "ArrayMesh": 30,
+          "PackedScene": 2,
+          "Shader": 22,
+          "CompressedTexture2D": 57,
+          "BitMap": 19,
+          "ImageTexture": 1,
+          "WeakRef": 18,
+          "FontFile": 4,
+          "AtlasTexture": 41,
+          "FontVariation": 3,
+          "ViewportTexture": 1,
+          "AudioStreamMP3": 2,
+          "AudioStreamWAV": 1,
+          "FileAccess": 1,
+          "Node2D": 154,
+          "Skeleton2D": 66,
+          "Bone2D": 206,
+          "Polygon2D": 237,
+          "Button": 33,
+          "MeshInstance2D": 67,
+          "Node": 10,
+          "AudioStreamPlayer": 6,
+          "Control": 40,
+          "ColorRect": 7,
+          "PanelContainer": 1,
+          "VBoxContainer": 1,
+          "Label": 26,
+          "RichTextLabel": 1,
+          "ScrollContainer": 7,
+          "Sprite2D": 175,
+          "Line2D": 2,
+          "SubViewportContainer": 1,
+          "SubViewport": 3,
+          "AnimationPlayer": 4,
+          "PointLight2D": 2,
+          "TextureRect": 2,
+          "Marker2D": 3,
+          "SceneTree": 1
+        }
+      },
+      {
+        "label": "settled_home",
+        "cycle": 20,
+        "reachable_objects": 1493,
+        "classes": {
+          "AtlasTexture": 49,
+          "ShaderMaterial": 177,
+          "Tween": 1,
+          "RefCounted": 37,
+          "ArrayMesh": 30,
+          "PackedScene": 2,
+          "Shader": 22,
+          "CompressedTexture2D": 57,
+          "BitMap": 19,
+          "ImageTexture": 1,
+          "WeakRef": 18,
+          "FontFile": 4,
+          "FontVariation": 3,
+          "ViewportTexture": 1,
+          "AudioStreamMP3": 2,
+          "AudioStreamWAV": 1,
+          "FileAccess": 1,
+          "Node2D": 155,
+          "Skeleton2D": 67,
+          "Bone2D": 211,
+          "Polygon2D": 239,
+          "Button": 33,
+          "MeshInstance2D": 67,
+          "Node": 10,
+          "AudioStreamPlayer": 6,
+          "Control": 40,
+          "ColorRect": 7,
+          "PanelContainer": 1,
+          "VBoxContainer": 1,
+          "Label": 26,
+          "RichTextLabel": 1,
+          "ScrollContainer": 7,
+          "Sprite2D": 177,
+          "Line2D": 4,
+          "SubViewportContainer": 1,
+          "SubViewport": 3,
+          "AnimationPlayer": 4,
+          "PointLight2D": 2,
+          "TextureRect": 2,
+          "Marker2D": 3,
+          "SceneTree": 1
+        }
+      },
+      {
+        "label": "post_loops_5s",
+        "cycle": 23,
+        "reachable_objects": 1493,
+        "classes": {
+          "AtlasTexture": 49,
+          "ShaderMaterial": 177,
+          "Tween": 1,
+          "RefCounted": 37,
+          "ArrayMesh": 30,
+          "PackedScene": 2,
+          "Shader": 22,
+          "CompressedTexture2D": 57,
+          "BitMap": 19,
+          "ImageTexture": 1,
+          "WeakRef": 18,
+          "FontFile": 4,
+          "FontVariation": 3,
+          "ViewportTexture": 1,
+          "AudioStreamMP3": 2,
+          "AudioStreamWAV": 1,
+          "FileAccess": 1,
+          "Node2D": 155,
+          "Skeleton2D": 67,
+          "Bone2D": 211,
+          "Polygon2D": 239,
+          "Button": 33,
+          "MeshInstance2D": 67,
+          "Node": 10,
+          "AudioStreamPlayer": 6,
+          "Control": 40,
+          "ColorRect": 7,
+          "PanelContainer": 1,
+          "VBoxContainer": 1,
+          "Label": 26,
+          "RichTextLabel": 1,
+          "ScrollContainer": 7,
+          "Sprite2D": 177,
+          "Line2D": 4,
+          "SubViewportContainer": 1,
+          "SubViewport": 3,
+          "AnimationPlayer": 4,
+          "PointLight2D": 2,
+          "TextureRect": 2,
+          "Marker2D": 3,
+          "SceneTree": 1
+        }
+      }
+    ],
+    "reachable_net_class_increase": {
+      "AtlasTexture": 8,
+      "ShaderMaterial": 1,
+      "Node2D": 1,
+      "Skeleton2D": 1,
+      "Bone2D": 5,
+      "Polygon2D": 2,
+      "Sprite2D": 2,
+      "Line2D": 2
+    },
+    "reachable_net_class_decrease": {},
+    "graph_boundary": "Read-only traversal of Node children and script-variable properties plus Array/Dictionary contents, depth <=20. Not a complete ObjectDB/native-private-resource inventory. ResourceCache count does not include all live uncached Resources. Early graph_walk used an is type-test on freed instances and logs errors; its traversal is partial and cannot prove complete exclusion.",
+    "object_growth_status": "Resolved by separate unchanged-default 75-wardrobe-cycle run plus last-only per-font causal probe. See object_growth_resolution.json. Strict exact-count assertions were incompatible with the live game: autonomous merit text caches and natural flowers legitimately add Objects.",
+    "single_page_isolation": "Interrupted by SIGINT to free CPU for parent timing work. Last completed settled cycle 12; no completion verdict, no teardown proof, no six-page isolation claim."
+  },
+  "original_failed_assertions_preserved": true,
+  "object_growth_resolution": "object_growth_resolution.json"
+}

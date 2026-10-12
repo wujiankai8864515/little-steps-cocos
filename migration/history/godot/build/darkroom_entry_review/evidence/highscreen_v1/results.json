@@ -1,0 +1,4549 @@
+{
+  "captures": [
+    {
+      "attack_time": -1.0,
+      "elapsed": 8.25297833333333,
+      "misfortune": 100.0,
+      "name": "02_stable_day_room",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 8.81666666666666,
+      "misfortune": 100.0,
+      "name": "03_day_lamp_off",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 8.90673366666666,
+      "misfortune": 100.0,
+      "name": "04_lamp_fade_feedback",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 9.43333333333333,
+      "misfortune": 100.0,
+      "name": "05_day_lamp_on",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 9.97335799999999,
+      "misfortune": 100.0,
+      "name": "06_night_lamp_off",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 10.5122176666667,
+      "misfortune": 100.0,
+      "name": "07_night_lamp_on",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 11.060026,
+      "misfortune": 100.0,
+      "name": "08_dawn_projection",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 11.6333333333333,
+      "misfortune": 100.0,
+      "name": "09_dusk_projection",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 12.1787037037037,
+      "misfortune": 100.0,
+      "name": "10_day_input_reference",
+      "state": "active"
+    },
+    {
+      "attack_time": 0.421979333333333,
+      "elapsed": 13.1764536666666,
+      "misfortune": 90.0,
+      "name": "11_high_needle_contact",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 13.549366,
+      "misfortune": 90.0,
+      "name": "12_selected_slipper",
+      "state": "active"
+    },
+    {
+      "attack_time": 0.377983,
+      "elapsed": 13.927349,
+      "misfortune": 70.0,
+      "name": "13_high_slipper_contact",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 17.85,
+      "misfortune": 70.0,
+      "name": "14_active_reentered",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 21.7074345555556,
+      "misfortune": 0.0,
+      "name": "15_clear_out_before_exit",
+      "state": "clear_out"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 25.290573,
+      "misfortune": 100.0,
+      "name": "16_clear_out_reentered",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 32.3222222222223,
+      "misfortune": 0.0,
+      "name": "17_gap_before_exit",
+      "state": "gap_1s"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 35.5411290000001,
+      "misfortune": 100.0,
+      "name": "18_gap_1s_reentered",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 43.4565203333336,
+      "misfortune": 100.0,
+      "name": "19_spawn_before_exit",
+      "state": "spawn_in"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 46.6666666666669,
+      "misfortune": 100.0,
+      "name": "20_spawn_in_reentered",
+      "state": "active"
+    },
+    {
+      "attack_time": 0.294273333333333,
+      "elapsed": 46.9609400000003,
+      "misfortune": 90.0,
+      "name": "21_reentry_needle_contact",
+      "state": "active"
+    }
+  ],
+  "checks": [
+    {
+      "check": "D01 actual X11 native GL renderer",
+      "passed": true
+    },
+    {
+      "check": "D01 actual requested viewport",
+      "passed": true
+    },
+    {
+      "check": "D01 delayed darkroom unavailable in core",
+      "passed": true
+    },
+    {
+      "check": "D01 actual App cold Home ready",
+      "passed": true
+    },
+    {
+      "check": "D01 Home does not mask cold darkroom dependency",
+      "passed": true
+    },
+    {
+      "check": "D01 cold entry Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "D01 cold entry actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "D01 first positive-alpha visible frame already has prepared lighting and draw",
+      "passed": true
+    },
+    {
+      "check": "D01 cold entry actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "D01 cold entry route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "D01 captured actual first visible room frame",
+      "passed": true
+    },
+    {
+      "check": "03_day_lamp_off lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "03_day_lamp_off rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "D02 real lamp tap gives immediate elastic deformation",
+      "passed": true
+    },
+    {
+      "check": "D02 lamp visibly interpolates over multiple frames",
+      "passed": true
+    },
+    {
+      "check": "D02 rapid repeated lamp clicks are not blocked by bubble",
+      "passed": true
+    },
+    {
+      "check": "05_day_lamp_on lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "05_day_lamp_on rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "06_night_lamp_off lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "06_night_lamp_off rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "07_night_lamp_on lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "07_night_lamp_on rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "08_dawn_projection lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "08_dawn_projection rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "09_dusk_projection lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "09_dusk_projection rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "10_day_input_reference lamp reaches requested state",
+      "passed": true
+    },
+    {
+      "check": "10_day_input_reference rendered material receives actual lamp value",
+      "passed": true
+    },
+    {
+      "check": "D03 both exact tool sprites fit their actual recesses",
+      "passed": true
+    },
+    {
+      "check": "D03 return hit rectangle lies inside viewport",
+      "passed": true
+    },
+    {
+      "check": "D03 edge and empty clicks do not strike",
+      "passed": true
+    },
+    {
+      "check": "D03 canceled touch plus emulated mouse does not strike",
+      "passed": true
+    },
+    {
+      "check": "D03 actual drag-out release cancels strike",
+      "passed": true
+    },
+    {
+      "check": "D03 true needle tray coordinate selects needle",
+      "passed": true
+    },
+    {
+      "check": "11_high_needle starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "11_high_needle does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "11_high_needle settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "11_high_needle has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D03 true slipper tray coordinate selects slipper",
+      "passed": true
+    },
+    {
+      "check": "13_high_slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "13_high_slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "13_high_slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "13_high_slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "14_active touch-down gives return elastic feedback",
+      "passed": true
+    },
+    {
+      "check": "14_active real touch return restores Home",
+      "passed": true
+    },
+    {
+      "check": "14_active Home owns input and darkroom is paused",
+      "passed": true
+    },
+    {
+      "check": "14_active inactive room does not advance or settle",
+      "passed": true
+    },
+    {
+      "check": "14_active inactive room emits no late result",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "14_active reuses the intended single world",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry presents one usable doll",
+      "passed": true
+    },
+    {
+      "check": "14_active existing active-round preserve policy keeps progress",
+      "passed": true
+    },
+    {
+      "check": "14_active reentry does not count another completion",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 reaches actual clear_out before exit",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out touch-down gives return elastic feedback",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out real touch return restores Home",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out Home owns input and darkroom is paused",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out inactive room does not advance or settle",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out inactive room emits no late result",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reuses the intended single world",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry presents one usable doll",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out existing interrupted-round restart policy clears old result",
+      "passed": true
+    },
+    {
+      "check": "16_clear_out reentry does not count another completion",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 reaches actual gap_1s before exit",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s touch-down gives return elastic feedback",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s real touch return restores Home",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s Home owns input and darkroom is paused",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s inactive room does not advance or settle",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s inactive room emits no late result",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reuses the intended single world",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry presents one usable doll",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s existing interrupted-round restart policy clears old result",
+      "passed": true
+    },
+    {
+      "check": "18_gap_1s reentry does not count another completion",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "D04 prerequisite actual slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D04 reaches actual spawn_in before exit",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in touch-down gives return elastic feedback",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in real touch return restores Home",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in Home owns input and darkroom is paused",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in inactive room does not advance or settle",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in inactive room emits no late result",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reuses the intended single world",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry presents one usable doll",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in existing interrupted-round restart policy clears old result",
+      "passed": true
+    },
+    {
+      "check": "20_spawn_in reentry does not count another completion",
+      "passed": true
+    },
+    {
+      "check": "21_reentry_needle starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "21_reentry_needle does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "21_reentry_needle settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "21_reentry_needle has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "D01-D04 never request unrelated travel pack",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "exits": [
+    {
+      "after_wait": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0533333333333,
+        "completed_rounds": 0,
+        "contacts": 2,
+        "displayed_misfortune": 70.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 70.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 2,
+          "joint_angles": {
+            "bow": -0.00105905567761511,
+            "head": -0.00239590182900429,
+            "left_arm": -0.0108660561963916,
+            "left_leg": 0.0,
+            "right_arm": 0.0114234564825892,
+            "right_leg": 0.0,
+            "torso": -0.00361211318522692
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 16.6455688476562,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.00421142578125,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "before": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 11.5331566222222,
+        "completed_rounds": 0,
+        "contacts": 2,
+        "displayed_misfortune": 70.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 70.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 2,
+          "joint_angles": {
+            "bow": 0.003805783810094,
+            "head": 0.00323926517739892,
+            "left_arm": -0.0637932643294334,
+            "left_leg": 0.0,
+            "right_arm": 0.0618669725954533,
+            "right_leg": 0.0,
+            "torso": 0.00343681988306344
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 17.6781616210938,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.05438232421875,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.230707685089909,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "last_result": {
+
+      },
+      "name": "14_active",
+      "paused": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0533333333333,
+        "completed_rounds": 0,
+        "contacts": 2,
+        "displayed_misfortune": 70.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 70.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 2,
+          "joint_angles": {
+            "bow": -0.00105905567761511,
+            "head": -0.00239590182900429,
+            "left_arm": -0.0108660561963916,
+            "left_leg": 0.0,
+            "right_arm": 0.0114234564825892,
+            "right_leg": 0.0,
+            "torso": -0.00361211318522692
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 16.6455688476562,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.00421142578125,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18660344802606,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "reentered": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0,
+        "completed_rounds": 0,
+        "contacts": 2,
+        "displayed_misfortune": 70.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 70.0,
+        "plumes": 1,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 2,
+          "joint_angles": {
+            "bow": 0.00000528286636836128,
+            "head": -0.000620198086835444,
+            "left_arm": 0.00197042361833155,
+            "left_leg": 0.0,
+            "right_arm": -0.00157617486547679,
+            "right_leg": 0.0,
+            "torso": -0.000831702374853194
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 16.9102172851562,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2272), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.227172851562,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      }
+    },
+    {
+      "after_wait": {
+        "attack_time": -1.0,
+        "clear_progress": 0.486172646284103,
+        "clear_time": 1.38559204190969,
+        "clock_bound": true,
+        "clock_hour": 10.0515555555556,
+        "completed_rounds": 0,
+        "contacts": 6,
+        "displayed_misfortune": 0.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 6,
+          "joint_angles": {
+            "bow": 0.000443116528913379,
+            "head": 0.00132409308571368,
+            "left_arm": 0.000229376717470586,
+            "left_leg": 0.0,
+            "right_arm": 0.000901073857676238,
+            "right_leg": 0.0,
+            "torso": 0.00187006173655391
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "clear_out",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 17.2276000976562,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.00421142578125,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "clear_out",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "before": {
+        "attack_time": -1.0,
+        "clear_progress": 0.232640907168388,
+        "clear_time": 0.663026585429907,
+        "clock_bound": true,
+        "clock_hour": 12.0835777185185,
+        "completed_rounds": 0,
+        "contacts": 6,
+        "displayed_misfortune": 0.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 4,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 6,
+          "joint_angles": {
+            "bow": 0.000337915640557185,
+            "head": 0.00215688860043883,
+            "left_arm": -0.0226512718945742,
+            "left_leg": 0.0,
+            "right_arm": 0.026340389624238,
+            "right_leg": 0.0,
+            "torso": 0.00359378568828106
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "clear_out",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.234472510455047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 17.2422485351562,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.233825272183051,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.234472510455047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.234472510455047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "clear_out",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "last_result": {
+
+      },
+      "name": "16_clear_out",
+      "paused": {
+        "attack_time": -1.0,
+        "clear_progress": 0.486172646284103,
+        "clear_time": 1.38559204190969,
+        "clock_bound": true,
+        "clock_hour": 10.0515555555556,
+        "completed_rounds": 0,
+        "contacts": 6,
+        "displayed_misfortune": 0.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 6,
+          "joint_angles": {
+            "bow": 0.000443116528913379,
+            "head": 0.00132409308571368,
+            "left_arm": 0.000229376717470586,
+            "left_leg": 0.0,
+            "right_arm": 0.000901073857676238,
+            "right_leg": 0.0,
+            "torso": 0.00187006173655391
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "clear_out",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 17.2276000976562,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.00421142578125,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2024), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.202392578125,
+            "lift": 0.0,
+            "opacity": 0.132011899875956,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186545683694283,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "clear_out",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "reentered": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0,
+        "completed_rounds": 0,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 6,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "needle",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      }
+    },
+    {
+      "after_wait": {
+        "attack_time": -1.0,
+        "clear_progress": 1.0,
+        "clear_time": 2.84889684319496,
+        "clock_bound": true,
+        "clock_hour": 10.0429328,
+        "completed_rounds": 1,
+        "contacts": 5,
+        "displayed_misfortune": 0.0,
+        "doll_visible": false,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.284075111111111,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 11,
+          "joint_angles": {
+            "bow": 0.0000000135152324887144,
+            "head": -0.0000000203226573347592,
+            "left_arm": 0.000000677725438436028,
+            "left_leg": 0.0,
+            "right_arm": -0.000000606371770572878,
+            "right_leg": 0.0,
+            "torso": -0.0000000262240860138263
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 17.0200805664062,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.00006103515625,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "gap_1s",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "before": {
+        "attack_time": -1.0,
+        "clear_progress": 1.0,
+        "clear_time": 2.84889684319496,
+        "clock_bound": true,
+        "clock_hour": 13.7696538074074,
+        "completed_rounds": 1,
+        "contacts": 5,
+        "displayed_misfortune": 0.0,
+        "doll_visible": false,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.955555555555555,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 11,
+          "joint_angles": {
+            "bow": -0.0000000985009478426946,
+            "head": -0.000000124554645708486,
+            "left_arm": -0.000000071665922973807,
+            "left_leg": 0.0,
+            "right_arm": 0.0000000641549462443436,
+            "right_leg": 0.0,
+            "torso": -0.000000185691490628415
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194510641428321,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 17.0200805664062,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.00006103515625,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194510641428321,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194510641428321,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "gap_1s",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "last_result": {
+        "contacts": 5,
+        "misfortune": 0.0,
+        "reward": 0,
+        "round_serial": 1,
+        "text": "晦气消除、乳腺通畅"
+      },
+      "name": "18_gap_1s",
+      "paused": {
+        "attack_time": -1.0,
+        "clear_progress": 1.0,
+        "clear_time": 2.84889684319496,
+        "clock_bound": true,
+        "clock_hour": 10.0429328,
+        "completed_rounds": 1,
+        "contacts": 5,
+        "displayed_misfortune": 0.0,
+        "doll_visible": false,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.284075111111111,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 0.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "relief",
+          "face_nodes": 3,
+          "hit_serial": 11,
+          "joint_angles": {
+            "bow": 0.0000000135152324887144,
+            "head": -0.0000000203226573347592,
+            "left_arm": 0.000000677725438436028,
+            "left_leg": 0.0,
+            "right_arm": -0.000000606371770572878,
+            "right_leg": 0.0,
+            "torso": -0.0000000262240860138263
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 17.0200805664062,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.00006103515625,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.2352), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.235168457031,
+            "lift": 0.0,
+            "opacity": 0.0,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.186265936515799,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "gap_1s",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "reentered": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0,
+        "completed_rounds": 1,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 11,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 1,
+        "selected_tool": "needle",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      }
+    },
+    {
+      "after_wait": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0439536,
+        "completed_rounds": 2,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 16,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "spawn_in",
+        "round_serial": 2,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 0.456395506858826,
+        "state": "spawn_in",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "before": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 14.2537347555555,
+        "completed_rounds": 2,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 16,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "spawn_in",
+        "round_serial": 2,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194113620051103,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0000597972957529047,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194113620051103,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.194113620051103,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 0.0203356985002756,
+        "state": "spawn_in",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "last_result": {
+        "contacts": 5,
+        "misfortune": 0.0,
+        "reward": 0,
+        "round_serial": 1,
+        "text": "晦气消除、乳腺通畅"
+      },
+      "name": "20_spawn_in",
+      "paused": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0439536,
+        "completed_rounds": 2,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 2,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 16,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "spawn_in",
+        "round_serial": 2,
+        "selected_tool": "slipper",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.0809951883655054,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18629901703221,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 0.456395506858826,
+        "state": "spawn_in",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      },
+      "reentered": {
+        "attack_time": -1.0,
+        "clear_progress": 0.0,
+        "clear_time": -1.0,
+        "clock_bound": true,
+        "clock_hour": 10.0,
+        "completed_rounds": 2,
+        "contacts": 0,
+        "displayed_misfortune": 100.0,
+        "doll_visible": true,
+        "dragging": false,
+        "economy_mutations": 0,
+        "gap_remaining": 0.0,
+        "lamp_override": 0,
+        "lamp_weight": 0.0,
+        "misfortune": 100.0,
+        "plumes": 0,
+        "pointer_pressed": false,
+        "result_text": "晦气消除、乳腺通畅",
+        "rig": {
+          "alpha_masks": 8,
+          "alpha_payload_bytes": 262144,
+          "continuous_skin_triangles": 980,
+          "continuous_skin_vertices": 1089,
+          "display_mask_bytes": 524288,
+          "dragging": false,
+          "expression": "idle",
+          "face_nodes": 3,
+          "hit_serial": 16,
+          "joint_angles": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0,
+            "torso": 0.0
+          },
+          "joint_link_errors": {
+            "bow": 0.0,
+            "head": 0.0,
+            "left_arm": 0.0,
+            "left_leg": 0.0,
+            "right_arm": 0.0,
+            "right_leg": 0.0
+          },
+          "last_hit_part": "torso",
+          "max_joint_error": 0.0,
+          "neutral_source_scale": 0.74,
+          "parts": 7,
+          "runtime_readbacks": 0,
+          "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+          "substeps": 4
+        },
+        "round_animation": "",
+        "round_serial": 2,
+        "selected_tool": "needle",
+        "shadows": [
+          {
+            "alpha_profile_points": 48,
+            "clip_rect": "[P: (22.0, 637.0), S: (112.0, 42.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "Lantern"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "TorsoPart"
+          },
+          {
+            "alpha_profile_points": 25,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftArmPart"
+          },
+          {
+            "alpha_profile_points": 27,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightArmPart"
+          },
+          {
+            "alpha_profile_points": 66,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "HeadPart"
+          },
+          {
+            "alpha_profile_points": 36,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 17.0200805664062,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "LeftLegPart"
+          },
+          {
+            "alpha_profile_points": 35,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "RightLegPart"
+          },
+          {
+            "alpha_profile_points": 50,
+            "clip_rect": "[P: (113.0, 768.26), S: (500.0, 180.0)]",
+            "draw_contact": false,
+            "fixed_ground_y": 808.260009765625,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "BowPart"
+          },
+          {
+            "alpha_profile_points": 56,
+            "clip_rect": "[P: (45.0, 940.0), S: (280.0, 120.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "NeedleTray"
+          },
+          {
+            "alpha_profile_points": 53,
+            "clip_rect": "[P: (397.0, 942.0), S: (270.0, 117.0)]",
+            "draw_contact": true,
+            "fixed_ground_y": null,
+            "lift": 0.0,
+            "opacity": 0.18488398494408,
+            "passes": 1,
+            "physical_contact_paths": 1,
+            "source": "SlipperTray"
+          }
+        ],
+        "spawn_progress": 1.0,
+        "state": "active",
+        "tray_fit": {
+          "needle": true,
+          "slipper": true
+        }
+      }
+    }
+  ],
+  "failed": 0,
+  "first_visible": {
+    "alpha": 0.502975821495056,
+    "draw_calls": 64,
+    "draw_confirmed": true,
+    "draw_revision": 5,
+    "lamp_weight": 0.0,
+    "lighting": {
+      "afterglow_energy": 0.0,
+      "ambient_color": "(0.497488, 0.533112, 0.56436)",
+      "cast_dir": "(0.45713, 0.8894)",
+      "cot_e": 0.5832122963412,
+      "daylight": 1.0,
+      "elevation": 1.04281219051897,
+      "game_hour": 10.0,
+      "moon_cast_dir": "(-0.633176, 0.774008)",
+      "moon_energy": 0.0,
+      "moon_phase": 1.0,
+      "moon_screen_position": "(228.0, 95.0)",
+      "morning_weight": 0.352,
+      "night": 0.0,
+      "night_scheduled": false,
+      "noon_weight": 0.437601639638911,
+      "solar_phase": 0.375,
+      "sun_azimuth": -19.5168550506196,
+      "sun_color": "(1.0, 0.94282, 0.821264)",
+      "sun_energy": 0.543776426306117,
+      "sun_screen_position": "(167.0, 34.08964)",
+      "sun_vector": "(-0.230299, -0.448073, 0.863824)",
+      "sunset_weight": 0.0
+    },
+    "ready": true,
+    "visual_revision": 5,
+    "world_ready": true
+  },
+  "input_events": 108,
+  "layouts": [
+    {
+      "canvas_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 139.0)]",
+      "composition": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 139.0)]",
+      "lamp_point": "(82.0, 698.0)",
+      "needle_tray": "(186.0, 1150.0)",
+      "return_rect": "[P: (30.02, 39.44), S: (63.96, 97.28)]",
+      "safe_rect": "[P: (0.0, 0.0), S: (720.0, 1280.0)]",
+      "slipper_tray": "(535.0, 1150.0)",
+      "subviewport": "(720, 1558)",
+      "viewport": "(720, 1558)"
+    }
+  ],
+  "lighting": [
+    {
+      "hour": 12.3006337777778,
+      "lamp_weight": 0.0,
+      "name": "03_day_lamp_off",
+      "shadows": [
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.009659, 0.08612)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.001739, 0.015502)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.232964562991404
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.001739, 0.015502)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.232964562991404
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.43222, 0.462405, 0.482775)",
+        "cast_dir": "(-0.080489, 0.996755)",
+        "cot_e": 0.36879315245063,
+        "daylight": 1.0,
+        "elevation": 1.21747834916874,
+        "game_hour": 12.3006337777778,
+        "moon_cast_dir": "(-0.633176, 0.774008)",
+        "moon_energy": 0.0,
+        "moon_phase": 1.0,
+        "moon_screen_position": "(228.0, 95.0)",
+        "morning_weight": 0.0,
+        "night": 0.0,
+        "night_scheduled": false,
+        "noon_weight": 0.981499581350728,
+        "solar_phase": 0.518789611111111,
+        "sun_azimuth": 3.00874649633028,
+        "sun_color": "(1.0, 0.983612, 0.89741)",
+        "sun_energy": 0.685189891151189,
+        "sun_screen_position": "(181.9541, 28.13934)",
+        "sun_vector": "(0.02785, -0.34489, 0.93823)",
+        "sunset_weight": 0.0
+      }
+    },
+    {
+      "hour": 12.2808531555556,
+      "lamp_weight": 1.0,
+      "name": "05_day_lamp_on",
+      "shadows": [
+        {
+          "contact_strength": 0.125,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.125,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.125,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.150094, 0.104165)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.125,
+          "direction": "(0.027017, 0.01875)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.433171002625002
+        },
+        {
+          "contact_strength": 0.125,
+          "direction": "(0.027017, 0.01875)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.433171002625002
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.43194, 0.462101, 0.482425)",
+        "cast_dir": "(-0.075234, 0.997166)",
+        "cot_e": 0.36817915717026,
+        "daylight": 1.0,
+        "elevation": 1.21801894168252,
+        "game_hour": 12.2808531555556,
+        "moon_cast_dir": "(-0.633176, 0.774008)",
+        "moon_energy": 0.0,
+        "moon_phase": 1.0,
+        "moon_screen_position": "(228.0, 95.0)",
+        "morning_weight": 0.0,
+        "night": 0.0,
+        "night_scheduled": false,
+        "noon_weight": 0.983834871323556,
+        "solar_phase": 0.517553322222222,
+        "sun_azimuth": 2.8109895797837,
+        "sun_color": "(1.0, 0.983788, 0.897737)",
+        "sun_energy": 0.685797066544124,
+        "sun_screen_position": "(181.8255, 28.12161)",
+        "sun_vector": "(0.025994, -0.344526, 0.938417)",
+        "sunset_weight": 0.0
+      }
+    },
+    {
+      "hour": 0.144006577777777,
+      "lamp_weight": 0.0,
+      "name": "06_night_lamp_off",
+      "shadows": [
+        {
+          "contact_strength": 0.08,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.08,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.08,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.012687, 0.172558)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.08,
+          "direction": "(-0.002284, 0.031061)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.08092
+        },
+        {
+          "contact_strength": 0.08,
+          "direction": "(-0.002284, 0.031061)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.08092
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.115, 0.17, 0.29)",
+        "cast_dir": "(-0.767065, 0.641569)",
+        "cot_e": 5.0,
+        "daylight": 0.0,
+        "elevation": 0.0,
+        "game_hour": 0.144006577777777,
+        "moon_cast_dir": "(-0.052862, 0.998602)",
+        "moon_energy": 0.7,
+        "moon_phase": 0.518000822222222,
+        "moon_screen_position": "(181.7281, 29.10551)",
+        "morning_weight": 0.0,
+        "night": 1.0,
+        "night_scheduled": true,
+        "noon_weight": 0.0,
+        "solar_phase": 1.0,
+        "sun_azimuth": 51.0,
+        "sun_color": "(1.0, 0.91, 0.76)",
+        "sun_energy": 0.0,
+        "sun_screen_position": "(128.0, 108.0)",
+        "sun_vector": "(0.767066, -0.641569, 0.0)",
+        "sunset_weight": 0.0
+      }
+    },
+    {
+      "hour": 0.143695911111109,
+      "lamp_weight": 1.0,
+      "name": "07_night_lamp_on",
+      "shadows": [
+        {
+          "contact_strength": 0.095,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.095,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.095,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.219238, 0.132288)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.095,
+          "direction": "(0.039463, 0.023812)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.28092
+        },
+        {
+          "contact_strength": 0.095,
+          "direction": "(0.039463, 0.023812)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.28092
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.115, 0.17, 0.29)",
+        "cast_dir": "(-0.767065, 0.641569)",
+        "cot_e": 5.0,
+        "daylight": 0.0,
+        "elevation": 0.0,
+        "game_hour": 0.143695911111109,
+        "moon_cast_dir": "(-0.052749, 0.998608)",
+        "moon_energy": 0.7,
+        "moon_phase": 0.517961988888889,
+        "moon_screen_position": "(181.7243, 29.10505)",
+        "morning_weight": 0.0,
+        "night": 1.0,
+        "night_scheduled": true,
+        "noon_weight": 0.0,
+        "solar_phase": 1.0,
+        "sun_azimuth": 51.0,
+        "sun_color": "(1.0, 0.91, 0.76)",
+        "sun_energy": 0.0,
+        "sun_screen_position": "(128.0, 108.0)",
+        "sun_vector": "(0.767066, -0.641569, 0.0)",
+        "sunset_weight": 0.0
+      }
+    },
+    {
+      "hour": 6.79216444444444,
+      "lamp_weight": 0.0,
+      "name": "08_dawn_projection",
+      "shadows": [
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.253237, 0.172091)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.045583, 0.030976)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.146525707901833
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.045583, 0.030976)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.146525707901833
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.549558, 0.589521, 0.629447)",
+        "cast_dir": "(0.727234, 0.68639)",
+        "cot_e": 2.90183317803673,
+        "daylight": 1.0,
+        "elevation": 0.331864765849235,
+        "game_hour": 6.79216444444444,
+        "moon_cast_dir": "(-0.633176, 0.774008)",
+        "moon_energy": 0.0,
+        "moon_phase": 1.0,
+        "moon_screen_position": "(228.0, 95.0)",
+        "morning_weight": 1.0,
+        "night": 0.0,
+        "night_scheduled": false,
+        "noon_weight": 0.00368447852752456,
+        "solar_phase": 0.174510277777778,
+        "sun_azimuth": -43.5255941739497,
+        "sun_color": "(1.0, 0.910276, 0.760516)",
+        "sun_energy": 0.430957964417156,
+        "sun_screen_position": "(146.1491, 66.30511)",
+        "sun_vector": "(-0.687553, -0.648938, 0.325807)",
+        "sunset_weight": 0.0
+      }
+    },
+    {
+      "hour": 17.8057639111111,
+      "lamp_weight": 0.0,
+      "name": "09_dusk_projection",
+      "shadows": [
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(-0.412538, 0.266873)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.074257, 0.048037)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.255
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(-0.074257, 0.048037)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.255
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.202871442403195,
+        "ambient_color": "(0.4, 0.43, 0.5)",
+        "cast_dir": "(-0.743855, 0.668341)",
+        "cot_e": 4.6216153654227,
+        "daylight": 1.0,
+        "elevation": 0.213089618358321,
+        "game_hour": 17.8057639111111,
+        "moon_cast_dir": "(-0.633176, 0.774008)",
+        "moon_energy": 0.0,
+        "moon_phase": 1.0,
+        "moon_screen_position": "(228.0, 95.0)",
+        "morning_weight": 0.0,
+        "night": 0.0,
+        "night_scheduled": false,
+        "noon_weight": 0.000945086198067759,
+        "solar_phase": 0.862860244444444,
+        "sun_azimuth": 46.339436739016,
+        "sun_color": "(1.0, 0.46, 0.16)",
+        "sun_energy": 0.75,
+        "sun_screen_position": "(217.7375, 74.58946)",
+        "sun_vector": "(0.727031, -0.653224, 0.211481)",
+        "sunset_weight": 1.0
+      }
+    },
+    {
+      "hour": 10.2908641975309,
+      "lamp_weight": 0.0,
+      "name": "10_day_input_reference",
+      "shadows": [
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "Lantern",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "TorsoPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "LeftArmPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "RightArmPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "HeadPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "LeftLegPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "RightLegPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.0,
+          "direction": "(0.048746, 0.07895)",
+          "mesh_surfaces": 1,
+          "name": "BowPart",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.008774, 0.014211)",
+          "mesh_surfaces": 1,
+          "name": "NeedleTray",
+          "opacity": 0.194543393561749
+        },
+        {
+          "contact_strength": 0.11,
+          "direction": "(0.008774, 0.014211)",
+          "mesh_surfaces": 1,
+          "name": "SlipperTray",
+          "opacity": 0.194543393561749
+        }
+      ],
+      "snapshot": {
+        "afterglow_energy": 0.0,
+        "ambient_color": "(0.484376, 0.518907, 0.547969)",
+        "cast_dir": "(0.406219, 0.913776)",
+        "cot_e": 0.522605631323362,
+        "daylight": 1.0,
+        "elevation": 1.08922819062685,
+        "game_hour": 10.2908641975309,
+        "moon_cast_dir": "(-0.633176, 0.774008)",
+        "moon_energy": 0.0,
+        "moon_phase": 1.0,
+        "moon_screen_position": "(228.0, 95.0)",
+        "morning_weight": 0.195733796428293,
+        "night": 0.0,
+        "night_scheduled": false,
+        "noon_weight": 0.546870967893086,
+        "solar_phase": 0.393179012345679,
+        "sun_azimuth": -16.7955471874529,
+        "sun_color": "(1.0, 0.951015, 0.836562)",
+        "sun_energy": 0.572186451652202,
+        "sun_screen_position": "(168.8906, 32.46265)",
+        "sun_vector": "(-0.188148, -0.423233, 0.88627)",
+        "sunset_weight": 0.0
+      }
+    }
+  ],
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 5,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 5,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "darkroom"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 1021738,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4020,
+          "loaded": 943108,
+          "mount_usec": 405,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs/packs/entry.pck",
+          "request_id": "p30618420620-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2482410,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 7557,
+          "loaded": 2313888,
+          "mount_usec": 297,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs/packs/comic.pck",
+          "request_id": "p30618420620-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2500351,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3591,
+          "loaded": 1107208,
+          "mount_usec": 294,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs/packs/exterior.pck",
+          "request_id": "p30618420620-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2568510,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 55504,
+          "loaded": 17019800,
+          "mount_usec": 577,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs/packs/house.pck",
+          "request_id": "p30618420620-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 20138347,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 16637,
+          "loaded": 4782656,
+          "mount_usec": 438,
+          "pack_id": "darkroom",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs/packs/darkroom.pck",
+          "request_id": "p30618420620-e1-r5",
+          "state": "ready",
+          "total": 4782656,
+          "verified_sha256": "089fe10bc3fecac765d005b6917a879e9cec5364da873eb45102ddb72d25a7b3"
+        },
+        "epoch": 1,
+        "pack_id": "darkroom",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "TEST ONLY candidate, empty res, exact candidate c242-derived PCKs, real App/router/root input, native Mesa GL. Clock review hour controls time only. Existing c242 base helpers reused; opening comic omitted. No Web, audio listening or device touch-feel claim.",
+  "viewport": [
+    720,
+    1558
+  ]
+}

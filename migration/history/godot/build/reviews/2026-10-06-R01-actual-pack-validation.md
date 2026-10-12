@@ -1,0 +1,7 @@
+# R01 关联组真实包审查缺口
+
+已发布561的原生组装测试 --path 指向带全资产项目，再传 --main-pack。core/Home之外的物理文件会掩盖迟加载字体/图片缺失。这正是H08冷Home空白日记未被旧通过检查发现的条件。不能继续把旧warm检查称实际冷包通过。
+
+本次把正式packed construction/lazy Home/resource audit三个入口改到仅有project.godot的空res目录，具体每次实际PCK挂载按最终manifest取值。照片＋确认出发使PCK从历史7个变为9个，历史mount_order不含departure会漏审资源，现按全部实际pack依赖重建拓扑；未知循环直接失败。origin_pack_manifest恢复为561历史原件，当前新增photo/departure只在当前manifest生成器声明，避免改历史基准冒原始内容。
+
+日记GL runner增加--production，从实际新包验证且不叠源脚本delta；旧561红绿对照仍可显式使用delta。照片actual-packs回归纳组内脚本。资源关系声明测试已核9包、Home闭包core/house/exterior、photo独立、travel依赖departure；真实动态挂载待按先GitHub后正式包的顺序完成，未在此文件写PASS。

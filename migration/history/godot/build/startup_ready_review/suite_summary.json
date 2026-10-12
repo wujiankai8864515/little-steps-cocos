@@ -1,0 +1,227 @@
+{
+  "source_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+  "formal_run_summaries": [
+    {
+      "directory": "gl_cold_warm_timing",
+      "mode": "slow_warm_timing",
+      "display": "X11",
+      "failed": 0,
+      "check_count": 100,
+      "duration_msec": 57569,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "gl_loading_contact",
+      "mode": "slow_visual",
+      "display": "X11",
+      "failed": 0,
+      "check_count": 7,
+      "duration_msec": 2619,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "gl_slow",
+      "mode": "slow_visual",
+      "display": "X11",
+      "failed": 0,
+      "check_count": 63,
+      "duration_msec": 33502,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_cold_normal",
+      "mode": "cold_normal",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 44,
+      "duration_msec": 15321,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_fail_comic",
+      "mode": "fail_comic",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 46,
+      "duration_msec": 15752,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_fail_home",
+      "mode": "fail_home",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 46,
+      "duration_msec": 16768,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_fail_login",
+      "mode": "fail_login",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 46,
+      "duration_msec": 15343,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_parallel_slow_comic",
+      "mode": "parallel_slow_comic",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 49,
+      "duration_msec": 19603,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "directory": "headless_warm_replay",
+      "mode": "warm_replay",
+      "display": "headless",
+      "failed": 0,
+      "check_count": 91,
+      "duration_msec": 30381,
+      "engine_returncode": 0,
+      "diagnostic_errors": []
+    }
+  ],
+  "overall": "finite native gates covered, A049 software GL continuity boundary remains open, no all-topic or Web acceptance",
+  "open_observation_count": 1,
+  "processes": [
+    {
+      "run": "gl_slow",
+      "kind": "engine_pid.json",
+      "pid": 13,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "gl_slow",
+      "kind": "xorg_pid.json",
+      "pid": 9,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_cold_normal",
+      "kind": "pid.json",
+      "pid": 5,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_warm_replay",
+      "kind": "pid.json",
+      "pid": 19,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "gl_loading_contact",
+      "kind": "engine_pid.json",
+      "pid": 12,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "gl_loading_contact",
+      "kind": "xorg_pid.json",
+      "pid": 8,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_fail_comic",
+      "kind": "pid.json",
+      "pid": 47,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_fail_home",
+      "kind": "pid.json",
+      "pid": 61,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "gl_cold_warm_timing",
+      "kind": "engine_pid.json",
+      "pid": 12,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "gl_cold_warm_timing",
+      "kind": "xorg_pid.json",
+      "pid": 8,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_fail_login",
+      "kind": "pid.json",
+      "pid": 33,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "headless_parallel_slow_comic",
+      "kind": "pid.json",
+      "pid": 6,
+      "matching_task_process_alive": false,
+      "note": "PID numbers may be reused between execution namespaces; identity match checks this task command, not mere PID existence."
+    },
+    {
+      "run": "diagnostic_processing_disabled",
+      "kind": "engine_pid.json",
+      "pid": 12,
+      "matching_task_process_alive": false,
+      "note": "subprocess.wait completed and runner process_exit.json confirms termination; PID numbers are namespace-local"
+    },
+    {
+      "run": "diagnostic_processing_disabled",
+      "kind": "xorg_pid.json",
+      "pid": 8,
+      "matching_task_process_alive": false,
+      "note": "subprocess.wait completed and runner process_exit.json confirms termination; PID numbers are namespace-local"
+    },
+    {
+      "run": "diagnostic_render_disabled",
+      "kind": "engine_pid.json",
+      "pid": 11,
+      "matching_task_process_alive": false,
+      "note": "subprocess.wait completed and runner process_exit.json confirms termination; PID numbers are namespace-local"
+    },
+    {
+      "run": "diagnostic_render_disabled",
+      "kind": "xorg_pid.json",
+      "pid": 7,
+      "matching_task_process_alive": false,
+      "note": "subprocess.wait completed and runner process_exit.json confirms termination; PID numbers are namespace-local"
+    }
+  ],
+  "diagnostic_runs": [
+    {
+      "name": "diagnostic_processing_disabled",
+      "acceptance": false,
+      "exit_code": 0,
+      "fixture_failed": 0,
+      "errors": []
+    },
+    {
+      "name": "diagnostic_render_disabled",
+      "acceptance": false,
+      "exit_code": 0,
+      "fixture_failed": 0,
+      "errors": []
+    }
+  ]
+}

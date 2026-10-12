@@ -1,0 +1,11 @@
+# N28 桃花试穿真实点击宽屏失效
+
+用户2026-10-07实际反馈：点击桃花试穿无反应。197ee6c正式包、空res真实App、Home根鼠标进入衣柜后实测：720x1280点击标签成功；将实际根viewport改为1200x1280，点击屏幕上可见标签后仍selected=original、outfit_enabled=false。
+
+确证根因：App._layout_pages将PageHost水平居中，wardrobe_page._input使用root event.position仅扣frame_origin，漏父Canvas坐标变换。不是广告provider问题，也不是服装材质缺资源。
+
+修复：先逆get_global_transform_with_canvas得到page坐标，再除内viewport适配scale。只一次root→page→房间转换，不改变SubViewportContainer向公共气泡/返回传事件。
+
+候选验证：官方Godot4.5.2编译单脚本override PCK叠在197ee6c正式资源包；真实App入口与真实根鼠标，1200宽同一标签点击selected=peach、outfit_enabled=true，返回亦可用，20断言0失败、0运行错误。源/字节码overlay明确是候选而非正式冷包；无需新图片或新增运行资源。
+
+外部证据目录：round7_wardrobe_wide_repro（正式包失效）和round7_wardrobe_input_compiled（候选成功），保留日志、JSON与真实PNG。最初直接GDScript缓存override与源码PCK试验因GDC依赖解析失败，已弃用，未当产品证据。正式重包/Web/真实触摸尚待集成验证。

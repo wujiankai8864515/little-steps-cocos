@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "empty room does not capture pointer",
+      "pass": true
+    },
+    {
+      "name": "fish actual alpha target exists",
+      "pass": true
+    },
+    {
+      "name": "mouse captures actual fish",
+      "pass": true
+    },
+    {
+      "name": "fish click starts one complete manual tap",
+      "pass": true
+    },
+    {
+      "name": "manual merit is not awarded on pointer press",
+      "pass": true
+    },
+    {
+      "name": "manual tap records one contact hit",
+      "pass": true
+    },
+    {
+      "name": "real touch hold enters fish drag",
+      "pass": true
+    },
+    {
+      "name": "touch cancellation releases capture",
+      "pass": true
+    },
+    {
+      "name": "touch cancellation returns fixed fish home",
+      "pass": true
+    },
+    {
+      "name": "bag actual alpha target exists",
+      "pass": true
+    },
+    {
+      "name": "mouse captures actual bag",
+      "pass": true
+    },
+    {
+      "name": "drag bag to fish opens real travel invitation",
+      "pass": true
+    },
+    {
+      "name": "invitation reached real hold phase",
+      "pass": true
+    },
+    {
+      "name": "actual Cancel clears offer and route",
+      "pass": true
+    },
+    {
+      "name": "Cancel does not depart",
+      "pass": true
+    },
+    {
+      "name": "bag actual alpha target exists",
+      "pass": true
+    },
+    {
+      "name": "mouse captures actual bag",
+      "pass": true
+    },
+    {
+      "name": "drag bag to fish opens real travel invitation",
+      "pass": true
+    },
+    {
+      "name": "outside click consumes gesture and cancels invitation",
+      "pass": true
+    },
+    {
+      "name": "outside cancellation does not capture underlying world",
+      "pass": true
+    },
+    {
+      "name": "actual darkroom return button emits one route request",
+      "pass": true
+    }
+  ],
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "failed": 0,
+  "passed": 21,
+  "root_push_input_events": 18,
+  "scope": "Native headless production input dispatch smoke; no GPU or browser touch/feel claim; no16-itemfixes."
+}

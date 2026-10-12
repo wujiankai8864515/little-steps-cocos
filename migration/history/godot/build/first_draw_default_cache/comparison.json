@@ -1,0 +1,517 @@
+{
+  "scope": "Fourth and final additional GL configuration. Unmodified exact full App and materials; default driver cache in isolated per-process directories. Same-process first App then second App. No cache hit claim and no disk-cache-only warmed process experiment.",
+  "baseline_MESA_SHADER_CACHE_DISABLE_true": [
+    {
+      "round": 1,
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "elapsed_ms": 3.343,
+          "start_msec": 20872.706,
+          "end_msec": 20876.049
+        },
+        {
+          "stage": "home_tree_ready",
+          "elapsed_ms": 198.551,
+          "start_msec": 20903.634,
+          "end_msec": 21102.185
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "elapsed_ms": 8628.664,
+          "start_msec": 20903.649,
+          "end_msec": 29532.313
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 20862,
+          "msec": 317,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20545
+        },
+        {
+          "end": 29382,
+          "msec": 8478,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20904
+        }
+      ],
+      "post_draw_gaps": [
+        {
+          "end": 20861,
+          "msec": 316,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20545
+        },
+        {
+          "end": 29376,
+          "msec": 8473,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20903
+        }
+      ],
+      "max_home_process_gap_ms": 8478,
+      "max_home_post_draw_gap_ms": 8473,
+      "waiting_captions": [
+        {
+          "at": 16682,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 17148,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 17598,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 18048,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 18498,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 18948,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 19398,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 19829,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 20291,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 29455,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 29874,
+          "home_ready": true,
+          "round": 1,
+          "text": "正在准备小屋.."
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "elapsed_ms": 1.824,
+          "start_msec": 50746.699,
+          "end_msec": 50748.523
+        },
+        {
+          "stage": "home_tree_ready",
+          "elapsed_ms": 152.258,
+          "start_msec": 50759.7,
+          "end_msec": 50911.958
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "elapsed_ms": 5845.364,
+          "start_msec": 50759.719,
+          "end_msec": 56605.083
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 56478,
+          "msec": 5718,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 50760
+        }
+      ],
+      "post_draw_gaps": [
+        {
+          "end": 56475,
+          "msec": 5715,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 50760
+        }
+      ],
+      "max_home_process_gap_ms": 5718,
+      "max_home_post_draw_gap_ms": 5715,
+      "waiting_captions": [
+        {
+          "at": 46776,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 47243,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 47693,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 48143,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 48597,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 49043,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 49477,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 49923,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 50389,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 56542,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 56930,
+          "home_ready": true,
+          "round": 2,
+          "text": "正在准备小屋.."
+        }
+      ]
+    }
+  ],
+  "default_driver_cache": [
+    {
+      "round": 1,
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "elapsed_ms": 3.585,
+          "start_msec": 20936.247,
+          "end_msec": 20939.832
+        },
+        {
+          "stage": "home_tree_ready",
+          "elapsed_ms": 204.894,
+          "start_msec": 20967.826,
+          "end_msec": 21172.72
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "elapsed_ms": 8038.268,
+          "start_msec": 20967.848,
+          "end_msec": 29006.116
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 20925,
+          "msec": 332,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20593
+        },
+        {
+          "end": 28869,
+          "msec": 7902,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20967
+        }
+      ],
+      "post_draw_gaps": [
+        {
+          "end": 20924,
+          "msec": 331,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20593
+        },
+        {
+          "end": 28854,
+          "msec": 7887,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20967
+        }
+      ],
+      "max_home_process_gap_ms": 7902,
+      "max_home_post_draw_gap_ms": 7887,
+      "waiting_captions": [
+        {
+          "at": 16697,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 17164,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 17624,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 18063,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 18514,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 18963,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 19413,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 19849,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 20290,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 28869,
+          "home_ready": false,
+          "round": 1,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 29345,
+          "home_ready": true,
+          "round": 1,
+          "text": "正在准备小屋.."
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "elapsed_ms": 2.05,
+          "start_msec": 49898.263,
+          "end_msec": 49900.313
+        },
+        {
+          "stage": "home_tree_ready",
+          "elapsed_ms": 172.486,
+          "start_msec": 49913.009,
+          "end_msec": 50085.495
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "elapsed_ms": 4764.974,
+          "start_msec": 49913.037,
+          "end_msec": 54678.011
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 54544,
+          "msec": 4632,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 49912
+        }
+      ],
+      "post_draw_gaps": [
+        {
+          "end": 54540,
+          "msec": 4628,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 49912
+        }
+      ],
+      "max_home_process_gap_ms": 4632,
+      "max_home_post_draw_gap_ms": 4628,
+      "waiting_captions": [
+        {
+          "at": 45962,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 46411,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 46857,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 47307,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 47757,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 48207,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 48657,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 49112,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋.."
+        },
+        {
+          "at": 49568,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋..."
+        },
+        {
+          "at": 54613,
+          "home_ready": false,
+          "round": 2,
+          "text": "正在准备小屋."
+        },
+        {
+          "at": 55049,
+          "home_ready": true,
+          "round": 2,
+          "text": "正在准备小屋.."
+        }
+      ]
+    }
+  ],
+  "cache_writes_observed_after_exit": {
+    "Fontconfig or other cache": {
+      "files": 31,
+      "bytes": 1132144
+    },
+    "Mesa driver": {
+      "files": 101,
+      "bytes": 3611878
+    },
+    "Godot shader": {
+      "files": 17,
+      "bytes": 11775006
+    }
+  },
+  "cache_policy": {
+    "MESA_SHADER_CACHE_DISABLE_present_in_child": false,
+    "inherited_disable_removed": null,
+    "policy": "No custom disable flag or cache size limit; private XDG and Mesa cache directories; same-process cold then warm App.",
+    "other_inherited_driver_options": {}
+  },
+  "checks": 100,
+  "failed": 0,
+  "process_exit": {
+    "xorg_returncode": 0,
+    "engine_returncode": 0
+  },
+  "engine_pid": {
+    "pid": 11
+  },
+  "xorg_pid": {
+    "pid": 7,
+    "display": 31679
+  },
+  "base_script_identical": true,
+  "sources": {
+    "baseline": "/workspace/shared/startup_ready_chain_qa/gl_cold_warm_timing/results.json",
+    "current": "/workspace/shared/home_first_draw_default_cache_qa/default_cache_cold_warm/results.json"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "checks": [
+    {
+      "check": "Native X11 GL renderer",
+      "passed": true
+    },
+    {
+      "check": "Cold Home preparation terminates",
+      "passed": true
+    },
+    {
+      "check": "Production App prepares cold Home",
+      "passed": true
+    },
+    {
+      "check": "Actual router reaches enabled Home; unrelated comic omitted",
+      "passed": true
+    },
+    {
+      "check": "Normal App ambient is enabled; review freezes clock only",
+      "passed": true
+    },
+    {
+      "check": "Normal ambient bowl drop starts drink",
+      "passed": true
+    },
+    {
+      "check": "Drink production code suspends ambient",
+      "passed": true
+    },
+    {
+      "check": "Drink production code restores original enabled ambient without fixture intervention",
+      "passed": true
+    },
+    {
+      "check": "Actual post-drink mouse strike reaches contact",
+      "passed": true
+    },
+    {
+      "check": "Normal restored strike settles once",
+      "passed": true
+    },
+    {
+      "check": "Second drink begins normally",
+      "passed": true
+    },
+    {
+      "check": "Focus cancellation restores drink ambient ownership",
+      "passed": true
+    },
+    {
+      "check": "Canceled drink returns exact bowl transform",
+      "passed": true
+    },
+    {
+      "check": "Canceled drink does not add completion",
+      "passed": true
+    },
+    {
+      "check": "Touch strike works after drink focus interruption",
+      "passed": true
+    },
+    {
+      "check": "Post-cancel touch has no emulated duplicate",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "input_events": 12,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 957613,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3255,
+          "loaded": 943108,
+          "mount_usec": 383,
+          "pack_id": "entry",
+          "pack_path": "/workspace/shared/home_grounding_candidate_v2/native_packs/packs/entry.pck",
+          "request_id": "p30349985162-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2412098,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 7494,
+          "loaded": 2313888,
+          "mount_usec": 315,
+          "pack_id": "comic",
+          "pack_path": "/workspace/shared/home_grounding_candidate_v2/native_packs/packs/comic.pck",
+          "request_id": "p30349985162-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2427994,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3602,
+          "loaded": 1107208,
+          "mount_usec": 315,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/shared/home_grounding_candidate_v2/native_packs/packs/exterior.pck",
+          "request_id": "p30349985162-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2495204,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 55177,
+          "loaded": 17019800,
+          "mount_usec": 541,
+          "pack_id": "house",
+          "pack_path": "/workspace/shared/home_grounding_candidate_v2/native_packs/packs/house.pck",
+          "request_id": "p30349985162-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "A013 default ambient lifecycle. No ambient/pose intervention after App boot; only set_review_hour(10,false) pauses time-of-day. Root mouse/touch drinks, strikes and focus lifecycle. Exact labeled candidate PCKs, empty res, production App/router; comic omitted with _commit_home; root mouse/touch actions; time-of-day review fixture; new Canvas probe is explicitly synthetic. Native Mesa only. Visual frames require manual inspection.",
+  "snapshots": [],
+  "traces": []
+}

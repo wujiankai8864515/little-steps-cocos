@@ -1,0 +1,35 @@
+{
+  "boundary": "Deterministic mock host/network API event ordering, no browser/network speed claim.",
+  "overlap_expected": false,
+  "results": [
+    {
+      "case": "held_actor_network_overlap",
+      "events": [
+        "actor_start",
+        "actor_ready",
+        "manifest",
+        "engine_script",
+        "engine_start",
+        "actor_dispose"
+      ],
+      "pass": true
+    },
+    {
+      "case": "actor_failure_keeps_retry_and_prevents_engine_start",
+      "pass": true,
+      "events": [
+        "actor_start",
+        "actor_dispose"
+      ]
+    },
+    {
+      "case": "close_during_parallel_prepare_blocks_late_start",
+      "pass": true,
+      "events": [
+        "actor_start",
+        "actor_dispose",
+        "actor_ready"
+      ]
+    }
+  ]
+}

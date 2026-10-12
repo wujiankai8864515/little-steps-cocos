@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "base_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+  "runtime_native_verified_commit": "c546ada",
+  "native_source_snapshot_sha256": "fffd6e28b42ab46fa4911efdab743651ceb76337afa8baebfdf49cee6ec2fc97",
+  "runtime_source_hashes_equal_to_native_candidate": {
+    "travel/travel_scene_config.gd": "fb901efdd3e99db1cbe30e55475b00595025f1eb023912d575aaa6628ba5763f",
+    "travel/travel_scene_runtime.gd": "b62409c03728d712f01e0c5882b5e9b7f459adede4b97e5fecc630d1144afc62",
+    "travel/travel_page.gd": "83db2223f5c3090beb891a763c4300b2cb4eace745348914bd4ba0a5e2b6e230",
+    "travel/travel_home_bridge.gd": "dbb2f79cc61d1738e78d68b38e1c41495cac67d1a66dd197552e29baaecaee67"
+  },
+  "later_changes": "Admission metadata allocates 600000 procedural bytes to the atlas real App spec; verified by exact production _resource_specs. QA audio shutdown allows decoder drain. No further game script changes.",
+  "checks": {
+    "configured_scene_gl": {
+      "passed": 40,
+      "failed": 0
+    },
+    "shared_clock_and_real_mute_and_gate": {
+      "passed": 14,
+      "failed": 0
+    },
+    "travel_state": {
+      "passed": 535,
+      "failed": 0
+    },
+    "quality_and_diary_pixels": {
+      "passed": 12,
+      "failed": 0
+    }
+  },
+  "audio": {
+    "sample_rate": 22050,
+    "source_samples": 61740,
+    "duration": 2.8,
+    "source_peak_dbfs": -7.557486025553541,
+    "playback_gain_db": -24,
+    "rendered_peak_dbfs": -31.55748602555354,
+    "collision_times": [
+      3.67499999999999,
+      18.3749999999996
+    ],
+    "clipped_samples": 0,
+    "source_bytes": 123480,
+    "declared_peak_reservation": 600000,
+    "listened": false,
+    "audio_capture": "Not a device capture: exact runtime-generated source mixed at actual recorded contact times."
+  },
+  "resources": {
+    "entries": 126,
+    "estimated_bytes": 242848640,
+    "resource_estimated_bytes": 242248640,
+    "runtime_reserved_bytes": 600000
+  },
+  "phase2_items": {
+    "24": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "26": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "27": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "28": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "29": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "30": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "31": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    },
+    "32": {
+      "status": "implemented_component_verified_combined_pending",
+      "user_visual_accepted": false
+    }
+  },
+  "visual_review": "Viewed dawn/noon/dusk/night actual GL screenshots; inspected before/middle/after route keyframes and contact-adjacent bell crops from actual rendered frame sequence. MP4 has been encoded and parsed; no full-speed audiovisual listening claim.",
+  "boundaries": [
+    "Mesa llvmpipe software GL, not user GPU/browser PASS",
+    "No physical loudspeaker listening or audio device capture",
+    "No Web dynamic mount, Home final 19MB package measurement, hardware memory or 60fps measurement",
+    "Current export prune logic removes old HUD sidecars/ctex; actual final PCK inventory must be checked by integrator",
+    "No external push, formal PCK/Web deployment, user Mac use, or final user visual acceptance"
+  ]
+}

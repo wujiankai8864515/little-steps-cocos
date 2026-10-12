@@ -1,0 +1,291 @@
+{
+  "scope": "software GL cold then warm actual full App, two process frames and draw gate included; no shader attribution",
+  "timelines": [
+    {
+      "round": 1,
+      "home_backend_events": [
+        {
+          "at": 3597,
+          "bytes": 17019800,
+          "id": "house",
+          "kind": "start",
+          "path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+          "sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        {
+          "at": 3655,
+          "kind": "native_result",
+          "result": {
+            "cache_hit": false,
+            "copy_usec": null,
+            "download_usec": null,
+            "epoch": 1,
+            "error": "",
+            "hash_usec": 58388,
+            "loaded": 17019800,
+            "mount_usec": null,
+            "pack_id": "house",
+            "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+            "request_id": "p30400316809-e1-r4",
+            "state": "ready",
+            "total": 17019800,
+            "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+          }
+        },
+        {
+          "at": 19410,
+          "id": "house",
+          "kind": "deliver",
+          "state": "ready"
+        },
+        {
+          "at": 19410,
+          "kind": "mount",
+          "ok": true,
+          "path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck"
+        }
+      ],
+      "backend_time_base": "milliseconds since this rounds recorder creation; not global run clock",
+      "home_stage_metrics": [
+        {
+          "stage": "home_instantiate",
+          "end_msec": 20876.049,
+          "elapsed_msec": 3.343,
+          "start_msec": 20872.706
+        },
+        {
+          "stage": "home_tree_ready",
+          "end_msec": 21102.185,
+          "elapsed_msec": 198.551,
+          "start_msec": 20903.634
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "end_msec": 29532.313,
+          "elapsed_msec": 8628.664,
+          "start_msec": 20903.649
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 20862,
+          "msec": 317,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20545
+        },
+        {
+          "end": 29382,
+          "msec": 8478,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20904
+        }
+      ],
+      "draw_gaps": [
+        {
+          "end": 20861,
+          "msec": 316,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20545
+        },
+        {
+          "end": 29376,
+          "msec": 8473,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20903
+        }
+      ],
+      "waiting_dot_gaps": [
+        {
+          "from": 16682,
+          "to": 17148,
+          "msec": 466
+        },
+        {
+          "from": 17148,
+          "to": 17598,
+          "msec": 450
+        },
+        {
+          "from": 17598,
+          "to": 18048,
+          "msec": 450
+        },
+        {
+          "from": 18048,
+          "to": 18498,
+          "msec": 450
+        },
+        {
+          "from": 18498,
+          "to": 18948,
+          "msec": 450
+        },
+        {
+          "from": 18948,
+          "to": 19398,
+          "msec": 450
+        },
+        {
+          "from": 19398,
+          "to": 19829,
+          "msec": 431
+        },
+        {
+          "from": 19829,
+          "to": 20291,
+          "msec": 462
+        },
+        {
+          "from": 20291,
+          "to": 29455,
+          "msec": 9164
+        },
+        {
+          "from": 29455,
+          "to": 29874,
+          "msec": 419
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "home_backend_events": [
+        {
+          "at": 3204,
+          "bytes": 17019800,
+          "id": "house",
+          "kind": "start",
+          "path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+          "sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        {
+          "at": 3265,
+          "kind": "native_result",
+          "result": {
+            "cache_hit": false,
+            "copy_usec": null,
+            "download_usec": null,
+            "epoch": 1,
+            "error": "",
+            "hash_usec": 61617,
+            "loaded": 17019800,
+            "mount_usec": null,
+            "pack_id": "house",
+            "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+            "request_id": "p148662912370-e1-r4",
+            "state": "ready",
+            "total": 17019800,
+            "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+          }
+        },
+        {
+          "at": 18995,
+          "id": "house",
+          "kind": "deliver",
+          "state": "ready"
+        },
+        {
+          "at": 18996,
+          "kind": "mount",
+          "ok": true,
+          "path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck"
+        }
+      ],
+      "backend_time_base": "milliseconds since this rounds recorder creation; not global run clock",
+      "home_stage_metrics": [
+        {
+          "stage": "home_instantiate",
+          "end_msec": 50748.523,
+          "elapsed_msec": 1.824,
+          "start_msec": 50746.699
+        },
+        {
+          "stage": "home_tree_ready",
+          "end_msec": 50911.958,
+          "elapsed_msec": 152.258,
+          "start_msec": 50759.7
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "end_msec": 56605.083,
+          "elapsed_msec": 5845.364,
+          "start_msec": 50759.719
+        }
+      ],
+      "process_gaps": [
+        {
+          "end": 56478,
+          "msec": 5718,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 50760
+        }
+      ],
+      "draw_gaps": [
+        {
+          "end": 56475,
+          "msec": 5715,
+          "page": "HOME_ENTERING",
+          "round": 2,
+          "start": 50760
+        }
+      ],
+      "waiting_dot_gaps": [
+        {
+          "from": 46776,
+          "to": 47243,
+          "msec": 467
+        },
+        {
+          "from": 47243,
+          "to": 47693,
+          "msec": 450
+        },
+        {
+          "from": 47693,
+          "to": 48143,
+          "msec": 450
+        },
+        {
+          "from": 48143,
+          "to": 48597,
+          "msec": 454
+        },
+        {
+          "from": 48597,
+          "to": 49043,
+          "msec": 446
+        },
+        {
+          "from": 49043,
+          "to": 49477,
+          "msec": 434
+        },
+        {
+          "from": 49477,
+          "to": 49923,
+          "msec": 446
+        },
+        {
+          "from": 49923,
+          "to": 50389,
+          "msec": 466
+        },
+        {
+          "from": 50389,
+          "to": 56542,
+          "msec": 6153
+        },
+        {
+          "from": 56542,
+          "to": 56930,
+          "msec": 388
+        }
+      ]
+    }
+  ]
+}

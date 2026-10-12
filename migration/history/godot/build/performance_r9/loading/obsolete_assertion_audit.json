@@ -1,0 +1,16 @@
+{
+  "scope": "R9-L01 test maintenance, not another product fix",
+  "source_scan": "git grep minimum_loading_visible_msec over tracked gd/py/js/md",
+  "changed": [
+    "build/checks/test_round5_app_journey.gd",
+    "build/first_draw_default_cache/test_startup_timing.gd",
+    "build/startup_ready_review/test_parallel_startup.gd",
+    "build/startup_ready_review/test_startup_chain.gd",
+    "build/startup_ready_review/test_startup_timing.gd"
+  ],
+  "old_assertion": "minimum_loading_visible_msec >= 1000",
+  "replacement": "real Login resource batch successful, actual Login node ready, observed loading_visible_msec present",
+  "preserved": ["delayed Login stays on Loading after one second", "real first draw checks", "title/subtitle/rest/peek animation timing", "opening story drawing and hold", "failure retry and cancelled route checks"],
+  "no_obsolete_assertion": ["build/assemble.py", "build/web_candidate.py", "build/check_loading_contract.py", "build/checks/test_loading_contract.py"],
+  "boundary": "Assertions updated; historical results/REPORT frozen. These older full suites were not re-run by this audit; current focused entry and host tests are separate evidence."
+}

@@ -1,0 +1,46 @@
+{
+  "base_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+  "production_changed_paths": [
+    "games/travel_woodfish/project/entry/comic_page.gd"
+  ],
+  "production_source_sha256": "1121eb0460024aab80dfd29cda88b4227cdf3671b144441b97c5291528c114fe",
+  "qa_scope": "Real cold App on exact 5c37 formal packs with explicit single-source candidate overlay; native software GL, not final grouped release or browser GPU.",
+  "baseline_checks": 30,
+  "final_candidate_checks": 111,
+  "pixel_layouts": 5,
+  "loading_contract_tests": 6,
+  "baseline_standard_prompt_center_y": 1217,
+  "baseline_standard_wait_center_y": 1154,
+  "fixed_standard_prompt_and_wait_center_y": 1217,
+  "red_rounds_preserved": true,
+  "actual_screenshots_viewed": [
+    "reference",
+    "baseline standard enter/wait",
+    "candidate standard enter/wait dots1/3",
+    "candidate compact/mobile scaled wait"
+  ],
+  "all_files": {
+    "baseline_gl_RED_provenance.json": "b3f24df9c39c8f06d03d83f3133c07d099aa7ac7cf25acbe37fa9addbd6722a9",
+    "baseline_gl_RED_results.json": "0b141d6ec4383d2b82c2378c8465607be9360ced602798b1b96b75de6e4fa5b8",
+    "baseline_gl_v2/provenance.json": "a44a51d593431f53a73ad6768dde60a9ed5d39bcf4d1adf82caeff2ed338bd2c",
+    "baseline_gl_v2/results.json": "7988b71556fef2581c07b6111611e11f16b2bce690949c9390eb1baaed855941",
+    "baseline_gl_v2/run.log": "994c2f04d0178fea7c9bda41c0b0b61d0b057987d8671bfb54dfec9575ee6ac0",
+    "baseline_gl_v2/standard_enter.png": "c1fde7d37857fc3aff2cf253c07f16ce47e3488ddfd0b5f9f05a996486c56be6",
+    "baseline_gl_v2/standard_wait_1.png": "203687eb64baeedfa6293ba559a5ac35ef47a882b29ee7ea319a4b6c21d56f95",
+    "candidate_gl_RED_provenance.json": "e36b326e8d5d54b0574a010a7f4e489123f5a94ea2b0ec4909e6cab8e9816375",
+    "candidate_gl_RED_results.json": "bb655eb0be9ffa66e08db4a87664293e919e8f7d18ba0d974d0511384cbccbc3",
+    "candidate_gl_v2_RED_provenance.json": "107dc84f74bd0b8cf54f95334f20a26feee8c827c89fefbdcc1e4f6b915380cf",
+    "candidate_gl_v2_RED_results.json": "9c4b5b5544f849b2943be1aae2df222fb3774f3723035c4b8175b6b0f288d031",
+    "candidate_gl_v3/compact_wait_3.png": "3dde52b0bc531eae3d8c37542a20ed66fd3c6a8d0ac5f3927c43c26e65d10991",
+    "candidate_gl_v3/mobile_scaled_wait_3.png": "2b43da73395ff5f1c4274a7c746bf7ab43dd092e238b60ee84e38f4ec935ef61",
+    "candidate_gl_v3/pixel_checks.json": "20222dd9dad2cf59793357b38e13a892b4055cc4dde8cb617ab38e75d7596335",
+    "candidate_gl_v3/provenance.json": "4ca5d41dacddca5dadf62cf54fe43104c3d1dd020fe35b808aebb991615ee7c8",
+    "candidate_gl_v3/results.json": "2cf0450d107d60bd3c61910eb8cbc070c33deeda13ff88a1864190534c1e7c11",
+    "candidate_gl_v3/run.log": "a8403ed5cd9c18a0aa383b32b5d15a4175076bcc120ee98ce751802028a4c151",
+    "candidate_gl_v3/standard_enter.png": "c1fde7d37857fc3aff2cf253c07f16ce47e3488ddfd0b5f9f05a996486c56be6",
+    "candidate_gl_v3/standard_wait_1.png": "7a02a8060d6d8097a8394a1b4404de0ecbaf94b8d03f60ff837187cc38337fde",
+    "candidate_gl_v3/standard_wait_3.png": "bc7dda247927622d7bb55145c28c5c414ea4597c15c532b780153eb1c7fdb16d",
+    "candidate_guard.json": "68e670cc21351359be97497e97f5c13ca3ba31c569948eb2b11fa31c2f8db8ec",
+    "loading_contract_tests.log": "7ad585402a4ccb8e5526da2d4c696c0c413aa1157357f308df813a6dd0da2f08"
+  }
+}

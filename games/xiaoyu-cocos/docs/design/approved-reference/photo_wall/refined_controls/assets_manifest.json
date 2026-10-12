@@ -1,0 +1,290 @@
+{
+  "purpose": "Authoring assets for parent atlas integration only; no production PNG entries added.",
+  "generator": "OpenAI built-in image_gen; exact prompts and references in prompts.json",
+  "runtime_filter": "linear; clamp; atlas cells require at least 2px external gutters",
+  "no_baked_text": true,
+  "asset_count": 7,
+  "assets": [
+    {
+      "id": "title_paper",
+      "source": "source/title_paper.png",
+      "runtime": "runtime/title_paper.png",
+      "source_size": [
+        2206,
+        713
+      ],
+      "runtime_size": [
+        500,
+        132
+      ],
+      "crop_source_box": [
+        73,
+        88,
+        2134,
+        633
+      ],
+      "transform": "alpha>=8 subject-bbox with 4px guard, crop then Lanczos contain; no color or alpha modification",
+      "source_sha256": "c7b3efebd5ce81618838fe5329ef42b47dd7a0533fa64c8eeca33f05c0970423",
+      "runtime_sha256": "b323d52a75e1fd997cc1b843da1abfb4e76bc79fc367ded3e5fb9558db57ccfd",
+      "png_bytes": 97790,
+      "rgba8_decode_bytes": 264000,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 5086,
+      "text_safe_rect_xywh": [
+        50,
+        22,
+        400,
+        82
+      ],
+      "text_safe_rect_normalized": [
+        0.1,
+        0.17,
+        0.8,
+        0.62
+      ],
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "hint_paper",
+      "source": "source/hint_paper.png",
+      "runtime": "runtime/hint_paper.png",
+      "source_size": [
+        2206,
+        713
+      ],
+      "runtime_size": [
+        560,
+        98
+      ],
+      "crop_source_box": [
+        98,
+        175,
+        2119,
+        529
+      ],
+      "transform": "alpha>=8 subject-bbox with 4px guard, crop then Lanczos contain; no color or alpha modification",
+      "source_sha256": "2a8927f18d1ea763105cf80bd39715b6ddc1d1f51efb51eaf9398087ac40b48c",
+      "runtime_sha256": "e1f404737a858d83e7d06107561409d87bdd5c569fc1227a1be7c5e6db6d3b15",
+      "png_bytes": 80157,
+      "rgba8_decode_bytes": 219520,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 9649,
+      "text_safe_rect_xywh": [
+        73,
+        20,
+        409,
+        57
+      ],
+      "text_safe_rect_normalized": [
+        0.13,
+        0.2,
+        0.73,
+        0.58
+      ],
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "oval_paper_tag",
+      "source": "source/oval_paper_tag.png",
+      "runtime": "runtime/oval_paper_tag.png",
+      "source_size": [
+        1455,
+        1081
+      ],
+      "runtime_size": [
+        239,
+        160
+      ],
+      "crop_source_box": [
+        125,
+        136,
+        1358,
+        960
+      ],
+      "transform": "alpha>=8 subject-bbox with 4px guard, crop then Lanczos contain; no color or alpha modification",
+      "source_sha256": "864a4db524c5195d21a69150ceb084652b94e04f36e7a297f085fd0f931e9865",
+      "runtime_sha256": "3acceaa6a0a31ff71fa757c0b443ed7e1267a68818bd515df5ad7fb8679f22dc",
+      "png_bytes": 53383,
+      "rgba8_decode_bytes": 152960,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 7453,
+      "text_safe_rect_xywh": [
+        53,
+        56,
+        155,
+        64
+      ],
+      "text_safe_rect_normalized": [
+        0.22,
+        0.35,
+        0.65,
+        0.4
+      ],
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "batch_folded_card",
+      "source": "source/batch_folded_card.png",
+      "runtime": "runtime/batch_folded_card.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "runtime_size": [
+        320,
+        154
+      ],
+      "crop_source_box": [
+        73,
+        194,
+        1493,
+        876
+      ],
+      "transform": "alpha>=8 subject-bbox with 4px guard, crop then Lanczos contain; no color or alpha modification",
+      "source_sha256": "64fc162f2bda4f03d9ddab5599270ae16b06fd14249b6ac3eababc814bbd44ad",
+      "runtime_sha256": "d81409e3480cc052ebd01d3f8c00b4406de459180800d49718c18db5b8c3e866",
+      "png_bytes": 66824,
+      "rgba8_decode_bytes": 197120,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 11047,
+      "text_safe_rect_xywh": [
+        99,
+        40,
+        189,
+        72
+      ],
+      "text_safe_rect_normalized": [
+        0.31,
+        0.26,
+        0.59,
+        0.47
+      ],
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "counter_wood",
+      "source": "source/counter_wood.png",
+      "runtime": "runtime/counter_wood.png",
+      "source_size": [
+        2172,
+        724
+      ],
+      "runtime_size": [
+        320,
+        79
+      ],
+      "crop_source_box": [
+        171,
+        134,
+        2002,
+        588
+      ],
+      "transform": "alpha>=8 subject-bbox with 4px guard, crop then Lanczos contain; no color or alpha modification",
+      "source_sha256": "346e06cc7e565174ba03035268cfc2cc904298b456caa61773906124fc434ad7",
+      "runtime_sha256": "7fdbadbd16b0fe2a74319d7d049b20e35a89f07b10b9a241ed087cdf42ab2c6d",
+      "png_bytes": 36221,
+      "rgba8_decode_bytes": 101120,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 430,
+      "text_safe_rect_xywh": [
+        48,
+        17,
+        224,
+        44
+      ],
+      "text_safe_rect_normalized": [
+        0.15,
+        0.22,
+        0.7,
+        0.56
+      ],
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "photo_torii",
+      "source": "source/photo_torii_v2.png",
+      "runtime": "runtime/photo_torii.png",
+      "source_size": [
+        1166,
+        1349
+      ],
+      "runtime_size": [
+        480,
+        512
+      ],
+      "crop_source_box": [
+        0,
+        52.633333333333326,
+        1166,
+        1296.3666666666668
+      ],
+      "transform": "center crop to target aspect, then Lanczos downsample; no stretching, no extra sharpening",
+      "source_sha256": "fe177c612b47685250c1974ef37adce03b4213a47acb1ea5087b078bdc344a37",
+      "runtime_sha256": "667b97350bf16fa878369c1a7519bed249f052b9bb72e709586209ffab11cb34",
+      "png_bytes": 367165,
+      "rgba8_decode_bytes": 983040,
+      "mode": "RGB",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "fully_transparent_pixels": 0,
+      "text_safe_rect_xywh": null,
+      "text_safe_rect_normalized": null,
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    },
+    {
+      "id": "photo_blue_lake",
+      "source": "source/photo_blue_lake.png",
+      "runtime": "runtime/photo_blue_lake.png",
+      "source_size": [
+        1161,
+        1355
+      ],
+      "runtime_size": [
+        480,
+        512
+      ],
+      "crop_source_box": [
+        0,
+        58.299999999999955,
+        1161,
+        1296.7
+      ],
+      "transform": "center crop to target aspect, then Lanczos downsample; no stretching, no extra sharpening",
+      "source_sha256": "1c0e26f079ecf0c687a94e5049f677a400d74cdff246423ea7752f957d90f625",
+      "runtime_sha256": "7c0a20aa58a39b5c143936f80e8a98270d64b76d1545a1d257f41905ac3733c8",
+      "png_bytes": 376584,
+      "rgba8_decode_bytes": 983040,
+      "mode": "RGB",
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "fully_transparent_pixels": 0,
+      "text_safe_rect_xywh": null,
+      "text_safe_rect_normalized": null,
+      "inspection": "Generated source and runtime composited contact sheet visually inspected, 2026-10-06."
+    }
+  ]
+}

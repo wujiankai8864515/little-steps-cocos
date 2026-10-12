@@ -1,0 +1,120 @@
+{
+  "production_source_sha256": "79bc0ba1b17a9262bb153d76cb79d2456ff742446a79783d31e350d6934af61c",
+  "config_unchanged": true,
+  "config_sha256": "597b9647db59972c90c452e574051d27cfc050f7bf51c47b854ba4854eca4c9c",
+  "asset_files_changed": false,
+  "resource_entries_added": 0,
+  "formal_pack_files_unchanged_before_after": true,
+  "final_overlay": {
+    "source_sha256": "79bc0ba1b17a9262bb153d76cb79d2456ff742446a79783d31e350d6934af61c",
+    "config_sha256": "597b9647db59972c90c452e574051d27cfc050f7bf51c47b854ba4854eca4c9c",
+    "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "delta_bytes": 18680,
+    "delta_sha256": "7ab3d8c46cec4dbad14d18d0a4adad6faaed8e0f496f4359aa4d72407f550545",
+    "members": {
+      "travel/travel_scene_runtime.gdc": "8ff39d4d7038f5ef30d5339fe3f3ddef517efd73498f5a1aed7f79c0ca0d5420",
+      "travel/travel_scene_runtime.gd.remap": "b241e582b9e96c8e2637c6805eea021f7c3736318cdcff8189d1fbecfb28db37"
+    },
+    "commands": [
+      [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/godot_travel_moon_fix/build/travel_moon_review/candidate_v2/compile",
+        "--export-pack",
+        "A075 QA only",
+        "/workspace/scratch/3f82ff2b3f81/godot_travel_moon_fix/build/travel_moon_review/candidate_v2/compiler_output.pck"
+      ],
+      [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/godot_travel_moon_fix/build/travel_moon_review/candidate_v2/empty",
+        "--script",
+        "/tmp/godot_actor_gaze_group_source/build/make_pack.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/godot_travel_moon_fix/build/travel_moon_review/candidate_v2/delta_spec.json"
+      ]
+    ],
+    "scope": "Candidate-only compiled runtime replacement; no new assets, no added formal pack entries, no production config change. Grouped formal build remains pending."
+  },
+  "empty_res_files": [
+    "project.godot"
+  ],
+  "day_frames_bitwise_equal": {
+    "method": "Two independent actual native GL runs. Viewport Image converted to FORMAT_RGBA8; SHA-256 computed over Image.get_data before JPEG encoding. JPEG files are for viewing only.",
+    "baseline": {
+      "source": "bc1f8cf formal packs; QA ancestor 0078c5a",
+      "summary": "raw_day_baseline_gl/summary.json",
+      "summary_sha256": "bb22a6fe9884dd2ddb0ede46967d9235ba3cfbf90c5713d6fc4a270351809e34",
+      "fixture_sha256": "a3276891eb04de7a37ea204c818de03aa209688f5d0fe0708ebd4e7b35e69a48"
+    },
+    "candidate": {
+      "source_sha256": "79bc0ba1b17a9262bb153d76cb79d2456ff742446a79783d31e350d6934af61c",
+      "identity": "candidate_v2/identity.json",
+      "summary": "raw_day_candidate_v2_gl/summary.json",
+      "summary_sha256": "241feda72edf8ce6d5415aae2e5a18f3342df968a17d2ef50f9180e01445c92a",
+      "fixture_sha256": "a3276891eb04de7a37ea204c818de03aa209688f5d0fe0708ebd4e7b35e69a48"
+    },
+    "rows": [
+      {
+        "hour": 5.0,
+        "raw_rgba_bytes": 3686400,
+        "size": [
+          720,
+          1280
+        ],
+        "baseline_raw_rgba_sha256": "db1b6f6b70c5c69698ad56c1ec410083ce0ada2255be1252aa772a9760206482",
+        "candidate_raw_rgba_sha256": "db1b6f6b70c5c69698ad56c1ec410083ce0ada2255be1252aa772a9760206482",
+        "equal": true
+      },
+      {
+        "hour": 8.0,
+        "raw_rgba_bytes": 3686400,
+        "size": [
+          720,
+          1280
+        ],
+        "baseline_raw_rgba_sha256": "9b52aa0904393f86521b6d667eea0fc01e80d5359e4a79773532b484516be207",
+        "candidate_raw_rgba_sha256": "9b52aa0904393f86521b6d667eea0fc01e80d5359e4a79773532b484516be207",
+        "equal": true
+      },
+      {
+        "hour": 12.0,
+        "raw_rgba_bytes": 3686400,
+        "size": [
+          720,
+          1280
+        ],
+        "baseline_raw_rgba_sha256": "08c701c4f401a6f894f6b9b9be5807aeeb70d89ed09d2ed7d4bdd1ed91556995",
+        "candidate_raw_rgba_sha256": "08c701c4f401a6f894f6b9b9be5807aeeb70d89ed09d2ed7d4bdd1ed91556995",
+        "equal": true
+      },
+      {
+        "hour": 18.0,
+        "raw_rgba_bytes": 3686400,
+        "size": [
+          720,
+          1280
+        ],
+        "baseline_raw_rgba_sha256": "19837bec63164434f386abe6cfaccd2d374e5eaa7d6d9002b4ac107eef7c2f53",
+        "candidate_raw_rgba_sha256": "19837bec63164434f386abe6cfaccd2d374e5eaa7d6d9002b4ac107eef7c2f53",
+        "equal": true
+      },
+      {
+        "hour": 18.5,
+        "raw_rgba_bytes": 3686400,
+        "size": [
+          720,
+          1280
+        ],
+        "baseline_raw_rgba_sha256": "3b495de0d9daf45ca3d44789272895ce9cd0edb1f6e897d59521980cfcc7d649",
+        "candidate_raw_rgba_sha256": "3b495de0d9daf45ca3d44789272895ce9cd0edb1f6e897d59521980cfcc7d649",
+        "equal": true
+      }
+    ],
+    "all_equal": true
+  },
+  "scope": "Final runtime overlay only; official grouped source build and Web remain pending.",
+  "configuration_note": "No config edit; existing moon anchor, optional runtime moon_arc_height fallback 24."
+}

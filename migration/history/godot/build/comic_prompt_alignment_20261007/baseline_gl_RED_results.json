@@ -1,0 +1,416 @@
+{
+  "candidate_overlay": "none",
+  "checks": [
+    {
+      "name": "real Loading reaches Login",
+      "pass": true
+    },
+    {
+      "name": "real root click enters Comic after content readiness",
+      "pass": true
+    },
+    {
+      "name": "complete real animated comic reveals enter prompt",
+      "pass": false
+    },
+    {
+      "name": "Home is held at real transport completion, not a fake ready timer",
+      "pass": false
+    },
+    {
+      "name": "real enter click changes state and waits for actual Home",
+      "pass": false
+    },
+    {
+      "name": "completion emits exactly once",
+      "pass": false
+    },
+    {
+      "name": "standard baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "standard baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "standard baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "long baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "long baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "long baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "mobile_scaled baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "mobile_scaled baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "mobile_scaled baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "safe_area baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "safe_area baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "safe_area baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "compact baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "compact baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "compact baseline reproduces original Y jump",
+      "pass": true
+    },
+    {
+      "name": "loading stays on visible enter label only after fix",
+      "pass": true
+    },
+    {
+      "name": "repeated waiting clicks cannot repeat completion",
+      "pass": false
+    },
+    {
+      "name": "real Home transport failure returns comic retry state",
+      "pass": false
+    },
+    {
+      "name": "failure remains explicit and separate",
+      "pass": false
+    },
+    {
+      "name": "failure exposes usable retry",
+      "pass": false
+    },
+    {
+      "name": "real retry starts a fresh Home transport request",
+      "pass": false
+    },
+    {
+      "name": "retry emits once",
+      "pass": false
+    },
+    {
+      "name": "actual verified Home completion proceeds without extra waiting",
+      "pass": false
+    },
+    {
+      "name": "Home entered once and Comic released",
+      "pass": false
+    }
+  ],
+  "expected_fixed": false,
+  "failed": 12,
+  "observations": [
+    {
+      "event": "enter",
+      "geometry": {
+        "actions": "[P: (24.0, 1178.0), S: (672.0, 78.0)]",
+        "center": "(124.0, 1206.0)",
+        "font": 28,
+        "minimum": "(112.0, 34.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1016.0)]",
+        "rect": "[P: (24.0, 1178.0), S: (200.0, 56.0)]",
+        "text": "点击进入",
+        "visible_characters": -1
+      },
+      "layout": "standard"
+    },
+    {
+      "event": "enter",
+      "geometry": {
+        "actions": "[P: (24.0, 1317.0), S: (672.0, 78.0)]",
+        "center": "(124.0, 1345.0)",
+        "font": 28,
+        "minimum": "(112.0, 34.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1155.0)]",
+        "rect": "[P: (24.0, 1317.0), S: (200.0, 56.0)]",
+        "text": "点击进入",
+        "visible_characters": -1
+      },
+      "layout": "long"
+    },
+    {
+      "event": "enter",
+      "geometry": {
+        "actions": "[P: (24.0, 1456.0), S: (672.0, 78.0)]",
+        "center": "(124.0, 1484.0)",
+        "font": 28,
+        "minimum": "(112.0, 34.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1294.0)]",
+        "rect": "[P: (24.0, 1456.0), S: (200.0, 56.0)]",
+        "text": "点击进入",
+        "visible_characters": -1
+      },
+      "layout": "mobile_scaled"
+    },
+    {
+      "event": "enter",
+      "geometry": {
+        "actions": "[P: (24.0, 1422.0), S: (672.0, 78.0)]",
+        "center": "(124.0, 1450.0)",
+        "font": 28,
+        "minimum": "(112.0, 34.0)",
+        "paper": "[P: (24.0, 162.0), S: (672.0, 1212.0)]",
+        "rect": "[P: (24.0, 1422.0), S: (200.0, 56.0)]",
+        "text": "点击进入",
+        "visible_characters": -1
+      },
+      "layout": "safe_area"
+    },
+    {
+      "event": "enter",
+      "geometry": {
+        "actions": "[P: (12.60001, 563.2), S: (334.0, 64.0)]",
+        "center": "(112.6, 591.2)",
+        "font": 28,
+        "minimum": "(112.0, 34.0)",
+        "paper": "[P: (12.60001, 83.2), S: (334.0, 432.0)]",
+        "rect": "[P: (12.60001, 563.2), S: (200.0, 56.0)]",
+        "text": "点击进入",
+        "visible_characters": -1
+      },
+      "layout": "compact"
+    },
+    {
+      "event": "wait_1",
+      "geometry": {
+        "actions": "[P: (24.0, 1178.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1154.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1016.0)]",
+        "rect": "[P: (24.0, 1138.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋.",
+        "visible_characters": -1
+      },
+      "layout": "standard"
+    },
+    {
+      "event": "wait_2",
+      "geometry": {
+        "actions": "[P: (24.0, 1178.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1154.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1016.0)]",
+        "rect": "[P: (24.0, 1138.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋..",
+        "visible_characters": -1
+      },
+      "layout": "standard"
+    },
+    {
+      "event": "wait_3",
+      "geometry": {
+        "actions": "[P: (24.0, 1178.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1154.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1016.0)]",
+        "rect": "[P: (24.0, 1138.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋...",
+        "visible_characters": -1
+      },
+      "layout": "standard"
+    },
+    {
+      "event": "wait_1",
+      "geometry": {
+        "actions": "[P: (24.0, 1317.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1293.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1155.0)]",
+        "rect": "[P: (24.0, 1277.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋.",
+        "visible_characters": -1
+      },
+      "layout": "long"
+    },
+    {
+      "event": "wait_2",
+      "geometry": {
+        "actions": "[P: (24.0, 1317.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1293.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1155.0)]",
+        "rect": "[P: (24.0, 1277.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋..",
+        "visible_characters": -1
+      },
+      "layout": "long"
+    },
+    {
+      "event": "wait_3",
+      "geometry": {
+        "actions": "[P: (24.0, 1317.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1293.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1155.0)]",
+        "rect": "[P: (24.0, 1277.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋...",
+        "visible_characters": -1
+      },
+      "layout": "long"
+    },
+    {
+      "event": "wait_1",
+      "geometry": {
+        "actions": "[P: (24.0, 1456.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1432.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1294.0)]",
+        "rect": "[P: (24.0, 1416.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋.",
+        "visible_characters": -1
+      },
+      "layout": "mobile_scaled"
+    },
+    {
+      "event": "wait_2",
+      "geometry": {
+        "actions": "[P: (24.0, 1456.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1432.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1294.0)]",
+        "rect": "[P: (24.0, 1416.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋..",
+        "visible_characters": -1
+      },
+      "layout": "mobile_scaled"
+    },
+    {
+      "event": "wait_3",
+      "geometry": {
+        "actions": "[P: (24.0, 1456.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1432.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 114.0), S: (672.0, 1294.0)]",
+        "rect": "[P: (24.0, 1416.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋...",
+        "visible_characters": -1
+      },
+      "layout": "mobile_scaled"
+    },
+    {
+      "event": "wait_1",
+      "geometry": {
+        "actions": "[P: (24.0, 1422.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1398.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 162.0), S: (672.0, 1212.0)]",
+        "rect": "[P: (24.0, 1382.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋.",
+        "visible_characters": -1
+      },
+      "layout": "safe_area"
+    },
+    {
+      "event": "wait_2",
+      "geometry": {
+        "actions": "[P: (24.0, 1422.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1398.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 162.0), S: (672.0, 1212.0)]",
+        "rect": "[P: (24.0, 1382.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋..",
+        "visible_characters": -1
+      },
+      "layout": "safe_area"
+    },
+    {
+      "event": "wait_3",
+      "geometry": {
+        "actions": "[P: (24.0, 1422.0), S: (672.0, 78.0)]",
+        "center": "(360.0, 1398.0)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (24.0, 162.0), S: (672.0, 1212.0)]",
+        "rect": "[P: (24.0, 1382.0), S: (672.0, 32.0)]",
+        "text": "正在准备小屋...",
+        "visible_characters": -1
+      },
+      "layout": "safe_area"
+    },
+    {
+      "event": "wait_1",
+      "geometry": {
+        "actions": "[P: (12.60001, 563.2), S: (334.0, 64.0)]",
+        "center": "(179.6, 539.2)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (12.60001, 83.2), S: (334.0, 432.0)]",
+        "rect": "[P: (12.60001, 523.2), S: (334.0, 32.0)]",
+        "text": "正在准备小屋.",
+        "visible_characters": -1
+      },
+      "layout": "compact"
+    },
+    {
+      "event": "wait_2",
+      "geometry": {
+        "actions": "[P: (12.60001, 563.2), S: (334.0, 64.0)]",
+        "center": "(179.6, 539.2)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (12.60001, 83.2), S: (334.0, 432.0)]",
+        "rect": "[P: (12.60001, 523.2), S: (334.0, 32.0)]",
+        "text": "正在准备小屋..",
+        "visible_characters": -1
+      },
+      "layout": "compact"
+    },
+    {
+      "event": "wait_3",
+      "geometry": {
+        "actions": "[P: (12.60001, 563.2), S: (334.0, 64.0)]",
+        "center": "(179.6, 539.2)",
+        "font": 24,
+        "minimum": "(1.0, 30.0)",
+        "paper": "[P: (12.60001, 83.2), S: (334.0, 432.0)]",
+        "rect": "[P: (12.60001, 523.2), S: (334.0, 32.0)]",
+        "text": "正在准备小屋...",
+        "visible_characters": -1
+      },
+      "layout": "compact"
+    }
+  ],
+  "requests": [
+    "entry",
+    "comic",
+    "exterior",
+    "house"
+  ],
+  "scope": "Actual cold App with native software GL, real delayed PCK mounts, explicit Home transport hold/failure fixture; not browser GPU evidence."
+}

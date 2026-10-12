@@ -1,0 +1,832 @@
+[
+  {
+    "count": 1,
+    "before": {
+      "active_seconds": 0.0,
+      "flowers": [
+        {
+          "bend": -0.035,
+          "born": -8.0,
+          "head_size": 37.089303652399394,
+          "height": 81.93151389723789,
+          "id": 0,
+          "lifetime": 331.5371346367174,
+          "phase": 1.2954257839579046,
+          "root_x": 0.0
+        }
+      ],
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 60.0,
+      "next_id": 1,
+      "offline_growth": false,
+      "revision": 1,
+      "schema": 3
+    },
+    "after_disk_save": {
+      "active_seconds": 0.0,
+      "flowers": [
+        {
+          "bend": -0.044256066301459215,
+          "born": -8.0,
+          "head_size": 37.089303652399394,
+          "height": 97.93151389723789,
+          "id": 0,
+          "lifetime": 331.5371346367174,
+          "phase": 1.2954257839579046,
+          "root_x": 0.0
+        }
+      ],
+      "geometry_version": 2,
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 60.0,
+      "next_id": 1,
+      "offline_growth": false,
+      "revision": 2,
+      "schema": 3
+    },
+    "field_changes": [
+      {
+        "id": 0,
+        "changed_fields": {
+          "bend": {
+            "before": -0.035,
+            "after": -0.044256066301459215
+          },
+          "height": {
+            "before": 81.93151389723789,
+            "after": 97.93151389723789
+          }
+        },
+        "unchanged_identity_and_birth": true
+      }
+    ],
+    "note": "The normal explicit Store.save increments revision by one; restore itself preserves revision, checked in results.json."
+  },
+  {
+    "count": 3,
+    "before": {
+      "active_seconds": 128.0,
+      "flowers": [
+        {
+          "bend": -0.035,
+          "born": -8.0,
+          "head_size": 37.0893036523994,
+          "height": 81.9315138972379,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.417753647494392,
+          "born": 60.0,
+          "head_size": 34.1324031042059,
+          "height": 69.1198792266368,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -6.85425870120525
+        },
+        {
+          "bend": 0.333093006752142,
+          "born": 120.0,
+          "head_size": 32.3877697169955,
+          "height": 98.9547306752356,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 11.5380573166767
+        }
+      ],
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 180.0,
+      "next_id": 3,
+      "offline_growth": false,
+      "revision": 0,
+      "schema": 3
+    },
+    "after_disk_save": {
+      "active_seconds": 128.0,
+      "flowers": [
+        {
+          "bend": -0.044256066301459215,
+          "born": -8.0,
+          "head_size": 37.089303652399394,
+          "height": 97.93151389723789,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.8138056248827488,
+          "born": 60.0,
+          "head_size": 34.13240310420588,
+          "height": 80.11987922663684,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -13.0
+        },
+        {
+          "bend": 0.35021832988838647,
+          "born": 120.0,
+          "head_size": 32.387769716995535,
+          "height": 132.95473067523562,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 13.0
+        }
+      ],
+      "geometry_version": 2,
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 180.0,
+      "next_id": 3,
+      "offline_growth": false,
+      "revision": 1,
+      "schema": 3
+    },
+    "field_changes": [
+      {
+        "id": 0,
+        "changed_fields": {
+          "bend": {
+            "before": -0.035,
+            "after": -0.044256066301459215
+          },
+          "height": {
+            "before": 81.9315138972379,
+            "after": 97.93151389723789
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 1,
+        "changed_fields": {
+          "bend": {
+            "before": -0.417753647494392,
+            "after": -0.8138056248827488
+          },
+          "height": {
+            "before": 69.1198792266368,
+            "after": 80.11987922663684
+          },
+          "root_x": {
+            "before": -6.85425870120525,
+            "after": -13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 2,
+        "changed_fields": {
+          "bend": {
+            "before": 0.333093006752142,
+            "after": 0.35021832988838647
+          },
+          "height": {
+            "before": 98.9547306752356,
+            "after": 132.95473067523562
+          },
+          "root_x": {
+            "before": 11.5380573166767,
+            "after": 13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      }
+    ],
+    "note": "The normal explicit Store.save increments revision by one; restore itself preserves revision, checked in results.json."
+  },
+  {
+    "count": 5,
+    "before": {
+      "active_seconds": 248.0,
+      "flowers": [
+        {
+          "bend": -0.035,
+          "born": -8.0,
+          "head_size": 37.0893036523994,
+          "height": 81.9315138972379,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.417753647494392,
+          "born": 60.0,
+          "head_size": 34.1324031042059,
+          "height": 69.1198792266368,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -6.85425870120525
+        },
+        {
+          "bend": 0.333093006752142,
+          "born": 120.0,
+          "head_size": 32.3877697169955,
+          "height": 98.9547306752356,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 11.5380573166767
+        },
+        {
+          "bend": -0.179057890408731,
+          "born": 180.0,
+          "head_size": 35.0436943001296,
+          "height": 80.1386541914981,
+          "id": 3,
+          "lifetime": 380.052203662657,
+          "phase": 0.139008446602625,
+          "root_x": -10.5146886177827
+        },
+        {
+          "bend": 0.196554586763959,
+          "born": 240.0,
+          "head_size": 37.3315561084819,
+          "height": 105.426159424358,
+          "id": 4,
+          "lifetime": 364.491448908637,
+          "phase": 0.639257477102698,
+          "root_x": 15.8666717230226
+        }
+      ],
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 300.0,
+      "next_id": 5,
+      "offline_growth": false,
+      "revision": 0,
+      "schema": 3
+    },
+    "after_disk_save": {
+      "active_seconds": 248.0,
+      "flowers": [
+        {
+          "bend": -0.044256066301459215,
+          "born": -8.0,
+          "head_size": 37.089303652399394,
+          "height": 97.93151389723789,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.8138056248827488,
+          "born": 60.0,
+          "head_size": 34.13240310420588,
+          "height": 80.11987922663684,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -13.0
+        },
+        {
+          "bend": 0.35021832988838647,
+          "born": 120.0,
+          "head_size": 32.387769716995535,
+          "height": 132.95473067523562,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 13.0
+        },
+        {
+          "bend": -0.410654737147619,
+          "born": 180.0,
+          "head_size": 35.04369430012957,
+          "height": 137.13865419149806,
+          "id": 3,
+          "lifetime": 380.052203662657,
+          "phase": 0.139008446602625,
+          "root_x": -8.0
+        },
+        {
+          "bend": 0.7205803237715735,
+          "born": 240.0,
+          "head_size": 37.33155610848189,
+          "height": 109.42615942435805,
+          "id": 4,
+          "lifetime": 364.491448908637,
+          "phase": 0.639257477102698,
+          "root_x": 18.0
+        }
+      ],
+      "geometry_version": 2,
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 300.0,
+      "next_id": 5,
+      "offline_growth": false,
+      "revision": 1,
+      "schema": 3
+    },
+    "field_changes": [
+      {
+        "id": 0,
+        "changed_fields": {
+          "bend": {
+            "before": -0.035,
+            "after": -0.044256066301459215
+          },
+          "height": {
+            "before": 81.9315138972379,
+            "after": 97.93151389723789
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 1,
+        "changed_fields": {
+          "bend": {
+            "before": -0.417753647494392,
+            "after": -0.8138056248827488
+          },
+          "height": {
+            "before": 69.1198792266368,
+            "after": 80.11987922663684
+          },
+          "root_x": {
+            "before": -6.85425870120525,
+            "after": -13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 2,
+        "changed_fields": {
+          "bend": {
+            "before": 0.333093006752142,
+            "after": 0.35021832988838647
+          },
+          "height": {
+            "before": 98.9547306752356,
+            "after": 132.95473067523562
+          },
+          "root_x": {
+            "before": 11.5380573166767,
+            "after": 13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 3,
+        "changed_fields": {
+          "bend": {
+            "before": -0.179057890408731,
+            "after": -0.410654737147619
+          },
+          "height": {
+            "before": 80.1386541914981,
+            "after": 137.13865419149806
+          },
+          "root_x": {
+            "before": -10.5146886177827,
+            "after": -8.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 4,
+        "changed_fields": {
+          "bend": {
+            "before": 0.196554586763959,
+            "after": 0.7205803237715735
+          },
+          "height": {
+            "before": 105.426159424358,
+            "after": 109.42615942435805
+          },
+          "root_x": {
+            "before": 15.8666717230226,
+            "after": 18.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      }
+    ],
+    "note": "The normal explicit Store.save increments revision by one; restore itself preserves revision, checked in results.json."
+  },
+  {
+    "count": 10,
+    "before": {
+      "active_seconds": 548.0,
+      "flowers": [
+        {
+          "bend": -0.035,
+          "born": -8.0,
+          "head_size": 37.0893036523994,
+          "height": 81.9315138972379,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.417753647494392,
+          "born": 60.0,
+          "head_size": 34.1324031042059,
+          "height": 69.1198792266368,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -6.85425870120525
+        },
+        {
+          "bend": 0.333093006752142,
+          "born": 120.0,
+          "head_size": 32.3877697169955,
+          "height": 98.9547306752356,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 11.5380573166767
+        },
+        {
+          "bend": -0.179057890408731,
+          "born": 180.0,
+          "head_size": 35.0436943001296,
+          "height": 80.1386541914981,
+          "id": 3,
+          "lifetime": 380.052203662657,
+          "phase": 0.139008446602625,
+          "root_x": -10.5146886177827
+        },
+        {
+          "bend": 0.196554586763959,
+          "born": 240.0,
+          "head_size": 37.3315561084819,
+          "height": 105.426159424358,
+          "id": 4,
+          "lifetime": 364.491448908637,
+          "phase": 0.639257477102698,
+          "root_x": 15.8666717230226
+        },
+        {
+          "bend": -0.385698626340454,
+          "born": 300.0,
+          "head_size": 32.4372872366657,
+          "height": 89.5367022168648,
+          "id": 5,
+          "lifetime": 394.700148572199,
+          "phase": 0.348543338846226,
+          "root_x": -20.0431953335647
+        },
+        {
+          "bend": 0.26313769437118,
+          "born": 360.0,
+          "head_size": 37.7747960024499,
+          "height": 101.926315197081,
+          "id": 6,
+          "lifetime": 390.085559551022,
+          "phase": 1.13529220938605,
+          "root_x": 6.06771501144976
+        },
+        {
+          "bend": -0.302180509407044,
+          "born": 420.0,
+          "head_size": 37.3575999692557,
+          "height": 73.3926366010273,
+          "id": 7,
+          "lifetime": 383.206276766374,
+          "phase": 5.74760790943121,
+          "root_x": -16.8218573346967
+        },
+        {
+          "bend": 0.370956656593262,
+          "born": 480.0,
+          "head_size": 34.1760755678333,
+          "height": 95.1695133598114,
+          "id": 8,
+          "lifetime": 392.310964765668,
+          "phase": 2.24353778833138,
+          "root_x": 18.2641223935934
+        },
+        {
+          "bend": -0.322677174540659,
+          "born": 540.0,
+          "head_size": 32.1818539566739,
+          "height": 83.3197462836993,
+          "id": 9,
+          "lifetime": 377.976683248737,
+          "phase": 1.17809776429494,
+          "root_x": -10.7272245232016
+        }
+      ],
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "offline_growth": false,
+      "revision": 0,
+      "schema": 3
+    },
+    "after_disk_save": {
+      "active_seconds": 548.0,
+      "flowers": [
+        {
+          "bend": -0.044256066301459215,
+          "born": -8.0,
+          "head_size": 37.089303652399394,
+          "height": 97.93151389723789,
+          "id": 0,
+          "lifetime": 331.537134636717,
+          "phase": 1.2954257839579,
+          "root_x": 0.0
+        },
+        {
+          "bend": -0.8138056248827488,
+          "born": 60.0,
+          "head_size": 34.13240310420588,
+          "height": 80.11987922663684,
+          "id": 1,
+          "lifetime": 381.607709935633,
+          "phase": 3.39410123081187,
+          "root_x": -13.0
+        },
+        {
+          "bend": 0.35021832988838647,
+          "born": 120.0,
+          "head_size": 32.387769716995535,
+          "height": 132.95473067523562,
+          "id": 2,
+          "lifetime": 369.338556579023,
+          "phase": 3.78091460213227,
+          "root_x": 13.0
+        },
+        {
+          "bend": -0.410654737147619,
+          "born": 180.0,
+          "head_size": 35.04369430012957,
+          "height": 137.13865419149806,
+          "id": 3,
+          "lifetime": 380.052203662657,
+          "phase": 0.139008446602625,
+          "root_x": -8.0
+        },
+        {
+          "bend": 0.7205803237715735,
+          "born": 240.0,
+          "head_size": 37.33155610848189,
+          "height": 109.42615942435805,
+          "id": 4,
+          "lifetime": 364.491448908637,
+          "phase": 0.639257477102698,
+          "root_x": 18.0
+        },
+        {
+          "bend": -0.04606833225832088,
+          "born": 300.0,
+          "head_size": 32.437287236665725,
+          "height": 160.5367022168648,
+          "id": 5,
+          "lifetime": 394.700148572199,
+          "phase": 0.348543338846226,
+          "root_x": -5.0
+        },
+        {
+          "bend": 0.9152803078379657,
+          "born": 360.0,
+          "head_size": 37.774796002449875,
+          "height": 160.92631519708084,
+          "id": 6,
+          "lifetime": 390.085559551022,
+          "phase": 1.13529220938605,
+          "root_x": 8.0
+        },
+        {
+          "bend": -0.821963728747738,
+          "born": 420.0,
+          "head_size": 37.357599969255716,
+          "height": 123.39263660102733,
+          "id": 7,
+          "lifetime": 383.206276766374,
+          "phase": 5.74760790943121,
+          "root_x": -9.0
+        },
+        {
+          "bend": 0.43289105811246553,
+          "born": 480.0,
+          "head_size": 34.17607556783332,
+          "height": 170.1695133598114,
+          "id": 8,
+          "lifetime": 392.310964765668,
+          "phase": 2.24353778833138,
+          "root_x": 4.0
+        },
+        {
+          "bend": -0.5505169053265417,
+          "born": 540.0,
+          "head_size": 32.181853956673876,
+          "height": 106.31974628369926,
+          "id": 9,
+          "lifetime": 377.976683248737,
+          "phase": 1.17809776429494,
+          "root_x": -5.0
+        }
+      ],
+      "geometry_version": 2,
+      "lifetime_seconds": 360.0,
+      "max_flowers": 10,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "offline_growth": false,
+      "revision": 1,
+      "schema": 3
+    },
+    "field_changes": [
+      {
+        "id": 0,
+        "changed_fields": {
+          "bend": {
+            "before": -0.035,
+            "after": -0.044256066301459215
+          },
+          "height": {
+            "before": 81.9315138972379,
+            "after": 97.93151389723789
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 1,
+        "changed_fields": {
+          "bend": {
+            "before": -0.417753647494392,
+            "after": -0.8138056248827488
+          },
+          "height": {
+            "before": 69.1198792266368,
+            "after": 80.11987922663684
+          },
+          "root_x": {
+            "before": -6.85425870120525,
+            "after": -13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 2,
+        "changed_fields": {
+          "bend": {
+            "before": 0.333093006752142,
+            "after": 0.35021832988838647
+          },
+          "height": {
+            "before": 98.9547306752356,
+            "after": 132.95473067523562
+          },
+          "root_x": {
+            "before": 11.5380573166767,
+            "after": 13.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 3,
+        "changed_fields": {
+          "bend": {
+            "before": -0.179057890408731,
+            "after": -0.410654737147619
+          },
+          "height": {
+            "before": 80.1386541914981,
+            "after": 137.13865419149806
+          },
+          "root_x": {
+            "before": -10.5146886177827,
+            "after": -8.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 4,
+        "changed_fields": {
+          "bend": {
+            "before": 0.196554586763959,
+            "after": 0.7205803237715735
+          },
+          "height": {
+            "before": 105.426159424358,
+            "after": 109.42615942435805
+          },
+          "root_x": {
+            "before": 15.8666717230226,
+            "after": 18.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 5,
+        "changed_fields": {
+          "bend": {
+            "before": -0.385698626340454,
+            "after": -0.04606833225832088
+          },
+          "height": {
+            "before": 89.5367022168648,
+            "after": 160.5367022168648
+          },
+          "root_x": {
+            "before": -20.0431953335647,
+            "after": -5.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 6,
+        "changed_fields": {
+          "bend": {
+            "before": 0.26313769437118,
+            "after": 0.9152803078379657
+          },
+          "height": {
+            "before": 101.926315197081,
+            "after": 160.92631519708084
+          },
+          "root_x": {
+            "before": 6.06771501144976,
+            "after": 8.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 7,
+        "changed_fields": {
+          "bend": {
+            "before": -0.302180509407044,
+            "after": -0.821963728747738
+          },
+          "height": {
+            "before": 73.3926366010273,
+            "after": 123.39263660102733
+          },
+          "root_x": {
+            "before": -16.8218573346967,
+            "after": -9.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 8,
+        "changed_fields": {
+          "bend": {
+            "before": 0.370956656593262,
+            "after": 0.43289105811246553
+          },
+          "height": {
+            "before": 95.1695133598114,
+            "after": 170.1695133598114
+          },
+          "root_x": {
+            "before": 18.2641223935934,
+            "after": 4.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      },
+      {
+        "id": 9,
+        "changed_fields": {
+          "bend": {
+            "before": -0.322677174540659,
+            "after": -0.5505169053265417
+          },
+          "height": {
+            "before": 83.3197462836993,
+            "after": 106.31974628369926
+          },
+          "root_x": {
+            "before": -10.7272245232016,
+            "after": -5.0
+          }
+        },
+        "unchanged_identity_and_birth": true
+      }
+    ],
+    "note": "The normal explicit Store.save increments revision by one; restore itself preserves revision, checked in results.json."
+  }
+]

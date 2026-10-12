@@ -1,0 +1,212 @@
+{
+  "version": 1,
+  "texture": "res://assets/round2/backpack_parts_atlas.png",
+  "size": [
+    1024,
+    1024
+  ],
+  "original_reference": "res://assets/travelbag_closed.png",
+  "coordinate_note": "rect is [x,y,width,height] in atlas pixels. pivot/anchors are local to that rect. Use custom regions, not fixed cells. Screen-left/right naming. Origin/pivots below are integration suggestions, not a tested character fit.",
+  "parts": {
+    "front_shell": {
+      "rect": [
+        101,
+        46,
+        447,
+        494
+      ],
+      "pivot": [
+        223.5,
+        247
+      ],
+      "alpha32_bbox_xyxy": [
+        105,
+        50,
+        544,
+        536
+      ],
+      "anchors": {
+        "top_center": [
+          223,
+          20
+        ],
+        "near_strap_top": [
+          151,
+          57
+        ],
+        "far_strap_top": [
+          309,
+          46
+        ],
+        "near_strap_lower": [
+          71,
+          414
+        ],
+        "far_strap_lower": [
+          404,
+          403
+        ],
+        "loop_left": [
+          205,
+          21
+        ],
+        "loop_right": [
+          253,
+          25
+        ],
+        "ground": [
+          219,
+          489
+        ]
+      },
+      "use": "Wall-hanging body. No attached long shoulder straps or carrying loop. Front pocket's two short buckle-closure straps intentionally remain."
+    },
+    "side_shell": {
+      "rect": [
+        598,
+        48,
+        344,
+        500
+      ],
+      "pivot": [
+        172,
+        250
+      ],
+      "alpha32_bbox_xyxy": [
+        602,
+        52,
+        938,
+        544
+      ],
+      "anchors": {
+        "back_upper": [
+          259,
+          66
+        ],
+        "back_lower": [
+          307,
+          410
+        ],
+        "near_strap_top": [
+          217,
+          52
+        ],
+        "far_strap_top": [
+          271,
+          65
+        ],
+        "near_strap_lower": [
+          297,
+          428
+        ],
+        "far_strap_lower": [
+          316,
+          409
+        ],
+        "ground": [
+          171,
+          493
+        ]
+      },
+      "use": "Three-quarter side body for behind-character wear. Put shell and far strap behind body; expose only side portion appropriate to character orientation. Mirror if needed rather than placing full shell in front."
+    },
+    "near_strap": {
+      "rect": [
+        97,
+        558,
+        234,
+        430
+      ],
+      "pivot": [
+        209,
+        20
+      ],
+      "alpha32_bbox_xyxy": [
+        101,
+        562,
+        327,
+        984
+      ],
+      "anchors": {
+        "upper_tab": [
+          209,
+          20
+        ],
+        "lower_tab": [
+          34,
+          407
+        ]
+      },
+      "use": "Independent curved padded strap with buckle and hidden overlap tabs. In wear state, top behind shoulder and visible strap segment above torso clothing; mesh/bone deformation recommended for shoulder bend."
+    },
+    "far_strap": {
+      "rect": [
+        438,
+        569,
+        130,
+        431
+      ],
+      "pivot": [
+        100,
+        21
+      ],
+      "alpha32_bbox_xyxy": [
+        442,
+        573,
+        564,
+        996
+      ],
+      "anchors": {
+        "upper_tab": [
+          100,
+          21
+        ],
+        "lower_tab": [
+          105,
+          411
+        ]
+      },
+      "use": "Independent darker shoulder strap. Keep behind character torso except any visible far-shoulder sliver. Separate damped motion in wall state."
+    },
+    "top_loop": {
+      "rect": [
+        717,
+        661,
+        166,
+        222
+      ],
+      "pivot": [
+        77,
+        10
+      ],
+      "alpha32_bbox_xyxy": [
+        721,
+        665,
+        879,
+        879
+      ],
+      "anchors": {
+        "hang_apex": [
+          77,
+          10
+        ],
+        "left_tab": [
+          27,
+          189
+        ],
+        "right_tab": [
+          137,
+          209
+        ]
+      },
+      "use": "Independent inverted-U carrying/hanging loop. Pin apex at wall hook during hanging. Hide bottom tabs behind shell upper edge, permit small damped local flex."
+    }
+  },
+  "assembly_notes": [
+    "Original whole travelbag_closed.png preserved. Atlas components are real raster cutouts, not procedural replacement polygons.",
+    "Match body rest size to original source before adding independent straps. Shell, straps and handle are not equal atlas scale after generation; inspect character fit instead of assuming one shared unit scale.",
+    "Preserve front/back draw ordering per mode: wall: far strap, near strap, loop tabs behind shell; worn: far strap and side shell behind character, near strap above character at shoulder/torso, with attachment tips hidden.",
+    "Each long strap has separate upper/lower endpoints and can be skinned to multiple joints; do not move one entire foreground polygon as a substitute."
+  ],
+  "qa": "Inspected original, first generated atlas, corrected atlas and final 1024 PNG. First generated front shell retained a dangling shoulder remnant at left; targeted second built-in edit removed it. Final includes exactly five substantial isolated alpha components and preserves orange-brown fabric, yellow emblem, stitching, zipper and front buckles. No GPU wearing/hanging interaction acceptance."
+}

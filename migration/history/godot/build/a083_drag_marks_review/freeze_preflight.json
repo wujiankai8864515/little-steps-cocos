@@ -1,0 +1,63 @@
+{
+  "code_commit_before_metadata": "6a8442a2fafa47bd54d93ac59d8936094ffb960d",
+  "font_checks": {
+    "status": "passed",
+    "all_fonts_unchanged": true,
+    "missing_glyphs": 0,
+    "source_report_changes": "Only corpus file SHA references refreshed to current source; 4 actual font assets and glyph coverage unchanged",
+    "brush_check": "604 glyphs, 368512 bytes, SHA18864febf7fc7acf5a485ba7885cc8cd5d85ad7a2374e5ef8556316b72232933 unchanged"
+  },
+  "resource_contract": {
+    "batches": {
+      "loading": {
+        "specs": 9,
+        "estimated_bytes": 15436812
+      },
+      "login": {
+        "specs": 13,
+        "estimated_bytes": 39761024
+      },
+      "comic": {
+        "specs": 8,
+        "estimated_bytes": 12823360
+      },
+      "home": {
+        "specs": 66,
+        "estimated_bytes": 107059928
+      },
+      "darkroom": {
+        "specs": 30,
+        "estimated_bytes": 43492716
+      },
+      "departure_visual": {
+        "specs": 2,
+        "estimated_bytes": 10166360
+      },
+      "travel_visual": {
+        "specs": 11,
+        "estimated_bytes": 60439004
+      },
+      "photo_visual": {
+        "specs": 2,
+        "estimated_bytes": 14026656
+      }
+    },
+    "all_pages_union": {
+      "entries": 128,
+      "estimated_bytes": 268344204,
+      "resource_estimated_bytes": 266040268,
+      "runtime_reserved_bytes": 2303936
+    },
+    "declaration_only": true
+  },
+  "resource_config_diff": "none after refresh-contract",
+  "group": "one real A083 fix plus bounded related regression and provenance, await remote-source verification before formal builder",
+  "space_plan": "shared sources+native, tmp Web+ZIP; existing source/Git/PCK remain; only approved proven copies/cache removed",
+  "pending": [
+    "GitHub remote exact source mapping",
+    "official native+Web grouped full build",
+    "zero-overlay final PCK 32+45 checks",
+    "publisher final archive/old-path regression",
+    "Web/user acceptance"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "batch": "R9发布后的新五项视觉反馈",
+  "base_private_commit": "b59373583ef615d28fd6137227fba9d6a82d9de2",
+  "baseline_runtime_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+  "status": "五项同源正式原生包、公开部署及源码里程碑均已核验；冷首次打开性能不确定性、WebGL2画面及用户视觉认可边界保留。",
+  "items": [
+    {
+      "id": "N1",
+      "title": "格漫加载提示同位",
+      "worker_commit": "a83e9a75cf79c0e1617a2550ca97fb207da351df",
+      "integrated_commit": "9423dbf34560bce45e20f0c11846b336d7329bc7",
+      "production_paths": [
+        "games/travel_woodfish/project/entry/comic_page.gd"
+      ],
+      "candidate_numbered_checks": 111,
+      "candidate_scope": "官方4.5.2原生软件GL；明确组件或显式单脚本候选覆盖，不是本组正式PCK",
+      "formal_pack": {
+        "status": "PASS",
+        "scope": "官方同源十一PCK、空res、none覆盖、原生Mesa软件GL",
+        "focused_numbered_checks": 111
+      },
+      "deployed": {
+        "status": "PASS",
+        "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+        "http_files_verified": 34,
+        "host_assets_verified": 32,
+        "physical_packs_preloaded": 11
+      },
+      "user_visual_acceptance": "pending"
+    },
+    {
+      "id": "N2",
+      "title": "奇遇结果纸质底板",
+      "worker_commit": "0de763a37d18634da85827a5f7c28b3b888974b9",
+      "integrated_commit": "dad66f875e36f25c9f7fe3daab7e5be9696567fc",
+      "production_paths": [
+        "games/travel_woodfish/project/travel/travel_page.gd"
+      ],
+      "candidate_numbered_checks": 186,
+      "candidate_scope": "官方4.5.2原生软件GL；明确组件或显式单脚本候选覆盖，不是本组正式PCK",
+      "formal_pack": {
+        "status": "PASS",
+        "scope": "官方同源十一PCK、空res、none覆盖、原生Mesa软件GL",
+        "focused_numbered_checks": 186
+      },
+      "deployed": {
+        "status": "PASS",
+        "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+        "http_files_verified": 34,
+        "host_assets_verified": 32,
+        "physical_packs_preloaded": 11
+      },
+      "user_visual_acceptance": "pending"
+    },
+    {
+      "id": "N3",
+      "title": "背包主角原地渐隐",
+      "worker_commit": "b401997df59699a08fba2436a16a76f46a4f9598",
+      "integrated_commit": "e3ea4fbc6c25ec63aeb6a0b5ad9d6cca9dd18e1e",
+      "production_paths": [
+        "games/travel_woodfish/project/home/home_departure_visual.gd"
+      ],
+      "candidate_numbered_checks": 51,
+      "candidate_scope": "官方4.5.2原生软件GL；明确组件或显式单脚本候选覆盖，不是本组正式PCK",
+      "formal_pack": {
+        "status": "PASS",
+        "scope": "官方同源十一PCK、空res、none覆盖、原生Mesa软件GL",
+        "focused_numbered_checks": 51
+      },
+      "deployed": {
+        "status": "PASS",
+        "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+        "http_files_verified": 34,
+        "host_assets_verified": 32,
+        "physical_packs_preloaded": 11
+      },
+      "user_visual_acceptance": "pending"
+    },
+    {
+      "id": "N4",
+      "title": "照片墙宽软斜光与受光层次",
+      "worker_commit": "3173284dcec61f2e4e9e1f4dd827063a64e176b0",
+      "integrated_commit": "3a0c7a462658e5e81d5462571a3c358282aac474",
+      "production_paths": [
+        "games/travel_woodfish/project/photo/photo_material.gd",
+        "games/travel_woodfish/project/photo/photo_page.gd",
+        "games/travel_woodfish/project/shared_room_lighting/soft_atmosphere.gd"
+      ],
+      "candidate_numbered_checks": 24,
+      "candidate_scope": "官方4.5.2原生软件GL；明确组件或显式单脚本候选覆盖，不是本组正式PCK",
+      "formal_pack": {
+        "status": "PASS",
+        "scope": "官方同源十一PCK、空res、none覆盖、原生Mesa软件GL",
+        "focused_numbered_checks": 24
+      },
+      "deployed": {
+        "status": "PASS",
+        "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+        "http_files_verified": 34,
+        "host_assets_verified": 32,
+        "physical_packs_preloaded": 11
+      },
+      "user_visual_acceptance": "pending"
+    },
+    {
+      "id": "N5",
+      "title": "旅行场景柔光与昼夜受光",
+      "worker_commit": "edd3bc31bbee51c180ac03e6e0cd7718e38f4a28",
+      "integrated_commit": "11fefad0c56f924fc26924f91b906c38b7ba2804",
+      "production_paths": [
+        "games/travel_woodfish/project/travel/travel_atmosphere.gd",
+        "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+      ],
+      "candidate_numbered_checks": 284,
+      "candidate_scope": "官方4.5.2原生软件GL；明确组件或显式单脚本候选覆盖，不是本组正式PCK",
+      "formal_pack": {
+        "status": "PASS",
+        "scope": "官方同源十一PCK、空res、none覆盖、原生Mesa软件GL",
+        "focused_numbered_checks": 284
+      },
+      "deployed": {
+        "status": "PASS",
+        "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+        "http_files_verified": 34,
+        "host_assets_verified": 32,
+        "physical_packs_preloaded": 11
+      },
+      "user_visual_acceptance": "pending"
+    }
+  ],
+  "runtime_source_commit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "public_export_commit": "f0763b7f01d8bd4758d3d16216d9baef8347da71",
+  "milestone": "milestone/2026-10-07-five-visual-fixes",
+  "broader_native_regression": {
+    "numbered_assertions": 153,
+    "assert_based_render_scenarios": [
+      "wardrobe_visual",
+      "photo_peach"
+    ]
+  },
+  "performance": "见PERFORMANCE.md：有界生命周期通过，稳态受控场景较快；首次打开不确定性保留，无零回退承诺。"
+}

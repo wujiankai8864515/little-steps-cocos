@@ -1,0 +1,1225 @@
+{
+  "Performance": {
+    "constants": {
+      "MEMORY_MESSAGE_BUFFER_MAX": 6,
+      "MEMORY_STATIC": 4,
+      "MEMORY_STATIC_MAX": 5,
+      "PIPELINE_COMPILATIONS_CANVAS": 34,
+      "PIPELINE_COMPILATIONS_DRAW": 37,
+      "PIPELINE_COMPILATIONS_MESH": 35,
+      "PIPELINE_COMPILATIONS_SPECIALIZATION": 38,
+      "PIPELINE_COMPILATIONS_SURFACE": 36,
+      "RENDER_BUFFER_MEM_USED": 16,
+      "RENDER_TEXTURE_MEM_USED": 15,
+      "RENDER_TOTAL_DRAW_CALLS_IN_FRAME": 13,
+      "RENDER_TOTAL_OBJECTS_IN_FRAME": 11,
+      "RENDER_TOTAL_PRIMITIVES_IN_FRAME": 12,
+      "RENDER_VIDEO_MEM_USED": 14,
+      "TIME_FPS": 0,
+      "TIME_NAVIGATION_PROCESS": 3,
+      "TIME_PHYSICS_PROCESS": 2,
+      "TIME_PROCESS": 1
+    },
+    "methods": [
+      {
+        "args": [
+          {
+            "class_name": "Performance.Monitor",
+            "hint": 0,
+            "hint_string": "",
+            "name": "monitor",
+            "type": 2,
+            "usage": 65542
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 1239,
+        "name": "get_monitor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 3,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "id",
+            "type": 21,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "callable",
+            "type": 25,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "arguments",
+            "type": 28,
+            "usage": 6
+          }
+        ],
+        "default_args": [
+          []
+        ],
+        "flags": 1,
+        "id": 1240,
+        "name": "add_custom_monitor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "id",
+            "type": 21,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1241,
+        "name": "remove_custom_monitor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "id",
+            "type": 21,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1242,
+        "name": "has_custom_monitor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 1,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "id",
+            "type": 21,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1243,
+        "name": "get_custom_monitor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 131078
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 1,
+        "id": 1244,
+        "name": "get_monitor_modification_time",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 2,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 1,
+        "id": 1245,
+        "name": "get_custom_monitor_names",
+        "return": {
+          "class_name": "",
+          "hint": 31,
+          "hint_string": "StringName",
+          "name": "",
+          "type": 28,
+          "usage": 6
+        }
+      }
+    ]
+  },
+  "RenderingServer": {
+    "constants": {
+      "MATERIAL_RENDER_PRIORITY_MAX": 127,
+      "MATERIAL_RENDER_PRIORITY_MIN": -128,
+      "PIPELINE_SOURCE_CANVAS": 0,
+      "PIPELINE_SOURCE_DRAW": 3,
+      "PIPELINE_SOURCE_MAX": 5,
+      "PIPELINE_SOURCE_MESH": 1,
+      "PIPELINE_SOURCE_SPECIALIZATION": 4,
+      "PIPELINE_SOURCE_SURFACE": 2,
+      "RENDERING_INFO_PIPELINE_COMPILATIONS_CANVAS": 6,
+      "RENDERING_INFO_PIPELINE_COMPILATIONS_DRAW": 9,
+      "RENDERING_INFO_PIPELINE_COMPILATIONS_MESH": 7,
+      "RENDERING_INFO_PIPELINE_COMPILATIONS_SPECIALIZATION": 10,
+      "RENDERING_INFO_PIPELINE_COMPILATIONS_SURFACE": 8,
+      "VIEWPORT_RENDER_INFO_DRAW_CALLS_IN_FRAME": 2,
+      "VIEWPORT_RENDER_INFO_MAX": 3,
+      "VIEWPORT_RENDER_INFO_OBJECTS_IN_FRAME": 0,
+      "VIEWPORT_RENDER_INFO_PRIMITIVES_IN_FRAME": 1,
+      "VIEWPORT_RENDER_INFO_TYPE_CANVAS": 2,
+      "VIEWPORT_RENDER_INFO_TYPE_MAX": 3,
+      "VIEWPORT_RENDER_INFO_TYPE_SHADOW": 1,
+      "VIEWPORT_RENDER_INFO_TYPE_VISIBLE": 0
+    },
+    "methods": [
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 1,
+        "id": 1945,
+        "name": "material_create",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 23,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "shader_material",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "shader",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1946,
+        "name": "material_set_shader",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "parameter",
+            "type": 21,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "value",
+            "type": 0,
+            "usage": 131078
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1947,
+        "name": "material_set_param",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "parameter",
+            "type": 21,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 1948,
+        "name": "material_get_param",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 131078
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "priority",
+            "type": 2,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1949,
+        "name": "material_set_render_priority",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "next_material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1950,
+        "name": "material_set_next_pass",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "mesh",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "surface",
+            "type": 2,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 1964,
+        "name": "mesh_surface_set_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "mesh",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "surface",
+            "type": 2,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 1965,
+        "name": "mesh_surface_get_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 23,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "particles",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2110,
+        "name": "particles_set_process_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "fog_volume",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2143,
+        "name": "fog_volume_set_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "enabled",
+            "type": 1,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2165,
+        "name": "viewport_set_render_direct_to_screen",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 2175,
+        "name": "viewport_get_render_target",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 23,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "RenderingServer.ViewportRenderInfoType",
+            "hint": 0,
+            "hint_string": "",
+            "name": "type",
+            "type": 2,
+            "usage": 65542
+          },
+          {
+            "class_name": "RenderingServer.ViewportRenderInfo",
+            "hint": 0,
+            "hint_string": "",
+            "name": "info",
+            "type": 2,
+            "usage": 65542
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2204,
+        "name": "viewport_get_render_info",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 2,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "enable",
+            "type": 1,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2206,
+        "name": "viewport_set_measure_render_time",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 2207,
+        "name": "viewport_get_measured_render_time_cpu",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 3,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "viewport",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 5,
+        "id": 2208,
+        "name": "viewport_get_measured_render_time_gpu",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 3,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "sky",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2215,
+        "name": "sky_set_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "instance",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "surface",
+            "type": 2,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2275,
+        "name": "instance_set_surface_override_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "instance",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2286,
+        "name": "instance_geometry_set_material_override",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "instance",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2287,
+        "name": "instance_geometry_set_material_overlay",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "base",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 31,
+            "hint_string": "RID",
+            "name": "material_overrides",
+            "type": 28,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "image_size",
+            "type": 6,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2298,
+        "name": "bake_render_uv2",
+        "return": {
+          "class_name": "",
+          "hint": 31,
+          "hint_string": "Image",
+          "name": "",
+          "type": 28,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "item",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "material",
+            "type": 23,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2352,
+        "name": "canvas_item_set_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "item",
+            "type": 23,
+            "usage": 6
+          },
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "enabled",
+            "type": 1,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2353,
+        "name": "canvas_item_set_use_parent_material",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "RenderingServer.RenderingInfo",
+            "hint": 0,
+            "hint_string": "",
+            "name": "info",
+            "type": 2,
+            "usage": 65542
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2408,
+        "name": "get_rendering_info",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 2,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2409,
+        "name": "get_video_adapter_name",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 4,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2410,
+        "name": "get_video_adapter_vendor",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 4,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2411,
+        "name": "get_video_adapter_type",
+        "return": {
+          "class_name": "RenderingDevice.DeviceType",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 2,
+          "usage": 65542
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2412,
+        "name": "get_video_adapter_api_version",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 4,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2413,
+        "name": "get_current_rendering_driver_name",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 4,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2414,
+        "name": "get_current_rendering_method",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 4,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2424,
+        "name": "is_render_loop_enabled",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 1,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "enabled",
+            "type": 1,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2425,
+        "name": "set_render_loop_enabled",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2429,
+        "name": "get_rendering_device",
+        "return": {
+          "class_name": "RenderingDevice",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 24,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 5,
+        "id": 2430,
+        "name": "create_local_rendering_device",
+        "return": {
+          "class_name": "RenderingDevice",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 24,
+          "usage": 6
+        }
+      },
+      {
+        "args": [],
+        "default_args": [],
+        "flags": 1,
+        "id": 2431,
+        "name": "is_on_render_thread",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 1,
+          "usage": 6
+        }
+      },
+      {
+        "args": [
+          {
+            "class_name": "",
+            "hint": 0,
+            "hint_string": "",
+            "name": "callable",
+            "type": 25,
+            "usage": 6
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 2432,
+        "name": "call_on_render_thread",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 0,
+          "usage": 6
+        }
+      }
+    ]
+  },
+  "Viewport": {
+    "constants": {
+      "NOTIFICATION_OS_MEMORY_WARNING": 2009,
+      "RENDER_INFO_DRAW_CALLS_IN_FRAME": 2,
+      "RENDER_INFO_MAX": 3,
+      "RENDER_INFO_OBJECTS_IN_FRAME": 0,
+      "RENDER_INFO_PRIMITIVES_IN_FRAME": 1,
+      "RENDER_INFO_TYPE_CANVAS": 2,
+      "RENDER_INFO_TYPE_MAX": 3,
+      "RENDER_INFO_TYPE_SHADOW": 1,
+      "RENDER_INFO_TYPE_VISIBLE": 0
+    },
+    "methods": [
+      {
+        "args": [
+          {
+            "class_name": "Viewport.RenderInfoType",
+            "hint": 0,
+            "hint_string": "",
+            "name": "type",
+            "type": 2,
+            "usage": 65542
+          },
+          {
+            "class_name": "Viewport.RenderInfo",
+            "hint": 0,
+            "hint_string": "",
+            "name": "info",
+            "type": 2,
+            "usage": 65542
+          }
+        ],
+        "default_args": [],
+        "flags": 1,
+        "id": 4527,
+        "name": "get_render_info",
+        "return": {
+          "class_name": "",
+          "hint": 0,
+          "hint_string": "",
+          "name": "",
+          "type": 2,
+          "usage": 6
+        }
+      }
+    ]
+  }
+}

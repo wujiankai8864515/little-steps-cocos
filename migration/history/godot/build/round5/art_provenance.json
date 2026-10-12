@@ -1,0 +1,222 @@
+{
+  "tool": "builtin image_gen__imagegen for generated/edited assets; no CLI/API fallback",
+  "asset_count": 8,
+  "assets": [
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_approved_mother_v5.png",
+      "bytes": 2616717,
+      "sha256": "4f3f3cc28b27edfdae9459a2fbd80f714a5c0e449acd559e4abf6b7d030e9dee",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "role": "Approved original full RGB sheet, copied byte-for-byte; production Polygon2D uses only approved tent pixels.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "已确认局部母版/02_主页三态_原像素保留.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/已确认局部母版/02_主页三态_原像素保留.png",
+        "sha256": "4f3f3cc28b27edfdae9459a2fbd80f714a5c0e449acd559e4abf6b7d030e9dee",
+        "asset_library_file_id_from_bundle_index": "libfile_f1c0dabe3098819194104629fcc5e03a"
+      },
+      "operation": "copy_original_then_runtime_uv_polygon",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": true,
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_diary_plate_v5.png",
+      "bytes": 1980766,
+      "sha256": "ae581d6638cf6d14f3633efa6d84d962d87baa5f718843716c1bc4e8f16726e4",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "mode": "RGB",
+      "role": "Builtin imagegen precise object edit of approved diary II; clear page contents for live text and event-specific illustration, keep room and book perspective.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "日记/05B_日记阅读批阅_用户选定界面.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/日记/05B_日记阅读批阅_用户选定界面.png",
+        "sha256": "e5ba3ba964e170d2175b9de711aff71943bb7584025f405fb130e0e79f5770d4",
+        "asset_library_file_id_from_bundle_index": "libfile_382ee9667a248191b542bbf392ebf431"
+      },
+      "operation": "builtin_imagegen_clear_all_page_content",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": false,
+      "pixel_fidelity_claim": "Generated/edited art; not claimed to retain all approved source pixels. Original composition and visual invariants were inspected.",
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_diary_reference_v5.png",
+      "bytes": 2329053,
+      "sha256": "e5ba3ba964e170d2175b9de711aff71943bb7584025f405fb130e0e79f5770d4",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "mode": "RGB",
+      "role": "Approved original diary II copied byte-for-byte; runtime quadrilateral clips offer illustration only.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "日记/05B_日记阅读批阅_用户选定界面.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/日记/05B_日记阅读批阅_用户选定界面.png",
+        "sha256": "e5ba3ba964e170d2175b9de711aff71943bb7584025f405fb130e0e79f5770d4",
+        "asset_library_file_id_from_bundle_index": "libfile_382ee9667a248191b542bbf392ebf431"
+      },
+      "operation": "copy_original_then_runtime_illustration_uv_polygon",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": true,
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_harvest_light_v5.png",
+      "bytes": 1883930,
+      "sha256": "c418bb5a18b2d42e21ab73c9690b60072e6bd0609bd2d4adaae4ddbc07e5b134",
+      "dimensions": [
+        1145,
+        1374
+      ],
+      "mode": "RGBA",
+      "role": "Approved transparent upward light spray copied byte-for-byte.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "透明素材/开包向上喷洒彩光_透明特效.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/透明素材/开包向上喷洒彩光_透明特效.png",
+        "sha256": "c418bb5a18b2d42e21ab73c9690b60072e6bd0609bd2d4adaae4ddbc07e5b134",
+        "asset_library_file_id_from_bundle_index": "libfile_fc1b7d50e00c8191b2609e7ced61349f"
+      },
+      "operation": "copy_original_animate_size_alpha",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": true,
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_map_actor_v5.png",
+      "bytes": 1138247,
+      "sha256": "b5309a87ea154d7464c684b784d9c3ed76f96b39f58dda0dec31a4470e6b5711",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "role": "Builtin imagegen transparent extraction of the approved map lower woodfish/backpack, used only on route and diary illustrations, never replacing the Home actor.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "旅行页/01_地图推进_默认状态.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/旅行页/01_地图推进_默认状态.png",
+        "sha256": "daabf7020c5e6210675e3f03dd17c0a699425e829234497ed245396bf0321ac6",
+        "asset_library_file_id_from_bundle_index": null,
+        "source_note": "Exact latest PNG verified as a member of the authorized bundle. The older simple-map ID libfile_daaba354909881919a6808092a9d0f15 is design lineage, not asserted byte-identical to this member."
+      },
+      "operation": "builtin_imagegen_transparent_extraction",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": false,
+      "pixel_fidelity_claim": "Generated/edited art; not claimed to retain all approved source pixels. Original composition and visual invariants were inspected.",
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_map_plate_v5.png",
+      "bytes": 2499340,
+      "sha256": "34ac87235856b40bd1a25481c5645476a59405486310e37557814c67c99819ee",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "mode": "RGB",
+      "role": "Builtin imagegen precise object edit of approved map; remove runtime route strokes, miniature actor, place/progress text and draft watermark, keep composition.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "旅行页/01_地图推进_默认状态.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/旅行页/01_地图推进_默认状态.png",
+        "sha256": "daabf7020c5e6210675e3f03dd17c0a699425e829234497ed245396bf0321ac6",
+        "asset_library_file_id_from_bundle_index": null,
+        "source_note": "Exact latest PNG verified as a member of the authorized bundle. The older simple-map ID libfile_daaba354909881919a6808092a9d0f15 is design lineage, not asserted byte-identical to this member."
+      },
+      "operation": "builtin_imagegen_clear_dynamic_content",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": false,
+      "pixel_fidelity_claim": "Generated/edited art; not claimed to retain all approved source pixels. Original composition and visual invariants were inspected.",
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_offer_person_v5.png",
+      "bytes": 1278114,
+      "sha256": "4faf3c43f505f5a7caad2f0d2133af78ce7f48c0d030d5fdb464cd6280e8458e",
+      "dimensions": [
+        1185,
+        1327
+      ],
+      "mode": "RGBA",
+      "role": "Approved transparent offer NPC copied byte-for-byte.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "透明素材/求offer的祈求人物_透明原图.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/透明素材/求offer的祈求人物_透明原图.png",
+        "sha256": "4faf3c43f505f5a7caad2f0d2133af78ce7f48c0d030d5fdb464cd6280e8458e",
+        "asset_library_file_id_from_bundle_index": "libfile_aee1bc7e839481919cb7ae8790002a84"
+      },
+      "operation": "copy_original_then_runtime_alpha_bounds_atlas",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": true,
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/godot_round5_implementation/games/travel_woodfish/project/travel/assets/travel_people_v5.png",
+      "bytes": 2101968,
+      "sha256": "78c50a16e0a327c5212ac97b1d8ed2b748f6f2043e1dc56ded42b168b9861a17",
+      "dimensions": [
+        1185,
+        1327
+      ],
+      "mode": "RGBA",
+      "role": "Builtin imagegen new transparent 2x2 contextual NPC sheet in approved offer character style: vampire, rain-letter traveler, postcard hiker, osmanthus seller.",
+      "reference": {
+        "package_library_file_id": "libfile_687a0beb1ff4819184422b9abe365626",
+        "member_relative_path": "透明素材/求offer的祈求人物_透明原图.png",
+        "local_path": "/workspace/scratch/3f82ff2b3f81/round5_implementation_inputs/approved_design_bundle/透明素材/求offer的祈求人物_透明原图.png",
+        "sha256": "4faf3c43f505f5a7caad2f0d2133af78ce7f48c0d030d5fdb464cd6280e8458e",
+        "asset_library_file_id_from_bundle_index": "libfile_aee1bc7e839481919cb7ae8790002a84"
+      },
+      "operation": "builtin_imagegen_generate_contextual_characters",
+      "pixels_actually_viewed": true,
+      "byte_identical_to_reference": false,
+      "pixel_fidelity_claim": "Generated/edited art; not claimed to retain all approved source pixels. Original composition and visual invariants were inspected.",
+      "runtime_reviewed": true,
+      "user_runtime_visual_acceptance": "not claimed"
+    }
+  ],
+  "runtime_rendering": "Native official Godot 4.5.2 OpenGL Compatibility on Mesa llvmpipe. Actual 720x1280 screenshots, not static compositor. No hardware GPU, browser/mobile input-feel or deployment claim.",
+  "input_report": "result_cas_final.json and input_gl_cas_final/result.json: 84/84 each.",
+  "render_paths": [
+    "render_final",
+    "render_people",
+    "render_variants"
+  ],
+  "verification": {
+    "headless_input": "84/84 after stale-view additions; 42 production root.push_input events plus three real dual-service native-save CAS scenarios",
+    "native_input_gl": "84/84 with native Godot 4.5.2 X11 OpenGL Compatibility / Mesa llvmpipe; same real input harness",
+    "newer_reports": [
+      "result_cas_final.json",
+      "input_gl_cas_final/result.json"
+    ],
+    "render_paths": [
+      "render_final",
+      "render_people",
+      "render_variants"
+    ],
+    "scope_limit": "No browser/mobile feel, hardware GPU, deployment, remote push or runtime user acceptance claim."
+  },
+  "shared_home_usage": {
+    "resource": "res://travel/assets/travel_approved_mother_v5.png",
+    "purpose": "Home worn bag UV polygons and travel tent share the exact approved mother image. Duplicate new Home PNG removed before release.",
+    "sha256": "4f3f3cc28b27edfdae9459a2fbd80f714a5c0e449acd559e4abf6b7d030e9dee"
+  }
+}

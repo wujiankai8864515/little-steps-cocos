@@ -1,0 +1,698 @@
+{
+  "verdict": "PASS for listed actual native packed scenarios; not Web, hardware, audio, full-memory or user visual acceptance",
+  "source": {
+    "local_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+    "github_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+    "tree": "f254b7b667155473600780a2dcccae30ff561963",
+    "production_input_count": 765,
+    "production_input_sha256": "bca6020c835ca69de74dc2ae514b31cd7377cd439592a30d979bc84d551a53f6",
+    "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+  },
+  "no_overlay": true,
+  "empty_res": true,
+  "isolated_home_xdg": true,
+  "pack_bytes_unchanged_across_runs": true,
+  "pack_hashes": {
+    "index.pck": {
+      "bytes": 2308476,
+      "sha256": "86afd0ad53ab72d6d1cc008564e7fa9acba24462b31c4c76105b2fc5472c6a93"
+    },
+    "packs/comic.pck": {
+      "bytes": 2316192,
+      "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+    },
+    "packs/darkroom.pck": {
+      "bytes": 4396188,
+      "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+    },
+    "packs/departure.pck": {
+      "bytes": 1203888,
+      "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+    },
+    "packs/entry.pck": {
+      "bytes": 943108,
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+    },
+    "packs/exterior.pck": {
+      "bytes": 1494444,
+      "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+    },
+    "packs/house.pck": {
+      "bytes": 17026424,
+      "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+    },
+    "packs/outfit.pck": {
+      "bytes": 281448,
+      "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+    },
+    "packs/photo.pck": {
+      "bytes": 2754084,
+      "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+    },
+    "packs/travel.pck": {
+      "bytes": 13877768,
+      "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+    },
+    "packs/wardrobe.pck": {
+      "bytes": 2027864,
+      "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+    }
+  },
+  "selected_scenario_count": 17,
+  "numbered_assertions": 742,
+  "assert_based_fixture_without_numeric_counter": [
+    "wardrobe_visual",
+    "photo_peach"
+  ],
+  "runs": [
+    {
+      "scenario": "wardrobe_late",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 51,
+      "seconds": 42.826,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe.gd": "38cdf40bd9d679ca8c986284dfc830b3809c5c9ef7dfd948325e25bab941d80a"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "late_wardrobe.png",
+        "late_peach_root_1200.png",
+        "late_home.png",
+        "late_peach_root_720.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_new_fixes/wardrobe_late",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "wardrobe_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 0,
+      "seconds": 37.665,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe_visual.gd": "64ee44807dc6464c4da376652df9f459f8278a6a0bb598e4bdd3cc3c523b2406"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "08_original_restored.png",
+        "02_before_lower_only.png",
+        "07_crown_night.png",
+        "03_after_crown_idle_day.png",
+        "06_crown_land.png",
+        "09_home_worn.png",
+        "01_local_unlock_notice.png",
+        "04_crown_drink.png",
+        "05_crown_lift.png",
+        "10_mobile_worn.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_new_fixes/wardrobe_visual",
+      "scope": "Exact formal PCK native GL component fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "field_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 268,
+      "seconds": 14.544,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_field_final.gd": "cd7711c0b1d6d3bf8dfb74646216dda3530a58d535fadeec99392222f7a1e412"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "W6_night_0320.png",
+        "W6_flow_0240.png",
+        "W6_flow_0480.png",
+        "W6_flow_0000.png",
+        "W6_flow_0080.png",
+        "W6_flow_0160.png",
+        "W6_mobile_360x780.png",
+        "W5_single_arrival.png",
+        "W6_flow_0320.png",
+        "W6_choice_no_field.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_new_fixes/field_visual",
+      "scope": "Exact formal PCK native GL component fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "field_focus",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 6,
+      "seconds": 4.325,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_field_focus.gd": "fb7311e20b280935cd57a2619dfb49dd883a99535e3deadedce4a40030680f09"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence_directory": "formal_new_fixes/field_focus",
+      "scope": "Exact formal PCK native GL component fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "rehang_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 27,
+      "seconds": 23.479,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_rehang_final.gd": "d4d3fbda2c668a4633817421f1491d7c9d10600061ef4f444c01e3cab1f84afc"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "W7_phone_night_landed.png",
+        "W7_rehang_0650.png",
+        "W7_rehang_0340.png",
+        "W7_rehang_0900.png",
+        "W7_rehang_1000.png",
+        "W7_rehang_0000.png",
+        "W7_night_parent_offset_midflight.png",
+        "W7_rehang_0150.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_new_fixes/rehang_visual",
+      "scope": "Exact formal PCK native GL component fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "wardrobe_original",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 78,
+      "seconds": 61.062,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe.gd": "d0752a39f1aed2f0bacbfd81524bc167f4269b2d22007a28af00e974228775ba"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "original_volume_12_on.png",
+        "original_cloth_frame_2.png",
+        "original_cloth_frame_1.png",
+        "original_peach_root_1200.png",
+        "original_cloth_frame_0.png",
+        "original_peach_root_720.png",
+        "original_home.png",
+        "original_volume_22_on.png",
+        "saved_peach_home.png",
+        "original_volume_12_off.png",
+        "original_wardrobe.png",
+        "original_volume_22_off.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_corrected_new_fixes/wardrobe_original",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "wardrobe_persisted",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 9,
+      "seconds": 22.411,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe.gd": "d0752a39f1aed2f0bacbfd81524bc167f4269b2d22007a28af00e974228775ba"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "persisted_home.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_corrected_new_fixes/wardrobe_persisted",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "departure_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 21,
+      "seconds": 28.623,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_departure_final.gd": "443f9ba5c9433e2ac02a0119b6e3ca5e0cb666604aa99c1ec07483c9aa425600"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "W3_depart_0350.png",
+        "W3_depart_0076.png",
+        "W3_depart_0220.png",
+        "W3_depart_0135.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_corrected_new_fixes/departure_visual",
+      "scope": "Exact formal PCK native GL component fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "photo_input",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 51,
+      "seconds": 28.302,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/photo_input.gd": "cbbc1efc9c1a8e5d9df5b0ddb66a77fa3d2d74db59ac64bceb3c822921f75992"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "photo_return_home.png",
+        "photo_bound_second.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_regression/photo_input",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "travel_normal",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 14,
+      "seconds": 26.52,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "094c8cea41ede5d631873d8bc32a366a926deee0e5d1554da248c88d118cef89"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence_directory": "formal_regression/travel_normal",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "travel_late",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 15,
+      "seconds": 30.58,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "094c8cea41ede5d631873d8bc32a366a926deee0e5d1554da248c88d118cef89"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence_directory": "formal_regression/travel_late",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "darkroom_720x1280",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 65,
+      "seconds": 60.066,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/darkroom.gd": "a4547dc9aedb5e4ced5a9ee00bba90ea14428204cf2e42303eb919e6abadbb10"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "12_empty_gap.png",
+        "04_black_smoke.png",
+        "14_new_doll_ready.png",
+        "16_return_home.png",
+        "15b_hold_release.png",
+        "07_slipper_contact.png",
+        "03_needle_contact.png",
+        "01_home_invitation.png",
+        "13_spawn_midpoint.png",
+        "06_slipper_selected.png",
+        "11_dissolve_midpoint.png",
+        "02_darkroom_ready.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_regression/darkroom_720x1280",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "darkroom_720x1558",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 65,
+      "seconds": 76.014,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/darkroom.gd": "a4547dc9aedb5e4ced5a9ee00bba90ea14428204cf2e42303eb919e6abadbb10"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "12_empty_gap.png",
+        "04_black_smoke.png",
+        "14_new_doll_ready.png",
+        "16_return_home.png",
+        "15b_hold_release.png",
+        "07_slipper_contact.png",
+        "03_needle_contact.png",
+        "01_home_invitation.png",
+        "13_spawn_midpoint.png",
+        "06_slipper_selected.png",
+        "11_dissolve_midpoint.png",
+        "02_darkroom_ready.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_regression/darkroom_720x1558",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "photo_continuity",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 3,
+      "seconds": 54.181,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/photo_continuity.gd": "1878697e34172456dc3f25f9421560a3a231f130f53ba80dc743f232eb4f0669"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "boundary_4.0_10.jpg",
+        "boundary_20.0_20.jpg",
+        "boundary_24.0_20.jpg",
+        "boundary_20.0_10.jpg",
+        "boundary_4.0_0.jpg",
+        "boundary_24.0_10.jpg",
+        "boundary_24.0_0.jpg",
+        "boundary_20.0_0.jpg",
+        "boundary_4.0_20.jpg"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_regression/photo_continuity",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "wardrobe_failure",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 53,
+      "seconds": 38.765,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe.gd": "ee15fe079094b4347c4714b3fe73ed3e6a708233a6ef742e7200991d86882469"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "failure_peach_root_1200.png",
+        "failure_home.png",
+        "failure_peach_root_720.png",
+        "failure_wardrobe.png"
+      ],
+      "pass": true,
+      "evidence_directory": "formal_valid_transport_failures/wardrobe_failure",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "travel_failure",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 16,
+      "seconds": 29.755,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "a967ac07478b31f74589f34ec94ca48d1816d527df6986d1486a08816dedbdfe"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence_directory": "formal_valid_transport_failures/travel_failure",
+      "scope": "Exact formal PCK native GL App fixture",
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa"
+    },
+    {
+      "scenario": "photo_peach",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 0,
+      "seconds": 18.889,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/fixtures/check_wardrobe_photo_skin.gd": "e2ca80493f964c7a7f4d25553253205a8189bb7e04d787553875a94f13d59191"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "11_photo_crown_day.png",
+        "12_photo_crown_night.png",
+        "13_photo_original.png"
+      ],
+      "pass": true,
+      "evidence_root": "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum",
+      "evidence_directory": "formal_photo_peach/photo_peach",
+      "scope": "Exact formal packed Home/Photo component fixture with explicit pack mounts and memory-only outfit state. It directly calls unlock/equip/open; it does not add a new full App cold-routing, Web persistence or touch acceptance claim. Those prior native App cases remain separate."
+    }
+  ],
+  "valid_transport_failures": {
+    "wardrobe_failure": {
+      "cancellations": 0,
+      "failures": 1,
+      "invalid_callbacks": 0,
+      "mounts": 6,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 1,
+      "stale_callbacks": 0,
+      "starts": 8,
+      "warm_hits": 0
+    },
+    "travel_failure": {
+      "cancellations": 0,
+      "failures": 1,
+      "invalid_callbacks": 0,
+      "mounts": 6,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 1,
+      "stale_callbacks": 0,
+      "starts": 8,
+      "warm_hits": 2
+    }
+  },
+  "photo_day_boundary_continuity": [
+    {
+      "boundary": 4.0,
+      "max_mean_channel_step": 0.00245632595486111,
+      "pass": true
+    },
+    {
+      "boundary": 20.0,
+      "max_mean_channel_step": 0.00556098090277778,
+      "pass": true
+    },
+    {
+      "boundary": 24.0,
+      "max_mean_channel_step": 0.00596137152777778,
+      "pass": true
+    }
+  ],
+  "visual_review": {
+    "viewed": [
+      "formal_new_fixes/wardrobe_original/original_peach_root_720.png",
+      "formal_new_fixes/wardrobe_persisted/persisted_home.png",
+      "formal_new_fixes/wardrobe_visual/contact_sheet.jpg",
+      "formal_new_fixes/field_visual/W6_mobile_360x780.png",
+      "formal_new_fixes/field_visual/W5_single_arrival.png",
+      "formal_new_fixes/rehang_visual/W7_rehang_0650.png",
+      "formal_new_fixes/rehang_visual/W7_rehang_1000.png",
+      "formal_corrected_new_fixes/departure_visual/W3_depart_0076.png",
+      "formal_corrected_new_fixes/departure_visual/W3_depart_0220.png",
+      "formal_regression/darkroom_720x1558/15b_hold_release.png",
+      "formal_regression/photo_input/photo_bound_second.png",
+      "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/formal_photo_peach/photo_peach/11_photo_crown_day.png",
+      "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/formal_photo_peach/photo_peach/12_photo_crown_night.png",
+      "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/formal_photo_peach/photo_peach/13_photo_original.png"
+    ],
+    "findings": [
+      "Direct-unlock disclosure and choices visibly rendered, no fake ad completion text.",
+      "Peach crown and lower cloth remain attached across rendered idle/drink/lift/land/day/night; original restored; phone fitted room preserved.",
+      "One departure cloud stage at 0.76s and clear actor/no new cloud at 2.2s.",
+      "Arrival footprint visible without repeated stamping; full-screen stars extend through tall-screen letterbox area.",
+      "Actual wall backpack travels from lower position to matching hook rest frame.",
+      "Tall darkroom meter, invitation, needle/slipper controls and return remain in frame; smoke and held-release result render.",
+      "Photo drop visibly marks both selectors on second paper and Home return restores chosen binding.",
+      "Daylight: peach head/crown cloth edge and lower blossom cloth are visible on actual Photo actor.",
+      "Night: same peach outfit remains attached under the shared cool night lighting.",
+      "Reopen after original equip: peach head/crown and lower cloth are both absent; original actor returns using the same material/shader object."
+    ],
+    "boundary": "Limited engineering visual review of listed screenshots, not user aesthetic approval."
+  },
+  "warnings": [
+    "Selected native GL runs only report unsupported software-driver VSync setting; no SCRIPT ERROR or ERROR in selected runs.",
+    "Inherited Source component candidate scope strings in some W3/W5/W6/W7 raw JSON are stale fixture wording. Actual command, guard, immutable pack hashes and empty-res run prove formal packed component provenance. The component fixtures are not full App dynamic-loading tests."
+  ],
+  "retained_failures_and_superseded_scopes": [
+    {
+      "evidence": "formal_new_fixes/wardrobe_original",
+      "reason": "QA read Button.text instead of shared rendered choice label; one assertion failed, corrected fresh original/persisted pair passed.",
+      "review": "QA_REVIEW_01_LABEL_ASSERTION.md"
+    },
+    {
+      "evidence": "formal_new_fixes/departure_visual",
+      "reason": "QA wrapper invented travel_visual physical PCK from logical group; stopped before component tests, corrected wrapper headless and GL passed.",
+      "review": "QA_REVIEW_02_PACK_GROUP_WRAPPER.md"
+    },
+    {
+      "evidence": [
+        "formal_new_fixes/wardrobe_failure",
+        "formal_regression/travel_failure"
+      ],
+      "reason": "Valid safe-rejection/manual-retry evidence for malformed callback, not valid transport failures. New full-schema two-attempt runs passed separately.",
+      "review": "QA_REVIEW_03_FAILURE_CALLBACK_SCHEMA.md"
+    },
+    {
+      "evidence": "formal_valid_failure_headless/wardrobe_failure",
+      "reason": "Optional headless root-entry preflight failed before failure injection. Cause not established; no claim that headless equals rendered input. Same full-schema exact-pack GL root flow passed.",
+      "review": "QA_REVIEW_04_HEADLESS_POINTER_PREFLIGHT.md"
+    }
+  ],
+  "boundaries": [
+    "No pre-reset final QA counts reused. Restored R8 fixtures are provenance only.",
+    "No product source/packs changed by QA. Tests intentionally skip opening story timing via documented completion callback.",
+    "Native underlying delayed pack backend verifies actual sizes/SHA and mounts exact PCKs; transport faults/delays are explicitly injected, not real HTTP.",
+    "Real root mouse/synthetic touch events are not hardware touch-feel verification.",
+    "No audible audio, Web browser storage/network, hardware GPU frame-rate, browser total memory, phone or user aesthetic acceptance claim.",
+    "Cross-six-page 20-loop memory and uniform before/after performance are assigned to engineering owner."
+  ],
+  "gl_handoff": "All additional Godot/Xorg processes exited; returned to owner at 2026-10-07T10:34:22Z.",
+  "version": 2,
+  "prior_version_sha256": "211c28c31818c565f9163f6b8b7fbe137100061ae66b326492b8dd20ff3950e5",
+  "photo_peach_addendum": {
+    "verdict": "PASS",
+    "source": {
+      "local_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+      "github_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+      "tree": "f254b7b667155473600780a2dcccae30ff561963",
+      "production_input_count": 765,
+      "production_input_sha256": "bca6020c835ca69de74dc2ae514b31cd7377cd439592a30d979bc84d551a53f6",
+      "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+    },
+    "previous_report": {
+      "path": "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/FINAL_NATIVE_QA.json",
+      "sha256": "211c28c31818c565f9163f6b8b7fbe137100061ae66b326492b8dd20ff3950e5",
+      "unchanged": true
+    },
+    "scenario": {
+      "scenario": "photo_peach",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 0,
+      "seconds": 18.889,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/fixtures/check_wardrobe_photo_skin.gd": "e2ca80493f964c7a7f4d25553253205a8189bb7e04d787553875a94f13d59191"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "11_photo_crown_day.png",
+        "12_photo_crown_night.png",
+        "13_photo_original.png"
+      ],
+      "pass": true
+    },
+    "overlay": "none",
+    "pack_hashes_unchanged_and_identical_to_prior_qa": true,
+    "fixture_exact_repo_copy": true,
+    "fixture_sha256": "e2ca80493f964c7a7f4d25553253205a8189bb7e04d787553875a94f13d59191",
+    "visual_review": {
+      "all_three_images_viewed": true,
+      "images": [
+        {
+          "path": "formal_photo_peach/photo_peach/11_photo_crown_day.png",
+          "sha256": "48552fafa92f1596df6eb8929349428c9786858a65e508f7d284468f4f767a5e"
+        },
+        {
+          "path": "formal_photo_peach/photo_peach/12_photo_crown_night.png",
+          "sha256": "f2ed0ca101cc889a3c6e96ed9bb7781fc600f2c8ca0de3db133578e5a3eb1192"
+        },
+        {
+          "path": "formal_photo_peach/photo_peach/13_photo_original.png",
+          "sha256": "40d6fd5b3833f0f3482d91895472153d4a4b27fa8f07991fdd6f9e0b0f20207b"
+        }
+      ],
+      "findings": [
+        "Daylight: peach head/crown cloth edge and lower blossom cloth are visible on actual Photo actor.",
+        "Night: same peach outfit remains attached under the shared cool night lighting.",
+        "Reopen after original equip: peach head/crown and lower cloth are both absent; original actor returns using the same material/shader object."
+      ]
+    },
+    "boundary": "Exact formal packed Home/Photo component fixture with explicit pack mounts and memory-only outfit state. It directly calls unlock/equip/open; it does not add a new full App cold-routing, Web persistence or touch acceptance claim. Those prior native App cases remain separate.",
+    "new_cumulative_scenarios": 17,
+    "numbered_assertions_unchanged": 742,
+    "assert_based_fixtures": [
+      "wardrobe_visual",
+      "photo_peach"
+    ],
+    "gl_handoff": "All additional Godot/Xorg processes exited; returned to owner at 2026-10-07T10:34:22Z."
+  }
+}

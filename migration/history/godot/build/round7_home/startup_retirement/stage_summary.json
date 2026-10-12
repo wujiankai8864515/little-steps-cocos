@@ -1,0 +1,209 @@
+[
+  {
+    "stage": "startup_all_ready",
+    "entries": 84,
+    "reserved_bytes": 152191384,
+    "render_texture_memory_bytes": 169211670,
+    "render_video_memory_bytes": 176141532,
+    "watched_resource_count": 17,
+    "watched_alive": 17,
+    "watched_cached": 17,
+    "nodes_alive": {
+      "comic": true,
+      "login": true
+    }
+  },
+  {
+    "stage": "startup_entry_cancelled",
+    "entries": 84,
+    "reserved_bytes": 152191384,
+    "render_texture_memory_bytes": 169211670,
+    "render_video_memory_bytes": 176141532,
+    "watched_resource_count": 17,
+    "watched_alive": 17,
+    "watched_cached": 17,
+    "nodes_alive": {
+      "comic": true,
+      "login": true
+    }
+  },
+  {
+    "stage": "comic_before_return",
+    "entries": 84,
+    "reserved_bytes": 152191384,
+    "render_texture_memory_bytes": 169342742,
+    "render_video_memory_bytes": 176280380,
+    "watched_resource_count": 17,
+    "watched_alive": 17,
+    "watched_cached": 17,
+    "nodes_alive": {
+      "cancelled_comic": true,
+      "comic": true,
+      "login": true
+    }
+  },
+  {
+    "stage": "startup_comic_returned",
+    "entries": 84,
+    "reserved_bytes": 152191384,
+    "render_texture_memory_bytes": 169342742,
+    "render_video_memory_bytes": 176267876,
+    "watched_resource_count": 17,
+    "watched_alive": 17,
+    "watched_cached": 17,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": true
+    }
+  },
+  {
+    "stage": "comic_final_before_home",
+    "entries": 84,
+    "reserved_bytes": 152191384,
+    "render_texture_memory_bytes": 169342742,
+    "render_video_memory_bytes": 176280380,
+    "watched_resource_count": 17,
+    "watched_alive": 17,
+    "watched_cached": 17,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": true,
+      "login": true
+    }
+  },
+  {
+    "stage": "home_after_startup_retirement",
+    "entries": 67,
+    "reserved_bytes": 109488856,
+    "render_texture_memory_bytes": 129063884,
+    "render_video_memory_bytes": 135990314,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false
+    }
+  },
+  {
+    "stage": "photo_open",
+    "entries": 69,
+    "reserved_bytes": 123515512,
+    "render_texture_memory_bytes": 144228100,
+    "render_video_memory_bytes": 151171178,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false,
+      "photo": true
+    }
+  },
+  {
+    "stage": "photo_closed_resident",
+    "entries": 69,
+    "reserved_bytes": 123515512,
+    "render_texture_memory_bytes": 144228100,
+    "render_video_memory_bytes": 151194562,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false,
+      "photo": true
+    }
+  },
+  {
+    "stage": "travel_open_photo_retained",
+    "entries": 80,
+    "reserved_bytes": 183954516,
+    "render_texture_memory_bytes": 202401078,
+    "render_video_memory_bytes": 209474444,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false,
+      "photo": true,
+      "travel": true
+    }
+  },
+  {
+    "stage": "travel_closed_photo_retained",
+    "entries": 80,
+    "reserved_bytes": 183954516,
+    "render_texture_memory_bytes": 202401078,
+    "render_video_memory_bytes": 209392708,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false,
+      "photo": true,
+      "travel": true
+    }
+  },
+  {
+    "stage": "departure_batch_also_held",
+    "entries": 80,
+    "reserved_bytes": 183954516,
+    "render_texture_memory_bytes": 202401078,
+    "render_video_memory_bytes": 209392708,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "login": false,
+      "photo": true,
+      "travel": true
+    }
+  },
+  {
+    "stage": "darkroom_with_photo_travel_resident",
+    "entries": 104,
+    "reserved_bytes": 215145792,
+    "render_texture_memory_bytes": 248963146,
+    "render_video_memory_bytes": 256084780,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "darkroom": true,
+      "login": false,
+      "photo": true,
+      "travel": true
+    }
+  },
+  {
+    "stage": "final_all_optional_retained",
+    "entries": 104,
+    "reserved_bytes": 215145792,
+    "render_texture_memory_bytes": 248983626,
+    "render_video_memory_bytes": 256024612,
+    "watched_resource_count": 17,
+    "watched_alive": 0,
+    "watched_cached": 0,
+    "nodes_alive": {
+      "cancelled_comic": false,
+      "comic": false,
+      "darkroom": true,
+      "login": false,
+      "photo": true,
+      "travel": true
+    }
+  }
+]

@@ -1,0 +1,454 @@
+{
+  "checks": [
+    {
+      "label": "explicit headless scope, no visual acceptance",
+      "msec": 0,
+      "pass": true
+    },
+    {
+      "label": "Home scene is unavailable before native delayed mounts",
+      "msec": 0,
+      "pass": true
+    },
+    {
+      "label": "cold Home prepare terminates",
+      "msec": 3309,
+      "pass": true
+    },
+    {
+      "label": "production App owns ready Home",
+      "msec": 3943,
+      "pass": true
+    },
+    {
+      "label": "cold Home has no optional page packs",
+      "msec": 3943,
+      "pass": true
+    },
+    {
+      "label": "A037 canceled settings touch plus emulation stays closed",
+      "msec": 4346,
+      "pass": true
+    },
+    {
+      "label": "A080 settings release starts bounce before panel",
+      "msec": 4346,
+      "pass": true
+    },
+    {
+      "label": "A080 settings burst cannot open during bounce",
+      "msec": 4462,
+      "pass": true
+    },
+    {
+      "label": "A037 settings opens after bounce",
+      "msec": 4643,
+      "pass": true
+    },
+    {
+      "label": "A037 canceled music switch and emulation do not change state",
+      "msec": 4693,
+      "pass": true
+    },
+    {
+      "label": "A037 music switch touch plus emulation changes exactly once",
+      "msec": 4743,
+      "pass": true
+    },
+    {
+      "label": "A037 music switch reopens audio preference",
+      "msec": 4793,
+      "pass": true
+    },
+    {
+      "label": "A037 canceled close plus emulation retains panel",
+      "msec": 4843,
+      "pass": true
+    },
+    {
+      "label": "A037 touch close plus emulation closes panel",
+      "msec": 4893,
+      "pass": true
+    },
+    {
+      "label": "A037 touch reopens settings after close",
+      "msec": 5176,
+      "pass": true
+    },
+    {
+      "label": "A037 Escape closes reopened settings",
+      "msec": 5226,
+      "pass": true
+    },
+    {
+      "label": "A080 focus loss revokes pending settings opener",
+      "msec": 5629,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo1 canceled touch plus emulation does not enter",
+      "msec": 5996,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo1 waits for bounce before loading",
+      "msec": 5996,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo1 burst cannot skip bounce",
+      "msec": 6114,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo1 enters current single photo wall",
+      "msec": 6419,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo1 enters exactly once and restores pose",
+      "msec": 6419,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo1 canceled return stays on wall",
+      "msec": 6452,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo1 actual return restores Home",
+      "msec": 6469,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo2 canceled touch plus emulation does not enter",
+      "msec": 6822,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo2 waits for bounce before loading",
+      "msec": 6822,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo2 burst cannot skip bounce",
+      "msec": 6941,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo2 enters current single photo wall",
+      "msec": 7119,
+      "pass": true
+    },
+    {
+      "label": "A080 Photo2 enters exactly once and restores pose",
+      "msec": 7119,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo2 canceled return stays on wall",
+      "msec": 7169,
+      "pass": true
+    },
+    {
+      "label": "A015 Photo2 actual return restores Home",
+      "msec": 7186,
+      "pass": true
+    },
+    {
+      "label": "A080 lamp responds immediately on touch press",
+      "msec": 7187,
+      "pass": true
+    },
+    {
+      "label": "A080 lamp starts real gradual transition without instant jump",
+      "msec": 7187,
+      "pass": true
+    },
+    {
+      "label": "A080 lamp has intermediate actual fade values",
+      "msec": 7241,
+      "pass": true
+    },
+    {
+      "label": "A080 emulated mouse does not toggle lamp twice",
+      "msec": 7241,
+      "pass": true
+    },
+    {
+      "label": "A080 lamp completes short fade",
+      "msec": 7556,
+      "pass": true
+    },
+    {
+      "label": "A080 canceled incense touch does not ignite",
+      "msec": 7924,
+      "pass": true
+    },
+    {
+      "label": "A080 incense waits for bounce before ignition",
+      "msec": 7925,
+      "pass": true
+    },
+    {
+      "label": "A080 incense burst cannot ignite early",
+      "msec": 8039,
+      "pass": true
+    },
+    {
+      "label": "A080 incense ignites exactly once after bounce",
+      "msec": 8219,
+      "pass": true
+    },
+    {
+      "label": "doll alpha input target exists",
+      "msec": 13302,
+      "pass": true
+    },
+    {
+      "label": "doll real drag/settle opens correct natural confirmation",
+      "msec": 14216,
+      "pass": true
+    },
+    {
+      "label": "A015 canceled doll confirmation plus emulation does not accept",
+      "msec": 14266,
+      "pass": true
+    },
+    {
+      "label": "A015 doll cancel resolves exactly once",
+      "msec": 14620,
+      "pass": true
+    },
+    {
+      "label": "doll alpha input target exists",
+      "msec": 19733,
+      "pass": true
+    },
+    {
+      "label": "doll real drag/settle opens correct natural confirmation",
+      "msec": 20637,
+      "pass": true
+    },
+    {
+      "label": "A015 doll confirm enters actual darkroom",
+      "msec": 50640,
+      "pass": false
+    },
+    {
+      "label": "trip available from actual bag confirmation",
+      "msec": 50640,
+      "pass": false
+    }
+  ],
+  "decisions": [
+    {
+      "accepted": false,
+      "kind": "darkroom"
+    },
+    {
+      "accepted": false,
+      "kind": "darkroom"
+    }
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 2,
+  "inputs": 153,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 6,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 6,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "photo",
+      "darkroom"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 228317,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3178,
+          "loaded": 943108,
+          "mount_usec": 292,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/entry.pck",
+          "request_id": "p29846668681-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1634342,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8808,
+          "loaded": 2313888,
+          "mount_usec": 328,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/comic.pck",
+          "request_id": "p29846668681-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1647581,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4559,
+          "loaded": 1107208,
+          "mount_usec": 360,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/exterior.pck",
+          "request_id": "p29846668681-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1723565,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 64378,
+          "loaded": 17019800,
+          "mount_usec": 667,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/house.pck",
+          "request_id": "p29846668681-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 6436282,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 9936,
+          "loaded": 2858372,
+          "mount_usec": 470,
+          "pack_id": "photo",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/photo.pck",
+          "request_id": "p29846668681-e1-r5",
+          "state": "ready",
+          "total": 2858372,
+          "verified_sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "ready"
+      },
+      {
+        "at_usec": 13453583,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 16596,
+          "loaded": 4783424,
+          "mount_usec": 366,
+          "pack_id": "darkroom",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/darkroom.pck",
+          "request_id": "p29846668681-e1-r6",
+          "state": "ready",
+          "total": 4783424,
+          "verified_sha256": "b926c29779993be721665979f420373be157d5aaeedd2f6cc7ec2b149cd4cc0d"
+        },
+        "epoch": 1,
+        "pack_id": "darkroom",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "samples": [
+    {
+      "event": "settings_dismissed",
+      "msec": 4843
+    },
+    {
+      "event": "settings_dismissed",
+      "msec": 5176
+    }
+  ],
+  "scope": "Formal bc1f8cf index plus unchanged delayed packs via native backend, empty res; production App/route/root input. Comic skipped with existing commit method; isolated service clock advances trip only. Headless state/resource/input evidence, no GL/Web/device-touch or user visual acceptance."
+}

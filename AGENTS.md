@@ -1,6 +1,6 @@
-# Cocos 迁移执行约束
+# Cocos 工程执行约束
 
-用户当前授权是完整迁移，严格一比一对照；不要以样例、相似画面、少量按钮通过或构建成功替代最终目标。参考相邻 Godot 仓库的最新有效需求、生产源和原美术。旧的「取消迁移、Godot 唯一主线」已由本次用户授权覆盖，其余产品、存档和资源预算约束继续参考。
+当前唯一开发与打包工程使用 Cocos Creator 3.8.8。有效需求见 games/xiaoyu-cocos/docs/requirements.md 和 requirements.json；框架和游戏架构分别见 engines/travel-core/docs/architecture.md、games/xiaoyu-cocos/docs/architecture.md。完整功能、原美术和产品行为仍是基准；不要以样例、相似画面、少量按钮通过或构建成功替代最终目标。旧 Godot 目录已由用户授权退役，原始需求和实现仅作为固定历史来源，不恢复旧引擎主线或已撤销玩法。
 
 - `engines` 只实现通用框架；`games` 只实现游戏；`builds` 只负责渠道打包：根目录放公共脚本，每个平台的配置、处理脚本和模板集中在本平台目录。导入/迁移/验收工具、历史构建与证据放 `migration`，不得重新堆回打包仓。仅正式打包微信小游戏。
 - 当用户说「打包 xxx 游戏」时，按游戏名称定位 `games` 下的工程，通过 `builds/build.py` 调用该游戏的渠道构建流程；未指定平台时默认微信小游戏。当前「小雨／旅行木鱼／Little Steps」对应 `games/xiaoyu-cocos`，命令为 `python3 -B builds/build.py wechatgame`。默认打包最新已保存的本地代码和资源（包含未提交修改），先同步渠道模板、冻结隔离镜像，再构建和检查；成功后更新固定 `builds/wechatgame/project` 与 `remote`，微信工具打开 `builds/wechatgame`。不复用旧候选或擅自传 `--readback`；源码在构建期间改变则保留原产物并重新打包。明确要求正式发布时才切换到远端核验后的冻结源码与正式交付门禁。新增游戏须先建立明确的游戏到打包配置映射，不以小雨替代其他游戏。
@@ -35,3 +35,7 @@
 ## 2026-10-12 Loading 与平台调研补充
 
 用户明确要求完整 Cocos Loading 为首屏，覆盖上文「无图片的原生 loading」偏好。其资源、代码与游戏/公共模块独立，第一帧绘制后再加载游戏；引擎初始化期间仅保留同色底，不另做简陋进度界面。可选页面图片仍按需加载。平台建议须核对本机 Cocos 3.8.8 适配、当前源码与实际产物，不能把现有分包、资源释放等重复列为待接入优化。首屏上报等埋点后续统一处理。用户已授权加入可关闭的轻、重、长震动，并要求 Git 独立提交和远端回读。
+
+## 2026-10-12 旧工程退役与文档归属
+
+用户要求删除工作区原 little-steps Godot 目录。需求与设计归游戏仓，通用架构归框架仓，渠道与分包说明归打包仓。字体源及许可保存在 games/xiaoyu-cocos/source/fonts，不依赖已删除的相邻仓库。原需求、技术记录和失败证据在 migration/history/godot，旧约束以 historical-agent-policy.txt 保存，不是当前指令。完整历史入口为 migration/archives/godot-history.json；历史工具仅在显式调用时恢复固定缓存，日常 Cocos 构建不得恢复或运行 Godot。文档核对当前源码、用户覆盖和实际边界，不能将旧 Godot PASS 改为 Cocos 已验收。

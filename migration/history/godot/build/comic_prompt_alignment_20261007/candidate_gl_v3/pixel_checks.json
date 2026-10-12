@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "layout": "standard",
+      "image_size": [
+        720,
+        1280
+      ],
+      "dots_only_diff_bbox": [
+        442,
+        1222,
+        456,
+        1226
+      ],
+      "pass": true
+    },
+    {
+      "layout": "long",
+      "image_size": [
+        720,
+        1558
+      ],
+      "dots_only_diff_bbox": [
+        442,
+        1361,
+        456,
+        1365
+      ],
+      "pass": true
+    },
+    {
+      "layout": "mobile_scaled",
+      "image_size": [
+        390,
+        843
+      ],
+      "dots_only_diff_bbox": [
+        238,
+        811,
+        248,
+        814
+      ],
+      "pass": true
+    },
+    {
+      "layout": "safe_area",
+      "image_size": [
+        720,
+        1558
+      ],
+      "dots_only_diff_bbox": [
+        442,
+        1466,
+        456,
+        1470
+      ],
+      "pass": true
+    },
+    {
+      "layout": "compact",
+      "image_size": [
+        360,
+        640
+      ],
+      "dots_only_diff_bbox": [
+        262,
+        600,
+        276,
+        604
+      ],
+      "pass": true
+    }
+  ],
+  "all_pass": true
+}

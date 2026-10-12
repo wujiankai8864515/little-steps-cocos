@@ -1,0 +1,30 @@
+{
+  "events": [
+    {
+      "at": 20886,
+      "event": "before_injection",
+      "home_in_tree": false,
+      "home_instance": 123983627960,
+      "home_ready": false,
+      "process_mode": 0,
+      "viewport_update": 4
+    },
+    {
+      "at": 20886,
+      "event": "after_injection",
+      "home_in_tree": false,
+      "process_mode": 0,
+      "viewport_update": 0
+    },
+    {
+      "at": 21096,
+      "can_process": true,
+      "event": "after_home_ready_signal",
+      "home_in_tree": true,
+      "process_mode": 0,
+      "viewport_update": 0
+    }
+  ],
+  "kind": "diagnostic_render_disabled",
+  "scope": "QA-only causal-direction probe. One Home subsystem intentionally disabled before add_child. It is not a valid product acceptance run and does not change source/PCK/ready code. Production resume may restore rendering/processing after preparation; inspect gate timestamps separately."
+}

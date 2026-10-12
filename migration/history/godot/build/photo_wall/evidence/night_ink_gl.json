@@ -1,0 +1,181 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "Home route opens single wall",
+      "pass": true
+    },
+    {
+      "check": "all paper meshes and shadows fully initialized",
+      "pass": true
+    },
+    {
+      "check": "initial existing two photographs, no fake acquired photos or batch entry",
+      "pass": true
+    },
+    {
+      "check": "daytime paper UI retains original dark ink",
+      "pass": true
+    },
+    {
+      "check": "twelve explicitly acquired test photos render six and stack",
+      "pass": true
+    },
+    {
+      "check": "real mouse drag assigns selected photo ID",
+      "pass": true
+    },
+    {
+      "check": "real click rotates batch with no stolen stamp",
+      "pass": true
+    },
+    {
+      "check": "stamp restores on same photo after full cycle",
+      "pass": true
+    },
+    {
+      "check": "touch cancellation returns clip with binding unchanged",
+      "pass": true
+    },
+    {
+      "check": "night paper UI uses high-contrast warm ink",
+      "pass": true
+    },
+    {
+      "check": "six paper pin points remain fixed while mesh curls",
+      "pass": true
+    },
+    {
+      "check": "each mesh top-centre pin is mathematically stationary",
+      "pass": true
+    },
+    {
+      "check": "paper lower vertex actually deforms across frames",
+      "pass": true
+    },
+    {
+      "check": "App-equivalent responsive logical viewport 360x800",
+      "pass": true
+    },
+    {
+      "check": "actual render width 360x800",
+      "pass": true
+    },
+    {
+      "check": "App-equivalent responsive logical viewport 430x932",
+      "pass": true
+    },
+    {
+      "check": "actual render width 430x932",
+      "pass": true
+    },
+    {
+      "check": "App-equivalent responsive logical viewport 960x1280",
+      "pass": true
+    },
+    {
+      "check": "actual render width 960x1280",
+      "pass": true
+    },
+    {
+      "check": "App-equivalent responsive logical viewport 1440x2560",
+      "pass": true
+    },
+    {
+      "check": "actual render width 1440x2560",
+      "pass": true
+    },
+    {
+      "check": "return restores Home input and render",
+      "pass": true
+    },
+    {
+      "check": "reopen restores saved slot bindings",
+      "pass": true
+    }
+  ],
+  "display_records": [
+    {
+      "logical_viewport": [
+        720.0,
+        1600.0
+      ],
+      "page_size": [
+        720.0,
+        1600.0
+      ],
+      "physical_request": [
+        360,
+        800
+      ],
+      "render_pixels": [
+        360,
+        800
+      ],
+      "stretch": "[X: (0.5, 0.0), Y: (0.0, 0.5), O: (0.0, 0.0)]"
+    },
+    {
+      "logical_viewport": [
+        720.0,
+        1560.0
+      ],
+      "page_size": [
+        720.0,
+        1560.0
+      ],
+      "physical_request": [
+        430,
+        932
+      ],
+      "render_pixels": [
+        430,
+        932
+      ],
+      "stretch": "[X: (0.597222, 0.0), Y: (0.0, 0.597436), O: (0.0, 0.0)]"
+    },
+    {
+      "logical_viewport": [
+        960.0,
+        1280.0
+      ],
+      "page_size": [
+        720.0,
+        1280.0
+      ],
+      "physical_request": [
+        960,
+        1280
+      ],
+      "render_pixels": [
+        960,
+        1280
+      ],
+      "stretch": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]"
+    },
+    {
+      "logical_viewport": [
+        720.0,
+        1280.0
+      ],
+      "page_size": [
+        720.0,
+        1280.0
+      ],
+      "physical_request": [
+        1440,
+        2560
+      ],
+      "render_pixels": [
+        1440,
+        2560
+      ],
+      "stretch": "[X: (2.0, 0.0), Y: (0.0, 2.0), O: (0.0, 0.0)]"
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Mesa software GL diagnostic fixture; not Web or phone performance",
+  "base_preflight_commit": "716d8efaebeb84ebd20bc8a679836f5be6685f84",
+  "targeted_override_file": "games/travel_woodfish/project/photo/photo_page.gd",
+  "override_sha256": "438cdd89e8643c808548640a9b4686431398f934929d1ba848db3ae8c53400ce",
+  "full_merged_preflight_pending": true
+}

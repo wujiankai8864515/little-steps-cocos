@@ -1,0 +1,176 @@
+{
+  "checks": [
+    {
+      "check": "X11 real software GL",
+      "pass": true
+    },
+    {
+      "check": "cold Home prepare terminates",
+      "pass": true
+    },
+    {
+      "check": "Home receives actual root input",
+      "pass": true
+    },
+    {
+      "check": "find opaque bowl target",
+      "pass": true
+    },
+    {
+      "check": "real bowl tap emits sip feedback",
+      "pass": true
+    },
+    {
+      "check": "actual visible drink_before_drag",
+      "pass": true
+    },
+    {
+      "check": "face safe drink_before_drag",
+      "pass": true
+    },
+    {
+      "check": "drink completes",
+      "pass": true
+    },
+    {
+      "check": "drink leaves normal marks layer",
+      "pass": true
+    },
+    {
+      "check": "bowl enters real long drag",
+      "pass": true
+    },
+    {
+      "check": "prop-only drag does not reparent action marks",
+      "pass": true
+    },
+    {
+      "check": "bowl drag settles",
+      "pass": true
+    },
+    {
+      "check": "bowl returns its fixed anchor",
+      "pass": true
+    },
+    {
+      "check": "bowl release removes drag canvas",
+      "pass": true
+    },
+    {
+      "check": "second drink begins",
+      "pass": true
+    },
+    {
+      "check": "fish grab interrupts active drink",
+      "pass": true
+    },
+    {
+      "check": "fish grab cancels drink context",
+      "pass": true
+    },
+    {
+      "check": "interrupted bowl retains anchor",
+      "pass": true
+    },
+    {
+      "check": "cancelled interruption clears marks and restores layer",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 0",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 0",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 1",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 1",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 2",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 2",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 3",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 3",
+      "pass": true
+    },
+    {
+      "check": "real fish tap emits knock feedback after cancellations",
+      "pass": false
+    },
+    {
+      "check": "knock feedback expires",
+      "pass": true
+    },
+    {
+      "check": "night director emits doze feedback",
+      "pass": false
+    },
+    {
+      "check": "doze feedback expires",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 2,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "diff": {
+        "changed_pixels": 87,
+        "max_channel_difference": 94,
+        "sum_rgb_difference": 12586
+      },
+      "kind": "drink",
+      "region": "[P: (369, 809), S: (130, 120)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0637613333333333,
+            "alpha": 0.747130387383828,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "drink",
+            "lifetime": 0.42,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (419.8404, 848.6426), S: (32.0, 45.0)]",
+            "world_position": "(434.8404, 869.6426)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    }
+  ],
+  "scope": "Candidate core compiled from d817 plus one Home page fix; eight unchanged native packs; empty res; real App and root long press; app process frozen immediately after production lift. Original mark visibility A/B, hidden actor diagnostic, restore/cancel regressions; no Web/hardware/user acceptance claim."
+}

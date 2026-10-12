@@ -1,0 +1,33 @@
+{
+  "requirement": "W5",
+  "origin": "OpenAI built-in image_gen style-transfer of the inspected rejected footprint, 2026-10-07",
+  "master_sha256": "63a0f3d9fe955ac3bae055e778d44ec0a667b1640c9f08ea36c6e71d5178cbcb",
+  "master_size": [
+    1086,
+    1448
+  ],
+  "crop": [
+    265,
+    109,
+    953,
+    1344
+  ],
+  "output": "games/travel_woodfish/project/travel/assets/travel_footprint_ink_v1.png",
+  "output_sha256": "ef24c2020f698479266ab3044ff7d186c0b974e265b33dcee785925b99cf0c0a",
+  "source_size": [
+    96,
+    128
+  ],
+  "runtime_display_box": [
+    26,
+    35
+  ],
+  "dpr_1_2_3": "96x128 source exceeds 3x largest settled display and covers entrance scale up to 35.1x47.25 at DPR2; enlarged entrance DPR3 may mildly upscale",
+  "alpha": "generated genuine transparency, alpha-preserving crop/resize only",
+  "rgba_bytes": 49152,
+  "mipmaps": false,
+  "admission_estimate_bytes": 114688,
+  "pack": "travel.pck; declared travel_visual group; same replaced resource identity",
+  "viewed": "Original old runtime, full generated master, and runtime small-scale preview were inspected",
+  "validation": "Candidate; official importer pixel/hash check and aggregate cold pack pending"
+}

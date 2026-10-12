@@ -1,0 +1,723 @@
+{
+  "schema": 1,
+  "status": "asset_coordinate_contract_runtime_integration_pending",
+  "canvas": [
+    720,
+    1280
+  ],
+  "source_canvas": [
+    941,
+    1672
+  ],
+  "plate": "res://travel/assets/travel_map_plate_v5.png",
+  "atlas": "res://travel/assets/travel_scene_layers_v1.png",
+  "atlas_dimensions": [
+    512,
+    512
+  ],
+  "layers": {
+    "bell_body": {
+      "region": [
+        4,
+        4,
+        142,
+        242
+      ],
+      "source": "Generated completion of same reference bell, hidden left body reconstructed; neutral material shading.",
+      "texture_size": [
+        142,
+        242
+      ],
+      "z": 20,
+      "position": [
+        90.2869,
+        718.0861
+      ],
+      "size": [
+        86.4612,
+        147.7512
+      ],
+      "pivot": [
+        44.3783,
+        7.6555
+      ]
+    },
+    "bell_clapper": {
+      "region": [
+        154,
+        4,
+        24,
+        112
+      ],
+      "source": "Separated reference-style clapper; visible portion only.",
+      "texture_size": [
+        24,
+        112
+      ],
+      "z": 21,
+      "position": [
+        91.8172,
+        841.3397
+      ],
+      "size": [
+        10.712,
+        40.5742
+      ],
+      "pivot": [
+        5.356,
+        0.0
+      ]
+    },
+    "bell_chain": {
+      "region": [
+        188,
+        4,
+        24,
+        70
+      ],
+      "source": "Exact source painting support chain cutout.",
+      "texture_size": [
+        24,
+        70
+      ],
+      "z": 19,
+      "position": [
+        82.6355,
+        669.0909
+      ],
+      "size": [
+        21.424,
+        55.1196
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "bell_occluder": {
+      "region": [
+        218,
+        4,
+        142,
+        264
+      ],
+      "source": "Neutral plate front wooden post and stone rail alpha matte.",
+      "texture_size": [
+        142,
+        264
+      ],
+      "z": 22,
+      "position": [
+        29.8406,
+        686.6986
+      ],
+      "size": [
+        117.067,
+        210.5263
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "leaf_foreground_left": {
+      "region": [
+        372,
+        4,
+        85,
+        64
+      ],
+      "source": "Exact neutral painting leaf RGB with hand-traced alpha; matching stationary leaf removed from plate.",
+      "texture_size": [
+        85,
+        64
+      ],
+      "z": 30,
+      "position": [
+        125.4835,
+        587.177
+      ],
+      "size": [
+        66.5675,
+        46.6986
+      ],
+      "pivot": [
+        29.0755,
+        4.5933
+      ],
+      "source_box": [
+        126,
+        761,
+        213,
+        822
+      ],
+      "source_polygon": [
+        [
+          164,
+          767
+        ],
+        [
+          178,
+          774
+        ],
+        [
+          191,
+          781
+        ],
+        [
+          202,
+          785
+        ],
+        [
+          207,
+          786
+        ],
+        [
+          208,
+          792
+        ],
+        [
+          205,
+          798
+        ],
+        [
+          204,
+          806
+        ],
+        [
+          199,
+          808
+        ],
+        [
+          196,
+          813
+        ],
+        [
+          190,
+          814
+        ],
+        [
+          184,
+          817
+        ],
+        [
+          177,
+          817
+        ],
+        [
+          173,
+          801
+        ],
+        [
+          169,
+          801
+        ],
+        [
+          166,
+          816
+        ],
+        [
+          160,
+          817
+        ],
+        [
+          155,
+          814
+        ],
+        [
+          149,
+          812
+        ],
+        [
+          142,
+          808
+        ],
+        [
+          139,
+          804
+        ],
+        [
+          133,
+          805
+        ],
+        [
+          130,
+          801
+        ],
+        [
+          131,
+          796
+        ],
+        [
+          141,
+          787
+        ],
+        [
+          149,
+          781
+        ],
+        [
+          157,
+          773
+        ],
+        [
+          158,
+          765
+        ]
+      ]
+    },
+    "leaf_foreground_right": {
+      "region": [
+        372,
+        80,
+        81,
+        60
+      ],
+      "source": "Exact neutral painting leaf RGB with hand-traced alpha; matching stationary leaf removed from plate.",
+      "texture_size": [
+        81,
+        60
+      ],
+      "z": 30,
+      "position": [
+        167.5664,
+        666.7943
+      ],
+      "size": [
+        59.6812,
+        42.8708
+      ],
+      "pivot": [
+        29.0755,
+        3.0622
+      ],
+      "source_box": [
+        181,
+        867,
+        259,
+        923
+      ],
+      "source_polygon": [
+        [
+          219,
+          871
+        ],
+        [
+          225,
+          878
+        ],
+        [
+          236,
+          883
+        ],
+        [
+          247,
+          883
+        ],
+        [
+          254,
+          887
+        ],
+        [
+          254,
+          892
+        ],
+        [
+          251,
+          897
+        ],
+        [
+          252,
+          903
+        ],
+        [
+          247,
+          906
+        ],
+        [
+          242,
+          907
+        ],
+        [
+          243,
+          914
+        ],
+        [
+          235,
+          915
+        ],
+        [
+          230,
+          918
+        ],
+        [
+          222,
+          918
+        ],
+        [
+          218,
+          915
+        ],
+        [
+          216,
+          904
+        ],
+        [
+          215,
+          913
+        ],
+        [
+          208,
+          915
+        ],
+        [
+          202,
+          913
+        ],
+        [
+          196,
+          913
+        ],
+        [
+          191,
+          908
+        ],
+        [
+          188,
+          906
+        ],
+        [
+          190,
+          902
+        ],
+        [
+          185,
+          899
+        ],
+        [
+          185,
+          895
+        ],
+        [
+          189,
+          891
+        ],
+        [
+          194,
+          887
+        ],
+        [
+          204,
+          884
+        ],
+        [
+          211,
+          879
+        ],
+        [
+          213,
+          873
+        ]
+      ]
+    },
+    "leaf_foreground_middle": {
+      "region": [
+        372,
+        152,
+        74,
+        59
+      ],
+      "source": "Exact neutral painting leaf RGB with hand-traced alpha; matching stationary leaf removed from plate.",
+      "texture_size": [
+        74,
+        59
+      ],
+      "z": 30,
+      "position": [
+        174.4527,
+        623.9234
+      ],
+      "size": [
+        52.0298,
+        41.3397
+      ],
+      "pivot": [
+        31.3709,
+        3.0622
+      ],
+      "source_box": [
+        187,
+        811,
+        255,
+        865
+      ],
+      "source_polygon": [
+        [
+          228,
+          815
+        ],
+        [
+          235,
+          820
+        ],
+        [
+          241,
+          825
+        ],
+        [
+          248,
+          829
+        ],
+        [
+          250,
+          834
+        ],
+        [
+          249,
+          839
+        ],
+        [
+          249,
+          844
+        ],
+        [
+          243,
+          849
+        ],
+        [
+          240,
+          854
+        ],
+        [
+          233,
+          856
+        ],
+        [
+          229,
+          860
+        ],
+        [
+          222,
+          859
+        ],
+        [
+          220,
+          843
+        ],
+        [
+          216,
+          842
+        ],
+        [
+          215,
+          856
+        ],
+        [
+          209,
+          857
+        ],
+        [
+          203,
+          852
+        ],
+        [
+          196,
+          849
+        ],
+        [
+          194,
+          844
+        ],
+        [
+          191,
+          844
+        ],
+        [
+          191,
+          839
+        ],
+        [
+          197,
+          834
+        ],
+        [
+          207,
+          829
+        ],
+        [
+          217,
+          821
+        ],
+        [
+          223,
+          816
+        ]
+      ]
+    },
+    "leaf_midground": {
+      "region": [
+        464,
+        152,
+        40,
+        39
+      ],
+      "source": "Exact original middle-distance floating leaf; old static counterpart removed by neutral edit.",
+      "texture_size": [
+        40,
+        39
+      ],
+      "z": 16,
+      "position": [
+        664.9097,
+        622.3923
+      ],
+      "size": [
+        28.3103,
+        27.5598
+      ],
+      "pivot": [
+        14.5377,
+        14.5455
+      ]
+    },
+    "leaf_a": {
+      "region": [
+        372,
+        223,
+        36,
+        29
+      ],
+      "source": "Reduced reuse of leaf_foreground_left actual painting.",
+      "texture_size": [
+        36,
+        29
+      ],
+      "z": 31
+    },
+    "leaf_b": {
+      "region": [
+        420,
+        223,
+        36,
+        29
+      ],
+      "source": "Reduced reuse of leaf_foreground_right actual painting.",
+      "texture_size": [
+        36,
+        29
+      ],
+      "z": 31
+    },
+    "leaf_c": {
+      "region": [
+        468,
+        223,
+        36,
+        29
+      ],
+      "source": "Reduced reuse of leaf_midground actual painting.",
+      "texture_size": [
+        36,
+        29
+      ],
+      "z": 31
+    },
+    "cloud_far": {
+      "region": [
+        4,
+        282,
+        300,
+        65
+      ],
+      "source": "Generated transparent watercolor cloud extracted/completed from same valley cloud reference.",
+      "texture_size": [
+        300,
+        65
+      ],
+      "z": 3,
+      "position": [
+        364.9734,
+        205.1675
+      ],
+      "size": [
+        192.8162,
+        42.8708
+      ],
+      "pivot": [
+        96.4081,
+        21.4354
+      ]
+    },
+    "cloud_mid": {
+      "region": [
+        4,
+        359,
+        280,
+        66
+      ],
+      "source": "Second independent generated cloud bank from same valley cloud reference.",
+      "texture_size": [
+        280,
+        66
+      ],
+      "z": 4,
+      "position": [
+        598.3422,
+        535.1196
+      ],
+      "size": [
+        163.7407,
+        40.5742
+      ],
+      "pivot": [
+        81.8704,
+        19.9043
+      ]
+    }
+  },
+  "bell": {
+    "anchor": [
+      90.2869,
+      718.0861
+    ],
+    "body_region": "bell_body",
+    "body_size": [
+      86.4612,
+      147.7512
+    ],
+    "body_pivot": [
+      44.3783,
+      7.6555
+    ],
+    "clapper_region": "bell_clapper",
+    "clapper_anchor": [
+      1.5303,
+      123.2536
+    ],
+    "clapper_size": [
+      10.712,
+      40.5742
+    ],
+    "clapper_pivot": [
+      5.356,
+      0.0
+    ],
+    "chain_region": "bell_chain",
+    "occluder_region": "bell_occluder",
+    "draw_order": [
+      "bell_chain",
+      "bell_body",
+      "bell_clapper",
+      "bell_occluder"
+    ]
+  },
+  "notes": [
+    "Positions are 720x1280 content-local; add the page vertical offset once.",
+    "Leaf pivots are at their painted attachment; do not shake the entire plate.",
+    "Clouds are thin mobile wisps; recommended opacity 0.28–0.50; distant painted cloud masses retain scenery depth.",
+    "UI/title/bottom actor protected pixels are byte-identical to approved original.",
+    "Bell hidden left side and clapper were reconstructed by imagegen from original painted bell crop; they are not claimed to be original hidden pixels.",
+    "Use background alpha plate crop as front occluder rather than a hard rectangular clip.",
+    "Atlas intended linear sampling. Base-level lossless RGBA8=1048576 bytes; mipmapped RGBA8=1398100 bytes before +65536 reservation."
+  ]
+}

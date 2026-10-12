@@ -1,0 +1,82 @@
+{
+  "scope": "Mapping only. Original historical audit statuses preserved; no old unverified theme automatically made complete. Actual new grouped PCK and Web are pending.",
+  "historical_snapshot": "history_matrix_snapshot.json",
+  "repairs": {
+    "A047": {
+      "followup_id": "H01",
+      "source_commit": "4e272d221b2970613ecbbf89a35d84779b58c419",
+      "state": "native_gl_and_both_background_assets_verified_group_web_pending"
+    },
+    "A041": {
+      "followup_id": "H02",
+      "source_commit": "93582f79d0d29319e3d9b5160bd267ac2bad4f2f",
+      "state": "stable_geometry_and_old_save_migration_native_gl_verified_group_pending"
+    },
+    "A007": {
+      "followup_id": "H03",
+      "source_commit": "13780286b76b6d15f3ac7fbf065d0a7e61104e91",
+      "state": "original_motion_restored_native_clock_input_verified_GL_wallclock_limits_disclosed"
+    },
+    "A014/A077": {
+      "followup_id": "H04",
+      "source_commit": "76d41d2a0e2a2b5ab078547ec6d7910a4118d92d",
+      "state": "confirmed_static_view_component_and_empty_res_delta_verified_group_pending"
+    },
+    "A055": {
+      "followup_id": "H05",
+      "source_commit": "998ef7c942100ab4892197627da1c671a4b82511",
+      "state": "source_assets_native_gl_verified_actual_group_cold_pending"
+    },
+    "A046": {
+      "followup_id": "H06",
+      "source_commit": "d4eaf88af8c39a26207c9eabc1c57e664a7af175",
+      "state": "native_gl_real_cancel_retry_verified_group_cold_pending"
+    },
+    "A051": {
+      "followup_id": "H07",
+      "source_commit": "14f60222854ded951413e8a17d353d74ad84c8af",
+      "state": "selected03_runtime_1x2x_GL_input_and_exact_import_verified_group_cold_pending"
+    },
+    "A063": {
+      "followup_id": "H08",
+      "source_commit": "df3fd9c1dc1ddece781e8951174cd8f543bd59a5",
+      "state": "three_empty_res_diary_paths_verified_actual_new_group_pending"
+    },
+    "A059": {
+      "followup_id": "H09",
+      "source_commit": "ed4417cbcb1df0e23fcecd7bd0d5a309f0b22605",
+      "state": "four_point_reused_confirmed_departure_component_verified_group_pending"
+    },
+    "A061": {
+      "followup_id": "H10",
+      "source_commit": "da192e18e3155a42e27eeb72517cc2956b42b1d0",
+      "state": "actual_cold_delta_day_night_lamp_alpha_projection_verified_group_pending"
+    },
+    "A064": {
+      "followup_id": "H11",
+      "source_commit": "cbb1b7d661d15950590595f7be724ba3db97dd4a",
+      "state": "cold_delta_three_state_cue_input_release_and_learn_once_verified_group_pending"
+    }
+  },
+  "additional_gates": {
+    "A001/A002": "R03 actual Login corners/touch cancel/dedup/presentation28; final cold Web pending",
+    "B27-1/2/3/4+B16-13": "Actual561 empty-res Darkroom two complete rounds63 checks each; original cold diary error retained; new group rerun pending",
+    "A056": "Photo11 atomic commits integrated; final cold pack/visual acceptance pending",
+    "restart": "Productionseed3cases21 assertions passed; separate new process restore waits formal grouped packs"
+  },
+  "followup_commits": {
+    "H04": [
+      "b2cbc2c1cd765082f0550f1ad2a31054c56f7eb8"
+    ],
+    "H07": [
+      "2544e534fa52aaa6b830416016273a5b64383a41",
+      "fb9aca8e79ae160abeca42d7b80f83a2ab0c69f7"
+    ],
+    "H10": [
+      "585ed61f765f485a036761b62127d4d5bb9e4d9f"
+    ],
+    "H11": [
+      "8246b3421d19dee52717f5aa32d37a4ad05a9fb0"
+    ]
+  }
+}

@@ -1,0 +1,758 @@
+{
+  "checks": [
+    {
+      "check": "real service starts trip",
+      "pass": true
+    },
+    {
+      "check": "actual first encounter matches uploaded offer result",
+      "pass": true
+    },
+    {
+      "check": "real marker pointer opens choice and pauses route",
+      "pass": true
+    },
+    {
+      "check": "real choice pointer settles and closes encounter",
+      "pass": true
+    },
+    {
+      "check": "actual uploaded result string emitted",
+      "pass": true
+    },
+    {
+      "check": "manual settlement once and route resumes",
+      "pass": true
+    },
+    {
+      "check": "actual offer spends merit once",
+      "pass": true
+    },
+    {
+      "check": "standard: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "standard: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "standard: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "standard: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "standard: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "standard: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "standard: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "standard: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "standard: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 780): result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "resize (360, 640): result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1558): result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "resize (720, 1280): result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:功德已寄出，他的愿望猛猛实现中。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus offer:小余认真地说了声：好运连连。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余找了盏暖灯，终于把气喘匀了。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus vampire:小余贴着亮灯的街道，慢慢走出了阴影。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:两个人一起看了一会儿雨。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus rain:前面的亭子宽敞，他朝小余挥了挥手。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:明信片回到了主人的手里。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus postcard:小站的人接过明信片：我来帮忙。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:桂花落在台阶上，小余坐了一小会儿。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "corpus osmanthus:小余记住了这个转角，继续慢慢走。: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "review hides toast and paper together 0",
+      "pass": true
+    },
+    {
+      "check": "existing review includes chosen result 0",
+      "pass": true
+    },
+    {
+      "check": "review close keeps exactly one settlement 0",
+      "pass": true
+    },
+    {
+      "check": "review return 0: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "review return 0: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "review return 0: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "review return 0: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "review return 0: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "review return 0: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "review return 0: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "review return 0: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "review return 0: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "review hides toast and paper together 1",
+      "pass": true
+    },
+    {
+      "check": "existing review includes chosen result 1",
+      "pass": true
+    },
+    {
+      "check": "review close keeps exactly one settlement 1",
+      "pass": true
+    },
+    {
+      "check": "review return 1: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "review return 1: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "review return 1: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "review return 1: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "review return 1: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "review return 1: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "review return 1: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "review return 1: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "review return 1: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "review hides toast and paper together 2",
+      "pass": true
+    },
+    {
+      "check": "existing review includes chosen result 2",
+      "pass": true
+    },
+    {
+      "check": "review close keeps exactly one settlement 2",
+      "pass": true
+    },
+    {
+      "check": "review return 2: result has paper-backed parent",
+      "pass": true
+    },
+    {
+      "check": "review return 2: approved admitted hand-painted ticket reused",
+      "pass": true
+    },
+    {
+      "check": "review return 2: paper and ink share map parent and correct draw order",
+      "pass": true
+    },
+    {
+      "check": "review return 2: result surface never captures route input",
+      "pass": true
+    },
+    {
+      "check": "review return 2: label stays within paper inner rectangle",
+      "pass": true
+    },
+    {
+      "check": "review return 2: complete text fits without vertical overflow",
+      "pass": true
+    },
+    {
+      "check": "review return 2: card horizontally centered",
+      "pass": true
+    },
+    {
+      "check": "review return 2: text centered in paper",
+      "pass": true
+    },
+    {
+      "check": "review return 2: result fits actual logical screen width",
+      "pass": true
+    },
+    {
+      "check": "existing four-second expiry removes paper and text together",
+      "pass": true
+    },
+    {
+      "check": "next encounter remains manually selectable",
+      "pass": true
+    },
+    {
+      "check": "cancel leaves pending choice and resumes route",
+      "pass": true
+    },
+    {
+      "check": "full-screen four-point guide remains after cancel",
+      "pass": true
+    },
+    {
+      "check": "terminal AI settlement unchanged for unchosen encounter",
+      "pass": true
+    },
+    {
+      "check": "AI result remains inside existing review bubble",
+      "pass": true
+    },
+    {
+      "check": "closing map restores Home rendering",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "scope": "Exact R9 formal asset packs with explicitly declared optional single-script candidate. Real Native GL pointer events and service/model behavior; not grouped final pack, WebGL2, phone or user visual acceptance.",
+  "screenshots": [
+    "manual_choice",
+    "result_standard",
+    "result_360x780",
+    "result_360x640",
+    "result_720x1558",
+    "result_720x1280",
+    "result_night",
+    "review_existing_bubble",
+    "ai_review"
+  ]
+}

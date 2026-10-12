@@ -1,0 +1,821 @@
+{
+  "status": "PASS",
+  "source_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+  "github_commit": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+  "github_tree": "f254b7b667155473600780a2dcccae30ff561963",
+  "private": true,
+  "complete_tree_files": 3043,
+  "all_blob_modes_match": true,
+  "changed_file_byte_readbacks": [
+    {
+      "path": "README.md",
+      "bytes": 85832,
+      "sha256": "a4889a58df058366189bd4e127b35f2f87287707927f17126c63097830d31672",
+      "git_blob": "13ad6cea7f6dd3dd3be5d45198aca40ff34cc0a0",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/checks/check_wardrobe_local_unlock.gd",
+      "bytes": 2841,
+      "sha256": "7cc54279f6b327e030b3c75f231419cc559f2cd73abd77da0ff9770b7d95ff9e",
+      "git_blob": "d1ee9fbf9cd4084d8c34baef6f1e84b2b32c62c9",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/checks/check_wardrobe_photo_skin.gd",
+      "bytes": 2061,
+      "sha256": "e2ca80493f964c7a7f4d25553253205a8189bb7e04d787553875a94f13d59191",
+      "git_blob": "a09bc31e5bf679bee43bc9b9dc2b35df42e57aad",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/checks/check_wardrobe_w1w2_render.gd",
+      "bytes": 5203,
+      "sha256": "c8f696c501b702b898b28731e877ed9d2850cc064b94f50e7bd2312256fb3687",
+      "git_blob": "5d7b51d9898cdba0a73338cde1725b01ec9716b1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/fonts/travel_brush/coverage.json",
+      "bytes": 11143,
+      "sha256": "01482a3d97d53db9cfa03dc9f83773e6cbcea4d4a9c2450dfe4f8922d0cae32e",
+      "git_blob": "ced398c947a3314d41c5fd8a91639da8437f22b4",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/performance_r9/STATUS.md",
+      "bytes": 9842,
+      "sha256": "99f2bd8f6dd6814ef455919297c5b313ab2ea8d2aa1fb1b13503b63b689f15d6",
+      "git_blob": "1f71938946d4548e8fc92e6be530386cb310c174",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-travel-W3-W5-W6-W7-candidate.md",
+      "bytes": 2349,
+      "sha256": "998e3e86f4eeaa34c13ef88d5efde46b038dc227c9685be587164bd393f27af6",
+      "git_blob": "2d2a6f6f40e898a61ae100fb9c63a8c52752822b",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/W1.md",
+      "bytes": 1757,
+      "sha256": "a2d3cb960f52812c9f5cd2c1957c4c0be149a82a63be4746036b6a5cc495ca29",
+      "git_blob": "dcb5e233a1411294943853af5fa2c0f784279108",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/W2.md",
+      "bytes": 2939,
+      "sha256": "416d51f2783d96a2162ed9915b05d3217845fe13ebaecff995c8b448201618be",
+      "git_blob": "d1a883c566741fc240168b41ecc0d6d3f010c7d6",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/W2_evidence.json",
+      "bytes": 4059,
+      "sha256": "25994823b378786dbe684c25d7c28cbbb65a2540ac8d6c6f0d27b4c1d6f85e77",
+      "git_blob": "e5880281943e13502a6574cb6ef1162ad412d524",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/photo.log",
+      "bytes": 597,
+      "sha256": "7a0b60dde73f1d3236ba256e919fd80e049d63f1510a19885b6793c7d88f7318",
+      "git_blob": "ac355849f038325c292778acd52318f280ebcb83",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/photo_guard.json",
+      "bytes": 368,
+      "sha256": "92eb348367c284ca3894173eb7d03272ef23931a18ad1049e95a95fb903b8dcd",
+      "git_blob": "170a063b3b842c7403bbce2e988c3f820fe614d6",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/render.log",
+      "bytes": 768,
+      "sha256": "0919d2c880cab107457a8c7fed5b567563d14d5d02cbe6cb7afc7e8cea79f540",
+      "git_blob": "79c6e41917da3ac45615757f3332b263f01a51fc",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/render_guard.json",
+      "bytes": 369,
+      "sha256": "12c4a0ea79d170fa1658b2173987c00bb9820a96938bc86c8343a2305be0e553",
+      "git_blob": "0c7586f7589e7f438e27f361d4b1026a323a08a5",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/01_local_unlock_notice.png",
+      "bytes": 1433733,
+      "sha256": "d4ba6680a5b1c6443c1c995e3bdc4ccf9ccb260dfefe99e8a266bd730804fc4e",
+      "git_blob": "8b67d5c3e03e0ffc1b40b76a0717ada448706c35",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/02_before_lower_only.png",
+      "bytes": 1517371,
+      "sha256": "2656cb42fde24d2e2bde7ebc89916e1c198cd1c07e88cd547e9596f40ee720aa",
+      "git_blob": "49b061a5530f343d6a2836e422546e233a907588",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/03_after_crown_idle_day.png",
+      "bytes": 1515630,
+      "sha256": "0c5cf88f4cd5f8becbab963ffa2bf14aecb6807f7c0b1263c3a4d860ea87702a",
+      "git_blob": "9cea8dea83f1cf8bea51c137f8e3ce25137ac281",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/04_crown_drink.png",
+      "bytes": 1515577,
+      "sha256": "7dbb907750a7b599e0848b374864c5bf4039781e5b12c21d1ad92c318e00bb93",
+      "git_blob": "e0d63256af30f502daf4f0f2919c8a8f9312f5e0",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/05_crown_lift.png",
+      "bytes": 1539571,
+      "sha256": "1929ac3eb787a1e61a15045a4c26d88e133f90b754b42869e84f3be1b43fc7e2",
+      "git_blob": "7493155a1d60976eb0fa6e49c0e600a8a151fdca",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/06_crown_land.png",
+      "bytes": 1513064,
+      "sha256": "4dff094d1a32c7e7be6c3907bfd96808db332e054ad5d804044b89772ddb9fba",
+      "git_blob": "6e8a9f9e913e7586c83a6c6525f5f69cd1275d31",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/07_crown_night.png",
+      "bytes": 1294395,
+      "sha256": "31cd27061c6278eb7ca3191dd784e67aaed1c1a01368ce659e959d53eb77ba3c",
+      "git_blob": "0cf30ecdca9b5f2591b0111a1fa53e3f4151407a",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/08_original_restored.png",
+      "bytes": 1280310,
+      "sha256": "f14509a00b361dcf8da44871812b4eaef9a87bd257b5682fc87325b8a17a64c3",
+      "git_blob": "1b726eb7bbc5be30d438ecd7ff9a691b72ea5f35",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/09_home_worn.png",
+      "bytes": 1025788,
+      "sha256": "201cbc8a822d0f7c6a878b67612030309a6ecf24101e8c514e4fba8bc121948b",
+      "git_blob": "90b7348b90a2ac7160fa0486e6fb23f135ce9942",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/10_mobile_worn.png",
+      "bytes": 419344,
+      "sha256": "841489b7e15b15c9e1c323c4fe34ca27b030a11dbb85d99de6b3f3e07805d84b",
+      "git_blob": "94707af256a7a74c383028aca2201a76535610ac",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/11_photo_crown_day.png",
+      "bytes": 1468497,
+      "sha256": "6ecc41305f33cab1ce0f592c4843f0906b447014ac9cbf6617b541040426171e",
+      "git_blob": "52545c8ba9c62518f1dd6502f44831fb0e512c94",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/12_photo_crown_night.png",
+      "bytes": 1233893,
+      "sha256": "70586194cc0edbdc4b9bd699ff22c09eed6e8b2c89f7fb818251bbf98f3e9b0b",
+      "git_blob": "341a7a0f0e01d1598d6e03d78af5b0f78d312966",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/screens/13_photo_original.png",
+      "bytes": 1228752,
+      "sha256": "9dc5ee7e933d7dacc8874413e37b329e6c0d342ce01f616873f700d88c32ac5e",
+      "git_blob": "85abc70082def04835ce8d83ffb64e93197806d5",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/w1_font_check.json",
+      "bytes": 149,
+      "sha256": "38e21751515c3adff2ec72fa43b9257385fe09afdaa544941d451cf623f79700",
+      "git_blob": "c551eba6a2143fd5ca0b43bc2f69aa2295dc3677",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/w1_store.log",
+      "bytes": 462,
+      "sha256": "6632cad831fde72608024410e4f097dfb85d3d8c938b114286ed72c58bb9519f",
+      "git_blob": "c1629c72ca5a64e218aeea37ee499912035ceca7",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/whole_font_check.json",
+      "bytes": 40625,
+      "sha256": "0a797ce1bf8dbd959632a274e0ce96632828aec1fcfc2ab1b176847c6bd07c7f",
+      "git_blob": "12ccffc27406b7f2203d7427cc520f42398bbab2",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/reviews/20261007-wardrobe-w1w2/whole_font_check.log",
+      "bytes": 214,
+      "sha256": "227ac4f6796faa1bb64de45cde7ca3228d635fcfd284eb5ae61e548e69f78837",
+      "git_blob": "b1a64a64bdaa56902383142ed6119cc341ec754e",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/W3.md",
+      "bytes": 1624,
+      "sha256": "9d6e2bcf745da1f39fc693f380246a73e5e00af62e3433232e39bbc6ecc478e9",
+      "git_blob": "3d5b509d627bdb194e72ad0b08ce3bb7126e5d66",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/W5.md",
+      "bytes": 1712,
+      "sha256": "8c61e8e68c6508ad3a3e2ae74f36bbf066007185a525e1f717a92ba294181f9a",
+      "git_blob": "85d59a568feef363d6c676bcbc85e0260e140bff",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/W6.md",
+      "bytes": 2411,
+      "sha256": "a2795c9510e6f93e021d99a5ccb65a47077a52d9490d3f9ebb3fef99b6ef64f5",
+      "git_blob": "0816eef7c6f591658660c4e695834baceed35c9b",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/W7.md",
+      "bytes": 1972,
+      "sha256": "7252a47f461cda03e955a2a9fe014fddd0206fa063ddf320adbd43a39f8f789c",
+      "git_blob": "bb30f06a00fe5d738523cb6ebcdf4e2432b21b82",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/check_departure_final.gd",
+      "bytes": 4679,
+      "sha256": "5b93de9fae72b741636faa7b4a07ad74ed77d583020ef21926379ab7741f86d1",
+      "git_blob": "cf377a9f53e1f42bbcee0005e2600d9e2d28f57e",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/check_field_final.gd",
+      "bytes": 7509,
+      "sha256": "ef6d9927026b78e5c9cee03238c142d9c89c5507ae2eaf5e778f195e7adb8988",
+      "git_blob": "2b9735b3c02fc3d2b4d1252f89ea5af0b7a252ce",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/check_field_focus.gd",
+      "bytes": 2381,
+      "sha256": "1393d0451e7ea11a7fb77183daa261ce7bc3d03dabb962ae1a5c882b1a3df220",
+      "git_blob": "6f9f8afc8fd9bd492dda1fc1a16ebd29cfdb758b",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/check_rehang_final.gd",
+      "bytes": 5630,
+      "sha256": "75c4d0376a8756ed9aa0e23c03a997d7afe8855c8e8fbe105f477e2334377adb",
+      "git_blob": "1c5358eec59d3f41bcf278c97374a9ccc42dc206",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W3_depart_0076.webp",
+      "bytes": 961566,
+      "sha256": "8fcd30560ed599c7aca096942a106ef97e49dd83bb042c243af1855808398077",
+      "git_blob": "4e71dab976b8c407d314c2534fd6d05ca013aabe",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W3_depart_0220.webp",
+      "bytes": 936308,
+      "sha256": "5c4e344790c9185568651e101a02a86aef00cb1f1c02c9adec82ff6f75bccaa5",
+      "git_blob": "c49033aba67d23ae4d972078af29b0ef7d5561e1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W3_depart_0350.webp",
+      "bytes": 953440,
+      "sha256": "8e3b4d48ebce4d54989d4fdd4cc795046f8b443f16d8457ef185713e4fd5aaa9",
+      "git_blob": "b4594cde5fad6dbd8cf7b4a228ae1461be6367d9",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W3_gl03_checks.json",
+      "bytes": 2280,
+      "sha256": "2ef0b8bf6c5726444b631f8bb5c39908e228a097961192e83d8aec1c529ea39e",
+      "git_blob": "cd8689adbf0dda51faac86651ee8fb64e9f22393",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W5_gl03_checks.json",
+      "bytes": 1356,
+      "sha256": "853ad598768cf4bcbe392b5e8740d65b632c6d0fde0e0a53164031f215ec62be",
+      "git_blob": "6dd4d4ac44e0045d7cd8cf1ec62ced4a781376e6",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W5_official_import.json",
+      "bytes": 1223,
+      "sha256": "f52b595a1bb7fe1e8eb1658ada2251cfba0cd36f5dd4394c67091fac9dbef492",
+      "git_blob": "8b35f8ac929fa8a64b3cfde32ee779b8792bb94c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W5_single_arrival.webp",
+      "bytes": 1302034,
+      "sha256": "61c128cc7d8b3366d31655af3e94624056f3c4a7d7db5eb98f5089c901182779",
+      "git_blob": "6abd4819c18a5c127dd846bd374a9b9cc53c1124",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_choice_no_field.webp",
+      "bytes": 1013534,
+      "sha256": "d7ef1de8e7790d546807d14b5a3256014ca208a04276adb9dc16851cd84698d1",
+      "git_blob": "fccd48ab2048413e979e982fb2d6db4904bb11a0",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_final_command.json",
+      "bytes": 522,
+      "sha256": "014217384b4a624b763fa89122ed9e7f9dafd09414399abcee036e009a524e59",
+      "git_blob": "8826b5bed882930f20d61fc62da8cce0a7b03489",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_final_results.json",
+      "bytes": 23384,
+      "sha256": "90d819b9bc0d7839a2813ccef13e26acd58a85bb10d30bb59f5c6814190f6657",
+      "git_blob": "563d80a83632d9c3f9e3e6e0c025291b2cc04001",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_final_source_hashes.json",
+      "bytes": 33709,
+      "sha256": "e07677864943a2d40d7e625d663613f32f28aac0e6bea1b4ecf6cf0bf04bcace",
+      "git_blob": "70cd2b70ca9abae385b0968ca1c05f73c58f290a",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_final_summary.json",
+      "bytes": 648,
+      "sha256": "9a3e9a8f088c07476b66034c2961b50715b9134867566ee4f44ff70134bfa42d",
+      "git_blob": "8867a4be6d95570694e81daba8eba2f97ec1fdc4",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_flow_0000.webp",
+      "bytes": 1320948,
+      "sha256": "3b9b92c2e1002401e980fb462a05f5333888af0f59a3e9ec3b44eaede92ad65b",
+      "git_blob": "ebce3bfe474bb0eb1c31069af56ac80d4707a339",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_flow_0240.webp",
+      "bytes": 1321504,
+      "sha256": "2e861f402583b781426d617dfc43bc7fd6fee1c673fb17438ca5ab8d242d8472",
+      "git_blob": "6c0dc361236b7119c3ab9b7b481bae2328f2c2e5",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_focus_results.json",
+      "bytes": 760,
+      "sha256": "a3d93c3294ef35dacac4589b7c24e28398a9068293738f9400a1c40cfe3ed696",
+      "git_blob": "fb94180f96705937712b7e4e6ee808fe8b0211d8",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_focus_run.log",
+      "bytes": 723,
+      "sha256": "3fc0557b8350220f6dceace4aa31ac1a72be0500e6f26ef446a059a81295b053",
+      "git_blob": "ec4e95dbc13a73a1ee49def080fc7d244b6cdeeb",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_mobile_360x780.webp",
+      "bytes": 409522,
+      "sha256": "797219c85c1b7fa02c798b5c54cb6ecd8af1255985f88525fe3de50431e7ffb5",
+      "git_blob": "abc0d01ffc99d23922ab6794f32992e0ef3d6c8c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W6_night_0320.webp",
+      "bytes": 1100076,
+      "sha256": "ee008a66bd247c1f2c3d6e22e3434a6319ac3f923a1f67031d639caaf06eed09",
+      "git_blob": "71556fc4d57035bd9b0c8d69fe3a66d45f2a36b1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_final_command.json",
+      "bytes": 513,
+      "sha256": "97e030e83936c794641b4f828bfdbad73b08dedef91d594545d5c52761d3e24d",
+      "git_blob": "7332242fe1677d834810afd3a27817773a075866",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_final_results.json",
+      "bytes": 2847,
+      "sha256": "15905e68018c3a8971430ab9481bce6c26520d91f7ef6d3e38cc8038d6e4357c",
+      "git_blob": "a33a9cbd373261407d5d48bb0f1793be15505645",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_final_source_hashes.json",
+      "bytes": 33709,
+      "sha256": "00f7d63989fbf35aeb0f2e67da85aa573ce6be8afb9dd7afa36093cd6216a35d",
+      "git_blob": "60bfabb06e5d4fb36f8f1e4e59485e0406746bb4",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_final_summary.json",
+      "bytes": 623,
+      "sha256": "90e564643136ab615f2137c20d271b13781525a91006ce604b1bf8300bc32251",
+      "git_blob": "61f9df4001342fc82decbf62c2f11a5f1a9171a7",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_phone_night_landed.webp",
+      "bytes": 228420,
+      "sha256": "b15b2d1a1b2078f891a6af75bf75ef09afa3c5a59f2d32280560b8381ba8f549",
+      "git_blob": "ccd8ec4ebc1309ebf42481c1bf4f1966a1b0e5dc",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_rehang_0340.webp",
+      "bytes": 989020,
+      "sha256": "22eefb811c7585fb1764fbb912c3730bda8b6b3029f80c04445acb1964c64be3",
+      "git_blob": "47f57bbdb40388a175e2a80b21bb008459cbc14c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_rehang_0900.webp",
+      "bytes": 983266,
+      "sha256": "8048e8be3a130d2d85482ec3275aac3a666236ca87e9bb3f750f545c6f5d3163",
+      "git_blob": "545f3270fd3bc7f7bb276453958dddc55bcf8398",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/W7_rehang_1000.webp",
+      "bytes": 983164,
+      "sha256": "f31090abe8040cba855ce3da63f18ddf5e1060f55a10e682dea9cd73af3be68f",
+      "git_blob": "cf341c1f2a82de1efae7ff3f08940f9dd5c84870",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/all_scripts_final_parse.json",
+      "bytes": 11925,
+      "sha256": "b8bafad4b515e25177f5e7cbc43f3d46fb87b76abc41c1a05862662400acfa76",
+      "git_blob": "2d929d232849cd6c5ac2371d299346f2eb4769a8",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/all_scripts_final_parse.log",
+      "bytes": 99,
+      "sha256": "2f2886469f65f1de918c8a558930d5ef2b534ad1d102af83b3ecbc466e869eec",
+      "git_blob": "3b9c53c7d8fb7aecf2ecd753154d28d21a69e630",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/executed_gl03_fixture.gd",
+      "bytes": 10259,
+      "sha256": "e66cde0492088a05cf1214f2990ce93c9f17e9be739ab46c8ffac9d110ad347b",
+      "git_blob": "2c89c48073b350d78464f8676f4ccba4bde93c3b",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/gl03_command.json",
+      "bytes": 496,
+      "sha256": "943cd6aece3995ec2e9ed39d6d3daf5eb29f8b6d7c369970ed466b4c720da9cb",
+      "git_blob": "f01dae7db410519e8234d994e03d4172c13bd7f1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/gl03_source_hashes.json",
+      "bytes": 33709,
+      "sha256": "7c868be2202ecdd507089dffea3267d18a1f5e878b696b1fc1b163b7af6b3459",
+      "git_blob": "559d863a0f1cec0760c71ec5b417436e6cce8150",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/evidence/gl03_summary.json",
+      "bytes": 908,
+      "sha256": "0eaa572ec3176bd4c986acc468e23527eb50a96cbaa1072271cc529b513a426e",
+      "git_blob": "96b388757e5d7dc7cc6a8fa36fcc76925c20178f",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/prepare_candidate.py",
+      "bytes": 1943,
+      "sha256": "a7bdc3a4f506ee1014618428e0e3786eba159f0437a2af03f5293d7df705edf0",
+      "git_blob": "8f50b6f3a2e26f11dce327a63467fe3622af286a",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/travel_user_corrections/run_gl.py",
+      "bytes": 3268,
+      "sha256": "ad210a9efed71927bae847fecfbccab75c864f25dce8de5688501f2e28732dd1",
+      "git_blob": "f34be3a11a7bc1a2f88076af2b7c4ae0298d1038",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/core_cache.json",
+      "bytes": 1527,
+      "sha256": "2201c47ecce490b26c9f43d3267042febb1c176435ee1bd137ff078a9c861996",
+      "git_blob": "df63143bd2340a6c6746efd437971826d16e97e9",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/host_cache.json",
+      "bytes": 1094,
+      "sha256": "6d7bb2fe95514528584287b8915e298d7c7d25cb5089b54a6e6bda126bd51436",
+      "git_blob": "3466462e7b0438b934cd6920593b64eb0d832a16",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/host_overlap.json",
+      "bytes": 852,
+      "sha256": "b01e2431f19ba9a00191f5784a355d6ae321b5ffe5b3b7c5b210aa699c6d058e",
+      "git_blob": "b0b79549b804049228ddf4a042154013daff6abc",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/host_ready.json",
+      "bytes": 2375,
+      "sha256": "58be0a9387c27afe0967425e282c0e9824ee32dcdd012a1598b8a318b89e7d90",
+      "git_blob": "eac518bbbd70223fcdf1b9a61135ed55ac9a306d",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/integrated_compile.json",
+      "bytes": 12246,
+      "sha256": "68161d33751b70cb717d478b5f4f34578089ff7cc21c0738693cf8ffafe13cf0",
+      "git_blob": "6483e124943b917de993b8045cedc9fb55c6aea1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "build/user_corrections_20261007/integrated_local_unlock.log",
+      "bytes": 462,
+      "sha256": "6632cad831fde72608024410e4f097dfb85d3d8c938b114286ed72c58bb9519f",
+      "git_blob": "c1629c72ca5a64e218aeea37ee499912035ceca7",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "design/travel_footprint_cute/PROMPT.txt",
+      "bytes": 1145,
+      "sha256": "057426925f5489112c87602ce95ecdc3dcb95b5e082deb72b67df8c9b74e2913",
+      "git_blob": "1f0907fe41f31a935e156ff58339f1c507ec5709",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "design/travel_footprint_cute/generated_master.png",
+      "bytes": 1424163,
+      "sha256": "63a0f3d9fe955ac3bae055e778d44ec0a667b1640c9f08ea36c6e71d5178cbcb",
+      "git_blob": "550359a6556d164728207baacecd58571692aa12",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "design/travel_footprint_cute/prepare.py",
+      "bytes": 1885,
+      "sha256": "033c1cf074c19f623bd0a5d627b7b70807d8710ffb0384d9d3762668c4356e20",
+      "git_blob": "d1323ae2803c2fedd770b8b6fc5d61ccf0ac685c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "design/travel_footprint_cute/provenance.json",
+      "bytes": 1187,
+      "sha256": "02e4f5884734e33fd1a75c1c4d975ea159796f0d287d417215c6d8d4186a16d5",
+      "git_blob": "b5d6b87f134b13412261447ce4ba919d8e4e140f",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "design/travel_footprint_cute/rejected_runtime.png",
+      "bytes": 13390,
+      "sha256": "9cc97e9764f736c25e7f4f966714c8b03efc7cc2838651b8fcdb379d7d2e175a",
+      "git_blob": "134f9a7b3a2f909a14527d81d2d60c65110e34a1",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/config/resource_groups.json",
+      "bytes": 26378,
+      "sha256": "45ad33a9e99c93fcd18a7db0d2abd8ee61c788c13299038628fb15b44e25e21b",
+      "git_blob": "8d83ac4437870a78d4044ebf8463494ef03f2137",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/config/resource_pack_manifest.json",
+      "bytes": 15310,
+      "sha256": "0d9d5c1d68bc5bb012234e2a9bc71721f397af69462df96c9224a761e6b8eb21",
+      "git_blob": "275b791e3bf85ddbadc3649c23f3befc59e1f458",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/home/home_departure_visual.gd",
+      "bytes": 3416,
+      "sha256": "203da0f8bd782e20188dbc834fdbe0bf5fef2cb617b6689528103f81fe07f4ef",
+      "git_blob": "61dfd091839a4043426966c293ce1713ea36735d",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/home/room_props_controller.gd",
+      "bytes": 17799,
+      "sha256": "fc9753ee4104191a004cbe1a94500fb69c4cb972aa38ecc7519264bd4e8bab83",
+      "git_blob": "96a393b9d96a3fbae52911a118957e7aefb67e4a",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/home/secondary/articulated_backpack.gd",
+      "bytes": 35564,
+      "sha256": "16e84e97e67293b3220699def103264ef756347f9d2da982b64bb6e791431715",
+      "git_blob": "b8a55b25f07ebbbcd66964e98ddd5f2d36ae3607",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/shaders/home_face_receiver.gdshader",
+      "bytes": 12008,
+      "sha256": "1bdd67d4d31e1bb0bf0fa727fbb86e141c871dac29094e6495ce9f8e643e977e",
+      "git_blob": "ec49071e3d091fb2b3749adad17cae0df2d38d5c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/assets/travel_footprint_ink_v1.png",
+      "bytes": 17040,
+      "sha256": "ef24c2020f698479266ab3044ff7d186c0b974e265b33dcee785925b99cf0c0a",
+      "git_blob": "68b6d160e2aa355674249b122206cea002b1c024",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_home_bridge.gd",
+      "bytes": 19374,
+      "sha256": "62c1d5e09b17dae1c2836f1fd3c7bb1b9161b7a14e3835c3d0f69bd3066eac38",
+      "git_blob": "c9146e7e6e1c7d70f4f9128fb582677b6987942c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_home_props.gd",
+      "bytes": 29303,
+      "sha256": "30a0b8d6742814c6ea2e4992b947e67a5907b7e50d63c534513516df2b0d2e6c",
+      "git_blob": "c7f39dc0d6acd10061ed1c5e87d371c0f62b4a3c",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_page.gd",
+      "bytes": 46420,
+      "sha256": "74691a693cd669d5f0a8f4c889cd8d23da1fd645c260ee5d0155197cea6af113",
+      "git_blob": "02996bf279dd0f3f53436460452ae5e6f072b1f7",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/travel/travel_scene_runtime.gd",
+      "bytes": 31229,
+      "sha256": "a4795fd26b379ac0ec555d3421eea935e5b04c7a4d9955dc0bee3a4add1e7501",
+      "git_blob": "dc805cc367ed688ccf536b613da24c2a338c3c96",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_binding.gd",
+      "bytes": 1401,
+      "sha256": "3089df6b585bc98030f0d7ade2bf7d3ec4e02b8d4e99aff021c5759a3db867cf",
+      "git_blob": "aed201f45bbdebedb33385c80a4277cbf357fc30",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_catalog.gd",
+      "bytes": 667,
+      "sha256": "eb959bd9c8010949e5e9435465ffe8acff31cb1e67320488b51b84e6e120c7b3",
+      "git_blob": "4703fe28b8fdc432e8d707e5091654614bfea5c9",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/skin_store.gd",
+      "bytes": 1832,
+      "sha256": "32bb99c9de302a8383330d19acc277c6a2851a341460c5fb2354350992c1bd8a",
+      "git_blob": "a38849bf73a6d424a971485afa79f616665542da",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/unlock_policy.gd",
+      "bytes": 549,
+      "sha256": "091505b3d35199c6e799bedb7e3946ecb8dd795a433c496281330bf4ba0cc8a2",
+      "git_blob": "bed0efad590a3aa0c3b9495ca98c46a13758b403",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_bridge.gd",
+      "bytes": 5276,
+      "sha256": "c12c19b842cb22b95a74cb2355d39335bf7c95deb49e32815e19b15ff7b61650",
+      "git_blob": "44b5fd9dc9e99c537f4925fa134dedea1ad81a1b",
+      "mode": "100644",
+      "pass": true
+    },
+    {
+      "path": "games/travel_woodfish/project/wardrobe/wardrobe_page.gd",
+      "bytes": 18908,
+      "sha256": "4904c0dfaf4233272d257bb1b7522fdb413558dc73eccd2867b01958fab5fae5",
+      "git_blob": "046616f15de2527713919824bab89b3e37bf3293",
+      "mode": "100644",
+      "pass": true
+    }
+  ],
+  "milestone_tag_unchanged": true,
+  "scope": "Integrated source gate only, formal runtime QA and publication remain pending"
+}

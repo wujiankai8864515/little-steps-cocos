@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "coordinate_note": "Points are pixels within each complete texture, not alpha-bbox-local. alpha32_bbox is x,y,width,height and ignores near-transparent generation residue. Use threshold >=32/255 for hit/visible-bounds geometry; preserve original alpha for rendering.",
+  "props": {
+    "lantern": {
+      "texture": "res://darkroom/assets/round2/lantern_cranes.png",
+      "size": [
+        512,
+        483
+      ],
+      "alpha32_bbox": [
+        161,
+        38,
+        191,
+        415
+      ],
+      "hang_point": [
+        256,
+        39
+      ],
+      "visual_center": [
+        256,
+        245
+      ],
+      "source_canvas": [
+        1291,
+        1218
+      ]
+    },
+    "water_bowl": {
+      "texture": "res://assets/round2/water_bowl_clean.png",
+      "size": [
+        512,
+        512
+      ],
+      "alpha32_bbox": [
+        41,
+        78,
+        429,
+        352
+      ],
+      "ground_point": [
+        255,
+        428
+      ],
+      "water_center": [
+        255,
+        164
+      ],
+      "source_canvas": [
+        512,
+        512
+      ]
+    },
+    "incense_ceramic": {
+      "texture": "res://assets/round2/incense_ceramic.png",
+      "size": [
+        512,
+        512
+      ],
+      "alpha32_bbox": [
+        50,
+        139,
+        413,
+        305
+      ],
+      "ground_point": [
+        256,
+        443
+      ],
+      "incense_socket_center": [
+        255,
+        231
+      ],
+      "incense_socket_front_lip": [
+        255,
+        236
+      ],
+      "source_canvas": [
+        1368,
+        1149
+      ],
+      "note": "Render the incense stick separately, with its bottom at socket center/front lip. This sprite has no baked stick or smoke. Ground against the center foot, not texture bottom."
+    }
+  },
+  "status": "Generated candidates visually inspected at asset level; not user-finalized and not in-game visual/interaction acceptance."
+}

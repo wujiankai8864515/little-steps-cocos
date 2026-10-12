@@ -1,0 +1,1732 @@
+{
+  "scope": "Exact raw packaged image/font/audio/shader payload SHA256 comparison; compiled behavior code tested separately. W2 shader and W5 footprint are intentional later user-requested visual changes, not performance quality cuts.",
+  "source": "5c37fb30fe088e998c414ed32a3e26fb551c2689",
+  "count": 121,
+  "unchanged": 119,
+  "changed": [
+    {
+      "path": ".godot/imported/travel_footprint_ink_v1.png-e0eb5157e74eec08bf95788eba8ae6bc.ctex",
+      "before": {
+        "sha256": "1979ecac4bf19003f353a57bdd4ccdf29bc282e0176cba783539eb0cf3fb545a",
+        "bytes": 11310,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "5a037bd2caf4ab3128c81e2d4921eeaa93e8a0cc03fc1bc11c1f66212b5bb2f9",
+        "bytes": 14640,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": false
+    },
+    {
+      "path": "shaders/home_face_receiver.gdshader",
+      "before": {
+        "sha256": "30b97ff10e80b5f7bd023fdca170f557a61310cbdf1f07535187251ef8f0f314",
+        "bytes": 10558,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "1bdd67d4d31e1bb0bf0fa727fbb86e141c871dac29094e6495ce9f8e643e977e",
+        "bytes": 12008,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": false
+    }
+  ],
+  "rows": [
+    {
+      "path": ".godot/imported/actor_body.png-a244ef21c2becfbf868c6cde1e0d62d2.ctex",
+      "before": {
+        "sha256": "1f15c08137e18d3f15fa62a941e52de4f5817ea530a1f895d43cc1d4376d27e1",
+        "bytes": 129820,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "1f15c08137e18d3f15fa62a941e52de4f5817ea530a1f895d43cc1d4376d27e1",
+        "bytes": 129820,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/actor_fin_mallet.png-567d40424d5ba6e00025417da6a2cbaf.ctex",
+      "before": {
+        "sha256": "e230cde67fd64c1c098ebb34232ad3ca1057f3251d84ad6dbeb496332647b93b",
+        "bytes": 40178,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "e230cde67fd64c1c098ebb34232ad3ca1057f3251d84ad6dbeb496332647b93b",
+        "bytes": 40178,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/altar_neutral.png-1cc3f63721e83f520be34bb3976fbcff.ctex",
+      "before": {
+        "sha256": "d591114dc62283a88582da9b18accf6b2bab17ecdafaf4427bfd2d8311503bc4",
+        "bytes": 97010,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "d591114dc62283a88582da9b18accf6b2bab17ecdafaf4427bfd2d8311503bc4",
+        "bytes": 97010,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/backpack_parts_atlas.png-384735b77d4a175ac24e122526ff303d.ctex",
+      "before": {
+        "sha256": "bd0d59230972b453f4dfa5b2a046c2f88c477ead8890ce96c31b29d1c258b918",
+        "bytes": 563506,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "bd0d59230972b453f4dfa5b2a046c2f88c477ead8890ce96c31b29d1c258b918",
+        "bytes": 563506,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/bed_occlusion_mask.png-00750318897bd4abfaf7a895bf240a55.ctex",
+      "before": {
+        "sha256": "9f82a715697ddbe65d08cdbcc8a4e94053af49b1973297759980843e8e69b0a6",
+        "bytes": 50372,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "9f82a715697ddbe65d08cdbcc8a4e94053af49b1973297759980843e8e69b0a6",
+        "bytes": 50372,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex",
+      "before": {
+        "sha256": "b8ad2633205c857261046e1627fcc10b4cca10b3c25c31a5b487327c177da2db",
+        "bytes": 83306,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "b8ad2633205c857261046e1627fcc10b4cca10b3c25c31a5b487327c177da2db",
+        "bytes": 83306,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+      "before": {
+        "sha256": "5fcb5a52b6199f4742c9c9ef27516814892d4c8138c56b6fe489954f9d174ccf",
+        "bytes": 233002,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "5fcb5a52b6199f4742c9c9ef27516814892d4c8138c56b6fe489954f9d174ccf",
+        "bytes": 233002,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/comic_paper_v2.png-8d86983b30df3c404f0185a3591b491a.ctex",
+      "before": {
+        "sha256": "701b702fc0872030216d05a662bb89105c131b486a68cfebc3fbe312e89e8117",
+        "bytes": 2067976,
+        "pack": "packs/comic.pck"
+      },
+      "after": {
+        "sha256": "701b702fc0872030216d05a662bb89105c131b486a68cfebc3fbe312e89e8117",
+        "bytes": 2067976,
+        "pack": "packs/comic.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/comic_story_ui.ttf-95abf224fe7c1ae9911d81add0adfa7d.fontdata",
+      "before": {
+        "sha256": "4b4cf4d56992162afa4155441e117d837e29e2906045076467a6067c62a0cd2f",
+        "bytes": 232998,
+        "pack": "packs/comic.pck"
+      },
+      "after": {
+        "sha256": "4b4cf4d56992162afa4155441e117d837e29e2906045076467a6067c62a0cd2f",
+        "bytes": 232998,
+        "pack": "packs/comic.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/daisy_heads_candidate.png-35f31810d401673390359af3ea29fa1b.ctex",
+      "before": {
+        "sha256": "326d2ce6107d14322cbacc020aa44b98b4b4c5069f844c96d6d2bd62a7ecbca1",
+        "bytes": 251366,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "326d2ce6107d14322cbacc020aa44b98b4b4c5069f844c96d6d2bd62a7ecbca1",
+        "bytes": 251366,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/daisy_leaf_candidate.png-9d4cc776a802df83378b85c567637bbc.ctex",
+      "before": {
+        "sha256": "b315fa85bd7dd1d9a0060f83d5979d3740caeab25f2c0e3460a1e48834bc11b1",
+        "bytes": 18512,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "b315fa85bd7dd1d9a0060f83d5979d3740caeab25f2c0e3460a1e48834bc11b1",
+        "bytes": 18512,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/darkroom_plants_atlas.png-1686831dbe50a44c2ab6b07246673ca9.ctex",
+      "before": {
+        "sha256": "1d12ede10a517cdffbd892992c9fd93552cd51f25d1a08ada16be070e36f02f4",
+        "bytes": 627298,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "1d12ede10a517cdffbd892992c9fd93552cd51f25d1a08ada16be070e36f02f4",
+        "bytes": 627298,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/doll_idle.png-12fcbab1dde303dcb8bb5a228150ee7c.ctex",
+      "before": {
+        "sha256": "a1526e97cf113e4f6f5970fd234d5e8a080251b16354fae98e0a1112c5af9e45",
+        "bytes": 142290,
+        "pack": "packs/exterior.pck"
+      },
+      "after": {
+        "sha256": "a1526e97cf113e4f6f5970fd234d5e8a080251b16354fae98e0a1112c5af9e45",
+        "bytes": 142290,
+        "pack": "packs/exterior.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/doll_rig.png-02e4adf178f15a73c4754d08976b619e.ctex",
+      "before": {
+        "sha256": "367330595d2f6da5409c2d16a6c282122d84db0485053a716e966052d782b58c",
+        "bytes": 241018,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "367330595d2f6da5409c2d16a6c282122d84db0485053a716e966052d782b58c",
+        "bytes": 241018,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/door_ajar.png-5f70f925290c1a27cdefe7b09013d9d9.ctex",
+      "before": {
+        "sha256": "4fd3b68993d32c1c838aa6d4c693f707a5bb818e65a5caed8a9df817ca2af2a9",
+        "bytes": 109930,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "4fd3b68993d32c1c838aa6d4c693f707a5bb818e65a5caed8a9df817ca2af2a9",
+        "bytes": 109930,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/doorframe.png-4afa80d424bf90cbd3a35bfe0fc9dc5c.ctex",
+      "before": {
+        "sha256": "c8129ce5597c5d642c13bf02ed51af2fa058492b086773c291f99383b1ebc3e0",
+        "bytes": 57326,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "c8129ce5597c5d642c13bf02ed51af2fa058492b086773c291f99383b1ebc3e0",
+        "bytes": 57326,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/doorway_glow.png-56aa189ef1a897211be108f7dd683395.ctex",
+      "before": {
+        "sha256": "5648d8b48a69237e9d3fbc38962ce79727a2318060937a4b0f342d6c10607fed",
+        "bytes": 78820,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "5648d8b48a69237e9d3fbc38962ce79727a2318060937a4b0f342d6c10607fed",
+        "bytes": 78820,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/empty_vase_candidate.png-af9ee831a4d8dec72c0163ff2a28879e.ctex",
+      "before": {
+        "sha256": "7080071cc851132e20d1d2db219fb5ef3fde964cfdaf18bc959962776e073413",
+        "bytes": 54604,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "7080071cc851132e20d1d2db219fb5ef3fde964cfdaf18bc959962776e073413",
+        "bytes": 54604,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/eyes_closed.png-cacdcfe2b9d24fedb9e7faaafec2dc48.ctex",
+      "before": {
+        "sha256": "61ede6040362b906f18ffc8bb2384605dd177199ab6a922bdd6a1fd66013cc4e",
+        "bytes": 84658,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "61ede6040362b906f18ffc8bb2384605dd177199ab6a922bdd6a1fd66013cc4e",
+        "bytes": 84658,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/fin_mallet.png-d6cbf456aa8e9a218864d71b859cc74b.ctex",
+      "before": {
+        "sha256": "04d2a2f98e38b07d991a420dc24d51d65f3a712e37f5164481aa7b69878f7b5e",
+        "bytes": 20554,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "04d2a2f98e38b07d991a420dc24d51d65f3a712e37f5164481aa7b69878f7b5e",
+        "bytes": 20554,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/font.ttf-976a98412f76666fef587cd4874204ca.fontdata",
+      "before": {
+        "sha256": "f76a4e369eebc7d91d6ab024a61fc4fc974f602f6e7f8c068c4aa6ea471bceb6",
+        "bytes": 293001,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "f76a4e369eebc7d91d6ab024a61fc4fc974f602f6e7f8c068c4aa6ea471bceb6",
+        "bytes": 293001,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/ground_shadows.png-3f2355d470510c329b8e1100de71d424.ctex",
+      "before": {
+        "sha256": "3de0b929c20d4e7c3954354fbacccadbd287b9c9861ec2d6563cdb8a261654da",
+        "bytes": 13442,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "3de0b929c20d4e7c3954354fbacccadbd287b9c9861ec2d6563cdb8a261654da",
+        "bytes": 13442,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_neutral.png-6d90870caad7a05bf109f0199f861dc6.ctex",
+      "before": {
+        "sha256": "0c295bd4a465a2e5843ae4d92e188f42b858527745427a9f5847dc91fec08fbd",
+        "bytes": 952364,
+        "pack": "packs/exterior.pck"
+      },
+      "after": {
+        "sha256": "0c295bd4a465a2e5843ae4d92e188f42b858527745427a9f5847dc91fec08fbd",
+        "bytes": 952364,
+        "pack": "packs/exterior.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_neutral_bleed_no_plants.png-e09c80444102f894387a5917be7c205c.ctex",
+      "before": {
+        "sha256": "da4537695265d432fe86d7ede711ed32aee237b47c11026ca80d78804fcb5deb",
+        "bytes": 1018452,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "da4537695265d432fe86d7ede711ed32aee237b47c11026ca80d78804fcb5deb",
+        "bytes": 1018452,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_neutral_no_plants.png-d4b5c2403525c5474d5bbb64ddea6b34.ctex",
+      "before": {
+        "sha256": "3364ea9f494d58cfbbc0447b3c67a30b09df71dc6a3cf331126b54c72e1fa40b",
+        "bytes": 793544,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "3364ea9f494d58cfbbc0447b3c67a30b09df71dc6a3cf331126b54c72e1fa40b",
+        "bytes": 793544,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_plants_atlas.png-15932390fcbe0661b88f99dfad2f5a97.ctex",
+      "before": {
+        "sha256": "7da6add9af39f3d8297f30236dc8e451fb24f0ca25595ec2186b191315b58fea",
+        "bytes": 563644,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "7da6add9af39f3d8297f30236dc8e451fb24f0ca25595ec2186b191315b58fea",
+        "bytes": 563644,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_tent_hd_v1.png-c99e5fda1add1d805b5b3f17f82ce2bb.ctex",
+      "before": {
+        "sha256": "e4241cd80f9a90bc531f4403c36828812876fff5d32b05708028fc937916afea",
+        "bytes": 373858,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "e4241cd80f9a90bc531f4403c36828812876fff5d32b05708028fc937916afea",
+        "bytes": 373858,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_tent_pixels.png-bdc6b2e45067a88900e5890937cfe582.ctex",
+      "before": {
+        "sha256": "fe027ee3693b99939473615555813ee8a5984f5533c9e787a7083c9b0277ce5a",
+        "bytes": 28266,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "fe027ee3693b99939473615555813ee8a5984f5533c9e787a7083c9b0277ce5a",
+        "bytes": 28266,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/home_worn_bag_pixels.png-59ed259e88890ead96eab48842c10080.ctex",
+      "before": {
+        "sha256": "d2e9bd2abfb3ad13cac0736b89002a74dbd06c153527a2f9cefcc8355735b274",
+        "bytes": 1268894,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "d2e9bd2abfb3ad13cac0736b89002a74dbd06c153527a2f9cefcc8355735b274",
+        "bytes": 1268894,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/incense_ceramic.png-e5d12965faf5e607b1abc1b099a7dd87.ctex",
+      "before": {
+        "sha256": "3b20a361daa109fb65fd31edbe675b52e586d5c853c7a0bcc43aec57c9797914",
+        "bytes": 127036,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "3b20a361daa109fb65fd31edbe675b52e586d5c853c7a0bcc43aec57c9797914",
+        "bytes": 127036,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/lamp_sconce.png-9432df858242716e2763e72a66c22eac.ctex",
+      "before": {
+        "sha256": "a6839d955975449cbcada5a4be8193ee01cee62e514b5ce41fcbf46866245022",
+        "bytes": 141868,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "a6839d955975449cbcada5a4be8193ee01cee62e514b5ce41fcbf46866245022",
+        "bytes": 141868,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/lantern_cranes.png-ed9a46587093b68aeecfedbdfef9685d.ctex",
+      "before": {
+        "sha256": "789c4e562e8ce3b3a590d564b32762cc49ccf96381f8e7274885796cde0581a7",
+        "bytes": 112468,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "789c4e562e8ce3b3a590d564b32762cc49ccf96381f8e7274885796cde0581a7",
+        "bytes": 112468,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/loading_clean_bleed_720x1600.png-1636629aa49532f08f3000826c9dfbb1.ctex",
+      "before": {
+        "sha256": "605f65745fe42dc5bd24e9c143c7234c8f65d56513a43ec7cacc42520dbdeee3",
+        "bytes": 611144,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "605f65745fe42dc5bd24e9c143c7234c8f65d56513a43ec7cacc42520dbdeee3",
+        "bytes": 611144,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/login_accents.png-89b9c20d8f41fe04fdd4d0569dd55b4d.ctex",
+      "before": {
+        "sha256": "30a637d3a9767c753662c1fda3ecec0a4869eca16816c38c1944c7b0ca9c0c10",
+        "bytes": 1322,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "30a637d3a9767c753662c1fda3ecec0a4869eca16816c38c1944c7b0ca9c0c10",
+        "bytes": 1322,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/login_clean_bleed_720x1600.png-5bc971c8d44831c383588514f65ebc0a.ctex",
+      "before": {
+        "sha256": "921780b897349b61e52a6b900be6a0168e558410fe0cd0b91ddd277399bb2470",
+        "bytes": 644758,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "921780b897349b61e52a6b900be6a0168e558410fe0cd0b91ddd277399bb2470",
+        "bytes": 644758,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/login_enter_wood_sign.png-4f04b73fa033f9c4eba241c28226924c.ctex",
+      "before": {
+        "sha256": "01b6acb4bf974e21fca173ba09c2625dd9863841c6b71dcabc752c9db1728ab1",
+        "bytes": 17172,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "01b6acb4bf974e21fca173ba09c2625dd9863841c6b71dcabc752c9db1728ab1",
+        "bytes": 17172,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/login_peek_source.png-053faaae78dfb9a1772c6daa8a606767.ctex",
+      "before": {
+        "sha256": "e876cfd53029cb5b93203eb22b155d7aad0b64f3dde1d64b4a6eb1ff352eec1a",
+        "bytes": 11300,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "e876cfd53029cb5b93203eb22b155d7aad0b64f3dde1d64b4a6eb1ff352eec1a",
+        "bytes": 11300,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/logo_title.png-d42648ef5ac70b4dc2c94edf137355c8.ctex",
+      "before": {
+        "sha256": "2414b15411a635d2a5febfc0b184a3dbd6ca14209dd8f774db9f5d099b9302b9",
+        "bytes": 29436,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "2414b15411a635d2a5febfc0b184a3dbd6ca14209dd8f774db9f5d099b9302b9",
+        "bytes": 29436,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/mat_flat.png-51577e41822f8ebe693eebd87a509dc9.ctex",
+      "before": {
+        "sha256": "fb977641a363ad021390440976eb8ec0ecb31e62e492556467d4f8268ed885c0",
+        "bytes": 103702,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "fb977641a363ad021390440976eb8ec0ecb31e62e492556467d4f8268ed885c0",
+        "bytes": 103702,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/merit_box.png-b14803842a2540efe4c8ff4f41a6e5fe.ctex",
+      "before": {
+        "sha256": "591e43caa9855bb989458762e2e55bd96b53a765e52481835ba3ae793ef4d4be",
+        "bytes": 140026,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "591e43caa9855bb989458762e2e55bd96b53a765e52481835ba3ae793ef4d4be",
+        "bytes": 140026,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/merit_digits_thin_gold.png-9ae3a8e4892da23f1b9a0a5b23dfb56b.ctex",
+      "before": {
+        "sha256": "a24015277471c460e9e9dbf6aa0e698e9138d30eb433b99dffd5dea8c0e5c667",
+        "bytes": 817902,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "a24015277471c460e9e9dbf6aa0e698e9138d30eb433b99dffd5dea8c0e5c667",
+        "bytes": 817902,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/merit_reward_14.png-a531a5eef9d16ed4909cc3076f45216d.ctex",
+      "before": {
+        "sha256": "91d2c14f78e1316fd93ecb8214ac8cb9afe3800721c8a39f58bbbd085a48ba8e",
+        "bytes": 181446,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "91d2c14f78e1316fd93ecb8214ac8cb9afe3800721c8a39f58bbbd085a48ba8e",
+        "bytes": 181446,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/needle.png-997ee3201e8439ad9759908827476195.ctex",
+      "before": {
+        "sha256": "cf76c2cf2a2011fc421ec12b61172708f7a7eb61f19a3aa43d881ec711d301f5",
+        "bytes": 197868,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "cf76c2cf2a2011fc421ec12b61172708f7a7eb61f19a3aa43d881ec711d301f5",
+        "bytes": 197868,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/peach_material.png-f1801171098d3804b84a0d7efb36eb50.ctex",
+      "before": {
+        "sha256": "18b17863e82477218650ca0414b5fae11590fdef1081c7b1b177a3ebc2ec445e",
+        "bytes": 280116,
+        "pack": "packs/outfit.pck"
+      },
+      "after": {
+        "sha256": "18b17863e82477218650ca0414b5fae11590fdef1081c7b1b177a3ebc2ec445e",
+        "bytes": 280116,
+        "pack": "packs/outfit.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/photo_clip.png-a39a52f32f8269bb0261de0704c462cd.ctex",
+      "before": {
+        "sha256": "73cc9382d15db64eeb370769bf8378772df5fd01c7a5899cb4ba22b5de15c088",
+        "bytes": 11474,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "73cc9382d15db64eeb370769bf8378772df5fd01c7a5899cb4ba22b5de15c088",
+        "bytes": 11474,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/photo_frame_01_travel.png-998bb568f8976d47283b91ad792fcd4b.ctex",
+      "before": {
+        "sha256": "8df45b39739fa24e9d51773115db333d048d7f1e862dfc74616db80f18355dbe",
+        "bytes": 65926,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "8df45b39739fa24e9d51773115db333d048d7f1e862dfc74616db80f18355dbe",
+        "bytes": 65926,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/photo_frame_02_travel.png-3f3b1c286455fa5d0ee7f67e6f004772.ctex",
+      "before": {
+        "sha256": "68086a1d2edcd3e8e49c991ad64f4ecbf26eb26c1f2e2503c344bde4c7a977a2",
+        "bytes": 61608,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "68086a1d2edcd3e8e49c991ad64f4ecbf26eb26c1f2e2503c344bde4c7a977a2",
+        "bytes": 61608,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/photo_wall_material_atlas_v3.png-c4188f5e7aa9e8256c68b235160e461e.ctex",
+      "before": {
+        "sha256": "39751557105a2b40ac4c3044c43146a0829e933027dbbbe4c7f77bd05a0b4520",
+        "bytes": 1321728,
+        "pack": "packs/photo.pck"
+      },
+      "after": {
+        "sha256": "39751557105a2b40ac4c3044c43146a0829e933027dbbbe4c7f77bd05a0b4520",
+        "bytes": 1321728,
+        "pack": "packs/photo.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/photo_wall_neutral_plate_v1.png-bd653391f78495473f57c260aa048fac.ctex",
+      "before": {
+        "sha256": "f111b8827b42c5cbb45a55b93f06a350d2553ca158c24250aa5b5ab3a774212c",
+        "bytes": 1421248,
+        "pack": "packs/photo.pck"
+      },
+      "after": {
+        "sha256": "f111b8827b42c5cbb45a55b93f06a350d2553ca158c24250aa5b5ab3a774212c",
+        "bytes": 1421248,
+        "pack": "packs/photo.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/release.png-998ef8327472e0a373a81e678b8d4337.ctex",
+      "before": {
+        "sha256": "f111a15bfdef2f84d9ba98d3241e66f6554ae5185129c5752ddb2590d5cc6867",
+        "bytes": 386084,
+        "pack": "packs/exterior.pck"
+      },
+      "after": {
+        "sha256": "f111a15bfdef2f84d9ba98d3241e66f6554ae5185129c5752ddb2590d5cc6867",
+        "bytes": 386084,
+        "pack": "packs/exterior.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/returned_bag_diamond.png-7e6e31671a62ed683cb0a4ba7689ff6e.ctex",
+      "before": {
+        "sha256": "21a17e37e7236e309d80c171733b13691cd94ed7421b8b3b4a3ba59fafc8bf6f",
+        "bytes": 14476,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "21a17e37e7236e309d80c171733b13691cd94ed7421b8b3b4a3ba59fafc8bf6f",
+        "bytes": 14476,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/room_no_plants.png-afba884a19e90b3cfa1104093b96fd8f.ctex",
+      "before": {
+        "sha256": "c6d9fac8f8bb51ac4f2e0aace59e7f923309573911e282b47461313bd559d20c",
+        "bytes": 1800626,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "c6d9fac8f8bb51ac4f2e0aace59e7f923309573911e282b47461313bd559d20c",
+        "bytes": 1800626,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/slipper.png-c3a7b85386bdaf5763f431699e84ed1e.ctex",
+      "before": {
+        "sha256": "9519470604bb04022f7ac8ecd8cd331a2a7a622bd8074da59bfb6eb362aecbda",
+        "bytes": 948972,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "9519470604bb04022f7ac8ecd8cd331a2a7a622bd8074da59bfb6eb362aecbda",
+        "bytes": 948972,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/smoke.png-8979f190f8195f152772449a8ae3daf2.ctex",
+      "before": {
+        "sha256": "ec21171a3edf32e1ea44d4ce56d513be0d06cb48fca820ee728a58c65d98b2e6",
+        "bytes": 479680,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "ec21171a3edf32e1ea44d4ce56d513be0d06cb48fca820ee728a58c65d98b2e6",
+        "bytes": 479680,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/tail.png-aaa9f67109fe2ef09a160a8bbfa5cc8d.ctex",
+      "before": {
+        "sha256": "6dfc8d2f316818459faef7dc6a76cf6933ba7ddb5dcb4d9940c8f66913171387",
+        "bytes": 8262,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "6dfc8d2f316818459faef7dc6a76cf6933ba7ddb5dcb4d9940c8f66913171387",
+        "bytes": 8262,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_brush.ttf-54b9265faa08fc545ea229a06e7766fd.fontdata",
+      "before": {
+        "sha256": "dea0b7f2b9d5f14ac4094894e582a62f61e94c3856c3760a68d59db01d661821",
+        "bytes": 250680,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "dea0b7f2b9d5f14ac4094894e582a62f61e94c3856c3760a68d59db01d661821",
+        "bytes": 250680,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_diary_plate_v5.png-519bd5a1f069a2bec4428b888d51f3b4.ctex",
+      "before": {
+        "sha256": "e2c791bc35b6c3555e5cfec8abe3605943616abf522c55503e67849822a205d4",
+        "bytes": 1503240,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "e2c791bc35b6c3555e5cfec8abe3605943616abf522c55503e67849822a205d4",
+        "bytes": 1503240,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_diary_reference_v5.png-416a89a65abfb2345662037ce048bd90.ctex",
+      "before": {
+        "sha256": "80a80b7ccdc5302a5f2215810e341a210320ce5a0b8fb21249171762df2fa9e7",
+        "bytes": 1854710,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "80a80b7ccdc5302a5f2215810e341a210320ce5a0b8fb21249171762df2fa9e7",
+        "bytes": 1854710,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_footprint_ink_v1.png-e0eb5157e74eec08bf95788eba8ae6bc.ctex",
+      "before": {
+        "sha256": "1979ecac4bf19003f353a57bdd4ccdf29bc282e0176cba783539eb0cf3fb545a",
+        "bytes": 11310,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "5a037bd2caf4ab3128c81e2d4921eeaa93e8a0cc03fc1bc11c1f66212b5bb2f9",
+        "bytes": 14640,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": false
+    },
+    {
+      "path": ".godot/imported/travel_map_actor_v5.png-5bd43b3eee87763f9a9db2c589c8d7d1.ctex",
+      "before": {
+        "sha256": "afd68f404adecc9277dfa3084d52d541cc68d1d50d6655729f6f6f1ebb12bb45",
+        "bytes": 1202530,
+        "pack": "packs/departure.pck"
+      },
+      "after": {
+        "sha256": "afd68f404adecc9277dfa3084d52d541cc68d1d50d6655729f6f6f1ebb12bb45",
+        "bytes": 1202530,
+        "pack": "packs/departure.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_map_plate_v5.png-b16099ec696466f98775b7ad7d35080b.ctex",
+      "before": {
+        "sha256": "c807e075ed146ff4b77885c1e7e9bf8b0e112d31659f2007cd4b6d7c7fda8dd7",
+        "bytes": 2079354,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "c807e075ed146ff4b77885c1e7e9bf8b0e112d31659f2007cd4b6d7c7fda8dd7",
+        "bytes": 2079354,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_offer_person_v5.png-af23ef0ea19a97eec0695e51a29e367e.ctex",
+      "before": {
+        "sha256": "701fb35342b2faa0b44fce5ba4133a9602c4080f5516552ee0a348e558870242",
+        "bytes": 1292468,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "701fb35342b2faa0b44fce5ba4133a9602c4080f5516552ee0a348e558870242",
+        "bytes": 1292468,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_paper_v1.png-935ae10cb47d4b99d4659fd0238b90f1.ctex",
+      "before": {
+        "sha256": "d4d193de1027b767038e24fd42f50410e3c27843f18640733218a6d1d6af52f3",
+        "bytes": 1698476,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "d4d193de1027b767038e24fd42f50410e3c27843f18640733218a6d1d6af52f3",
+        "bytes": 1698476,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_people_v5.png-511dbeb5cabda44b541689bc13542c8b.ctex",
+      "before": {
+        "sha256": "0f22c41b908ab84ad06d6bb083ff843d752ee17f2087be263e1c611718dc92e1",
+        "bytes": 2205634,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "0f22c41b908ab84ad06d6bb083ff843d752ee17f2087be263e1c611718dc92e1",
+        "bytes": 2205634,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_props_v1.png-631927af52ca9165d3f87df25158f076.ctex",
+      "before": {
+        "sha256": "df470e9a65941e852e0808c645dd39039537154e96c67356889dbebf574cce59",
+        "bytes": 1796128,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "df470e9a65941e852e0808c645dd39039537154e96c67356889dbebf574cce59",
+        "bytes": 1796128,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_rewards_v1.png-80c22706ab444ab69dfd604648b18d39.ctex",
+      "before": {
+        "sha256": "2d994fcb8b3ebedfcc8092dac5ceb6821ea3cf487079e3c1171c2cc90f4fce31",
+        "bytes": 1195482,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "2d994fcb8b3ebedfcc8092dac5ceb6821ea3cf487079e3c1171c2cc90f4fce31",
+        "bytes": 1195482,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_scene_layers_v1.png-7821c068918adbf63d68b06ef0e36434.ctex",
+      "before": {
+        "sha256": "95a01a9628f03d02bc21d9f4ff5298a16501f1552345fa012cc21d909217d079",
+        "bytes": 192398,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "95a01a9628f03d02bc21d9f4ff5298a16501f1552345fa012cc21d909217d079",
+        "bytes": 192398,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_scenery_v1.png-5ab768439bf8d7192157630aa5c2c1fa.ctex",
+      "before": {
+        "sha256": "bc56dcc75d02fa13e8386ff7eabefbb303c2f2e6d61034a654c2c72cf99cb649",
+        "bytes": 2774362,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "bc56dcc75d02fa13e8386ff7eabefbb303c2f2e6d61034a654c2c72cf99cb649",
+        "bytes": 2774362,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travel_ui.ttf-292419b27ef4ce77741809fce83a40b2.fontdata",
+      "before": {
+        "sha256": "372fe88933cda24dbda68d0e7f4a20e3e1a1bdafcd8c22ebfd66855a3b47a877",
+        "bytes": 232955,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "372fe88933cda24dbda68d0e7f4a20e3e1a1bdafcd8c22ebfd66855a3b47a877",
+        "bytes": 232955,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/travelbag_closed.png-0151d887275d65d7485f49f6b31e6d51.ctex",
+      "before": {
+        "sha256": "565a0c29cbdcb0bf2c2c2318a9a46c81a3062e4a1c21f9f34b89fbcee6c071cc",
+        "bytes": 214254,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "565a0c29cbdcb0bf2c2c2318a9a46c81a3062e4a1c21f9f34b89fbcee6c071cc",
+        "bytes": 214254,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/treasure_open_filled.png-641a53082a8cf3a83bf10498f1a51e49.ctex",
+      "before": {
+        "sha256": "97cd87f25b571f4cd23dfc5a8983b7ff2a4b6c4d9ff0af10dcb71ee54150e3ba",
+        "bytes": 182732,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "97cd87f25b571f4cd23dfc5a8983b7ff2a4b6c4d9ff0af10dcb71ee54150e3ba",
+        "bytes": 182732,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/wall_hook.png-dbdde286a83a8287daf42764d1792add.ctex",
+      "before": {
+        "sha256": "9f8a22dede117f3fe768b9e52c9e5d5804961d780d651569843dbb0c17f4895f",
+        "bytes": 25222,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "9f8a22dede117f3fe768b9e52c9e5d5804961d780d651569843dbb0c17f4895f",
+        "bytes": 25222,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/wardrobe_neutral.png-7835883ad3170b4a834c64424715cffa.ctex",
+      "before": {
+        "sha256": "3d4dba2b1e7f2084c4f4ff3bcb7506cd361405d33217bc737dc2a29bfce69f4c",
+        "bytes": 217856,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "3d4dba2b1e7f2084c4f4ff3bcb7506cd361405d33217bc737dc2a29bfce69f4c",
+        "bytes": 217856,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/wardrobe_runtime_atlas.png-01d38ca522fa9600609cba72fcc4a91b.ctex",
+      "before": {
+        "sha256": "ef7d815deabbb5ac5376eee1ce9a757fb90585fd221171e9dc1d8bdee3ee90af",
+        "bytes": 2026526,
+        "pack": "packs/wardrobe.pck"
+      },
+      "after": {
+        "sha256": "ef7d815deabbb5ac5376eee1ce9a757fb90585fd221171e9dc1d8bdee3ee90af",
+        "bytes": 2026526,
+        "pack": "packs/wardrobe.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": ".godot/imported/water_bowl_clean.png-c5bd34abf2f5e7d1e97dd5dc69905d96.ctex",
+      "before": {
+        "sha256": "d95a9a600d5f55099a74303c2796bb351dd44cde78aec59b354e1f5d843f1ed0",
+        "bytes": 148484,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "d95a9a600d5f55099a74303c2796bb351dd44cde78aec59b354e1f5d843f1ed0",
+        "bytes": 148484,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "__derived_atlas__/login_signage.ctex",
+      "before": {
+        "sha256": "0221f167cbf30f6c1e1a662fd6fa43e7c0dbb5a008e8b5ea77561e1b9b702142",
+        "bytes": 9964,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "0221f167cbf30f6c1e1a662fd6fa43e7c0dbb5a008e8b5ea77561e1b9b702142",
+        "bytes": 9964,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "__derived_atlas__/login_signage/3c1c5d2c27a061bd69e4.tres",
+      "before": {
+        "sha256": "b0404d8a6e856a29918ccb51ba88fa561a98fa2877f700c4100cb13433b0069c",
+        "bytes": 278,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "b0404d8a6e856a29918ccb51ba88fa561a98fa2877f700c4100cb13433b0069c",
+        "bytes": 278,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "__derived_atlas__/login_signage/464f45ed2ee961188380.tres",
+      "before": {
+        "sha256": "61321c76f7c4513b81a03a0d59be7cdac23034fb2a50d763a67fabc4ef536cfd",
+        "bytes": 280,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "61321c76f7c4513b81a03a0d59be7cdac23034fb2a50d763a67fabc4ef536cfd",
+        "bytes": 280,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_bow_hit.res",
+      "before": {
+        "sha256": "a4239fa7b0ce4793f55b3325e7a2458cde955fe2e9762b2dd25f7ab2d7bf777a",
+        "bytes": 1058,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "a4239fa7b0ce4793f55b3325e7a2458cde955fe2e9762b2dd25f7ab2d7bf777a",
+        "bytes": 1058,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_head_hit.res",
+      "before": {
+        "sha256": "f66b87332aab4a82817f8e86e3ac78f45a48d2e0e96b302480f364d5a4ea9e74",
+        "bytes": 1074,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "f66b87332aab4a82817f8e86e3ac78f45a48d2e0e96b302480f364d5a4ea9e74",
+        "bytes": 1074,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_left_arm_hit.res",
+      "before": {
+        "sha256": "08555c934510e52fc465857a9155f96926b0f9b5112f9fa1f693b5b9ff32c22c",
+        "bytes": 692,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "08555c934510e52fc465857a9155f96926b0f9b5112f9fa1f693b5b9ff32c22c",
+        "bytes": 692,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_left_leg_hit.res",
+      "before": {
+        "sha256": "82880b9ec2ceaffb7b1f3593fe7a680b986c2737da411622c76cc0290cde2ce4",
+        "bytes": 815,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "82880b9ec2ceaffb7b1f3593fe7a680b986c2737da411622c76cc0290cde2ce4",
+        "bytes": 815,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_right_arm_hit.res",
+      "before": {
+        "sha256": "42214ed866e2a6d45d7689ea1d03c718141845f1dd092217a24d32ef1ec3f8b5",
+        "bytes": 789,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "42214ed866e2a6d45d7689ea1d03c718141845f1dd092217a24d32ef1ec3f8b5",
+        "bytes": 789,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_right_leg_hit.res",
+      "before": {
+        "sha256": "3ee5315304b3b860a59c58920d05d8d4f86050d91b64f1974eed5cea01da2893",
+        "bytes": 813,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "3ee5315304b3b860a59c58920d05d8d4f86050d91b64f1974eed5cea01da2893",
+        "bytes": 813,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_source_alpha.res",
+      "before": {
+        "sha256": "da0cab9a24f1e19b447172e2f36a497e062b113ae613cf1755f73d41aee86fdc",
+        "bytes": 1758,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "da0cab9a24f1e19b447172e2f36a497e062b113ae613cf1755f73d41aee86fdc",
+        "bytes": 1758,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_source_display_mask.res",
+      "before": {
+        "sha256": "53f62a9a926db6c58412a3b9fe79bf653542cfaba61eff8df46766a6fd38c416",
+        "bytes": 8206,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "53f62a9a926db6c58412a3b9fe79bf653542cfaba61eff8df46766a6fd38c416",
+        "bytes": 8206,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/assets/round3/doll_torso_hit.res",
+      "before": {
+        "sha256": "9390d76bcc38c8bbab0555665f83da08e202d0758301f32a1228b66e19cdc036",
+        "bytes": 1170,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "9390d76bcc38c8bbab0555665f83da08e202d0758301f32a1228b66e19cdc036",
+        "bytes": 1170,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/alpha_shadow.gdshader",
+      "before": {
+        "sha256": "9502472ce2155a6aec951ecbbf967ca866a05dd7b0bc9d2774113d6541b7739c",
+        "bytes": 1105,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "9502472ce2155a6aec951ecbbf967ca866a05dd7b0bc9d2774113d6541b7739c",
+        "bytes": 1105,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/doll_release.gdshader",
+      "before": {
+        "sha256": "43aac2ef5a6a462fab0240adf093185ca63bf2588967a2c17e0e4a8b920a8ee3",
+        "bytes": 2232,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "43aac2ef5a6a462fab0240adf093185ca63bf2588967a2c17e0e4a8b920a8ee3",
+        "bytes": 2232,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/room_light.gdshader",
+      "before": {
+        "sha256": "9124f9f86727c73b8e48dff7c0895daec12893b01154d78c7c98a102aac6a1f4",
+        "bytes": 1541,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "9124f9f86727c73b8e48dff7c0895daec12893b01154d78c7c98a102aac6a1f4",
+        "bytes": 1541,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/sky.gdshader",
+      "before": {
+        "sha256": "fd358eaf756a02f58c237daa5e0f4934897e6e1b878465cda92b90def494f215",
+        "bytes": 1706,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "fd358eaf756a02f58c237daa5e0f4934897e6e1b878465cda92b90def494f215",
+        "bytes": 1706,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/smoke_flow.gdshader",
+      "before": {
+        "sha256": "ad9b504d09fea1e5d18e0776fe4acab120c30715c3b9d68d82f5ea49932c24c0",
+        "bytes": 622,
+        "pack": "packs/exterior.pck"
+      },
+      "after": {
+        "sha256": "ad9b504d09fea1e5d18e0776fe4acab120c30715c3b9d68d82f5ea49932c24c0",
+        "bytes": 622,
+        "pack": "packs/exterior.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/tool_receiver_shadow.gdshader",
+      "before": {
+        "sha256": "5bef17e3977908e1b457dd4ed9a60745e57f43e5bcfd6f9dff8ea785d21a358d",
+        "bytes": 1166,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "5bef17e3977908e1b457dd4ed9a60745e57f43e5bcfd6f9dff8ea785d21a358d",
+        "bytes": 1166,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/tool_selection_glow.gdshader",
+      "before": {
+        "sha256": "9cb4b60ce832d2b582919b197724a5f46fdfb3ff0e87007a213bea6c9c2d4fe2",
+        "bytes": 737,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "9cb4b60ce832d2b582919b197724a5f46fdfb3ff0e87007a213bea6c9c2d4fe2",
+        "bytes": 737,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "darkroom/shaders/window_beams.gdshader",
+      "before": {
+        "sha256": "45598bb284a354c898fc9fc0562ef3e8f6eb9ce2ba3b0dd1c98bcfdbda99e3e7",
+        "bytes": 913,
+        "pack": "packs/darkroom.pck"
+      },
+      "after": {
+        "sha256": "45598bb284a354c898fc9fc0562ef3e8f6eb9ce2ba3b0dd1c98bcfdbda99e3e7",
+        "bytes": 913,
+        "pack": "packs/darkroom.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "entry/assets/login/logo_title.png",
+      "before": {
+        "sha256": "56cc173a7b7f6904e32e217a765935384ad859da36b741c06caaf03247a1b76e",
+        "bytes": 109581,
+        "pack": "index.pck"
+      },
+      "after": {
+        "sha256": "56cc173a7b7f6904e32e217a765935384ad859da36b741c06caaf03247a1b76e",
+        "bytes": 109581,
+        "pack": "index.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/flowers/flower_receiver.gdshader",
+      "before": {
+        "sha256": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760",
+        "bytes": 3685,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760",
+        "bytes": 3685,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/altar.res",
+      "before": {
+        "sha256": "ba10920b90730b5e2fb89a864c3bd25042cbac9ac766a78e59c0acbf18bae973",
+        "bytes": 1438,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "ba10920b90730b5e2fb89a864c3bd25042cbac9ac766a78e59c0acbf18bae973",
+        "bytes": 1438,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/backpack_parts.res",
+      "before": {
+        "sha256": "401a088fabaf08dc5a0b1bf4f0af84609facc04205f90fe67bfcc8b27c2cffd3",
+        "bytes": 16016,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "401a088fabaf08dc5a0b1bf4f0af84609facc04205f90fe67bfcc8b27c2cffd3",
+        "bytes": 16016,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/bag.res",
+      "before": {
+        "sha256": "1000e8b5395fd8387dfc5e90a02e90eae35a530d664047326112942b5f8278de",
+        "bytes": 2320,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "1000e8b5395fd8387dfc5e90a02e90eae35a530d664047326112942b5f8278de",
+        "bytes": 2320,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/body.res",
+      "before": {
+        "sha256": "f81e832c2a3de6e44bc4e933d78f42c706c3e557279ec502018a4dc9c5fa4532",
+        "bytes": 1725,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "f81e832c2a3de6e44bc4e933d78f42c706c3e557279ec502018a4dc9c5fa4532",
+        "bytes": 1725,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/bowl.res",
+      "before": {
+        "sha256": "09d7ab9013070b4e0638921f6b0c5c4db7a33b7e6d50fc7cfbfa23fdc3c273c3",
+        "bytes": 1594,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "09d7ab9013070b4e0638921f6b0c5c4db7a33b7e6d50fc7cfbfa23fdc3c273c3",
+        "bytes": 1594,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/doll.res",
+      "before": {
+        "sha256": "238ec0a63598e8c346e57755b228ab40bc890b68dc54d6ddcb3d4e5ee5a72a7d",
+        "bytes": 1995,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "238ec0a63598e8c346e57755b228ab40bc890b68dc54d6ddcb3d4e5ee5a72a7d",
+        "bytes": 1995,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/fin_mallet.res",
+      "before": {
+        "sha256": "7374fe87cb0795e02c6b96d592f199f11f5d0dacaa78954d982903827c51472c",
+        "bytes": 1183,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "7374fe87cb0795e02c6b96d592f199f11f5d0dacaa78954d982903827c51472c",
+        "bytes": 1183,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/interaction/alpha_masks/tail.res",
+      "before": {
+        "sha256": "b9c18edebf3bd046d6c2f79805450a6e229fea53cd5f72be55bf025810658a75",
+        "bytes": 894,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "b9c18edebf3bd046d6c2f79805450a6e229fea53cd5f72be55bf025810658a75",
+        "bytes": 894,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/secondary/part_receiver.gdshader",
+      "before": {
+        "sha256": "270bf70e991e94a2365d8ef7efcc8e69c2c780f5ba53e036bc5fe5e4a78ea074",
+        "bytes": 3243,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "270bf70e991e94a2365d8ef7efcc8e69c2c780f5ba53e036bc5fe5e4a78ea074",
+        "bytes": 3243,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "home/secondary/part_wall_shadow.gdshader",
+      "before": {
+        "sha256": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526",
+        "bytes": 649,
+        "pack": "packs/exterior.pck"
+      },
+      "after": {
+        "sha256": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526",
+        "bytes": 649,
+        "pack": "packs/exterior.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/bed_receiver.gdshader",
+      "before": {
+        "sha256": "d0c06363b116afa5327a063e5a6b41582c8fcbefeb35fae6a29e81d75db19c1b",
+        "bytes": 3270,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "d0c06363b116afa5327a063e5a6b41582c8fcbefeb35fae6a29e81d75db19c1b",
+        "bytes": 3270,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/bleed_receiver.gdshader",
+      "before": {
+        "sha256": "a55c804d934acfb3769d7b6c75017a214ffba6ba05a86f2375f79da0c44b200e",
+        "bytes": 3764,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "a55c804d934acfb3769d7b6c75017a214ffba6ba05a86f2375f79da0c44b200e",
+        "bytes": 3764,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/grounded_shadow.gdshader",
+      "before": {
+        "sha256": "cb85ab69825d4ab9b7fad6a77269876d7611870fa2ef714108e4e943c9da2f8b",
+        "bytes": 1887,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "cb85ab69825d4ab9b7fad6a77269876d7611870fa2ef714108e4e943c9da2f8b",
+        "bytes": 1887,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/home_face_receiver.gdshader",
+      "before": {
+        "sha256": "30b97ff10e80b5f7bd023fdca170f557a61310cbdf1f07535187251ef8f0f314",
+        "bytes": 10558,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "1bdd67d4d31e1bb0bf0fa727fbb86e141c871dac29094e6495ce9f8e643e977e",
+        "bytes": 12008,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": false
+    },
+    {
+      "path": "shaders/home_grounded_shadow.gdshader",
+      "before": {
+        "sha256": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557",
+        "bytes": 3706,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557",
+        "bytes": 3706,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/home_prop_receiver.gdshader",
+      "before": {
+        "sha256": "987c160bed6c5e196611b4edc774d8b6932c56eb48faa7fe2133d3ff8c11dcfe",
+        "bytes": 4977,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "987c160bed6c5e196611b4edc774d8b6932c56eb48faa7fe2133d3ff8c11dcfe",
+        "bytes": 4977,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/incense_stick.gdshader",
+      "before": {
+        "sha256": "45c1e05058eab9e3ec56a2288a058c04ceec42a1e72c3765cee1887a336d6bdb",
+        "bytes": 4036,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "45c1e05058eab9e3ec56a2288a058c04ceec42a1e72c3765cee1887a336d6bdb",
+        "bytes": 4036,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/light_shafts.gdshader",
+      "before": {
+        "sha256": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
+        "bytes": 875,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
+        "bytes": 875,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/login_peek_reveal.gdshader",
+      "before": {
+        "sha256": "10f0b64212fbd0f38254c542fb83af7742f5a4c5fa4e03f37dbe5392d250e242",
+        "bytes": 486,
+        "pack": "packs/entry.pck"
+      },
+      "after": {
+        "sha256": "10f0b64212fbd0f38254c542fb83af7742f5a4c5fa4e03f37dbe5392d250e242",
+        "bytes": 486,
+        "pack": "packs/entry.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/receiver.gdshader",
+      "before": {
+        "sha256": "238e3b4ecb2bd8c2a796a0f18d1c234cad8d6332596b29badd39823435b9540a",
+        "bytes": 3165,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "238e3b4ecb2bd8c2a796a0f18d1c234cad8d6332596b29badd39823435b9540a",
+        "bytes": 3165,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "shaders/shadow.gdshader",
+      "before": {
+        "sha256": "85f5bd20a73f6049be8b509a3cb62a9ce64d2559cbdc5de82ab02f5be7b50b34",
+        "bytes": 1827,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "85f5bd20a73f6049be8b509a3cb62a9ce64d2559cbdc5de82ab02f5be7b50b34",
+        "bytes": 1827,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "travel/assets/travel_props_hit.res",
+      "before": {
+        "sha256": "d06e82082c5e9d79d506fa7363f05f1baf421c768da80f925224a6bbfe769f19",
+        "bytes": 197129,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "d06e82082c5e9d79d506fa7363f05f1baf421c768da80f925224a6bbfe769f19",
+        "bytes": 197129,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "travel/assets/treasure_hit.res",
+      "before": {
+        "sha256": "6a54aa324573361a959b13bf72303e153e28b988b5ab7d9875860235e1b6b0cc",
+        "bytes": 33287,
+        "pack": "packs/house.pck"
+      },
+      "after": {
+        "sha256": "6a54aa324573361a959b13bf72303e153e28b988b5ab7d9875860235e1b6b0cc",
+        "bytes": 33287,
+        "pack": "packs/house.pck"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "travel/travel_mist.gdshader",
+      "before": {
+        "sha256": "643dc6b8e294f3b7f97dc3b6a86127830fb19bb2f69e1af6b19649282f12685a",
+        "bytes": 402,
+        "pack": "packs/travel.pck"
+      },
+      "after": {
+        "sha256": "643dc6b8e294f3b7f97dc3b6a86127830fb19bb2f69e1af6b19649282f12685a",
+        "bytes": 402,
+        "pack": "packs/travel.pck"
+      },
+      "unchanged": true
+    }
+  ]
+}

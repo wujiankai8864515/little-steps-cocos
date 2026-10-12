@@ -1,0 +1,393 @@
+{
+  "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+  "source_status": "",
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "packs": {
+    "index.pck": {
+      "sha256": "32889980734b66ca5a549f6dc7f845ddaf2992cc4cb54907c623692cc082b649",
+      "bytes": 2230724
+    },
+    "packs/comic.pck": {
+      "sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10",
+      "bytes": 2313888
+    },
+    "packs/darkroom.pck": {
+      "sha256": "b926c29779993be721665979f420373be157d5aaeedd2f6cc7ec2b149cd4cc0d",
+      "bytes": 4783424
+    },
+    "packs/departure.pck": {
+      "sha256": "c915fa7a24bcb04c85eb171a3bb3a7e88fcbc2c266839fc1020ffbb0fb68f0bb",
+      "bytes": 1326752
+    },
+    "packs/entry.pck": {
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+      "bytes": 943108
+    },
+    "packs/exterior.pck": {
+      "sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f",
+      "bytes": 1107208
+    },
+    "packs/house.pck": {
+      "sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f",
+      "bytes": 17019800
+    },
+    "packs/photo.pck": {
+      "sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7",
+      "bytes": 2858372
+    },
+    "packs/travel.pck": {
+      "sha256": "eaf3272da8c5af308fb3bbc222b96e0923c8fd5edca87a08b3bd40749a434dbe",
+      "bytes": 13671876
+    }
+  },
+  "dependency_examples": [
+    {
+      "logical": "home/home_page.gd",
+      "source_sha256": "ff0812cd983d48e1d5f247231f367a2729ebae29f4af1f3c132fcffed7f2d5fe",
+      "exact_pack_members": [
+        {
+          "path": "home/home_page.gd.remap",
+          "pack": "index.pck",
+          "bytes": 41,
+          "sha256": "7e57b6e93303e20ec7e0781f04cd0fd8a3ab9fcc319c0ef7a32b7517f90413f7"
+        },
+        {
+          "path": "home/home_page.gdc",
+          "pack": "index.pck",
+          "bytes": 19785,
+          "sha256": "a2296b76a6945d3142de2787e126d80efe789b55596e1fde15752b4f3e4f1c15"
+        },
+        {
+          "path": "home/home_page.gdc",
+          "pack": "index.pck",
+          "bytes": 19785,
+          "sha256": "a2296b76a6945d3142de2787e126d80efe789b55596e1fde15752b4f3e4f1c15"
+        }
+      ]
+    },
+    {
+      "logical": "home/home_world.gd",
+      "source_sha256": "7464c0b067b16842a91cfd33b9ea5941fcd246bbf14e2f5a5faf9813a0d25532",
+      "exact_pack_members": [
+        {
+          "path": "home/home_world.gd.remap",
+          "pack": "index.pck",
+          "bytes": 42,
+          "sha256": "5d9eef55076ea833a56c76136a4a449c880cb3c2b6cd4f8014b07a51b2772ceb"
+        },
+        {
+          "path": "home/home_world.gdc",
+          "pack": "index.pck",
+          "bytes": 34458,
+          "sha256": "0ad525163f8657146b729efa9c34800bab9f3b65b95f097e921371c9f1f430eb"
+        },
+        {
+          "path": "home/home_world.gdc",
+          "pack": "index.pck",
+          "bytes": 34458,
+          "sha256": "0ad525163f8657146b729efa9c34800bab9f3b65b95f097e921371c9f1f430eb"
+        }
+      ]
+    },
+    {
+      "logical": "home/grounding/alpha_grounding.gd",
+      "source_sha256": "f4260d398b44a3c40659a649613da74dc9f7a3ce6dd00ab73caa7ef581fcb754",
+      "exact_pack_members": [
+        {
+          "path": "home/grounding/alpha_grounding.gd.remap",
+          "pack": "index.pck",
+          "bytes": 57,
+          "sha256": "00edb176c4a64c016db59c373ad97e096297fac482979f2bbdd6033527cd86f5"
+        },
+        {
+          "path": "home/grounding/alpha_grounding.gdc",
+          "pack": "index.pck",
+          "bytes": 10962,
+          "sha256": "a2a1eb49f1128907d6824f270a6a21f9c301c23ac992975e72f1ceac58ee15cd"
+        },
+        {
+          "path": "home/grounding/alpha_grounding.gdc",
+          "pack": "index.pck",
+          "bytes": 10962,
+          "sha256": "a2a1eb49f1128907d6824f270a6a21f9c301c23ac992975e72f1ceac58ee15cd"
+        }
+      ]
+    },
+    {
+      "logical": "home/interaction/home_interaction_controller.gd",
+      "source_sha256": "28ec1263af31b9811f70099f92c97590afdfab41feb2caca6c2dc64800bcbc79",
+      "exact_pack_members": [
+        {
+          "path": "home/interaction/home_interaction_controller.gd.remap",
+          "pack": "index.pck",
+          "bytes": 71,
+          "sha256": "8ad2ce2ecde41cebbd558444aeeba371f6bfe06df219403c213e8e774905cae5"
+        },
+        {
+          "path": "home/interaction/home_interaction_controller.gdc",
+          "pack": "index.pck",
+          "bytes": 26824,
+          "sha256": "c2a004320bab53d4e1d53dc6fcda92d1b5d63a711f7ac296a15a5e264dac1904"
+        },
+        {
+          "path": "home/interaction/home_interaction_controller.gdc",
+          "pack": "index.pck",
+          "bytes": 26824,
+          "sha256": "c2a004320bab53d4e1d53dc6fcda92d1b5d63a711f7ac296a15a5e264dac1904"
+        }
+      ]
+    },
+    {
+      "logical": "home/behavior/character_geometry.gd",
+      "source_sha256": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896",
+      "exact_pack_members": [
+        {
+          "path": "home/behavior/character_geometry.gd.remap",
+          "pack": "index.pck",
+          "bytes": 59,
+          "sha256": "774a9f9a30dd8427cd724cf8a8202ef199a224618f74255d23f7334d4e6e3c52"
+        },
+        {
+          "path": "home/behavior/character_geometry.gdc",
+          "pack": "index.pck",
+          "bytes": 3019,
+          "sha256": "7102ad5c13db7bc99951ebda39d2e480dc6017ce5d43989ea4e53c9005c6303c"
+        },
+        {
+          "path": "home/behavior/character_geometry.gdc",
+          "pack": "index.pck",
+          "bytes": 3019,
+          "sha256": "7102ad5c13db7bc99951ebda39d2e480dc6017ce5d43989ea4e53c9005c6303c"
+        }
+      ]
+    },
+    {
+      "logical": "home/behavior/rig_secondary_motion.gd",
+      "source_sha256": "23f67f76c34bafcfeacd785a45e287ec549a74c9dd79a6d98b15417462c01bda",
+      "exact_pack_members": [
+        {
+          "path": "home/behavior/rig_secondary_motion.gd.remap",
+          "pack": "index.pck",
+          "bytes": 61,
+          "sha256": "12b03d88b76df3d79c512d68e7d2d18ae31447701d1c45d0fbcd18f8b655e326"
+        },
+        {
+          "path": "home/behavior/rig_secondary_motion.gdc",
+          "pack": "index.pck",
+          "bytes": 1887,
+          "sha256": "5e79c5bfefaa9c7f9187c11b3706df26213db985d6102f2b7102382f6ea70743"
+        },
+        {
+          "path": "home/behavior/rig_secondary_motion.gdc",
+          "pack": "index.pck",
+          "bytes": 1887,
+          "sha256": "5e79c5bfefaa9c7f9187c11b3706df26213db985d6102f2b7102382f6ea70743"
+        }
+      ]
+    },
+    {
+      "logical": "home/behavior/soft_attachment_mesh.gd",
+      "source_sha256": "92f2f1e08549e0aae8db7de1b33dfec3f15895edd719e2c3d89fb93cb0fa9a5a",
+      "exact_pack_members": [
+        {
+          "path": "home/behavior/soft_attachment_mesh.gd.remap",
+          "pack": "index.pck",
+          "bytes": 61,
+          "sha256": "1978d59a0708cd4f5f88cbf5c64bc624cd58cc73fa58bac60824053f30f7ca6d"
+        },
+        {
+          "path": "home/behavior/soft_attachment_mesh.gdc",
+          "pack": "index.pck",
+          "bytes": 6788,
+          "sha256": "7b5c62b89e6202d40f0f5aca7d65b74a4a1f4de15391de5cff0db83050261c21"
+        },
+        {
+          "path": "home/behavior/soft_attachment_mesh.gdc",
+          "pack": "index.pck",
+          "bytes": 6788,
+          "sha256": "7b5c62b89e6202d40f0f5aca7d65b74a4a1f4de15391de5cff0db83050261c21"
+        }
+      ]
+    },
+    {
+      "logical": "assets/body.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/body.png.import",
+          "pack": "packs/house.pck",
+          "bytes": 192,
+          "sha256": "4b80c52fa638282fa074cdf68b48ee4493f4b86e7c14f43c245da5794330aca2"
+        },
+        {
+          "path": ".godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex",
+          "pack": "packs/house.pck",
+          "bytes": 83306,
+          "sha256": "b8ad2633205c857261046e1627fcc10b4cca10b3c25c31a5b487327c177da2db"
+        }
+      ]
+    },
+    {
+      "logical": "assets/tail.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/tail.png.import",
+          "pack": "packs/house.pck",
+          "bytes": 193,
+          "sha256": "b062cd3d0573855480e9fb74805f290d817ab6d576e9ec3c0122afd18e4c1716"
+        },
+        {
+          "path": ".godot/imported/tail.png-aaa9f67109fe2ef09a160a8bbfa5cc8d.ctex",
+          "pack": "packs/house.pck",
+          "bytes": 8262,
+          "sha256": "6dfc8d2f316818459faef7dc6a76cf6933ba7ddb5dcb4d9940c8f66913171387"
+        }
+      ]
+    },
+    {
+      "logical": "assets/fin_mallet.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/fin_mallet.png.import",
+          "pack": "packs/house.pck",
+          "bytes": 199,
+          "sha256": "7b384b6a10b01fe51c07389d6060ac2f541f4b55649d9bb50546499b6653e640"
+        },
+        {
+          "path": ".godot/imported/fin_mallet.png-d6cbf456aa8e9a218864d71b859cc74b.ctex",
+          "pack": "packs/house.pck",
+          "bytes": 20554,
+          "sha256": "04d2a2f98e38b07d991a420dc24d51d65f3a712e37f5164481aa7b69878f7b5e"
+        }
+      ]
+    },
+    {
+      "logical": "assets/doll_idle.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/doll_idle.png.import",
+          "pack": "packs/exterior.pck",
+          "bytes": 198,
+          "sha256": "f512f17f219928e7f42a53e18e7f36e346d62b26ef6167f156cb401192e1c4a1"
+        },
+        {
+          "path": ".godot/imported/doll_idle.png-12fcbab1dde303dcb8bb5a228150ee7c.ctex",
+          "pack": "packs/exterior.pck",
+          "bytes": 142290,
+          "sha256": "a1526e97cf113e4f6f5970fd234d5e8a080251b16354fae98e0a1112c5af9e45"
+        }
+      ]
+    },
+    {
+      "logical": "assets/round2/water_bowl_clean.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/round2/water_bowl_clean.png.import",
+          "pack": "packs/house.pck",
+          "bytes": 205,
+          "sha256": "8d561ae01d79f94960151482d83a606528fbfc45773be94905198227650f4c66"
+        },
+        {
+          "path": ".godot/imported/water_bowl_clean.png-c5bd34abf2f5e7d1e97dd5dc69905d96.ctex",
+          "pack": "packs/house.pck",
+          "bytes": 148484,
+          "sha256": "d95a9a600d5f55099a74303c2796bb351dd44cde78aec59b354e1f5d843f1ed0"
+        }
+      ]
+    },
+    {
+      "logical": "assets/altar_neutral.png",
+      "source_sha256": null,
+      "exact_pack_members": [
+        {
+          "path": "assets/altar_neutral.png.import",
+          "pack": "packs/house.pck",
+          "bytes": 201,
+          "sha256": "6742926ee01132f66b55c698dd188975406e1d58fbf13529af522804daddf492"
+        },
+        {
+          "path": ".godot/imported/altar_neutral.png-1cc3f63721e83f520be34bb3976fbcff.ctex",
+          "pack": "packs/house.pck",
+          "bytes": 97010,
+          "sha256": "d591114dc62283a88582da9b18accf6b2bab17ecdafaf4427bfd2d8311503bc4"
+        }
+      ]
+    },
+    {
+      "logical": "home/home_page.tscn",
+      "source_sha256": "cda085956659166887ea8065fc8c657fb9bd7efc65122ba3d745e08568fcd6df",
+      "exact_pack_members": [
+        {
+          "path": "home/home_page.tscn.remap",
+          "pack": "packs/house.pck",
+          "bytes": 102,
+          "sha256": "f61b1b5b900b4ac9419a989cebd41bffa14e8e0c8c2f2c22d1f0ce2f17feb9f7"
+        },
+        {
+          "path": ".godot/exported/133200997/export-abdd1f89b51fff0affae81067e8777f5-home_page.scn",
+          "pack": "packs/house.pck",
+          "bytes": 2806,
+          "sha256": "d24f74f8a1a628819760c02a12b5d392e27d96a7761c4eaf2e6d3bbcfedd50da"
+        }
+      ]
+    },
+    {
+      "logical": "home/home_world.tscn",
+      "source_sha256": "1ebd5056ef7f68614d5b20738f09cccf7712c898e7b6af859dda5f2458581e17",
+      "exact_pack_members": [
+        {
+          "path": "home/home_world.tscn.remap",
+          "pack": "packs/house.pck",
+          "bytes": 103,
+          "sha256": "c0a57fe0d557fcd1479ad593d0f25a078122ceac7bc1d3f204ce0196c0a08929"
+        },
+        {
+          "path": ".godot/exported/133200997/export-3752778707841ef3f6d07a0f65b3fb58-home_world.scn",
+          "pack": "packs/house.pck",
+          "bytes": 11716,
+          "sha256": "7cff47fb5451763860314f4ba0a58c8f78ceef414ee9466af5aa3a06be10377d"
+        }
+      ]
+    },
+    {
+      "logical": "xiaoyu_rig.tscn",
+      "source_sha256": "ef0effe5c2ce9e734fc46f957a4d57e8c35e1f0aed6b1cf9bda41cee5d2747ad",
+      "exact_pack_members": [
+        {
+          "path": "xiaoyu_rig.tscn.remap",
+          "pack": "packs/house.pck",
+          "bytes": 103,
+          "sha256": "697415d9efdd8b9e36f10dbbb9ff7ccf84787671d6ce434102b944e2ae4aeb37"
+        },
+        {
+          "path": ".godot/exported/133200997/export-bf9d5b23ca51b2ea975c5eefd17303db-xiaoyu_rig.scn",
+          "pack": "packs/house.pck",
+          "bytes": 28777,
+          "sha256": "38bbec8207b5fbf67c47c96d9e6cd99d63712ede0fe19d9c7217bf7c6600405f"
+        }
+      ]
+    },
+    {
+      "logical": "shaders/home_grounded_shadow.gdshader",
+      "source_sha256": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557",
+      "exact_pack_members": [
+        {
+          "path": "shaders/home_grounded_shadow.gdshader",
+          "pack": "packs/house.pck",
+          "bytes": 3706,
+          "sha256": "54d97c702cc3f82f1f96eb7282e76399a4213c049354085b597a358822c8e557"
+        }
+      ]
+    }
+  ],
+  "build_identity": {
+    "source_snapshot_sha256": "29d2c936b91a6af40561fb74867b79431f8231046498fa5e8ef9f95e9a93d00d",
+    "resource_references": 240,
+    "official_engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+  },
+  "caveat": "Source and direct resource/remap examples with exact pack bytes. Runtime empty-res tests establish the tested call paths; this is not a complete dynamic dependency proof."
+}

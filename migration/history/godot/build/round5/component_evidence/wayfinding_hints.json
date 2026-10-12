@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "check": "actual incense hint exists after Home ready",
+      "passed": true
+    },
+    {
+      "check": "long hint holds bright opacity",
+      "passed": true
+    },
+    {
+      "check": "fixed travel font covers incense phrase",
+      "passed": true
+    },
+    {
+      "check": "same font covers diary phrase",
+      "passed": true
+    },
+    {
+      "check": "unsupported codepoint explicitly rejected",
+      "passed": true
+    },
+    {
+      "check": "hint not darkened by room illumination",
+      "passed": true
+    },
+    {
+      "check": "warm ivory readable fill",
+      "passed": true
+    },
+    {
+      "check": "hint does not intercept taps",
+      "passed": true
+    },
+    {
+      "check": "ignition hint softly fades",
+      "passed": true
+    },
+    {
+      "check": "hint fully leaves after ignition",
+      "passed": true
+    },
+    {
+      "check": "same hint reused after burning without duplicates",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Actual native hints; no browser/hardware claim"
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fae8c7">
+<title>旅行木鱼</title>
+<link rel="icon" type="image/png" href="[IMAGE DATA OMITTED]">
+<style>
+html,body {margin:0;width:100%;height:100%;overflow:hidden;background:#fae8c7;color:#6b472a;font-family:system-ui,sans-serif;touch-action:none}
+#canvas {display:block;width:100%;height:100%;border:0;outline:none}
+#host-preboot {--u:min(0.138888889vw,0.078125vh);--loading-bg:url("[IMAGE DATA OMITTED]");position:fixed;inset:0;z-index:2;overflow:hidden;background:#fae8c7}
+#host-column {position:absolute;left:50%;top:0;width:calc(720 * var(--u));height:100%;transform:translateX(-50%);overflow:hidden}
+#host-background {position:absolute;left:0;top:50%;width:100%;height:calc(1600 * var(--u));transform:translateY(-50%);background:var(--loading-bg) center/100% 100% no-repeat}
+.host-bleed {position:absolute;left:0;width:100%;height:max(0px,calc((100% - 1600 * var(--u)) / 2));background-image:var(--loading-bg);background-size:100% 1000%;background-repeat:no-repeat}
+#host-bleed-top {top:0;background-position:top}
+#host-bleed-bottom {bottom:0;background-position:bottom}
+#host-composition {position:absolute;left:0;top:50%;width:100%;height:calc(1280 * var(--u));transform:translateY(-50%)}
+#host-art {position:absolute;left:0;top:calc(400 * var(--u));width:100%;height:calc(480 * var(--u))}
+#host-poster,#host-first-frame {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+#host-poster {visibility:hidden}
+#host-first-frame[hidden] {display:none}
+#host-progress-frame {--fraction:0;position:absolute;left:calc(182 * var(--u));top:calc(933 * var(--u));width:calc(356 * var(--u));height:calc(28 * var(--u));box-sizing:border-box;border:calc(1 * var(--u)) solid rgba(206,161,87,.4902);border-radius:calc(14 * var(--u));background:rgba(255,249,229,.96078)}
+#host-progress {appearance:none;-webkit-appearance:none;position:absolute;left:calc(4 * var(--u));top:calc(4 * var(--u));width:calc(346 * var(--u));height:calc(18 * var(--u));margin:0;border:0;border-radius:calc(9 * var(--u));overflow:hidden;background:rgba(218,192,144,.39216);color:#dda640}
+#host-progress::-webkit-progress-bar {background:transparent;border-radius:calc(9 * var(--u))}
+#host-progress::-webkit-progress-value {background:#dda640;border-radius:calc(9 * var(--u))}
+#host-progress::-moz-progress-bar {background:#dda640;border-radius:calc(9 * var(--u))}
+#host-progress-highlight {position:absolute;left:calc(6 * var(--u));top:calc(6 * var(--u));width:max(0px,calc((346 * var(--fraction) - 3) * var(--u)));height:calc(4 * var(--u));border-radius:calc(3 * var(--u));background:rgba(255,223,132,.90196)}
+#host-progress-frame[data-empty="true"] #host-progress-highlight {display:none}
+.host-travel-mark {position:absolute;top:calc(38 * var(--u));width:calc(4 * var(--u));height:calc(4 * var(--u));border-radius:calc(2 * var(--u));background:rgba(176,127,60,.35294)}
+#host-mark-1 {left:calc(2 * var(--u))} #host-mark-2 {left:calc(175 * var(--u))} #host-mark-3 {left:calc(348 * var(--u))}
+#host-status {position:absolute;left:calc(120 * var(--u));top:calc(992 * var(--u));width:calc(480 * var(--u));min-height:calc(44 * var(--u));font-size:calc(22 * var(--u));line-height:1.5;text-align:center;white-space:pre-line;color:#8f5e2e}
+#host-retry {position:absolute;left:calc(286 * var(--u));top:calc(1054 * var(--u));width:calc(148 * var(--u));min-height:calc(48 * var(--u));border:calc(1 * var(--u)) solid #a8753e;border-radius:calc(16 * var(--u));background:#f0d197;color:#6b472a;font:inherit;font-size:calc(24 * var(--u))}
+#host-preboot[data-state="failed"] #host-composition {display:flex;flex-direction:column;align-items:center;gap:16px;top:0;height:100%;padding:24px 16px;box-sizing:border-box;transform:none;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}
+#host-preboot[data-state="failed"] #host-art {position:relative;top:auto;height:auto;aspect-ratio:3/2;flex-shrink:0;margin-top:auto}
+#host-preboot[data-state="failed"] #host-status {position:static;width:100%;min-height:0;font-size:16px;line-height:1.5;overflow-wrap:anywhere;flex-shrink:0}
+#host-preboot[data-state="failed"] #host-retry {position:static;width:auto;min-width:148px;min-height:48px;box-sizing:border-box;flex-shrink:0;padding:10px 20px;font-size:16px;margin-bottom:auto;touch-action:manipulation}
+#host-preboot[hidden],#host-retry[hidden],#host-progress-frame[hidden] {display:none}
+noscript {position:fixed;bottom:10%;left:10%;right:10%;z-index:3;text-align:center}
+</style>
+<link rel="preload" as="image" href="host/assets/compact/actor_body.png">
+<link rel="preload" as="image" href="host/assets/compact/actor_fin_mallet.png">
+<link rel="preload" as="image" href="host/assets/compact/doll_rig.png">
+
+</head>
+<body>
+<canvas id="canvas" aria-label="旅行木鱼游戏画面">您的浏览器不支持 Canvas。</canvas>
+<section id="host-preboot" aria-label="正在启动游戏" aria-busy="true">
+<div id="host-column">
+<div id="host-background" aria-hidden="true"></div>
+<div id="host-bleed-top" class="host-bleed" aria-hidden="true"></div>
+<div id="host-bleed-bottom" class="host-bleed" aria-hidden="true"></div>
+<div id="host-composition">
+<div id="host-art" aria-hidden="true">
+<img id="host-first-frame" src="[IMAGE DATA OMITTED]" width="318" height="212" alt="" decoding="sync" fetchpriority="high">
+<canvas id="host-poster" width="720" height="480"></canvas>
+</div>
+<div id="host-progress-frame" data-mode="determinate" data-empty="true">
+<progress id="host-progress" value="0" max="1" aria-label="启动进度，资源下载后继续准备登录画面"></progress>
+<span id="host-progress-highlight" aria-hidden="true"></span>
+<i id="host-mark-1" class="host-travel-mark" aria-hidden="true"></i><i id="host-mark-2" class="host-travel-mark" aria-hidden="true"></i><i id="host-mark-3" class="host-travel-mark" aria-hidden="true"></i>
+</div>
+<div id="host-status" role="status" aria-live="polite">正在准备游戏…</div>
+<button id="host-retry" type="button" hidden onclick="location.reload()">重新加载</button>
+</div>
+</div>
+</section>
+<noscript>请启用 JavaScript 以启动游戏。</noscript>
+<script>
+window.TRAVEL_HOST_CONFIG = {
+  godot: {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2230916,"index.wasm":38047590},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4},
+  engineURL: "index.js",
+  threads: false,
+  manifestURL: "resource_packs.host.json",
+  cacheRevision: "continuous-loading-v7"
+};
+window.travelHostScriptFailure = function () {
+  window.TRAVEL_HOST_SCRIPT_FAILED = true;
+  if (window.TravelHostPreboot) {
+    window.TravelHostPreboot.fail(new Error('启动文件加载失败，请检查网络后重试。'));
+    return;
+  }
+  document.getElementById('host-status').textContent = '启动文件加载失败，请检查网络后重试。';
+  document.getElementById('host-retry').hidden = false;
+  document.getElementById('host-preboot').setAttribute('data-state', 'failed');
+  document.getElementById('host-preboot').setAttribute('aria-busy', 'false');
+  document.getElementById('host-progress').hidden = true;
+  document.getElementById('host-progress-frame').hidden = true;
+};
+</script>
+<script defer src="host/resource_transport.js?host_revision=continuous-loading-v7" onerror="travelHostScriptFailure()"></script>
+<script defer src="host/viewport.js?host_revision=continuous-loading-v7" onerror="travelHostScriptFailure()"></script>
+<script defer src="host/actor_loading.js?host_revision=continuous-loading-v7" onerror="travelHostScriptFailure()"></script>
+<script defer src="host/preboot.js?host_revision=continuous-loading-v7" onerror="travelHostScriptFailure()"></script>
+</body>
+</html>
+

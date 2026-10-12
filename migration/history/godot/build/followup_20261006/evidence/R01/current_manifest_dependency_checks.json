@@ -1,0 +1,41 @@
+{
+  "packs": 9,
+  "mount_order": [
+    "core",
+    "comic",
+    "exterior",
+    "darkroom",
+    "entry",
+    "house",
+    "departure",
+    "travel",
+    "photo"
+  ],
+  "Home": [
+    "core",
+    "exterior",
+    "house"
+  ],
+  "photo": [
+    "core",
+    "photo"
+  ],
+  "departure": [
+    "core",
+    "departure"
+  ],
+  "travel": [
+    "core",
+    "departure",
+    "exterior",
+    "house",
+    "travel"
+  ],
+  "admission": {
+    "entries": 128,
+    "estimated_bytes": 262284308,
+    "resource_estimated_bytes": 260111444,
+    "runtime_reserved_bytes": 2172864
+  },
+  "scope": "declaration verified; actual empty-res dynamic mount waits formal grouped package"
+}

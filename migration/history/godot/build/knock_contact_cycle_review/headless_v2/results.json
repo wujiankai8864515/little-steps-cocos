@@ -1,0 +1,188 @@
+{
+  "checks": [
+    {
+      "check": "Cold Home load terminates",
+      "passed": true
+    },
+    {
+      "check": "Exact production core + delayed packs prepare Home",
+      "passed": true
+    },
+    {
+      "check": "Production router has enabled Home; unrelated comic skipped",
+      "passed": true
+    },
+    {
+      "check": "Production animation remains active",
+      "passed": true
+    },
+    {
+      "check": "Chosen background point is outside actual alpha hits",
+      "passed": true
+    },
+    {
+      "check": "A052 actual blank click has no strike or merit",
+      "passed": true
+    },
+    {
+      "check": "A052 transparent point within fish visual AABB exists",
+      "passed": true
+    },
+    {
+      "check": "A052 transparent pixel does not trigger fish",
+      "passed": true
+    },
+    {
+      "check": "A052 actual alpha fish target exists +1",
+      "passed": true
+    },
+    {
+      "check": "A052 root click immediately starts at original clip zero +1",
+      "passed": false
+    },
+    {
+      "check": "A052 no precontact award +1",
+      "passed": true
+    }
+  ],
+  "display": "headless",
+  "engine_time_scale": 1.0,
+  "failed": 1,
+  "fixed_fps": false,
+  "merit_signals": [],
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 239003,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3846,
+          "loaded": 943108,
+          "mount_usec": 587,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/entry.pck",
+          "request_id": "p29947331979-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1643145,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8041,
+          "loaded": 2313888,
+          "mount_usec": 267,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/comic.pck",
+          "request_id": "p29947331979-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1656624,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4377,
+          "loaded": 1107208,
+          "mount_usec": 239,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/exterior.pck",
+          "request_id": "p29947331979-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1728085,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 59626,
+          "loaded": 17019800,
+          "mount_usec": 551,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+          "request_id": "p29947331979-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "",
+  "reward_art": [],
+  "root_input_events": 6,
+  "scope": "d1bfcaa exact nine PCK input, empty res, actual App/native backend; only comic routing omitted. Real root mouse/touch with alpha hit test. Review hour 10, long ambient rest between scenarios, reward provider values 1/2/10/100 are explicit fixtures. Full 720x1280 GL if X11. Dummy audio calls, not listening; not Web/mobile/performance/user artistic approval.",
+  "sound_calls": [],
+  "traces": []
+}

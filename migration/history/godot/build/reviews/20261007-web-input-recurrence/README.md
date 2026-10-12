@@ -1,0 +1,1 @@
+本次83cf Web构建失败：稀疏物化按扩展名筛选漏既有host HTML/JS/PNG，copytree仅有许可证并保官方默认HTML，后置配置regex拒绝。此前A083已出现同类缺口，本次必须按复发处理。改为显式生产输入root+file清单，从冻结Git读取完整blob/mode逐字核全部扩展，缺文件/错字节/多余文件/模式错在任何导出前硬拒；host与许可证纳原生/Web共同snapshot。Web必须与原生snapshot相同，不能拿部分raw发。旧失败输出保留不发布。5个真实小Git反例/正例通过；待当前已提交源预检及同源重构。

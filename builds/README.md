@@ -73,3 +73,22 @@ python3 -B builds/build.py wechatgame --readback migration/reviews/READBACK.json
 资源导入、对照工具、截图、验收记录、旧候选及缓存统一放在仓库根目录的 `migration/`，不放在打包仓。打包测试位于 `tests/builds/`。记录保留原文件内容和哈希，旧路径由读取工具映射到新位置，不改写历史清单。
 
 原素材、候选与失败记录均可追溯回退；日常打包始终读取最新已保存源码。
+
+## Cocos 运行时与资料归属
+
+当前渠道使用工程固定的 Creator 3.8.8。规范游戏源码、原图、字形与存档规则属于游戏仓；完整字体原文件在游戏 source/fonts，设计参考在游戏 docs/design，均位于 Cocos assets 之外，不进入微信包。通用资源门禁和渲染能力属于框架仓。旧 Godot 目录退役后，日常打包不读取或恢复该工程；资源门槛的当前定义见 [游戏需求清单](../games/xiaoyu-cocos/docs/requirements.json)。
+
+| 运行时目录或包 | 内容 | 请求时机 |
+| --- | --- | --- |
+| 主包 main 和 loading | Boot、独立 Loading 代码、四张动画图、小字体、小清单及启动适配 | Cocos 初始化后显示完整 Loading |
+| framework_code | 同字节 travel-core 插件及微信 platform.js | Loading 首帧绘制后 |
+| runtime_data | 全量资源和场景目录、游戏 effects | 框架安装后 |
+| gameplay_code | Application 和游戏页面代码 | 数据包就绪后 |
+| login、comic、home | 当前入口与小屋所需资源 | 相应页面准备时；Home 在漫画进入动作后请求 |
+| photo_visual、wardrobe_visual、travel_visual 等 | 可选页面图片与数据 | 按页面和明确业务需求加载 |
+
+isolation.py 只处理冻结镜像及生成包：搬移 resources、从 eager jsList 移出框架、生成可 require 的 runtime-framework.js 并刷新入口哈希引用。微信 require 不具备 Node JSON 导入语义，不能把该清单改回 JSON require。startup.py 显式复制额外渠道 JS，不能假定 Creator 会复制所有自定义脚本。
+
+settings 中的 preloadBundles、实际 Bundle deps、游戏目录中的业务依赖是不同层。公共依赖先加载，可选资源不提前混入首屏；loadBundle 不等于已解析包里所有图片。每次审计检查独立 Loading、只读框架、真实 payload、重复字节和闭包预算。
+
+当前 v5 候选的主包为 1,118,016 bytes，总本地包 22,160,669 bytes，Home 后续闭包 11,595,639 bytes，native 相同 payload 额外重复字节为 0。这些数字来自生成文件清单，不是客户端下载大小或真机内存。热编译等待、mipmap 警告、冷启动与实际触感仍按 [验证记录](../migration/reviews/M20-final-local-validation.json) 和 [重复编译记录](../migration/reviews/M20-devtools-repeat-start-wait.json) 的边界处理。

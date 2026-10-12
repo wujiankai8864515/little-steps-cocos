@@ -1,0 +1,31 @@
+{
+  "boundary": "Real App _prepare_home/resource closure with explicit _ready-disabled test subclass and held-pack/recording-gate fixtures; no actual GPU/scene construction performance claim.",
+  "checks": [
+    {
+      "name": "baseline waits for unrelated Comic pack",
+      "pass": true
+    },
+    {
+      "name": "background prefetch cannot navigate or enable partial Home",
+      "pass": true
+    },
+    {
+      "name": "prefetch requests only required Home group",
+      "pass": true
+    },
+    {
+      "name": "Home pack must mount before resource batch",
+      "pass": true
+    },
+    {
+      "name": "stale pack completion cannot enqueue Home resources",
+      "pass": true
+    },
+    {
+      "name": "cancelled late batch cannot ready or fail replacement Home",
+      "pass": true
+    }
+  ],
+  "failures": 0,
+  "optimized": false
+}

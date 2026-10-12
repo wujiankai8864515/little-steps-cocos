@@ -1,0 +1,1 @@
+新衣柜及衣料组漏priority，真实App按需入口_resource_specs报错后返回空规格，直接资源load掩盖门禁失效。两组配置补priority40与on_demand，生成器对全部组强制整型priority。删除任一新组priority的反例均被拒。原1b包保留为失败证据；新配置+旧正式App函数证明返回2/1非空规格，但只有新同源正式包回归可关闭缺陷。

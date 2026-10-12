@@ -1,0 +1,34 @@
+{
+  "source_parent": "7ec6b1b17868967d8ad526912bd847f4e6791677",
+  "root_cause": "World receiver/shadow coordinates require fixed logical render surface; scaling parent CanvasItem makes actual screen coordinates diverge at small aspect ratios. Close during drag retained elevated z index.",
+  "actual_changes": [
+    "Fixed720x1280 SubViewport fitted to root with one pointer normalization",
+    "Disabled rendering on dismiss and restored rig z12",
+    "Reserved12MiB target buffers plus1MiB rig/UI and regenerated unchanged hard-gate contract"
+  ],
+  "evidence": [
+    "390x844,430x932,960x1280 actual native frames inspected",
+    "430x932 and960x1280 root Input.parse_input_event selection, cancel-choice, return, reopen passed",
+    "24 skin switches preserve same mesh/rig;8 preview-cancel;persisted provider fixture;drag-close z12;viewport/process disabled assertions passed"
+  ],
+  "limits": [
+    "Candidate overlays on exact7ba core/house/exterior; NOT final11pack cold test",
+    "Actual advertisement provider unavailable; production does not unlock",
+    "960x1280 frame is original skin after preceding cancel, despite legacy peach filename",
+    "Native Mesa GL not Web/hardware/user visual approval"
+  ],
+  "images": [
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/wardrobe_candidate_checks/peach_390x844.png",
+      "sha256": "7701b9bc16a4977f0fa897fdf5074b9f37a4721ec8ee1c0951ec9b574691723f"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/wardrobe_candidate_checks/peach_430x932.png",
+      "sha256": "bcb31c98be61db1adc69b3496de6fa6ffb39172393c3768012ea254350cc275a"
+    },
+    {
+      "path": "/workspace/scratch/3f82ff2b3f81/wardrobe_candidate_checks/peach_960x1280.png",
+      "sha256": "c913bbd638714bd6c12b2af1a2234284589a344521e0d3fe979f0a9dcc469653"
+    }
+  ]
+}

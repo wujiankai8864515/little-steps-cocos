@@ -1,0 +1,617 @@
+{
+  "schema": 1,
+  "source_message_id": "Sentinel_19748391e1e08191a710d5269690ef41",
+  "source_note": "Canonical voice checklist read by parent and forwarded verbatim on 2026-10-06; child direct read was unavailable.",
+  "supersedes": "14-item intermediate list",
+  "all_complete": false,
+  "phase1_scope": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    22,
+    23
+  ],
+  "design_scope": [
+    19,
+    20
+  ],
+  "phase2_scope": [
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "publish_process_not_a_function_item": "Chinese meaningful commit and ordinary little-steps push, remote hash/blob verification before final same-source packaging/private deployment.",
+  "items": [
+    {
+      "id": 1,
+      "requirement": "去掉书包与小余之间多余黄色像素。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/backpack_bubble_qa/combined_after"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/secondary/articulated_backpack.gd"
+      ],
+      "state_cases": "穿包/卸包/中断/旅行出发/投影",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 2,
+      "requirement": "气泡内容在主体内水平居中。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/bubble_alignment_qa/bubble_alignment_summary.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "framework/addons/travel_core/ui/speech_bubble.gd"
+      ],
+      "state_cases": "长→短/双语/换行/重复切换/resize",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 3,
+      "requirement": "旅行加载面板改成配套手绘风，保真实进度、取消返回。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_panel_style_qa/loading_evidence"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_home_bridge.gd"
+      ],
+      "state_cases": "真实进度/取消/失败/重试/晚返回",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 4,
+      "requirement": "截图中未居中的页面排版、边距校正。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_panel_style_qa/verified"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "五类奇遇选择及结果/390-720宽",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 5,
+      "requirement": "指定文字统一为截图下方气泡的字体与风格。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_panel_style_qa/verified"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_page.gd",
+        "travel/assets/travel_brush.ttf",
+        "build/fonts/travel_brush/prepare_travel_brush.py"
+      ],
+      "state_cases": "真实动态文字/offer/500/长句/缺字拒绝/许可",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 6,
+      "requirement": "五角星换为有材质、光晕和灵动闪烁的菱形四尖闪光。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/spray_video"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_home_props.gd",
+        "home/feedback/assets/returned_bag_diamond.png"
+      ],
+      "state_cases": "归来满包/开包/Home地图/旅行事件各自状态",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 7,
+      "requirement": "提示字增强实心笔画，去厚描边与金色光晕，昼夜均清楚。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/hints_after"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/feedback/wayfinding_hint_style.gd"
+      ],
+      "state_cases": "白天夜晚×灯开关/字号与fill/灯光参数",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 8,
+      "requirement": "开包等特效增强出现、运动、消散的动感。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/spray_video/motion.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_home_props.gd"
+      ],
+      "state_cases": "真时间喷发轨迹/2.7秒消散/单件收纳/剩余悬浮/退出释放",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 9,
+      "requirement": "修正向日葵转向反了，核对早、中、晚花头与茎干。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/flower_direction_qa/evidence/verification.md"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/flowers/flower_head.gd",
+        "home/flowers/flower_stem.gd"
+      ],
+      "state_cases": "早中晚/整昼连续/夜闭合ZZ/1至10花",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 10,
+      "requirement": "修复截图中模糊材质，核对源图、缩放和纹理设置。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_tent_clarity_qa/render_verified"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/assets/home_tent_hd_v1.png",
+        "travel/travel_art.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "state_cases": "1×和DPR2/原轮廓/接地/文本/导入RGBA",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 11,
+      "requirement": "地图放大，校正地图、闪光、提示语的位置与间距。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/map_props/map_props.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_home_props.gd"
+      ],
+      "state_cases": "地图日记并存/点按Q弹后打开/返回仍闪/窗口边界",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 12,
+      "requirement": "地面日记翻开两页补手绘记录和小插画，不留白。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/diary_visual_cues_qa/final_render/results.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_open_diary_art.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "state_cases": "展开中段/完全翻开/中断/昼夜/内容随书变换",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 13,
+      "requirement": "批阅确认突出显示，配高光与柔和闪动。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/diary_visual_cues_qa/final_render/results.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "未选禁用/选择启用/明确提交一次/已阅关闭/翻页销毁",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 14,
+      "requirement": "你指出的两个按钮改成现有返回按钮同套画风。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/home_header_qa/results2.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/header_tag.gd",
+        "home/home_page.gd",
+        "home/home_page.tscn"
+      ],
+      "state_cases": "昼夜/320-720宽/大功德数/设置mouse-touch/cancel/focus",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 15,
+      "requirement": "燃香提示改为“点击燃香”，在当前香炉提示位置居中。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/hints_guidance/wayfinding_hints_results.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/independent_incense.gd"
+      ],
+      "state_cases": "新短文案/围绕香炉中心/燃点后淡出/重新可用",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 16,
+      "requirement": "燃香、日记等可点击提示加悬浮引导；可用轻量小字/手绘小手指，必须融入画风。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/travel_visual_round6_qa/hints_guidance/wayfinding_hints_results.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/feedback/wayfinding_hint_style.gd",
+        "travel/travel_home_props.gd",
+        "home/independent_incense.gd"
+      ],
+      "state_cases": "低幅浮动和真材质提示/不同处理优先级/不截获输入",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 17,
+      "requirement": "小余黑瞳在当前基础放大20%，保高光、眼白边界与自然跟随。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/pupil_size_qa/render/pupil_before_after_and_four_edges.png"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/behavior/eye_geometry.gd",
+        "shaders/home_face_receiver.gdshader"
+      ],
+      "state_cases": "中立和四向/完整椭圆/高光/白域AA守卫",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 18,
+      "requirement": "修通用气泡的旧最小宽度等排版问题；主页、暗室、旅行统一公共组件与规则，验证长短文字/换行/连续切换。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/shared_speech_qa/verified_gl/"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "framework/addons/travel_core/ui/speech_bubble.gd",
+        "framework/addons/travel_core/ui/speech_bubble_shape.gd",
+        "travel/travel_page.gd",
+        "travel/travel_speech.gd",
+        "entry/opening_story_paper.gd",
+        "darkroom/helpers/doll_speech_bubble.gd",
+        "home/interaction/home_note.gd"
+      ],
+      "state_cases": "全实际调用/公共字形测量/选项/尾巴/安全区/动画禁选/CAS",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 19,
+      "requirement": "收藏页重新出创意设计：不要方正信纸+规整icon列表；自然错落、有适度动态，背景虚化突出高清藏品；标题清楚、空木牌有明确用途、页码与前后按钮符合画风。",
+      "status": "design_delivered_awaiting_review_not_game_implementation",
+      "evidence": [],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [],
+      "state_cases": "仅设计图及流转审核，不是游戏实现",
+      "pending": "设计已交，等待用户具体反馈；未改游戏"
+    },
+    {
+      "id": 20,
+      "requirement": "照片页重出详细示意图，依据最初MD、旧照片图和最新偏好，含进入/查看/返回流转。",
+      "status": "design_delivered_awaiting_review_not_game_implementation",
+      "evidence": [],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [],
+      "state_cases": "仅设计图及流转审核，不是游戏实现",
+      "pending": "设计已交，等待用户具体反馈；未改游戏"
+    },
+    {
+      "id": 21,
+      "requirement": "自敲动作节奏更快、更干脆，保完整接触与回弹。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/strike_feedback_qa/"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/home_world.gd"
+      ],
+      "state_cases": "原速接触和回弹/连续点击/不把首帧耗时算入新动作/自动功德频率不变",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 22,
+      "requirement": "敲击旁三条漫画冲击线加入击中同步的短促迸发、伸缩与消散。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/strike_feedback_qa/"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/action_marks.gd",
+        "home/home_world.gd"
+      ],
+      "state_cases": "contact同帧外迸/回弹/消散/取消无残留",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 23,
+      "requirement": "旅途地图奇遇提示更醒目、可点，用菱形闪光/轻量引导，区分待选择与已处理，不强迫点击。",
+      "status": "phase1_deployed_verified_phase2_regression_pending",
+      "evidence": [
+        "/workspace/scratch/3f82ff2b3f81/shared_speech_qa/verified_gl/"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "未揭示/待选/已手选/AI已处理/热区与连续脉动",
+      "pending": "第二阶段同源回归；用户视觉接受未确认",
+      "phase1_source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+      "phase1_combined_evidence": "travel_visual_round6_2a123d9_qa/requirements_32_verified.json"
+    },
+    {
+      "id": 24,
+      "requirement": "真实路线前进：固定多个地点和路牌，小余沿路移动、到站反馈；不能同一房屋反复换地名伪装行进。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "固定地标名与位置/前中后连续行进到站/恢复确定性",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认",
+      "scope_note": "11个固定本地点、10段连续路线；旧随机地点仅作故事背景，model/store/schema未改。"
+    },
+    {
+      "id": 25,
+      "requirement": "主页背包结构对齐你认可的旅行查看页背法，包体比例、肩带绕鳍和遮挡一致。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/approved_backpack/comparison_evidence.json",
+        "design/backpack_layers/provenance.json",
+        "build/reviews/2026-10-06-layered-backpack-alpha-hit.md",
+        "build/reviews/2026-10-06-worn-backpack-contour-projection.md"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "home/secondary/articulated_backpack.gd",
+        "travel/assets/home_worn_bag_pixels.png",
+        "home/home_world.gd",
+        "home/room_props_controller.gd",
+        "home/interaction/alpha_masks/backpack_parts.res"
+      ],
+      "state_cases": "同一Home actor/包款一致/绕鳍前后遮挡/拖拽与连续出发",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认",
+      "scope_note": "内置imagegen基于认可旅行图参考编辑的新包分层候选，保原Home actor与鳍；非原图逐像素提取，尚未经用户视觉认可。透明UV命中与5层alpha日/月/灯轮廓投影已实现，抬起/卸包/出发同调用清理。"
+    },
+    {
+      "id": 26,
+      "requirement": "先把当前旅途场景精调动态、分层，不急着扩场景数量，不整幅背景同摇。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "独立层而非整图摇/重进释放",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认"
+    },
+    {
+      "id": 27,
+      "requirement": "拆出独立钟体与钟舌，自然晃动、偶尔同步钟响，遵静音和音量设置。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "钟体钟舌接触/稀疏声音/音量静音后台/防叠播",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认"
+    },
+    {
+      "id": 28,
+      "requirement": "旅途场景元素、动态与光影做成可配置、可复用效果，以后配景不反复改实现。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "配置资源节点与参数/无需改实现换场景/预算",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认"
+    },
+    {
+      "id": 29,
+      "requirement": "枫叶/叶片较频繁自然随风动，带弹性惯性、错相，不整组机械摆。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "弹性阻尼/错相/可见风动/暂停",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认"
+    },
+    {
+      "id": 30,
+      "requirement": "天空云动态移动，节奏自然。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "state_cases": "云层运动与自然速度/释放",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认"
+    },
+    {
+      "id": 31,
+      "requirement": "共享主页昼夜时间，呈现日升日落、晨昏、可见丁达尔光束与方向一致的投影。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "build/travel_scene_runtime/verification.json",
+        "build/travel_scene_runtime/portal_refinement/pixel_difference.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd",
+        "travel/travel_home_bridge.gd"
+      ],
+      "state_cases": "共享时钟早午昏夜/丁达尔方向强度/投影一致",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认",
+      "scope_note": "复用App/Home同一时钟；树隙与檐口四处光束及阴影随太阳同向，文字区域保护。"
+    },
+    {
+      "id": 32,
+      "requirement": "清理或拆层背景中烘死的强光、光束与方向性阴影，给动态光照留空间，保手绘材质。",
+      "status": "implemented_component_verified_combined_pending",
+      "evidence": [
+        "games/travel_woodfish/design/travel_scene_layers/asset_audit.json"
+      ],
+      "final_combined_verified": false,
+      "user_visual_accepted": false,
+      "production_files": [
+        "travel/assets/travel_map_plate_v5.png",
+        "travel/assets/travel_scene_layers_v1.png"
+      ],
+      "state_cases": "中性原画层/无双重烘焙光/保材质与构图",
+      "pending": "第二阶段同源原生、真实动态挂载及资源预算复验；用户视觉接受未确认",
+      "scope_note": "清理景物强定向光束/硬方向影并拆独立层；受保护原角色、气泡、标题、牌子保留原像素及环境明暗，不称全像素去烘焙。"
+    }
+  ],
+  "verification_publication": "This source ledger records evidence available at source freeze. Final same-source combined results are emitted beside the frozen source as QA/requirements_32_verified.json, tied by full commit and source snapshot; source is not mutated by verification.",
+  "phase2_integration_note": "第二阶段独立于已部署2a首阶段。19/20仅设计，all_complete持续false。最终同源证据写交付QA，不在冻结后改源。"
+}

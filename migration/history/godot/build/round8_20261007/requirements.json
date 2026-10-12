@@ -1,0 +1,655 @@
+{
+  "schema": 1,
+  "baseline": "197ee6c557151d7ce42ebbfad80810a9c1aaf28e",
+  "source": "Sentinel_800c28cba2ac81918640882e48f25f58 + latest voice HUD supplement",
+  "effective_count": 23,
+  "withdrawn": [
+    "Ten font choices cancelled; use existing enquiry cue style",
+    "Bell sound fault withdrawn after user unmuted; do not change clock/bell",
+    "Observation-dependent travel completion remains cancelled"
+  ],
+  "release_rules": [
+    "Each substantive fix separate commit; documentation is not functionality",
+    "Complete related group before build; remote Git verification before formal package",
+    "No undeclared candidate PCK in formal QA; dependency scripts also inspect",
+    "Actual source/resources/frame/input evidence; no empty commit completion"
+  ],
+  "rows": [
+    {
+      "id": "R8-01",
+      "requirement": "公共气泡布局与横向颤抖",
+      "group": "bubble",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "0f537b1"
+      ],
+      "actual_diff": [
+        {
+          "commit": "0f537b1d5e4b2bcad81410eed25ebdf2fe66b820",
+          "production_files": [
+            "framework/addons/travel_core/ui/speech_bubble.gd",
+            "games/travel_woodfish/project/home/interaction/character_bubble_anchor.gd",
+            "games/travel_woodfish/project/travel/travel_home_bridge.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-02",
+      "requirement": "确认出发云雾复用暗室净化",
+      "group": "departure",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "3b2a4ee",
+        "ef5f727"
+      ],
+      "actual_diff": [
+        {
+          "commit": "3b2a4ee580a953d2c9667a92ed216c9ece960d28",
+          "production_files": [
+            "games/travel_woodfish/project/home/home_departure_visual.gd",
+            "games/travel_woodfish/project/home/home_page.gd"
+          ]
+        },
+        {
+          "commit": "ef5f727814b274a37bbcb35d096666a9341a67a0",
+          "production_files": [
+            "games/travel_woodfish/project/config/resource_groups.json",
+            "games/travel_woodfish/project/config/resource_pack_manifest.json"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-03",
+      "requirement": "燃香及日记提示复用询问文字样式",
+      "group": "home_prompts",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "8e48a76"
+      ],
+      "actual_diff": [
+        {
+          "commit": "8e48a76520107dba174082515252300ce8f6b8fa",
+          "production_files": [
+            "games/travel_woodfish/project/home/feedback/bitmap_hint.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-04",
+      "requirement": "所有交互提示统一错落四尖菱光",
+      "group": "home_prompts",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "0c07a29",
+        "6b69bf1",
+        "c18a4da",
+        "6d96a5a"
+      ],
+      "actual_diff": [
+        {
+          "commit": "0c07a299463a3986eadaa2140b92c461214fd493",
+          "production_files": [
+            "games/travel_woodfish/project/home/feedback/prompt_sparkles.gd",
+            "games/travel_woodfish/project/home/feedback/wayfinding_hint_style.gd"
+          ]
+        },
+        {
+          "commit": "6b69bf15304394af365ea180a5323c3b6c545ff7",
+          "production_files": [
+            "games/travel_woodfish/project/photo/photo_page.gd",
+            "games/travel_woodfish/project/wardrobe/wardrobe_page.gd"
+          ]
+        },
+        {
+          "commit": "c18a4da16e11f5f76908ec63d7048ed41a8ce2a1",
+          "production_files": [
+            "games/travel_woodfish/project/home/feedback/prompt_sparkles.gd"
+          ]
+        },
+        {
+          "commit": "6d96a5a71e5a1e9bb2a1ffe4d784aac42652fff0",
+          "production_files": [
+            "games/travel_woodfish/project/home/feedback/prompt_sparkles.gd",
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-05",
+      "requirement": "归来开包云朵移到背包前景",
+      "group": "harvest",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "23d0dcd"
+      ],
+      "actual_diff": [
+        {
+          "commit": "23d0dcd64a945cc9fa9a42348febf05620c9a8f5",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_home_props.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-06",
+      "requirement": "奖励靠包上方扇形错落悬浮",
+      "group": "harvest",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "3fa6572"
+      ],
+      "actual_diff": [
+        {
+          "commit": "3fa65720e3099aaf565411b50a2874a0df6a3e81",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_home_props.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-07",
+      "requirement": "收齐奖励后慢贝塞尔回挂背包",
+      "group": "harvest",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "d306d66"
+      ],
+      "actual_diff": [
+        {
+          "commit": "d306d6698259273de7828be78fdd131d54dbd91c",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_home_props.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-08",
+      "requirement": "收藏日记斜牌文字居中",
+      "group": "collection",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "a25d5fb"
+      ],
+      "actual_diff": [
+        {
+          "commit": "a25d5fbb629442edd1c9e681ea6885a1da761372",
+          "production_files": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-09",
+      "requirement": "收藏底排所有状态不显示名称",
+      "group": "collection",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "774982b"
+      ],
+      "actual_diff": [
+        {
+          "commit": "774982bb3645c0611990edea6348fb5f6ff3ef34",
+          "production_files": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-10",
+      "requirement": "收藏详情图名简介同一纸板",
+      "group": "collection",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "d06fcdf"
+      ],
+      "actual_diff": [
+        {
+          "commit": "d06fcdfd719160802c6d78fc43f566bc1a9bd6d8",
+          "production_files": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-11",
+      "requirement": "灵物分类毛笔字配实物图标",
+      "group": "collection",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "aca5724"
+      ],
+      "actual_diff": [
+        {
+          "commit": "aca57242e066d8b4117772a4a99cdf591028bf82",
+          "production_files": [
+            "games/travel_woodfish/project/travel/treasure_gallery.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-12",
+      "requirement": "照片墙可见宽柔丁达尔光束",
+      "group": "photo",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "dc85a61"
+      ],
+      "actual_diff": [
+        {
+          "commit": "dc85a61030eaa9cb7f0b531e43a3240a7e7e860f",
+          "production_files": [
+            "games/travel_woodfish/project/photo/photo_material.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-13",
+      "requirement": "照片藤蔓内容裁剪与离屏停算",
+      "group": "photo",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "09599e7"
+      ],
+      "actual_diff": [
+        {
+          "commit": "09599e7f57f3d510824dfa3359051333ff426b6a",
+          "production_files": [
+            "games/travel_woodfish/project/photo/photo_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-14",
+      "requirement": "旅行落叶多种贝塞尔自然飘落",
+      "group": "travel",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "33009ab"
+      ],
+      "actual_diff": [
+        {
+          "commit": "33009abbb274e36e36b05ff01d097fa6a4971a21",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-15",
+      "requirement": "奇遇全屏柔光束聚焦真实热区",
+      "group": "travel",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "eab79a9"
+      ],
+      "actual_diff": [
+        {
+          "commit": "eab79a97798308757beb3e8af41421e9119ecebc",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-16",
+      "requirement": "实际到站生成手绘脚印",
+      "group": "travel",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "ae1e54b"
+      ],
+      "actual_diff": [
+        {
+          "commit": "ae1e54b88474240cdcf9b53bdb2ec9dfa210087a",
+          "production_files": [
+            "games/travel_woodfish/project/travel/assets/travel_footprint_ink_v1.png",
+            "games/travel_woodfish/project/travel/assets/travel_footprint_ink_v1.png.import",
+            "games/travel_woodfish/project/travel/travel_page.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-17",
+      "requirement": "旅行常态宽柔丁达尔光束",
+      "group": "travel",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "5d98688"
+      ],
+      "actual_diff": [
+        {
+          "commit": "5d986886cbf68e217a5a1996e56e14cef208e345",
+          "production_files": [
+            "games/travel_woodfish/project/travel/travel_scene_config.gd",
+            "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-18",
+      "requirement": "衣柜点击只内衣布轻反馈",
+      "group": "wardrobe",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "911d43c"
+      ],
+      "actual_diff": [
+        {
+          "commit": "911d43cecad2845780839286a9865855e103733b",
+          "production_files": [
+            "games/travel_woodfish/project/home/home_page.gd",
+            "games/travel_woodfish/project/wardrobe/wardrobe_material.gd",
+            "games/travel_woodfish/project/wardrobe/wardrobe_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-19",
+      "requirement": "衣柜可见窗光丁达尔",
+      "group": "wardrobe",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "0e9ac05"
+      ],
+      "actual_diff": [
+        {
+          "commit": "0e9ac055fc66342b2fdeae95fd65def1ce1175b5",
+          "production_files": [
+            "games/travel_woodfish/project/wardrobe/wardrobe_material.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-20",
+      "requirement": "桃花真实点击试穿无反应",
+      "group": "wardrobe",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "b7ec44e"
+      ],
+      "actual_diff": [
+        {
+          "commit": "b7ec44ee1b4d59e272e3227898e48dd008d7d311",
+          "production_files": [
+            "games/travel_woodfish/project/wardrobe/wardrobe_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-21",
+      "requirement": "衣柜两块标签视觉居中",
+      "group": "wardrobe",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "24854a4"
+      ],
+      "actual_diff": [
+        {
+          "commit": "24854a4d6dabb5571a3f5755f12db7418f2057b5",
+          "production_files": [
+            "games/travel_woodfish/project/wardrobe/wardrobe_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-22",
+      "requirement": "挂布固定挂点自然风动",
+      "group": "wardrobe",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "911d43c"
+      ],
+      "actual_diff": [
+        {
+          "commit": "911d43cecad2845780839286a9865855e103733b",
+          "production_files": [
+            "games/travel_woodfish/project/home/home_page.gd",
+            "games/travel_woodfish/project/wardrobe/wardrobe_material.gd",
+            "games/travel_woodfish/project/wardrobe/wardrobe_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    },
+    {
+      "id": "R8-23",
+      "requirement": "功德HUD增数时框不抖",
+      "group": "home_prompts",
+      "status": {
+        "code": "integrated_substantive_candidate",
+        "resources": "source_bindings_closed_pending_official_pack",
+        "candidate_runtime": "group_evidence_available_not_formal",
+        "formal_cold": "pending_same_source_build",
+        "deployment": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "commits": [
+        "74c7ebd"
+      ],
+      "actual_diff": [
+        {
+          "commit": "74c7ebda9470bd49419fbd8f6564f8e3d80a6554",
+          "production_files": [
+            "games/travel_woodfish/project/home/header_tag.gd",
+            "games/travel_woodfish/project/home/home_page.gd"
+          ]
+        }
+      ],
+      "verification_boundary": "Do not count a commit or declared shader as visual acceptance; source/resource/actual entrance/multi-frame/side effects/formal pack remain separate."
+    }
+  ],
+  "integration_head_before_record": "089436d0460467cf08e2b07896527f39eeab4942",
+  "formal_pack_count_expected": 11,
+  "admission": {
+    "startup_entries": 94,
+    "startup_estimated_bytes": 190976480,
+    "gameplay_entries": 114,
+    "gameplay_estimated_bytes": 252053776,
+    "max_entries": 128,
+    "max_estimated_bytes": 268435456
+  },
+  "explicit_open_checks": [
+    "Final no-overlay all entrances and real travel-return bubble, wide/tall screens",
+    "Home group corrected tall-input fixture previously unverified under load",
+    "Actual shade visibility remains user aesthetic approval",
+    "Real advertisement provider unavailable; preview not fake unlock",
+    "Web/hardware/audio/storage not covered by MesaGL"
+  ]
+}

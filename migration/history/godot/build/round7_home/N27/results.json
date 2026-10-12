@@ -1,0 +1,288 @@
+{
+  "checks": [
+    {
+      "label": "actual cold Home prepare terminates",
+      "msec": 13626,
+      "pass": true
+    },
+    {
+      "label": "production service seeds isolated trip fixture",
+      "msec": 14743,
+      "pass": true
+    },
+    {
+      "label": "returned trip exposes diary cue",
+      "msec": 18234,
+      "pass": true
+    },
+    {
+      "label": "diary bitmap width 168 down from 210",
+      "msec": 18234,
+      "pass": true
+    },
+    {
+      "label": "incense bitmap world width 96 down from 118",
+      "msec": 18234,
+      "pass": true
+    },
+    {
+      "label": "hint does not take input",
+      "msec": 18234,
+      "pass": true
+    },
+    {
+      "label": "real full bag input opens rewards",
+      "msec": 19742,
+      "pass": true
+    },
+    {
+      "label": "two reused cloud sprites replace 32 hard jets",
+      "msec": 19742,
+      "pass": true
+    },
+    {
+      "label": "Home has not mounted darkroom",
+      "msec": 19743,
+      "pass": true
+    },
+    {
+      "label": "finite clouds fully expire",
+      "msec": 22350,
+      "pass": true
+    },
+    {
+      "label": "unselected floating rewards remain uncollected",
+      "msec": 22350,
+      "pass": true
+    },
+    {
+      "label": "Bezier completes exactly once for trip_1_91357:reward:0",
+      "msec": 23621,
+      "pass": true
+    },
+    {
+      "label": "Bezier completes exactly once for trip_1_91357:reward:1",
+      "msec": 25049,
+      "pass": true
+    },
+    {
+      "label": "repeated input gives no duplicate reward",
+      "msec": 25049,
+      "pass": true
+    },
+    {
+      "label": "all flight visuals cleaned",
+      "msec": 25049,
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 1005119,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3203,
+          "loaded": 943108,
+          "mount_usec": 352,
+          "pack_id": "entry",
+          "pack_path": "/tmp/r7_home_n27/native_packs/packs/entry.pck",
+          "request_id": "p30349985162-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2488449,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 10361,
+          "loaded": 2313888,
+          "mount_usec": 376,
+          "pack_id": "comic",
+          "pack_path": "/tmp/r7_home_n27/native_packs/packs/comic.pck",
+          "request_id": "p30349985162-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2509314,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 5330,
+          "loaded": 1493728,
+          "mount_usec": 284,
+          "pack_id": "exterior",
+          "pack_path": "/tmp/r7_home_n27/native_packs/packs/exterior.pck",
+          "request_id": "p30349985162-e1-r3",
+          "state": "ready",
+          "total": 1493728,
+          "verified_sha256": "80bf8d08d8496a6ce3b889730ce44803ee19959fce0c39e4173642ffbf57a178"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2585521,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 61716,
+          "loaded": 17019800,
+          "mount_usec": 882,
+          "pack_id": "house",
+          "pack_path": "/tmp/r7_home_n27/native_packs/packs/house.pck",
+          "request_id": "p30349985162-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "samples": [
+    {
+      "age": 0.45,
+      "clouds": [
+        {
+          "age": 0.45,
+          "alpha": 0.579071044921875,
+          "position": "(378.3023, 958.3)",
+          "rotation": 0.0342489931188292,
+          "width": 147.841533660889
+        },
+        {
+          "age": 0.27,
+          "alpha": 0.1812744140625,
+          "position": "(347.8333, 962.98)",
+          "rotation": 0.0587277763434976,
+          "width": 119.539664428711
+        }
+      ],
+      "inventory": 0
+    },
+    {
+      "age": 1.35,
+      "clouds": [
+        {
+          "age": 1.35,
+          "alpha": 0.66,
+          "position": "(381.5454, 934.9)",
+          "rotation": 0.0581093712170013,
+          "width": 197.506809234619
+        },
+        {
+          "age": 1.17,
+          "alpha": 0.4,
+          "position": "(343.3432, 939.58)",
+          "rotation": 0.031977482699504,
+          "width": 155.214567993164
+        }
+      ],
+      "inventory": 0
+    },
+    {
+      "age": 2.65,
+      "clouds": [
+        {
+          "age": 2.65,
+          "alpha": 0.241121243302939,
+          "position": "(368.1554, 901.1)",
+          "rotation": -0.0253339843837384,
+          "width": 278.440517425537
+        },
+        {
+          "age": 2.47,
+          "alpha": 0.225828562296695,
+          "position": "(330.2896, 905.78)",
+          "rotation": -0.0557667351678025,
+          "width": 226.320203979492
+        }
+      ],
+      "inventory": 0
+    },
+    {
+      "expected_rewards": 2,
+      "inventory": 2
+    }
+  ],
+  "scope": "Actual candidate core+formal delayed PCK; empty res; production App cold Home with isolated returned fixture, original bitmap cues and deterministic cloud phase sampling after real opening; repeated root input reward flights; native Mesa GL, not Web/user acceptance."
+}

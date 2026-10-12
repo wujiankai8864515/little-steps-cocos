@@ -1,0 +1,108 @@
+{
+  "source_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+  "rows": [
+    {
+      "canonical_id": "A006",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A009",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A010",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A035",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "真实root输入+GL限定证据；A035追物方向反转确证",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "部分符合，方向缺陷待修",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A053",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A054",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    },
+    {
+      "canonical_id": "A066",
+      "code": "生产源码与正式source_files匹配；相关逻辑已读",
+      "resource": "40个实际PCK成员重读hash，相关来源RGBA/mask已核；原Home PNG缺失边界保留",
+      "actual_native_pack": "选定状态已运行并查看；未发现该限定范围新明确缺陷",
+      "visual": "已看1x软件GL；艺术自然程度与用户认可未验",
+      "overall": "限定证据已补，不能标整体用户验收",
+      "deployed": "未变更，本轮无部署检查",
+      "Web_user": "未验",
+      "whole_topic_accepted": false
+    }
+  ],
+  "confirmed_defects": [
+    {
+      "id": "A035-gaze-direction-inversion",
+      "runtime": "gl_v1/08_gaze_down.png + results.json same snapshot",
+      "minimal_repro": "clamp_repro/results.json",
+      "root_cause": "eye_geometry.clamp_offset nearest Euclidean projection into slanted safe domain reverses requested vertical component",
+      "requested": [
+        3.760847,
+        3.149987
+      ],
+      "actual": [
+        2.1949462890625,
+        -0.308029174804688
+      ],
+      "fix_recommendation": "Preserve latest pupil radii and full-pupil safe domain; clamp along origin-to-request ray; verify direction, damping, complete pupils, live four-way drag and ordinary states",
+      "fixed": false
+    }
+  ],
+  "fixture_failures": [
+    {
+      "path": "gl_grips/summary.json",
+      "cause": "Hardcoded fin point did not choose fin alpha",
+      "corrected_run": "gl_fin/summary.json",
+      "product_failure": false
+    }
+  ]
+}

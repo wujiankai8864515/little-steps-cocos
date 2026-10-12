@@ -1,0 +1,96 @@
+{
+  "source_and_packed_manifest_identical": true,
+  "manifest_sha256": "1887917dda7dbf78600b4dbdf9e08a30f2a131093a602f0793ff6e0c64dcda5e",
+  "approval_record": {
+    "revision": "four_scenes_20261005_v1",
+    "source": "Sentinel_d0d0b4b85b308191a63820f2a389637a — 2026-10-05T14:38:50+08:00 用户“可以”，回应四幕正式分镜及四句原文确认",
+    "scope": "four_scene_script_and_exact_copy; art execution delegated within approved IP/direction",
+    "individual_generated_panels_seen_by_user": false
+  },
+  "panels": [
+    {
+      "id": "1_arrival",
+      "copy": "借住一下",
+      "alt": "小余背着背包来到小屋门口，轻轻探进门。",
+      "image": "res://entry/assets/comic/comic_paper_v2.png"
+    },
+    {
+      "id": "2_drink",
+      "copy": "先喝口水",
+      "alt": "小余用鳍捧起水碗，碗沿靠近红色嘴巴，安心喝水。",
+      "image": "res://entry/assets/comic/comic_paper_v2.png"
+    },
+    {
+      "id": "3_luck",
+      "copy": "送你一点虚拟好运",
+      "alt": "小余待在柔和暖光里，向玩家送来一点虚拟好运。",
+      "image": "res://entry/assets/comic/comic_paper_v2.png"
+    },
+    {
+      "id": "4_sleep",
+      "copy": "剩下的，睡醒再说",
+      "alt": "小余盖好蓝色毯子，闭眼睡着，房间安静下来。",
+      "image": "res://entry/assets/comic/comic_paper_v2.png"
+    }
+  ],
+  "presentation": {
+    "mode": "single_paper_sequential_reveal",
+    "reading_order": "left_to_right_then_down",
+    "page_size": [
+      1024,
+      1536
+    ],
+    "replay": "every_entry",
+    "completion": "all_panels_revealed_then_hold_then_user_tap",
+    "image": "res://entry/assets/comic/comic_paper_v2.png"
+  },
+  "sound_effects": {
+    "puff": [
+      {
+        "path": "entry/assets/comic/audio/paper_puff_v2.wav.import",
+        "pack": "packs/comic.pck",
+        "bytes": 159,
+        "sha256": "383f4df74260e8bb203e293e632d9a04c49e97c8dea2f4c5b886e49d35e6cdb3"
+      },
+      {
+        "path": ".godot/imported/paper_puff_v2.wav-cfef99e114b7e09d1a37b158a118053b.sample",
+        "pack": "packs/comic.pck",
+        "bytes": 1831,
+        "sha256": "8dfd34f87d5fc304622e3f77061222ffe3bbe61bf33942fed0cdd9018f223eb5"
+      }
+    ],
+    "drink": [
+      {
+        "path": "entry/assets/comic/audio/water_sip_v2.wav.import",
+        "pack": "packs/comic.pck",
+        "bytes": 158,
+        "sha256": "7daaaa160608167cfca24b5ae0f36371b837ceba1aa94b7b82102b03598af02d"
+      },
+      {
+        "path": ".godot/imported/water_sip_v2.wav-c8d1b3026c8cf7df0770b5e7c347919d.sample",
+        "pack": "packs/comic.pck",
+        "bytes": 3087,
+        "sha256": "f799bf731476ae723ef5d85de44cbc20b9fdd3845d7d5fcf5f1f74000eac253d"
+      }
+    ],
+    "joy": [
+      {
+        "path": "entry/assets/comic/audio/tiny_joy_v2.wav.import",
+        "pack": "packs/comic.pck",
+        "bytes": 157,
+        "sha256": "f73cae1481435693b5117ab5533a14d59831497d34691cf2c155a5f58754e49e"
+      },
+      {
+        "path": ".godot/imported/tiny_joy_v2.wav-0db894d10b543d98ddc0265943ec75c8.sample",
+        "pack": "packs/comic.pck",
+        "bytes": 3791,
+        "sha256": "ed77bc8f685012763e69c24f5fe8f19e76efcd31278f5f316fae5681fc32e03d"
+      }
+    ]
+  },
+  "limits": [
+    "Approval citation is a preserved source-manifest record; original user message was not independently retrieved by this read-only worker.",
+    "The manifest explicitly states individual generated panels were not seen by the user. Artwork acceptance remains open.",
+    "This audit did not listen to audio or run browser autoplay/focus checks."
+  ]
+}

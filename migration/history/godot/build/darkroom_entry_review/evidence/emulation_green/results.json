@@ -1,0 +1,263 @@
+{
+  "captures": [
+    {
+      "attack_time": -1.0,
+      "elapsed": 9.25107866666667,
+      "misfortune": 100.0,
+      "name": "01_after_return_cancel_emulation",
+      "state": "active"
+    }
+  ],
+  "checks": [
+    {
+      "check": "D01 actual X11 native GL renderer",
+      "passed": true
+    },
+    {
+      "check": "D01 actual requested viewport",
+      "passed": true
+    },
+    {
+      "check": "D01 delayed darkroom unavailable in core",
+      "passed": true
+    },
+    {
+      "check": "D01 actual App cold Home ready",
+      "passed": true
+    },
+    {
+      "check": "D01 Home does not mask cold darkroom dependency",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated cancellation Home alpha doll reachable",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated cancellation actual invitation held",
+      "passed": true
+    },
+    {
+      "check": "D01 first positive-alpha visible frame already has prepared lighting and draw",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated cancellation actual confirmation enters room",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated cancellation route enables input only after real draw readiness",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated real mouse return drag-out does not navigate",
+      "passed": true
+    },
+    {
+      "check": "D03 isolated canceled touch alone does not navigate",
+      "passed": true
+    },
+    {
+      "check": "D03 emulated mouse after canceled touch must not navigate",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "exits": [],
+  "failed": 0,
+  "first_visible": {
+    "alpha": 0.517228126525879,
+    "draw_calls": 64,
+    "draw_confirmed": true,
+    "draw_revision": 5,
+    "lamp_weight": 0.0,
+    "lighting": {
+      "afterglow_energy": 0.0,
+      "ambient_color": "(0.497488, 0.533112, 0.56436)",
+      "cast_dir": "(0.45713, 0.8894)",
+      "cot_e": 0.5832122963412,
+      "daylight": 1.0,
+      "elevation": 1.04281219051897,
+      "game_hour": 10.0,
+      "moon_cast_dir": "(-0.633176, 0.774008)",
+      "moon_energy": 0.0,
+      "moon_phase": 1.0,
+      "moon_screen_position": "(228.0, 95.0)",
+      "morning_weight": 0.352,
+      "night": 0.0,
+      "night_scheduled": false,
+      "noon_weight": 0.437601639638911,
+      "solar_phase": 0.375,
+      "sun_azimuth": -19.5168550506196,
+      "sun_color": "(1.0, 0.94282, 0.821264)",
+      "sun_energy": 0.543776426306117,
+      "sun_screen_position": "(167.0, 34.08964)",
+      "sun_vector": "(-0.230299, -0.448073, 0.863824)",
+      "sunset_weight": 0.0
+    },
+    "ready": true,
+    "visual_revision": 5,
+    "world_ready": true
+  },
+  "input_events": 12,
+  "layouts": [],
+  "lighting": [],
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 5,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 5,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "darkroom"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 925228,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3162,
+          "loaded": 943108,
+          "mount_usec": 435,
+          "pack_id": "entry",
+          "pack_path": "/workspace/shared/darkroom_button_candidate_v1/native_packs/packs/entry.pck",
+          "request_id": "p30836524429-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2387426,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 7962,
+          "loaded": 2313888,
+          "mount_usec": 442,
+          "pack_id": "comic",
+          "pack_path": "/workspace/shared/darkroom_button_candidate_v1/native_packs/packs/comic.pck",
+          "request_id": "p30836524429-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2404951,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3706,
+          "loaded": 1107208,
+          "mount_usec": 296,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/shared/darkroom_button_candidate_v1/native_packs/packs/exterior.pck",
+          "request_id": "p30836524429-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2474084,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 56434,
+          "loaded": 17019800,
+          "mount_usec": 572,
+          "pack_id": "house",
+          "pack_path": "/workspace/shared/darkroom_button_candidate_v1/native_packs/packs/house.pck",
+          "request_id": "p30836524429-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 19791127,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 15665,
+          "loaded": 4782656,
+          "mount_usec": 425,
+          "pack_id": "darkroom",
+          "pack_path": "/workspace/shared/darkroom_button_candidate_v1/native_packs/packs/darkroom.pck",
+          "request_id": "p30836524429-e1-r5",
+          "state": "ready",
+          "total": 4782656,
+          "verified_sha256": "089fe10bc3fecac765d005b6917a879e9cec5364da873eb45102ddb72d25a7b3"
+        },
+        "epoch": 1,
+        "pack_id": "darkroom",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "TEST ONLY candidate, empty res, exact candidate c242-derived PCKs, real App/router/root input, native Mesa GL. Clock review hour controls time only. Existing c242 base helpers reused; opening comic omitted. No Web, audio listening or device touch-feel claim.",
+  "viewport": [
+    720,
+    1558
+  ]
+}

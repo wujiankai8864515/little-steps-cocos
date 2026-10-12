@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "name": "Repeat confirm coalesces one preparation",
+      "pass": true
+    },
+    {
+      "name": "Slow preparation does not depart or swap actor",
+      "pass": true
+    },
+    {
+      "name": "Cancel rejects late success without trip or visual",
+      "pass": true
+    },
+    {
+      "name": "Offline failure keeps no trip and presents retry",
+      "pass": true
+    },
+    {
+      "name": "Exit and reenter reject the previous generation",
+      "pass": true
+    },
+    {
+      "name": "Successful retry commits one trip and starts view",
+      "pass": true
+    },
+    {
+      "name": "Exact approved traveler texture is used",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 0.0",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 0.0",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 0.45",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 0.45",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 0.76",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 0.76",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 1.3",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 1.3",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 2.2",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 2.2",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 3.75",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 3.75",
+      "pass": true
+    },
+    {
+      "name": "One actor only at 4.6",
+      "pass": true
+    },
+    {
+      "name": "View does not mutate merit/trip at 4.6",
+      "pass": true
+    },
+    {
+      "name": "Interrupt releases view nodes and texture references",
+      "pass": true
+    },
+    {
+      "name": "No native actor, bag or old projection remains",
+      "pass": true
+    },
+    {
+      "name": "Reenter preserves committed trip without replaying departure",
+      "pass": true
+    },
+    {
+      "name": "Original actor identity and resource release are preserved",
+      "pass": true
+    },
+    {
+      "name": "Returned trip restores the normal original actor and projections",
+      "pass": true
+    },
+    {
+      "name": "Return never recreates the ephemeral departure view",
+      "pass": true
+    },
+    {
+      "name": "Natural4.8s finish releases outgoing actor",
+      "pass": true
+    },
+    {
+      "name": "Same completion frame clears farewell glints and reveals paper",
+      "pass": true
+    },
+    {
+      "name": "Same completion frame enables paper grounding",
+      "pass": true
+    },
+    {
+      "name": "A long interrupted frame cannot restart a completed departure",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "renderer": "headless",
+  "scope": "Focused production view and async lifecycle, mocked network outcome; actual cold PCK test separate"
+}

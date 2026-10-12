@@ -1,0 +1,94 @@
+{
+  "boundary": "Deterministic mocked host APIs: readiness/cancel/failure behavior, no real browser/network/render timing.",
+  "results": [
+    {
+      "case": "fast_ready_after_two_paints",
+      "hidden": false,
+      "elapsed_ms": 112,
+      "metrics": {
+        "shell_initialized_ms": 0,
+        "shell_paint_opportunity_ms": 32,
+        "poster_decode_settled_ms": null,
+        "actor_decode_settled_ms": 16,
+        "actor_first_draw_ms": 0,
+        "paint_opportunity_ms": 48,
+        "engine_script_start_ms": 48,
+        "engine_script_ready_ms": 48,
+        "engine_start_begin_ms": 48,
+        "engine_started_ms": 48,
+        "godot_ready_signal_ms": 48,
+        "preboot_hidden_ms": null,
+        "first_contentful_paint_ms": null,
+        "status": "preboot",
+        "stage": "login_ready",
+        "stages": [
+          {
+            "stage": "manifest",
+            "at_ms": 48
+          },
+          {
+            "stage": "engine_script",
+            "at_ms": 48
+          },
+          {
+            "stage": "download",
+            "at_ms": 48
+          },
+          {
+            "stage": "engine_boot",
+            "at_ms": 48
+          },
+          {
+            "stage": "login_download",
+            "at_ms": 48
+          },
+          {
+            "stage": "login_ready",
+            "at_ms": 48
+          }
+        ],
+        "progress": {
+          "current": 38,
+          "total": 38,
+          "observed_high_water": 38,
+          "paused": false,
+          "display_fraction": 0.99,
+          "mode": "determinate",
+          "fraction": 0.99,
+          "downloads_complete": true,
+          "complete": false
+        },
+        "login_ready_signal_ms": 48,
+        "ledger": {
+          "pack_ids": [
+            "core",
+            "entry"
+          ],
+          "engine_total": 30,
+          "login_total": 8,
+          "total": 38,
+          "engine_loaded": 30,
+          "login_loaded": 8,
+          "observed_high_water": 38,
+          "retries": 0,
+          "complete": false
+        },
+        "actor": {
+          "first_draw_ms": 0
+        }
+      }
+    },
+    {
+      "case": "slow_login_stays_covered_then_reveals",
+      "pass": true
+    },
+    {
+      "case": "close_rejects_late_ready",
+      "pass": true
+    },
+    {
+      "case": "incomplete_download_cannot_reveal",
+      "pass": true
+    }
+  ]
+}

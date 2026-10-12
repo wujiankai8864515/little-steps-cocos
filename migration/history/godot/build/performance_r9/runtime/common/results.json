@@ -1,0 +1,42 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "1200 unchanged frames measure once with exact original edges",
+      "pass": true
+    },
+    {
+      "check": "text mutation invalidates once",
+      "pass": true
+    },
+    {
+      "check": "fractional label width invalidates without rounding change",
+      "pass": true
+    },
+    {
+      "check": "font-size override invalidates",
+      "pass": true
+    },
+    {
+      "check": "font resource replacement invalidates",
+      "pass": true
+    },
+    {
+      "check": "same font resource changed signal invalidates",
+      "pass": true
+    },
+    {
+      "check": "theme font and size changes invalidate",
+      "pass": true
+    },
+    {
+      "check": "viewport and parent transform do not stale text metrics; coordinate frame stays per-draw",
+      "pass": true
+    },
+    {
+      "check": "font signal safely releases with cue",
+      "pass": true
+    }
+  ],
+  "scope": "Explicit candidate text metric/cache invalidation component tests; nativeGL image comparison separate"
+}

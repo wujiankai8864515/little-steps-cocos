@@ -1,0 +1,58 @@
+{
+  "scope": "Explicit R8+W1/W2 component candidate, not R9 release or Web acceptance",
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "base_source": "6327bdb",
+  "candidate_pck_sha256": "51f1040edc62db3d1a3c77b22da8c3ad0a34873f1fc9df91b8bb366e8e761674",
+  "candidate_sources": {
+    "wardrobe/unlock_policy.gd": "091505b3d35199c6e799bedb7e3946ecb8dd795a433c496281330bf4ba0cc8a2",
+    "wardrobe/skin_store.gd": "32bb99c9de302a8383330d19acc277c6a2851a341460c5fb2354350992c1bd8a",
+    "wardrobe/skin_catalog.gd": "eb959bd9c8010949e5e9435465ffe8acff31cb1e67320488b51b84e6e120c7b3",
+    "wardrobe/skin_binding.gd": "3089df6b585bc98030f0d7ade2bf7d3ec4e02b8d4e99aff021c5759a3db867cf",
+    "wardrobe/wardrobe_bridge.gd": "19ef5d331e3ec234306a773b67ca8758f43abc120f0e863f8e87aec3bb52f300",
+    "wardrobe/wardrobe_page.gd": "4fe09069f6d34c846770749acccfda8e2a0c999771298c60e4922d1ed8baa5cd",
+    "shaders/home_face_receiver.gdshader": "1bdd67d4d31e1bb0bf0fa727fbb86e141c871dac29094e6495ce9f8e643e977e"
+  },
+  "base_packs": {
+    "index.pck": "4916d735cd15fe63045af866ccd1e4096c5401c8acc1122de35347236d8460d1",
+    "packs/house.pck": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98",
+    "packs/exterior.pck": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+    "packs/outfit.pck": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+    "packs/wardrobe.pck": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+    "packs/photo.pck": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+  },
+  "screenshots": {
+    "08_original_restored.png": "f14509a00b361dcf8da44871812b4eaef9a87bd257b5682fc87325b8a17a64c3",
+    "11_photo_crown_day.png": "6ecc41305f33cab1ce0f592c4843f0906b447014ac9cbf6617b541040426171e",
+    "12_photo_crown_night.png": "70586194cc0edbdc4b9bd699ff22c09eed6e8b2c89f7fb818251bbf98f3e9b0b",
+    "02_before_lower_only.png": "2656cb42fde24d2e2bde7ebc89916e1c198cd1c07e88cd547e9596f40ee720aa",
+    "07_crown_night.png": "31cd27061c6278eb7ca3191dd784e67aaed1c1a01368ce659e959d53eb77ba3c",
+    "13_photo_original.png": "9dc5ee7e933d7dacc8874413e37b329e6c0d342ce01f616873f700d88c32ac5e",
+    "03_after_crown_idle_day.png": "0c5cf88f4cd5f8becbab963ffa2bf14aecb6807f7c0b1263c3a4d860ea87702a",
+    "06_crown_land.png": "4dff094d1a32c7e7be6c3907bfd96808db332e054ad5d804044b89772ddb9fba",
+    "09_home_worn.png": "201cbc8a822d0f7c6a878b67612030309a6ecf24101e8c514e4fba8bc121948b",
+    "01_local_unlock_notice.png": "d4ba6680a5b1c6443c1c995e3bdc4ccf9ccb260dfefe99e8a266bd730804fc4e",
+    "04_crown_drink.png": "7dbb907750a7b599e0848b374864c5bf4039781e5b12c21d1ad92c318e00bb93",
+    "05_crown_lift.png": "1929ac3eb787a1e61a15045a4c26d88e133f90b754b42869e84f3be1b43fc7e2",
+    "10_mobile_worn.png": "841489b7e15b15c9e1c323c4fe34ca27b030a11dbb85d99de6b3f3e07805d84b"
+  },
+  "reference": {
+    "library_file_id": "libfile_d8b5243d0ec881919b142887f46a8351",
+    "version": 1,
+    "sha256": "677cba64652541c0a04aedf9a0027a1c00f9623daef03d0d967ac0e23f9aba3a",
+    "visually_inspected": true
+  },
+  "unchanged_assets": {
+    "design/wardrobe/peach_fabric_body.png": "c8a8e5309048c1f5e87ea4b6fb2e1874d27a7f08df22ca7721764e4b0ee78086",
+    "games/travel_woodfish/project/wardrobe/assets/peach_material.png": "e9eed446ce08c1a11f232fb6af9611313cd659db4580636f0bbbea19ff842f8a",
+    "games/travel_woodfish/project/xiaoyu_rig.tscn": "ef0effe5c2ce9e734fc46f957a4d57e8c35e1f0aed6b1cf9bda41cee5d2747ad",
+    "games/travel_woodfish/project/home/behavior/soft_attachment_mesh.gd": "92f2f1e08549e0aae8db7de1b33dfec3f15895edd719e2c3d89fb93cb0fa9a5a"
+  },
+  "checks": {
+    "native_store": "6 groups passed",
+    "input": "injected pointer cloth/unlock/equip and mobile cancel passed",
+    "render": "Home/Wardrobe/Photo, day/night, idle/drink/lift/land/original restored, 720x1280 and390x844",
+    "font": "whole production4 fonts745codepoints; brush597glyphs passed",
+    "R9_final_packs": "pending",
+    "Web_persistence_and_hardware": "not tested"
+  }
+}

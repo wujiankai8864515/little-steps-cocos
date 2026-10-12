@@ -1,0 +1,11 @@
+{
+  "initial_attempt": "baseline_720",
+  "production_changes": false,
+  "result": "inconclusive timeout, no saved pictures",
+  "cause": [
+    "Whole-screen alpha search was unnecessarily expensive",
+    "Strike fixture left freeze_for_review=true and ambient_enabled=false",
+    "Resize assertion overconstrained behavior; safe continuing drag is allowed"
+  ],
+  "remedy": "check_v2 uses source-specific alpha vicinity; reenables manual strike clock; checks aligned resize then actual touch cancel"
+}

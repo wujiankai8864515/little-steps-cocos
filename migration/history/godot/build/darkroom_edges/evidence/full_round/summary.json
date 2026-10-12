@@ -1,0 +1,59 @@
+{
+  "pack_label": "test-only-edge-candidate2",
+  "pack_root": "/tmp/darkroom_edges_candidate2/native_packs",
+  "frozen_pack_hashes": {
+    "index.pck": {
+      "bytes": 1574892,
+      "sha256": "12ee1fa63a6ea89ef24f2bbc208eddf2e108ce176674ea5aed89f35e094f8bbb"
+    },
+    "packs/comic.pck": {
+      "bytes": 2311552,
+      "sha256": "19e5937677103f5a70cee482766a20b9153ffcc3b7c3e44eded5e2c5326aca9f"
+    },
+    "packs/darkroom.pck": {
+      "bytes": 4782656,
+      "sha256": "089fe10bc3fecac765d005b6917a879e9cec5364da873eb45102ddb72d25a7b3"
+    },
+    "packs/entry.pck": {
+      "bytes": 943108,
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+    },
+    "packs/exterior.pck": {
+      "bytes": 1107208,
+      "sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+    },
+    "packs/house.pck": {
+      "bytes": 16828344,
+      "sha256": "f9f15a8aa96521f53d8f5183ef40296d5365876fca177757e0497da67707a552"
+    },
+    "packs/travel.pck": {
+      "bytes": 15368992,
+      "sha256": "cdc4c903d7a5d79d40119163082c4fc26af6a8eb7fd02ff92885c9a279e69928"
+    }
+  },
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "empty_res_files": [
+    "project.godot"
+  ],
+  "test_script_sha256": "aed936c668e76f4195ff48bded6eeed0fcf0a53669da8ac9d18e26aef6609b03",
+  "exit_code": 0,
+  "error_lines": [
+    "ERROR: Resource file not found: res://travel/assets/travel_brush.ttf (expected type: unknown)"
+  ],
+  "checks": 63,
+  "failed": 0,
+  "screenshots": [
+    "01_home_invitation.png",
+    "02_darkroom_ready.png",
+    "03_needle_contact.png",
+    "04_black_smoke.png",
+    "06_slipper_selected.png",
+    "07_slipper_contact.png",
+    "11_dissolve_midpoint.png",
+    "12_empty_gap.png",
+    "13_spawn_midpoint.png",
+    "14_new_doll_ready.png",
+    "16_return_home.png"
+  ],
+  "scope": "Exact original PCKs, no delta or source resources; native Mesa GL. Visual frames require review; later grouped builds need their own run."
+}

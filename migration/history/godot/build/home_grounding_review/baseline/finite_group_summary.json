@@ -1,0 +1,64 @@
+{
+  "source": "e394bda99cab432c27d351953c2d7ba2227d8384",
+  "all_four_runs_same_nine_pack_hashes": true,
+  "checks": [
+    {
+      "run": "baseline_v2",
+      "checks": 45,
+      "failed": 0,
+      "errors": [],
+      "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "test_script_sha256": "2ca23c62718d1da43a755eaef22b5ab039a824c7c840988dd226725888c62e20",
+      "empty_res_files": [
+        "project.godot"
+      ],
+      "pack_label": "formal-e394bda"
+    },
+    {
+      "run": "edges_combo",
+      "checks": 150,
+      "failed": 0,
+      "errors": [],
+      "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "test_script_sha256": "4de30425e79bb4bf45f18fd615e6d3ae83b9ce25824082caebd444ecb1185c26",
+      "empty_res_files": [
+        "project.godot"
+      ],
+      "pack_label": "formal-e394bda"
+    },
+    {
+      "run": "prop_shadow",
+      "checks": 10,
+      "failed": 0,
+      "errors": [],
+      "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "test_script_sha256": "2d545a6b044ebea7a6952241e9f97a8380538adaba198025e2e4326de89e03ad",
+      "empty_res_files": [
+        "project.godot"
+      ],
+      "pack_label": "formal-e394bda"
+    },
+    {
+      "run": "natural_drink",
+      "checks": 16,
+      "failed": 0,
+      "errors": [],
+      "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "test_script_sha256": "073c85fccbb0c863706a8694367ef17541609b6d3c779911924c0e880caf4968",
+      "empty_res_files": [
+        "project.godot"
+      ],
+      "pack_label": "formal-e394bda"
+    }
+  ],
+  "total_runtime_assertions": 221,
+  "assertions_are_not_visual_passes": true,
+  "reviewed_gl_images": 34,
+  "production_defects": [
+    "A004 ordinary props always use 5px projection height while dragged upwards"
+  ],
+  "production_source_modified": false,
+  "overlay_packs": 0,
+  "report": "BASELINE_REPORT.md",
+  "all_generated_file_bytes": 34703924
+}

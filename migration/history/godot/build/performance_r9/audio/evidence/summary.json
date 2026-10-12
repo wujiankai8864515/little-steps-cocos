@@ -1,0 +1,196 @@
+{
+  "item": "R9-AU01",
+  "source_base": "6327bdbd7505e473f256a106c3bd00ba72815d6f",
+  "scope": "Explicit one-App-script candidate over exact formal base PCKs; not formal rebuild/deploy/browser/audio-listening acceptance",
+  "production_files_changed": [
+    "games/travel_woodfish/project/scripts/app.gd"
+  ],
+  "source_app_sha256": "45bacc9c717406ec6996e3db4927e3f5f1f6258b3f1e5c7a02a7ef52d1a8685a",
+  "fixture_sha256": "8884a4bb45910b6cc563af6da56601224ce38fdd788e7e44cb3fa13b64099468",
+  "headless_cases": 9,
+  "headless_assertions": 107,
+  "native_assertions": 22,
+  "failed_assertions": 0,
+  "normal_close_headless_observations": {
+    "active": {
+      "elapsed_msec": 46,
+      "observed_playbacks": 2,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    },
+    "disabled": {
+      "elapsed_msec": 70,
+      "observed_playbacks": 2,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    },
+    "darkroom": {
+      "elapsed_msec": 83,
+      "observed_playbacks": 2,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    },
+    "unstarted": {
+      "elapsed_msec": 1,
+      "observed_playbacks": 0,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    },
+    "boot": {
+      "elapsed_msec": 0,
+      "observed_playbacks": 0,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    },
+    "paused": {
+      "elapsed_msec": 74,
+      "observed_playbacks": 2,
+      "remaining_playbacks": 0,
+      "retired": true,
+      "timeout_msec": 1000
+    }
+  },
+  "native_os_close": {
+    "elapsed_msec": 74,
+    "observed_playbacks": 2,
+    "remaining_playbacks": 0,
+    "retired": true,
+    "timeout_msec": 1000
+  },
+  "native_event": {
+    "protocol": "WM_PROTOCOLS/WM_DELETE_WINDOW",
+    "native_window": 2097155,
+    "engine_pid": 31,
+    "display": "127.0.0.1:30647",
+    "XSendEvent_accepted": true
+  },
+  "three_app_teardowns": [
+    {
+      "cycle": 1,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    },
+    {
+      "cycle": 2,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    },
+    {
+      "cycle": 3,
+      "nodes": 1,
+      "orphans": 0.0,
+      "resources": 104.0
+    }
+  ],
+  "expected_timeout": {
+    "case": "timeout",
+    "exit": 1,
+    "expected_exit": 1,
+    "errors": [],
+    "warnings": [
+      "WARNING: Audio shutdown retirement timed out: 1 playback(s) still referenced"
+    ],
+    "checks_failed": 0,
+    "shutdown": {
+      "elapsed_msec": 1012,
+      "observed_playbacks": 2,
+      "remaining_playbacks": 1,
+      "retired": false,
+      "timeout_msec": 1000
+    },
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/empty",
+      "--main-pack",
+      "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+      "--audio-driver",
+      "Dummy",
+      "--max-fps",
+      "60",
+      "--verbose",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_performance_r9_audio/build/performance_r9/audio/test_shutdown.gd",
+      "--headless",
+      "--",
+      "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/timeout.json",
+      "timeout",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/candidate.pck"
+    ],
+    "unexpected_warnings": []
+  },
+  "forced_quit_remaining_boundary": {
+    "case": "forced",
+    "exit": 0,
+    "expected_exit": 0,
+    "errors": [],
+    "warnings": [
+      "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).",
+      "Leaked instance: AudioStreamPlaybackMP3:9223372159563335125",
+      "Leaked instance: AudioStreamMP3:9223372143507540380 - Resource path: ",
+      "Leaked instance: AudioStreamMP3:9223372143524317597 - Resource path: ",
+      "Leaked instance: AudioStreamPlaybackMP3:9223372159580113611"
+    ],
+    "checks_failed": 0,
+    "shutdown": {},
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/empty",
+      "--main-pack",
+      "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+      "--audio-driver",
+      "Dummy",
+      "--max-fps",
+      "60",
+      "--verbose",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_performance_r9_audio/build/performance_r9/audio/test_shutdown.gd",
+      "--headless",
+      "--",
+      "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/forced.json",
+      "forced",
+      "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/candidate.pck"
+    ],
+    "unexpected_warnings": []
+  },
+  "native_expected_environment_warning": [
+    "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+  ],
+  "normal_exit_ObjectDB_warnings": 0,
+  "screenshot_review": {
+    "path": "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_os_close_verified/run/os_close.json.png",
+    "sha256": "f1f39bed47338bae4f210ad399750582519f462e07b13684c9b3918e1d6ccd4e",
+    "viewed": true,
+    "note": "Native Home after three Home/Darkroom cycles; no art/audio content change. Not pixel-diff or hardware/Web evidence."
+  },
+  "no_audio_asset_or_gameplay_parameters_changed": true,
+  "limits": [
+    "A browser tab/process kill cannot guarantee async retirement.",
+    "Direct SceneTree.quit still bypasses the normal-close wait and reproduces four MP3 objects at shutdown.",
+    "Formal same-source rebuild, Web and actual listening are not covered."
+  ],
+  "logs": {
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/paused.log": "db985f5fc27baf634791df8a3b80f2983117ff83e2c6aad8a3e92709cb25f81c",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/active.log": "1753375f930d2e3603c07d67b261a75d3c6414637406cac276f9e78283c54cdf",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/boot.log": "013d87f4875f5c1c3b77fb7dde34e1c53f1e2e55fbd1b90ac69a465dc960e120",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/overlay.log": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/disabled.log": "e942aaab70f2c77fd6fea8bdf8ea425ad7871f5b765c5c4840aed76ef386e2b9",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/timeout.log": "0082a9f97715d991e4063a8812ce638bf28257fac09438f80b8d67c89f349a64",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/forced.log": "06196461e380953f1a136c3e11b9116e1b8348307b33a36c17778a4346aff06f",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/darkroom.log": "25744081a15dd2463af4e67c4d3fdade357f4fc17d080122001e72e66fa32b15",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/unstarted.log": "da179da9148348482f31bd7f208fb9dcb7565baf81488ae6f816533dedfccf80",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_candidate_verified/teardown.log": "939393511a581e83afda65fd20ef15be8269412e4ac7922fd4711969f47016f6",
+    "/workspace/scratch/3f82ff2b3f81/performance_r9_audio_os_close_verified/run/os_close.log": "e759d1578a1d11e72b8dcc4da5799a28da382f3ed4afbfc783cbad7c76c8a4b2"
+  },
+  "baseline_raw_log_sha256": "9d62ec25ff6975b433911bf5113f9440e3375cc45b04221878dcdaad81b56e50"
+}

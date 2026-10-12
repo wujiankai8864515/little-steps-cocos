@@ -1,0 +1,526 @@
+{
+  "packs": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+  "fixture_sha256": "cecb43a58b537747193528e58f13012a43e7abe91e28d2f1209c73e86a5b6341",
+  "pack_hashes": {
+    "index.pck": "4916d735cd15fe63045af866ccd1e4096c5401c8acc1122de35347236d8460d1",
+    "packs/comic.pck": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+    "packs/darkroom.pck": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+    "packs/departure.pck": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+    "packs/entry.pck": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+    "packs/exterior.pck": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+    "packs/house.pck": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98",
+    "packs/outfit.pck": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+    "packs/photo.pck": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+    "packs/travel.pck": "c6fe0c747d64aabde17cd6e638adf276b065376632c7a369b67b0a302051e442",
+    "packs/wardrobe.pck": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+  },
+  "runs": [
+    {
+      "scenario": "startup",
+      "returncode": 0,
+      "elapsed_sec": 20.67094593399088,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "darkroom",
+      "returncode": 0,
+      "elapsed_sec": 34.649862327001756,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "photo",
+      "returncode": 0,
+      "elapsed_sec": 35.27412497099431,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "wardrobe",
+      "returncode": 0,
+      "elapsed_sec": 28.827769387004082,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "travel",
+      "returncode": 0,
+      "elapsed_sec": 34.262994129996514,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.",
+        "ERROR: Invalid polygon data, triangulation failed."
+      ]
+    },
+    {
+      "scenario": "collection",
+      "returncode": 0,
+      "elapsed_sec": 31.497867312005837,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "journal",
+      "returncode": 0,
+      "elapsed_sec": 32.79411484798766,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    },
+    {
+      "scenario": "departure",
+      "returncode": 0,
+      "elapsed_sec": 22.1251498979982,
+      "errors": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ]
+    }
+  ],
+  "fixture_versions": {
+    "startup_and_darkroom": "cecb43a58b537747193528e58f13012a43e7abe91e28d2f1209c73e86a5b6341",
+    "photo_onward": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+    "amendment": "Only home.photo property typo corrected to home.photos before any Photo process launched. Old fixture retained and did not execute Photo branch in startup/darkroom."
+  },
+  "runs_identity": [
+    {
+      "scenario": "startup",
+      "metrics_sha256": "fe7fe776692250b2e9559e91d30100d67b714acd55dbfd7fd312dc13002f4c3f",
+      "fixture_sha256": "cecb43a58b537747193528e58f13012a43e7abe91e28d2f1209c73e86a5b6341",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "darkroom",
+      "metrics_sha256": "6a09a2439e5b32a24694b300292369e85137b2dc76b2943628254485f9edcf9e",
+      "fixture_sha256": "cecb43a58b537747193528e58f13012a43e7abe91e28d2f1209c73e86a5b6341",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "photo",
+      "metrics_sha256": "0b9eb253378476226ee527133c1f28e70c3d9120add49e6b68b4d7a7fcf249c9",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "wardrobe",
+      "metrics_sha256": "6b6086a5d3f2a1c451eb524af98f840f685b9c5b9402baa5a36f8dfdb3eccbea",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "travel",
+      "metrics_sha256": "04ae103726aeb719f3634cc3134cb7c420caa45f6fd5a209a561ac1fa62578ec",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": "Invalid polygon data, triangulation failed; fixed separately R9-Q01"
+    },
+    {
+      "scenario": "collection",
+      "metrics_sha256": "1f216d65a2328ba498be577d643e9d34461e9e8a3831dca70a4d13071fb14881",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "journal",
+      "metrics_sha256": "660299adb08f10c430b160c0fa50527a8c86a042e8c1f8fa3788c779a426fe16",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": null
+    },
+    {
+      "scenario": "departure",
+      "metrics_sha256": "8d8a4ea534464d09c29ab4556243289bb72a882cb6d208ca7cc48244a97ab20a",
+      "fixture_sha256": "702818169d74380f7680eb1770d911498bfe02e9335d7bb2a7032ba3e0ba4358",
+      "failures": [],
+      "known_runtime_error": null
+    }
+  ],
+  "entry_summary": [
+    {
+      "scenario": "startup",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1927.771,
+      "frames": 86
+    },
+    {
+      "scenario": "startup",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 12488.763,
+      "frames": 143
+    },
+    {
+      "scenario": "startup",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 838.829,
+      "frames": 9
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1863.065,
+      "frames": 87
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11611.221,
+      "frames": 163
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 772.655,
+      "frames": 10
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_first_use",
+      "ready_and_drawn_msec": 4083.416,
+      "frames": 36
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_return_0",
+      "ready_and_drawn_msec": 1347.398,
+      "frames": 10
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_warm_1",
+      "ready_and_drawn_msec": 703.411,
+      "frames": 10
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_return_1",
+      "ready_and_drawn_msec": 778.066,
+      "frames": 10
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_warm_2",
+      "ready_and_drawn_msec": 725.301,
+      "frames": 10
+    },
+    {
+      "scenario": "darkroom",
+      "entry": "darkroom_return_2",
+      "ready_and_drawn_msec": 767.692,
+      "frames": 10
+    },
+    {
+      "scenario": "photo",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1880.657,
+      "frames": 89
+    },
+    {
+      "scenario": "photo",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11946.182,
+      "frames": 158
+    },
+    {
+      "scenario": "photo",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 790.056,
+      "frames": 10
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_first_use",
+      "ready_and_drawn_msec": 5039.181,
+      "frames": 5
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_return_0",
+      "ready_and_drawn_msec": 766.445,
+      "frames": 1
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_warm_1",
+      "ready_and_drawn_msec": 1362.368,
+      "frames": 1
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_return_1",
+      "ready_and_drawn_msec": 57.167,
+      "frames": 1
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_warm_2",
+      "ready_and_drawn_msec": 1363.425,
+      "frames": 1
+    },
+    {
+      "scenario": "photo",
+      "entry": "photo_return_2",
+      "ready_and_drawn_msec": 81.246,
+      "frames": 1
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1878.597,
+      "frames": 90
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11882.607,
+      "frames": 157
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 789.456,
+      "frames": 10
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_first_use",
+      "ready_and_drawn_msec": 1842.253,
+      "frames": 6
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_return_0",
+      "ready_and_drawn_msec": 54.815,
+      "frames": 1
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_warm_1",
+      "ready_and_drawn_msec": 27.995,
+      "frames": 1
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_return_1",
+      "ready_and_drawn_msec": 52.241,
+      "frames": 1
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_warm_2",
+      "ready_and_drawn_msec": 27.679,
+      "frames": 1
+    },
+    {
+      "scenario": "wardrobe",
+      "entry": "wardrobe_return_2",
+      "ready_and_drawn_msec": 54.022,
+      "frames": 1
+    },
+    {
+      "scenario": "travel",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1833.95,
+      "frames": 85
+    },
+    {
+      "scenario": "travel",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11433.092,
+      "frames": 164
+    },
+    {
+      "scenario": "travel",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 816.616,
+      "frames": 11
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_first_use",
+      "ready_and_drawn_msec": 1805.268,
+      "frames": 16
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_return_0",
+      "ready_and_drawn_msec": 62.643,
+      "frames": 1
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_warm_1",
+      "ready_and_drawn_msec": 244.241,
+      "frames": 1
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_return_1",
+      "ready_and_drawn_msec": 65.359,
+      "frames": 1
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_warm_2",
+      "ready_and_drawn_msec": 264.165,
+      "frames": 1
+    },
+    {
+      "scenario": "travel",
+      "entry": "travel_return_2",
+      "ready_and_drawn_msec": 64.098,
+      "frames": 1
+    },
+    {
+      "scenario": "collection",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1873.546,
+      "frames": 90
+    },
+    {
+      "scenario": "collection",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11268.465,
+      "frames": 157
+    },
+    {
+      "scenario": "collection",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 799.747,
+      "frames": 10
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_first_use",
+      "ready_and_drawn_msec": 1492.522,
+      "frames": 16
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_return_0",
+      "ready_and_drawn_msec": 52.635,
+      "frames": 1
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_warm_1",
+      "ready_and_drawn_msec": 78.211,
+      "frames": 1
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_return_1",
+      "ready_and_drawn_msec": 57.547,
+      "frames": 1
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_warm_2",
+      "ready_and_drawn_msec": 86.555,
+      "frames": 1
+    },
+    {
+      "scenario": "collection",
+      "entry": "collection_return_2",
+      "ready_and_drawn_msec": 58.966,
+      "frames": 1
+    },
+    {
+      "scenario": "journal",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1911.927,
+      "frames": 90
+    },
+    {
+      "scenario": "journal",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 12114.027,
+      "frames": 151
+    },
+    {
+      "scenario": "journal",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 791.194,
+      "frames": 10
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_first_use",
+      "ready_and_drawn_msec": 1447.899,
+      "frames": 16
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_return_0",
+      "ready_and_drawn_msec": 54.402,
+      "frames": 1
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_warm_1",
+      "ready_and_drawn_msec": 64.884,
+      "frames": 1
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_return_1",
+      "ready_and_drawn_msec": 59.389,
+      "frames": 1
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_warm_2",
+      "ready_and_drawn_msec": 76.1,
+      "frames": 1
+    },
+    {
+      "scenario": "journal",
+      "entry": "journal_return_2",
+      "ready_and_drawn_msec": 67.21,
+      "frames": 1
+    },
+    {
+      "scenario": "departure",
+      "entry": "process_cold_login",
+      "ready_and_drawn_msec": 1846.684,
+      "frames": 89
+    },
+    {
+      "scenario": "departure",
+      "entry": "first_comic",
+      "ready_and_drawn_msec": 11275.973,
+      "frames": 146
+    },
+    {
+      "scenario": "departure",
+      "entry": "first_home",
+      "ready_and_drawn_msec": 838.918,
+      "frames": 10
+    },
+    {
+      "scenario": "departure",
+      "entry": "first_departure",
+      "ready_and_drawn_msec": 1509.157,
+      "frames": 4
+    }
+  ],
+  "source_commit": "6327bdbd7505e473f256a106c3bd00ba72815d6f",
+  "github_commit": "8b85fb4dff821ba7ffb8516bd229a8e96264ffe6",
+  "source_snapshot_sha256": "c9a2b1c9cd1b8eabd9caf46018767a99ff90624c1ac2a219a0b41e2e937c0112",
+  "limits": [
+    "Fresh process,empty res,isolated user/shader directories,720x1280,llvmpipe,official4.5.2,maxFPS60. OS diskcache not controlled.",
+    "Native softwareGL numbers are not browser download or userGPU/phone claims.",
+    "Each optional route has fresh App process,first-use plus2warm repeats. Startup animation transition retained. Comic content dwell excluded by productionfinishcallback. Empty savedinventory.",
+    "Lighting clock continues naturally; rendering totals vary with solar state. Small draw/frame differences cannot be ascribed to optimizations without fixed-state per-module A/B.",
+    "Engine TIME_PROCESS monitor is engine reported sample, not independent per-frame CPU profiler. wall-frame intervals include software renderer work.",
+    "Travel baselinehasonepre-existing triangulationERROR despiteexit0. This is not an all-green baseline."
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "checks": [
+    {
+      "label": "actual cold Home prepare terminates",
+      "msec": 13752,
+      "pass": true
+    },
+    {
+      "label": "production service seeds isolated trip fixture",
+      "msec": 14814,
+      "pass": true
+    },
+    {
+      "label": "returned trip exposes diary cue",
+      "msec": 18204,
+      "pass": true
+    },
+    {
+      "label": "diary uses actual reference 21px font",
+      "msec": 18204,
+      "pass": true
+    },
+    {
+      "label": "incense typography scale matches reference despite parent",
+      "msec": 18204,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 9",
+      "msec": 18435,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 10",
+      "msec": 18679,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 99",
+      "msec": 18924,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 100",
+      "msec": 19177,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 9999",
+      "msec": 19438,
+      "pass": true
+    },
+    {
+      "label": "HUD fixed for value 10000",
+      "msec": 19708,
+      "pass": true
+    },
+    {
+      "label": "full bag actual hit region",
+      "msec": 20185,
+      "pass": true
+    },
+    {
+      "label": "real bag click opens rewards",
+      "msec": 20660,
+      "pass": true
+    },
+    {
+      "label": "cloud in front of bag",
+      "msec": 21679,
+      "pass": true
+    },
+    {
+      "label": "cloud below collectible layer",
+      "msec": 21679,
+      "pass": true
+    },
+    {
+      "label": "reward sits on upper fan",
+      "msec": 23354,
+      "pass": true
+    },
+    {
+      "label": "reward sits on upper fan",
+      "msec": 23354,
+      "pass": true
+    },
+    {
+      "label": "reward sits on upper fan",
+      "msec": 23354,
+      "pass": true
+    },
+    {
+      "label": "reward sits on upper fan",
+      "msec": 23354,
+      "pass": true
+    },
+    {
+      "label": "click starts item flight trip_1_5:reward:0",
+      "msec": 24057,
+      "pass": true
+    },
+    {
+      "label": "click starts item flight trip_1_5:reward:1",
+      "msec": 25613,
+      "pass": true
+    },
+    {
+      "label": "click starts item flight trip_1_5:reward:2",
+      "msec": 27103,
+      "pass": true
+    },
+    {
+      "label": "click starts item flight trip_1_5:reward:3",
+      "msec": 28657,
+      "pass": true
+    },
+    {
+      "label": "last item triggers return animation",
+      "msec": 30061,
+      "pass": true
+    },
+    {
+      "label": "bag rehang finishes visible",
+      "msec": 32368,
+      "pass": true
+    },
+    {
+      "label": "claims retained after visual return",
+      "msec": 32368,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot fly twice",
+      "msec": 33033,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot settle twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot fly twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot settle twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot fly twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot settle twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot fly twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "collected item cannot settle twice",
+      "msec": 33034,
+      "pass": true
+    },
+    {
+      "label": "no duplicate inventory on repeated settlement",
+      "msec": 33034,
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 983046,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3425,
+          "loaded": 943108,
+          "mount_usec": 375,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round7_formal_197ee6c/native_packs/packs/entry.pck",
+          "request_id": "p32044483983-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2438935,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 9782,
+          "loaded": 2316192,
+          "mount_usec": 333,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round7_formal_197ee6c/native_packs/packs/comic.pck",
+          "request_id": "p32044483983-e1-r2",
+          "state": "ready",
+          "total": 2316192,
+          "verified_sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2460366,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 6371,
+          "loaded": 1493728,
+          "mount_usec": 289,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round7_formal_197ee6c/native_packs/packs/exterior.pck",
+          "request_id": "p32044483983-e1-r3",
+          "state": "ready",
+          "total": 1493728,
+          "verified_sha256": "4f987b228c7a1a98fb45f09a46d5f01852d304d41bd0d48a9c90d2da87ef82fb"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2536450,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 60798,
+          "loaded": 17024952,
+          "mount_usec": 524,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round7_formal_197ee6c/native_packs/packs/house.pck",
+          "request_id": "p32044483983-e1-r4",
+          "state": "ready",
+          "total": 17024952,
+          "verified_sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "samples": [
+    {
+      "fan": [
+        "(221.8049, 931.0345)",
+        "(301.1724, 842.5764)",
+        "(416.8276, 841.853)",
+        "(496.1951, 930.7789)"
+      ]
+    },
+    {
+      "return": "{ \"age\": 0.20177233333333, \"start\": (359.0, 1017.0), \"end\": (531.0, 379.0), \"scale\": (0.373166, 0.374745), \"end_scale\": (0.422566, 0.503158) }"
+    }
+  ],
+  "scope": "Actual candidate core+formal delayed PCK; empty res; production App cold Home with isolated returned fixture, shared reference typography; native Mesa GL, not Web/user acceptance."
+}

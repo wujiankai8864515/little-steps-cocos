@@ -1,0 +1,438 @@
+{
+  "checks": [
+    {
+      "check": "Exact entry PCK mounts",
+      "passed": true
+    },
+    {
+      "check": "Exact house PCK mounts",
+      "passed": true
+    },
+    {
+      "check": "Exact travel PCK mounts",
+      "passed": true
+    },
+    {
+      "check": "Exact departure PCK mounts",
+      "passed": true
+    },
+    {
+      "check": "Seeded production service departs",
+      "passed": true
+    },
+    {
+      "check": "Final progress reports return gate at matching foot",
+      "passed": true
+    },
+    {
+      "check": "Ten stages and 100 effective seconds",
+      "passed": true
+    },
+    {
+      "check": "Route viewing preserves seeded cells",
+      "passed": true
+    },
+    {
+      "check": "Production trip retains 2–3 events",
+      "passed": true
+    },
+    {
+      "check": "Event identities and stage placement persist",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "landmarks": [
+    {
+      "anchor": "(164.0, 287.0)",
+      "name": "山门",
+      "rect": "[P: (116.0, 257.0), S: (72.0, 29.0)]"
+    },
+    {
+      "anchor": "(293.0, 475.0)",
+      "name": "石桥",
+      "rect": "[P: (232.0, 491.0), S: (76.0, 29.0)]"
+    },
+    {
+      "anchor": "(358.0, 528.0)",
+      "name": "溪边",
+      "rect": "[P: (323.0, 537.0), S: (68.0, 29.0)]"
+    },
+    {
+      "anchor": "(490.0, 413.0)",
+      "baked": true,
+      "name": "秋叶寺",
+      "rect": "[P: (446.0, 316.0), S: (91.0, 35.0)]"
+    },
+    {
+      "anchor": "(594.0, 549.0)",
+      "name": "山路",
+      "rect": "[P: (567.0, 540.0), S: (67.0, 29.0)]"
+    },
+    {
+      "anchor": "(588.0, 660.0)",
+      "name": "归途山门",
+      "rect": "[P: (534.0, 672.0), S: (116.0, 30.0)]"
+    }
+  ],
+  "nodes": [
+    {
+      "at": "(164.0, 298.0)",
+      "id": "mountain_gate",
+      "name": "山门"
+    },
+    {
+      "at": "(225.0, 320.0)",
+      "id": "forest_path",
+      "name": "林间小径"
+    },
+    {
+      "at": "(266.0, 369.0)",
+      "id": "creek_bend",
+      "name": "溪畔弯道"
+    },
+    {
+      "at": "(316.0, 390.0)",
+      "id": "bridge_turn",
+      "name": "石桥岔路"
+    },
+    {
+      "at": "(367.0, 420.0)",
+      "id": "river_view",
+      "name": "临水坡"
+    },
+    {
+      "at": "(414.0, 443.0)",
+      "id": "temple_approach",
+      "name": "寺前小径"
+    },
+    {
+      "at": "(466.0, 450.0)",
+      "id": "temple",
+      "name": "秋叶寺"
+    },
+    {
+      "at": "(508.0, 477.0)",
+      "id": "hill_path",
+      "name": "山路"
+    },
+    {
+      "at": "(563.0, 525.0)",
+      "id": "maple_woods",
+      "name": "枫林"
+    },
+    {
+      "at": "(647.0, 591.0)",
+      "id": "cloud_ridge",
+      "name": "云边坡"
+    },
+    {
+      "at": "(583.0, 665.0)",
+      "id": "return_gate",
+      "name": "归途山门"
+    }
+  ],
+  "samples": [
+    {
+      "arrival": "当前 · 山门",
+      "events": [],
+      "foot": [
+        164.0,
+        298.0
+      ],
+      "label": "000_0_0",
+      "progress": 0.0,
+      "route_elapsed_seconds": 0.0,
+      "stage": 0,
+      "story_context": "故事背景：山路驿站",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 林间小径",
+      "events": [],
+      "foot": [
+        225.0,
+        320.0
+      ],
+      "label": "100_10_0",
+      "progress": 0.1,
+      "route_elapsed_seconds": 10.0,
+      "stage": 1,
+      "story_context": "故事背景：山路驿站",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 溪畔弯道",
+      "events": [],
+      "foot": [
+        266.0,
+        369.0
+      ],
+      "label": "200_20_0",
+      "progress": 0.2,
+      "route_elapsed_seconds": 20.0,
+      "stage": 2,
+      "story_context": "故事背景：山脚旧街",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 溪畔弯道",
+      "events": [],
+      "foot": [
+        315.495086669922,
+        389.801635742188
+      ],
+      "label": "299_29_9",
+      "progress": 0.299000000000001,
+      "route_elapsed_seconds": 29.9000000000001,
+      "stage": 2,
+      "story_context": "故事背景：山脚旧街",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 石桥岔路",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        316.0,
+        390.0
+      ],
+      "label": "300_30_0",
+      "progress": 0.3,
+      "route_elapsed_seconds": 30.0,
+      "stage": 3,
+      "story_context": "故事背景：红螺寺",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 临水坡",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        367.0,
+        420.0
+      ],
+      "label": "400_40_0",
+      "progress": 0.4,
+      "route_elapsed_seconds": 40.0,
+      "stage": 4,
+      "story_context": "故事背景：山路驿站",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 寺前小径",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        414.0,
+        443.0
+      ],
+      "label": "500_50_0",
+      "progress": 0.5,
+      "route_elapsed_seconds": 50.0,
+      "stage": 5,
+      "story_context": "故事背景：青海湖",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 寺前小径",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        465.476928710938,
+        449.950958251953
+      ],
+      "label": "599_59_9",
+      "progress": 0.599000000000001,
+      "route_elapsed_seconds": 59.9000000000001,
+      "stage": 5,
+      "story_context": "故事背景：青海湖",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 秋叶寺",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        466.0,
+        450.0
+      ],
+      "label": "600_60_0",
+      "progress": 0.6,
+      "route_elapsed_seconds": 60.0,
+      "stage": 6,
+      "story_context": "故事背景：罗马尼亚",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 山路",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        }
+      ],
+      "foot": [
+        533.512145996094,
+        503.362548828125
+      ],
+      "label": "750_75_0",
+      "progress": 0.75,
+      "route_elapsed_seconds": 75.0,
+      "stage": 7,
+      "story_context": "故事背景：山脚旧街",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 云边坡",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        },
+        {
+          "cell": 7,
+          "center": [
+            563.0,
+            525.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:7"
+        }
+      ],
+      "foot": [
+        647.0,
+        591.0
+      ],
+      "label": "900_90_0",
+      "progress": 0.9,
+      "route_elapsed_seconds": 90.0,
+      "stage": 9,
+      "story_context": "故事背景：青海湖",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 云边坡",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:2"
+        },
+        {
+          "cell": 7,
+          "center": [
+            563.0,
+            525.0
+          ],
+          "state": "waiting",
+          "uid": "trip_1_91357:7"
+        }
+      ],
+      "foot": [
+        639.526123046875,
+        636.325012207031
+      ],
+      "label": "950_95_0",
+      "progress": 0.95,
+      "route_elapsed_seconds": 95.0,
+      "stage": 9,
+      "story_context": "故事背景：青海湖",
+      "trip_id": "trip_1_91357"
+    },
+    {
+      "arrival": "到达 归途山门",
+      "events": [
+        {
+          "cell": 2,
+          "center": [
+            316.0,
+            390.0
+          ],
+          "state": "decided",
+          "uid": "trip_1_91357:2"
+        },
+        {
+          "cell": 7,
+          "center": [
+            563.0,
+            525.0
+          ],
+          "state": "decided",
+          "uid": "trip_1_91357:7"
+        }
+      ],
+      "foot": [
+        583.0,
+        665.0
+      ],
+      "label": "1000_100_0",
+      "progress": 1.0,
+      "route_elapsed_seconds": 100.0,
+      "stage": 10,
+      "story_context": "故事背景：红螺寺",
+      "trip_id": "trip_1_91357"
+    }
+  ],
+  "scope": "Exact bc1f8cf production PCKs, empty res, actual production page/service/scene and native Mesa GL; controlled wall time to inspect geometry. Not Web or hardware performance evidence."
+}

@@ -1,0 +1,29 @@
+{
+  "production_fix": "8cd2097",
+  "production_diff_since_fix": "none",
+  "related_checks": 45,
+  "failed": 0,
+  "result": "Candidate real native App and compiled core passed bounded related feedback/lifecycle checks.",
+  "covered": [
+    "actual bowl click and sip feedback visibly rendered, face-safe",
+    "bowl dragged alone leaves marks in normal layer and returns fixed anchor",
+    "fish lift interrupts drinking and restores bowl",
+    "four repeated fish hold/cancel cycles no stale drag layer",
+    "manual fish click after cancellation emits tap burst",
+    "night director emits doze Z, expires",
+    "new layer65 beneath dynamically raised drag canvas and attached marks",
+    "actual App.enter_darkroom route interrupts hold and restores mark parent/z, no survivor",
+    "actual App.return_home cached path; subsequent real hold produces new mark and cleans again"
+  ],
+  "fixture_failure": "First related run froze Home world via set_review_hour default still=true and disabled ambient. Tap/doze never advanced. Corrected fixture sets still=false and ambient=true for those specific branches; production unchanged. Preserved failed fixture and logs.",
+  "visual_review": "Viewed real drink, tap and doze crops. Original blue drops / yellow contact flicks / muted golden Z retained, all visible, no face overlap in these cases. Aesthetic approval remains pending.",
+  "limits": [
+    "720x1280 native llvmpipe only; not Web/hardware/touch/performance acceptance",
+    "Mark frames paused only after production events for visibility comparison",
+    "Artificial layer65 and direct route interruption are explicitly QA controls, not a claim user can click obscured UI",
+    "This closes bounded A083 candidate branch checks, not all historical items or global no-bug assertion",
+    "Formal group build, source-contract refresh, deployed/user acceptance still pending"
+  ],
+  "evidence_scope_erratum": "Preserved related_green/fixture_snapshot.gd header and results.json scope inherited obsolete lift-only/d817-formal boilerplate. Those descriptions do not identify this run; actual candidate label, per-check records, commands and hashes apply. This is the 8cd candidate compiled core and 45 related checks, not a formal deployment. Current check_related.gd text corrected without changing assertions.",
+  "independent_resource_verification": "Readonly reviewer compared 238 core entries: only home/home_page.gdc content changed; .gd.remap byte-identical, and all 8 delayed packs byte-identical."
+}

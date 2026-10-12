@@ -1,0 +1,55 @@
+{
+  "scope": "Official4.5.2 source-component candidate, all four corrections present; not R9 final cold packs/Web/user acceptance",
+  "checks": [
+    {
+      "check": "W5 future stations have no footprint",
+      "pass": true
+    },
+    {
+      "check": "W5 one new reached station drops once",
+      "pass": true
+    },
+    {
+      "check": "W5 same progress never repeats settled arrival",
+      "pass": true
+    },
+    {
+      "check": "W5 restore seeds only visited stations",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 0",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 1",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 2",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 3",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 4",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 5",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 6",
+      "pass": true
+    },
+    {
+      "check": "W5 restored arrival never replays 7",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "source_candidate": "source_candidate_01 with room_props type fix and final48star source replacement recorded by gl03/source_hashes.json"
+}

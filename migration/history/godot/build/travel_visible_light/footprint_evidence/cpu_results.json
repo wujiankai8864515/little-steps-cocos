@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "only departure station exists at start",
+    "future station has no print",
+    "one actual arrival adds one print",
+    "same snapshot does not replay",
+    "drop press and settled poses are distinct",
+    "catch-up arrivals stay sequential across updates",
+    "restored progress seeds precisely reached history",
+    "restored station 0 never replays",
+    "restored station 1 never replays",
+    "restored station 2 never replays",
+    "restored station 3 never replays",
+    "restored station 4 never replays",
+    "restored station 5 never replays",
+    "restored station 6 never replays",
+    "restored station 7 never replays",
+    "restored future is not prelaid",
+    "new/reset route discards old future history",
+    "shared runtime texture stays 49152 RGBA bytes",
+    "dispose releases material and transient arrivals"
+  ],
+  "configure_usec": 118644,
+  "failed": 0,
+  "scope": "CPU state/material only, no rendered scene approval"
+}

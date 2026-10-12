@@ -1,0 +1,623 @@
+{
+  "checks": [
+    {
+      "check": "X11 real software GL",
+      "pass": true
+    },
+    {
+      "check": "cold Home prepare terminates",
+      "pass": true
+    },
+    {
+      "check": "Home receives actual root input",
+      "pass": true
+    },
+    {
+      "check": "source-body grab hits fish 0",
+      "pass": true
+    },
+    {
+      "check": "actual long press reaches DRAGGING 0",
+      "pass": true
+    },
+    {
+      "check": "capture before lift lifetime ends 0",
+      "pass": true
+    },
+    {
+      "check": "release settles 0",
+      "pass": true
+    },
+    {
+      "check": "source-body grab hits fish 1",
+      "pass": true
+    },
+    {
+      "check": "actual long press reaches DRAGGING 1",
+      "pass": true
+    },
+    {
+      "check": "capture before lift lifetime ends 1",
+      "pass": true
+    },
+    {
+      "check": "release settles 1",
+      "pass": true
+    },
+    {
+      "check": "source-body grab hits fish 2",
+      "pass": true
+    },
+    {
+      "check": "actual long press reaches DRAGGING 2",
+      "pass": true
+    },
+    {
+      "check": "capture before lift lifetime ends 2",
+      "pass": true
+    },
+    {
+      "check": "release settles 2",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "body_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+      "face": "[P: (270.0, 730.0), S: (215.0, 105.0)]",
+      "fish_bounds": "[P: (79.0, 634.0), S: (557.4369, 357.0)]"
+    },
+    {
+      "fish_hierarchy": [
+        {
+          "name": "XiaoyuRig",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+          "z": 180
+        },
+        {
+          "name": "HeldActorAndAttachments",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "layer": 40,
+          "name": "TemporaryHomeDragCanvas",
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "CanvasLayer"
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "grab": "(365.0, 855.0)",
+      "hidden_fish_on_off": {
+        "changed_pixels": 218,
+        "max_channel_difference": 61,
+        "sum_rgb_difference": 7175
+      },
+      "marks_hierarchy": [
+        {
+          "name": "ActionMarks",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 84
+        },
+        {
+          "name": "HomeWorld",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "original_on_off": {
+        "changed_pixels": 0,
+        "max_channel_difference": 0,
+        "sum_rgb_difference": 0
+      },
+      "raised_on_off": {
+        "changed_pixels": 224,
+        "max_channel_difference": 89,
+        "sum_rgb_difference": 19533
+      },
+      "raised_snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0583333333333333,
+            "alpha": 0.685426870157282,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (287.0, 863.0), S: (27.0, 34.0)]",
+            "world_position": "(300.0, 881.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      },
+      "region": "[P: (230, 816), S: (140, 130)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0583333333333333,
+            "alpha": 0.685426870157282,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (287.0, 863.0), S: (27.0, 34.0)]",
+            "world_position": "(300.0, 881.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "fish_hierarchy": [
+        {
+          "name": "XiaoyuRig",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+          "z": 180
+        },
+        {
+          "name": "HeldActorAndAttachments",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "layer": 40,
+          "name": "TemporaryHomeDragCanvas",
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "CanvasLayer"
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "grab": "(305.0, 855.0)",
+      "hidden_fish_on_off": {
+        "changed_pixels": 220,
+        "max_channel_difference": 68,
+        "sum_rgb_difference": 7802
+      },
+      "marks_hierarchy": [
+        {
+          "name": "ActionMarks",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 84
+        },
+        {
+          "name": "HomeWorld",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "original_on_off": {
+        "changed_pixels": 0,
+        "max_channel_difference": 0,
+        "sum_rgb_difference": 0
+      },
+      "raised_on_off": {
+        "changed_pixels": 224,
+        "max_channel_difference": 88,
+        "sum_rgb_difference": 18561
+      },
+      "raised_snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0575757575757576,
+            "alpha": 0.685866476924757,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (227.0, 863.0), S: (27.0, 34.0)]",
+            "world_position": "(240.0, 881.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      },
+      "region": "[P: (170, 816), S: (140, 130)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0575757575757576,
+            "alpha": 0.685866476924757,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (227.0, 863.0), S: (27.0, 34.0)]",
+            "world_position": "(240.0, 881.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "fish_hierarchy": [
+        {
+          "name": "XiaoyuRig",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.00003, 615.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.00003, 615.0)]",
+          "z": 180
+        },
+        {
+          "name": "HeldActorAndAttachments",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "layer": 40,
+          "name": "TemporaryHomeDragCanvas",
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "CanvasLayer"
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "grab": "(435.0, 870.0)",
+      "hidden_fish_on_off": {
+        "changed_pixels": 217,
+        "max_channel_difference": 86,
+        "sum_rgb_difference": 6935
+      },
+      "marks_hierarchy": [
+        {
+          "name": "ActionMarks",
+          "relative_z": false,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 84
+        },
+        {
+          "name": "HomeWorld",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Node2D",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "RoomViewport",
+          "type": "SubViewport"
+        },
+        {
+          "name": "HomePage",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "PageHost",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "TravelWoodfish",
+          "relative_z": true,
+          "transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "type": "Control",
+          "visible": true,
+          "with_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+          "z": 0
+        },
+        {
+          "name": "root",
+          "type": "Window"
+        }
+      ],
+      "original_on_off": {
+        "changed_pixels": 0,
+        "max_channel_difference": 0,
+        "sum_rgb_difference": 0
+      },
+      "raised_on_off": {
+        "changed_pixels": 224,
+        "max_channel_difference": 141,
+        "sum_rgb_difference": 29999
+      },
+      "raised_snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0566666666666667,
+            "alpha": 0.686365580812769,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (357.0, 878.0), S: (27.0, 34.0)]",
+            "world_position": "(370.0, 896.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      },
+      "region": "[P: (300, 831), S: (140, 130)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0566666666666667,
+            "alpha": 0.686365580812769,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "lift",
+            "lifetime": 0.36,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (357.0, 878.0), S: (27.0, 34.0)]",
+            "world_position": "(370.0, 896.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    }
+  ],
+  "scope": "Exact d817 native packs; empty res; real App and root long press; app process frozen immediately after production lift. Original A/B and two clearly marked QA causal controls; no Web/hardware/user acceptance claim."
+}

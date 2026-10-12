@@ -1,0 +1,78 @@
+{
+  "case": "button",
+  "qa_sources": {
+    "build/checks/run_cold_darkroom_round.py": "7765d02097212ed780228caf2b8b30716266fa9b2900265890573a05796adf56",
+    "build/checks/test_cold_darkroom_round.gd": "aed936c668e76f4195ff48bded6eeed0fcf0a53669da8ac9d18e26aef6609b03",
+    "build/darkroom_entry_review/run_review.py": "d69f5e91c4abb8e4b89f42bd70aeec31fb9fe2af85d00a8ac1e7ed632f8a44fc",
+    "build/darkroom_entry_review/test_highscreen_edges.gd": "5524ee776152ac3bc4bdeed66278f5a4e9a1a6f27d3ba08bd0667503c8600868",
+    "build/darkroom_entry_review/test_touch_action_lifecycle.gd": "24a2d1ef888624179501f27b61ce95966254c97b6d36c83da6a862b1b94842f7"
+  },
+  "source_hashes_unchanged": true,
+  "processes": [
+    {
+      "pid_in_runner_namespace": 6,
+      "command": [
+        "mcookie"
+      ],
+      "exit_code": 0
+    },
+    {
+      "pid_in_runner_namespace": 7,
+      "command": [
+        "xauth",
+        "-f",
+        "/workspace/shared/darkroom_entry_qa/button_green/xauthority",
+        "add",
+        "127.0.0.1:4109",
+        ".",
+        "50fcefea49b4e6ea609c4fea481c7399"
+      ],
+      "exit_code": 0
+    },
+    {
+      "pid_in_runner_namespace": 8,
+      "command": [
+        "Xorg",
+        ":4109",
+        "-noreset",
+        "-nolisten",
+        "unix",
+        "-nolisten",
+        "local",
+        "-listen",
+        "tcp",
+        "-auth",
+        "/workspace/shared/darkroom_entry_qa/button_green/xauthority",
+        "-config",
+        "/workspace/shared/darkroom_entry_qa/button_green/xorg.conf",
+        "-logfile",
+        "/workspace/shared/darkroom_entry_qa/button_green/xorg.log"
+      ],
+      "exit_code": 0
+    },
+    {
+      "pid_in_runner_namespace": 12,
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/workspace/shared/darkroom_entry_qa/button_green/empty",
+        "--main-pack",
+        "/workspace/shared/darkroom_button_candidate_v1/native_packs/index.pck",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/godot_darkroom_entry_followup/build/darkroom_entry_review/test_touch_action_lifecycle.gd",
+        "--",
+        "/workspace/shared/darkroom_button_candidate_v1/native_packs",
+        "/workspace/shared/darkroom_entry_qa/button_green",
+        "720x1558"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "all_child_processes_exited": true
+}

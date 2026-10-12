@@ -1,0 +1,54 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "mount and page constructor perform no page texture IO",
+      "pass": true
+    },
+    {
+      "check": "collection fonts and physical diary/paper prepared",
+      "pass": true
+    },
+    {
+      "check": "collection never eagerly reads unused journal/map/NPC/scene",
+      "pass": true
+    },
+    {
+      "check": "collection leaves map/NPC textures absent from resource cache",
+      "pass": true
+    },
+    {
+      "check": "warm archive fills missing journal reference without scene atlas",
+      "pass": true
+    },
+    {
+      "check": "warm mode upgrade reuses every common object identity",
+      "pass": true
+    },
+    {
+      "check": "event alias requests comic-only resources idempotently",
+      "pass": true
+    },
+    {
+      "check": "catalog normalizes aliases consistently",
+      "pass": true
+    },
+    {
+      "check": "completed model produces a real journal fixture",
+      "pass": true
+    },
+    {
+      "check": "archive click requests owner admission while keeping original collection visible",
+      "pass": true
+    },
+    {
+      "check": "authorized archive completion preserves journal and selection identity",
+      "pass": true
+    },
+    {
+      "check": "archive Back preserves collection state and admitted assets",
+      "pass": true
+    }
+  ],
+  "scope": "Explicit candidate page-side asset/cache/navigation component checks, async App/Bridge admission validated by owning worker"
+}

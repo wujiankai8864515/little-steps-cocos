@@ -1,0 +1,16 @@
+{
+  "source_change": "Existingrelease already shared_room_visual; onlyshader moves fromdarkroom toshared. No newtexture or12thpack. Travelcloudatlas no longer used fordeparture, moves totravel_visual.",
+  "unique_owners": {
+    "res://darkroom/assets/release.png": "shared_room_visual",
+    "res://darkroom/shaders/smoke_flow.gdshader": "shared_room_visual",
+    "res://travel/assets/travel_scene_layers_v1.png": "travel_visual"
+  },
+  "departure_groups": [
+    "core_code",
+    "departure_visual",
+    "shared_room_visual"
+  ],
+  "existing_texture_bytes_unchanged": true,
+  "formal_cold_pack_verification": "pending_group_build",
+  "withdrawn_proposal": "newshared_purification12thpack unnecessary afteractualgroupinspection"
+}

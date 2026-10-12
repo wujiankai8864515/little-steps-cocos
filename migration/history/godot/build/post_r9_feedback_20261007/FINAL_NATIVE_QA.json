@@ -1,0 +1,999 @@
+{
+  "status": "PASS for listed exact-PCK native visual/input scenarios only",
+  "source_commit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+  "source_input_sha256": "6871179852c38ab9bbd83fe20f8fc1a3b3219d8d407523af7a1caba7999b9e72",
+  "candidate_overlays": "none",
+  "all_empty_res": true,
+  "scenarios": 16,
+  "numbered_assertions": 809,
+  "assert_based_without_counter": [
+    "wardrobe_visual",
+    "photo_peach"
+  ],
+  "runs": [
+    {
+      "scenario": "comic",
+      "pass": true,
+      "checks": 111,
+      "seconds": 53.56992903600076,
+      "evidence": "comic",
+      "scope": "Exact supplied formal packs, empty res, native Mesa software GL",
+      "pack_hashes": {
+        "index.pck": {
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+          "bytes": 2314516
+        },
+        "packs/comic.pck": {
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+          "bytes": 2316192
+        },
+        "packs/darkroom.pck": {
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+          "bytes": 4396188
+        },
+        "packs/departure.pck": {
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+          "bytes": 1203888
+        },
+        "packs/entry.pck": {
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+          "bytes": 943108
+        },
+        "packs/exterior.pck": {
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+          "bytes": 1494444
+        },
+        "packs/house.pck": {
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+          "bytes": 17026424
+        },
+        "packs/outfit.pck": {
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+          "bytes": 281448
+        },
+        "packs/photo.pck": {
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+          "bytes": 2754084
+        },
+        "packs/travel.pck": {
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+          "bytes": 13877768
+        },
+        "packs/wardrobe.pck": {
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+          "bytes": 2027864
+        }
+      },
+      "errors": []
+    },
+    {
+      "scenario": "encounter",
+      "pass": true,
+      "checks": 186,
+      "seconds": 20.768155264000598,
+      "evidence": "encounter",
+      "scope": "Exact supplied formal packs, zero overlay",
+      "pack_hashes": {
+        "index.pck": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+        "packs/comic.pck": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+        "packs/darkroom.pck": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+        "packs/departure.pck": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+        "packs/entry.pck": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+        "packs/exterior.pck": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+        "packs/house.pck": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+        "packs/outfit.pck": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+        "packs/photo.pck": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+        "packs/travel.pck": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+        "packs/wardrobe.pck": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+      },
+      "errors": []
+    },
+    {
+      "scenario": "departure",
+      "pass": true,
+      "checks": 51,
+      "seconds": 51.33826688299996,
+      "evidence": "departure",
+      "scope": "Exact supplied formal packs, empty res, native Mesa software GL",
+      "pack_hashes": {
+        "index.pck": {
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+          "bytes": 2314516
+        },
+        "packs/comic.pck": {
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+          "bytes": 2316192
+        },
+        "packs/darkroom.pck": {
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+          "bytes": 4396188
+        },
+        "packs/departure.pck": {
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+          "bytes": 1203888
+        },
+        "packs/entry.pck": {
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+          "bytes": 943108
+        },
+        "packs/exterior.pck": {
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+          "bytes": 1494444
+        },
+        "packs/house.pck": {
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+          "bytes": 17026424
+        },
+        "packs/outfit.pck": {
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+          "bytes": 281448
+        },
+        "packs/photo.pck": {
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+          "bytes": 2754084
+        },
+        "packs/travel.pck": {
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+          "bytes": 13877768
+        },
+        "packs/wardrobe.pck": {
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+          "bytes": 2027864
+        }
+      },
+      "errors": []
+    },
+    {
+      "scenario": "lightshafts",
+      "pass": true,
+      "checks": 38,
+      "seconds": 59.251830791999964,
+      "evidence": "lightshafts",
+      "scope": "Exact supplied formal packs, empty res, native Mesa software GL",
+      "pack_hashes": {
+        "index.pck": {
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+          "bytes": 2314516
+        },
+        "packs/comic.pck": {
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+          "bytes": 2316192
+        },
+        "packs/darkroom.pck": {
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+          "bytes": 4396188
+        },
+        "packs/departure.pck": {
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+          "bytes": 1203888
+        },
+        "packs/entry.pck": {
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+          "bytes": 943108
+        },
+        "packs/exterior.pck": {
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+          "bytes": 1494444
+        },
+        "packs/house.pck": {
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+          "bytes": 17026424
+        },
+        "packs/outfit.pck": {
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+          "bytes": 281448
+        },
+        "packs/photo.pck": {
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+          "bytes": 2754084
+        },
+        "packs/travel.pck": {
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+          "bytes": 13877768
+        },
+        "packs/wardrobe.pck": {
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+          "bytes": 2027864
+        }
+      },
+      "errors": []
+    },
+    {
+      "scenario": "travel_click",
+      "pass": true,
+      "checks": 2,
+      "seconds": 23.025167202000375,
+      "evidence": "travel_click",
+      "scope": "Exact supplied formal packs, empty res, native Mesa software GL",
+      "pack_hashes": {
+        "index.pck": {
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+          "bytes": 2314516
+        },
+        "packs/comic.pck": {
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+          "bytes": 2316192
+        },
+        "packs/darkroom.pck": {
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+          "bytes": 4396188
+        },
+        "packs/departure.pck": {
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+          "bytes": 1203888
+        },
+        "packs/entry.pck": {
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+          "bytes": 943108
+        },
+        "packs/exterior.pck": {
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+          "bytes": 1494444
+        },
+        "packs/house.pck": {
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+          "bytes": 17026424
+        },
+        "packs/outfit.pck": {
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+          "bytes": 281448
+        },
+        "packs/photo.pck": {
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+          "bytes": 2754084
+        },
+        "packs/travel.pck": {
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+          "bytes": 13877768
+        },
+        "packs/wardrobe.pck": {
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+          "bytes": 2027864
+        }
+      },
+      "errors": []
+    },
+    {
+      "scenario": "travel_gameplay",
+      "pass": true,
+      "checks": 268,
+      "seconds": 26.163193456000954,
+      "evidence": "travel_gameplay",
+      "scope": "Exact supplied formal packs, empty res, native Mesa software GL",
+      "pack_hashes": {
+        "index.pck": {
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c",
+          "bytes": 2314516
+        },
+        "packs/comic.pck": {
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4",
+          "bytes": 2316192
+        },
+        "packs/darkroom.pck": {
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e",
+          "bytes": 4396188
+        },
+        "packs/departure.pck": {
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee",
+          "bytes": 1203888
+        },
+        "packs/entry.pck": {
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+          "bytes": 943108
+        },
+        "packs/exterior.pck": {
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51",
+          "bytes": 1494444
+        },
+        "packs/house.pck": {
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16",
+          "bytes": 17026424
+        },
+        "packs/outfit.pck": {
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee",
+          "bytes": 281448
+        },
+        "packs/photo.pck": {
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512",
+          "bytes": 2754084
+        },
+        "packs/travel.pck": {
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7",
+          "bytes": 13877768
+        },
+        "packs/wardrobe.pck": {
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2",
+          "bytes": 2027864
+        }
+      },
+      "errors": []
+    },
+    {
+      "scenario": "photo_input",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 51,
+      "seconds": 45.037,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/photo_input.gd": "cbbc1efc9c1a8e5d9df5b0ddb66a77fa3d2d74db59ac64bceb3c822921f75992"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "photo_return_home.png",
+        "photo_bound_second.png"
+      ],
+      "pass": true,
+      "evidence": "r9_regression/photo_input",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "travel_normal",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 14,
+      "seconds": 35.474,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "a967ac07478b31f74589f34ec94ca48d1816d527df6986d1486a08816dedbdfe"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence": "r9_regression/travel_normal",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "travel_failure",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 16,
+      "seconds": 28.543,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "a967ac07478b31f74589f34ec94ca48d1816d527df6986d1486a08816dedbdfe"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence": "r9_regression/travel_failure",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "travel_late",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 15,
+      "seconds": 42.873,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/travel_modes.gd": "a967ac07478b31f74589f34ec94ca48d1816d527df6986d1486a08816dedbdfe"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence": "r9_regression/travel_late",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "photo_continuity",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 3,
+      "seconds": 64.321,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/photo_continuity.gd": "1878697e34172456dc3f25f9421560a3a231f130f53ba80dc743f232eb4f0669"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "boundary_4.0_10.jpg",
+        "boundary_20.0_20.jpg",
+        "boundary_24.0_20.jpg",
+        "boundary_20.0_10.jpg",
+        "boundary_4.0_0.jpg",
+        "boundary_24.0_10.jpg",
+        "boundary_24.0_0.jpg",
+        "boundary_20.0_0.jpg",
+        "boundary_4.0_20.jpg"
+      ],
+      "pass": true,
+      "evidence": "r9_regression/photo_continuity",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "wardrobe_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 0,
+      "seconds": 40.505,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/wardrobe_visual.gd": "64ee44807dc6464c4da376652df9f459f8278a6a0bb598e4bdd3cc3c523b2406"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "08_original_restored.png",
+        "02_before_lower_only.png",
+        "07_crown_night.png",
+        "03_after_crown_idle_day.png",
+        "06_crown_land.png",
+        "09_home_worn.png",
+        "01_local_unlock_notice.png",
+        "04_crown_drink.png",
+        "05_crown_lift.png",
+        "10_mobile_worn.png"
+      ],
+      "pass": true,
+      "evidence": "r9_regression/wardrobe_visual",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "departure_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 21,
+      "seconds": 31.379,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_departure_final.gd": "443f9ba5c9433e2ac02a0119b6e3ca5e0cb666604aa99c1ec07483c9aa425600"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "W3_depart_0350.png",
+        "W3_depart_0076.png",
+        "W3_depart_0220.png",
+        "W3_depart_0135.png"
+      ],
+      "pass": true,
+      "evidence": "r9_regression/departure_visual",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "field_focus",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 6,
+      "seconds": 5.135,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_field_focus.gd": "fb7311e20b280935cd57a2619dfb49dd883a99535e3deadedce4a40030680f09"
+      },
+      "terminal_evidence": true,
+      "screenshots": [],
+      "pass": true,
+      "evidence": "r9_regression/field_focus",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "rehang_visual",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 27,
+      "seconds": 33.582,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_final_native_qa/fixtures/check_rehang_final.gd": "d4d3fbda2c668a4633817421f1491d7c9d10600061ef4f444c01e3cab1f84afc"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "W7_phone_night_landed.png",
+        "W7_rehang_0650.png",
+        "W7_rehang_0340.png",
+        "W7_rehang_0900.png",
+        "W7_rehang_1000.png",
+        "W7_rehang_0000.png",
+        "W7_night_parent_offset_midflight.png",
+        "W7_rehang_0150.png"
+      ],
+      "pass": true,
+      "evidence": "r9_regression/rehang_visual",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    },
+    {
+      "scenario": "photo_peach",
+      "exit_code": 0,
+      "failed": 0,
+      "checks": 0,
+      "seconds": 12.85,
+      "runtime_errors": [],
+      "warnings": [
+        "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+      ],
+      "fixture_hashes": {
+        "/workspace/scratch/3f82ff2b3f81/r9_photo_peach_addendum/fixtures/check_wardrobe_photo_skin.gd": "e2ca80493f964c7a7f4d25553253205a8189bb7e04d787553875a94f13d59191"
+      },
+      "terminal_evidence": true,
+      "screenshots": [
+        "11_photo_crown_day.png",
+        "12_photo_crown_night.png",
+        "13_photo_original.png"
+      ],
+      "pass": true,
+      "evidence": "photo_peach/photo_peach",
+      "pack_hashes": {
+        "index.pck": {
+          "bytes": 2314516,
+          "sha256": "c25b9875517a95f0fe97c09e7cbcb72ed2010619200950c23558a4b1e421040c"
+        },
+        "packs/comic.pck": {
+          "bytes": 2316192,
+          "sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "packs/darkroom.pck": {
+          "bytes": 4396188,
+          "sha256": "383cc5b7b3353952d63507b639eedfe173086925c7f63455ed63a0591bc1531e"
+        },
+        "packs/departure.pck": {
+          "bytes": 1203888,
+          "sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "packs/entry.pck": {
+          "bytes": 943108,
+          "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "packs/exterior.pck": {
+          "bytes": 1494444,
+          "sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "packs/house.pck": {
+          "bytes": 17026424,
+          "sha256": "91c7c40ed4701d59b026708450cd3231bb3c1fe6f94f72258da48d771ca53e16"
+        },
+        "packs/outfit.pck": {
+          "bytes": 281448,
+          "sha256": "10059ddbd0633275ae869a47e4617458853343f232600de6e4aef882837eceee"
+        },
+        "packs/photo.pck": {
+          "bytes": 2754084,
+          "sha256": "82a166ec2608c23f3185b65851c39ea89457cdae40053f70cf7d6d1ed69d8512"
+        },
+        "packs/travel.pck": {
+          "bytes": 13877768,
+          "sha256": "1fbf979523b30c30b7482b4e75bd8ead16b306d6a2bf100ed689aee124d04bc7"
+        },
+        "packs/wardrobe.pck": {
+          "bytes": 2027864,
+          "sha256": "c12702ca738604778db4621d47e9591ed112761682fbcd8ccf5c9588075749d2"
+        }
+      }
+    }
+  ],
+  "boundaries": [
+    "Native software GL is not WebGL2/hardware GPU/mobile evidence",
+    "User visual acceptance remains pending",
+    "Performance and lifecycle are recorded in a separate report"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "QA fixture failure, no production defect established",
+  "root_cause": "Generic Control.get_global_transform_with_canvas included the Home RoomViewport render-scale transform; injection into root coordinates landed outside the intended note option. Both observed darkroom decisions were canceled.",
+  "invalidated_evidence": [
+    "v1 doll canceled-confirmation/cancel assertions used wrong coordinate and are not accepted",
+    "v1 darkroom-entry red and following missing-trip red are fixture/cascading failures"
+  ],
+  "correction": "For controls inside Home RoomViewport, map Control global point through world.to_local, then Home root transform. Assert production _world_pointer and _target_at resolve to yes; _target_at requires target visible and enabled. Re-run all note confirm/cancel branches.",
+  "v1_decisions": [
+    {
+      "accepted": false,
+      "kind": "darkroom"
+    },
+    {
+      "accepted": false,
+      "kind": "darkroom"
+    }
+  ],
+  "v1_no_script_or_resource_errors": true,
+  "production_changes": 0,
+  "fixed_fps_used": false
+}

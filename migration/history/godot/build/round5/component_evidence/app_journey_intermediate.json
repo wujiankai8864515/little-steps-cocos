@@ -1,0 +1,864 @@
+{
+  "boot_errors": [],
+  "checks": [
+    {
+      "at_msec": 134,
+      "name": "App uses ordinary startup without smoke, autoplay or movie bypass",
+      "pass": true
+    },
+    {
+      "at_msec": 1551,
+      "name": "real loading gate reaches Login",
+      "pass": true
+    },
+    {
+      "at_msec": 1551,
+      "name": "Loading minimum real hold is honored",
+      "pass": true
+    },
+    {
+      "at_msec": 5027,
+      "name": "Login title, subtitle and greeting presentation finishes",
+      "pass": true
+    },
+    {
+      "at_msec": 5494,
+      "name": "Login input enters actual opening Comic",
+      "pass": true
+    },
+    {
+      "at_msec": 5494,
+      "name": "Opening Comic uses production content validation",
+      "pass": true
+    },
+    {
+      "at_msec": 5544,
+      "name": "early keyboard press cannot skip Comic drawing and hold",
+      "pass": true
+    },
+    {
+      "at_msec": 13577,
+      "name": "all original Comic panels finish their real holds",
+      "pass": true
+    },
+    {
+      "at_msec": 13577,
+      "name": "every original opening panel was revealed",
+      "pass": true
+    },
+    {
+      "at_msec": 14144,
+      "name": "Comic input passes actual Home resource and route gate",
+      "pass": true
+    },
+    {
+      "at_msec": 14144,
+      "name": "App prepared Home resources without boot or travel preload failure",
+      "pass": true
+    },
+    {
+      "at_msec": 14203,
+      "name": "actual alpha target exists for doll",
+      "pass": true
+    },
+    {
+      "at_msec": 14227,
+      "name": "ordinary pointer captures doll",
+      "pass": true
+    },
+    {
+      "at_msec": 15133,
+      "name": "real darkroom invitation reaches hold",
+      "pass": true
+    },
+    {
+      "at_msec": 15133,
+      "name": "accept only an interactive darkroom invitation",
+      "pass": true
+    },
+    {
+      "at_msec": 15600,
+      "name": "real doll acceptance loads and enters Darkroom",
+      "pass": true
+    },
+    {
+      "at_msec": 15600,
+      "name": "Darkroom resource and first-frame gate completes",
+      "pass": true
+    },
+    {
+      "at_msec": 16067,
+      "name": "Darkroom return input restores cached Home",
+      "pass": true
+    },
+    {
+      "at_msec": 16067,
+      "name": "Darkroom round trip preserves the same Home and actor",
+      "pass": true
+    },
+    {
+      "at_msec": 16067,
+      "name": "combined journey uses actual isolated native save files",
+      "pass": true
+    },
+    {
+      "at_msec": 16084,
+      "name": "actual alpha target exists for bag",
+      "pass": true
+    },
+    {
+      "at_msec": 16100,
+      "name": "ordinary pointer captures bag",
+      "pass": true
+    },
+    {
+      "at_msec": 16983,
+      "name": "real travel invitation reaches hold",
+      "pass": true
+    },
+    {
+      "at_msec": 16983,
+      "name": "accept only an interactive travel invitation",
+      "pass": true
+    },
+    {
+      "at_msec": 17016,
+      "name": "Yes departs continuously with the original visible actor",
+      "pass": true
+    },
+    {
+      "at_msec": 17016,
+      "name": "real invitation creates one persisted trip",
+      "pass": true
+    },
+    {
+      "at_msec": 21800,
+      "name": "actual farewell finishes before travel props replace actor",
+      "pass": true
+    },
+    {
+      "at_msec": 21800,
+      "name": "farewell hides the same actor without a replacement",
+      "pass": true
+    },
+    {
+      "at_msec": 21804,
+      "name": "injected travel clock reaches stage two without opening map",
+      "pass": true
+    },
+    {
+      "at_msec": 21804,
+      "name": "map first plays actual entry bounce",
+      "pass": true
+    },
+    {
+      "at_msec": 22086,
+      "name": "map opens only when bounce completes",
+      "pass": true
+    },
+    {
+      "at_msec": 22086,
+      "name": "App map shows persisted stage two",
+      "pass": true
+    },
+    {
+      "at_msec": 22133,
+      "name": "production control exists: event_trip_1_1205574158:1",
+      "pass": true
+    },
+    {
+      "at_msec": 22178,
+      "name": "real reached marker opens compact panel within map",
+      "pass": true
+    },
+    {
+      "at_msec": 22178,
+      "name": "App compact panel obtains durable route pause",
+      "pass": true
+    },
+    {
+      "at_msec": 22185,
+      "name": "injected 30 seconds selecting leaves route progress unchanged",
+      "pass": true
+    },
+    {
+      "at_msec": 22185,
+      "name": "production control exists: cancel_event",
+      "pass": true
+    },
+    {
+      "at_msec": 22211,
+      "name": "real cancel resumes route and preserves unresolved event",
+      "pass": true
+    },
+    {
+      "at_msec": 22211,
+      "name": "production control exists: back",
+      "pass": true
+    },
+    {
+      "at_msec": 22239,
+      "name": "map return stays in the actual App Home",
+      "pass": true
+    },
+    {
+      "at_msec": 22246,
+      "name": "map first plays actual entry bounce",
+      "pass": true
+    },
+    {
+      "at_msec": 22522,
+      "name": "map opens only when bounce completes",
+      "pass": true
+    },
+    {
+      "at_msec": 22523,
+      "name": "return and map reopen neither block nor reset travel",
+      "pass": true
+    },
+    {
+      "at_msec": 22523,
+      "name": "production control exists: back",
+      "pass": true
+    },
+    {
+      "at_msec": 23038,
+      "name": "normal App route remains usable during travel",
+      "pass": true
+    },
+    {
+      "at_msec": 23489,
+      "name": "cached Home returns during active trip",
+      "pass": true
+    },
+    {
+      "at_msec": 23490,
+      "name": "time away from Home continues the travel route",
+      "pass": true
+    },
+    {
+      "at_msec": 23542,
+      "name": "terminal AI transaction produces returned full bag in App",
+      "pass": true
+    },
+    {
+      "at_msec": 23542,
+      "name": "all unchosen events settle once at terminal without manual learning",
+      "pass": true
+    },
+    {
+      "at_msec": 23542,
+      "name": "automatic terminal events create the independent ground diary",
+      "pass": true
+    },
+    {
+      "at_msec": 23542,
+      "name": "arrival restores the original actor instance",
+      "pass": true
+    },
+    {
+      "at_msec": 23989,
+      "name": "Home information note reaches interactive hold",
+      "pass": true
+    },
+    {
+      "at_msec": 24556,
+      "name": "real bag bounce opens floating harvest in Home",
+      "pass": true
+    },
+    {
+      "at_msec": 24556,
+      "name": "opening harvest neither opens a white page nor grants all items",
+      "pass": true
+    },
+    {
+      "at_msec": 26460,
+      "name": "actual floating reward sprite exists",
+      "pass": true
+    },
+    {
+      "at_msec": 26489,
+      "name": "real reward tap starts flight before inventory grant",
+      "pass": true
+    },
+    {
+      "at_msec": 27756,
+      "name": "Bezier flight completion commits one item",
+      "pass": true
+    },
+    {
+      "at_msec": 27756,
+      "name": "one item is collected while untouched items and full bag remain",
+      "pass": true
+    },
+    {
+      "at_msec": 27789,
+      "name": "diary turn precedes opening its review interface",
+      "pass": true
+    },
+    {
+      "at_msec": 28253,
+      "name": "real diary turn opens direct combined review",
+      "pass": true
+    },
+    {
+      "at_msec": 28253,
+      "name": "production control exists: review_0",
+      "pass": true
+    },
+    {
+      "at_msec": 28283,
+      "name": "draft diary feedback does not learn",
+      "pass": true
+    },
+    {
+      "at_msec": 28283,
+      "name": "production control exists: journal_close",
+      "pass": true
+    },
+    {
+      "at_msec": 28311,
+      "name": "closing diary without submit does not learn",
+      "pass": true
+    },
+    {
+      "at_msec": 28478,
+      "name": "whole App teardown releases Home, travel page and props",
+      "pass": true
+    },
+    {
+      "at_msec": 28478,
+      "name": "whole App teardown releases travel service without a retained cycle",
+      "pass": true
+    },
+    {
+      "at_msec": 29261,
+      "name": "recreated Home restores same completed trip from native storage",
+      "pass": true
+    },
+    {
+      "at_msec": 29261,
+      "name": "recreated Home does not replay the collected reward",
+      "pass": true
+    },
+    {
+      "at_msec": 29261,
+      "name": "recreated Home keeps unreviewed diary independent of partial collection",
+      "pass": true
+    },
+    {
+      "at_msec": 29261,
+      "name": "recreated Home restores only untouched floating items",
+      "pass": true
+    },
+    {
+      "at_msec": 29428,
+      "name": "recreated Home teardown also releases service",
+      "pass": true
+    }
+  ],
+  "duration_seconds": 29.428,
+  "engine": "4.5.2-stable (official)",
+  "failed": 0,
+  "inputs": [
+    {
+      "position": [
+        360.0,
+        1080.0
+      ],
+      "target": "Login enter",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        360.0,
+        1080.0
+      ],
+      "target": "Login enter",
+      "type": "mouse_up"
+    },
+    {
+      "key": 32,
+      "target": "premature opening Comic continue",
+      "type": "key_down"
+    },
+    {
+      "key": 32,
+      "target": "premature opening Comic continue",
+      "type": "key_up"
+    },
+    {
+      "key": 32,
+      "target": "opening Comic continue after hold",
+      "type": "key_down"
+    },
+    {
+      "key": 32,
+      "target": "opening Comic continue after hold",
+      "type": "key_up"
+    },
+    {
+      "position": [
+        656.0,
+        737.0
+      ],
+      "target": "grab doll",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        350.0,
+        921.0
+      ],
+      "target": "carry doll to actor",
+      "type": "mouse_motion"
+    },
+    {
+      "position": [
+        350.0,
+        921.0
+      ],
+      "target": "drop doll on actor",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        298.499938964844,
+        614.5
+      ],
+      "target": "Yes darkroom",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        298.499938964844,
+        614.5
+      ],
+      "target": "Yes darkroom",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        62.0,
+        88.0800018310547
+      ],
+      "target": "Darkroom return",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        62.0,
+        88.0800018310547
+      ],
+      "target": "Darkroom return",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        625.0,
+        398.0
+      ],
+      "target": "grab bag",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        350.0,
+        921.0
+      ],
+      "target": "carry bag to actor",
+      "type": "mouse_motion"
+    },
+    {
+      "position": [
+        350.0,
+        921.0
+      ],
+      "target": "drop bag on actor",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        298.499938964844,
+        614.5
+      ],
+      "target": "Yes travel",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        298.499938964844,
+        614.5
+      ],
+      "target": "Yes travel",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "map",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "map",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        266.0,
+        370.5
+      ],
+      "target": "event_trip_1_1205574158:1",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        266.0,
+        370.5
+      ],
+      "target": "event_trip_1_1205574158:1",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        636.5,
+        488.5
+      ],
+      "target": "cancel_event",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        636.5,
+        488.5
+      ],
+      "target": "cancel_event",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        73.5,
+        131.0
+      ],
+      "target": "back",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        73.5,
+        131.0
+      ],
+      "target": "back",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "map",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "map",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        73.5,
+        131.0
+      ],
+      "target": "back",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        73.5,
+        131.0
+      ],
+      "target": "back",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        62.0,
+        88.0800018310547
+      ],
+      "target": "Darkroom return during travel",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        62.0,
+        88.0800018310547
+      ],
+      "target": "Darkroom return during travel",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        379.492156982422,
+        606.498718261719
+      ],
+      "target": "close Home information card",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        379.492156982422,
+        606.498718261719
+      ],
+      "target": "close Home information card",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        359.0,
+        1015.0
+      ],
+      "target": "returned full bag",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        359.0,
+        1015.0
+      ],
+      "target": "returned full bag",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        245.0,
+        862.009704589844
+      ],
+      "target": "one floating reward",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        245.0,
+        862.009704589844
+      ],
+      "target": "one floating reward",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "ground diary",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        568.0,
+        1137.0
+      ],
+      "target": "ground diary",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        434.0,
+        863.5
+      ],
+      "target": "review_0",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        434.0,
+        863.5
+      ],
+      "target": "review_0",
+      "type": "mouse_up"
+    },
+    {
+      "position": [
+        644.0,
+        992.0
+      ],
+      "target": "journal_close",
+      "type": "mouse_down"
+    },
+    {
+      "position": [
+        644.0,
+        992.0
+      ],
+      "target": "journal_close",
+      "type": "mouse_up"
+    }
+  ],
+  "pages": [
+    {
+      "at_msec": 135,
+      "page": "LOADING"
+    },
+    {
+      "at_msec": 1535,
+      "page": "LOGIN"
+    },
+    {
+      "at_msec": 5478,
+      "page": "COMIC"
+    },
+    {
+      "at_msec": 14132,
+      "page": "HOME"
+    },
+    {
+      "at_msec": 15596,
+      "page": "DARKROOM"
+    },
+    {
+      "at_msec": 16056,
+      "page": "HOME"
+    },
+    {
+      "at_msec": 23032,
+      "page": "DARKROOM"
+    },
+    {
+      "at_msec": 23476,
+      "page": "HOME"
+    }
+  ],
+  "passed": 71,
+  "root_push_input_events": 44,
+  "scope": "Full production App resource gates, real root input, ordinary darkroom routes, isolated native saves and weak-reference teardown. Headless run does not validate GPU pixels, browser behavior, sound or touch feel.",
+  "snapshots": {
+    "actor_id": 83818972893,
+    "comic": {
+      "audio": {
+        "gesture_seen": true,
+        "play_count": 6,
+        "players": 2,
+        "playing": 0,
+        "revealed_once": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "stop_count": 0
+      },
+      "completed": false,
+      "content_ready": true,
+      "enter_available": true,
+      "errors": [],
+      "finished_emitted": false,
+      "panel_index": 3,
+      "paper": {
+        "amounts": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "native_bubbles": true,
+        "paper_rect": "[P: (0.0, 4.0), S: (672.0, 1008.0)]",
+        "shared_bubble_shape": true,
+        "single_texture": true
+      },
+      "paused": false,
+      "revealed_count": 4,
+      "state": "PLAYING",
+      "status": ""
+    },
+    "final_trip": {
+      "auto_count": 3,
+      "id": "trip_1_1205574158",
+      "inventory_count": 1,
+      "review_count": 0,
+      "reward_uid": "trip_1_1205574158:reward:0",
+      "status": "returned"
+    },
+    "login": {
+      "accents_visible": true,
+      "fin_visible": true,
+      "fish_visible": true,
+      "generation": 1,
+      "ready": true,
+      "stage": "GREETING",
+      "stage_elapsed": 0.0,
+      "subtitle_complete": true,
+      "title_complete": true
+    },
+    "page_counts": {
+      "comic": 1,
+      "darkroom": 2,
+      "home": 1,
+      "loading": 1,
+      "login": 1
+    },
+    "startup_metrics": {
+      "comic_prepared_msec": 1631,
+      "darkroom_preparation": {
+        "completed": 0,
+        "stage": "ready",
+        "stage_msec": 14859,
+        "started_msec": 14336,
+        "total": 0,
+        "transitions": [
+          {
+            "at_msec": 14336,
+            "previous_stage_msec": 0,
+            "stage": "download"
+          },
+          {
+            "at_msec": 14336,
+            "previous_stage_msec": 0,
+            "stage": "resources"
+          },
+          {
+            "at_msec": 14801,
+            "previous_stage_msec": 465,
+            "stage": "instance"
+          },
+          {
+            "at_msec": 14858,
+            "previous_stage_msec": 57,
+            "stage": "first_draw"
+          },
+          {
+            "at_msec": 14859,
+            "previous_stage_msec": 1,
+            "stage": "ready"
+          }
+        ]
+      },
+      "darkroom_prepare_duration_msec": 523,
+      "darkroom_prepared_msec": 14635,
+      "godot_loading_first_draw_usec": 41446,
+      "home_prepared_msec": 3480,
+      "loading_clock": "native_first_draw",
+      "login_visible_msec": 1442,
+      "minimum_loading_visible_msec": 1000,
+      "opening_story_errors": [],
+      "opening_story_status": "COMPLETED",
+      "peekintro_ready_msec": 4935,
+      "stage": "login_ready",
+      "stage_completed": 1,
+      "stage_total": 1
+    },
+    "viewport": {
+      "logical_app_size": "(720.0, 1280.0)",
+      "visible_rect": "[P: (0.0, 0.0), S: (720.0, 1280.0)]",
+      "window_size": "(720, 1280)"
+    }
+  },
+  "travel_clock": "Injected wall-clock values after real Home entry; not a second real-time 100-second test"
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "TEST ONLY A004 single-script candidate core; original eight resource packs are read-only symlinks; no formal release claim",
+  "base_packs": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_formal_e394bda/native_packs",
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "source_path": "games/travel_woodfish/project/home/interaction/home_interaction_controller.gd",
+  "source_sha256": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd",
+  "compile_script_closure": {
+    "home/interaction/home_interaction_controller.gd": "5a02ffabda7086999390d2ba769f0accfc1f41d0498b9eea44e2bd30df8ffddd",
+    "home/behavior/character_geometry.gd": "2e125863a95c75bf54c1affed10a5e536cf6b21093964d2c58556500587a6896",
+    "home/behavior/eye_geometry.gd": "4bb8acac9b4636a9af7c04b568b2b7b3be1041b51c4f08dc431d7b4e3d5ec952",
+    "home/interaction/interaction_feedback.gd": "9faf2c06482ee63b89eef4e92b9d936231e0ee4172712314ba72c3bde152c19d",
+    "home/interaction/anchor_registry.gd": "1a18592bc127e397ef6f280d4c2b8f2b7f04fc868b62f915002226e3bae41289",
+    "home/interaction/alpha_hit_cache.gd": "f704a96b2abc38996a065757dda13ca517f200a966ef70080b4cb789bdef64b7"
+  },
+  "changed_entries": [
+    "home/interaction/home_interaction_controller.gdc"
+  ],
+  "entry_delta": 0,
+  "index_bytes": 2230916,
+  "index_sha256": "4beee15a5da4e604136e62f71aadbb4a3ad60a9b83dfd90997243bf54a2d258c",
+  "commands": [
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/home_grounding_candidate_v2/official_compile",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/home_grounding_candidate_v2/official_compile",
+      "--export-pack",
+      "Home Lift Token Audit",
+      "/workspace/shared/home_grounding_candidate_v2/compiled.pck"
+    ],
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/home_grounding_candidate_v2/official_compile",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_home_grounding_followup/build/make_pack.gd",
+      "--",
+      "/workspace/shared/home_grounding_candidate_v2/pack_core.json"
+    ]
+  ]
+}

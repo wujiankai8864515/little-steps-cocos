@@ -1,0 +1,14 @@
+{
+  "id": "N04",
+  "cause": "Authored Tail -1 under actor 0 sorts behind opaque page backdrop 0; source texture/UV were intact. Only local photo actor parent moves to2, keeping Tail1 and Body2 relative ordering.",
+  "test": "Exact baseline 7ba4243 core and eight lazy PCK, real Home entry, freeze page, compare actor z0 versus z2. No texture/scale/gaze edit.",
+  "difference_bounds": [
+    34,
+    28,
+    108,
+    918
+  ],
+  "status": "causal native software GL A/B verified; candidate full-group regression pending",
+  "web_user_verified": false,
+  "changed_pixels": 3694
+}

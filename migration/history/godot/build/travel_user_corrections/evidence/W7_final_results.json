@@ -1,0 +1,115 @@
+{
+  "checks": [
+    {
+      "check": "W7 trip starts through service",
+      "pass": true
+    },
+    {
+      "check": "W7 actual timed trip returns with full bag",
+      "pass": true
+    },
+    {
+      "check": "W7 reward starts once trip_1_91357:reward:0",
+      "pass": true
+    },
+    {
+      "check": "W7 reward completes once trip_1_91357:reward:0",
+      "pass": true
+    },
+    {
+      "check": "W7 reward starts once trip_1_91357:reward:1",
+      "pass": true
+    },
+    {
+      "check": "W7 reward completes once trip_1_91357:reward:1",
+      "pass": true
+    },
+    {
+      "check": "W7 claim signal transfers ownership before bridge wall visibility",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.0",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.15",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.34",
+      "pass": true
+    },
+    {
+      "check": "W7 hanging artwork owns middle/end flight 0.34",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.65",
+      "pass": true
+    },
+    {
+      "check": "W7 hanging artwork owns middle/end flight 0.65",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.9",
+      "pass": true
+    },
+    {
+      "check": "W7 hanging artwork owns middle/end flight 0.9",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 0.999",
+      "pass": true
+    },
+    {
+      "check": "W7 hanging artwork owns middle/end flight 0.999",
+      "pass": true
+    },
+    {
+      "check": "W7 real top-loop follows shared hook curve at 1.0",
+      "pass": true
+    },
+    {
+      "check": "W7 hanging artwork owns middle/end flight 1.0",
+      "pass": true
+    },
+    {
+      "check": "W7 final transform scale rotation alpha and depth match shared wall rest exactly",
+      "pass": true
+    },
+    {
+      "check": "W7 landing releases one owner",
+      "pass": true
+    },
+    {
+      "check": "W7 changed parent origins still share world hook coordinates",
+      "pass": true
+    },
+    {
+      "check": "W7 in-flight hanging bag cannot acquire second drag owner",
+      "pass": true
+    },
+    {
+      "check": "W7 suspend ends flight at shared wall state",
+      "pass": true
+    },
+    {
+      "check": "W7 resume of claimed trip never replays return",
+      "pass": true
+    },
+    {
+      "check": "W7 repeated settled reward callback cannot restart return",
+      "pass": true
+    },
+    {
+      "check": "W7 tall phone viewport ends at same live wall frame",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "scope": "Source component candidate, official4.5.2; not final R9 cold pack/Web/user acceptance"
+}

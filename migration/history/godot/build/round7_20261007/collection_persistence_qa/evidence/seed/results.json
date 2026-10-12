@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "check": "X11 real software GL",
+      "pass": true
+    },
+    {
+      "check": "cold Home prepare terminates",
+      "pass": true
+    },
+    {
+      "check": "Home receives actual root input",
+      "pass": true
+    },
+    {
+      "check": "actual cold Home collection entry mounts Travel",
+      "pass": true
+    },
+    {
+      "check": "actual mounted content available",
+      "pass": true
+    },
+    {
+      "check": "native persistent store enabled without errors",
+      "pass": true
+    },
+    {
+      "check": "fresh isolated fixture slot, no user data",
+      "pass": true
+    },
+    {
+      "check": "real service creates deterministic trip",
+      "pass": true
+    },
+    {
+      "check": "real service auto-settles trip and builds journal",
+      "pass": false
+    },
+    {
+      "check": "trip reaches return gate",
+      "pass": false
+    },
+    {
+      "check": "real reward bag opens",
+      "pass": false
+    },
+    {
+      "check": "start real reward flight trip_1_91357:reward:0",
+      "pass": false
+    },
+    {
+      "check": "collect real reward trip_1_91357:reward:0",
+      "pass": false
+    },
+    {
+      "check": "start real reward flight trip_1_91357:reward:1",
+      "pass": false
+    },
+    {
+      "check": "collect real reward trip_1_91357:reward:1",
+      "pass": false
+    },
+    {
+      "check": "actual FileAccess JSON save exists",
+      "pass": true
+    },
+    {
+      "check": "real collected inventory available after seed",
+      "pass": false
+    },
+    {
+      "check": "real archived journal available after seed",
+      "pass": false
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 9,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [],
+  "scope": "Candidate zero-overlay PCK. Two distinct native processes share isolated FileAccess slot. Test-only trip generated through real depart, auto-settlement, reward collection and review APIs. Not user data, Web persistence or hardware acceptance."
+}

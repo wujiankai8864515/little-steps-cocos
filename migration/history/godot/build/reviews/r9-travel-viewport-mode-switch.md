@@ -1,0 +1,5 @@
+# R9 同页模式切换恢复实时背景
+
+按mode准入启用同一TravelPage切换后，需要同时处理comic全覆盖→collection实时Home背景。若只在dismiss恢复SubViewport，直接切换会保留旧停绘标记。补齐open新mode后立即恢复原update_mode，再按当前comic状态接管。Home world/物理不暂停，其他页不冻结。
+
+7种连续模式切换method-level夹具通过，精确检查UPDATE_DISABLED只在comic且world处理模式不变。使用明确fakePage只隔离渲染所有权，不称为实际入口或视觉验收；真实App合并回归由关联组完成。初次mock遗漏退出时的Home字段/方法造成夹具错误，补齐最小退出接口后重跑日志无ERROR。证据build/performance_r9/runtime/view_switch/。

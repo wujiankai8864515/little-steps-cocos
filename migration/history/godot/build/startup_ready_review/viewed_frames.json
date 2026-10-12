@@ -1,0 +1,24 @@
+{
+  "reviewed_by": "startup QA worker",
+  "frames": [
+    "gl_slow/00_loading_contact.png",
+    "gl_slow/01_login_initial_hidden.png",
+    "gl_slow/02_login_title_settled.png",
+    "gl_slow/03_login_pause_before_peek.png",
+    "gl_slow/04_login_greeting_ready.png",
+    "gl_slow/05_comic_blank.png",
+    "gl_slow/06_comic_panel_1.png",
+    "gl_slow/07_comic_panel_2.png",
+    "gl_slow/08_comic_panel_3.png",
+    "gl_slow/09_comic_panel_4.png",
+    "gl_slow/10_comic_enter_breath.png",
+    "gl_slow/11_comic_waiting_home.png",
+    "gl_slow/12_home_after_comic.png",
+    "gl_loading_contact/00_loading_prepare.png",
+    "gl_loading_contact/01_loading_swing.png",
+    "gl_loading_contact/02_loading_rebound.png",
+    "gl_loading_contact/03_loading_contact.png"
+  ],
+  "finding": "Actual 720x1280 GL: initial login hidden, branding pause, later peek; single paper retains panels; final prompt and waiting caption; loading no halo/leading dot, three static marks; Loading preparation/contact/rebound frames. Contact captures sampled at frame_post_draw. No gross penetration in inspected contact/rebound frames. Subjective animation force, audio and user artwork approval remain open.",
+  "view_attempt_note": "Two initial view requests used assumed contact/rebound order; filenames were corrected using contact_frames.json and both actual images then inspected. No test fixture run failed."
+}

@@ -1,0 +1,88 @@
+{
+  "status": "Static evidence completed; no whole-topic or visual pass asserted",
+  "topics": [
+    {
+      "id": "A001",
+      "finding": "Source has reset-to-hidden, TITLE 1.15s → SUBTITLE .85s → SETTLED .35s → PEEK .75s. Peek guards title/subtitle alpha=1 and resting positions. App waits login presentation ready before Comic.",
+      "evidence": [
+        "entry/login_page.gd:37",
+        "entry/login_page.gd:74",
+        "scripts/app.gd:517"
+      ],
+      "remaining": "Observe actual cold/refresh/re-entry ordering and four-corner taps. Static inspection cannot pass visual timing."
+    },
+    {
+      "id": "A022",
+      "finding": "App awaits login pack, required-resource batch, instantiated scene, minimum 1000 ms since first draw/host paint, router transition and first draw. Host requires engineStarted, gameReady and loginReady plus >=1000 ms. Contact actor is original 3-layer resource set, 66 frames @30fps, hit frames 14/28/40; contact and next frames have zero mathematical gap; impact lines decay over 4 frames.",
+      "evidence": [
+        "scripts/app.gd:150",
+        "scripts/app.gd:208",
+        "entry/native_actor.gd:114",
+        "entry/loading_page.gd:71",
+        "host/preboot.js:197",
+        "host/actor_loading.js:48"
+      ],
+      "remaining": "No new animation playback/browser timing/listening evidence here. Whole-sprite penetration, visual force, cache, slow/failing/interrupted response observations require actual runs. project.godot uses game-title boot splash, not Godot Logo, but first visible browser/native frame is runtime evidence."
+    },
+    {
+      "id": "A023",
+      "finding": "Actual declared closure: Loading=index; Login=index+entry; Comic=index+comic; Home=index+house+exterior. No missing remap/import/member. App begins Comic and Home preparation after LOGIN; Comic entry only requires Comic and login introduction, not home_ready. Home enters only after home_ready; both prepare branches await necessary resources and tree/first-draw gate. Home optional travel/photo/departure not in first-screen closure.",
+      "evidence": [
+        "resource_closure.json",
+        "entry_scene_closure.json",
+        "scripts/app.gd:230",
+        "scripts/app.gd:272",
+        "scripts/app.gd:430",
+        "scripts/app.gd:550"
+      ],
+      "remaining": "Actual network priority/concurrency, slow/cached/failure/cancel/retry/late-response sequences need runtime observation. Declared closure is not proof of every dynamic draw branch."
+    },
+    {
+      "id": "A026",
+      "finding": "Frozen packed opening_story.json equals source byte-for-byte; four original copy lines and approval citation retained. One packed 1024x1536 paper has four unequal panels; source reveals each while retaining previous panels, every entry configures from blank, no progress-store read/write gate. Audio has puff each panel, drink at panel 2, joy at panel 3; streams belong to comic.pck and are gated by gesture/focus/activity.",
+      "evidence": [
+        "story_provenance.json",
+        "packed_comic_paper_v2.png",
+        "config/opening_story.json:7",
+        "entry/comic_page.gd:65",
+        "entry/comic_page.gd:134",
+        "entry/opening_story_audio.gd:38"
+      ],
+      "remaining": "Approval citation was not independently fetched; individual generated panels explicitly not user-approved. Full rendered paper/bubble placement, reading flow, playback audio, artwork acceptance remain separate."
+    },
+    {
+      "id": "A047",
+      "finding": "No halo/dot draw element in source scene or frozen host shell; actual packed clean background pixels equal source RGBA hash and frozen inline host background matches no-halo provenance. Source and host preserve exactly three 4x4 static TravelMarks below track. Both source progress and host use high-water value, cap at .99 until prepared, retain retry high water.",
+      "evidence": [
+        "loading_art_evidence.json",
+        "packed_image_inspection.json",
+        "frozen_index_sanitized.html.txt:23",
+        "entry/loading_page.tscn:184",
+        "entry/loading_page.gd:38",
+        "host/preboot.js:99"
+      ],
+      "remaining": "Frozen CSS/images/source pass static checks; deployed browser rendering and monotone observed run sequence remain separate. Static TravelMarks are intentional and should not be removed as leading-dot regression."
+    },
+    {
+      "id": "A048",
+      "finding": "Comic scene has Advance and Retry actions, no return button. Enter only becomes available after all panel draws plus 1.35s hold. A child label breathes alpha .86–1 and scale 1–1.025 on 2.8s cycle; actual button rectangle stays stable.",
+      "evidence": [
+        "entry/comic_page.tscn",
+        "entry/comic_page.gd:159",
+        "entry/comic_page.gd:245",
+        "entry/comic_page.gd:266"
+      ],
+      "remaining": "Actual UI visibility, screen-size hit testing, no early advancement and input lifecycle still need run evidence."
+    },
+    {
+      "id": "A049",
+      "finding": "WAITING_FOR_HOME with no error advances a 0.45s per-dot counter cycling 1,2,3 dots; waiting start/retry resets it. _can_interact guards paused/focus/page lifecycle.",
+      "evidence": [
+        "entry/comic_page.gd:134",
+        "entry/comic_page.gd:177",
+        "entry/comic_page.gd:276"
+      ],
+      "remaining": "Observe real extended Home wait, not a forced static label; resume/retry cadence remains runtime evidence."
+    }
+  ]
+}

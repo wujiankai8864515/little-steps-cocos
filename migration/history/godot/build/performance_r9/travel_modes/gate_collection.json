@@ -1,0 +1,352 @@
+{
+  "boundary": "Explicit candidate App/catalog/gate against6327 native physical packs, empty res, actual ResourceLoader/headless. No page visual or browser timing claim.",
+  "checks": [
+    {
+      "name": "unchanged physical manifest accepted",
+      "pass": true
+    },
+    {
+      "name": "mode ready with its own successful lease: collection",
+      "pass": true
+    },
+    {
+      "name": "exact catalog batch size: collection",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_brush.ttf",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_paper_v1.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_diary_plate_v5.png",
+      "pass": true
+    },
+    {
+      "name": "hard residency admission unchanged: collection",
+      "pass": true
+    }
+  ],
+  "failures": 0,
+  "gate": {
+    "backend": "ResourceLoader",
+    "batches": 1,
+    "clock": "monotonic_usec",
+    "counters": {
+      "admission_rejections": 0,
+      "batches_failed": 0,
+      "batches_ready": 1,
+      "budget_overruns": 3,
+      "cache_hits": 0,
+      "cancelled": 0,
+      "consumes": 3,
+      "deduplicated": 0,
+      "evictions": 0,
+      "max_process_usec": 36954,
+      "peak_batches": 1,
+      "peak_entries": 3,
+      "peak_in_flight": 1,
+      "peak_reserved_bytes": 14227028,
+      "requests": 1,
+      "retries": 0,
+      "starts": 3,
+      "timeouts": 0
+    },
+    "effective_max_concurrent": 1,
+    "entries": 3,
+    "estimated_ready_bytes": 14227028,
+    "estimated_reserved_bytes": 14227028,
+    "fallback_reason": "godot_4_5_2_loader_lifetime",
+    "in_flight": 0,
+    "limits": {
+      "default_estimated_bytes": 1048576,
+      "frame_budget_usec": 2000,
+      "max_batches": 32,
+      "max_concurrent": 2,
+      "max_entries": 128,
+      "max_estimated_bytes": 268435456,
+      "max_finishes_per_frame": 8,
+      "max_owners": 64,
+      "max_specs_per_batch": 80,
+      "max_starts_per_frame": 8,
+      "metrics_capacity": 256,
+      "mode": "auto"
+    },
+    "memory": {
+      "godot_static_memory_bytes": 41933930,
+      "per_resource_decode_usec": null,
+      "per_resource_gpu_upload_usec": null,
+      "render_texture_memory_bytes": null,
+      "render_video_memory_bytes": null,
+      "whole_process_rss_bytes": null
+    },
+    "mode": "sequential",
+    "owners": 1,
+    "queue_entries": 0,
+    "requested_mode": "auto",
+    "samples": [
+      {
+        "at_usec": 346357,
+        "attempt": 1,
+        "elapsed_usec": 3072,
+        "error": 0,
+        "frame": 5,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_wait_usec": 181,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 346376,
+        "budget_usec": 2000,
+        "elapsed_usec": 3149,
+        "frame": 5,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 346482,
+        "elapsed_usec": 3,
+        "frame": 6,
+        "load_wall_usec": 3200,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 346494,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 6,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_to_ready_usec": 3394,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 383368,
+        "attempt": 1,
+        "elapsed_usec": 36831,
+        "error": 0,
+        "frame": 6,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "queue_wait_usec": 3413,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 383401,
+        "budget_usec": 2000,
+        "elapsed_usec": 36954,
+        "frame": 6,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 383591,
+        "elapsed_usec": 5,
+        "frame": 7,
+        "load_wall_usec": 37077,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 383608,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 7,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "queue_to_ready_usec": 40507,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 415510,
+        "attempt": 1,
+        "elapsed_usec": 31839,
+        "error": 0,
+        "frame": 7,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_wait_usec": 40557,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 415542,
+        "budget_usec": 2000,
+        "elapsed_usec": 32008,
+        "frame": 7,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 415747,
+        "elapsed_usec": 5,
+        "frame": 8,
+        "load_wall_usec": 32090,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 415766,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 8,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_to_ready_usec": 72664,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 415774,
+        "batch_id": 1,
+        "elapsed_usec": 72674,
+        "frame": 8,
+        "stage": "batch_finished",
+        "success": true
+      }
+    ]
+  },
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 4,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "exterior",
+      "house",
+      "departure",
+      "travel"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 225189,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 5017,
+          "loaded": 1494444,
+          "mount_usec": 243,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/exterior.pck",
+          "request_id": "p33118225802-e1-r1",
+          "state": "ready",
+          "total": 1494444,
+          "verified_sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 286163,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 59859,
+          "loaded": 17024952,
+          "mount_usec": 848,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/house.pck",
+          "request_id": "p33118225802-e1-r2",
+          "state": "ready",
+          "total": 17024952,
+          "verified_sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 291122,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4427,
+          "loaded": 1203888,
+          "mount_usec": 228,
+          "pack_id": "departure",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/departure.pck",
+          "request_id": "p33118225802-e1-r3",
+          "state": "ready",
+          "total": 1203888,
+          "verified_sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "epoch": 1,
+        "pack_id": "departure",
+        "state": "ready"
+      },
+      {
+        "at_usec": 342879,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 50916,
+          "loaded": 13874440,
+          "mount_usec": 594,
+          "pack_id": "travel",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/travel.pck",
+          "request_id": "p33118225802-e1-r4",
+          "state": "ready",
+          "total": 13874440,
+          "verified_sha256": "c6fe0c747d64aabde17cd6e638adf276b065376632c7a369b67b0a302051e442"
+        },
+        "epoch": 1,
+        "pack_id": "travel",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "rows": [
+    {
+      "batch_specs": 3,
+      "declared_estimated_bytes": 14227028,
+      "elapsed_msec": 196.393,
+      "mode": "collection",
+      "new_starts": 3,
+      "reserved_estimated_bytes": 14227028,
+      "unique_entries": 3
+    }
+  ]
+}

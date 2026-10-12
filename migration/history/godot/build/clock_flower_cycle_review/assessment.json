@@ -1,0 +1,239 @@
+{
+  "source_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+  "source_snapshot_sha256": "904745318e53d4c356b4082395c06f86266655be77cac17f0e1fd61ade469f4d",
+  "formal_pack_root": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs",
+  "topics": {
+    "A017": {
+      "source": "current production rules verified",
+      "resource": "actual core + house/darkroom/travel pack members and native dynamic mounts verified",
+      "runtime": "real active 60-second cycle, 30+30 settings, automatic lamp timing, actual same clock references in all three pages, native application notification pause/resume verified",
+      "view": "actual moon-before-lamp and lamp-on full frames plus dawn/off crops inspected",
+      "deployed": "not retested here; parent-reported d1 Sitev7 only",
+      "Web_user": "not verified; no user acceptance claimed"
+    },
+    "A041": {
+      "source": "schema3 geometry2; one per60s, growth8s, cap10; virtual half-circle centered on vase; old age decay removed",
+      "resource": "three recovered imports and production shaders resolve in exact house pack; matching source manifest + original recovery hashes, actual runtime decoder pixel hashes recorded",
+      "runtime": "real clean start1 and birth at60; explicit legacy5/native saved9-to10 fixture; independent second process reload10 preserves identities/geometry/boundary; no11th; cross-page active time same clock",
+      "view": "real growth + old5/current10 morning noon evening stagger, closure and small yellow ZZ inspected",
+      "deployed": "not retested here; parent-reported d1 Sitev7 only",
+      "Web_user": "not verified; no artistic user approval claimed"
+    }
+  },
+  "actual_results": {
+    "real_checks": 36,
+    "fixture_checks": 128,
+    "independent_reload_checks": 36,
+    "successful_checks": 200,
+    "final_failed": 0,
+    "wall_clock": {
+      "active_seconds": 68.3733193333335,
+      "birth_model_seconds": 60.0254630000001,
+      "birth_wall_ms": 60642,
+      "fixed_fps": false,
+      "label": "wall_clock_summary",
+      "max_root_error": 0.0,
+      "max_tip_frame_step": 3.8633918762207,
+      "time_scale": 1.0,
+      "wall_seconds": 68.907
+    },
+    "observed_night_sampling_window": {
+      "wall_seconds": 30.26,
+      "active_seconds": 30.0625000000001,
+      "sampling": "nearest half-second samples, not precise boundary-timestamp assertion"
+    },
+    "lighting_samples": [
+      {
+        "label": "moon_before_lamp",
+        "wall_ms": 45108,
+        "clock": {
+          "cycle_position": 36.0446869999999,
+          "cycle_seconds": 60.0,
+          "day_seconds": 30.0,
+          "game_hour": 21.6119165333333,
+          "lamp_weight": 0.0,
+          "night_progress": 0.201489566666664,
+          "night_seconds": 30.0,
+          "total_active_seconds": 30.419687
+        },
+        "sun_energy": 0.0,
+        "moon_energy": 0.7,
+        "lamp_energy": 0.0
+      },
+      {
+        "label": "lamp_on",
+        "wall_ms": 57231,
+        "clock": {
+          "cycle_position": 48.0083333333333,
+          "cycle_seconds": 60.0,
+          "day_seconds": 30.0,
+          "game_hour": 0.802222222222206,
+          "lamp_weight": 1.0,
+          "night_progress": 0.600277777777776,
+          "night_seconds": 30.0,
+          "total_active_seconds": 42.3833333333334
+        },
+        "sun_energy": 0.0,
+        "moon_energy": 0.7,
+        "lamp_energy": 0.78
+      },
+      {
+        "label": "lamp_off_before_dawn",
+        "wall_ms": 65237,
+        "clock": {
+          "cycle_position": 56.0300093333334,
+          "cycle_seconds": 60.0,
+          "day_seconds": 30.0,
+          "game_hour": 2.94133582222224,
+          "lamp_weight": 0.0,
+          "night_progress": 0.86766697777778,
+          "night_seconds": 30.0,
+          "total_active_seconds": 50.4050093333334
+        },
+        "sun_energy": 0.0,
+        "moon_energy": 0.7,
+        "lamp_energy": 0.0
+      },
+      {
+        "label": "dawn",
+        "wall_ms": 69313,
+        "clock": {
+          "cycle_position": 0.0583333333334507,
+          "cycle_seconds": 60.0,
+          "day_seconds": 30.0,
+          "game_hour": 4.03111111111117,
+          "lamp_weight": 0.0,
+          "night_progress": -1.0,
+          "night_seconds": 30.0,
+          "total_active_seconds": 54.4333333333334
+        },
+        "sun_energy": 1.24712086926104e-07,
+        "moon_energy": 0.0,
+        "lamp_energy": 0.0
+      }
+    ],
+    "real_growth_samples": [
+      {
+        "label": "new_flower_birth",
+        "active_seconds": 60.0254630000001,
+        "new_phase": {
+          "age": 0.0254630000001299,
+          "alpha": 1.0,
+          "bloom": 0.0,
+          "frame": 0.0,
+          "growth": 0.0450420238561148,
+          "head_growth": 0.08,
+          "progress": 0.00318287500001624,
+          "stage": "daynight",
+          "wilt": 0.0
+        }
+      },
+      {
+        "label": "growth_4s",
+        "active_seconds": 64.0379630000001,
+        "new_phase": {
+          "age": 4.03796300000013,
+          "alpha": 1.0,
+          "bloom": 0.255500048856864,
+          "frame": 1.02200019542745,
+          "growth": 0.674977322003741,
+          "head_growth": 0.398590607020541,
+          "progress": 0.504745375000017,
+          "stage": "daynight",
+          "wilt": 0.0
+        }
+      },
+      {
+        "label": "growth_8s",
+        "active_seconds": 68.0215659523812,
+        "new_phase": {
+          "age": 8.02156595238117,
+          "alpha": 1.0,
+          "bloom": 1.0,
+          "frame": 4.0,
+          "growth": 1.0,
+          "head_growth": 1.0,
+          "progress": 1.0,
+          "stage": "daynight",
+          "wilt": 0.0
+        }
+      }
+    ],
+    "bouquet_metrics": [
+      {
+        "label": "old5_morning",
+        "minimum_center_distance": 44.2319717407227,
+        "height_span": 73.9014892578125
+      },
+      {
+        "label": "old5_noon",
+        "minimum_center_distance": 41.9902954101562,
+        "height_span": 63.836669921875
+      },
+      {
+        "label": "old5_evening",
+        "minimum_center_distance": 39.731388092041,
+        "height_span": 61.7423095703125
+      },
+      {
+        "label": "fixture10_morning",
+        "minimum_center_distance": 30.476318359375,
+        "height_span": 110.89306640625
+      },
+      {
+        "label": "fixture10_noon",
+        "minimum_center_distance": 31.0463638305664,
+        "height_span": 94.7392578125
+      },
+      {
+        "label": "fixture10_evening",
+        "minimum_center_distance": 32.044563293457,
+        "height_span": 81.4210205078125
+      }
+    ]
+  },
+  "fixture_failures_preserved": [
+    {
+      "directory": "fixture_parse_fail",
+      "cause": "external checker used inferred type from dynamic get_script path; no product executed; fixed explicit String"
+    },
+    {
+      "directory": "fixture_unposed_fail",
+      "cause": "external checker sampled a newly constructed explicit-fixture stem before posing it; added zero-delta pose before sample; engine log retained and failed run not accepted"
+    }
+  ],
+  "boundaries": [
+    "Official Godot4.5.2 native llvmpipe software GL, not Web/WebGL/Safari/mobile/user GPU",
+    "No hearing/audio acceptance or hardware60fps performance claim",
+    "Real loop used max-fps60, time_scale1, no fixed-fps acceleration; system readback/frame overhead separates wall and active elapsed",
+    "Legacy5, generated9/10, pose seeking, native notifications and direct departure service setup are explicit QA fixtures",
+    "No new offline behavior; current application active-only rule verified",
+    "No production edits, pushes or deployments",
+    "No claimed recovery of absent original PNG authoring sources; exact pinned recovered imports verified"
+  ],
+  "cleanup": {
+    "cache_bytes_removed": 54113252,
+    "process_exits": {
+      "fixture_parse_fail": {
+        "xorg_returncode": 0,
+        "engine_returncode": 1
+      },
+      "real_cycle": {
+        "xorg_returncode": 0,
+        "engine_returncode": 0
+      },
+      "fixture_unposed_fail": {
+        "xorg_returncode": 0,
+        "engine_returncode": 0
+      },
+      "fixture": {
+        "xorg_returncode": 0,
+        "engine_returncode": 0
+      },
+      "reload": {
+        "xorg_returncode": 0,
+        "engine_returncode": 0
+      }
+    }
+  }
+}

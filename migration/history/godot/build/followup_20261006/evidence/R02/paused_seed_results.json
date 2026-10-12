@@ -1,0 +1,32 @@
+{
+  "checks": [
+    {
+      "name": "seed mounts actual packs/exterior.pck",
+      "pass": true
+    },
+    {
+      "name": "seed mounts actual packs/house.pck",
+      "pass": true
+    },
+    {
+      "name": "seed begins from fresh isolated native slot",
+      "pass": true
+    },
+    {
+      "name": "production departure persists trip",
+      "pass": true
+    },
+    {
+      "name": "production choice obtains saved pause",
+      "pass": true
+    },
+    {
+      "name": "seed really contains abandoned choice lock",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "phase": "seed",
+  "scenario": "paused",
+  "scope": "Separate process actual native PCK mount and disk persistence; browser localStorage/refresh unverified"
+}

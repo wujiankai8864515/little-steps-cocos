@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "complete arbitrary-extension Git closure passes",
+    "missing host HTML rejected before export",
+    "wrong bytes rejected",
+    "untracked build input rejected",
+    "wrong executable mode rejected"
+  ],
+  "passed": true,
+  "scope": "Small actual Git fixture, all-byte/mode/missing/extra input validation"
+}

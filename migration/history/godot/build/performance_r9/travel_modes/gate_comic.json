@@ -1,0 +1,584 @@
+{
+  "boundary": "Explicit candidate App/catalog/gate against6327 native physical packs, empty res, actual ResourceLoader/headless. No page visual or browser timing claim.",
+  "checks": [
+    {
+      "name": "unchanged physical manifest accepted",
+      "pass": true
+    },
+    {
+      "name": "mode ready with its own successful lease: comic",
+      "pass": true
+    },
+    {
+      "name": "exact catalog batch size: comic",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_brush.ttf",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_paper_v1.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_map_plate_v5.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_offer_person_v5.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_people_v5.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_scene_layers_v1.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_footprint_ink_v1.png",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/travel_mist.gdshader",
+      "pass": true
+    },
+    {
+      "name": "actual mounted resource bound: res://travel/assets/travel_map_actor_v5.png",
+      "pass": true
+    },
+    {
+      "name": "hard residency admission unchanged: comic",
+      "pass": true
+    }
+  ],
+  "failures": 0,
+  "gate": {
+    "backend": "ResourceLoader",
+    "batches": 1,
+    "clock": "monotonic_usec",
+    "counters": {
+      "admission_rejections": 0,
+      "batches_failed": 0,
+      "batches_ready": 1,
+      "budget_overruns": 7,
+      "cache_hits": 0,
+      "cancelled": 0,
+      "consumes": 9,
+      "deduplicated": 0,
+      "evictions": 0,
+      "max_process_usec": 33725,
+      "peak_batches": 1,
+      "peak_entries": 9,
+      "peak_in_flight": 1,
+      "peak_reserved_bytes": 41468260,
+      "requests": 1,
+      "retries": 0,
+      "starts": 9,
+      "timeouts": 0
+    },
+    "effective_max_concurrent": 1,
+    "entries": 9,
+    "estimated_ready_bytes": 41468260,
+    "estimated_reserved_bytes": 41468260,
+    "fallback_reason": "godot_4_5_2_loader_lifetime",
+    "in_flight": 0,
+    "limits": {
+      "default_estimated_bytes": 1048576,
+      "frame_budget_usec": 2000,
+      "max_batches": 32,
+      "max_concurrent": 2,
+      "max_entries": 128,
+      "max_estimated_bytes": 268435456,
+      "max_finishes_per_frame": 8,
+      "max_owners": 64,
+      "max_specs_per_batch": 80,
+      "max_starts_per_frame": 8,
+      "metrics_capacity": 256,
+      "mode": "auto"
+    },
+    "memory": {
+      "godot_static_memory_bytes": 68291922,
+      "per_resource_decode_usec": null,
+      "per_resource_gpu_upload_usec": null,
+      "render_texture_memory_bytes": null,
+      "render_video_memory_bytes": null,
+      "whole_process_rss_bytes": null
+    },
+    "mode": "sequential",
+    "owners": 1,
+    "queue_entries": 0,
+    "requested_mode": "auto",
+    "samples": [
+      {
+        "at_usec": 341531,
+        "attempt": 1,
+        "elapsed_usec": 2774,
+        "error": 0,
+        "frame": 5,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_wait_usec": 233,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 341546,
+        "budget_usec": 2000,
+        "elapsed_usec": 2874,
+        "frame": 5,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 341632,
+        "elapsed_usec": 2,
+        "frame": 6,
+        "load_wall_usec": 2878,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 341647,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 6,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_to_ready_usec": 3125,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 341963,
+        "attempt": 1,
+        "elapsed_usec": 284,
+        "error": 0,
+        "frame": 6,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "queue_wait_usec": 3157,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 341974,
+        "elapsed_usec": 2,
+        "frame": 6,
+        "load_wall_usec": 296,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 372507,
+        "attempt": 1,
+        "elapsed_usec": 30505,
+        "error": 0,
+        "frame": 6,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "queue_wait_usec": 3467,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 372543,
+        "budget_usec": 2000,
+        "elapsed_usec": 30950,
+        "frame": 6,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 372803,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 7,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "queue_to_ready_usec": 34279,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 372835,
+        "elapsed_usec": 4,
+        "frame": 7,
+        "load_wall_usec": 30845,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 372853,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 7,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "queue_to_ready_usec": 34331,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 406430,
+        "attempt": 1,
+        "elapsed_usec": 33513,
+        "error": 0,
+        "frame": 7,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "queue_wait_usec": 34367,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 406470,
+        "budget_usec": 2000,
+        "elapsed_usec": 33725,
+        "frame": 7,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 406685,
+        "elapsed_usec": 4,
+        "frame": 8,
+        "load_wall_usec": 33795,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 406708,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 8,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "queue_to_ready_usec": 68184,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 430150,
+        "attempt": 1,
+        "elapsed_usec": 23391,
+        "error": 0,
+        "frame": 8,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "queue_wait_usec": 68221,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 430187,
+        "budget_usec": 2000,
+        "elapsed_usec": 23579,
+        "frame": 8,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 430429,
+        "elapsed_usec": 4,
+        "frame": 9,
+        "load_wall_usec": 23686,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 430452,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 9,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "queue_to_ready_usec": 91929,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 460236,
+        "attempt": 1,
+        "elapsed_usec": 29721,
+        "error": 0,
+        "frame": 9,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_wait_usec": 91964,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 460274,
+        "budget_usec": 2000,
+        "elapsed_usec": 29958,
+        "frame": 9,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 460515,
+        "elapsed_usec": 4,
+        "frame": 10,
+        "load_wall_usec": 30028,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 460540,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 10,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_to_ready_usec": 122017,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 490591,
+        "attempt": 1,
+        "elapsed_usec": 30003,
+        "error": 0,
+        "frame": 10,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "queue_wait_usec": 122049,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 490626,
+        "budget_usec": 2000,
+        "elapsed_usec": 30189,
+        "frame": 10,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 490825,
+        "elapsed_usec": 4,
+        "frame": 11,
+        "load_wall_usec": 30254,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 490849,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 11,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "queue_to_ready_usec": 152326,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 493682,
+        "attempt": 1,
+        "elapsed_usec": 2803,
+        "error": 0,
+        "frame": 11,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "queue_wait_usec": 152354,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 493695,
+        "budget_usec": 2000,
+        "elapsed_usec": 2944,
+        "frame": 11,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 493777,
+        "elapsed_usec": 2,
+        "frame": 12,
+        "load_wall_usec": 2901,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 493796,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 12,
+        "owner_id": 30987519341,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "queue_to_ready_usec": 155274,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 493887,
+        "attempt": 1,
+        "elapsed_usec": 78,
+        "error": 0,
+        "frame": 12,
+        "path": "res://travel/travel_mist.gdshader",
+        "queue_wait_usec": 155287,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 493896,
+        "elapsed_usec": 1,
+        "frame": 12,
+        "load_wall_usec": 87,
+        "path": "res://travel/travel_mist.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 493920,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 12,
+        "owner_id": 30987519341,
+        "path": "res://travel/travel_mist.gdshader",
+        "queue_to_ready_usec": 155398,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 493926,
+        "batch_id": 1,
+        "elapsed_usec": 155404,
+        "frame": 12,
+        "stage": "batch_finished",
+        "success": true
+      }
+    ]
+  },
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 4,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "exterior",
+      "house",
+      "departure",
+      "travel"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 226765,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 5025,
+          "loaded": 1494444,
+          "mount_usec": 500,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/exterior.pck",
+          "request_id": "p33118225802-e1-r1",
+          "state": "ready",
+          "total": 1494444,
+          "verified_sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 285360,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 57743,
+          "loaded": 17024952,
+          "mount_usec": 570,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/house.pck",
+          "request_id": "p33118225802-e1-r2",
+          "state": "ready",
+          "total": 17024952,
+          "verified_sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 289879,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4024,
+          "loaded": 1203888,
+          "mount_usec": 187,
+          "pack_id": "departure",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/departure.pck",
+          "request_id": "p33118225802-e1-r3",
+          "state": "ready",
+          "total": 1203888,
+          "verified_sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "epoch": 1,
+        "pack_id": "departure",
+        "state": "ready"
+      },
+      {
+        "at_usec": 338266,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 47786,
+          "loaded": 13874440,
+          "mount_usec": 367,
+          "pack_id": "travel",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/travel.pck",
+          "request_id": "p33118225802-e1-r4",
+          "state": "ready",
+          "total": 13874440,
+          "verified_sha256": "c6fe0c747d64aabde17cd6e638adf276b065376632c7a369b67b0a302051e442"
+        },
+        "epoch": 1,
+        "pack_id": "travel",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "rows": [
+    {
+      "batch_specs": 9,
+      "declared_estimated_bytes": 41468260,
+      "elapsed_msec": 273.207,
+      "mode": "comic",
+      "new_starts": 9,
+      "reserved_estimated_bytes": 41468260,
+      "unique_entries": 9
+    }
+  ]
+}

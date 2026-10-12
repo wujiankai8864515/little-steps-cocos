@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "check": "trip starts through actual service",
+      "pass": true
+    },
+    {
+      "check": "start displays only actual departure footprint",
+      "pass": true
+    },
+    {
+      "check": "official lossless imported footprint pixels match exact source PNG",
+      "pass": true
+    },
+    {
+      "check": "actual service crossing first station emits one arrival",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.0",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.08",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.16",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.28",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.43",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 0.6",
+      "pass": true
+    },
+    {
+      "check": "same actual progress cannot replay at 1.25",
+      "pass": true
+    },
+    {
+      "check": "new footprint is settled after one press",
+      "pass": true
+    },
+    {
+      "check": "dismiss disposes arrival owner",
+      "pass": true
+    },
+    {
+      "check": "reopen seeds reached 0 through 4 only",
+      "pass": true
+    },
+    {
+      "check": "restored station 0 does not replay",
+      "pass": true
+    },
+    {
+      "check": "restored station 1 does not replay",
+      "pass": true
+    },
+    {
+      "check": "restored station 2 does not replay",
+      "pass": true
+    },
+    {
+      "check": "restored station 3 does not replay",
+      "pass": true
+    },
+    {
+      "check": "restored station 4 does not replay",
+      "pass": true
+    },
+    {
+      "check": "future station remains absent after restore",
+      "pass": true
+    },
+    {
+      "check": "visual arrival never replaces trip",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "scope": "Actual App/Home/Travel/service, official compiled candidate source and footprint asset overlay on 197ee6c packs; final declared-resource cold build still pending"
+}

@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "check": "continuous frames at 4.0",
+      "pass": true
+    },
+    {
+      "check": "continuous frames at 20.0",
+      "pass": true
+    },
+    {
+      "check": "continuous frames at 24.0",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "steps": [
+    {
+      "boundary": 4.0,
+      "max_mean_channel_step": 0.00228325737847222,
+      "pass": true
+    },
+    {
+      "boundary": 20.0,
+      "max_mean_channel_step": 0.00251410590277778,
+      "pass": true
+    },
+    {
+      "boundary": 24.0,
+      "max_mean_channel_step": 0.00258192274305556,
+      "pass": true
+    }
+  ]
+}

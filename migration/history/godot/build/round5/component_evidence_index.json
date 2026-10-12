@@ -1,0 +1,53 @@
+{
+  "scope": "Actual individual component verification before final joint build; full same-commit evidence is in the final delivery package.",
+  "reports": [
+    {
+      "id": "travel_state",
+      "source": "round5_state_qa/final_state_results.json",
+      "archived": "build/round5/component_evidence/travel_state.json",
+      "sha256": "dab2680f982baadc5f335b86c1440a251302c67c2d6ba4702e372792e6172e98"
+    },
+    {
+      "id": "eyes_flowers",
+      "source": "round5_eyes_flowers_qa/evidence/verification_summary.json",
+      "archived": "build/round5/component_evidence/eyes_flowers.json",
+      "sha256": "2f27fec694e7d78655d3a2429c1a810505ea1727986e43468bcc672f5bd7d6ad"
+    },
+    {
+      "id": "bubble_layout",
+      "source": "round5_integrator_qa/bubble_render_retry/bubble_layout_results.json",
+      "archived": "build/round5/component_evidence/bubble_layout.json",
+      "sha256": "00834055ad8bea96e5b2252dc7ac92c0090fb3a335c5bebb6d31f1d1106c25b5"
+    },
+    {
+      "id": "wayfinding_hints",
+      "source": "round5_integrator_qa/hints_render_final/wayfinding_hints_results.json",
+      "archived": "build/round5/component_evidence/wayfinding_hints.json",
+      "sha256": "dab904de7816c7781ef736a309d8e66b592fbfa2a51eac90a8369272d67699dd"
+    },
+    {
+      "id": "travel_ui",
+      "source": "round5_ui_validation/input_gl_cas_final/result.json",
+      "archived": "build/round5/component_evidence/travel_ui.json",
+      "sha256": "c2b8f8dff5eebb4bb4b040960367f2a544ebefd5fa9a82b8b7e9126037e1fe76"
+    },
+    {
+      "id": "app_journey_intermediate",
+      "source": "round5_app_journey_qa/probe_result_v2.json",
+      "archived": "build/round5/component_evidence/app_journey_intermediate.json",
+      "sha256": "f50aad7cc9b2bf6d3130dc6dea6cb38fabe191c89c4efa82311932aae14d014c"
+    },
+    {
+      "id": "multi_instance_recovery",
+      "source": "round5_integrator_qa/multi_instance/multi_instance_results.json",
+      "archived": "build/round5/component_evidence/multi_instance_recovery.json",
+      "sha256": "a49ac249aa59f7c0bcff7a5440f41269005caa535b948725d0e4526a1f4de3a4"
+    },
+    {
+      "id": "transaction_review",
+      "source": "round5_transaction_review/review_results.json",
+      "archived": "build/round5/component_evidence/transaction_review.json",
+      "sha256": "5fad7af7044ea5995c8bf17e76b98bfb82f3c9c46284bd6b874cbca54f2d5887"
+    }
+  ]
+}

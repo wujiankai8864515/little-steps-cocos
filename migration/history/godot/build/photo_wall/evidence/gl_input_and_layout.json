@@ -1,0 +1,61 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "Home route opens single wall",
+      "pass": true
+    },
+    {
+      "check": "initial existing two photographs, no fake acquired photos or batch entry",
+      "pass": true
+    },
+    {
+      "check": "twelve explicitly acquired test photos render six and stack",
+      "pass": true
+    },
+    {
+      "check": "real mouse drag assigns selected photo ID",
+      "pass": true
+    },
+    {
+      "check": "real click rotates batch with no stolen stamp",
+      "pass": true
+    },
+    {
+      "check": "stamp restores on same photo after full cycle",
+      "pass": true
+    },
+    {
+      "check": "touch cancellation returns clip with binding unchanged",
+      "pass": true
+    },
+    {
+      "check": "six paper pin points remain fixed while mesh curls",
+      "pass": true
+    },
+    {
+      "check": "responsive safe canvas 360",
+      "pass": true
+    },
+    {
+      "check": "responsive safe canvas 430",
+      "pass": true
+    },
+    {
+      "check": "responsive safe canvas 960",
+      "pass": true
+    },
+    {
+      "check": "return restores Home input and render",
+      "pass": true
+    },
+    {
+      "check": "reopen restores saved slot bindings",
+      "pass": true
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Mesa software GL diagnostic fixture; not Web or phone performance",
+  "diagnostic_only": true,
+  "responsive_assertions_superseded": "GL01–04 used physical size instead of the App logical viewport; see review and final frozen-source external QA."
+}

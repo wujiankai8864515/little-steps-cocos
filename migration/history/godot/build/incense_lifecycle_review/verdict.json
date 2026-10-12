@@ -1,0 +1,227 @@
+{
+  "scope": "A019/A020/A042/A045 independent incense finite group; read-only e394 formal baseline",
+  "source_commit": "e394bda99cab432c27d351953c2d7ba2227d8384",
+  "production_changes": false,
+  "actual_native_checks": 111,
+  "checks_by_run": {
+    "e394_v2/lifecycle": 48,
+    "e394_restore_v3/seed": 12,
+    "e394_restore_v3/restore": 30,
+    "e394_restore_v3/expired": 11,
+    "e394_light_v4/light": 10
+  },
+  "passed": 111,
+  "failed_product_checks": 0,
+  "measured_burn_seconds": 30.011,
+  "pack_overlay": false,
+  "source_fallback": false,
+  "resource_members_verified": 34,
+  "clock": "ordinary wall/tick clock; --max-fps 60; no --fixed-fps or injected clock",
+  "native_restore": {
+    "same_deadline_strict_full_precision": true,
+    "seed_remaining": 28.942,
+    "restored_remaining": 14.6011171607971,
+    "restored_bonus": 2,
+    "expired_bonus": 1,
+    "third_process_expired": true
+  },
+  "visual_review": {
+    "viewed": true,
+    "frames": [
+      "e394_v2/lifecycle/03_ignition_flame.jpg",
+      "e394_v2/lifecycle/04_first_soft_smoke.jpg",
+      "e394_v2/lifecycle/05_burning_plus2.jpg",
+      "e394_v2/lifecycle/06_burning_tip.jpg",
+      "e394_v2/lifecycle/07_night_lamp_on.jpg",
+      "e394_v2/lifecycle/08_night_lamp_off.jpg",
+      "e394_v2/lifecycle/09_night_lamp_on_again.jpg",
+      "e394_v2/lifecycle/10_mid_smoke.jpg",
+      "e394_v2/lifecycle/11_late_smoke.jpg",
+      "e394_v2/lifecycle/12_before_extinction.jpg",
+      "e394_v2/lifecycle/13_extinction_tail.jpg",
+      "e394_v2/lifecycle/14_after_extinction_plus1.jpg",
+      "e394_v2/lifecycle/15_tail_diffusion.jpg",
+      "e394_v2/lifecycle/16_tail_gone.jpg",
+      "e394_light_v4/light/sun_08.jpg",
+      "e394_light_v4/light/sun_12.jpg",
+      "e394_light_v4/light/sun_16.jpg",
+      "e394_restore_v3/restore/02_restore_plus2.jpg",
+      "e394_restore_v3/expired/01_expired_native_restore.jpg"
+    ],
+    "findings": [
+      "Incense tip glows and relight flame is visible, shaft has grain and shortens continuously.",
+      "Initial smoke is faint but visible from the tip; later smoke curls and drifts; residual smoke remains after extinction and fades without a visibly hard rectangular cut.",
+      "Burner foot contact and cast shadow visible; 08/12/16 captures show changed projected direction and length with solar light.",
+      "Night lamp toggles are real root input; burner is near/outside effective lamp radius and its local light difference is tiny, so full-room light differences are not used as proof of burner lighting.",
+      "Merit +1/+2 artwork, total counter, and burning tip message visually match observations."
+    ]
+  },
+  "not_verified": [
+    "Web localStorage actual refresh",
+    "user device GPU and physical touchscreen",
+    "browser memory/performance",
+    "390:844 tall screen in this group",
+    "A020 vase/table drag lifecycle already belongs to prior Home group, not rerun here",
+    "User visual acceptance"
+  ],
+  "fixture_failures": {
+    "e394_v1": "Wrong initial lamp-state assumption and wrong smoke crop; 2 failing lamp assertions. Exact old checker recovered and hash verified; red logs preserved.",
+    "e394_v2/restore": "QA seed default JSON precision rounded original start/deadline by 4.053 microseconds; strict equality false. Production full-precision persistence was correct. Corrected isolated v3 full-precision seed passes strict equality."
+  },
+  "cleanup": "Every own Xorg and Godot process exited, pids.json cleaned=true. Removed only own recomputable shader/cache files. No PCK/source edits.",
+  "phases": {
+    "01_cold_unlit": {
+      "remaining": 0.0,
+      "burn_count": 0,
+      "smoke_points": 0,
+      "smoke_tail": 0.0,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "02_before_ignition_plus1": {
+      "remaining": 0.0,
+      "burn_count": 0,
+      "smoke_points": 0,
+      "smoke_tail": 0.0,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "03_ignition_flame": {
+      "remaining": 29.228532075882,
+      "burn_count": 1,
+      "smoke_points": 24,
+      "smoke_tail": 5.6,
+      "stick_length": 218.239706166585,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "04_first_soft_smoke": {
+      "remaining": 28.9653761024475,
+      "burn_count": 1,
+      "smoke_points": 32,
+      "smoke_tail": 5.6,
+      "stick_length": 216.274808231608,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "05_burning_plus2": {
+      "remaining": 27.5282280445099,
+      "burn_count": 1,
+      "smoke_points": 75,
+      "smoke_tail": 5.6,
+      "stick_length": 205.54410273234,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "06_burning_tip": {
+      "remaining": 25.0992280445099,
+      "burn_count": 1,
+      "smoke_points": 148,
+      "smoke_tail": 5.6,
+      "stick_length": 187.407569399007,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "07_night_lamp_on": {
+      "remaining": 20.7681529521942,
+      "burn_count": 1,
+      "smoke_points": 168,
+      "smoke_tail": 5.6,
+      "stick_length": 155.068875376383,
+      "hour": 22.0,
+      "lamp": 0.72
+    },
+    "08_night_lamp_off": {
+      "remaining": 20.2411529521942,
+      "burn_count": 1,
+      "smoke_points": 168,
+      "smoke_tail": 5.6,
+      "stick_length": 151.13394204305,
+      "hour": 22.0,
+      "lamp": 0.0
+    },
+    "09_night_lamp_on_again": {
+      "remaining": 19.7021529521942,
+      "burn_count": 1,
+      "smoke_points": 168,
+      "smoke_tail": 5.6,
+      "stick_length": 147.109408709717,
+      "hour": 22.0,
+      "lamp": 0.72
+    },
+    "10_mid_smoke": {
+      "remaining": 14.9920580005646,
+      "burn_count": 1,
+      "smoke_points": 169,
+      "smoke_tail": 5.6,
+      "stick_length": 111.940699737549,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "11_late_smoke": {
+      "remaining": 2.96688299560547,
+      "burn_count": 1,
+      "smoke_points": 168,
+      "smoke_tail": 5.6,
+      "stick_length": 22.1527263671875,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "12_before_extinction": {
+      "remaining": 0.495775974273682,
+      "burn_count": 1,
+      "smoke_points": 169,
+      "smoke_tail": 5.6,
+      "stick_length": 3.70179394124349,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "13_extinction_tail": {
+      "remaining": 0.0,
+      "burn_count": 1,
+      "smoke_points": 166,
+      "smoke_tail": 5.52677597427368,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "14_after_extinction_plus1": {
+      "remaining": 0.0,
+      "burn_count": 1,
+      "smoke_points": 121,
+      "smoke_tail": 4.01677597427368,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "15_tail_diffusion": {
+      "remaining": 0.0,
+      "burn_count": 1,
+      "smoke_points": 71,
+      "smoke_tail": 2.36377597427368,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "16_tail_gone": {
+      "remaining": 0.0,
+      "burn_count": 1,
+      "smoke_points": 0,
+      "smoke_tail": 0.0,
+      "stick_length": 0.0,
+      "hour": 10.0,
+      "lamp": 0.0
+    },
+    "17_relight": {
+      "remaining": 29.8252820968628,
+      "burn_count": 2,
+      "smoke_points": 6,
+      "smoke_tail": 5.6,
+      "stick_length": 222.695439656576,
+      "hour": 10.0,
+      "lamp": 0.0
+    }
+  }
+}

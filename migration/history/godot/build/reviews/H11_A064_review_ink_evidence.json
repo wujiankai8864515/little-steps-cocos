@@ -1,0 +1,35 @@
+{
+  "item": "H11/A064",
+  "base_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+  "scope": "冷PCK脚本delta专项原生GL，非正式组包或Web验收",
+  "checks_passed": 53,
+  "checks_failed": 0,
+  "display": "X11",
+  "input_events": 28,
+  "cue_changed_pixels": 80,
+  "evidence": "/tmp/paper_cues_qa/h11_acceptance",
+  "baseline_evidence": "/tmp/paper_cues_qa/h11_before",
+  "actual_sizes": [
+    "720x1280",
+    "360x640"
+  ],
+  "new_image_entries": 0,
+  "new_decoded_image_bytes": 0,
+  "new_production_text": false,
+  "reuse": "res://home/feedback/assets/returned_bag_diamond.png",
+  "tested_states": [
+    "未选不可提交、仅选项旁轻提示",
+    "已选、细下划线/笔身高光及真实四尖呼吸",
+    "空白点击不触发",
+    "连续点击仅一次review_count及每个review_tag+1",
+    "已批阅无提交/两类cue",
+    "翻页、关闭、重开、取消触控、中断展开及Home释放"
+  ],
+  "overlay_sha256": "9ca42ca64a42dd3b8b29f62bc80935d74bb214698ba9e5f1ad0582648862815f",
+  "production_script_sha256": "fb65820c641c18976584bf4d0a14f8dfb76f63b18ab4017e59f0521f405827e6",
+  "unverified": [
+    "最终合并后官方7PCK/Web包",
+    "用户设备GPU与手机触感",
+    "用户视觉接受"
+  ]
+}

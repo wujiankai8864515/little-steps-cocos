@@ -1,0 +1,426 @@
+{
+  "version": 3,
+  "texture": "res://assets/doll_idle.png",
+  "source_sha256": "2318067ff0d9d437fbf4e0a7b406989861cb9a24827b8964e375c868681fdfc4",
+  "size": [
+    512,
+    512
+  ],
+  "root_source_origin": [
+    256,
+    480
+  ],
+  "uniform_display_scale": 0.74,
+  "coordinate_note": "All visible RGB and alpha are sampled unchanged from the approved Home mother PNG. Source-space masks partition the source exactly once. Seven bounded joints drive one continuous weighted source mesh, shared across the masked pieces, so movement cannot open a rigid cut. No new character art, underlap repaint, or synthesized joints. Screen-left/right and original asymmetry are retained. Neutral transforms are exactly reversible, never normalized to new part bounds.",
+  "ownership_priority": [
+    "bow",
+    "head",
+    "left_leg",
+    "right_leg",
+    "left_arm",
+    "right_arm",
+    "torso"
+  ],
+  "parts": {
+    "torso": {
+      "id": 0,
+      "source_pivot": [
+        250,
+        330
+      ],
+      "parent": null,
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          512,
+          0
+        ],
+        [
+          512,
+          512
+        ],
+        [
+          0,
+          512
+        ]
+      ]
+    },
+    "left_arm": {
+      "id": 1,
+      "source_pivot": [
+        187,
+        266
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          0,
+          244
+        ],
+        [
+          177,
+          244
+        ],
+        [
+          202,
+          263
+        ],
+        [
+          181,
+          296
+        ],
+        [
+          164,
+          327
+        ],
+        [
+          149,
+          346
+        ],
+        [
+          83,
+          371
+        ],
+        [
+          0,
+          371
+        ]
+      ]
+    },
+    "right_arm": {
+      "id": 2,
+      "source_pivot": [
+        343,
+        286
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          354,
+          261
+        ],
+        [
+          512,
+          261
+        ],
+        [
+          512,
+          435
+        ],
+        [
+          343,
+          435
+        ],
+        [
+          338,
+          375
+        ],
+        [
+          330,
+          330
+        ],
+        [
+          330,
+          303
+        ]
+      ]
+    },
+    "head": {
+      "id": 3,
+      "source_pivot": [
+        261,
+        241
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          512,
+          0
+        ],
+        [
+          512,
+          242
+        ],
+        [
+          348,
+          254
+        ],
+        [
+          311,
+          250
+        ],
+        [
+          268,
+          257
+        ],
+        [
+          229,
+          247
+        ],
+        [
+          190,
+          240
+        ],
+        [
+          151,
+          236
+        ],
+        [
+          0,
+          236
+        ]
+      ]
+    },
+    "left_leg": {
+      "id": 4,
+      "source_pivot": [
+        185,
+        369
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          0,
+          344
+        ],
+        [
+          139,
+          341
+        ],
+        [
+          169,
+          342
+        ],
+        [
+          194,
+          354
+        ],
+        [
+          211,
+          375
+        ],
+        [
+          221,
+          394
+        ],
+        [
+          194,
+          444
+        ],
+        [
+          163,
+          477
+        ],
+        [
+          0,
+          477
+        ]
+      ]
+    },
+    "right_leg": {
+      "id": 5,
+      "source_pivot": [
+        276,
+        386
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          254,
+          370
+        ],
+        [
+          280,
+          359
+        ],
+        [
+          309,
+          358
+        ],
+        [
+          328,
+          371
+        ],
+        [
+          350,
+          397
+        ],
+        [
+          350,
+          512
+        ],
+        [
+          183,
+          512
+        ],
+        [
+          206,
+          410
+        ],
+        [
+          226,
+          388
+        ]
+      ]
+    },
+    "bow": {
+      "id": 6,
+      "source_pivot": [
+        241,
+        254
+      ],
+      "parent": "torso",
+      "polygon": [
+        [
+          176,
+          224
+        ],
+        [
+          201,
+          225
+        ],
+        [
+          228,
+          235
+        ],
+        [
+          242,
+          233
+        ],
+        [
+          259,
+          243
+        ],
+        [
+          293,
+          237
+        ],
+        [
+          328,
+          237
+        ],
+        [
+          341,
+          248
+        ],
+        [
+          362,
+          245
+        ],
+        [
+          365,
+          257
+        ],
+        [
+          337,
+          264
+        ],
+        [
+          329,
+          283
+        ],
+        [
+          305,
+          284
+        ],
+        [
+          268,
+          271
+        ],
+        [
+          295,
+          320
+        ],
+        [
+          296,
+          336
+        ],
+        [
+          279,
+          343
+        ],
+        [
+          269,
+          336
+        ],
+        [
+          257,
+          289
+        ],
+        [
+          246,
+          270
+        ],
+        [
+          235,
+          274
+        ],
+        [
+          214,
+          315
+        ],
+        [
+          200,
+          332
+        ],
+        [
+          184,
+          331
+        ],
+        [
+          174,
+          319
+        ],
+        [
+          173,
+          308
+        ],
+        [
+          204,
+          272
+        ],
+        [
+          176,
+          268
+        ],
+        [
+          165,
+          254
+        ],
+        [
+          164,
+          239
+        ]
+      ]
+    }
+  },
+  "face_regions": {
+    "left_eye": [
+      171,
+      137,
+      51,
+      58
+    ],
+    "right_eye": [
+      277,
+      151,
+      57,
+      57
+    ],
+    "mouth": [
+      216,
+      190,
+      55,
+      31
+    ]
+  },
+  "face_note": "Idle eyes and mouth stay baked in the original approved head pixels. Reactions use compact, identity-at-zero UV deformation only inside these source rectangles; no replacement face atlas is loaded.",
+  "validation": "CPU source-mask reconstruction must reproduce every nontransparent source RGBA pixel, source silhouette, and original source-space transforms. GPU seam and expression appearance remain a separate visual gate."
+}

@@ -1,0 +1,201 @@
+{
+  "checks": [
+    {
+      "label": "actual cold Home prepare terminates",
+      "msec": 14402,
+      "pass": true
+    },
+    {
+      "label": "production service seeds isolated trip fixture",
+      "msec": 15480,
+      "pass": true
+    },
+    {
+      "label": "returned trip exposes diary cue",
+      "msec": 18902,
+      "pass": true
+    },
+    {
+      "label": "diary bitmap width 168 down from 210",
+      "msec": 18902,
+      "pass": true
+    },
+    {
+      "label": "incense bitmap world width 96 down from 118",
+      "msec": 18902,
+      "pass": true
+    },
+    {
+      "label": "hint does not take input",
+      "msec": 18902,
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 999704,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3540,
+          "loaded": 943108,
+          "mount_usec": 583,
+          "pack_id": "entry",
+          "pack_path": "/tmp/r7_home_n26/native_packs/packs/entry.pck",
+          "request_id": "p30349985162-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2454128,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8213,
+          "loaded": 2313888,
+          "mount_usec": 305,
+          "pack_id": "comic",
+          "pack_path": "/tmp/r7_home_n26/native_packs/packs/comic.pck",
+          "request_id": "p30349985162-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2477425,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4047,
+          "loaded": 1107208,
+          "mount_usec": 357,
+          "pack_id": "exterior",
+          "pack_path": "/tmp/r7_home_n26/native_packs/packs/exterior.pck",
+          "request_id": "p30349985162-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2565102,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 67839,
+          "loaded": 17019800,
+          "mount_usec": 697,
+          "pack_id": "house",
+          "pack_path": "/tmp/r7_home_n26/native_packs/packs/house.pck",
+          "request_id": "p30349985162-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "samples": [
+    {
+      "control": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/Altar/IndependentIncense/UnlitIncenseGentleHint",
+      "event": "subviewport_input_mapping",
+      "logical": "(188.123, 1024.948)",
+      "note_target": "",
+      "old_canvas_point": "(188.123, 1163.948)",
+      "root": "(188.123, 1024.948)",
+      "round_trip": "(188.123, 885.9485)"
+    },
+    {
+      "diary_hint_rect": "[P: (12.0, 7.090909), S: (168.0, 31.81818)]",
+      "incense": {
+        "alpha": 1.0,
+        "burning": false,
+        "count": 1,
+        "instance_id": 105511913986,
+        "position": "(-120.0, -165.9247)",
+        "rest_elapsed": 2.05,
+        "state": "held"
+      },
+      "incense_hint_center": "(188.123, 1024.948)"
+    }
+  ],
+  "scope": "Actual candidate core+formal delayed PCK; empty res; production App cold Home with isolated returned fixture, original bitmap cues; native Mesa GL, not Web/user acceptance."
+}

@@ -1,0 +1,1605 @@
+{
+  "checks": [
+    {
+      "check": "Real native X11 GL renderer",
+      "passed": true
+    },
+    {
+      "check": "Incense texture unavailable before Home pack mount",
+      "passed": true
+    },
+    {
+      "check": "Cold Home preparation terminates",
+      "passed": true
+    },
+    {
+      "check": "Production App prepares cold Home",
+      "passed": true
+    },
+    {
+      "check": "Production router activates Home; unrelated comic omitted",
+      "passed": true
+    },
+    {
+      "check": "Cold Home does not depend on travel or darkroom packs",
+      "passed": true
+    },
+    {
+      "check": "Production burner and stick have actual texture and shaders",
+      "passed": true
+    },
+    {
+      "check": "Both incense receivers registered with production lighting",
+      "passed": true
+    },
+    {
+      "check": "Production contact and projected shadow nodes exist",
+      "passed": true
+    },
+    {
+      "check": "Cold Home loads hint, tip font and merit art",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "events": [
+    {
+      "event": "started",
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 0",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 10.0,
+        "lamp": 0.0,
+        "merit": 0,
+        "note": "",
+        "remaining": 30.0,
+        "reward": {
+          "amount": 1,
+          "assets_ready": true,
+          "bounds": "[P: (-37.59315, -51.75), S: (75.18629, 103.5)]",
+          "child_count": 0,
+          "digits": "1",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+1",
+              "rect": "[P: (-37.59315, -14.25), S: (75.18629, 66.0)]",
+              "region": "[P: (396.0, 510.0), S: (532.0, 467.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            }
+          ],
+          "exact_original_one": true,
+          "text": "功德 +1",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 0,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 224.0,
+        "unix": 1791315042.84924,
+        "wall_msec": 14509
+      }
+    },
+    {
+      "amount": 2,
+      "event": "merit",
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 10.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 29.9991230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 1,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 223.993452453613,
+        "unix": 1791315042.84961,
+        "wall_msec": 14510
+      }
+    },
+    {
+      "burner_ground": {
+
+      },
+      "burner_material": "(-0.549873, -0.607165, 0.573576)",
+      "hour": 8.0,
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 8.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 28.5951230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 43,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 213.510252453613,
+        "unix": 1791315044.31897,
+        "wall_msec": 15979
+      },
+      "stick_material": "(-0.549873, -0.607165, 0.573576)",
+      "stick_shadow_dir": "(0.671272, 0.741212)",
+      "stick_shadow_scale": "(0.139709, -0.32687)",
+      "stick_shadow_visible": true
+    },
+    {
+      "burner_ground": {
+
+      },
+      "burner_material": "(0.0, -0.34202, 0.939693)",
+      "hour": 12.0,
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 12.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 28.2961230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 52,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 211.27771912028,
+        "unix": 1791315044.61237,
+        "wall_msec": 16272
+      },
+      "stick_material": "(0.0, -0.34202, 0.939693)",
+      "stick_shadow_dir": "(0.0, 1.0)",
+      "stick_shadow_scale": "(0.139709, -0.069207)",
+      "stick_shadow_visible": true
+    },
+    {
+      "burner_ground": {
+
+      },
+      "burner_material": "(0.549873, -0.607165, 0.573576)",
+      "hour": 16.0,
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 16.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 27.9881230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 61,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 208.977985786947,
+        "unix": 1791315044.92742,
+        "wall_msec": 16587
+      },
+      "stick_material": "(0.549873, -0.607165, 0.573576)",
+      "stick_shadow_dir": "(-0.671272, 0.741212)",
+      "stick_shadow_scale": "(0.139709, -0.319946)",
+      "stick_shadow_visible": true
+    }
+  ],
+  "failed": 0,
+  "input_events": 2,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 955111,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3570,
+          "loaded": 943108,
+          "mount_usec": 344,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_formal_e394bda/native_packs/packs/entry.pck",
+          "request_id": "p30383539594-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2427178,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8895,
+          "loaded": 2313888,
+          "mount_usec": 294,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_formal_e394bda/native_packs/packs/comic.pck",
+          "request_id": "p30383539594-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2447818,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3688,
+          "loaded": 1107208,
+          "mount_usec": 297,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_formal_e394bda/native_packs/packs/exterior.pck",
+          "request_id": "p30383539594-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2519251,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 55874,
+          "loaded": 17019800,
+          "mount_usec": 524,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_formal_e394bda/native_packs/packs/house.pck",
+          "request_id": "p30383539594-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Exact e394 native PCKs with empty res and production App/backend. Root mouse/touch for all incense/strike/light inputs. Ordinary real clock --max-fps 60; no fixed FPS or time mutation. Time-of-day review fixture only. Focus notifications are explicit lifecycle probes. Native saved-file process restart is not Web localStorage refresh. Cropped smoke frames plus full key frames require visual review.",
+  "snapshots": [
+    {
+      "crop": [
+        70,
+        630,
+        280,
+        540
+      ],
+      "full": false,
+      "layer": {
+        "evidence": "runtime_layer_state_not_GPU_pixels",
+        "fish_lift_height": 0.0,
+        "hour": 8.0,
+        "lamp_energy": 0.0,
+        "layers": [
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.231429, -0.070787)",
+              "lamp_near": "(142.3887, 783.4863)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 28,
+              "receiver_contact": "(142.3887, 783.4863)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Wardrobe",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 768.0)]",
+              "source_texture": "res://assets/wardrobe_neutral.png",
+              "source_transform": "[X: (0.855469, 0.0), Y: (0.0, 0.855469), O: (-24.0, 156.0)]",
+              "sun_direction": "(0.345123, 0.274379)",
+              "sun_near": "(142.3887, 783.4863)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(142.3887, 783.4863)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Wardrobe",
+            "source_texture": "res://assets/wardrobe_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Merit_box",
+            "source_texture": "res://assets/merit_box.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo1",
+            "source_texture": "res://assets/photo_frame_01_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo2",
+            "source_texture": "res://assets/photo_frame_02_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.161548, -0.041353)",
+              "lamp_near": "(579.1445, 836.6602)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 195,
+              "receiver_contact": "(579.1445, 836.6602)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Treasure",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/treasure_open_filled.png",
+              "source_transform": "[X: (0.570312, 0.0), Y: (0.0, 0.570312), O: (434.0, 590.0)]",
+              "sun_direction": "(0.565618, 0.449676)",
+              "sun_near": "(579.1445, 836.6602)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(579.1445, 836.6602)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Treasure",
+            "source_texture": "res://assets/treasure_open_filled.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.328333, -0.034453)",
+              "lamp_near": "(654.1582, 859.4512)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(654.1582, 859.4512)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Doll",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/doll_idle.png",
+              "source_transform": "[X: (0.285156, 0.0), Y: (0.0, 0.285156), O: (589.0, 725.0)]",
+              "sun_direction": "(0.671073, 0.533514)",
+              "sun_near": "(654.1582, 859.4512)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(654.1582, 859.4512)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Doll",
+            "source_texture": "res://assets/doll_idle.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.249333, 0.132067)",
+              "lamp_near": "(652.1387, 1011.119)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 111,
+              "receiver_contact": "(652.1387, 1011.119)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Bowl",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/water_bowl_clean.png",
+              "source_transform": "[X: (0.277344, 0.0), Y: (0.0, 0.277344), O: (581.0, 892.0)]",
+              "sun_direction": "(0.536858, 0.426811)",
+              "sun_near": "(652.1387, 1011.119)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(652.1387, 1011.119)",
+              "z_index": 14
+            },
+            "lamp_sprite_visible": false,
+            "source": "Bowl",
+            "source_texture": "res://assets/round2/water_bowl_clean.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.577679, 0.472938)",
+              "lamp_near": "(185.249, 1216.183)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(185.249, 1216.183)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Altar",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/altar_neutral.png",
+              "source_transform": "[X: (0.638672, 0.0), Y: (0.0, 0.638672), O: (-22.0, 977.0)]",
+              "sun_direction": "(0.719006, 0.571622)",
+              "sun_near": "(185.249, 1216.183)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(185.249, 1216.183)",
+              "z_index": 19
+            },
+            "lamp_sprite_visible": false,
+            "source": "Altar",
+            "source_texture": "res://assets/altar_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalTail",
+            "source_texture": "res://assets/tail.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.197143, 0.0864)",
+              "lamp_near": "(339.5, 948.5)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 144,
+              "receiver_contact": "(339.5, 948.5)",
+              "signed_physical_lift_height": 0.0,
+              "source": "OriginalBody",
+              "source_rect": "[P: (0.0, 0.0), S: (670.0, 402.0)]",
+              "source_texture": "res://assets/body.png",
+              "source_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+              "sun_direction": "(0.690246, 0.548757)",
+              "sun_near": "(339.5, 948.5)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(339.5, 948.5)",
+              "z_index": 1
+            },
+            "lamp_sprite_visible": false,
+            "source": "OriginalBody",
+            "source_texture": "res://assets/body.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalFinAndRigidMallet",
+            "source_texture": "res://assets/fin_mallet.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.316431, 0.206916)",
+              "lamp_near": "(186.1703, 1114.2)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 76,
+              "receiver_contact": "(186.1703, 1114.2)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicIncenseBurner",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/incense_ceramic.png",
+              "source_transform": "[X: (0.229738, 0.0), Y: (0.0, 0.229738), O: (129.3101, 1012.54)]",
+              "sun_direction": "(0.460164, 0.365838)",
+              "sun_near": "(186.1703, 1114.2)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(186.1703, 1114.2)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicIncenseBurner",
+            "source_texture": "res://assets/round2/incense_ceramic.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "IncenseStick",
+            "source_texture": "",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.429567, 0.199909)",
+              "lamp_near": "(89.48454, 1106.365)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 75,
+              "receiver_contact": "(89.48454, 1106.365)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicVaseBack",
+              "source_rect": "[P: (0.0, 0.0), S: (320.0, 389.0)]",
+              "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+              "source_transform": "[X: (0.237085, 0.0), Y: (0.0, 0.237085), O: (51.19526, 1027.771)]",
+              "sun_direction": "(0.460164, 0.365838)",
+              "sun_near": "(89.48454, 1106.365)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(89.48454, 1106.365)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicVaseBack",
+            "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+            "sun_sprite_visible": false
+          }
+        ],
+        "legacy_character_blob": false,
+        "legacy_table_split_passes": false,
+        "sun_energy": 0.439534306525563
+      },
+      "name": "sun_08",
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 8.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 28.5951230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 43,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 213.510252453613,
+        "unix": 1791315044.31831,
+        "wall_msec": 15978
+      }
+    },
+    {
+      "crop": [
+        70,
+        630,
+        280,
+        540
+      ],
+      "full": false,
+      "layer": {
+        "evidence": "runtime_layer_state_not_GPU_pixels",
+        "fish_lift_height": 0.0,
+        "hour": 12.0,
+        "lamp_energy": 0.0,
+        "layers": [
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.231429, -0.070787)",
+              "lamp_near": "(142.3887, 783.4863)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 28,
+              "receiver_contact": "(142.3887, 783.4863)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Wardrobe",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 768.0)]",
+              "source_texture": "res://assets/wardrobe_neutral.png",
+              "source_transform": "[X: (0.855469, 0.0), Y: (0.0, 0.855469), O: (-24.0, 156.0)]",
+              "sun_direction": "(0.0, 0.094341)",
+              "sun_near": "(142.3887, 783.4863)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(142.3887, 783.4863)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Wardrobe",
+            "source_texture": "res://assets/wardrobe_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Merit_box",
+            "source_texture": "res://assets/merit_box.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo1",
+            "source_texture": "res://assets/photo_frame_01_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo2",
+            "source_texture": "res://assets/photo_frame_02_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.161548, -0.041353)",
+              "lamp_near": "(579.1445, 836.6602)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 195,
+              "receiver_contact": "(579.1445, 836.6602)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Treasure",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/treasure_open_filled.png",
+              "source_transform": "[X: (0.570312, 0.0), Y: (0.0, 0.570312), O: (434.0, 590.0)]",
+              "sun_direction": "(0.0, 0.154615)",
+              "sun_near": "(579.1445, 836.6602)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(579.1445, 836.6602)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Treasure",
+            "source_texture": "res://assets/treasure_open_filled.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.328333, -0.034453)",
+              "lamp_near": "(654.1582, 859.4512)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(654.1582, 859.4512)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Doll",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/doll_idle.png",
+              "source_transform": "[X: (0.285156, 0.0), Y: (0.0, 0.285156), O: (589.0, 725.0)]",
+              "sun_direction": "(0.0, 0.183441)",
+              "sun_near": "(654.1582, 859.4512)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(654.1582, 859.4512)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Doll",
+            "source_texture": "res://assets/doll_idle.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.249333, 0.132067)",
+              "lamp_near": "(652.1387, 1011.119)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 111,
+              "receiver_contact": "(652.1387, 1011.119)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Bowl",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/water_bowl_clean.png",
+              "source_transform": "[X: (0.277344, 0.0), Y: (0.0, 0.277344), O: (581.0, 892.0)]",
+              "sun_direction": "(0.0, 0.146753)",
+              "sun_near": "(652.1387, 1011.119)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(652.1387, 1011.119)",
+              "z_index": 14
+            },
+            "lamp_sprite_visible": false,
+            "source": "Bowl",
+            "source_texture": "res://assets/round2/water_bowl_clean.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.577679, 0.472938)",
+              "lamp_near": "(185.249, 1216.183)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(185.249, 1216.183)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Altar",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/altar_neutral.png",
+              "source_transform": "[X: (0.638672, 0.0), Y: (0.0, 0.638672), O: (-22.0, 977.0)]",
+              "sun_direction": "(0.0, 0.196544)",
+              "sun_near": "(185.249, 1216.183)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(185.249, 1216.183)",
+              "z_index": 19
+            },
+            "lamp_sprite_visible": false,
+            "source": "Altar",
+            "source_texture": "res://assets/altar_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalTail",
+            "source_texture": "res://assets/tail.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.197143, 0.0864)",
+              "lamp_near": "(339.5, 948.5)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 144,
+              "receiver_contact": "(339.5, 948.5)",
+              "signed_physical_lift_height": 0.0,
+              "source": "OriginalBody",
+              "source_rect": "[P: (0.0, 0.0), S: (670.0, 402.0)]",
+              "source_texture": "res://assets/body.png",
+              "source_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+              "sun_direction": "(0.0, 0.188682)",
+              "sun_near": "(339.5, 948.5)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(339.5, 948.5)",
+              "z_index": 1
+            },
+            "lamp_sprite_visible": false,
+            "source": "OriginalBody",
+            "source_texture": "res://assets/body.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalFinAndRigidMallet",
+            "source_texture": "res://assets/fin_mallet.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.316431, 0.206916)",
+              "lamp_near": "(186.1703, 1114.2)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 76,
+              "receiver_contact": "(186.1703, 1114.2)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicIncenseBurner",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/incense_ceramic.png",
+              "source_transform": "[X: (0.229738, 0.0), Y: (0.0, 0.229738), O: (129.3101, 1012.54)]",
+              "sun_direction": "(0.0, 0.125788)",
+              "sun_near": "(186.1703, 1114.2)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(186.1703, 1114.2)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicIncenseBurner",
+            "source_texture": "res://assets/round2/incense_ceramic.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "IncenseStick",
+            "source_texture": "",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.429567, 0.199909)",
+              "lamp_near": "(89.48454, 1106.365)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 75,
+              "receiver_contact": "(89.48454, 1106.365)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicVaseBack",
+              "source_rect": "[P: (0.0, 0.0), S: (320.0, 389.0)]",
+              "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+              "source_transform": "[X: (0.237085, 0.0), Y: (0.0, 0.237085), O: (51.19526, 1027.771)]",
+              "sun_direction": "(0.0, 0.125788)",
+              "sun_near": "(89.48454, 1106.365)",
+              "sun_near_blur_source_px": 1.4,
+              "sun_visible": true,
+              "support_source": "(89.48454, 1106.365)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicVaseBack",
+            "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+            "sun_sprite_visible": false
+          }
+        ],
+        "legacy_character_blob": false,
+        "legacy_table_split_passes": false,
+        "sun_energy": 0.69
+      },
+      "name": "sun_12",
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 12.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 28.2961230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 52,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 211.27771912028,
+        "unix": 1791315044.61177,
+        "wall_msec": 16272
+      }
+    },
+    {
+      "crop": [
+        70,
+        630,
+        280,
+        540
+      ],
+      "full": false,
+      "layer": {
+        "evidence": "runtime_layer_state_not_GPU_pixels",
+        "fish_lift_height": 0.0,
+        "hour": 16.0,
+        "lamp_energy": 0.0,
+        "layers": [
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.231429, -0.070787)",
+              "lamp_near": "(142.3887, 783.4863)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 28,
+              "receiver_contact": "(142.3887, 783.4863)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Wardrobe",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 768.0)]",
+              "source_texture": "res://assets/wardrobe_neutral.png",
+              "source_transform": "[X: (0.855469, 0.0), Y: (0.0, 0.855469), O: (-24.0, 156.0)]",
+              "sun_direction": "(-0.345123, 0.274379)",
+              "sun_near": "(142.3887, 783.4863)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(142.3887, 783.4863)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Wardrobe",
+            "source_texture": "res://assets/wardrobe_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Merit_box",
+            "source_texture": "res://assets/merit_box.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo1",
+            "source_texture": "res://assets/photo_frame_01_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "Photo2",
+            "source_texture": "res://assets/photo_frame_02_travel.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.161548, -0.041353)",
+              "lamp_near": "(579.1445, 836.6602)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 195,
+              "receiver_contact": "(579.1445, 836.6602)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Treasure",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/treasure_open_filled.png",
+              "source_transform": "[X: (0.570312, 0.0), Y: (0.0, 0.570312), O: (434.0, 590.0)]",
+              "sun_direction": "(-0.565618, 0.449676)",
+              "sun_near": "(579.1445, 836.6602)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(579.1445, 836.6602)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Treasure",
+            "source_texture": "res://assets/treasure_open_filled.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.328333, -0.034453)",
+              "lamp_near": "(654.1582, 859.4512)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 2,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(654.1582, 859.4512)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Doll",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/doll_idle.png",
+              "source_transform": "[X: (0.285156, 0.0), Y: (0.0, 0.285156), O: (589.0, 725.0)]",
+              "sun_direction": "(-0.671073, 0.533514)",
+              "sun_near": "(654.1582, 859.4512)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(654.1582, 859.4512)",
+              "z_index": -32
+            },
+            "lamp_sprite_visible": false,
+            "source": "Doll",
+            "source_texture": "res://assets/doll_idle.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(0.249333, 0.132067)",
+              "lamp_near": "(652.1387, 1011.119)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 111,
+              "receiver_contact": "(652.1387, 1011.119)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Bowl",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/water_bowl_clean.png",
+              "source_transform": "[X: (0.277344, 0.0), Y: (0.0, 0.277344), O: (581.0, 892.0)]",
+              "sun_direction": "(-0.536858, 0.426811)",
+              "sun_near": "(652.1387, 1011.119)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(652.1387, 1011.119)",
+              "z_index": 14
+            },
+            "lamp_sprite_visible": false,
+            "source": "Bowl",
+            "source_texture": "res://assets/round2/water_bowl_clean.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.577679, 0.472938)",
+              "lamp_near": "(185.249, 1216.183)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 90,
+              "receiver_contact": "(185.249, 1216.183)",
+              "signed_physical_lift_height": 0.0,
+              "source": "Altar",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/altar_neutral.png",
+              "source_transform": "[X: (0.638672, 0.0), Y: (0.0, 0.638672), O: (-22.0, 977.0)]",
+              "sun_direction": "(-0.719006, 0.571622)",
+              "sun_near": "(185.249, 1216.183)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(185.249, 1216.183)",
+              "z_index": 19
+            },
+            "lamp_sprite_visible": false,
+            "source": "Altar",
+            "source_texture": "res://assets/altar_neutral.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalTail",
+            "source_texture": "res://assets/tail.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.197143, 0.0864)",
+              "lamp_near": "(339.5, 948.5)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 144,
+              "receiver_contact": "(339.5, 948.5)",
+              "signed_physical_lift_height": 0.0,
+              "source": "OriginalBody",
+              "source_rect": "[P: (0.0, 0.0), S: (670.0, 402.0)]",
+              "source_texture": "res://assets/body.png",
+              "source_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (15.0, 615.0)]",
+              "sun_direction": "(-0.690246, 0.548757)",
+              "sun_near": "(339.5, 948.5)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(339.5, 948.5)",
+              "z_index": 1
+            },
+            "lamp_sprite_visible": false,
+            "source": "OriginalBody",
+            "source_texture": "res://assets/body.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "OriginalFinAndRigidMallet",
+            "source_texture": "res://assets/fin_mallet.png",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.316431, 0.206916)",
+              "lamp_near": "(186.1703, 1114.2)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 3,
+              "physical_lift_height": 0.0,
+              "profile_points": 76,
+              "receiver_contact": "(186.1703, 1114.2)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicIncenseBurner",
+              "source_rect": "[P: (0.0, 0.0), S: (512.0, 512.0)]",
+              "source_texture": "res://assets/round2/incense_ceramic.png",
+              "source_transform": "[X: (0.229738, 0.0), Y: (0.0, 0.229738), O: (129.3101, 1012.54)]",
+              "sun_direction": "(-0.460164, 0.365838)",
+              "sun_near": "(186.1703, 1114.2)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(186.1703, 1114.2)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicIncenseBurner",
+            "source_texture": "res://assets/round2/incense_ceramic.png",
+            "sun_sprite_visible": false
+          },
+          {
+            "carried": false,
+            "lamp_sprite_visible": false,
+            "source": "IncenseStick",
+            "source_texture": "",
+            "sun_sprite_visible": true
+          },
+          {
+            "carried": false,
+            "grounding": {
+              "contact_opacity": 0.19,
+              "contact_visible": true,
+              "deformed_shadow_mesh": false,
+              "implementation": "alpha_support_mesh_and_fading_contact_band",
+              "lamp_direction": "(-0.429567, 0.199909)",
+              "lamp_near": "(89.48454, 1106.365)",
+              "lamp_visible": false,
+              "lift_height": 0.0,
+              "near_height": 0.0,
+              "physical_contacts": 1,
+              "physical_lift_height": 0.0,
+              "profile_points": 75,
+              "receiver_contact": "(89.48454, 1106.365)",
+              "signed_physical_lift_height": 0.0,
+              "source": "CeramicVaseBack",
+              "source_rect": "[P: (0.0, 0.0), S: (320.0, 389.0)]",
+              "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+              "source_transform": "[X: (0.237085, 0.0), Y: (0.0, 0.237085), O: (51.19526, 1027.771)]",
+              "sun_direction": "(-0.460164, 0.365838)",
+              "sun_near": "(89.48454, 1106.365)",
+              "sun_near_blur_source_px": 2.65232846737219,
+              "sun_visible": true,
+              "support_source": "(89.48454, 1106.365)",
+              "z_index": 21
+            },
+            "lamp_sprite_visible": false,
+            "source": "CeramicVaseBack",
+            "source_texture": "res://home/flowers/assets/empty_vase_candidate.png",
+            "sun_sprite_visible": false
+          }
+        ],
+        "legacy_character_blob": false,
+        "legacy_table_split_passes": false,
+        "sun_energy": 0.75
+      },
+      "name": "sun_16",
+      "state": {
+        "burn_count": 1,
+        "burn_seconds": 30.0,
+        "burning": true,
+        "counter": "功德 2",
+        "deadline_unix": 1791315072.84865,
+        "hits": 0,
+        "hour": 16.0,
+        "lamp": 0.0,
+        "merit": 2,
+        "note": "",
+        "remaining": 27.9881230964661,
+        "reward": {
+          "amount": 2,
+          "assets_ready": true,
+          "bounds": "[P: (-67.34624, -51.75), S: (134.6925, 103.5)]",
+          "child_count": 0,
+          "digits": "2",
+          "draws": [
+            {
+              "glyph": "功德",
+              "rect": "[P: (-33.0695, -51.75), S: (66.13901, 35.5)]",
+              "region": "[P: (411.0, 274.0), S: (449.0, 241.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "+",
+              "rect": "[P: (-67.34624, -2.1), S: (47.79898, 41.7)]",
+              "region": "[P: (402.0, 585.0), S: (337.0, 294.0)]",
+              "source": "res://assets/merit_reward_14.png"
+            },
+            {
+              "glyph": "2",
+              "rect": "[P: (-16.04726, -14.25), S: (83.3935, 66.0)]",
+              "region": "[P: (832.0, 80.0), S: (350.0, 277.0)]",
+              "source": "res://home/feedback/assets/merit_digits_thin_gold.png"
+            }
+          ],
+          "exact_original_one": false,
+          "text": "功德 +2",
+          "texture_count": 2,
+          "timer_count": 0,
+          "uniform_scale": 1.0
+        },
+        "smoke_points": 61,
+        "smoke_tail": 5.6,
+        "started_unix": 1791315042.84865,
+        "stick_length": 208.977985786947,
+        "unix": 1791315044.92685,
+        "wall_msec": 16587
+      }
+    }
+  ]
+}

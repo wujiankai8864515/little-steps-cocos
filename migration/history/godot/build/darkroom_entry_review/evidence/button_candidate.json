@@ -1,0 +1,42 @@
+{
+  "scope": "TEST ONLY shared-button candidate; no formal release claim",
+  "base_packs": "/workspace/scratch/3f82ff2b3f81/darkroom_entry_candidate_adb65a1/native_packs",
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "source_path": "framework/addons/travel_core/ui/touch_action_button.gd",
+  "source_sha256": "a5c34a1bfa01d530bf088b166b263bb2f6c549dad00a83169a8c8acc0a3514a2",
+  "changed_entries": [
+    "addons/travel_core/ui/touch_action_button.gdc"
+  ],
+  "entry_delta": 0,
+  "index_bytes": 2230628,
+  "index_sha256": "7cf58fd1316a8086849dae03c1ddcce00fbfcfcc3de4f7fb34dfbc9982d06c6c",
+  "commands": [
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/darkroom_button_candidate_v1/official_compile",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/darkroom_button_candidate_v1/official_compile",
+      "--export-pack",
+      "Button Token Audit",
+      "/workspace/shared/darkroom_button_candidate_v1/compiled.pck"
+    ],
+    [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/shared/darkroom_button_candidate_v1/official_compile",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_darkroom_entry_followup/build/make_pack.gd",
+      "--",
+      "/workspace/shared/darkroom_button_candidate_v1/pack_core.json"
+    ]
+  ]
+}

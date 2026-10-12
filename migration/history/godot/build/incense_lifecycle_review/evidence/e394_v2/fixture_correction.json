@@ -1,0 +1,10 @@
+{
+  "product_failure": false,
+  "trigger": "Fresh process identity exact == comparison with default-precision QA seed JSON",
+  "seed_started": 1791314750.43309,
+  "persisted_started": 1791314750.433094,
+  "difference_seconds": 4.0531158447265625e-06,
+  "root_cause": "QA artifact JSON.stringify omitted full_precision=true; production store already uses full precision. Runtime saved original deadline and counted elapsed time correctly.",
+  "correction": "Separate bounded seed/restore/expired run writes full_precision seed and compares exact identity; green lifecycle 48/48 remains valid.",
+  "preserved": "Unchanged check.gd, all logs/results/images, exact PCK hashes and stored data."
+}

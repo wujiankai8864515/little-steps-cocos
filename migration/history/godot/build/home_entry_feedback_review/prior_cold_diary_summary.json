@@ -1,0 +1,58 @@
+{
+  "archive": "/workspace/scratch/3f82ff2b3f81/home_polish_delivery_c242391/qa_c242391.zip",
+  "entry": "runtime_equivalent_a297/diary_actual_packs/summary.json",
+  "summary": {
+    "scope": "Actual grouped production PCK, empty-res native GL; no source delta",
+    "baseline": false,
+    "frozen_pack_hashes": {
+      "index.pck": "8cf98242275e2a9e61b2a416b1fa82cb952937e8a2cce651c4eabb9eb5ab4008",
+      "packs/comic.pck": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10",
+      "packs/departure.pck": "c915fa7a24bcb04c85eb171a3bb3a7e88fcbc2c266839fc1020ffbb0fb68f0bb",
+      "packs/photo.pck": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7",
+      "packs/entry.pck": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+      "packs/exterior.pck": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f",
+      "packs/travel.pck": "eaf3272da8c5af308fb3bbc222b96e0923c8fd5edca87a08b3bd40749a434dbe",
+      "packs/house.pck": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f",
+      "packs/darkroom.pck": "250640a1ddc9d72675b23e6a0cbbc9e1ee14229750bcbdac27eb3bdde6441cac"
+    },
+    "home_deferred_bytes_unchanged": 18127008,
+    "new_runtime_resources": 0,
+    "delta_entries": 0,
+    "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "results": [
+      {
+        "scenario": "direct",
+        "checks": 38,
+        "failed": 0
+      },
+      {
+        "scenario": "map_first",
+        "checks": 39,
+        "failed": 0
+      },
+      {
+        "scenario": "legacy_return",
+        "checks": 39,
+        "failed": 0
+      }
+    ]
+  },
+  "source_c242_to_bc1": {
+    "games/travel_woodfish/project/travel/travel_open_diary_art.gd": {
+      "unchanged": true,
+      "c242_sha256": "3bffc5b16604e174d1eb04c6c77471eddf6ef517b9f687cf27e88acee471ed59",
+      "bc1_sha256": "3bffc5b16604e174d1eb04c6c77471eddf6ef517b9f687cf27e88acee471ed59"
+    },
+    "games/travel_woodfish/project/travel/travel_home_props.gd": {
+      "unchanged": true,
+      "c242_sha256": "50982e402bd80ba6cb3fcfcc4e7aae42540943ac88f02b119d3b59bc346c709f",
+      "bc1_sha256": "50982e402bd80ba6cb3fcfcc4e7aae42540943ac88f02b119d3b59bc346c709f"
+    },
+    "games/travel_woodfish/project/travel/travel_home_bridge.gd": {
+      "unchanged": true,
+      "c242_sha256": "245e435aefbda3ef561ad8271d745a3fece3acfa22943246e783da69c3be6719",
+      "bc1_sha256": "245e435aefbda3ef561ad8271d745a3fece3acfa22943246e783da69c3be6719"
+    }
+  },
+  "identity_caveat": "Archive reports runtime_equivalent_a297 production pack evidence carried in c242 QA archive. Current house.pck and related travel assets match prior frozen hashes; the three diary path scripts are compared separately. This is prior bounded evidence plus unchanged identity, not a new bc1 independent cold diary run."
+}

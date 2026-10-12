@@ -1,0 +1,171 @@
+{
+  "source": "6327bdb",
+  "scope": "Exact formal PCK music-only engine lifecycle isolation; manual declared house mount; no full App/page/GL/browser validation",
+  "engine_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "core_sha256": "4916d735cd15fe63045af866ccd1e4096c5401c8acc1122de35347236d8460d1",
+  "house_sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98",
+  "runs": [
+    {
+      "mode": "baseline",
+      "exit": 0,
+      "warnings": [
+        "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).",
+        "Leaked instance: AudioStreamMP3:9223372062255482222 - Resource path: ",
+        "Leaked instance: AudioStreamMP3:9223372062272259441 - Resource path: ",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062356145524",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062372922741"
+      ],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "baseline",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/baseline.json"
+      ]
+    },
+    {
+      "mode": "dispose_immediate",
+      "exit": 0,
+      "warnings": [
+        "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).",
+        "Leaked instance: AudioStreamMP3:9223372062289036654 - Resource path: ",
+        "Leaked instance: AudioStreamMP3:9223372062305813873 - Resource path: ",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062389699956",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062406477173"
+      ],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "dispose_immediate",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/dispose_immediate.json"
+      ]
+    },
+    {
+      "mode": "dispose_deferred",
+      "exit": 0,
+      "warnings": [],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "dispose_deferred",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/dispose_deferred.json"
+      ]
+    },
+    {
+      "mode": "dispose_drain",
+      "exit": 0,
+      "warnings": [],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "dispose_drain",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/dispose_drain.json"
+      ]
+    },
+    {
+      "mode": "free_immediate",
+      "exit": 0,
+      "warnings": [
+        "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).",
+        "Leaked instance: AudioStreamMP3:9223372062289036654 - Resource path: ",
+        "Leaked instance: AudioStreamMP3:9223372062305813873 - Resource path: ",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062389699956",
+        "Leaked instance: AudioStreamPlaybackMP3:9223372062406477173"
+      ],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "free_immediate",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/free_immediate.json"
+      ]
+    },
+    {
+      "mode": "free_drain",
+      "exit": 0,
+      "warnings": [],
+      "command": [
+        "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/empty",
+        "--main-pack",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/index.pck",
+        "--audio-driver",
+        "Dummy",
+        "--max-fps",
+        "60",
+        "--verbose",
+        "--script",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/music_only.gd",
+        "--",
+        "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs",
+        "free_drain",
+        "/workspace/scratch/3f82ff2b3f81/milestone_audio_shutdown6327/free_drain.json"
+      ]
+    }
+  ]
+}

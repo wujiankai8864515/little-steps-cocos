@@ -1,0 +1,1248 @@
+{
+  "baseline": true,
+  "checks": [
+    {
+      "check": "Production cold Home load terminates",
+      "pass": true
+    },
+    {
+      "check": "Formal core and delayed packs prepare Home",
+      "pass": true
+    },
+    {
+      "check": "Deterministic trip fixture starts through real service",
+      "pass": true
+    },
+    {
+      "check": "Real Home bridge loads and opens Travel Page",
+      "pass": true
+    },
+    {
+      "check": "Page uses actual scene resources",
+      "pass": true
+    },
+    {
+      "check": "App, Home and Travel share the identical Clock",
+      "pass": true
+    },
+    {
+      "check": "No midnight light/shadow direction jump",
+      "pass": false
+    },
+    {
+      "check": "Moon visibly progresses left to right with Home night phase",
+      "pass": false
+    },
+    {
+      "check": "Night light direction follows visible moon across the sky",
+      "pass": false
+    },
+    {
+      "check": "Direction changes converge with 10x finer time sampling; no jumps",
+      "pass": false
+    },
+    {
+      "check": "Background freezes the same shared clock and scene",
+      "pass": true
+    },
+    {
+      "check": "Resume skips first long frame",
+      "pass": true
+    },
+    {
+      "check": "Next foreground frame resumes clock and scene",
+      "pass": true
+    },
+    {
+      "check": "Exit synchronously disposes scene PCM and audio",
+      "pass": true
+    },
+    {
+      "check": "Exit releases scene, player and PCM objects",
+      "pass": true
+    },
+    {
+      "check": "Hidden page retains no active scene",
+      "pass": true
+    },
+    {
+      "check": "Return Home retains original shared clock",
+      "pass": true
+    },
+    {
+      "check": "Repeated reopen/dismiss releases every scene",
+      "pass": true
+    }
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 4,
+  "samples": [
+    {
+      "Home_hour": 5.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        6.20186376571655,
+        4.0
+      ],
+      "clock_position": 1.875,
+      "daylight": 0.5,
+      "direction": [
+        -0.413457572460175,
+        -0.910523355007172
+      ],
+      "hour": 5.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0625,
+      "sun": [
+        252.5,
+        167.317825317383
+      ],
+      "tint": [
+        0.732362508773804,
+        0.744187533855438,
+        0.769687533378601,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 8.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        2.09204530715942,
+        4.0
+      ],
+      "clock_position": 7.5,
+      "daylight": 1.0,
+      "direction": [
+        -0.139469683170319,
+        -0.9902263879776
+      ],
+      "hour": 8.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.25,
+      "sun": [
+        314.0,
+        155.029434204102
+      ],
+      "tint": [
+        1.0,
+        0.956200003623962,
+        0.875,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 12.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -1.42213654518127,
+        4.0
+      ],
+      "clock_position": 15.0,
+      "daylight": 1.0,
+      "direction": [
+        0.0948091000318527,
+        -0.995495438575745
+      ],
+      "hour": 12.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.5,
+      "sun": [
+        396.0,
+        148.0
+      ],
+      "tint": [
+        1.0,
+        0.980000019073486,
+        0.910000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 18.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -7.61867952346802,
+        4.0
+      ],
+      "clock_position": 26.25,
+      "daylight": 1.0,
+      "direction": [
+        0.50791198015213,
+        -0.861408948898315
+      ],
+      "hour": 18.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.875,
+      "sun": [
+        519.0,
+        162.81559753418
+      ],
+      "tint": [
+        1.0,
+        0.9442999958992,
+        0.857500016689301,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 18.5,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -8.33026885986328,
+        4.0
+      ],
+      "clock_position": 27.1875,
+      "daylight": 0.84375,
+      "direction": [
+        0.555351257324219,
+        -0.83161586523056
+      ],
+      "hour": 18.5,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.90625,
+      "sun": [
+        529.25,
+        165.033172607422
+      ],
+      "tint": [
+        0.922983050346375,
+        0.885501861572266,
+        0.830447435379028,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 20.0,
+      "Home_moon_phase": 0.0,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 30.0,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 20.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 21.0,
+      "Home_moon_phase": 0.125,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 33.75,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 21.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.0,
+      "Home_moon_phase": 0.375,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 41.25,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 23.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.99,
+      "Home_moon_phase": 0.49875,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 44.9625,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 23.99,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 0.0,
+      "Home_moon_phase": 0.5,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 45.0,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 0.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 0.00999999999999801,
+      "Home_moon_phase": 0.50125,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 45.0375,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 0.00999999999999801,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 1.0,
+      "Home_moon_phase": 0.625,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 48.75,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 1.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.0,
+      "Home_moon_phase": 0.875,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 56.25,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 4.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 0.0,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 4.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.999,
+      "Home_moon_phase": 0.499875,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 44.99625,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 23.999,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 0.00100000000000122,
+      "Home_moon_phase": 0.500125,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 45.00375,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 0.00100000000000122,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 21.0,
+      "Home_moon_phase": 0.125,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 33.75,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 21.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 0.0,
+      "Home_moon_phase": 0.5,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 45.0,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 0.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.0,
+      "Home_moon_phase": 0.875,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 56.25,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.0,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 19.79,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -10.2331771850586,
+        4.0
+      ],
+      "clock_position": 29.60625,
+      "daylight": 0.0307597500000003,
+      "direction": [
+        0.682211816310883,
+        -0.731154561042786
+      ],
+      "hour": 19.79,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.986875,
+      "sun": [
+        555.695007324219,
+        171.010681152344
+      ],
+      "tint": [
+        0.413721919059753,
+        0.507629632949829,
+        0.667625486850739,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 19.8,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -10.2478866577148,
+        4.0
+      ],
+      "clock_position": 29.625,
+      "daylight": 0.0279999999999998,
+      "direction": [
+        0.683192431926727,
+        -0.730238437652588
+      ],
+      "hour": 19.8,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.9875,
+      "sun": [
+        555.900024414062,
+        171.057769775391
+      ],
+      "tint": [
+        0.411612272262573,
+        0.506061196327209,
+        0.666946530342102,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 19.9,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -10.3945903778076,
+        4.0
+      ],
+      "clock_position": 29.8125,
+      "daylight": 0.0072500000000002,
+      "direction": [
+        0.692972660064697,
+        -0.720963776111603
+      ],
+      "hour": 19.9,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.99375,
+      "sun": [
+        557.949951171875,
+        171.528793334961
+      ],
+      "tint": [
+        0.394422471523285,
+        0.493552505970001,
+        0.661812543869019,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 19.99,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -10.5259647369385,
+        4.0
+      ],
+      "clock_position": 29.98125,
+      "daylight": 0.0000747500000000123,
+      "direction": [
+        0.701730966567993,
+        -0.712441980838776
+      ],
+      "hour": 19.99,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.999375,
+      "sun": [
+        559.794982910156,
+        171.952880859375
+      ],
+      "tint": [
+        0.390045583248138,
+        0.490036636590958,
+        0.660018742084503,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 20.01,
+      "Home_moon_phase": 0.0012500000000002,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 30.0375,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 20.01,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 20.1,
+      "Home_moon_phase": 0.0125000000000002,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 30.375,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 20.1,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 20.5,
+      "Home_moon_phase": 0.0625,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 31.875,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 20.5,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 20.99,
+      "Home_moon_phase": 0.12375,
+      "actor_shadow_offset": [
+        -10.5405187606812,
+        4.0
+      ],
+      "clock_position": 33.7125,
+      "daylight": 0.0,
+      "direction": [
+        0.702701270580292,
+        -0.711485028266907
+      ],
+      "hour": 20.99,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.01,
+      "Home_moon_phase": 0.87625,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 56.2875,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.01,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.5,
+      "Home_moon_phase": 0.9375,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 58.125,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.5,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.9,
+      "Home_moon_phase": 0.9875,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 59.625,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.9,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 3.99,
+      "Home_moon_phase": 0.99875,
+      "actor_shadow_offset": [
+        8.01460552215576,
+        4.0
+      ],
+      "clock_position": 59.9625,
+      "daylight": 0.0,
+      "direction": [
+        -0.534307062625885,
+        -0.84529048204422
+      ],
+      "hour": 3.99,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0,
+      "sun": [
+        232.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 4.01,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        7.9956955909729,
+        4.0
+      ],
+      "clock_position": 0.0187499999999996,
+      "daylight": 0.0000747499999999968,
+      "direction": [
+        -0.533046364784241,
+        -0.846086025238037
+      ],
+      "hour": 4.01,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.000624999999999987,
+      "sun": [
+        232.205001831055,
+        171.952880859375
+      ],
+      "tint": [
+        0.390045583248138,
+        0.490036636590958,
+        0.660018742084503,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 4.1,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        7.82601547241211,
+        4.0
+      ],
+      "clock_position": 0.187499999999999,
+      "daylight": 0.00724999999999995,
+      "direction": [
+        -0.521734356880188,
+        -0.853107988834381
+      ],
+      "hour": 4.1,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.00624999999999998,
+      "sun": [
+        234.050003051758,
+        171.528793334961
+      ],
+      "tint": [
+        0.394422471523285,
+        0.493552505970001,
+        0.661812543869019,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 4.2,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        7.63868284225464,
+        4.0
+      ],
+      "clock_position": 0.375,
+      "daylight": 0.028,
+      "direction": [
+        -0.50924551486969,
+        -0.860621273517609
+      ],
+      "hour": 4.2,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.0125,
+      "sun": [
+        236.100006103516,
+        171.057769775391
+      ],
+      "tint": [
+        0.411612272262573,
+        0.506061196327209,
+        0.666946530342102,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 4.21,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        7.62002515792847,
+        4.0
+      ],
+      "clock_position": 0.39375,
+      "daylight": 0.03075975,
+      "direction": [
+        -0.508001685142517,
+        -0.8613560795784
+      ],
+      "hour": 4.21,
+      "moon": [
+        543.0,
+        190.0
+      ],
+      "moon_phase": null,
+      "moon_weight": null,
+      "same_clock": true,
+      "solar": 0.013125,
+      "sun": [
+        236.304992675781,
+        171.010681152344
+      ],
+      "tint": [
+        0.413721919059753,
+        0.507629632949829,
+        0.667625486850739,
+        1.0
+      ]
+    }
+  ],
+  "scope": "Real App/Home bridge/Travel Page from exact native packs. The original shared Clock is posed using seek_hour; motion paused for comparable frames. Native Mesa software rendering is not Web/device visual acceptance. Baseline expected to fail moon motion and midnight direction checks."
+}

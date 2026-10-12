@@ -1,0 +1,74 @@
+{
+  "method": "Two independent actual native GL runs. Viewport Image converted to FORMAT_RGBA8; SHA-256 computed over Image.get_data before JPEG encoding. JPEG files are for viewing only.",
+  "baseline": {
+    "source": "bc1f8cf formal packs; QA ancestor 0078c5a",
+    "summary": "raw_day_baseline_gl/summary.json",
+    "summary_sha256": "bb22a6fe9884dd2ddb0ede46967d9235ba3cfbf90c5713d6fc4a270351809e34",
+    "fixture_sha256": "a3276891eb04de7a37ea204c818de03aa209688f5d0fe0708ebd4e7b35e69a48"
+  },
+  "candidate": {
+    "source_sha256": "79bc0ba1b17a9262bb153d76cb79d2456ff742446a79783d31e350d6934af61c",
+    "identity": "candidate_v2/identity.json",
+    "summary": "raw_day_candidate_v2_gl/summary.json",
+    "summary_sha256": "241feda72edf8ce6d5415aae2e5a18f3342df968a17d2ef50f9180e01445c92a",
+    "fixture_sha256": "a3276891eb04de7a37ea204c818de03aa209688f5d0fe0708ebd4e7b35e69a48"
+  },
+  "rows": [
+    {
+      "hour": 5.0,
+      "raw_rgba_bytes": 3686400,
+      "size": [
+        720,
+        1280
+      ],
+      "baseline_raw_rgba_sha256": "db1b6f6b70c5c69698ad56c1ec410083ce0ada2255be1252aa772a9760206482",
+      "candidate_raw_rgba_sha256": "db1b6f6b70c5c69698ad56c1ec410083ce0ada2255be1252aa772a9760206482",
+      "equal": true
+    },
+    {
+      "hour": 8.0,
+      "raw_rgba_bytes": 3686400,
+      "size": [
+        720,
+        1280
+      ],
+      "baseline_raw_rgba_sha256": "9b52aa0904393f86521b6d667eea0fc01e80d5359e4a79773532b484516be207",
+      "candidate_raw_rgba_sha256": "9b52aa0904393f86521b6d667eea0fc01e80d5359e4a79773532b484516be207",
+      "equal": true
+    },
+    {
+      "hour": 12.0,
+      "raw_rgba_bytes": 3686400,
+      "size": [
+        720,
+        1280
+      ],
+      "baseline_raw_rgba_sha256": "08c701c4f401a6f894f6b9b9be5807aeeb70d89ed09d2ed7d4bdd1ed91556995",
+      "candidate_raw_rgba_sha256": "08c701c4f401a6f894f6b9b9be5807aeeb70d89ed09d2ed7d4bdd1ed91556995",
+      "equal": true
+    },
+    {
+      "hour": 18.0,
+      "raw_rgba_bytes": 3686400,
+      "size": [
+        720,
+        1280
+      ],
+      "baseline_raw_rgba_sha256": "19837bec63164434f386abe6cfaccd2d374e5eaa7d6d9002b4ac107eef7c2f53",
+      "candidate_raw_rgba_sha256": "19837bec63164434f386abe6cfaccd2d374e5eaa7d6d9002b4ac107eef7c2f53",
+      "equal": true
+    },
+    {
+      "hour": 18.5,
+      "raw_rgba_bytes": 3686400,
+      "size": [
+        720,
+        1280
+      ],
+      "baseline_raw_rgba_sha256": "3b495de0d9daf45ca3d44789272895ce9cd0edb1f6e897d59521980cfcc7d649",
+      "candidate_raw_rgba_sha256": "3b495de0d9daf45ca3d44789272895ce9cd0edb1f6e897d59521980cfcc7d649",
+      "equal": true
+    }
+  ],
+  "all_equal": true
+}

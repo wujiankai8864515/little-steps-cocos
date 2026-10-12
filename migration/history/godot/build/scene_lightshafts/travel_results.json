@@ -1,0 +1,138 @@
+{
+  "checks": [
+    {
+      "check": "Travel uses same Home clock",
+      "pass": true
+    },
+    {
+      "check": "Travel landscape preserves project minimum logical height",
+      "pass": true
+    },
+    {
+      "check": "Travel receiver/shaft continuity around 4.0: 0.00146484375",
+      "pass": true
+    },
+    {
+      "check": "Travel receiver/shaft continuity around 20.0: 0.00146484375",
+      "pass": true
+    },
+    {
+      "check": "Travel receiver/shaft continuity around 24.0: 0.0095703125",
+      "pass": true
+    },
+    {
+      "check": "Travel dismiss restores Home input",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 0",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 1",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 2",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 3",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 4",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 5",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 6",
+      "pass": true
+    },
+    {
+      "check": "Travel one shared shader and three effect/audio nodes stable reopen 7",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "overlay": "/workspace/scratch/3f82ff2b3f81/scene_lightshaft_qa/candidate.pck",
+  "samples": [
+    {
+      "draw_calls": 85.0,
+      "name": "travel_720x1280_05_on",
+      "objects": 17984.0,
+      "process_seconds": 0.069362
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_05_off",
+      "objects": 17983.0,
+      "process_seconds": 0.946134
+    },
+    {
+      "draw_calls": 85.0,
+      "name": "travel_720x1280_12_on",
+      "objects": 17984.0,
+      "process_seconds": 0.909932
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_12_off",
+      "objects": 17983.0,
+      "process_seconds": 0.82717
+    },
+    {
+      "draw_calls": 85.0,
+      "name": "travel_720x1280_22_on",
+      "objects": 17984.0,
+      "process_seconds": 0.789398
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_22_off",
+      "objects": 17983.0,
+      "process_seconds": 0.999978
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_05_on",
+      "objects": 17984.0,
+      "process_seconds": 0.99405
+    },
+    {
+      "draw_calls": 82.0,
+      "name": "travel_1280x720_05_off",
+      "objects": 17983.0,
+      "process_seconds": 0.19417
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_12_on",
+      "objects": 17984.0,
+      "process_seconds": 0.19417
+    },
+    {
+      "draw_calls": 82.0,
+      "name": "travel_1280x720_12_off",
+      "objects": 17983.0,
+      "process_seconds": 0.19417
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_22_on",
+      "objects": 17984.0,
+      "process_seconds": 0.19417
+    },
+    {
+      "draw_calls": 82.0,
+      "name": "travel_1280x720_22_off",
+      "objects": 17983.0,
+      "process_seconds": 0.233613
+    }
+  ],
+  "scope": "exact supplied packs; explicit candidate only when overlay argument is not none"
+}

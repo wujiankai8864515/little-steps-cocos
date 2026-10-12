@@ -1,0 +1,66 @@
+{
+  "generated_on": "2026-10-06",
+  "records": [
+    {
+      "tool": "built-in image_gen.imagegen",
+      "output": "source/neutral_generated.png",
+      "reference_images": [
+        "project/travel/assets/travel_map_plate_v5.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: lighting-weather and precise-object-edit. Edit this exact portrait hand-painted travel temple valley game background. Keep precisely the same framing, all mountain/river/bridge/temple/gate/path positions, architecture, autumn foliage brushwork, ornamental title and back button, text, bottom character, backpack, speech bubble, and bottom blank paper plaque. Convert ONLY the environment lighting to soft neutral overcast ambient daylight suitable for later runtime sunlight: remove baked bright diagonal sun beams, intense glowing edge highlights, yellow light splashes on stone steps and pillars, and strong directional cast shadows. Preserve rich hand-painted paper texture, material colors, shaded volume/ambient occlusion, warm autumn gold and vermilion wood, cool blue-green mountains; do not flatten or desaturate. Remove ONLY the large bronze hanging bell in the left foreground wooden bell pavilion, including the visible clapper under its rim, filling its small old silhouette naturally with distant cool foliage/sky behind it. Keep the pavilion roof, posts, hanging attachment at the same location. Remove the tiny floating lone yellow leaf at top center and right of lower mountain gate. Keep all other composition unchanged. This is a lighting-neutral clean game background plate, same portrait aspect, no new objects and no style change.",
+      "sha256": "efc4b7a1b7ede07a2e6db565aaa2f8ba23c9b26df188728a859cbac53dbe7906",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "source_only_not_runtime": true
+    },
+    {
+      "tool": "built-in image_gen.imagegen",
+      "output": "source/bell_generated.png",
+      "reference_images": [
+        "source/bell_reference_crop.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: background-extraction / precise-object-edit. Make a clean production sprite sheet on genuine transparent alpha. Use the supplied cropped painting as the exact design reference for this hanging Chinese temple bell: a tall bronze cylindrical bell, subtle rounded shoulder, horizontal cast bands, small rectangular and dot relief patterns, slightly flared elliptical open bottom. Preserve the reference's painterly brushwork and bronze patina. Reconstruct the obscured left half behind the red pillar, so the COMPLETE unoccluded symmetrical bell body is present, same three-quarter frontal camera with visible dark open underside. Remove all pillar/roof/leaves/background and remove hard baked yellow sunlight spots: diffuse neutral ambient light but keep bronze volume and material. On the LEFT of this transparent sheet show ONLY the complete bell body, no chain and no clapper, upright. On the RIGHT show ONLY its separate simple slim wooden/bronze hanging clapper, a narrow straight vertical dark stem ending in an elongated thicker hanging weight, matching the reference's visible clapper under the bell. Leave a clear wide transparent gap between body and clapper. Bell body height about 650px and width about 400px, clapper height about 230px width 55px in a 1024-ish square sheet, both completely inside canvas with generous margin. Do not add text, frames, paper, labels, other objects, or duplicated bells.",
+      "sha256": "e71ffaddb3ca2998b821d26f07b17756c4f33abc1268a4e5689b1b0d513cb708",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "source_only_not_runtime": true
+    },
+    {
+      "tool": "built-in image_gen.imagegen",
+      "output": "source/cloud_generated.png",
+      "reference_images": [
+        "source/cloud_reference_crop.png"
+      ],
+      "transparent_background": true,
+      "prompt": "Use case: background-extraction. Extract and complete TWO distinct horizontally elongated soft painted cloud/mist banks from this exact traditional hand-painted temple valley reference, as reusable game sprites on a fully transparent alpha background. Same chunky watercolor/gouache brush texture and cloud forms, cool ivory with subtle pale blue-gray ambient shading, neutral diffuse daylight, no golden sun glow. Upper half: a long gentle low cloud bank with about six irregular lobes, tapering wisps and soft semi-transparent feathered fringes, aspect about 4.5:1. Lower half: a smaller more irregular cloud/mist ribbon with three uneven lobes and a fading trailing wisp, aspect about 3.5:1. Leave a very wide transparent gap between the two sprites. No scenery, mountains, trees, architecture, text, color blocks, labels, framed cards or hard rectangle boundaries. Each cloud is fully contained with generous transparent margins. Preserve the reference painting style, not photorealistic 3D clouds.",
+      "sha256": "f8072f3e74fb2a0a86bbe1a37b78b57ab3b882dd77c8edc84d21f192fd85a4ed",
+      "dimensions": [
+        2143,
+        734
+      ],
+      "source_only_not_runtime": true
+    },
+    {
+      "tool": "built-in image_gen.imagegen",
+      "output": "source/leaf_cleanup_generated.png",
+      "reference_images": [
+        "source/neutral_generated.png",
+        "source/leaf_removal_reference.png"
+      ],
+      "transparent_background": false,
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact edit target. Image 2 is a MASK GUIDE ONLY: the three magenta patches mark the three separate dangling ginkgo leaf fans that must be removed from Image 1. Remove those three selected fans only, and naturally paint the previously hidden gray-blue roof tiles or red roof beams underneath each fan, reconstructing the original roof material exactly. Keep the thin branch/stem connections. Do not remove any other foliage. This clean background is for reattaching those same leaf fans as moving sprites later. Absolutely preserve everything else: exact canvas composition, all text and typography, lower character/backpack/speech bubble, temples, bridges, clouds, river, shape of the roof, all other leaves, neutral ambient lighting. No magenta or markup in result; no new leaf at these three patches; no other edits.",
+      "sha256": "042837699fa3d0a4044cf602b8db66ba02207d278430dae1aa90b9b5a5e33bc5",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "source_only_not_runtime": true
+    }
+  ]
+}

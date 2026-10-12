@@ -1,0 +1,82 @@
+{
+  "boundary": "Production App and Bridge methods with explicit held loaders/recording gate and mock page, validates cancellation/routing/compatibility only.",
+  "checks": [
+    {
+      "name": "concurrent duplicate mode has one batch",
+      "pass": true
+    },
+    {
+      "name": "both mode waiters receive same success",
+      "pass": true
+    },
+    {
+      "name": "collection readiness never claims map readiness",
+      "pass": true
+    },
+    {
+      "name": "different map mode requests its required batch",
+      "pass": true
+    },
+    {
+      "name": "failed map can retry without false cache",
+      "pass": true
+    },
+    {
+      "name": "map alias retry succeeds with independent lease",
+      "pass": true
+    },
+    {
+      "name": "warm mode does not enqueue another batch",
+      "pass": true
+    },
+    {
+      "name": "unknown mode fails closed before resource work",
+      "pass": true
+    },
+    {
+      "name": "old-generation mount cannot enqueue modes",
+      "pass": true
+    },
+    {
+      "name": "late old batch cannot reset replacement loading state",
+      "pass": true
+    },
+    {
+      "name": "replacement generation completes normally",
+      "pass": true
+    },
+    {
+      "name": "legacy zero-argument loader remains supported",
+      "pass": true
+    },
+    {
+      "name": "first open retains original Home ambient state",
+      "pass": true
+    },
+    {
+      "name": "archive request keeps current gallery until assets ready",
+      "pass": true
+    },
+    {
+      "name": "cancelled archive late completion cannot navigate",
+      "pass": true
+    },
+    {
+      "name": "archive failure retains gallery and retry",
+      "pass": true
+    },
+    {
+      "name": "successful retry enters archive without overwriting saved ambient",
+      "pass": true
+    },
+    {
+      "name": "closing nested archive restores original Home ambient",
+      "pass": true
+    },
+    {
+      "name": "Back during archive load invalidates late reopening",
+      "pass": true
+    }
+  ],
+  "failures": 0
+}

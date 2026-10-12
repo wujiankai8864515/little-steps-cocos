@@ -1,0 +1,279 @@
+{
+  "r9": {
+    "settled_home_flower_transitions": [],
+    "settled_home_merit": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "settled_home_objects": [
+      3920,
+      3921,
+      3922,
+      3923,
+      3924,
+      3925,
+      3926,
+      3927,
+      3928,
+      3929,
+      3930,
+      3931,
+      3932,
+      3933,
+      3934,
+      3935,
+      3936,
+      3937,
+      3938,
+      3939,
+      3940
+    ],
+    "settled_home_nodes": [
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829
+    ],
+    "settled_home_flower_children": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "retained_page_instance_id_counts": {
+      "photo": 1,
+      "travel": 1,
+      "wardrobe": 1
+    },
+    "teardown": {
+      "cycle": 21,
+      "direct_static_bytes": 69781112,
+      "label": "after_teardown",
+      "objects": 1545,
+      "orphans": 0,
+      "process_memory": {
+        "RssAnon": 310747136,
+        "RssFile": 73236480,
+        "VmHWM": 405782528,
+        "VmRSS": 383983616
+      },
+      "resources": 125,
+      "static_bytes": 69781112,
+      "ticks_msec": 67038,
+      "tree_nodes": 1
+    }
+  },
+  "new": {
+    "settled_home_flower_transitions": [
+      {
+        "before": {
+          "cycle": 19,
+          "ticks_msec": 68487,
+          "tree_nodes": 829,
+          "objects": 3942,
+          "merit": 20,
+          "persistent_flower_children": 4
+        },
+        "after": {
+          "cycle": 20,
+          "ticks_msec": 71215,
+          "tree_nodes": 842,
+          "objects": 3965,
+          "merit": 21,
+          "persistent_flower_children": 5
+        }
+      }
+    ],
+    "settled_home_merit": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "settled_home_objects": [
+      3923,
+      3924,
+      3925,
+      3926,
+      3927,
+      3928,
+      3929,
+      3930,
+      3931,
+      3932,
+      3933,
+      3934,
+      3935,
+      3936,
+      3937,
+      3938,
+      3939,
+      3940,
+      3941,
+      3942,
+      3965
+    ],
+    "settled_home_nodes": [
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      829,
+      842
+    ],
+    "settled_home_flower_children": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5
+    ],
+    "retained_page_instance_id_counts": {
+      "photo": 1,
+      "travel": 1,
+      "wardrobe": 1
+    },
+    "teardown": {
+      "cycle": 21,
+      "direct_static_bytes": 69908676,
+      "label": "after_teardown",
+      "objects": 1548,
+      "orphans": 0,
+      "process_memory": {
+        "RssAnon": 311382016,
+        "RssFile": 73236480,
+        "VmHWM": 406421504,
+        "VmRSS": 384618496
+      },
+      "resources": 127,
+      "static_bytes": 69908676,
+      "ticks_msec": 72429,
+      "tree_nodes": 1
+    }
+  },
+  "interpretation": {
+    "comparison": "Through settled cycle19 the new build stays exactly3 Objects above R9; both gain one Object per observed merit increment. At new cycle20 actual flower-container child count changes4\u21925, tree Nodes829\u2192842 and Objects3942\u21923965 while merit20\u219221. R9 completes with container4/tree829 and same merit21. This observed boundary, unchanged flower/text sources, and earlier independently diagnosed flower/text-cache evidence support natural flower+text growth rather than newly retained pages. No fixed allowance is applied to assertions.",
+    "flower_container_boundary": "persistent_flower_children is direct container children, not botanical flower count: fixed support children are included. Only settled HOME comparisons are used; Darkroom detaches Home and find_child returns no container there.",
+    "historical_causal_source": "r9_final_lifecycle/REPORT.md and object_growth_resolution.json, unchanged valid75-cycle causal evidence; not rerun here and not substituted for current samples.",
+    "scope": "No new retained resource/node growth unexplained by observed state changes in this bounded20-loop window. Not indefinite memory or full RSS-release proof."
+  },
+  "unchanged_growth_sources": {
+    "games/travel_woodfish/project/home/flowers/flower_life.gd": {
+      "r9_blob": "eb437e618d7e1199a59ee2aa6596ee8f86ee0faa",
+      "new_blob": "eb437e618d7e1199a59ee2aa6596ee8f86ee0faa"
+    },
+    "games/travel_woodfish/project/home/header_tag.gd": {
+      "r9_blob": "aaa32ef2c90aae65f22ae0c18495cc76eb64f25f",
+      "new_blob": "aaa32ef2c90aae65f22ae0c18495cc76eb64f25f"
+    },
+    "games/travel_woodfish/project/home/home_world.gd": {
+      "r9_blob": "b061a1cbc54829123fea14d01882aa9b76f0db1e",
+      "new_blob": "b061a1cbc54829123fea14d01882aa9b76f0db1e"
+    },
+    "games/travel_woodfish/project/home/home_page.gd": {
+      "r9_blob": "e9719bca3ae5ae087e4891a6f714ebfc9e51fb1d",
+      "new_blob": "e9719bca3ae5ae087e4891a6f714ebfc9e51fb1d"
+    }
+  }
+}

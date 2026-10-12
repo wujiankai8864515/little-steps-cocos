@@ -1,0 +1,71 @@
+[
+  {
+    "label": "baseline_geometry",
+    "pid": 7,
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/empty",
+      "--main-pack",
+      "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/index.pck",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/test_geometry.gd",
+      "--",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/baseline_geometry.json",
+      "baseline"
+    ],
+    "waited": true
+  },
+  {
+    "label": "official_compile",
+    "pid": 21,
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/compile",
+      "--export-pack",
+      "A035 Candidate",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/compiler_output.pck"
+    ],
+    "waited": true
+  },
+  {
+    "label": "delta_pack",
+    "pid": 421,
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/empty",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_home_grounding_followup/build/make_pack.gd",
+      "--",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/delta_spec.json"
+    ],
+    "waited": true
+  },
+  {
+    "label": "candidate_geometry",
+    "pid": 435,
+    "returncode": 0,
+    "command": [
+      "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/empty",
+      "--main-pack",
+      "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/index.pck",
+      "--script",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/test_geometry.gd",
+      "--",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/candidate_geometry.json",
+      "/workspace/scratch/3f82ff2b3f81/godot_actor_gaze_fix/build/actor_gaze_review/candidate/A035_CANDIDATE_ONLY.pck"
+    ],
+    "waited": true
+  }
+]

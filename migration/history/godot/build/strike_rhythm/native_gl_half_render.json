@@ -1,0 +1,956 @@
+{
+  "ambient_samples": [
+    {
+      "clip_time": 0.07134552,
+      "pose_time": 0.07134552,
+      "wall_ms": 79
+    },
+    {
+      "clip_time": 0.157685399999999,
+      "pose_time": 0.157685399999999,
+      "wall_ms": 157
+    },
+    {
+      "clip_time": 0.238685399999999,
+      "pose_time": 0.238685399999999,
+      "wall_ms": 232
+    },
+    {
+      "clip_time": 0.319685399999999,
+      "pose_time": 0.319685399999999,
+      "wall_ms": 281
+    },
+    {
+      "clip_time": 0.373685399999999,
+      "pose_time": 0.373685399999999,
+      "wall_ms": 363
+    },
+    {
+      "clip_time": 0.452061,
+      "pose_time": 0.452061,
+      "wall_ms": 442
+    },
+    {
+      "clip_time": 0.53750196,
+      "pose_time": 0.53750196,
+      "wall_ms": 485
+    },
+    {
+      "clip_time": 0.60158124,
+      "pose_time": 0.60158124,
+      "wall_ms": 555
+    },
+    {
+      "clip_time": 0.67358124,
+      "pose_time": 0.67358124,
+      "wall_ms": 639
+    },
+    {
+      "clip_time": 0.7498494,
+      "pose_time": 0.7498494,
+      "wall_ms": 728
+    },
+    {
+      "clip_time": 0.85496832,
+      "pose_time": 0.85496832,
+      "wall_ms": 803
+    },
+    {
+      "clip_time": 0.93608928,
+      "pose_time": 0.93608928,
+      "wall_ms": 860
+    },
+    {
+      "clip_time": 1.00706616,
+      "pose_time": 1.00706616,
+      "wall_ms": 941
+    },
+    {
+      "clip_time": 1.0936854,
+      "pose_time": 1.0936854,
+      "wall_ms": 1016
+    },
+    {
+      "clip_time": 1.1674494,
+      "pose_time": 1.1674494,
+      "wall_ms": 1088
+    },
+    {
+      "clip_time": 1.2484494,
+      "pose_time": 1.2484494,
+      "wall_ms": 1145
+    },
+    {
+      "clip_time": 1.31411772,
+      "pose_time": 1.29,
+      "wall_ms": 1224
+    },
+    {
+      "clip_time": 1.39061772,
+      "pose_time": 1.39061772,
+      "wall_ms": 1295
+    },
+    {
+      "clip_time": 1.4716854,
+      "pose_time": 1.4716854,
+      "wall_ms": 1357
+    },
+    {
+      "clip_time": 1.54302048,
+      "pose_time": 1.54302048,
+      "wall_ms": 1415
+    },
+    {
+      "clip_time": 1.59255216,
+      "pose_time": 1.59255216,
+      "wall_ms": 1611
+    },
+    {
+      "clip_time": 1.70055216,
+      "pose_time": 1.70055216,
+      "wall_ms": 1664
+    },
+    {
+      "clip_time": 1.7607114,
+      "pose_time": 1.7607114,
+      "wall_ms": 1726
+    },
+    {
+      "clip_time": 1.8327114,
+      "pose_time": 1.8327114,
+      "wall_ms": 1764
+    },
+    {
+      "clip_time": 1.8687114,
+      "pose_time": 1.8687114,
+      "wall_ms": 1829
+    },
+    {
+      "clip_time": 1.93757328,
+      "pose_time": 1.93757328,
+      "wall_ms": 1896
+    },
+    {
+      "clip_time": 2.00045916,
+      "pose_time": 2.00045916,
+      "wall_ms": 1983
+    },
+    {
+      "clip_time": 2.1027114,
+      "pose_time": 2.1027114,
+      "wall_ms": 2048
+    },
+    {
+      "clip_time": 2.1747114,
+      "pose_time": 2.1747114,
+      "wall_ms": 2117
+    },
+    {
+      "clip_time": 2.2467114,
+      "pose_time": 2.2467114,
+      "wall_ms": 2176
+    },
+    {
+      "clip_time": 2.3187114,
+      "pose_time": 2.3187114,
+      "wall_ms": 2225
+    },
+    {
+      "clip_time": 2.37345948,
+      "pose_time": 2.37345948,
+      "wall_ms": 2293
+    },
+    {
+      "clip_time": 2.44545948,
+      "pose_time": 2.44545948,
+      "wall_ms": 2361
+    },
+    {
+      "clip_time": 0.0650594800000008,
+      "pose_time": 0.0650594800000008,
+      "wall_ms": 2419
+    }
+  ],
+  "checks": [
+    {
+      "name": "one root click restarts a complete user strike",
+      "pass": true
+    },
+    {
+      "name": "press/release never awards before contact",
+      "pass": true
+    },
+    {
+      "name": "wind-up samples original clip directly without phase compression",
+      "pass": true
+    },
+    {
+      "name": "one contact earns one merit",
+      "pass": true
+    },
+    {
+      "name": "contact keeps original 1.29-second clip timing at original tempo",
+      "pass": false
+    },
+    {
+      "name": "one contact calls real sound port exactly once",
+      "pass": true
+    },
+    {
+      "name": "contact emits one impact mark",
+      "pass": true
+    },
+    {
+      "name": "contact event displays original exact impact pose",
+      "pass": true
+    },
+    {
+      "name": "contact expression is a mild reaction",
+      "pass": true
+    },
+    {
+      "name": "rebound samples original clip directly without phase compression",
+      "pass": true
+    },
+    {
+      "name": "complete tail return remains at original timing",
+      "pass": true
+    },
+    {
+      "name": "manual tap retains complete original 3.2-second clip at original tempo",
+      "pass": false
+    },
+    {
+      "name": "settle has no duplicate award or lingering mark",
+      "pass": true
+    },
+    {
+      "name": "six rapid root clicks each restart once",
+      "pass": true
+    },
+    {
+      "name": "canceled wind-ups cannot earn phantom merit",
+      "pass": true
+    },
+    {
+      "name": "last rapid click reaches exactly one contact",
+      "pass": true
+    },
+    {
+      "name": "four repeat clicks after contact produce four hits without queued duplicates",
+      "pass": true
+    },
+    {
+      "name": "touch plus emulated mouse requests one strike",
+      "pass": true
+    },
+    {
+      "name": "holding and dragging takes priority over pending strike",
+      "pass": true
+    },
+    {
+      "name": "drag cancels pending hit with no merit or impact",
+      "pass": true
+    },
+    {
+      "name": "release restores interaction after interrupted strike",
+      "pass": true
+    },
+    {
+      "name": "backgrounding discards pending strike and accrues no hidden contacts",
+      "pass": true
+    },
+    {
+      "name": "background blocks strike requests and clears contact ink",
+      "pass": true
+    },
+    {
+      "name": "foreground accepts a fresh complete strike",
+      "pass": true
+    },
+    {
+      "name": "page pause cancels in-flight strike",
+      "pass": true
+    },
+    {
+      "name": "real bag drag opens travel invitation",
+      "pass": true
+    },
+    {
+      "name": "real invitation input starts departure",
+      "pass": true
+    },
+    {
+      "name": "departure ownership blocks a competing woodfish strike",
+      "pass": true
+    },
+    {
+      "name": "departure animation reaches terminal state on real clock",
+      "pass": true
+    },
+    {
+      "name": "departed actor has no hidden contact or merit",
+      "pass": true
+    },
+    {
+      "name": "hidden traveling actor refuses strike",
+      "pass": true
+    },
+    {
+      "name": "travel clock return restores original actor",
+      "pass": true
+    },
+    {
+      "name": "returned actor accepts one fresh root click and one contact",
+      "pass": true
+    },
+    {
+      "name": "ambient retains every original movement through tail return at 2.15 seconds",
+      "pass": false
+    },
+    {
+      "name": "ambient cycle adds only 280ms idle after full return",
+      "pass": true
+    },
+    {
+      "name": "shorter gap is observable in complete automatic cycle",
+      "pass": true
+    },
+    {
+      "name": "shorter automatic cycle still has exactly one merit and sound",
+      "pass": true
+    },
+    {
+      "name": "changing idle preserves original action duration",
+      "pass": true
+    },
+    {
+      "name": "independent idle setting changes cycle by only the requested 370ms",
+      "pass": true
+    },
+    {
+      "name": "interaction recovery keeps its separate original 800ms delay",
+      "pass": true
+    },
+    {
+      "name": "cancel/release restores neutral base pose and drops pending contact",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 3,
+  "fixed_fps": false,
+  "half_render": true,
+  "manual_samples": [
+    {
+      "active": true,
+      "clip_time": 0.0002862,
+      "sample_time": 0.0002862,
+      "speed": 1.08,
+      "wall_ms": 82
+    },
+    {
+      "active": true,
+      "clip_time": 0.089721,
+      "sample_time": 0.089721,
+      "speed": 1.08,
+      "wall_ms": 126
+    },
+    {
+      "active": true,
+      "clip_time": 0.13674312,
+      "sample_time": 0.13674312,
+      "speed": 1.08,
+      "wall_ms": 162
+    },
+    {
+      "active": true,
+      "clip_time": 0.17591148,
+      "sample_time": 0.17591148,
+      "speed": 1.08,
+      "wall_ms": 196
+    },
+    {
+      "active": true,
+      "clip_time": 0.2126898,
+      "sample_time": 0.2126898,
+      "speed": 1.08,
+      "wall_ms": 231
+    },
+    {
+      "active": true,
+      "clip_time": 0.25033536,
+      "sample_time": 0.25033536,
+      "speed": 1.08,
+      "wall_ms": 266
+    },
+    {
+      "active": true,
+      "clip_time": 0.2877066,
+      "sample_time": 0.2877066,
+      "speed": 1.08,
+      "wall_ms": 301
+    },
+    {
+      "active": true,
+      "clip_time": 0.32550552,
+      "sample_time": 0.32550552,
+      "speed": 1.08,
+      "wall_ms": 331
+    },
+    {
+      "active": true,
+      "clip_time": 0.3580254,
+      "sample_time": 0.3580254,
+      "speed": 1.08,
+      "wall_ms": 361
+    },
+    {
+      "active": true,
+      "clip_time": 0.39078504,
+      "sample_time": 0.39078504,
+      "speed": 1.08,
+      "wall_ms": 393
+    },
+    {
+      "active": true,
+      "clip_time": 0.42561504,
+      "sample_time": 0.42561504,
+      "speed": 1.08,
+      "wall_ms": 424
+    },
+    {
+      "active": true,
+      "clip_time": 0.45864468,
+      "sample_time": 0.45864468,
+      "speed": 1.08,
+      "wall_ms": 459
+    },
+    {
+      "active": true,
+      "clip_time": 0.49621032,
+      "sample_time": 0.49621032,
+      "speed": 1.08,
+      "wall_ms": 489
+    },
+    {
+      "active": true,
+      "clip_time": 0.52886196,
+      "sample_time": 0.52886196,
+      "speed": 1.08,
+      "wall_ms": 519
+    },
+    {
+      "active": true,
+      "clip_time": 0.56096064,
+      "sample_time": 0.56096064,
+      "speed": 1.08,
+      "wall_ms": 548
+    },
+    {
+      "active": true,
+      "clip_time": 0.59205492,
+      "sample_time": 0.59205492,
+      "speed": 1.08,
+      "wall_ms": 579
+    },
+    {
+      "active": true,
+      "clip_time": 0.62621856,
+      "sample_time": 0.62621856,
+      "speed": 1.08,
+      "wall_ms": 609
+    },
+    {
+      "active": true,
+      "clip_time": 0.65797056,
+      "sample_time": 0.65797056,
+      "speed": 1.08,
+      "wall_ms": 639
+    },
+    {
+      "active": true,
+      "clip_time": 0.69102828,
+      "sample_time": 0.69102828,
+      "speed": 1.08,
+      "wall_ms": 670
+    },
+    {
+      "active": true,
+      "clip_time": 0.7241346,
+      "sample_time": 0.7241346,
+      "speed": 1.08,
+      "wall_ms": 699
+    },
+    {
+      "active": true,
+      "clip_time": 0.75562092,
+      "sample_time": 0.75562092,
+      "speed": 1.08,
+      "wall_ms": 728
+    },
+    {
+      "active": true,
+      "clip_time": 0.7868016,
+      "sample_time": 0.7868016,
+      "speed": 1.08,
+      "wall_ms": 759
+    },
+    {
+      "active": true,
+      "clip_time": 0.82056672,
+      "sample_time": 0.82056672,
+      "speed": 1.08,
+      "wall_ms": 792
+    },
+    {
+      "active": true,
+      "clip_time": 0.8560998,
+      "sample_time": 0.8560998,
+      "speed": 1.08,
+      "wall_ms": 823
+    },
+    {
+      "active": true,
+      "clip_time": 0.88967916,
+      "sample_time": 0.88967916,
+      "speed": 1.08,
+      "wall_ms": 852
+    },
+    {
+      "active": true,
+      "clip_time": 0.92065356,
+      "sample_time": 0.92065356,
+      "speed": 1.08,
+      "wall_ms": 881
+    },
+    {
+      "active": true,
+      "clip_time": 0.9516636,
+      "sample_time": 0.9516636,
+      "speed": 1.08,
+      "wall_ms": 911
+    },
+    {
+      "active": true,
+      "clip_time": 0.9849492,
+      "sample_time": 0.9849492,
+      "speed": 1.08,
+      "wall_ms": 942
+    },
+    {
+      "active": true,
+      "clip_time": 1.01811708,
+      "sample_time": 1.01811708,
+      "speed": 1.08,
+      "wall_ms": 978
+    },
+    {
+      "active": true,
+      "clip_time": 1.05674868,
+      "sample_time": 1.05674868,
+      "speed": 1.08,
+      "wall_ms": 1041
+    },
+    {
+      "active": true,
+      "clip_time": 1.12475304,
+      "sample_time": 1.12475304,
+      "speed": 1.08,
+      "wall_ms": 1073
+    },
+    {
+      "active": true,
+      "clip_time": 1.15949124,
+      "sample_time": 1.15949124,
+      "speed": 1.08,
+      "wall_ms": 1107
+    },
+    {
+      "active": true,
+      "clip_time": 1.19632032,
+      "sample_time": 1.19632032,
+      "speed": 1.08,
+      "wall_ms": 1139
+    },
+    {
+      "active": true,
+      "clip_time": 1.23126048,
+      "sample_time": 1.23126048,
+      "speed": 1.08,
+      "wall_ms": 1171
+    },
+    {
+      "active": true,
+      "clip_time": 1.26563688,
+      "sample_time": 1.26563688,
+      "speed": 1.08,
+      "wall_ms": 1205
+    },
+    {
+      "active": true,
+      "clip_time": 1.30181796,
+      "sample_time": 1.29,
+      "speed": 1.08,
+      "wall_ms": 1631
+    },
+    {
+      "active": true,
+      "clip_time": 1.40981796,
+      "sample_time": 1.40981796,
+      "speed": 1.08,
+      "wall_ms": 1664
+    },
+    {
+      "active": true,
+      "clip_time": 1.44467064,
+      "sample_time": 1.44467064,
+      "speed": 1.08,
+      "wall_ms": 1698
+    },
+    {
+      "active": true,
+      "clip_time": 1.4821218,
+      "sample_time": 1.4821218,
+      "speed": 1.08,
+      "wall_ms": 1730
+    },
+    {
+      "active": true,
+      "clip_time": 1.51683192,
+      "sample_time": 1.51683192,
+      "speed": 1.08,
+      "wall_ms": 1762
+    },
+    {
+      "active": true,
+      "clip_time": 1.55114244,
+      "sample_time": 1.55114244,
+      "speed": 1.08,
+      "wall_ms": 1794
+    },
+    {
+      "active": true,
+      "clip_time": 1.5850458,
+      "sample_time": 1.5850458,
+      "speed": 1.08,
+      "wall_ms": 1824
+    },
+    {
+      "active": true,
+      "clip_time": 1.61785188,
+      "sample_time": 1.61785188,
+      "speed": 1.08,
+      "wall_ms": 1855
+    },
+    {
+      "active": true,
+      "clip_time": 1.6513956,
+      "sample_time": 1.6513956,
+      "speed": 1.08,
+      "wall_ms": 1887
+    },
+    {
+      "active": true,
+      "clip_time": 1.6865388,
+      "sample_time": 1.6865388,
+      "speed": 1.08,
+      "wall_ms": 1924
+    },
+    {
+      "active": true,
+      "clip_time": 1.72553976,
+      "sample_time": 1.72553976,
+      "speed": 1.08,
+      "wall_ms": 1959
+    },
+    {
+      "active": true,
+      "clip_time": 1.76425776,
+      "sample_time": 1.76425776,
+      "speed": 1.08,
+      "wall_ms": 1999
+    },
+    {
+      "active": true,
+      "clip_time": 1.80717372,
+      "sample_time": 1.80717372,
+      "speed": 1.08,
+      "wall_ms": 2038
+    },
+    {
+      "active": true,
+      "clip_time": 1.84891032,
+      "sample_time": 1.84891032,
+      "speed": 1.08,
+      "wall_ms": 2074
+    },
+    {
+      "active": true,
+      "clip_time": 1.888191,
+      "sample_time": 1.888191,
+      "speed": 1.08,
+      "wall_ms": 2107
+    },
+    {
+      "active": true,
+      "clip_time": 1.924155,
+      "sample_time": 1.924155,
+      "speed": 1.08,
+      "wall_ms": 2139
+    },
+    {
+      "active": true,
+      "clip_time": 1.95870204,
+      "sample_time": 1.95870204,
+      "speed": 1.08,
+      "wall_ms": 2172
+    },
+    {
+      "active": true,
+      "clip_time": 1.99407852,
+      "sample_time": 1.99407852,
+      "speed": 1.08,
+      "wall_ms": 2206
+    },
+    {
+      "active": true,
+      "clip_time": 2.03096592,
+      "sample_time": 2.03096592,
+      "speed": 1.08,
+      "wall_ms": 2238
+    },
+    {
+      "active": true,
+      "clip_time": 2.06518464,
+      "sample_time": 2.06518464,
+      "speed": 1.08,
+      "wall_ms": 2272
+    },
+    {
+      "active": true,
+      "clip_time": 2.10154608,
+      "sample_time": 2.10154608,
+      "speed": 1.08,
+      "wall_ms": 2304
+    },
+    {
+      "active": true,
+      "clip_time": 2.13686424,
+      "sample_time": 2.13686424,
+      "speed": 1.08,
+      "wall_ms": 2335
+    },
+    {
+      "active": true,
+      "clip_time": 2.17035828,
+      "sample_time": 2.17035828,
+      "speed": 1.08,
+      "wall_ms": 2365
+    },
+    {
+      "active": true,
+      "clip_time": 2.20274424,
+      "sample_time": 2.20274424,
+      "speed": 1.08,
+      "wall_ms": 2397
+    },
+    {
+      "active": true,
+      "clip_time": 2.23694136,
+      "sample_time": 2.23694136,
+      "speed": 1.08,
+      "wall_ms": 2429
+    },
+    {
+      "active": true,
+      "clip_time": 2.27100672,
+      "sample_time": 2.27100672,
+      "speed": 1.08,
+      "wall_ms": 2460
+    },
+    {
+      "active": true,
+      "clip_time": 2.30492844,
+      "sample_time": 2.30492844,
+      "speed": 1.08,
+      "wall_ms": 2491
+    },
+    {
+      "active": true,
+      "clip_time": 2.3386104,
+      "sample_time": 2.3386104,
+      "speed": 1.08,
+      "wall_ms": 2523
+    },
+    {
+      "active": true,
+      "clip_time": 2.37288744,
+      "sample_time": 2.37288744,
+      "speed": 1.08,
+      "wall_ms": 2556
+    },
+    {
+      "active": true,
+      "clip_time": 2.4080436,
+      "sample_time": 2.4080436,
+      "speed": 1.08,
+      "wall_ms": 2587
+    },
+    {
+      "active": true,
+      "clip_time": 2.44247616,
+      "sample_time": 2.44247616,
+      "speed": 1.08,
+      "wall_ms": 2620
+    },
+    {
+      "active": true,
+      "clip_time": 2.47772196,
+      "sample_time": 2.47772196,
+      "speed": 1.08,
+      "wall_ms": 2651
+    },
+    {
+      "active": true,
+      "clip_time": 2.51151408,
+      "sample_time": 2.51151408,
+      "speed": 1.08,
+      "wall_ms": 2683
+    },
+    {
+      "active": true,
+      "clip_time": 2.5455816,
+      "sample_time": 2.5455816,
+      "speed": 1.08,
+      "wall_ms": 2714
+    },
+    {
+      "active": true,
+      "clip_time": 2.57950656,
+      "sample_time": 2.57950656,
+      "speed": 1.08,
+      "wall_ms": 2746
+    },
+    {
+      "active": true,
+      "clip_time": 2.61371016,
+      "sample_time": 2.61371016,
+      "speed": 1.08,
+      "wall_ms": 2776
+    },
+    {
+      "active": true,
+      "clip_time": 2.64657132,
+      "sample_time": 2.64657132,
+      "speed": 1.08,
+      "wall_ms": 2810
+    },
+    {
+      "active": true,
+      "clip_time": 2.68260876,
+      "sample_time": 2.68260876,
+      "speed": 1.08,
+      "wall_ms": 2850
+    },
+    {
+      "active": true,
+      "clip_time": 2.72607228,
+      "sample_time": 2.72607228,
+      "speed": 1.08,
+      "wall_ms": 2942
+    },
+    {
+      "active": true,
+      "clip_time": 2.82508884,
+      "sample_time": 2.82508884,
+      "speed": 1.08,
+      "wall_ms": 2980
+    },
+    {
+      "active": true,
+      "clip_time": 2.8666386,
+      "sample_time": 2.8666386,
+      "speed": 1.08,
+      "wall_ms": 3014
+    },
+    {
+      "active": true,
+      "clip_time": 2.90291688,
+      "sample_time": 2.90291688,
+      "speed": 1.08,
+      "wall_ms": 3049
+    },
+    {
+      "active": true,
+      "clip_time": 2.94119856,
+      "sample_time": 2.94119856,
+      "speed": 1.08,
+      "wall_ms": 3094
+    },
+    {
+      "active": true,
+      "clip_time": 2.98967544,
+      "sample_time": 2.98967544,
+      "speed": 1.08,
+      "wall_ms": 3132
+    },
+    {
+      "active": true,
+      "clip_time": 3.03065712,
+      "sample_time": 3.03065712,
+      "speed": 1.08,
+      "wall_ms": 3164
+    },
+    {
+      "active": true,
+      "clip_time": 3.06551736,
+      "sample_time": 3.06551736,
+      "speed": 1.08,
+      "wall_ms": 3198
+    },
+    {
+      "active": true,
+      "clip_time": 3.10170276,
+      "sample_time": 3.10170276,
+      "speed": 1.08,
+      "wall_ms": 3233
+    },
+    {
+      "active": true,
+      "clip_time": 3.13929216,
+      "sample_time": 3.13929216,
+      "speed": 1.08,
+      "wall_ms": 3270
+    },
+    {
+      "active": true,
+      "clip_time": 3.1798926,
+      "sample_time": 3.1798926,
+      "speed": 1.08,
+      "wall_ms": 3310
+    },
+    {
+      "active": false,
+      "clip_time": 0.0,
+      "sample_time": 0.0,
+      "speed": 1.1502,
+      "wall_ms": 3345
+    }
+  ],
+  "passed": 38,
+  "real_duration_ms": 56565,
+  "room_render_size": "(360, 640)",
+  "root_input_events": 46,
+  "time_scale": 1.0,
+  "timing": {
+    "alternate_cycle_ms": 2682,
+    "ambient_cycle_ms": 2419,
+    "ambient_idle_ms": 302,
+    "ambient_motion_ms": 2117,
+    "complete_ms": 3346,
+    "contact_ms": 1631,
+    "original_cycle_ms": 2962.96296296296
+  },
+  "travel_clock": "injected only after real departure completes"
+}

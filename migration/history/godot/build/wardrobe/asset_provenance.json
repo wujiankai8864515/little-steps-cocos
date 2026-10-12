@@ -1,0 +1,45 @@
+{
+  "inputs": {
+    "room_neutral.png": {
+      "sha256": "62954a1433605c2a0bca5aff87b7631d503cbef6db281a1875fcd0e23ba28b04",
+      "size": [
+        941,
+        1672
+      ]
+    },
+    "wardrobe_atlas.png": {
+      "sha256": "17a92a5f15d589e27e9af75eb759a6e19a1f96c99cd743d5dafeb24009a34584",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "peach_fabric_body.png": {
+      "sha256": "c8a8e5309048c1f5e87ea4b6fb2e1874d27a7f08df22ca7721764e4b0ee78086",
+      "size": [
+        1620,
+        971
+      ]
+    }
+  },
+  "outputs": {
+    "wardrobe_runtime_atlas.png": {
+      "sha256": "2ece6a40bb35b5c00eaec4dce6f840739b0cb98814d3e7651ee2471024544708",
+      "size": [
+        1974,
+        1280
+      ],
+      "bytes": 2891077
+    },
+    "peach_material.png": {
+      "sha256": "e9eed446ce08c1a11f232fb6af9611313cd659db4580636f0bbbea19ff842f8a",
+      "size": [
+        1005,
+        603
+      ],
+      "bytes": 371877
+    }
+  },
+  "decoded_bytes": 12530940,
+  "source_policy": "Authoring PNGs are not included in runtime groups; resized high-quality material samples retain original body geometry in shader."
+}

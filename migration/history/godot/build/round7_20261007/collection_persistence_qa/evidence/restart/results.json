@@ -1,0 +1,94 @@
+{
+  "checks": [
+    {
+      "check": "X11 real software GL",
+      "pass": true
+    },
+    {
+      "check": "cold Home prepare terminates",
+      "pass": true
+    },
+    {
+      "check": "Home receives actual root input",
+      "pass": true
+    },
+    {
+      "check": "actual cold Home collection entry mounts Travel",
+      "pass": true
+    },
+    {
+      "check": "actual mounted content available",
+      "pass": true
+    },
+    {
+      "check": "native persistent store enabled without errors",
+      "pass": true
+    },
+    {
+      "check": "real collected inventory available after restart",
+      "pass": true
+    },
+    {
+      "check": "real archived journal available after restart",
+      "pass": true
+    },
+    {
+      "check": "second process restored exact inventory UIDs, journal entries and review count",
+      "pass": true
+    },
+    {
+      "check": "archive diary physical entry enabled",
+      "pass": true
+    },
+    {
+      "check": "find physical archive entry hit",
+      "pass": true
+    },
+    {
+      "check": "actual archive pointer opens correct saved diary",
+      "pass": true
+    },
+    {
+      "check": "read-only archive shows saved diary prose",
+      "pass": true
+    },
+    {
+      "check": "archive has no mutable review controls",
+      "pass": true
+    },
+    {
+      "check": "actual back pointer restores collection",
+      "pass": true
+    },
+    {
+      "check": "archive open/read/back leaves persistent model unchanged",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "archived_count": 1,
+      "inventory_count": 2,
+      "phase": "restart",
+      "pid": 11,
+      "review_count": 2.0,
+      "save_path": "/workspace/shared/round7_collection_archive_qa/state_v2/godot/app_userdata/旅行木鱼/travel_story/round7_archive_fixture.json",
+      "save_sha256": "a0d0d13dda4d37abd9920f66043a27820df77fc303b8eea71a3e93d63757f180"
+    }
+  ],
+  "scope": "Candidate zero-overlay PCK. Two distinct native processes share isolated FileAccess slot. Test-only trip generated through real depart, auto-settlement, reward collection and review APIs. Not user data, Web persistence or hardware acceptance."
+}

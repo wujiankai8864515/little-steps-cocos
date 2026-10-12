@@ -1,0 +1,299 @@
+{
+  "captures": [],
+  "checks": [
+    {
+      "check": "D01 actual X11 native GL renderer",
+      "passed": true
+    },
+    {
+      "check": "D01 actual requested viewport",
+      "passed": true
+    },
+    {
+      "check": "D01 delayed darkroom unavailable in core",
+      "passed": true
+    },
+    {
+      "check": "D01 actual App cold Home ready",
+      "passed": true
+    },
+    {
+      "check": "D01 Home does not mask cold darkroom dependency",
+      "passed": true
+    },
+    {
+      "check": "photo actual on-demand request delayed",
+      "passed": true
+    },
+    {
+      "check": "photo actual entry exact caption",
+      "passed": true
+    },
+    {
+      "check": "photo native missing pack actual failure UI",
+      "passed": true
+    },
+    {
+      "check": "photo retry creates pending actual transport",
+      "passed": true
+    },
+    {
+      "check": "photo canceled late pack cannot open overlay",
+      "passed": true
+    },
+    {
+      "check": "photo warm actual page opens",
+      "passed": true
+    },
+    {
+      "check": "journal actual on-demand travel pack delayed",
+      "passed": true
+    },
+    {
+      "check": "journal actual initial caption",
+      "passed": true
+    },
+    {
+      "check": "journal actual progress object stable",
+      "passed": true
+    },
+    {
+      "check": "journal canceled late actual pack does not open page",
+      "passed": true
+    },
+    {
+      "check": "map warm actual page opens",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "exits": [],
+  "failed": 0,
+  "first_visible": {},
+  "input_events": 0,
+  "layouts": [],
+  "lighting": [],
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 1,
+      "invalid_callbacks": 0,
+      "mounts": 7,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 1,
+      "stale_callbacks": 0,
+      "starts": 9,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "photo",
+      "departure",
+      "travel"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 710969,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4901,
+          "loaded": 943108,
+          "mount_usec": 470,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/entry.pck",
+          "request_id": "p32413582738-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2170494,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 7831,
+          "loaded": 2313888,
+          "mount_usec": 380,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/comic.pck",
+          "request_id": "p32413582738-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2195613,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4997,
+          "loaded": 1107208,
+          "mount_usec": 316,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/exterior.pck",
+          "request_id": "p32413582738-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2269987,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 60076,
+          "loaded": 17019800,
+          "mount_usec": 569,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/house.pck",
+          "request_id": "p32413582738-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 14810129,
+        "details": {
+          "error": "missing_pack"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "retry"
+      },
+      {
+        "at_usec": 14868142,
+        "details": {
+          "error": "missing_pack"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "failed"
+      },
+      {
+        "at_usec": 15201957,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 12300,
+          "loaded": 2858372,
+          "mount_usec": 364,
+          "pack_id": "photo",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/photo.pck",
+          "request_id": "p32413582738-e1-r7",
+          "state": "ready",
+          "total": 2858372,
+          "verified_sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "ready"
+      },
+      {
+        "at_usec": 17486750,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4537,
+          "loaded": 1326752,
+          "mount_usec": 269,
+          "pack_id": "departure",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/departure.pck",
+          "request_id": "p32413582738-e1-r8",
+          "state": "ready",
+          "total": 1326752,
+          "verified_sha256": "c915fa7a24bcb04c85eb171a3bb3a7e88fcbc2c266839fc1020ffbb0fb68f0bb"
+        },
+        "epoch": 1,
+        "pack_id": "departure",
+        "state": "ready"
+      },
+      {
+        "at_usec": 17800713,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 46959,
+          "loaded": 13671876,
+          "mount_usec": 519,
+          "pack_id": "travel",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/a083_formal_7ba4243/native_packs/packs/travel.pck",
+          "request_id": "p32413582738-e1-r9",
+          "state": "ready",
+          "total": 13671876,
+          "verified_sha256": "eaf3272da8c5af308fb3bbc222b96e0923c8fd5edca87a08b3bd40749a434dbe"
+        },
+        "epoch": 1,
+        "pack_id": "travel",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "viewport": [
+    720,
+    1280
+  ],
+  "inherited_harness_scope": "TEST ONLY candidate, empty res, exact candidate c242-derived PCKs, real App/router/root input, native Mesa GL. Clock review hour controls time only. Existing c242 base helpers reused; opening comic omitted. No Web, audio listening or device touch-feel claim.",
+  "scope": "N01/N02 candidate only: empty res, formal 7ba4243 core and genuine delayed native backend/hash/mount, explicitly mounted loading source delta (12 files darkroom; 14 files optional including candidate bootstrap font). App commit_home fixture skips opening comic. Darkroom uses root pointer input; optional overlays use production bridge entry/cancel/retry methods. Native Mesa GL, not Web or hardware performance acceptance."
+}

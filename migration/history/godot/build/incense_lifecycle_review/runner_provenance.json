@@ -1,0 +1,22 @@
+{
+  "archive_checks": {
+    "check.gd": {
+      "sha256": "57d03fbd92b91bb2283e0adf76c38a060edf026eb117a98dcf9b1f50f0fd6ee9",
+      "matches_tested_external_bytes": true
+    },
+    "check_restore.gd": {
+      "sha256": "13cf012b5fa04bff8c5ed15da032de385db6016b2ad53d53c0835aad4b5a52fa",
+      "matches_tested_external_bytes": true
+    },
+    "check_light.gd": {
+      "sha256": "ef75502ab3bad3a00b873829d83b54df888293d7b13b3608f3bb141d288f1cdb",
+      "matches_tested_external_bytes": true
+    }
+  },
+  "adaptation": "run_review.py consolidates original three wrappers and exposes engine, packs, output, stage and label arguments; test scenario bytes remain unchanged. Original actual commands are preserved with every evidence run.",
+  "original_runner_sha256": {
+    "run.py": "5aa4374cb8855eb630d3aa8751603b8e466b9f8b34077f247707173bf1c46d66",
+    "run_restore.py": "5c1c6a9a3fa9e0f443b44d2bcd0fe78fa8156a69ef9cd52b0fddbe1e8a0e6e14",
+    "run_light.py": "e0ce1232db70f2546896eccccde086d923c582c21f4db29c541674a370cbaf20"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "prepared_only_not_run_waiting_for_parent_GL_release",
+  "base_runner": "/workspace/shared/startup_ready_chain_qa/run_review.py",
+  "base_runner_sha256": "64e154a19b23144b6558e55a53b9dd8f4f393364e44c576ad9f2ce32aef725d9",
+  "base_timing_script_sha256": "66ade645cd730305dbd29cc015faf936b4474e9aa2500b819b0f50c8b6657804",
+  "timing_script_content_changed": false,
+  "new_runner_changes": [
+    "Xorg port matches current permitted loopback",
+    "remove MESA_SHADER_CACHE_DISABLE for child only",
+    "after engine exit hash/index then delete isolated runtime cache"
+  ],
+  "case": "slow_warm_timing",
+  "source_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+  "material_modification": false,
+  "ready_modification": false,
+  "screenshots": false
+}

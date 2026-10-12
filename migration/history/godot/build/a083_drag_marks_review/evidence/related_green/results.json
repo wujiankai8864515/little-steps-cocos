@@ -1,0 +1,294 @@
+{
+  "checks": [
+    {
+      "check": "X11 real software GL",
+      "pass": true
+    },
+    {
+      "check": "cold Home prepare terminates",
+      "pass": true
+    },
+    {
+      "check": "Home receives actual root input",
+      "pass": true
+    },
+    {
+      "check": "find opaque bowl target",
+      "pass": true
+    },
+    {
+      "check": "real bowl tap emits sip feedback",
+      "pass": true
+    },
+    {
+      "check": "actual visible drink_before_drag",
+      "pass": true
+    },
+    {
+      "check": "face safe drink_before_drag",
+      "pass": true
+    },
+    {
+      "check": "drink completes",
+      "pass": true
+    },
+    {
+      "check": "drink leaves normal marks layer",
+      "pass": true
+    },
+    {
+      "check": "bowl enters real long drag",
+      "pass": true
+    },
+    {
+      "check": "prop-only drag does not reparent action marks",
+      "pass": true
+    },
+    {
+      "check": "bowl drag settles",
+      "pass": true
+    },
+    {
+      "check": "bowl returns its fixed anchor",
+      "pass": true
+    },
+    {
+      "check": "bowl release removes drag canvas",
+      "pass": true
+    },
+    {
+      "check": "second drink begins",
+      "pass": true
+    },
+    {
+      "check": "fish grab interrupts active drink",
+      "pass": true
+    },
+    {
+      "check": "fish grab cancels drink context",
+      "pass": true
+    },
+    {
+      "check": "interrupted bowl retains anchor",
+      "pass": true
+    },
+    {
+      "check": "cancelled interruption clears marks and restores layer",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 0",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 0",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 1",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 1",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 2",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 2",
+      "pass": true
+    },
+    {
+      "check": "repeated real hold 3",
+      "pass": true
+    },
+    {
+      "check": "no stale layer after repeat cancel 3",
+      "pass": true
+    },
+    {
+      "check": "real fish tap emits knock feedback after cancellations",
+      "pass": true
+    },
+    {
+      "check": "actual visible tap_after_cancels",
+      "pass": true
+    },
+    {
+      "check": "face safe tap_after_cancels",
+      "pass": true
+    },
+    {
+      "check": "knock feedback expires",
+      "pass": true
+    },
+    {
+      "check": "night director emits doze feedback",
+      "pass": true
+    },
+    {
+      "check": "actual visible doze_night",
+      "pass": true
+    },
+    {
+      "check": "face safe doze_night",
+      "pass": true
+    },
+    {
+      "check": "doze feedback expires",
+      "pass": true
+    },
+    {
+      "check": "future overlay fixture enters hold",
+      "pass": true
+    },
+    {
+      "check": "fish and feedback remain above later-added overlay",
+      "pass": true
+    },
+    {
+      "check": "real darkroom route completes while hold interrupted",
+      "pass": true
+    },
+    {
+      "check": "route exit restores mark layer and clears held canvas",
+      "pass": true
+    },
+    {
+      "check": "no lift feedback survives page exit",
+      "pass": true
+    },
+    {
+      "check": "actual cached Home return completes",
+      "pass": true
+    },
+    {
+      "check": "returned Home has original feedback hierarchy",
+      "pass": true
+    },
+    {
+      "check": "hold after route return works",
+      "pass": true
+    },
+    {
+      "check": "new lift feedback appears after page return",
+      "pass": true
+    },
+    {
+      "check": "post-return cleanup complete",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "diff": {
+        "changed_pixels": 89,
+        "max_channel_difference": 99,
+        "sum_rgb_difference": 13089
+      },
+      "kind": "drink",
+      "region": "[P: (369, 809), S: (130, 120)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0583333333333333,
+            "alpha": 0.748978189285919,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "drink",
+            "lifetime": 0.42,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (419.7644, 848.4647), S: (32.0, 45.0)]",
+            "world_position": "(434.7644, 869.4647)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "diff": {
+        "changed_pixels": 136,
+        "max_channel_difference": 231,
+        "sum_rgb_difference": 26427
+      },
+      "kind": "tap",
+      "region": "[P: (497, 715), S: (130, 120)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0,
+            "alpha": 0.94,
+            "face_safe": true,
+            "impulse_scale": 0.579999983310699,
+            "kind": "tap",
+            "lifetime": 0.19,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (554.5367, 732.4188), S: (64.0, 77.0)]",
+            "world_position": "(562.5367, 775.4188)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "diff": {
+        "changed_pixels": 256,
+        "max_channel_difference": 95,
+        "sum_rgb_difference": 40150
+      },
+      "kind": "doze",
+      "region": "[P: (420, 632), S: (130, 120)]",
+      "snapshot": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 2,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0,
+            "alpha": 0.6,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "doze",
+            "lifetime": 0.82,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (473.0, 664.0), S: (35.0, 33.0)]",
+            "world_position": "(485.0, 692.0)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    }
+  ],
+  "scope": "Candidate core compiled from d817 plus one Home page fix; eight unchanged native packs; empty res; real App and root long press; app process frozen immediately after production lift. Original mark visibility A/B, hidden actor diagnostic, restore/cancel regressions; no Web/hardware/user acceptance claim."
+}

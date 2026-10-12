@@ -1,0 +1,3646 @@
+{
+  "checks": [
+    {
+      "name": "real GL renderer",
+      "pass": true
+    },
+    {
+      "name": "initialization is one established flower and idempotent",
+      "pass": true
+    },
+    {
+      "name": "no birth before a full 60 seconds",
+      "pass": true
+    },
+    {
+      "name": "one birth at exact 60 seconds",
+      "pass": true
+    },
+    {
+      "name": "new flower begins as a small closed bud",
+      "pass": true
+    },
+    {
+      "name": "new flower emerges gradually halfway through eight seconds",
+      "pass": true
+    },
+    {
+      "name": "new flower fully grows at eight seconds",
+      "pass": true
+    },
+    {
+      "name": "ten flowers stay and no further flower IDs are issued",
+      "pass": true
+    },
+    {
+      "name": "existing schema3 1-flower save restores",
+      "pass": true
+    },
+    {
+      "name": "migration 1 preserves flower count and IDs without a bonus",
+      "pass": true
+    },
+    {
+      "name": "migration 1 preserves earned clock and save revision",
+      "pass": true
+    },
+    {
+      "name": "migration 1 preserves identity, birth, and legacy lifetime 0",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 1/0",
+      "pass": true
+    },
+    {
+      "name": "existing bouquet 1 receives the new geometry",
+      "pass": true
+    },
+    {
+      "name": "geometry migration is idempotent on reload 1",
+      "pass": true
+    },
+    {
+      "name": "isolated disk save 1",
+      "pass": true
+    },
+    {
+      "name": "disk reload preserves all stable geometry 1",
+      "pass": true
+    },
+    {
+      "name": "old save 1 does not earn early after migration",
+      "pass": true
+    },
+    {
+      "name": "old save 1 births once at its original boundary",
+      "pass": true
+    },
+    {
+      "name": "existing schema3 3-flower save restores",
+      "pass": true
+    },
+    {
+      "name": "migration 3 preserves flower count and IDs without a bonus",
+      "pass": true
+    },
+    {
+      "name": "migration 3 preserves earned clock and save revision",
+      "pass": true
+    },
+    {
+      "name": "migration 3 preserves identity, birth, and legacy lifetime 0",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 3/0",
+      "pass": true
+    },
+    {
+      "name": "migration 3 preserves identity, birth, and legacy lifetime 1",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 3/1",
+      "pass": true
+    },
+    {
+      "name": "migration 3 preserves identity, birth, and legacy lifetime 2",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 3/2",
+      "pass": true
+    },
+    {
+      "name": "existing bouquet 3 receives the new geometry",
+      "pass": true
+    },
+    {
+      "name": "geometry migration is idempotent on reload 3",
+      "pass": true
+    },
+    {
+      "name": "isolated disk save 3",
+      "pass": true
+    },
+    {
+      "name": "disk reload preserves all stable geometry 3",
+      "pass": true
+    },
+    {
+      "name": "old save 3 does not earn early after migration",
+      "pass": true
+    },
+    {
+      "name": "old save 3 births once at its original boundary",
+      "pass": true
+    },
+    {
+      "name": "existing schema3 5-flower save restores",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves flower count and IDs without a bonus",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves earned clock and save revision",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves identity, birth, and legacy lifetime 0",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 5/0",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves identity, birth, and legacy lifetime 1",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 5/1",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves identity, birth, and legacy lifetime 2",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 5/2",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves identity, birth, and legacy lifetime 3",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 5/3",
+      "pass": true
+    },
+    {
+      "name": "migration 5 preserves identity, birth, and legacy lifetime 4",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 5/4",
+      "pass": true
+    },
+    {
+      "name": "existing bouquet 5 receives the new geometry",
+      "pass": true
+    },
+    {
+      "name": "geometry migration is idempotent on reload 5",
+      "pass": true
+    },
+    {
+      "name": "isolated disk save 5",
+      "pass": true
+    },
+    {
+      "name": "disk reload preserves all stable geometry 5",
+      "pass": true
+    },
+    {
+      "name": "old save 5 does not earn early after migration",
+      "pass": true
+    },
+    {
+      "name": "old save 5 births once at its original boundary",
+      "pass": true
+    },
+    {
+      "name": "existing schema3 10-flower save restores",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves flower count and IDs without a bonus",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves earned clock and save revision",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 0",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/0",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 1",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/1",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 2",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/2",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 3",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/3",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 4",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/4",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 5",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/5",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 6",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/6",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 7",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/7",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 8",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/8",
+      "pass": true
+    },
+    {
+      "name": "migration 10 preserves identity, birth, and legacy lifetime 9",
+      "pass": true
+    },
+    {
+      "name": "same ID has identical geometry when new or migrated 10/9",
+      "pass": true
+    },
+    {
+      "name": "existing bouquet 10 receives the new geometry",
+      "pass": true
+    },
+    {
+      "name": "geometry migration is idempotent on reload 10",
+      "pass": true
+    },
+    {
+      "name": "isolated disk save 10",
+      "pass": true
+    },
+    {
+      "name": "disk reload preserves all stable geometry 10",
+      "pass": true
+    },
+    {
+      "name": "unknown geometry version is rejected",
+      "pass": true
+    },
+    {
+      "name": "real Home constructs the expected 3-flower bouquet",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_3_morning detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_3_noon detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_3_evening detail image saved",
+      "pass": true
+    },
+    {
+      "name": "real Home constructs the expected 5-flower bouquet",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_5_morning detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_5_noon detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_5_evening detail image saved",
+      "pass": true
+    },
+    {
+      "name": "real Home constructs the expected 10-flower bouquet",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_morning detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_noon detail image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_evening detail image saved",
+      "pass": true
+    },
+    {
+      "name": "full bouquet retains a visible screen margin from dawn through dusk",
+      "pass": true
+    },
+    {
+      "name": "all ten roots remain fixed throughout the full 30-second solar sweep",
+      "pass": true
+    },
+    {
+      "name": "all stem segments continue upward and never turn back into the vase",
+      "pass": true
+    },
+    {
+      "name": "all ten tips move smoothly below one local pixel per 30Hz frame",
+      "pass": true
+    },
+    {
+      "name": "all ten blossom fronts continue tracking the moving sun",
+      "pass": true
+    },
+    {
+      "name": "night boundary starts a transition rather than snapping every flower shut",
+      "pass": true
+    },
+    {
+      "name": "all flowers are visibly partway through staggered closure after three seconds",
+      "pass": true
+    },
+    {
+      "name": "home_10_closing_3s full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_closing_3s detail image saved",
+      "pass": true
+    },
+    {
+      "name": "all flowers finish their seven-second plus per-ID staggered closure by nine seconds",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 0",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 1",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 2",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 3",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 4",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 5",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 6",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 7",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 8",
+      "pass": true
+    },
+    {
+      "name": "home_10_night all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_night fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_night closed 9",
+      "pass": true
+    },
+    {
+      "name": "home_10_night every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "home_10_night visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "home_10_night visible sleeping Z",
+      "pass": true
+    },
+    {
+      "name": "home_10_night full image saved",
+      "pass": true
+    },
+    {
+      "name": "home_10_night detail image saved",
+      "pass": true
+    },
+    {
+      "name": "full bouquet remains inside 390x844 mobile screen",
+      "pass": true
+    },
+    {
+      "name": "full bouquet remains inside 430x932 mobile screen",
+      "pass": true
+    },
+    {
+      "name": "real Home constructs the expected 1-flower bouquet",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning full image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_morning detail image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon full image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_noon detail image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening faces sun 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening full image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_evening detail image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 0",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 1",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 2",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 3",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 4",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 5",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 6",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 7",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 8",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night all branches stay behind flower fronts 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night fixed root 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night closed 9",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night every flower center remains separately readable",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night visible heights remain staggered",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night visible sleeping Z",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night full image saved",
+      "pass": true
+    },
+    {
+      "name": "fresh_10_night detail image saved",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "passed": true,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.338668711303516,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8842163085938,
+            -95.303466796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07507188221001,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9009399414062,
+            -59.01171875
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.00281618185173475,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.2098999023438,
+            -132.913208007812
+          ]
+        }
+      ],
+      "height_span": 73.9014892578125,
+      "label": "home_3_morning",
+      "minimum_center_distance": 47.5495567321777
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0322229585900637,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.445388793945312,
+            -97.843505859375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.772624586698918,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.2117309570312,
+            -68.73486328125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.311893458793336,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.3932189941406,
+            -129.901245117188
+          ]
+        }
+      ],
+      "height_span": 61.1663818359375,
+      "label": "home_3_noon",
+      "minimum_center_distance": 48.1658096313477
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": 0.274933952176915,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.496334109224684,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.650694013241877,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        }
+      ],
+      "height_span": 44.505615234375,
+      "label": "home_3_evening",
+      "minimum_center_distance": 49.2339935302734
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.338668711303516,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8842163085938,
+            -95.303466796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07507188221001,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9009399414062,
+            -59.01171875
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.00281618185173475,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.2098999023438,
+            -132.913208007812
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.711745925321505,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -64.4556121826172,
+            -120.720092773438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.390385288524828,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            45.6576690673828,
+            -105.167602539062
+          ]
+        }
+      ],
+      "height_span": 73.9014892578125,
+      "label": "home_5_morning",
+      "minimum_center_distance": 44.2319717407227
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0322229585900637,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.445388793945312,
+            -97.843505859375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.772624586698918,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.2117309570312,
+            -68.73486328125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.311893458793336,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.3932189941406,
+            -129.901245117188
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.371113295464972,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.5544052124023,
+            -132.571533203125
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.6729053761901,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            62.862548828125,
+            -97.3043212890625
+          ]
+        }
+      ],
+      "height_span": 63.836669921875,
+      "label": "home_5_noon",
+      "minimum_center_distance": 41.9902954101562
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": 0.274933952176915,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.496334109224684,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.650694013241877,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0609923593943776,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.699104309082,
+            -137.017822265625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.995655474766926,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.5033111572266,
+            -84.12646484375
+          ]
+        }
+      ],
+      "height_span": 61.7423095703125,
+      "label": "home_5_evening",
+      "minimum_center_distance": 39.7313957214355
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.338668711303516,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8842163085938,
+            -95.303466796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07507188221001,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9009399414062,
+            -59.01171875
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.00281618185173475,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.2098999023438,
+            -132.913208007812
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.711745925321505,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -64.4556121826172,
+            -120.720092773438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.390385288524828,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            45.6576690673828,
+            -105.167602539062
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.383102506159671,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -41.072868347168,
+            -154.905517578125
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.555410751455157,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            65.0615234375,
+            -148.34130859375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -1.09745303998777,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -83.0642700195312,
+            -89.4029541015625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.0717303805347731,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            14.9531555175781,
+            -169.800048828125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.825065020474484,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -52.6349029541016,
+            -89.7684326171875
+          ]
+        }
+      ],
+      "height_span": 110.788330078125,
+      "label": "home_10_morning",
+      "minimum_center_distance": 30.4315605163574
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0322229585900637,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.445388793945312,
+            -97.843505859375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.772624586698918,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.2117309570312,
+            -68.73486328125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.311893458793336,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.3932189941406,
+            -129.901245117188
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.371113295464972,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.5544052124023,
+            -132.571533203125
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.6729053761901,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            62.862548828125,
+            -97.3043212890625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.0342400648106964,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -7.00950622558594,
+            -160.4853515625
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.841439821887168,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.6781005859375,
+            -133.38525390625
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": -0.769580078944072,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3834457397461,
+            -105.8154296875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.392612762288263,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            48.029052734375,
+            -163.357543945312
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.507570502619264,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.947998046875,
+            -99.9234619140625
+          ]
+        }
+      ],
+      "height_span": 94.6226806640625,
+      "label": "home_10_noon",
+      "minimum_center_distance": 31.0005111694336
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": 0.274933952176915,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.496334109224684,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.650694013241877,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0609923593943776,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.699104309082,
+            -137.017822265625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.995655474766926,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.5033111572266,
+            -84.12646484375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.306766307758265,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            26.5827789306641,
+            -156.716796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 1.19243080670409,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            111.566314697266,
+            -108.928100585938
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.483284246721078,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -46.5390930175781,
+            -116.191284179688
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.759038861335078,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            82.015625,
+            -146.284057617188
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.211297128328939,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -16.3511505126953,
+            -105.201293945312
+          ]
+        }
+      ],
+      "height_span": 81.4412841796875,
+      "label": "home_10_evening",
+      "minimum_center_distance": 32.0254402160645
+    },
+    {
+      "label": "full_sun_sweep",
+      "largest_tip_step": 0.21849299967289,
+      "smallest_horizontal_screen_margin": 4.69419097900391,
+      "worst_moving_alignment": 0.994820356369019
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.990688681602478,
+          "bend": 0.460960978772864,
+          "frame": 0,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            29.6584014892578,
+            -92.530029296875
+          ]
+        },
+        {
+          "alignment": 0.995801687240601,
+          "bend": -0.315151607838917,
+          "frame": 0,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -28.9778366088867,
+            -78.1290283203125
+          ]
+        },
+        {
+          "alignment": 0.990725040435791,
+          "bend": 0.845288899482269,
+          "frame": 0,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            74.9352264404297,
+            -111.10546875
+          ]
+        },
+        {
+          "alignment": 0.99301815032959,
+          "bend": 0.0865519352671488,
+          "frame": 0,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -0.163055419921875,
+            -136.872924804688
+          ]
+        },
+        {
+          "alignment": 0.996086359024048,
+          "bend": 1.22150488964938,
+          "frame": 0,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            88.6638946533203,
+            -72.82958984375
+          ]
+        },
+        {
+          "alignment": 0.99085408449173,
+          "bend": 0.452656811072353,
+          "frame": 0,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            40.3451538085938,
+            -152.37841796875
+          ]
+        },
+        {
+          "alignment": 0.996634542942047,
+          "bend": 1.4,
+          "frame": 0,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            121.299285888672,
+            -92.236328125
+          ]
+        },
+        {
+          "alignment": 0.997455596923828,
+          "bend": -0.330645846405332,
+          "frame": 0,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -35.5631256103516,
+            -119.935302734375
+          ]
+        },
+        {
+          "alignment": 0.991808176040649,
+          "bend": 0.939320668494489,
+          "frame": 0,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            96.3358154296875,
+            -134.614624023438
+          ]
+        },
+        {
+          "alignment": 0.993984043598175,
+          "bend": -0.0459254746056097,
+          "frame": 0,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -5.52308654785156,
+            -106.210693359375
+          ]
+        }
+      ],
+      "height_span": 79.548828125,
+      "label": "home_10_night",
+      "minimum_center_distance": 31.1271953582764
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.338668711303516,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8842163085938,
+            -95.303466796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07507188221001,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9009399414062,
+            -59.01171875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.00281618185173473,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.2098999023438,
+            -132.913208007812
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.711745925321505,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -64.4556121826172,
+            -120.720092773438
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.390385288524828,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            45.6576690673828,
+            -105.167602539062
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.383102506159671,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -41.072868347168,
+            -154.905517578125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.555410751455158,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            65.0615234375,
+            -148.34130859375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -1.09745303998777,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -83.0642700195312,
+            -89.4029541015625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.0717303805240449,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            14.9531555175781,
+            -169.800048828125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.825065020474486,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -52.6349029541016,
+            -89.7684326171875
+          ]
+        }
+      ],
+      "height_span": 110.788330078125,
+      "label": "fresh_10_morning",
+      "minimum_center_distance": 30.4315605163574
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0322229585900637,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.445388793945312,
+            -97.843505859375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.772624586698918,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.2117309570312,
+            -68.73486328125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.311893458793336,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.3932189941406,
+            -129.901245117188
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.371113295464972,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.5544052124023,
+            -132.571533203125
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.6729053761901,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            62.862548828125,
+            -97.3043212890625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.0342400648106964,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -7.00950622558594,
+            -160.4853515625
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.841439821887168,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.6781005859375,
+            -133.38525390625
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": -0.769580078944072,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3834457397461,
+            -105.8154296875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.392612762288263,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            48.029052734375,
+            -163.357543945312
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.507570502619264,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.947998046875,
+            -99.9234619140625
+          ]
+        }
+      ],
+      "height_span": 94.6226806640625,
+      "label": "fresh_10_noon",
+      "minimum_center_distance": 31.0005111694336
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": 0.274933952176915,
+          "frame": 4,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.496334109224684,
+          "frame": 4,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.650694013241877,
+          "frame": 4,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0609923593943776,
+          "frame": 4,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.699104309082,
+            -137.017822265625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.995655474766926,
+          "frame": 4,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.5033111572266,
+            -84.12646484375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.306766307758265,
+          "frame": 4,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            26.5827789306641,
+            -156.716796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 1.19243080670409,
+          "frame": 4,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            111.566314697266,
+            -108.928100585938
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.483284246721078,
+          "frame": 4,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -46.5390930175781,
+            -116.191284179688
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.759038861335078,
+          "frame": 4,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            82.015625,
+            -146.284057617188
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.211297128328939,
+          "frame": 4,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -16.3511505126953,
+            -105.201293945312
+          ]
+        }
+      ],
+      "height_span": 81.4412841796875,
+      "label": "fresh_10_evening",
+      "minimum_center_distance": 32.0254402160645
+    },
+    {
+      "flowers": [
+        {
+          "alignment": 0.604835569858551,
+          "bend": 0.274933952176915,
+          "frame": 0,
+          "height": 97.9315138972379,
+          "id": 0,
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 0.657736659049988,
+          "bend": -0.496334109224684,
+          "frame": 0,
+          "height": 80.1198792266368,
+          "id": 1,
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 0.565845370292664,
+          "bend": 0.650694013241877,
+          "frame": 0,
+          "height": 132.954730675236,
+          "id": 2,
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        },
+        {
+          "alignment": 0.638471364974976,
+          "bend": -0.0609923593943776,
+          "frame": 0,
+          "height": 137.138654191498,
+          "id": 3,
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -12.699104309082,
+            -137.017822265625
+          ]
+        },
+        {
+          "alignment": 0.567971467971802,
+          "bend": 0.995655474766926,
+          "frame": 0,
+          "height": 109.426159424358,
+          "id": 4,
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            79.5033111572266,
+            -84.12646484375
+          ]
+        },
+        {
+          "alignment": 0.607400596141815,
+          "bend": 0.306766307758265,
+          "frame": 0,
+          "height": 160.536702216865,
+          "id": 5,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            26.5827789306641,
+            -156.716796875
+          ]
+        },
+        {
+          "alignment": 0.511333703994751,
+          "bend": 1.19243080670409,
+          "frame": 0,
+          "height": 160.926315197081,
+          "id": 6,
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            111.566314697266,
+            -108.928100585938
+          ]
+        },
+        {
+          "alignment": 0.676998019218445,
+          "bend": -0.483284246721078,
+          "frame": 0,
+          "height": 123.392636601027,
+          "id": 7,
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -46.5390930175781,
+            -116.191284179688
+          ]
+        },
+        {
+          "alignment": 0.542159080505371,
+          "bend": 0.759038861335078,
+          "frame": 0,
+          "height": 170.169513359811,
+          "id": 8,
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            82.015625,
+            -146.284057617188
+          ]
+        },
+        {
+          "alignment": 0.632512450218201,
+          "bend": -0.211297128328939,
+          "frame": 0,
+          "height": 106.319746283699,
+          "id": 9,
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -16.3511505126953,
+            -105.201293945312
+          ]
+        }
+      ],
+      "height_span": 81.4412841796875,
+      "label": "fresh_10_night",
+      "minimum_center_distance": 32.0254402160645
+    }
+  ],
+  "verification_boundary": "Official Godot 4.5.2 native Mesa GL; not Web or device hardware."
+}

@@ -1,0 +1,76 @@
+{
+  "source_commit": "2a123d9c050ce0c5d9889ffada7ab3ae24b7957f",
+  "source_original_sha256": "34ac87235856b40bd1a25481c5645476a59405486310e37557814c67c99819ee",
+  "protected_pixel_tests": {
+    "title": {
+      "protected_pixels": 57575,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    },
+    "back": {
+      "protected_pixels": 22183,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    },
+    "bubble": {
+      "protected_pixels": 94018,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    },
+    "approved_lower_actor": {
+      "protected_pixels": 71340,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    },
+    "bottom_plaque": {
+      "protected_pixels": 31113,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    },
+    "map_wood_sign": {
+      "protected_pixels": 6608,
+      "changed_pixels": 0,
+      "max_channel_delta": 0
+    }
+  },
+  "approved_actor_asset_unchanged_sha256": "b5309a87ea154d7464c684b784d9c3ed76f96b39f58dda0dec31a4470e6b5711",
+  "runtime_assets": {
+    "travel_map_plate_v5.png": {
+      "dimensions": [
+        941,
+        1672
+      ],
+      "png_bytes": 2486315,
+      "sha256": "e78c9865060013084adf635b9dda1575bdda2fcae11e054a3d5b3ba93273dc64",
+      "rgba8_bytes": 6293408,
+      "rgba8_plus_64k": 6358944
+    },
+    "travel_scene_layers_v1.png": {
+      "dimensions": [
+        512,
+        512
+      ],
+      "png_bytes": 153131,
+      "sha256": "5788c54861236a8f0246e7c6792c38ff505e92284dd3acfdeb9cbab69d8a5bba",
+      "rgba8_bytes": 1048576,
+      "rgba8_plus_64k": 1114112
+    }
+  },
+  "atlas_entries": 13,
+  "runtime_texture_entries_added": 1,
+  "atlas_mipmapped_rgba8_bytes": 1398100,
+  "mipmaps_declared": false,
+  "official_import_pixel_check": "PASS isolated pinned Godot 4.5.2 exact RGBA8 both assets; final integrated build pending",
+  "actual_scene_animation_check": "pending_in_runtime_worker",
+  "memory_measurement": "decoded declaration only; browser GPU not measured",
+  "viewed": [
+    "approved original full map",
+    "approved separate traveler sprite",
+    "approved mother sheet",
+    "neutral generator result",
+    "bell generation",
+    "cloud generation",
+    "leaf cleanup detail",
+    "Final atlas, resting composite, before/after detail, and exaggerated opposite asset poses actually viewed"
+  ]
+}

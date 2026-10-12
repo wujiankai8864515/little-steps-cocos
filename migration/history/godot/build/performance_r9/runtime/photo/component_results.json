@@ -1,0 +1,73 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "changed page and actor parse against real packed dependencies",
+      "pass": true
+    },
+    {
+      "check": "all shader source strings unchanged",
+      "pass": true
+    },
+    {
+      "check": "shared immutable Shader, independent ShaderMaterial",
+      "pass": true
+    },
+    {
+      "check": "material uniforms remain independent",
+      "pass": true
+    },
+    {
+      "check": "1441 day/night samples have bit-identical light fields",
+      "pass": true
+    },
+    {
+      "check": "1441 samples publish identical receiver uniforms",
+      "pass": true
+    },
+    {
+      "check": "one immutable exact RGBA white texture",
+      "pass": true
+    },
+    {
+      "check": "775 stack-count cases equal legacy deep-copy implementation",
+      "pass": true
+    },
+    {
+      "check": "paper 0 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "paper 1 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "paper 2 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "paper 3 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "paper 4 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "paper 5 reuses white texture",
+      "pass": true
+    },
+    {
+      "check": "1086 paper poses preserve exact mesh, contour, four shadows, colors and transforms",
+      "pass": true
+    },
+    {
+      "check": "shader cache remains bounded under arbitrary diagnostic inputs",
+      "pass": true
+    }
+  ],
+  "field_samples": 1441,
+  "overlay": "/workspace/scratch/3f82ff2b3f81/performance_r9_runtime_evidence/photo/candidate_source_overlay.pck",
+  "scope": "Explicit source-overlay component candidate; exact original packed assets; headless CPU/resource/geometry equivalence, not native GL or Web performance",
+  "shader_cache_size": 5
+}

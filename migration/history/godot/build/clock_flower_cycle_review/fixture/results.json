@@ -1,0 +1,6359 @@
+{
+  "checks": [
+    {
+      "check": "cold Home preparation terminates",
+      "pass": true
+    },
+    {
+      "check": "exact production core + dynamically mounted packs prepare Home",
+      "pass": true
+    },
+    {
+      "check": "production Home router enabled; comic omitted by bounded fixture",
+      "pass": true
+    },
+    {
+      "check": "Home holds same App-owned shared clock",
+      "pass": true
+    },
+    {
+      "check": "production config has 30s day and 30s night",
+      "pass": true
+    },
+    {
+      "check": "packed texture resolves res://home/flowers/assets/daisy_heads_candidate.png",
+      "pass": true
+    },
+    {
+      "check": "packed texture resolves res://home/flowers/assets/daisy_leaf_candidate.png",
+      "pass": true
+    },
+    {
+      "check": "packed texture resolves res://home/flowers/assets/empty_vase_candidate.png",
+      "pass": true
+    },
+    {
+      "check": "flower and fish use identical packed yellow stroke ZZ renderer",
+      "pass": true
+    },
+    {
+      "check": "native old5 saved fixture restores five without bonus",
+      "pass": true
+    },
+    {
+      "check": "migration retains next earned boundary",
+      "pass": true
+    },
+    {
+      "check": "old fixture migrates only to current geometry2",
+      "pass": true
+    },
+    {
+      "check": "old5_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "old5_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "old5_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "old5_morning fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "old5_morning fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "old5_morning flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "old5_morning flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "old5_morning flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "old5_morning flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "old5_morning flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "old5_morning numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "old5_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "old5_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "old5_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "old5_noon fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "old5_noon fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "old5_noon flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "old5_noon flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "old5_noon flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "old5_noon flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "old5_noon flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "old5_noon numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "old5_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "old5_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "old5_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "old5_evening fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "old5_evening fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "old5_evening flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "old5_evening flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "old5_evening flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "old5_evening flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "old5_evening flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "old5_evening numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "real window/light hint cannot replace clock virtual sun",
+      "pass": true
+    },
+    {
+      "check": "explicit production-generated 9-flower boundary fixture",
+      "pass": true
+    },
+    {
+      "check": "nine-flower fixture persisted atomically",
+      "pass": true
+    },
+    {
+      "check": "actual Store reloads nine-flower fixture into Home",
+      "pass": true
+    },
+    {
+      "check": "tenth earned exactly at 540 active seconds",
+      "pass": true
+    },
+    {
+      "check": "tenth matures after explicit 8-second state advance",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning fixed root 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning flower front follows virtual sun 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_morning numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon fixed root 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon flower front follows virtual sun 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_noon numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening fixed root 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 0",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 1",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 2",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 3",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 4",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 5",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 6",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 7",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 8",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening flower front follows virtual sun 9",
+      "pass": true
+    },
+    {
+      "check": "fixture10_evening numeric spacing corroborates separately viewed staggered bouquet",
+      "pass": true
+    },
+    {
+      "check": "night closes continuously and per-ID stagger remains after 3 simulated visual seconds",
+      "pass": true
+    },
+    {
+      "check": "all ten closed by 9.5 simulated visual seconds, without wilt",
+      "pass": true
+    },
+    {
+      "check": "real shared ZZ renderer emits on sleeping bouquet",
+      "pass": true
+    },
+    {
+      "check": "next daylight reopens every retained old flower",
+      "pass": true
+    },
+    {
+      "check": "ten-flower cap retains existing ids across ten more simulated days",
+      "pass": true
+    },
+    {
+      "check": "final ten-flower state saved for independent next process",
+      "pass": true
+    },
+    {
+      "check": "save frame old5_morning",
+      "pass": true
+    },
+    {
+      "check": "save frame old5_noon",
+      "pass": true
+    },
+    {
+      "check": "save frame old5_evening",
+      "pass": true
+    },
+    {
+      "check": "save frame fixture10_morning",
+      "pass": true
+    },
+    {
+      "check": "save frame fixture10_noon",
+      "pass": true
+    },
+    {
+      "check": "save frame fixture10_evening",
+      "pass": true
+    },
+    {
+      "check": "save frame fixture10_closing3",
+      "pass": true
+    },
+    {
+      "check": "save frame fixture10_night_ZZ",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "mode": "fixture",
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 4,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 4,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 1024631,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3379,
+          "loaded": 943108,
+          "mount_usec": 354,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/entry.pck",
+          "request_id": "p30467425675-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2496766,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8649,
+          "loaded": 2313888,
+          "mount_usec": 317,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/comic.pck",
+          "request_id": "p30467425675-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2514870,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3967,
+          "loaded": 1107208,
+          "mount_usec": 284,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/exterior.pck",
+          "request_id": "p30467425675-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2591035,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 62509,
+          "loaded": 17019800,
+          "mount_usec": 542,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_grounding_formal_d1bfcaa/native_packs/packs/house.pck",
+          "request_id": "p30467425675-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "records": [
+    {
+      "clock": {
+        "cycle_position": 7.5,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 8.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 5,
+      "daylight": true,
+      "flower_active_seconds": 248.0,
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.338668711303534,
+          "head_frame": 4,
+          "head_normal": [
+            -0.835898220539093,
+            -0.548884451389313
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 256.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8842163085938,
+            -95.303466796875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07507188221003,
+          "head_frame": 4,
+          "head_normal": [
+            -0.748780608177185,
+            -0.66281795501709
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9009323120117,
+            -59.01171875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.00281618185171522,
+          "head_frame": 4,
+          "head_normal": [
+            -0.896254897117615,
+            -0.443539261817932
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.2098999023438,
+            -132.913208007812
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.711745925321484,
+          "head_frame": 4,
+          "head_normal": [
+            -0.828688979148865,
+            -0.559709370136261
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -64.4556121826172,
+            -120.720092773438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.390385288524802,
+          "head_frame": 4,
+          "head_normal": [
+            -0.886247336864471,
+            -0.463212311267853
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            45.6576690673828,
+            -105.167602539062
+          ]
+        }
+      ],
+      "height_span": 73.9014892578125,
+      "home_clock_id": -9223372007796636301,
+      "label": "old5_morning",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 44.2319717407227,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 300.0,
+      "next_id": 5,
+      "sun": [
+        -339.411254882812,
+        -385.411254882812
+      ],
+      "sun_energy": 0.439534306525563,
+      "wall_ms": 14860,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 15.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 12.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 5,
+      "daylight": true,
+      "flower_active_seconds": 248.0,
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.0322229585900948,
+          "head_frame": 4,
+          "head_normal": [
+            -0.00109169166535139,
+            -0.999999463558197
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 256.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.445388793945312,
+            -97.843505859375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.772624586699036,
+          "head_frame": 4,
+          "head_normal": [
+            0.129194661974907,
+            -0.991619229316711
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.2117309570312,
+            -68.73486328125
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.311893458793396,
+          "head_frame": 4,
+          "head_normal": [
+            -0.113839209079742,
+            -0.993499159812927
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.3932189941406,
+            -129.901245117188
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": -0.371113295515048,
+          "head_frame": 4,
+          "head_normal": [
+            0.121905654668808,
+            -0.992541670799255
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.5544052124023,
+            -132.571533203125
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.672905376190057,
+          "head_frame": 4,
+          "head_normal": [
+            -0.176759347319603,
+            -0.984254121780396
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            62.862548828125,
+            -97.3043212890625
+          ]
+        }
+      ],
+      "height_span": 63.836669921875,
+      "home_clock_id": -9223372007796636301,
+      "label": "old5_noon",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 41.9902954101562,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 300.0,
+      "next_id": 5,
+      "sun": [
+        0.0000000000000293915248855605,
+        -526.0
+      ],
+      "sun_energy": 0.69,
+      "wall_ms": 15357,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 22.5,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 16.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 5,
+      "daylight": true,
+      "flower_active_seconds": 248.0,
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": 0.274933952176774,
+          "head_frame": 4,
+          "head_normal": [
+            0.835883259773254,
+            -0.548907220363617
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 256.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9326477050781,
+            -95.8739013671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.496334109224845,
+          "head_frame": 4,
+          "head_normal": [
+            0.852528274059296,
+            -0.522681057453156
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4413528442383,
+            -75.2755126953125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.650694013241985,
+          "head_frame": 4,
+          "head_normal": [
+            0.829849362373352,
+            -0.557987570762634
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.9725189208984,
+            -119.781127929688
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.0609923593945433,
+          "head_frame": 4,
+          "head_normal": [
+            0.901225566864014,
+            -0.43335023522377
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.699104309082,
+            -137.017822265625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.995655500818873,
+          "head_frame": 4,
+          "head_normal": [
+            0.760095000267029,
+            -0.649811983108521
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.5032958984375,
+            -84.12646484375
+          ]
+        }
+      ],
+      "height_span": 61.7423095703125,
+      "home_clock_id": -9223372007796636301,
+      "label": "old5_evening",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 39.731388092041,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 300.0,
+      "next_id": 5,
+      "sun": [
+        339.411254882812,
+        -385.411254882812
+      ],
+      "sun_energy": 0.75,
+      "wall_ms": 15852,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 22.5,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 16.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 9,
+      "daylight": true,
+      "flower_active_seconds": 539.0,
+      "flowers": [
+        {
+          "alignment": 0.999998927116394,
+          "bend": 0.26250540446033,
+          "head_frame": 4,
+          "head_normal": [
+            0.835780680179596,
+            -0.549063444137573
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 547.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.1982574462891,
+            -96.0404052734375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.497409865249792,
+          "head_frame": 4,
+          "head_normal": [
+            0.85243833065033,
+            -0.522827744483948
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 479.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.4901504516602,
+            -75.2550048828125
+          ]
+        },
+        {
+          "alignment": 0.999999821186066,
+          "bend": 0.653595374958305,
+          "head_frame": 4,
+          "head_normal": [
+            0.829736649990082,
+            -0.558155119419098
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 419.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            62.1766052246094,
+            -119.666015625
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.062711204942818,
+          "head_frame": 4,
+          "head_normal": [
+            0.901142835617065,
+            -0.433522313833237
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 359.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.8450622558594,
+            -137.010864257812
+          ]
+        },
+        {
+          "alignment": 0.999998986721039,
+          "bend": 0.988192627615651,
+          "head_frame": 4,
+          "head_normal": [
+            0.759969055652618,
+            -0.64995926618576
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 299.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.1631317138672,
+            -84.4739990234375
+          ]
+        },
+        {
+          "alignment": 0.998871922492981,
+          "bend": 0.316680175574616,
+          "head_frame": 4,
+          "head_normal": [
+            0.920811593532562,
+            -0.390007555484772
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 239.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            27.5349884033203,
+            -156.472290039062
+          ]
+        },
+        {
+          "alignment": 0.947480440139771,
+          "bend": 1.2739934455764,
+          "head_frame": 4,
+          "head_normal": [
+            0.915656924247742,
+            -0.401960730552673
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 179.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            115.74919128418,
+            -102.519653320312
+          ]
+        },
+        {
+          "alignment": 0.999667823314667,
+          "bend": -0.484957073777676,
+          "head_frame": 4,
+          "head_normal": [
+            0.885290503501892,
+            -0.465038478374481
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 119.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -46.656379699707,
+            -116.142822265625
+          ]
+        },
+        {
+          "alignment": 0.983170747756958,
+          "bend": 0.800229410954098,
+          "head_frame": 4,
+          "head_normal": [
+            0.926484942436218,
+            -0.376331835985184
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 59.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            85.4492950439453,
+            -143.7890625
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "fixture9_at539",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 540.0,
+      "next_id": 9,
+      "sun": [
+        339.411254882812,
+        -385.411254882812
+      ],
+      "sun_energy": 0.75,
+      "wall_ms": 15922,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 7.5,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 8.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": true,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.337542392836529,
+          "head_frame": 4,
+          "head_normal": [
+            -0.836215317249298,
+            -0.548401296138763
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -17.8185653686523,
+            -95.321044921875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -1.07773921800502,
+          "head_frame": 4,
+          "head_normal": [
+            -0.748834609985352,
+            -0.662756979465485
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -59.9831237792969,
+            -58.9161376953125
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.000293697447420252,
+          "head_frame": 4,
+          "head_normal": [
+            -0.89636492729187,
+            -0.443317025899887
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            11.0019836425781,
+            -132.912231445312
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": -0.708611287177497,
+          "head_frame": 4,
+          "head_normal": [
+            -0.829345047473907,
+            -0.558736860752106
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -64.2353973388672,
+            -120.859375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.393072721462488,
+          "head_frame": 4,
+          "head_normal": [
+            -0.886490762233734,
+            -0.462746322154999
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            45.8299255371094,
+            -105.11083984375
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": -0.380136216484679,
+          "head_frame": 4,
+          "head_normal": [
+            -0.892100274562836,
+            -0.451837450265884
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -40.7927932739258,
+            -154.992065429688
+          ]
+        },
+        {
+          "alignment": 0.999999821186066,
+          "bend": 0.557011708161842,
+          "head_frame": 4,
+          "head_normal": [
+            -0.931581854820251,
+            -0.363531589508057
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            65.2036743164062,
+            -148.272583007812
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -1.09687198245431,
+          "head_frame": 4,
+          "head_normal": [
+            -0.763566732406616,
+            -0.645728945732117
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -83.0373077392578,
+            -89.435546875
+          ]
+        },
+        {
+          "alignment": 0.999999821186066,
+          "bend": 0.0703919551520411,
+          "head_frame": 4,
+          "head_normal": [
+            -0.933213412761688,
+            -0.359322637319565
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            14.812255859375,
+            -169.809204101562
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.823658644765622,
+          "head_frame": 4,
+          "head_normal": [
+            -0.798263192176819,
+            -0.602308809757233
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -52.5634460449219,
+            -89.822509765625
+          ]
+        }
+      ],
+      "height_span": 110.89306640625,
+      "home_clock_id": -9223372007796636301,
+      "label": "fixture10_morning",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 30.476318359375,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        -339.411254882812,
+        -385.411254882812
+      ],
+      "sun_energy": 0.439534306525563,
+      "wall_ms": 16704,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 15.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 12.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": true,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.0311154478811905,
+          "head_frame": 4,
+          "head_normal": [
+            -0.00128427031449974,
+            -0.999999165534973
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.775318839373904,
+          "head_frame": 4,
+          "head_normal": [
+            0.129443243145943,
+            -0.991586804389954
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.309477572955099,
+          "head_frame": 4,
+          "head_normal": [
+            -0.113261021673679,
+            -0.993565261363983
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.2008514404297,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.367992028843788,
+          "head_frame": 4,
+          "head_normal": [
+            0.121148966252804,
+            -0.992634356021881
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.675500467471472,
+          "head_frame": 4,
+          "head_normal": [
+            -0.177119433879852,
+            -0.984189391136169
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0313912262965314,
+          "head_frame": 4,
+          "head_normal": [
+            0.0236699916422367,
+            -0.999719798564911
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.842951411093859,
+          "head_frame": 4,
+          "head_normal": [
+            -0.272178620100021,
+            -0.962246716022491
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.76898728709419,
+          "head_frame": 4,
+          "head_normal": [
+            0.188320398330688,
+            -0.982107639312744
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3473510742188,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": 0.391364647571505,
+          "head_frame": 4,
+          "head_normal": [
+            -0.166373237967491,
+            -0.986062824726105
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.506161451334197,
+          "head_frame": 4,
+          "head_normal": [
+            0.100145690143108,
+            -0.994972765445709
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "height_span": 94.7392578125,
+      "home_clock_id": -9223372007796636301,
+      "label": "fixture10_noon",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 31.0463638305664,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        0.0000000000000293915248855605,
+        -526.0
+      ],
+      "sun_energy": 0.69,
+      "wall_ms": 17564,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 22.5,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 16.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": true,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": 0.99999988079071,
+          "bend": 0.276061044491469,
+          "head_frame": 4,
+          "head_normal": [
+            0.835812270641327,
+            -0.54901534318924
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            18.9991607666016,
+            -95.8582763671875
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": -0.499091670087698,
+          "head_frame": 4,
+          "head_normal": [
+            0.852552592754364,
+            -0.522641360759735
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -37.5663299560547,
+            -75.2230224609375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.648260357202932,
+          "head_frame": 4,
+          "head_normal": [
+            0.830141961574554,
+            -0.557552099227905
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            61.8011016845703,
+            -119.877319335938
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.0577212258524678,
+          "head_frame": 4,
+          "head_normal": [
+            0.901104748249054,
+            -0.433601558208466
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -12.4213180541992,
+            -137.030639648438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.9982131822835,
+          "head_frame": 4,
+          "head_normal": [
+            0.75977885723114,
+            -0.650181531906128
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            79.6193542480469,
+            -84.0068359375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.30975197021999,
+          "head_frame": 4,
+          "head_normal": [
+            0.901896059513092,
+            -0.43195316195488
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            26.8697814941406,
+            -156.64404296875
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": 1.19388296798573,
+          "head_frame": 4,
+          "head_normal": [
+            0.755498290061951,
+            -0.655150592327118
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            111.644714355469,
+            -108.815795898438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.482666508565404,
+          "head_frame": 4,
+          "head_normal": [
+            0.897049605846405,
+            -0.441929906606674
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -46.4957656860352,
+            -116.208984375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.757787478764198,
+          "head_frame": 4,
+          "head_normal": [
+            0.849420607089996,
+            -0.527716398239136
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            81.9098968505859,
+            -146.358154296875
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.209841688284759,
+          "head_frame": 4,
+          "head_normal": [
+            0.870479881763458,
+            -0.492204040288925
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -16.2566986083984,
+            -105.216430664062
+          ]
+        }
+      ],
+      "height_span": 81.4210205078125,
+      "home_clock_id": -9223372007796636301,
+      "label": "fixture10_evening",
+      "lamp_energy": 0.0,
+      "minimum_center_distance": 32.044563293457,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        339.411254882812,
+        -385.411254882812
+      ],
+      "sun_energy": 0.75,
+      "wall_ms": 18369,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 45.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 0.0,
+        "lamp_weight": 0.0,
+        "night_progress": 0.5,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": false,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": -0.264852374792099,
+          "bend": -0.0311154478811515,
+          "head_frame": 4,
+          "head_normal": [
+            -0.00165257533080876,
+            -0.99999862909317
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": -0.0602570474147797,
+          "bend": -0.775318839373685,
+          "head_frame": 4,
+          "head_normal": [
+            0.12909235060215,
+            -0.991632580757141
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": -0.449114292860031,
+          "bend": 0.309477573290545,
+          "head_frame": 4,
+          "head_normal": [
+            -0.11364159733057,
+            -0.993521869182587
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.2008666992188,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": -0.187164306640625,
+          "bend": -0.367992028843916,
+          "head_frame": 4,
+          "head_normal": [
+            0.12076723575592,
+            -0.992680847644806
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": -0.462758362293243,
+          "bend": 0.675500467471576,
+          "head_frame": 4,
+          "head_normal": [
+            -0.177480071783066,
+            -0.984124422073364
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": -0.347689509391785,
+          "bend": -0.0313912262968996,
+          "head_frame": 4,
+          "head_normal": [
+            0.0232734140008688,
+            -0.999729096889496
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": -0.627217590808868,
+          "bend": 0.842951411093957,
+          "head_frame": 4,
+          "head_normal": [
+            -0.272548079490662,
+            -0.962142169475555
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": -0.0601794719696045,
+          "bend": -0.768987287184212,
+          "head_frame": 4,
+          "head_normal": [
+            0.187955558300018,
+            -0.982177555561066
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3473510742188,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": -0.559813559055328,
+          "bend": 0.391364647571157,
+          "head_frame": 4,
+          "head_normal": [
+            -0.166766121983528,
+            -0.985996425151825
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": -0.152181148529053,
+          "bend": -0.506161451334114,
+          "head_frame": 4,
+          "head_normal": [
+            0.0997780784964561,
+            -0.99500972032547
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "night_transition_0",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.7,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        480.0,
+        -46.0
+      ],
+      "sun_energy": 0.0,
+      "wall_ms": 19214,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 45.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 0.0,
+        "lamp_weight": 0.0,
+        "night_progress": 0.5,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": false,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": -0.265174180269241,
+          "bend": -0.0311154478811543,
+          "head_frame": 2,
+          "head_normal": [
+            -0.00198633829131722,
+            -0.999997973442078
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.393586005830903,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": -0.0639250800013542,
+          "bend": -0.77531883937378,
+          "head_frame": 3,
+          "head_normal": [
+            0.125447124242783,
+            -0.992100358009338
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.211148859006015,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": -0.446300953626633,
+          "bend": 0.30947756970537,
+          "head_frame": 2,
+          "head_normal": [
+            -0.110515147447586,
+            -0.993874430656433
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.320611147100895,
+          "tip": [
+            36.2008514404297,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": -0.188000380992889,
+          "bend": -0.36799202884387,
+          "head_frame": 3,
+          "head_normal": [
+            0.119922243058681,
+            -0.992783308029175
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.151273161660765,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": -0.458721786737442,
+          "bend": 0.675500467471537,
+          "head_frame": 2,
+          "head_normal": [
+            -0.173002406954765,
+            -0.984921336174011
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.251383028089894,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": -0.348157197237015,
+          "bend": -0.0313912262967534,
+          "head_frame": 2,
+          "head_normal": [
+            0.0227746888995171,
+            -0.999740660190582
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.365368735945463,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": -0.624252200126648,
+          "bend": 0.842951411093847,
+          "head_frame": 3,
+          "head_normal": [
+            -0.268888413906097,
+            -0.963171362876892
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.187455008881302,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": -0.0668702572584152,
+          "bend": -0.768987286142263,
+          "head_frame": 2,
+          "head_normal": [
+            0.181366503238678,
+            -0.983415544033051
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.293641655154515,
+          "tip": [
+            -65.3473434448242,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": -0.559154748916626,
+          "bend": 0.391364647571349,
+          "head_frame": 3,
+          "head_normal": [
+            -0.165982306003571,
+            -0.986128687858582
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.130380449558519,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": -0.154614478349686,
+          "bend": -0.506161451334148,
+          "head_frame": 3,
+          "head_normal": [
+            0.0973275974392891,
+            -0.995252430438995
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.226254644837669,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "night_transition_3s",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.7,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        480.0,
+        -46.0
+      ],
+      "sun_energy": 0.0,
+      "wall_ms": 19556,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 45.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 0.0,
+        "lamp_weight": 0.0,
+        "night_progress": 0.5,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": false,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": -0.268176525831223,
+          "bend": -0.0311154478811543,
+          "head_frame": 0,
+          "head_normal": [
+            -0.00510145165026188,
+            -0.999986946582794
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": -0.148815825581551,
+          "bend": -0.77531883937378,
+          "head_frame": 0,
+          "head_normal": [
+            0.0403655618429184,
+            -0.999184966087341
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": -0.406756073236465,
+          "bend": 0.309477569705373,
+          "head_frame": 0,
+          "head_normal": [
+            -0.0669639855623245,
+            -0.997755408287048
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            36.2008514404297,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": -0.239605337381363,
+          "bend": -0.36799202884387,
+          "head_frame": 0,
+          "head_normal": [
+            0.067327044904232,
+            -0.997730910778046
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": -0.385410338640213,
+          "bend": 0.675500467471537,
+          "head_frame": 0,
+          "head_normal": [
+            -0.0928395912051201,
+            -0.99568110704422
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": -0.353406190872192,
+          "bend": -0.0313912262967534,
+          "head_frame": 0,
+          "head_normal": [
+            0.0171706154942513,
+            -0.999852538108826
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": -0.547835767269135,
+          "bend": 0.842951411093847,
+          "head_frame": 0,
+          "head_normal": [
+            -0.176903933286667,
+            -0.984228134155273
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": -0.151456117630005,
+          "bend": -0.768987286142263,
+          "head_frame": 0,
+          "head_normal": [
+            0.0971015989780426,
+            -0.995274543762207
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -65.3473434448242,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": -0.508845627307892,
+          "bend": 0.391364647571349,
+          "head_frame": 0,
+          "head_normal": [
+            -0.107026048004627,
+            -0.994256198406219
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": -0.216560244560242,
+          "bend": -0.506161451334148,
+          "head_frame": 0,
+          "head_normal": [
+            0.0344226211309433,
+            -0.999407351016998
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "night_transition_9_5s",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.7,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        480.0,
+        -46.0
+      ],
+      "sun_energy": 0.0,
+      "wall_ms": 20394,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 45.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 0.0,
+        "lamp_weight": 0.0,
+        "night_progress": 0.5,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": false,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": -0.268176525831223,
+          "bend": -0.0311154478811543,
+          "head_frame": 0,
+          "head_normal": [
+            -0.00510145165026188,
+            -0.999986946582794
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": -0.148815825581551,
+          "bend": -0.77531883937378,
+          "head_frame": 0,
+          "head_normal": [
+            0.0403655618429184,
+            -0.999184966087341
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": -0.406756073236465,
+          "bend": 0.309477569705373,
+          "head_frame": 0,
+          "head_normal": [
+            -0.0669639855623245,
+            -0.997755408287048
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            36.2008514404297,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": -0.239605337381363,
+          "bend": -0.36799202884387,
+          "head_frame": 0,
+          "head_normal": [
+            0.067327044904232,
+            -0.997730910778046
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": -0.385410338640213,
+          "bend": 0.675500467471537,
+          "head_frame": 0,
+          "head_normal": [
+            -0.0928395912051201,
+            -0.99568110704422
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": -0.353406190872192,
+          "bend": -0.0313912262967534,
+          "head_frame": 0,
+          "head_normal": [
+            0.0171706154942513,
+            -0.999852538108826
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": -0.547835767269135,
+          "bend": 0.842951411093847,
+          "head_frame": 0,
+          "head_normal": [
+            -0.176903933286667,
+            -0.984228134155273
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": -0.151456117630005,
+          "bend": -0.768987286142263,
+          "head_frame": 0,
+          "head_normal": [
+            0.0971015989780426,
+            -0.995274543762207
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -65.3473434448242,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": -0.508845627307892,
+          "bend": 0.391364647571349,
+          "head_frame": 0,
+          "head_normal": [
+            -0.107026048004627,
+            -0.994256198406219
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": -0.216560244560242,
+          "bend": -0.506161451334148,
+          "head_frame": 0,
+          "head_normal": [
+            0.0344226211309433,
+            -0.999407351016998
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 1.0,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "night_ZZ",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.7,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        480.0,
+        -46.0
+      ],
+      "sun_energy": 0.0,
+      "wall_ms": 20566,
+      "zz": {
+        "active_count": 1,
+        "capacity": 3,
+        "cooldown_count": 1,
+        "event_id_count": 1,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [
+          {
+            "age": 0.0,
+            "alpha": 0.6,
+            "face_safe": true,
+            "impulse_scale": 1.0,
+            "kind": "doze",
+            "lifetime": 0.82,
+            "outward_pixels": 0.0,
+            "world_bounds": "[P: (66.09192, 981.8446), S: (18.16617, 17.12811)]",
+            "world_position": "(72.32032, 996.3776)"
+          }
+        ],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 15.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 12.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": true,
+      "flower_active_seconds": 548.0,
+      "flowers": [
+        {
+          "alignment": 1.00000011920929,
+          "bend": -0.0311154478811543,
+          "head_frame": 4,
+          "head_normal": [
+            -0.00146812258753926,
+            -0.999998927116394
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 556.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.512603759765625,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.77531883937378,
+          "head_frame": 4,
+          "head_normal": [
+            0.129259943962097,
+            -0.991610705852509
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 488.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.3180313110352,
+            -68.6595458984375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.309477572943171,
+          "head_frame": 4,
+          "head_normal": [
+            -0.113442704081535,
+            -0.993544518947601
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 428.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.2008514404297,
+            -129.948608398438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.36799202884387,
+          "head_frame": 4,
+          "head_normal": [
+            0.120949260890484,
+            -0.992658734321594
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 368.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.301872253418,
+            -132.647705078125
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.675500467471537,
+          "head_frame": 4,
+          "head_normal": [
+            -0.177287518978119,
+            -0.984159111976624
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 308.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            63.0106811523438,
+            -97.2149658203125
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.0313912262967534,
+          "head_frame": 4,
+          "head_normal": [
+            0.0234695468097925,
+            -0.999724566936493
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 248.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -6.72607421875,
+            -160.491577148438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.842951411093847,
+          "head_frame": 4,
+          "head_normal": [
+            -0.272343188524246,
+            -0.962200164794922
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 188.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.7922668457031,
+            -133.293090820312
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.768987287069125,
+          "head_frame": 4,
+          "head_normal": [
+            0.188125237822533,
+            -0.982145071029663
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 128.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3473510742188,
+            -105.841186523438
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": 0.391364647571349,
+          "head_frame": 4,
+          "head_normal": [
+            -0.166556283831596,
+            -0.986031949520111
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 68.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            47.9047088623047,
+            -163.398803710938
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.506161451334148,
+          "head_frame": 4,
+          "head_normal": [
+            0.0999558493494987,
+            -0.994991898536682
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 8.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.863410949707,
+            -99.95849609375
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "day_reopened",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 600.0,
+      "next_id": 10,
+      "sun": [
+        0.0000000000000293915248855605,
+        -526.0
+      ],
+      "sun_energy": 0.69,
+      "wall_ms": 22062,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    },
+    {
+      "clock": {
+        "cycle_position": 15.0,
+        "cycle_seconds": 60.0,
+        "day_seconds": 30.0,
+        "game_hour": 12.0,
+        "lamp_weight": 0.0,
+        "night_progress": -1.0,
+        "night_seconds": 30.0,
+        "total_active_seconds": 0.0
+      },
+      "clock_id": -9223372007796636301,
+      "count": 10,
+      "daylight": true,
+      "flower_active_seconds": 1148.0,
+      "flowers": [
+        {
+          "alignment": 1.0,
+          "bend": -0.0310891120281383,
+          "head_frame": 4,
+          "head_normal": [
+            -0.00145218777470291,
+            -0.999998927116394
+          ],
+          "head_scale": [
+            0.23158198595047,
+            0.23158198595047
+          ],
+          "height": 97.9315138972379,
+          "id": 0,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 1156.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            0.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            0.514190673828125,
+            -97.8446044921875
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.775465446398044,
+          "head_frame": 4,
+          "head_normal": [
+            0.12917198240757,
+            -0.991622149944305
+          ],
+          "head_scale": [
+            0.213119387626648,
+            0.213119387626648
+          ],
+          "height": 80.1198792266368,
+          "id": 1,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 1088.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -13.0000076293945,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -49.3238220214844,
+            -68.6553955078125
+          ]
+        },
+        {
+          "alignment": 1.00000011920929,
+          "bend": 0.30934817401466,
+          "head_frame": 4,
+          "head_normal": [
+            -0.113520592451096,
+            -0.99353563785553
+          ],
+          "head_scale": [
+            0.202226057648659,
+            0.202226057648659
+          ],
+          "height": 132.954730675236,
+          "id": 2,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 1028.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            13.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            36.1905364990234,
+            -129.950927734375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.367834825845078,
+          "head_frame": 4,
+          "head_normal": [
+            0.121043875813484,
+            -0.992647171020508
+          ],
+          "head_scale": [
+            0.21880941092968,
+            0.21880941092968
+          ],
+          "height": 137.138654191498,
+          "id": 3,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 968.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -38.2891387939453,
+            -132.6513671875
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.675613428975845,
+          "head_frame": 4,
+          "head_normal": [
+            -0.177220210433006,
+            -0.984171211719513
+          ],
+          "head_scale": [
+            0.233094587922096,
+            0.233094587922096
+          ],
+          "height": 109.426159424358,
+          "id": 4,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 908.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            18.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            63.0171051025391,
+            -97.2113037109375
+          ]
+        },
+        {
+          "alignment": 0.999999940395355,
+          "bend": -0.0312494103206266,
+          "head_frame": 4,
+          "head_normal": [
+            0.0235553681850433,
+            -0.999722480773926
+          ],
+          "head_scale": [
+            0.20253524184227,
+            0.20253524184227
+          ],
+          "height": 160.536702216865,
+          "id": 5,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 848.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -6.71195983886719,
+            -160.491943359375
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.843000551380366,
+          "head_frame": 4,
+          "head_normal": [
+            -0.272314518690109,
+            -0.962208271026611
+          ],
+          "head_scale": [
+            0.235862135887146,
+            0.235862135887146
+          ],
+          "height": 160.926315197081,
+          "id": 6,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 788.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            8.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            88.7959899902344,
+            -133.290283203125
+          ]
+        },
+        {
+          "alignment": 0.99999988079071,
+          "bend": -0.76893972123265,
+          "head_frame": 4,
+          "head_normal": [
+            0.188153624534607,
+            -0.982139587402344
+          ],
+          "head_scale": [
+            0.233257219195366,
+            0.233257219195366
+          ],
+          "height": 123.392636601027,
+          "id": 7,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 728.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -9.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -65.3444366455078,
+            -105.843139648438
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": 0.391266143046786,
+          "head_frame": 4,
+          "head_normal": [
+            -0.16661511361599,
+            -0.986021995544434
+          ],
+          "head_scale": [
+            0.213392078876495,
+            0.213392078876495
+          ],
+          "height": 170.169513359811,
+          "id": 8,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 668.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            4.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            47.8948974609375,
+            -163.401977539062
+          ]
+        },
+        {
+          "alignment": 1.0,
+          "bend": -0.506118352834949,
+          "head_frame": 4,
+          "head_normal": [
+            0.0999817401170731,
+            -0.994989275932312
+          ],
+          "head_scale": [
+            0.200940355658531,
+            0.200940355658531
+          ],
+          "height": 106.319746283699,
+          "id": 9,
+          "leaf_scales": [
+            [
+              0.189999997615814,
+              0.189999997615814
+            ],
+            [
+              -0.189999997615814,
+              0.189999997615814
+            ]
+          ],
+          "phase": {
+            "age": 608.0,
+            "alpha": 1.0,
+            "bloom": 1.0,
+            "frame": 4.0,
+            "growth": 1.0,
+            "head_growth": 1.0,
+            "progress": 1.0,
+            "stage": "daynight",
+            "wilt": 0.0
+          },
+          "root": [
+            -5.0,
+            0.0
+          ],
+          "sleep": 0.0,
+          "tip": [
+            -34.8608245849609,
+            -99.9595947265625
+          ]
+        }
+      ],
+      "home_clock_id": -9223372007796636301,
+      "label": "fixture_final_saved",
+      "lamp_energy": 0.0,
+      "moon_energy": 0.0,
+      "next_birth_seconds": 1200.0,
+      "next_id": 10,
+      "sun": [
+        0.0000000000000293915248855605,
+        -526.0
+      ],
+      "sun_energy": 0.69,
+      "wall_ms": 22066,
+      "zz": {
+        "active_count": 0,
+        "capacity": 3,
+        "cooldown_count": 0,
+        "event_id_count": 0,
+        "marker": "HOME_ACTION_MARKS",
+        "marks": [],
+        "max_lifetime": 0.82,
+        "visual_review": "pending"
+      }
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "resource_actual": [
+    {
+      "height": 512,
+      "mipmaps": false,
+      "path": "res://home/flowers/assets/daisy_heads_candidate.png",
+      "resource_class": "CompressedTexture2D",
+      "rgba8_sha256": "ad538735606d301e5a0dd35fd872fbdf69d5f3671f20692d7ec168eee1fa1dc8",
+      "width": 1024
+    },
+    {
+      "height": 171,
+      "mipmaps": false,
+      "path": "res://home/flowers/assets/daisy_leaf_candidate.png",
+      "resource_class": "CompressedTexture2D",
+      "rgba8_sha256": "547b01be0c74ae9ccdc9475da383dfb1644376549d49da98d8c260149182759d",
+      "width": 256
+    },
+    {
+      "height": 389,
+      "mipmaps": false,
+      "path": "res://home/flowers/assets/empty_vase_candidate.png",
+      "resource_class": "CompressedTexture2D",
+      "rgba8_sha256": "ca103ac64f19f348c906298b50e4a737425e0df0b8ed45bed132905103c71399",
+      "width": 320
+    },
+    {
+      "fish_zz_script": "res://home/action_marks.gd",
+      "head_shader": "res://home/flowers/flower_receiver.gdshader",
+      "stem_shader": "res://home/flowers/flower_receiver.gdshader",
+      "vase_shader": "res://home/flowers/flower_receiver.gdshader",
+      "zz_script": "res://home/action_marks.gd"
+    }
+  ],
+  "scope": "Exact d1bfcaa formal PCK, empty res, production App/native backend. real_cycle uses wall clock, no fixed-fps/acceleration. fixture/reload are explicit saved states and shared-clock seek with simulated pose settling. Native software GL only; no Web/mobile/audio/hardware60fps/user visual approval."
+}

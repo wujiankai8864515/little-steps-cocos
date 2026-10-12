@@ -1,0 +1,50 @@
+{
+  "requirement": "A083 / O32-27: short action marks at lift/struggle, not covered or face-obscuring",
+  "base_source": "d817a893081f236bc597cd95fba2dbb9c608ba9e",
+  "code": "home_page.gd minimal drag-layer attach and restore; action_marks.gd and all art unchanged",
+  "resources": "one officially compiled Home GDC replaced in candidate core; all eight delayed packs exact unchanged; no new resource entries or downloads",
+  "root_cause": "Held fish moves to CanvasLayer40; ActionMarks remained HomeWorld z84 and is entirely occluded at three real opaque grab points. Z alone across different canvases is ineffective.",
+  "red": {
+    "grab_points": 3,
+    "original_visible_pixels": [
+      0,
+      0,
+      0
+    ],
+    "fish_hidden_visible_pixels": [
+      217,
+      222,
+      217
+    ],
+    "same_state_raised_visible_pixels": [
+      224,
+      224,
+      224
+    ]
+  },
+  "candidate": {
+    "checks": 32,
+    "failures": 0,
+    "visible_pixels": [
+      224,
+      224,
+      224
+    ],
+    "regressions": [
+      "three real holds/releases restore original marks parent and z",
+      "immediate cancel restores/clears temporary canvas",
+      "normal feedback emits and expires after cancelled drag",
+      "cold native Home via actual lazy pack backend",
+      "face-safe metadata retained and visible crop manually inspected"
+    ]
+  },
+  "fixture_correction": "v1/v2 QA reparent invalidly erased marks through _exit_tree; corrected red controls restore captured diagnostic state after reparent. Never use old raised-zero as production result.",
+  "limits": [
+    "This is candidate native llvmpipe rendering, not full formal export or deployment.",
+    "Production runtime action timing was paused only for exact pixel comparisons; this does not validate user motion quality or hardware/Web performance.",
+    "A083 drink/doze/tap whole-theme acceptance not implied.",
+    "No user visual approval."
+  ],
+  "formal_next": "Parent ordinary per-item GitHub append and remote-source verification, then aggregate related group full official build and zero-overlay regression; no per-item deploy.",
+  "evidence_metadata_erratum": "candidate_green/summary.json retains legacy runner boilerplate claiming final d817 formal group. That phrase is inaccurate for this run: label A083_CANDIDATE_ONLY, runtime identity candidate-A083-one-home-page, candidate compiler identity and actual pack hashes govern. This is explicitly a modified candidate core, not formal d817. run.py has been corrected for later runs."
+}

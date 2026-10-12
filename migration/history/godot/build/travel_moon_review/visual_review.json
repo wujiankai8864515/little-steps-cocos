@@ -1,0 +1,31 @@
+{
+  "reviewer": "native worker and parent independent view",
+  "full_frames_viewed": [
+    "baseline_gl/hour_23_0.jpg",
+    "baseline_gl/hour_0_0.jpg",
+    "candidate_gl/hour_23_0.jpg",
+    "candidate_gl/hour_0_0.jpg",
+    "candidate_gl/hour_3_0.jpg"
+  ],
+  "contact_sheets_viewed": [
+    "candidate_phase_contact.jpg",
+    "final_night_contact.jpg"
+  ],
+  "final_full_frames_parent_viewed": [
+    "candidate_v2_gl/hour_23_0.jpg",
+    "candidate_v2_gl/hour_0_0.jpg",
+    "candidate_v2_gl/hour_3_0.jpg",
+    "candidate_v2_gl/hour_20_1.jpg",
+    "candidate_v2_gl/hour_3_9.jpg"
+  ],
+  "findings": [
+    "Final moon progresses visibly left-to-right, with highest point at midnight.",
+    "Faint dusk/dawn keeps a small contact-region shadow; full source direction is always lunar when the moon is visible.",
+    "Daytime original RGBA equality proven separately by raw_rgba_daytime_comparison.json.",
+    "Moon/scene style otherwise reuses existing circles, paper/map art and anchors; no claim of full scene art acceptance."
+  ],
+  "limits": [
+    "Native Mesa software GL at 720x1280; no Web, hardware GPU, touch or audio-listening claim.",
+    "Posed original shared Clock, not independent wall-clock timing benchmark."
+  ]
+}

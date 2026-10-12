@@ -1,0 +1,1040 @@
+{
+  "basis": "以精确 fa1e74c 导出为依据的独立可编辑重建候选；原 framework/games/build Git 仓尚未找回。",
+  "current_workspace_recheck": "2026-10-06T03:18Z: cwd/shared/tmp rechecked after environment ready; original Godot worktrees,delivery folders,source archives,bundles absent. Site source clean1a08a5c remains.",
+  "components": {
+    "framework": {
+      "available_scripts": [
+        "addons/travel_core/atlas_resolver.gd",
+        "addons/travel_core/audio_port.gd",
+        "addons/travel_core/budgeted_resource_backend.gd",
+        "addons/travel_core/budgeted_resource_gate.gd",
+        "addons/travel_core/pack_service.gd",
+        "addons/travel_core/pack_service_backend.gd",
+        "addons/travel_core/pack_service_waiter.gd",
+        "addons/travel_core/page_router.gd",
+        "addons/travel_core/platform_viewport_backend.gd",
+        "addons/travel_core/platform_viewport_port.gd",
+        "addons/travel_core/resource_batch.gd",
+        "addons/travel_core/resource_gate.gd",
+        "addons/travel_core/tween_scope.gd",
+        "addons/travel_core/ui/hanging_return.gd",
+        "addons/travel_core/ui/speech_bubble.gd",
+        "addons/travel_core/ui/speech_bubble_shape.gd",
+        "addons/travel_core/ui/touch_action_button.gd"
+      ],
+      "runtime_manifest": "addons/travel_core/framework_manifest.json v1.4.0/API1",
+      "validated": "17 份文本源码经官方引擎回导，完整解压 token 数据与原 GDSC 一致。",
+      "missing": [
+        "原 Git 历史",
+        "comments/style",
+        "framework tests",
+        "framework documentation",
+        "original package/build scripts"
+      ]
+    },
+    "games": {
+      "available_scripts": [
+        "darkroom/config.gd",
+        "darkroom/darkroom_page.gd",
+        "darkroom/darkroom_world.gd",
+        "darkroom/helpers/alpha_support_shadow.gd",
+        "darkroom/helpers/articulated_doll.gd",
+        "darkroom/helpers/darkroom_hud.gd",
+        "darkroom/helpers/doll_speech_bubble.gd",
+        "darkroom/helpers/flowing_plumes.gd",
+        "darkroom/helpers/room_bleed.gd",
+        "darkroom/helpers/tool_tray_fit.gd",
+        "darkroom/resource_contract.gd",
+        "entry/comic_page.gd",
+        "entry/door_hotspot.gd",
+        "entry/loading_page.gd",
+        "entry/login_page.gd",
+        "entry/native_actor.gd",
+        "entry/opening_story_audio.gd",
+        "entry/opening_story_paper.gd",
+        "entry/opening_story_progress.gd",
+        "entry/opening_story_spec.gd",
+        "entry/page_base.gd",
+        "home/action_marks.gd",
+        "home/audio/home_music.gd",
+        "home/audio/music_credits.gd",
+        "home/behavior/ambient_director.gd",
+        "home/behavior/character_geometry.gd",
+        "home/behavior/drag_gaze.gd",
+        "home/behavior/eye_geometry.gd",
+        "home/behavior/home_cycle_clock.gd",
+        "home/behavior/rig_secondary_motion.gd",
+        "home/behavior/soft_attachment_mesh.gd",
+        "home/feedback/merit_amount_art.gd",
+        "home/feedback/merit_legacy_style.gd",
+        "home/flowers/flower_head.gd",
+        "home/flowers/flower_life.gd",
+        "home/flowers/flower_stem.gd",
+        "home/flowers/flower_store.gd",
+        "home/flowers/persistent_vase.gd",
+        "home/flowers/tabletop_support.gd",
+        "home/grounding/alpha_grounding.gd",
+        "home/home_page.gd",
+        "home/home_world.gd",
+        "home/incense_burn_store.gd",
+        "home/independent_incense.gd",
+        "home/interaction/alpha_hit_cache.gd",
+        "home/interaction/anchor_registry.gd",
+        "home/interaction/character_bubble_anchor.gd",
+        "home/interaction/home_interaction_controller.gd",
+        "home/interaction/home_note.gd",
+        "home/interaction/interaction_feedback.gd",
+        "home/room_props_controller.gd",
+        "home/secondary/articulated_backpack.gd",
+        "home/secondary/room_plants.gd",
+        "home/secondary/spring_mesh_part.gd",
+        "scripts/app.gd",
+        "scripts/approved_lighting_v3.gd",
+        "scripts/text_font_policy.gd",
+        "shared_room_lighting/lighting_snapshot.gd",
+        "shared_room_lighting/responsive_lamp.gd",
+        "travel/travel_art.gd",
+        "travel/travel_home_bridge.gd",
+        "travel/travel_home_props.gd",
+        "travel/travel_model.gd",
+        "travel/travel_page.gd",
+        "travel/travel_service.gd",
+        "travel/travel_speech.gd",
+        "travel/travel_store.gd"
+      ],
+      "validated": "67 份文本源码回导 token 完全一致；9 个文本场景保存的节点、属性、材质、动画与资源状态一致；已恢复 37 项运行配置。",
+      "available_resources": {
+        "shader_and_includes": 33,
+        "runtime_imports": 68,
+        "bitmaps": 19,
+        "text_atlas_resources": 2,
+        "JSON": 16
+      },
+      "authoring_imports": "官方引擎已提取 58 张纹理 PNG、4 份内嵌字体和 2 份 MP3；4 份 QOA 音效保留原 .sample，另经官方解码器生成 PCM 参考。重新编码的 PNG 和 WAV 不能声称为原美术文件字节。",
+      "missing": [
+        "原 Git 历史",
+        "原场景与脚本注释",
+        "unexported tests and fixtures",
+        "原完整字体源与子集生成输入",
+        "unexported art/layer files",
+        "complete original import parameter files",
+        "design/build documents absent from export"
+      ]
+    },
+    "build": {
+      "available": [
+        "build_info.json 中原提交、工具链与源码归档哈希",
+        "config/resource_groups.json",
+        "config/resource_pack_manifest.json",
+        "精确 Site Web 宿主代码与 27 个导出文件",
+        "与原 SHA 匹配的官方 4.5.2 引擎",
+        "明确标为新写的重建、转换与验证脚本"
+      ],
+      "missing": [
+        "原 build/assemble.py",
+        "原 build/docs_tool.py",
+        "原 build/tests",
+        "原 source.lock 文件内容",
+        "原 export_presets.cfg",
+        "原字体、图集与分包生成脚本",
+        "原 Git 历史"
+      ],
+      "old_workspace_check": "cocos_min_loop 只有方案文档生成代码；旧 Site three-pages 留有 Cocos 阶段 JavaScript 框架，并非本次 Godot framework/build 基线，未拿来替换。"
+    }
+  },
+  "home_darkroom_detail_matrix": [
+    {
+      "detail": "Home layout/rig/anchors/layers",
+      "evidence": "9/9 场景保存状态一致。HomeWorld 26 节点、HomePage 9 节点、角色骨架 14 节点；覆盖位置、变换与导出元数据。",
+      "status": "MATCHED_STORED_STATE",
+      "unverified": "GPU 实际绘制与视觉落位待验"
+    },
+    {
+      "detail": "Home eye/gaze/tap/drag/latebubble/offer cancellation",
+      "evidence": "主页 33 份脚本包含在 84 份 token 一致结果中；互动 alpha 遮罩逐字节保留。",
+      "status": "MATCHED_CODE_AND_MASKS",
+      "unverified": "真实触控与手势手感待验"
+    },
+    {
+      "detail": "Home lighting/daynight/flowers/incense/audio",
+      "evidence": "37 项运行配置、33 份 shader/include 与共享光照代码保留；实际构造日志仍为 5 骨骼、44 受光件、12 投影件、60 秒昼夜。",
+      "status": "MATCHED_DATA_AND_CONSTRUCTED",
+      "unverified": "GPU 光照、动画观感和听音待验"
+    },
+    {
+      "detail": "Rig self_tap animation/bones/materials",
+      "evidence": "SceneState 比较递归覆盖动画库、动画轨道、骨骼角度和嵌入材质。官方文本写入产生的 7 处浮点截短已补回原导出运行值。",
+      "status": "MATCHED_STORED_STATE",
+      "unverified": "GPU 动作表现待验"
+    },
+    {
+      "detail": "Darkroom procedural room/doll/attachments/hit shapes/UI",
+      "evidence": "暗室 11 份脚本一致；原页面只有 1 个根节点，由脚本构建房间。候选实际构造出 242 个后代节点、22 个 world 子节点；原娃娃遮罩与契约保留。",
+      "status": "MATCHED_CODE_RESOURCES_AND_CONSTRUCTED",
+      "unverified": "GPU 娃娃网格、形变与手势待验"
+    },
+    {
+      "detail": "Darkroom firstdraw/readiness/sharedclock/return",
+      "evidence": "原代码流程保留；headless 中固定字体 ready 与构造 ready 为 true。",
+      "status": "LOGIC_PRESERVED_PARTIAL_EXECUTION",
+      "unverified": "真实 GPU 首绘门槛、取消竞态和 App 导航待验"
+    },
+    {
+      "detail": "HomeandDarkroomoriginalruntimevisual/audioassets",
+      "evidence": "68/68 原导入资源逐字节保留，包括 58 纹理、4 字体、4 QOA 音效和 2 MP3；19 个命中位图也一致。",
+      "status": "BYTES_MATCH",
+      "unverified": "GPU、听音与源美术可编辑性待验"
+    }
+  ],
+  "exact_copy_evidence": {
+    "shaders": [
+      {
+        "path": "darkroom/shaders/alpha_shadow.gdshader",
+        "bytes": 1105,
+        "sha256": "9502472ce2155a6aec951ecbbf967ca866a05dd7b0bc9d2774113d6541b7739c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/doll_release.gdshader",
+        "bytes": 2232,
+        "sha256": "43aac2ef5a6a462fab0240adf093185ca63bf2588967a2c17e0e4a8b920a8ee3",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/doll_source_mask.gdshaderinc",
+        "bytes": 615,
+        "sha256": "54e7d9d6746518522184c76dec37d2efd5f14d6c3fd2bc84cedf8471fa5c186e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/room_light.gdshader",
+        "bytes": 1541,
+        "sha256": "9124f9f86727c73b8e48dff7c0895daec12893b01154d78c7c98a102aac6a1f4",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/sky.gdshader",
+        "bytes": 1706,
+        "sha256": "fd358eaf756a02f58c237daa5e0f4934897e6e1b878465cda92b90def494f215",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/smoke_flow.gdshader",
+        "bytes": 622,
+        "sha256": "ad9b504d09fea1e5d18e0776fe4acab120c30715c3b9d68d82f5ea49932c24c0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/tool_receiver_shadow.gdshader",
+        "bytes": 1166,
+        "sha256": "5bef17e3977908e1b457dd4ed9a60745e57f43e5bcfd6f9dff8ea785d21a358d",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/tool_selection_glow.gdshader",
+        "bytes": 737,
+        "sha256": "9cb4b60ce832d2b582919b197724a5f46fdfb3ff0e87007a213bea6c9c2d4fe2",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/shaders/window_beams.gdshader",
+        "bytes": 913,
+        "sha256": "45598bb284a354c898fc9fc0562ef3e8f6eb9ce2ba3b0dd1c98bcfdbda99e3e7",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/flowers/flower_receiver.gdshader",
+        "bytes": 3685,
+        "sha256": "f6abb7203eb79b3c470cf5e0cf487555558b1228883228c52b70ffda0bd80760",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/secondary/part_receiver.gdshader",
+        "bytes": 3243,
+        "sha256": "270bf70e991e94a2365d8ef7efcc8e69c2c780f5ba53e036bc5fe5e4a78ea074",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/secondary/part_wall_shadow.gdshader",
+        "bytes": 649,
+        "sha256": "5bab99fd30c27051bfa8a7ca29bcf4a85bc807b5e343fce0b568834902069526",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/bed_receiver.gdshader",
+        "bytes": 3270,
+        "sha256": "d0c06363b116afa5327a063e5a6b41582c8fcbefeb35fae6a29e81d75db19c1b",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/bleed_receiver.gdshader",
+        "bytes": 3764,
+        "sha256": "a55c804d934acfb3769d7b6c75017a214ffba6ba05a86f2375f79da0c44b200e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/grounded_shadow.gdshader",
+        "bytes": 1887,
+        "sha256": "cb85ab69825d4ab9b7fad6a77269876d7611870fa2ef714108e4e943c9da2f8b",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/home_face_receiver.gdshader",
+        "bytes": 9431,
+        "sha256": "1aedc8bf9019554e3dfa433b43cbb3b058f5aee8ddcf136a37a07cf12a48319d",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/home_grounded_shadow.gdshader",
+        "bytes": 3577,
+        "sha256": "11d5cf27a96fb9abd32ed92451a4051987334f6f1d6e73c8c457fc52c8383ff8",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/home_prop_receiver.gdshader",
+        "bytes": 4977,
+        "sha256": "987c160bed6c5e196611b4edc774d8b6932c56eb48faa7fe2133d3ff8c11dcfe",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/incense_stick.gdshader",
+        "bytes": 4036,
+        "sha256": "45c1e05058eab9e3ec56a2288a058c04ceec42a1e72c3765cee1887a336d6bdb",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/light_shafts.gdshader",
+        "bytes": 875,
+        "sha256": "0e2ca1b6d8e5b7f0f8019d817216fea04dcfcdc3fe8a1c7051af413b97ac655f",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/login_peek_reveal.gdshader",
+        "bytes": 486,
+        "sha256": "10f0b64212fbd0f38254c542fb83af7742f5a4c5fa4e03f37dbe5392d250e242",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/outdoor_window.gdshaderinc",
+        "bytes": 1371,
+        "sha256": "cfb69ca48f6b87c960521eef9070720faabe2adc6a5f172cefb1a518259f8970",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/outdoor_window_extended.gdshaderinc",
+        "bytes": 1375,
+        "sha256": "4f93af543431e5771f199721cb8e0e043aefc9e89af308dd5595c53c9d6cafa0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/receiver.gdshader",
+        "bytes": 3165,
+        "sha256": "238e3b4ecb2bd8c2a796a0f18d1c234cad8d6332596b29badd39823435b9540a",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/shadow.gdshader",
+        "bytes": 1827,
+        "sha256": "85f5bd20a73f6049be8b509a3cb62a9ce64d2559cbdc5de82ab02f5be7b50b34",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shaders/window_field.gdshaderinc",
+        "bytes": 396,
+        "sha256": "1e29948fdf9138535c2ee384f7f85ef0a4584597faed1b45a006429a4403c1d9",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/dark_window_field.gdshaderinc",
+        "bytes": 389,
+        "sha256": "7fa9576b57736a2f9cde4016a03496a16cc008a318de7f333503d5d050d8a185",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/outdoor_scene.gdshaderinc",
+        "bytes": 4494,
+        "sha256": "0adea3fae5fa5c32bdfdfb86207e6765e1030b87503dcf80cae111f86c2623b9",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/pane_geometry.gdshaderinc",
+        "bytes": 508,
+        "sha256": "b2f6e7c50bbabe5fde44a1cd307f288beafdce7ff508a828455ec4dc3b06ec28",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/thin_glass.gdshaderinc",
+        "bytes": 1028,
+        "sha256": "96c486e0fd8591737185a005cf2e99a02d4cc475f116e62ac09fcd84ac26ac71",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/window_beam_profile.gdshaderinc",
+        "bytes": 743,
+        "sha256": "b51ccba109864c553883979c586e1fca92e55610ef63e8610fd553c29f77e6a6",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "shared_room_lighting/window_field_kernel.gdshaderinc",
+        "bytes": 1081,
+        "sha256": "0098019872c06be51a820a794196887dcb47150ed59caff00ae0a67bd96fbc44",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "travel/travel_mist.gdshader",
+        "bytes": 402,
+        "sha256": "643dc6b8e294f3b7f97dc3b6a86127830fb19bb2f69e1af6b19649282f12685a",
+        "candidate_bytes_equal": true
+      }
+    ],
+    "runtime_imports": [
+      {
+        "path": ".godot/imported/actor_body.png-a244ef21c2becfbf868c6cde1e0d62d2.ctex",
+        "bytes": 129820,
+        "sha256": "1f15c08137e18d3f15fa62a941e52de4f5817ea530a1f895d43cc1d4376d27e1",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/actor_fin_mallet.png-567d40424d5ba6e00025417da6a2cbaf.ctex",
+        "bytes": 40178,
+        "sha256": "e230cde67fd64c1c098ebb34232ad3ca1057f3251d84ad6dbeb496332647b93b",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/altar_neutral.png-1cc3f63721e83f520be34bb3976fbcff.ctex",
+        "bytes": 97010,
+        "sha256": "d591114dc62283a88582da9b18accf6b2bab17ecdafaf4427bfd2d8311503bc4",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/backpack_parts_atlas.png-384735b77d4a175ac24e122526ff303d.ctex",
+        "bytes": 563506,
+        "sha256": "bd0d59230972b453f4dfa5b2a046c2f88c477ead8890ce96c31b29d1c258b918",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/bed_occlusion_mask.png-00750318897bd4abfaf7a895bf240a55.ctex",
+        "bytes": 50372,
+        "sha256": "9f82a715697ddbe65d08cdbcc8a4e94053af49b1973297759980843e8e69b0a6",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex",
+        "bytes": 83306,
+        "sha256": "b8ad2633205c857261046e1627fcc10b4cca10b3c25c31a5b487327c177da2db",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+        "bytes": 68471,
+        "sha256": "b4624646e4baf3b896024418545d824f4c3d850eaed83fbc9ac692faf7bbfd59",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/button_icon_circle.png-ece0baec840c102d7a96b59125e9408d.ctex",
+        "bytes": 8864,
+        "sha256": "c6a541416ac872caeffc59bf4ca1bd134e7b10e51811aa32b2b180ae8f207c14",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/comic_paper_v2.png-8d86983b30df3c404f0185a3591b491a.ctex",
+        "bytes": 2067976,
+        "sha256": "701b702fc0872030216d05a662bb89105c131b486a68cfebc3fbe312e89e8117",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/comic_story_ui.ttf-95abf224fe7c1ae9911d81add0adfa7d.fontdata",
+        "bytes": 8066,
+        "sha256": "c89cbe7deee71869130b6c605386fa66be1017938cb5e38b98ffd5c8955d7a27",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/counter_merit.png-805967c23cb0f398d978a27ecd98088a.ctex",
+        "bytes": 5438,
+        "sha256": "486241d7cef6eb7ce65d728ba1927e5ca6c4a546d8c3d81fb4e4a119f0d873e7",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/daisy_heads_candidate.png-35f31810d401673390359af3ea29fa1b.ctex",
+        "bytes": 251366,
+        "sha256": "326d2ce6107d14322cbacc020aa44b98b4b4c5069f844c96d6d2bd62a7ecbca1",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/daisy_leaf_candidate.png-9d4cc776a802df83378b85c567637bbc.ctex",
+        "bytes": 18512,
+        "sha256": "b315fa85bd7dd1d9a0060f83d5979d3740caeab25f2c0e3460a1e48834bc11b1",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/darkroom_plants_atlas.png-1686831dbe50a44c2ab6b07246673ca9.ctex",
+        "bytes": 627298,
+        "sha256": "1d12ede10a517cdffbd892992c9fd93552cd51f25d1a08ada16be070e36f02f4",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/day_harp_mouse.mp3-54a3bc0327d4f329ebc903a73a98e8e7.mp3str",
+        "bytes": 2021247,
+        "sha256": "3b6aab3d1dd83701285d0c0e3934bdbeeaab38c70c44079670a464f4a4317224",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/doll_idle.png-12fcbab1dde303dcb8bb5a228150ee7c.ctex",
+        "bytes": 142290,
+        "sha256": "a1526e97cf113e4f6f5970fd234d5e8a080251b16354fae98e0a1112c5af9e45",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/doll_rig.png-02e4adf178f15a73c4754d08976b619e.ctex",
+        "bytes": 241018,
+        "sha256": "367330595d2f6da5409c2d16a6c282122d84db0485053a716e966052d782b58c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/door_ajar.png-5f70f925290c1a27cdefe7b09013d9d9.ctex",
+        "bytes": 109930,
+        "sha256": "4fd3b68993d32c1c838aa6d4c693f707a5bb818e65a5caed8a9df817ca2af2a9",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/doorframe.png-4afa80d424bf90cbd3a35bfe0fc9dc5c.ctex",
+        "bytes": 57326,
+        "sha256": "c8129ce5597c5d642c13bf02ed51af2fa058492b086773c291f99383b1ebc3e0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/doorway_glow.png-56aa189ef1a897211be108f7dd683395.ctex",
+        "bytes": 78820,
+        "sha256": "5648d8b48a69237e9d3fbc38962ce79727a2318060937a4b0f342d6c10607fed",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/empty_vase_candidate.png-af9ee831a4d8dec72c0163ff2a28879e.ctex",
+        "bytes": 54604,
+        "sha256": "7080071cc851132e20d1d2db219fb5ef3fde964cfdaf18bc959962776e073413",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/eyes_closed.png-cacdcfe2b9d24fedb9e7faaafec2dc48.ctex",
+        "bytes": 84658,
+        "sha256": "61ede6040362b906f18ffc8bb2384605dd177199ab6a922bdd6a1fd66013cc4e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/fin_mallet.png-d6cbf456aa8e9a218864d71b859cc74b.ctex",
+        "bytes": 20554,
+        "sha256": "04d2a2f98e38b07d991a420dc24d51d65f3a712e37f5164481aa7b69878f7b5e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/font.ttf-976a98412f76666fef587cd4874204ca.fontdata",
+        "bytes": 58473,
+        "sha256": "2712c49e62939b98c09c31557e62dca5328345a53befd5ab88c54b9067986e85",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/ground_shadows.png-3f2355d470510c329b8e1100de71d424.ctex",
+        "bytes": 13442,
+        "sha256": "3de0b929c20d4e7c3954354fbacccadbd287b9c9861ec2d6563cdb8a261654da",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/home_neutral.png-6d90870caad7a05bf109f0199f861dc6.ctex",
+        "bytes": 952364,
+        "sha256": "0c295bd4a465a2e5843ae4d92e188f42b858527745427a9f5847dc91fec08fbd",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/home_neutral_bleed_no_plants.png-e09c80444102f894387a5917be7c205c.ctex",
+        "bytes": 1018452,
+        "sha256": "da4537695265d432fe86d7ede711ed32aee237b47c11026ca80d78804fcb5deb",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/home_neutral_no_plants.png-d4b5c2403525c5474d5bbb64ddea6b34.ctex",
+        "bytes": 793544,
+        "sha256": "3364ea9f494d58cfbbc0447b3c67a30b09df71dc6a3cf331126b54c72e1fa40b",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/home_plants_atlas.png-15932390fcbe0661b88f99dfad2f5a97.ctex",
+        "bytes": 563644,
+        "sha256": "7da6add9af39f3d8297f30236dc8e451fb24f0ca25595ec2186b191315b58fea",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/icon_settings.png-3c62b51ca418165cd28a9c8a8d319803.ctex",
+        "bytes": 5580,
+        "sha256": "488310cd9271eff74723c8e43c6409cbfbd1280a8c216de7d28625abd3e684fa",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/incense_ceramic.png-e5d12965faf5e607b1abc1b099a7dd87.ctex",
+        "bytes": 127036,
+        "sha256": "3b20a361daa109fb65fd31edbe675b52e586d5c853c7a0bcc43aec57c9797914",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/lamp_sconce.png-9432df858242716e2763e72a66c22eac.ctex",
+        "bytes": 141868,
+        "sha256": "a6839d955975449cbcada5a4be8193ee01cee62e514b5ce41fcbf46866245022",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/lantern_cranes.png-ed9a46587093b68aeecfedbdfef9685d.ctex",
+        "bytes": 112468,
+        "sha256": "789c4e562e8ce3b3a590d564b32762cc49ccf96381f8e7274885796cde0581a7",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/loading_clean_bleed_720x1600.png-1636629aa49532f08f3000826c9dfbb1.ctex",
+        "bytes": 37668,
+        "sha256": "331e54ae6d8862a5594be85672066fefd83e94ad8fb2a7370b1f590f59680e42",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/login_accents.png-89b9c20d8f41fe04fdd4d0569dd55b4d.ctex",
+        "bytes": 1322,
+        "sha256": "30a637d3a9767c753662c1fda3ecec0a4869eca16816c38c1944c7b0ca9c0c10",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/login_clean_bleed_720x1600.png-5bc971c8d44831c383588514f65ebc0a.ctex",
+        "bytes": 644758,
+        "sha256": "921780b897349b61e52a6b900be6a0168e558410fe0cd0b91ddd277399bb2470",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/login_enter_wood_sign.png-4f04b73fa033f9c4eba241c28226924c.ctex",
+        "bytes": 17172,
+        "sha256": "01b6acb4bf974e21fca173ba09c2625dd9863841c6b71dcabc752c9db1728ab1",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/login_peek_source.png-053faaae78dfb9a1772c6daa8a606767.ctex",
+        "bytes": 11300,
+        "sha256": "e876cfd53029cb5b93203eb22b155d7aad0b64f3dde1d64b4a6eb1ff352eec1a",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/logo_title.png-d42648ef5ac70b4dc2c94edf137355c8.ctex",
+        "bytes": 29436,
+        "sha256": "2414b15411a635d2a5febfc0b184a3dbd6ca14209dd8f774db9f5d099b9302b9",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/mat_flat.png-51577e41822f8ebe693eebd87a509dc9.ctex",
+        "bytes": 103702,
+        "sha256": "fb977641a363ad021390440976eb8ec0ecb31e62e492556467d4f8268ed885c0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/merit_box.png-b14803842a2540efe4c8ff4f41a6e5fe.ctex",
+        "bytes": 140026,
+        "sha256": "591e43caa9855bb989458762e2e55bd96b53a765e52481835ba3ae793ef4d4be",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/merit_digits_thin_gold.png-9ae3a8e4892da23f1b9a0a5b23dfb56b.ctex",
+        "bytes": 631802,
+        "sha256": "10d4fb704e7d23bf6585baadefe12507740876e2491343eab71d17074ecbf2f6",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/merit_reward_14.png-a531a5eef9d16ed4909cc3076f45216d.ctex",
+        "bytes": 181446,
+        "sha256": "91d2c14f78e1316fd93ecb8214ac8cb9afe3800721c8a39f58bbbd085a48ba8e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/needle.png-997ee3201e8439ad9759908827476195.ctex",
+        "bytes": 197868,
+        "sha256": "cf76c2cf2a2011fc421ec12b61172708f7a7eb61f19a3aa43d881ec711d301f5",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/night_peaceful_mind.mp3-937db62bcea21da8a6637681cf9736e7.mp3str",
+        "bytes": 3339407,
+        "sha256": "81dff3b5d3e4700dfd35c7aa3276f0e7a6bf19f155a00b5c9c8cf1b4a67432cb",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/paper_puff_v2.wav-cfef99e114b7e09d1a37b158a118053b.sample",
+        "bytes": 1831,
+        "sha256": "8dfd34f87d5fc304622e3f77061222ffe3bbe61bf33942fed0cdd9018f223eb5",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/photo_clip.png-a39a52f32f8269bb0261de0704c462cd.ctex",
+        "bytes": 11474,
+        "sha256": "73cc9382d15db64eeb370769bf8378772df5fd01c7a5899cb4ba22b5de15c088",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/photo_frame_01_travel.png-998bb568f8976d47283b91ad792fcd4b.ctex",
+        "bytes": 65926,
+        "sha256": "8df45b39739fa24e9d51773115db333d048d7f1e862dfc74616db80f18355dbe",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/photo_frame_02_travel.png-3f3b1c286455fa5d0ee7f67e6f004772.ctex",
+        "bytes": 61608,
+        "sha256": "68086a1d2edcd3e8e49c991ad64f4ecbf26eb26c1f2e2503c344bde4c7a977a2",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/release.png-998ef8327472e0a373a81e678b8d4337.ctex",
+        "bytes": 386084,
+        "sha256": "f111a15bfdef2f84d9ba98d3241e66f6554ae5185129c5752ddb2590d5cc6867",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/room_no_plants.png-afba884a19e90b3cfa1104093b96fd8f.ctex",
+        "bytes": 1552176,
+        "sha256": "e2371ea7800963a857e847b417677d0b285e7a745cf5dcb84765877546ae6379",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/slipper.png-c3a7b85386bdaf5763f431699e84ed1e.ctex",
+        "bytes": 948972,
+        "sha256": "9519470604bb04022f7ac8ecd8cd331a2a7a622bd8074da59bfb6eb362aecbda",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/smoke.png-8979f190f8195f152772449a8ae3daf2.ctex",
+        "bytes": 479680,
+        "sha256": "ec21171a3edf32e1ea44d4ce56d513be0d06cb48fca820ee728a58c65d98b2e6",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/tail.png-aaa9f67109fe2ef09a160a8bbfa5cc8d.ctex",
+        "bytes": 8262,
+        "sha256": "6dfc8d2f316818459faef7dc6a76cf6933ba7ddb5dcb4d9940c8f66913171387",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/tiny_joy_v2.wav-0db894d10b543d98ddc0265943ec75c8.sample",
+        "bytes": 3791,
+        "sha256": "ed77bc8f685012763e69c24f5fe8f19e76efcd31278f5f316fae5681fc32e03d",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travel_paper_v1.png-935ae10cb47d4b99d4659fd0238b90f1.ctex",
+        "bytes": 2072588,
+        "sha256": "d7c5fb099186e44b0e30fcb6dd562a9f1118229fe67153934a4e5d257ca6f926",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travel_props_v1.png-631927af52ca9165d3f87df25158f076.ctex",
+        "bytes": 1796128,
+        "sha256": "df470e9a65941e852e0808c645dd39039537154e96c67356889dbebf574cce59",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travel_rewards_v1.png-80c22706ab444ab69dfd604648b18d39.ctex",
+        "bytes": 1195482,
+        "sha256": "2d994fcb8b3ebedfcc8092dac5ceb6821ea3cf487079e3c1171c2cc90f4fce31",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travel_scenery_v1.png-5ab768439bf8d7192157630aa5c2c1fa.ctex",
+        "bytes": 2774362,
+        "sha256": "bc56dcc75d02fa13e8386ff7eabefbb303c2f2e6d61034a654c2c72cf99cb649",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travel_ui.ttf-292419b27ef4ce77741809fce83a40b2.fontdata",
+        "bytes": 199511,
+        "sha256": "eb7f178f6fa581a9b3ec12ba2de8b566987d8df01fb195d625ead17450f14ffb",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/travelbag_closed.png-0151d887275d65d7485f49f6b31e6d51.ctex",
+        "bytes": 214254,
+        "sha256": "565a0c29cbdcb0bf2c2c2318a9a46c81a3062e4a1c21f9f34b89fbcee6c071cc",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/treasure_open_filled.png-641a53082a8cf3a83bf10498f1a51e49.ctex",
+        "bytes": 182732,
+        "sha256": "97cd87f25b571f4cd23dfc5a8983b7ff2a4b6c4d9ff0af10dcb71ee54150e3ba",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/wall_hook.png-dbdde286a83a8287daf42764d1792add.ctex",
+        "bytes": 25222,
+        "sha256": "9f8a22dede117f3fe768b9e52c9e5d5804961d780d651569843dbb0c17f4895f",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/wardrobe_neutral.png-7835883ad3170b4a834c64424715cffa.ctex",
+        "bytes": 217856,
+        "sha256": "3d4dba2b1e7f2084c4f4ff3bcb7506cd361405d33217bc737dc2a29bfce69f4c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/water_bowl_clean.png-c5bd34abf2f5e7d1e97dd5dc69905d96.ctex",
+        "bytes": 148484,
+        "sha256": "d95a9a600d5f55099a74303c2796bb351dd44cde78aec59b354e1f5d843f1ed0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/water_sip_v2.wav-c8d1b3026c8cf7df0770b5e7c347919d.sample",
+        "bytes": 3087,
+        "sha256": "f799bf731476ae723ef5d85de44cbc20b9fdd3845d7d5fcf5f1f74000eac253d",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": ".godot/imported/wood_knock.wav-9150ca7cba8129f0a17c27d55a0a48a1.sample",
+        "bytes": 4087,
+        "sha256": "a79aa530e6a16a3ca0eacfa21831a2e4e4f5aecf815f835bf83b059edb73a846",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "__derived_atlas__/login_signage.ctex",
+        "bytes": 9964,
+        "sha256": "0221f167cbf30f6c1e1a662fd6fa43e7c0dbb5a008e8b5ea77561e1b9b702142",
+        "candidate_bytes_equal": true
+      }
+    ],
+    "data": [
+      {
+        "path": "__derived_atlas__/login_signage/3c1c5d2c27a061bd69e4.tres",
+        "bytes": 278,
+        "sha256": "b0404d8a6e856a29918ccb51ba88fa561a98fa2877f700c4100cb13433b0069c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "__derived_atlas__/login_signage/464f45ed2ee961188380.tres",
+        "bytes": 280,
+        "sha256": "61321c76f7c4513b81a03a0d59be7cdac23034fb2a50d763a67fabc4ef536cfd",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "addons/travel_core/framework_manifest.json",
+        "bytes": 127,
+        "sha256": "2b6259d35fcf86f4e1fe0f26ff1958e33c598064fb454cd7a621e214cd846088",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "assets/home_layout.json",
+        "bytes": 6520,
+        "sha256": "4b5043bbd0058541a2841e3f9002989a3f39ef6afcc968f285fd0076ee8d4bc7",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "assets/round2/backpack_parts_contract.json",
+        "bytes": 5284,
+        "sha256": "94ba0b827f2685a085d40add359c45ce3101a84964c1730ae46c017739ddeda2",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "assets/round2/home_plants_contract.json",
+        "bytes": 6048,
+        "sha256": "f208f732544e063db0f680e321ec89c24c23ae0f70cefb98e2cd69c7d5fa48f2",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "assets/round2/props_contract.json",
+        "bytes": 1908,
+        "sha256": "ddb8b3398869a3313138dc594e0282024efad6ecd0728154740d0b5fc347aa3a",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "build_info.json",
+        "bytes": 1248,
+        "sha256": "733083e91b1528577b0f929250035814ca9a2dd75a11a8a62d64244b02e554a0",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "config/opening_story.json",
+        "bytes": 3250,
+        "sha256": "1887917dda7dbf78600b4dbdf9e08a30f2a131093a602f0793ff6e0c64dcda5e",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "config/resource_groups.json",
+        "bytes": 19738,
+        "sha256": "75802ee6ac8c2f4d19a00e9d0d447cd3a43dd1e2c2b5ca0ccab3ac4dcb3aa0a8",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "config/resource_pack_manifest.json",
+        "bytes": 3879,
+        "sha256": "031c8639ed36c3d956cd172ac90c342c1d05793bbfdc401df05e3b2fd32290c7",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round2/darkroom_plants_contract.json",
+        "bytes": 6430,
+        "sha256": "a2588306c16aaafcff153baa93657d899dab5c5e269eee7cfe3a21ac46e490da",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round2/doll_alpha_geometry.json",
+        "bytes": 25289,
+        "sha256": "e967f4c117d934aff3bfd687a4240f7a0c765e28341986c5f44783a8817d124c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_bow_hit.res",
+        "bytes": 1058,
+        "sha256": "a4239fa7b0ce4793f55b3325e7a2458cde955fe2e9762b2dd25f7ab2d7bf777a",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_head_hit.res",
+        "bytes": 1074,
+        "sha256": "f66b87332aab4a82817f8e86e3ac78f45a48d2e0e96b302480f364d5a4ea9e74",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_left_arm_hit.res",
+        "bytes": 692,
+        "sha256": "08555c934510e52fc465857a9155f96926b0f9b5112f9fa1f693b5b9ff32c22c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_left_leg_hit.res",
+        "bytes": 815,
+        "sha256": "82880b9ec2ceaffb7b1f3593fe7a680b986c2737da411622c76cc0290cde2ce4",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_right_arm_hit.res",
+        "bytes": 789,
+        "sha256": "42214ed866e2a6d45d7689ea1d03c718141845f1dd092217a24d32ef1ec3f8b5",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_right_leg_hit.res",
+        "bytes": 813,
+        "sha256": "3ee5315304b3b860a59c58920d05d8d4f86050d91b64f1974eed5cea01da2893",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_source_alpha.res",
+        "bytes": 1758,
+        "sha256": "da0cab9a24f1e19b447172e2f36a497e062b113ae613cf1755f73d41aee86fdc",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_source_contract.json",
+        "bytes": 6425,
+        "sha256": "45e7de5e994d960c5afa20ac08cb09ce2f997efc811d46f7e4ad7b58506c3487",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_source_display_mask.res",
+        "bytes": 8206,
+        "sha256": "53f62a9a926db6c58412a3b9fe79bf653542cfaba61eff8df46766a6fd38c416",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_source_geometry.json",
+        "bytes": 157961,
+        "sha256": "033d8abc3d61429031f5202e25ffc67b7b5b5fb7245b976a6c9868aa5c8a3946",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "darkroom/assets/round3/doll_torso_hit.res",
+        "bytes": 1170,
+        "sha256": "9390d76bcc38c8bbab0555665f83da08e202d0758301f32a1228b66e19cdc036",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "game_manifest.json",
+        "bytes": 319,
+        "sha256": "15fb0c16c0e89492b820793b615f7fa435df6a9eadc9c6b13f39e8eb6949fe52",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/altar.res",
+        "bytes": 1438,
+        "sha256": "ba10920b90730b5e2fb89a864c3bd25042cbac9ac766a78e59c0acbf18bae973",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/backpack_parts.res",
+        "bytes": 5809,
+        "sha256": "cf07f7df313f7eea834ab53f45db5de41319c2b2b897cc9435d0d7c581162467",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/bag.res",
+        "bytes": 2320,
+        "sha256": "1000e8b5395fd8387dfc5e90a02e90eae35a530d664047326112942b5f8278de",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/body.res",
+        "bytes": 1725,
+        "sha256": "f81e832c2a3de6e44bc4e933d78f42c706c3e557279ec502018a4dc9c5fa4532",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/bowl.res",
+        "bytes": 1594,
+        "sha256": "09d7ab9013070b4e0638921f6b0c5c4db7a33b7e6d50fc7cfbfa23fdc3c273c3",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/doll.res",
+        "bytes": 1995,
+        "sha256": "238ec0a63598e8c346e57755b228ab40bc890b68dc54d6ddcb3d4e5ee5a72a7d",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/fin_mallet.res",
+        "bytes": 1183,
+        "sha256": "7374fe87cb0795e02c6b96d592f199f11f5d0dacaa78954d982903827c51472c",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/interaction/alpha_masks/tail.res",
+        "bytes": 894,
+        "sha256": "b9c18edebf3bd046d6c2f79805450a6e229fea53cd5f72be55bf025810658a75",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "home/secondary/backpack_ribbon_profile.json",
+        "bytes": 7242,
+        "sha256": "b0a107d0fe2aea00fbe97a9b68be2e51dd5fb6a16c92ee1d094cffecf18dcb7b",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "travel/assets/travel_props_hit.res",
+        "bytes": 197129,
+        "sha256": "d06e82082c5e9d79d506fa7363f05f1baf421c768da80f925224a6bbfe769f19",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "travel/assets/treasure_hit.res",
+        "bytes": 33287,
+        "sha256": "6a54aa324573361a959b13bf72303e153e28b988b5ab7d9875860235e1b6b0cc",
+        "candidate_bytes_equal": true
+      },
+      {
+        "path": "travel/travel_content.json",
+        "bytes": 10567,
+        "sha256": "3ef07b3fbf4983f685c28141fb0a955f4f6d708217a695bdea80c8e4ecd34455",
+        "candidate_bytes_equal": true
+      }
+    ]
+  },
+  "shortest_verified_path": [
+    "在 Library 保留不可变原导出备份和可编辑候选检查点。",
+    "以 84 份 token 校验源码、9 个状态匹配场景和原导入缓存组成当前原生候选。",
+    "另建编辑用副本验证资源路径与重新导入；保留原运行缓存作对照，不把 QOA 静默换成渲染 PCM。",
+    "补建缺失的构建、测试、字体和图集脚本，并明确新来源，不能标作原源码。",
+    "再做运行、输入、生命周期对照与官方 Web 构建；GPU、触控和听音分别验收。"
+  ],
+  "user_material_boundary": "继续当前候选不需要用户补文件。若要找回原提交历史、原测试与构建工具、未导出美术，需要真实的原三仓、源码归档、Git bundle 或可访问的旧云端快照；没有这些资料时不能要求用户手写重建代码。",
+  "expected_original_archive_hashes": {
+    "game": "26b06cf97cc8b1f9610b353e31a7a027ae6a00c37371dccfcab471c6e07ceafb",
+    "framework": "ae770bf63aedf7ab80cdb6f8bf25d499d4b5e81de9f684044680d6e1bccf0b86",
+    "build": "14e5b518292c1719682003dd5878bfd07b7e821ede04066206254e796f5cb93f"
+  },
+  "online_changed": false,
+  "sixteen_fixes_started": false
+}

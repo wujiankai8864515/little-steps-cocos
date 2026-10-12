@@ -1,0 +1,607 @@
+{
+  "captures": [
+    {
+      "attack_time": null,
+      "elapsed": 6.38333333333333,
+      "misfortune": null,
+      "name": "01_home_invitation",
+      "state": "HOME"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 8.13333333333333,
+      "misfortune": 100.0,
+      "name": "02_darkroom_ready",
+      "state": "active"
+    },
+    {
+      "attack_time": 0.377192666666666,
+      "elapsed": 8.510526,
+      "misfortune": 90.0,
+      "name": "03_needle_contact",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 8.93423877777777,
+      "misfortune": 90.0,
+      "name": "04_black_smoke",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 10.6233333333333,
+      "misfortune": 80.0,
+      "name": "06_slipper_selected",
+      "state": "active"
+    },
+    {
+      "attack_time": 0.400596666666666,
+      "elapsed": 11.02393,
+      "misfortune": 60.0,
+      "name": "07_slipper_contact",
+      "state": "active"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 15.1495036666667,
+      "misfortune": 0.0,
+      "name": "11_dissolve_midpoint",
+      "state": "clear_out"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 16.6600298888889,
+      "misfortune": 0.0,
+      "name": "12_empty_gap",
+      "state": "gap_1s"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 18.3994126190476,
+      "misfortune": 100.0,
+      "name": "13_spawn_midpoint",
+      "state": "spawn_in"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 19.6973723333333,
+      "misfortune": 100.0,
+      "name": "14_new_doll_ready",
+      "state": "ready_full"
+    },
+    {
+      "attack_time": -1.0,
+      "elapsed": 21.3858493333333,
+      "misfortune": 80.0,
+      "name": "16_return_home",
+      "state": "active"
+    }
+  ],
+  "checks": [
+    {
+      "check": "Actual native GL renderer is active",
+      "passed": true
+    },
+    {
+      "check": "Rendered viewport matches requested size",
+      "passed": true
+    },
+    {
+      "check": "Core cannot resolve delayed needle before darkroom request",
+      "passed": true
+    },
+    {
+      "check": "Production App prepares cold Home",
+      "passed": true
+    },
+    {
+      "check": "Production router activates Home fixture",
+      "passed": true
+    },
+    {
+      "check": "Home did not pre-mount darkroom",
+      "passed": true
+    },
+    {
+      "check": "Home assets cannot mask delayed darkroom dependencies",
+      "passed": true
+    },
+    {
+      "check": "Real Home doll alpha target exists",
+      "passed": true
+    },
+    {
+      "check": "Real doll press captures doll",
+      "passed": true
+    },
+    {
+      "check": "Doll press starts production darkroom preparation",
+      "passed": true
+    },
+    {
+      "check": "Actual doll drag opens held darkroom invitation",
+      "passed": true
+    },
+    {
+      "check": "Actual confirmation reaches production darkroom route",
+      "passed": true
+    },
+    {
+      "check": "Darkroom entry waits for an actual SubViewport first draw",
+      "passed": true
+    },
+    {
+      "check": "App preparation recorded first_draw then ready",
+      "passed": true
+    },
+    {
+      "check": "New round starts at 100 with default needle",
+      "passed": true
+    },
+    {
+      "check": "03_needle starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "03_needle does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "03_needle settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "03_needle has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "Canceled touch and synthetic mouse do not strike",
+      "passed": true
+    },
+    {
+      "check": "05_touch_needle starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "05_touch_needle does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "05_touch_needle settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "05_touch_needle has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "Actual slipper tray selects slipper",
+      "passed": true
+    },
+    {
+      "check": "07_slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "07_slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "07_slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "07_slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "08_slipper_repeat starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "08_slipper_repeat does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "08_slipper_repeat settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "08_slipper_repeat has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "09_slipper_repeat starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "09_slipper_repeat does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "09_slipper_repeat settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "09_slipper_repeat has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "10_slipper_clear starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "10_slipper_clear does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "10_slipper_clear settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "10_slipper_clear has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "Two needles and four slippers complete one 100-point round",
+      "passed": true
+    },
+    {
+      "check": "Input during dissolve cannot queue another hit",
+      "passed": true
+    },
+    {
+      "check": "Dissolve ends in empty one-second gap",
+      "passed": true
+    },
+    {
+      "check": "Round completion and finished signal increment once",
+      "passed": true
+    },
+    {
+      "check": "Gap leads to exactly one new doll",
+      "passed": true
+    },
+    {
+      "check": "Gap and spawn input cannot settle or queue a hit",
+      "passed": true
+    },
+    {
+      "check": "New doll reaches full ready state with reset meter",
+      "passed": true
+    },
+    {
+      "check": "Spawning does not increment completion twice",
+      "passed": true
+    },
+    {
+      "check": "Actual clear_out duration 2.859s matches 2.85s",
+      "passed": true
+    },
+    {
+      "check": "Wall-clock clear_out duration 2.867s matches 2.85s without PNG encoding pauses",
+      "passed": true
+    },
+    {
+      "check": "Actual gap_1s duration 0.992s matches 1.0s",
+      "passed": true
+    },
+    {
+      "check": "Wall-clock gap_1s duration 0.998s matches 1.0s without PNG encoding pauses",
+      "passed": true
+    },
+    {
+      "check": "Actual spawn_in duration 1.558s matches 1.55s",
+      "passed": true
+    },
+    {
+      "check": "Wall-clock spawn_in duration 1.555s matches 1.55s without PNG encoding pauses",
+      "passed": true
+    },
+    {
+      "check": "15_new_round_slipper starts an actual attack",
+      "passed": true
+    },
+    {
+      "check": "15_new_round_slipper does not settle on press/release",
+      "passed": true
+    },
+    {
+      "check": "15_new_round_slipper settles exactly once at contact",
+      "passed": true
+    },
+    {
+      "check": "15_new_round_slipper has no duplicate settlement after recovery",
+      "passed": true
+    },
+    {
+      "check": "New doll accepts an actual hit without recounting previous round",
+      "passed": true
+    },
+    {
+      "check": "Actual return plaque restores usable Home",
+      "passed": true
+    },
+    {
+      "check": "Return clears darkroom input and pauses its world",
+      "passed": true
+    },
+    {
+      "check": "Full darkroom round never mounts unrelated travel pack",
+      "passed": true
+    }
+  ],
+  "contacts": [
+    {
+      "elapsed": 8.40618333333333,
+      "point": [
+        358.559997558594,
+        698.0
+      ],
+      "removed": 10.0,
+      "tool": "needle"
+    },
+    {
+      "elapsed": 10.1076386666667,
+      "point": [
+        358.559997558594,
+        697.945861816406
+      ],
+      "removed": 10.0,
+      "tool": "needle"
+    },
+    {
+      "elapsed": 11.0,
+      "point": [
+        358.566925048828,
+        697.794555664062
+      ],
+      "removed": 20.0,
+      "tool": "slipper"
+    },
+    {
+      "elapsed": 11.9432399206349,
+      "point": [
+        358.494201660156,
+        697.888244628906
+      ],
+      "removed": 20.0,
+      "tool": "slipper"
+    },
+    {
+      "elapsed": 12.8321934285714,
+      "point": [
+        358.625793457031,
+        697.837524414062
+      ],
+      "removed": 20.0,
+      "tool": "slipper"
+    },
+    {
+      "elapsed": 13.7687083333333,
+      "point": [
+        358.532012939453,
+        697.877075195312
+      ],
+      "removed": 20.0,
+      "tool": "slipper"
+    },
+    {
+      "elapsed": 20.0413923333333,
+      "point": [
+        358.559997558594,
+        698.0
+      ],
+      "removed": 20.0,
+      "tool": "slipper"
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "finished_results": [
+    {
+      "contacts": 6,
+      "misfortune": 0.0,
+      "reward": 0,
+      "round_serial": 1,
+      "text": "晦气消除、乳腺通畅"
+    }
+  ],
+  "input_events": 35,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 5,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 5,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "darkroom"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 939938,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3623,
+          "loaded": 943108,
+          "mount_usec": 305,
+          "pack_id": "entry",
+          "pack_path": "/tmp/travel_scene_formal_56193b7/native_packs/packs/entry.pck",
+          "request_id": "p30383539594-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2383602,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 11432,
+          "loaded": 2311552,
+          "mount_usec": 390,
+          "pack_id": "comic",
+          "pack_path": "/tmp/travel_scene_formal_56193b7/native_packs/packs/comic.pck",
+          "request_id": "p30383539594-e1-r2",
+          "state": "ready",
+          "total": 2311552,
+          "verified_sha256": "19e5937677103f5a70cee482766a20b9153ffcc3b7c3e44eded5e2c5326aca9f"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2402461,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4845,
+          "loaded": 1107208,
+          "mount_usec": 254,
+          "pack_id": "exterior",
+          "pack_path": "/tmp/travel_scene_formal_56193b7/native_packs/packs/exterior.pck",
+          "request_id": "p30383539594-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2487741,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 69870,
+          "loaded": 16828344,
+          "mount_usec": 585,
+          "pack_id": "house",
+          "pack_path": "/tmp/travel_scene_formal_56193b7/native_packs/packs/house.pck",
+          "request_id": "p30383539594-e1-r4",
+          "state": "ready",
+          "total": 16828344,
+          "verified_sha256": "f9f15a8aa96521f53d8f5183ef40296d5365876fca177757e0497da67707a552"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 19958717,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 15302,
+          "loaded": 4534208,
+          "mount_usec": 402,
+          "pack_id": "darkroom",
+          "pack_path": "/tmp/travel_scene_formal_56193b7/native_packs/packs/darkroom.pck",
+          "request_id": "p30383539594-e1-r5",
+          "state": "ready",
+          "total": 4534208,
+          "verified_sha256": "250640a1ddc9d72675b23e6a0cbbc9e1ee14229750bcbdac27eb3bdde6441cac"
+        },
+        "epoch": 1,
+        "pack_id": "darkroom",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "phases": [
+    {
+      "completed_rounds": 0,
+      "elapsed": 13.7687083333333,
+      "phase": "clear_out",
+      "round_serial": 1,
+      "wall_msec": 29943
+    },
+    {
+      "completed_rounds": 1,
+      "elapsed": 16.6280854444445,
+      "phase": "gap_1s",
+      "round_serial": 1,
+      "wall_msec": 32810
+    },
+    {
+      "completed_rounds": 1,
+      "elapsed": 17.619696969697,
+      "phase": "spawn_in",
+      "round_serial": 2,
+      "wall_msec": 33808
+    },
+    {
+      "completed_rounds": 1,
+      "elapsed": 19.1777796060606,
+      "phase": "ready_full",
+      "round_serial": 2,
+      "wall_msec": 35363
+    },
+    {
+      "completed_rounds": 1,
+      "elapsed": 19.6973723333333,
+      "phase": "active",
+      "round_serial": 2,
+      "wall_msec": 35907
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Exact input PCKs, empty res, native Mesa GL, production App/router. Opening comic omitted with _commit_home fixture; all darkroom actions use root.push_input. Screenshots require separate visual review. No Web, hardware GPU, audio or touch-feel claim.",
+  "viewport": [
+    720,
+    1558
+  ]
+}

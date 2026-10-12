@@ -1,0 +1,75 @@
+{
+  "renderer": "Official Godot4.5.2 Mesa llvmpipe, same 720x1280 rendering for reference and page",
+  "scope": "Only approved fixed artwork regions; dynamic paragraph, event image and state cues intentionally differ.",
+  "regions": {
+    "return_hanger": {
+      "source_roi": [
+        35,
+        45,
+        120,
+        216
+      ],
+      "mean_absolute_channel_error": 0.0,
+      "maximum_channel_error": 0,
+      "byte_identical": true
+    },
+    "original_fish_seal": {
+      "source_roi": [
+        595,
+        804,
+        693,
+        899
+      ],
+      "mean_absolute_channel_error": 0.0,
+      "maximum_channel_error": 0,
+      "byte_identical": true
+    },
+    "footer_leaf": {
+      "source_roi": [
+        182,
+        990,
+        231,
+        1034
+      ],
+      "mean_absolute_channel_error": 0.0,
+      "maximum_channel_error": 0,
+      "byte_identical": true
+    },
+    "submit_pen_and_line_when_enabled": {
+      "source_roi": [
+        334,
+        927,
+        562,
+        975
+      ],
+      "mean_absolute_channel_error": 0.0,
+      "maximum_channel_error": 0,
+      "byte_identical": true
+    },
+    "heading_polygon_excluding_dynamic_illustration": {
+      "polygon": [
+        [
+          158,
+          340
+        ],
+        [
+          550,
+          300
+        ],
+        [
+          562,
+          373
+        ],
+        [
+          171,
+          416
+        ]
+      ],
+      "pixels_compared": 29692,
+      "max_error": 0,
+      "byte_identical": true
+    }
+  },
+  "reference_png_sha256": "2034b6e9501dfa46c09678312ffebb2693e3e27a508024cc678dddc1f8c77f1b",
+  "selected_page_png_sha256": "52a3d25aa68c91d3d5456a79aa14f1a637e2e8caf53a8f2ff6f1f66b2222f071"
+}

@@ -1,0 +1,58 @@
+{
+  "boundary": "Deterministic public-Engine API mocks, verified against pinned official4.5.2 source; no browser/cache-server observation claim.",
+  "results": [
+    {
+      "case": "versioned_core_canonical_FS_args_sizes_progress_exactly_once",
+      "pass": true,
+      "calls": [
+        {
+          "kind": "init",
+          "executable": "index"
+        },
+        {
+          "kind": "preload",
+          "url": "https://fixture.invalid/index.pck?sha256=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "destination": "index.pck",
+          "size": 10
+        },
+        {
+          "kind": "start",
+          "args": [
+            "--main-pack",
+            "index.pck",
+            "--sample-argument"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "new_core_hash_changes_HTTP_identity_only",
+      "pass": true,
+      "url": "https://fixture.invalid/index.pck?sha256=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "case": "holdInit_late_completion_cannot_start_closed_game",
+      "pass": true
+    },
+    {
+      "case": "holdPack_late_completion_cannot_start_closed_game",
+      "pass": true
+    },
+    {
+      "case": "failInit_keeps_failure_and_retry",
+      "pass": true
+    },
+    {
+      "case": "failPack_keeps_failure_and_retry",
+      "pass": true
+    },
+    {
+      "case": "failStart_keeps_failure_and_retry",
+      "pass": true
+    },
+    {
+      "case": "cross_origin_core_rejected_before_engine",
+      "pass": true
+    }
+  ]
+}

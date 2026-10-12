@@ -1,0 +1,322 @@
+{
+  "baseline_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+  "source_process_message": "Sentinel_4bd487cd61f8819194777d7d68c3af34",
+  "history_audit_message": "Sentinel_be0abdf623648191a17c05a63bc7f4b4",
+  "all_complete": false,
+  "items": [
+    {
+      "id": "H01",
+      "requirement": "Loading去大光圈，preboot/Godot一致，保角色与进度",
+      "latest_source": "root relay 14:19 / image(20261006-141642).png",
+      "status": "native_gl_and_both_background_assets_verified_group_web_pending",
+      "code_evidence": [
+        "entry/loading_page.tscn unchanged actor/progress logic",
+        "build/web_host_seed/index.html --loading-bg"
+      ],
+      "resource_evidence": [
+        "design/loading_no_halo/provenance.json",
+        "build/followup_20261006/evidence/H01/asset_checks.json"
+      ],
+      "cold_pack_evidence": [],
+      "visual_evidence": [
+        "build/followup_20261006/evidence/H01/loading_43.png"
+      ],
+      "source_commit": "4e272d221b2970613ecbbf89a35d84779b58c419",
+      "github_commit": null,
+      "historical_audit_id": "A047",
+      "commit_lookup": "git log --grep=H01",
+      "remaining": "Web preboot browser and complete empty-root startup await grouped package; static under-bar marks are outside requested halo/leading-dot scope",
+      "integrated_evidence": [
+        "build/followup_20261006/evidence/H01"
+      ]
+    },
+    {
+      "id": "H02",
+      "requirement": "花高度/曲率/前后错落稳定，保太阳方向/逐日最多10",
+      "latest_source": "root relay 14:19 / image(20261006-141800).png",
+      "status": "stable_geometry_and_old_save_migration_native_gl_verified_group_pending",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [],
+      "source_commit": "93582f79d0d29319e3d9b5160bd267ac2bad4f2f",
+      "github_commit": null,
+      "historical_audit_id": "A041",
+      "integrated_evidence": [
+        "build/reviews/h02_a041_flower_bouquet"
+      ]
+    },
+    {
+      "id": "H03",
+      "requirement": "恢复旧单次敲击原速度，缩两次间idle；保contact反馈",
+      "latest_source": "Sentinel_8a392f2b78f08191a9fe5e1d9e2e1d84",
+      "status": "original_motion_restored_native_clock_input_verified_GL_wallclock_limits_disclosed",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [],
+      "source_commit": "13780286b76b6d15f3ac7fbf065d0a7e61104e91",
+      "github_commit": null,
+      "historical_audit_id": "A007",
+      "integrated_evidence": [
+        "build/strike_rhythm/README.md"
+      ]
+    },
+    {
+      "id": "H04",
+      "requirement": "确认后认可旅行整角色静态背包图，云雾遮掩切换；取消正常actor",
+      "latest_source": "Sentinel_e65629fcc38481918864ae28f337c493",
+      "status": "confirmed_static_view_component_and_empty_res_delta_verified_group_pending",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [],
+      "source_commit": "76d41d2a0e2a2b5ab078547ec6d7910a4118d92d",
+      "github_commit": null,
+      "historical_audit_id": "A014/A077",
+      "integrated_evidence": [
+        "build/static_departure/h04_evidence.json"
+      ],
+      "followup_commits": [
+        "b2cbc2c1cd765082f0550f1ad2a31054c56f7eb8"
+      ],
+      "remaining": "Same-frame natural4.8s handoff fixed and actual GL verified. Final grouped cold packs/Web pending."
+    },
+    {
+      "id": "H05",
+      "requirement": "收藏按新馆设计工程落地，箱口点实物切故事、虚化背景高清前景",
+      "latest_source": "Sentinel_a4272a2189588191bc5eb5487640c6d3; Sentinel_28cb90b47df081919872bd8f2703920b",
+      "status": "source_assets_native_gl_verified_actual_group_cold_pending",
+      "code_evidence": [
+        "travel/treasure_gallery.gd",
+        "travel/travel_page.gd::_collection",
+        "build/reviews/H05_treasure_gallery_implementation.md"
+      ],
+      "resource_evidence": [
+        "travel_paper_v1.png reused runtime owner; no new entry; collection alpha mask reservation 262144 bytes"
+      ],
+      "cold_pack_evidence": [
+        "build/checks/test_treasure_gallery_cold_packs.gd syntax checked; final grouped PCK execution pending"
+      ],
+      "visual_evidence": [
+        "build/treasure_gallery/evidence/01_ginkgo_live.png",
+        "build/treasure_gallery/evidence/02_mani_live.png"
+      ],
+      "source_commit": "998ef7c942100ab4892197627da1c671a4b82511",
+      "github_commit": null,
+      "historical_audit_id": "A055",
+      "commit_lookup": "git log --grep=H05",
+      "remaining": "Actual combined cold PCK / user Web still pending; worker screenshots match its source, cumulative group still requires verification",
+      "integrated_evidence": [
+        "build/treasure_gallery/evidence"
+      ]
+    },
+    {
+      "id": "H06",
+      "requirement": "暗室等待只显示暗室装载中…，内部诊断/取消/重试保留",
+      "latest_source": "Sentinel_7379ac04ce048191811711138fa96db7",
+      "status": "native_gl_real_cancel_retry_verified_group_cold_pending",
+      "code_evidence": [
+        "scripts/app.gd::_darkroom_wait_text/_refresh_darkroom_wait_caption",
+        "home/home_page.gd::show_route_waiting"
+      ],
+      "resource_evidence": [
+        "Uses existing Home bootstrap font; no added asset or gate entry"
+      ],
+      "cold_pack_evidence": [
+        "No resource owner changed; group-level empty-root cold Darkroom entry still pending"
+      ],
+      "visual_evidence": [
+        "build/followup_20261006/evidence/H06/01_plain_loading.png",
+        "build/followup_20261006/evidence/H06/02_retry.png"
+      ],
+      "source_commit": "d4eaf88af8c39a26207c9eabc1c57e664a7af175",
+      "github_commit": null,
+      "historical_audit_id": "A046",
+      "commit_lookup": "git log --grep=H06",
+      "remaining": "关联组正式包冷加载与用户Web待验；原文省略号按三点循环，内部bytes/diagnostics保留",
+      "integrated_evidence": [
+        "build/followup_20261006/evidence/H06"
+      ]
+    },
+    {
+      "id": "H07",
+      "requirement": "仅两句Home提示接方案03真位图，保居中/悬浮/相对锚",
+      "latest_source": "Sentinel_fdea8d0682048191b930866207ab5c88",
+      "status": "selected03_exact_pixels_and118px_ten_flower_spacing_verified_group_cold_pending",
+      "code_evidence": [
+        "home/feedback/bitmap_hint.gd",
+        "home/independent_incense.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "resource_evidence": [
+        "design/home_labels_03/atlas_provenance.json",
+        "build/followup_20261006/evidence/H07/asset_checks.json"
+      ],
+      "cold_pack_evidence": [],
+      "visual_evidence": [
+        "build/followup_20261006/evidence/H07/bouquet_spacing/early_noon_evening_night.png",
+        "build/followup_20261006/evidence/H07/production_policy_day_lamp_off_detail.png"
+      ],
+      "source_commit": "14f60222854ded951413e8a17d353d74ad84c8af",
+      "github_commit": null,
+      "historical_audit_id": "A051",
+      "integrated_evidence": [
+        "build/followup_20261006/evidence/H07/asset_checks.json",
+        "2544e53"
+      ],
+      "followup_commits": [
+        "2544e534fa52aaa6b830416016273a5b64383a41",
+        "fb9aca8e79ae160abeca42d7b80f83a2ab0c69f7"
+      ]
+    },
+    {
+      "id": "H08",
+      "requirement": "地面日记翻开仍空白，按精确冷包修字体依赖与整绘制跳过",
+      "latest_source": "Sentinel_10ad2368586c8191b3fe0e20d6fca718",
+      "status": "three_empty_res_diary_paths_verified_actual_new_group_pending",
+      "code_evidence": [
+        "travel/travel_open_diary_art.gd",
+        "build/reviews/2026-10-06-cold-home-diary-blank.md"
+      ],
+      "resource_evidence": [
+        "Art.FONT uses house-resident travel_ui.ttf; 0 new resources; travel_brush.ttf bytes unchanged"
+      ],
+      "cold_pack_evidence": [
+        "build/checks/run_cold_diary_packs.py",
+        "exact561 core/house PCK plus only two officially compiled diary delta members; direct39/map-first40/schema1-return40"
+      ],
+      "visual_evidence": [
+        "/workspace/scratch/3f82ff2b3f81/diary_cold_fix_evidence/final_before",
+        "/workspace/scratch/3f82ff2b3f81/diary_cold_fix_evidence/final_after"
+      ],
+      "source_commit": "df3fd9c1dc1ddece781e8951174cd8f543bd59a5",
+      "github_commit": "0fe266ed06dc2f10fae828e8be53267b41eda381",
+      "historical_audit_id": "A063",
+      "commit_lookup": "git log --grep=H08",
+      "remaining": "关联组同源正式包和用户Web验收待；不称其余100项完成",
+      "integrated_evidence": [
+        "build/reviews/2026-10-06-cold-home-diary-blank.md"
+      ]
+    },
+    {
+      "id": "H09",
+      "requirement": "出发遗漏程序五星换四尖，按最新整相关提示范围",
+      "latest_source": "root relay 14:33 / image(20261006-142854).png",
+      "status": "four_point_reused_confirmed_departure_component_verified_group_pending",
+      "code_evidence": [
+        "travel/travel_home_props.gd::_draw departure branch",
+        "build/static_departure/capture_departure_glints.gd"
+      ],
+      "resource_evidence": [
+        "Reuses already Home-resident returned_bag_diamond.png; 0 new entry"
+      ],
+      "cold_pack_evidence": [],
+      "visual_evidence": [
+        "build/static_departure/h09_evidence.md",
+        "/tmp/godot_static_departure_qa/h09_retry/departure_four_point.png"
+      ],
+      "source_commit": "ed4417cbcb1df0e23fcecd7bd0d5a309f0b22605",
+      "github_commit": null,
+      "historical_audit_id": "A059",
+      "commit_lookup": "git log --grep=H09",
+      "remaining": "受控1.8秒阶段只证明四尖材质，截屏其余旧状态不是通过；连续真实确认/出场由H04一起验",
+      "integrated_evidence": [
+        "build/static_departure/README.md"
+      ]
+    },
+    {
+      "id": "H10",
+      "requirement": "三角纸牌接真实world昼夜/灯光与投影，不固定亮度",
+      "latest_source": "root relay 14:33 / image(20261006-142937).png",
+      "status": "actual_cold_delta_day_night_lamp_alpha_projection_verified_group_pending",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [],
+      "source_commit": "da192e18e3155a42e27eeb72517cc2956b42b1d0",
+      "github_commit": null,
+      "historical_audit_id": "A061",
+      "integrated_evidence": [
+        "build/reviews/H10_A061_paper_lighting_evidence.json"
+      ],
+      "followup_commits": [
+        "585ed61f765f485a036761b62127d4d5bb9e4d9f"
+      ]
+    },
+    {
+      "id": "H11",
+      "requirement": "日记批阅确认高光有明显但柔和可点击提示，区分未选/已选/已批阅",
+      "latest_source": "root relay 14:33 / image(20261006-142823).png",
+      "status": "enhanced360px_peak_valley_independently_viewed_three_state_input_verified_group_pending",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [],
+      "source_commit": "cbb1b7d661d15950590595f7be724ba3db97dd4a",
+      "github_commit": null,
+      "historical_audit_id": "A064",
+      "integrated_evidence": [
+        "build/reviews/H11_A064_review_ink_evidence.json"
+      ],
+      "followup_commits": [
+        "8246b3421d19dee52717f5aa32d37a4ad05a9fb0"
+      ]
+    },
+    {
+      "id": "H12",
+      "requirement": "用户图青海湖牌/无场景动态：核当前URL与精确包，禁先归缓存",
+      "latest_source": "root relay 14:33 / image(20261006-143105).png",
+      "status": "version_identification_pending_current561_has_fixed_route",
+      "code_evidence": [],
+      "resource_evidence": [],
+      "cold_pack_evidence": [],
+      "visual_evidence": [
+        "user_visual_feedback/image(20261006-143105).png",
+        "user_visual_feedback/image(20261006-143211).png"
+      ],
+      "source_commit": null,
+      "github_commit": null,
+      "remaining": "Both actual images viewed: Qinghai plaque above temple; screenshot alone cannot identify URL/version. Root requested exact URL; do not attribute to cache without it. 561 fixed-route code still requires actual current Web verification."
+    }
+  ],
+  "superseded": [
+    {
+      "old": "第21项把单击压到0.58秒/contact0.20秒",
+      "by": "H03",
+      "reason": "用户明确恢复旧单次动作，仅缩动作之间等待"
+    },
+    {
+      "old": "第25项禁止确认后使用旅行整角色替身",
+      "by": "H04",
+      "reason": "用户明确这个确认后场景改认可静态整图＋云雾过渡"
+    },
+    {
+      "old": "Home两句提示继续普通楷体",
+      "by": "H07",
+      "reason": "用户已选位图03"
+    }
+  ],
+  "separate_root_work": [
+    "照片墙工程 /root/implement_single_photo_wall；不与collection混页",
+    "跨历史100项覆盖矩阵 /root/audit_repeated_visual_failures；最新覆盖旧，不凑数"
+  ],
+  "group_packaging_source": "Sentinel_404a5b4d3a18819198dd83d0f8521d9c",
+  "photo_status": "Eleven original atomic photo commits integrated, including painted controls and480x512 reference-derived two old images. Latest integration f128665/271df9b; 0 new photo IDs, Home originals unchanged. Final grouped actual cold photo pack still pending.",
+  "additional_repair": {
+    "R03/A002": {
+      "source_commit": "0430ca6d02a4fff1ea25f16ed38c3da885919050",
+      "finding": "Login unhandled fallback entered on touch-down even when later canceled",
+      "verified": "28 actual App input/presentation assertions; no new resources",
+      "remaining": "Final actual empty-res PCK and Web"
+    }
+  },
+  "group_freeze_scope": "H01–H11, collection, photo wall plus repaired Login touch fallback and exact resource/cold-runner corrections. H12 screenshot version unknown. Darkroom tall bleed is next separate group.",
+  "native_preflight": {
+    "commit": "0430ca6d02a4fff1ea25f16ed38c3da885919050",
+    "snapshot": "bce97fd9738bc416a343c917739986b9b7ee3ceb9567ded7ab70814a35615a7f",
+    "scripts": 104,
+    "references": 240,
+    "checks": "Official4.5.2 asset import/parse/construction/input/original App smoke passed; noPCK"
+  }
+}

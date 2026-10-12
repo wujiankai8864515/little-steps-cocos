@@ -1,0 +1,48 @@
+{
+  "source_baseline": "efc034a^",
+  "file": "games/travel_woodfish/project/xiaoyu_rig.tscn",
+  "original_sha256": "ef0effe5c2ce9e734fc46f957a4d57e8c35e1f0aed6b1cf9bda41cee5d2747ad",
+  "current_sha256": "ef0effe5c2ce9e734fc46f957a4d57e8c35e1f0aed6b1cf9bda41cee5d2747ad",
+  "byte_identical": true,
+  "clip_length": 3.2,
+  "motion_end": 2.15,
+  "tracks": [
+    {
+      "path": "Skeleton2D/Ground/Body:scale",
+      "keys": 193,
+      "last_non_neutral_clip_second": 3.1833334
+    },
+    {
+      "path": "Skeleton2D/Ground/Body:rotation",
+      "keys": 193,
+      "last_non_neutral_clip_second": 1.8166667
+    },
+    {
+      "path": "Skeleton2D/Ground/Body:position",
+      "keys": 193,
+      "last_non_neutral_clip_second": 1.8166667
+    },
+    {
+      "path": "Skeleton2D/Ground/Body/Tail:rotation",
+      "keys": 193,
+      "last_non_neutral_clip_second": 2.1333334
+    },
+    {
+      "path": "Skeleton2D/Ground/Shoulder:position",
+      "keys": 193,
+      "last_non_neutral_clip_second": 1.85
+    },
+    {
+      "path": "Skeleton2D/Ground/Shoulder/GripMallet:rotation",
+      "keys": 193,
+      "last_non_neutral_clip_second": 1.85
+    },
+    {
+      "path": "Skeleton2D/Ground/Body/Expression:visible",
+      "keys": 6,
+      "last_non_neutral_clip_second": 1.27
+    }
+  ],
+  "note": "Body scale and position are reset by existing _sample_base_pose in both source versions; shoulder and grip neutral by 1.8667, tail by 2.15. No rig keys edited.",
+  "moving_bone_tracks_neutral_by_2_15": true
+}

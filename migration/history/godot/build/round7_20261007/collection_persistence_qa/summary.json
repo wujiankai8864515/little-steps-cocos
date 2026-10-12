@@ -1,0 +1,21 @@
+{
+  "candidate": "round7_collection_candidate_n25_v3/native_packs",
+  "production_changes": false,
+  "synthetic_fixture_not_user_data": true,
+  "seed_checks": 27,
+  "restart_checks": 16,
+  "failed": 0,
+  "inventory_count": 2,
+  "archived_count": 1,
+  "review_count": 2.0,
+  "saved_file_sha256_before": "a0d0d13dda4d37abd9920f66043a27820df77fc303b8eea71a3e93d63757f180",
+  "saved_file_sha256_after": "a0d0d13dda4d37abd9920f66043a27820df77fc303b8eea71a3e93d63757f180",
+  "two_processes": "Sequential independent run.py invocations; seed exits before restart. OS PID may repeat across executor PID namespaces. Shared isolated XDG_DATA_HOME, no in-memory service reused.",
+  "checks": "Actual root pointer archive and return; readonly prose matches archived entry; no review buttons; model unchanged; full inventory/journals/review_count equals expected after reload.",
+  "boundaries": [
+    "Native FileAccess only, not Web localStorage",
+    "Software GL not user GPU/mobile",
+    "Candidate not formal deployment",
+    "Fixture seed built with real service APIs, not pre-existing user data"
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "artifact": "A069 exact formal PCK route-landmark limited review",
+  "production_source": "bc1f8cf805c3650501a4dca616c37bc8c54f9df7",
+  "production_changes": false,
+  "final_screenshot_count": 13,
+  "analytical_image_count": 4,
+  "self_excluded": [
+    "artifact_manifest.json",
+    "artifact_manifest.sha256"
+  ],
+  "file_count": 59,
+  "total_bytes_excluding_manifest": 27266184,
+  "files": [
+    {
+      "path": "annotated_route_nodes.png",
+      "bytes": 1296874,
+      "sha256": "3b02c98f11556b5644924a2dfad8797341031acffd95532fe7d3912df8a18707"
+    },
+    {
+      "path": "arrival_threshold.png",
+      "bytes": 315470,
+      "sha256": "78f4417953c62ebac30c99dcebab86b3f88871c1f58f7a92e57d5ab577d9c87b"
+    },
+    {
+      "path": "base_route_crop.png",
+      "bytes": 1288096,
+      "sha256": "7ba1ddca6f17e03a99bcb9326b91053a13d941ecbf2e52b8f075122d5d4bea6e"
+    },
+    {
+      "path": "compact_evidence.py",
+      "bytes": 4670,
+      "sha256": "aa9807d795ec09efb5f88e0a1d55267a78fe291b5200c22b79f83feb32d1709f"
+    },
+    {
+      "path": "fixture_image_cleanup.json",
+      "bytes": 6999,
+      "sha256": "e28e34f873162ca701cfc9bb44a099028b219a512e7f5b5f249ffbc7ddff3a73"
+    },
+    {
+      "path": "formal_gl_v1/command.json",
+      "bytes": 651,
+      "sha256": "649eef2aac5fc6ba2dd34fd4f809fb47f30a81fee4d90b03e527f142a75c635d"
+    },
+    {
+      "path": "formal_gl_v1/empty/project.godot",
+      "bytes": 128,
+      "sha256": "813b4a2c1c859f1ee410bb3f39dac89502106e1c45c942382ff70110edbfba65"
+    },
+    {
+      "path": "formal_gl_v1/engine_pid.json",
+      "bytes": 11,
+      "sha256": "6b36773008c88f15af552c8791e8cc5e876e183ba6c477eb5d5acd2a2be7c6ea"
+    },
+    {
+      "path": "formal_gl_v1/preserved_runtime/data/godot/app_userdata/旅行木鱼/logs/godot.log",
+      "bytes": 366,
+      "sha256": "d3c6f92273373199f06825c80d19d808903e776f7f866a6599cd87235847ea03"
+    },
+    {
+      "path": "formal_gl_v1/process_exit.json",
+      "bytes": 46,
+      "sha256": "8c1954baa85be04f52bf025b92120e05fce2c2b2a87956cedac3456508534afc"
+    },
+    {
+      "path": "formal_gl_v1/render.log",
+      "bytes": 368,
+      "sha256": "056ffaee8f7f40fe52475e6851eab16c70e0f6952fcf9e4658c9caf609d522ac"
+    },
+    {
+      "path": "formal_gl_v1/results.json",
+      "bytes": 9431,
+      "sha256": "73a2459c9f7c5166794a784e2baf6756d7a8c0600190e471390ed1e101b41a25"
+    },
+    {
+      "path": "formal_gl_v1/summary.json",
+      "bytes": 2426,
+      "sha256": "3712f6f95fc069c44cbb7a977d3c07a8b1901fdb817459e569be93f0726a5a77"
+    },
+    {
+      "path": "formal_gl_v1/xorg.conf",
+      "bytes": 407,
+      "sha256": "105888630a00ddfa0bf8bedac135fc5de0431b361e6c2a49ed87793265b54489"
+    },
+    {
+      "path": "formal_gl_v1/xorg.log",
+      "bytes": 39961,
+      "sha256": "b0a2dc2c3f6662b1c357f68bfcfe2d919a0f71daffa9931a48c4da8416b0fb22"
+    },
+    {
+      "path": "formal_gl_v1/xorg.stdout",
+      "bytes": 1528,
+      "sha256": "942638a7a10028275d7d55899193f9dd7f9b14f682b31c17662bf220d17bb1eb"
+    },
+    {
+      "path": "formal_gl_v1/xorg_pid.json",
+      "bytes": 28,
+      "sha256": "5d247185e20ff12d476244b8c2625872d643a1974c358a98ae86894e2f08f2b2"
+    },
+    {
+      "path": "formal_gl_v2/command.json",
+      "bytes": 651,
+      "sha256": "1c973899dc668aa0e96e754b68c46b9b64a0367d7fe01bd72ae36d878bb7dc3d"
+    },
+    {
+      "path": "formal_gl_v2/empty/project.godot",
+      "bytes": 128,
+      "sha256": "813b4a2c1c859f1ee410bb3f39dac89502106e1c45c942382ff70110edbfba65"
+    },
+    {
+      "path": "formal_gl_v2/engine_pid.json",
+      "bytes": 11,
+      "sha256": "4071b29841af1042e31a159dec0312c234811dc460725c2699921c9cbcfcf60b"
+    },
+    {
+      "path": "formal_gl_v2/preserved_runtime/data/godot/app_userdata/旅行木鱼/logs/godot.log",
+      "bytes": 1014,
+      "sha256": "fde95796248c0c5e824909dd28b44ce0242f8fb25d2467e046717d70234a4bf7"
+    },
+    {
+      "path": "formal_gl_v2/process_termination.json",
+      "bytes": 469,
+      "sha256": "5e22b7d40216179d2474c56dd297b6f613cd1b0052fbea562ebb7792858d8d6b"
+    },
+    {
+      "path": "formal_gl_v2/render.log",
+      "bytes": 1037,
+      "sha256": "78e1d78913e02950aca94d0d3aaa1da93a75f86aec292552c5b5c6fb2e63fa8c"
+    },
+    {
+      "path": "formal_gl_v2/xorg.conf",
+      "bytes": 407,
+      "sha256": "105888630a00ddfa0bf8bedac135fc5de0431b361e6c2a49ed87793265b54489"
+    },
+    {
+      "path": "formal_gl_v2/xorg.log",
+      "bytes": 40339,
+      "sha256": "603fff3b426002f7afe06c65f7cea5347d2621181895022a64818d5e2d2629df"
+    },
+    {
+      "path": "formal_gl_v2/xorg.stdout",
+      "bytes": 1469,
+      "sha256": "14cb9c59937affe9d9f6fe0b8df15121c678fd85883f42f8aa62ac7c582d0d21"
+    },
+    {
+      "path": "formal_gl_v2/xorg_pid.json",
+      "bytes": 28,
+      "sha256": "583de314615fcef9d3a6ade2b184c9b94dc240a5b0178f599c33b99be86db2ac"
+    },
+    {
+      "path": "formal_gl_v3/000_0_0.png",
+      "bytes": 1756777,
+      "sha256": "9197867dd974b1e4da80977f9833b9ac25ad90b382c15ab49a6191a0e1bb3a48"
+    },
+    {
+      "path": "formal_gl_v3/1000_100_0.png",
+      "bytes": 1757150,
+      "sha256": "3ac158a25b06a0a625efb8e5b97b467d929a4c3c9ad94f841bd8a916a08174ed"
+    },
+    {
+      "path": "formal_gl_v3/200_20_0.png",
+      "bytes": 1758362,
+      "sha256": "83fd031bbf539ee74f9cfbcb5ff3f26002b4888ea2c7ea00d9592e63a849a5df"
+    },
+    {
+      "path": "formal_gl_v3/299_29_9.png",
+      "bytes": 1757734,
+      "sha256": "45c613f86fb3b64ef294127bf2ed77db8b1f4e8d822d094c0d9738fd735be6f8"
+    },
+    {
+      "path": "formal_gl_v3/300_30_0.png",
+      "bytes": 1758055,
+      "sha256": "6faaf06d9f863ddfa4c732961ad7525eb9f6c48ad3a33770c1139b7820f4d3d3"
+    },
+    {
+      "path": "formal_gl_v3/333_33_3.png",
+      "bytes": 1757592,
+      "sha256": "50236b00d3538b983824dd58709be1be7c99e1226aa36e4cb76e1600dc25a154"
+    },
+    {
+      "path": "formal_gl_v3/400_40_0.png",
+      "bytes": 1756823,
+      "sha256": "17b705e4ed6eb021963fd0bcb1ab1d56eaf52b043971a12030f7e1f60a29f4e5"
+    },
+    {
+      "path": "formal_gl_v3/500_50_0.png",
+      "bytes": 1757358,
+      "sha256": "190a6c1bd683e634c11f7cc4e0c05aeba9620197b957047de9f281721b44b8bc"
+    },
+    {
+      "path": "formal_gl_v3/599_59_9.png",
+      "bytes": 1756879,
+      "sha256": "e25e0352f647f3b5092df58146b82179717a87f93c774346de440aa0ed0439b8"
+    },
+    {
+      "path": "formal_gl_v3/600_60_0.png",
+      "bytes": 1756739,
+      "sha256": "f67d81d1625f4f25c01c70162bffcc161dde1f892c5631425505611bffabcedd"
+    },
+    {
+      "path": "formal_gl_v3/900_90_0.png",
+      "bytes": 1757888,
+      "sha256": "d2019c7934fab3daa9e0aabdbf0f9a31b0c5644606169f49126e5a4d293bb0cc"
+    },
+    {
+      "path": "formal_gl_v3/950_95_0.png",
+      "bytes": 1757502,
+      "sha256": "21255d5cc3ac036a03d9d48d0e56b431b7eb8cab7c33d5138928da5ef74ac8c8"
+    },
+    {
+      "path": "formal_gl_v3/999_99_9.png",
+      "bytes": 1757254,
+      "sha256": "b2b0655d9a2b8ee856eb49053651861b0c82a3625404d1c86bf90638979074ab"
+    },
+    {
+      "path": "formal_gl_v3/command.json",
+      "bytes": 651,
+      "sha256": "6b852f1bf9f31eb4c6574a44f68c66bcb64a61e883a4518472d26d9e47360a8a"
+    },
+    {
+      "path": "formal_gl_v3/empty/project.godot",
+      "bytes": 128,
+      "sha256": "813b4a2c1c859f1ee410bb3f39dac89502106e1c45c942382ff70110edbfba65"
+    },
+    {
+      "path": "formal_gl_v3/engine_pid.json",
+      "bytes": 11,
+      "sha256": "4071b29841af1042e31a159dec0312c234811dc460725c2699921c9cbcfcf60b"
+    },
+    {
+      "path": "formal_gl_v3/preserved_runtime/data/godot/app_userdata/旅行木鱼/logs/godot.log",
+      "bytes": 366,
+      "sha256": "d3c6f92273373199f06825c80d19d808903e776f7f866a6599cd87235847ea03"
+    },
+    {
+      "path": "formal_gl_v3/process_exit.json",
+      "bytes": 46,
+      "sha256": "8c1954baa85be04f52bf025b92120e05fce2c2b2a87956cedac3456508534afc"
+    },
+    {
+      "path": "formal_gl_v3/render.log",
+      "bytes": 368,
+      "sha256": "056ffaee8f7f40fe52475e6851eab16c70e0f6952fcf9e4658c9caf609d522ac"
+    },
+    {
+      "path": "formal_gl_v3/results.json",
+      "bytes": 12604,
+      "sha256": "5ad496eda1695e841ce741fd1107acf197ec6c15be524a4526dfeeaafca07201"
+    },
+    {
+      "path": "formal_gl_v3/summary.json",
+      "bytes": 2426,
+      "sha256": "cc422b7bf080b8950869be7f3c196dc55c596ac6008b0335b56f9a787b6d5565"
+    },
+    {
+      "path": "formal_gl_v3/xorg.conf",
+      "bytes": 407,
+      "sha256": "105888630a00ddfa0bf8bedac135fc5de0431b361e6c2a49ed87793265b54489"
+    },
+    {
+      "path": "formal_gl_v3/xorg.log",
+      "bytes": 40111,
+      "sha256": "8e69461c3cac6e904542c34c2aaa8c00ccf235cf6390f6e0c1294c2214f3353e"
+    },
+    {
+      "path": "formal_gl_v3/xorg.stdout",
+      "bytes": 1528,
+      "sha256": "29f03c1346bc7533917d4f76cbc8a3f3fbd0270841296bf1770e08015931b62d"
+    },
+    {
+      "path": "formal_gl_v3/xorg_pid.json",
+      "bytes": 28,
+      "sha256": "03844e7b796ac67a5f98f61817b0c589b369299de94c1c20b26a3dcb95196127"
+    },
+    {
+      "path": "png_lossless_reencoding.json",
+      "bytes": 9606,
+      "sha256": "a3a8a5466ace9933f3f34735af500656c27d6285a9d05a754132c6abca4c9e1e"
+    },
+    {
+      "path": "review.json",
+      "bytes": 6734,
+      "sha256": "b74ba6b4c61cd448113d5e276436fdcd10162f3f283d3f303ee202cce25eea8a"
+    },
+    {
+      "path": "review.md",
+      "bytes": 3864,
+      "sha256": "9a59353abb7136a436b4ee5138a7eeec7f8df34d4a9f704363c17466b221836d"
+    },
+    {
+      "path": "route_before_middle_after.png",
+      "bytes": 1307652,
+      "sha256": "a59ab450f4e2456e33b9533567b1a196f44ef07b45a346dbd685229f8bb1acdd"
+    },
+    {
+      "path": "run_review.py",
+      "bytes": 7108,
+      "sha256": "af8e5d22778674571ab002c0275bb7d2ee9e19e53afe937ddbf35af5a35cbf63"
+    },
+    {
+      "path": "runtime_cleanup.json",
+      "bytes": 5381,
+      "sha256": "1ce94df4f8d025c720da3767529100633967acb4c4e9803ce9f6181cee62c30c"
+    },
+    {
+      "path": "test_route_landmarks.gd",
+      "bytes": 8039,
+      "sha256": "92a4e0e105f7c59e5c80916a289e9f54d6723a5e55254574c308ee79e39d3015"
+    }
+  ]
+}

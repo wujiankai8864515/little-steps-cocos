@@ -1,0 +1,76 @@
+{
+  "recorded_at_utc": "2026-10-06T06:46:48.290033+00:00",
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "engine_path": "/workspace/scratch/3f82ff2b3f81/godot_reconstruction_assessment/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "pre_fix_service_sha256": "1f403612afd226d59b0ea558a7bfba05b18378b05f7c501dfd4ac988d29febab",
+  "scope": "Read-only code review and isolated headless two-Service reproductions. No visual or live browser/tab acceptance.",
+  "findings": [
+    {
+      "id": "R5-TX-01",
+      "severity": "P2",
+      "status": "fixed_and_independently_rechecked",
+      "original_location": "games/travel_woodfish/project/travel/travel_page.gd:360",
+      "current_fix_locations": [
+        "games/travel_woodfish/project/travel/travel_page.gd:95",
+        "games/travel_woodfish/project/travel/travel_page.gd:107",
+        "games/travel_woodfish/project/travel/travel_page.gd:383"
+      ],
+      "problem": "External cancellation/token replacement left a stale local choice panel. An old token could neither choose nor close; a waiting event was rendered as decided and accessed missing result.",
+      "before_log": "logs/ui_before_fix.log",
+      "after_log": "logs/ui_after_fix.log",
+      "before": {
+        "old_token_release": false,
+        "panel_uid_remained": true,
+        "waiting_render": "Invalid access to result on Dictionary"
+      },
+      "after": {
+        "old_token_release": true,
+        "panel_uid_cleared": true,
+        "waiting_render": "Safe early return; no script error"
+      }
+    },
+    {
+      "id": "R5-TX-02",
+      "severity": "P2",
+      "status": "fixed_and_independently_rechecked",
+      "original_location": "games/travel_woodfish/project/travel/travel_service.gd:86",
+      "current_fix_locations": [
+        "games/travel_woodfish/project/travel/travel_service.gd:33",
+        "games/travel_woodfish/project/travel/travel_service.gd:90"
+      ],
+      "problem": "Recovery after a write failure retained a generic pending flag. After stale-revision reload, its next retry released another instance’s newer live token.",
+      "before_log": "logs/recovery_before_fix.log",
+      "after_log": "logs/recovery_after_fix.log",
+      "before": {
+        "second_retry_durable_clock": "RUNNING",
+        "second_retry_durable_token": ""
+      },
+      "after": {
+        "second_retry_durable_clock": "CHOICE_PAUSED",
+        "second_retry_durable_token": "trip_1_7:choice:2",
+        "event": "manual",
+        "recovery_pending": false
+      }
+    }
+  ],
+  "conclusion": "所审事务未发现其他具体阻塞。两个实证 P2 均已修复并以原独立路径复核。",
+  "reviewed_without_additional_findings": [
+    "Terminal atomic commit and rollback",
+    "Manual selection and explicit diary-review learning once",
+    "FLYING reward recovery, Home exit and presentation reconstruction",
+    "Reward completion failure retry and unique inventory grant",
+    "Departure after all rewards collected",
+    "Background-time route reconciliation and legacy migration call contracts"
+  ],
+  "limitations": [
+    "The dual instances shared an isolated memory store; this exercises service CAS/reload ownership logic but is not an actual multi-tab browser test.",
+    "No GPU pixels, animation appearance or real touch-feel acceptance.",
+    "The prior 1537-check / 103.291-second report was read as existing evidence; this reviewer did not rerun longrun.",
+    "Reproduction scripts log state and intentionally return zero even for expected pre-fix bugs; inspect the records and script-error log rather than using exit code as a pass.",
+    "Original UI source was not frozen or modified by this reviewer; its exact original failure is retained in the native Godot log. Scripts reference the production source path and thus follow later edits."
+  ],
+  "repo_modified_by_reviewer": false,
+  "committed_or_deployed": false,
+  "runtime_auth_or_cache_copied": false,
+  "recovery_before_log_provenance": "Re-executed unchanged original repro against the still-available pre-fix assembled service; its SHA-256 was verified immediately before execution."
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "check_count": 305,
+  "failures": [],
+  "verification_boundary": "Headless logic/storage regression only; GL visual evidence is results.json and the actual Home images.",
+  "full_result_path": "/tmp/godot_flower_variation_qa/regression_commit/results.json",
+  "full_result_sha256": "7171b4ec25aa4e778a5205e9bf102fd84a9554e250ca139f88ebf762d49bc6cd",
+  "covers": [
+    "schema 1/2/3 restore and geometry migration",
+    "one initial flower, exact 60-second births, eight-second growth, ten-flower cap",
+    "isolated atomic disk save/reload",
+    "virtual upper semicircle and fixed roots",
+    "continuous stem sweep",
+    "unchanged eye geometry and gaze regression"
+  ]
+}

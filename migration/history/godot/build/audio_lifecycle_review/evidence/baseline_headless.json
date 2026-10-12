@@ -1,0 +1,872 @@
+{
+  "checks": [
+    {
+      "check": "cold Home preparation terminates",
+      "elapsed": 2.56666666666667,
+      "pass": true
+    },
+    {
+      "check": "actual router owns active Home",
+      "elapsed": 3.1245278888889,
+      "pass": true
+    },
+    {
+      "check": "cold Home has no delayed page packs",
+      "elapsed": 3.1245278888889,
+      "pass": true
+    },
+    {
+      "check": "no music before first valid Home gesture",
+      "elapsed": 3.1245278888889,
+      "pass": true
+    },
+    {
+      "check": "release and canceled touch do not unlock music",
+      "elapsed": 3.1245278888889,
+      "pass": true
+    },
+    {
+      "check": "first valid root gesture starts real two players once",
+      "elapsed": 3.15264900000001,
+      "pass": true
+    },
+    {
+      "check": "twenty root lamp clicks all reach production switch",
+      "elapsed": 3.15264900000001,
+      "pass": true
+    },
+    {
+      "check": "lamp burst reuses streams with no music state writes",
+      "elapsed": 3.15264900000001,
+      "pass": true
+    },
+    {
+      "check": "root settings input opens music controls",
+      "elapsed": 3.43593566666668,
+      "pass": true
+    },
+    {
+      "check": "real music toggle pauses both streams",
+      "elapsed": 3.46260233333335,
+      "pass": true
+    },
+    {
+      "check": "same disabled state causes no duplicate pause writes",
+      "elapsed": 3.46260233333335,
+      "pass": true
+    },
+    {
+      "check": "real music toggle resumes without restart",
+      "elapsed": 3.48926900000001,
+      "pass": true
+    },
+    {
+      "check": "injected focus loss pauses actual music",
+      "elapsed": 3.51593566666668,
+      "pass": true
+    },
+    {
+      "check": "repeat focus out is idempotent",
+      "elapsed": 3.51593566666668,
+      "pass": true
+    },
+    {
+      "check": "focus recovery reuses actual streams without replay",
+      "elapsed": 3.51593566666668,
+      "pass": true
+    },
+    {
+      "check": "before_photo_focus: root input starts strike",
+      "elapsed": 3.51593566666668,
+      "pass": true
+    },
+    {
+      "check": "before_photo_focus: no merit or sound before contact",
+      "elapsed": 3.51593566666668,
+      "pass": true
+    },
+    {
+      "check": "before_photo_focus: exactly one merit at actual contact",
+      "elapsed": 6.61712700000004,
+      "pass": true
+    },
+    {
+      "check": "before_photo_focus: exactly one observed real playback identity at contact",
+      "elapsed": 6.61712700000004,
+      "pass": true
+    },
+    {
+      "check": "photo burst opens one real photo page",
+      "elapsed": 7.03265500000004,
+      "pass": true
+    },
+    {
+      "check": "photo burst does not duplicate music streams",
+      "elapsed": 7.03265500000004,
+      "pass": true
+    },
+    {
+      "check": "photo return after focus loss restores Home input",
+      "elapsed": 7.03265500000004,
+      "pass": true
+    },
+    {
+      "check": "photo focus recovery restores Home effects enabled state",
+      "elapsed": 7.03265500000004,
+      "pass": false
+    },
+    {
+      "check": "after_photo_focus: root input starts strike",
+      "elapsed": 7.03265500000004,
+      "pass": true
+    },
+    {
+      "check": "after_photo_focus: no merit or sound before contact",
+      "elapsed": 7.03265500000004,
+      "pass": true
+    },
+    {
+      "check": "after_photo_focus: exactly one merit at actual contact",
+      "elapsed": 9.95030233333333,
+      "pass": true
+    },
+    {
+      "check": "after_photo_focus: exactly one observed real playback identity at contact",
+      "elapsed": 9.95030233333333,
+      "pass": false
+    },
+    {
+      "check": "photo cycle 0 opens",
+      "elapsed": 10.2330383333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 0 reuses page shell",
+      "elapsed": 10.2330383333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 0 no hidden Home effects",
+      "elapsed": 10.2330383333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 0 returns",
+      "elapsed": 10.2330383333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 1 opens",
+      "elapsed": 10.5709423333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 1 reuses page shell",
+      "elapsed": 10.5709423333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 1 no hidden Home effects",
+      "elapsed": 10.5709423333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 1 returns",
+      "elapsed": 10.5709423333333,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 2 opens",
+      "elapsed": 10.9088463333332,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 2 reuses page shell",
+      "elapsed": 10.9088463333332,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 2 no hidden Home effects",
+      "elapsed": 10.9088463333332,
+      "pass": true
+    },
+    {
+      "check": "photo cycle 2 returns",
+      "elapsed": 10.9088463333332,
+      "pass": true
+    }
+  ],
+  "cmdline": [
+    "--script",
+    "/workspace/scratch/3f82ff2b3f81/audio_lifecycle_followup/audio_lifecycle_actual_packs.gd"
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 2,
+  "pack_metrics": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 5,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 5,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "photo"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 232247,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3262,
+          "loaded": 943108,
+          "mount_usec": 273,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/entry.pck",
+          "request_id": "p29829891465-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1621562,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 7546,
+          "loaded": 2313888,
+          "mount_usec": 264,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/comic.pck",
+          "request_id": "p29829891465-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1627426,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3606,
+          "loaded": 1107208,
+          "mount_usec": 193,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/exterior.pck",
+          "request_id": "p29829891465-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1688177,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 59739,
+          "loaded": 17019800,
+          "mount_usec": 554,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/house.pck",
+          "request_id": "p29829891465-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 11801669,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 15278,
+          "loaded": 2858372,
+          "mount_usec": 390,
+          "pack_id": "photo",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/home_polish_formal_c242391/native_packs/packs/photo.pck",
+          "request_id": "p29829891465-e1-r5",
+          "state": "ready",
+          "total": 2858372,
+          "verified_sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "root_input_events": 115,
+  "samples": [
+    {
+      "elapsed": 3.15264900000001,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": true,
+      "label": "first_gesture",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.00221790396608412,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 0.0351513888888889,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 0,
+        "resume_write_count": 0,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 401,
+      "objects": 2446.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": 0
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 170.0,
+      "static_bytes": 186725418.0
+    },
+    {
+      "contact_playing": true,
+      "knock_enabled": true,
+      "label": "before_photo_focus_strike",
+      "playback_ids": [
+        -9223371914230102538
+      ]
+    },
+    {
+      "elapsed": 6.61712700000004,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": true,
+      "label": "AU01_home_controls",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.0630957558751106,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 1.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 4,
+        "resume_write_count": 4,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 401,
+      "objects": 2456.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": -9223371976893004048
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 170.0,
+      "static_bytes": 187508714.0
+    },
+    {
+      "contact_playing": false,
+      "knock_enabled": false,
+      "label": "after_photo_focus_strike",
+      "playback_ids": []
+    },
+    {
+      "elapsed": 9.95030233333333,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": false,
+      "label": "photo_focus_return",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.0630957558751106,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 1.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 6,
+        "resume_write_count": 6,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 485,
+      "objects": 2715.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": -9223371976893004048
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 172.0,
+      "static_bytes": 205671962.0
+    },
+    {
+      "elapsed": 10.2882063333333,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": false,
+      "label": "photo_cycle_0",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.0630957558751106,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 1.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 6,
+        "resume_write_count": 6,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 485,
+      "objects": 2715.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": -9223371976893004048
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 172.0,
+      "static_bytes": 205650358.0
+    },
+    {
+      "elapsed": 10.6261103333333,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": false,
+      "label": "photo_cycle_1",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.0630957558751106,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 1.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 6,
+        "resume_write_count": 6,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 485,
+      "objects": 2715.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": -9223371976893004048
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 172.0,
+      "static_bytes": 205695698.0
+    },
+    {
+      "elapsed": 10.9640143333332,
+      "identity": {
+        "day_bytes": 2020909,
+        "day_player": 103616088438,
+        "day_stream": -9223371933272241804,
+        "music": 103532202355,
+        "night_bytes": 3339071,
+        "night_player": 103649642872,
+        "night_stream": -9223371933255464587
+      },
+      "knock_enabled": false,
+      "label": "photo_cycle_2",
+      "music": {
+        "application_paused": false,
+        "can_play": true,
+        "configured": true,
+        "day_gain": 0.0630957558751106,
+        "day_paused": false,
+        "day_playback_type": 1,
+        "disposed": false,
+        "enabled": true,
+        "envelope": 1.0,
+        "focused": true,
+        "gesture_seen": true,
+        "mix": 0.0,
+        "night_gain": 0.0,
+        "night_paused": false,
+        "night_playback_type": 1,
+        "page_active": true,
+        "pause_write_count": 6,
+        "resume_write_count": 6,
+        "start_count": 1,
+        "started": true,
+        "stop_count": 0,
+        "target_mix": 0.0
+      },
+      "node_count": 485,
+      "objects": 2715.0,
+      "orphans": 0.0,
+      "players": [
+        {
+          "id": 96703875127,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Music",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 1,
+          "stream": 0
+        },
+        {
+          "id": 96737429561,
+          "path": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/GameAudio/Effects",
+          "paused": false,
+          "playback": 0,
+          "playing": false,
+          "polyphony": 8,
+          "stream": -9223371976893004048
+        },
+        {
+          "id": 103616088438,
+          "path": "/root/TravelWoodfish/HomeMusic/DayMusic",
+          "paused": false,
+          "playback": -9223371921863735810,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933272241804
+        },
+        {
+          "id": 103649642872,
+          "path": "/root/TravelWoodfish/HomeMusic/NightMusic",
+          "paused": false,
+          "playback": -9223371921846958638,
+          "playing": true,
+          "polyphony": 1,
+          "stream": -9223371933255464587
+        }
+      ],
+      "resources": 172.0,
+      "static_bytes": 205708142.0
+    }
+  ],
+  "scope": "Native actual AudioStreamPlayer state/identity and root input; injected application notifications; no Web audio unlock, actual listening, OS focus event, or browser memory evidence."
+}

@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "check": "trip starts through real service",
+      "pass": true
+    },
+    {
+      "check": "leaf count stays 18",
+      "pass": true
+    },
+    {
+      "check": "Bezier travel and independent flip change on actual frames",
+      "pass": true
+    },
+    {
+      "check": "continuous leaf motion below 3 logical pixels per 60Hz step",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "largest_step": 0.803806841373444
+}

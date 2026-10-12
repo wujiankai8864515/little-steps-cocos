@@ -1,0 +1,192 @@
+{
+  "checks": [
+    {
+      "check": "mount entry",
+      "passed": true
+    },
+    {
+      "check": "mount exterior",
+      "passed": true
+    },
+    {
+      "check": "mount house",
+      "passed": true
+    },
+    {
+      "check": "mount darkroom",
+      "passed": true
+    },
+    {
+      "check": "Official imported central RGBA and transparent windows match frozen original exactly",
+      "passed": true
+    },
+    {
+      "check": "Actual first draw ready at height 1280",
+      "passed": true
+    },
+    {
+      "check": "Doll position unchanged at height 1280",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1280_day",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1280_night_off",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1280_night_on",
+      "passed": true
+    },
+    {
+      "check": "Real needle input settles exactly once at height 1280",
+      "passed": true
+    },
+    {
+      "check": "Actual first draw ready at height 1558",
+      "passed": true
+    },
+    {
+      "check": "Doll position unchanged at height 1558",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1558_day",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1558_night_off",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1558_night_on",
+      "passed": true
+    },
+    {
+      "check": "Real needle input settles exactly once at height 1558",
+      "passed": true
+    },
+    {
+      "check": "Actual first draw ready at height 1800",
+      "passed": true
+    },
+    {
+      "check": "Doll position unchanged at height 1800",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1800_day",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1800_night_off",
+      "passed": true
+    },
+    {
+      "check": "Edge shares production room lighting at 1800_night_on",
+      "passed": true
+    },
+    {
+      "check": "Real needle input settles exactly once at height 1800",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Exact input PCKs, empty res, native GL static day/night/lamp component matrix plus real needle input; App full-round route verified separately.",
+  "snapshots": [
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 63,
+      "height": 1280,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "day"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 63,
+      "height": 1280,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_off"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 63,
+      "height": 1280,
+      "lamp_weight": 1.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_on"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1558,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "day"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1558,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_off"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1558,
+      "lamp_weight": 1.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_on"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1800,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "day"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1800,
+      "lamp_weight": 0.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_off"
+    },
+    {
+      "doll_position": "(363.0, 809.0)",
+      "draw_calls": 64,
+      "height": 1800,
+      "lamp_weight": 1.0,
+      "room_rect": "[P: (0.0, 0.0), S: (941.0, 1672.0)]",
+      "room_scale": "(0.765143, 0.76555)",
+      "texture_size": "(941, 1672)",
+      "variant": "night_on"
+    }
+  ]
+}

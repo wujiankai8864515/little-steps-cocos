@@ -1,0 +1,483 @@
+{
+  "checks": [
+    {
+      "check": "Candidate mounts before production scene load",
+      "pass": true
+    },
+    {
+      "check": "Candidate-only script overlay mounts",
+      "pass": true
+    },
+    {
+      "check": "Production cold Home load terminates",
+      "pass": true
+    },
+    {
+      "check": "Formal core and delayed packs prepare Home",
+      "pass": true
+    },
+    {
+      "check": "Deterministic trip fixture starts through real service",
+      "pass": true
+    },
+    {
+      "check": "Real Home bridge loads and opens Travel Page",
+      "pass": true
+    },
+    {
+      "check": "Page uses actual scene resources",
+      "pass": true
+    },
+    {
+      "check": "App, Home and Travel share the identical Clock",
+      "pass": true
+    },
+    {
+      "check": "N22 exact ten arrival endpoints and C1 Bezier joins",
+      "pass": true
+    },
+    {
+      "check": "N19/N21/N22 atlas dimensions and decoded budget unchanged",
+      "pass": true
+    },
+    {
+      "check": "Official lossless import preserves exact new atlas RGBA",
+      "pass": true
+    },
+    {
+      "check": "N21 redundant story context removed",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_01_hour_5_5.jpg",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_02_hour_12_0.jpg",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_03_hour_18_5.jpg",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_04_hour_23_0.jpg",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 山门",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 石桥",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 溪边",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 秋叶寺",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 山路",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 归途山门",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 旅途中 · 0 / 10",
+      "pass": true
+    },
+    {
+      "check": "N13 visible glyph center: 当前站：山门",
+      "pass": true
+    },
+    {
+      "check": "N21 ticket updates only to actual route station",
+      "pass": true
+    },
+    {
+      "check": "N20 first visible pending encounter chimes once",
+      "pass": true
+    },
+    {
+      "check": "N20 repeated frame refresh cannot replay same event",
+      "pass": true
+    },
+    {
+      "check": "N20 cue does not overlap bell",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_05_hour_23_0.jpg",
+      "pass": true
+    },
+    {
+      "check": "N18 full-page flow never captures input",
+      "pass": true
+    },
+    {
+      "check": "N18 current advances across actual rendered frames",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_06_hour_23_0.jpg",
+      "pass": true
+    },
+    {
+      "check": "N18 untouched encounter does not pause travel",
+      "pass": true
+    },
+    {
+      "check": "N20 sound switch suppresses cue",
+      "pass": true
+    },
+    {
+      "check": "N14 at least four physical contacts in 45 seconds",
+      "pass": true
+    },
+    {
+      "check": "N14 real contact path starts actual bell player",
+      "pass": true
+    },
+    {
+      "check": "N14/N20 focus loss blocks and stops both sounds",
+      "pass": true
+    },
+    {
+      "check": "A real pending event exists",
+      "pass": true
+    },
+    {
+      "check": "N17 existing manual choice still pauses",
+      "pass": true
+    },
+    {
+      "check": "Saved actual Travel frame frame_07_hour_12_0.jpg",
+      "pass": true
+    },
+    {
+      "check": "Cancel manual choice resumes original clock",
+      "pass": true
+    },
+    {
+      "check": "N17 still auto-returns at endpoint while viewed",
+      "pass": true
+    },
+    {
+      "check": "N21 endpoint ticket keeps real return gate",
+      "pass": true
+    },
+    {
+      "check": "N14/N20 dismiss releases both PCM streams",
+      "pass": true
+    },
+    {
+      "check": "Page releases runtime on exit",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "samples": [
+    {
+      "Home_hour": 5.5,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        5.37366962432861,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.1959375,
+      "actor_shadow_rotation": 0.192705478668213,
+      "clock_position": 2.8125,
+      "daylight": 0.84375,
+      "direction": [
+        -0.358244657516479,
+        -0.933627843856812
+      ],
+      "hour": 5.5,
+      "moon": [
+        543.0,
+        214.0
+      ],
+      "moon_phase": 1.0,
+      "moon_weight": 0.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "858baf569a5a921c3900e99bf84d102c8e0bfea2bf989ea5c1ac3ec0244861c2",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 0.09375,
+      "sun": [
+        262.75,
+        165.033172607422
+      ],
+      "tint": [
+        0.922983050346375,
+        0.885501861572266,
+        0.830447435379028,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 12.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -1.42213654518127,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.21,
+      "actor_shadow_rotation": 0.266519680023193,
+      "clock_position": 15.0,
+      "daylight": 1.0,
+      "direction": [
+        0.0948091000318527,
+        -0.995495438575745
+      ],
+      "hour": 12.0,
+      "moon": [
+        543.0,
+        214.0
+      ],
+      "moon_phase": 1.0,
+      "moon_weight": 0.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "7d8af5f543155e56ab584c0706a7acbcdfacae40990f2a8b1b79c0d1c6518ebf",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 0.5,
+      "sun": [
+        396.0,
+        148.0
+      ],
+      "tint": [
+        1.0,
+        0.980000019073486,
+        0.910000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 18.5,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -8.33026885986328,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.1959375,
+      "actor_shadow_rotation": 0.345533065795898,
+      "clock_position": 27.1875,
+      "daylight": 0.84375,
+      "direction": [
+        0.555351257324219,
+        -0.83161586523056
+      ],
+      "hour": 18.5,
+      "moon": [
+        543.0,
+        214.0
+      ],
+      "moon_phase": 1.0,
+      "moon_weight": 0.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "41a7b31a82aedb2f2209da16d4615a490cf072e62a4287cc2525fe9e055d4ad2",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 0.90625,
+      "sun": [
+        529.25,
+        165.033172607422
+      ],
+      "tint": [
+        0.922983050346375,
+        0.885501861572266,
+        0.830447435379028,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.0,
+      "Home_moon_phase": 0.375,
+      "actor_shadow_offset": [
+        1.86734843254089,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.12,
+      "actor_shadow_rotation": 0.23135721206665,
+      "clock_position": 41.25,
+      "daylight": 0.0,
+      "direction": [
+        -0.124489895999432,
+        -0.992220818996429
+      ],
+      "hour": 23.0,
+      "moon": [
+        314.25,
+        191.826889038086
+      ],
+      "moon_phase": 0.375,
+      "moon_weight": 1.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "95d2197ec052770d7e679ca5e836fd495e2c0b608d78914c3836f569ec43a268",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.0,
+      "Home_moon_phase": 0.375,
+      "actor_shadow_offset": [
+        1.86734843254089,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.12,
+      "actor_shadow_rotation": 0.23135721206665,
+      "clock_position": 41.25,
+      "daylight": 0.0,
+      "direction": [
+        -0.124489895999432,
+        -0.992220818996429
+      ],
+      "hour": 23.0,
+      "moon": [
+        314.25,
+        191.826889038086
+      ],
+      "moon_phase": 0.375,
+      "moon_weight": 1.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "edac3a9a19658c949e837a113742d4b0f92a281c80f2fccb2aba2d6fa44066cf",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 23.0,
+      "Home_moon_phase": 0.375,
+      "actor_shadow_offset": [
+        1.86734843254089,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.12,
+      "actor_shadow_rotation": 0.23135721206665,
+      "clock_position": 41.25,
+      "daylight": 0.0,
+      "direction": [
+        -0.124489895999432,
+        -0.992220818996429
+      ],
+      "hour": 23.0,
+      "moon": [
+        314.25,
+        191.826889038086
+      ],
+      "moon_phase": 0.375,
+      "moon_weight": 1.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "8936d26d0fa3727f8bda951e569f7b33db07c2d5245be82ef7d1d918480c8493",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 1.0,
+      "sun": [
+        560.0,
+        172.0
+      ],
+      "tint": [
+        0.389999985694885,
+        0.490000009536743,
+        0.660000026226044,
+        1.0
+      ]
+    },
+    {
+      "Home_hour": 12.0,
+      "Home_moon_phase": 1.0,
+      "actor_shadow_offset": [
+        -1.42213654518127,
+        4.0
+      ],
+      "actor_shadow_opacity": 0.21,
+      "actor_shadow_rotation": 0.266519680023193,
+      "clock_position": 15.0,
+      "daylight": 1.0,
+      "direction": [
+        0.0948091000318527,
+        -0.995495438575745
+      ],
+      "hour": 12.0,
+      "moon": [
+        543.0,
+        214.0
+      ],
+      "moon_phase": 1.0,
+      "moon_weight": 0.0,
+      "raw_rgba_bytes": 3686400,
+      "raw_rgba_sha256": "f1deee31cf67f5acdf065e34a2efb092e23432102be5e1cb971695e2de08fa5b",
+      "raw_rgba_size": [
+        720,
+        1280
+      ],
+      "same_clock": true,
+      "shadow_weight": 1.0,
+      "solar": 0.5,
+      "sun": [
+        396.0,
+        148.0
+      ],
+      "tint": [
+        1.0,
+        0.980000019073486,
+        0.910000026226044,
+        1.0
+      ]
+    }
+  ],
+  "scope": "Exact formal core plus declared 8-entry candidate delta in empty res; actual lazy backend/production Home bridge. Software GL and Dummy audio do not claim Web/device hearing or aesthetic acceptance."
+}

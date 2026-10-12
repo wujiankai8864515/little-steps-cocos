@@ -1,0 +1,45 @@
+{
+  "method": "Two clean output directories, isolated user/config/cache data; same recovered source and official4.5.2 engine. Full7 rebuilt PCK SHA256 comparison.",
+  "packs": [
+    {
+      "path": "packs/comic.pck",
+      "sha256": "74b817ddde4db0ec59f20165868d18f92d3f0002dd3ace913b33400d5ce74191",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "packs/darkroom.pck",
+      "sha256": "250640a1ddc9d72675b23e6a0cbbc9e1ee14229750bcbdac27eb3bdde6441cac",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "packs/entry.pck",
+      "sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "packs/exterior.pck",
+      "sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "packs/house.pck",
+      "sha256": "3e0d0eedffa7d9f6ca15c905a43f47bee9e3f1cd38440d0a1d076fa33afefaf6",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "packs/travel.pck",
+      "sha256": "3274a1fd76e7b34f6a08b1a0cc6ebf4eb42d2521b3ea6d23c7a91aa866e00d55",
+      "same_on_second_clean_build": true
+    },
+    {
+      "path": "index.pck",
+      "sha256": "d9d50afb78be8248890188f5eb6d5fdd6472bcebb2d08c59ddb98bc649e6029f",
+      "same_on_second_clean_build": true
+    }
+  ],
+  "all7_equal": true,
+  "original_source_history_recovered": false,
+  "new_build_tools": true,
+  "original_product_logic_changed": false,
+  "headless_only": true
+}

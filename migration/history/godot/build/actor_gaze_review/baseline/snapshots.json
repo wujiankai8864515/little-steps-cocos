@@ -1,0 +1,3226 @@
+{
+  "source_results_sha256": "fbd2f93d4963f5856360d4f288cdd342b06f3bb9602491fc90e5ffffdc9b5031",
+  "source_results_path": "/workspace/shared/actor_face_motion_qa/gl_v1/results.json",
+  "snapshots": [
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00177107146009803,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": 0.0152557957917452,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "player",
+        "jelly_offset_px": "(-0.168252, 0.0)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.449633, 0.349715)"
+      },
+      "frame": 184,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 0,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        -0.449633121490479,
+        0.349714696407318
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 0.0,
+      "meshes": [
+        {
+          "bounds": "[P: (106.8317, 58.0), S: (432.1682, 279.0)]",
+          "geometry_revision": 15,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 0,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 0,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "00_home_neutral",
+      "phase": "neutral",
+      "pupils": {
+        "left_center": "(300.1035, 190.6997)",
+        "left_offset": "(-0.449633, 0.349715)",
+        "left_world": "(315.1926, 805.6378)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.2402, 155.518)",
+        "right_offset": "(-0.459839, 0.186768)",
+        "right_world": "(436.3914, 770.6708)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.4598388671875,
+        0.186767578125
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 14874
+    },
+    {
+      "ambient": false,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0293125286698341,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            132.535751342773,
+            -90.6118240356445
+          ],
+          "rotation": -0.00320456433109939,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -176.664031982422,
+            -89.0129165649414
+          ],
+          "rotation": 0.00558699294924736,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "ground",
+        "jelly_offset_px": "(0.0, 0.0)",
+        "mouth_open_px": -2.61583254781272,
+        "pupil_offset_px": "(1.767881, 1.31666)"
+      },
+      "frame": 202,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(395.1257, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 2,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 0,
+        "fish_ground": "(395.1257, 951.0)",
+        "fish_lift_height": 174.990905761719,
+        "offered_id": "",
+        "selected_id": "fish",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        1.30426025390625,
+        0.0684356689453125
+      ],
+      "lift": 1.0,
+      "lift_elapsed": 0.734774666666666,
+      "meshes": [
+        {
+          "bounds": "[P: (109.1494, 71.27231), S: (427.0974, 301.1206)]",
+          "geometry_revision": 28,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (105.4276, 222.0964), S: (78.6593, 96.25133)]",
+          "geometry_revision": 12,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (425.7798, 136.7698), S: (148.0, 167.0)]",
+          "geometry_revision": 12,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "01_fish_held_a",
+      "phase": "fish_lift",
+      "pupils": {
+        "left_center": "(301.8574, 190.4184)",
+        "left_offset": "(1.30426, 0.068436)",
+        "left_world": "(361.9831, 630.4276)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(422.8956, 155.0446)",
+        "right_offset": "(1.195587, -0.286652)",
+        "right_world": "(483.0213, 595.0536)"
+      },
+      "rig": "(60.12573, 440.0091)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        1.19558715820312,
+        -0.286651611328125
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 16467
+    },
+    {
+      "ambient": false,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0501959733664989,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.303985595703,
+            -86.3200759887695
+          ],
+          "rotation": -0.00315582240000367,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.346801757812,
+            -87.3367691040039
+          ],
+          "rotation": -0.0331140533089638,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "ground",
+        "jelly_offset_px": "(0.0, 0.0)",
+        "mouth_open_px": 1.48083568799014,
+        "pupil_offset_px": "(-0.07344, 0.864211)"
+      },
+      "frame": 208,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(395.1257, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 2,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 0,
+        "fish_ground": "(395.1257, 951.0)",
+        "fish_lift_height": 174.990905761719,
+        "offered_id": "",
+        "selected_id": "fish",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        -0.1407470703125,
+        0.527572631835938
+      ],
+      "lift": 1.0,
+      "lift_elapsed": 1.13511466666667,
+      "meshes": [
+        {
+          "bounds": "[P: (109.9497, 74.79852), S: (427.2913, 299.064)]",
+          "geometry_revision": 34,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (105.8053, 219.4778), S: (78.97311, 96.66803)]",
+          "geometry_revision": 18,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (426.9853, 144.2649), S: (148.0, 167.0)]",
+          "geometry_revision": 18,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "02_fish_held_b",
+      "phase": "fish_hold",
+      "pupils": {
+        "left_center": "(300.4124, 190.8776)",
+        "left_offset": "(-0.140747, 0.527573)",
+        "left_world": "(360.5381, 630.8867)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.5076, 155.4817)",
+        "right_offset": "(-0.192413, 0.150482)",
+        "right_world": "(481.6333, 595.4908)"
+      },
+      "rig": "(60.12573, 440.0091)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.192413330078125,
+        0.150482177734375
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 16875
+    },
+    {
+      "ambient": false,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0295551978051662,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            132.501251220703,
+            -90.5133895874023
+          ],
+          "rotation": -0.00312930531799793,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -176.6796875,
+            -89.0881652832031
+          ],
+          "rotation": 0.00184705969877541,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "ground",
+        "jelly_offset_px": "(0.0, 0.0)",
+        "mouth_open_px": -2.52187262818907,
+        "pupil_offset_px": "(-1.999805, 0.743295)"
+      },
+      "frame": 217,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(305.1257, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 3,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 0,
+        "fish_ground": "(305.1257, 951.0)",
+        "fish_lift_height": 134.990905761719,
+        "offered_id": "",
+        "selected_id": "fish",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        -1.99980461597443,
+        0.743295431137085
+      ],
+      "lift": 1.0,
+      "lift_elapsed": 1.67800333333333,
+      "meshes": [
+        {
+          "bounds": "[P: (109.3857, 70.69309), S: (427.173, 300.4067)]",
+          "geometry_revision": 43,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (105.6447, 221.3942), S: (78.65505, 95.83908)]",
+          "geometry_revision": 27,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (426.0632, 136.4366), S: (148.0, 167.0)]",
+          "geometry_revision": 27,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "03_fish_held_c",
+      "phase": "fish_move",
+      "pupils": {
+        "left_center": "(298.5533, 191.0933)",
+        "left_offset": "(-1.999805, 0.743295)",
+        "left_world": "(268.679, 671.1024)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(420.6808, 155.5346)",
+        "right_offset": "(-1.019226, 0.203354)",
+        "right_world": "(390.8065, 635.5437)"
+      },
+      "rig": "(-29.87427, 480.0091)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -1.01922607421875,
+        0.203353881835938
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 17424
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00685262866318226,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0223080515861511,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.00754846166819334,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0334503874182701,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "player",
+        "jelly_offset_px": "(-0.651, 0.415165)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.36753, 0.285856)"
+      },
+      "frame": 224,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 7.87719356374521,
+      "land_active": true,
+      "left_offset": [
+        -0.367529571056366,
+        0.285856336355209
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (103.3559, 66.29236), S: (437.6711, 270.7076)]",
+          "geometry_revision": 51,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "04_land_compress",
+      "phase": "landing",
+      "pupils": {
+        "left_center": "(300.1856, 190.6359)",
+        "left_offset": "(-0.36753, 0.285856)",
+        "left_world": "(315.0375, 813.6854)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.3173, 155.5109)",
+        "right_offset": "(-0.38269, 0.179611)",
+        "right_world": "(437.7094, 779.4002)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.3826904296875,
+        0.179611206054688
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 17875
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00367104192264378,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0343358181416988,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.00155883887782693,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0150680094957352,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "player",
+        "jelly_offset_px": "(-0.348749, 0.085736)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.449957, 0.349967)"
+      },
+      "frame": 232,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": -0.373082329022905,
+      "land_active": true,
+      "left_offset": [
+        -0.449957460165024,
+        0.349966943264008
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (106.6513, 57.71265), S: (432.3488, 279.2874)]",
+          "geometry_revision": 59,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "05_land_rebound",
+      "phase": "landing",
+      "pupils": {
+        "left_center": "(300.1032, 190.7)",
+        "left_offset": "(-0.449957, 0.349967)",
+        "left_world": "(315.3098, 805.2843)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.2399, 155.518)",
+        "right_offset": "(-0.460144, 0.186783)",
+        "right_world": "(436.5132, 770.5471)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.46014404296875,
+        0.186782836914062
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 18442
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.000593567616306245,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": 1.49511743074981e-05,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "player",
+        "jelly_offset_px": "(0.056389, 0.0)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.401094, 0.311962)"
+      },
+      "frame": 256,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        -0.401094377040863,
+        0.311962306499481
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (107.0, 58.0), S: (432.0564, 279.0)]",
+          "geometry_revision": 84,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "06_fish_settled",
+      "phase": "landing",
+      "pupils": {
+        "left_center": "(300.152, 190.662)",
+        "left_offset": "(-0.401094, 0.311962)",
+        "left_world": "(315.1222, 805.6827)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.2884, 155.515)",
+        "right_offset": "(-0.411621, 0.183746)",
+        "right_world": "(436.2377, 770.4638)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.41162109375,
+        0.183746337890625
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 20313
+    },
+    {
+      "ambient": false,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0347885005176067,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.0171024277806282,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            128.0,
+            -80.5
+          ],
+          "rotation": 0.0236473921686411,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.108873054385185,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, 0.0)",
+        "left_velocity": "(0.0, 0.0)",
+        "right": "(0.0, 0.0)",
+        "right_velocity": "(0.0, 0.0)",
+        "target_world": "(0.0, 0.0)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "bowl",
+        "jelly_offset_px": "(-3.304908, 1.300607)",
+        "mouth_open_px": 1.48574886724735,
+        "pupil_offset_px": "(0.719408, 1.448778)"
+      },
+      "frame": 272,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {
+          "bowl_pickup_origin": "(581.0, 892.0)",
+          "drink": true,
+          "elapsed": 0.959090909090909,
+          "mouth_contact_world": "(390.9075, 801.8515)",
+          "origin": "(350.0, 951.0)",
+          "phase": "sip",
+          "rim_contact_world": "(390.9075, 801.8515)",
+          "rim_gap_px": 0.0,
+          "sip_mark_sent": true,
+          "target_id": "bowl",
+          "target_position": "(651.8613, 1011.812)",
+          "token": {
+            "content_revision": 0,
+            "generation": 1,
+            "ownership_revision": 0,
+            "stable_id": "bowl"
+          }
+        },
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 0,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        0.374420166015625,
+        0.41357421875
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (103.6951, 59.30061), S: (435.3049, 277.6994)]",
+          "geometry_revision": 101,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "07_drink_sip",
+      "phase": "drink",
+      "pupils": {
+        "left_center": "(300.9276, 190.7636)",
+        "left_offset": "(0.37442, 0.413574)",
+        "left_world": "(317.6516, 805.8513)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.9611, 155.3426)",
+        "right_offset": "(0.261108, 0.011307)",
+        "right_world": "(439.8439, 774.6614)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        0.2611083984375,
+        0.0113067626953125
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 21271
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.00286691915243864,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": 0.0176257360726595,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(-10.75363, -0.413867)",
+        "left_velocity": "(-12.72596, -0.0843)",
+        "right": "(-6.2775, 0.208006)",
+        "right_velocity": "(-7.439969, 0.12459)",
+        "target_world": "(150.0342, 791.9448)",
+        "weight": 1.0
+      },
+      "expression": false,
+      "face": {
+        "drag_target_world": "(150.0342, 791.9448)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(0.272357, 0.0)",
+        "left_pupil_offset_px": "(-10.75363, -0.413867)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.449989, 0.349992)",
+        "right_pupil_offset_px": "(-6.2775, 0.208006)"
+      },
+      "frame": 317,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(150.0342, 861.105)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 2,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "doll",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        -4.44125366210938,
+        0.9407958984375
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (107.0, 58.0), S: (432.2723, 279.0)]",
+          "geometry_revision": 148,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "08_gaze_left",
+      "phase": "prop_left",
+      "pupils": {
+        "left_center": "(296.1119, 191.2908)",
+        "left_offset": "(-4.441254, 0.940796)",
+        "left_world": "(310.9695, 806.4021)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(420.6808, 155.5346)",
+        "right_offset": "(-1.019226, 0.203354)",
+        "right_world": "(435.4354, 770.2889)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -1.01922607421875,
+        0.203353881835938
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 24093
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.00102160370443016,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": 0.00783080514520407,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(10.13329, -0.222543)",
+        "left_velocity": "(19.24173, 0.155117)",
+        "right": "(6.119452, 0.333203)",
+        "right_velocity": "(8.887916, 0.062946)",
+        "target_world": "(629.7061, 791.9448)",
+        "weight": 1.0
+      },
+      "expression": false,
+      "face": {
+        "drag_target_world": "(629.7061, 791.9448)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(0.097052, 0.0)",
+        "left_pupil_offset_px": "(10.13329, -0.222543)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(6.119452, 0.333203)"
+      },
+      "frame": 324,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(629.7061, 861.105)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 3,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "doll",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        5.0843505859375,
+        -1.9110107421875
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (107.0, 58.0), S: (432.097, 279.0)]",
+          "geometry_revision": 155,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "08_gaze_right",
+      "phase": "prop_right",
+      "pupils": {
+        "left_center": "(305.6375, 188.439)",
+        "left_offset": "(5.084351, -1.911011)",
+        "left_world": "(320.5838, 803.469)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(423.5228, 154.731)",
+        "right_offset": "(1.822784, -0.60025)",
+        "right_world": "(438.4346, 769.6406)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        1.82278430461884,
+        -0.600250244140625
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 24562
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00177383341360837,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.00855317525565624,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(3.133523, -4.689783)",
+        "left_velocity": "(-3.399169, -1.848757)",
+        "right": "(-1.399184, -2.791271)",
+        "right_velocity": "(-3.346074, -1.281694)",
+        "target_world": "(379.7061, 541.9448)",
+        "weight": 1.0
+      },
+      "expression": false,
+      "face": {
+        "drag_target_world": "(379.7061, 541.9448)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(-0.168514, 0.0)",
+        "left_pupil_offset_px": "(3.133523, -4.689783)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-1.399184, -2.791271)"
+      },
+      "frame": 332,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(379.7061, 611.105)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 4,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "doll",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        3.952880859375,
+        -1.61712646484375
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (106.8315, 58.0), S: (432.1685, 279.0)]",
+          "geometry_revision": 163,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "08_gaze_up",
+      "phase": "prop_up",
+      "pupils": {
+        "left_center": "(304.506, 188.7329)",
+        "left_offset": "(3.952881, -1.617126)",
+        "left_world": "(319.5988, 803.6787)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.2688, 155.319)",
+        "right_offset": "(-0.431213, -0.012253)",
+        "right_world": "(436.4207, 770.4719)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -0.43121337890625,
+        -0.0122528076171875
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 25052
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00282031414099038,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0156248826533556,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(3.760847, 3.149987)",
+        "left_velocity": "(1.593226, 15.7371)",
+        "right": "(-1.708475, 1.951599)",
+        "right_velocity": "(-0.27948, 9.538751)",
+        "target_world": "(379.7061, 991.9448)",
+        "weight": 1.0
+      },
+      "expression": false,
+      "face": {
+        "drag_target_world": "(379.7061, 991.9448)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(-0.26793, 0.0)",
+        "left_pupil_offset_px": "(3.760847, 3.149987)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-1.708475, 1.951599)"
+      },
+      "frame": 337,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(379.7061, 1061.105)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 5,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "doll",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        2.1949462890625,
+        -0.308029174804688
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (106.7321, 58.0), S: (432.2679, 279.0)]",
+          "geometry_revision": 168,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "08_gaze_down",
+      "phase": "prop_down",
+      "pupils": {
+        "left_center": "(302.7481, 190.042)",
+        "left_offset": "(2.194946, -0.308029)",
+        "left_world": "(317.8919, 804.9508)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(420.6808, 155.5346)",
+        "right_offset": "(-1.019226, 0.203354)",
+        "right_world": "(435.9215, 770.7762)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -1.01922607421875,
+        0.203353881835938
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 26633
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00214351527392864,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0349065847694874,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0181401968002319,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(6.059341, -0.371114)",
+        "left_velocity": "(0.925915, -1.809684)",
+        "right": "(-3.146972, 0.589554)",
+        "right_velocity": "(-0.575201, -0.779265)",
+        "target_world": "(379.7061, 791.9448)",
+        "weight": 1.0
+      },
+      "expression": false,
+      "face": {
+        "drag_target_world": "(379.7061, 791.9448)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(-0.203634, 0.0)",
+        "left_pupil_offset_px": "(6.059341, -0.371114)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-3.146972, 0.589554)"
+      },
+      "frame": 345,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(379.7061, 861.105)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "player",
+            "ownership_revision": 1,
+            "position_revision": 6,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -1,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "doll",
+        "state": "DRAGGING"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        5.06063842773438,
+        -1.89547729492188
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (106.7964, 58.0), S: (432.2036, 279.0)]",
+          "geometry_revision": 176,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "08_gaze_near",
+      "phase": "prop_near",
+      "pupils": {
+        "left_center": "(305.6138, 188.4545)",
+        "left_offset": "(5.060638, -1.895477)",
+        "left_world": "(320.7265, 803.3915)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(420.6808, 155.5346)",
+        "right_offset": "(-1.019226, 0.203354)",
+        "right_world": "(435.8638, 770.7183)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        -1.01922607421875,
+        0.203353881835938
+      ],
+      "safe": true,
+      "state": "rest",
+      "wall_ms": 27140
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.0115496292710304,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.295437186956406,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            155.39094543457,
+            -137.013748168945
+          ],
+          "rotation": -0.0033675346057862,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0557343848049641,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.000007, -0.000001)",
+        "left_velocity": "(-0.00008, 0.000006)",
+        "right": "(-0.000004, 0.000001)",
+        "right_velocity": "(0.000042, -0.000007)",
+        "target_world": "(379.7061, 791.9448)",
+        "weight": 0.0
+      },
+      "expression": false,
+      "face": {
+        "gaze_target": "mallet",
+        "jelly_offset_px": "(0.553754, -0.185214)",
+        "mouth_open_px": -0.651505071797681,
+        "pupil_offset_px": "(2.554661, -0.479444)"
+      },
+      "frame": 374,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 7,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        2.55466079711914,
+        -0.479444295167923
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (107.0, 57.81479), S: (432.5538, 279.1852)]",
+          "geometry_revision": 199,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "09_tap_anticipate",
+      "phase": "tap",
+      "pupils": {
+        "left_center": "(303.1078, 189.8706)",
+        "left_offset": "(2.554661, -0.479444)",
+        "left_world": "(316.9738, 805.0571)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(423.5228, 154.731)",
+        "right_offset": "(1.822784, -0.60025)",
+        "right_world": "(436.9749, 768.5291)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        1.82278430461884,
+        -0.600250244140625
+      ],
+      "safe": true,
+      "state": "self_tap",
+      "wall_ms": 28817
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.016744801774621,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.00925872381776571,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            130.091156005859,
+            -82.1974792480469
+          ],
+          "rotation": -0.0145264780148864,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0340196378529072,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, -0.0)",
+        "left_velocity": "(-0.000001, 0.0)",
+        "right": "(-0.0, 0.0)",
+        "right_velocity": "(0.0, -0.0)",
+        "target_world": "(379.7061, 791.9448)",
+        "weight": 0.0
+      },
+      "expression": true,
+      "face": {
+        "gaze_target": "strike",
+        "jelly_offset_px": "(2.04115, -0.798956)",
+        "mouth_open_px": -1.15,
+        "pupil_offset_px": "(0.0, 0.0)"
+      },
+      "frame": 382,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 7,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        0.0,
+        0.0
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (107.0, 57.20104), S: (434.0411, 279.799)]",
+          "geometry_revision": 207,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "10_tap_contact",
+      "phase": "tap",
+      "pupils": {
+        "left_center": "(300.5531, 190.35)",
+        "left_offset": "(0.0, 0.0)",
+        "left_world": "(315.1467, 805.1142)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.7, 155.3313)",
+        "right_offset": "(0.0, 0.0)",
+        "right_world": "(435.6902, 768.0719)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        0.0,
+        0.0
+      ],
+      "safe": true,
+      "state": "self_tap",
+      "wall_ms": 29311
+    },
+    {
+      "ambient": true,
+      "body_texture": "res://assets/body.png",
+      "bones": {
+        "Body": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": 0.0400990881025791,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "GripMallet": {
+          "position": [
+            0.0,
+            0.0
+          ],
+          "rotation": -0.0924492627382278,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Shoulder": {
+          "position": [
+            133.0,
+            -88.5
+          ],
+          "rotation": 0.0162572748959064,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        },
+        "Tail": {
+          "position": [
+            -177.0,
+            -88.0
+          ],
+          "rotation": -0.0444090217351913,
+          "scale": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "drag_gaze": {
+        "active_id": "",
+        "left": "(0.0, -0.0)",
+        "left_velocity": "(-0.0, 0.0)",
+        "right": "(-0.0, 0.0)",
+        "right_velocity": "(0.0, -0.0)",
+        "target_world": "(379.7061, 791.9448)",
+        "weight": 0.0
+      },
+      "expression": true,
+      "face": {
+        "gaze_target": "doze",
+        "jelly_offset_px": "(-3.809413, 4.544146)",
+        "mouth_open_px": 2.8,
+        "pupil_offset_px": "(0.0, 0.0)"
+      },
+      "frame": 428,
+      "interaction": {
+        "anchors": {
+          "bag": {
+            "anchor_position": "(624.2617, 590.7391)",
+            "committed_position": "(624.2617, 590.7391)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(624.2617, 590.7391)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bag"
+          },
+          "bowl": {
+            "anchor_position": "(651.8613, 1011.812)",
+            "committed_position": "(651.8613, 1011.812)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(651.8613, 1011.812)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "bowl"
+          },
+          "doll": {
+            "anchor_position": "(662.0, 862.1602)",
+            "committed_position": "(662.0, 862.1602)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(662.0, 862.1602)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 7,
+            "stable_id": "doll"
+          },
+          "fish": {
+            "anchor_position": "(350.0, 951.0)",
+            "committed_position": "(350.0, 951.0)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(350.0, 951.0)",
+            "owner": "world",
+            "ownership_revision": 2,
+            "position_revision": 9,
+            "stable_id": "fish"
+          },
+          "low_table": {
+            "anchor_position": "(141.5, 1219.057)",
+            "committed_position": "(141.5, 1219.057)",
+            "content_revision": 0,
+            "fixed_home": true,
+            "generation": 1,
+            "home_position": "(141.5, 1219.057)",
+            "owner": "world",
+            "ownership_revision": 0,
+            "position_revision": 0,
+            "stable_id": "low_table"
+          }
+        },
+        "captured_pointer": -2147483648,
+        "context": {},
+        "director": "deterministic_interaction_slice_not_utility_goap",
+        "drink_count": 1,
+        "drop_evaluations": 1,
+        "fish_ground": "(350.0, 951.0)",
+        "fish_lift_height": 0.0,
+        "offered_id": "",
+        "selected_id": "",
+        "state": "IDLE"
+      },
+      "land": 0.0,
+      "land_active": false,
+      "left_offset": [
+        0.0,
+        0.0
+      ],
+      "lift": 0.0,
+      "lift_elapsed": 2.05916666666667,
+      "meshes": [
+        {
+          "bounds": "[P: (103.1906, 62.54415), S: (435.8094, 274.4558)]",
+          "geometry_revision": 254,
+          "name": "OriginalBody",
+          "points": 672,
+          "texture": "res://assets/body.png",
+          "uv_hash": 964097258
+        },
+        {
+          "bounds": "[P: (103.0, 203.0), S: (78.0, 84.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalTail",
+          "points": 49,
+          "texture": "res://assets/tail.png",
+          "uv_hash": 3049657427
+        },
+        {
+          "bounds": "[P: (427.0, 122.0), S: (148.0, 167.0)]",
+          "geometry_revision": 33,
+          "name": "OriginalFinAndRigidMallet",
+          "points": 575,
+          "texture": "res://assets/fin_mallet.png",
+          "uv_hash": 698345997
+        }
+      ],
+      "name": "11_doze",
+      "phase": "doze_fixture",
+      "pupils": {
+        "left_center": "(300.5531, 190.35)",
+        "left_offset": "(0.0, 0.0)",
+        "left_world": "(317.4312, 808.4739)",
+        "original_body_texture_unchanged": "res://assets/body.png",
+        "right_center": "(421.7, 155.3313)",
+        "right_offset": "(0.0, 0.0)",
+        "right_world": "(439.8845, 778.3399)"
+      },
+      "rig": "(15.0, 615.0)",
+      "rig_scale": "(1.0, 1.0)",
+      "right_offset": [
+        0.0,
+        0.0
+      ],
+      "safe": true,
+      "state": "doze",
+      "wall_ms": 32015
+    }
+  ],
+  "capture_metadata": [
+    {
+      "crop": "[P: (0, 0), S: (720, 1280)]",
+      "name": "00_home_neutral"
+    },
+    {
+      "crop": "[P: (112, 447), S: (579, 381)]",
+      "name": "01_fish_held_a"
+    },
+    {
+      "crop": "[P: (110, 447), S: (584, 381)]",
+      "name": "02_fish_held_b"
+    },
+    {
+      "crop": "[P: (22, 487), S: (579, 381)]",
+      "name": "03_fish_held_c"
+    },
+    {
+      "crop": "[P: (66, 620), S: (581, 383)]",
+      "name": "04_land_compress"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 382)]",
+      "name": "05_land_rebound"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 381)]",
+      "name": "06_fish_settled"
+    },
+    {
+      "crop": "[P: (67, 614), S: (572, 395)]",
+      "name": "07_drink_sip"
+    },
+    {
+      "crop": "[P: (66, 621), S: (582, 382)]",
+      "name": "08_gaze_left"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 381)]",
+      "name": "08_gaze_right"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 381)]",
+      "name": "08_gaze_up"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 382)]",
+      "name": "08_gaze_down"
+    },
+    {
+      "crop": "[P: (66, 621), S: (581, 381)]",
+      "name": "08_gaze_near"
+    },
+    {
+      "crop": "[P: (63, 619), S: (635, 385)]",
+      "name": "09_tap_anticipate"
+    },
+    {
+      "crop": "[P: (63, 618), S: (577, 388)]",
+      "name": "10_tap_contact"
+    },
+    {
+      "crop": "[P: (70, 613), S: (575, 397)]",
+      "name": "11_doze"
+    }
+  ],
+  "scope": "Selected snapshots copied without numeric alteration from actual formal d1 root-input GL. Baseline snapshots use fixed wall observation; candidate settled snapshots use the same inputs with extra damping settle wait. Not frame-identical."
+}

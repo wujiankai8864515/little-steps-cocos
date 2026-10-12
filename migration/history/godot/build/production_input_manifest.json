@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "roots": [
+    "framework",
+    "games",
+    "design",
+    "build/fonts",
+    "build/web_host_seed",
+    "build/checks",
+    "build/recovery_evidence",
+    "build/baseline_gdc"
+  ],
+  "files": [
+    "build/PRODUCTION.md",
+    "build/README.md",
+    "build/assemble.py",
+    "build/audit_imported_assets.gd",
+    "build/audit_pack_resources.gd",
+    "build/check_loading_contract.py",
+    "build/engine_convert.gd",
+    "build/input_manifest.py",
+    "build/make_pack.gd",
+    "build/origin_build_info.json",
+    "build/origin_pack_manifest.json",
+    "build/original_export_inventory.json",
+    "build/prepare_asset_imports.gd",
+    "build/prepare_fonts.py",
+    "build/production_input_manifest.json",
+    "build/qa_source_guard.py",
+    "build/resource_pipeline.py",
+    "build/round6_diary_cues.md",
+    "build/scene_original_paths.json",
+    "build/web_candidate.py",
+    "build/web_host_seed_origin.json",
+    "build/web_startup_check.html",
+    "build/web_template_provenance.json"
+  ],
+  "policy": "Fixed Git object input closure, all extensions under declared roots. Includes Web host and licenses. QA evidence outside this closure is not a runtime input."
+}

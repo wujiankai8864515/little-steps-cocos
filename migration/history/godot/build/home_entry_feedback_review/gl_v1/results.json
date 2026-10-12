@@ -1,0 +1,836 @@
+{
+  "captures": [
+    {
+      "bounce_elapsed": null,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "01_settings.png",
+      "msec": 14287,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": 0.129814666666667,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "02_photo_bounce.png",
+      "msec": 14833,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "03_photo_wall.png",
+      "msec": 16623,
+      "photo_open": true,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "04_doll_confirmation.png",
+      "msec": 24079,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "05_bag_confirmation.png",
+      "msec": 28895,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": false,
+      "entry_busy": false,
+      "file": "06_full_bag_floating.png",
+      "msec": 35671,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": true,
+      "entry_busy": true,
+      "file": "07_diary_unfolding.png",
+      "msec": 37989,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "diary_open": true,
+      "entry_busy": false,
+      "file": "08_diary_reading.png",
+      "msec": 40242,
+      "photo_open": false,
+      "size": "(720, 1280)",
+      "travel_open": true
+    }
+  ],
+  "checks": [
+    {
+      "label": "actual X11 GL renderer",
+      "msec": 18,
+      "pass": true
+    },
+    {
+      "label": "actual cold Home prepare terminates",
+      "msec": 12371,
+      "pass": true
+    },
+    {
+      "label": "actual App owns rendered Home",
+      "msec": 13565,
+      "pass": true
+    },
+    {
+      "label": "rendered settings opens through actual touch",
+      "msec": 14060,
+      "pass": true
+    },
+    {
+      "label": "rendered settings closes",
+      "msec": 14289,
+      "pass": true
+    },
+    {
+      "label": "rendered photo release starts bounce before route",
+      "msec": 14289,
+      "pass": true
+    },
+    {
+      "label": "rendered photo opens after completed bounce",
+      "msec": 16046,
+      "pass": true
+    },
+    {
+      "label": "rendered photo return restores Home",
+      "msec": 16626,
+      "pass": true
+    },
+    {
+      "label": "doll alpha input target exists",
+      "msec": 21946,
+      "pass": true
+    },
+    {
+      "label": "doll real drag/settle opens correct natural confirmation",
+      "msec": 23570,
+      "pass": true
+    },
+    {
+      "label": "GL note accept root mapping valid",
+      "msec": 23570,
+      "pass": true
+    },
+    {
+      "label": "bag alpha input target exists",
+      "msec": 25688,
+      "pass": true
+    },
+    {
+      "label": "bag real drag/settle opens correct natural confirmation",
+      "msec": 28387,
+      "pass": true
+    },
+    {
+      "label": "production service seeds isolated trip fixture",
+      "msec": 29616,
+      "pass": true
+    },
+    {
+      "label": "rendered full bag starts bounce before opening",
+      "msec": 33608,
+      "pass": true
+    },
+    {
+      "label": "rendered full bag opens after bounce",
+      "msec": 33890,
+      "pass": true
+    },
+    {
+      "label": "rendered floating rewards stay uncollected",
+      "msec": 35671,
+      "pass": true
+    },
+    {
+      "label": "rendered diary begins unfold before page",
+      "msec": 35681,
+      "pass": true
+    },
+    {
+      "label": "rendered diary is still in Home halfway through",
+      "msec": 37484,
+      "pass": true
+    },
+    {
+      "label": "rendered diary opens after complete unfold",
+      "msec": 39679,
+      "pass": true
+    },
+    {
+      "label": "rendered diary enters combined reading/review",
+      "msec": 39679,
+      "pass": true
+    },
+    {
+      "label": "rendered diary return restores Home",
+      "msec": 40244,
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "inputs": 42,
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 8,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 8,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "photo",
+      "darkroom",
+      "departure",
+      "travel"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 914648,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3206,
+          "loaded": 943108,
+          "mount_usec": 315,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/entry.pck",
+          "request_id": "p30568088971-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2377124,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 9171,
+          "loaded": 2313888,
+          "mount_usec": 318,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/comic.pck",
+          "request_id": "p30568088971-e1-r2",
+          "state": "ready",
+          "total": 2313888,
+          "verified_sha256": "fab02160ba25380217bf010633ed87297a68b6a9fd5f2eb49d2d4bf096e9ef10"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2395576,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3703,
+          "loaded": 1107208,
+          "mount_usec": 253,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/exterior.pck",
+          "request_id": "p30568088971-e1-r3",
+          "state": "ready",
+          "total": 1107208,
+          "verified_sha256": "698a90db482a62cf442269a2571af87230f39520ec5c7e80236f92e6c5619a7f"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 2467586,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 57446,
+          "loaded": 17019800,
+          "mount_usec": 532,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/house.pck",
+          "request_id": "p30568088971-e1-r4",
+          "state": "ready",
+          "total": 17019800,
+          "verified_sha256": "9776b3279f07fef39e9b9532bba14fba1383ba43fc9190a495b90e77ce61952f"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 15420738,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 10201,
+          "loaded": 2858372,
+          "mount_usec": 290,
+          "pack_id": "photo",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/photo.pck",
+          "request_id": "p30568088971-e1-r5",
+          "state": "ready",
+          "total": 2858372,
+          "verified_sha256": "17566e0e4caef0d8b989e412590b9c2020b9673669b5970e31a0ca05384af4a7"
+        },
+        "epoch": 1,
+        "pack_id": "photo",
+        "state": "ready"
+      },
+      {
+        "at_usec": 22437018,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 17427,
+          "loaded": 4783424,
+          "mount_usec": 418,
+          "pack_id": "darkroom",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/darkroom.pck",
+          "request_id": "p30568088971-e1-r6",
+          "state": "ready",
+          "total": 4783424,
+          "verified_sha256": "b926c29779993be721665979f420373be157d5aaeedd2f6cc7ec2b149cd4cc0d"
+        },
+        "epoch": 1,
+        "pack_id": "darkroom",
+        "state": "ready"
+      },
+      {
+        "at_usec": 38764285,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4544,
+          "loaded": 1326752,
+          "mount_usec": 318,
+          "pack_id": "departure",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/departure.pck",
+          "request_id": "p30568088971-e1-r7",
+          "state": "ready",
+          "total": 1326752,
+          "verified_sha256": "c915fa7a24bcb04c85eb171a3bb3a7e88fcbc2c266839fc1020ffbb0fb68f0bb"
+        },
+        "epoch": 1,
+        "pack_id": "departure",
+        "state": "ready"
+      },
+      {
+        "at_usec": 38877558,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 46515,
+          "loaded": 13671876,
+          "mount_usec": 464,
+          "pack_id": "travel",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/actor_gaze_formal_bc1f8cf/native_packs/packs/travel.pck",
+          "request_id": "p30568088971-e1-r8",
+          "state": "ready",
+          "total": 13671876,
+          "verified_sha256": "eaf3272da8c5af308fb3bbc222b96e0923c8fd5edca87a08b3bd40749a434dbe"
+        },
+        "epoch": 1,
+        "pack_id": "travel",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "samples": [
+    {
+      "home_size": "(720.0, 1280.0)",
+      "home_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+      "room_canvas": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+      "room_size": "(720, 1280)",
+      "root_size": "(720, 1280)",
+      "root_texture": "(720.0, 1280.0)"
+    },
+    {
+      "control": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/@Node2D@31/CrispTextAndFixedChoices/Accept",
+      "event": "subviewport_input_mapping",
+      "logical": "(298.4999, 614.5)",
+      "note_target": "yes",
+      "old_canvas_point": "(298.4999, 614.5)",
+      "root": "(298.4999, 614.5)",
+      "round_trip": "(298.4999, 614.5)"
+    },
+    {
+      "control": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/@Node2D@31/CrispTextAndFixedChoices/Cancel",
+      "event": "subviewport_input_mapping",
+      "logical": "(446.4999, 614.5)",
+      "note_target": "no",
+      "old_canvas_point": "(446.4999, 614.5)",
+      "root": "(446.4999, 614.5)",
+      "round_trip": "(446.4999, 614.5)"
+    },
+    {
+      "control": "/root/TravelWoodfish/PageHost/HomePage/RoomViewport/HomeWorld/@Node2D@31/CrispTextAndFixedChoices/Cancel",
+      "event": "subviewport_input_mapping",
+      "logical": "(446.4999, 614.5)",
+      "note_target": "no",
+      "old_canvas_point": "(446.4999, 614.5)",
+      "root": "(446.4999, 614.5)",
+      "round_trip": "(446.4999, 614.5)"
+    }
+  ],
+  "scope": "Exact formal bc1f8cf nine PCK, no overlay, empty res, production App and native backend/root input. Existing service seeds one trip; Comic skipped. Eight native Mesa software GL frames, true process timing; no Web/hardware GPU/device touch/user acceptance claim.",
+  "trace": [
+    {
+      "bounce_elapsed": 0.129814666666667,
+      "delta": 0.129372333333333,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 14834,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": 0.259187,
+      "delta": 0.063096,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 14908,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.107469,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 15005,
+      "photo_loading": true,
+      "photo_open": false,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.076349,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 15081,
+      "photo_loading": true,
+      "photo_open": false,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0886966666666667,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 15178,
+      "photo_loading": true,
+      "photo_open": false,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.121869,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.322413802146912,
+      "entry_busy": false,
+      "entry_key": "",
+      "msec": 16046,
+      "photo_loading": false,
+      "photo_open": true,
+      "topic": "photo",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.131961333333333,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": false,
+      "diary_open_scale_x": 0.0162068959325552,
+      "entry_busy": true,
+      "entry_key": "diary",
+      "msec": 35683,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.15,
+      "diary_closed_scale_x": 0.203836843371391,
+      "diary_open": false,
+      "diary_open_scale_x": 0.10531871765852,
+      "entry_busy": true,
+      "entry_key": "diary",
+      "msec": 37477,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.116666666666667,
+      "diary_closed_scale_x": 0.0122857140377164,
+      "diary_open": true,
+      "diary_open_scale_x": 0.217833191156387,
+      "entry_busy": true,
+      "entry_key": "diary",
+      "msec": 37990,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0565553333333335,
+      "diary_closed_scale_x": 0.0122857140377164,
+      "diary_open": true,
+      "diary_open_scale_x": 0.303936123847961,
+      "entry_busy": true,
+      "entry_key": "diary",
+      "msec": 38048,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.062808,
+      "diary_closed_scale_x": 0.0122857140377164,
+      "diary_open": true,
+      "diary_open_scale_x": 0.322218090295792,
+      "entry_busy": true,
+      "entry_key": "diary",
+      "msec": 38111,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.144016666666667,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38288,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.070921,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38359,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.113606,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38473,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0687596666666665,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38538,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.1,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38639,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.1,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38744,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.100556,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38850,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.10228,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 38968,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.104804,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39057,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0923599999999998,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39149,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0972460000000002,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39247,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0765226666666667,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39307,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0944444444444444,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39406,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.0528782222222222,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39462,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": false
+    },
+    {
+      "bounce_elapsed": null,
+      "delta": 0.145575333333333,
+      "diary_closed_scale_x": 0.307142853736877,
+      "diary_open": true,
+      "diary_open_scale_x": 0.324137926101685,
+      "entry_busy": false,
+      "entry_key": "diary",
+      "msec": 39679,
+      "photo_loading": false,
+      "photo_open": false,
+      "topic": "diary",
+      "travel_open": true
+    }
+  ]
+}

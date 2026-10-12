@@ -1,0 +1,2732 @@
+{
+  "boundary": "Actual App/Home/Bridge/Page/code-only explicit overlay+6327PCK journey, headless. Comic finish injected solely to isolate modes; no visual/story timing/browser claim.",
+  "checks": [
+    {
+      "name": "real model journal fixture available",
+      "pass": true
+    },
+    {
+      "name": "actual cold Collection only leases3resources",
+      "pass": true
+    },
+    {
+      "name": "actual Collection excludes map and archive fields",
+      "pass": true
+    },
+    {
+      "name": "actual Collection leaves map decoded resource absent",
+      "pass": true
+    },
+    {
+      "name": "actual Collection complete with real gallery",
+      "pass": true
+    },
+    {
+      "name": "real archive request retains outgoing gallery while awaiting resources",
+      "pass": true
+    },
+    {
+      "name": "archive own7resource lease and visible document complete",
+      "pass": true
+    },
+    {
+      "name": "nested archive preserves collection selection",
+      "pass": true
+    },
+    {
+      "name": "actual Back restores selected collection",
+      "pass": true
+    },
+    {
+      "name": "warm map builds full original scene from9resource lease",
+      "pass": true
+    },
+    {
+      "name": "opaque map suspends onlycovered Home rendering",
+      "pass": true
+    },
+    {
+      "name": "map to journal restores live Home texture",
+      "pass": true
+    },
+    {
+      "name": "warm Collection navigation startsnoadditional resource",
+      "pass": true
+    },
+    {
+      "name": "final return closes overlay and restores Home render ownership",
+      "pass": true
+    }
+  ],
+  "failures": 0,
+  "gate": {
+    "backend": "ResourceLoader",
+    "batches": 4,
+    "clock": "monotonic_usec",
+    "counters": {
+      "admission_rejections": 0,
+      "batches_failed": 0,
+      "batches_ready": 6,
+      "budget_overruns": 59,
+      "cache_hits": 11,
+      "cancelled": 0,
+      "consumes": 97,
+      "deduplicated": 11,
+      "evictions": 17,
+      "max_process_usec": 325123,
+      "peak_batches": 4,
+      "peak_entries": 85,
+      "peak_in_flight": 1,
+      "peak_reserved_bytes": 170111996,
+      "requests": 6,
+      "retries": 0,
+      "starts": 97,
+      "timeouts": 0
+    },
+    "effective_max_concurrent": 1,
+    "entries": 80,
+    "estimated_ready_bytes": 170111996,
+    "estimated_reserved_bytes": 170111996,
+    "fallback_reason": "godot_4_5_2_loader_lifetime",
+    "in_flight": 0,
+    "limits": {
+      "default_estimated_bytes": 1048576,
+      "frame_budget_usec": 2000,
+      "max_batches": 32,
+      "max_concurrent": 2,
+      "max_entries": 128,
+      "max_estimated_bytes": 268435456,
+      "max_finishes_per_frame": 8,
+      "max_owners": 64,
+      "max_specs_per_batch": 80,
+      "max_starts_per_frame": 8,
+      "metrics_capacity": 256,
+      "mode": "auto"
+    },
+    "memory": {
+      "godot_static_memory_bytes": 383909892,
+      "per_resource_decode_usec": null,
+      "per_resource_gpu_upload_usec": null,
+      "render_texture_memory_bytes": null,
+      "render_video_memory_bytes": null,
+      "whole_process_rss_bytes": null
+    },
+    "mode": "sequential",
+    "owners": 1,
+    "queue_entries": 0,
+    "requested_mode": "auto",
+    "samples": [
+      {
+        "at_usec": 1790899,
+        "elapsed_usec": 4,
+        "frame": 49,
+        "load_wall_usec": 15194,
+        "path": "res://assets/merit_box.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1790984,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 49,
+        "owner_id": 215184581394,
+        "path": "res://assets/merit_box.png",
+        "queue_to_ready_usec": 291262,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1798567,
+        "attempt": 1,
+        "elapsed_usec": 7378,
+        "error": 0,
+        "frame": 49,
+        "path": "res://assets/merit_reward_14.png",
+        "queue_wait_usec": 291463,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1798618,
+        "budget_usec": 2000,
+        "elapsed_usec": 8057,
+        "frame": 49,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1807415,
+        "elapsed_usec": 4,
+        "frame": 50,
+        "load_wall_usec": 16230,
+        "path": "res://assets/merit_reward_14.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1807474,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 50,
+        "owner_id": 215184581394,
+        "path": "res://assets/merit_reward_14.png",
+        "queue_to_ready_usec": 307754,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1807991,
+        "attempt": 1,
+        "elapsed_usec": 347,
+        "error": 0,
+        "frame": 50,
+        "path": "res://assets/photo_clip.png",
+        "queue_wait_usec": 307922,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1808010,
+        "elapsed_usec": 1,
+        "frame": 50,
+        "load_wall_usec": 368,
+        "path": "res://assets/photo_clip.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1809170,
+        "attempt": 1,
+        "elapsed_usec": 1091,
+        "error": 0,
+        "frame": 50,
+        "path": "res://assets/photo_frame_01_travel.png",
+        "queue_wait_usec": 308358,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1809198,
+        "budget_usec": 2000,
+        "elapsed_usec": 2030,
+        "frame": 50,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1823920,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 51,
+        "owner_id": 215184581394,
+        "path": "res://assets/photo_clip.png",
+        "queue_to_ready_usec": 324198,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1824049,
+        "elapsed_usec": 3,
+        "frame": 51,
+        "load_wall_usec": 15971,
+        "path": "res://assets/photo_frame_01_travel.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1824107,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 51,
+        "owner_id": 215184581394,
+        "path": "res://assets/photo_frame_01_travel.png",
+        "queue_to_ready_usec": 324387,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1825515,
+        "attempt": 1,
+        "elapsed_usec": 1223,
+        "error": 0,
+        "frame": 51,
+        "path": "res://assets/photo_frame_02_travel.png",
+        "queue_wait_usec": 324570,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1825544,
+        "elapsed_usec": 3,
+        "frame": 51,
+        "load_wall_usec": 1253,
+        "path": "res://assets/photo_frame_02_travel.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1836194,
+        "attempt": 1,
+        "elapsed_usec": 10523,
+        "error": 0,
+        "frame": 51,
+        "path": "res://assets/round2/backpack_parts_atlas.png",
+        "queue_wait_usec": 325946,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1836261,
+        "budget_usec": 2000,
+        "elapsed_usec": 12436,
+        "frame": 51,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1840594,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 52,
+        "owner_id": 215184581394,
+        "path": "res://assets/photo_frame_02_travel.png",
+        "queue_to_ready_usec": 340873,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1840715,
+        "elapsed_usec": 2,
+        "frame": 52,
+        "load_wall_usec": 15048,
+        "path": "res://assets/round2/backpack_parts_atlas.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1840776,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 52,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/backpack_parts_atlas.png",
+        "queue_to_ready_usec": 341056,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1861947,
+        "attempt": 1,
+        "elapsed_usec": 21005,
+        "error": 0,
+        "frame": 52,
+        "path": "res://assets/round2/home_neutral_bleed_no_plants.png",
+        "queue_wait_usec": 341214,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1862011,
+        "budget_usec": 2000,
+        "elapsed_usec": 21517,
+        "frame": 52,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1862528,
+        "elapsed_usec": 4,
+        "frame": 53,
+        "load_wall_usec": 21593,
+        "path": "res://assets/round2/home_neutral_bleed_no_plants.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1862611,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 53,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/home_neutral_bleed_no_plants.png",
+        "queue_to_ready_usec": 362890,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1878750,
+        "attempt": 1,
+        "elapsed_usec": 15966,
+        "error": 0,
+        "frame": 53,
+        "path": "res://assets/round2/home_neutral_no_plants.png",
+        "queue_wait_usec": 363057,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1878804,
+        "budget_usec": 2000,
+        "elapsed_usec": 16576,
+        "frame": 53,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1879204,
+        "elapsed_usec": 3,
+        "frame": 54,
+        "load_wall_usec": 16426,
+        "path": "res://assets/round2/home_neutral_no_plants.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1879314,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 54,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/home_neutral_no_plants.png",
+        "queue_to_ready_usec": 379593,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1888679,
+        "attempt": 1,
+        "elapsed_usec": 9201,
+        "error": 0,
+        "frame": 54,
+        "path": "res://assets/round2/home_plants_atlas.png",
+        "queue_wait_usec": 379752,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1888725,
+        "budget_usec": 2000,
+        "elapsed_usec": 9731,
+        "frame": 54,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1890725,
+        "elapsed_usec": 3,
+        "frame": 55,
+        "load_wall_usec": 11251,
+        "path": "res://assets/round2/home_plants_atlas.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1890788,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 55,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/home_plants_atlas.png",
+        "queue_to_ready_usec": 391068,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1893027,
+        "attempt": 1,
+        "elapsed_usec": 2084,
+        "error": 0,
+        "frame": 55,
+        "path": "res://assets/round2/incense_ceramic.png",
+        "queue_wait_usec": 391221,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1893057,
+        "budget_usec": 2000,
+        "elapsed_usec": 2566,
+        "frame": 55,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1907560,
+        "elapsed_usec": 6,
+        "frame": 56,
+        "load_wall_usec": 16615,
+        "path": "res://assets/round2/incense_ceramic.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1907627,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 56,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/incense_ceramic.png",
+        "queue_to_ready_usec": 407906,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1910775,
+        "attempt": 1,
+        "elapsed_usec": 2979,
+        "error": 0,
+        "frame": 56,
+        "path": "res://assets/round2/water_bowl_clean.png",
+        "queue_wait_usec": 408071,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1910821,
+        "budget_usec": 2000,
+        "elapsed_usec": 3559,
+        "frame": 56,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1924212,
+        "elapsed_usec": 5,
+        "frame": 57,
+        "load_wall_usec": 16417,
+        "path": "res://assets/round2/water_bowl_clean.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1924312,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 57,
+        "owner_id": 215184581394,
+        "path": "res://assets/round2/water_bowl_clean.png",
+        "queue_to_ready_usec": 424591,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1925384,
+        "attempt": 1,
+        "elapsed_usec": 904,
+        "error": 0,
+        "frame": 57,
+        "path": "res://assets/tail.png",
+        "queue_wait_usec": 424756,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1925418,
+        "elapsed_usec": 3,
+        "frame": 57,
+        "load_wall_usec": 942,
+        "path": "res://assets/tail.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1929565,
+        "attempt": 1,
+        "elapsed_usec": 4066,
+        "error": 0,
+        "frame": 57,
+        "path": "res://assets/travelbag_closed.png",
+        "queue_wait_usec": 425773,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1929614,
+        "budget_usec": 2000,
+        "elapsed_usec": 5694,
+        "frame": 57,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1940723,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 58,
+        "owner_id": 215184581394,
+        "path": "res://assets/tail.png",
+        "queue_to_ready_usec": 441001,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1940860,
+        "elapsed_usec": 4,
+        "frame": 58,
+        "load_wall_usec": 15366,
+        "path": "res://assets/travelbag_closed.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1940928,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 58,
+        "owner_id": 215184581394,
+        "path": "res://assets/travelbag_closed.png",
+        "queue_to_ready_usec": 441208,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1944654,
+        "attempt": 1,
+        "elapsed_usec": 3569,
+        "error": 0,
+        "frame": 58,
+        "path": "res://assets/treasure_open_filled.png",
+        "queue_wait_usec": 441359,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1944704,
+        "budget_usec": 2000,
+        "elapsed_usec": 4128,
+        "frame": 58,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1957527,
+        "elapsed_usec": 4,
+        "frame": 59,
+        "load_wall_usec": 16445,
+        "path": "res://assets/treasure_open_filled.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1957596,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 59,
+        "owner_id": 215184581394,
+        "path": "res://assets/treasure_open_filled.png",
+        "queue_to_ready_usec": 457875,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1958487,
+        "attempt": 1,
+        "elapsed_usec": 708,
+        "error": 0,
+        "frame": 59,
+        "path": "res://assets/wall_hook.png",
+        "queue_wait_usec": 458055,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1958517,
+        "elapsed_usec": 2,
+        "frame": 59,
+        "load_wall_usec": 741,
+        "path": "res://assets/wall_hook.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1965671,
+        "attempt": 1,
+        "elapsed_usec": 7041,
+        "error": 0,
+        "frame": 59,
+        "path": "res://assets/wardrobe_neutral.png",
+        "queue_wait_usec": 458903,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1965726,
+        "budget_usec": 2000,
+        "elapsed_usec": 8504,
+        "frame": 59,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1974023,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 60,
+        "owner_id": 215184581394,
+        "path": "res://assets/wall_hook.png",
+        "queue_to_ready_usec": 474300,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1974155,
+        "elapsed_usec": 3,
+        "frame": 60,
+        "load_wall_usec": 15531,
+        "path": "res://assets/wardrobe_neutral.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1974223,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 60,
+        "owner_id": 215184581394,
+        "path": "res://assets/wardrobe_neutral.png",
+        "queue_to_ready_usec": 474502,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1974628,
+        "attempt": 1,
+        "elapsed_usec": 237,
+        "error": 0,
+        "frame": 60,
+        "path": "res://assets/wood_knock.wav",
+        "queue_wait_usec": 474668,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1974652,
+        "elapsed_usec": 1,
+        "frame": 60,
+        "load_wall_usec": 264,
+        "path": "res://assets/wood_knock.wav",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1981474,
+        "attempt": 1,
+        "elapsed_usec": 6752,
+        "error": 0,
+        "frame": 60,
+        "path": "res://darkroom/assets/release.png",
+        "queue_wait_usec": 474996,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1981518,
+        "budget_usec": 2000,
+        "elapsed_usec": 7636,
+        "frame": 60,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 1990664,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 61,
+        "owner_id": 215184581394,
+        "path": "res://assets/wood_knock.wav",
+        "queue_to_ready_usec": 490942,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1990785,
+        "elapsed_usec": 3,
+        "frame": 61,
+        "load_wall_usec": 16068,
+        "path": "res://darkroom/assets/release.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1990852,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 61,
+        "owner_id": 215184581394,
+        "path": "res://darkroom/assets/release.png",
+        "queue_to_ready_usec": 491132,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 1991092,
+        "attempt": 1,
+        "elapsed_usec": 109,
+        "error": 0,
+        "frame": 61,
+        "path": "res://darkroom/shaders/smoke_flow.gdshader",
+        "queue_wait_usec": 491262,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1991110,
+        "elapsed_usec": 1,
+        "frame": 61,
+        "load_wall_usec": 128,
+        "path": "res://darkroom/shaders/smoke_flow.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 1994030,
+        "attempt": 1,
+        "elapsed_usec": 2858,
+        "error": 0,
+        "frame": 61,
+        "path": "res://home/audio/tracks/day_harp_mouse.mp3",
+        "queue_wait_usec": 491449,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 1994070,
+        "budget_usec": 2000,
+        "elapsed_usec": 3553,
+        "frame": 61,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2007342,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 62,
+        "owner_id": 215184581394,
+        "path": "res://darkroom/shaders/smoke_flow.gdshader",
+        "queue_to_ready_usec": 507619,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2007469,
+        "elapsed_usec": 3,
+        "frame": 62,
+        "load_wall_usec": 16299,
+        "path": "res://home/audio/tracks/day_harp_mouse.mp3",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2007541,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 62,
+        "owner_id": 215184581394,
+        "path": "res://home/audio/tracks/day_harp_mouse.mp3",
+        "queue_to_ready_usec": 507821,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2012128,
+        "attempt": 1,
+        "elapsed_usec": 4453,
+        "error": 0,
+        "frame": 62,
+        "path": "res://home/audio/tracks/night_peaceful_mind.mp3",
+        "queue_wait_usec": 507950,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2012178,
+        "budget_usec": 2000,
+        "elapsed_usec": 4987,
+        "frame": 62,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2024104,
+        "elapsed_usec": 3,
+        "frame": 63,
+        "load_wall_usec": 16431,
+        "path": "res://home/audio/tracks/night_peaceful_mind.mp3",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2024178,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 63,
+        "owner_id": 215184581394,
+        "path": "res://home/audio/tracks/night_peaceful_mind.mp3",
+        "queue_to_ready_usec": 524457,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2041770,
+        "attempt": 1,
+        "elapsed_usec": 17434,
+        "error": 0,
+        "frame": 63,
+        "path": "res://home/feedback/assets/merit_digits_thin_gold.png",
+        "queue_wait_usec": 524608,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2041837,
+        "budget_usec": 2000,
+        "elapsed_usec": 17979,
+        "frame": 63,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2042326,
+        "elapsed_usec": 4,
+        "frame": 64,
+        "load_wall_usec": 17997,
+        "path": "res://home/feedback/assets/merit_digits_thin_gold.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2042402,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 64,
+        "owner_id": 215184581394,
+        "path": "res://home/feedback/assets/merit_digits_thin_gold.png",
+        "queue_to_ready_usec": 542681,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2043012,
+        "attempt": 1,
+        "elapsed_usec": 444,
+        "error": 0,
+        "frame": 64,
+        "path": "res://home/feedback/assets/returned_bag_diamond.png",
+        "queue_wait_usec": 542845,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2043040,
+        "elapsed_usec": 2,
+        "frame": 64,
+        "load_wall_usec": 475,
+        "path": "res://home/feedback/assets/returned_bag_diamond.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2047256,
+        "attempt": 1,
+        "elapsed_usec": 4145,
+        "error": 0,
+        "frame": 64,
+        "path": "res://home/flowers/assets/daisy_heads_candidate.png",
+        "queue_wait_usec": 543387,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2047297,
+        "budget_usec": 2000,
+        "elapsed_usec": 5231,
+        "frame": 64,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2057367,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 65,
+        "owner_id": 215184581394,
+        "path": "res://home/feedback/assets/returned_bag_diamond.png",
+        "queue_to_ready_usec": 557644,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2057484,
+        "elapsed_usec": 2,
+        "frame": 65,
+        "load_wall_usec": 14376,
+        "path": "res://home/flowers/assets/daisy_heads_candidate.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2057560,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 65,
+        "owner_id": 215184581394,
+        "path": "res://home/flowers/assets/daisy_heads_candidate.png",
+        "queue_to_ready_usec": 557839,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2058231,
+        "attempt": 1,
+        "elapsed_usec": 552,
+        "error": 0,
+        "frame": 65,
+        "path": "res://home/flowers/assets/daisy_leaf_candidate.png",
+        "queue_wait_usec": 557957,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2058281,
+        "elapsed_usec": 2,
+        "frame": 65,
+        "load_wall_usec": 603,
+        "path": "res://home/flowers/assets/daisy_leaf_candidate.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2059580,
+        "attempt": 1,
+        "elapsed_usec": 1237,
+        "error": 0,
+        "frame": 65,
+        "path": "res://home/flowers/assets/empty_vase_candidate.png",
+        "queue_wait_usec": 558621,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2059612,
+        "budget_usec": 2000,
+        "elapsed_usec": 2403,
+        "frame": 65,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2073969,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 66,
+        "owner_id": 215184581394,
+        "path": "res://home/flowers/assets/daisy_leaf_candidate.png",
+        "queue_to_ready_usec": 574247,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2074078,
+        "elapsed_usec": 4,
+        "frame": 66,
+        "load_wall_usec": 15736,
+        "path": "res://home/flowers/assets/empty_vase_candidate.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2074151,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 66,
+        "owner_id": 215184581394,
+        "path": "res://home/flowers/assets/empty_vase_candidate.png",
+        "queue_to_ready_usec": 574431,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2075563,
+        "attempt": 1,
+        "elapsed_usec": 1283,
+        "error": 0,
+        "frame": 66,
+        "path": "res://home/flowers/flower_receiver.gdshader",
+        "queue_wait_usec": 574558,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2075606,
+        "elapsed_usec": 2,
+        "frame": 66,
+        "load_wall_usec": 1327,
+        "path": "res://home/flowers/flower_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2075816,
+        "attempt": 1,
+        "elapsed_usec": 147,
+        "error": 0,
+        "frame": 66,
+        "path": "res://home/interaction/alpha_masks/altar.res",
+        "queue_wait_usec": 575948,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2075834,
+        "elapsed_usec": 1,
+        "frame": 66,
+        "load_wall_usec": 165,
+        "path": "res://home/interaction/alpha_masks/altar.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2075848,
+        "budget_usec": 2000,
+        "elapsed_usec": 2007,
+        "frame": 66,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2090681,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 67,
+        "owner_id": 215184581394,
+        "path": "res://home/flowers/flower_receiver.gdshader",
+        "queue_to_ready_usec": 590959,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2090689,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 67,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/altar.res",
+        "queue_to_ready_usec": 590968,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2091795,
+        "attempt": 1,
+        "elapsed_usec": 469,
+        "error": 0,
+        "frame": 67,
+        "path": "res://home/interaction/alpha_masks/backpack_parts.res",
+        "queue_wait_usec": 591604,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2091824,
+        "elapsed_usec": 3,
+        "frame": 67,
+        "load_wall_usec": 499,
+        "path": "res://home/interaction/alpha_masks/backpack_parts.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2091998,
+        "attempt": 1,
+        "elapsed_usec": 117,
+        "error": 0,
+        "frame": 67,
+        "path": "res://home/interaction/alpha_masks/bag.res",
+        "queue_wait_usec": 592160,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2092014,
+        "elapsed_usec": 1,
+        "frame": 67,
+        "load_wall_usec": 134,
+        "path": "res://home/interaction/alpha_masks/bag.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2092178,
+        "attempt": 1,
+        "elapsed_usec": 93,
+        "error": 0,
+        "frame": 67,
+        "path": "res://home/interaction/alpha_masks/body.res",
+        "queue_wait_usec": 592364,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2092194,
+        "elapsed_usec": 1,
+        "frame": 67,
+        "load_wall_usec": 110,
+        "path": "res://home/interaction/alpha_masks/body.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2092373,
+        "attempt": 1,
+        "elapsed_usec": 101,
+        "error": 0,
+        "frame": 67,
+        "path": "res://home/interaction/alpha_masks/bowl.res",
+        "queue_wait_usec": 592552,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2092390,
+        "elapsed_usec": 1,
+        "frame": 67,
+        "load_wall_usec": 118,
+        "path": "res://home/interaction/alpha_masks/bowl.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2092531,
+        "attempt": 1,
+        "elapsed_usec": 92,
+        "error": 0,
+        "frame": 67,
+        "path": "res://home/interaction/alpha_masks/doll.res",
+        "queue_wait_usec": 592719,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2092554,
+        "budget_usec": 2000,
+        "elapsed_usec": 2040,
+        "frame": 67,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2107350,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 68,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/backpack_parts.res",
+        "queue_to_ready_usec": 607628,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2107359,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 68,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/bag.res",
+        "queue_to_ready_usec": 607639,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2107364,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 68,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/body.res",
+        "queue_to_ready_usec": 607644,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2107369,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 68,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/bowl.res",
+        "queue_to_ready_usec": 607648,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2107471,
+        "elapsed_usec": 3,
+        "frame": 68,
+        "load_wall_usec": 15031,
+        "path": "res://home/interaction/alpha_masks/doll.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2107551,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 68,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/doll.res",
+        "queue_to_ready_usec": 607830,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2107813,
+        "attempt": 1,
+        "elapsed_usec": 163,
+        "error": 0,
+        "frame": 68,
+        "path": "res://home/interaction/alpha_masks/fin_mallet.res",
+        "queue_wait_usec": 607929,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2107832,
+        "elapsed_usec": 1,
+        "frame": 68,
+        "load_wall_usec": 183,
+        "path": "res://home/interaction/alpha_masks/fin_mallet.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2107961,
+        "attempt": 1,
+        "elapsed_usec": 78,
+        "error": 0,
+        "frame": 68,
+        "path": "res://home/interaction/alpha_masks/tail.res",
+        "queue_wait_usec": 608162,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2107976,
+        "elapsed_usec": 1,
+        "frame": 68,
+        "load_wall_usec": 93,
+        "path": "res://home/interaction/alpha_masks/tail.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2108563,
+        "attempt": 1,
+        "elapsed_usec": 539,
+        "error": 0,
+        "frame": 68,
+        "path": "res://home/secondary/part_receiver.gdshader",
+        "queue_wait_usec": 608303,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2108582,
+        "elapsed_usec": 2,
+        "frame": 68,
+        "load_wall_usec": 559,
+        "path": "res://home/secondary/part_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2108873,
+        "attempt": 1,
+        "elapsed_usec": 241,
+        "error": 0,
+        "frame": 68,
+        "path": "res://home/secondary/part_wall_shadow.gdshader",
+        "queue_wait_usec": 608911,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2108888,
+        "elapsed_usec": 1,
+        "frame": 68,
+        "load_wall_usec": 257,
+        "path": "res://home/secondary/part_wall_shadow.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2109432,
+        "attempt": 1,
+        "elapsed_usec": 497,
+        "error": 0,
+        "frame": 68,
+        "path": "res://shaders/bed_receiver.gdshader",
+        "queue_wait_usec": 609214,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2109458,
+        "budget_usec": 2000,
+        "elapsed_usec": 2271,
+        "frame": 68,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2124007,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 69,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/fin_mallet.res",
+        "queue_to_ready_usec": 624284,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2124014,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 69,
+        "owner_id": 215184581394,
+        "path": "res://home/interaction/alpha_masks/tail.res",
+        "queue_to_ready_usec": 624294,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2124019,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 69,
+        "owner_id": 215184581394,
+        "path": "res://home/secondary/part_receiver.gdshader",
+        "queue_to_ready_usec": 624299,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2124023,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 69,
+        "owner_id": 215184581394,
+        "path": "res://home/secondary/part_wall_shadow.gdshader",
+        "queue_to_ready_usec": 624304,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2124122,
+        "elapsed_usec": 4,
+        "frame": 69,
+        "load_wall_usec": 15187,
+        "path": "res://shaders/bed_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2124204,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 69,
+        "owner_id": 215184581394,
+        "path": "res://shaders/bed_receiver.gdshader",
+        "queue_to_ready_usec": 624484,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2125223,
+        "attempt": 1,
+        "elapsed_usec": 827,
+        "error": 0,
+        "frame": 69,
+        "path": "res://shaders/bleed_receiver.gdshader",
+        "queue_wait_usec": 624674,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2125287,
+        "elapsed_usec": 2,
+        "frame": 69,
+        "load_wall_usec": 891,
+        "path": "res://shaders/bleed_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2125523,
+        "attempt": 1,
+        "elapsed_usec": 179,
+        "error": 0,
+        "frame": 69,
+        "path": "res://shaders/grounded_shadow.gdshader",
+        "queue_wait_usec": 625623,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2125540,
+        "elapsed_usec": 1,
+        "frame": 69,
+        "load_wall_usec": 197,
+        "path": "res://shaders/grounded_shadow.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2126355,
+        "attempt": 1,
+        "elapsed_usec": 767,
+        "error": 0,
+        "frame": 69,
+        "path": "res://shaders/home_face_receiver.gdshader",
+        "queue_wait_usec": 625866,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2126385,
+        "budget_usec": 2000,
+        "elapsed_usec": 2515,
+        "frame": 69,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2140665,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 70,
+        "owner_id": 215184581394,
+        "path": "res://shaders/bleed_receiver.gdshader",
+        "queue_to_ready_usec": 640942,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2140673,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 70,
+        "owner_id": 215184581394,
+        "path": "res://shaders/grounded_shadow.gdshader",
+        "queue_to_ready_usec": 640952,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2140770,
+        "elapsed_usec": 3,
+        "frame": 70,
+        "load_wall_usec": 15183,
+        "path": "res://shaders/home_face_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2140857,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 70,
+        "owner_id": 215184581394,
+        "path": "res://shaders/home_face_receiver.gdshader",
+        "queue_to_ready_usec": 641137,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2141182,
+        "attempt": 1,
+        "elapsed_usec": 246,
+        "error": 0,
+        "frame": 70,
+        "path": "res://shaders/home_grounded_shadow.gdshader",
+        "queue_wait_usec": 641215,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2141215,
+        "elapsed_usec": 2,
+        "frame": 70,
+        "load_wall_usec": 279,
+        "path": "res://shaders/home_grounded_shadow.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2141879,
+        "attempt": 1,
+        "elapsed_usec": 573,
+        "error": 0,
+        "frame": 70,
+        "path": "res://shaders/home_prop_receiver.gdshader",
+        "queue_wait_usec": 641584,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2141904,
+        "elapsed_usec": 2,
+        "frame": 70,
+        "load_wall_usec": 600,
+        "path": "res://shaders/home_prop_receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2142502,
+        "attempt": 1,
+        "elapsed_usec": 550,
+        "error": 0,
+        "frame": 70,
+        "path": "res://shaders/incense_stick.gdshader",
+        "queue_wait_usec": 642231,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2142578,
+        "budget_usec": 2000,
+        "elapsed_usec": 2056,
+        "frame": 70,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2157320,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 71,
+        "owner_id": 215184581394,
+        "path": "res://shaders/home_grounded_shadow.gdshader",
+        "queue_to_ready_usec": 657597,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2157331,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 71,
+        "owner_id": 215184581394,
+        "path": "res://shaders/home_prop_receiver.gdshader",
+        "queue_to_ready_usec": 657610,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2157428,
+        "elapsed_usec": 3,
+        "frame": 71,
+        "load_wall_usec": 15476,
+        "path": "res://shaders/incense_stick.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2157568,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 71,
+        "owner_id": 215184581394,
+        "path": "res://shaders/incense_stick.gdshader",
+        "queue_to_ready_usec": 657846,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2157950,
+        "attempt": 1,
+        "elapsed_usec": 272,
+        "error": 0,
+        "frame": 71,
+        "path": "res://shaders/light_shafts.gdshader",
+        "queue_wait_usec": 657956,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2157973,
+        "elapsed_usec": 1,
+        "frame": 71,
+        "load_wall_usec": 297,
+        "path": "res://shaders/light_shafts.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2158587,
+        "attempt": 1,
+        "elapsed_usec": 568,
+        "error": 0,
+        "frame": 71,
+        "path": "res://shaders/receiver.gdshader",
+        "queue_wait_usec": 658296,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2158611,
+        "elapsed_usec": 2,
+        "frame": 71,
+        "load_wall_usec": 595,
+        "path": "res://shaders/receiver.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2158822,
+        "attempt": 1,
+        "elapsed_usec": 165,
+        "error": 0,
+        "frame": 71,
+        "path": "res://shaders/shadow.gdshader",
+        "queue_wait_usec": 658937,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2158841,
+        "elapsed_usec": 1,
+        "frame": 71,
+        "load_wall_usec": 184,
+        "path": "res://shaders/shadow.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2165041,
+        "attempt": 1,
+        "elapsed_usec": 6155,
+        "error": 0,
+        "frame": 71,
+        "path": "res://travel/assets/home_tent_hd_v1.png",
+        "queue_wait_usec": 659163,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2165081,
+        "budget_usec": 2000,
+        "elapsed_usec": 7916,
+        "frame": 71,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2173942,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 72,
+        "owner_id": 215184581394,
+        "path": "res://shaders/light_shafts.gdshader",
+        "queue_to_ready_usec": 674221,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2173952,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 72,
+        "owner_id": 215184581394,
+        "path": "res://shaders/receiver.gdshader",
+        "queue_to_ready_usec": 674232,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2173959,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 72,
+        "owner_id": 215184581394,
+        "path": "res://shaders/shadow.gdshader",
+        "queue_to_ready_usec": 674239,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2174042,
+        "elapsed_usec": 2,
+        "frame": 72,
+        "load_wall_usec": 15159,
+        "path": "res://travel/assets/home_tent_hd_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2174210,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 72,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/home_tent_hd_v1.png",
+        "queue_to_ready_usec": 674489,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2174931,
+        "attempt": 1,
+        "elapsed_usec": 631,
+        "error": 0,
+        "frame": 72,
+        "path": "res://travel/assets/home_tent_pixels.png",
+        "queue_wait_usec": 674578,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2174956,
+        "elapsed_usec": 1,
+        "frame": 72,
+        "load_wall_usec": 658,
+        "path": "res://travel/assets/home_tent_pixels.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2201070,
+        "attempt": 1,
+        "elapsed_usec": 26051,
+        "error": 0,
+        "frame": 72,
+        "path": "res://travel/assets/home_worn_bag_pixels.png",
+        "queue_wait_usec": 675283,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2201155,
+        "budget_usec": 2000,
+        "elapsed_usec": 27346,
+        "frame": 72,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2201617,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 73,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/home_tent_pixels.png",
+        "queue_to_ready_usec": 701895,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2201700,
+        "elapsed_usec": 3,
+        "frame": 73,
+        "load_wall_usec": 26697,
+        "path": "res://travel/assets/home_worn_bag_pixels.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2201795,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 73,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/home_worn_bag_pixels.png",
+        "queue_to_ready_usec": 702074,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2202027,
+        "attempt": 1,
+        "elapsed_usec": 167,
+        "error": 0,
+        "frame": 73,
+        "path": "res://travel/assets/travel_props_hit.res",
+        "queue_wait_usec": 702138,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2202047,
+        "elapsed_usec": 1,
+        "frame": 73,
+        "load_wall_usec": 189,
+        "path": "res://travel/assets/travel_props_hit.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2232520,
+        "attempt": 1,
+        "elapsed_usec": 30413,
+        "error": 0,
+        "frame": 73,
+        "path": "res://travel/assets/travel_props_v1.png",
+        "queue_wait_usec": 702370,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2232609,
+        "budget_usec": 2000,
+        "elapsed_usec": 31157,
+        "frame": 73,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2233052,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 74,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_props_hit.res",
+        "queue_to_ready_usec": 733330,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2233131,
+        "elapsed_usec": 3,
+        "frame": 74,
+        "load_wall_usec": 31041,
+        "path": "res://travel/assets/travel_props_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2233226,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 74,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_props_v1.png",
+        "queue_to_ready_usec": 733506,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2251327,
+        "attempt": 1,
+        "elapsed_usec": 18015,
+        "error": 0,
+        "frame": 74,
+        "path": "res://travel/assets/travel_rewards_v1.png",
+        "queue_wait_usec": 733583,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2251400,
+        "budget_usec": 2000,
+        "elapsed_usec": 18512,
+        "frame": 74,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2251865,
+        "elapsed_usec": 4,
+        "frame": 75,
+        "load_wall_usec": 18561,
+        "path": "res://travel/assets/travel_rewards_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2251962,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 75,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_rewards_v1.png",
+        "queue_to_ready_usec": 752242,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2253000,
+        "attempt": 1,
+        "elapsed_usec": 980,
+        "error": 0,
+        "frame": 75,
+        "path": "res://travel/assets/travel_ui.ttf",
+        "queue_wait_usec": 752298,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2253024,
+        "elapsed_usec": 2,
+        "frame": 75,
+        "load_wall_usec": 1006,
+        "path": "res://travel/assets/travel_ui.ttf",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2253157,
+        "attempt": 1,
+        "elapsed_usec": 90,
+        "error": 0,
+        "frame": 75,
+        "path": "res://travel/assets/treasure_hit.res",
+        "queue_wait_usec": 753346,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2253175,
+        "elapsed_usec": 1,
+        "frame": 75,
+        "load_wall_usec": 109,
+        "path": "res://travel/assets/treasure_hit.res",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2576600,
+        "attempt": 1,
+        "elapsed_usec": 323377,
+        "error": 0,
+        "frame": 75,
+        "path": "res://home/home_page.tscn",
+        "queue_wait_usec": 753493,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 2576758,
+        "budget_usec": 2000,
+        "elapsed_usec": 325123,
+        "frame": 75,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 2585207,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 76,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_ui.ttf",
+        "queue_to_ready_usec": 1085484,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2585217,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 76,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/treasure_hit.res",
+        "queue_to_ready_usec": 1085497,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2585344,
+        "elapsed_usec": 5,
+        "frame": 76,
+        "load_wall_usec": 332130,
+        "path": "res://home/home_page.tscn",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 2585663,
+        "batch_id": 3,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 76,
+        "owner_id": 215184581394,
+        "path": "res://home/home_page.tscn",
+        "queue_to_ready_usec": 1085942,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 2585671,
+        "batch_id": 3,
+        "elapsed_usec": 1085951,
+        "frame": 76,
+        "stage": "batch_finished",
+        "success": true
+      },
+      {
+        "at_usec": 2586464,
+        "elapsed_usec": 574,
+        "epoch": 1,
+        "frame": 76,
+        "owner_id": 215184581394,
+        "stage": "home_instantiate"
+      },
+      {
+        "at_usec": 2779771,
+        "elapsed_usec": 178062,
+        "epoch": 1,
+        "frame": 77,
+        "owner_id": 215184581394,
+        "stage": "home_tree_ready"
+      },
+      {
+        "at_usec": 2789313,
+        "elapsed_usec": 187615,
+        "epoch": 1,
+        "frame": 79,
+        "owner_id": 215184581394,
+        "stage": "home_first_draw_gate"
+      },
+      {
+        "at_usec": 6042054,
+        "attempt": 1,
+        "elapsed_usec": 1109,
+        "error": 0,
+        "frame": 273,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_wait_usec": 4882,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6042090,
+        "elapsed_usec": 4,
+        "frame": 273,
+        "load_wall_usec": 1149,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6068629,
+        "attempt": 1,
+        "elapsed_usec": 26483,
+        "error": 0,
+        "frame": 273,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "queue_wait_usec": 6073,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6068715,
+        "budget_usec": 2000,
+        "elapsed_usec": 27943,
+        "frame": 273,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6073440,
+        "batch_id": 4,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 274,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_to_ready_usec": 37379,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6073536,
+        "elapsed_usec": 5,
+        "frame": 274,
+        "load_wall_usec": 31404,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6073549,
+        "batch_id": 4,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 274,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "queue_to_ready_usec": 37491,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6100379,
+        "attempt": 1,
+        "elapsed_usec": 26769,
+        "error": 0,
+        "frame": 274,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_wait_usec": 37536,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6100467,
+        "budget_usec": 2000,
+        "elapsed_usec": 27071,
+        "frame": 274,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6105215,
+        "elapsed_usec": 4,
+        "frame": 275,
+        "load_wall_usec": 31619,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6105230,
+        "batch_id": 4,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 275,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_to_ready_usec": 69172,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6105238,
+        "batch_id": 4,
+        "elapsed_usec": 69179,
+        "frame": 275,
+        "stage": "batch_finished",
+        "success": true
+      },
+      {
+        "at_usec": 6135053,
+        "budget_usec": 2000,
+        "elapsed_usec": 29973,
+        "frame": 275,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6149444,
+        "batch_id": 5,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 276,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_to_ready_usec": 1731,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6149455,
+        "batch_id": 5,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 276,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_diary_plate_v5.png",
+        "queue_to_ready_usec": 1744,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6149465,
+        "batch_id": 5,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 276,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_to_ready_usec": 1754,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6177298,
+        "attempt": 1,
+        "elapsed_usec": 27697,
+        "error": 0,
+        "frame": 276,
+        "path": "res://travel/assets/travel_diary_reference_v5.png",
+        "queue_wait_usec": 1874,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6177386,
+        "budget_usec": 2000,
+        "elapsed_usec": 27974,
+        "frame": 276,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6181662,
+        "elapsed_usec": 5,
+        "frame": 277,
+        "load_wall_usec": 32075,
+        "path": "res://travel/assets/travel_diary_reference_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6181682,
+        "batch_id": 5,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 277,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_diary_reference_v5.png",
+        "queue_to_ready_usec": 33970,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6205856,
+        "attempt": 1,
+        "elapsed_usec": 24101,
+        "error": 0,
+        "frame": 277,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "queue_wait_usec": 34027,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6205941,
+        "budget_usec": 2000,
+        "elapsed_usec": 24417,
+        "frame": 277,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6210119,
+        "elapsed_usec": 4,
+        "frame": 278,
+        "load_wall_usec": 28380,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6210137,
+        "batch_id": 5,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 278,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "queue_to_ready_usec": 62425,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6238606,
+        "attempt": 1,
+        "elapsed_usec": 28381,
+        "error": 0,
+        "frame": 278,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "queue_wait_usec": 62496,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6238693,
+        "budget_usec": 2000,
+        "elapsed_usec": 28705,
+        "frame": 278,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6242984,
+        "elapsed_usec": 4,
+        "frame": 279,
+        "load_wall_usec": 32776,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6243004,
+        "batch_id": 5,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 279,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "queue_to_ready_usec": 95293,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6275457,
+        "attempt": 1,
+        "elapsed_usec": 32375,
+        "error": 0,
+        "frame": 279,
+        "path": "res://travel/assets/travel_scenery_v1.png",
+        "queue_wait_usec": 95339,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6275544,
+        "budget_usec": 2000,
+        "elapsed_usec": 32690,
+        "frame": 279,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6279899,
+        "elapsed_usec": 4,
+        "frame": 280,
+        "load_wall_usec": 36847,
+        "path": "res://travel/assets/travel_scenery_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6279921,
+        "batch_id": 5,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 280,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_scenery_v1.png",
+        "queue_to_ready_usec": 132209,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6279929,
+        "batch_id": 5,
+        "elapsed_usec": 132218,
+        "frame": 280,
+        "stage": "batch_finished",
+        "success": true
+      },
+      {
+        "at_usec": 6293440,
+        "budget_usec": 2000,
+        "elapsed_usec": 13671,
+        "frame": 280,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6309610,
+        "batch_id": 6,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 281,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_brush.ttf",
+        "queue_to_ready_usec": 1854,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6309623,
+        "batch_id": 6,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 281,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_map_actor_v5.png",
+        "queue_to_ready_usec": 1869,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6309633,
+        "batch_id": 6,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 281,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_paper_v1.png",
+        "queue_to_ready_usec": 1878,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6309638,
+        "batch_id": 6,
+        "cache_hit": true,
+        "epoch": 1,
+        "frame": 281,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_people_v5.png",
+        "queue_to_ready_usec": 1884,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6310098,
+        "attempt": 1,
+        "elapsed_usec": 332,
+        "error": 0,
+        "frame": 281,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "queue_wait_usec": 2010,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6310124,
+        "elapsed_usec": 3,
+        "frame": 281,
+        "load_wall_usec": 360,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6341292,
+        "attempt": 1,
+        "elapsed_usec": 31114,
+        "error": 0,
+        "frame": 281,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "queue_wait_usec": 2410,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6341384,
+        "budget_usec": 2000,
+        "elapsed_usec": 31811,
+        "frame": 281,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6345761,
+        "batch_id": 6,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 282,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_footprint_ink_v1.png",
+        "queue_to_ready_usec": 38005,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6345879,
+        "elapsed_usec": 5,
+        "frame": 282,
+        "load_wall_usec": 35714,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6345896,
+        "batch_id": 6,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 282,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_map_plate_v5.png",
+        "queue_to_ready_usec": 38142,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6367626,
+        "attempt": 1,
+        "elapsed_usec": 21655,
+        "error": 0,
+        "frame": 282,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "queue_wait_usec": 38200,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6367720,
+        "budget_usec": 2000,
+        "elapsed_usec": 22015,
+        "frame": 282,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6372018,
+        "elapsed_usec": 4,
+        "frame": 283,
+        "load_wall_usec": 26062,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6372038,
+        "batch_id": 6,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 283,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_offer_person_v5.png",
+        "queue_to_ready_usec": 64283,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6375159,
+        "attempt": 1,
+        "elapsed_usec": 3061,
+        "error": 0,
+        "frame": 283,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "queue_wait_usec": 64341,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6375236,
+        "budget_usec": 2000,
+        "elapsed_usec": 3364,
+        "frame": 283,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 6378306,
+        "elapsed_usec": 3,
+        "frame": 284,
+        "load_wall_usec": 6210,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6378328,
+        "batch_id": 6,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 284,
+        "owner_id": 215184581394,
+        "path": "res://travel/assets/travel_scene_layers_v1.png",
+        "queue_to_ready_usec": 70573,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6378497,
+        "attempt": 1,
+        "elapsed_usec": 124,
+        "error": 0,
+        "frame": 284,
+        "path": "res://travel/travel_mist.gdshader",
+        "queue_wait_usec": 70618,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 6378520,
+        "elapsed_usec": 1,
+        "frame": 284,
+        "load_wall_usec": 149,
+        "path": "res://travel/travel_mist.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 6378575,
+        "batch_id": 6,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 284,
+        "owner_id": 215184581394,
+        "path": "res://travel/travel_mist.gdshader",
+        "queue_to_ready_usec": 70820,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 6378581,
+        "batch_id": 6,
+        "elapsed_usec": 70827,
+        "frame": 284,
+        "stage": "batch_finished",
+        "success": true
+      },
+      {
+        "at_usec": 6462114,
+        "budget_usec": 2000,
+        "elapsed_usec": 83940,
+        "frame": 284,
+        "stage": "scheduler_budget_overrun"
+      }
+    ]
+  },
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 6,
+      "peak_active": 1,
+      "peak_queue": 3,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 6,
+      "warm_hits": 2
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry",
+      "comic",
+      "exterior",
+      "house",
+      "departure",
+      "travel"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 805716,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3581,
+          "loaded": 943108,
+          "mount_usec": 97,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/entry.pck",
+          "request_id": "p216627422003-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1377792,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 8655,
+          "loaded": 2316192,
+          "mount_usec": 89,
+          "pack_id": "comic",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/comic.pck",
+          "request_id": "p216627422003-e1-r2",
+          "state": "ready",
+          "total": 2316192,
+          "verified_sha256": "f72208240d0c59baf30501cf26bdfb6db9f17f2f4d167dcccaba23e48f3610d4"
+        },
+        "epoch": 1,
+        "pack_id": "comic",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1423125,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 5376,
+          "loaded": 1494444,
+          "mount_usec": 79,
+          "pack_id": "exterior",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/exterior.pck",
+          "request_id": "p216627422003-e1-r3",
+          "state": "ready",
+          "total": 1494444,
+          "verified_sha256": "507033763109282e91d7f19f399882a10585045cfa8e413f5275ffbf58a9ea51"
+        },
+        "epoch": 1,
+        "pack_id": "exterior",
+        "state": "ready"
+      },
+      {
+        "at_usec": 1499060,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 58510,
+          "loaded": 17024952,
+          "mount_usec": 336,
+          "pack_id": "house",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/house.pck",
+          "request_id": "p216627422003-e1-r4",
+          "state": "ready",
+          "total": 17024952,
+          "verified_sha256": "9acf3b150dafdc05600a31e208180d539b7db1e64a418cc4aaa54f5ca6effd98"
+        },
+        "epoch": 1,
+        "pack_id": "house",
+        "state": "ready"
+      },
+      {
+        "at_usec": 5981598,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 4323,
+          "loaded": 1203888,
+          "mount_usec": 42,
+          "pack_id": "departure",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/departure.pck",
+          "request_id": "p216627422003-e1-r5",
+          "state": "ready",
+          "total": 1203888,
+          "verified_sha256": "f30dec5877699d582981562af4d9c87a1e3d9d706576455f0b3c7827f76692ee"
+        },
+        "epoch": 1,
+        "pack_id": "departure",
+        "state": "ready"
+      },
+      {
+        "at_usec": 6035693,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 48447,
+          "loaded": 13874440,
+          "mount_usec": 159,
+          "pack_id": "travel",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/travel.pck",
+          "request_id": "p216627422003-e1-r6",
+          "state": "ready",
+          "total": 13874440,
+          "verified_sha256": "c6fe0c747d64aabde17cd6e638adf276b065376632c7a369b67b0a302051e442"
+        },
+        "epoch": 1,
+        "pack_id": "travel",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  }
+}

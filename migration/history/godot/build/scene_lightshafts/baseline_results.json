@@ -1,0 +1,214 @@
+{
+  "checks": [
+    {
+      "check": "Photo uses actual shared clock and bridge",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 5.5",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 12.0",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 22.0",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 5.5",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 12.0",
+      "pass": true
+    },
+    {
+      "check": "Photo source remains outside canvas 22.0",
+      "pass": true
+    },
+    {
+      "check": "Photo selector still captures through light in landscape",
+      "pass": true
+    },
+    {
+      "check": "Photo dismiss restores Home input",
+      "pass": true
+    },
+    {
+      "check": "Photo shared Shader cache remains bounded to five",
+      "pass": true
+    },
+    {
+      "check": "Travel uses same Home clock",
+      "pass": true
+    },
+    {
+      "check": "Travel dismiss restores Home input",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "overlay": "none",
+  "samples": [
+    {
+      "draw_calls": 146.0,
+      "name": "wardrobe_12",
+      "objects": 286.0,
+      "process_seconds": 2.751362
+    },
+    {
+      "draw_calls": 146.0,
+      "name": "wardrobe_22",
+      "objects": 286.0,
+      "process_seconds": 0.082102
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_720x1280_05_on",
+      "objects": 2037.0,
+      "process_seconds": 0.063658
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_720x1280_05_off",
+      "objects": 2036.0,
+      "process_seconds": 0.927821
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_720x1280_12_on",
+      "objects": 2037.0,
+      "process_seconds": 0.763717
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_720x1280_12_off",
+      "objects": 2036.0,
+      "process_seconds": 0.766635
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_720x1280_22_on",
+      "objects": 2037.0,
+      "process_seconds": 0.778585
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_720x1280_22_off",
+      "objects": 2036.0,
+      "process_seconds": 0.792396
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_1280x720_05_on",
+      "objects": 2037.0,
+      "process_seconds": 0.792396
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_1280x720_05_off",
+      "objects": 2036.0,
+      "process_seconds": 0.701391
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_1280x720_12_on",
+      "objects": 2037.0,
+      "process_seconds": 0.701391
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_1280x720_12_off",
+      "objects": 2036.0,
+      "process_seconds": 0.701391
+    },
+    {
+      "draw_calls": 106.0,
+      "name": "photo_1280x720_22_on",
+      "objects": 2037.0,
+      "process_seconds": 0.214967
+    },
+    {
+      "draw_calls": 105.0,
+      "name": "photo_1280x720_22_off",
+      "objects": 2036.0,
+      "process_seconds": 0.214967
+    },
+    {
+      "draw_calls": 336.0,
+      "name": "travel_720x1280_05_on",
+      "objects": 18235.0,
+      "process_seconds": 0.757951
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_05_off",
+      "objects": 17983.0,
+      "process_seconds": 0.717715
+    },
+    {
+      "draw_calls": 309.0,
+      "name": "travel_720x1280_12_on",
+      "objects": 18208.0,
+      "process_seconds": 0.688978
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_12_off",
+      "objects": 17983.0,
+      "process_seconds": 0.705529
+    },
+    {
+      "draw_calls": 326.0,
+      "name": "travel_720x1280_22_on",
+      "objects": 18225.0,
+      "process_seconds": 0.70113
+    },
+    {
+      "draw_calls": 84.0,
+      "name": "travel_720x1280_22_off",
+      "objects": 17983.0,
+      "process_seconds": 0.70113
+    },
+    {
+      "draw_calls": 335.0,
+      "name": "travel_1280x720_05_on",
+      "objects": 18227.0,
+      "process_seconds": 0.700417
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_05_off",
+      "objects": 17975.0,
+      "process_seconds": 0.357134
+    },
+    {
+      "draw_calls": 308.0,
+      "name": "travel_1280x720_12_on",
+      "objects": 18200.0,
+      "process_seconds": 0.357134
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_12_off",
+      "objects": 17975.0,
+      "process_seconds": 0.329925
+    },
+    {
+      "draw_calls": 325.0,
+      "name": "travel_1280x720_22_on",
+      "objects": 18217.0,
+      "process_seconds": 0.329925
+    },
+    {
+      "draw_calls": 83.0,
+      "name": "travel_1280x720_22_off",
+      "objects": 17975.0,
+      "process_seconds": 0.391726
+    }
+  ],
+  "scope": "exact supplied packs; explicit candidate only when overlay argument is not none"
+}

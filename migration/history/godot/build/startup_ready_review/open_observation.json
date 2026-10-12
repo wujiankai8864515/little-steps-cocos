@@ -1,0 +1,14 @@
+[
+  {
+    "id": "A049_native_gl_frame_stall",
+    "state": "open_environment_bounded",
+    "requirement": "preparing Home one/two/three dots continuously loop",
+    "observed": "Dots loop while verified Home callback is held, then first drawing preparation produces multi-second missing process/draw frames in both cold and warm rounds.",
+    "cold_draw_gap_msec": 8473,
+    "warm_draw_gap_msec": 5715,
+    "confirmed": "No QA sleep/blocking wait. Delayed native result is queued and released from process_frame. Real successful results remain size/hash verified.",
+    "not_established": "Browser occurrence, hardware GPU performance, shader compilation attribution, user acceptance.",
+    "next_smallest_step": "Profile only Home add_child/first draw stages in a new authorized isolated source branch; separate scene initialization, first material/shader upload and draw submission. Keep real Home ready gate; do not hide delay by falsely committing Home.",
+    "diagnostic_direction": "Inherited processing disabled still 7986ms process gap. SubViewport rendering disabled reduces preparation gate to263.236ms; production resume restoring rendering shifts 7683ms process/7691ms draw gap after gate. Initial actual render/submission direction, not shader-specific."
+  }
+]

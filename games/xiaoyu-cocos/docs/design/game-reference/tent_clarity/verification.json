@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "original_crop_pixel_exact": true,
+  "official_lossless_import_pixel_exact": true,
+  "alpha_silhouette_checks": [
+    {
+      "dpr": 1,
+      "threshold": 0,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    },
+    {
+      "dpr": 1,
+      "threshold": 127,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    },
+    {
+      "dpr": 1,
+      "threshold": 254,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    },
+    {
+      "dpr": 2,
+      "threshold": 0,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    },
+    {
+      "dpr": 2,
+      "threshold": 127,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    },
+    {
+      "dpr": 2,
+      "threshold": 254,
+      "silhouette_iou": 1.0,
+      "changed_mask_pixels": 0
+    }
+  ],
+  "import": {
+    "base_rgba8_sha256": "d3c9a60edb9d26ebdb90d2d6189bc44ea331a253fee7e9cd444e35ae51b86970",
+    "decoded_bytes_with_mips": 1723096,
+    "height": 421,
+    "mipmaps": 9,
+    "width": 768
+  },
+  "new_runtime_png_bytes": 353930,
+  "new_runtime_reservation_bytes": 1788632,
+  "text_visual_review": "小余旅途中; all five characters retained in regenerated brown calligraphy, not a font overlay",
+  "geometry": "Approved five world vertices, contact (359,926), scale 1.38 unchanged",
+  "visual_review": "DPR1 and DPR2 captures inspected; clear lettering and paper edges, original contact triangle retained"
+}

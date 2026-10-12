@@ -1,0 +1,85 @@
+{
+  "actual_script": "res://scripts/app.gd",
+  "actual_script_sha256": "45bacc9c717406ec6996e3db4927e3f5f1f6258b3f1e5c7a02a7ef52d1a8685a",
+  "case": "boot",
+  "checks": [
+    {
+      "label": "explicit source candidate is active",
+      "pass": true
+    },
+    {
+      "label": "App owns normal close handling",
+      "pass": true
+    },
+    {
+      "label": "retirement count matches actual held-reference condition",
+      "pass": true
+    },
+    {
+      "label": "retirement reports success or bounded failure accurately",
+      "pass": true
+    },
+    {
+      "label": "normal close bounded by one-second timeout plus scheduling",
+      "pass": true
+    }
+  ],
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "failed": 0,
+  "pack_metrics": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 1,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 0,
+      "peak_active": 0,
+      "peak_queue": 0,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 0,
+      "warm_hits": 0
+    },
+    "epoch": 2,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "scope": "Explicit candidate raw-App remap over exact 6327 formal PCK set. Headless notifications are injected; os_close alone uses real X11 WM_DELETE_WINDOW. No Web/hardware/listening claim.",
+  "shutdown": {
+    "elapsed_msec": 0,
+    "observed_playbacks": 0,
+    "remaining_playbacks": 0,
+    "retired": true,
+    "timeout_msec": 1000
+  },
+  "teardown_observations": []
+}

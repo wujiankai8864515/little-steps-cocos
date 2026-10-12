@@ -1,0 +1,800 @@
+{
+  "scope": "2026-10-07最新授权27项：原N01–N27除撤销N17为26项，新增N28正式衣柜完整接入。不等独立样例确认，不另行样例发布；保内部动作贴合验证。逐项实质提交，关联完整组打包前GitHub同源核。",
+  "items": [
+    {
+      "id": "N01",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "scope": "按入口对象显示加载文案",
+      "latest_wording": "对象名+加载中+1/2/3点，例如暗室加载中...、日记加载中...、地图加载中...；不出现技术资源包名或准备旅行画卷；照片墙加载中...也统一",
+      "source_files": [
+        "travel/travel_home_bridge.gd:181,212,250",
+        "photo/photo_bridge.gd:50-51,66-76"
+      ],
+      "root_cause": "Loading mode is stored but default loading/progress/error copy ignores diary/map context",
+      "acceptance": "初始/每次进度/重试不串对象；失败另用明确对象失败/重试文案",
+      "photo_route_note": "照片墙独立Speech.present_choices入口，初始文案写死正在准备照片墙…，失败也为还没准备好；本组件无dots/progress显示更新，统一模板时须覆盖异步等待显示，不只改travel_bridge。",
+      "group": "loading",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "864065c34a756ba088b40400105362c7703993f9",
+        "f093ed85fef373fd4750d4cbd23f3982879a8ef9"
+      ],
+      "evidence": [
+        "build/round7_loading/actual_darkroom_results.json",
+        "build/round7_loading/actual_optional_results.json",
+        "build/round7_loading/01_actual_slow_loading_crop.png"
+      ]
+    },
+    {
+      "id": "N02",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "scope": "动态省略号不触发布局抖动",
+      "source_files": [
+        "scripts/app.gd:_darkroom_wait_text",
+        "home/interaction/home_note.gd:update_route_waiting",
+        "addons/travel_core/ui/speech_bubble.gd:_layout"
+      ],
+      "root_cause": "Every point count update remeasures current message width and recenters card/buttons",
+      "acceptance": "保留1/2/3点循环；按最长三点预留固定槽，气泡框/锚/居中稳定；非取消动画掩盖",
+      "counting": "细化第1/2项，不新增第3项",
+      "group": "loading",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "475dd55e04d8528e12318919cbfbe46f86c91323"
+      ],
+      "evidence": [
+        "build/round7_loading/actual_darkroom_results.json",
+        "build/round7_loading/actual_optional_results.json",
+        "build/round7_loading/01_actual_slow_loading_crop.png"
+      ]
+    },
+    {
+      "id": "N03",
+      "scope": "照片墙光束柔和体积层次",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_page.gd:64-70; photo/photo_material.gd:10-18; darkroom/shaders/window_beams.gdshader",
+      "finding_and_limits": "Confirmed implementation difference: four 0.028rad triangles alpha0.035, paper separate sin(angle*23)^8 stripe field. Darkroom has smooth Gaussian beam profile and fade/energy composition.",
+      "acceptance": "保画外动态日月、共享昼夜、无窗和照片可读；统一柔边光场及纸面受光，不仅加曝光。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "21b8a63d715045cdc63fb4b95a705579f2df42b0"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N04",
+      "scope": "照片页小余尾鳍缺失",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_actor.gd:configure; xiaoyu_rig.tscn:118; photo/photo_page.gd:backdrop/actor",
+      "finding_and_limits": "Tail exists with OriginalTail texture; tail z=-1 and photo actor/rig defaultz0 behind opaque backdropz0 is high-confidence suspected occlusion, needs actual A/B render confirmation.",
+      "acceptance": "保持IP与上看动态；核实际部件/UV/裁剪/遮挡，不整体缩小掩盖。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "cdbdd578380dc14184d2b46198a6b401eb3c2971"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N05",
+      "scope": "照片页小余影子随姿态与日月",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_page.gd:70-74",
+      "finding_and_limits": "Shadow not entirely unlinked: fixed flattened circle at(205,946), follows cast only9px and rotation, fixed size/alpha; no body pose deformation.",
+      "acceptance": "锚脚底，按角色轮廓/姿态/光方向和高度更新长度柔度。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "836163e38e68011458325959e11d1ceff356f251"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N06",
+      "scope": "底部两枚小屋夹子独立轻摆",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_page.gd:selectors configure/process/input",
+      "finding_and_limits": "Confirmed no idle motion for selectors; position updated only during drag/reset.",
+      "acceptance": "是底部Home选图的两枚小屋夹子，不是全部壁挂夹；轻柔错相、保持热区/拖拽绑定。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "8239e72ab5902d9d0ffb8c8a49c74aeac1e8e266"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N07",
+      "scope": "照片纸摆幅与独立错相",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_paper.gd:deform/advance",
+      "finding_and_limits": "rotation amplitude0.009rad(~0.52deg), x2.3px/y1.5px; index phase differs but frequency0.73 uniform.",
+      "acceptance": "适度加大，独立平滑随机/错相，夹点固定、保持纸质连续。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "5a564b2ac5c5423f39439bc0fef53d198e5fc5a7"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N08",
+      "scope": "每张照片投影随纸面与光",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_paper.gd:advance",
+      "finding_and_limits": "Already updates from deformed contour and sun/moon cast; tiny1.5–9.5px offset/fixedalpha0.19, height/softness/energy absent. Not claiming completely static; visibility needs actual-frame diagnosis.",
+      "acceptance": "随纸面形变/摆动、共享日月方向更新，不能只给静态阴影。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "99dae23431bb43b3f1b0e7f8874ff59c37997459"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N09",
+      "scope": "挂夹与绳子投影适配数量",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": "photo/photo_page.gd:WallFurniture._draw/_refresh/_process",
+      "finding_and_limits": "Wall clips already have tiny2.6px contact shadow; rope draws lines only without dedicated cast shadow. Current slots loop6 not5.",
+      "acceptance": "按配置实际展示数适配，跟画外日月方向柔度/形变，不硬编码5，不与底部2夹混淆，避免烘焙双影。；挂夹本体与绳子也动，绳夹与纸连接点随动。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "8c4dc3058fd7fdbcda4b043ff96e32c7e37f1785"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N10",
+      "scope": "照片墙背景叶/藤拆分持续物理轻摆",
+      "source_files": "photo/photo_page.gd/backdrop; photo/photo_actor.gd",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Confirmed photo page loads one neutral backdrop, no independent foliage nodes/joints/wind simulation.",
+      "acceptance": "树叶藤蔓从背景拆清，不重影；保根挂点/限位，独立连续错相晃，不摆整背景。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "3e6e209cb3dd664c0bfbfb07e4a1e0965f2e033e"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N11",
+      "scope": "照片墙昼夜/光效频繁闪抖",
+      "source_files": "photo/photo_material.gd:illuminate/wall_field; shared_room_lighting/lighting_snapshot.gd",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Risk points: night_scheduled hard-switches light origin, tint and energy while only ambient blends; narrow high-power sine bands amplify changes. Unique runtime root cause not proven; needs multi-frame boundary trace.",
+      "acceptance": "多帧跨昼夜测相位/场景更新与共享钟，连续过渡无闪抖；不同于N03的束宽强度。",
+      "group": "photo",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "a8225a1781c0eba52cb8534ee95ec6b4d2135436"
+      ],
+      "evidence": [
+        "build/round7_photo/GROUP_REVIEW.md",
+        "build/round7_photo/evidence/group_v3/source_identity.json"
+      ]
+    },
+    {
+      "id": "N12",
+      "scope": "动态功德+N暗边",
+      "source_files": "home/feedback/merit_amount_art.gd; home/feedback/assets/merit_digits_thin_gold.png",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Runtime uses direct bitmap draw, not legacy Label outline. +1 uses original art, other digits atlas with linear filter. Digit2 crop has329 low-alpha dark pixels,0 dark pixels alpha>128; alpha/scale A/B needed before asserting cause.",
+      "acceptance": "覆盖所有+N/多位数，保之前选定功德字体，不误换03（03只两提示语）；核资源/alpha采样/outline/shadow。",
+      "group": "home",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "ed6a0ca05bc738455739a921837273f574b9b875"
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ]
+    },
+    {
+      "id": "N13",
+      "scope": "旅途各牌面文案垂直居中",
+      "source_files": "travel/travel_page.gd:_label/_map_page; travel/travel_scene_config.gd:landmarks",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Confirmed shared _label sets horizontal center only, lacks vertical_alignment (default top). All landmark labels and journey progress use it. Actual names秋叶寺/溪边/归途山门, actual progress旅途中 · N / 10.",
+      "acceptance": "整页公共字体可见字形度量+牌面内区；保水平与真实名称/固定地标逻辑，不逐句魔法offset、不仅rect center验收。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "a9eac5df847dcdbde7b5c07c355cf9957965f894"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N14",
+      "scope": "旅行钟摆频率与钟声清楚可闻",
+      "source_files": "travel/travel_scene_runtime.gd:_physics/_can_sound; travel/travel_scene_config.gd:bell/audio",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Configured gust interval14.7s,start3.5s,cooldown8s,volume-24dB,2.8s synth onMaster. Playback requires music enabled, gesture,focus/active/nochoicepause,unmuted bus and not already playing.",
+      "acceptance": "提升感知但先查触击→播放计数/BGM遮盖/Web解锁恢复；尊重静音/SFX、离页释放、不叠播；不能盲加gain。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "d2e85414ca0b65b40af18268a4cf6b0867653e5d"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N15",
+      "scope": "本旅行场景隐藏太阳/月亮实体保光效",
+      "source_files": "travel/travel_scene_runtime.gd:_draw_sky/light_snapshot/_draw_light",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Sun disk+rings and two overlapping moon circles are separately drawn in _draw_sky; illumination/shadows use independent snapshot and _draw_light. Crescent overlap potential artifact, not yet runtime-proven.",
+      "acceptance": "最新要求覆盖本场景可见日月：不出太阳/月亮/其残影，保画外虚拟轨迹/共享钟/晨昏/丁达尔/投影，不改主页暗室。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "2609ac34d06ef5106b3490bfac0020a3a7753f1e"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N16",
+      "scope": "旅行页面清晰动态柔光束",
+      "source_files": "travel/travel_scene_runtime.gd:_draw_light/_draw_portal_shaft; travel_scene_config.gd:beam_portals",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Existing4 portal beams widths3→20–38px, gradient meshes and exclusion clipping. Drawn only if daylight>0.01; no nighttime moonbeam. Actual daytime visibility still needs render.",
+      "acceptance": "与照片N03分开；遵N15隐藏日月实体但保画外动态柔束/丁达尔；查强度与裁切，不仅shader存在。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "041243748b646f0bd9938705cd13095553922a5b"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N18",
+      "scope": "奇遇全屏层次引导与华丽菱形闪光",
+      "source_files": "travel/travel_page.gd:EncounterGlow/_map_page",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Existing effect confined46×46 mark: diamond texture with concentric circles/ring,scale0.90–1.04,bob2px; no full-screen guiding layers.",
+      "acceptance": "四尖菱形非五角星，高清材质/分层柔光/流动动势导向真实hit；全屏引导不遮挡弹窗、不恢复全屏选择页；不点击不影响推进，不高频刺眼。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "bc32ef2ef7cd9ca0b2f1a4952b9d9efe093881a3",
+        "681b1bab510c3e3b1133a23b7707d021783cdeec"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N19",
+      "scope": "全屏落叶近大远小景深",
+      "source_files": "travel/travel_scene_config.gd:leaves; travel_scene_runtime.gd:_draw_leaves",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "18leaves base16×19, area(0,170,720,650), shared speeds/opacity class, no explicit foreground/mid/background strata.",
+      "acceptance": "高清近景大叶、远景小叶；深度关联尺度/速度/透明/层级，保性能，不靠堆数量。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "1ea4c6941aa0311133062030e1d1fe59d316873b"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N20",
+      "scope": "奇遇等待点击时同步提示音",
+      "source_files": "travel/travel_page.gd:EncounterGlow/_map_page; travel_service.gd",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "No dedicated encounter-appearance cue in page/service/bridge; only scene-bell audio context present.",
+      "acceptance": "用户明确新增；首次出现短促清楚温柔，和引导动效同步；事件去重/冷却/不叠播不每帧，尊重SFX静音/手势解锁/焦点/离页释放，不将BGM冒充。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "f0c0c4429a13905eff03ce8bd7344dad1694e5d4"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N21",
+      "scope": "旅行页地点/故事文案合理载体与位置",
+      "source_files": [
+        "travel/travel_page.gd:291-294,475-483"
+      ],
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "finding_and_limits": "Confirmed production Labels, not debug: arrival changes到达/当前·node, story_context prints故事背景:place each frame. Rects(208,702,342,35)/(208,737,342,30), font outline only, no paper/sign carrier.",
+      "acceptance": "删除故事背景/当前归途山门背景等冗余说明；只在“看看它走到哪儿”标题下放手绘火车票式便签，显示“当前站：实际站名”，随真实到站更新；固定版式与字形视觉居中，不再一般边侧说明牌，不加花哨信息；永久站牌名保持固定。",
+      "supersedes": "此前边侧说明牌的建议由最新标题下火车票式定稿覆盖",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "55f65d060aaf72b30b6e2b1c149e91526a7ae0f6",
+        "d3bef10627b527e39622ae4aede181a1d28c8c21"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N22",
+      "scope": "旅途路线贝塞尔手绘与真实材质节点",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "travel/travel_scene_runtime.gd:_draw_route",
+        "travel/travel_scene_config.gd:sample_segment/route_position"
+      ],
+      "finding_and_limits": "Route currently draw_polyline and length-based linear interpolation; nodes draw_circle/draw_arc.",
+      "acceptance": "贝塞尔平滑手绘纹理线；普通点/终点换画风真实材质小元素；角色/到站/marker共用曲线，保10段计时/存档，不裸几何。",
+      "group": "travel",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "0cd748472194fcdc0025593b44eaee1ee5f38f55",
+        "d3bef10627b527e39622ae4aede181a1d28c8c21",
+        "9aad8e8bb10d8263c9c5d68e9cbe4a793b223406"
+      ],
+      "evidence": [
+        "build/round7_20261007/travel/REVIEW.md",
+        "build/round7_20261007/travel/evidence/results.json"
+      ]
+    },
+    {
+      "id": "N23",
+      "scope": "收藏底部物件选择不重排",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "travel/treasure_gallery.gd:select_item/_build"
+      ],
+      "finding_and_limits": "Every select calls _build; bottom order excludes current index when<=4, otherwise computed selected-neighbours[-1,1,2,3], changing slots after each click.",
+      "acceptance": "收藏总体、上方物件放大与中部说明已获认可；底部position/rotation/order/hit稳定，只改上方详情/选态，不重做认可布局。",
+      "group": "collection",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "c53763050f3110a5afb328c79484f7d0aff03416"
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ]
+    },
+    {
+      "id": "N24",
+      "scope": "收藏实物分页与保留归档旅行日记",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "travel/treasure_gallery.gd:_build/_build_archive",
+        "travel/travel_page.gd:_collection/open"
+      ],
+      "finding_and_limits": "No independent paging; >4 shows selected-neighbours4. collection_index is transient and resets0 onopen; no saved page field. Archived diary has independentDiaryButton and archive route.",
+      "acceptance": "保认可归档旅行日记入口；藏品扩展时用画风实物材质上一页/下一页、边界状态，明确翻页才换批，单选底排稳定；查UID选态/分页与存档恢复，非裸矢量箭头圆点；覆盖此前取消普通翻页方案。",
+      "group": "collection",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "a89adb238171fa31a87435f63f6fcac93fe44340"
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ]
+    },
+    {
+      "id": "N25",
+      "scope": "收藏详情小型日记纸质衬底",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "travel/treasure_gallery.gd:_build/_light_label"
+      ],
+      "finding_and_limits": "Detail Labels are over wholeplate, only5px outline and font shadow; no separate descriptive paper backing.",
+      "acceptance": "参考认可日记本纸面做小型说明衬底，只解释藏品，不占全屏/不抢主体；保上方放大主体、中间说明、底排陈列/分页，不回退规整大信纸。",
+      "group": "collection",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "c7b443df0f4f59b2b11743c7aba508edcdf35657"
+      ],
+      "evidence": [
+        "build/round7_collection/N23_results.json",
+        "build/round7_collection/N24_results.json",
+        "build/round7_collection/N25_results.json",
+        "build/round7_collection/N25_page_1.jpg"
+      ]
+    },
+    {
+      "id": "N26",
+      "scope": "主页两03艺术提示占比收小",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "home/feedback/bitmap_hint.gd",
+        "home/independent_incense.gd:_make_hint",
+        "travel/travel_home_props.gd:diary_hint"
+      ],
+      "finding_and_limits": "03 bitmap confirmed; diary visible width210 logicalpx,control232x56;incense compensated global width118px;guide16px.",
+      "acceptance": "保03位图字形，缩小实际占比及引导区域，物件旁视觉居中、轻量、多屏昼夜可读；不换字体不取消引导。",
+      "group": "home",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "6d9976d3b4ccb6e4eb134fbc68054e0076c8e604"
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ]
+    },
+    {
+      "id": "N27",
+      "scope": "归来开包柔软云朵扩散",
+      "status": "implemented_group_candidate_verified_integration_formal_pending",
+      "source_files": [
+        "travel/travel_home_props.gd",
+        "travel/travel_reward_flight.gd"
+      ],
+      "finding_and_limits": "User approves existing starlight, rejects hard outward spray; implementation path to inspect.",
+      "acceptance": "保已认可星光不动，四散喷射改为类似暗室布偶净化柔软云朵/云雾扩散，统一画风；物品仍近包悬浮→点击Bezier收百宝箱。",
+      "group": "home",
+      "completion": {
+        "code": "actual_diff_connected_candidate_verified",
+        "resources_connected": "group_candidate_verified_integration_pack_pending",
+        "visible_style_spec": "native_frames_reviewed_user_acceptance_pending",
+        "regression": "group_candidate_pass_integration_regression_pending",
+        "remote_source": "atomic_chain_in_progress",
+        "formal_build": "pending_wardrobe_integration",
+        "deployed": "not_deployed",
+        "Web_user": "not_verified"
+      },
+      "repair_commits": [
+        "e94fcce56dff44fd830cf718680bd8c3c232c063"
+      ],
+      "evidence": [
+        "build/round7_home/N12/REPORT.md",
+        "build/round7_home/N26/REPORT.md",
+        "build/round7_home/N27/REPORT.md"
+      ]
+    },
+    {
+      "id": "N28",
+      "scope": "正式接入精简衣柜与通用粉色换肤",
+      "status": "authorized_implementation_in_progress",
+      "acceptance": "只保衣柜/窗户/藤蔓/垫/小余；玻璃共享昼夜光束光影，独立藤蔓及挂布摆动投影；原皮与粉色桃花通用切换，绑定现有敲击喝水睡觉拖拽变形，保存返回取消正确，穿上有桃花上升与四尖星光。必要内部验证不取消，不另发布样例或等确认；背包沿用不重测。真实广告不可用不得假解锁。",
+      "group": "wardrobe",
+      "completion": {
+        "code": "pending",
+        "resources_connected": "pending",
+        "visible_style_spec": "pending",
+        "regression": "pending",
+        "remote_source": "pending",
+        "formal_build": "pending",
+        "deployed": "pending",
+        "Web_user": "pending"
+      },
+      "repair_commits": [],
+      "evidence": []
+    }
+  ],
+  "count": 27,
+  "withdrawn": [
+    {
+      "id": "N17",
+      "status": "withdrawn_by_latest_user",
+      "old_request": "观看旅途到终点时推迟结算到返回",
+      "latest_user_quote": "噢,我错了,我收回刚刚最新的那一条修改,应该应该就是归途山门的时候结束。不要因为我正在看不看而改变",
+      "current_requirement": "保到归途山门结束、未选AI代选，与是否观看无关；既定人工奇遇选择暂停不变；未作代码更改。"
+    }
+  ],
+  "release_groups": {
+    "loading": [
+      "N01",
+      "N02"
+    ],
+    "photo": [
+      "N03",
+      "N04",
+      "N05",
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10",
+      "N11"
+    ],
+    "travel": [
+      "N13",
+      "N14",
+      "N15",
+      "N16",
+      "N18",
+      "N19",
+      "N20",
+      "N21",
+      "N22"
+    ],
+    "collection": [
+      "N23",
+      "N24",
+      "N25"
+    ],
+    "home": [
+      "N12",
+      "N26",
+      "N27"
+    ],
+    "wardrobe": [
+      "N28"
+    ]
+  },
+  "base_source": "7ba4243f3ca5a28fb7174809df53842a8c16de60",
+  "base_deployed": "Site v10 /drag-feedback-7ba4243/",
+  "release_policy": "关联完整才冻结：不是修几条凑版本。每真实修独立commit，全部组内条目资源/实帧/回归证据齐备后普通推GitHub核同源，再一次正式build/deploy；未验边界独立标记，不由数量/编译/代码存在推完成。"
+}

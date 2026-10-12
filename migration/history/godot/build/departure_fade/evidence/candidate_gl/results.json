@@ -1,0 +1,565 @@
+{
+  "checks": [
+    {
+      "check": "day: real confirmation starts departure",
+      "pass": true
+    },
+    {
+      "check": "day: approved traveler texture and original material",
+      "pass": true
+    },
+    {
+      "check": "day: rapid confirmation retains one view and trip",
+      "pass": true
+    },
+    {
+      "check": "day: all 481 actor/carrier transforms remain fixed",
+      "pass": true
+    },
+    {
+      "check": "day: original rig and mat remain fixed",
+      "pass": true
+    },
+    {
+      "check": "day: authored opacity decreases monotonically from 3.3 to zero at 4.55 seconds",
+      "pass": true
+    },
+    {
+      "check": "day: no native/reveal actor duplication",
+      "pass": true
+    },
+    {
+      "check": "day: only initial cloud emission and none after 2.2 seconds",
+      "pass": true
+    },
+    {
+      "check": "day: presentation never changes merit or trip",
+      "pass": true
+    },
+    {
+      "check": "day: late callback cannot replay fade",
+      "pass": true
+    },
+    {
+      "check": "day: original 4.8-second handoff and tent are same-frame",
+      "pass": true
+    },
+    {
+      "check": "day: long interrupted frame never replays",
+      "pass": true
+    },
+    {
+      "check": "night: real confirmation starts departure",
+      "pass": true
+    },
+    {
+      "check": "night: approved traveler texture and original material",
+      "pass": true
+    },
+    {
+      "check": "night: rapid confirmation retains one view and trip",
+      "pass": true
+    },
+    {
+      "check": "night: all 481 actor/carrier transforms remain fixed",
+      "pass": true
+    },
+    {
+      "check": "night: original rig and mat remain fixed",
+      "pass": true
+    },
+    {
+      "check": "night: authored opacity decreases monotonically from 3.3 to zero at 4.55 seconds",
+      "pass": true
+    },
+    {
+      "check": "night: no native/reveal actor duplication",
+      "pass": true
+    },
+    {
+      "check": "night: only initial cloud emission and none after 2.2 seconds",
+      "pass": true
+    },
+    {
+      "check": "night: presentation never changes merit or trip",
+      "pass": true
+    },
+    {
+      "check": "night: late callback cannot replay fade",
+      "pass": true
+    },
+    {
+      "check": "night: original 4.8-second handoff and tent are same-frame",
+      "pass": true
+    },
+    {
+      "check": "night: long interrupted frame never replays",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: real confirmation starts departure",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: approved traveler texture and original material",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: rapid confirmation retains one view and trip",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: all 481 actor/carrier transforms remain fixed",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: original rig and mat remain fixed",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: authored opacity decreases monotonically from 3.3 to zero at 4.55 seconds",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: no native/reveal actor duplication",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: only initial cloud emission and none after 2.2 seconds",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: presentation never changes merit or trip",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: late callback cannot replay fade",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: original 4.8-second handoff and tent are same-frame",
+      "pass": true
+    },
+    {
+      "check": "night_lamp: long interrupted frame never replays",
+      "pass": true
+    },
+    {
+      "check": "long_day: real confirmation starts departure",
+      "pass": true
+    },
+    {
+      "check": "long_day: approved traveler texture and original material",
+      "pass": true
+    },
+    {
+      "check": "long_day: rapid confirmation retains one view and trip",
+      "pass": true
+    },
+    {
+      "check": "long_day: all 481 actor/carrier transforms remain fixed",
+      "pass": true
+    },
+    {
+      "check": "long_day: original rig and mat remain fixed",
+      "pass": true
+    },
+    {
+      "check": "long_day: authored opacity decreases monotonically from 3.3 to zero at 4.55 seconds",
+      "pass": true
+    },
+    {
+      "check": "long_day: no native/reveal actor duplication",
+      "pass": true
+    },
+    {
+      "check": "long_day: only initial cloud emission and none after 2.2 seconds",
+      "pass": true
+    },
+    {
+      "check": "long_day: presentation never changes merit or trip",
+      "pass": true
+    },
+    {
+      "check": "long_day: late callback cannot replay fade",
+      "pass": true
+    },
+    {
+      "check": "long_day: original 4.8-second handoff and tent are same-frame",
+      "pass": true
+    },
+    {
+      "check": "long_day: long interrupted frame never replays",
+      "pass": true
+    },
+    {
+      "check": "persistence: confirmed trip saved to isolated native disk",
+      "pass": true
+    },
+    {
+      "check": "persistence: recreated Home restores trip without replay or duplication",
+      "pass": true
+    },
+    {
+      "check": "return: original actor opacity and projections restored",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "samples": [
+    {
+      "age": 2.2,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.3,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.92,
+      "alpha": 0.505999872,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 4.55,
+      "alpha": 0.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": false
+    },
+    {
+      "age": 2.2,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night",
+      "tint": [
+        0.379999995231628,
+        0.460000038146973,
+        0.629999995231628
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.3,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night",
+      "tint": [
+        0.379999995231628,
+        0.460000038146973,
+        0.629999995231628
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.92,
+      "alpha": 0.505999872,
+      "lamp": 0.0,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night",
+      "tint": [
+        0.379999995231628,
+        0.460000038146973,
+        0.629999995231628
+      ],
+      "visible": true
+    },
+    {
+      "age": 4.55,
+      "alpha": 0.0,
+      "lamp": 0.0,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night",
+      "tint": [
+        0.379999995231628,
+        0.460000038146973,
+        0.629999995231628
+      ],
+      "visible": false
+    },
+    {
+      "age": 2.2,
+      "alpha": 1.0,
+      "lamp": 0.779999971389771,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night_lamp",
+      "tint": [
+        0.799999952316284,
+        0.670000016689301,
+        0.5
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.3,
+      "alpha": 1.0,
+      "lamp": 0.779999971389771,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night_lamp",
+      "tint": [
+        0.799999952316284,
+        0.670000016689301,
+        0.5
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.92,
+      "alpha": 0.505999872,
+      "lamp": 0.779999971389771,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night_lamp",
+      "tint": [
+        0.799999952316284,
+        0.670000016689301,
+        0.5
+      ],
+      "visible": true
+    },
+    {
+      "age": 4.55,
+      "alpha": 0.0,
+      "lamp": 0.779999971389771,
+      "night": 1.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "night_lamp",
+      "tint": [
+        0.799999952316284,
+        0.670000016689301,
+        0.5
+      ],
+      "visible": false
+    },
+    {
+      "age": 2.2,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "long_day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.3,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "long_day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.92,
+      "alpha": 0.505999872,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "long_day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 4.55,
+      "alpha": 0.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "long_day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": false
+    }
+  ],
+  "scope": "Source component candidate, official 4.5.2; not formal PCK, Web or user acceptance"
+}

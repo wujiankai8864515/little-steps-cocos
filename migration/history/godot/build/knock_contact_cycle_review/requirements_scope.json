@@ -1,0 +1,138 @@
+{
+  "matrix_source": "/workspace/scratch/3f82ff2b3f81/audit_repeated_visual_failures/release_reaudit_561/requirements_matrix.json",
+  "requirements": [
+    {
+      "canonical_id": "A007",
+      "topic": "自主敲击和休息间隔",
+      "sources": [
+        {
+          "source_key": "B26-7",
+          "batch": "B26",
+          "item": 7,
+          "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+          "date": "2026-10-05T05:13:54.265936+00:00",
+          "text": "敲击与瞌睡循环\n自主敲击稍快，敲一阵、瞌睡一阵，再继续；玩家互动优先。\n验收：循环完整，互动结束能自然恢复，不机械不停敲。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A007"
+        },
+        {
+          "source_key": "B27-22",
+          "batch": "B27",
+          "item": 22,
+          "message_id": "Sentinel_301864a8e740819189081d5907ebd62c",
+          "date": "2026-10-05T08:47:49.053161+00:00",
+          "text": "昼夜自主动作：默认白天敲木鱼、夜晚趴着瞌睡；睡意加入合适漫画符号与呼吸表现。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A007"
+        },
+        {
+          "source_key": "B32-21",
+          "batch": "B32",
+          "item": 21,
+          "message_id": "Sentinel_19748391e1e08191a710d5269690ef41",
+          "date": "2026-10-06",
+          "text": "自敲动作节奏更快、更干脆，保完整接触与回弹。",
+          "authority": "最后32项唯一清单，来源ID由父线程确认；历史完成标签不作验收",
+          "canonical_id": "A007"
+        },
+        {
+          "source_key": "LATEST-7",
+          "message_id": "Sentinel_8a392f2b78f08191a9fe5e1d9e2e1d84",
+          "text": "现在的主角敲木鱼动作太快了，不像敲木鱼，改回之前的，只是之前的敲木鱼动作和动作之间间隔太长",
+          "authority": "用户原句",
+          "date": "2026-10-06"
+        }
+      ],
+      "latest_requirement": "现在的主角敲木鱼动作太快了，不像敲木鱼，改回之前的，只是之前的敲木鱼动作和动作之间间隔太长"
+    },
+    {
+      "canonical_id": "A008",
+      "topic": "击中反应与每击变化",
+      "sources": [
+        {
+          "source_key": "B26-8",
+          "batch": "B26",
+          "item": 8,
+          "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+          "date": "2026-10-05T05:13:54.265936+00:00",
+          "text": "每次敲击的小变化\n节奏、角度小范围浮动。\n验收：变化自然，木槌准确接触，每击只触发一次反馈。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A008"
+        },
+        {
+          "source_key": "B26-9",
+          "batch": "B26",
+          "item": 9,
+          "message_id": "Sentinel_c631d340d4ac81919567157e54d05b65",
+          "date": "2026-10-05T05:13:54.265936+00:00",
+          "text": "击中时轻微受刺激\n短暂缩眼、嘴部轻绷再放松。\n验收：跟接触时刻同步，程度轻微可爱，不呈现惩罚感。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A008"
+        }
+      ],
+      "latest_requirement": "击中时轻微受刺激\n短暂缩眼、嘴部轻绷再放松。\n验收：跟接触时刻同步，程度轻微可爱，不呈现惩罚感。"
+    },
+    {
+      "canonical_id": "A050",
+      "topic": "功德薄金+N艺术字",
+      "sources": [
+        {
+          "source_key": "B22-5",
+          "batch": "B22",
+          "item": 5,
+          "message_id": "Sentinel_77634deb00f88191a8c5a1e63e88838f",
+          "date": "2026-10-05T15:19:12.964449+00:00",
+          "text": "功德浮字：恢复“薄金微芒”艺术字，动态组合＋N，支持两位数及更多位数，不硬拉伸。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A050"
+        }
+      ],
+      "latest_requirement": "功德浮字：恢复“薄金微芒”艺术字，动态组合＋N，支持两位数及更多位数，不硬拉伸。"
+    },
+    {
+      "canonical_id": "A052",
+      "topic": "角色点击与空白隔离",
+      "sources": [
+        {
+          "source_key": "B22-10",
+          "batch": "B22",
+          "item": 10,
+          "message_id": "Sentinel_77634deb00f88191a8c5a1e63e88838f",
+          "date": "2026-10-05T15:19:12.964449+00:00",
+          "text": "物件点击：点花瓶或凳子不再让小余位移，去掉旧平移动作并查命中穿透。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A052"
+        },
+        {
+          "source_key": "B22-11",
+          "batch": "B22",
+          "item": 11,
+          "message_id": "Sentinel_77634deb00f88191a8c5a1e63e88838f",
+          "date": "2026-10-05T15:19:12.964449+00:00",
+          "text": "主角敲击输入：空白无反应；点中小余立刻完整敲一下，正在敲也立即重新执行，旧事件不重复结算。",
+          "authority": "当时发给用户的待办汇总原文；已取得的会话记录",
+          "canonical_id": "A052"
+        }
+      ],
+      "latest_requirement": "主角敲击输入：空白无反应；点中小余立刻完整敲一下，正在敲也立即重新执行，旧事件不重复结算。"
+    },
+    {
+      "canonical_id": "A067",
+      "topic": "敲击三线contact短冲击",
+      "sources": [
+        {
+          "source_key": "B32-22",
+          "batch": "B32",
+          "item": 22,
+          "message_id": "Sentinel_19748391e1e08191a710d5269690ef41",
+          "date": "2026-10-06",
+          "text": "敲击旁三条漫画冲击线加入击中同步的短促迸发、伸缩与消散。",
+          "authority": "最后32项唯一清单，来源ID由父线程确认；历史完成标签不作验收",
+          "canonical_id": "A067"
+        }
+      ],
+      "latest_requirement": "敲击旁三条漫画冲击线加入击中同步的短促迸发、伸缩与消散。"
+    }
+  ],
+  "override": "A007 latest user original per-strike curve/time supersedes old speed-up; A008 retains both B26-8 per-strike variation and B26-9 mild contact reaction"
+}

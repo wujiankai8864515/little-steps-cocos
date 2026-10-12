@@ -1,0 +1,149 @@
+{
+  "checks": 37,
+  "failed": 0,
+  "trace_count": 134,
+  "root_input_events": 15,
+  "direction_samples": 268,
+  "four_direction_snapshots": [
+    {
+      "name": "08_gaze_left",
+      "face": {
+        "drag_target_world": "(150.0876, 791.9548)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(-0.00063, 0.0)",
+        "left_pupil_offset_px": "(-11.95655, -0.408876)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-6.978573, 0.223868)"
+      },
+      "left_offset": [
+        -1.37426853179932,
+        -0.0469956807792187
+      ],
+      "right_offset": [
+        -0.508858442306519,
+        0.016323858872056
+      ],
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(-11.95655, -0.408876)",
+        "left_velocity": "(-0.045525, 0.040363)",
+        "right": "(-6.978573, 0.223868)",
+        "right_velocity": "(-0.019614, 0.013745)",
+        "target_world": "(150.0876, 791.9548)",
+        "weight": 1.0
+      },
+      "safe": true
+    },
+    {
+      "name": "08_gaze_right",
+      "face": {
+        "drag_target_world": "(629.7595, 791.9548)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(-0.169564, 0.0)",
+        "left_pupil_offset_px": "(11.98466, -0.223413)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(6.957679, 0.324245)"
+      },
+      "left_offset": [
+        1.56526458263397,
+        -0.0291790161281824
+      ],
+      "right_offset": [
+        0.258444726467133,
+        0.0120441550388932
+      ],
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(11.98466, -0.223413)",
+        "left_velocity": "(0.040486, 0.017198)",
+        "right": "(6.957679, 0.324245)",
+        "right_velocity": "(0.011169, 0.0158)",
+        "target_world": "(629.7595, 791.9548)",
+        "weight": 1.0
+      },
+      "safe": true
+    },
+    {
+      "name": "08_gaze_up",
+      "face": {
+        "drag_target_world": "(379.7595, 541.9548)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(0.270914, 0.0)",
+        "left_pupil_offset_px": "(2.877657, -4.852293)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-1.669213, -2.911422)"
+      },
+      "left_offset": [
+        0.329726159572601,
+        -0.555982768535614
+      ],
+      "right_offset": [
+        -0.0621625669300556,
+        -0.108423262834549
+      ],
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(2.877657, -4.852293)",
+        "left_velocity": "(0.005445, -0.02027)",
+        "right": "(-1.669212, -2.911422)",
+        "right_velocity": "(-0.012224, -0.022096)",
+        "target_world": "(379.7595, 541.9548)",
+        "weight": 1.0
+      },
+      "safe": true
+    },
+    {
+      "name": "08_gaze_down",
+      "face": {
+        "drag_target_world": "(379.7595, 991.9548)",
+        "gaze_target": "active_drag",
+        "jelly_offset_px": "(0.044299, 0.0)",
+        "left_pupil_offset_px": "(3.894226, 4.724625)",
+        "mouth_open_px": 0.0,
+        "pupil_offset_px": "(-0.45, 0.35)",
+        "right_pupil_offset_px": "(-1.746281, 2.902291)"
+      },
+      "left_offset": [
+        0.348043084144592,
+        0.422259271144867
+      ],
+      "right_offset": [
+        -0.0703181698918343,
+        0.116867691278458
+      ],
+      "drag_gaze": {
+        "active_id": "doll",
+        "left": "(3.894226, 4.724625)",
+        "left_velocity": "(0.048894, 0.047832)",
+        "right": "(-1.746281, 2.902291)",
+        "right_velocity": "(0.019544, 0.034991)",
+        "target_world": "(379.7595, 991.9548)",
+        "weight": 1.0
+      },
+      "safe": true
+    }
+  ],
+  "four_direction_span_source_pixels": {
+    "left": {
+      "x": 2.93953311443329,
+      "y": 0.978242039680481
+    },
+    "right": {
+      "x": 0.767303168773652,
+      "y": 0.225290954113007
+    }
+  },
+  "mounted_packs": [
+    "core",
+    "entry",
+    "comic",
+    "exterior",
+    "house",
+    "darkroom"
+  ],
+  "no_travel_required": true,
+  "visual_acceptance": "Selected actual GL frames inspected; no whole-topic or user artistic acceptance."
+}

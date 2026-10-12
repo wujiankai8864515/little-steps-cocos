@@ -1,0 +1,493 @@
+{
+  "ambient_samples": [
+    {
+      "clip_time": 0.108,
+      "pose_time": 0.108,
+      "wall_ms": 143
+    },
+    {
+      "clip_time": 0.216,
+      "pose_time": 0.216,
+      "wall_ms": 268
+    },
+    {
+      "clip_time": 0.324,
+      "pose_time": 0.324,
+      "wall_ms": 401
+    },
+    {
+      "clip_time": 0.432,
+      "pose_time": 0.432,
+      "wall_ms": 540
+    },
+    {
+      "clip_time": 0.54,
+      "pose_time": 0.54,
+      "wall_ms": 657
+    },
+    {
+      "clip_time": 0.648,
+      "pose_time": 0.648,
+      "wall_ms": 762
+    },
+    {
+      "clip_time": 0.75318624,
+      "pose_time": 0.75318624,
+      "wall_ms": 902
+    },
+    {
+      "clip_time": 0.86118624,
+      "pose_time": 0.86118624,
+      "wall_ms": 1037
+    },
+    {
+      "clip_time": 0.96918624,
+      "pose_time": 0.96918624,
+      "wall_ms": 1170
+    },
+    {
+      "clip_time": 1.07718624,
+      "pose_time": 1.07718624,
+      "wall_ms": 1305
+    },
+    {
+      "clip_time": 1.18518624,
+      "pose_time": 1.18518624,
+      "wall_ms": 1408
+    },
+    {
+      "clip_time": 1.29318624,
+      "pose_time": 1.29,
+      "wall_ms": 1544
+    },
+    {
+      "clip_time": 1.40118624,
+      "pose_time": 1.40118624,
+      "wall_ms": 1675
+    },
+    {
+      "clip_time": 1.50918624,
+      "pose_time": 1.50918624,
+      "wall_ms": 1829
+    },
+    {
+      "clip_time": 1.61718624,
+      "pose_time": 1.61718624,
+      "wall_ms": 1954
+    },
+    {
+      "clip_time": 1.72518624,
+      "pose_time": 1.72518624,
+      "wall_ms": 2076
+    },
+    {
+      "clip_time": 1.83318624,
+      "pose_time": 1.83318624,
+      "wall_ms": 2213
+    },
+    {
+      "clip_time": 1.94118624,
+      "pose_time": 1.94118624,
+      "wall_ms": 2347
+    },
+    {
+      "clip_time": 2.04918624,
+      "pose_time": 2.04918624,
+      "wall_ms": 2498
+    },
+    {
+      "clip_time": 2.15718624,
+      "pose_time": 2.15718624,
+      "wall_ms": 2642
+    },
+    {
+      "clip_time": 2.26518624,
+      "pose_time": 2.26518624,
+      "wall_ms": 2794
+    },
+    {
+      "clip_time": 2.37318624,
+      "pose_time": 2.37318624,
+      "wall_ms": 2921
+    },
+    {
+      "clip_time": 0.0287862400000014,
+      "pose_time": 0.0287862400000014,
+      "wall_ms": 3050
+    }
+  ],
+  "checks": [
+    {
+      "name": "one root click restarts a complete user strike",
+      "pass": true
+    },
+    {
+      "name": "press/release never awards before contact",
+      "pass": true
+    },
+    {
+      "name": "wind-up samples original clip directly without phase compression",
+      "pass": true
+    },
+    {
+      "name": "one contact earns one merit",
+      "pass": false
+    },
+    {
+      "name": "contact keeps original 1.29-second clip timing at original tempo",
+      "pass": false
+    },
+    {
+      "name": "one contact calls real sound port exactly once",
+      "pass": false
+    },
+    {
+      "name": "contact emits one impact mark",
+      "pass": false
+    },
+    {
+      "name": "contact event displays original exact impact pose",
+      "pass": false
+    },
+    {
+      "name": "contact expression is a mild reaction",
+      "pass": true
+    },
+    {
+      "name": "rebound samples original clip directly without phase compression",
+      "pass": true
+    },
+    {
+      "name": "complete tail return remains at original timing",
+      "pass": true
+    },
+    {
+      "name": "manual tap retains complete original 3.2-second clip at original tempo",
+      "pass": false
+    },
+    {
+      "name": "settle has no duplicate award or lingering mark",
+      "pass": true
+    },
+    {
+      "name": "six rapid root clicks each restart once",
+      "pass": true
+    },
+    {
+      "name": "canceled wind-ups cannot earn phantom merit",
+      "pass": true
+    },
+    {
+      "name": "last rapid click reaches exactly one contact",
+      "pass": true
+    },
+    {
+      "name": "four repeat clicks after contact produce four hits without queued duplicates",
+      "pass": true
+    },
+    {
+      "name": "touch plus emulated mouse requests one strike",
+      "pass": true
+    },
+    {
+      "name": "holding and dragging takes priority over pending strike",
+      "pass": true
+    },
+    {
+      "name": "drag cancels pending hit with no merit or impact",
+      "pass": true
+    },
+    {
+      "name": "release restores interaction after interrupted strike",
+      "pass": true
+    },
+    {
+      "name": "backgrounding discards pending strike and accrues no hidden contacts",
+      "pass": true
+    },
+    {
+      "name": "background blocks strike requests and clears contact ink",
+      "pass": true
+    },
+    {
+      "name": "foreground accepts a fresh complete strike",
+      "pass": true
+    },
+    {
+      "name": "page pause cancels in-flight strike",
+      "pass": true
+    },
+    {
+      "name": "real bag drag opens travel invitation",
+      "pass": true
+    },
+    {
+      "name": "real invitation input starts departure",
+      "pass": true
+    },
+    {
+      "name": "departure ownership blocks a competing woodfish strike",
+      "pass": true
+    },
+    {
+      "name": "departure animation reaches terminal state on real clock",
+      "pass": true
+    },
+    {
+      "name": "departed actor has no hidden contact or merit",
+      "pass": true
+    },
+    {
+      "name": "hidden traveling actor refuses strike",
+      "pass": true
+    },
+    {
+      "name": "travel clock return restores original actor",
+      "pass": true
+    },
+    {
+      "name": "returned actor accepts one fresh root click and one contact",
+      "pass": true
+    },
+    {
+      "name": "ambient retains every original movement through tail return at 2.15 seconds",
+      "pass": false
+    },
+    {
+      "name": "ambient cycle adds only 280ms idle after full return",
+      "pass": false
+    },
+    {
+      "name": "shorter gap is observable in complete automatic cycle",
+      "pass": false
+    },
+    {
+      "name": "shorter automatic cycle still has exactly one merit and sound",
+      "pass": true
+    },
+    {
+      "name": "changing idle preserves original action duration",
+      "pass": false
+    },
+    {
+      "name": "independent idle setting changes cycle by only the requested 370ms",
+      "pass": true
+    },
+    {
+      "name": "interaction recovery keeps its separate original 800ms delay",
+      "pass": true
+    },
+    {
+      "name": "cancel/release restores neutral base pose and drops pending contact",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 10,
+  "fixed_fps": false,
+  "manual_samples": [
+    {
+      "active": true,
+      "clip_time": 0.00024624,
+      "sample_time": 0.00024624,
+      "speed": 1.08,
+      "wall_ms": 1045
+    },
+    {
+      "active": true,
+      "clip_time": 0.10824624,
+      "sample_time": 0.10824624,
+      "speed": 1.08,
+      "wall_ms": 1135
+    },
+    {
+      "active": true,
+      "clip_time": 0.20625192,
+      "sample_time": 0.20625192,
+      "speed": 1.08,
+      "wall_ms": 1216
+    },
+    {
+      "active": true,
+      "clip_time": 0.29391876,
+      "sample_time": 0.29391876,
+      "speed": 1.08,
+      "wall_ms": 1308
+    },
+    {
+      "active": true,
+      "clip_time": 0.39240396,
+      "sample_time": 0.39240396,
+      "speed": 1.08,
+      "wall_ms": 1414
+    },
+    {
+      "active": true,
+      "clip_time": 0.50040396,
+      "sample_time": 0.50040396,
+      "speed": 1.08,
+      "wall_ms": 1503
+    },
+    {
+      "active": true,
+      "clip_time": 0.59647104,
+      "sample_time": 0.59647104,
+      "speed": 1.08,
+      "wall_ms": 1600
+    },
+    {
+      "active": true,
+      "clip_time": 0.70045128,
+      "sample_time": 0.70045128,
+      "speed": 1.08,
+      "wall_ms": 1683
+    },
+    {
+      "active": true,
+      "clip_time": 0.79010424,
+      "sample_time": 0.79010424,
+      "speed": 1.08,
+      "wall_ms": 1764
+    },
+    {
+      "active": true,
+      "clip_time": 0.87810804,
+      "sample_time": 0.87810804,
+      "speed": 1.08,
+      "wall_ms": 1844
+    },
+    {
+      "active": true,
+      "clip_time": 0.96447348,
+      "sample_time": 0.96447348,
+      "speed": 1.08,
+      "wall_ms": 1913
+    },
+    {
+      "active": true,
+      "clip_time": 1.039041,
+      "sample_time": 1.039041,
+      "speed": 1.08,
+      "wall_ms": 1976
+    },
+    {
+      "active": true,
+      "clip_time": 1.10747412,
+      "sample_time": 1.10747412,
+      "speed": 1.08,
+      "wall_ms": 2043
+    },
+    {
+      "active": true,
+      "clip_time": 1.17958788,
+      "sample_time": 1.17958788,
+      "speed": 1.08,
+      "wall_ms": 2109
+    },
+    {
+      "active": true,
+      "clip_time": 1.25102988,
+      "sample_time": 1.25102988,
+      "speed": 1.08,
+      "wall_ms": 2175
+    },
+    {
+      "active": true,
+      "clip_time": 1.3220928,
+      "sample_time": 1.29,
+      "speed": 1.08,
+      "wall_ms": 2762
+    },
+    {
+      "active": true,
+      "clip_time": 1.4300928,
+      "sample_time": 1.4300928,
+      "speed": 1.08,
+      "wall_ms": 2857
+    },
+    {
+      "active": true,
+      "clip_time": 1.5326496,
+      "sample_time": 1.5326496,
+      "speed": 1.08,
+      "wall_ms": 2969
+    },
+    {
+      "active": true,
+      "clip_time": 1.6406496,
+      "sample_time": 1.6406496,
+      "speed": 1.08,
+      "wall_ms": 3104
+    },
+    {
+      "active": true,
+      "clip_time": 1.7486496,
+      "sample_time": 1.7486496,
+      "speed": 1.08,
+      "wall_ms": 3234
+    },
+    {
+      "active": true,
+      "clip_time": 1.8566496,
+      "sample_time": 1.8566496,
+      "speed": 1.08,
+      "wall_ms": 3317
+    },
+    {
+      "active": true,
+      "clip_time": 1.94582304,
+      "sample_time": 1.94582304,
+      "speed": 1.08,
+      "wall_ms": 3399
+    },
+    {
+      "active": true,
+      "clip_time": 2.0346552,
+      "sample_time": 2.0346552,
+      "speed": 1.08,
+      "wall_ms": 3483
+    },
+    {
+      "active": true,
+      "clip_time": 2.12553288,
+      "sample_time": 2.12553288,
+      "speed": 1.08,
+      "wall_ms": 3558
+    },
+    {
+      "active": true,
+      "clip_time": 2.20652424,
+      "sample_time": 2.20652424,
+      "speed": 1.08,
+      "wall_ms": 3636
+    },
+    {
+      "active": true,
+      "clip_time": 2.29033008,
+      "sample_time": 2.29033008,
+      "speed": 1.08,
+      "wall_ms": 3721
+    },
+    {
+      "active": true,
+      "clip_time": 2.38222944,
+      "sample_time": 2.38222944,
+      "speed": 1.08,
+      "wall_ms": 3809
+    }
+  ],
+  "passed": 31,
+  "real_duration_ms": 59068,
+  "root_input_events": 46,
+  "time_scale": 1.0,
+  "timing": {
+    "alternate_cycle_ms": 3441,
+    "ambient_cycle_ms": 3050,
+    "ambient_idle_ms": 408,
+    "ambient_motion_ms": 2642,
+    "complete_ms": 3809,
+    "contact_ms": 1913,
+    "original_cycle_ms": 2962.96296296296
+  },
+  "travel_clock": "injected only after real departure completes"
+}

@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "check": "new process uses real native Store decode and Service configure",
+      "pass": true
+    },
+    {
+      "check": "native restored trip resumes at 45 percent",
+      "pass": true
+    },
+    {
+      "check": "new process seeds only five already reached stations",
+      "pass": true
+    },
+    {
+      "check": "new-process history 0 is static",
+      "pass": true
+    },
+    {
+      "check": "new-process history 1 is static",
+      "pass": true
+    },
+    {
+      "check": "new-process history 2 is static",
+      "pass": true
+    },
+    {
+      "check": "new-process history 3 is static",
+      "pass": true
+    },
+    {
+      "check": "new-process history 4 is static",
+      "pass": true
+    },
+    {
+      "check": "new-process future is absent",
+      "pass": true
+    },
+    {
+      "check": "new-process history does not replay at 0.0",
+      "pass": true
+    },
+    {
+      "check": "new-process history does not replay at 0.43",
+      "pass": true
+    },
+    {
+      "check": "new-process history does not replay at 1.4",
+      "pass": true
+    },
+    {
+      "check": "first newly crossed node alone animates after restore",
+      "pass": true
+    },
+    {
+      "check": "new arrival preserves historical timestamp 0",
+      "pass": true
+    },
+    {
+      "check": "new arrival preserves historical timestamp 1",
+      "pass": true
+    },
+    {
+      "check": "new arrival preserves historical timestamp 2",
+      "pass": true
+    },
+    {
+      "check": "new arrival preserves historical timestamp 3",
+      "pass": true
+    },
+    {
+      "check": "new arrival preserves historical timestamp 4",
+      "pass": true
+    },
+    {
+      "check": "restored page releases its transient scene",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "saved_envelope_sha256": "21690acaa1d49f0311c4d9ed65f14094b0c31144fc2d128840d041e2cacb448a",
+  "scope": "Second OS process, real native Store/Service/Page restore at fixed clock; not browser localStorage verification"
+}

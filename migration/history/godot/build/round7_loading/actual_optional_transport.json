@@ -1,0 +1,45 @@
+{
+  "retry_visible": false,
+  "transport_attempts": [
+    {
+      "at_msec": 12927,
+      "failure_mode": false,
+      "request": {
+        "epoch": 1,
+        "pack_id": "photo",
+        "request_id": "p32413582738-e1-r5"
+      }
+    },
+    {
+      "at_msec": 14868,
+      "failure_mode": true,
+      "request": {
+        "epoch": 1,
+        "pack_id": "photo",
+        "request_id": "p32413582738-e1-r6"
+      }
+    },
+    {
+      "at_msec": 14936,
+      "failure_mode": false,
+      "request": {
+        "epoch": 1,
+        "pack_id": "photo",
+        "request_id": "p32413582738-e1-r7"
+      }
+    },
+    {
+      "at_msec": 17551,
+      "failure_mode": false,
+      "request": {
+        "epoch": 1,
+        "pack_id": "travel",
+        "request_id": "p32413582738-e1-r9"
+      }
+    }
+  ],
+  "transport_scope": "A delaying adapter controls completion and points genuine native backend at an intentionally absent directory for failure. Successful PCK reads/hash/mount use the unmodified actual backend. This is not network/browser evidence.",
+  "waiting_samples": [],
+  "warm_node_wait_frames": 0,
+  "warm_visible_wait_frames": 0
+}

@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "name": "new process prepares Home through actual pack backend",
+      "pass": true
+    },
+    {
+      "name": "cold restored Home never mounts deferred UI packs",
+      "pass": true
+    },
+    {
+      "name": "same durable trip identity restored",
+      "pass": true
+    },
+    {
+      "name": "restart never invents preference learning",
+      "pass": true
+    },
+    {
+      "name": "returned status survives independent process",
+      "pass": true
+    },
+    {
+      "name": "terminal AI never repeats on restore",
+      "pass": true
+    },
+    {
+      "name": "ground diary survives without duplication",
+      "pass": true
+    },
+    {
+      "name": "previously clicked FLYING or collected reward resolves to one durable item",
+      "pass": true
+    },
+    {
+      "name": "exactly one clicked reward is in inventory",
+      "pass": true
+    },
+    {
+      "name": "collected reward is already visually absent at model commit",
+      "pass": true
+    },
+    {
+      "name": "only untouched rewards remain after normal frame cleanup",
+      "pass": true
+    },
+    {
+      "name": "duplicate collection is rejected after restart",
+      "pass": true
+    },
+    {
+      "name": "later ticks cannot duplicate reward or terminal AI",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "observations": [
+    {
+      "collected_visual_alpha": -0.000000000000000222044604925031,
+      "phase": "model_commit",
+      "visual_count": 3
+    },
+    {
+      "phase": "two_frames_after_commit",
+      "visual_count": 2
+    }
+  ],
+  "phase": "restore",
+  "scenario": "flying",
+  "scope": "Separate process actual native PCK mount and disk persistence; browser localStorage/refresh unverified"
+}

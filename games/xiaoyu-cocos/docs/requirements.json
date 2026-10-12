@@ -1,0 +1,2627 @@
+{
+  "schema": 2,
+  "creator": "3.8.8",
+  "updated": "2026-10-12",
+  "currentPlatform": "wechatgame",
+  "authority": "Latest user overrides govern current Cocos behavior; all original IDs/descriptions and withdrawals remain traceable. Related module mapping does not imply complete acceptance.",
+  "legacySource": {
+    "commit": "b4f77afc02999a465757177794343eb3d531c5e6",
+    "runtimeCommit": "a0237fa78982b9df5732558a67a0630ec73abe93",
+    "initialSnapshot": "migration/records/requirements.json",
+    "history": "migration/history/godot",
+    "archive": "migration/archives/godot-history.json"
+  },
+  "requirements": [
+    {
+      "id": "HISTORY:A001",
+      "requirement": "登录入场节奏\n标题、副标题缓慢就位，停顿后小余才探头；初始完全藏住。\n验收：冷启动、刷新和重进都不提前露头，顺序一致。",
+      "source_id": "A001",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/login_page.gd",
+        "entry/door_hotspot.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/LoginPage.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A001",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A002",
+      "requirement": "登录全屏进入\n全屏点击均能进入下一阶段。\n验收：中央及四角有效，一次点击不重复切页；下一阶段未就绪时明确等待。",
+      "source_id": "A002",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/login_page.gd",
+        "entry/door_hotspot.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/LoginPage.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A002",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A003",
+      "requirement": "静置贴地阴影\n小余、娃娃、碗、凳子按真实底沿接地。\n验收：昼夜各阶段都不悬空，阴影近端不脱离物件。",
+      "source_id": "A003",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/grounding/alpha_grounding.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A003",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A004",
+      "requirement": "抬起时双影\n查清接触阴影、投影和素材原有影子的叠加。\n验收：抬起没有多余固定影子；投影随高度变化，落地恢复接触关系。",
+      "source_id": "A004",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/grounding/alpha_grounding.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A004",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A005",
+      "requirement": "拖起形变：克制重力下垂＋轻微上下弹，去掉明显左右Q弹；不追求夸张水滴，脸与鳍连接稳定。",
+      "source_id": "A005",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/soft_attachment_mesh.gd",
+        "home/interaction/home_interaction_controller.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A005",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A006",
+      "requirement": "拖起微微挣扎与表情\n鳍尾轻轻挣动，配合眼神、眼球转动和面部表情；放下轻压、回弹后稳住。\n验收：拖起状态有明确生命反应，不僵直、不痛苦；放下自然恢复。",
+      "source_id": "A006",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/rig_secondary_motion.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A006",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A007",
+      "requirement": "现在的主角敲木鱼动作太快了，不像敲木鱼，改回之前的，只是之前的敲木鱼动作和动作之间间隔太长",
+      "source_id": "A007",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/ambient_director.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A007",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A008",
+      "requirement": "击中时轻微受刺激\n短暂缩眼、嘴部轻绷再放松。\n验收：跟接触时刻同步，程度轻微可爱，不呈现惩罚感。",
+      "source_id": "A008",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_world.gd",
+        "home/action_marks.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A008",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A009",
+      "requirement": "日常眼神与表情\n敲击、瞌睡、喝水、拖起分别有眼球、视线和面部表现。\n验收：不是固定一张脸，视线目标清楚，表情切换不跳变。",
+      "source_id": "A009",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_world.gd",
+        "home/behavior/drag_gaze.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A009",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A010",
+      "requirement": "全身果冻联动\n身体、鳍、尾巴有弹性、滞后及小动作。\n验收：联动实际可见，体型和接地稳定，无穿帮或突然放大缩小。",
+      "source_id": "A010",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/rig_secondary_motion.gd",
+        "home/behavior/soft_attachment_mesh.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A010",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A011",
+      "requirement": "主页藤蔓：恢复可见、局部、不规则的柔和叶片摆动，不整串同步。",
+      "source_id": "A011",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/secondary/room_plants.gd",
+        "home/secondary/spring_mesh_part.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A011",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A012",
+      "requirement": "背包肩带：修穿戴衔接和遮挡；挂墙时肩带也有独立弹性轻摆。",
+      "source_id": "A012",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/secondary/articulated_backpack.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+        "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A012",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A013",
+      "requirement": "喝水\n碗沿对准红色嘴巴，视线看碗，有喝水表情，结束恢复敲击。\n验收：不穿脸、不对错部位，全过程自然衔接。",
+      "source_id": "A013",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/behavior/character_geometry.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A013",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A014",
+      "requirement": "主角背书包的动作还是太傻，当我拖书包确认后，改为用你旅行页面的背书包的静态图吧，起码背书包样子很协调。注意背书包的时候要加云雾的动效来做类似的出场动画",
+      "source_id": "A014",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/secondary/articulated_backpack.gd",
+        "home/room_props_controller.gd",
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A014",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A015",
+      "requirement": "物件询问与照片\n背包触发旅行询问，娃娃触发暗室询问，照片触发对应入口。\n验收：用自然气泡或场景载体，不堆生硬按钮；确认、取消、返回有效。",
+      "source_id": "A015",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_page.gd",
+        "home/interaction/home_note.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A015",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A016",
+      "requirement": "两处灯：主页灯与暗室灯笼都立即Q弹回应，快速渐亮／渐灭，连续点击不被提示拦截。",
+      "source_id": "A016",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_page.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A016",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A017",
+      "requirement": "60秒昼夜\n白天30秒、夜晚30秒；入夜先展示月光，夜半开灯，天亮前关灯。\n验收：时长正确，过渡平滑，月光和晨光阶段可见。",
+      "source_id": "A017",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/home_cycle_clock.gd",
+        "scripts/app.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A017",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A018",
+      "requirement": "两处窗玻璃质感\n主页、暗室同步增强玻璃反射、透光与边缘质感。\n验收：可感知玻璃，但不蒙白遮住外景，昼夜表现协调。\n\n核验要求：每项对照真实素材、节点、生产调用和状态流程，列清逻辑／资源证据；受云端图形环境限制的实际画面和触感单独标待实测，不再笼统宣布全部完成。",
+      "source_id": "A018",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_world.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A018",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A019",
+      "requirement": "香炉独立交互\n凳子上香炉独立燃烧；未燃尽提示，燃尽后点击重新点香。\n验收：不重复叠香，不要求小余参与。",
+      "source_id": "A019",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/independent_incense.gd",
+        "home/incense_burn_store.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+        "games/xiaoyu-cocos/assets/game/IncenseState.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A019",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A020",
+      "requirement": "花瓶、香炉、香的光影：补实际受光、接触阴影与随光源变化的投影。",
+      "source_id": "A020",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/independent_incense.gd",
+        "home/flowers/tabletop_support.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+        "games/xiaoyu-cocos/assets/game/FlowerLife.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A020",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A021",
+      "requirement": "拖拽层：原actor/附属件共用临时Canvas，动态高于Home内新增Canvas；释放取消恢复父层与固定锚，无透明输入罩",
+      "source_id": "A021",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A021",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A022",
+      "requirement": "Loading展示与打布偶动画\n首屏显示定稿Loading，不闪Godot Logo；最低显示1秒，即使缓存命中也保留；打布偶动作补真实接触、力度和反馈。\n验收：Loading可看见，动作不穿透、不悬空；资源未就绪时超过1秒继续等待，不能强行跳页。",
+      "source_id": "A022",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/loading_page.gd",
+        "entry/native_actor.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/Boot.ts",
+        "games/xiaoyu-cocos/assets/startup/LoadingView.ts",
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A022",
+      "overrides": [
+        "COCOS:LOADING-ISOLATION"
+      ]
+    },
+    {
+      "id": "HISTORY:A023",
+      "requirement": "分阶段必要资源门槛\n• Loading：只等待登录必需资源及运行依赖。\n• 登录：并行下载格漫、主页必需资源。\n• 进入格漫：格漫资源就绪即可进入，不被主页下载拖住。\n• 格漫结束：主页必需资源就绪后才进入主页；未就绪时明确显示等待。\n• 同时可低优先级预加载后续资源，不挤占当前必要下载。\n验收：门槛包含下载及使用前必要准备；慢网、缓存、失败重试均不出现空白页、缺图或假完成；不强制首屏全量下载。若现有打包方式把资源绑成一包，需要调整资源组织。",
+      "source_id": "A023",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "scripts/app.gd",
+        "config/resource_groups.json",
+        "config/resource_pack_manifest.json"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/Boot.ts",
+        "games/xiaoyu-cocos/assets/startup/LoadingView.ts",
+        "games/xiaoyu-cocos/assets/game/LoginPage.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A023",
+      "overrides": [
+        "COCOS:LOADING-ISOLATION"
+      ]
+    },
+    {
+      "id": "HISTORY:A024",
+      "requirement": "两首背景音乐\n白天《弹竖琴的小老鼠》、夜晚《Peaceful Mind》，低音量平滑切换，保留许可署名。\n验收：首次有效交互后可播放，切换不突兀，重进不重复播放器；只接这两首。",
+      "source_id": "A024",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/audio/home_music.gd",
+        "home/audio/music_credits.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/AudioBehavior.ts",
+        "games/xiaoyu-cocos/assets/game/MusicCreditsView.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A024",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A025",
+      "requirement": "暗室\n已发三屏视觉候选：邀请→针／拖鞋互动→晦气消散。确认后按原玩法完成页面。\n验收：入口、操作反馈、结算与返回完整，风格与定稿一致。",
+      "source_id": "A025",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_page.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A025",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A026",
+      "requirement": "格漫轻音效：逐格柔和“噗”声，加对应剧情的短音效，轻量同步。",
+      "source_id": "A026",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/opening_story_paper.gd",
+        "entry/opening_story_progress.gd",
+        "entry/comic_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+        "games/xiaoyu-cocos/assets/game/OpeningClock.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A026",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A027",
+      "requirement": "暗室首帧：房间显示前把光影准备好，避免先房间、后补光。",
+      "source_id": "A027",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "scripts/app.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A027",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A028",
+      "requirement": "暗室点击阻断：修复默认针点布偶无反应、拖鞋无法选中的输入拦截。",
+      "source_id": "A028",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_page.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A028",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A029",
+      "requirement": "针与拖鞋打击感：分别核查扎入／挥打、接触反馈、布偶反应、黑气、血条和结算。",
+      "source_id": "A029",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_world.gd",
+        "darkroom/helpers/flowing_plumes.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A029",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A030",
+      "requirement": "工具选中态：去掉黄色线框，换柔和外发光；针、拖鞋尺寸收进托盘凹槽。",
+      "source_id": "A030",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/helpers/tool_tray_fit.gd",
+        "darkroom/helpers/darkroom_hud.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A030",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A031",
+      "requirement": "暗室娃娃外形一致\n分件与物理关节保留主页同一只娃娃的原造型。\n验收：中性姿态与母版一比一对照，脸、比例、四肢、蝴蝶结不变；活动不裂缝。",
+      "source_id": "A031",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/helpers/articulated_doll.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A031",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A032",
+      "requirement": "灯笼图案：去掉枝叶纹样，换干净的纸鹤点缀。",
+      "source_id": "A032",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A032",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A033",
+      "requirement": "暗室叶片：保留已认可的随机方式与幅度，仅稍提高活动频率，不重做暗室。\n\n审查要求：逐项检查真实素材、节点、生产调用和完整状态流程；眼部、肩带、尾巴另做合成对照。报告区分“修改完成／代码资源验证／实际画面待验”，不以参数存在或单个测试通过笼统宣布全部完成。",
+      "source_id": "A033",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A033",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A034",
+      "requirement": "返回控件：去掉点击出现的虚线圆框，修触摸返回，保留轻微弹性。",
+      "source_id": "A034",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_page.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A034",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A035",
+      "requirement": "追物方向与完整瞳安全必须同时成立。半径由后续A066覆盖：当前左12×9.12、右10.8×7.92；旧左10×7.6、右9×6.6仅比较基线，不得回退。210候选只修clamp方向，半径/domain/shader不变；右眼可见行程很小，整体美术/Web仍待验。",
+      "source_id": "A035",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/eye_geometry.gd",
+        "home/behavior/drag_gaze.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A035",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A036",
+      "requirement": "音频报错与卡顿：修重复恢复播放、重启复制大缓冲及残留播放，核查灯／照片连点时的卡顿。",
+      "source_id": "A036",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/audio/home_music.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A036",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A037",
+      "requirement": "设置无法关闭：修触摸、关闭路由与遮罩，保证可关、可重开。",
+      "source_id": "A037",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A037",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A038",
+      "requirement": "全项目内存：排查播放器、纹理、序列帧、页面节点、粒子及临时拷贝，区分泄漏和峰值浪费。",
+      "source_id": "A038",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "scripts/app.gd",
+        "config/resource_groups.json"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A038",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A039",
+      "requirement": "碗边残光：清理原图右边缘暖黄／黄绿残留，保留正常材质。",
+      "source_id": "A039",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A039",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A040",
+      "requirement": "花瓶与香炉摆放：在凳面中央均衡分布；香炉更换为符合画风、辨识清楚的造型。",
+      "source_id": "A040",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/flowers/tabletop_support.gd",
+        "home/independent_incense.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+        "games/xiaoyu-cocos/assets/game/FlowerLife.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A040",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A041",
+      "requirement": "最新实图花朵过于等高同向拥挤，需明确高低/左右错落；不能用旧追光角度PASS关闭。",
+      "source_id": "A041",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/flowers/flower_life.gd",
+        "home/flowers/flower_head.gd",
+        "home/flowers/persistent_vase.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+        "games/xiaoyu-cocos/assets/game/FlowerLife.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A041",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A042",
+      "requirement": "香烟：点燃初期就有柔和飘烟，燃尽时自然扩散淡去，去掉硬直裁切边。",
+      "source_id": "A042",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/independent_incense.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeIncense.ts",
+        "games/xiaoyu-cocos/assets/game/IncenseState.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A042",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A043",
+      "requirement": "暗室自动下一轮\n旧娃随更明显、更慢的成功动画消散；完全消失后停1秒，新娃伴黑雾渐现，晦气条回满。\n验收：无需返回重进；时序完整，不双娃叠加、不重复结算，准备完成后可继续操作。",
+      "source_id": "A043",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/darkroom_world.gd",
+        "darkroom/darkroom_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A043",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A044",
+      "requirement": "修通用气泡的旧最小宽度等排版问题；主页、暗室、旅行统一公共组件与规则，验证长短文字/换行/连续切换。",
+      "source_id": "A044",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/interaction/home_note.gd",
+        "travel/travel_page.gd",
+        "darkroom/helpers/doll_speech_bubble.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A044",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A045",
+      "requirement": "点香加成（新增优化）\n用户点燃才开始：一根香30秒，期间每次敲击功德+2，燃尽恢复+1；不重复叠加。\n验收：实际结算与显示一致；预加载不提前点燃，刷新恢复时间与加成一致。",
+      "source_id": "A045",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/incense_burn_store.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A045",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A046",
+      "requirement": "精确文案为“暗室装载中…”，只在真实装载中显示，省略号循环；不是“正在装载”。",
+      "source_id": "A046",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "scripts/app.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A046",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A047",
+      "requirement": "最新要求去除Loading角色背后大圆圈/光环；不是仅旧进度条前端小圆点。网页preboot与Godot两处均须核实。",
+      "source_id": "A047",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/loading_page.gd",
+        "entry/native_actor.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/Boot.ts",
+        "games/xiaoyu-cocos/assets/startup/LoadingView.ts",
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A047",
+      "overrides": [
+        "COCOS:LOADING-ISOLATION"
+      ]
+    },
+    {
+      "id": "HISTORY:A048",
+      "requirement": "格漫“点击进入”：整页完成后显示轻柔呼吸效果，点击热区稳定。",
+      "source_id": "A048",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "entry/comic_page.gd",
+        "entry/opening_story_progress.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+        "games/xiaoyu-cocos/assets/game/OpeningClock.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A048",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A049",
+      "requirement": "“正在准备小屋”：尾部点按一、二、三持续循环。",
+      "source_id": "A049",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "scripts/app.gd",
+        "entry/comic_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+        "games/xiaoyu-cocos/assets/game/OpeningClock.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A049",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A050",
+      "requirement": "功德浮字：恢复“薄金微芒”艺术字，动态组合＋N，支持两位数及更多位数，不硬拉伸。",
+      "source_id": "A050",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/feedback/merit_amount_art.gd",
+        "home/feedback/merit_legacy_style.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A050",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A051",
+      "requirement": "03（Home两句10款位图选择板中选03，结合前一选择问题确认）",
+      "source_id": "A051",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/feedback/wayfinding_hint_style.gd",
+        "home/independent_incense.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A051",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A052",
+      "requirement": "主角敲击输入：空白无反应；点中小余立刻完整敲一下，正在敲也立即重新执行，旧事件不重复结算。",
+      "source_id": "A052",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/interaction/home_interaction_controller.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A052",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A053",
+      "requirement": "尾巴穿帮：检查拖起时裁切、UV、轮廓及身体连接同步，不靠减小动作掩盖。",
+      "source_id": "A053",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/soft_attachment_mesh.gd",
+        "home/behavior/rig_secondary_motion.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A053",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A054",
+      "requirement": "眼白白球：查清额外白球的素材／合成来源，恢复连贯眼白，不能盲删层。",
+      "source_id": "A054",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/eye_geometry.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A054",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A055",
+      "requirement": "收藏页重新出创意设计：不要方正信纸+规整icon列表；自然错落、有适度动态，背景虚化突出高清藏品；标题清楚、空木牌有明确用途、页码与前后按钮符合画风。",
+      "source_id": "A055",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelCollectionSession.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A055",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A056",
+      "requirement": "照片页重出详细示意图，依据最初MD、旧照片图和最新偏好，含进入/查看/返回流转。",
+      "source_id": "A056",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/interaction/home_note.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A056",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A057",
+      "requirement": "指定文字统一为截图下方气泡的字体与风格。",
+      "source_id": "A057",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_page.gd",
+        "travel/travel_speech.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A057",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A058",
+      "requirement": "旅行加载面板改成配套手绘风，保真实进度、取消返回。",
+      "source_id": "A058",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A058",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A059",
+      "requirement": "五角星换为有材质、光晕和灵动闪烁的菱形四尖闪光。",
+      "source_id": "A059",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A059",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A060",
+      "requirement": "开包等特效增强出现、运动、消散的动感。",
+      "source_id": "A060",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_service.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A060",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A061",
+      "requirement": "修复截图中模糊材质，核对源图、缩放和纹理设置。",
+      "source_id": "A061",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_art.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A061",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A062",
+      "requirement": "地图放大，校正地图、闪光、提示语的位置与间距。",
+      "source_id": "A062",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A062",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A063",
+      "requirement": "地面日记翻开两页补手绘记录和小插画，不留白。",
+      "source_id": "A063",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_open_diary_art.gd",
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A063",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A064",
+      "requirement": "批阅确认突出显示，配高光与柔和闪动。",
+      "source_id": "A064",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A064",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A065",
+      "requirement": "你指出的两个按钮改成现有返回按钮同套画风。",
+      "source_id": "A065",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/header_tag.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A065",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A066",
+      "requirement": "小余黑瞳在当前基础放大20%，保高光、眼白边界与自然跟随。",
+      "source_id": "A066",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/behavior/eye_geometry.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A066",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A067",
+      "requirement": "敲击旁三条漫画冲击线加入击中同步的短促迸发、伸缩与消散。",
+      "source_id": "A067",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/action_marks.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+        "games/xiaoyu-cocos/assets/game/OpeningClock.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A067",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A068",
+      "requirement": "旅途地图奇遇提示更醒目、可点，用菱形闪光/轻量引导，区分待选择与已处理，不强迫点击。",
+      "source_id": "A068",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A068",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A069",
+      "requirement": "真实路线前进：固定多个地点和路牌，小余沿路移动、到站反馈；不能同一房屋反复换地名伪装行进。",
+      "source_id": "A069",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A069",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A070",
+      "requirement": "先把当前旅途场景精调动态、分层，不急着扩场景数量，不整幅背景同摇。",
+      "source_id": "A070",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A070",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A071",
+      "requirement": "旅途场景元素、动态与光影做成可配置、可复用效果，以后配景不反复改实现。",
+      "source_id": "A071",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_config.gd",
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A071",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A072",
+      "requirement": "枫叶/叶片较频繁自然随风动，带弹性惯性、错相，不整组机械摆。",
+      "source_id": "A072",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A072",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A073",
+      "requirement": "拆出独立钟体与钟舌，自然晃动、偶尔同步钟响，遵静音和音量设置。",
+      "source_id": "A073",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A073",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A074",
+      "requirement": "天空云动态移动，节奏自然。",
+      "source_id": "A074",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A074",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A075",
+      "requirement": "共享主页昼夜时间，呈现日升日落、晨昏、可见丁达尔光束与方向一致的投影。",
+      "source_id": "A075",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd",
+        "travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A075",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A076",
+      "requirement": "清理或拆层背景中烘死的强光、光束与方向性阴影，给动态光照留空间，保手绘材质。",
+      "source_id": "A076",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A076",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A077",
+      "requirement": "确认背包后改旅行静态背包角色并加云雾出场",
+      "source_id": "A077",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_bridge.gd",
+        "travel/travel_home_props.gd",
+        "home/home_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A077",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A078",
+      "requirement": "新旅行页：保批准地图布局，路线10秒一阶段共100有效秒；事件可不点；点光点原页人物小板才暂停，取消续行，终点AI统一处理未选",
+      "source_id": "A078",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_model.gd",
+        "travel/travel_service.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A078",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A079",
+      "requirement": "满包：按最新放大图rect(273.5,925,171,180)，鱼身前接地，眼嘴完整，不碰右碗；开包rect(270,925,178,184)",
+      "source_id": "A079",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A079",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A080",
+      "requirement": "入口反馈：地图/包/照片/设置/燃香等短弹完再触发；日记翻开完再进入；触摸取消、连点及合成鼠标去重；灯即时光渐变",
+      "source_id": "A080",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/home_page.gd",
+        "travel/travel_home_bridge.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A080",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A081",
+      "requirement": "逐件保存、失败回滚、旧存档迁移、损坏主档备份、选择锁/偏好学习一次性与跨页清理",
+      "source_id": "A081",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "travel/travel_store.gd",
+        "travel/travel_model.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A081",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A082",
+      "requirement": "暗室待办补充：\n\n第31项增加：暗室物件投影随太阳、日出日落与灯笼变化。验收时检查方向、长度、柔度、接地点及遮挡，不能出现悬空或多余影子。\n\n第32项：黑气烟雾与晦气消散动画。保留你认可的布偶、绣花针、拖鞋以及第三屏消散画风；黑气要连续、柔顺地卷曲、扩散和消散，互动、血条及结算反馈同步。结果文字保持“晦气消除、乳腺通畅”。\n\n验收：烟雾像烟，不像硬块贴图；循环和结束不突跳；消散过程完整，最终结果可读，返回有效。\n\n说明：第三屏目前是静态视觉示意，不是已经完成的序列帧或动画；接下来按你认可的样式制作实际效果。此前31项保持有效。",
+      "source_id": "A082",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "darkroom/helpers/flowing_plumes.gd",
+        "darkroom/darkroom_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A082",
+      "overrides": []
+    },
+    {
+      "id": "HISTORY:A083",
+      "requirement": "最新版待办补充第27项：动作的漫画式反馈元素。\n\n敲木鱼、喝水、瞌睡、拖起挣动等动作，搭配符合动作含义的冲击线、水滴、困意或动势提示，沿用原画风格，轻量呈现。\n\n验收：与动作关键时刻同步，短暂出现后消失；不常驻、不遮住眼神和表情、不堆得过密，不把这些元素当作新增按钮或玩法。此前26项保持有效。",
+      "source_id": "A083",
+      "source_document": "migration/history/godot/build/followup_20261006/history_matrix_snapshot.json",
+      "legacy_code_paths": [
+        "home/action_marks.gd",
+        "home/home_world.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/ComicPage.ts",
+        "games/xiaoyu-cocos/assets/game/OpeningClock.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#HISTORY:A083",
+      "overrides": []
+    },
+    {
+      "id": "R7:N01",
+      "requirement": "对象名+加载中+1/2/3点，例如暗室加载中...、日记加载中...、地图加载中...；不出现技术资源包名或准备旅行画卷；照片墙加载中...也统一",
+      "source_id": "N01",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/travel_home_bridge.gd:181,212,250",
+        "photo/photo_bridge.gd:50-51,66-76"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N01",
+      "overrides": []
+    },
+    {
+      "id": "R7:N02",
+      "requirement": "动态省略号不触发布局抖动",
+      "source_id": "N02",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "scripts/app.gd:_darkroom_wait_text",
+        "home/interaction/home_note.gd:update_route_waiting",
+        "addons/travel_core/ui/speech_bubble.gd:_layout"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N02",
+      "overrides": []
+    },
+    {
+      "id": "R7:N03",
+      "requirement": "照片墙光束柔和体积层次",
+      "source_id": "N03",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_page.gd:64-70; photo/photo_material.gd:10-18; darkroom/shaders/window_beams.gdshader",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N03",
+      "overrides": []
+    },
+    {
+      "id": "R7:N04",
+      "requirement": "照片页小余尾鳍缺失",
+      "source_id": "N04",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_actor.gd:configure; xiaoyu_rig.tscn:118; photo/photo_page.gd:backdrop/actor",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N04",
+      "overrides": []
+    },
+    {
+      "id": "R7:N05",
+      "requirement": "照片页小余影子随姿态与日月",
+      "source_id": "N05",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_page.gd:70-74",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N05",
+      "overrides": []
+    },
+    {
+      "id": "R7:N06",
+      "requirement": "底部两枚小屋夹子独立轻摆",
+      "source_id": "N06",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_page.gd:selectors configure/process/input",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N06",
+      "overrides": []
+    },
+    {
+      "id": "R7:N07",
+      "requirement": "照片纸摆幅与独立错相",
+      "source_id": "N07",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_paper.gd:deform/advance",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N07",
+      "overrides": []
+    },
+    {
+      "id": "R7:N08",
+      "requirement": "每张照片投影随纸面与光",
+      "source_id": "N08",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_paper.gd:advance",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N08",
+      "overrides": []
+    },
+    {
+      "id": "R7:N09",
+      "requirement": "挂夹与绳子投影适配数量",
+      "source_id": "N09",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_page.gd:WallFurniture._draw/_refresh/_process",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N09",
+      "overrides": []
+    },
+    {
+      "id": "R7:N10",
+      "requirement": "照片墙背景叶/藤拆分持续物理轻摆",
+      "source_id": "N10",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_page.gd/backdrop; photo/photo_actor.gd",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N10",
+      "overrides": []
+    },
+    {
+      "id": "R7:N11",
+      "requirement": "照片墙昼夜/光效频繁闪抖",
+      "source_id": "N11",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "photo/photo_material.gd:illuminate/wall_field; shared_room_lighting/lighting_snapshot.gd",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N11",
+      "overrides": []
+    },
+    {
+      "id": "R7:N12",
+      "requirement": "动态功德+N暗边",
+      "source_id": "N12",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "home/feedback/merit_amount_art.gd; home/feedback/assets/merit_digits_thin_gold.png",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N12",
+      "overrides": []
+    },
+    {
+      "id": "R7:N13",
+      "requirement": "旅途各牌面文案垂直居中",
+      "source_id": "N13",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_page.gd:_label/_map_page; travel/travel_scene_config.gd:landmarks",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N13",
+      "overrides": []
+    },
+    {
+      "id": "R7:N14",
+      "requirement": "旅行钟摆频率与钟声清楚可闻",
+      "source_id": "N14",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_scene_runtime.gd:_physics/_can_sound; travel/travel_scene_config.gd:bell/audio",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N14",
+      "overrides": []
+    },
+    {
+      "id": "R7:N15",
+      "requirement": "本旅行场景隐藏太阳/月亮实体保光效",
+      "source_id": "N15",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_scene_runtime.gd:_draw_sky/light_snapshot/_draw_light",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N15",
+      "overrides": []
+    },
+    {
+      "id": "R7:N16",
+      "requirement": "旅行页面清晰动态柔光束",
+      "source_id": "N16",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_scene_runtime.gd:_draw_light/_draw_portal_shaft; travel_scene_config.gd:beam_portals",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N16",
+      "overrides": []
+    },
+    {
+      "id": "R7:N18",
+      "requirement": "奇遇全屏层次引导与华丽菱形闪光",
+      "source_id": "N18",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_page.gd:EncounterGlow/_map_page",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N18",
+      "overrides": []
+    },
+    {
+      "id": "R7:N19",
+      "requirement": "全屏落叶近大远小景深",
+      "source_id": "N19",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_scene_config.gd:leaves; travel_scene_runtime.gd:_draw_leaves",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N19",
+      "overrides": []
+    },
+    {
+      "id": "R7:N20",
+      "requirement": "奇遇等待点击时同步提示音",
+      "source_id": "N20",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": "travel/travel_page.gd:EncounterGlow/_map_page; travel_service.gd",
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N20",
+      "overrides": []
+    },
+    {
+      "id": "R7:N21",
+      "requirement": "旅行页地点/故事文案合理载体与位置",
+      "source_id": "N21",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/travel_page.gd:291-294,475-483"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N21",
+      "overrides": []
+    },
+    {
+      "id": "R7:N22",
+      "requirement": "旅途路线贝塞尔手绘与真实材质节点",
+      "source_id": "N22",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/travel_scene_runtime.gd:_draw_route",
+        "travel/travel_scene_config.gd:sample_segment/route_position"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N22",
+      "overrides": []
+    },
+    {
+      "id": "R7:N23",
+      "requirement": "收藏底部物件选择不重排",
+      "source_id": "N23",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/treasure_gallery.gd:select_item/_build"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelCollectionSession.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N23",
+      "overrides": []
+    },
+    {
+      "id": "R7:N24",
+      "requirement": "收藏实物分页与保留归档旅行日记",
+      "source_id": "N24",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/treasure_gallery.gd:_build/_build_archive",
+        "travel/travel_page.gd:_collection/open"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N24",
+      "overrides": []
+    },
+    {
+      "id": "R7:N25",
+      "requirement": "收藏详情小型日记纸质衬底",
+      "source_id": "N25",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/treasure_gallery.gd:_build/_light_label"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N25",
+      "overrides": []
+    },
+    {
+      "id": "R7:N26",
+      "requirement": "主页两03艺术提示占比收小",
+      "source_id": "N26",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "home/feedback/bitmap_hint.gd",
+        "home/independent_incense.gd:_make_hint",
+        "travel/travel_home_props.gd:diary_hint"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N26",
+      "overrides": []
+    },
+    {
+      "id": "R7:N27",
+      "requirement": "归来开包柔软云朵扩散",
+      "source_id": "N27",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [
+        "travel/travel_home_props.gd",
+        "travel/travel_reward_flight.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N27",
+      "overrides": []
+    },
+    {
+      "id": "R7:N28",
+      "requirement": "正式接入精简衣柜与通用粉色换肤",
+      "source_id": "N28",
+      "source_document": "migration/history/godot/build/round7_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+        "games/xiaoyu-cocos/assets/game/WardrobeStore.ts",
+        "games/xiaoyu-cocos/assets/game/OutfitBinding.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R7:N28",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-01",
+      "requirement": "公共气泡布局与横向颤抖",
+      "source_id": "R8-01",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/Engine.ts",
+        "games/xiaoyu-cocos/assets/game/Visual.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-01",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-02",
+      "requirement": "确认出发云雾复用暗室净化",
+      "source_id": "R8-02",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/DarkroomPage.ts",
+        "games/xiaoyu-cocos/assets/game/DollSkin.ts",
+        "games/xiaoyu-cocos/assets/game/DarkroomLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-02",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-03",
+      "requirement": "燃香及日记提示复用询问文字样式",
+      "source_id": "R8-03",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-03",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-04",
+      "requirement": "所有交互提示统一错落四尖菱光",
+      "source_id": "R8-04",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-04",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-05",
+      "requirement": "归来开包云朵移到背包前景",
+      "source_id": "R8-05",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+        "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-05",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-06",
+      "requirement": "奖励靠包上方扇形错落悬浮",
+      "source_id": "R8-06",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-06",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-07",
+      "requirement": "收齐奖励后慢贝塞尔回挂背包",
+      "source_id": "R8-07",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeBackpack.ts",
+        "games/xiaoyu-cocos/assets/game/ApprovedBackpackGeometry.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-07",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-08",
+      "requirement": "收藏日记斜牌文字居中",
+      "source_id": "R8-08",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelJournalPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelDiaryArtwork.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-08",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-09",
+      "requirement": "收藏底排所有状态不显示名称",
+      "source_id": "R8-09",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelCollectionSession.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-09",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-10",
+      "requirement": "收藏详情图名简介同一纸板",
+      "source_id": "R8-10",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelCollectionPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelCollectionSession.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-10",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-11",
+      "requirement": "灵物分类毛笔字配实物图标",
+      "source_id": "R8-11",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-11",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-12",
+      "requirement": "照片墙可见宽柔丁达尔光束",
+      "source_id": "R8-12",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-12",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-13",
+      "requirement": "照片藤蔓内容裁剪与离屏停算",
+      "source_id": "R8-13",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-13",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-14",
+      "requirement": "旅行落叶多种贝塞尔自然飘落",
+      "source_id": "R8-14",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-14",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-15",
+      "requirement": "奇遇全屏柔光束聚焦真实热区",
+      "source_id": "R8-15",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-15",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-16",
+      "requirement": "实际到站生成手绘脚印",
+      "source_id": "R8-16",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-16",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-17",
+      "requirement": "旅行常态宽柔丁达尔光束",
+      "source_id": "R8-17",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-17",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-18",
+      "requirement": "衣柜点击只内衣布轻反馈",
+      "source_id": "R8-18",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+        "games/xiaoyu-cocos/assets/game/WardrobeStore.ts",
+        "games/xiaoyu-cocos/assets/game/OutfitBinding.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-18",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-19",
+      "requirement": "衣柜可见窗光丁达尔",
+      "source_id": "R8-19",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+        "games/xiaoyu-cocos/assets/game/WardrobeStore.ts",
+        "games/xiaoyu-cocos/assets/game/OutfitBinding.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-19",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-20",
+      "requirement": "桃花真实点击试穿无反应",
+      "source_id": "R8-20",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeFlowers.ts",
+        "games/xiaoyu-cocos/assets/game/FlowerLife.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-20",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-21",
+      "requirement": "衣柜两块标签视觉居中",
+      "source_id": "R8-21",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/WardrobePage.ts",
+        "games/xiaoyu-cocos/assets/game/WardrobeStore.ts",
+        "games/xiaoyu-cocos/assets/game/OutfitBinding.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-21",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-22",
+      "requirement": "挂布固定挂点自然风动",
+      "source_id": "R8-22",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-22",
+      "overrides": []
+    },
+    {
+      "id": "R8:R8-23",
+      "requirement": "功德HUD增数时框不抖",
+      "source_id": "R8-23",
+      "source_document": "migration/history/godot/build/round8_20261007/requirements.json",
+      "legacy_code_paths": [],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomePage.ts",
+        "games/xiaoyu-cocos/assets/game/Application.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#R8:R8-23",
+      "overrides": []
+    },
+    {
+      "id": "POST-R9:N1",
+      "requirement": "格漫加载提示同位",
+      "source_id": "N1",
+      "source_document": "migration/history/godot/build/post_r9_feedback_20261007/requirements.json",
+      "legacy_code_paths": [
+        "games/travel_woodfish/project/entry/comic_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#POST-R9:N1",
+      "overrides": []
+    },
+    {
+      "id": "POST-R9:N2",
+      "requirement": "奇遇结果纸质底板",
+      "source_id": "N2",
+      "source_document": "migration/history/godot/build/post_r9_feedback_20261007/requirements.json",
+      "legacy_code_paths": [
+        "games/travel_woodfish/project/travel/travel_page.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#POST-R9:N2",
+      "overrides": []
+    },
+    {
+      "id": "POST-R9:N3",
+      "requirement": "背包主角原地渐隐",
+      "source_id": "N3",
+      "source_document": "migration/history/godot/build/post_r9_feedback_20261007/requirements.json",
+      "legacy_code_paths": [
+        "games/travel_woodfish/project/home/home_departure_visual.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/HomeDepartureVisual.ts",
+        "games/xiaoyu-cocos/assets/game/HomeTravelBridge.ts",
+        "games/xiaoyu-cocos/assets/game/DepartureMotion.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#POST-R9:N3",
+      "overrides": [
+        "COCOS:DEPARTURE-CLOUD"
+      ]
+    },
+    {
+      "id": "POST-R9:N4",
+      "requirement": "照片墙宽软斜光与受光层次",
+      "source_id": "N4",
+      "source_document": "migration/history/godot/build/post_r9_feedback_20261007/requirements.json",
+      "legacy_code_paths": [
+        "games/travel_woodfish/project/photo/photo_material.gd",
+        "games/travel_woodfish/project/photo/photo_page.gd",
+        "games/travel_woodfish/project/shared_room_lighting/soft_atmosphere.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/PhotoPage.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+        "games/xiaoyu-cocos/assets/game/PhotoLighting.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#POST-R9:N4",
+      "overrides": []
+    },
+    {
+      "id": "POST-R9:N5",
+      "requirement": "旅行场景柔光与昼夜受光",
+      "source_id": "N5",
+      "source_document": "migration/history/godot/build/post_r9_feedback_20261007/requirements.json",
+      "legacy_code_paths": [
+        "games/travel_woodfish/project/travel/travel_atmosphere.gd",
+        "games/travel_woodfish/project/travel/travel_scene_runtime.gd"
+      ],
+      "cocos_related_modules": [
+        "games/xiaoyu-cocos/assets/game/TravelService.ts",
+        "games/xiaoyu-cocos/assets/game/TravelMapPage.ts",
+        "games/xiaoyu-cocos/assets/game/TravelSceneView.ts",
+        "games/xiaoyu-cocos/assets/game/TravelStore.ts"
+      ],
+      "moduleMappingScope": "Related subsystem entry points; not a claim that every historical clause has been fully implemented or accepted.",
+      "acceptance": "pending_per_requirement",
+      "historical_status_reference": "migration/records/requirements.json#POST-R9:N5",
+      "overrides": []
+    }
+  ],
+  "current_overrides": [
+    {
+      "id": "COCOS:ENGINE",
+      "requirement": "唯一当前运行工程为 Cocos Creator 3.8.8，正式平台微信小游戏；旧 Godot/PCK/Web 发布规则由当前渠道规则替代。",
+      "modules": [
+        "games/xiaoyu-cocos/package.json",
+        "builds/wechatgame/config.json"
+      ]
+    },
+    {
+      "id": "COCOS:LOADING-ISOLATION",
+      "requirement": "完整 Loading 独立资源、字体、代码；首帧 EVENT_AFTER_DRAW 后再加载 framework_code/runtime_data/gameplay_code；引擎初始化期间同色底。",
+      "modules": [
+        "games/xiaoyu-cocos/assets/Boot.ts",
+        "games/xiaoyu-cocos/assets/startup/LoadingView.ts",
+        "games/xiaoyu-cocos/assets/startup/LoadingAssets.ts"
+      ]
+    },
+    {
+      "id": "COCOS:BOOT-BUDGET",
+      "requirement": "80 specs/batch、128 entries、256 MiB；Home非启动闭包<=19,000,000 bytes，不依赖非必要 travel/departure；主包4,000,000、总包30,000,000 bytes为当前保守门禁。",
+      "modules": [
+        "engines/travel-core/src/resource-gate.js",
+        "builds/common.py",
+        "builds/wechatgame/audit.py"
+      ]
+    },
+    {
+      "id": "COCOS:IMAGE-BUDGET",
+      "requirement": "大背景720宽保留高屏余量，目标500,000 bytes内；允许程序合成、拆分、复用及有损渠道压缩，原素材和命中掩码保留。",
+      "modules": [
+        "builds/wechatgame/assets.py",
+        "games/xiaoyu-cocos/assets/game/PageBackground.ts"
+      ]
+    },
+    {
+      "id": "COCOS:AUDIO",
+      "requirement": "单声道流式48 kbps MP3音乐与单声道PCM短音效，保留当前Cocos播放适配。",
+      "modules": [
+        "builds/wechatgame/assets.py",
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "games/xiaoyu-cocos/assets/game/AudioBehavior.ts"
+      ]
+    },
+    {
+      "id": "COCOS:DEPARTURE-CLOUD",
+      "requirement": "云朵消散代表去了，完成后不再出现小屋主角；保留一次出发、取消、迟到和存档恢复。覆盖旧仅原地渐隐描述。",
+      "modules": [
+        "games/xiaoyu-cocos/assets/game/HomeDepartureVisual.ts",
+        "games/xiaoyu-cocos/assets/game/HomeTravelBridge.ts",
+        "games/xiaoyu-cocos/assets/game/DepartureMotion.ts"
+      ]
+    },
+    {
+      "id": "COCOS:HAPTICS",
+      "requirement": "合理使用可关闭的轻、重、长震动；后台停止、限频、平台失败不影响逻辑。",
+      "modules": [
+        "games/xiaoyu-cocos/assets/game/Haptics.ts",
+        "games/xiaoyu-cocos/assets/game/MusicCreditsView.ts",
+        "builds/wechatgame/templates/platform.js"
+      ]
+    },
+    {
+      "id": "COCOS:TELEMETRY",
+      "requirement": "首帧上报和其他埋点暂不接入，未来统一处理；本地诊断不是官方上报。",
+      "modules": [
+        "games/xiaoyu-cocos/assets/Boot.ts"
+      ]
+    },
+    {
+      "id": "COCOS:ON-DEMAND",
+      "requirement": "Cocos适配原生分包，业务决定加载时机；Home在漫画进入动作后请求，可选图片按需；页面代码共用延后的gameplay_code。",
+      "modules": [
+        "games/xiaoyu-cocos/assets/game/Application.ts",
+        "games/xiaoyu-cocos/assets/game/Assets.ts",
+        "builds/wechatgame/isolation.py"
+      ]
+    },
+    {
+      "id": "COCOS:TRACEABILITY",
+      "requirement": "删除旧Godot工作目录，迁移需求、架构、设计、字体与许可；完整Git归档和旧原文保留，旧PASS不是Cocos验收。",
+      "modules": [
+        "migration/archives/godot-history.json",
+        "games/xiaoyu-cocos/docs/requirements.md",
+        "engines/travel-core/docs/architecture.md",
+        "builds/README.md"
+      ]
+    }
+  ],
+  "withdrawn": [
+    {
+      "source": "R7:N17",
+      "reason": "Terminal trip timing must not depend on watching; preserve human-choice pause."
+    }
+  ],
+  "validation_protocol": {
+    "screenshots": {
+      "status": "pending",
+      "same_viewport": true,
+      "same_game_clock": true,
+      "same_progress_and_outfit": true,
+      "alpha_preserved": true,
+      "frames": [
+        "entry before and after transitions",
+        "stable day",
+        "stable night",
+        "lamp on/off",
+        "all pressed/hover/drag/release states",
+        "every popup and cancellation",
+        "all intermediate animation/contact/landing frames"
+      ],
+      "metrics": [
+        "pixel difference with aligned crop",
+        "structural overlay",
+        "manual visible review"
+      ],
+      "tolerance": "No blanket pixel tolerance can approve all effects. Any renderer difference must be identified and resolved or remain unaccepted."
+    },
+    "interaction": {
+      "status": "pending",
+      "all_buttons": true,
+      "all_routes": true,
+      "failure_cancel_retry": true,
+      "storage_reopen": true,
+      "reward_exactly_once": true,
+      "single_contact_single_merit": true
+    },
+    "device": {
+      "status": "pending",
+      "scope": [
+        "WeChat developer tool",
+        "physical WeChat phone",
+        "cold/warm load",
+        "safe area and foreground/background",
+        "download/memory/frame-time measurements"
+      ]
+    }
+  }
+}

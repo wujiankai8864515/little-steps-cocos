@@ -1,0 +1,51 @@
+{
+  "item": "H11/A064 加强候选",
+  "previous_source_commit": "9355312244946a35d1628a7702e0f68bdd98d256",
+  "production_files": [
+    "games/travel_woodfish/project/travel/travel_page.gd"
+  ],
+  "scope": "仅ReviewInkCue可见度，加强候选；非正式组包/Web",
+  "budget": {
+    "new_images": 0,
+    "new_entries": 0,
+    "new_decoded_image_bytes": 0,
+    "new_fonts": 0,
+    "new_production_text": false
+  },
+  "previous_native_gl": {
+    "evidence": "/tmp/paper_cues_qa/h11_emphasis_previous_peaks",
+    "checks": 54,
+    "failed": 0,
+    "phases": [
+      0.713998330361317,
+      2.14199499108395
+    ],
+    "changed_pixels": 1446
+  },
+  "candidate_native_gl": {
+    "evidence": "/tmp/paper_cues_qa/h11_emphasis_final",
+    "checks": 54,
+    "failed": 0,
+    "input_events": 28,
+    "phases": [
+      0.0,
+      1.4
+    ],
+    "changed_pixels": 3258,
+    "period_seconds": 2.8,
+    "display": "X11"
+  },
+  "complete_360_frames": {
+    "previous_peak": "/tmp/paper_cues_qa/h11_emphasis_previous_peaks/05b_ready_360x640.png",
+    "candidate_peak": "/tmp/paper_cues_qa/h11_emphasis_final/05b_ready_360x640.png",
+    "candidate_trough": "/tmp/paper_cues_qa/h11_emphasis_final/05c_rest_360x640.png",
+    "unselected": "/tmp/paper_cues_qa/h11_emphasis_final/03b_unselected_360x640.png",
+    "reviewed": "/tmp/paper_cues_qa/h11_emphasis_final/06b_reviewed_360x640.png"
+  },
+  "overlay_sha256": "41becb220b0a86ecad583dbbda9d59c6e4cf16002dad539a17b0178abf711219",
+  "production_script_sha256": "319ddaf50afea27381fa9ab766aeb3e7c324a7c71950b48c786fae1ccaef717c",
+  "limits": [
+    "像素差仅验证时序变化，不替代整屏可见度审查",
+    "最终组包、Web、用户GPU与用户视觉接受未验"
+  ]
+}

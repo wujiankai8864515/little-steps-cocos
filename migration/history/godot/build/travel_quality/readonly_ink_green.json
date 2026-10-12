@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "check": "map place shows the last reached cell, never the unrevealed next cell",
+      "passed": true
+    },
+    {
+      "check": "walked route advances inside a second to the same continuous endpoint as actor",
+      "passed": true
+    },
+    {
+      "check": "fixture genuinely includes an automatic second-option decision",
+      "passed": true
+    },
+    {
+      "check": "approved diary row one remains agreement when AI picked second option",
+      "passed": true
+    },
+    {
+      "check": "approved diary row two remains alternative",
+      "passed": true
+    },
+    {
+      "check": "diary navigation does not overlap the approved close label or its target",
+      "passed": true
+    },
+    {
+      "check": "selecting agreement alone does not learn",
+      "passed": true
+    },
+    {
+      "check": "agreement chooses actual AI outcome despite original option ordering",
+      "passed": true
+    },
+    {
+      "check": "explicit submit learns exactly once",
+      "passed": true
+    },
+    {
+      "check": "persisted review records agreement, not opposite option",
+      "passed": true
+    },
+    {
+      "check": "reviewed paper patches cannot erase any long-paragraph ink (lost=0)",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "scope": "Targeted real input and native pixel regression; no browser/hardware claim"
+}

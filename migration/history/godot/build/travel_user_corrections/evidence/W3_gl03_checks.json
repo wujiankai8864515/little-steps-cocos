@@ -1,0 +1,91 @@
+{
+  "scope": "Official4.5.2 source-component candidate, all four corrections present; not R9 final cold packs/Web/user acceptance",
+  "checks": [
+    {
+      "check": "W3 confirmed real bridge starts departure",
+      "pass": true
+    },
+    {
+      "check": "W3 accepted offer retains original wearing state without re-equipping",
+      "pass": true
+    },
+    {
+      "check": "W3 rapid confirm emits one actor and one committed trip",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 0.0",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 0.76",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 1.35",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 2.2",
+      "pass": true
+    },
+    {
+      "check": "W3 no second cloud emission at 2.2",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 3.2",
+      "pass": true
+    },
+    {
+      "check": "W3 no second cloud emission at 3.2",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 3.5",
+      "pass": true
+    },
+    {
+      "check": "W3 no second cloud emission at 3.5",
+      "pass": true
+    },
+    {
+      "check": "W3 bounded initial two-plume cloud at 4.55",
+      "pass": true
+    },
+    {
+      "check": "W3 no second cloud emission at 4.55",
+      "pass": true
+    },
+    {
+      "check": "W3 late age callback cannot replay actor",
+      "pass": true
+    },
+    {
+      "check": "W3 one sequence ends at original4.8seconds",
+      "pass": true
+    },
+    {
+      "check": "W3 repeated click does not duplicate resource request",
+      "pass": true
+    },
+    {
+      "check": "W3 canceled late load never commits or starts reveal",
+      "pass": true
+    },
+    {
+      "check": "W3 failed load never starts reveal",
+      "pass": true
+    },
+    {
+      "check": "W3 retry succeeds once after cancel and failure",
+      "pass": true
+    },
+    {
+      "check": "W3 suspension clears effect without replay",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "source_candidate": "source_candidate_01 with room_props type fix and final48star source replacement recorded by gl03/source_hashes.json"
+}

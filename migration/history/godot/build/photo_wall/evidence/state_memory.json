@@ -1,0 +1,89 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "migrate exactly two existing Home photographs",
+      "pass": true
+    },
+    {
+      "check": "legacy slot bindings retained",
+      "pass": true
+    },
+    {
+      "check": "two photos hide batching",
+      "pass": true
+    },
+    {
+      "check": "ingest acquired photos",
+      "pass": true
+    },
+    {
+      "check": "twelve acquired photos make two batches",
+      "pass": true
+    },
+    {
+      "check": "bind by photo ID",
+      "pass": true
+    },
+    {
+      "check": "different batch has no carried slot mark",
+      "pass": true
+    },
+    {
+      "check": "returning batch restores identity",
+      "pass": true
+    },
+    {
+      "check": "save and reentry preserve binding",
+      "pass": true
+    },
+    {
+      "check": "reject nonexistent slots and photos",
+      "pass": true
+    },
+    {
+      "check": "two Home slots can explicitly select same photo",
+      "pass": true
+    },
+    {
+      "check": "stale writes fail atomically",
+      "pass": true
+    },
+    {
+      "check": "capacity ingest",
+      "pass": true
+    },
+    {
+      "check": "30 wall capacity does not delete overflow inventory",
+      "pass": true
+    },
+    {
+      "check": "paper stack never renders more than twenty layers",
+      "pass": true
+    },
+    {
+      "check": "inventory sync idempotent",
+      "pass": true
+    },
+    {
+      "check": "future schema fails closed",
+      "pass": true
+    },
+    {
+      "check": "invalid binding fails closed",
+      "pass": true
+    },
+    {
+      "check": "checksum envelope roundtrip",
+      "pass": true
+    },
+    {
+      "check": "bad checksum rejected",
+      "pass": true
+    },
+    {
+      "check": "blocked storage reports failed selection without silent success",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "checks": [
+    {
+      "check": "day: real confirmation starts departure",
+      "pass": true
+    },
+    {
+      "check": "day: approved traveler texture and original material",
+      "pass": true
+    },
+    {
+      "check": "day: rapid confirmation retains one view and trip",
+      "pass": true
+    },
+    {
+      "check": "day: baseline reproduces forbidden displacement",
+      "pass": true
+    },
+    {
+      "check": "day: baseline exact displacement reaches (28,-56)",
+      "pass": true
+    },
+    {
+      "check": "day: original rig and mat remain fixed",
+      "pass": true
+    },
+    {
+      "check": "day: authored opacity decreases monotonically from 3.3 to zero at 4.55 seconds",
+      "pass": true
+    },
+    {
+      "check": "day: no native/reveal actor duplication",
+      "pass": true
+    },
+    {
+      "check": "day: only initial cloud emission and none after 2.2 seconds",
+      "pass": true
+    },
+    {
+      "check": "day: presentation never changes merit or trip",
+      "pass": true
+    },
+    {
+      "check": "day: late callback cannot replay fade",
+      "pass": true
+    },
+    {
+      "check": "day: original 4.8-second handoff and tent are same-frame",
+      "pass": true
+    },
+    {
+      "check": "day: long interrupted frame never replays",
+      "pass": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "samples": [
+    {
+      "age": 2.2,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -332.5,
+        -288.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.3,
+      "alpha": 1.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -323.898742675781,
+        -305.952514648438
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 3.92,
+      "alpha": 0.505999872,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -310.734619140625,
+        -332.280792236328
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": true
+    },
+    {
+      "age": 4.55,
+      "alpha": 0.0,
+      "lamp": 0.0,
+      "night": 0.0,
+      "plumes": 0,
+      "position": [
+        -304.5,
+        -344.75
+      ],
+      "scale": [
+        0.349999994039536,
+        0.349999994039536
+      ],
+      "scenario": "day",
+      "tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "visible": false
+    }
+  ],
+  "scope": "Baseline reproduction"
+}

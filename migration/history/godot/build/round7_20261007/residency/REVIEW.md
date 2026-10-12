@@ -1,0 +1,4 @@
+# N28整合依赖：阶段准入真实约束
+新增衣柜使累计资源库存超过128/256MiB，不能抬顶。旧构建把永不同时持有的启动和游戏资源全累加；实际App已在Home释放Login/Comic并trim，真实34项GL证据含取消/重入、17资源WeakRef失效/cache消失、节点释放，见build/round7_home/startup_retirement。photo/travel离页不释放，必须全算，未假设互斥。
+实际修改build.resource_pipeline.admission_audit：保累计inventory并明确不可当驻留；分别硬核startup/gameplay完整闭包，所有runtime预留保守计入，无任何上限增大。已有阶段91/162687268与111/225641676；新增衣柜依真实资源最终重算。数学负测包含超大纹理、129条小纹理拒绝，不能单凭库存大放行。
+当前实运行证明是N27候选基线，非整合衣柜运行；集成正式包仍需重跑整个实际到站流程与弱引用及峰值。Godot纹理峰值249069642B并非Web总内存，PCK仍挂载，Web内存未验。

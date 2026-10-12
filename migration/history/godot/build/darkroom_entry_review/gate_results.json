@@ -1,0 +1,71 @@
+{
+  "status": "TEST_ONLY_NATIVE_CANDIDATE_VERIFIED_NOT_FORMAL_RELEASE",
+  "baseline_commit": "c242391826a723a6ac15024fce4dce0335cf40fc",
+  "qa_commit": "cb3ea6daa0875b8c8b2a78b81a68ac7723b85c43",
+  "d03_contract": "One shared touch once-only/cancellation contract, two root causes: native emulated mouse duplicate; unrevoked deferred activation after lifecycle cancellation",
+  "candidate_index_sha256": "7cf58fd1316a8086849dae03c1ddcce00fbfcfcc3de4f7fb34dfbc9982d06c6c",
+  "source_file": "framework/addons/travel_core/ui/touch_action_button.gd",
+  "production_resource_delta": {
+    "changed_core_entries": [
+      "addons/travel_core/ui/touch_action_button.gdc"
+    ],
+    "new_entries": 0,
+    "index_bytes_delta": 320,
+    "other_pack_hashes_unchanged": true
+  },
+  "red": {
+    "button": {
+      "checks": 18,
+      "failed": 7
+    },
+    "return_emulation": {
+      "checks": 13,
+      "failed": 1
+    },
+    "midstrike_initial": {
+      "checks": 31,
+      "failed": 5,
+      "note": "One return defect then four cascading assertions; not five bugs"
+    }
+  },
+  "green": {
+    "button_green": {
+      "checks": 18,
+      "failed": 0,
+      "error_lines": [],
+      "evidence": "evidence/button_green/summary.json"
+    },
+    "emulation_green": {
+      "checks": 13,
+      "failed": 0,
+      "error_lines": [],
+      "evidence": "evidence/emulation_green/summary.json"
+    },
+    "home_note_green": {
+      "checks": 13,
+      "failed": 0,
+      "error_lines": [],
+      "evidence": "evidence/home_note_green/summary.json"
+    },
+    "midstrike_green": {
+      "checks": 31,
+      "failed": 0,
+      "error_lines": [],
+      "evidence": "evidence/midstrike_green/summary.json"
+    },
+    "entry_green": {
+      "checks": 25,
+      "failed": 0,
+      "error_lines": [],
+      "evidence": "evidence/entry_green/summary.json"
+    }
+  },
+  "visual_review": "Actual PNGs viewed, including whole highscreen, night-off labels, first room surface, bottom seam crops, tool contacts, state reentry, canceled-return before/after.",
+  "limits": [
+    "No official grouped release claim",
+    "No Web transport/audio listening/device touch/heap or 60fps claim",
+    "No A031/A033 master-art equivalence claim",
+    "Shared button other pages require grouped integration checks"
+  ],
+  "green_checks_total": 100
+}

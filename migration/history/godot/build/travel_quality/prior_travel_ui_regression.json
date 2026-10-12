@@ -1,0 +1,361 @@
+{
+  "animation_samples": [
+    {
+      "chest_target": [
+        580.0,
+        718.0
+      ],
+      "kind": "flight_started",
+      "other_floating": 1,
+      "uid": "trip_1_91357:reward:0"
+    },
+    {
+      "closed_scale_x": 0.0122857140377164,
+      "kind": "diary_turn",
+      "open_scale_x": 0.282150745391846
+    }
+  ],
+  "checks": [
+    {
+      "name": "trip fixture starts through transactional service",
+      "pass": true
+    },
+    {
+      "name": "map uses approved old diary center",
+      "pass": true
+    },
+    {
+      "name": "tent clips original approved mother pixels",
+      "pass": true
+    },
+    {
+      "name": "map has real opaque input target",
+      "pass": true
+    },
+    {
+      "name": "map does not open before entry bounce ends",
+      "pass": true
+    },
+    {
+      "name": "map starts one entry bounce",
+      "pass": true
+    },
+    {
+      "name": "bounce ends in the single map page",
+      "pass": true
+    },
+    {
+      "name": "map has no retired comic pagination",
+      "pass": true
+    },
+    {
+      "name": "button exists: event_trip_1_91357:2",
+      "pass": true
+    },
+    {
+      "name": "marker opens small panel on original map",
+      "pass": true
+    },
+    {
+      "name": "visible choice owns route pause",
+      "pass": true
+    },
+    {
+      "name": "original texture dimensions cannot expand the compact panel or person",
+      "pass": true
+    },
+    {
+      "name": "30 seconds visible choice excludes route time",
+      "pass": true
+    },
+    {
+      "name": "pause heartbeats do not rebuild or cancel held choice controls",
+      "pass": true
+    },
+    {
+      "name": "button exists: cancel_event",
+      "pass": true
+    },
+    {
+      "name": "cancel closes compact panel and resumes route",
+      "pass": true
+    },
+    {
+      "name": "cancel leaves marker unresolved",
+      "pass": true
+    },
+    {
+      "name": "button exists: event_trip_1_91357:2",
+      "pass": true
+    },
+    {
+      "name": "button exists: choice_0",
+      "pass": true
+    },
+    {
+      "name": "choice closes panel only after committed selection",
+      "pass": true
+    },
+    {
+      "name": "one real input choice learns once",
+      "pass": true
+    },
+    {
+      "name": "button exists: event_trip_1_91357:2",
+      "pass": true
+    },
+    {
+      "name": "settled marker is read-only",
+      "pass": true
+    },
+    {
+      "name": "button exists: cancel_event",
+      "pass": true
+    },
+    {
+      "name": "button exists: back",
+      "pass": true
+    },
+    {
+      "name": "map return preserves Home map and its persistent star",
+      "pass": true
+    },
+    {
+      "name": "persistent star phase continues after map return",
+      "pass": true
+    },
+    {
+      "name": "canceled map touch does not open or leave entry tween",
+      "pass": true
+    },
+    {
+      "name": "leaving during entry cancels stale callback and resets prop",
+      "pass": true
+    },
+    {
+      "name": "terminal return shows large bag",
+      "pass": true
+    },
+    {
+      "name": "large full bag follows latest approved rectangle",
+      "pass": true
+    },
+    {
+      "name": "full bag does not open a white rewards page",
+      "pass": true
+    },
+    {
+      "name": "full bag bounce commits opened presentation",
+      "pass": true
+    },
+    {
+      "name": "opening bag does not bulk grant rewards",
+      "pass": true
+    },
+    {
+      "name": "reward ejection is staggered rather than all at once",
+      "pass": true
+    },
+    {
+      "name": "all uncollected rewards remain as floating sprites",
+      "pass": true
+    },
+    {
+      "name": "single item click enters durable flying state",
+      "pass": true
+    },
+    {
+      "name": "inventory waits for flight completion",
+      "pass": true
+    },
+    {
+      "name": "recreated Home restores the unfinished flight by stable ID",
+      "pass": true
+    },
+    {
+      "name": "repeated click grants only the one clicked item",
+      "pass": true
+    },
+    {
+      "name": "flight completion durably collects clicked item",
+      "pass": true
+    },
+    {
+      "name": "other rewards keep floating after one is collected",
+      "pass": true
+    },
+    {
+      "name": "partly collected bag cannot restore departure",
+      "pass": true
+    },
+    {
+      "name": "ground diary starts true page turn before entry",
+      "pass": true
+    },
+    {
+      "name": "page turn goes directly to approved combined reading and review",
+      "pass": true
+    },
+    {
+      "name": "diary prose stays inside the actual book width",
+      "pass": true
+    },
+    {
+      "name": "button exists: review_0",
+      "pass": true
+    },
+    {
+      "name": "selecting draft review does not learn",
+      "pass": true
+    },
+    {
+      "name": "explicit submit enables only after choosing review",
+      "pass": true
+    },
+    {
+      "name": "button exists: journal_close",
+      "pass": true
+    },
+    {
+      "name": "closing unsubmitted review does not learn",
+      "pass": true
+    },
+    {
+      "name": "reopened diary does not silently submit stale draft",
+      "pass": true
+    },
+    {
+      "name": "button exists: review_0",
+      "pass": true
+    },
+    {
+      "name": "button exists: review_submit",
+      "pass": true
+    },
+    {
+      "name": "explicit review submit learns exactly once",
+      "pass": true
+    },
+    {
+      "name": "only collecting all individual items restores ready bag",
+      "pass": true
+    },
+    {
+      "name": "one unique grant exists for each reward",
+      "pass": true
+    },
+    {
+      "name": "collection completes on Home",
+      "pass": true
+    },
+    {
+      "name": "CAS fixture starts native save: 0",
+      "pass": true
+    },
+    {
+      "name": "first native view owns token: 0",
+      "pass": true
+    },
+    {
+      "name": "second native session recovers old visible pause: 0",
+      "pass": true
+    },
+    {
+      "name": "first service adopts newer file through real stale_revision: 0",
+      "pass": true
+    },
+    {
+      "name": "obsolete local panel closes without a chosen-option lookup: 0",
+      "pass": true
+    },
+    {
+      "name": "stale view can always return: 0",
+      "pass": true
+    },
+    {
+      "name": "CAS fixture starts native save: 1",
+      "pass": true
+    },
+    {
+      "name": "first native view owns token: 1",
+      "pass": true
+    },
+    {
+      "name": "second native session recovers old visible pause: 1",
+      "pass": true
+    },
+    {
+      "name": "second native view obtains newer token: 1",
+      "pass": true
+    },
+    {
+      "name": "new selection generation differs: 1",
+      "pass": true
+    },
+    {
+      "name": "first service adopts newer file through real stale_revision: 1",
+      "pass": true
+    },
+    {
+      "name": "obsolete local panel closes without a chosen-option lookup: 1",
+      "pass": true
+    },
+    {
+      "name": "old view did not cancel the newer owner",
+      "pass": true
+    },
+    {
+      "name": "stale view can always return: 1",
+      "pass": true
+    },
+    {
+      "name": "return still preserves newer token owner",
+      "pass": true
+    },
+    {
+      "name": "CAS fixture starts native save: 2",
+      "pass": true
+    },
+    {
+      "name": "first native view owns token: 2",
+      "pass": true
+    },
+    {
+      "name": "second native session recovers old visible pause: 2",
+      "pass": true
+    },
+    {
+      "name": "second native view obtains newer token: 2",
+      "pass": true
+    },
+    {
+      "name": "new selection generation differs: 2",
+      "pass": true
+    },
+    {
+      "name": "second view commits the one manual choice",
+      "pass": true
+    },
+    {
+      "name": "first service adopts newer file through real stale_revision: 2",
+      "pass": true
+    },
+    {
+      "name": "newly decided event is read-only after stale reload",
+      "pass": true
+    },
+    {
+      "name": "stale view did not duplicate newer manual learning",
+      "pass": true
+    },
+    {
+      "name": "stale view can always return: 2",
+      "pass": true
+    }
+  ],
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "failed": 0,
+  "input_events": 42,
+  "passed": 84,
+  "scope": "Actual production Home, map, diary and reward input dispatch; headless native run. GPU pixels and touch feel are not validated."
+}

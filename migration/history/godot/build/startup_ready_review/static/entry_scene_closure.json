@@ -1,0 +1,636 @@
+{
+  "entry/loading_page.tscn": {
+    "source_literal_edges": {
+      "entry/loading_page.tscn": [
+        "entry/loading_page.gd",
+        "entry/assets/backgrounds/loading_clean_bleed_720x1600.png",
+        "entry/assets/loading/ground_shadows.png",
+        "entry/native_actor.tscn",
+        "assets/bootstrap_ui.ttf"
+      ],
+      "entry/loading_page.gd": [
+        "entry/page_base.gd",
+        "addons/travel_core/ui/touch_action_button.gd",
+        "assets/bootstrap_ui.ttf"
+      ],
+      "entry/page_base.gd": [],
+      "addons/travel_core/ui/touch_action_button.gd": [],
+      "entry/native_actor.tscn": [
+        "entry/native_actor.gd",
+        "entry/assets/loading/native/doll_rig.png",
+        "entry/assets/loading/native/actor_body.png",
+        "entry/assets/loading/native/actor_fin_mallet.png"
+      ],
+      "entry/native_actor.gd": []
+    },
+    "resolved_resources": {
+      "addons/travel_core/ui/touch_action_button.gd": [
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gd.remap",
+          "pack": "index.pck",
+          "bytes": 68,
+          "sha256": "99520c3a396f061fbb970b84fd7c8cec60f2c065666ff7a5d524848ed0a3f894"
+        },
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gdc",
+          "pack": "index.pck",
+          "bytes": 2120,
+          "sha256": "8192bcdaf382cccf084698da42c3dae7f56eb5043f79c93dab141c6cc05184da"
+        }
+      ],
+      "assets/bootstrap_ui.ttf": [
+        {
+          "path": "assets/bootstrap_ui.ttf.import",
+          "pack": "index.pck",
+          "bytes": 769,
+          "sha256": "af60089c2bca85f9b36da51ec6b45b48d61ce543bac7e8a65b16dedc8a426072"
+        },
+        {
+          "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+          "pack": "index.pck",
+          "bytes": 230706,
+          "sha256": "b6c8e631e47db0fd56830e7e6ea858f3e77e0c983b202fdb20dea91df5557736"
+        }
+      ],
+      "entry/assets/backgrounds/loading_clean_bleed_720x1600.png": [
+        {
+          "path": "entry/assets/backgrounds/loading_clean_bleed_720x1600.png.import",
+          "pack": "index.pck",
+          "bytes": 1014,
+          "sha256": "95423ac725ed8fdd2f403abaab06fe039a760715c2ef52d86b814d7b6bbd7c44"
+        },
+        {
+          "path": ".godot/imported/loading_clean_bleed_720x1600.png-1636629aa49532f08f3000826c9dfbb1.ctex",
+          "pack": "index.pck",
+          "bytes": 611144,
+          "sha256": "605f65745fe42dc5bd24e9c143c7234c8f65d56513a43ec7cacc42520dbdeee3"
+        }
+      ],
+      "entry/assets/loading/ground_shadows.png": [
+        {
+          "path": "entry/assets/loading/ground_shadows.png.import",
+          "pack": "index.pck",
+          "bytes": 202,
+          "sha256": "f7d875c7a6603ab34fe37544a58c84733099f70cdcd3740a3230a888e6498971"
+        },
+        {
+          "path": ".godot/imported/ground_shadows.png-3f2355d470510c329b8e1100de71d424.ctex",
+          "pack": "index.pck",
+          "bytes": 13442,
+          "sha256": "3de0b929c20d4e7c3954354fbacccadbd287b9c9861ec2d6563cdb8a261654da"
+        }
+      ],
+      "entry/assets/loading/native/actor_body.png": [
+        {
+          "path": "entry/assets/loading/native/actor_body.png.import",
+          "pack": "index.pck",
+          "bytes": 198,
+          "sha256": "e4a4bd4866ae50c4da17ccac388bfd8c7856b07b4dc81b951acad92f72769bdc"
+        },
+        {
+          "path": ".godot/imported/actor_body.png-a244ef21c2becfbf868c6cde1e0d62d2.ctex",
+          "pack": "index.pck",
+          "bytes": 129820,
+          "sha256": "1f15c08137e18d3f15fa62a941e52de4f5817ea530a1f895d43cc1d4376d27e1"
+        }
+      ],
+      "entry/assets/loading/native/actor_fin_mallet.png": [
+        {
+          "path": "entry/assets/loading/native/actor_fin_mallet.png.import",
+          "pack": "index.pck",
+          "bytes": 205,
+          "sha256": "74dd075e180d1d47eaf0b831ac91bb6b26e5dbd68a0ee33162ec50cd1ee15175"
+        },
+        {
+          "path": ".godot/imported/actor_fin_mallet.png-567d40424d5ba6e00025417da6a2cbaf.ctex",
+          "pack": "index.pck",
+          "bytes": 40178,
+          "sha256": "e230cde67fd64c1c098ebb34232ad3ca1057f3251d84ad6dbeb496332647b93b"
+        }
+      ],
+      "entry/assets/loading/native/doll_rig.png": [
+        {
+          "path": "entry/assets/loading/native/doll_rig.png.import",
+          "pack": "index.pck",
+          "bytes": 197,
+          "sha256": "72aad34580df26198b63ad31f824a757bae89a65dd491e11b5deb408f23bfadc"
+        },
+        {
+          "path": ".godot/imported/doll_rig.png-02e4adf178f15a73c4754d08976b619e.ctex",
+          "pack": "index.pck",
+          "bytes": 241018,
+          "sha256": "367330595d2f6da5409c2d16a6c282122d84db0485053a716e966052d782b58c"
+        }
+      ],
+      "entry/loading_page.gd": [
+        {
+          "path": "entry/loading_page.gd.remap",
+          "pack": "index.pck",
+          "bytes": 45,
+          "sha256": "a3451bb5f88ef1caa6f5867ec811690e89afab430790f4991b7bef9e2b91343a"
+        },
+        {
+          "path": "entry/loading_page.gdc",
+          "pack": "index.pck",
+          "bytes": 3845,
+          "sha256": "d94440dbbe7f10d573267c55fd1e297cb52986fbbe12709e73a7fdce06f0b15b"
+        }
+      ],
+      "entry/loading_page.tscn": [
+        {
+          "path": "entry/loading_page.tscn.remap",
+          "pack": "index.pck",
+          "bytes": 105,
+          "sha256": "da921a41be9dd44f7f198fd0d2d10affcc2b6ecef76936ce62ae66a05b4be668"
+        },
+        {
+          "path": ".godot/exported/133200997/export-92fd48ea34da291371c233ac078cb1d4-loading_page.scn",
+          "pack": "index.pck",
+          "bytes": 7835,
+          "sha256": "8ee70667586be6bf6b4765de5411ba30137d0803bb617fe3f272aff9ffe399f4"
+        }
+      ],
+      "entry/native_actor.gd": [
+        {
+          "path": "entry/native_actor.gd.remap",
+          "pack": "index.pck",
+          "bytes": 45,
+          "sha256": "4600b3396e0715a44eef146324a1095f49771552b474b161a579e5bea1a553cc"
+        },
+        {
+          "path": "entry/native_actor.gdc",
+          "pack": "index.pck",
+          "bytes": 4991,
+          "sha256": "eef2fa382dd182c9985580b8bcf22a3d4383f518384d6d57de7bda034eb04f21"
+        }
+      ],
+      "entry/native_actor.tscn": [
+        {
+          "path": "entry/native_actor.tscn.remap",
+          "pack": "index.pck",
+          "bytes": 105,
+          "sha256": "7c02b465bd1438120fa7b6b0021b5852484be8e7474b41a36b03f17843b53d70"
+        },
+        {
+          "path": ".godot/exported/133200997/export-4fa0b0098109216c5f9607c3ca03fea8-native_actor.scn",
+          "pack": "index.pck",
+          "bytes": 1622,
+          "sha256": "29a181749199c3a99ca874c206c145266e97773df7f0c05e8f3e720c14d9fd83"
+        }
+      ],
+      "entry/page_base.gd": [
+        {
+          "path": "entry/page_base.gd.remap",
+          "pack": "index.pck",
+          "bytes": 42,
+          "sha256": "f21df4ab7a609bfd1cee7ef52f9ad96329a82760e0fb6efb457a2a28b8081789"
+        },
+        {
+          "path": "entry/page_base.gdc",
+          "pack": "index.pck",
+          "bytes": 1584,
+          "sha256": "ec7dd513c8d21ea96ac6385f11004cc5701ff688bf1976cf98097308310c28c6"
+        }
+      ]
+    },
+    "caveat": "Includes recursive static scripts/scenes. Does not assume this covers constructed dynamic paths."
+  },
+  "entry/login_page.tscn": {
+    "source_literal_edges": {
+      "entry/login_page.tscn": [
+        "entry/login_page.gd",
+        "entry/assets/backgrounds/login_clean_bleed_720x1600.png",
+        "entry/assets/login/doorway_glow.png",
+        "entry/assets/login/doorframe.png",
+        "entry/assets/login/door_ajar.png",
+        "entry/assets/login/login_enter_wood_sign.png",
+        "shaders/login_peek_reveal.gdshader",
+        "entry/assets/login/login_peek_source.png",
+        "entry/assets/login/login_greeting_fin.png",
+        "entry/assets/login/logo_title.png",
+        "entry/assets/login/logo_subtitle.png",
+        "entry/assets/login/login_accents.png",
+        "entry/door_hotspot.gd",
+        "assets/bootstrap_ui.ttf"
+      ],
+      "entry/login_page.gd": [
+        "entry/page_base.gd",
+        "addons/travel_core/ui/hanging_return.gd",
+        "assets/bootstrap_ui.ttf",
+        "assets/bootstrap_ui.ttf"
+      ],
+      "entry/page_base.gd": [],
+      "addons/travel_core/ui/hanging_return.gd": [],
+      "shaders/login_peek_reveal.gdshader": [],
+      "entry/door_hotspot.gd": [
+        "addons/travel_core/ui/touch_action_button.gd"
+      ],
+      "addons/travel_core/ui/touch_action_button.gd": []
+    },
+    "resolved_resources": {
+      "addons/travel_core/ui/hanging_return.gd": [
+        {
+          "path": "addons/travel_core/ui/hanging_return.gd.remap",
+          "pack": "index.pck",
+          "bytes": 63,
+          "sha256": "cfda21c72391cdcc7df83ede7c3e25e6230e2c9bd6aa662b0212dd0e33101956"
+        },
+        {
+          "path": "addons/travel_core/ui/hanging_return.gdc",
+          "pack": "index.pck",
+          "bytes": 5544,
+          "sha256": "84b9723143034af7f28948cf60ce325a1bca6c59d1623696ebfd7bfc7ed6c6f3"
+        }
+      ],
+      "addons/travel_core/ui/touch_action_button.gd": [
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gd.remap",
+          "pack": "index.pck",
+          "bytes": 68,
+          "sha256": "99520c3a396f061fbb970b84fd7c8cec60f2c065666ff7a5d524848ed0a3f894"
+        },
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gdc",
+          "pack": "index.pck",
+          "bytes": 2120,
+          "sha256": "8192bcdaf382cccf084698da42c3dae7f56eb5043f79c93dab141c6cc05184da"
+        }
+      ],
+      "assets/bootstrap_ui.ttf": [
+        {
+          "path": "assets/bootstrap_ui.ttf.import",
+          "pack": "index.pck",
+          "bytes": 769,
+          "sha256": "af60089c2bca85f9b36da51ec6b45b48d61ce543bac7e8a65b16dedc8a426072"
+        },
+        {
+          "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+          "pack": "index.pck",
+          "bytes": 230706,
+          "sha256": "b6c8e631e47db0fd56830e7e6ea858f3e77e0c983b202fdb20dea91df5557736"
+        }
+      ],
+      "entry/assets/backgrounds/login_clean_bleed_720x1600.png": [
+        {
+          "path": "entry/assets/backgrounds/login_clean_bleed_720x1600.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 215,
+          "sha256": "91f051999824b5cb15a49485a125ba6d52c91d1e1ff44f2af9839df0b46f1a03"
+        },
+        {
+          "path": ".godot/imported/login_clean_bleed_720x1600.png-5bc971c8d44831c383588514f65ebc0a.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 644758,
+          "sha256": "921780b897349b61e52a6b900be6a0168e558410fe0cd0b91ddd277399bb2470"
+        }
+      ],
+      "entry/assets/login/door_ajar.png": [
+        {
+          "path": "entry/assets/login/door_ajar.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 198,
+          "sha256": "d455d128df53cd19fed3e02463227b07df5256d027cd0d5854826bb371432cd5"
+        },
+        {
+          "path": ".godot/imported/door_ajar.png-5f70f925290c1a27cdefe7b09013d9d9.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 109930,
+          "sha256": "4fd3b68993d32c1c838aa6d4c693f707a5bb818e65a5caed8a9df817ca2af2a9"
+        }
+      ],
+      "entry/assets/login/doorframe.png": [
+        {
+          "path": "entry/assets/login/doorframe.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 197,
+          "sha256": "9fa630b91998b53ddf6c31c36b9e5a140ec68aa607c267892c6a3c39c8231f4d"
+        },
+        {
+          "path": ".godot/imported/doorframe.png-4afa80d424bf90cbd3a35bfe0fc9dc5c.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 57326,
+          "sha256": "c8129ce5597c5d642c13bf02ed51af2fa058492b086773c291f99383b1ebc3e0"
+        }
+      ],
+      "entry/assets/login/doorway_glow.png": [
+        {
+          "path": "entry/assets/login/doorway_glow.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 200,
+          "sha256": "863c73ff52bd73970dd693b7f4249fa29fbfacd4dddb61899f719598a7d3e833"
+        },
+        {
+          "path": ".godot/imported/doorway_glow.png-56aa189ef1a897211be108f7dd683395.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 78820,
+          "sha256": "5648d8b48a69237e9d3fbc38962ce79727a2318060937a4b0f342d6c10607fed"
+        }
+      ],
+      "entry/assets/login/login_accents.png": [
+        {
+          "path": "entry/assets/login/login_accents.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 202,
+          "sha256": "9396475b6b9e01a28d859cb076debb74a6fa86d1331207dd6a309e3058eb7f76"
+        },
+        {
+          "path": ".godot/imported/login_accents.png-89b9c20d8f41fe04fdd4d0569dd55b4d.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 1322,
+          "sha256": "30a637d3a9767c753662c1fda3ecec0a4869eca16816c38c1944c7b0ca9c0c10"
+        }
+      ],
+      "entry/assets/login/login_enter_wood_sign.png": [
+        {
+          "path": "entry/assets/login/login_enter_wood_sign.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 210,
+          "sha256": "c347fac64aa6243843f2d80d50bf498dea2dafecaf6abaa9df0042f4f6276621"
+        },
+        {
+          "path": ".godot/imported/login_enter_wood_sign.png-4f04b73fa033f9c4eba241c28226924c.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 17172,
+          "sha256": "01b6acb4bf974e21fca173ba09c2625dd9863841c6b71dcabc752c9db1728ab1"
+        }
+      ],
+      "entry/assets/login/login_greeting_fin.png": [
+        {
+          "path": "entry/assets/login/login_greeting_fin.png.remap",
+          "pack": "packs/entry.pck",
+          "bytes": 79,
+          "sha256": "bc1e82f96a30e6a02b769ff94745cb95431bf969deb3681e3512db03191ba514"
+        },
+        {
+          "path": "__derived_atlas__/login_signage/3c1c5d2c27a061bd69e4.tres",
+          "pack": "packs/entry.pck",
+          "bytes": 278,
+          "sha256": "b0404d8a6e856a29918ccb51ba88fa561a98fa2877f700c4100cb13433b0069c"
+        }
+      ],
+      "entry/assets/login/login_peek_source.png": [
+        {
+          "path": "entry/assets/login/login_peek_source.png.import",
+          "pack": "packs/entry.pck",
+          "bytes": 206,
+          "sha256": "dc569e7a4eec2d7d925757166ed77506106134b85ffddbd31a1753cdc37391a3"
+        },
+        {
+          "path": ".godot/imported/login_peek_source.png-053faaae78dfb9a1772c6daa8a606767.ctex",
+          "pack": "packs/entry.pck",
+          "bytes": 11300,
+          "sha256": "e876cfd53029cb5b93203eb22b155d7aad0b64f3dde1d64b4a6eb1ff352eec1a"
+        }
+      ],
+      "entry/assets/login/logo_subtitle.png": [
+        {
+          "path": "entry/assets/login/logo_subtitle.png.remap",
+          "pack": "packs/entry.pck",
+          "bytes": 79,
+          "sha256": "fb61a7c1290f671fbb1b51404d7756fc329f00232d370a6de77baf01cba0ecfa"
+        },
+        {
+          "path": "__derived_atlas__/login_signage/464f45ed2ee961188380.tres",
+          "pack": "packs/entry.pck",
+          "bytes": 280,
+          "sha256": "61321c76f7c4513b81a03a0d59be7cdac23034fb2a50d763a67fabc4ef536cfd"
+        }
+      ],
+      "entry/assets/login/logo_title.png": [
+        {
+          "path": "entry/assets/login/logo_title.png",
+          "pack": "index.pck",
+          "bytes": 109581,
+          "sha256": "56cc173a7b7f6904e32e217a765935384ad859da36b741c06caaf03247a1b76e"
+        }
+      ],
+      "entry/door_hotspot.gd": [
+        {
+          "path": "entry/door_hotspot.gd.remap",
+          "pack": "index.pck",
+          "bytes": 45,
+          "sha256": "dc151741f23a3255b227f64785634350458206a13b85c3f0eca5f4053e3826b7"
+        },
+        {
+          "path": "entry/door_hotspot.gdc",
+          "pack": "index.pck",
+          "bytes": 282,
+          "sha256": "21a50896b7a26322502900f22d35b29b1ee8f220c630807d4a3f7dbd37fa7487"
+        }
+      ],
+      "entry/login_page.gd": [
+        {
+          "path": "entry/login_page.gd.remap",
+          "pack": "index.pck",
+          "bytes": 43,
+          "sha256": "8b1ef0e7e3cad30af26ec2a8accaec568c194d8cfb31b84b992c8ba72936e575"
+        },
+        {
+          "path": "entry/login_page.gdc",
+          "pack": "index.pck",
+          "bytes": 6823,
+          "sha256": "ac32b6c78b3c10550259fef3f6600e9f7a9c6841432413cfc5a2b80581947fa0"
+        }
+      ],
+      "entry/login_page.tscn": [
+        {
+          "path": "entry/login_page.tscn.remap",
+          "pack": "packs/entry.pck",
+          "bytes": 103,
+          "sha256": "ede240be58d99b002a9d29ffeda02e769cd3a9577c4fe8c03050f7745c17f934"
+        },
+        {
+          "path": ".godot/exported/133200997/export-9499f02a91e46d3eb22976cbfbae6b72-login_page.scn",
+          "pack": "packs/entry.pck",
+          "bytes": 6850,
+          "sha256": "d3a6123f639105dc0f95839f6c3b538a6b741221dd39b31e0057966bee80a5b7"
+        }
+      ],
+      "entry/page_base.gd": [
+        {
+          "path": "entry/page_base.gd.remap",
+          "pack": "index.pck",
+          "bytes": 42,
+          "sha256": "f21df4ab7a609bfd1cee7ef52f9ad96329a82760e0fb6efb457a2a28b8081789"
+        },
+        {
+          "path": "entry/page_base.gdc",
+          "pack": "index.pck",
+          "bytes": 1584,
+          "sha256": "ec7dd513c8d21ea96ac6385f11004cc5701ff688bf1976cf98097308310c28c6"
+        }
+      ],
+      "shaders/login_peek_reveal.gdshader": [
+        {
+          "path": "shaders/login_peek_reveal.gdshader",
+          "pack": "packs/entry.pck",
+          "bytes": 486,
+          "sha256": "10f0b64212fbd0f38254c542fb83af7742f5a4c5fa4e03f37dbe5392d250e242"
+        }
+      ]
+    },
+    "caveat": "Includes recursive static scripts/scenes. Does not assume this covers constructed dynamic paths."
+  },
+  "entry/comic_page.tscn": {
+    "source_literal_edges": {
+      "entry/comic_page.tscn": [
+        "entry/comic_page.gd",
+        "entry/opening_story_paper.gd",
+        "addons/travel_core/ui/touch_action_button.gd"
+      ],
+      "entry/comic_page.gd": [
+        "entry/opening_story_spec.gd",
+        "entry/opening_story_progress.gd",
+        "entry/opening_story_audio.gd",
+        "assets/bootstrap_ui.ttf"
+      ],
+      "entry/opening_story_spec.gd": [
+        "config/opening_story.json"
+      ],
+      "entry/opening_story_progress.gd": [],
+      "entry/opening_story_audio.gd": [],
+      "entry/opening_story_paper.gd": [
+        "addons/travel_core/ui/speech_bubble.gd"
+      ],
+      "addons/travel_core/ui/speech_bubble.gd": [],
+      "addons/travel_core/ui/touch_action_button.gd": []
+    },
+    "resolved_resources": {
+      "addons/travel_core/ui/speech_bubble.gd": [
+        {
+          "path": "addons/travel_core/ui/speech_bubble.gd.remap",
+          "pack": "index.pck",
+          "bytes": 62,
+          "sha256": "006d62eb4290ffc6d4e98f18343e88476c608ae19fe8b9a5316d60705f10e6f4"
+        },
+        {
+          "path": "addons/travel_core/ui/speech_bubble.gdc",
+          "pack": "index.pck",
+          "bytes": 23612,
+          "sha256": "38a5bbeebb40222ba16b11249d9b7cfef2a483d1317a34e9809d57d7be6f4ecc"
+        }
+      ],
+      "addons/travel_core/ui/touch_action_button.gd": [
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gd.remap",
+          "pack": "index.pck",
+          "bytes": 68,
+          "sha256": "99520c3a396f061fbb970b84fd7c8cec60f2c065666ff7a5d524848ed0a3f894"
+        },
+        {
+          "path": "addons/travel_core/ui/touch_action_button.gdc",
+          "pack": "index.pck",
+          "bytes": 2120,
+          "sha256": "8192bcdaf382cccf084698da42c3dae7f56eb5043f79c93dab141c6cc05184da"
+        }
+      ],
+      "assets/bootstrap_ui.ttf": [
+        {
+          "path": "assets/bootstrap_ui.ttf.import",
+          "pack": "index.pck",
+          "bytes": 769,
+          "sha256": "af60089c2bca85f9b36da51ec6b45b48d61ce543bac7e8a65b16dedc8a426072"
+        },
+        {
+          "path": ".godot/imported/bootstrap_ui.ttf-1bfd4ad8a5177213bda1d6714987d2ab.fontdata",
+          "pack": "index.pck",
+          "bytes": 230706,
+          "sha256": "b6c8e631e47db0fd56830e7e6ea858f3e77e0c983b202fdb20dea91df5557736"
+        }
+      ],
+      "config/opening_story.json": [
+        {
+          "path": "config/opening_story.json",
+          "pack": "index.pck",
+          "bytes": 3250,
+          "sha256": "1887917dda7dbf78600b4dbdf9e08a30f2a131093a602f0793ff6e0c64dcda5e"
+        }
+      ],
+      "entry/comic_page.gd": [
+        {
+          "path": "entry/comic_page.gd.remap",
+          "pack": "index.pck",
+          "bytes": 43,
+          "sha256": "15d328cad456886dd050f0b998abdf68afe973b01118fdcc5682f0ae3d1d44f9"
+        },
+        {
+          "path": "entry/comic_page.gdc",
+          "pack": "index.pck",
+          "bytes": 9537,
+          "sha256": "a1c4f4af1f34f6e05c5666eabfc07dc4a4d420246f125c6f22264021f0e873e0"
+        }
+      ],
+      "entry/comic_page.tscn": [
+        {
+          "path": "entry/comic_page.tscn.remap",
+          "pack": "packs/comic.pck",
+          "bytes": 103,
+          "sha256": "d654c4dde2464516d8894f356b8a3433d9a80a3065964236015722add432e724"
+        },
+        {
+          "path": ".godot/exported/133200997/export-01f5f33649a523e68b930f41680ae888-comic_page.scn",
+          "pack": "packs/comic.pck",
+          "bytes": 3427,
+          "sha256": "13ad0035ea150d70e3ba791e9ba7c9e4a260baa66888b35f815d081a940c4cbf"
+        }
+      ],
+      "entry/opening_story_audio.gd": [
+        {
+          "path": "entry/opening_story_audio.gd.remap",
+          "pack": "index.pck",
+          "bytes": 52,
+          "sha256": "db432690aaf64237f4960767ca8d9ef859aaa226c704c0f4d05fae35ee2b9df8"
+        },
+        {
+          "path": "entry/opening_story_audio.gdc",
+          "pack": "index.pck",
+          "bytes": 2375,
+          "sha256": "7b33429561158e47fabad7451b71db834c711d18f41e9a5a9dce7b59a9b7296f"
+        }
+      ],
+      "entry/opening_story_paper.gd": [
+        {
+          "path": "entry/opening_story_paper.gd.remap",
+          "pack": "index.pck",
+          "bytes": 52,
+          "sha256": "a4bbff8e851f770d74e7c419e28e84de49287945611fed289a516adce22c0ff6"
+        },
+        {
+          "path": "entry/opening_story_paper.gdc",
+          "pack": "index.pck",
+          "bytes": 4536,
+          "sha256": "a2887ccddf127976ddfbbf9a672daf4567c9a0b37d94efeef190ad184340348d"
+        }
+      ],
+      "entry/opening_story_progress.gd": [
+        {
+          "path": "entry/opening_story_progress.gd.remap",
+          "pack": "index.pck",
+          "bytes": 55,
+          "sha256": "76a0bd67acc481a38a1345f81fd7f750bb6755ae30993bb7e539f8311fe983fc"
+        },
+        {
+          "path": "entry/opening_story_progress.gdc",
+          "pack": "index.pck",
+          "bytes": 2832,
+          "sha256": "53bc24ac239ec171bd1f73f1828907eadda570b5cefd82e3b34892061835798f"
+        }
+      ],
+      "entry/opening_story_spec.gd": [
+        {
+          "path": "entry/opening_story_spec.gd.remap",
+          "pack": "index.pck",
+          "bytes": 51,
+          "sha256": "a09d7cfffae12980f567dbeba7adda466fa23041b56feefe3e0eb563725c310f"
+        },
+        {
+          "path": "entry/opening_story_spec.gdc",
+          "pack": "index.pck",
+          "bytes": 4560,
+          "sha256": "8d84bfdd4fc0c6506c4b6b83ab71cf9f0b5869ccaf6d011b1acd45d285807d2a"
+        }
+      ]
+    },
+    "caveat": "Includes recursive static scripts/scenes. Does not assume this covers constructed dynamic paths."
+  }
+}

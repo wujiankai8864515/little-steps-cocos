@@ -1,0 +1,27 @@
+{
+  "checks": 9,
+  "passed": [
+    "both URLs bind their exact SHA",
+    "obsolete shared revision removed",
+    "presentation and failure handlers unchanged",
+    "deterministic idempotent stamps",
+    "unchanged actor keeps cache key",
+    "only changed loader invalidates cache key",
+    "missing/duplicate host references fail build",
+    "missing/duplicate host references fail build",
+    "actual committed host stamped without source mutation"
+  ],
+  "actual_host_versions": [
+    {
+      "path": "host/actor_loading.js",
+      "sha256": "95ed251d88ca2301d30967b52408d0a2e94782802f46a49f802bf7fd51b8d96a",
+      "url": "host/actor_loading.js?host_revision=95ed251d88ca2301d30967b52408d0a2e94782802f46a49f802bf7fd51b8d96a"
+    },
+    {
+      "path": "host/preboot.js",
+      "sha256": "f92058dc474c861652ab99ff68d1f74b7e27caa1ef50399ea7edfc8d92945124",
+      "url": "host/preboot.js?host_revision=f92058dc474c861652ab99ff68d1f74b7e27caa1ef50399ea7edfc8d92945124"
+    }
+  ],
+  "scope": "Deterministic packaging/cache identity test, not browser speed or actual CDN freshness measurement"
+}

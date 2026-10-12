@@ -1,0 +1,37 @@
+{
+  "all_modes_original_specs": 12,
+  "all_modes_original_estimated_bytes": 60543140,
+  "modes": {
+    "collection": {
+      "batch_specs": 3,
+      "declared_estimated_bytes": 14227028,
+      "elapsed_msec": 196.393,
+      "mode": "collection",
+      "new_starts": 3,
+      "reserved_estimated_bytes": 14227028,
+      "unique_entries": 3
+    },
+    "journal": {
+      "batch_specs": 7,
+      "declared_estimated_bytes": 43842536,
+      "elapsed_msec": 322.766,
+      "mode": "journal",
+      "new_starts": 7,
+      "reserved_estimated_bytes": 43842536,
+      "unique_entries": 7
+    },
+    "comic": {
+      "batch_specs": 9,
+      "declared_estimated_bytes": 41468260,
+      "elapsed_msec": 273.207,
+      "mode": "comic",
+      "new_starts": 9,
+      "reserved_estimated_bytes": 41468260,
+      "unique_entries": 9
+    }
+  },
+  "physical_topology_changed": false,
+  "only_manifest_change": "new data-only core-code catalog .gd",
+  "warm_union_unique": 12,
+  "boundary": "declared admission bytes, not GPU/browser/process memory"
+}

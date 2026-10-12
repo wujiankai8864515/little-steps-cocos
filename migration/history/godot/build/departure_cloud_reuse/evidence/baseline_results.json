@@ -1,0 +1,116 @@
+{
+  "checks": [
+    "one actor each stage",
+    "rewind resets clouds",
+    "release frees effect"
+  ],
+  "display": "X11",
+  "failed": 0,
+  "samples": [
+    {
+      "age": 0.0,
+      "clouds": 5,
+      "native": true,
+      "native_alpha": 1.0,
+      "static": false,
+      "static_alpha": 0.0
+    },
+    {
+      "age": 0.34,
+      "clouds": 5,
+      "native": true,
+      "native_alpha": 1.0,
+      "static": false,
+      "static_alpha": 0.0
+    },
+    {
+      "age": 0.55,
+      "clouds": 5,
+      "native": true,
+      "native_alpha": 0.5,
+      "static": false,
+      "static_alpha": 0.0
+    },
+    {
+      "age": 0.76,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": false,
+      "static_alpha": 0.0
+    },
+    {
+      "age": 1.0,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 0.0740740740740741
+    },
+    {
+      "age": 1.35,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 0.84375
+    },
+    {
+      "age": 1.8,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 1.0
+    },
+    {
+      "age": 2.2,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 1.0
+    },
+    {
+      "age": 2.85,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 1.0
+    },
+    {
+      "age": 3.5,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 0.931392
+    },
+    {
+      "age": 4.1,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": true,
+      "static_alpha": 0.295488
+    },
+    {
+      "age": 4.55,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": false,
+      "static_alpha": 0.0
+    },
+    {
+      "age": 4.8,
+      "clouds": 5,
+      "native": false,
+      "native_alpha": 0.0,
+      "static": false,
+      "static_alpha": 0.0
+    }
+  ],
+  "scope": "Source overlay component candidate against prior native packs; not cold candidate release or input test"
+}

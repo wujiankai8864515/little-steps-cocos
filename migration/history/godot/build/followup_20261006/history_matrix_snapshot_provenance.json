@@ -1,0 +1,60 @@
+{
+  "purpose": "Latest frozen layered requirement tracking; preserve historical baselines and precise QA/production distinctions",
+  "fixed_at_utc": "2026-10-06T22:14:00Z",
+  "source_directory": "/workspace/scratch/3f82ff2b3f81/audit_repeated_visual_failures/release_reaudit_561/schema2_frozen_20261006_2214",
+  "files": [
+    {
+      "source": "requirements_matrix.json",
+      "repository_path": "build/followup_20261006/history_matrix_snapshot.json",
+      "bytes": 1573510,
+      "sha256": "52f717f0f62b4dc2bcb89496d9e8c3d69067cbf39095c528f1290bb54d88b54f"
+    },
+    {
+      "source": "requirements_current_status.csv",
+      "repository_path": "build/followup_20261006/history_matrix_current_status.csv",
+      "bytes": 46527,
+      "sha256": "a2ded85b45894f0bb4891093fde8faa8a41082041efe922d58e9e5211ccc63a4"
+    },
+    {
+      "source": "当前状态冻结说明_2214.md",
+      "repository_path": "build/followup_20261006/history_matrix_current_status.md",
+      "bytes": 1738,
+      "sha256": "cb565212c8406a23a380a00b11c3733eeb93ce56fae3dc31c23a496126a5c6c0"
+    }
+  ],
+  "previous_snapshot": {
+    "purpose": "Current layered requirement tracking; preserve original561 baseline and evidence history",
+    "fixed_at_utc": "2026-10-06T19:48:00Z",
+    "source_directory": "/workspace/scratch/3f82ff2b3f81/audit_repeated_visual_failures/release_reaudit_561/schema2_frozen_20261006_1948",
+    "files": [
+      {
+        "source": "requirements_matrix.json",
+        "repository_path": "build/followup_20261006/history_matrix_snapshot.json",
+        "bytes": 1567438,
+        "sha256": "b4888be479be3435a2589547e17bb3d5fd001d462127ffbad0128f2fafdefc85"
+      },
+      {
+        "source": "requirements_current_status.csv",
+        "repository_path": "build/followup_20261006/history_matrix_current_status.csv",
+        "bytes": 31623,
+        "sha256": "0010a58089c09276ebc6aaf0711e00c0b7f8ab38f2d9b722c1ce87717174928b"
+      },
+      {
+        "source": "当前状态归位与下一组.md",
+        "repository_path": "build/followup_20261006/history_matrix_current_status.md",
+        "bytes": 4435,
+        "sha256": "f8c9d865af2e044db0b3ef0895e309fd3cb4bcccb128df08f3342f3473162d50"
+      }
+    ]
+  },
+  "current_production_release": {
+    "source_commit": "d1bfcaa0bb4ddf2f9980e27e7fabd3b22d8b8b0c",
+    "site_version": 7
+  },
+  "candidate_production_delta": {
+    "source_commit": "210d91577f880ca857c3764b0c44e9ceeca9188b",
+    "requirement": "A035",
+    "status": "candidate validated; new formal pack and deployment pending"
+  },
+  "frozen_time_not_rewritten": true
+}

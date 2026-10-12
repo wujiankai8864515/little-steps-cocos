@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "check": "Touch down arms without early activation",
+      "passed": true
+    },
+    {
+      "check": "Normal touch activates once on release",
+      "passed": true
+    },
+    {
+      "check": "Touch with emulated mouse activates only once",
+      "passed": true
+    },
+    {
+      "check": "Canceled touch with trailing emulated mouse never activates",
+      "passed": true
+    },
+    {
+      "check": "Touch drag out then back stays canceled",
+      "passed": true
+    },
+    {
+      "check": "Hidden and shown active touch cannot reactivate",
+      "passed": true
+    },
+    {
+      "check": "Focus loss cancels active touch",
+      "passed": true
+    },
+    {
+      "check": "Explicit cancellation revokes deferred touch release",
+      "passed": true
+    },
+    {
+      "check": "Focus loss revokes deferred touch release",
+      "passed": true
+    },
+    {
+      "check": "Hide and show revokes deferred touch release",
+      "passed": true
+    },
+    {
+      "check": "Tree exit and reentry revokes deferred touch release",
+      "passed": true
+    },
+    {
+      "check": "Disabled button rejects touch and emulated activation",
+      "passed": true
+    },
+    {
+      "check": "Real mouse remains usable",
+      "passed": true
+    },
+    {
+      "check": "Real mouse drag-out cancels",
+      "passed": true
+    },
+    {
+      "check": "Focused keyboard space still activates once",
+      "passed": true
+    },
+    {
+      "check": "Toggle touch plus emulation toggles only once",
+      "passed": true
+    },
+    {
+      "check": "Filter does not swallow emulated mouse on an unrelated plain control",
+      "passed": true
+    },
+    {
+      "check": "Another common button retains independent touch ownership",
+      "passed": true
+    }
+  ],
+  "display": "X11",
+  "failed": 0,
+  "input_events": 45,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "scope": "Exact PCK common TouchActionButton loaded in a small native GUI fixture; root input for touch/mouse/key, explicit lifecycle notifications. Product App routes are verified separately."
+}

@@ -1,0 +1,110 @@
+{
+  "checks": [
+    {
+      "name": "production loading gate reaches Login",
+      "pass": true
+    },
+    {
+      "name": "first actual Login frame has no premature fish or fin",
+      "pass": true
+    },
+    {
+      "name": "corner 0 creates exactly one entry intent",
+      "pass": true
+    },
+    {
+      "name": "early click waits for actual title/subtitle/peek readiness",
+      "pass": true
+    },
+    {
+      "name": "pending Login entry has actual cancellation control",
+      "pass": true
+    },
+    {
+      "name": "corner 0 cancellation returns to usable Login",
+      "pass": true
+    },
+    {
+      "name": "repeated intents never peek before both titles settle",
+      "pass": true
+    },
+    {
+      "name": "corner 1 creates exactly one entry intent",
+      "pass": true
+    },
+    {
+      "name": "early click waits for actual title/subtitle/peek readiness",
+      "pass": true
+    },
+    {
+      "name": "pending Login entry has actual cancellation control",
+      "pass": true
+    },
+    {
+      "name": "corner 1 cancellation returns to usable Login",
+      "pass": true
+    },
+    {
+      "name": "repeated intents never peek before both titles settle",
+      "pass": true
+    },
+    {
+      "name": "cancelled touch cannot enter from bottom-left",
+      "pass": false
+    },
+    {
+      "name": "corner 2 creates exactly one entry intent",
+      "pass": true
+    },
+    {
+      "name": "early click waits for actual title/subtitle/peek readiness",
+      "pass": true
+    },
+    {
+      "name": "pending Login entry has actual cancellation control",
+      "pass": true
+    },
+    {
+      "name": "corner 2 cancellation returns to usable Login",
+      "pass": true
+    },
+    {
+      "name": "repeated intents never peek before both titles settle",
+      "pass": true
+    },
+    {
+      "name": "corner 3 creates exactly one entry intent",
+      "pass": true
+    },
+    {
+      "name": "early click waits for actual title/subtitle/peek readiness",
+      "pass": true
+    },
+    {
+      "name": "pending Login entry has actual cancellation control",
+      "pass": true
+    },
+    {
+      "name": "corner 3 cancellation returns to usable Login",
+      "pass": true
+    },
+    {
+      "name": "repeated intents never peek before both titles settle",
+      "pass": true
+    },
+    {
+      "name": "normal title and greeting sequence eventually completes",
+      "pass": true
+    },
+    {
+      "name": "ready Login keeps original completed presentation",
+      "pass": true
+    },
+    {
+      "name": "last real corner input enters actual Comic without a blank route",
+      "pass": true
+    }
+  ],
+  "failed": 1,
+  "scope": "Actual App root input; explicit packs arg permits separate empty-res cold process. No browser claim."
+}

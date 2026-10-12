@@ -1,0 +1,47 @@
+{
+  "method": "Direct image inspection of actual saved native Mesa GL screenshots; eye comparison is original 1x pixel crops, no rescale. Different wall/render phases are disclosed.",
+  "frames": [
+    {
+      "path": "gl_settled/00_home_neutral.png",
+      "sha256": "ce1d6e3a3e88001ae70e3c5727fc0ee667557d8a77c1452526586267bb301dd8"
+    },
+    {
+      "path": "gl_settled/08_gaze_left.png",
+      "sha256": "b54a9c4b9ab42fc67ba1c1fec150b5353d1203685ae83a1ce2655958568d6001"
+    },
+    {
+      "path": "gl_settled/08_gaze_right.png",
+      "sha256": "e00c853eb9bf7c70b2308e01772a50db5be803bd32bd9ead3a840262dfd537f3"
+    },
+    {
+      "path": "gl_settled/08_gaze_up.png",
+      "sha256": "96fce7c607e4df1fcce509d4e258edda5a6833aea045d3c9fbb2d5f2d7bcc655"
+    },
+    {
+      "path": "gl_settled/08_gaze_down.png",
+      "sha256": "a0a3d45e6c8626ba5ce98fe434b70e3d9f87e56af137026fa2b793f2a287f700"
+    },
+    {
+      "path": "gl_settled/07_drink_sip.png",
+      "sha256": "1759b749fa3f4b8b9b8a52a9b9265358221ad9f1b8696c37f42cabb76efd50e3"
+    },
+    {
+      "path": "gl_settled/01_fish_held_a.png",
+      "sha256": "f638a133402b8f89db709a1d84455911c5f193e95ae5ed4187efa7a78c49bd00"
+    },
+    {
+      "path": "gl_settled/05_land_rebound.png",
+      "sha256": "cb651e9b5d557e8d9e0301991a766e9a1048a1a7fac87b27738d682c8cbe6cb7"
+    },
+    {
+      "path": "gl_settled/10_tap_contact.png",
+      "sha256": "2da46415c37bdb7d0ccdf55f175057b499c06c2212343cfbf32d33594b9d6721"
+    }
+  ],
+  "also_viewed": [
+    "baseline/08_gaze_down.png",
+    "gl_candidate/08_gaze_down.png",
+    "eyes_before_after_1x.png"
+  ],
+  "finding": "Full pupils and inner small highlights visible in open-eye frames, no extra white ball/cropped half pupil detected; contact closes eyes. Direction correction supported by preclamp-to-actual data; right-eye movement is subtle."
+}

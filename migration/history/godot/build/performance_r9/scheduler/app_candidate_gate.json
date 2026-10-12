@@ -1,0 +1,631 @@
+{
+  "boundary": "Explicit source App+gate candidates against immutable6327bdb native core and actual delayedPCK mounts; App preload points to supplied candidate gate with class-name-only alias to avoid collision with packed original. Headless:no GPU/browser claim.",
+  "checks": {
+    "login_resource_batch_ready": true,
+    "ordered_presentation_starts_at_title": true,
+    "real_login_node_ready": true,
+    "required_only_packs_at_login": true
+  },
+  "engine": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "login_presentation": {
+    "accents_visible": false,
+    "fin_visible": false,
+    "fish_visible": false,
+    "generation": 1,
+    "ready": false,
+    "stage": "TITLE",
+    "stage_elapsed": 0.0,
+    "subtitle_complete": false,
+    "title_complete": false
+  },
+  "packs": {
+    "active": 0,
+    "configured": true,
+    "counters": {
+      "cancellations": 0,
+      "failures": 0,
+      "invalid_callbacks": 0,
+      "mounts": 1,
+      "peak_active": 1,
+      "peak_queue": 1,
+      "retries": 0,
+      "stale_callbacks": 0,
+      "starts": 1,
+      "warm_hits": 0
+    },
+    "epoch": 1,
+    "limits": {
+      "max_concurrent": 2,
+      "max_queue": 64,
+      "max_retries": 1,
+      "max_specs": 512,
+      "max_starts_per_frame": 1,
+      "max_waiters": 64,
+      "metrics_capacity": 128,
+      "timeout_msec": 30000
+    },
+    "mounted_packs": [
+      "core",
+      "entry"
+    ],
+    "mounted_packs_unloadable": false,
+    "pending": 0,
+    "profile": "native",
+    "samples": [
+      {
+        "at_usec": 322428,
+        "details": {
+          "cache_hit": false,
+          "copy_usec": null,
+          "download_usec": null,
+          "epoch": 1,
+          "error": "",
+          "hash_usec": 3181,
+          "loaded": 943108,
+          "mount_usec": 287,
+          "pack_id": "entry",
+          "pack_path": "/workspace/scratch/3f82ff2b3f81/round8_formal_6327bdb/native_packs/packs/entry.pck",
+          "request_id": "p33705428367-e1-r1",
+          "state": "ready",
+          "total": 943108,
+          "verified_sha256": "7cde5f604dd0fb064144fdaad0de628ce1bb6803a13ba1c98be79d37a9d2b5c5"
+        },
+        "epoch": 1,
+        "pack_id": "entry",
+        "state": "ready"
+      }
+    ],
+    "source": "injected_simulated",
+    "waiters": 0
+  },
+  "page": "LOGIN",
+  "resources": {
+    "backend": "ResourceLoader",
+    "batches": 1,
+    "clock": "monotonic_usec",
+    "counters": {
+      "admission_rejections": 0,
+      "batches_failed": 0,
+      "batches_ready": 1,
+      "budget_overruns": 9,
+      "cache_hits": 0,
+      "cancelled": 0,
+      "consumes": 13,
+      "deduplicated": 0,
+      "evictions": 0,
+      "max_process_usec": 22598,
+      "peak_batches": 1,
+      "peak_entries": 13,
+      "peak_in_flight": 1,
+      "peak_reserved_bytes": 39766016,
+      "requests": 1,
+      "retries": 0,
+      "starts": 13,
+      "timeouts": 0
+    },
+    "effective_max_concurrent": 1,
+    "entries": 13,
+    "estimated_ready_bytes": 39766016,
+    "estimated_reserved_bytes": 39766016,
+    "fallback_reason": "godot_4_5_2_loader_lifetime",
+    "in_flight": 0,
+    "limits": {
+      "default_estimated_bytes": 1048576,
+      "frame_budget_usec": 2000,
+      "max_batches": 32,
+      "max_concurrent": 2,
+      "max_entries": 128,
+      "max_estimated_bytes": 268435456,
+      "max_finishes_per_frame": 8,
+      "max_owners": 64,
+      "max_specs_per_batch": 80,
+      "max_starts_per_frame": 8,
+      "metrics_capacity": 256,
+      "mode": "auto"
+    },
+    "memory": {
+      "godot_static_memory_bytes": 105745350,
+      "per_resource_decode_usec": null,
+      "per_resource_gpu_upload_usec": null,
+      "render_texture_memory_bytes": null,
+      "render_video_memory_bytes": null,
+      "whole_process_rss_bytes": null
+    },
+    "mode": "sequential",
+    "owners": 1,
+    "queue_entries": 0,
+    "requested_mode": "auto",
+    "samples": [
+      {
+        "at_usec": 323256,
+        "attempt": 1,
+        "elapsed_usec": 17,
+        "error": 0,
+        "frame": 3,
+        "path": "res://assets/bootstrap_ui.ttf",
+        "queue_wait_usec": 545,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 323271,
+        "elapsed_usec": 3,
+        "frame": 3,
+        "load_wall_usec": 34,
+        "path": "res://assets/bootstrap_ui.ttf",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 345701,
+        "attempt": 1,
+        "elapsed_usec": 22397,
+        "error": 0,
+        "frame": 3,
+        "path": "res://entry/assets/backgrounds/login_clean_bleed_720x1600.png",
+        "queue_wait_usec": 599,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 345734,
+        "budget_usec": 2000,
+        "elapsed_usec": 22598,
+        "frame": 3,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 345922,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 4,
+        "owner_id": 32195478903,
+        "path": "res://assets/bootstrap_ui.ttf",
+        "queue_to_ready_usec": 23229,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 346016,
+        "elapsed_usec": 5,
+        "frame": 4,
+        "load_wall_usec": 22723,
+        "path": "res://entry/assets/backgrounds/login_clean_bleed_720x1600.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 346037,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 4,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/backgrounds/login_clean_bleed_720x1600.png",
+        "queue_to_ready_usec": 23344,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 350184,
+        "attempt": 1,
+        "elapsed_usec": 4085,
+        "error": 0,
+        "frame": 4,
+        "path": "res://entry/assets/login/door_ajar.png",
+        "queue_wait_usec": 23402,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 350206,
+        "budget_usec": 2000,
+        "elapsed_usec": 4339,
+        "frame": 4,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 351869,
+        "elapsed_usec": 4,
+        "frame": 5,
+        "load_wall_usec": 5774,
+        "path": "res://entry/assets/login/door_ajar.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 351891,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 5,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/door_ajar.png",
+        "queue_to_ready_usec": 29198,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 355728,
+        "attempt": 1,
+        "elapsed_usec": 3762,
+        "error": 0,
+        "frame": 5,
+        "path": "res://entry/assets/login/doorframe.png",
+        "queue_wait_usec": 29271,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 355745,
+        "budget_usec": 2000,
+        "elapsed_usec": 3950,
+        "frame": 5,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 368606,
+        "elapsed_usec": 6,
+        "frame": 6,
+        "load_wall_usec": 16639,
+        "path": "res://entry/assets/login/doorframe.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 368634,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 6,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/doorframe.png",
+        "queue_to_ready_usec": 45939,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 374335,
+        "attempt": 1,
+        "elapsed_usec": 5596,
+        "error": 0,
+        "frame": 6,
+        "path": "res://entry/assets/login/doorway_glow.png",
+        "queue_wait_usec": 46039,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 374364,
+        "budget_usec": 2000,
+        "elapsed_usec": 5906,
+        "frame": 6,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 385348,
+        "elapsed_usec": 6,
+        "frame": 7,
+        "load_wall_usec": 16615,
+        "path": "res://entry/assets/login/doorway_glow.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 385376,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 7,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/doorway_glow.png",
+        "queue_to_ready_usec": 62682,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 387206,
+        "attempt": 1,
+        "elapsed_usec": 1737,
+        "error": 0,
+        "frame": 7,
+        "path": "res://entry/assets/login/login_accents.png",
+        "queue_wait_usec": 62772,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 387236,
+        "elapsed_usec": 7,
+        "frame": 7,
+        "load_wall_usec": 1771,
+        "path": "res://entry/assets/login/login_accents.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 387294,
+        "budget_usec": 2000,
+        "elapsed_usec": 2002,
+        "frame": 7,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 401919,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 8,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/login_accents.png",
+        "queue_to_ready_usec": 79222,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 405115,
+        "attempt": 1,
+        "elapsed_usec": 3051,
+        "error": 0,
+        "frame": 8,
+        "path": "res://entry/assets/login/login_enter_wood_sign.png",
+        "queue_wait_usec": 79364,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 405144,
+        "budget_usec": 2000,
+        "elapsed_usec": 3299,
+        "frame": 8,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 420874,
+        "elapsed_usec": 5,
+        "frame": 9,
+        "load_wall_usec": 18814,
+        "path": "res://entry/assets/login/login_enter_wood_sign.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 420905,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 9,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/login_enter_wood_sign.png",
+        "queue_to_ready_usec": 98210,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 421720,
+        "attempt": 1,
+        "elapsed_usec": 728,
+        "error": 0,
+        "frame": 9,
+        "path": "res://entry/assets/login/login_greeting_fin.png",
+        "queue_wait_usec": 98296,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 421738,
+        "elapsed_usec": 3,
+        "frame": 9,
+        "load_wall_usec": 750,
+        "path": "res://entry/assets/login/login_greeting_fin.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 425423,
+        "attempt": 1,
+        "elapsed_usec": 3660,
+        "error": 0,
+        "frame": 9,
+        "path": "res://entry/assets/login/login_peek_source.png",
+        "queue_wait_usec": 99066,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 425443,
+        "budget_usec": 2000,
+        "elapsed_usec": 4769,
+        "frame": 9,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 435169,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 10,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/login_greeting_fin.png",
+        "queue_to_ready_usec": 112474,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 435252,
+        "elapsed_usec": 4,
+        "frame": 10,
+        "load_wall_usec": 13494,
+        "path": "res://entry/assets/login/login_peek_source.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 435277,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 10,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/login_peek_source.png",
+        "queue_to_ready_usec": 112585,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 435674,
+        "attempt": 1,
+        "elapsed_usec": 351,
+        "error": 0,
+        "frame": 10,
+        "path": "res://entry/assets/login/logo_subtitle.png",
+        "queue_wait_usec": 112630,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 435688,
+        "elapsed_usec": 2,
+        "frame": 10,
+        "load_wall_usec": 366,
+        "path": "res://entry/assets/login/logo_subtitle.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 438497,
+        "attempt": 1,
+        "elapsed_usec": 2779,
+        "error": 0,
+        "frame": 10,
+        "path": "res://entry/assets/login/logo_title.png",
+        "queue_wait_usec": 113012,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 438530,
+        "budget_usec": 2000,
+        "elapsed_usec": 3413,
+        "frame": 10,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 451901,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 11,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/logo_subtitle.png",
+        "queue_to_ready_usec": 129206,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 451974,
+        "elapsed_usec": 4,
+        "frame": 11,
+        "load_wall_usec": 16269,
+        "path": "res://entry/assets/login/logo_title.png",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 452001,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 11,
+        "owner_id": 32195478903,
+        "path": "res://entry/assets/login/logo_title.png",
+        "queue_to_ready_usec": 129309,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 452174,
+        "attempt": 1,
+        "elapsed_usec": 142,
+        "error": 0,
+        "frame": 11,
+        "path": "res://shaders/login_peek_reveal.gdshader",
+        "queue_wait_usec": 129339,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 452184,
+        "elapsed_usec": 1,
+        "frame": 11,
+        "load_wall_usec": 153,
+        "path": "res://shaders/login_peek_reveal.gdshader",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 463195,
+        "attempt": 1,
+        "elapsed_usec": 10994,
+        "error": 0,
+        "frame": 11,
+        "path": "res://entry/login_page.tscn",
+        "queue_wait_usec": 129504,
+        "stage": "blocking_sequential_load"
+      },
+      {
+        "at_usec": 463216,
+        "budget_usec": 2000,
+        "elapsed_usec": 11380,
+        "frame": 11,
+        "stage": "scheduler_budget_overrun"
+      },
+      {
+        "at_usec": 468490,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 12,
+        "owner_id": 32195478903,
+        "path": "res://shaders/login_peek_reveal.gdshader",
+        "queue_to_ready_usec": 145796,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 468573,
+        "elapsed_usec": 4,
+        "frame": 12,
+        "load_wall_usec": 16377,
+        "path": "res://entry/login_page.tscn",
+        "stage": "resource_retrieval",
+        "status": 3
+      },
+      {
+        "at_usec": 468600,
+        "batch_id": 1,
+        "cache_hit": false,
+        "epoch": 1,
+        "frame": 12,
+        "owner_id": 32195478903,
+        "path": "res://entry/login_page.tscn",
+        "queue_to_ready_usec": 145909,
+        "stage": "resource_ready"
+      },
+      {
+        "at_usec": 468614,
+        "batch_id": 1,
+        "elapsed_usec": 145922,
+        "frame": 12,
+        "stage": "batch_finished",
+        "success": true
+      },
+      {
+        "at_usec": 485665,
+        "elapsed_usec": 478,
+        "epoch": 1,
+        "frame": 12,
+        "owner_id": 32195478903,
+        "stage": "login_instantiate"
+      }
+    ]
+  },
+  "startup": {
+    "godot_loading_first_draw_usec": 39475,
+    "loading_clock": "native_first_draw",
+    "loading_visible_msec": 167,
+    "login_visible_msec": 606,
+    "opening_story_errors": [],
+    "opening_story_status": "REQUIRED",
+    "stage": "login_ready",
+    "stage_completed": 1,
+    "stage_total": 1
+  }
+}

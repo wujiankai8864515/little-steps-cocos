@@ -1,0 +1,26 @@
+{
+  "source_message": "Sentinel_e0840b59fb3c8191ac5b357801302206",
+  "reference_library_file": "libfile_25703269b964819185d25c99b54f2e99",
+  "viewed_actual_reference_pixels": true,
+  "viewed_actual_native_captures": [
+    "baseline_gl/result_standard.png",
+    "candidate_compiled_gl/result_standard.png",
+    "candidate_compiled_gl/result_360x780.png",
+    "candidate_compiled_gl/result_night.png",
+    "candidate_compiled_gl/ai_review.png",
+    "candidate_portable_gl/result_standard.png",
+    "candidate_portable_gl/result_360x780.png"
+  ],
+  "findings": [
+    "Uploaded result reproduced without paper in baseline",
+    "Existing painted ticket appears beneath the same real result in candidate",
+    "Brown ink is legible on light paper at noon and night",
+    "Paper/text are centered and complete at 360x780",
+    "Existing AI review bubble is unchanged and contains outcome text"
+  ],
+  "limits": [
+    "native software GL; no WebGL2 or phone hardware visual validation",
+    "final grouped source backup/build/deployment pending",
+    "user aesthetic acceptance pending"
+  ]
+}

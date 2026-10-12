@@ -1,0 +1,38 @@
+{
+  "source_base": "197ee6c",
+  "user_report": "Sentinel_d749cc6792708191b10100e724c24d18",
+  "actual_roots": [
+    "Travel LoadingPaper Label reset_size shaped in zero-width autowrap; actual height294 remains after minimum returns30, expected54",
+    "Home contour argmin-y x changes with bones:120frames x372.51..379.84, card67positions, parent transform identical"
+  ],
+  "fixes": [
+    "Shared non-wrapping fixed caption fitter; fit width/font before final size, used by LoadingPaper and common speech waiting captions",
+    "Waiting card locks anchor while dots animate",
+    "Ordinary actor dialogue horizontal anchor tied to actor rig center; y still measures head clearance"
+  ],
+  "candidate_evidence": [
+    "Label54 height across dot1/2/3, actual frames viewed",
+    "darkroom120frame card/anchor/parent unique1 each",
+    "31 multi-entry checks pass: journal/map/collection/photo/wardrobe/darkroom, failure wording, title inside card, live geometry updates, ordinary dialogue max_x_motion0"
+  ],
+  "scope": "Explicit3-script candidate overlay on197ee6c; not formal new-pack proof or Web acceptance",
+  "withdrawn_prior_evidence": "Prior16 optional-loading QA had undeclared /tmp/r7_loading/candidate.pck; cannot be cited as no-overlay formal validation",
+  "images": {
+    "red/journal_1.png": "41473573c1c3b2ea7551af07a8f25a088826da09b27b16eb95616c7de74ea33d",
+    "red/journal_0.png": "02467c8de6513c3c00b32b70d834c51875bb7a84eb7e2325a434c24a79bc125d",
+    "red/journal_2.png": "53a8dfe97cd55650a4cefef39fdefe24a9a98cf97a797f6580ac2fb8b804530e",
+    "green_candidate/journal_1.png": "70230081243fee38ab6d88013ea54b6eda2f447e2c68df294be88a2810e6fcbe",
+    "green_candidate/darkroom_wait.png": "c092adc49e0cb79568806b07abb87560439f206a4ff4d2122db436c3b13f654e",
+    "green_candidate/journal_0.png": "77b474f8f1b6ed2a470a806e7b1137d7f6470491ae2b55f9a7139d14122c43ef",
+    "green_candidate/journal_2.png": "33da7a6eba1167e89f733c964da0793fd050cbec85e7d0ac2245b0313db071ef",
+    "all_candidate/journal.png": "00a6b6eed741bd1a89616018359cbb716134e972c964d513501bf0ad0344b7da",
+    "all_candidate/journal_failed.png": "409fdd3c13a5d132cf30889bb8f1e5f34b22c7523271a9d4a80b4ac3d3aac14e",
+    "all_candidate/map.png": "53c4e77d8b8a3f1ce716837fceac0e24f5e19314134c3eccb9c0fd1cd0da8e6b",
+    "all_candidate/collection_failed.png": "a994b2a327ae04d1ddd0dd6b1e8066efba59536e7c8e0fee1bcfdd1641502a85",
+    "all_candidate/wardrobe.png": "64e44ec846ee69d37bd47c76d3f92f9d836138f5f919e1da3769c6f7c8a65b50",
+    "all_candidate/map_failed.png": "4e7bf2e31320ef589f7c66fc04b27b2c3e9f831d66de5c4da79ed4e37ec296b1",
+    "all_candidate/collection.png": "558808324ac6f3072bfabfaa52e61be83cae8d4bac61c3fbff2246cd475c7df6",
+    "all_candidate/photo.png": "686f2d101ddc7326e5441f41a49d2536f71ac823e576e42de6434a50999ffc1a",
+    "all_candidate/darkroom.png": "aadd8a4b3884d2e5d3bf24a0d428de98601d0a0e06d09ac91953c16eb2d9c71a"
+  }
+}

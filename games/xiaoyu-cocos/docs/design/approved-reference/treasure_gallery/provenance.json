@@ -1,0 +1,72 @@
+{
+  "item": "H05 收藏工程落地",
+  "source_baseline_commit": "56193b766b3c13d83ac5aee7149f4d8045e5733e",
+  "generator": "OpenAI built-in image_gen reference edit, 2026-10-06",
+  "generated_asset": "games/travel_woodfish/project/travel/assets/travel_paper_v1.png",
+  "asset_sha256": "18371700eeded62f1b0f41c0dfe49094603d922353d8872a1371880bc3c9df42",
+  "rgba8_sha256": "a18df315d5657840746c9fcb2a0acacf31af817fd21b6d128d19c5c119c7cf1d",
+  "bytes": 2158346,
+  "dimensions": [
+    941,
+    1671
+  ],
+  "display": {
+    "base_canvas": [
+      720,
+      1280
+    ],
+    "background_dpr": [
+      1.3069444444444445,
+      1.30546875
+    ],
+    "source_unscaled": true,
+    "mipmaps": false
+  },
+  "references": [
+    {
+      "filename": "01_收藏页新提案_银杏叶_虚化背景高清前景.png",
+      "library_file_id": "libfile_800ade93bf10819186ac3e83bd02d8fb",
+      "sha256": "7a6bb136301221a77f4ec29b0672d64deb70b4b233492bc2476bce4db4ba1dd2",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "viewed": true
+    },
+    {
+      "filename": "02_收藏页新提案_玛尼石_切换状态.png",
+      "library_file_id": "libfile_3ba3f17d90ec8191a42bc0dffe42c0f8",
+      "sha256": "ca5f0e4e344ef459e02f74fd230706f4633db812dba5c35596456ed45ab7223a",
+      "dimensions": [
+        941,
+        1672
+      ],
+      "viewed": true
+    }
+  ],
+  "source_rights": "User-provided/approved generated concept reference edited for the authorized game. Newly generated artwork; no downloaded third-party art or added font license. Not asserted to be CC0 or a recovered original. Existing sprites remain unchanged at the frozen recovered hash.",
+  "runtime_pack": "travel_visual / packs/travel.pck",
+  "resource_entry_delta": 0,
+  "alpha_mask_reservation_bytes": 262144,
+  "runtime_background_rgba8_plus_import_reservation_bytes": 6355180,
+  "actual_pixel_viewed": [
+    "Both approved local reference PNGs",
+    "Generated background PNG",
+    "Recovered four-sprite reward atlas decoded WEBP",
+    "Native GL ginkgo/stone/empty/single/many/tall screenshots"
+  ],
+  "invariants": [
+    "HangingReturn remains common component",
+    "Existing reward atlas and its atlas regions unchanged",
+    "Background and title sign no baked content or owned items",
+    "Story/name/place/count are live inventory data",
+    "No photo-wall changes",
+    "No equipment or purchases"
+  ],
+  "limitations": [
+    "Native Mesa software rendering is not Web/GPU/touch-device validation",
+    "Current approved reference has painterly detailed stone; existing game stone keeps its own original stylized motif",
+    "Cold final PCK and Web must be checked after parent publishes frozen source",
+    "Background plate was reauthored from approved concept; not exact pixel identity with concept"
+  ]
+}

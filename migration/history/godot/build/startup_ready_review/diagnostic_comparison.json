@@ -1,0 +1,312 @@
+{
+  "scope": "Two single-variable QA probes only; never product acceptance or remediation",
+  "findings": "Disabling inherited Home processing retains multi-second first actual draw gap. Disabling SubViewport update shrinks preparation gate, and normal production resume shifts gap to restored actual rendering. Narrows investigation to SubViewport initial rendering/submission; does not prove GPU-only, shader compilation or asset upload cause.",
+  "probes": [
+    {
+      "name": "diagnostic_processing_disabled",
+      "acceptance": false,
+      "injection": {
+        "events": [
+          {
+            "at": 20974,
+            "event": "before_injection",
+            "home_in_tree": false,
+            "home_instance": 123882964394,
+            "home_ready": false,
+            "process_mode": 0,
+            "viewport_update": 4
+          },
+          {
+            "at": 20974,
+            "event": "after_injection",
+            "home_in_tree": false,
+            "process_mode": 4,
+            "viewport_update": 4
+          },
+          {
+            "at": 21176,
+            "can_process": false,
+            "event": "after_home_ready_signal",
+            "home_in_tree": true,
+            "process_mode": 4,
+            "viewport_update": 4
+          }
+        ],
+        "kind": "diagnostic_processing_disabled",
+        "scope": "QA-only causal-direction probe. One Home subsystem intentionally disabled before add_child. It is not a valid product acceptance run and does not change source/PCK/ready code. Production resume may restore rendering/processing after preparation; inspect gate timestamps separately."
+      },
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "end_msec": 20946.287,
+          "elapsed_msec": 3.404
+        },
+        {
+          "stage": "home_tree_ready",
+          "end_msec": 21176.004,
+          "elapsed_msec": 202.258
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "end_msec": 29076.53,
+          "elapsed_msec": 8102.763
+        }
+      ],
+      "frame_gaps": [
+        {
+          "end": 413,
+          "msec": 294,
+          "page": "LOADING",
+          "round": 1,
+          "start": 119
+        },
+        {
+          "end": 7077,
+          "msec": 351,
+          "page": "COMIC_ENTERING",
+          "round": 1,
+          "start": 6726
+        },
+        {
+          "end": 20932,
+          "msec": 326,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20606
+        },
+        {
+          "end": 28960,
+          "msec": 7986,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20974
+        }
+      ],
+      "draw_gaps": [
+        {
+          "end": 412,
+          "msec": 294,
+          "page": "LOADING",
+          "round": 1,
+          "start": 118
+        },
+        {
+          "end": 7076,
+          "msec": 351,
+          "page": "COMIC_ENTERING",
+          "round": 1,
+          "start": 6725
+        },
+        {
+          "end": 20931,
+          "msec": 325,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20606
+        },
+        {
+          "end": 28960,
+          "msec": 7987,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20973
+        }
+      ],
+      "home_transitions": [
+        {
+          "at": 103,
+          "page": "LOADING",
+          "round": 1,
+          "state": "false:false:false"
+        },
+        {
+          "at": 20974,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:false:false"
+        },
+        {
+          "at": 28960,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:true:false"
+        },
+        {
+          "at": 29087,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:false:true"
+        },
+        {
+          "at": 29158,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:true:true"
+        }
+      ],
+      "engine_returncode": 0,
+      "fixture_failed": 0,
+      "diagnostic_errors": []
+    },
+    {
+      "name": "diagnostic_render_disabled",
+      "acceptance": false,
+      "injection": {
+        "events": [
+          {
+            "at": 20886,
+            "event": "before_injection",
+            "home_in_tree": false,
+            "home_instance": 123983627960,
+            "home_ready": false,
+            "process_mode": 0,
+            "viewport_update": 4
+          },
+          {
+            "at": 20886,
+            "event": "after_injection",
+            "home_in_tree": false,
+            "process_mode": 0,
+            "viewport_update": 0
+          },
+          {
+            "at": 21096,
+            "can_process": true,
+            "event": "after_home_ready_signal",
+            "home_in_tree": true,
+            "process_mode": 0,
+            "viewport_update": 0
+          }
+        ],
+        "kind": "diagnostic_render_disabled",
+        "scope": "QA-only causal-direction probe. One Home subsystem intentionally disabled before add_child. It is not a valid product acceptance run and does not change source/PCK/ready code. Production resume may restore rendering/processing after preparation; inspect gate timestamps separately."
+      },
+      "stages": [
+        {
+          "stage": "home_instantiate",
+          "end_msec": 20849.778,
+          "elapsed_msec": 3.589
+        },
+        {
+          "stage": "home_tree_ready",
+          "end_msec": 21096.16,
+          "elapsed_msec": 209.863
+        },
+        {
+          "stage": "home_first_draw_gate",
+          "end_msec": 21149.546,
+          "elapsed_msec": 263.236
+        }
+      ],
+      "frame_gaps": [
+        {
+          "end": 459,
+          "msec": 328,
+          "page": "LOADING",
+          "round": 1,
+          "start": 131
+        },
+        {
+          "end": 6967,
+          "msec": 275,
+          "page": "COMIC_ENTERING",
+          "round": 1,
+          "start": 6692
+        },
+        {
+          "end": 20833,
+          "msec": 325,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20508
+        },
+        {
+          "end": 28841,
+          "msec": 7683,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 21158
+        },
+        {
+          "end": 29241,
+          "msec": 400,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 28841
+        }
+      ],
+      "draw_gaps": [
+        {
+          "end": 458,
+          "msec": 328,
+          "page": "LOADING",
+          "round": 1,
+          "start": 130
+        },
+        {
+          "end": 6966,
+          "msec": 275,
+          "page": "COMIC_ENTERING",
+          "round": 1,
+          "start": 6691
+        },
+        {
+          "end": 20832,
+          "msec": 325,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 20507
+        },
+        {
+          "end": 28840,
+          "msec": 7691,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 21149
+        },
+        {
+          "end": 29240,
+          "msec": 400,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "start": 28840
+        }
+      ],
+      "home_transitions": [
+        {
+          "at": 113,
+          "page": "LOADING",
+          "round": 1,
+          "state": "false:false:false"
+        },
+        {
+          "at": 20886,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:false:false"
+        },
+        {
+          "at": 21118,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:true:false"
+        },
+        {
+          "at": 21158,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:false:true"
+        },
+        {
+          "at": 28841,
+          "page": "HOME_ENTERING",
+          "round": 1,
+          "state": "true:true:true"
+        }
+      ],
+      "engine_returncode": 0,
+      "fixture_failed": 0,
+      "diagnostic_errors": []
+    }
+  ]
+}

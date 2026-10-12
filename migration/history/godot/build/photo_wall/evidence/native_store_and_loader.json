@@ -1,0 +1,61 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "native ingestion saves",
+      "pass": true
+    },
+    {
+      "check": "native binding saves",
+      "pass": true
+    },
+    {
+      "check": "fresh native collection reads committed ID",
+      "pass": true
+    },
+    {
+      "check": "partial last batch shows actual remaining stack count",
+      "pass": true
+    },
+    {
+      "check": "corrupt native primary recovers verified backup",
+      "pass": true
+    },
+    {
+      "check": "recovered save promotes replacement with good backup",
+      "pass": true
+    },
+    {
+      "check": "future native schema blocks writes",
+      "pass": true
+    },
+    {
+      "check": "slow loader shows shared actionable bubble",
+      "pass": true
+    },
+    {
+      "check": "real cancel input returns Home and rejects late callback",
+      "pass": true
+    },
+    {
+      "check": "failed loader exposes retry and return",
+      "pass": true
+    },
+    {
+      "check": "real retry input opens ready wall",
+      "pass": true
+    },
+    {
+      "check": "background pauses whole dynamic subtree",
+      "pass": true
+    },
+    {
+      "check": "focus resume restores page dynamics",
+      "pass": true
+    },
+    {
+      "check": "closed wall stops all animation",
+      "pass": true
+    }
+  ]
+}

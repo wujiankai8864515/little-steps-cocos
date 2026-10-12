@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "check": "download player sees only one plain room-loading line",
+      "pass": true
+    },
+    {
+      "check": "download internal progress bytes/counters remain intact",
+      "pass": true
+    },
+    {
+      "check": "download cancel remains available",
+      "pass": true
+    },
+    {
+      "check": "resources player sees only one plain room-loading line",
+      "pass": true
+    },
+    {
+      "check": "resources internal progress bytes/counters remain intact",
+      "pass": true
+    },
+    {
+      "check": "resources cancel remains available",
+      "pass": true
+    },
+    {
+      "check": "instance player sees only one plain room-loading line",
+      "pass": true
+    },
+    {
+      "check": "instance internal progress bytes/counters remain intact",
+      "pass": true
+    },
+    {
+      "check": "instance cancel remains available",
+      "pass": true
+    },
+    {
+      "check": "first_draw player sees only one plain room-loading line",
+      "pass": true
+    },
+    {
+      "check": "first_draw internal progress bytes/counters remain intact",
+      "pass": true
+    },
+    {
+      "check": "first_draw cancel remains available",
+      "pass": true
+    },
+    {
+      "check": "pulse 0 does not resize the shared bubble",
+      "pass": true
+    },
+    {
+      "check": "pulse 1 does not resize the shared bubble",
+      "pass": true
+    },
+    {
+      "check": "pulse 2 does not resize the shared bubble",
+      "pass": true
+    },
+    {
+      "check": "pulse 3 does not resize the shared bubble",
+      "pass": true
+    },
+    {
+      "check": "ellipsis cycles without requiring network progress callbacks",
+      "pass": true
+    },
+    {
+      "check": "actual cancel pointer closes pending Home confirmation once",
+      "pass": true
+    },
+    {
+      "check": "failure diagnostic remains internal",
+      "pass": true
+    },
+    {
+      "check": "friendly retry/cancel affordances preserved",
+      "pass": true
+    },
+    {
+      "check": "actual retry pointer emits exactly one retry request",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "scope": "Production App wait formatter/progress storage and actual Home waiting/retry input. Does not replace separate transport regression."
+}

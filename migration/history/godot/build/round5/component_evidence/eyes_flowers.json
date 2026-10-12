@@ -1,0 +1,108 @@
+{
+  "status": "IMPLEMENTED_AND_TARGETED_VERIFICATION_PASSED",
+  "engine": "Godot 4.5.2.stable.official.6ce3de25a",
+  "scope": [
+    "round5 item1 enlarged eyes",
+    "round5 item2 virtual sun flowers",
+    "round5 item5 daily flowers"
+  ],
+  "production_paths": [
+    "home/behavior/eye_geometry.gd",
+    "shaders/home_face_receiver.gdshader",
+    "home/flowers/flower_life.gd",
+    "home/flowers/flower_stem.gd",
+    "home/flowers/persistent_vase.gd"
+  ],
+  "test_path": "build/checks/test_round5_eyes_flowers.gd",
+  "headless": {
+    "passed": true,
+    "checks": 305,
+    "failures": [],
+    "largest_day_sweep_tip_step_pixels": 0.141878113150597
+  },
+  "actual_rendering": {
+    "backend": "Godot OpenGL Compatibility / Mesa 25.0.7 llvmpipe LLVM 19.1.7",
+    "captured_and_pixels_reviewed": true,
+    "scenes": [
+      "isolated shader size comparisons",
+      "360px logical projection and four extreme gaze directions",
+      "existing flower art with actual bones and mesh",
+      "actual HomeWorld with one and ten flowers at day phases"
+    ],
+    "physical_gpu_tested": false,
+    "web_browser_tested": false,
+    "phone_device_tested": false,
+    "touch_tested": false,
+    "newest_whole_task_integration_tested": false
+  },
+  "eyes": {
+    "source_size": [
+      670,
+      402
+    ],
+    "radii": [
+      [
+        10,
+        7.6
+      ],
+      [
+        9,
+        6.6
+      ]
+    ],
+    "previous_radii": [
+      [
+        7.5,
+        6.25
+      ],
+      [
+        6.5,
+        5
+      ]
+    ],
+    "antialias_support_scale": 1.05,
+    "safety_margin_source_pixels": 0.35,
+    "source_png_modified": false,
+    "full_pupil_white_guard_sample_minimum": 1.0
+  },
+  "flowers": {
+    "initial": 1,
+    "new_birth_every_active_seconds": 60,
+    "growth_seconds": 8,
+    "cap": 10,
+    "retirement_enabled": false,
+    "schema": 3,
+    "restores_schema": [
+      1,
+      2,
+      3
+    ],
+    "migrates_saved_bouquet_and_next_birth_without_backfill": true,
+    "day_seconds": 30,
+    "night_seconds": 30,
+    "sun_arc_degrees": 180,
+    "sun_radius_vase_local": 480,
+    "sun_center_vase_local": [
+      0,
+      -46
+    ],
+    "root_vase_local": [
+      0,
+      -79
+    ],
+    "follows_actual_lamp_or_outdoor_sun": false
+  },
+  "new_production_assets": [],
+  "new_fonts": [],
+  "published": false,
+  "committed": false,
+  "artifacts": [
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/eyes_gpu_phone_and_extremes.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/eyes_gpu_source_old_new.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/flowers_gpu_day_growth_cap_night.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/home_evening_one.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/home_morning_one.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/home_noon_one.png",
+    "/workspace/scratch/3f82ff2b3f81/round5_eyes_flowers_qa/evidence/gpu/home_noon_ten.png"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "source_commit": "961d593268b5a564cd4399ee2feef2be0bfa5901",
+  "scope": "旅行关联组候选层完成；不是正式构建、部署或Web用户验收",
+  "withdrawn": "N17未修改；真实服务观看时终点returned、人工选择仍CHOICE_PAUSED及取消恢复",
+  "items": [
+    {
+      "id": "N13",
+      "repair_commits": "d954bc7",
+      "root_cause": "共享Label只水平居中，字形ink上下界偏离牌面中心",
+      "diff": "公共PlateLabel真实字体glyph度量居中",
+      "actual_evidence": "八个牌文字形度量误差0；实看帧；不冒像素分割结果",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N14",
+      "repair_commits": "f4858be",
+      "root_cause": "阵风14.7秒、冷却8秒、-24dB使钟弱而稀疏",
+      "diff": "调整阵风/触击冷却并校准合成音，保持播放门控",
+      "actual_evidence": "45秒加速物理5触击；实际player播放1次（加速物理不等于45秒听音）",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N15",
+      "repair_commits": "d763f9e",
+      "root_cause": "_draw_sky仍绘制太阳盘、月盘与光环",
+      "diff": "去掉实体绘制，光照快照不动",
+      "actual_evidence": "晨午暮夜实帧无日月实体；共享Clock同一实例",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N16",
+      "repair_commits": "fb2d131",
+      "root_cause": "光束窄且daylight为0时消失",
+      "diff": "高斯柔边扩宽并加入月光能量",
+      "actual_evidence": "昼夜实帧可见柔光；审美、用户可见程度仍待用户验收",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N18",
+      "repair_commits": "0590523 + 961d593",
+      "root_cause": "旧提示局限46px热点局部环形，整页动势不足",
+      "diff": "四尖材质加全页汇聚曲线柔流、低频光粒",
+      "actual_evidence": "流不捕获输入、跨帧运动、真实marker点击打开原气泡；待审美验收",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N19",
+      "repair_commits": "ea830d5",
+      "root_cause": "同尺度18片无景深",
+      "diff": "三层深度关联尺度/速度/透明/绘制顺序",
+      "actual_evidence": "实帧近叶明显大于远叶；保持18片预算",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N20",
+      "repair_commits": "a035539",
+      "root_cause": "无独立奇遇出现声音",
+      "diff": "0.78秒短音、UID去重、冷却和钟声互斥",
+      "actual_evidence": "实际cue播放器一次、20次刷新不重复；静音/焦点阻断、离页stream释放；尚未听音",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N21",
+      "repair_commits": "2d5a998 + 3ad9fed",
+      "root_cause": "背景裸字及故事冗文无载体",
+      "diff": "标题下火车票仅实际当前站，移除故事背景字",
+      "actual_evidence": "真实服务更新山门/溪畔弯道/归途山门；固定牌名不变",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    },
+    {
+      "id": "N22",
+      "repair_commits": "a017b54 + 3ad9fed + 49e2aec",
+      "root_cause": "折线路线裸几何节点；实时曲线采样重复分配",
+      "diff": "共用C1三次贝塞尔、颜料纹理、石块山门材质及静态采样缓存",
+      "actual_evidence": "11个端点误差0，接缝方向误差0.001410；角色、marker共用配置函数",
+      "code": "implemented",
+      "resources": "connected_candidate_pack",
+      "native_candidate": "passed",
+      "visible_style": "actual_frames_reviewed_not_user_accepted",
+      "formal_zero_overlay": "pending_parent_group_build",
+      "Web_audio_device": "pending"
+    }
+  ],
+  "resource_budget": {
+    "atlas_size": [
+      512,
+      512
+    ],
+    "decoded_bytes": 1048576,
+    "old_regions_pixels_unchanged": true,
+    "new_runtime_resource_entries": 0,
+    "audio_pcm_bytes": 157878,
+    "reservation_unchanged": 600000
+  },
+  "regression": {
+    "tests": "evidence/results.json",
+    "engine": "official Godot 4.5.2",
+    "display": "Mesa llvmpipe software GL",
+    "audio": "Dummy, no hearing claim",
+    "source_identity": "evidence/identity.json",
+    "pack": "baseline exact nine PCKs with explicit eight-entry delta in empty res, actual Home bridge lazy loading",
+    "not_covered": [
+      "formal current-source zero-overlay PCK",
+      "browser cold/warm/slow/cancel/late load",
+      "hardware GPU and touch",
+      "audibility and BGM masking on user devices",
+      "user aesthetic approval"
+    ],
+    "check_count": 45,
+    "check_failures": 0,
+    "screen_scope": "720x1280 logical rendering; additional 360x640 window requested run also passes 45, viewport rendering stays720x1280. Not a device/DPR acceptance claim.",
+    "candidate_pck_sha256": "b1ee2448b727488702c7f83cb00232160104e6c2e2cc6d09ca3d63c93af3b288"
+  },
+  "non_scope": [
+    "No Home/collection/photo/wardrobe code changes",
+    "No deployed site changes",
+    "No N17 deferred settlement restored"
+  ]
+}

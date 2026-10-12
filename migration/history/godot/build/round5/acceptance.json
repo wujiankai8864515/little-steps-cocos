@@ -1,0 +1,187 @@
+{
+  "round": 5,
+  "status": "IMPLEMENTED_CANDIDATE_INTEGRATION_IN_PROGRESS",
+  "source_review": "Recovered editable framework/games/build baseline; product source is now being changed under explicit user authorization. Original historical Git/comments/unexported art remain unavailable.",
+  "deployment_changed": false,
+  "implementation_started": true,
+  "items": [
+    {
+      "item": 1,
+      "feedback": "主角黑眼球太小，整体像小眼睛",
+      "goal": "增大符合原IP；保自然圆椭圆、小高光、阻尼追踪、不越界",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 2,
+      "subject": "花瓶与花",
+      "feedback": "花始终偏右",
+      "latest_rule": "不再追真实灯光或室外太阳。以花瓶中心为基准，在上半平面第一、二象限模拟180度虚拟太阳半圆；整个白天同步走完整段，花头和茎干协调转向弯曲，早中晚左右明显，根固定。",
+      "clarification": "最终对象为花瓶，不是主角；180度是目标轨迹，不是整株硬转或翻根。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 3,
+      "subject": "旅行背包邀请选择气泡",
+      "feedback": "背包好了，要去旅行吗？气泡内部内容偏右未居中",
+      "latest_rule": "以气泡主体内区居中；检查文字/选项容器padding、锚点、自适应尺寸、尾部占宽；覆盖长短文案、换行及手机宽度。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 4,
+      "subject": "背包本体与肩带视角/穿戴遮挡",
+      "latest_rule": "尽量1:1贴合认可产品图，包本体与肩带视角统一，肩带绕/穿左鳍与前后遮挡正确；不能仅再加弧线。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 5,
+      "subject": "逐日增花",
+      "latest_rule": "初始1朵，每完整昼夜60秒增1，新花可见逐渐长出但不过慢，随机左右交错，最多10朵停止新增；昼夜二态不取消逐日增长。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 6,
+      "subject": "同一个小余连续出发",
+      "latest_rule": "确认旅行后不能蹦出替换主角；沿用眼前actor，保包、告别和星星的连续位置比例姿势。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 7,
+      "subject": "纯星星告别特效及节奏",
+      "latest_rule": "特效独立透明纯星星，无鱼像素；放慢可读，叠原actor连续出发，和#6分开验收。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 8,
+      "subject": "简洁旅行查看页替代格漫",
+      "latest_rule": "地图整体布局不变，以线路前进呈现10秒一阶段、10阶段、2–3事件。已到奇遇为可点光点/标记；不点继续走，全部未选留至总体终点由效用AI统一处理并形成自动日志。点击已到光点在地图原页开小弹板；选择期间暂停线路，选完续；取消未选则关闭面板、恢复线路，该事件继续待选并留待终点AI。地图不开也照常推进，实际时间扣除选择暂停。",
+      "explicitly_superseded": [
+        "旧多页/分格旅行漫画",
+        "旧事件出现10秒后AI代选",
+        "旧全屏奇遇",
+        "旧进入事件后永久玩家所有权",
+        "旧选择期间线路持续推进",
+        "旧末格永久未决阻止归来"
+      ],
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 9,
+      "subject": "收获icon和黄色虚影",
+      "latest_rule": "归来开包留在主页面：包中物品伴星星彩光依次弹出，在包上方持续悬浮；单件点击沿贝塞尔曲线飞入百宝箱，未点击继续浮。所有icon统一合理显示大小、保比例、不重叠；不打开白面板/槽格、不弹详情、不误触再次旅行；收齐才恢复待出发包。先出图确认，统一审完再改。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 10,
+      "subject": "提示文字清晰度与风格",
+      "latest_rule": "燃香“点一点燃香”与日记等提示提高明亮清晰度和长句可读性，参考旧功德艺术字候选；语音候选名不清不猜。独立于薄金微芒+N，覆盖此前燃香复用普通功德字样。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 11,
+      "subject": "三角纸牌垫中央",
+      "latest_rule": "旅行中纸牌准确位于坐垫中心，透视/接地影正确，地图在旁不挤占中心；先示意图与流转确认。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 12,
+      "subject": "地图右下定位",
+      "latest_rule": "地图移到当前日记本位置的右下角；与纸牌垫中心同步并考虑并存不重叠。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 13,
+      "subject": "满包前景与主角前方",
+      "latest_rule": "归来满包移坐垫正中、主角身前前景，接地不挡脸，不与碗重叠，与挂墙待出发包分开。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 14,
+      "subject": "全场顶层拖拽",
+      "latest_rule": "拖起小余及附属件高于包/日记/牌/地图和后来新增物件，统一拖拽载体，松手还原层级与固定位置，不留遮罩吞输入。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 15,
+      "subject": "日记纸页整体布局",
+      "latest_rule": "已认可新日记图右侧②为唯一直接打开效果：书页内插图+小余第一人称情绪文字+批阅选项+“记下我的批阅”+“先合上”；不先进入左侧①阅读再进入②。图认可不是实现通过。",
+      "learning_gate": "单界面中选择反馈和最终提交要明确；按图“记下我的批阅”提交才更新AI一次，阅读/暂选/先合上不学习，不重复结算奖励。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    },
+    {
+      "item": 16,
+      "subject": "入口Q弹结束后开页",
+      "latest_rule": "地图/日记/常规道具入口点击先短促缩放Q弹，完整结束才开对应页；归还原尺寸/位置，连点不开多页；轻点和拖拽分流。灯保即时Q弹并立即短渐变亮，不等弹完。",
+      "diary_override": "点击地面日记本先真正翻开书本；翻开结束直接进入已认可右侧②阅读批阅界面，不只缩放，不显示①再加一次点击。地图/其他入口仍短促Q弹结束后开页；灯即时渐亮例外不变。",
+      "implemented": true,
+      "deployed": false,
+      "implementation_status": "CANDIDATE_IMPLEMENTED",
+      "user_runtime_acceptance": "NOT_CLAIMED",
+      "joint_validation": "PENDING_SAME_COMMIT_BUILD"
+    }
+  ],
+  "travel_visual_gate": "先图后改的旧边界已被用户明确开始实施覆盖；已确认母版继续遵守。实现候选不等于用户运行画面验收。",
+  "implementation_gate": "Authorized and active; no deployment performed from this working tree.",
+  "implementation_authorization": "2026-10-06 05:59:10 UTC，用户：开始实施啊；2026-10-06 06:19:36 UTC，用户：继续推进",
+  "source_baseline": "20d5e5e041825ad0d47ab240b295a8471baf84a6",
+  "commit_binding": "This source file is bound by its containing Git commit; final build and joint validation hashes are reported separately to avoid a self-referential commit."
+}

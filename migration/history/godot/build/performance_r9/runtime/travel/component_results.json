@@ -1,0 +1,48 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "48 running/paused/release/recovery/time projections and full snapshot API equal frozen source",
+      "pass": true
+    },
+    {
+      "check": "route reads and returned-dictionary mutation never mutate model data",
+      "pass": true
+    },
+    {
+      "check": "bell and encounter PCM bytes exactly match original synthesis",
+      "pass": true
+    },
+    {
+      "check": "30 warm opens reuse same two immutable PCM resources",
+      "pass": true
+    },
+    {
+      "check": "new configuration rebuilds correct bytes with bounded two-entry cache",
+      "pass": true
+    },
+    {
+      "check": "never-opened hidden page disables descendants",
+      "pass": true
+    },
+    {
+      "check": "comic opens with scene and processing active",
+      "pass": true
+    },
+    {
+      "check": "dismiss stops all inherited page work and releases scene",
+      "pass": true
+    },
+    {
+      "check": "dismiss releases audio players while bounded PCM remains reusable",
+      "pass": true
+    },
+    {
+      "check": "warm reopen restores page and identical shared audio",
+      "pass": true
+    }
+  ],
+  "pcm_cache_limit": 2,
+  "production_pcm_bytes": 157878,
+  "scope": "Explicit source-overlay component candidate; headless state/PCM/lifecycle equivalence, not nativeGL or Web performance"
+}

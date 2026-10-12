@@ -1,0 +1,91 @@
+{
+  "selected_candidate": "03",
+  "source_board": "Home文字_10款对比.png",
+  "pixel_format": "RGBA8",
+  "alpha_mode": "straight",
+  "texture_filter": "linear",
+  "mipmaps": true,
+  "notes": [
+    "Do not stretch text to match a rectangle; preserve aspect ratio.",
+    "Use the alpha128 rect as visible layout bounds, with at least 4 source pixels extra padding if using AtlasTexture.",
+    "The original files remain unchanged imagegen outputs.",
+    "Target size estimates are based on the supplied 782px-wide Home crop; actual Godot UI verification required.",
+    "Do not change global fonts or other hints."
+  ],
+  "entries": [
+    {
+      "id": "home_incense_03",
+      "file": "home_incense_03.png",
+      "text": "点击燃香",
+      "image_size": [
+        2172,
+        724
+      ],
+      "alpha_nonzero_bbox_ltrb": [
+        76,
+        89,
+        2108,
+        684
+      ],
+      "visible_alpha128_bbox_ltrb": [
+        79,
+        95,
+        2105,
+        638
+      ],
+      "visible_size": [
+        2026,
+        543
+      ],
+      "visible_center_px": [
+        1092.0,
+        366.5
+      ],
+      "pivot_normalized": [
+        0.5027624309392266,
+        0.5062154696132597
+      ],
+      "baseline_y_px": 638,
+      "recommended_visible_width_px": 142,
+      "recommended_visible_height_px": 38.06,
+      "sha256": "c16a4f245eb5ca7a50bd9bccb68c79afec2251b192428749b340b7008f257626"
+    },
+    {
+      "id": "home_diary_03",
+      "file": "home_diary_03.png",
+      "text": "翻翻我的日记",
+      "image_size": [
+        2172,
+        724
+      ],
+      "alpha_nonzero_bbox_ltrb": [
+        38,
+        164,
+        2153,
+        566
+      ],
+      "visible_alpha128_bbox_ltrb": [
+        42,
+        169,
+        2146,
+        563
+      ],
+      "visible_size": [
+        2104,
+        394
+      ],
+      "visible_center_px": [
+        1094.0,
+        366.0
+      ],
+      "pivot_normalized": [
+        0.503683241252302,
+        0.505524861878453
+      ],
+      "baseline_y_px": 563,
+      "recommended_visible_width_px": 210,
+      "recommended_visible_height_px": 39.33,
+      "sha256": "b3451e9f2fd1fc2bbd1bd74dfbe1426ed26e3064f994759121817b788bc40160"
+    }
+  ]
+}

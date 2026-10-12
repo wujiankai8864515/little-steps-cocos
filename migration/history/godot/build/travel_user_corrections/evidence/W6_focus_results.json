@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "check": "W6 visible field uses sole live page clock",
+      "pass": true
+    },
+    {
+      "check": "W6 real focus-loss notifications dismiss page and stop field",
+      "pass": true
+    },
+    {
+      "check": "W6 focus suspension cannot accumulate trajectory phase",
+      "pass": true
+    },
+    {
+      "check": "W6 focus return never silently reopens old field",
+      "pass": true
+    },
+    {
+      "check": "W6 explicit reopen starts from same lifecycle phase",
+      "pass": true
+    },
+    {
+      "check": "W6 resumed frame advances once without duplicate delta",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "scope": "Official4.5.2 source candidate, real focus propagation and reopen lifecycle; no rendering claim"
+}
