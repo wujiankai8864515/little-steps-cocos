@@ -1,0 +1,74 @@
+{
+  "item": "M20.04",
+  "candidate": "wechat-loading-isolated-v5",
+  "implementationCommit": "a4a472973ed8c46726b9367f33c7901241bb513f",
+  "frozenSourceCommit": "980b4fb88105d5837534f1d821766d60aa800189",
+  "sourceMode": "latest saved local working copy; includes unrelated local PhotoCollection/plugin metadata changes, which are not included in this task commit",
+  "runtimeInputsMatchCurrentSavedSources": true,
+  "devtools": "Stable 2.02.2608080 / SDK 3.17.3",
+  "validation": {
+    "automaticRegression": {
+      "game": 272,
+      "packaging": 28,
+      "allPassed": true,
+      "typescriptNoEmit": "passed"
+    },
+    "packaging": {
+      "allChecks": true,
+      "mainBytes": 1118016,
+      "totalLocalBytes": 22160669,
+      "homeDeferredBytes": 11595639,
+      "duplicateNativeExtraBytes": 0
+    },
+    "observedConsoleOrder": [
+      "COMPLETE_LOADING_FIRST_DRAW",
+      "source catalog ready",
+      "PAGE_READY LOGIN",
+      "PAGE_READY COMIC",
+      "PAGE_READY HOME",
+      "PAGE_READY PHOTO"
+    ],
+    "loginState": {
+      "loadingDisposed": true,
+      "pageActive": true,
+      "loadedGamePackages": [
+        "framework_code",
+        "runtime_data",
+        "gameplay_code"
+      ],
+      "homePhotoWardrobeTravelNotLoaded": true
+    },
+    "homeState": {
+      "loadedOptionalAmongHomePhotoWardrobeTravel": [
+        "home"
+      ],
+      "hapticSwitchRendered": "震动：开"
+    },
+    "flowMethod": "Login -> Comic -> Home -> Photo callbacks invoked in the DevTools gameContext through the normal application paths. Native automation clicks did not prove canvas touch input; this is callback/resource/render validation, not touch or physical acceptance."
+  },
+  "diagnosticErrors": [
+    {
+      "context": "top",
+      "error": "System is not defined",
+      "cause": "Read-only inspection expression entered in the wrong DevTools context; not game startup code."
+    },
+    {
+      "context": "gameContext",
+      "error": "Cannot read properties of undefined (reading map)",
+      "cause": "Read-only inspection assumed bundles.array; corrected to assetManager.getBundle(name). Not game startup code."
+    }
+  ],
+  "observedWarnings": [
+    "SDK HarmonyOS compatibility notice",
+    "7 x GL_INVALID_VALUE: The texture is a non-power-of-two texture.",
+    "7 x GL_INVALID_OPERATION: Texture level does not exist."
+  ],
+  "pending": [
+    "Physical cold first-screen latency and haptic feel",
+    "Actual touch/cancel/background input acceptance",
+    "ASTC image quality and device memory measurement; disabled in this build",
+    "Home texture/mipmap WebGL warnings: origin and repair not covered by this Loading change",
+    "Full product parity and final visual/audio acceptance"
+  ],
+  "status": "local development candidate; not release or physical device acceptance"
+}

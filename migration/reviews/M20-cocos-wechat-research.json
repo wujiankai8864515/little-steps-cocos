@@ -1,0 +1,63 @@
+{
+  "item": "M20.03",
+  "creator": "3.8.8",
+  "basis": "Installed engine source, current game/channel configuration, actual generated candidates, official manuals and official WeChat API typings.",
+  "sources": {
+    "bundle": "https://docs.cocos.com/creator/3.8/manual/zh/asset/bundle.html",
+    "plugin": "https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/wechatgame-plugin.html",
+    "compression": "https://docs.cocos.com/creator/3.8/manual/zh/asset/compress-texture.html",
+    "dynamicAtlas": "https://docs.cocos.com/creator/3.8/manual/zh/advanced-topics/dynamic-atlas.html",
+    "wechatTypes": "https://github.com/wechat-miniprogram/minigame-api-typings/blob/master/types/wx/lib.wx.api.d.ts",
+    "ios": "https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/ios/optimize.html"
+  },
+  "findings": [
+    {
+      "topic": "分包与预加载",
+      "current": "Cocos AssetManager loads configured native WeChat bundles; GameAssets owns dependency ordering and caches bundle promises. Home is requested on the final comic enter action; optional page assets are loaded on demand.",
+      "correction": "Cocos does adapt native package loading; it does not decide the gameplay prefetch moment automatically. loadBundle loads package code/manifest, not every asset. A separate native API stack is not required for our existing flow.",
+      "action": "Keep Cocos loading; defer framework/data/game code until the complete Loading first draw. All page code currently shares the deferred gameplay_code package, while optional page assets remain separate."
+    },
+    {
+      "topic": "内存回收",
+      "current": "Page scopes, decRef/release, parked renderers and hibernated render textures already exist.",
+      "correction": "Do not list existing cleanup as a missing WeChat capability. onMemoryWarning would add a trigger, not replace these ownership rules.",
+      "action": "No new warning hook in this change."
+    },
+    {
+      "topic": "帧率",
+      "current": "Installed game.ts defaults _frameRate to 60 and the current settings/application contain no override.",
+      "correction": "Configured target is 60 fps; actual device fps has not been measured.",
+      "action": "No frame-rate policy change."
+    },
+    {
+      "topic": "音频",
+      "current": "Installed pal/audio/minigame/player-minigame.js uses minigame.createInnerAudioContext() without options. pal/utils.js third argument true enables asynchronous event-polyfill callbacks; it does not select WebAudio. Long music is already mono 48 kbps streaming and short effects are mono PCM.",
+      "correction": "Cocos handles platform playback, but it does not automatically set useWebAudioImplement for our effects.",
+      "action": "Do not globally change the driver without a latency/memory test; current behavior retained."
+    },
+    {
+      "topic": "引擎分离",
+      "current": "separateEngine is already enabled with authorized CocosCreatorV3 3.8.8 provider wx0446ba2621dda60a.",
+      "correction": "Shared engine cache helps repeat launches; first-use engine initialization still precedes a real Cocos frame.",
+      "action": "Retain plugin and module trimming, remove Cocos splash and crude alternate progress UI."
+    },
+    {
+      "topic": "ASTC",
+      "current": "PNG compatibility build; Creator bundled astcenc tested three actual wardrobe/photo/travel atlases with 6x6 medium.",
+      "result": "RGBA texture storage 22,824,044 -> ASTC 2,542,560 bytes (about 89% lower). Keeping PNG fallback adds 2,542,608 bytes of ASTC data.",
+      "correction": "This estimates texture-format storage, not measured device memory, frame rate or approved image quality. DevTools simulator does not support ASTC.",
+      "action": "Not enabled in this candidate. Selective device trial on these large atlases is the supported next step; do not duplicate every texture or compress the tiny procedural Loading."
+    },
+    {
+      "topic": "首帧上报",
+      "correction": "Platform cannot infer when our complete page is ready; semantic first-frame reporting needs our hook and is instrumentation.",
+      "action": "Deferred per user. Local diagnostic COMPLETE_LOADING_FIRST_DRAW is a console milestone only, no network report or analytics."
+    },
+    {
+      "topic": "震动",
+      "action": "Persistent off switch, light/heavy short and long channel feedback implemented, with foreground ownership and rate limits. Unsupported devices fail silently. No backend capability or user permission is needed.",
+      "pending": "Physical feel and exact device support."
+    }
+  ],
+  "validationBoundary": "Build/test checks and DevTools validation recorded separately. No physical device performance or texture quality claim."
+}

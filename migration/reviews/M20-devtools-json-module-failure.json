@@ -1,0 +1,20 @@
+{
+  "item": "M20.02",
+  "candidate": "wechat-loading-isolated-v4",
+  "status": "devtools_startup_failed_fixed_in_v5_pending",
+  "evidence": {
+    "platform": "WeChat DevTools Stable 2.02.2608080",
+    "sdk": "3.17.3",
+    "console": [
+      "[LittleSteps] COMPLETE_LOADING_FIRST_DRAW",
+      "[LittleSteps] game startup failed Error: module 'runtime-framework.json.js' is not defined, require args is './runtime-framework.json'"
+    ]
+  },
+  "rootCause": "WeChat require does not implement Node JSON loading; the generated deferred framework path manifest must be a JavaScript module.",
+  "fix": "Emit runtime-framework.js with module.exports and require that JS after the complete Cocos loading first draw.",
+  "regression": "Channel output test now checks JS module export and absence of JSON require manifest.",
+  "pending": [
+    "v5 WeChat simulator startup",
+    "physical haptic feel and startup timing"
+  ]
+}
