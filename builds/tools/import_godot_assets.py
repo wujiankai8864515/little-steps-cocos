@@ -305,7 +305,9 @@ def main():
             content = (max(0, l - 3), max(0, t - 3), min(w, r + 3), min(h, b + 3))
             trimmed = image.crop(content)
             destination.write_bytes(exact_png(trimmed))
-            reopened = Image.open(destination).convert('RGBA')
+            encoded_image = Image.open(destination)
+            has_alpha = 'A' in encoded_image.getbands()
+            reopened = encoded_image.convert('RGBA')
             assert reopened.tobytes() == trimmed.tobytes(), f'Pixel transfer changed: {resource}'
             sw, sh = trimmed.size
             image_uuid = uid(str(destination.relative_to(ASSETS)))
@@ -314,7 +316,7 @@ def main():
             if model:
                 # doll_source_mask.gdshaderinc explicitly uses nearest data sampling.
                 texture_meta['userData']['minfilter']=texture_meta['userData']['magfilter']='nearest'
-            write_json(Path(str(destination) + '.meta'), {'ver': '1.0.27', 'importer': 'image', 'imported': True, 'uuid': image_uuid, 'files': ['.json', '.png'], 'subMetas': {'6c48a': texture_meta}, 'userData': {'type': 'texture', 'redirect': texture_uuid, 'hasAlpha': True, 'fixAlphaTransparencyArtifacts': False}})
+            write_json(Path(str(destination) + '.meta'), {'ver': '1.0.27', 'importer': 'image', 'imported': True, 'uuid': image_uuid, 'files': ['.json', '.png'], 'subMetas': {'6c48a': texture_meta}, 'userData': {'type': 'texture', 'redirect': texture_uuid, 'hasAlpha': has_alpha, 'fixAlphaTransparencyArtifacts': False}})
             # Run-length alpha rows retain the exact 8-bit source coverage, not a rectangle hit target.
             alpha = trimmed.getchannel('A').tobytes()
             runs = []

@@ -2,7 +2,7 @@
   "schema": 1,
   "item": "M09.09",
   "sourceCommit": "5102d078a54218406e33ff094bede63a1ce9e259",
-  "status": "source_pixels_verified_runtime_pending",
+  "status": "Creator_v6_preserves98_native_assets_hasAlpha_metadata_repaired_rebuild_pending",
   "images": [
     {
       "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/comic_paper_v2.png",
@@ -195,9 +195,9 @@
     "Decoded GPU reservation unchanged"
   ],
   "pending": [
-    "Frozen Creator import/export and browser rendering",
-    "Home 19MB gate still requires output audit",
-    "WeChat device validation"
+    "Fresh remote-frozen Creator rebuild after hasAlpha correction",
+    "Browser rendering and WeChat device validation",
+    "Home closure22,948,245bytes remains above19MB"
   ],
   "homeClosureSourceSavings": 452994,
   "evidence": [
@@ -205,5 +205,6 @@
     "builds/reviews/M09-opaque-png-alpha-recheck.json",
     "builds/reviews/M09-opaque-png-tests-v1.log"
   ],
-  "toolCorrection": "Alpha verifier used a hard-coded historical output path. Rerun result moved to unique M09-opaque-png-alpha-recheck.json, historical v3 restored byte-for-byte from Git; verifier now defaults to stdout and optional --out rejects existing files."
+  "toolCorrection": "Alpha verifier used a hard-coded historical output path. Rerun result moved to unique M09-opaque-png-alpha-recheck.json, historical v3 restored byte-for-byte from Git; verifier now defaults to stdout and optional --out rejects existing files.",
+  "followup": "builds/reviews/M09-opaque-png-metadata-repair.json"
 }

@@ -1,0 +1,120 @@
+{
+  "item": "M09.09b",
+  "status": "metadata_repaired_rebuild_pending",
+  "sourceCommit": "6f942fd85cbd6ee186791c14e7d27746ad78fb12",
+  "trigger": "v6 Creator build exit36, but audit correctly rejected14 image metadata changes in addition to Home budget failure",
+  "rootCause": "RGB PNG format was updated while generated image metadata still declared hasAlpha:true. Creator corrected it during import.",
+  "fix": "Match authoring metadata to observed official Creator import, and derive hasAlpha from actual encoded PNG in both importer and compactor. No UUID, texture filtering, premultiplication or mipmap changes.",
+  "changes": [
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/comic/entry/assets/comic/comic_paper_v2.png.meta",
+      "beforeSHA256": "dcf1f506046dcf47a44302af515ec2b0b1195881d3d1d154db3978d3258ca3c6",
+      "afterSHA256": "09fc68b257f62fce8c3cc252edc1bf3c64900aa528b98a1461de249ac2626fe8",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/darkroom/darkroom/assets/round3/doll_source_display_mask.png.meta",
+      "beforeSHA256": "c81a3165d0921f375d863c6964e8323fc3d17d00cce1ddcff4cf9604aa13b12f",
+      "afterSHA256": "d151d305ce658e10b4f03a6b205e639751b3ca598c9180f1d551e00d40802650",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_bleed_no_plants.png.meta",
+      "beforeSHA256": "45f90d4ead07ba79903551a9e42f99f7b2c64c8e6f28957cba2f584f71109d66",
+      "afterSHA256": "689d268ae2bd2029a14b9c4b76f19afbb207640902e017731de0d7afb601ac75",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/assets/round2/home_neutral_no_plants.png.meta",
+      "beforeSHA256": "6b1c8f261c5d69c4ea37d6d8f81a9b542602b95d8a4377fb2d8b689825718777",
+      "afterSHA256": "b6fb79184e833ebadbb55b5c5b52ecec09c87bad9e5372787a0d6c2acd04d79d",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/home/travel/assets/home_tent_pixels.png.meta",
+      "beforeSHA256": "133a8b3e061de3bcded8f417eb541b815e2bb0bce99daf59f09d37770eab8fde",
+      "afterSHA256": "140ddcc09074930c1612d764f36866173667c74d53d1cde7d5616cf3ce157535",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/loading/entry/assets/backgrounds/loading_clean_bleed_720x1600.png.meta",
+      "beforeSHA256": "06e67f09f7a999224ad54a5631bcf4ac14902c899bf131faa6b5952fb763c784",
+      "afterSHA256": "69dd4d2474217c3bddd1cf84d4791733e57589d19b4ceb944522b3e2c11c302f",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/login/entry/assets/backgrounds/login_clean_bleed_720x1600.png.meta",
+      "beforeSHA256": "d573b12fe5ebf357673962152d0c861071a12f60c3ba511d7eaeb47ea6f4ea86",
+      "afterSHA256": "5bda7b3c0da5fe596afb1f1e0237ea57c2dfc0563d0ebeb2a4ed36b339cb50f6",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/photo_visual/photo/assets/photo_wall_neutral_plate_v1.png.meta",
+      "beforeSHA256": "16197b3f96fc5cfe7db443e58eb74dfc1ad9828ac89bd5d1dd1cd5680e8ebed1",
+      "afterSHA256": "3a21ad10089c32d6ea9fa2c917169a0fe7ac4cdf296724574d726370591b3f85",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/shared_room_visual/assets/home_neutral.png.meta",
+      "beforeSHA256": "0054b10417ea80dc04953e89ddd6cc16fd70c5224933db2bb155eebde8d6eb07",
+      "afterSHA256": "48c9debfa58de334871de49fc8b20114e2a7cf1e73f595ecdc24fd33f4def27a",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_plate_v5.png.meta",
+      "beforeSHA256": "dbf530dbaff1e4ba424a3d79d6a9b607369b9dd00fd224c7b394a4d8d6405eed",
+      "afterSHA256": "567c669dd68a751f45aefca644079d94e968294622228cc255aa145c5973c09a",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_diary_reference_v5.png.meta",
+      "beforeSHA256": "7f2b1d88654248e5408903680d6efdb6b6a32234338ddad33f01d20340e8100b",
+      "afterSHA256": "afb50e2337150a1656efd9dabebd8337aa6675b2ee14822d8f0f7ab5d538f8b2",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_map_plate_v5.png.meta",
+      "beforeSHA256": "eca2b2567b71fe06fdba33ec0ef52b1d86bbc8a77e406aa682174a33adcc1b74",
+      "afterSHA256": "8814cc993ee3a49b1817c813db69408334aa9e162ade187dcd05777dc492807d",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_paper_v1.png.meta",
+      "beforeSHA256": "4dccce1e323e48fe064cf6ca05f35310171960fdbb261d0cf59f30e146a034fc",
+      "afterSHA256": "037b864d9e786bd1d2f7abc7653850728664e8767ea6d94eb01125386173fa5d",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    },
+    {
+      "path": "games/xiaoyu-cocos/assets/bundles/travel_visual/travel/assets/travel_scenery_v1.png.meta",
+      "beforeSHA256": "c1b76ec5448ff05d60dc3260918d0ea91deedc1c69142b1d5aca0423608e0323",
+      "afterSHA256": "23dc17891ea93edf69d02fb52075a0bb03c9ecc3ef64ee3d2a4ade0cd79da104",
+      "onlySemanticChange": "userData.hasAlpha:true->false",
+      "matchesCreatorImport": true
+    }
+  ],
+  "v6": {
+    "homeDeferredBytes": 22948245,
+    "excessBytes": 3948245,
+    "mainBytes": 3056214,
+    "allNativeAssetsPreserved": 98,
+    "outputBytesSaved": 2817308
+  },
+  "pending": [
+    "Fresh remote-frozen Creator rebuild",
+    "Runtime visual and WeChat device acceptance",
+    "Home19MB gate still fails"
+  ]
+}

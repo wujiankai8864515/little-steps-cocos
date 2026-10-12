@@ -7,6 +7,7 @@ not encoded PNG bytes, are the fidelity invariant for this declared change.
 """
 import argparse
 import hashlib
+import io
 import json
 import subprocess
 from pathlib import Path
@@ -37,17 +38,22 @@ def compact(apply, record):
             encoded = exact_png(rgba)
             if len(encoded) >= len(original):
                 continue
-            replacements.append((path, encoded))
+            meta_path = path.with_suffix('.png.meta')
+            old_meta = meta_path.read_bytes()
+            meta = json.loads(old_meta)
+            meta['userData']['hasAlpha'] = 'A' in Image.open(io.BytesIO(encoded)).getbands()
+            new_meta = (json.dumps(meta, ensure_ascii=False, separators=(',', ':')) + '\n').encode()
+            replacements.extend(((path, encoded), (meta_path, new_meta)))
             rows.append({'path': path.relative_to(ROOT).as_posix(), 'size': list(rgba.size),
                          'beforeBytes': len(original), 'afterBytes': len(encoded),
                          'beforeSHA256': sha(original), 'afterSHA256': sha(encoded),
                          'decodedRGBA256': sha(rgba.tobytes()),
-                         'metadataSHA256': sha(path.with_suffix('.png.meta').read_bytes())})
+                         'metadataBeforeSHA256': sha(old_meta), 'metadataSHA256': sha(new_meta)})
     result = {'schema': 1, 'item': 'M09.09',
               'sourceCommit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'status': 'source_pixels_verified_runtime_pending' if apply else 'inspection_only',
               'images': rows, 'savedBytes': sum(r['beforeBytes'] - r['afterBytes'] for r in rows),
-              'invariants': ['RGBA pixel bytes and dimensions exact', 'No texture metadata, UUID, crop/UV or mipmap changes',
+              'invariants': ['RGBA pixel bytes and dimensions exact', 'Only hasAlpha metadata follows encoded channel format; UUID, crop/UV, sampling and mipmaps unchanged',
                              'No lossy encoding, rescaling or new image format', 'Decoded GPU reservation unchanged'],
               'pending': ['Frozen Creator import/export and browser rendering', 'Home 19MB gate still requires output audit', 'WeChat device validation']}
     if apply:
