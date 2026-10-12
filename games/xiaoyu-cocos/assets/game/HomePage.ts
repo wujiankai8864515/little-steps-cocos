@@ -28,6 +28,7 @@ import { HomeDepartureVisual } from './HomeDepartureVisual';
 import { DEPARTURE_FINISH_AT } from './DepartureMotion';
 import { homeLighting } from './LightingSnapshot';
 import { PageBackground } from './PageBackground';
+import { haptics } from './Haptics';
 
 let roomSerial=0;
 
@@ -169,7 +170,7 @@ export class HomePage {
         const escape=(e:EventKeyboard)=>{if(e.keyCode===KeyCode.ESCAPE){if(this.photoInteractions?.busy){this.photoInteractions.cancelPointer();return;}if(this.departure||this.travelLoading||this.travelInteractions?.busy||this.note.ownsInput||this.bag.state!=='IDLE'||this.props.state!=='IDLE'||this.props.drinking)return;this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();report('escape');}};input.on(Input.EventType.KEY_DOWN,escape);
         scope.own(()=>{this.active=false;this.pointerBinding.dispose();this.bag.cancel(true);this.props.cancel();this.fish.cancel(true);input.off(Input.EventType.KEY_DOWN,escape);});
         this.hud.onOpen=()=>{this.pointerBinding.cancel();this.bag.cancel(true);this.props.cancel();this.note.dismiss();this.fish.cancel(true);this.backpack.restore(true);this.incense.cancel();this.incense.dismiss();this.rig.behavior.director.resumeAfterPlayer();this.knock.stop();};
-        this.rig.onContact=()=>{if(!this.active||this.travelAway)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){this.hud.merit.setValue(this.merit.count);this.onMeritChanged(this.merit.count);(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
+        this.rig.onContact=()=>{if(!this.active||this.travelAway)return;if(this.merit.award(this.rig.behavior.contacts,this.incense.state.merit())){haptics().pulse('light');this.hud.merit.setValue(this.merit.count);this.onMeritChanged(this.merit.count);(globalThis as any).__LITTLE_STEPS_TRACE__ === true && console.info('[LittleSteps] merit contact '+JSON.stringify(this.merit.snapshot()));}if(gestureSeen()){this.knock.assign(assets.audio('res://assets/wood_knock.wav'));this.knock.play();}};
         layers.push({z:100,order:1003,node:this.meritArt.root});
         layers.push({z:90,order:1004,node:this.feedback.root},{z:84,order:1008,node:this.propVisuals.marks.root});
         layers.push({z:22,order:1005,node:this.incense.root},{z:24,order:1006,node:this.incense.visual},{z:24,order:1007,node:this.incense.hint});

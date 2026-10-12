@@ -1,0 +1,27 @@
+✔ Repeated confirmation owns one load and one durable trip; cancelling before ready rejects late success (0.933125ms)
+✔ A failed load may retry; a late result from an older generation cannot hide or fail the new panel (3.2125ms)
+✔ Write failure leaves no trip or animation, releases prepared art and restores the offer; retry commits once (2.642584ms)
+✔ Foreground recovery uses wall-clock state without replaying departure; parent destruction prevents late entry (3.304833ms)
+✔ A post-commit visual failure preserves the saved trip and releases art; it cannot silently replay the farewell (0.885041ms)
+✔ Disabled input cannot request resources or change a saved trip (0.091458ms)
+✔ Already-owned loading stays idempotent after the panel blocks Home input; idle cancellation does not repeat restoration (0.118375ms)
+✔ A declined visual is reported after commit; thrown visual cleanup still releases the resource scope and synchronizes (1.752041ms)
+✔ Actual Home bridge keeps first-session merit, marks the synchronous commit as departing and observes later merit (1.544875ms)
+✔ Existing saved travel restores without a farewell and terminal return/notice happens once even across repeated foreground events (1.835708ms)
+✔ Home bridge defers persistence warnings until local input/note is free and cancels in-flight art on app hide (0.361041ms)
+✔ Home does not conceal or latch the actor during synchronous departure commit, but a restored away trip hides actor and bag (0.195833ms)
+✔ All feedback types respect the persistent user switch and background suspension (1.173792ms)
+✔ Repeated callbacks cannot turn into a continuous vibration and unavailable devices are harmless (0.212959ms)
+✔ WeChat channel dispatches light/heavy short feedback and long feedback without requesting permission (1.796833ms)
+✔ Settings ignores moved contacts, waits for the full bounce, and cannot reopen after cancellation (1.168625ms)
+✔ Merit is tied to unique monotonic contacts, survives a pose reset, and expires after the authored full elapsed time (0.4685ms)
+✔ Merit one keeps its approved bitmap while arbitrary rewards remain centered and fit the original width (2.066625ms)
+✔ Credits retain every original artist, license paragraph and URL without text substitutions (6.316583ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 426.501459

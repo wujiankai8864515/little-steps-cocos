@@ -29,6 +29,7 @@ import { LoadingPage } from './LoadingPage';
 import { LoginPage } from './LoginPage';
 import { box } from './Viewport';
 import { nodeAt } from './Visual';
+import { bindHaptics, haptics } from './Haptics';
 
 type Page = LoadingPage | LoginPage | ComicPage | HomePage | DarkroomPage | TravelJournalPage | TravelMapPage | TravelCollectionPage | PhotoPage | WardrobePage;
 type Prepared<T extends Page> = {page:T;scope:Scope};
@@ -65,6 +66,7 @@ export class Application {
     private darkroomError='';private routeWaitAge=0;
     private transitioning:Page;
     constructor(canvas: Node) {
+        bindHaptics(this.scope);
         this.canvas=canvas;const size = canvas.getComponent(UITransform).contentSize;
         this.height = size.height;
         this.root = nodeAt(canvas, 'LittleSteps', -size.width / 2, -size.height / 2, size.width, size.height);
@@ -169,6 +171,7 @@ export class Application {
             if(id!=='original')await this.assets.acquireResources([OUTFIT_TEXTURE],lease);
             if(!current()||!home.scope.active||!this.skins.equip(id))return false;
             applyOutfit(home.page.rig,this.assets,this.skins.worn);
+            haptics().pulse('light');
             const previous=this.outfitScope;this.outfitScope=id==='original'?null:lease;previous?.dispose();return true;
         }catch(_){return false;}
         finally{if(this.outfitScope!==lease)lease.dispose();}
@@ -205,7 +208,7 @@ export class Application {
             showLoading:()=>{home.setTravelLoading(true);loading.show();},
             hideLoading:()=>{loading.hide();home.setTravelLoading(false);},
             loadingFailed:error=>{loading.failure();console.error('[LittleSteps] departure resources failed',error);},
-            restoreOffer:()=>home.restoreTravelOffer(),begin:(scope,text)=>{const started=home.beginDeparture(scope,text);if(started)travelProps.beginDeparture();return started;},finish:()=>{home.finishDeparture();travelProps.finishDeparture();},
+            restoreOffer:()=>home.restoreTravelOffer(),begin:(scope,text)=>{const started=home.beginDeparture(scope,text);if(started){travelProps.beginDeparture();haptics().pulse('heavy');}return started;},finish:()=>{home.finishDeparture();travelProps.finishDeparture();},
             info:text=>home.note.info(text,'res://travel/assets/travel_ui.ttf'),
             openExisting:mode=>this.openTravelPage(mode),
             visualFailed:error=>console.error('[LittleSteps] saved trip retained after departure visual failure',error),

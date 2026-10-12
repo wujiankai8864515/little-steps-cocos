@@ -17,6 +17,7 @@ import { DarkroomHUD } from './DarkroomHUD';
 import { DarkroomBubble } from './DarkroomBubble';
 import { inside, LAMP_RECT, NEEDLE_RECT, SLIPPER_RECT, ResponsiveLamp } from './DarkroomVisualRules';
 import { nodeAt, picture } from './Visual';
+import { haptics } from './Haptics';
 
 // Retained gameplay has no Cocos nodes, materials, frames or textures.
 export type DarkroomRetainedState={round:DarkroomRound;lamp:ResponsiveLamp;forest:PlantForest;plumes:DarkroomPlumeState;plaqueMotion:any;shadowClock:number;replay:boolean};
@@ -88,7 +89,7 @@ export class DarkroomPage {
     private back(){if(!this.active||!this.round.inputEnabled)return;this.replay=!this.round.acceptsInput();this.round.cancel();this.bubble.dismiss();this.onBack();}
     private sync(delta:number){this.lighting.update(delta,this.round.clearTime);const scale=this.lighting.lamp.scale();this.lantern.root.setScale(.53*scale[0],.53*scale[1],1);this.lantern.sprite.color=this.lighting.color(this.lighting.lanternTint());this.doll.sync(this.lighting.tint,this.round.spawnAlpha,this.round.dissolve,this.round.dollVisible);this.tools.sync();this.plants.advance(delta);this.hud.advance();}
     advance(delta:number){if(!this.active)return;this.round.advance(delta);this.sync(delta);
-        for(const event of this.round.drainEvents()){if(event.kind==='contact')this.plumes.dark(event.at);else if(event.kind==='release')this.plumes.release(event.at);else if(event.kind==='spawn')this.plumes.spawn(event.at,event.seconds);else if(event.kind==='finished'){this.plumes.clear();this.onFinished(event);}else if(event.kind==='result')this.bubble.show(event.text,2);else if(event.kind==='ready'){this.plumes.clear();this.bubble.show(event.text,3);}else if(event.kind==='phase'&&(event.phase==='gap_1s'||event.phase==='spawn_in'))this.bubble.dismiss();if(['contact','phase','finished','ready'].indexOf(event.kind)>=0)this.report(event.kind);}
+        for(const event of this.round.drainEvents()){if(event.kind==='contact'){this.plumes.dark(event.at);haptics().pulse(event.tool==='slipper'?'heavy':'light');}else if(event.kind==='release')this.plumes.release(event.at);else if(event.kind==='spawn')this.plumes.spawn(event.at,event.seconds);else if(event.kind==='finished'){this.plumes.clear();haptics().pulse('long');this.onFinished(event);}else if(event.kind==='result')this.bubble.show(event.text,2);else if(event.kind==='ready'){this.plumes.clear();this.bubble.show(event.text,3);}else if(event.kind==='phase'&&(event.phase==='gap_1s'||event.phase==='spawn_in'))this.bubble.dismiss();if(['contact','phase','finished','ready'].indexOf(event.kind)>=0)this.report(event.kind);}
         this.plumes.advance(['clear_out','spawn_in'].indexOf(this.round.phase)>=0?Math.min(delta,1/15):delta);this.shadows.advance(delta);this.bubble.advance(delta);this.plaque.advance(delta);
     }
     resume(allowInput=true){this.active=true;this.round.active=true;this.round.inputEnabled=allowInput;this.surface.setActive(true);if(this.replay){this.round.restart();this.plumes.clear();this.replay=false;}this.sync(0);this.shadows.sync();if(this.round.phase==='ready_full')this.bubble.show(DARKROOM_READY,3);else if(this.round.phase==='clear_out'&&this.round.resultVisible)this.bubble.show(DARKROOM_RESULT,2);}
