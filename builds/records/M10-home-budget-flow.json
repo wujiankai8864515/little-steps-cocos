@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "item": "M10.04",
+  "updatedAt": "2026-10-12T00:16:00.988604+00:00",
+  "status": "gate_enforced_existing_candidate_fails",
+  "sourceContract": {
+    "path": "../little-steps/build/check_loading_contract.py",
+    "sha256": "5efdb7b9f2aa33e7dc20792a17272acd662b318ba56dd3786ab3dd995810a629",
+    "scope": "Home non-startup dependency packs; core/shared bootstrap excluded, no travel/departure page dependency"
+  },
+  "candidate": "wechat-six-pages-v5",
+  "rawDeferredBytes": 23401239,
+  "ceilingBytes": 19000000,
+  "excessBytes": 4401239,
+  "checks": {
+    "boundariesDependenciesMissingAndLocalPlacement": "3 tests passed",
+    "existingCandidateAuditExit": 1,
+    "deliveryStagingExit": 1,
+    "oldOutputRetained": true
+  },
+  "evidence": [
+    "builds/reviews/M09-home-budget-tests-v1.log",
+    "builds/reviews/M10-wechat-v5-home-budget-recheck.json",
+    "builds/reviews/M10-home-budget-stage-rejection.log"
+  ],
+  "correction": "Earlier16 passing static checks did not include this budget; v5 remains source-complete but cannot pass new packaging gate. The37.98MB full-entry debug traffic has a different scope.",
+  "pending": [
+    "Reduce actual Home closure below unchanged19MB limit",
+    "Fresh remote-frozen output verification",
+    "Actual WeChat transfer and device runtime"
+  ]
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/stage_wechat_delivery.py", line 64, in <module>
+    result = stage_delivery(args.name)
+  File "/Users/wkk/dotWorkers/little-steps-cocos/builds/tools/stage_wechat_delivery.py", line 17, in stage_delivery
+    raise ValueError('Packaging audit failed; refusing to stage a delivery')
+ValueError: Packaging audit failed; refusing to stage a delivery

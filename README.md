@@ -36,4 +36,6 @@ python3 builds/tools/create_wechat_candidate.py --name wechat-review-new --readb
 
 **v1–v4 已撤回完整性判断，不得用于交付。** M10.02 查出旧 `native` 忽略规则漏掉三张 Loading 角色图，v5 已补齐，并由新目录门禁核验。旧失败产物和记录保留。
 
-当前使用 Creator 官方测试 AppID 和回环资源地址，资源未上传。正式账号、HTTPS 资源域名、19,000,000 bytes 的 Home 首屏下载和微信真机验证仍待完成；主包体积通过不等于首屏或性能通过。
+M10.04 已按原版 `check_loading_contract.py` 补上 Home 硬门禁：统计小屋及其非启动依赖资源包，不包含引擎、登录和格漫。v5 实际为 23,401,239 bytes，超过 19,000,000 bytes，新的审核会拒绝交付暂存；旧 v5 目录保留为测试候选和历史证据。此前 16 项检查通过未覆盖此项，不代表完整打包门禁通过。
+
+当前使用 Creator 官方测试 AppID 和回环资源地址，资源未上传。正式账号、HTTPS 资源域名、Home 资源减重、实际下载和微信真机验证仍待完成；主包体积通过不等于首屏或性能通过。
