@@ -1,0 +1,27 @@
+test_only_packaging_copy_changes_and_background_and_audio_fit_policy (test_assets.PackagingAssetsTest) ... /Users/wkk/dotWorkers/little-steps-cocos/tests/builds/test_assets.py:41: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/t5/9b262zb53335xk3sp939dqtm0000gn/T/tmpk4nhapz_/stage/game/assets/bundles/home/neutral_plate.png'>
+  self.assertEqual(Image.open(payload).width, 720)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_md5_entry_preserves_generated_paths_and_initializes_before_systemjs (test_startup.EarlyLoadingTest) ... ok
+test_unknown_entry_is_rejected_without_mutation (test_startup.EarlyLoadingTest) ... ok
+test_channel_tools_templates_and_personal_settings_stay_outside_generated_project (test_wechat.WorkspaceTest) ... ok
+test_editor_caches_outputs_and_test_updates_do_not_mark_game_snapshot_stale (test_wechat.WorkspaceTest) ... ok
+test_failed_structural_audit_never_replaces_previous_project (test_wechat.WorkspaceTest) ... ok
+test_historical_output_paths_resolve_without_editing_old_manifest (test_wechat.WorkspaceTest) ... ok
+test_home_budget_follows_native_subpackages_instead_of_remote_paths (test_wechat.WorkspaceTest) ... ok
+test_incomplete_backup_never_changes_original_project (test_wechat.WorkspaceTest) ... ok
+test_latest_saved_changes_new_files_and_deleted_assets_invalidate_in_progress_build (test_wechat.WorkspaceTest) ... ok
+test_native_build_only_never_starts_a_server_or_updates_fixed_project (test_wechat.WorkspaceTest) ... ok
+test_native_refresh_clears_old_remote_resources_and_installs_subpackages (test_wechat.WorkspaceTest) ... ok
+test_new_generated_file_cannot_silently_overwrite_user_added_file (test_wechat.WorkspaceTest) ... ok
+test_real_template_mirror_survives_snapshot_and_tracks_latest_changes (test_wechat.WorkspaceTest) ... ok
+test_refresh_removes_stale_generated_files_and_keeps_private_and_user_files (test_wechat.WorkspaceTest) ... ok
+test_refuse_to_replace_real_template_directory (test_wechat.WorkspaceTest) ... ok
+test_refuse_unmanaged_output_directory (test_wechat.WorkspaceTest) ... ok
+test_startup_resources_are_checked_in_actual_packaged_bundle (test_wechat.WorkspaceTest) ... ok
+test_swap_failure_restores_package_and_cdn (test_wechat.WorkspaceTest) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.368s
+
+OK

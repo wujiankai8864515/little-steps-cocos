@@ -1,0 +1,68 @@
+{
+  "item": "M16.03",
+  "candidate": "wechat-feedback-v6",
+  "sourceCommit": "036e4874d070d2e5aaedea2eac07116efe8f27ab",
+  "status": "built-activated-device-startup-observed-user-visual-acceptance-pending",
+  "package": {
+    "rawBytes": 22215292,
+    "mainBytes": 2881223,
+    "homeClosureBytes": 9887055,
+    "duplicateNativeBytes": 0,
+    "devtoolsDisplayedCodePackageKB": 21640,
+    "mode": "native WeChat subpackages, no localhost/LAN/CDN resource dependency"
+  },
+  "enginePlugin": {
+    "name": "CocosCreatorV3",
+    "version": "3.8.8",
+    "provider": "wx0446ba2621dda60a",
+    "authorization": "WeChat UI displayed 申请通过; subsequently simulator started with 0 errors and PAGE_READY LOGIN"
+  },
+  "device": {
+    "name": "OnePlus-PJA110",
+    "platform": "Android",
+    "observedLatestV6": [
+      "PAGE_READY LOGIN",
+      "PAGE_READY COMIC"
+    ],
+    "previousV4Observed": [
+      "PAGE_READY HOME",
+      "PAGE_READY COLLECTION",
+      "PAGE_READY DARKROOM",
+      "PAGE_READY WARDROBE"
+    ],
+    "connection": "normal, actual automatic device debugging",
+    "remainingBridgeMessages": "WeChat remote debugging emitted not node js file system messages, followed by successful resource admission; retained as SDK-level diagnostic, not counted as zero errors"
+  },
+  "fixes": [
+    "Photo acquireResources recursively admits 3 background patches, deduplicates and rejects missing/cyclic dependencies before leasing",
+    "Original full Cocos loading assets included in main; no simplified progress page; useSplashScreen=false",
+    "Cloud-only departure completes at 1.9 seconds and never reveals substitute traveler; original return logic retained",
+    "Backgrounds use 720-wide sampling and <=500000 bytes where applicable; three simple plates use shared procedural colour grids and original-art patches",
+    "Music 44.1 kHz,48 kbps,mono; short effects mono PCM; canonical originals retained"
+  ],
+  "verification": {
+    "gameRegression": {
+      "passed": 266,
+      "failed": 0,
+      "log": "migration/reviews/M18-feedback-regressions-v6.log"
+    },
+    "channelTests": {
+      "passed": 19,
+      "failed": 0,
+      "log": "migration/reviews/M16-channel-tests-v6.log"
+    },
+    "creatorExitCode": 36,
+    "staticChecksPassed": true,
+    "TypeScript": "passed with --noEmit --skipLibCheck"
+  },
+  "pending": [
+    "User visual/audio quality acceptance",
+    "Latest photo first-draw and cloud-only departure physical acceptance",
+    "Measured cold launch timing; current observations do not prove startup performance"
+  ],
+  "preservedUnrelatedLocalChanges": [
+    "games/xiaoyu-cocos/assets/game/PhotoCollection.ts",
+    "games/xiaoyu-cocos/assets/plugins/travel-core.js.meta",
+    "games/xiaoyu-cocos/test/photo-wall.test.cjs"
+  ]
+}
