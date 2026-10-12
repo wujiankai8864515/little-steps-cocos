@@ -1,6 +1,8 @@
 // Cross-check the shipped JS decoder against PNG-derived byte hashes, and the
 // previous RLE query implementation against the new constant-time lookup.
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto'),cp=require('node:child_process'),assert=require('node:assert/strict');
+const args=process.argv.slice(2);assert.ok(args.length===0||(args.length===2&&args[0]==='--out'),'Usage: node verify_alpha_transport.cjs [--out NEW_REPORT.json]');
+const output=args.length?path.resolve(args[1]):null;if(output)assert.ok(!fs.existsSync(output),'Do not overwrite previous verification evidence');
 const root=path.resolve(__dirname,'../..'),assets=path.join(root,'games/xiaoyu-cocos/assets'),context=vm.createContext({console});
 vm.runInContext(fs.readFileSync(path.join(root,'engines/travel-core/dist/travel-core.js'),'utf8'),context);
 const core=context.LittleStepsCore,report=JSON.parse(fs.readFileSync(path.join(root,'builds/records/M09-alpha-transport.json'))),checks=[],decoded=new Map();
@@ -27,4 +29,4 @@ const oldInRealm=vm.runInContext('('+oldSample.toString()+')',context);
 const times={};let checksum=0;
 for(const [name,fn,index]of [['old',oldInRealm,1],['new',core.alphaSample,0]]){const start=performance.now();for(let round=0;round<10;round++)for(const q of queries)checksum+=fn(q[index],q[2],q[3]);times[name+'Ms']=performance.now()-start;}
 const result={item:'M09.08',sourceBaseline:base,decodedPlanes:decoded.size,verifiedPixels:report.pixelCount,groups:checks,exactSampleComparisons:samples,exactBoundsComparisons:bounds,microbenchmark:{...times,queriesPerMethod:queries.length*10,checksum,boundary:'Node synthetic CPU only; not browser first-draw, FPS or device acceptance'},globalExports:Object.keys(context)};
-fs.writeFileSync(path.join(root,'builds/reviews/M09-alpha-decoder-verification-v3.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+if(output)fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

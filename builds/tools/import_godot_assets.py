@@ -19,6 +19,7 @@ from pathlib import Path
 from PIL import Image
 from godot_binary import read_resource, qoa_pcm16
 from alpha_codec import encode_masks
+from png_transport import exact_png
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT.parent / 'little-steps'
@@ -303,7 +304,7 @@ def main():
             l, t, r, b = bounds
             content = (max(0, l - 3), max(0, t - 3), min(w, r + 3), min(h, b + 3))
             trimmed = image.crop(content)
-            trimmed.save(destination, format='PNG', optimize=True)
+            destination.write_bytes(exact_png(trimmed))
             reopened = Image.open(destination).convert('RGBA')
             assert reopened.tobytes() == trimmed.tobytes(), f'Pixel transfer changed: {resource}'
             sw, sh = trimmed.size
