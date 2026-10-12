@@ -2,9 +2,12 @@
 Thumbs.db
 node_modules/
 .migration-recovery/
-builds/work/
-builds/output/
-builds/.cache/
-builds/wechatgame/
-builds/cdn/
+migration/work/
+migration/output/
+migration/.cache/
+builds/*/project/
+builds/*/remote/
+builds/*/project.config.json
+builds/*/project.private.config.json
+games/xiaoyu-cocos/build-templates/
 **/__pycache__/

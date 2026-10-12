@@ -43,7 +43,7 @@ test('Large UTF8 states and prototype-named learned tags are validated by exact 
  const storage=new MemoryStorage(),store=new Store(storage),state=Model.fresh();state.manual_tags=JSON.parse('{"__proto__":1,"toString":2}');assert.equal(store.commit(state,0),true);assert.deepEqual(plain(store.load_state().manual_tags),plain(state.manual_tags));const huge=plain(state);huge.extra='雨'.repeat(Math.ceil(MAX/3));assert.equal(Model.valid(huge),true);assert.equal(store.commit(huge,1),false);assert.equal(store.error,'save_capacity');assert.equal(huge.revision,1);assert.equal(store.load_state().revision,1);
 });
 test('Durable schema1 migration retains all owned rewards and never replays them; blocked corruption refuses departures',()=>{
- const legacy=JSON.parse(fs.readFileSync(path.join(root,'builds/reviews/M07-travel-native-rows-v1.json'))).find(row=>row.label==='migration:claimed').result,storage=new MemoryStorage(),key=PREFIX+'main';storage.data.set(key,Store.envelope(legacy));const s=new Service();s.store=new Store(storage);s.wall_clock=()=>1200;s.configure();assert.equal(s.blocked,false);assert.equal(s.model.data.schema,2);assert.equal(s.store.load_state().schema,2);assert.equal(s.model.trip().claimed,true);assert.equal(s.model.data.inventory.length,legacy.inventory.length);assert.equal(s.open_rewards(),false);
+ const legacy=JSON.parse(fs.readFileSync(path.join(root,'migration/reviews/M07-travel-native-rows-v1.json'))).find(row=>row.label==='migration:claimed').result,storage=new MemoryStorage(),key=PREFIX+'main';storage.data.set(key,Store.envelope(legacy));const s=new Service();s.store=new Store(storage);s.wall_clock=()=>1200;s.configure();assert.equal(s.blocked,false);assert.equal(s.model.data.schema,2);assert.equal(s.store.load_state().schema,2);assert.equal(s.model.trip().claimed,true);assert.equal(s.model.data.inventory.length,legacy.inventory.length);assert.equal(s.open_rewards(),false);
  storage.data.set(key,'corrupt');s.configure();assert.equal(s.blocked,true);assert.equal(s.depart(700,.3,1),false);assert.equal(storage.data.get(key),'corrupt');
 });
 test('WeChat synchronous adapter distinguishes absent keys from corrupt empty strings and propagates platform errors',()=>{
@@ -55,7 +55,7 @@ test('WeChat synchronous adapter distinguishes absent keys from corrupt empty st
  }finally{delete environment.wx;}
 });
 test('Current native Godot envelopes, including full-precision JSON and schema1 owned rewards, decode without data loss',()=>{
- const rows=JSON.parse(fs.readFileSync(path.join(root,'builds/reviews/M07-travel-service-native-envelopes-v1.json')));assert.equal(rows.length,3);
+ const rows=JSON.parse(fs.readFileSync(path.join(root,'migration/reviews/M07-travel-service-native-envelopes-v1.json')));assert.equal(rows.length,3);
  for(const row of rows){const storage=new MemoryStorage();storage.data.set(PREFIX+'main',row.envelope);const store=new Store(storage),expected=plain(Model.migrate(row.data));assert.deepEqual(plain(store.load_state()),expected,row.label);assert.equal(store.error,'');assert.equal(store.needs_migration,row.data.schema===1);const box=JSON.parse(row.envelope);assert.equal(box.sha256,crypto.createHash('sha256').update(box.payload).digest('hex'));}
 });
 test('A stale cancellation cannot project a newer owned choice as running, even while storage fails again',()=>{

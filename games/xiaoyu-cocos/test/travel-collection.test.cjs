@@ -73,7 +73,7 @@ test('Page press uses original darkening and sticky owner, archive line is enabl
 });
 
 test('Actual page directional focus matches native Godot dispatch across every reachable row/paging/archive layout',()=>{
- const oracle=JSON.parse(fs.readFileSync(path.join(ROOT,'builds/records/M08-collection-focus-native.json'))).cases;let checked=0;
+ const oracle=JSON.parse(fs.readFileSync(path.join(ROOT,'migration/records/M08-collection-focus-native.json'))).cases;let checked=0;
  for(let count=0;count<=4;count++)for(const paging of [0,1,2,3])for(const archives of [0,1]){
   if((paging===1&&count===0)||(paging>=2&&count!==4))continue;
   const total=paging===0?count:paging===1?4+count:paging===2?8:12,pageIndex=paging===1||paging===3?1:0,f=fixture(total);

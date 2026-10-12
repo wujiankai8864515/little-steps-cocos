@@ -1,0 +1,171 @@
+{
+  "item": "M15.01",
+  "request": "打包仓按渠道整理；每次游戏迭代默认打包最新已保存源码；提炼「打包xxx游戏」指令",
+  "layout": {
+    "root": [
+      "build.py",
+      "common.py",
+      "README.md",
+      "wechatgame/"
+    ],
+    "channel": "配置、处理脚本、模板与固定project/remote",
+    "evidence": "migration/",
+    "generatedRootsIgnored": true,
+    "devtoolsImport": "builds/wechatgame",
+    "miniprogramRoot": "project/"
+  },
+  "defaultBuild": "python3 -B builds/build.py wechatgame",
+  "latestGuarantee": {
+    "mode": "local-working-copy",
+    "includesUncommittedSavedFiles": true,
+    "newCandidateEveryInvocation": true,
+    "copyBeforeAfterAndStageFingerprints": true,
+    "beforeRefreshFingerprints": true,
+    "changedInputsRejectBeforeRefresh": true,
+    "explicitHistoricalOption": "--readback"
+  },
+  "templateStrategy": {
+    "authority": "builds/wechatgame/templates/",
+    "creatorInput": "真实、自动同步、不进Git的build-templates/wechatgame目录",
+    "reason": "Creator3.8.8使用fs-extra复制平台目录软链接时按文件判定，无法覆盖已有输出目录"
+  },
+  "validation": {
+    "packagingRegression": 13,
+    "relocatedFixtureRegression": 55,
+    "homeClosureRegression": 3,
+    "httpRangeRegression": 2,
+    "immutableHistoricalFiles": 1701,
+    "immutableMismatches": 0,
+    "latestPackage": {
+      "candidate": "wechat-channel-latest-v2",
+      "sourceMode": "local-working-copy",
+      "sourceCommit": "0096af77895cc69eb8c264f09f47962f1b98153b",
+      "sourceDirty": true,
+      "savedRuntimeInputs": 690,
+      "currentInputFingerprintsMatch": true,
+      "outputFiles": 341,
+      "remoteHTTPFiles": 255,
+      "remoteHashMismatches": [],
+      "audioRange": {
+        "status": 206,
+        "contentRange": "bytes 0-255/3339071",
+        "bytesMatch": true
+      },
+      "channelSourceOutsideResourceService": [
+        {
+          "path": "build.py",
+          "method": "GET",
+          "status": 404
+        },
+        {
+          "path": "build.py",
+          "method": "HEAD",
+          "status": 404
+        },
+        {
+          "path": "config.json",
+          "method": "GET",
+          "status": 404
+        },
+        {
+          "path": "config.json",
+          "method": "HEAD",
+          "status": 404
+        },
+        {
+          "path": "templates/project.config.json",
+          "method": "GET",
+          "status": 404
+        },
+        {
+          "path": "templates/project.config.json",
+          "method": "HEAD",
+          "status": 404
+        },
+        {
+          "path": "remote/../build.py",
+          "method": "GET",
+          "status": 404
+        },
+        {
+          "path": "remote/../build.py",
+          "method": "HEAD",
+          "status": 404
+        },
+        {
+          "path": "remote/%2e%2e/config.json",
+          "method": "GET",
+          "status": 404
+        },
+        {
+          "path": "remote/%2e%2e/config.json",
+          "method": "HEAD",
+          "status": 404
+        }
+      ],
+      "devtools": {
+        "openedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame",
+        "appID": "wx4d41972686e54c11",
+        "version": "Stable 2.02.2608080",
+        "library": "3.17.3",
+        "observed": "PAGE_READY LOGIN and login greeting ready",
+        "errors": 0,
+        "warnings": 3,
+        "warningsDetail": "HarmonyOS notice and two existing cache directory warnings",
+        "homeFlow": "Earlier v7 user confirmed entered Home; latest v2 only login observed",
+        "device": "pending"
+      }
+    },
+    "packageChecks": {
+      "homeDeferredClosureWithin19MB": false,
+      "sourceCatalogComplete": true,
+      "wechatEntryFiles": true,
+      "startupResourcesBundlePresent": true,
+      "portrait": true,
+      "appidMatchesConfiguration": true,
+      "remoteBundlesMatch": true,
+      "remoteServerMatches": true,
+      "remoteScriptsAbsent": true,
+      "allRemoteBundlesPresent": true,
+      "frozenRuntimeSourceUnchanged": true,
+      "onlyPluginImporterMetadataChanged": true,
+      "originalNativeAssetBytesPreserved": true,
+      "configMatchesFrozenHash": true,
+      "mainWithinConservative4MB": true,
+      "noSourceMaps": true,
+      "readonlyRelativeFrameworkPlugin": true,
+      "miniGamePluginEnabled": true
+    },
+    "remoteReadbackLegacyBuild": "wechat-channel-layout-v1: Creator exit36；旧01a0713冻结提交兼容新目录",
+    "qaMirror": "channel-qa-layout-check:763文件、0QA覆盖、真实模板目录"
+  },
+  "failures": [
+    {
+      "attempt": "M15-channel-layout-tests-v1.log",
+      "trigger": "拒绝未知真实模板目录的测试断言",
+      "cause": "迁移后错误文本更精确，旧正则不匹配",
+      "fix": "更新测试断言；后续v2/v3/v4通过",
+      "impact": "测试断言，不涉及生成产物"
+    },
+    {
+      "attempt": "wechat-channel-latest-v1",
+      "trigger": "Creator复制平台模板软链接",
+      "evidence": "wechat-channel-latest-v1-build.log",
+      "cause": "Cannot overwrite directory with non-directory build-templates/wechatgame",
+      "fix": "平台模板每次构建同步为真实目录",
+      "retry": "wechat-channel-latest-v2成功，固定产物只在成功后更新"
+    }
+  ],
+  "boundaries": {
+    "home19MB": "仍未通过，未放宽门槛，默认为本地开发工具候选而非正式发布",
+    "latestHomeFlow": "最新v2本次仅核验登录；此前修复v7用户确认进屋",
+    "device": "pending",
+    "formalHTTPSAndUpload": "pending"
+  },
+  "instructionFiles": [
+    "/Users/wkk/dotWorkers/AGENTS.md",
+    "AGENTS.md",
+    "builds/README.md"
+  ],
+  "concurrentWork": "其他迭代0096af7已独立提交并包含在本地构建；尚未提交的PhotoCollection等修改保留，不纳入目录整理提交"
+}

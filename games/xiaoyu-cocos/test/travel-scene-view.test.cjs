@@ -8,7 +8,7 @@ class Material{properties={};initialize(values){this.effect=values.effectAsset;}
 class Vec4{constructor(x,y,z,w){Object.assign(this,{x,y,z,w});}}
 const cc={Node,Sprite,Material,Vec4,UITransform},mods={Engine:{core,meshSprite:()=>Sprite}},load=name=>{if(mods[name])return mods[name];const exports={};mods[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(GAME,'game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:k=>k==='cc'?cc:load(k.slice(2)),console});return exports;};
 const {TravelSceneState}=load('TravelSceneState'),{TravelSceneView,TRAVEL_SCENE_BUFFER_BYTES}=load('TravelSceneView'),{TravelRouteInk,mergeInk}=load('TravelSceneGeometry'),{HomeClock}=load('HomeClock');
-const catalog=JSON.parse(fs.readFileSync(path.join(GAME,'resources/source-catalog.json'))),native=JSON.parse(fs.readFileSync(path.join(ROOT,'builds/reviews/M07-travel-scene-native-v1.json')));
+const catalog=JSON.parse(fs.readFileSync(path.join(GAME,'resources/source-catalog.json'))),native=JSON.parse(fs.readFileSync(path.join(ROOT,'migration/reviews/M07-travel-scene-native-v1.json')));
 const plain=v=>JSON.parse(JSON.stringify(v)),near=(a,b,t=.0006)=>assert.ok(Math.abs(a-b)<=t,`${a} != ${b}`);
 function fixture(){const scope=new core.Lifetime(),gate=new core.ResourceGate(),frames=[],effects=[];const assets={catalog,art:key=>catalog.assets[key],frame(key,owner){const f={resource:key};frames.push(f);owner.own(()=>f.destroyed=true);return f;},effect:key=>{effects.push(key);return {name:key};},async acquireTransient(key,bytes,create,dispose,owner){const lease=await gate.acquire([{key,bytes}],create,dispose,owner);return lease.get(key);}};const state=new TravelSceneState(),clock=new HomeClock(),parent=new Node('Page');state.updateRoute(0,false);return {scope,gate,assets,state,clock,parent,frames,effects};}
 function actualPoint(node,point){let at=[point[0],-point[1]],n=node;while(n){const c=Math.cos(n.angle*Math.PI/180),s=Math.sin(n.angle*Math.PI/180),x=at[0]*n.scale.x,y=at[1]*n.scale.y;at=[n.position.x+c*x-s*y,n.position.y+s*x+c*y];n=n.parent;}return [at[0],-at[1]];}
@@ -52,7 +52,7 @@ test('Godot filled circle primitive uses 64 native fan triangles and rejects inv
 });
 
 test('Drawing transforms match native scale_basis order for actor shadows, footprint press and halo',async()=>{
- const matrixRows=JSON.parse(fs.readFileSync(path.join(ROOT,'builds/reviews/M07-travel-scene-native-v2.json'))).drawingMatrices;
+ const matrixRows=JSON.parse(fs.readFileSync(path.join(ROOT,'migration/reviews/M07-travel-scene-native-v2.json'))).drawingMatrices;
  const {transformInk,polygonInk}=load('TravelSceneGeometry');
  for(const row of matrixRows){const mesh=transformInk(polygonInk(row.source,[1,1,1,1]),row.at,row.angle,row.scale);Array.from(mesh.vertices).forEach((v,i)=>near(v,row.points[Math.floor(i/2)][i%2],.0001));}
  const f=fixture(),view=await TravelSceneView.create(f.parent,f.assets,f.scope,f.clock,f.state);f.state.updateRoute(.1,false);for(let i=0;i<26;i++)view.advance(1/60);

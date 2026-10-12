@@ -1,0 +1,80 @@
+{
+  "candidate": "wechat-channel-latest-v2",
+  "sourceMode": "local-working-copy",
+  "sourceCommit": "0096af77895cc69eb8c264f09f47962f1b98153b",
+  "sourceDirty": true,
+  "savedRuntimeInputs": 690,
+  "currentInputFingerprintsMatch": true,
+  "outputFiles": 341,
+  "remoteHTTPFiles": 255,
+  "remoteHashMismatches": [],
+  "audioRange": {
+    "status": 206,
+    "contentRange": "bytes 0-255/3339071",
+    "bytesMatch": true
+  },
+  "channelSourceOutsideResourceService": [
+    {
+      "path": "build.py",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "build.py",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "config.json",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "config.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "templates/project.config.json",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "templates/project.config.json",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "remote/../build.py",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "remote/../build.py",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "path": "remote/%2e%2e/config.json",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "remote/%2e%2e/config.json",
+      "method": "HEAD",
+      "status": 404
+    }
+  ],
+  "devtools": {
+    "openedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame",
+    "appID": "wx4d41972686e54c11",
+    "version": "Stable 2.02.2608080",
+    "library": "3.17.3",
+    "observed": "PAGE_READY LOGIN and login greeting ready",
+    "errors": 0,
+    "warnings": 3,
+    "warningsDetail": "HarmonyOS notice and two existing cache directory warnings",
+    "homeFlow": "Earlier v7 user confirmed entered Home; latest v2 only login observed",
+    "device": "pending"
+  }
+}

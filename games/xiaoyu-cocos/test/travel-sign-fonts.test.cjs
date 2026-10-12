@@ -14,7 +14,7 @@ test('Every source station and all route status/count combinations retain native
  assert.throws(()=>core.shapedInkLineMesh(table,null,[0,0,100,20]),/Invalid/);
 });
 test('Native glyph atlases retain verified payloads, optional map ownership and conservative decode/upload reservation',()=>{
- const catalog=JSON.parse(fs.readFileSync(path.join(game,'resources/source-catalog.json'))),record=JSON.parse(fs.readFileSync(path.join(root,'builds/records/M07-sign-font-source.json')));let bytes=0;
+ const catalog=JSON.parse(fs.readFileSync(path.join(game,'resources/source-catalog.json'))),record=JSON.parse(fs.readFileSync(path.join(root,'migration/records/M07-sign-font-source.json')));let bytes=0;
  for(const tier of Object.keys(data.atlases)){const a=data.atlases[tier],s=catalog.assets[a.resource],file=path.join(game,'bundles',s.bundle,s.path.replace(/\/texture$/,'')+'.png');assert.equal(s.bundle,'travel_visual');assert.equal(s.decodedBytes,a.size[0]*a.size[1]*8);bytes+=s.decodedBytes;assert.equal(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),record.atlases[tier].sha256);}
  assert.ok(bytes<=3*1024*1024);assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(game,'bundles/home/travel/assets/travel_ui.ttf'))).digest('hex'),record.fontSHA256);
 });

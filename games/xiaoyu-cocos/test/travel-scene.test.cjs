@@ -4,7 +4,7 @@ const ts=require('/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Re
 const root=path.resolve(__dirname,'../../..'),modules={},context=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(root,'engines/travel-core/dist/travel-core.js'),'utf8'),context);
 for(const name of ['Engine','TravelModel','TravelStore','TravelService','TravelSceneData','TravelSceneState','TravelEncounterSession']){const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../assets/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports,require:key=>key==='cc'?{}:modules[key.slice(2)],LittleStepsCore:context.LittleStepsCore,console});modules[name]=exports;}
 const {TravelSceneState,routePosition,travelLight,encounterStar,synthesizeBell,narrativeMapping}=modules.TravelSceneState,{TravelEncounterSession}=modules.TravelEncounterSession,{TravelService}=modules.TravelService;
-const oracle=JSON.parse(fs.readFileSync(path.join(root,'builds/reviews/M07-travel-scene-native-v1.json'))),max={error:0,path:''};
+const oracle=JSON.parse(fs.readFileSync(path.join(root,'migration/reviews/M07-travel-scene-native-v1.json'))),max={error:0,path:''};
 function near(actual,expected,label='root'){
  if(typeof expected==='number'){assert.equal(typeof actual,'number',label);const error=Math.abs(actual-expected);if(error>max.error)Object.assign(max,{error,path:label});assert.ok(error<.0006,`${label}: ${actual} != ${expected} (absolute error ${error})`);return;}
  if(expected&&typeof expected==='object'){assert.ok(actual,label);for(const key of Object.keys(expected))near(actual[key],expected[key],label+'.'+key);return;}
@@ -28,7 +28,7 @@ test('Native Godot 48 convergence glints preserve timed trajectories at both vie
  for(const group of oracle.flow)group.poses.forEach((pose,i)=>near(encounterStar(i,group.time,group.target,[720,group.height]),pose,`flow.${group.height}.${group.time}.${i}`));
 });
 test('Both bounded synthesized bell sounds match native Godot PCM bytes exactly',()=>{
- oracle.pcm.forEach((row,i)=>{const {rate,samples}=synthesizeBell(row.values),bytes=Buffer.alloc(samples.length*2);samples.forEach((v,k)=>bytes.writeInt16LE(v,k*2));assert.equal(rate,row.rate);assert.equal(bytes.length,row.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),row.sha256);assert.deepEqual(bytes,fs.readFileSync(path.join(root,`builds/reviews/M07-travel-scene-native-v1.json.${i}.pcm`)));});
+ oracle.pcm.forEach((row,i)=>{const {rate,samples}=synthesizeBell(row.values),bytes=Buffer.alloc(samples.length*2);samples.forEach((v,k)=>bytes.writeInt16LE(v,k*2));assert.equal(rate,row.rate);assert.equal(bytes.length,row.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),row.sha256);assert.deepEqual(bytes,fs.readFileSync(path.join(root,`migration/reviews/M07-travel-scene-native-v1.json.${i}.pcm`)));});
 });
 test('Scene audio obeys gesture, mute, pause, cooldown and nonoverlapping bell/cue ownership',()=>{
  let enabled=true,gesture=false;const live=new Set(),events=[];

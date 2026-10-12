@@ -7,7 +7,7 @@ const exportsModel={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path
 const Model=exportsModel.TravelModel,plain=value=>JSON.parse(JSON.stringify(value));
 const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/resources/source-catalog.json'))),spec=catalog.assets['res://travel/travel_content.json'];
 const content=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/bundles',spec.bundle,spec.path+'.json')));
-const reference=new Map(JSON.parse(fs.readFileSync(path.join(root,'builds/reviews/M07-travel-native-rows-v1.json'))).map(row=>[row.label,row]));
+const reference=new Map(JSON.parse(fs.readFileSync(path.join(root,'migration/reviews/M07-travel-native-rows-v1.json'))).map(row=>[row.label,row]));
 function fresh(seed=1){const m=new Model();m.content=plain(content);assert.equal(m.begin(1000,seed,700,.3),true);return m;}
 function row(label,m,result=null){const expected=reference.get(label);assert.ok(expected,label+' native reference');assert.deepEqual(plain(m.data),expected.data,label+' entire source data');assert.deepEqual(plain(result),expected.result,label+' result');assert.equal(Model.valid(m.data),expected.valid,label+' source validity');}
 test('Eight current native Godot plans and terminal transactions retain every route, event, reward and diary value',()=>{

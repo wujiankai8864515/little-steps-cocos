@@ -5,7 +5,7 @@ const {ApprovedBackpackGeometry,APPROVED_BIND}=load('ApprovedBackpackGeometry'),
 const near=(a,b,e=1e-5)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`),plain=v=>JSON.parse(JSON.stringify(v));
 const wall={position:[531,379],scale:[.22,.22],rotation:0},bones={grip:-.25,shoulder:[80,32],tailScale:[1,1]},ground=[350,951];
 test('All five approved contours retain actual native float32 UV, fitted vertex and index bytes',()=>{
- const oracle=JSON.parse(fs.readFileSync(path.join(__dirname,'../../..','builds/oracles/approved-backpack-native.json'))),g=new ApprovedBackpackGeometry();assert.equal(g.snapshot().vertices,120);assert.equal(g.snapshot().indices,330);
+ const oracle=JSON.parse(fs.readFileSync(path.join(__dirname,'../../..','migration/oracles/approved-backpack-native.json'))),g=new ApprovedBackpackGeometry();assert.equal(g.snapshot().vertices,120);assert.equal(g.snapshot().indices,330);
  for(const p of g.parts){const bytes=Buffer.concat([Buffer.from(p.mesh.source.buffer),Buffer.from(p.fitted.buffer),Buffer.from(p.mesh.indices.buffer)]);let hash=2166136261;for(const v of bytes)hash=Math.imul(hash^v,16777619)>>>0;assert.equal(hash,oracle.nativeFNV1a32[p.key]);const native=oracle.parts.find(o=>o.key===p.key);assert.deepEqual(Array.from(p.mesh.source),native.source.flat());assert.deepEqual(Array.from(p.mesh.indices),native.indices);}
 });
 test('Wear owns only existing bones for 0.24 seconds and restores captured bones before the return flight',()=>{
