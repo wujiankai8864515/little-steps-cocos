@@ -68,7 +68,16 @@ export class GameAssets {
         return leased;
     }
     acquireResources(keys:string[],scope:Scope) {
-        return this.acquireSpecs(keys.map(key=>{const spec=this.catalog.assets[key];if(!spec)throw new Error(`缺少资源：${key}`);return {key,bytes:this.reservedBytes(spec),spec};}),scope);
+        const ordered:string[]=[],visited=new Set<string>(),visiting=new Set<string>();
+        const include=(key:string)=>{
+            if(visited.has(key))return;
+            if(visiting.has(key))throw new Error(`资源依赖循环：${key}`);
+            const spec=this.catalog.assets[key];if(!spec)throw new Error(`缺少资源：${key}`);
+            visiting.add(key);for(const layer of spec.layers||[])include(layer);visiting.delete(key);
+            visited.add(key);ordered.push(key);
+        };
+        keys.forEach(include);
+        return this.acquireSpecs(ordered.map(key=>{const spec=this.catalog.assets[key];return {key,bytes:this.reservedBytes(spec),spec};}),scope);
     }
     acquireEffects(names:string[],scope:Scope) {
         // Conservative shader/pipeline reservation; these join the same page gate.

@@ -1,0 +1,21 @@
+{
+  "item": "M17.02",
+  "photoEntry": {
+    "rootCause": "Explicit PHOTO_RESOURCES admitted the procedural base but omitted its 3 original-art patches",
+    "fix": "Expand and deduplicate composite resource dependencies before a single gate acquisition; reject cycles/missing keys before admission",
+    "runtimeBefore": "User reported photo page cannot enter",
+    "runtimeAfter": "pending"
+  },
+  "loading": {
+    "userCorrection": "Use complete original Cocos loading rather than a simplified native progress screen",
+    "fix": "Place loading assets in local main-package bundle; remove BootstrapLoading and native progress UI; useSplashScreen=false",
+    "mainBytes": 2881210
+  },
+  "departure": {
+    "userCorrection": "Cloud disappearance represents departure; no replacement character after clouds",
+    "fix": "Cloud-only visual, finish at cloud lifetime 2.85/1.5 seconds, no map-actor download during departure",
+    "persistence": "Existing commit/return semantics retained"
+  },
+  "catalogCommitCompletion": "M17.01 resource catalogue was unintentionally left unstaged; include it in this follow-up commit rather than rewrite history",
+  "candidate": "wechat-cocos-loading-v5"
+}
