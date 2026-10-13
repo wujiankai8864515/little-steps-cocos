@@ -27,7 +27,7 @@ if not meta_path.exists():
  meta=json.loads(json.dumps(meta).replace(old,new).replace('night_mansion','cards_atlas'))
  write(meta_path,meta)
 catalog=json.loads(CATALOG.read_text())
-regions={'poker_back_01':{'x':435,'y':322,'width':61,'height':89},'poker_wild':{'x':821,'y':321,'width':64,'height':89}}
+regions={'poker_back_01':{'x':435,'y':322,'width':61,'height':89},'poker_wild':{'x':821,'y':321,'width':64,'height':77}}
 prior_catalog=json.loads((HISTORY/CATALOG.name).read_text())
 original={}
 for name,region in regions.items():

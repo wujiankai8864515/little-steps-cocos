@@ -1,0 +1,36 @@
+{
+  "item": "AVG.CARD.03",
+  "candidate": "avg-plus-android-20261013T212901594403Z",
+  "sourceCommit": "164c4f04401b85cbf671a3b537d0429165a05193",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "trigger": "Native preview after extending first level to 19 cards and 15 stock cards.",
+  "passed": [
+    "19-card layout with the original card-back crop",
+    "current card at JSON horizontal offset 110",
+    "15 visible stock cards",
+    "entry uses persisted wallet: 4700 -> 4200"
+  ],
+  "failures": [
+    {
+      "type": "wild-region",
+      "evidence": "reference-cards-native-board.png",
+      "observed": "Source price 500 was included at the bottom of the crop, plus the dynamic 500 label.",
+      "rootCause": "Wild image region included the independent source price row.",
+      "repair": "Reduce UV height from 89 to 77 and preserve the icon aspect ratio with its top edge aligned."
+    },
+    {
+      "type": "stock-touch",
+      "evidence": "reference-cards-stock-edge-before-fix.png",
+      "input": {
+        "x": 415,
+        "y": 1960
+      },
+      "observed": "Current card remains 7 diamond; tapping visible right edge does not draw.",
+      "rootCause": "Visual capacity expanded beyond the original parent UITransform hit bounds.",
+      "repair": "Expand hit bounds as the pile expands, preserve local left edge and Widget offset, never shrink during draws."
+    }
+  ],
+  "afterFix": "pending",
+  "fullFidelity": "pending: hidden ranks, exact draw sequence, progress/header and other reference elements"
+}

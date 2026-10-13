@@ -1327,6 +1327,19 @@ export class GamePresentation extends PresentationComponent {
             backup.addChild(card);
             cards.push(card);
         }
+        // Expanding the visual pile also expands its touch area. Keep the original local
+        // left edge and Widget offset, so draws never shift the remaining cards.
+        const transform = backup.getComponent(UITransform);
+        const cardTransform = template.getComponent(UITransform);
+        if (transform && cardTransform) {
+            const left = Math.min(-transform.width * transform.anchorPoint.x,
+                firstX - cardTransform.width * cardTransform.anchorPoint.x);
+            const right = Math.max(transform.width * (1 - transform.anchorPoint.x),
+                cards[cards.length - 1].position.x + cardTransform.width * (1 - cardTransform.anchorPoint.x));
+            const width = right - left;
+            transform.setContentSize(width, transform.height);
+            transform.setAnchorPoint(-left / width, transform.anchorPoint.y);
+        }
         return cards;
     }
 

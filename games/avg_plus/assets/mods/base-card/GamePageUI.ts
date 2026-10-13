@@ -78,7 +78,13 @@ export class GamePageUI extends GamePresentation {
             if (sprite) { sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = backFrame; }
         });
         const wild = this.findNode(GameUiNodeId.Wild)?.getChildByName('icon')?.getComponent(Sprite);
-        if (wild) { wild.sizeMode = Sprite.SizeMode.CUSTOM; wild.spriteFrame = wildFrame; }
+        if (wild) {
+            wild.sizeMode = Sprite.SizeMode.CUSTOM;
+            wild.spriteFrame = wildFrame;
+            const height = level.cardSize.width * wildFrame.originalSize.height / wildFrame.originalSize.width;
+            wild.node.getComponent(UITransform)?.setContentSize(level.cardSize.width, height);
+            wild.node.setPosition(0, (level.cardSize.height - height) / 2);
+        }
         const base = createCardMod(level, entry.config.seed ?? 20260917, {
             render: ctx => [{ id: 'base-card.render', timeoutMs: 10000, run: async scope => {
                 const restore = this.preserveVisualTransforms();

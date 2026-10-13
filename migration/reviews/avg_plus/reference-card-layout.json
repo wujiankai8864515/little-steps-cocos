@@ -16,7 +16,7 @@
       "x": 821,
       "y": 321,
       "width": 64,
-      "height": 89
+      "height": 77
     }
   },
   "priorCatalogEntries": {
@@ -44,7 +44,13 @@
   },
   "config": "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_01.json",
   "priorConfigArchive": "migration/history/avg_plus/pre-reference-card-layout",
-  "native": "pending",
+  "native": {
+    "firstCandidate": "avg-plus-android-20261013T212901594403Z",
+    "layout": "passed: 19 cards, four fans, central king, 15 stock cards",
+    "failedThenRepaired": "wild price included in crop; expanded pile outside hit bounds",
+    "evidence": "reference-cards-native-failure.json",
+    "afterFix": "pending"
+  },
   "fullFidelity": "pending: hidden ranks, exact draw sequence and other reference elements",
   "validation": {
     "typecheckFiles": 42,
