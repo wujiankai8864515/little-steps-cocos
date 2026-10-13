@@ -12,16 +12,30 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: avg-plus-pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  dispatch-main:
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Deploy through the protected main branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run avg-plus-pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+  deploy:
+    if: github.event_name != 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

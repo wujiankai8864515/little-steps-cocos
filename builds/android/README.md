@@ -21,6 +21,8 @@ python3 -B builds/build.py android --game avg_plus
 
 `.github/workflows/avg-plus-pages.yml` 在手动触发、发布 Release 或修改部署脚本时组装并部署 Pages。它只将验证后的 Release 更新资源与下载索引放进站点；构建产物不提交到源码分支。每个 Release 需上传三个固定名称的资源文件，APK 可一并作为 Release 资产上传。`pages.py` 校验所有版本 ZIP 的 SHA-256、大小、路径和清单一致性，保存历史版本目录，再按最高资源版本生成 latest 入口。
 
+发布和编辑 Release 的事件先触发 `main` 上的部署，保持 `github-pages` 环境现有保护规则。未完成附件不会进入站点。首页和 `avg-plus/android/` 入口都可打开；客户端只从 Pages 的不可变版本目录下载完整 ZIP。
+
 各版本 ZIP 发布到 `avg-plus/android/versions/<version>/avg-plus-assets.zip`；发现入口是 `avg-plus/android/latest/avg-plus-project.manifest` 和 `avg-plus-version.manifest`。先发布不可修改的版本目录，核验内容后再更新 latest 清单；客户端校验 ZIP URL 必须与清单版本完全一致。
 
 启动钩子在 SystemJS 与游戏模块加载之前恢复缓存搜索路径。ZIP 经过 SHA-256 和大小检查后才解压；下载最多重试两次，断网和不兼容更新使用本地内容。更新成功保存待验证启动状态，重启后目录读取成功才确认健康；若新代码启动未完成，下次启动退回 APK 内容并屏蔽该版本。`nativeCompatibility` 是 native/引擎合约，修改 native 或引擎时必须升级合约并重新安装 APK。
