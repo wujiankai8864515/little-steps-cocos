@@ -1,6 +1,6 @@
 import {
     _decorator, BlockInputEvents, Button, Color, Graphics, HorizontalTextAlignment,
-    instantiate, Label, Node, UITransform, UIOpacity, Vec3, VerticalTextAlignment,
+    instantiate, Label, Node, UITransform, UIOpacity, Vec3, VerticalTextAlignment, Widget,
 } from 'cc';
 import { PresentationComponent } from '../shared/PresentationComponent';
 
@@ -32,6 +32,8 @@ export class CardCompletionUI extends PresentationComponent {
         if (wallet) {
             const copy = instantiate(wallet);
             copy.name = 'completionWallet';
+            const alignment = copy.getComponent(Widget);
+            if (alignment) { alignment.enabled = false; alignment.destroy(); }
             copy.getChildByName('img_main_btn_add')?.destroy();
             this.node.addChild(copy);
             copy.setPosition(0, 1070);

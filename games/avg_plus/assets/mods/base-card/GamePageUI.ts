@@ -110,6 +110,10 @@ export class GamePageUI extends GamePresentation {
             } else if (type === 'card.play' && result.status === 'committed' &&
                 this.model().core.isComplete && this.onComplete) {
                 this.exiting = true;
+                for (const child of this.node.children) {
+                    // Completion keeps only the background; remaining stock/HUD must not show through.
+                    if (child.name !== 'bg') child.active = false;
+                }
                 const completion = new Node('CardCompletion');
                 completion.layer = this.node.layer; this.node.addChild(completion);
                 completion.addComponent(CardCompletionUI).open(this.findNode(GameUiNodeId.CoinWallet), () => {

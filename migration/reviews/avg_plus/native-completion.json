@@ -1,0 +1,24 @@
+{
+  "item": "AVG.UI.02",
+  "candidate": "avg-plus-android-20261013T162131739048Z",
+  "apkSha256": "a463d07f31d931e0b3c381d518d0c211aeda89ad9ed378f189644c47b50f5f95",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "verified": [
+    "complete JSON first level",
+    "Great completion screen stays open",
+    "coin celebration",
+    "Continue opens existing AVG first-chapter",
+    "unavailable video never adds coins or auto-continues"
+  ],
+  "rewardedVideo": "provider not configured; actual ad/double reward pending",
+  "fidelity": "pending",
+  "observedFailure": "Copied wallet inherited top-left Widget and old stock/HUD showed through overlay",
+  "fix": "Disable/destroy only cloned wallet Widget; hide game HUD when creating completion screen",
+  "fixNativeRevalidation": "pending",
+  "screenshots": [
+    "native-completion-route-18.png",
+    "native-completion-no-video.png",
+    "native-completion-continue.png"
+  ]
+}
