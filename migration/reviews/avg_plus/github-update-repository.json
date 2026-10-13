@@ -4,8 +4,8 @@
   "visibility": "public",
   "evidence": "Authenticated Chrome displayed repository with Public label and initial commit 3bcbb27321e36e8f069dfde94fafc31098a39c37",
   "authorization": "User explicitly authorized creating public repository and publishing APK, compiled game scripts/art ZIP and update manifests; then supplied its SSH URL",
-  "anonymousDownload": "Pages latest manifest 0.1.0.2 returns 200; full ZIP download and native SHA-256 verification passed",
-  "releasedAssets": "resource ZIP and two manifests published; APK candidate upload still pending",
+  "anonymousDownload": "0.1.0.3 complete APK downloaded anonymously and SHA-256 matched; Pages manifests and real legacy APK resource upgrade passed",
+  "releasedAssets": "0.1.0.3 APK, complete game ZIP and two manifests published in original repository",
   "supersededBy": "User requested existing GitHub Pages and private source, then said they would delete the new repository",
   "activeRepository": "wujiankai8864515/little-steps-cocos",
   "activeBaseUrl": "https://wujiankai8864515.github.io/little-steps-cocos/avg-plus/android/",
@@ -20,7 +20,7 @@
     "evidence": "Authenticated Chrome displayed GitHub Pages source saved and Source GitHub Actions",
     "screenshot": "migration/reviews/avg_plus/pages-actions-source.png",
     "settingsUrl": "https://github.com/wujiankai8864515/little-steps-cocos/settings/pages",
-    "deployment": "main workflow_dispatch succeeded; complete 0.1.0.2 resources served; actual old APK upgraded and cold boot passed",
+    "deployment": "main 229ef56 workflow_dispatch 38461680432 succeeded; 0.1.0.3 available; real legacy APK upgrade and cold boot passed",
     "runs": [
       {
         "id": 38447868000,

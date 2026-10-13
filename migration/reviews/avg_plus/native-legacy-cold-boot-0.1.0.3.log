@@ -1,0 +1,104 @@
+--------- beginning of main
+10-14 04:34:59.075 I/jiankai.avgplus(19986): Late-enabling -Xcheck:jni
+10-14 04:34:59.088 I/jiankai.avgplus(19986): Using CollectorTypeCMC GC.
+10-14 04:34:59.091 D/nativeloader(19986): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-14 04:34:59.139 W/ziparchive(19986): Unable to open '/data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/base.dm': No such file or directory
+10-14 04:34:59.139 W/ziparchive(19986): Unable to open '/data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/base.dm': No such file or directory
+10-14 04:34:59.163 D/nativeloader(19986): Configuring clns-6 for other apk /data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/lib/arm64:/data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.wujiankai.avgplus
+10-14 04:34:59.164 D/CompatChangeReporter(19986): Compat change id reported: 202956589; UID 10197; state: ENABLED
+10-14 04:34:59.183 V/GraphicsEnvironment(19986): Currently set values for:
+10-14 04:34:59.183 V/GraphicsEnvironment(19986):   angle_gl_driver_selection_pkgs=[]
+10-14 04:34:59.183 V/GraphicsEnvironment(19986):   angle_gl_driver_selection_values=[]
+10-14 04:34:59.183 V/GraphicsEnvironment(19986): Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-14 04:34:59.183 V/GraphicsEnvironment(19986): Neither updatable production driver nor prerelease driver is supported.
+10-14 04:34:59.264 D/nativeloader(19986): Load /data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/lib/arm64/libcocos.so using ns clns-6 from class loader (caller=/data/app/~~vskPVm7b7AplikS8TvM3AQ==/com.wujiankai.avgplus-OQAsjjI8gc8qbNY8hds7Ug==/base.apk!classes2.dex): ok
+10-14 04:34:59.269 D/CompatChangeReporter(19986): Compat change id reported: 279646685; UID 10197; state: ENABLED
+10-14 04:34:59.271 D/CompatChangeReporter(19986): Compat change id reported: 309578419; UID 10197; state: ENABLED
+10-14 04:34:59.291 D/GameActivity(19986): GameActivity_register
+10-14 04:34:59.291 V/GameActivity(19986): Registering com/google/androidgamesdk/GameActivity's 18 native methods...
+10-14 04:34:59.291 V/threaded_app(19986): Creating: 0xb400007b957cf3b0
+10-14 04:34:59.292 V/threaded_app(19986): Callbacks set: 0xb400007b957cf400
+10-14 04:34:59.292 V/threaded_app(19986): Launching android_app_entry in a thread
+10-14 04:34:59.292 V/threaded_app(19986): android_app_entry called
+10-14 04:34:59.292 V/threaded_app(19986): android_app = 0xb400007ce57f1040
+10-14 04:34:59.292 V/threaded_app(19986): config = 0xb400007bd5867a10
+10-14 04:34:59.292 V/threaded_app(19986): activity = 0xb400007b957cf3b0
+10-14 04:34:59.292 V/threaded_app(19986): assetmanager = 0xb400007b957cce30
+10-14 04:34:59.292 V/threaded_app(19986): Config: mcc=310 mnc=260 lang=en cnt=US orien=1 touch=3 dens=440 keys=2 nav=2 keysHid=1 navHid=0 sdk=35 size=2 long=2 modetype=1 modenight=1
+10-14 04:34:59.298 D/CompatChangeReporter(19986): Compat change id reported: 312399441; UID 10197; state: ENABLED
+10-14 04:34:59.317 D/GameControllerManager(19986): setNativeReady
+10-14 04:34:59.328 D/CocosAudioFocusManager(19986): requestAudioFocus succeed
+10-14 04:34:59.341 V/GameActivity(19986): onStart_native
+10-14 04:34:59.341 V/threaded_app(19986): Start: 0xb400007b957cf3b0
+10-14 04:34:59.341 V/threaded_app(19986): activityState=10
+10-14 04:34:59.341 I/Cocos   (19986): 04:34:59 [INFO]: AndroidPlatform: APP_CMD_START
+10-14 04:34:59.343 D/GameControllerThread(19986): registerInputDeviceListener
+10-14 04:34:59.344 V/threaded_app(19986): Resume: 0xb400007b957cf3b0
+10-14 04:34:59.344 V/threaded_app(19986): activityState=11
+10-14 04:34:59.344 I/Cocos   (19986): 04:34:59 [INFO]: AndroidPlatform: APP_CMD_RESUME
+10-14 04:34:59.364 W/HWUI    (19986): Unknown dataspace 0
+10-14 04:34:59.402 I/EGL_emulation(19986): Opening libGLESv1_CM_emulation.so
+10-14 04:34:59.402 I/EGL_emulation(19986): Opening libGLESv2_emulation.so
+10-14 04:34:59.406 V/GameActivity(19986): onSurfaceCreated_native
+10-14 04:34:59.406 V/threaded_app(19986): NativeWindowCreated: 0xb400007b957cf3b0 -- 0xb400007b157ed540
+10-14 04:34:59.406 V/threaded_app(19986): android_app_set_window called
+10-14 04:34:59.406 V/threaded_app(19986): APP_CMD_INIT_WINDOW
+10-14 04:34:59.406 D/Cocos   (19986): 04:34:59 [DEBUG]: AndroidPlatform: APP_CMD_INIT_WINDOW
+10-14 04:34:59.402 W/Thread-2(19986): type=1400 audit(0.0:1054): avc:  denied  { bind } for  scontext=u:r:untrusted_app:s0:c197,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c197,c256,c512,c768 tclass=netlink_route_socket permissive=0 bug=b/155595000 app=com.wujiankai.avgplus
+10-14 04:34:59.408 E/Cocos   (19986): 04:34:59 [ERROR]: E/ Failed to accquire interfaces, error: Permission denied
+10-14 04:34:59.408 E/Cocos   (19986):  Re-select port after 37000
+10-14 04:34:59.408 W/HWUI    (19986): Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-14 04:34:59.408 V/threaded_app(19986): NativeWindowRedrawNeeded: 0xb400007b957cf3b0 -- 0xb400007b157ed540
+10-14 04:34:59.409 W/HWUI    (19986): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-14 04:34:59.462 I/Cocos   (19986): 04:34:59 [INFO]: Setup EGLConfig: depth [24] stencil [8] sampleBuffer [0] sampleCount [0]
+10-14 04:34:59.464 E/EGL_emulation(19986): eglCreateContext: EGL_BAD_CONFIG: no ES 3.2 support
+10-14 04:34:59.464 E/EGL_emulation(19986): tid 20004: eglCreateContext(1830): error 0x3005 (EGL_BAD_CONFIG)
+10-14 04:34:59.471 I/Gralloc4(19986): mapper 4.x is not supported
+10-14 04:34:59.479 D/Cocos   (19986): 04:34:59 [DEBUG]: EGL context bounded to thread 7aed38e770
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: GLES3 device initialized.
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: RENDERER: Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: VENDOR: Google (Google Inc. (Google))
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: VERSION: OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: COMPRESSED_FORMATS: etc1 etc2 
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: FRAMEBUFFER_FETCH: NONE
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: MULTI_SAMPLE_RENDER_TO_TEXTURE: NONE
+10-14 04:34:59.513 I/Cocos   (19986): 04:34:59 [INFO]: Device validator enabled.
+10-14 04:34:59.513 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ Initializing V8, version: 11.6.189.22
+10-14 04:34:59.513 D/Cocos   (19986): 
+10-14 04:34:59.545 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ libuv version: 1.13.1
+10-14 04:34:59.545 D/Cocos   (19986): 
+10-14 04:34:59.545 E/Cocos   (19986): 04:34:59 [ERROR]: E/ failed to get addresses Permission denied
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ Number of interfaces: 0
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ Please query IP by running the following command in terminal: adb shell ip -4 -br addr
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ Debugger listening..., visit [
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/     devtools://devtools/bundled/js_app.html?v8only=true&ws=IP_ADDR_OF_THIS_DEVICE:43086/00010002-0003-4004-8005-000600070008
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/   ] in chrome browser to debug!
+10-14 04:34:59.546 D/Cocos   (19986): 04:34:59 [DEBUG]: D/ For help see https://nodejs.org/en/docs/inspector
+10-14 04:34:59.542 W/Thread-2(19986): type=1400 audit(0.0:1055): avc:  denied  { bind } for  scontext=u:r:untrusted_app:s0:c197,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c197,c256,c512,c768 tclass=netlink_route_socket permissive=0 bug=b/155595000 app=com.wujiankai.avgplus
+10-14 04:34:59.592 I/Cocos   (19986): 04:34:59 [INFO]: JS: injectWebAssembly ...
+10-14 04:34:59.639 V/threaded_app(19986): WindowFocusChanged: 0xb400007b957cf3b0 -- 1
+10-14 04:34:59.991 W/InteractionJankMonitor(19986): Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.wujiankai.avgplus
+10-14 04:35:00.076 W/Cocos   (19986): 04:35:00 [WARN]: JS: Failed to set shading scale, pipelineSceneData is invalid.
+10-14 04:35:00.080 W/jiankai.avgplus(19986): Accessing hidden method Ldalvik/system/CloseGuard;->get()Ldalvik/system/CloseGuard; (unsupported,core-platform-api, reflection, allowed)
+10-14 04:35:00.080 W/jiankai.avgplus(19986): Accessing hidden method Ldalvik/system/CloseGuard;->open(Ljava/lang/String;)V (unsupported,core-platform-api, reflection, allowed)
+10-14 04:35:00.081 W/jiankai.avgplus(19986): Accessing hidden method Ldalvik/system/CloseGuard;->warnIfOpen()V (unsupported,core-platform-api, reflection, allowed)
+10-14 04:35:00.082 D/Cocos   (19986): 04:35:00 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/temp)
+10-14 04:35:00.090 D/Cocos   (19986): 04:35:00 [DEBUG]: JS: [PHYSICS2D]: register box2d.
+10-14 04:35:00.091 I/Cocos   (19986): 04:35:00 [INFO]: AndroidPlatform: APP_CMD_WINDOW_REDRAW_NEEDED
+10-14 04:35:00.091 I/Cocos   (19986): 04:35:00 [INFO]: AndroidPlatform: APP_CMD_GAINED_FOCUS
+10-14 04:35:00.120 I/jiankai.avgplus(19986): Compiler allocated 5046KB to compile void android.view.ViewRootImpl.performTraversals()
+10-14 04:35:00.130 D/Cocos   (19986): 04:35:00 [DEBUG]: EGL context bounded to thread 7a62127770
+10-14 04:35:00.130 I/Cocos   (19986): 04:35:00 [INFO]: Device thread detached.
+10-14 04:35:00.214 D/Cocos   (19986): 04:35:00 [DEBUG]: JS: Cocos Creator v3.8.8
+10-14 04:35:00.260 D/Cocos   (19986): 04:35:00 [DEBUG]: JS: Using custom pipeline: Builtin
+10-14 04:35:00.286 I/Cocos   (19986): 04:35:00 [INFO]: Shader 'util/splash-screen|splash-screen-vs:vert|splash-screen-fs:frag' compilation succeeded.
+10-14 04:35:01.595 D/Cocos   (19986): 04:35:01 [DEBUG]: JS: Success to load scene: db://assets/mods/base-shell/scene.scene
+10-14 04:35:01.626 D/Cocos   (19986): 04:35:01 [DEBUG]: In the constructor of HttpClient!
+10-14 04:35:01.632 D/TrafficStats(19986): tagSocket(163) with statsTag=0xffffffff, statsUid=-1
+10-14 04:35:01.639 I/Cocos   (19986): 04:35:01 [INFO]: Shader 'internal/builtin-graphics|vs:vert|fs:frag' compilation succeeded.
+10-14 04:35:01.644 I/Cocos   (19986): 04:35:01 [INFO]: Shader 'for2d/builtin-sprite|sprite-vs:vert|sprite-fs:frag|CC_USE_EMBEDDED_ALPHA0|USE_TEXTURE1|IS_GRAY0' compilation succeeded.
+10-14 04:35:02.827 D/Cocos   (19986): 04:35:02 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/avg-plus-hot-update)
+10-14 04:35:02.827 D/Cocos   (19986): 04:35:02 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/avg-plus-hot-update_temp)
+10-14 04:35:03.929 I/Cocos   (19986): 04:35:03 [INFO]: Shader 'internal/builtin-clear-stencil|sprite-vs:vert|sprite-fs:frag' compilation succeeded.
+10-14 04:35:37.283 D/Cocos   (19986): 04:35:37 [DEBUG]: D/ XMLHttpRequest_finalize, 0xb400007b95818470 ... 
+10-14 04:35:37.283 D/Cocos   (19986): 

@@ -9,7 +9,7 @@
   "apkUpload": "not completed because batch stopped after ZIP failure",
   "alternativePartUpload": "automatic approval review rejected: permission recognized only for complete APK/script/art ZIP, not an unconfirmed split attachment; selection cancelled without upload",
   "pagesResources": "resolved: original repository Pages deployed complete resource 0.1.0.2",
-  "nextAction": "APK full-file publication and formal release remain pending",
+  "nextAction": "resolved whole-file uploads; continue full reference fidelity and formal Android signing",
   "resolvedResourceUpload": {
     "version": "0.1.0.1",
     "zipBytes": 32033763,
@@ -23,5 +23,11 @@
       "zipSha256": "08100c92a064a51fe8b10b31c0e7b4a3ffc01152c67a24166ee704f424b43b44",
       "result": "whole ZIP second attempt uploaded; main Pages deployment and real legacy APK upgrade passed; first failed upload preserved"
     }
+  },
+  "completeApkUpload": {
+    "version": "0.1.0.3",
+    "bytes": 55949704,
+    "sha256": "293d973921db310900d80704f67f1ce383fa914f912999806f3036704f61eb80",
+    "result": "whole APK uploaded and anonymously downloaded; no split assets used"
   }
 }
