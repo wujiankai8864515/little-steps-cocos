@@ -4,6 +4,7 @@ import {
     Color,
     Component,
     Graphics,
+    game,
     HorizontalTextAlignment,
     instantiate,
     JsonAsset,
@@ -22,6 +23,7 @@ import { AvgPlayer } from '../base-avg/AvgPlayer';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import { manifest } from './ModManifest';
+import { NativeHotUpdate } from './NativeHotUpdate';
 
 const { ccclass, executionOrder } = _decorator;
 const PACKAGED_CONTENT_LOAD_TIMEOUT_MS = 30000;
@@ -36,20 +38,34 @@ export class AppBootstrap extends Component {
     private shell: Runtime | null = null;
     private _screen: Node | null = null;
     private _loading = false;
+    private catalogReady = false;
 
     protected onLoad(): void {
         profiler.hideStats();
     }
 
     protected start(): void {
+        void this.startWithUpdate().catch(error => {
+            if (this.lifetime.cancelled) return;
+            console.error('[Shell]', error); this.setMessage('启动失败，请检查模块配置');
+        });
+    }
+
+    private async startWithUpdate(): Promise<void> {
+        this.replaceScreen(this.createLevelListShell());
+        const updater = new NativeHotUpdate(this.lifetime);
+        const result = await updater.run(text => this.setMessage(text));
+        this.lifetime.check();
+        if (result === 'restart') { game.restart(); return; }
         this.shell = new Runtime([{
             manifest, initialState: {}, actions: ['shell.open'], validate: () => {},
             execute: ctx => { ctx.result = { screen: 'catalog' }; },
             render: () => [{ id: 'shell.catalog', timeoutMs: 10000, run: () => this.showLevelList() }],
         }]);
-        void this.shell.open().then(() => this.shell!.dispatch({ type: 'shell.open' })).catch(error => {
-            console.error('[Shell]', error); this.setMessage('启动失败，请检查模块配置');
-        });
+        await this.shell.open();
+        const opened = await this.shell.dispatch({ type: 'shell.open' });
+        this.lifetime.check();
+        if (opened.status === 'committed' && this.catalogReady) updater.markHealthy();
     }
 
     protected onDestroy(): void { this.lifetime.dispose(); void this.shell?.dispose(); }
@@ -57,6 +73,7 @@ export class AppBootstrap extends Component {
     public async showLevelList(): Promise<void> {
         if (this._loading || this.lifetime.cancelled) return;
         this._loading = true;
+        this.catalogReady = false;
         this.replaceScreen(this.createLevelListShell());
 
         try {
@@ -73,7 +90,9 @@ export class AppBootstrap extends Component {
                 .filter((levelId) => levelId.length > 0)
                 .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
+            if (!levelIds.length) throw new Error('没有可读取的卡牌关卡');
             this.renderLevelButtons(levelIds);
+            this.catalogReady = true;
         } catch (error) {
             if (this.lifetime.cancelled) return;
             console.error('[AppBootstrap] 读取关卡列表失败。', error);

@@ -3,7 +3,7 @@ const ts = require('./ts-loader.cjs');
 const root = path.resolve(__dirname, '..');
 const config = ts.parseJsonConfigFileContent({ compilerOptions: {
  target: 'ES2017', module: 'ES2015', moduleResolution: 'node', lib: ['ES2020','DOM'], experimentalDecorators: true,
- skipLibCheck: true, strict: true, noEmit: true, types: [path.join(process.env.COCOS_PROJECT || root, 'temp/declarations/cc')]
+ skipLibCheck: true, strict: true, noEmit: true, types: ['cc', 'cc.env'].map(name => path.join(process.env.COCOS_PROJECT || root, 'temp/declarations', name))
 }, include: ['assets/foundation/**/*.ts', 'assets/mods/**/*.ts'] }, ts.sys, root);
 const program = ts.createProgram(config.fileNames, config.options);
 const diagnostics = ts.getPreEmitDiagnostics(program);

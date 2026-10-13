@@ -1,5 +1,9 @@
 # Cocos 工程执行约束
 
+## 2026-10-13 AVG Plus 安卓范围
+
+用户要求 `games/avg_plus` 发布竖屏安卓 App，并通过 GitHub 热更新；此要求覆盖下文仅正式打包微信的旧范围限制，仅适用于 avg_plus。安卓打包配置、脚本、模板位于 `builds/android`，统一经 `builds/build.py android --game avg_plus` 调用；构建镜像、工具和验证证据仍归 `migration`。视频剧情明确排除，沿用游戏已有 AVG 表现和 JSON 配置完成衔接。卡牌关卡 JSON 动态读取必须保留。具体范围见 `games/avg_plus/docs/ANDROID_REQUIREMENTS.md`。
+
 当前唯一开发与打包工程使用 Cocos Creator 3.8.8。有效需求见 games/xiaoyu-cocos/docs/requirements.md 和 requirements.json；框架和游戏架构分别见 engines/travel-core/docs/architecture.md、games/xiaoyu-cocos/docs/architecture.md。完整功能、原美术和产品行为仍是基准；不要以样例、相似画面、少量按钮通过或构建成功替代最终目标。旧 Godot 目录已由用户授权退役，原始需求和实现仅作为固定历史来源，不恢复旧引擎主线或已撤销玩法。
 
 - `engines` 只实现通用框架；`games` 只实现游戏；`builds` 只负责渠道打包：根目录放公共脚本，每个平台的配置、处理脚本和模板集中在本平台目录。导入/迁移/验收工具、历史构建与证据放 `migration`，不得重新堆回打包仓。仅正式打包微信小游戏。

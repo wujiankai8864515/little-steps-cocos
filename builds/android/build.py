@@ -1,0 +1,213 @@
+#!/usr/bin/env python3
+"""Android channel: frozen working-copy export, hot-update packaging, then APK compilation."""
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+from datetime import datetime, timezone
+
+ROOT = Path(__file__).resolve().parents[2]
+CHANNEL = Path(__file__).resolve().parent
+
+
+def write_json(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+
+def inputs(project):
+    raw = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z',
+                                   '--', project, 'builds/android', 'builds/build.py'], cwd=ROOT)
+    result = {}
+    for name in sorted(set(raw.split(b'\0'))):
+        if not name:
+            continue
+        relative = name.decode()
+        path = ROOT / relative
+        if path.is_symlink():
+            raise ValueError('Android source symlink requires an explicit asset mapping: ' + relative)
+        if path.is_file():
+            result[relative] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return result
+
+
+def environment():
+    creator = Path(os.environ.get('COCOS_CREATOR',
+        '/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator'))
+    sdk = Path(os.environ.get('ANDROID_SDK_ROOT', str(Path.home() / 'Library/Android/sdk')))
+    versions = sorted((sdk / 'ndk').glob('*')) if (sdk / 'ndk').exists() else []
+    ndk = Path(os.environ.get('ANDROID_NDK_HOME', str(versions[-1]) if versions else 'missing-ndk'))
+    java = Path(os.environ.get('AVG_PLUS_JAVA_HOME',
+        '/Applications/Android Studio.app/Contents/jbr/Contents/Home'))
+    cmake = creator.parents[1] / 'Resources/tools/cmake/bin/cmake'
+    for label, path in [('Cocos Creator', creator), ('Android SDK', sdk), ('NDK', ndk),
+                        ('Java', java / 'bin/java'), ('CMake', cmake)]:
+        if not path.exists():
+            raise FileNotFoundError(label + ': ' + str(path))
+    return {'creator': str(creator), 'sdk': str(sdk), 'ndk': str(ndk),
+            'java': str(java), 'cmake': str(cmake)}
+
+
+def export_config(game, stage, env, debug):
+    return {
+        'name': game['name'], 'platform': 'android', 'outputName': 'android',
+        'buildPath': str(stage / 'output'), 'debug': debug, 'md5Cache': False,
+        'startScene': game['startScene'],
+        'scenes': [{'url': 'db://assets/mods/base-shell/scene.scene', 'uuid': game['startScene']}],
+        'packages': {
+            'android': {
+                'packageName': game['packageName'], 'apiLevel': game['apiLevel'],
+                'appABIs': game['appABIs'], 'sdkPath': env['sdk'], 'ndkPath': env['ndk'],
+                'javaHome': env['java'], 'useDebugKeystore': debug, 'appBundle': False,
+                'orientation': {'portrait': True, 'upsideDown': False,
+                                'landscapeLeft': False, 'landscapeRight': False},
+                'renderBackEnd': {'vulkan': False, 'gles3': True, 'gles2': True},
+            },
+            'native': {'encrypted': False, 'makeAfterBuild': False,
+                       'JobSystem': 'taskFlow', 'xxteaKey': 'avg-plus-build01'}
+        }
+    }
+
+
+def run_logged(command, cwd, log, env):
+    with log.open('w') as handle:
+        process = subprocess.run(command, cwd=cwd, env=env, stdout=handle, stderr=subprocess.STDOUT)
+    if process.returncode not in (0, 36):
+        raise RuntimeError(f'Command failed ({process.returncode}); inspect {log}')
+    return process.returncode
+
+
+def audit_native_export(stage, game):
+    project = stage / 'output/android/proj'
+    properties_path = project / 'gradle.properties'
+    properties = properties_path.read_text()
+    for key in ['PROP_COMPILE_SDK_VERSION', 'PROP_MIN_SDK_VERSION', 'PROP_TARGET_SDK_VERSION']:
+        value = re.search(r'^' + key + r'=(.*)$', properties, re.M)
+        if not value or not value.group(1).strip().isdigit():
+            raise ValueError('Invalid generated Android SDK property: ' + key)
+    # Cocos defaults to a build-tools version that may not be installed locally.
+    properties = re.sub(r'^PROP_BUILD_TOOLS_VERSION=.*$',
+                        'PROP_BUILD_TOOLS_VERSION=' + game['buildToolsVersion'], properties, flags=re.M)
+    properties_path.write_text(properties)
+    log = (stage / 'export.log').read_text()
+    missing = sorted(set(re.findall(r'Missing uuid: "([^"]+)"', log)))
+    if missing:
+        raise ValueError('Native prefab references missing assets: ' + ', '.join(missing))
+    return {'numericSdkProperties': True, 'buildToolsVersion': game['buildToolsVersion'], 'missingReferences': []}
+
+
+def build(args):
+    settings = json.loads((CHANNEL / 'config.json').read_text())
+    if args.game not in settings['games']:
+        raise ValueError('No Android configuration for game: ' + args.game)
+    game = settings['games'][args.game]
+    if args.release:
+        raise ValueError('Release signing has not been configured; do not label debug APKs as releases')
+    env = environment()
+    plan = {'game': args.game, 'source': game['project'], 'environment': env,
+            'orientation': 'portrait', 'githubRepository': game['githubRepository'],
+            'release': False, 'verification': 'pending'}
+    if args.inspect:
+        print(json.dumps(plan, ensure_ascii=False, indent=2))
+        return
+    before = inputs(game['project'])
+    name = 'avg-plus-android-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+    stage = ROOT / 'migration/work' / name
+    stage.mkdir(parents=True)
+    project = stage / game['project']
+    for relative in before:
+        if relative.startswith(game['project'] + '/'):
+            target = stage / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / relative, target)
+    if inputs(game['project']) != before:
+        raise RuntimeError('Source changed while freezing; previous candidate retained')
+    configuration = export_config(game, stage, env, debug=True)
+    config_path = stage / 'build-config.json'
+    write_json(config_path, configuration)
+    # Project profile overrides allow an isolated editor invocation to discover installed tools.
+    write_json(project / 'profiles/v2/packages/program.json', {
+        '__version__': '1.0.4', 'android_sdk': env['sdk'], 'android_ndk': env['ndk'],
+        'androidSDK': {'path': env['sdk']}, 'androidNDK': {'path': env['ndk']},
+        'javaHome': {'path': env['java']}, 'cmake': {'path': env['cmake']}})
+    child_env = dict(os.environ, JAVA_HOME=env['java'], ANDROID_SDK_ROOT=env['sdk'],
+                     ANDROID_HOME=env['sdk'], ANDROID_NDK_HOME=env['ndk'])
+    record = dict(plan, item='AVG.ANDROID.01', candidate=name,
+                  sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                  sourceMode='local-working-copy', workingInputs=before, stage=str(stage),
+                  export='pending', apk='pending', hotUpdate='pending', device='pending', fidelity='pending')
+    review = ROOT / 'migration/reviews/avg_plus' / (name + '.json')
+    write_json(review, record)
+    try:
+        print('Exporting frozen project: ' + str(project), flush=True)
+        record['exportExitCode'] = run_logged([env['creator'], '--project', str(project), '--build',
+            'configPath=' + str(config_path)], ROOT, stage / 'export.log', child_env)
+        assets = stage / 'output/android/assets'
+        if not (assets / 'main.js').is_file():
+            raise RuntimeError('Creator did not export a native main.js')
+        record['nativeProjectAudit'] = audit_native_export(stage, game)
+        record['export'] = 'passed'
+        record['sourceUnchanged'] = inputs(game['project']) == before
+        if not record['sourceUnchanged']:
+            raise RuntimeError('Source changed during native export; retained as a candidate')
+        write_json(review, record)
+        if args.export_only:
+            print(json.dumps({'stage': str(stage), 'review': str(review), 'export': 'passed'}))
+            return
+        from hot_update import prepare
+        record['hotUpdate'] = prepare(assets, stage / 'hot-update', game, CHANNEL / 'templates')
+        write_json(review, record)
+        print('Compiling APK; log: ' + str(stage / 'compile.log'), flush=True)
+        record['makeExitCode'] = run_logged([env['creator'], '--project', str(project), '--build',
+            'stage=make;configPath=' + str(config_path)], ROOT, stage / 'compile.log', child_env)
+        apks = sorted((stage / 'output/android').rglob('*.apk'))
+        if not apks:
+            raise RuntimeError('Native compile produced no APK')
+        record['apk'] = [{'path': str(p), 'bytes': p.stat().st_size,
+                          'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in apks]
+        record['sourceUnchanged'] = inputs(game['project']) == before
+        if not record['sourceUnchanged']:
+            raise RuntimeError('Source changed during build; candidate retained, fixed output not updated')
+        destination = CHANNEL / args.game
+        replacement = stage / 'delivery'
+        replacement.mkdir()
+        for apk in apks:
+            shutil.copy2(apk, replacement / apk.name)
+        shutil.copytree(stage / 'hot-update', replacement / 'hot-update')
+        write_json(replacement / 'build-record.json', record)
+        if destination.exists():
+            destination.rename(stage / 'previous-delivery')
+        try:
+            shutil.copytree(replacement, destination)
+        except Exception:
+            if destination.exists():
+                shutil.rmtree(destination)
+            if (stage / 'previous-delivery').exists():
+                (stage / 'previous-delivery').rename(destination)
+            raise
+        record['delivery'] = str(destination)
+        write_json(review, record)
+        print(json.dumps({'delivery': str(destination), 'review': str(review), 'device': 'pending',
+                          'fidelity': 'pending'}, ensure_ascii=False))
+    except Exception as error:
+        record['failure'] = {'message': str(error), 'logs': [str(p) for p in stage.glob('*.log')]}
+        write_json(review, record)
+        raise
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--game', required=True)
+    parser.add_argument('--inspect', action='store_true', help='Print verified local tool paths without building')
+    parser.add_argument('--export-only', action='store_true', help='Export a candidate native project without claiming APK delivery')
+    parser.add_argument('--release', action='store_true')
+    build(parser.parse_args())
+
+
+if __name__ == '__main__':
+    main()
