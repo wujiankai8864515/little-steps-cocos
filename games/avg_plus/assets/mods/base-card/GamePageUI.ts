@@ -16,12 +16,14 @@ export class GamePageUI extends GamePresentation {
     private readonly lifetime = new TaskScope();
     private runtime: Runtime | null = null;
     private onExit: (() => void) | null = null;
+    private onComplete: (() => void) | null = null;
     private bound = false;
     private exiting = false;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
-    public async open(levelId: string, onExit?: () => void): Promise<void> {
+    public async open(levelId: string, onExit?: () => void, onComplete?: () => void): Promise<void> {
         this.prepareOpeningVisualState();
         this.onExit = onExit ?? null;
+        this.onComplete = onComplete ?? null;
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
         // 并使用与外层页面进入流程一致的 30 秒边界，避免先被默认 8 秒取消。
@@ -104,6 +106,12 @@ export class GamePageUI extends GamePresentation {
             if (type === 'card.exit' && result.status === 'committed') {
                 this.exiting = true; const callback = this.onExit; this.onExit = null;
                 this.scheduleOnce(() => callback?.(), 0);
+            } else if (type === 'card.play' && result.status === 'committed' &&
+                this.model().core.isComplete && this.onComplete) {
+                this.exiting = true;
+                const callback = this.onComplete; this.onComplete = null; this.onExit = null;
+                // Rule commit and its owned final-card animation have both settled before handoff.
+                this.scheduleOnce(() => callback(), 0);
             }
         } finally { if (this.node.isValid && !this.exiting) { this.refresh(false); this.lock(false); } }
     }
@@ -163,5 +171,5 @@ export class GamePageUI extends GamePresentation {
         }
     }
     private lock(value: boolean): void { this.ensureInputBlocker().active = value; if (value) this.bringInputBlockerToFront(); }
-    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; super.onDestroy(); }
+    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; super.onDestroy(); }
 }

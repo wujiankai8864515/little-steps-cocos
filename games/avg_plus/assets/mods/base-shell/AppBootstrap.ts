@@ -24,6 +24,7 @@ import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import { manifest } from './ModManifest';
 import { NativeHotUpdate } from './NativeHotUpdate';
+import { GameFlow, parseGameFlow } from './GameFlow';
 
 const { ccclass, executionOrder } = _decorator;
 const PACKAGED_CONTENT_LOAD_TIMEOUT_MS = 30000;
@@ -39,6 +40,7 @@ export class AppBootstrap extends Component {
     private _screen: Node | null = null;
     private _loading = false;
     private catalogReady = false;
+    private flow: GameFlow | null = null;
 
     protected onLoad(): void {
         profiler.hideStats();
@@ -77,8 +79,8 @@ export class AppBootstrap extends Component {
         this.replaceScreen(this.createLevelListShell());
 
         try {
-            const assets = await this.lifetime.run(
-                () => this.loadLevels(),
+            const [assets, flow] = await this.lifetime.run(
+                () => Promise.all([this.loadLevels(), this.loadFlow()]),
                 PACKAGED_CONTENT_LOAD_TIMEOUT_MS,
             );
             this.lifetime.check();
@@ -91,6 +93,10 @@ export class AppBootstrap extends Component {
                 .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
             if (!levelIds.length) throw new Error('没有可读取的卡牌关卡');
+            for (const id of Object.keys(flow.afterWin)) {
+                if (!levelIds.includes(id)) throw new Error(`剧情衔接引用了不存在的关卡：${id}`);
+            }
+            this.flow = flow;
             this.renderLevelButtons(levelIds);
             this.catalogReady = true;
         } catch (error) {
@@ -110,6 +116,15 @@ export class AppBootstrap extends Component {
                     return;
                 }
                 resolve(assets);
+            });
+        });
+    }
+
+    private loadFlow(): Promise<GameFlow> {
+        return new Promise((resolve, reject) => {
+            resources.load('config/game-flow', JsonAsset, (error, asset) => {
+                if (error || !asset) return reject(error ?? new Error('游戏流程配置缺失'));
+                try { resolve(parseGameFlow(asset.json)); } catch (error) { reject(error); }
             });
         });
     }
@@ -183,7 +198,7 @@ export class AppBootstrap extends Component {
         return node;
     }
 
-    private async openAvg(): Promise<void> {
+    private async openAvg(chapterId = 'first-chapter'): Promise<void> {
         if (this._loading || this.lifetime.cancelled) return;
         this._loading = true;
         this.setMessage('正在进入第一章…');
@@ -195,7 +210,7 @@ export class AppBootstrap extends Component {
             const player = avgNode.addComponent(AvgPlayer);
             this.replaceScreen(avgNode);
             await this.lifetime.run(
-                () => player.open(() => void this.showLevelList()),
+                () => player.open(() => void this.showLevelList(), chapterId),
                 PACKAGED_CONTENT_LOAD_TIMEOUT_MS,
             );
         } catch (error) {
@@ -252,7 +267,11 @@ export class AppBootstrap extends Component {
 
             this.replaceScreen(gameNode);
             await this.lifetime.run(
-                () => gamePage.open(levelId, () => void this.showLevelList()),
+                () => gamePage.open(levelId, () => void this.showLevelList(), () => {
+                    const chapterId = this.flow?.afterWin[levelId];
+                    if (chapterId) void this.openAvg(chapterId);
+                    else void this.showLevelList();
+                }),
                 PACKAGED_CONTENT_LOAD_TIMEOUT_MS,
             );
         } catch (error) {
