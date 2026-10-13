@@ -14,7 +14,7 @@
   "rootCause": "Chapter title attached Graphics and Label to one node, sharing native UI properties; Label replaces the dynamic RenderEntity needed by Graphics.",
   "repair": "Separate the title text into its own child node; retain native assertions and shader path.",
   "associatedSaveRepair": "Startup refunds an incomplete entry only when entryRefundable is true; persisting cleared round prevents duplicate refunds. Played and won rounds retain their balance.",
-  "retest": "pending",
+  "retest": "native entry and full 19-card completion passed on candidate 20261013T232635735513Z; coin/heart visual fixes awaiting next build",
   "actualCrashSave": {
     "coins": 3550,
     "round": {
@@ -28,5 +28,14 @@
     "typecheckFiles": 42,
     "testsPassed": 61,
     "testsFailed": 0
-  }
+  },
+  "firstRepairRetest": {
+    "candidate": "avg-plus-android-20261013T232635735513Z",
+    "entry": "passed: native board visible and PID 1479 alive",
+    "refund": "passed: 3550 -> 4050 before next entry",
+    "remainingVisualIssue": "Source coin crop displays a square purple margin.",
+    "nextRepair": "Use a separate child stencil and child Sprite around each coin icon; do not attach Graphics to the existing Sprite node.",
+    "evidence": "reference-hud-fixed-native-board.png"
+  },
+  "nativeDelivery": "reference-hud-native-delivery.json"
 }

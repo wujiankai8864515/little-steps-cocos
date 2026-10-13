@@ -1,0 +1,123 @@
+{
+  "item": "AVG.NATIVE.07",
+  "candidate": "avg-plus-android-20261013T232635735513Z",
+  "sourceCommit": "eddf166d800c621115bd46b655792a916b1f467c",
+  "apk": {
+    "bytes": 58350516,
+    "sha256": "f55cab1245e57073099df4c1559b903ad0663e448f98cb1844b235ae57d842fc",
+    "audit": {
+      "packageName": "com.wujiankai.avgplus",
+      "versionName": "0.1.0",
+      "versionCode": 4,
+      "orientation": "portrait",
+      "activities": [
+        {
+          "name": "com.cocos.game.AppActivity",
+          "orientation": "0x1"
+        },
+        {
+          "name": "com.cocos.lib.CocosEditBoxActivity",
+          "orientation": "0x3"
+        }
+      ],
+      "abis": [
+        "arm64-v8a"
+      ],
+      "signatureVerified": true,
+      "certificateSha256": "5d28400e0ad52af0ed29c8c879f91c0dd9d56526f8c16e5ef5f8f474abe01141",
+      "signing": "debug-candidate"
+    }
+  },
+  "sourceUnchanged": true,
+  "device": "Android 35 ARM64 emulator-5554; physical phone pending",
+  "entryCrashRepair": "passed: title Graphics and Label use separate nodes; board entered without the prior native assertion",
+  "unusedEntryRefund": {
+    "before": 3550,
+    "afterRestart": 4050,
+    "nextEntry": 3550,
+    "onceOnly": true
+  },
+  "progress": {
+    "cells": 5,
+    "suits": "actual removed card suit, not a fixed heart",
+    "draw": "cleared",
+    "rollback": "restored previous heart; coins 3550 -> 3500"
+  },
+  "stockAnchor": "right; screenshot after multiple draws keeps the front edge fixed",
+  "completion": {
+    "route": "reference-hud-solution.json",
+    "preRewardCoins": 3500,
+    "rewardCoins": 1000,
+    "persistedBeforeContinue": 4500,
+    "marker": "card-session completionRewarded verified by pure transactional route; native catalogue round.complete true",
+    "rewardVideo": "unavailable message; no extra coins",
+    "coinFlight": "actual capture and 12-second owned-app recording",
+    "continue": "own existing AVG page 02/28",
+    "coldStartCoins": 4500,
+    "coldStartGems": 40,
+    "completedLevels": [
+      "level_difficulty1_01"
+    ],
+    "roundCleared": true,
+    "dailyWins": 3
+  },
+  "screenshots": [
+    {
+      "path": "reference-hud-fixed-native-menu.png",
+      "sha256": "9fe42e1441ff1c8bc10cd6e2173f277a5d46ae3b412ebff05ddfd08ac6208d0c"
+    },
+    {
+      "path": "reference-hud-fixed-native-board.png",
+      "sha256": "896f71a959ae1889bd9b4c5fd94402d66799357aebb891f9d4f9e0374f6e650a"
+    },
+    {
+      "path": "reference-hud-native-route-05.png",
+      "sha256": "690e9fbc4908d59d345d1a2c5b1019dcc3c35959a8a54a3991fb8d479119f919"
+    },
+    {
+      "path": "reference-hud-native-route-17.png",
+      "sha256": "10ccf5e4611548308bbc0d41faa5e045c6115b9165ea8731ee305354144cb5b2"
+    },
+    {
+      "path": "reference-hud-progress-cleared.png",
+      "sha256": "0d952f49029c129557822cac39b83c77a62541e4c6798b23d98bce86cfe8d7a7"
+    },
+    {
+      "path": "reference-hud-progress-restored.png",
+      "sha256": "1ea46b7b1b4e3de30853aa5d3c0166f68f9ed0df960480787529a0068d26fc17"
+    },
+    {
+      "path": "reference-hud-native-route-33.png",
+      "sha256": "8c46d16583fa2af8b342dddd8560d79ce6c9bf3f1b97457ab39ff3ab6711a00a"
+    },
+    {
+      "path": "reference-hud-native-reward-ad-unavailable.png",
+      "sha256": "c9074fa11e3a666ae2525745a7fb2a79a53ecf531d2fa19526f886a1243c16e0"
+    },
+    {
+      "path": "reference-hud-native-coin-flight.png",
+      "sha256": "222236480eb933534899e3147fb2ff0628849c7df8e8ac2e8fae579d5820e841"
+    },
+    {
+      "path": "reference-hud-native-own-avg-02.png",
+      "sha256": "db82c12e21bc22fc73d5f0e9beff4c45dccda6f0bc2af3486b5ddd1a76ead3bb"
+    },
+    {
+      "path": "reference-hud-native-cold-menu-4500.png",
+      "sha256": "f257a1c5ff9ae21aecd5e4f0e7615fa2eba3c09e223d79af5b84b57541743ddb"
+    }
+  ],
+  "recording": {
+    "localIgnoredCache": "migration/.cache/avg_plus/reference-hud-native-reward.mp4",
+    "sha256": "6675dd7af0da577252ad2aff0da11ad585d0b864e0db02895bad7f38819fa1bf"
+  },
+  "validation": {
+    "typecheckFiles": 42,
+    "behaviorPassed": 61,
+    "behaviorFailed": 0,
+    "fullCheckExit": 1,
+    "preExistingMissingUUIDs": 18
+  },
+  "remaining": "coin purple square margin and contaminated heart crop repaired in source but awaiting next candidate; full video fidelity, hidden ranks, reward-card behavior, all other UI/effects, physical phone and formal signing still pending",
+  "published": false
+}

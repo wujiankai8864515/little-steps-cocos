@@ -1,0 +1,3108 @@
+{
+  "game": "avg_plus",
+  "source": "games/avg_plus",
+  "environment": {
+    "creator": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/MacOS/CocosCreator",
+    "sdk": "/Users/wkk/Library/Android/sdk",
+    "ndk": "/Users/wkk/Library/Android/sdk/ndk/26.0.10792818",
+    "java": "/Applications/Android Studio.app/Contents/jbr/Contents/Home",
+    "cmake": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/tools/cmake/bin/cmake"
+  },
+  "orientation": "portrait",
+  "githubRepository": "wujiankai8864515/little-steps-cocos",
+  "release": false,
+  "verification": "pending",
+  "item": "AVG.ANDROID.01",
+  "candidate": "avg-plus-android-20261013T232635735513Z",
+  "sourceCommit": "eddf166d800c621115bd46b655792a916b1f467c",
+  "sourceMode": "local-working-copy",
+  "workingInputs": {
+    "builds/android/README.md": "eabfa70fde01fb7fd6caa8701d81edb8ed2f806bbf4aed12e5a80b40aa9e7acc",
+    "builds/android/build.py": "6e6f7d15032910ae9cb70ec94e8370a320a8431afe5dc7cbf3a591d5ba05ee22",
+    "builds/android/config.json": "cfe4037601d2f5686d0ae3fe111cbdedb0b7f6bed9292de2cc334b8c130769d9",
+    "builds/android/hot_update.py": "dde25f13b08364521cd021aec0e9c43388277ba07ab461b7106f8bddad17b206",
+    "builds/android/pages.py": "b69a652e8855cb3f5cebc13d3e079f97f58761773eaf767bdbee81fd303d2e90",
+    "builds/android/png_storage.py": "74357e794ec78cea48f640f454507a2cbee506e7a77436dda97f75b3a6197e33",
+    "builds/android/templates/hot-update-bootstrap.js": "6ed3e486a4efe64afb30d11e1a76d63d0bc6d8773b37cefd0dbccd4d549d8dff",
+    "builds/build.py": "3d1bea2b1296600fd7e68bbf4f5ebbfcec96d776b15e201c5a20de551ec197f2",
+    "games/avg_plus/.agents/skills/pull-figma-static-assets/SKILL.md": "6f795dfa8321450fcffbbf911c9f0305859ea9bb86c88210a0d1b03a3b00b21c",
+    "games/avg_plus/.agents/skills/pull-figma-static-assets/agents/openai.yaml": "ae0f6c358b7a39c31dcc4b698d17c0d9a50287ea59903a2c995afe5f27c43591",
+    "games/avg_plus/.agents/skills/pull-figma-static-assets/scripts/figma_static_pull.py": "9ae6735b96b92a7c7f43d248434b93fb41fd9a997649fa295c0f4208a61aeba5",
+    "games/avg_plus/.agents/skills/pull-figma-static-assets/scripts/test_figma_static_pull.py": "2d974341dde1b9062a92ea7daacf656de54e585f9ac54112c70c54e0f130b79c",
+    "games/avg_plus/.agents/skills/sync-figma-card-levels/SKILL.md": "2fcf5de9d88314eb7f492ad9c9ffd5edee50cc499c6705ab0f4579963c0cb396",
+    "games/avg_plus/.agents/skills/sync-figma-card-levels/agents/openai.yaml": "8c21aa408cc78ed8ca44fe2d9182d2ee078cf780482b0a576297ef29e4988351",
+    "games/avg_plus/.agents/skills/sync-figma-card-levels/scripts/figma_levels.py": "4fa3a52c9cf56bb8dffc92f21e02153e70f5e79f17a5d7143ee02ad0478acecd",
+    "games/avg_plus/.agents/skills/sync-figma-card-levels/scripts/figma_rotations.py": "d3d62028328af48eddf03d12d68050b562751a7b3748204506dd4453c76cae4c",
+    "games/avg_plus/.agents/skills/sync-figma-game-assets/SKILL.md": "f0418972f9cadce03acd3557b248b7daa63e884fd3bf9e31bb04bf4fe186385f",
+    "games/avg_plus/.agents/skills/sync-figma-game-assets/agents/openai.yaml": "6ac2ae814eceec1adedfc17be5667539eaf15a50c94c67d12d57ccbc21d93372",
+    "games/avg_plus/.agents/skills/sync-figma-game-assets/scripts/figma_sync.py": "263907fc926cf90bb4ff893e0aad353b2b83815ab0ec70a8b0b03f6f329f54f6",
+    "games/avg_plus/.agents/skills/sync-figma-game-assets/scripts/test_figma_sync.py": "28f80eceaafdb2e22845a58bc96f150e573ab0c0fe107f98aac62504cd041b49",
+    "games/avg_plus/.creator/asset-template/typescript/Custom Script Template Help Documentation.url": "d9195c36f763bcca97d0f6eef1b3c9632918c7e8279258758b421b19579fea4a",
+    "games/avg_plus/.creator/default-meta.json": "b52800a6063e26378a7ed6610800cbec4261614c507e7b5a1afc0c0b696605f3",
+    "games/avg_plus/.gitignore": "7caa3a0913350a092011769b9452e42d2545dc3d3ac3fc767aa474258e456c8f",
+    "games/avg_plus/AGENTS.md": "54b71579fe31e4edfe7af40b3b78ef68f0d33e69bd5d8e2601a7b680486b6a89",
+    "games/avg_plus/FigmaExport/FtoX_Bidirectional_Vector_Test.json": "d7587adb55ee1aa7a3bc44832ffff1300038feee8455e27f7de3faaacf2009bb",
+    "games/avg_plus/GAME_UI_ARCHITECTURE.md": "9cdcdcccca87a729b49c765ff4ead99789ecb890a0335608eed289103f9533f3",
+    "games/avg_plus/README.md": "c4cb36620fd1526520efc4e3d624edfad6bd74e0bb7419a36cdcdf23bdf13f94",
+    "games/avg_plus/assets/art.meta": "60e52dd2ba30713fe840c9a537696ab0d324461409ad2f8d748171d210ab1cda",
+    "games/avg_plus/assets/art/FigmaImporterData.meta": "994b094381225fce8ae8925dac6b5c17816aaa6d5933d29335eaa4257b14feb2",
+    "games/avg_plus/assets/art/dramas.meta": "5c95c816bd6fd6cbce273104d374929081f3b045768556d8bd32f6e7bffb1336",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻.meta": "2723a1362c82cb7008597228c107de78855e1e8cccf5c92a1cb808d17b4a2cdc",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/backgrounds.meta": "d471703931d95055fa7c65965700b1dec53b51bb3eff6cbdbf6eabb8446c8c9c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/backgrounds/bg01.png": "cf908c7bfb61f4c83f2ac104483d297ff7f4b5bea951aa1cbc3bbe4a4b51fa4b",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/backgrounds/bg01.png.meta": "659e7095a1b543204b3760482a6d4ae7b8601cc2dcab74ef948c1a6fd0cf30b3",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters.meta": "3c5414daa81803aed4c2c895ce02c9a97490da2988c11a9c25b1b509981f4a3a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章.meta": "59ee084a09d99bc9bd447aa7f4de03b70d10890e51f5ee26b43068d675783f97",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/01.json": "993d89b7f9904997a7ad96b8673cac948f69a0fa9855787349602639f976664a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/01.json.meta": "42c6b3cc0096631a17f7874662e246c0b72d793b7e18623131d1d48ae978397a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/02.json": "8edc0e323037a69413bb43f184cb44686ad5f271dc1528720ae1c76fa3bc8e8b",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/02.json.meta": "65fc7a6a73fce29611e199fe5a033c28fbc686da0fbcad2ba87da400bbe4e0c0",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/03.json": "493ce38145428d1aeaac88f72dc4bb7f3d9a53645dcec80f7e98b4cefc25e5db",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/03.json.meta": "9ac1b315285ecaa304bc9fde35810c0185783ef02c71ad7dd717f10bb09d3dd5",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/04.json": "b8b2863b1a6404648fc83225cba2638d51d97f88b05d4a85bdf812c09ba53ed2",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/04.json.meta": "2dda9326f52c6eedd59fc6b0568d7c5bc949a8df94594e4a9e0bee92e31b5ef7",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/05.json": "eb6e42f8c12286be9623e30bef1803084499112a012a9d8d799d4adae22b54d8",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/05.json.meta": "dc1d96acc9ed714a596456cde6b049c4df696cc7a050b6f67d1c2bf7031d4e88",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/06.json": "14418a5c647914f6107b637d774ac65485c7f258dba118b57647e76225960839",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/06.json.meta": "158a8e98759c5188e5a53e8adc4e46d5a7531ec0eef8310667d09d73fdc21273",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/07.json": "298237ed2ef7a23ce07e98ed652f12314d073fca6d89220a12f2c30c62a0b5e0",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/07.json.meta": "a5670d2cab5152a413d1c902ff01615988ec7376e494b07d612df1a80a1c4e36",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/08.json": "c4f8d4e3454c45769d2c846e9566d0a2c06d3730732daef050231172b97c4b58",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/08.json.meta": "0d35aff8c6ad19c6c07fe94db6800d0d5b5ac59422a0103780601cd9b0eb3c8c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/09.json": "9f99389a3392dc819ccbc5daf68a3e5a170f5e22338e90d2a34d8971925e3ad7",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/09.json.meta": "36a83bcfbaa8f241fab4148b27c3af39ca1720e9f63b547bc410a961c3314aa0",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/10.json": "bef04e3a94d7b632c30f2279d06e08f0355e7cc6d82d2fb60508f3b6c0f8362e",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/10.json.meta": "b38801f027292388b44572ef158bf71c6469856311afb6a4171dd8f0d40a2632",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/11.json": "355465f0e731167364d5cfad5a654f813e7bdbf99b8c1acfa9578f21abff107c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/11.json.meta": "d768edf34f0c95b3d6bfaef8f862e81d05ba08e89d2dd32c8c607a8ed20fad22",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/12.json": "94530d1bca9f83d11400d14eb1b32fd0680e78c7cbc964e97fb92deb1717cf0c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/12.json.meta": "f6b6790ed66c6d6964093ee9237531039efff8d9836edfed53db8b690c3ca5ed",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/13.json": "0ee9b900334ec74a0b2101d222d155f3d14a70313eea59a1b710ff0ef292e18a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/13.json.meta": "835e63e798c2b65662c2f581acf4d249ab614a9329ac7f7e306bf21898db6233",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/14.json": "a14ef798dca071f9c43bd0ee6583dbc36f9bc874d6b2c288c2da76c7fac3dfeb",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/14.json.meta": "b4b738c63bb08d06f6909e0b77894d57d4a11640e6a10297f262304c9dbe2b24",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/15.json": "fabf5d91cc6fa8fad3abfdb97450c1de2f38684e8920a236a9dc323841641b88",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/15.json.meta": "d4847e60c4012760a54d0632b7402b1f9ca628d70ffa6ff1594030bb5cc89090",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/16.json": "743265d84321a9f6857b393440dad5a85c701645a6d3662764828fff60d641d7",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/16.json.meta": "847fe36ae9108c6c68112ae1cb00bb202157b75bff4dc99c1a9e434ad7162e2f",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/17.json": "d99214711d533f58beefeb3cf4ccc9db29b0fd9a400c54af03dd4192c7587119",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/17.json.meta": "35f4cd0584423044e11be56c2389bd522f341e3323704e667c0fb8dc32790986",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/18.json": "c1867a22ad63849d3e7cb18373eb94945c7079ebced2b2d1e21e4957f160dd4d",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/18.json.meta": "d7f5977ff73d5536e736914001c407ce138cabeb1d919929c6c0dd7669e70471",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/19.json": "98bdd4ef33f3f6d7742a299474b452ff2eb9a0bdc325ef05c27e36881049f4e3",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/19.json.meta": "20ec2c4efb467ad1f82306d06a60b68f48de2bd0923a8330f350d1716ff15696",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/20.json": "cdfe76c973360a3b49e854a41b6c00773a0afdbb237dabc44d375d912f58b260",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/20.json.meta": "200491ef5a5698b1e4d5f656b6dae1aa1e86a46ddeaa4417a9799b8c1a8aecde",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/21.json": "1ccb40203db83abd29a744ce7fa5631b71e2912acc338b6777437a4f7f2f9fc8",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/21.json.meta": "3af07744db0537dc4d083ce9e91170b3431155af1fcf4b742024bee9e85a7df0",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/22.json": "4291627197376dfbb016d15de4a3fc23b5ef584ba37b6b7eba5fd6656a6fd2df",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/22.json.meta": "5e39ddc5058bb5a93c441b664c9b1050c3bbaf70a9179efc1bbe15d79407549b",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/23.json": "86a0c81086aad2f35dddaccc34d1e2522e020d0ccae4b28a59173cc52fcb0b63",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/23.json.meta": "9bd1f6052901266d27104960d6ac6ae08cda085c35aa4534f20a5396b188aac3",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/24.json": "21ff01a7cf7a23897ace78aa37090248c981cbf6fc18fc8a2d0b805d1402783c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/24.json.meta": "1025ebd47e999f9d4515a241f8f9bf769cfc8f33c9433f9aecae06282d029687",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/25.json": "e4444675a7933e1049f723d165ae4319212cef7a52e2e25f24cc2e3fa815d7ce",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/25.json.meta": "fc722ac91aaac725501da4092ab346f6ce49ff5281b7fc2d2efbbfa2fee6c521",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/26.json": "41e9be1c54135db1fb0ac4235183e2655a731b02bcbf5ae21abc5f2120d269bb",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/26.json.meta": "6b1a0e096845981028df3efb334423aa6bcf27d45743978ebd92cb7e10b1e19c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/27.json": "b337ae69d83b38a5138399e60f0e64525cad70b3716c1a260187a163edfd12c7",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/27.json.meta": "c5c8336a8f1df04d8b7510066b991c59ed9b1769adcb065d98047f7186983daa",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/28.json": "9e38713e11ef0c8dfed16c4518ea52ca23f5824e47f21acf6db211009cd36c6f",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/chapters/第一章/28.json.meta": "f4b40f3b4b2d2243f76281c0b377ff8410e5f3bad4237d9143d8a46c6f7a1f4e",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue.meta": "81459509c82e8454b2d56f9eb019c2437181d9f8cd82343be8a939d2cccb0f0a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/bp_choice.png": "5239db60a1d4de112a16ca9a39af28698cdbc1d9295f452442b8f878720373a1",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/bp_choice.png.meta": "55b678201868a640ffea8f13cee482f73d7c874fd078adb7472744a4e7df7daf",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_arrow.png": "a217323c05043a51011090142a3afa5631365b4edf22ae71184d2e8a585418ef",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_arrow.png.meta": "a97d18077a8f8d39f31632d442ab2e5f658a8d3ef4350d764c7c69ec16a42dec",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_bg.png": "8bc0d8bae65ea6bcd7bccac99bc005c8aa31030475f390fe9434486ad17883d3",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_bg.png.meta": "dd094d0b5a9405c9b482584860f3d155fe40c617a0c551ff16e9f3c2af72ec7f",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_pink_left.png": "276bc6ac5a9b5bac59528dfe63acd05fb1cec2c43d4bf7dce8e469a2667804e6",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_pink_left.png.meta": "7a1290898ebbfdf9c55f440e8fc82476c5eff9ad39fd95f66ba402947438868a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_pink_right.png": "50436b6bfb02057eff336d3ee0c2da6830b44a7facfe544a3d5d7eb1b87204fb",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_tag_pink_right.png.meta": "cdb5560847610228d4ef6ad68ca50e2db7bbdacf7feea785a34393de98dfdaed",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_word_bg.png": "4525a8283396e95040bb4dfa14d3e53d7ffd5bfc47a3c5c37b91b8db3993c395",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/dialogue/img_plot_word_bg.png.meta": "d21cdba445cbad526370308d14f2bbfb54b3f086ad679fcf5e8ab629b3dba6ac",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles.meta": "03270a6d8fef028522590543e29a3ce2e942a50905e396fa91998e005ef4439c",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Caroline.png": "1025a456fc51fc46b49d8ea76a4166182bb4d72d6a31d4afa1b43d21b3dedaa6",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Caroline.png.meta": "6c97c25edcaeb6473ec84727b64f8c08fe343b4265eadde42d31b9a879a044ca",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Eli.png": "e2d25eb11c3e96db27dfd36a00ae7ecbd0499bb085969a0bd2f7cbd6e5167696",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Eli.png.meta": "b585a448a2ed85d839ff8f1683b9e71d386d1e821242f025ee95cedb211661ed",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Jabari.png": "a0fa029a7dde840563de21050e4c01525fa0c29db110c209dcd8eb4fdf4f9fce",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Jabari.png.meta": "07e500f78cdaa43c4d73318a0c304ca77d8d36e4ccf5ee2bfa1071c535d3a61b",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Killian.png": "23496f9b9c77730576d4b1637575e454aa8562038f7887854057aff918f97218",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Killian.png.meta": "5ce6325184f16125305f8710ec33fc45358ff0e665f6b8b562b444d620eebdb3",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Luna.png": "66043843989796ee7b7e193edf6a411d1e9e48a576da12db91ad7d2a085112f5",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Luna.png.meta": "74622a0d3c0cedfd0c2d14c691844d157c948f6783809cbda5636bac5e62cb24",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Mia.png": "29cb3071554022717dcb684334bfed873ea4b014e577561029739e9f7a0687cd",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Mia.png.meta": "4dcb9acd395070effe68e5bd50b1e54f030965f7240898e1171903ae6f708906",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Noah.png": "e3143146f4335dd678c0680eecfd5278c6d78a78612fc8375cf8e16454c26a21",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/roles/role_Noah.png.meta": "f70b1d147f113b7afd8705dfb8067aaf4b1a91e8f0167a1f65593f0b7e38feb9",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui.meta": "b78bb0e9088dc13548df15a5645cb6a7832095f77772a71c00b8f5945de1ccd1",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_btn_pink_bg01.png": "3024cdaa1ad2b3f6dc712d3f57b20f8933f74ac01e2314426156945d908dd3cc",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_btn_pink_bg01.png.meta": "a7d155190ddaa0bfa023366ace65707784f9d0ccb8de26175b85b7c558e7da6b",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_icon_pink_home.png": "566cf4d00a1a34eedbfcbeb413cc2253f376975d26216c8da14730a8b9ca5b82",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_icon_pink_home.png.meta": "b3e48ec62a923bc4d74b5d2fce7b7313565e34bd42391f6d69b9e417ec47a1ff",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_icon_pink_settings.png": "aa88a9ecbb4f00ab9c2bbdc1495d9bbb9b34b340d4772b762d243f01bb937d1a",
+    "games/avg_plus/assets/art/dramas/霸总的假未婚妻/ui/img_icon_pink_settings.png.meta": "a83f59245bfd1373690cdda2921566a24280d250ae0990f0c110956b34e4ca2e",
+    "games/avg_plus/assets/art/figma-prefabs.meta": "5e1add1516f29a1a3b74b8f6cf3c19af7883c113133b3826217f49889ac210e4",
+    "games/avg_plus/assets/art/figma-prefabs/FtoX_Bidirectional_Vector_Test.prefab": "50960b26b1ecd848e2a2a4f86ca61a068a18587ec279f2e99d7a62c47f6c9df3",
+    "games/avg_plus/assets/art/figma-prefabs/FtoX_Bidirectional_Vector_Test.prefab.meta": "abd7ccd4a45db5c0ee7d626ed01523eec1ae9e08496e052d8491b60347a7d13c",
+    "games/avg_plus/assets/art/figma.meta": "2eadb139766306b813c12a2399edf85128dc7563e70998f726a8b0f2669b6234",
+    "games/avg_plus/assets/art/figma/FtoX_Bidirectional_Vector_Test.meta": "56e5f44711e4071db08760fa0bdbae87530ce0398d815d1dffbb75058dc056f2",
+    "games/avg_plus/assets/art/figma/FtoX_Bidirectional_Vector_Test/img0.png": "a825cfc75f06b42c859314da7ba9c6d59e4379860cf084ada44e25c4ed8bac3c",
+    "games/avg_plus/assets/art/figma/FtoX_Bidirectional_Vector_Test/img0.png.meta": "dc6a74b03d6351cd4426977f43c64af943ed0f09f9957c8a01d392a77cc3f22b",
+    "games/avg_plus/assets/art/figma/第七章38.meta": "b90ef1c80082341c3a9264cd899c94ba3e34a3bee6c79ee4435e0ef65674d458",
+    "games/avg_plus/assets/art/figma/第七章38/img0.png": "4645e0c145db25f106cd88f0bb548b0aae62504e10e4daf2ce6202cdca9e2c98",
+    "games/avg_plus/assets/art/figma/第七章38/img0.png.meta": "98859415f36850903c61f0cdee28601cbabf0d7b0c97c22d940e51e4606d3046",
+    "games/avg_plus/assets/art/figma/第七章38/img1__ftoc_slice9_40_39_8_8.png": "732588dbafe600eca0203e0cdb73cf4c9d50351297f5da187236f980bb8cdfa3",
+    "games/avg_plus/assets/art/figma/第七章38/img1__ftoc_slice9_40_39_8_8.png.meta": "9c93f7acd558294eacd0b3f854b5264c75fa57fc864a4a52a83dd2a011ea18a7",
+    "games/avg_plus/assets/art/figma/第七章38/img4__ftoc_slice9_53_45_5_5.png": "783c56efc0ade44ba70a6e4ccd8573b6234b1ba56704256bb61313fa4e0a1a43",
+    "games/avg_plus/assets/art/figma/第七章38/img4__ftoc_slice9_53_45_5_5.png.meta": "e321592f98e14b2d7316dc3ce0fd7352545a94c6dc6371af9160ea9af942c11d",
+    "games/avg_plus/assets/art/figma/第七章38/img5__ftoc_slice9_51_55_33_33.png": "cc3074a74359bb4331412210ca78e9e544c2309470ab1f0c70bee583f7613977",
+    "games/avg_plus/assets/art/figma/第七章38/img5__ftoc_slice9_51_55_33_33.png.meta": "1c158b8fac9dc2db757db1e1ba8d22397ee12c77ba17a14881e6a78d00f481ef",
+    "games/avg_plus/assets/art/figma/第七章38/img6__ftoc_slice9_53_38_8_8.png": "10fd706219de8d8a9a0dc4ff907cc9439bc06eecc9beded49a762dfe6699844a",
+    "games/avg_plus/assets/art/figma/第七章38/img6__ftoc_slice9_53_38_8_8.png.meta": "41fc33170598b5cf349c104657e85720ea6a07185951991c3159807785477403",
+    "games/avg_plus/assets/art/figma/第九章26.meta": "387910406d4b891fc35cfa5df0a234e943a5a1feb1076f6e54f302ffc3f5a7d1",
+    "games/avg_plus/assets/art/figma/第九章26/img0.png": "af14784eaa55b80ba0395dd665ed9b6385a08e4977e8dd9f92b942eb1ed54d93",
+    "games/avg_plus/assets/art/figma/第九章26/img0.png.meta": "29257c1c9e49ce2300d0382c382fb4987eadeb00ea45e54aa3ccc6426bbaacaf",
+    "games/avg_plus/assets/art/figma/第九章26/img1__ftoc_slice9_40_39_8_8.png": "732588dbafe600eca0203e0cdb73cf4c9d50351297f5da187236f980bb8cdfa3",
+    "games/avg_plus/assets/art/figma/第九章26/img1__ftoc_slice9_40_39_8_8.png.meta": "3e47fb8c3f3ef69ad9f49e46d637f79a7364312955dbac32d84c822b29fdec0b",
+    "games/avg_plus/assets/art/figma/第九章26/img4__ftoc_slice9_53_45_5_5.png": "0012305c75a402eb1fd6ca5b4f100468566fcdbd107626e96654afb861efca6e",
+    "games/avg_plus/assets/art/figma/第九章26/img4__ftoc_slice9_53_45_5_5.png.meta": "1bc1738fe1b17ae5df0480752c7075406bd1f9b4807c2e8066dcb45aeaff2615",
+    "games/avg_plus/assets/art/figma/第九章26/img5__ftoc_slice9_51_55_33_33.png": "cc3074a74359bb4331412210ca78e9e544c2309470ab1f0c70bee583f7613977",
+    "games/avg_plus/assets/art/figma/第九章26/img5__ftoc_slice9_51_55_33_33.png.meta": "3e6be1772fbf5c1c1b6a74eb040d8f53c0f8644841dbf04de5b6ba80ea028f00",
+    "games/avg_plus/assets/art/figma/第九章26/img7__ftoc_slice9_53_38_8_8.png": "f3f795d9cb9dc5c051b44f1492e7dd393b4d5bde1cfe284c4b7d3f3b84ea3b98",
+    "games/avg_plus/assets/art/figma/第九章26/img7__ftoc_slice9_53_38_8_8.png.meta": "38f211f6140b786f2bff5ef185afac6010449dcdfc0def6765868f4f7098013b",
+    "games/avg_plus/assets/art/resources.meta": "c9290588bdfbe51778e953418e9ff391dd8d379a1f640802676722a52522fd07",
+    "games/avg_plus/assets/art/resources/assets.meta": "8fe0cb8dd5413c2bd6983e6697f143b5e98c5e767d3eb644a085656c0d479704",
+    "games/avg_plus/assets/art/resources/assets/poker.meta": "74cac611fb07eb03be25d79b7f421735e743149be5854c4976a90f6179c8fcbb",
+    "games/avg_plus/assets/art/resources/assets/poker/backs.meta": "3cf9f809726f098f8530b1e22674963032842af143ac150dd12155db81bb7670",
+    "games/avg_plus/assets/art/resources/assets/poker/backs/poker_back_01.png": "c94b2053ff2383bcf8a91078aaa1ff0e115da248411c20e67b518d326684a3db",
+    "games/avg_plus/assets/art/resources/assets/poker/backs/poker_back_01.png.meta": "6db14894b10f3a97cc4fde037dc126eeaf0d6e5a621971f7c154ba326168f9b0",
+    "games/avg_plus/assets/art/resources/assets/poker/card-catalog.json": "b1361e16402901a7098266e35b08ee84afef39109d54e8fd5ab35006ee71bb65",
+    "games/avg_plus/assets/art/resources/assets/poker/card-catalog.json.meta": "40cd18cb095705c2b0a26b7be2cc1140d226f42dd100350693110fcd66433fa0",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts.meta": "445ecf32ccbfe4e30fdf7f8de5d6f107a85ac81662eaaa0eda0f820cf54f5d73",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_01.png": "a44eff34ee3fd9818ad6152922c7bd33f1ce108a159143445ce164b3793818c6",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_01.png.meta": "5494534303e87f21f1d94166ace8b4e6131e66c55c42b8eb955b067a2fa66e93",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_02.png": "9fa381c7c9d8e014555edf6b5f58ce1eb0852e573612c3f63a2486982f9b6532",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_02.png.meta": "82baad26bab060aedf43bb2786aecfbea45783c357b72078007e03070a9dd6b1",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_03.png": "91bf6276edc6a212140b276c02ea2045fa4828f3ed07c092a87d03b27ce2bb46",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_03.png.meta": "8bb7275c77e34fd1ad972543176168f62a543b2359ee48522af81ddc2ad74df2",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_04.png": "88cfaa3fe59618fa33a32db6b2b4300e10437776c6d9094714dba1e7b365c2a2",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_04.png.meta": "4d71381fb3c47ea452b5c6601ed74179da730e4a775a039ef14b85c0f2f74947",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_05.png": "77c44bf207ac45cd1f391a5390855470ab0c7ab227a2b67e8a9178e898b04481",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_05.png.meta": "e09d303258d1dc4069e2ae655bb37121393de73b2f4a1c0159f0934ae4574b94",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_06.png": "7a778047e0414b8f7c4b962d1bb6a870f21b5e8a816d06132be9d477eccd216b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_06.png.meta": "3821fd579931e4f303817117b0e1aaa33878adc6f4357c54b786b143cee94d17",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_07.png": "b8231aa337bd9472643a2cef97c2b79b1affc6becd94f366aeec37677b064c41",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_07.png.meta": "6719536776baf5f0a386fcface27cc3e213e3bedc3ec4082df98b7b8be0a62ac",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_08.png": "e23d1a7cc126724bfda4bbfe6feb6a75ad695df3fab0b5f68c4f2020bea525ad",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_08.png.meta": "83bbb827d1f35184fec45ad29e62930f5118607ba7a18a6d0f385798dfaa51c4",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_09.png": "70b0ed581ae2bad5f33f1e1c21fcab4885f85f404549c8112523902fca992b1f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_09.png.meta": "6518b3f9ed955eb2ff8d71d59bb578ad73e34715ec9b2e0bf32a450fa4478771",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_10.png": "0cb233926a2e12e6cb3dc8bb0836878540c35817d83d7ccad8af4a79ce2e979a",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_10.png.meta": "4a3f9a3e006c1a42a894fe033403e0974089226211eb1de241c0af65674d1d4c",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_11.png": "79f9bb5e97b6ae2b3b8c1fbfb2898414c946adce7f8a2eed8d698427c9a8c049",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_11.png.meta": "5c256ae507729a88313f5826b3531f3036ed74a3b57d152350715f421519f667",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_12.png": "741d6c107d756a4d386d50ece783d369403de6c973a59801b35c89a0a7044d71",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_12.png.meta": "ab527a50acc1e98ee650c134554ca0c0a722afbfbcd64437ee76e90d57a6a7a2",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_13.png": "f556fe65c24cf26ec707c4bd090a66e7646738bd8f04f33ec50e056b9a1005c3",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_club_black_13.png.meta": "2956449bcd2f307e04798275957c77b8400a482d57a650b733a8750b817cd349",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_01.png": "38e1efc29a93ac6001fb04ffeca531f861f385821ef9511da0d7a17669f9e64b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_01.png.meta": "5528ed8e9243874a155e76716af26724178c0a44f5df9e9f0c3aafd4ad98847b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_02.png": "ac76ca9db1d715549f1ae53626164a1878e2d6691f68b483c095c2331d4978fb",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_02.png.meta": "8a65cdbc5872aae25656f91f3b8700266984d1caba0a62574558eaff11c8ca1a",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_03.png": "4c5e6018f35c8662869a86ec36f5ef68f3a7b038abf7a125c859712503b54118",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_03.png.meta": "f75af533637904589241036c65e7f435710c5fbc00edd470869dd33e0dcac138",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_04.png": "d0324d54467683b829c3832c187f6c7f620d1320dc7dbecc335e7febcbe07acc",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_04.png.meta": "b3fd8b203b36b02e1336916b12724192fb9e73002ccc6b7894c3f2bce82708e8",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_05.png": "f11f9dae516ad004b84eafedd0fe33bc7daef2726f27826256d41045f5914e1f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_05.png.meta": "bcd8a999fe2e249cfadaf77b1d879d510405b122011e689f307efebf9af1e849",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_06.png": "3a4de90aa4b1692561bcb647a9e0ef54825ac08604751ae32ba682ccf58f14e8",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_06.png.meta": "ea2f3cf484f914eedc21687780ef625aab00a6e00dda8fe166252b3751b4aff8",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_07.png": "fb07ae782cdd8f4cdc711d09b04815d2e14ce01dc17d26258d4882d035650e1b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_07.png.meta": "01bac57d6a6e7a85b105349bda96ff778d261f934ecd56234f9fa6e069773b5f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_08.png": "ac29b8eaa6c9095e025e32502073d111211648cf6ffddc966c8cbdf7889badfc",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_08.png.meta": "c57da0fe0ea448c2fde85e5d6f5bd00b5fa001d6ba11762ece436c4504ce3f95",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_09.png": "bde841432b62e6b9d0b3191316abefecde329ff08c3f5dc70ed0156150f98a86",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_09.png.meta": "c0e0a1a22cb7eb7344f31b14f5a73c6b5c53572f436b250d3ec0e9fd3922ef8b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_10.png": "0e2472d08c9e61360aa216378117fc2a0f17c4e39aaf0ab92487a06e50ed7a1a",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_10.png.meta": "c7dcbd1903d7ee76fa94c70f29686c083fd8081ea4c846154fc2d45cd4aec5f1",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_11.png": "0840af7aca0cdff286a793ad0da5309f6e7d4d546c716ebf9901bb33f7f97044",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_11.png.meta": "ddaead688dd4d48d42eaddf82fbf0fd0cdc3b83564412fb5d561820dbfe60224",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_12.png": "23a36352d6bc18c87da3cae7312b6157e9df50441bc4fb70965ced9c2145db5e",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_12.png.meta": "6892491fc2427834af229bcb2a933ce0e592047d448bff5d09036d1b0960ce1f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_13.png": "9da6b429b45e4acb9d25e4a547715c3b23dfddbaa78f2ceb36a86a724ac85582",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_diamond_red_13.png.meta": "2652d94174583785f50c23ee11c27c0f7be69de80baac64b132b1ec13da7e039",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_01.png": "e3ef7f8bc8e77db77c02cdbd2bfec4a58c8041b431fce5b57ecd07e3fd4cf312",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_01.png.meta": "dcfb1468a973fd19bfb832adfa0f4860129b27137c7246ae3dbb260c4f64d72f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_02.png": "ee5c28fbd2c4ae6b6e7fd89c468e9bdb82c4fe44042864cb438485cd7e546ec0",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_02.png.meta": "78db1b4e12dbe810a0b0b703447d387eb1d624a3051d803bfe5ebc77f36c28bd",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_03.png": "5807bed8d173a83b9f9495211f09ce25c144847a3665c26ebf2e2af2a9769fff",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_03.png.meta": "9fecb49c5b226cf0dd97873e74a00020875f82c37aafecac7c2bca07a1575fa6",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_04.png": "c4adb78db53021b835b6c4b3f99e578d97289850d3143ad8da06951faf122aae",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_04.png.meta": "e2c0bb2b02fb0f8d10a5f1140fd978ddb0da6471975bd5fe4427b33f0848d947",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_05.png": "3c686e3974fd4b1e34f24052b0e6e4974ee63ecae329c768b478e3cde3eb4f04",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_05.png.meta": "6a18020b5482fffe27afb1dd07d465a9167da741d62b9477c454b7300987ae55",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_06.png": "5634fbae22a47f6a2cca6481c046c11b0ea2f9b28beacb9d3823b7719df80123",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_06.png.meta": "99fded36d9ae91af51991117c751dd6b1e1eebe3a6c405025c5db4de97af1865",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_07.png": "e11ba7b6c8a47ac6923cc11d33a3654872cb6447175873c7b18daafde9d15a31",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_07.png.meta": "4a4f142d0d377474afe9ff546c1e714b58c3dc4b0aba7daa77455d692e2d73e3",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_08.png": "82cf5e76fb8b65f1cf3c86a66aaa52f33590ba7edaa7ca8a62d17c2e5da25d6a",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_08.png.meta": "e3110b0a44d07103add2d5990979a013bf46065f55230a03c682e63b672120a6",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_09.png": "aeeab7b96cad9331b1fd2e411231902c1d8d226ee926650cc340964450375c52",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_09.png.meta": "3ec7c1a6a267c8d1af0caf8e7c5d8dc9197bf81d1db21fe8c32c32d347067e95",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_10.png": "d17f0dbe92d3976ca12d096dc7fe08616abbb9bae46c516e7be262fea1c9ac85",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_10.png.meta": "52d6f6092ead27e77348d2226c795a3e20dd8ac43059e3ad68949097a17810ca",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_11.png": "b0fff0112dce4206e410c60e3b7815affea4ef1d2e49b4d2ac3284899f6badc4",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_11.png.meta": "47bfa2a0dd17d9d3c625c95889f2c5dca556b75b83f682976e90229effcc97f8",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_12.png": "26b73f1d3e8b456419acbfb556615c5269e7fdba8f2da007e052238ac607b3bf",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_12.png.meta": "ae7417a37951e90ed176f7bc83166608b17cd3386334a3cad5c376aa84541af5",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_13.png": "2b376fcf150e4c81dd5d11ac4958c131f49d9f3f70b5f15b9ea7a8ac988df4ee",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_heart_red_13.png.meta": "633ea7228867f2da34eb2c19fc7425356d073b2cc2d4073ed1dc48a01f913a24",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_01.png": "49fc4b2661e725c508254ec17c886e698f5628ba041afd22c332aff56cda84c1",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_01.png.meta": "43e3b03a63cb47a65a9b60b7ec6cfc87728c8a245ed88c9e361d1f00b6529a15",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_02.png": "d66db9ccb65d347ae8c31ef6c6d09a3f17302bb54a654663473cc789c2645d3b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_02.png.meta": "7a56ac1be08c5ae980cb6b59fa165802fc1663cf73d6d2164f7ef3ac8a7c38e8",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_03.png": "07d98bd23e61e6c7e4ffaa7e7c3fab7d93ca7b4788053b642ca51f26a98fdb48",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_03.png.meta": "985aa2a8567e169966d012c91e32bfaecf3a0ea01acf066699e27c5350d8c6fb",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_04.png": "d80bb259cfac2056c85a933521beb4cf036014d791f011b6f9ce70a11b04ce68",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_04.png.meta": "52da79a190f08a4621ff295b1aace6d48b23aa002f16662dd4e9ba75cc50b20c",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_05.png": "86d7a89d48e68a2a65687d1fdb72a165de28db379760a5c801fab3156ea89fa5",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_05.png.meta": "41e513c607265ed6ec00da53679e6f6036123d0795fcf9386df114e27c025a59",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_06.png": "d7ef49c2c06b7ac1806ce7af49c5a95c9246e966efbd80e0cc6546b327b97b98",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_06.png.meta": "e230dbce1eefc002c295af5386c4d569fa69fbd83ab829f27269f76673ce12e3",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_07.png": "c3b6a72e9f3534b7b7897be2815106af46728a61d0f63baf6b22eee148b3b9bf",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_07.png.meta": "aab2abc80ab7749910d7899a2911a0ad119f9242d4e72e75aa2d53248991ec82",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_08.png": "9eba0ad5ffa54ccc8d6b8268aef4c6925af3fe6d641809fa4177ffcbfab3780e",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_08.png.meta": "eab1d25a3ce036f6f5b64230e8633ef58163c5be475435cfd71fc9d59e318b6a",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_09.png": "037979a3c5fd543e64d2315cd4eaac5a55fc87cc7f46ad39e7123a5209e83d21",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_09.png.meta": "2c2de4563a2c8319e9cfa73c6cf634acf3cd8924e23fbb9d03823d7fa852fb5b",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_10.png": "97b1f4fc378f696b231f9799c15c3fa67fb7e5b329d5afedf230a442b4826f9f",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_10.png.meta": "ca510e2f2bec41a37709c8aa2fafa340768cc9366e76664513cd9d8360554363",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_11.png": "985779a9af41297e7a0bd99af1a9aa4bfb1673add87c051428d86d940c548084",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_11.png.meta": "964c6fb26371a3a6b0a48deb53e4d0902b8bb31a91126d30292f25e47e51087d",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_12.png": "76b19ffbbb3030b425dd8df77d25def8290ecbf8d134c667e546243f029d73e7",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_12.png.meta": "a32f9c0c755862f83dc0d056abc69e287b63cb89cb2e326e7938aa9640e6b727",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_13.png": "01f438141f8e572c4b978237c821eba9658a286a353981164731d656556fd0f3",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_spade_black_13.png.meta": "9fda7e93d5442c633c7ff2a2b235781f34608862d2f05efbef9237cec064d631",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_wild.png": "a25c6639346eb0f8ded54e02fadff08a993aafa4f4c55c7bddb8b892378dfd05",
+    "games/avg_plus/assets/art/resources/assets/poker/fronts/poker_wild.png.meta": "5a44c1529120ef3cc3d471dc51373ee9014e1af6a294895113cc036b56511827",
+    "games/avg_plus/assets/art/resources/assets/reference.meta": "160d5318368b410e32378e2bc557a70758553b4464f6addcaab3cf773e6640cd",
+    "games/avg_plus/assets/art/resources/assets/reference/cards_atlas.png": "c2b4dac0112c847cd245b8cb0b38b2b1e0fe6cc6040154bd4e00edb580fbd715",
+    "games/avg_plus/assets/art/resources/assets/reference/cards_atlas.png.meta": "81e9f707cddd3cb5bad2187e644dc37776b1906ef36a4364127a648d16961132",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_112.png": "51e169104af2496d0315aa264a3916b2925affa3152370434d9993a27cc8292a",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_112.png.meta": "47959e87241b2eb95cfd40af4044b4ff98391cd8cc4b6c60ad4932772097d499",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_85.png": "28a6680ca79c20044e503ec666fc4b0d8b223fb2bf3852e5a2f97bf510a4564b",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_85.png.meta": "eae0bea06c4907e18b463e802e75555664c0b40cd8d28fdc8674e01585a3a8c0",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_92.png": "fb1af787452db952643886e1dd7e1ff16cdaf830d3c2f8cecbc4cd24802ca3fb",
+    "games/avg_plus/assets/art/resources/assets/reference/hud_92.png.meta": "3cfedf9d2a6cc712c61cfb96cbdc4118e748482c64ef6430c045b0b151e9372b",
+    "games/avg_plus/assets/art/resources/assets/reference/night_mansion.png": "60b78524641f696ad2d09bd14851f2d34a22390b65b4607bedda7f0fa3afb5bc",
+    "games/avg_plus/assets/art/resources/assets/reference/night_mansion.png.meta": "89ae0f6209a6f031e23c0090c3be58161c7a7c53511fee1c45ecb18cce5f9f22",
+    "games/avg_plus/assets/art/resources/assets/reference/reference-glyph.effect": "8ba0516dd0af47c407fd0028be5e1ecdac35b324be83cb4ed7b11aadf8abbb27",
+    "games/avg_plus/assets/art/resources/assets/reference/reference-glyph.effect.meta": "3b29fa61984b9bfdaa990ee0a0ed447313fdf459a7a061bc50bcf64ee14c1195",
+    "games/avg_plus/assets/art/resources/assets/reference/reward_atlas.png": "a7d7b45565ce7e8ac43eb689f2ecc0fb998660fbe6061ca55ab00dde452e6c0a",
+    "games/avg_plus/assets/art/resources/assets/reference/reward_atlas.png.meta": "6e6075aaae1c9a36db6dfafadf3ed05a098ceff4953ea4c91fdfe8c68901ebb3",
+    "games/avg_plus/assets/art/resources/config.meta": "edeb64c689584a54fea0952634a246908aeb5a6a0733faaa06aef1acaf942e43",
+    "games/avg_plus/assets/art/resources/config/avg-chapters.json": "3b2cb78691aa782e4549585d37e65bf2b3d38f22c24e55d84ffb4856d9999507",
+    "games/avg_plus/assets/art/resources/config/avg-chapters.json.meta": "0a507dcde289ecf516258a3f0656b9ed5f213cf551e328c2deda16b66883b3ca",
+    "games/avg_plus/assets/art/resources/config/card-levels.meta": "3f25fe09746c85f723b4f660dc4570da5e6e10efa19358169dbd81103c785342",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_01.json": "961ce43f0a784db0cb019f2adad5de43df8c391dd65b3763cf330cfd77ac0354",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_01.json.meta": "c7fdf426b3b95be415d31118678058a3ceba62a38f811a6553dec02095afd905",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_02.json": "092b1f23631de45ab36d624b1b1701f5aa700e9d5d41bf02f72edc5860dfdc31",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_02.json.meta": "912ca67fec449a2737308bb34e22ccf1f916bea80008512376f2805e73f0a15d",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_03.json": "12cd95fa1b229c48fcf7ddcb8f9d44d1c53336deaf030483e28f33ecb5106723",
+    "games/avg_plus/assets/art/resources/config/card-levels/level_difficulty1_03.json.meta": "3a692b8d31e7d596adc46de9c7c11bf091d84fdeec5f632edecaada035c63d9b",
+    "games/avg_plus/assets/art/resources/config/catalog.json": "669395063294368cba7d6d8df2dacabc5c834e327a9505d15af1b32448b88002",
+    "games/avg_plus/assets/art/resources/config/catalog.json.meta": "3efa791945d4e9ebeeb86cf4f77ea8cce7a4ab0726547632797c9cd41b6c3b61",
+    "games/avg_plus/assets/art/resources/config/game-flow.json": "7ab2823f85ce2b1dfa5226dc4a82b984874a9dfcbf77597af5ab57310889bd4f",
+    "games/avg_plus/assets/art/resources/config/game-flow.json.meta": "e15aa2b96767323f9d55c30c43d1e3d1479dc535e8abbfe1f63a474c8f9e6703",
+    "games/avg_plus/assets/art/resources/effects.meta": "556ae3ceca639e21af93a8bb4c1d50c71ce47df6824122bed89f8ad4c1a13839",
+    "games/avg_plus/assets/art/resources/effects/avg.json": "75ee1f3783f15a7f5ea0fc02818211b75c917b5e9c889d7f0a72af3304b556d5",
+    "games/avg_plus/assets/art/resources/effects/avg.json.meta": "529335bd4b299629bd7772e4844085047b53af35647584da8cc346222c6c3459",
+    "games/avg_plus/assets/art/resources/effects/card.json": "15dd54d4c7ce7651108a0e9f19618bd3f949e0af3c7cf5083ef811070800fde0",
+    "games/avg_plus/assets/art/resources/effects/card.json.meta": "9d0dbd55aaa2b01748ed224001f5c6b672c8ea2dc688073a4e8105d33f3f058c",
+    "games/avg_plus/assets/art/resources/effects/paid-bubble.LICENSE.md": "47893e66752f890422d76de408667d48ae984f14aa6b33c7e2d347950f349545",
+    "games/avg_plus/assets/art/resources/effects/paid-bubble.LICENSE.md.meta": "f5832360d3a554bbc8295ade6d486f83f497918c8220855962e21f513c5e5bf2",
+    "games/avg_plus/assets/art/resources/effects/paid-bubble.png": "925b8ac284436f74f9cadf0ecd058da1c08fba65c098e4e34fd220603022f02e",
+    "games/avg_plus/assets/art/resources/effects/paid-bubble.png.meta": "a8cb9bd76f4dbfe70386bb541d32847daca28e1ffa586c5e48bf1e9bb6b6bbee",
+    "games/avg_plus/assets/art/resources/mods.meta": "872f59159063d10260cc6a2653c6cb0011bd82455fc607a25632494929e98abb",
+    "games/avg_plus/assets/art/resources/mods/profiles.meta": "e3f769f974da5f740a882765a82d5b4800576eb883d2f5af81bc28adefdb86f5",
+    "games/avg_plus/assets/art/resources/mods/profiles/default.json": "03da40d588ed5df18561727c5d8777b0e26477e08c355d15dd0611d73d4f6084",
+    "games/avg_plus/assets/art/resources/mods/profiles/default.json.meta": "db3a7deced232411b0c5b89ddb3cc4340fcaf770ed049fd1bae81c0311c7ecad",
+    "games/avg_plus/assets/art/resources/prefabs.meta": "f1990a9e2e111042230f6cfcf444cf213d734a078ca199fc66ed96098b8a6b90",
+    "games/avg_plus/assets/art/resources/prefabs/gamePage.prefab": "247a0050a7c6e4a5939705e7ca3c52e63b30128dbd0ef8202e65739da9471f13",
+    "games/avg_plus/assets/art/resources/prefabs/gamePage.prefab.meta": "28065c1b7fbc75676fc042fe383abe20c2ef44714a9023977ef50e7d2850d7b4",
+    "games/avg_plus/assets/art/textures.meta": "6d79af84427f039cbeea290c5a018d91e2d391aca2ef8c5f4d9c933017de355e",
+    "games/avg_plus/assets/art/textures/Property 1=btn_green.png": "30caa8df015949d8f3e7d0895b281ed9a826291cc5de0a5c88e3015aeec548fc",
+    "games/avg_plus/assets/art/textures/Property 1=btn_green.png.meta": "b39ab9f7a08d27a7f983d2fdb429daa39f54590f998a16b80df26d9d86f2b75b",
+    "games/avg_plus/assets/art/textures/Property 1=btn_orange.png": "dd8d49d84715b506d0045b875fa2fe265176d25b3741e44bf29544fb263721f8",
+    "games/avg_plus/assets/art/textures/Property 1=btn_orange.png.meta": "3301bdd06a07d9c7769065a19067fb31bee3e27af3bd7663ba19734cb0659b89",
+    "games/avg_plus/assets/art/textures/Property 1=btn_red.png": "1d9324ad866ca05e378e31c3edd8b82338be62b422678a9fedc166d1e202cfb5",
+    "games/avg_plus/assets/art/textures/Property 1=btn_red.png.meta": "6ae4525433363877d9d6f37a93435acdb1d256fdd5377041d1b34a6a3b8d1e1f",
+    "games/avg_plus/assets/art/textures/bg.png": "3b2237212cdde13b9d556e1495bbe289ad9f10fe4f47ba95c466ce0c4988617e",
+    "games/avg_plus/assets/art/textures/bg.png.meta": "bc2e704e6d52581a52e358e859182d87dd184b323eb2aa5600ca94f0bc3f2ee3",
+    "games/avg_plus/assets/art/textures/board_big.png": "7ee2f3dbecaa783a6a11e7dc9885625e6244528b83a9a5c9ba8be1ff27b872e9",
+    "games/avg_plus/assets/art/textures/board_big.png.meta": "2b568a6b6824c84ebb9b0d3a5d406457364817a39d6856e28866c436ff8ff04d",
+    "games/avg_plus/assets/art/textures/board_small.png": "f402b97476d5936326560b12f8e5dd3d8e4dced27b8ca9a60203c84063f85fcc",
+    "games/avg_plus/assets/art/textures/board_small.png.meta": "ceaf1380e53d0e3949ca9ee9fb367987dd1e42ab6e80a9173a564753eeda94c9",
+    "games/avg_plus/assets/art/textures/img_main_btn_add.png": "b98b7bced9e75c82009f3d9d7c64dc21d39ba0a047ab8572cf31a814eba784de",
+    "games/avg_plus/assets/art/textures/img_main_btn_add.png.meta": "adb2613c4ec629cfd054f7a7287c72976f4a1c9b0caaa74045db60807eb48aea",
+    "games/avg_plus/assets/art/textures/img_main_btn_pause.png": "d2fb0822d9a85e5dab5ff312e86c559e2815ce147709d0fce1f3efe4d84185bf",
+    "games/avg_plus/assets/art/textures/img_main_btn_pause.png.meta": "49aaf1d3bb2f6d30dc23575d46ac420347e0a74f52e5625f152924e38da23b16",
+    "games/avg_plus/assets/art/textures/img_main_btn_return.png": "77f340135f93667f7a3de351f5cece09622e4e859f072ed6c25ba7e9fb013fda",
+    "games/avg_plus/assets/art/textures/img_main_btn_return.png.meta": "53f1911c1dc0812aa397154ca0df69fc1c1c259be14a0257e624679a9ba2caf6",
+    "games/avg_plus/assets/art/textures/img_main_icon_gloden.png": "6104d043c57653457b67079adcdfb154be6459277d9f3a0fa0a593ac2a88c0fb",
+    "games/avg_plus/assets/art/textures/img_main_icon_gloden.png.meta": "161f8bd8f241025bb17cf93b5ed32a1e5107636b2001e9976bed074a0e06a93f",
+    "games/avg_plus/assets/art/textures/img_main_icon_gloden_small.png": "5d7431b728b84557dbf5b419bdab8fee6581ad050539575a159e0822e279a67d",
+    "games/avg_plus/assets/art/textures/img_main_icon_gloden_small.png.meta": "6b3df162099fffbab1a05a40a0ab62b47bb732ce5eb8a4b9e84e6d7f3ae04226",
+    "games/avg_plus/assets/art/textures/img_main_progress_red04.png": "6d3568369f29ab2bbac21089fcc2cb887a505b9901e9fc1b6e64440f9578332b",
+    "games/avg_plus/assets/art/textures/img_main_progress_red04.png.meta": "f0fcdb2d898a276404123540184aafd48851828fcd24f97cdc4c1bb293969eb3",
+    "games/avg_plus/assets/art/textures/img_main_reward_frame (1).png": "fad770da95d9e63bfe8dd538191895f686b8d6790c92c68a4322711ff4796489",
+    "games/avg_plus/assets/art/textures/img_main_reward_frame (1).png.meta": "ad3a9182eb11c8150c8da324af39491f80651bc42c012ecd417e0e74d902eaff",
+    "games/avg_plus/assets/art/textures/item1.png": "4f07db9dc5bb0492007f479a1f400b5dc059ec7f76c658437582cf4e03c485be",
+    "games/avg_plus/assets/art/textures/item1.png.meta": "5eaafed946770cecfbbb035e0b04ed2864dc6cc8dbdf1f6aad4e717b59d8cb6b",
+    "games/avg_plus/assets/art/textures/poker_wild.png": "bf2beb712130c015b199b5d5dd833559ab7773ca05600367f1c2d63e0d6f3e7a",
+    "games/avg_plus/assets/art/textures/poker_wild.png.meta": "6ba1760a43f1a316f1f3c7bc66324623c98abd235b63103a1a1fbb1c1ba89629",
+    "games/avg_plus/assets/art/textures/progress.meta": "3c9d68465e7382561f486ab4f730b07ec0612b5e0ec91c5d433e2ac48833936c",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_black01.png": "165c1e27a114ea355ce87378773416ba537f174ddcf6aeab121dd236103b2aed",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_black01.png.meta": "1971d8fe68b3b494dbe15e988fe58d550772f7280ed28be5dbebef20a6ebd14d",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_black02.png": "85ce9d17bd729cb7cc6b35168c5746d509276dd1d58b40acc4886692e7d88716",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_black02.png.meta": "17f891e89f71ee943c3206a51f8df9f3702b30011cb651f2107ab249ec85d4a4",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_gray01.png": "23ee2f8a9afd9774a73d618beea728883b36a7c5e539b72b3d4ed923d59e15ee",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_gray01.png.meta": "d5dce13b9366b4f2408d0a78d26e91c5ded2f99b5ecc04b7d5aab82457e8a1bc",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_gray02.png": "c16e8c965fbbee0b5fa97d59a7c5fd898f98393f493d2343727c5594575a090f",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_gray02.png.meta": "e0a8c505dbe52487ad5da52743be08e19556565d6e9e93b8843849f2304a6c62",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_red01.png": "057852ba4c19612fc492a6bd3424c569e64d5f9a02aa3da0454592091ca31471",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_red01.png.meta": "41ebba31032d331da4066b324454b00bb66b4a2de7cc06d155db815387a12679",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_red02.png": "76118a267059fd4247353908bb5508847a73f6150d4d30f32ffbf64b15d357df",
+    "games/avg_plus/assets/art/textures/progress/img_main_progress_red02.png.meta": "eb1cdaf3acfd622ebbd60d31e151a79fb5de9436b8ae4bcc0b1dd180c390134b",
+    "games/avg_plus/assets/art/textures/资产.png": "4ad58da0678e19384fef1b4b64aead5cc7023d7b512aaa2059e08482bf41f58a",
+    "games/avg_plus/assets/art/textures/资产.png.meta": "5e1f5b396d1bf263f9c8cf8e720a0ea6ed31ba67d9800239092fa5941107731a",
+    "games/avg_plus/assets/foundation.meta": "f3e0c70840e53eb6edc77c94c65b38b2aa65cb16e2971056d20e0bd6148ac584",
+    "games/avg_plus/assets/foundation/Contracts.ts": "8a0df5320b460e19d12f21a8b456dd2416788689c718e3c02d69c9307d2b8d89",
+    "games/avg_plus/assets/foundation/Contracts.ts.meta": "ecb5554d54ea7509003d17d6fb5855c10cd321bef7f869ee14e1a4b785e59699",
+    "games/avg_plus/assets/foundation/Data.ts": "89fd2400f4e6d7d00b8cb9b650e089988e078e95eb6cbf6576eb652f99f3668d",
+    "games/avg_plus/assets/foundation/Data.ts.meta": "15edbb1e995c43bebb936526fdb41e7dde561c506f8140a61b668923b77ac4be",
+    "games/avg_plus/assets/foundation/Runtime.ts": "a560f40bce0a4a7d99c119f06677ab9c917e59d68486492e25254bddec76596a",
+    "games/avg_plus/assets/foundation/Runtime.ts.meta": "4210a2b3d09327af1d4369c7627b6da8891dcfea8229cb22b7086e3b0d7e8fc4",
+    "games/avg_plus/assets/foundation/Tasks.ts": "4a72d9be6cbd88c66dd16440251f7df81cc4efc4429dd24d00289fb8af106fbf",
+    "games/avg_plus/assets/foundation/Tasks.ts.meta": "e3e6ae6aa9f4abd88db05c5e2789b967cae3ff5afd9b40103eaef37b2b883914",
+    "games/avg_plus/assets/mods.meta": "bbc2fa8eb0406f4dd8c12f917934f2b4aa6bca43dd789439a4479712339c49bc",
+    "games/avg_plus/assets/mods/Registry.ts": "391f9dd898b252df9e4e64b344221348b3c5a3a1eaaf9b606ac83d7732e16c71",
+    "games/avg_plus/assets/mods/Registry.ts.meta": "ec3860130175cb3fd4a7fdbb0ac543caaf730083997c92aeec2cf3f252cfa317",
+    "games/avg_plus/assets/mods/base-avg.meta": "8b3d3a31555b14b2ac21907efb25903bb816d8fba7692f6b6f85c47ed2fbf83d",
+    "games/avg_plus/assets/mods/base-avg/AvgContent.ts": "caf614bd3c8d9b27669a966e480fe8a52a056d51f4ef26efc539e4b8f688caa2",
+    "games/avg_plus/assets/mods/base-avg/AvgContent.ts.meta": "60033269c770f0a6b2c91d2232dee741011c2f2804dba39660ce62cdb63e48da",
+    "games/avg_plus/assets/mods/base-avg/AvgMod.ts": "a2517cbc9a509cdc3c93961b5827443b6ad3681ce26601c202a6f2e74f4b3a06",
+    "games/avg_plus/assets/mods/base-avg/AvgMod.ts.meta": "a0597c79879a84649c2332cda2d4fe0e86baa2b0e6976454751cfc897a5c5637",
+    "games/avg_plus/assets/mods/base-avg/AvgPlayer.ts": "a15f04b53b3eb3aaad1d0580854b358785b9f8a560fabe414930db4f592b84e3",
+    "games/avg_plus/assets/mods/base-avg/AvgPlayer.ts.meta": "d340f28eada6b7cea8238c965eba770a09f44b69b78210e4b6600dc17674e6a0",
+    "games/avg_plus/assets/mods/base-avg/AvgPresentation.ts": "c7120e11f38ab453b2bbee1debd6f8f036531c8849ede078f5d760317585eaee",
+    "games/avg_plus/assets/mods/base-avg/AvgPresentation.ts.meta": "3948aa79db2365f353ea2d5eb9384acd0658e266c4764796456172503a067759",
+    "games/avg_plus/assets/mods/base-avg/AvgTypes.ts": "6c5e937f6ef6021bd029cf17d1820b7c105ec3ce2124fbc8681a9fe4baac72bc",
+    "games/avg_plus/assets/mods/base-avg/AvgTypes.ts.meta": "3da8b2576925c901192064a3c9aec0b077297352c38698c71f882966b96a45b9",
+    "games/avg_plus/assets/mods/base-avg/ModManifest.ts": "ce38488e13236c4015b0c9451f5ee772856a9e7f6b295aa08f03e674f390e852",
+    "games/avg_plus/assets/mods/base-avg/ModManifest.ts.meta": "b6c785758697d245dc4dd3d530f64c779d2196bb762336407cab2f6feaef5469",
+    "games/avg_plus/assets/mods/base-avg/manifest.json": "5e85714fb1a1a2f28023f991a02e246ba4763fc1a523782bd26087adec35d08b",
+    "games/avg_plus/assets/mods/base-avg/manifest.json.meta": "2508b41ccc32bc82af0f232aaa8497f5acf7373fd79c5a7ea8872f8ea452230e",
+    "games/avg_plus/assets/mods/base-card.meta": "9d0a2b9e3d32df4d6d10e31e604146f254a7cc3e2dcc365079d2b279178d6597",
+    "games/avg_plus/assets/mods/base-card/CardCompletionUI.ts": "501c2a4aa169fa1d2527bc94948c3474924f02b37898b0d6800847f69adbc0cf",
+    "games/avg_plus/assets/mods/base-card/CardCompletionUI.ts.meta": "1f883f0bf2a3ce638fe7c8981cda8a665c62497f97025f48dae3de4ae1b7346d",
+    "games/avg_plus/assets/mods/base-card/CardLevelRepository.ts": "1a03c638343cf47bb4cf060788f934bd303a7bf62300fef1d0b8508016f88b68",
+    "games/avg_plus/assets/mods/base-card/CardLevelRepository.ts.meta": "df3269fda320b662c94ffb08ea67c2b73eb29d647d3f539ae0566f8ebc8ebef4",
+    "games/avg_plus/assets/mods/base-card/CardLevelTypes.ts": "3312b704f12f81c875ca85cd467644726636f5a841180f0426291039a24adc86",
+    "games/avg_plus/assets/mods/base-card/CardLevelTypes.ts.meta": "8148e9e198f9fe3ce9e1adba7e0be3975d824ad706f9f8639394ce2052ed7e37",
+    "games/avg_plus/assets/mods/base-card/CardMod.ts": "3bab1c825fc90e6cc929e178ddeef864be422c0f1cf8f54af665f4fd769ed28c",
+    "games/avg_plus/assets/mods/base-card/CardMod.ts.meta": "f754b0efc2740b47970461422bda1eb77cca2f95a45bbbdaca1698ea978e921a",
+    "games/avg_plus/assets/mods/base-card/CardShadowFollower.ts": "1f7dc9389dc3cb333b26a2c996aa9a63cb9378b03db4ddc97cea65abcf437762",
+    "games/avg_plus/assets/mods/base-card/CardShadowFollower.ts.meta": "c22c7b3ca8958af57be0cfdbd6f1cd9bfcd212ab305aed5ece6be422dd3ecac4",
+    "games/avg_plus/assets/mods/base-card/CardSpriteLoader.ts": "7f7fb3daa62fd97312e1263588fbe84df33f1f3810777fb2a68ee8fb46e49d26",
+    "games/avg_plus/assets/mods/base-card/CardSpriteLoader.ts.meta": "c1dd1772311e067674c2ea1487f74a98894196342806faf49cacc38835e0cf64",
+    "games/avg_plus/assets/mods/base-card/GamePageUI.ts": "8f9eca7b0c15a3bd11b4c98d74c24c67513461991af23e28a4b886c48e2ac5b9",
+    "games/avg_plus/assets/mods/base-card/GamePageUI.ts.meta": "6e2b795e12603d13b5b00ba06f6f8e9b2c0af4dff2a5c97ac854aea7ab8416ca",
+    "games/avg_plus/assets/mods/base-card/GamePresentation.ts": "376fb2ddc9aebe6ce256e2e363cbe94202c4bac0a16b2e98e2eeb88faa12b8b5",
+    "games/avg_plus/assets/mods/base-card/GamePresentation.ts.meta": "478ee5f4306cd84bf79ce4a2d764eb7404d187ce38a5640d4e1713f275512ae0",
+    "games/avg_plus/assets/mods/base-card/GameSessionStore.ts": "c59d14d6f2d9e8e4ee93bfbde8e97144a1dbd888a4ee5f49c65f4de1730a6137",
+    "games/avg_plus/assets/mods/base-card/GameSessionStore.ts.meta": "97eca720f0a0a0015315f2cd6f856b7be98fa15fc798d4d7d20e8dca5685a3c1",
+    "games/avg_plus/assets/mods/base-card/GameUIContract.ts": "fead69a3f413023f01e3e79dfef3cb27094400a697493c7c378a45afd6764f85",
+    "games/avg_plus/assets/mods/base-card/GameUIContract.ts.meta": "95e3a5bdfc31c888d96a52ff429b134fc4e1c9bb47b167a21618aa6c99b5427a",
+    "games/avg_plus/assets/mods/base-card/GameVisualTypes.ts": "3c82e64e09aedbbb15efedd1ce64a21b80077ac4747edcba27e862554396a669",
+    "games/avg_plus/assets/mods/base-card/GameVisualTypes.ts.meta": "c6c9eb7390082a9e141f5e884de6fe20f2b0a584e6f80ae83feb4963abdc33ce",
+    "games/avg_plus/assets/mods/base-card/HighLowSolitaireCore.ts": "56f872beb3be485a1983b6aded67bfa57f0635fe9d67a193cca3b1a6ef8b6cbb",
+    "games/avg_plus/assets/mods/base-card/HighLowSolitaireCore.ts.meta": "75585f9f7195dfb64ad2df336d40579d89d0bc12ba07d5dac538776889de12bf",
+    "games/avg_plus/assets/mods/base-card/ModManifest.ts": "a0484555cfa77d1d054867c5f83b907158c04bc6d2557158d7aed3975239bd28",
+    "games/avg_plus/assets/mods/base-card/ModManifest.ts.meta": "305f2d2a07d1c72ecc1d05ab573752cdafbebf4c67c641d11f1ab93acd850bb5",
+    "games/avg_plus/assets/mods/base-card/manifest.json": "1352d46abc531addadb54cb42acb92c895bd99b1641988881c569ae1edb80a71",
+    "games/avg_plus/assets/mods/base-card/manifest.json.meta": "eb03dd9b0e5a1d45943d27f640087ba5c9df72c41ce07622afe249fa6a72f7cf",
+    "games/avg_plus/assets/mods/base-shell.meta": "208058a80bda8823be683c2c0f3dba161d6b8392db721a1e9e0621ce346c5c02",
+    "games/avg_plus/assets/mods/base-shell/AppBootstrap.ts": "73c7b560b8e9e1de348f4ecff0d105d405a0e592cf56cabf00aeeb0d940caf5f",
+    "games/avg_plus/assets/mods/base-shell/AppBootstrap.ts.meta": "8150f12bad7faed0d71801b6e98d464040ac03289d583e4e48fac137c57f3204",
+    "games/avg_plus/assets/mods/base-shell/CatalogConfig.ts": "062bdfe3e0febae9d875de511fe7df325262c9d76f0e44cc28aff2b246881952",
+    "games/avg_plus/assets/mods/base-shell/CatalogConfig.ts.meta": "30d07eff39873fcfbd2c5bcc21b755acdc69557dc8462b85e2131a47db59505e",
+    "games/avg_plus/assets/mods/base-shell/CatalogMod.ts": "080696b62da1532a2010872c79f95089a16451c801f2bf78952f29ffff6c8737",
+    "games/avg_plus/assets/mods/base-shell/CatalogMod.ts.meta": "81acee82a5e0f4bd69d5375dce1fd9cde196903f5ca4e5bbbfaeb2a74540212c",
+    "games/avg_plus/assets/mods/base-shell/CatalogUI.ts": "e43a76c4d199f3b7dbe7e3078b4c97e3affe27faa39e0c98c1e4c40ec2cd9fbf",
+    "games/avg_plus/assets/mods/base-shell/CatalogUI.ts.meta": "d40302d0c392e25435ffce9a7d8a61e2b339ef3d2d78d95f7fb952e27a00c163",
+    "games/avg_plus/assets/mods/base-shell/GameFlow.ts": "45c66a6456187a3924e517bbdeb445eee69cdcd7084f051fa8835ba2684551c5",
+    "games/avg_plus/assets/mods/base-shell/GameFlow.ts.meta": "d4c1c0bcb63a6d1fb235363719a0e506b7d478b0e04dcabd8ce036db3d81a1f4",
+    "games/avg_plus/assets/mods/base-shell/ModManifest.ts": "3cdb68a3a4d004d9e233b0305e68cebba5b5ea86cfc16079dedf4c06e9e8682e",
+    "games/avg_plus/assets/mods/base-shell/ModManifest.ts.meta": "f83eae5168027cb1e1682d9a82a3308d487a2920d6c5362dd973f326c3a31649",
+    "games/avg_plus/assets/mods/base-shell/NativeHotUpdate.ts": "7254b1378375c0ba642e8a5a4e687d51ec4e2d15bded78fc2a298ef861316c0f",
+    "games/avg_plus/assets/mods/base-shell/NativeHotUpdate.ts.meta": "86d710f984a90a035480c2d460a67e2596574824b7822404f05437bf6a360742",
+    "games/avg_plus/assets/mods/base-shell/UpdateProtocol.ts": "3d7f09ae54f3825a546365348509ff384e26973592f38be2776a62a6f4944531",
+    "games/avg_plus/assets/mods/base-shell/UpdateProtocol.ts.meta": "a7d9eec76d7ea61343fdb5a945e88dda53ddd67a939cb113ad220f7bb3921911",
+    "games/avg_plus/assets/mods/base-shell/manifest.json": "9e60c95752f2f73f85dcede1b2be756484cfb3cf65ea222a82ba974c46151e1b",
+    "games/avg_plus/assets/mods/base-shell/manifest.json.meta": "dd9ef2e358e6147a0436e72935746655339f7b360b7225979be5c84556d229c8",
+    "games/avg_plus/assets/mods/base-shell/scene.scene": "1a9e89101d86d26006ac5e80d0bf4a3e5fffde152a6a5a18ca65a2b7a0966bd4",
+    "games/avg_plus/assets/mods/base-shell/scene.scene.meta": "8a483e1d494946b4cfc49fd8d0044b436e59a7a066cfc50f8f1e6cd0a1ba52e7",
+    "games/avg_plus/assets/mods/packages.meta": "18199afefe53f76d232ebea740380dec00e54bd2b9c2652a8e78d968a6916026",
+    "games/avg_plus/assets/mods/packages/cinematic-style.meta": "3c06cfad4903da09b23f5b175926e518ec73d8035f40e45a9c4ce8c1bd6412aa",
+    "games/avg_plus/assets/mods/packages/cinematic-style/ModManifest.ts": "c1b12745c39e8e6dc8fa7736cfbd5154ff079844b5e99d246036375af3cc9248",
+    "games/avg_plus/assets/mods/packages/cinematic-style/ModManifest.ts.meta": "59fbe8da6ffa30c84b2c55167fbb5700b8cc29008380f9c1b634d17cc68727a2",
+    "games/avg_plus/assets/mods/packages/cinematic-style/index.ts": "2b33d0c662ad71cbe1252c573f352d3c94c59180354e69ad4aed61d55b2056e6",
+    "games/avg_plus/assets/mods/packages/cinematic-style/index.ts.meta": "1175d0f5b9936e59b3166fd038ba238ddd9a78188849c19ef2c3c509eeffceb6",
+    "games/avg_plus/assets/mods/packages/cinematic-style/manifest.json": "9dae5a98c8fd63c11f381b17d8d9f2ad3d54eb606f378b7dbb9fcc3010ed701e",
+    "games/avg_plus/assets/mods/packages/cinematic-style/manifest.json.meta": "20708de8bc1cf6084e7a784fa830cddbc9faa8a7573ba4bc45a5af115660cce3",
+    "games/avg_plus/assets/mods/packages/reward-variant.meta": "9d8384c98c59bc6e36849e655b08eaed2bdd3a6f7d6e60578f3e431cd6f12910",
+    "games/avg_plus/assets/mods/packages/reward-variant/ModManifest.ts": "a6450a7272f404bccd71416ab2849ff85e2ac3be7d877814704b4c4540919297",
+    "games/avg_plus/assets/mods/packages/reward-variant/ModManifest.ts.meta": "ea3e3f7e58e8b616b09719855e8e2e5f610bf4ae6958c6aa7ccec684677d5f98",
+    "games/avg_plus/assets/mods/packages/reward-variant/index.ts": "ad2711011b99bacf24ed5019fc9394ac3be157aad131c28a6704e8eab05f4902",
+    "games/avg_plus/assets/mods/packages/reward-variant/index.ts.meta": "c8427671c306b56440136c1954148730ea2acc56bc8ec6e948fd22e5c75bbfb1",
+    "games/avg_plus/assets/mods/packages/reward-variant/manifest.json": "94d9e5d661553baf4c5143d470835131d13a60668f88e6c17b54d72b73dc7473",
+    "games/avg_plus/assets/mods/packages/reward-variant/manifest.json.meta": "66391b6cfcc660b781a7cc6eaa07147219fc261b2c4f7be75c8e878270f51a8f",
+    "games/avg_plus/assets/mods/packages/story-branch.meta": "8a1d931c30504f43e08699ae83a9bcab60d2d166ef600bf701a88c974c93af8f",
+    "games/avg_plus/assets/mods/packages/story-branch/ModManifest.ts": "57cad68f2ca484aefa85244f3f4a4a46f9ed41eda256d3c0646093789412754d",
+    "games/avg_plus/assets/mods/packages/story-branch/ModManifest.ts.meta": "dd613e0f019c2a688705beff8cbafe75926186827da0b0c2c6bd9ee221c59d05",
+    "games/avg_plus/assets/mods/packages/story-branch/index.ts": "85fe2f10fd96d2ea15cd874ce5564a5f5343072982c3c07c6660972de5aa5c3a",
+    "games/avg_plus/assets/mods/packages/story-branch/index.ts.meta": "54e86f7725a93efd15685c1f456b3c45468a0696382087051a71b61e67277e81",
+    "games/avg_plus/assets/mods/packages/story-branch/manifest.json": "531f2632f674abb52e27b0ea7a0c9b99e75f10b207a46093b8ae415290d0066f",
+    "games/avg_plus/assets/mods/packages/story-branch/manifest.json.meta": "0df1745462fd0ad99fd4087773bab3af20aa916cc68d6965510163d894bb9c91",
+    "games/avg_plus/assets/mods/shared.meta": "4765b07b28cb5de7871f1e9b1a220737c019595f9e4f2e4d8aeb020120c9946e",
+    "games/avg_plus/assets/mods/shared/EffectConfig.ts": "b02a96181f888dcb117d1019d3eeec99ddb5cd95ff9f41838a59f92d624562e6",
+    "games/avg_plus/assets/mods/shared/EffectConfig.ts.meta": "f5da15fbee5d1149f71fe369f6ef1b48a77dc8e6bccc2ad3fefbf8fe7a0c02f4",
+    "games/avg_plus/assets/mods/shared/EffectPlayer.ts": "01509be8a70dabc0abfaccaa3150c5684a4f69fe0db83981537a4efc769e7d04",
+    "games/avg_plus/assets/mods/shared/EffectPlayer.ts.meta": "dcc9226e0f8a59a24fc69922fef00705e4c9bca409d0c4d742ab7871ccdc8acd",
+    "games/avg_plus/assets/mods/shared/PresentationComponent.ts": "5a323a44b260e747cd345aa5aaa497a8ff533ce2b4f33072ad17e5cea153cc0b",
+    "games/avg_plus/assets/mods/shared/PresentationComponent.ts.meta": "666fbbcdbbf29c6e7e1c7a75b15eb3096b4dc1d5adaa0d5ff7a3bb391e3a88ed",
+    "games/avg_plus/assets/mods/shared/figma-runtime.meta": "b62f93f784c4808897862649fe4fcebb10d27056e031e00c84d0d776e1a2ea78",
+    "games/avg_plus/assets/mods/shared/figma-runtime/FigmaComponentState.ts": "f67a3df2be7e8947753dc6b714bb06adf59fc887103336147357488fef0000f9",
+    "games/avg_plus/assets/mods/shared/figma-runtime/FigmaComponentState.ts.meta": "c9fb3794bd585356df83dc734c1a489894f281d656b13bbe89dd4393bd066704",
+    "games/avg_plus/docs/ANDROID_REQUIREMENTS.md": "e9c13385b8bd2c3f0608d15b12901ad439f8c4adb1d050523075775980bc67d2",
+    "games/avg_plus/docs/MOD_ARCHITECTURE.md": "66bc3ccd1a568da079255cd5bd0f2e87a26d1a72dc9e2178fffb01571db664f2",
+    "games/avg_plus/docs/MOD_GUIDE.md": "adad555e60e1bd29f033f9a96be06117e2b3dcafa09e59b8c2fb70c68211d887",
+    "games/avg_plus/docs/MOD_MIGRATION.md": "baada73a58424743ae1166fc760f45e259a1990cccd029e786e7565e7f464470",
+    "games/avg_plus/docs/migration-uuid-baseline.json": "8de9d03ede1a5edd35e2354c675a28d28db92a3a3845117e6f160d3cca2daeba",
+    "games/avg_plus/extensions/figma-importer/.launchpad.json": "1b3c74134f9d0d8a6aa4665b6926b81541a57143a9b4779f168c66b03cde8453",
+    "games/avg_plus/extensions/figma-importer/CLAUDE.md": "28ea1e545657bd373a49908984ce0f5c804e934448fd23cc3750dfce3ce3d642",
+    "games/avg_plus/extensions/figma-importer/UNITY_PORTING_MAP.md": "d911b529c7981d415f9113a5f09a44767a3c36b71141db99e8366d35e852bf5d",
+    "games/avg_plus/extensions/figma-importer/dist/assetdb.js": "f3f6889c421ba228b599556f00807d48fb4a4361cfef43845dfb088d2a6339ca",
+    "games/avg_plus/extensions/figma-importer/dist/assets.js": "9337053b1ab37b5ef48c8eac2b37c38b4a81b97a1744ecede872a3a4d70a851d",
+    "games/avg_plus/extensions/figma-importer/dist/component-mapping.js": "e491d1a5a7094d6e9e891053824f3b6764f310ae7085a7cc9e0a8ef32df12357",
+    "games/avg_plus/extensions/figma-importer/dist/component-state-runtime.js": "c53bf7bb8b58317482d4a9a6a45619a66f19f459ef21498a43e4e4f847eee637",
+    "games/avg_plus/extensions/figma-importer/dist/editor-activation.js": "bb17df5a6b30ebd81f52041ac361d501c5723e900a400830850450c9bea8da0c",
+    "games/avg_plus/extensions/figma-importer/dist/fontlib.js": "6ba75c06ceeab465d1739e82708e6bf8102bf95209a0508369b30f482143ebc6",
+    "games/avg_plus/extensions/figma-importer/dist/json-workspace-state.js": "7496c71ba8677c7e213791725680445e15af533f65f41acc8505a992d69267bf",
+    "games/avg_plus/extensions/figma-importer/dist/layout-plan.js": "e1723c00005b0367b603e890656a8110c09ac475a56310cd9805fb560020194c",
+    "games/avg_plus/extensions/figma-importer/dist/main.js": "b3104f2530de1edd6c0deb42f036c7c2e9de681a00c50bc7d68ee2614493a0c5",
+    "games/avg_plus/extensions/figma-importer/dist/mapped-component-state.js": "c0927b424ec5b27c30d53c4f7d4cd03ed1bd708a517f4552dcf04c98bf98115f",
+    "games/avg_plus/extensions/figma-importer/dist/mapping-capabilities.js": "fb5274fc04170bb131528922bb225361abf90d45ebd39ddb02313dab8ee85534",
+    "games/avg_plus/extensions/figma-importer/dist/mapping-diagnostics.js": "531fbfbd95f296857506941f8f0e45cde06f570dc475edf95d45806d0ae90c87",
+    "games/avg_plus/extensions/figma-importer/dist/mapping-fallbacks.js": "135e2cad8c6ad6ab0294a45597a29abd2296ca3f1c6811c149af8114fb7c1990",
+    "games/avg_plus/extensions/figma-importer/dist/panels/component-mapping/index.js": "5fc43a43e581cf212efacb7d053ecfa116af7ee77919e371eca6a1c80b06b44b",
+    "games/avg_plus/extensions/figma-importer/dist/panels/replace/index.js": "91c4adf5464611a95e32ea7d7fbbebdd39205b591eb92e36aca5fb6f15296968",
+    "games/avg_plus/extensions/figma-importer/dist/panels/settings/index.js": "112300c17c7acffe93b530405acfde06be36513727b0e79025f2fdbea07c5377",
+    "games/avg_plus/extensions/figma-importer/dist/pngcrop.js": "c0fc9e43e7c8af866d9e05843d45c703c42768653c32de80e4d80b83470e20d5",
+    "games/avg_plus/extensions/figma-importer/dist/scene.js": "1cb08907cfb7404a36efe4282f8e2e8f12e9a14a70e7b5468cdd077344072e7f",
+    "games/avg_plus/extensions/figma-importer/dist/server.js": "93945b8cf0ad9fc1b52cc39fa1f71a222b85d711a115f4d5a6f7bc1be80c20fb",
+    "games/avg_plus/extensions/figma-importer/dist/slice9.js": "8b24036d330c5c12a10533d277bb4f56d8864fcd89314b39d3eee0cc56881fb1",
+    "games/avg_plus/extensions/figma-importer/dist/telemetry.js": "5bed2d370f2db61a0416f140f9054542abace3920ded7ee67be1480810277755",
+    "games/avg_plus/extensions/figma-importer/dist/textstyle.js": "e517afeca9e370635875a4b4fc99ed4ee1266f4850664bc1c43858b83c36a88f",
+    "games/avg_plus/extensions/figma-importer/dist/textstylegen.js": "9f925b5ec9c41bf107cd65a7ced5c19809f63a3b1c5adfc861172e8b2df7c3d7",
+    "games/avg_plus/extensions/figma-importer/dist/textstylelib.js": "7b3f3be655cdd17f8aad5f3fbebb741f56665e58861ddf7b3ab1fadaea089eed",
+    "games/avg_plus/extensions/figma-importer/dist/types.js": "49a250b8f0291c3f7733492d0406d1011de537d624a09a309dd9dbbd23e7ebd8",
+    "games/avg_plus/extensions/figma-importer/package.json": "4fa7dfd28723028dfd8ac60eeea448770d07c722afc5c2bab63a1dbcebb3a282",
+    "games/avg_plus/extensions/figma-importer/source/assetdb.ts": "54bf9df32683bb2ede3279ece00efbf281de9cc3532496a1f1eb853fe8cf8930",
+    "games/avg_plus/extensions/figma-importer/source/assets.ts": "b04bc6a6353c45abcafedc92fd9f46d8614cc04b2e0054fee22a8a949cf39700",
+    "games/avg_plus/extensions/figma-importer/source/component-mapping.ts": "744e3e7c266e8e91d4e1652aec0676a0ec2ae0256206c82e8d1092c38b441fe0",
+    "games/avg_plus/extensions/figma-importer/source/component-state-runtime.ts": "3d8c723e9d629435ee34daca44afbd8e922065c817daeb2b0d0ba34dd99f2b70",
+    "games/avg_plus/extensions/figma-importer/source/editor-activation.ts": "66d8ea073d26e11dd479f8e6efdc7a9b7d627614344a06775f1898c4bfe64bac",
+    "games/avg_plus/extensions/figma-importer/source/fontlib.ts": "cd772228e55e98965250c0ecbe71a009b49231ca79e9bd9177434f0bf1026995",
+    "games/avg_plus/extensions/figma-importer/source/json-workspace-state.ts": "15d5b0a0cb92f1b0ace153b90d3602933b5754695c1155f284f8c6a9657ff242",
+    "games/avg_plus/extensions/figma-importer/source/layout-plan.ts": "541abdca2cd0cf32bfc20c65e36f45ebbcf21c0d3ffb460556eee621db24e808",
+    "games/avg_plus/extensions/figma-importer/source/main.ts": "38de2ca431a7869fe4be4768ac70c457ba08606f004186c2e0fe7bfc9b69eb2c",
+    "games/avg_plus/extensions/figma-importer/source/mapped-component-state.ts": "46ff39e6591b267c0f1549c69db87dc525bec04d76b804f22af7fa4357d2fa32",
+    "games/avg_plus/extensions/figma-importer/source/mapping-capabilities.ts": "27b249de5d5f1142c084509e3e355e83292e88189087128d86e4e68e776126f6",
+    "games/avg_plus/extensions/figma-importer/source/mapping-diagnostics.ts": "dd2626585b7f9f5e33b2093f901382f61571a7f4b34430ff4531fbfacaf72d88",
+    "games/avg_plus/extensions/figma-importer/source/mapping-fallbacks.ts": "65353f111cc350adbed3ecbcd090211c5aa91a833cd6e6bd6639adcd00d33550",
+    "games/avg_plus/extensions/figma-importer/source/panels/component-mapping/index.ts": "d58805771800701efaf174dc4ae858e75717d23ec1e53315afc7d8e15e948c2d",
+    "games/avg_plus/extensions/figma-importer/source/panels/replace/index.ts": "c02c592ffa14127865d07a8ea844927c40218febcc6ce2871c64e9ec1e2c27dd",
+    "games/avg_plus/extensions/figma-importer/source/panels/settings/index.ts": "58bb47c855a0ea30be11d42362242960230a3112c2c3f08a071e76ee05510492",
+    "games/avg_plus/extensions/figma-importer/source/pngcrop.ts": "327cb16e49cc39c67075e25e142bee74c6a055868076fd854656da4ec746a869",
+    "games/avg_plus/extensions/figma-importer/source/scene.ts": "248122fb3b30f39b6211ddd7f7cec015e1060641a354dfb4622889a61cf3268b",
+    "games/avg_plus/extensions/figma-importer/source/server.ts": "acb802e688c05a3690605394e7ead517567ed9ab6ebc65496cea13e985cc5fed",
+    "games/avg_plus/extensions/figma-importer/source/slice9.ts": "b5bc822a4e822582fa3ca60bb9f1a0e8d8035f8e87cd3536e75425dc49e90c22",
+    "games/avg_plus/extensions/figma-importer/source/telemetry.ts": "17611fc08ff5c80b3108cf0813b97024db0257ec3f04a732822579992e342f93",
+    "games/avg_plus/extensions/figma-importer/source/textstyle.ts": "a93395cd48b6d2ba3adc84ebdb22f94b4f78ba641d1d1893b7d00857074cb031",
+    "games/avg_plus/extensions/figma-importer/source/textstylegen.ts": "36c836fba9d01e4e503d7eaf9017a688aa858893db08d5cdd4b10f3df43eb6a6",
+    "games/avg_plus/extensions/figma-importer/source/textstylelib.ts": "6e593a89712b38bb3b8831a27dfe749d4d3b7a73d55de16ab2f17f064e7aab9d",
+    "games/avg_plus/extensions/figma-importer/source/types.ts": "5faf59ccaf3c803abf028cb11a99db2e1c8e025ffe90a83c0bd471d67d25454c",
+    "games/avg_plus/extensions/figma-importer/static/FigmaComponentState.ts": "f67a3df2be7e8947753dc6b714bb06adf59fc887103336147357488fef0000f9",
+    "games/avg_plus/extensions/figma-importer/static/style/component-mapping/index.css": "2744ab8641d45a9c18542fffb9f9dbae2974f41c2f8348987e501c80ff6195cb",
+    "games/avg_plus/extensions/figma-importer/static/style/replace/index.css": "c9f6acb4f849a728ad15e627c62942f1e043c5561dd1ac8bdde57da3d6999699",
+    "games/avg_plus/extensions/figma-importer/static/style/settings/index.css": "d7ff2473ddda379cda3534245fe2a0bfad5874be48a3c09dbfd3524928de7bf5",
+    "games/avg_plus/extensions/figma-importer/static/template/component-mapping/index.html": "2dde3116b06d59cef5be6768e6775588cc63782a1816fca6794e54f0fefda05a",
+    "games/avg_plus/extensions/figma-importer/static/template/replace/index.html": "7e23447609ed0de506ed4a97ef2254ccd7d2becbe90686082b1d31dfb5719be8",
+    "games/avg_plus/extensions/figma-importer/static/template/settings/index.html": "9dae14643e2c3b3e055a8c732faceba97d60685220c262c524b8a8eda331ab9f",
+    "games/avg_plus/extensions/figma-importer/tsconfig.json": "4c10991a3997aa498f6bf019449ec6535c31d00eebc97cf2a90d840f08394a92",
+    "games/avg_plus/figma-assets.config.json": "79628f5a975e4065e0d56a2e992cccc560188b885eeb1e35ac9531bb3f06fc9c",
+    "games/avg_plus/figma-assets.lock.json": "bf6a75e3e27436d93a7a794dbeefce0d0c631df366653d4b929bad62f1f17b5c",
+    "games/avg_plus/figma-static-assets.config.json": "da15b6f5fd68d07dffbd21e2e39ffd6828d176f394107d63657480ee0bd72acb",
+    "games/avg_plus/package.json": "baeb29eb41e46d02b914a70c40e35eaabb01cff51041b772c7744d8a8072e915",
+    "games/avg_plus/settings/v2/packages/builder.json": "a3e1a8df580b6ebec15ad16c9bbef785806567bfbc093821852bb3606028e702",
+    "games/avg_plus/settings/v2/packages/cocos-service.json": "1c9c79224c93a4f77b7cbcf99462e10a44a610dcc49b9d41be8b9da77640d23f",
+    "games/avg_plus/settings/v2/packages/device.json": "93af91e0b90038cedc84d08651f845e1c2e2ae460321c19f083c27a178e451f8",
+    "games/avg_plus/settings/v2/packages/engine.json": "4f3ab4457fee5624da55da063d3e3025a58fb590309833155e1d28b891157121",
+    "games/avg_plus/settings/v2/packages/figma-importer.json": "f5cce160a7b8ed0a603548bbf85452a083c020a54df9f2d2bde1170060643c4a",
+    "games/avg_plus/settings/v2/packages/information.json": "a209638dce0686f0f86da44b538581baa2901d81324c0a1371cd6ba2c446fe93",
+    "games/avg_plus/settings/v2/packages/program.json": "d914f9f19ffe02724337936d8c7907798c8666566902b78243eb1aa8da0baedd",
+    "games/avg_plus/settings/v2/packages/project.json": "480a0b334cab4c97da22d75003e4e4c7594e37016581234056aa5bf3026a004c",
+    "games/avg_plus/templates/MOD_TEMPLATES.md": "5541fe40cf92d5257e33fadff384906706d67535aa16646281dc29e056effa1c",
+    "games/avg_plus/tests/card-assets.test.cjs": "a9ec133f361658919c179d1fb9d302d5a6f97d1eeaab501bd118d47951f2aa03",
+    "games/avg_plus/tests/catalog.test.cjs": "f790d5c045ea7892d7d4f94149e1e44f02c34a815c061edfd740167a9ad019ab",
+    "games/avg_plus/tests/completion-reward.test.cjs": "bd6f41705711a16bb8304f7576115bd58475ec1bedb2b629eb2f9810b7f91278",
+    "games/avg_plus/tests/entry-recovery.test.cjs": "a8dceb3af678d1b0eba104352a65aa36bf4d4ba99fbf44f582188f00fd48bf3e",
+    "games/avg_plus/tests/game-flow.test.cjs": "4c628e6e4b4780f6ff4784a490e2f83322f31594ee6c661c3df25fb801389f9f",
+    "games/avg_plus/tests/gameplay.test.cjs": "a7215fddeefead47bd17eff5388102458acfae94986c0465d265195a7ccf3151",
+    "games/avg_plus/tests/hot-update.test.cjs": "6a75ca8e0484ad7da104a74439a4afba48cb26d35d63ad65065c081ae24feb5d",
+    "games/avg_plus/tests/presentation.test.cjs": "f2b4b1beb53d0d2f0bffb4b28cf45933d10fdf365a9256f42552d4ae06b73d4e",
+    "games/avg_plus/tests/reference-cards.test.cjs": "c4041eb9324ebe074ae58501ed195562c4634724646b7bbdd96d089cba70f1d6",
+    "games/avg_plus/tests/runtime.test.cjs": "148f9d46eb4313f1d150c54759e2e274fe4b8903b242a2befc5dbca07025a146",
+    "games/avg_plus/tools/check-assets.py": "5fc98bde07eb116d51b0a366bf75c4bc37f5af88e75cf4bc2af602d9edd29ebd",
+    "games/avg_plus/tools/check-types.cjs": "d9ec9f443acf893f7c107db14b8692102234a1b6342a0fda4531f4fd80c7bf76",
+    "games/avg_plus/tools/check.sh": "ae46cf32186a7ddaae9ba3a1cd5e848251b36706f610e074dfaf2ac7e734343a",
+    "games/avg_plus/tools/generate-manifests.cjs": "7e5da70e82ec17ba95c9562770ec7eb299c992cf98d78a4635b12c4d0059199b",
+    "games/avg_plus/tools/ts-loader.cjs": "0d86c88df9f089121c5d8f69fa1159e622c6f87885bf60c8b2152ed2b6c5a04d",
+    "games/avg_plus/tsconfig.json": "5b905d615fb49c5214cb704126fd885f1f1c1f17f23426b084f32c7881b640fc"
+  },
+  "stage": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/avg-plus-android-20261013T232635735513Z",
+  "export": "passed",
+  "apk": [
+    {
+      "path": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/avg-plus-android-20261013T232635735513Z/output/android/proj/build/AVGPlus/outputs/apk/debug/AVGPlus-debug.apk",
+      "bytes": 58350516,
+      "sha256": "f55cab1245e57073099df4c1559b903ad0663e448f98cb1844b235ae57d842fc",
+      "audit": {
+        "packageName": "com.wujiankai.avgplus",
+        "versionName": "0.1.0",
+        "versionCode": 4,
+        "orientation": "portrait",
+        "activities": [
+          {
+            "name": "com.cocos.game.AppActivity",
+            "orientation": "0x1"
+          },
+          {
+            "name": "com.cocos.lib.CocosEditBoxActivity",
+            "orientation": "0x3"
+          }
+        ],
+        "abis": [
+          "arm64-v8a"
+        ],
+        "signatureVerified": true,
+        "certificateSha256": "5d28400e0ad52af0ed29c8c879f91c0dd9d56526f8c16e5ef5f8f474abe01141",
+        "signing": "debug-candidate"
+      }
+    },
+    {
+      "path": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/avg-plus-android-20261013T232635735513Z/output/android/publish/debug/AVGPlus-debug.apk",
+      "bytes": 58350516,
+      "sha256": "f55cab1245e57073099df4c1559b903ad0663e448f98cb1844b235ae57d842fc",
+      "audit": {
+        "packageName": "com.wujiankai.avgplus",
+        "versionName": "0.1.0",
+        "versionCode": 4,
+        "orientation": "portrait",
+        "activities": [
+          {
+            "name": "com.cocos.game.AppActivity",
+            "orientation": "0x1"
+          },
+          {
+            "name": "com.cocos.lib.CocosEditBoxActivity",
+            "orientation": "0x3"
+          }
+        ],
+        "abis": [
+          "arm64-v8a"
+        ],
+        "signatureVerified": true,
+        "certificateSha256": "5d28400e0ad52af0ed29c8c879f91c0dd9d56526f8c16e5ef5f8f474abe01141",
+        "signing": "debug-candidate"
+      }
+    }
+  ],
+  "hotUpdate": {
+    "repository": "wujiankai8864515/little-steps-cocos",
+    "tag": "avg-plus-android-0.1.0.5",
+    "version": "0.1.0.5",
+    "nativeCompatibility": "avg_plus-cocos-3.8.8-native-1",
+    "zipBytes": 34729856,
+    "sha256": "c8cc6865f8107675e807f5ce7774bbe164184af75c912dfa2996a5c1b07fca17",
+    "files": [
+      {
+        "path": "assets/drama_fake_fiancee/cc.config.json",
+        "bytes": 17046,
+        "sha256": "6b42bd064e96df8fa6a9cadac816f704cf917f252a0bd0a4b403238da36859f4"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/03/03235aa46.json",
+        "bytes": 1002,
+        "sha256": "d3703228f304ac90324e5bb8a1f18f014118bee24442a7eb7095e88b93657705"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/0b/0b015ca2-2a7e-45af-860d-b4b144834065.json",
+        "bytes": 396,
+        "sha256": "cd2dbb06afac71a2a5cd8e6e157d546b80dbca6227b71c15b0bb302e02626095"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/0f/0f09b834-9cb0-45f0-b308-a6628b75d56e.json",
+        "bytes": 528,
+        "sha256": "cf70b06215ce2f25cf50dde0ad20e9d9be753acd709df327c604dad5c252f600"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/17/17e84bb8-af6f-46e2-931a-aa0863c8eafb.json",
+        "bytes": 488,
+        "sha256": "df59aaf94ef64218ba0bfcff2aed6bd9324bec8ca4e243f195943456283c2fa2"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/1c/1c74da7b-0794-428a-960e-f7a8bcce78b7.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/1c/1c74da7b-0794-428a-960e-f7a8bcce78b7@f9941.json",
+        "bytes": 713,
+        "sha256": "20c92b32aaad4d4d2b3e819473a543ef22f5655799fea300d202cecb04e0dbc7"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/20/2069498f-fed9-438e-bd9d-9b88b71497ce.json",
+        "bytes": 566,
+        "sha256": "01e8880eded2bfcb258238f3d61dc7e96f9c7b575d829e1dd8558814ff7c9595"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/21/2144c5d9-6162-4091-a973-526ac11486f7.json",
+        "bytes": 549,
+        "sha256": "37d7e4c66e5a2e7e2e55de98f759621ef56e873ac6242bbfa67c199faf591d55"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/30/30ed1bae-9f79-4a5f-923d-8a6cc61e0682.json",
+        "bytes": 531,
+        "sha256": "7035419dc98dfddbefab8aefef8c5c794595999c8ca469a59e6f51aa3d47a2b3"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/34/34d7a17c-ccbe-4a62-8e02-f2b1f194a507.json",
+        "bytes": 531,
+        "sha256": "d3e6dd7ae5c389e8338b68872a336b6c7046243d55746061107f02c9068c50c8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/4b/4b173146-9954-4640-b7e8-6dd3f7ae2f08.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/4b/4b173146-9954-4640-b7e8-6dd3f7ae2f08@f9941.json",
+        "bytes": 715,
+        "sha256": "5a6c4dbc4487a25961d9a221364df601c7f1d0df9245152f1528788232a332e3"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/4c/4c3c5412-640d-4831-8fdf-64635b2c6b77.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/4c/4c3c5412-640d-4831-8fdf-64635b2c6b77@f9941.json",
+        "bytes": 714,
+        "sha256": "afe14dbd64db1ad72f05c0973dae32bff1d70f6c9c5ac2ad4981f2e74ba072b5"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/4d/4d25f433-2485-4b03-baf8-7cd1fe6d549e.json",
+        "bytes": 558,
+        "sha256": "4123efcae66921f605b34e4f52a76cf7c3a84b04c1de6eb61ccd79b5644caeb8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/58/5850bc9b-4118-459d-bcff-ed0a6b13f800.json",
+        "bytes": 387,
+        "sha256": "797be36a6b0e033f315a077a095b2586ef45f64e419a58727714ef9257a33fd4"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/58/58a2a35c-fa67-4956-a7d2-694a390ad69d.json",
+        "bytes": 509,
+        "sha256": "c579c725541cf88eef8d74f4de4aa65465b3e853d56e03fa0ddd8e56e25c031e"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/5f/5f6e35c4-a8a1-42e5-92d4-eb79320362ba.json",
+        "bytes": 423,
+        "sha256": "ccea74ecf8368f69d7655c3b21f21ad05787ae351e241e4b67faa80ee3adfcf5"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/73/738e1c1b-d378-4b58-aeae-fcd0afa61489.json",
+        "bytes": 515,
+        "sha256": "8dec91bb0edd3fd2eb3d13e242750ea78e9045bb6f2c206c5f9b3d6d5a247b88"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/85/859586ef-1af0-441e-a46b-66cd98b43af1.json",
+        "bytes": 522,
+        "sha256": "eabf1ea1484e763e0e72f2422d52ac18401647bc0478a6f1af5885140718c375"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/89/89f631df-fdd7-4849-8f3b-a67861d900a9.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/89/89f631df-fdd7-4849-8f3b-a67861d900a9@f9941.json",
+        "bytes": 715,
+        "sha256": "e612284ed7887b53aa0e76cf024d17e5ce23f7eee1879eefb00f375fff62a589"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/8e/8e835563-cc4e-404b-a82b-2af8c2f016fd.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/8e/8e835563-cc4e-404b-a82b-2af8c2f016fd@f9941.json",
+        "bytes": 577,
+        "sha256": "582ab090c04c4695f334f81f653d8aae553672c4a3935bc5080264bca8d35197"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/91/91b15246-d421-437b-a110-be353126192c.json",
+        "bytes": 569,
+        "sha256": "d523dedaee28c3bf8d119e71ef2d654752bb23472e2dc52cfb9a0f7bf36ff2f4"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/95/957ce8a6-dc1c-45a1-8856-3249ecd5441e.json",
+        "bytes": 390,
+        "sha256": "2c24fc3916892336ce1b238ac21d5f994bb018bea07c39bff3baf32154265343"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/95/95aa3180-0c39-4004-912d-e89112cec337.json",
+        "bytes": 576,
+        "sha256": "4225227387e8bb764d6b09aa9db380a05e3bbc67e77067e78a0d6a51fe823cec"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/9e/9e4ee2ab-cea9-4102-85c0-26c8aab339d9.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/9e/9e4ee2ab-cea9-4102-85c0-26c8aab339d9@f9941.json",
+        "bytes": 701,
+        "sha256": "853fae797d1ea7ea7f8413b81523eb10c390341ca30bae6cb41ddce25d360d79"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/ac/ac3b67b5-9d9a-4c84-85ef-b39fd1aedabc.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/ac/ac3b67b5-9d9a-4c84-85ef-b39fd1aedabc@f9941.json",
+        "bytes": 602,
+        "sha256": "554fbf3e03dd2b62d84bba26c5efc61dbd5fd12b590dd78957c7e02393b91b80"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/ad/ad720667-affb-4379-a0db-438ebbbf4bb2.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/ad/ad720667-affb-4379-a0db-438ebbbf4bb2@f9941.json",
+        "bytes": 571,
+        "sha256": "a6709c12a485a92fbd8c581395da69a7fbb7a5f7ff7fc2e9f8012a0f3df083e8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/b5/b5095c25-639e-4b63-8af9-93082d6bd7f8.json",
+        "bytes": 399,
+        "sha256": "b2ef666f28ea1386391720970122c4cabce1efc534395d607abe2f0bf5410903"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/b5/b575ce18-57ec-4a83-81d9-e700e3a1a345.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/b5/b575ce18-57ec-4a83-81d9-e700e3a1a345@f9941.json",
+        "bytes": 598,
+        "sha256": "faa2fc2e2578ae071309d9ee3714801c120e98b54550692bd41166588f139a61"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c1/c161d3fc-d364-4b7c-b214-720d6ca9baaf.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c1/c161d3fc-d364-4b7c-b214-720d6ca9baaf@f9941.json",
+        "bytes": 714,
+        "sha256": "1e90c0ff7da14a9cdfcb6e2ef26401f2cf13ef0a5c672685ecb9643e0afc2956"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c1/c1ac2a71-ae0c-440c-b035-98bbef765183.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c1/c1ac2a71-ae0c-440c-b035-98bbef765183@f9941.json",
+        "bytes": 703,
+        "sha256": "1c8b508502f30a93594d6a96cf536e9ea0d2369dfdb76f83dd7f68e57b1f8cc9"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c5/c520b17a-95c4-4450-84d4-c2a5cd21890c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c5/c520b17a-95c4-4450-84d4-c2a5cd21890c@f9941.json",
+        "bytes": 580,
+        "sha256": "d5f80ca6bf08eb3a06e16789ece7309bb8b77a6df67b27e4cd4adc5effd89ae7"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c5/c5e2a3bd-8868-4b7c-9f12-70f08da408d4.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c5/c5e2a3bd-8868-4b7c-9f12-70f08da408d4@f9941.json",
+        "bytes": 593,
+        "sha256": "64c3ede906b912c6f9b79adca85e6d05e8ff9f1a29f8a3ad6f9cb6c933b6d2ef"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c7/c71207b4-299f-4439-814e-5feb8b20153e.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c7/c71207b4-299f-4439-814e-5feb8b20153e@f9941.json",
+        "bytes": 619,
+        "sha256": "37cd3f1c98dd6272bb0ca7ff5014fabd2210e4c6a65d8a4da4bd4a9ff442d56e"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c9/c961b180-a143-4882-bf45-b122562b3e38.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/c9/c961b180-a143-4882-bf45-b122562b3e38@f9941.json",
+        "bytes": 590,
+        "sha256": "f70e8cd2c6f19ba69d0dd6bd6f316c96f76e09f4187b9d2a592f546a40d25ede"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/d0/d0cd5f11-2151-46ff-bbba-3bc7609129bc.json",
+        "bytes": 396,
+        "sha256": "f299a12fb32bb4f9e11046f0d2fd6324c0a8e490f024d94bb37ba08543edebfd"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/d7/d79fcfea-bc3b-4619-80f4-c95844c365b0.json",
+        "bytes": 540,
+        "sha256": "1e675f3f3c620e1aa3043c296185f9cc6f701381268f86b53eb2557bb95e0220"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/d9/d98bfd9a-b173-445d-8e00-98a7ec0c250c.json",
+        "bytes": 543,
+        "sha256": "c7a15c636ea22018160c9a5bbbb167fb77650dd9df58433591f7802906e8999a"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/dd/dd7f4765-4894-4b84-8a3c-fee4edf53995.json",
+        "bytes": 530,
+        "sha256": "9f4d1b3d981aa5c4230a64030b9d0a9c3f5f4a10bdb1c658fae041870578ffbc"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/de/de930223-9e89-419d-a6ee-b344bb6ba08f.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/de/de930223-9e89-419d-a6ee-b344bb6ba08f@f9941.json",
+        "bytes": 603,
+        "sha256": "40923eb906628bf3101493a7f6f3dcf26ff2d8b364f9c7b7389a4376f04ab8d4"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/e1/e1a51279-7b7a-41aa-adf0-fe49f7fd984b.json",
+        "bytes": 519,
+        "sha256": "4c58bc214b5c7b2c8261010d4bb4e985366d918f2b477634592ff301413afd2a"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/e2/e28978cd-0267-4ccc-9b20-f8bb2c8aa0ce.json",
+        "bytes": 555,
+        "sha256": "6a3ed236c2ad6d8713b73e0390af870fd3e29f92c245acd3e59a0bdf406ff4bf"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/e3/e35443fe-017c-4092-b3d1-2cf2da9dce68.json",
+        "bytes": 366,
+        "sha256": "f0779e910325bce926fd3809dfc98548c6ab12efabbe161c6fd9c4d91c1c375c"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/e4/e4760167-9d17-48d3-9056-59a251511583.json",
+        "bytes": 561,
+        "sha256": "e1d8f2e30821c7e102f63b68612379732d83fbeb158292377a1c26b392765850"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/eb/ebe85308-a1b0-4edf-af2b-f2df93d19987.json",
+        "bytes": 509,
+        "sha256": "fb3dc4f5caca8d44e5bce8e9241e414457aab4f7f8d48cc3afdfcfc6a4294e6b"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/f8/f80a42e8-02a4-44b6-9714-92331bfec9f2.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/f8/f80a42e8-02a4-44b6-9714-92331bfec9f2@f9941.json",
+        "bytes": 581,
+        "sha256": "852522cb32d6a0f8f34bf9e4122a19876a2e7716aef831a7d41d605164a49351"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/f9/f96c41b6-8bad-4532-bfbe-b70bf1a9c890.json",
+        "bytes": 558,
+        "sha256": "a4f608bd5cd2333c55b0cfd9960e436343a9b2c64880ad4d6abb15fee5d24e91"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/import/fd/fd60a07b-5abc-4d82-a7b2-8746204c0763.json",
+        "bytes": 530,
+        "sha256": "e4ebca243344a0d93b4a6302b3199f0fc846bc058bf30c2df1bd37e6cfc44d19"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/index.js",
+        "bytes": 651,
+        "sha256": "4697ee5ed56d4eabbf7686245443880fdf1b3462478d6584168e6cbfc010ed0a"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/1c/1c74da7b-0794-428a-960e-f7a8bcce78b7.png",
+        "bytes": 2357902,
+        "sha256": "4f3299fbc6e28e5e38d68253b8ddd2693dc26eb6cb45038c174321aec92b9b8d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/4b/4b173146-9954-4640-b7e8-6dd3f7ae2f08.png",
+        "bytes": 2635135,
+        "sha256": "dc1368507d9f403baec76b1e32e28d8bad4a1815be247b9612495968028ccd5b"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/4c/4c3c5412-640d-4831-8fdf-64635b2c6b77.png",
+        "bytes": 3041731,
+        "sha256": "d30bc799a3ff85dca64657288be5f086b49e1614900cde18c59c4d53f0ae72b9"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/89/89f631df-fdd7-4849-8f3b-a67861d900a9.png",
+        "bytes": 3245305,
+        "sha256": "528a7c6d296e7c2f1e1f450ff7c501f265b5b93d74eba3726591862c35f1c44f"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/8e/8e835563-cc4e-404b-a82b-2af8c2f016fd.png",
+        "bytes": 1222,
+        "sha256": "5fd185597d4740fd7194082e06a4c03f848f8b7e66d9f11bef6b8717b58dbbd2"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/9e/9e4ee2ab-cea9-4102-85c0-26c8aab339d9.png",
+        "bytes": 2845008,
+        "sha256": "a275a50f3e7bb5bf95c85c225c50db43b09575addb214374d17750f35e42f117"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/ac/ac3b67b5-9d9a-4c84-85ef-b39fd1aedabc.png",
+        "bytes": 1609,
+        "sha256": "616d8413d03a6322e976b18ad60e4a4de5b0b34885515102f4658a154f9031dc"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/ad/ad720667-affb-4379-a0db-438ebbbf4bb2.png",
+        "bytes": 6027,
+        "sha256": "f92ce51c8b449209840ffe16cec6e40c81d2622e6feb8c733fd7dbce2cb3c029"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/b5/b575ce18-57ec-4a83-81d9-e700e3a1a345.png",
+        "bytes": 10848,
+        "sha256": "6cd73e6c5aea299d3dc5bd2aa53d1dbc1aea9031c8a30a1f97a8c6827af66944"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c1/c161d3fc-d364-4b7c-b214-720d6ca9baaf.png",
+        "bytes": 2597198,
+        "sha256": "6fa9264bd859c20d280fa9b863e3406a2fcc7a99e5c3a40528964c83feb66824"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c1/c1ac2a71-ae0c-440c-b035-98bbef765183.png",
+        "bytes": 2447464,
+        "sha256": "25ae370998e1711f83b639cc3c99a2669778bd1abfd1cc156c1d78283bd131fa"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c5/c520b17a-95c4-4450-84d4-c2a5cd21890c.png",
+        "bytes": 1779,
+        "sha256": "62413ba4bd7770e023836988f54fb8d6f615308879b825e627e2856a7c4948ac"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c5/c5e2a3bd-8868-4b7c-9f12-70f08da408d4.png",
+        "bytes": 2800,
+        "sha256": "7f0f48389f1ed58aac5ba0b9fc7576fd2e6950b5163c9b21b9e5d4f1740222a8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c7/c71207b4-299f-4439-814e-5feb8b20153e.png",
+        "bytes": 2573,
+        "sha256": "84a42cf6a543b107a89bde6a105ffd33f636ada7b5e367ac465d5718639a401d"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c9/c961b180-a143-4882-bf45-b122562b3e38.png",
+        "bytes": 6057826,
+        "sha256": "1f53d886055ed6fe7550891cf58c1d5f2f55678f2718a7715f2f59056dbc05e8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/de/de930223-9e89-419d-a6ee-b344bb6ba08f.png",
+        "bytes": 1523,
+        "sha256": "0c9dc56d6f0051d502f0c6325cbe297537a610a62d2d8ec5c93d6ffeead20b2a"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/f8/f80a42e8-02a4-44b6-9714-92331bfec9f2.png",
+        "bytes": 4656,
+        "sha256": "65eac46c153dd38d149b103651744597ab547a54a56248ad56f5c9333d434ffa"
+      },
+      {
+        "path": "assets/internal/cc.config.json",
+        "bytes": 5778,
+        "sha256": "dd27418acbed024a7854eaf49c58b76b808aa6b066f4813587ba81a4de2854e5"
+      },
+      {
+        "path": "assets/internal/import/04/04f923b60.json",
+        "bytes": 193611,
+        "sha256": "954df1cc306adb765d6585cc62dee4284e4e75f0194f9fb78220354808609ea2"
+      },
+      {
+        "path": "assets/internal/index.js",
+        "bytes": 95787,
+        "sha256": "60bea805312aa3c846162a9d0f81290477a2ad9c381fc15acbcde51f3c231528"
+      },
+      {
+        "path": "assets/main/cc.config.json",
+        "bytes": 1103,
+        "sha256": "c009a6e5eb0ae87d7865a8d40dcec47f5913a1b3ea942f3f8fffacce78223d3f"
+      },
+      {
+        "path": "assets/main/import/ba/ba21476f-2866-4f81-9c4d-6e359316e448.json",
+        "bytes": 192,
+        "sha256": "0a34e9263b215bb661d6334db6a255497c6cdac1f1c40b130f50bf9d91f4dd39"
+      },
+      {
+        "path": "assets/main/import/e6/e65462e8-3cc7-460f-a115-bd1d15ae7fb6.json",
+        "bytes": 1616,
+        "sha256": "89b6775a8c4c804a20b21f5b86f4a8ad9500a14541bc502f2d4e9476b290b440"
+      },
+      {
+        "path": "assets/main/import/fd/fd8ec536-a354-4a17-9c74-4f3883c378c8.json",
+        "bytes": 480,
+        "sha256": "c2eee4552a460ed97591f527e127b95c811d5f796b9448f3f705974af9beba9d"
+      },
+      {
+        "path": "assets/main/index.js",
+        "bytes": 387854,
+        "sha256": "0f6be847804d86804859e90465209e793be09f75bad563a71cc3fcc1d012d371"
+      },
+      {
+        "path": "assets/resources/cc.config.json",
+        "bytes": 52375,
+        "sha256": "fa3d41ea1c417ea5c04bc4eb7b5036e4030c7e27fd4ba0f9bc27cc9b2a1246d5"
+      },
+      {
+        "path": "assets/resources/import/01/01e485e35.json",
+        "bytes": 25883,
+        "sha256": "844e15e91d0986ab36eb9bcb0762d776fa031748104a048200530fd589ae2bf2"
+      },
+      {
+        "path": "assets/resources/import/02/027a8ad6-4bd0-4ba5-9b01-8cbee20ee973.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/02/027a8ad6-4bd0-4ba5-9b01-8cbee20ee973@f9941.json",
+        "bytes": 592,
+        "sha256": "848c4645573be081193c8f2fffc403beba277e87bd02a6562e3590bdbf7ede45"
+      },
+      {
+        "path": "assets/resources/import/06/06b0dd3a-deb7-4352-9c56-f3f5574fc5cd.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/06/06b0dd3a-deb7-4352-9c56-f3f5574fc5cd@f9941.json",
+        "bytes": 592,
+        "sha256": "7e173cadfa2d525d3994d4f4ea28516ee17ee27061e0cf51efc2dcc47d841f43"
+      },
+      {
+        "path": "assets/resources/import/06/06d9124f-2438-440b-b998-8441de53a7f3.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/06/06d9124f-2438-440b-b998-8441de53a7f3@f9941.json",
+        "bytes": 590,
+        "sha256": "f18337468a86cf1229bc2e2f164322699ac43ceedcb0679f45727e527bbdad30"
+      },
+      {
+        "path": "assets/resources/import/09/0920ffcf-1103-4b4c-a312-a744673917a5.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/0a/0a618551-e3f3-4afd-a168-507bba1a2932.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/0d/0d68e3a6-a1f1-4bd2-84af-bec1b67de9d4.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/0d/0d68e3a6-a1f1-4bd2-84af-bec1b67de9d4@f9941.json",
+        "bytes": 592,
+        "sha256": "b6ad054e5de39cfcbf490b25345e07f3825ecbeb3cadbfaf3524f8323ac6c46c"
+      },
+      {
+        "path": "assets/resources/import/0d/0d6c04ea-6dc2-48a4-9a48-076614c72cf7.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/0d/0d6c04ea-6dc2-48a4-9a48-076614c72cf7@f9941.json",
+        "bytes": 591,
+        "sha256": "abbe454033265723def3d281cbf8e449cc573c968c67a9103006f2319bc48a5d"
+      },
+      {
+        "path": "assets/resources/import/0f/0f34aea6d.json",
+        "bytes": 4650,
+        "sha256": "1e0f893907d4a7ed71f1b889e956c6d8ddd2cad78816ae243d40f005a9bc6b89"
+      },
+      {
+        "path": "assets/resources/import/11/111711ea-e325-4e76-855f-d204e5b2c9b0.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/11/111711ea-e325-4e76-855f-d204e5b2c9b0@f9941.json",
+        "bytes": 592,
+        "sha256": "684cd53d27a6cc5ababd12fe751fa0b6b64f0ab6cdb3c4eda99dd3504e8713b7"
+      },
+      {
+        "path": "assets/resources/import/12/122120dd-df9c-4133-9061-41eb57312759.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/12/122120dd-df9c-4133-9061-41eb57312759@f9941.json",
+        "bytes": 579,
+        "sha256": "eafa4eaf5e6f74c7e8631742a9814cdbc019a646822495f85c41cf0928564ed5"
+      },
+      {
+        "path": "assets/resources/import/1a/1ae5244a-d5a3-4ec1-8608-0b4f4d56e822.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/1a/1ae5244a-d5a3-4ec1-8608-0b4f4d56e822@f9941.json",
+        "bytes": 590,
+        "sha256": "6bde03342eea946065461e0bb29719a465c6e43efb0e8dd26f17386397689334"
+      },
+      {
+        "path": "assets/resources/import/21/21356f3b-99a6-422b-afcf-4ab6f630b0a4.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/28/2807b28d-5a09-429d-aae3-5d64129f024e.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/28/2807b28d-5a09-429d-aae3-5d64129f024e@f9941.json",
+        "bytes": 573,
+        "sha256": "fe8a854817f46296d2a46b801da7a31f7914390f4e0729d7907931c6c3b44683"
+      },
+      {
+        "path": "assets/resources/import/2e/2ebc3f76-1de7-4c79-b756-d26eb7d21a43.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/2e/2ebc3f76-1de7-4c79-b756-d26eb7d21a43@f9941.json",
+        "bytes": 591,
+        "sha256": "808cd0e5dc876e888c6e63eeacd55cf81bb9b31f99aa95e2a62cdb4ae5fa3e57"
+      },
+      {
+        "path": "assets/resources/import/2f/2f44ab9b-abea-4c37-911c-c42fdaaacd17.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/2f/2f44ab9b-abea-4c37-911c-c42fdaaacd17@f9941.json",
+        "bytes": 592,
+        "sha256": "4eb2625cc80fc30606f3a5138cb4e74e7e5851cae597c38964ad457ae4f4c903"
+      },
+      {
+        "path": "assets/resources/import/30/30b41378-e71c-43d2-b646-686d14e7235e.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/30/30b41378-e71c-43d2-b646-686d14e7235e@f9941.json",
+        "bytes": 591,
+        "sha256": "ee8454e41f6f369e57e5e0c6b31dde964b4dca2166baf60ffecc5b19750d8033"
+      },
+      {
+        "path": "assets/resources/import/34/343ed55e-d45f-40ef-ac8c-e930e0b6ae69.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/36/36961f4b-26a6-45b4-8f34-4be887bb2f2c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/36/36a4c103-6b15-42be-8aa7-a9d23a821f6a.json",
+        "bytes": 453,
+        "sha256": "425460c0310faad86d1f7fb70deace51dba45efe0eb50f961a33dbf051e2cef0"
+      },
+      {
+        "path": "assets/resources/import/3d/3d632880-01a1-4899-ba6e-6a6e4f36a2cf.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/3d/3d632880-01a1-4899-ba6e-6a6e4f36a2cf@f9941.json",
+        "bytes": 574,
+        "sha256": "2efef8e1f5e102c65ccb11c3e277372bb3925e2fc919d1d87cd51018d345809c"
+      },
+      {
+        "path": "assets/resources/import/42/425910cc-fc7f-42f3-b80a-8c6c650af56b.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/42/425910cc-fc7f-42f3-b80a-8c6c650af56b@f9941.json",
+        "bytes": 591,
+        "sha256": "a16a4a60104fbf3b68a166ffff5eb1d8d07c561b3e726c0eb49caf9a7995077b"
+      },
+      {
+        "path": "assets/resources/import/45/4587b322-ac14-45e0-b843-a56236f29cb0.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/45/4587b322-ac14-45e0-b843-a56236f29cb0@f9941.json",
+        "bytes": 591,
+        "sha256": "db621a5c0e5d0847c412cdb030949b97f7f61a456a2b0bb66d8c403e332d1277"
+      },
+      {
+        "path": "assets/resources/import/47/47b0492d-ff30-4dc2-a1e4-eb2dd67efcf9.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/4b/4b7bee49-b4f0-4867-89ce-27bbeaba280a.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/50/50cf2fbb-440a-4907-8a07-758c0eaa535c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/50/50cf2fbb-440a-4907-8a07-758c0eaa535c@f9941.json",
+        "bytes": 591,
+        "sha256": "68c28462d3208284c175c346f7dbc8173cf0d9f6b581694f471ce63ab0e7b01e"
+      },
+      {
+        "path": "assets/resources/import/51/5146b64a-49dc-4edc-ab7d-d711a4aab267.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/51/5146b64a-49dc-4edc-ab7d-d711a4aab267@f9941.json",
+        "bytes": 592,
+        "sha256": "5e983e390dac6a95b9980aad69cfd523c43db47119fe345f517cb9f20f852419"
+      },
+      {
+        "path": "assets/resources/import/59/59c0fa4b-c090-415c-b451-b6b04cb900df.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/63/6337aa96-b989-480d-9525-5e54cc3ae589.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/63/63f231d6-796f-40f6-a562-2394a17b6479.json",
+        "bytes": 380,
+        "sha256": "c9e6b1d44912b45d14073485360f0626719689148235ea504c3a5799bc8518c5"
+      },
+      {
+        "path": "assets/resources/import/64/64272d29-79a5-468e-9a35-add1e177870d.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/64/64272d29-79a5-468e-9a35-add1e177870d@f9941.json",
+        "bytes": 592,
+        "sha256": "6847f54a0f258d3121850b7ebbbeb1b849c87cfd1d33cc5a55d5af377012d5fa"
+      },
+      {
+        "path": "assets/resources/import/65/65d2b58c-5c1f-4099-a414-c025cd944c20.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/65/65d2b58c-5c1f-4099-a414-c025cd944c20@f9941.json",
+        "bytes": 592,
+        "sha256": "06f9490359832be6fcf3a48caa406c08db0170f8798900367c84fd7cc64f438d"
+      },
+      {
+        "path": "assets/resources/import/6d/6d787c62-12db-429d-af8a-d9f97e3d3487.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/6d/6d787c62-12db-429d-af8a-d9f97e3d3487@f9941.json",
+        "bytes": 590,
+        "sha256": "5bac7f3467d271ba11a5e325cce742a5552b7e14bc98212f74b12ad79e06aca1"
+      },
+      {
+        "path": "assets/resources/import/6e/6e5bf6f4-a76b-48c1-900c-411b1ecc7328.json",
+        "bytes": 5822,
+        "sha256": "71c348b9d3856de6ef105d83593be3bac3ec6bdcd61513f08c51e121c1411ddd"
+      },
+      {
+        "path": "assets/resources/import/6e/6e75bec9-c835-4dae-a21b-7244d8552e48.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/6f/6f36dd92-055c-4f24-afa0-6f1b757b9117.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/73/7361da9c-2095-4870-9c96-8e02b6b6bb4d.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/73/7361da9c-2095-4870-9c96-8e02b6b6bb4d@f9941.json",
+        "bytes": 592,
+        "sha256": "b4a51b895a280e725a7b81120ac55574c7e4b114b77a2f290e8df96ea716e49b"
+      },
+      {
+        "path": "assets/resources/import/78/78c1716b-c4af-4d0f-bdcd-a212f78f0aa7.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/78/78c1716b-c4af-4d0f-bdcd-a212f78f0aa7@f9941.json",
+        "bytes": 591,
+        "sha256": "31f02b5bf0402a8403f0ab346a4341f41e76dae8862d1a0a858113544697e36a"
+      },
+      {
+        "path": "assets/resources/import/7a/7a6b87f2-8fd3-414c-b4c7-ab8afe7b179c.json",
+        "bytes": 3775,
+        "sha256": "7025b71ae222cf00affa1cc555e6d5c802f7a6b667ed922348ae5f72198fa2e0"
+      },
+      {
+        "path": "assets/resources/import/80/802a1341-b425-4a73-97c1-7b7304e35743.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/80/802a1341-b425-4a73-97c1-7b7304e35743@f9941.json",
+        "bytes": 591,
+        "sha256": "b89cdead953ffdbce3b080123e7a8805d6db97e26a5922de1705d9dd6baed887"
+      },
+      {
+        "path": "assets/resources/import/80/80ca3d89-5f3c-4ff9-a926-c40d36fe7bcd.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/80/80ca3d89-5f3c-4ff9-a926-c40d36fe7bcd@f9941.json",
+        "bytes": 590,
+        "sha256": "fb2b3b418bbfbd285b0b59468a80d825bff0815fbcd5751667ecbcb5a18b0952"
+      },
+      {
+        "path": "assets/resources/import/81/81917504-cd0b-4c39-b87e-7eeceac5ccd2.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/86/86496974-da3d-41ae-a590-2e5834be063a.json",
+        "bytes": 3217,
+        "sha256": "76d43d5ccb9cb2a8df77ae715cb3ae8797b291f54c1f8be39e7b840a3bf87834"
+      },
+      {
+        "path": "assets/resources/import/88/88d046f2-c0a4-47a3-a136-e8e9b60466e1.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/88/88d046f2-c0a4-47a3-a136-e8e9b60466e1@f9941.json",
+        "bytes": 592,
+        "sha256": "cfea14855ef79c3ff0538565e778ecb2e43e783991a294b9943230c597b996c1"
+      },
+      {
+        "path": "assets/resources/import/88/88e414dd-6804-4c60-98af-d660f4cb1e8c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/88/88e414dd-6804-4c60-98af-d660f4cb1e8c@f9941.json",
+        "bytes": 591,
+        "sha256": "efa07ce14be00543046cc5af8c52bd61ffc0d7240eae938983f78906ea8ee712"
+      },
+      {
+        "path": "assets/resources/import/89/8912d994-4f8e-42e0-811b-a5647e961c9c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/89/8912d994-4f8e-42e0-811b-a5647e961c9c@f9941.json",
+        "bytes": 592,
+        "sha256": "db9e84bbefb399857ebdfca2f498d9cd8c1f300b4e6c25042dd37b3f75a586e4"
+      },
+      {
+        "path": "assets/resources/import/89/894c3f68-c879-41d7-9b30-e6a454247524.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/89/894c3f68-c879-41d7-9b30-e6a454247524@f9941.json",
+        "bytes": 592,
+        "sha256": "6ed69ca2690a8944aaa922cf3103179241cfa1f4158ce4f0e77e070297fdda0a"
+      },
+      {
+        "path": "assets/resources/import/89/8960525e-fee6-40bb-a39d-b8b51a9ba155.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/89/8960525e-fee6-40bb-a39d-b8b51a9ba155@f9941.json",
+        "bytes": 592,
+        "sha256": "9220313a453ab4bd676b7a96aa747e064004f4870bf86dd2d2a10559cc961f66"
+      },
+      {
+        "path": "assets/resources/import/89/896e7932-7df8-46c1-9468-c4d93a0fa950.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/89/896e7932-7df8-46c1-9468-c4d93a0fa950@f9941.json",
+        "bytes": 592,
+        "sha256": "4498063deb9e3e96435e5986d6211819c741de5fda06b0e6d8d7ac5b2fb6b3d7"
+      },
+      {
+        "path": "assets/resources/import/8a/8a705422-709f-48a0-8e67-7aecbd0a29ee.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/8a/8a705422-709f-48a0-8e67-7aecbd0a29ee@f9941.json",
+        "bytes": 592,
+        "sha256": "79c9757e7608acd4e7065341393a7f827f25359809abb3f43990d6a80d112fe9"
+      },
+      {
+        "path": "assets/resources/import/8b/8b773fc1-7e4b-482d-9b09-635f6515a8b9.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/8b/8b773fc1-7e4b-482d-9b09-635f6515a8b9@f9941.json",
+        "bytes": 590,
+        "sha256": "0b5525fbaffd97e021849c7a3fd8e48564670565c78d7cbfa3661695a84f375f"
+      },
+      {
+        "path": "assets/resources/import/8c/8c7a65ed-9e7b-46cb-aaeb-b70f34bf012b.json",
+        "bytes": 1525,
+        "sha256": "b4866e0b0b7752d099bb35fa2fabd191a505dbea29c83fb2191330f888abf955"
+      },
+      {
+        "path": "assets/resources/import/8d/8d537f7a-b035-42e6-96f9-2e692a9bf955.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/95/958abfef-0c75-4e91-8405-e756a3f13b10.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/95/958abfef-0c75-4e91-8405-e756a3f13b10@f9941.json",
+        "bytes": 590,
+        "sha256": "e761e6b7e2b87b0fb7802de459e913dabac260ba5cd97a3902a52e7ff7ff6adb"
+      },
+      {
+        "path": "assets/resources/import/97/97a9818b-d4e6-4463-8640-1ebda365fced.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/97/97a9818b-d4e6-4463-8640-1ebda365fced@f9941.json",
+        "bytes": 590,
+        "sha256": "f884c0de5aee092b01870757d4468e10f89dd1ab89f845a5b8e005b1f94690cd"
+      },
+      {
+        "path": "assets/resources/import/98/986b1e94-dfa7-4ec5-8abc-50e4e252bf35.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/98/986b1e94-dfa7-4ec5-8abc-50e4e252bf35@f9941.json",
+        "bytes": 590,
+        "sha256": "af3169307699958a546d82a577cd8cbe7836a1a6dd7c3578e91c55bb5e41e35e"
+      },
+      {
+        "path": "assets/resources/import/99/990b0d80-0322-425c-94d8-24cffd15b2d3.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/99/990b0d80-0322-425c-94d8-24cffd15b2d3@f9941.json",
+        "bytes": 592,
+        "sha256": "b0a6b30d4df2ff7801e445207e06ab9b10f32f2499ad5f3feb5060182345e2be"
+      },
+      {
+        "path": "assets/resources/import/99/99885493-20db-46bb-a88f-7406e36d5a09.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/99/99885493-20db-46bb-a88f-7406e36d5a09@f9941.json",
+        "bytes": 592,
+        "sha256": "ac54d5f69f9e4e81a12a5db1f5ceefc44184ec59cf1559c32942e6a7396f2db6"
+      },
+      {
+        "path": "assets/resources/import/9a/9a638850-7193-4607-b772-0cceb5019ee9.json",
+        "bytes": 238,
+        "sha256": "c6f3f065df99128b09c0a795478141e717f549361d984564cc50ba14316e07be"
+      },
+      {
+        "path": "assets/resources/import/9a/9ab37e71-20c0-4a2a-b6b7-bbdddede1c0c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/9a/9ab37e71-20c0-4a2a-b6b7-bbdddede1c0c@f9941.json",
+        "bytes": 592,
+        "sha256": "0690d6ab9876f0d881ec61ad170d75a29f57689ece1a6a6faf839355781c2809"
+      },
+      {
+        "path": "assets/resources/import/9b/9b24a1c4-0c60-403b-930d-52a2be0a4e49.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/9b/9b24a1c4-0c60-403b-930d-52a2be0a4e49@f9941.json",
+        "bytes": 590,
+        "sha256": "5521392f823deecce9b421a3f9c7480ae38c7dd803953811e9b91f6d0cac32e6"
+      },
+      {
+        "path": "assets/resources/import/a3/a3003e0c-916c-4564-b5ce-b9f5d00e547b.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/a3/a3003e0c-916c-4564-b5ce-b9f5d00e547b@f9941.json",
+        "bytes": 590,
+        "sha256": "60d34cd7f0ebd87ed1e0b5921bc3c1a4b1c99fbbe244c5d5075a63563a6efc60"
+      },
+      {
+        "path": "assets/resources/import/a5/a5f3ea29-02d2-42c8-b1f1-3a534d51922d.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/a5/a5f3ea29-02d2-42c8-b1f1-3a534d51922d@f9941.json",
+        "bytes": 592,
+        "sha256": "fab4ebf9f763a5299c0854be095a81b07f855c533b7ed3aa9f38af85eb914c6c"
+      },
+      {
+        "path": "assets/resources/import/a6/a6bd733b-749b-4772-9abc-a703c7edd304.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/ab/abf98966-03cd-4884-a7cf-8fc97daf9aff.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/ab/abf98966-03cd-4884-a7cf-8fc97daf9aff@f9941.json",
+        "bytes": 590,
+        "sha256": "b742fd7aaa68712a627588fd0194ba79894c113a2292257dd6c483b624e395de"
+      },
+      {
+        "path": "assets/resources/import/b2/b2815776-2585-4bde-967b-a8da5b7849b6.json",
+        "bytes": 400,
+        "sha256": "73c54e13dabb3863b2ed6216dc4277cafd97f5de332099011c3f5c1913ec4ffa"
+      },
+      {
+        "path": "assets/resources/import/b3/b362f7b7-d04c-4a99-a774-8cd8212a024a.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/b3/b362f7b7-d04c-4a99-a774-8cd8212a024a@f9941.json",
+        "bytes": 580,
+        "sha256": "f1598cc9386ea772e0ae1a5a09361e4527ec84434c5b92c93c49934486fc391b"
+      },
+      {
+        "path": "assets/resources/import/b4/b49c080d-2d02-40be-8faf-bce5015675bd.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/b4/b49c080d-2d02-40be-8faf-bce5015675bd@f9941.json",
+        "bytes": 592,
+        "sha256": "0bdb23ad4994e1f0de432e7e9d428c9c6219ef50465db42310a40be74118f806"
+      },
+      {
+        "path": "assets/resources/import/b5/b5ce9a63-44b6-40ef-b267-b7030c0cfe33.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/b5/b5ce9a63-44b6-40ef-b267-b7030c0cfe33@f9941.json",
+        "bytes": 592,
+        "sha256": "d98cb2054e3fe4c5136ee62dec61b5449863d1232fa27de996187c9ca78e5259"
+      },
+      {
+        "path": "assets/resources/import/b6/b6ba74b1-5c4a-4ac1-b5d4-8bd13d46f8a5.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/b6/b6ba74b1-5c4a-4ac1-b5d4-8bd13d46f8a5@f9941.json",
+        "bytes": 573,
+        "sha256": "63381a0d0877a8193e02c3622bb19fd029745a4efbe16ba2e79d199a4c8bc169"
+      },
+      {
+        "path": "assets/resources/import/b9/b9b92dd1-e038-44fc-a2f2-c65999a9264d.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/b9/b9b92dd1-e038-44fc-a2f2-c65999a9264d@f9941.json",
+        "bytes": 591,
+        "sha256": "84f0b07a987acb3eddbfe4b28a74e8fd2dc1fb7bc99fb3f46f8437ad95030fba"
+      },
+      {
+        "path": "assets/resources/import/ba/ba179629-ab9a-4a97-8577-21c6fb849f57.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/ba/ba179629-ab9a-4a97-8577-21c6fb849f57@f9941.json",
+        "bytes": 578,
+        "sha256": "da838adfdb88c633cd15cb42b79699e2d6dbe608ba165f151edf56dbf999ccd7"
+      },
+      {
+        "path": "assets/resources/import/c1/c1762f6e-9e7c-40cd-ac34-18322b1dc55f.json",
+        "bytes": 434,
+        "sha256": "85289f76fe7fb8b9a0df60e9cae9437b3d7f2e65f9064005eeba7f416d09c424"
+      },
+      {
+        "path": "assets/resources/import/c2/c23a79f7-4448-4e7f-ad1d-ad9e42396a6e.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/c2/c23a79f7-4448-4e7f-ad1d-ad9e42396a6e@f9941.json",
+        "bytes": 591,
+        "sha256": "4d96d8a29db1ad542fdf65c79b0a0833ed7f1704e99581239ba4583ed238ba92"
+      },
+      {
+        "path": "assets/resources/import/c4/c4920e7c-fc54-462a-82dc-91c9b53303ce.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/c4/c4920e7c-fc54-462a-82dc-91c9b53303ce@f9941.json",
+        "bytes": 644,
+        "sha256": "d6b19870c10d1e3b7e335985d5d30d71b7c1c0f6fd3aced88f0d84807dd56622"
+      },
+      {
+        "path": "assets/resources/import/c5/c5049a03-a421-4c7c-8524-00d56f6a90a3.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/c5/c5049a03-a421-4c7c-8524-00d56f6a90a3@f9941.json",
+        "bytes": 592,
+        "sha256": "a879ea55d9e44da821173e8aa1951e5250787e4ffc45ddc2b8203963276fff83"
+      },
+      {
+        "path": "assets/resources/import/c7/c7ac861e-06ff-4987-8797-42797c646d56.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/c7/c7ac861e-06ff-4987-8797-42797c646d56@f9941.json",
+        "bytes": 590,
+        "sha256": "08ef7285fe7166c2e3e5d440967cdeeb0f9efcc61bef6c1bc72b966ff236cba5"
+      },
+      {
+        "path": "assets/resources/import/c9/c9093172-2486-4863-b3d8-0b1d46e1c3fd.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/cb/cb78bc3c-2d29-44cd-a408-d815a1cd0966.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/cb/cb78bc3c-2d29-44cd-a408-d815a1cd0966@f9941.json",
+        "bytes": 591,
+        "sha256": "a4fedc155b514302e1af8942e48ccdf77f4fac4d5df9b7116019ad3523ec7b27"
+      },
+      {
+        "path": "assets/resources/import/cc/cc2fd62f-e9ab-4894-927a-fc2a0938959c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/d4/d407b2e7-0de2-4132-a7eb-411101e13bf1.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/d4/d4c38c74-29ae-43c0-b76a-74f50829e53e.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/da/da70abe6-a438-45e4-b2d6-a5c8e8ca1026.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/da/da70abe6-a438-45e4-b2d6-a5c8e8ca1026@f9941.json",
+        "bytes": 582,
+        "sha256": "20015f51bd04a275a81044aceba4a69b04827196e97017a66091ffdb51f29fb8"
+      },
+      {
+        "path": "assets/resources/import/e2/e260cf2b-c872-543f-adc3-f8cc4eafca69.json",
+        "bytes": 161,
+        "sha256": "7fca3953f93b421aa0cbe7b404304b2466dcbfa9a10f1839062f6e5b135a03a4"
+      },
+      {
+        "path": "assets/resources/import/e4/e4a323cb-18c1-4f72-b6e1-16d86451ba6c.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/e4/e4a323cb-18c1-4f72-b6e1-16d86451ba6c@f9941.json",
+        "bytes": 592,
+        "sha256": "f0ec51f455c57a975b80992b099aca54ac648f819525818c8e4cddd16cacdfbc"
+      },
+      {
+        "path": "assets/resources/import/e5/e534881f-7b86-44cb-93de-34c6c4df7307.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/e5/e534881f-7b86-44cb-93de-34c6c4df7307@f9941.json",
+        "bytes": 592,
+        "sha256": "cc6ce930a8cea90185ab08fe6b2e808be9899c6fb8a04f3cf03abd94a563e961"
+      },
+      {
+        "path": "assets/resources/import/ea/ea8745f7-5a21-4af3-963c-eeac364f069d.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/eb/eb88f536-ab3d-4e77-ba4f-d69175dfc271.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/eb/eb88f536-ab3d-4e77-ba4f-d69175dfc271@f9941.json",
+        "bytes": 592,
+        "sha256": "9dd153e0a93950ab1544af14706af1ca27bdb966efbfb18ea72776f391ae1a52"
+      },
+      {
+        "path": "assets/resources/import/f4/f467ce09-f302-48e0-9ba8-4d90f8ba4a96.json",
+        "bytes": 14986,
+        "sha256": "bd3468c8559e40f910ca52a9486d65d92d5de03c8ad76415b733a5cb60de6d2f"
+      },
+      {
+        "path": "assets/resources/import/f8/f8b25c4f-7942-4f46-b2ba-ffeffc2268a9.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/f9/f94d59e8-a715-4eb7-910b-2e8017cc60db.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/f9/f9c84568-e833-4237-b1d2-84374707d895.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/fc/fc4cd3cb-574f-4a2b-9692-5abd68471a3f.json",
+        "bytes": 16588,
+        "sha256": "1e79a30b99f8a2a68a6ce67ae9cc37308fc93e171872e11f7c4a5d038e7035e4"
+      },
+      {
+        "path": "assets/resources/import/fe/fe34052e-95dd-4855-968e-a957d950030b.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/fe/fe34052e-95dd-4855-968e-a957d950030b@f9941.json",
+        "bytes": 590,
+        "sha256": "a43b32eec650b2e8012e2b38c563f2ea2379f21aae7898418c20f27d5b4bffa7"
+      },
+      {
+        "path": "assets/resources/import/ff/ff546544-38d9-471a-8249-63a8e4ced954.json",
+        "bytes": 72,
+        "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+      },
+      {
+        "path": "assets/resources/import/ff/ff546544-38d9-471a-8249-63a8e4ced954@f9941.json",
+        "bytes": 592,
+        "sha256": "d66f9457a3513bed3007997b9e4d65ae10a2985240041e16ead0bdf480488320"
+      },
+      {
+        "path": "assets/resources/index.js",
+        "bytes": 624,
+        "sha256": "a8a8842dba5661964a271fa0d82e5d00ba102dcbfe02407a66ed1a15dd5335bf"
+      },
+      {
+        "path": "assets/resources/native/02/027a8ad6-4bd0-4ba5-9b01-8cbee20ee973.png",
+        "bytes": 8466,
+        "sha256": "dcee73cc89bdb8aa9552bdecc7781b9ece9923ca2c28df07b0ccd66262fd5cbf"
+      },
+      {
+        "path": "assets/resources/native/06/06b0dd3a-deb7-4352-9c56-f3f5574fc5cd.png",
+        "bytes": 5463,
+        "sha256": "b7d9dccbfe42c7cb22e1712b1d1588284e6309e67c20810f35ff28228ab0d17d"
+      },
+      {
+        "path": "assets/resources/native/06/06d9124f-2438-440b-b998-8441de53a7f3.png",
+        "bytes": 5267,
+        "sha256": "b4cbefc703faf220b6cad75c0dcfdb122a48487d8186eb9caa38bb4bfb652e79"
+      },
+      {
+        "path": "assets/resources/native/09/0920ffcf-1103-4b4c-a312-a744673917a5.png",
+        "bytes": 6651,
+        "sha256": "8805af818444fe8369393a375df373b404f12991eabf1c6a0643490265c60e9b"
+      },
+      {
+        "path": "assets/resources/native/0a/0a618551-e3f3-4afd-a168-507bba1a2932.png",
+        "bytes": 5933790,
+        "sha256": "bbd52df90740ad5867de1a3faea32d5a0582a498f408be612ecdd6aae9f183bb"
+      },
+      {
+        "path": "assets/resources/native/0d/0d68e3a6-a1f1-4bd2-84af-bec1b67de9d4.png",
+        "bytes": 5884,
+        "sha256": "61b35bcc14fc29d33ba1c65b2bda10c58bc3136b1a6c9c41dec80c41970ff7e9"
+      },
+      {
+        "path": "assets/resources/native/0d/0d6c04ea-6dc2-48a4-9a48-076614c72cf7.png",
+        "bytes": 7611,
+        "sha256": "4b59da9f78f35c69312b4734709bdebf8a5ebdf5d0565dbcc6b827d9f1a2b275"
+      },
+      {
+        "path": "assets/resources/native/11/111711ea-e325-4e76-855f-d204e5b2c9b0.png",
+        "bytes": 5572,
+        "sha256": "5af53d14b5db83dd7f4d994f4f408f7c4ac071bddc0f4cbfbe297278e98c697c"
+      },
+      {
+        "path": "assets/resources/native/12/122120dd-df9c-4133-9061-41eb57312759.png",
+        "bytes": 195257,
+        "sha256": "8c330ed1a310782f165384b705ee4bfa21aae35c87a9a32e469b76fad784d8e6"
+      },
+      {
+        "path": "assets/resources/native/1a/1ae5244a-d5a3-4ec1-8608-0b4f4d56e822.png",
+        "bytes": 7896,
+        "sha256": "cb3895ca2b86127f29628f99027ab4b9297eca1cb4c845290dc6927a31b66518"
+      },
+      {
+        "path": "assets/resources/native/21/21356f3b-99a6-422b-afcf-4ab6f630b0a4.png",
+        "bytes": 2620,
+        "sha256": "92bd851a1722da0613801f4e407c790bf07bfe34488f5512e61b45b64a5cabcc"
+      },
+      {
+        "path": "assets/resources/native/28/2807b28d-5a09-429d-aae3-5d64129f024e.png",
+        "bytes": 542148,
+        "sha256": "8046dc6185b654af8a2dbe1ee53426b73582201bb2b7fd8a67b0d2535d8d723f"
+      },
+      {
+        "path": "assets/resources/native/2e/2ebc3f76-1de7-4c79-b756-d26eb7d21a43.png",
+        "bytes": 5473,
+        "sha256": "4edc6f88feba36a4a7c8c7a2a0772e44b95ae4bab757fb62176f63c6a3ad2f33"
+      },
+      {
+        "path": "assets/resources/native/2f/2f44ab9b-abea-4c37-911c-c42fdaaacd17.png",
+        "bytes": 5308,
+        "sha256": "a28167104d5f00abb7c70de3131b0ff5040ab9eee42a0044c199d7cb076acca5"
+      },
+      {
+        "path": "assets/resources/native/30/30b41378-e71c-43d2-b646-686d14e7235e.png",
+        "bytes": 8493,
+        "sha256": "39e75d8bd94e698642172436c8a01fdde3343c0b71eab5a39ffbb563a5a687a6"
+      },
+      {
+        "path": "assets/resources/native/34/343ed55e-d45f-40ef-ac8c-e930e0b6ae69.png",
+        "bytes": 6313,
+        "sha256": "5a6438fc469443b7eddb3da143d30271d18100bc9f7064f16ad75d2a4fe2a609"
+      },
+      {
+        "path": "assets/resources/native/36/36961f4b-26a6-45b4-8f34-4be887bb2f2c.png",
+        "bytes": 8306,
+        "sha256": "9c5e7d8ad2e21f86e797f40c8d4251edfbf5bb6a036118f53462672632831587"
+      },
+      {
+        "path": "assets/resources/native/3d/3d632880-01a1-4899-ba6e-6a6e4f36a2cf.png",
+        "bytes": 556538,
+        "sha256": "4e331b269f435860540bd08d5a0a60b8b609c928282f8a33568f9e2810a55ff8"
+      },
+      {
+        "path": "assets/resources/native/42/425910cc-fc7f-42f3-b80a-8c6c650af56b.png",
+        "bytes": 7808,
+        "sha256": "50777a80a619431c4ffc7b55a8433666d90ff35b422c57a5a604c2a3299708b5"
+      },
+      {
+        "path": "assets/resources/native/45/4587b322-ac14-45e0-b843-a56236f29cb0.png",
+        "bytes": 8396,
+        "sha256": "8c62dbcf2f9892d7e26a80dfcf86f93ca211886ee4e85f47b1cd3016b7dc4cc6"
+      },
+      {
+        "path": "assets/resources/native/47/47b0492d-ff30-4dc2-a1e4-eb2dd67efcf9.png",
+        "bytes": 1844,
+        "sha256": "ff0648fef0cc54117a86acfd69db40c0b7ebd3c4046c86531b18eb8823854635"
+      },
+      {
+        "path": "assets/resources/native/4b/4b7bee49-b4f0-4867-89ce-27bbeaba280a.png",
+        "bytes": 24261,
+        "sha256": "d741da1bf5c46c58363d7f95ddadef7e97faf440009b61c3f4cdf3dc10fe24ac"
+      },
+      {
+        "path": "assets/resources/native/50/50cf2fbb-440a-4907-8a07-758c0eaa535c.png",
+        "bytes": 7737,
+        "sha256": "a314db2c01764cbb7b5809b78faaa7574be31499bd9f72ef882e85d964f21fe8"
+      },
+      {
+        "path": "assets/resources/native/51/5146b64a-49dc-4edc-ab7d-d711a4aab267.png",
+        "bytes": 7002,
+        "sha256": "f6d37d91e123d53dc42a7dda22bd0493f7d3311a7afd8cd847634ba2d8e7789e"
+      },
+      {
+        "path": "assets/resources/native/59/59c0fa4b-c090-415c-b451-b6b04cb900df.png",
+        "bytes": 9866,
+        "sha256": "17137bcb9275a6389d347177960065407db13bf95db1f3cbca6171b882a1bae4"
+      },
+      {
+        "path": "assets/resources/native/63/6337aa96-b989-480d-9525-5e54cc3ae589.png",
+        "bytes": 2143,
+        "sha256": "5e17e65f7400b6dc0e291e0b26f70ecfddb8936dfe503503b8c88e0cb4b0bfd5"
+      },
+      {
+        "path": "assets/resources/native/64/64272d29-79a5-468e-9a35-add1e177870d.png",
+        "bytes": 8942,
+        "sha256": "98b56fc84ba3e48123096de9fcff4ab61db36df4019eecd2d94501645b1b2232"
+      },
+      {
+        "path": "assets/resources/native/65/65d2b58c-5c1f-4099-a414-c025cd944c20.png",
+        "bytes": 9059,
+        "sha256": "191f22334174e44c52baa41221e10fd3c9827b28930b20b3eabfd8bc80292ce1"
+      },
+      {
+        "path": "assets/resources/native/6d/6d787c62-12db-429d-af8a-d9f97e3d3487.png",
+        "bytes": 7438,
+        "sha256": "60b744ef94a77d0845a95e569358caae5a2e981e88d48b59018db33d4fa5b134"
+      },
+      {
+        "path": "assets/resources/native/6e/6e75bec9-c835-4dae-a21b-7244d8552e48.png",
+        "bytes": 62608,
+        "sha256": "c94b2053ff2383bcf8a91078aaa1ff0e115da248411c20e67b518d326684a3db"
+      },
+      {
+        "path": "assets/resources/native/6f/6f36dd92-055c-4f24-afa0-6f1b757b9117.png",
+        "bytes": 861,
+        "sha256": "9750851ff19b7adc5468f62dc9a2eb29db3092548de8d9d691a55b96c339b5db"
+      },
+      {
+        "path": "assets/resources/native/73/7361da9c-2095-4870-9c96-8e02b6b6bb4d.png",
+        "bytes": 8328,
+        "sha256": "96e09a68706e6333f05b95ddcaff2e0ea39750d8ec542eb206952a0db9d40a70"
+      },
+      {
+        "path": "assets/resources/native/78/78c1716b-c4af-4d0f-bdcd-a212f78f0aa7.png",
+        "bytes": 5693,
+        "sha256": "d70f327e82a80e6283d412059feaaa9c138ac380df991e4009743c076e16043e"
+      },
+      {
+        "path": "assets/resources/native/80/802a1341-b425-4a73-97c1-7b7304e35743.png",
+        "bytes": 7227,
+        "sha256": "575d46212a5d1234e75ea601f8c25c9c218b0de083920165f559aa1de720b42d"
+      },
+      {
+        "path": "assets/resources/native/80/80ca3d89-5f3c-4ff9-a926-c40d36fe7bcd.png",
+        "bytes": 5595,
+        "sha256": "5e7ca8cc7bcb09896a7f8f5302ab319abcf9d73fe9b7238fb7c04947ddc4cfe0"
+      },
+      {
+        "path": "assets/resources/native/81/81917504-cd0b-4c39-b87e-7eeceac5ccd2.png",
+        "bytes": 15760,
+        "sha256": "26cf567ad00e22dcc1f703d3efa15abbec825a30c85bb4e9319c0804ba4f5d22"
+      },
+      {
+        "path": "assets/resources/native/88/88d046f2-c0a4-47a3-a136-e8e9b60466e1.png",
+        "bytes": 7415,
+        "sha256": "8705195cb030958959b53fa4bc702a62cade7c5902f539594ab4e9462086d59d"
+      },
+      {
+        "path": "assets/resources/native/88/88e414dd-6804-4c60-98af-d660f4cb1e8c.png",
+        "bytes": 8012,
+        "sha256": "e29a04f7ac2079952e6df65f9fd36519be03d790fde3863fa743e2b09d622c3b"
+      },
+      {
+        "path": "assets/resources/native/89/8912d994-4f8e-42e0-811b-a5647e961c9c.png",
+        "bytes": 7497,
+        "sha256": "4166c7809d2eccf88c33fbf2082d59d4a7a41eb443756d3ca49e5cea03d472fa"
+      },
+      {
+        "path": "assets/resources/native/89/894c3f68-c879-41d7-9b30-e6a454247524.png",
+        "bytes": 7012,
+        "sha256": "788748217ba53fa7d94f63fd5b48e67003ef4276dd98c8cd467e0a149e9fea70"
+      },
+      {
+        "path": "assets/resources/native/89/8960525e-fee6-40bb-a39d-b8b51a9ba155.png",
+        "bytes": 7629,
+        "sha256": "76aabd2f3661ebedc68af67b141ccaa42ea78177fbfd25a8bdcc6c9d9fbc30ae"
+      },
+      {
+        "path": "assets/resources/native/89/896e7932-7df8-46c1-9468-c4d93a0fa950.png",
+        "bytes": 7079,
+        "sha256": "01d749228ae9e50b6c91bfa04dd7b59e9eb6fd79b890f07cca8111c0495ee8c6"
+      },
+      {
+        "path": "assets/resources/native/8a/8a705422-709f-48a0-8e67-7aecbd0a29ee.png",
+        "bytes": 6602,
+        "sha256": "6aa065f1f0c78b560345e1cd5ea035dc8f39550e08af7a20edbd3b25ac3f3502"
+      },
+      {
+        "path": "assets/resources/native/8b/8b773fc1-7e4b-482d-9b09-635f6515a8b9.png",
+        "bytes": 6973,
+        "sha256": "774da3dcf44c99dc19d2185e1c4d0eb36a706b411d81bea01a2bb1821109701b"
+      },
+      {
+        "path": "assets/resources/native/8d/8d537f7a-b035-42e6-96f9-2e692a9bf955.png",
+        "bytes": 35918,
+        "sha256": "6abc3ce8cdcee0bffe33dc73d5ab10b46dac51f84842dd76b0100d4114afe791"
+      },
+      {
+        "path": "assets/resources/native/95/958abfef-0c75-4e91-8405-e756a3f13b10.png",
+        "bytes": 8311,
+        "sha256": "aaa26e9fb1d910e3af19245aa8b1d061b19e34a8ff6a85f2973628ea0b839973"
+      },
+      {
+        "path": "assets/resources/native/97/97a9818b-d4e6-4463-8640-1ebda365fced.png",
+        "bytes": 7982,
+        "sha256": "7fa9b8135b9593fe79c6967de956f8d4db48d18d4536bc9f052e9e8ec0f5c6e4"
+      },
+      {
+        "path": "assets/resources/native/98/986b1e94-dfa7-4ec5-8abc-50e4e252bf35.png",
+        "bytes": 8078,
+        "sha256": "3fb7ed3ff5a40124b929b850242b05ffb2722a3355602afcb1942c7c6ece4bca"
+      },
+      {
+        "path": "assets/resources/native/99/990b0d80-0322-425c-94d8-24cffd15b2d3.png",
+        "bytes": 5527,
+        "sha256": "39e40d9862f222f5156f9acb5e21b8c95a01a3b3825937bafbee54cb15885304"
+      },
+      {
+        "path": "assets/resources/native/99/99885493-20db-46bb-a88f-7406e36d5a09.png",
+        "bytes": 8231,
+        "sha256": "ab2083e041c125d98a0133e6ee25abe4e471e3653bf0bed43bd6e0cf6239e8db"
+      },
+      {
+        "path": "assets/resources/native/9a/9ab37e71-20c0-4a2a-b6b7-bbdddede1c0c.png",
+        "bytes": 8056,
+        "sha256": "5b214f828ec33da3781c918f837393f08da3a760c5c0168a836682643ea41dc6"
+      },
+      {
+        "path": "assets/resources/native/9b/9b24a1c4-0c60-403b-930d-52a2be0a4e49.png",
+        "bytes": 8870,
+        "sha256": "ee4eefe8147401254e08672d8a878cb78c5d52aa7a9a721fb5c17d99878c4394"
+      },
+      {
+        "path": "assets/resources/native/a3/a3003e0c-916c-4564-b5ce-b9f5d00e547b.png",
+        "bytes": 5777,
+        "sha256": "ac6ea0ed2391306fa278611036776567ca93cf9438feb067bff727693467c6c2"
+      },
+      {
+        "path": "assets/resources/native/a5/a5f3ea29-02d2-42c8-b1f1-3a534d51922d.png",
+        "bytes": 8070,
+        "sha256": "d953ac42f5fb76706db2be4f5c2a4aeb401c302866a17e536b11e3064e77ee81"
+      },
+      {
+        "path": "assets/resources/native/a6/a6bd733b-749b-4772-9abc-a703c7edd304.png",
+        "bytes": 8026,
+        "sha256": "a08458488036f2974efe3abdfcd0ba01f998f746aee05d451fba56011acd5d15"
+      },
+      {
+        "path": "assets/resources/native/ab/abf98966-03cd-4884-a7cf-8fc97daf9aff.png",
+        "bytes": 8780,
+        "sha256": "cee93dd2d01c59b4e40fa10ba01b8583ef8414845a652db387ce8b8e97b5e048"
+      },
+      {
+        "path": "assets/resources/native/b3/b362f7b7-d04c-4a99-a774-8cd8212a024a.png",
+        "bytes": 284060,
+        "sha256": "d7a485cacd593103059eb81099c4a6b6c5b3ebf04b0753c5534311b137acbfc9"
+      },
+      {
+        "path": "assets/resources/native/b4/b49c080d-2d02-40be-8faf-bce5015675bd.png",
+        "bytes": 7041,
+        "sha256": "ff12c6b4e6125b7e49d2ad1935d2eab64d3040cc3882cd7ebd5e47dce799eb45"
+      },
+      {
+        "path": "assets/resources/native/b5/b5ce9a63-44b6-40ef-b267-b7030c0cfe33.png",
+        "bytes": 7827,
+        "sha256": "61172c7495c72ac5bb875e2ea3f18708be3373cf8ffde80cf6b21fc21bf12452"
+      },
+      {
+        "path": "assets/resources/native/b6/b6ba74b1-5c4a-4ac1-b5d4-8bd13d46f8a5.png",
+        "bytes": 538117,
+        "sha256": "138694f5f066055c37d0ab1ff04a53084828c879d66c4107fdc6318592976bba"
+      },
+      {
+        "path": "assets/resources/native/b9/b9b92dd1-e038-44fc-a2f2-c65999a9264d.png",
+        "bytes": 5828,
+        "sha256": "efdc28cb011633a43adc1b0164a4e32baab02b4c4802be3821b9329d1d2a194f"
+      },
+      {
+        "path": "assets/resources/native/ba/ba179629-ab9a-4a97-8577-21c6fb849f57.png",
+        "bytes": 550603,
+        "sha256": "e7ed8b062a5a07f216e6e7b8ebb6717fdaa0110deb85003aab6c304357fb557c"
+      },
+      {
+        "path": "assets/resources/native/c2/c23a79f7-4448-4e7f-ad1d-ad9e42396a6e.png",
+        "bytes": 6791,
+        "sha256": "69a9ccbe8e8d510a1c575dd1a6043d889fb63d170090f5179a9f039457d6f8a9"
+      },
+      {
+        "path": "assets/resources/native/c4/c4920e7c-fc54-462a-82dc-91c9b53303ce.png",
+        "bytes": 65336,
+        "sha256": "925b8ac284436f74f9cadf0ecd058da1c08fba65c098e4e34fd220603022f02e"
+      },
+      {
+        "path": "assets/resources/native/c5/c5049a03-a421-4c7c-8524-00d56f6a90a3.png",
+        "bytes": 6679,
+        "sha256": "88e13516ad204cab797ffeb49a9ea17dfec2c87bc8a4189fb9dada17b8d83b47"
+      },
+      {
+        "path": "assets/resources/native/c7/c7ac861e-06ff-4987-8797-42797c646d56.png",
+        "bytes": 7389,
+        "sha256": "f42eedca3c1ca7db8d4011d2c9205c72cddc0a5bf6de569b4d2502f381c5b4f1"
+      },
+      {
+        "path": "assets/resources/native/c9/c9093172-2486-4863-b3d8-0b1d46e1c3fd.png",
+        "bytes": 854,
+        "sha256": "fe7ff2f0ae5115e4b915006637f17d97b71d8e835969c16fa83328b5466b1019"
+      },
+      {
+        "path": "assets/resources/native/cb/cb78bc3c-2d29-44cd-a408-d815a1cd0966.png",
+        "bytes": 7176,
+        "sha256": "2ff042d7dfd23b6a7c1cf53e26c7a1bdb126662922a622258d3be288f82142f8"
+      },
+      {
+        "path": "assets/resources/native/cc/cc2fd62f-e9ab-4894-927a-fc2a0938959c.png",
+        "bytes": 5147,
+        "sha256": "5703ff39e122531d9e24be1e770968925ecbc9ac0b40e6125c89507aad5d73a6"
+      },
+      {
+        "path": "assets/resources/native/d4/d407b2e7-0de2-4132-a7eb-411101e13bf1.png",
+        "bytes": 8739,
+        "sha256": "e3bd8bd543a231e7dad327134fdc1fd795b553647d21cd750dc5cd0d1237e727"
+      },
+      {
+        "path": "assets/resources/native/d4/d4c38c74-29ae-43c0-b76a-74f50829e53e.png",
+        "bytes": 6835,
+        "sha256": "91e9c9ef2f4b6a59ee65f023d0309fb3712635c724e1394fdee426c10116542e"
+      },
+      {
+        "path": "assets/resources/native/da/da70abe6-a438-45e4-b2d6-a5c8e8ca1026.png",
+        "bytes": 34555,
+        "sha256": "45acfe07fce7b4c80449702afb612f63a92babc220807c2395d736c5ff386ffd"
+      },
+      {
+        "path": "assets/resources/native/e4/e4a323cb-18c1-4f72-b6e1-16d86451ba6c.png",
+        "bytes": 8183,
+        "sha256": "102d4403061ed9b2b5d0f84a2c235339645686e777e5999e000ce1bdf6724e9d"
+      },
+      {
+        "path": "assets/resources/native/e5/e534881f-7b86-44cb-93de-34c6c4df7307.png",
+        "bytes": 7583,
+        "sha256": "b630d4e9dffa85ea8a1ceb8798390c99c3b901ee0a50549faca7add83a32e91b"
+      },
+      {
+        "path": "assets/resources/native/ea/ea8745f7-5a21-4af3-963c-eeac364f069d.png",
+        "bytes": 2289,
+        "sha256": "fb045a3ed741e96244a8f656158e39d859eefb37cb662414e8bd9646293bca70"
+      },
+      {
+        "path": "assets/resources/native/eb/eb88f536-ab3d-4e77-ba4f-d69175dfc271.png",
+        "bytes": 5688,
+        "sha256": "99c9d4cf714f350750d4223c344d357cdb71ced237120796d5ddeeb2d9aaab65"
+      },
+      {
+        "path": "assets/resources/native/f8/f8b25c4f-7942-4f46-b2ba-ffeffc2268a9.png",
+        "bytes": 1300,
+        "sha256": "283e9cb42dbdc4eeb28196f682415d585563a349a7ef807d920da620cedc9dff"
+      },
+      {
+        "path": "assets/resources/native/f9/f94d59e8-a715-4eb7-910b-2e8017cc60db.png",
+        "bytes": 2423,
+        "sha256": "56032b5cc197ad887a597296fd667032efcf927fd78511358246968cdfc7d788"
+      },
+      {
+        "path": "assets/resources/native/f9/f9c84568-e833-4237-b1d2-84374707d895.png",
+        "bytes": 1259,
+        "sha256": "91d8026f13ceaea3e29ddfe9f3c3ae8f7d4490543bfbf112606e06d1d046385a"
+      },
+      {
+        "path": "assets/resources/native/fe/fe34052e-95dd-4855-968e-a957d950030b.png",
+        "bytes": 6896,
+        "sha256": "d66129df1639a1005cc1243aec8a78e49d288740c0b9019247c1aa839bd313c3"
+      },
+      {
+        "path": "assets/resources/native/ff/ff546544-38d9-471a-8249-63a8e4ced954.png",
+        "bytes": 7508,
+        "sha256": "cb713a346f1c467cd095d09eebf806ec4881715800b61b18e6d6a9f90e106b43"
+      },
+      {
+        "path": "src/chunks/bundle.js",
+        "bytes": 1717,
+        "sha256": "aee054088f890c10431a79d718559175bf90fff0120705840c5349887b0099ed"
+      },
+      {
+        "path": "src/effect.bin",
+        "bytes": 5755,
+        "sha256": "b0d92f8307e3109abe8af8a863d68feb58cf4f49cf000b1d48fbb3dc3ad45556"
+      },
+      {
+        "path": "src/import-map.json",
+        "bytes": 51,
+        "sha256": "13e209693a07ec6d1f292316fec5bbade10f3b87bfd877af92d151085439d684"
+      },
+      {
+        "path": "src/settings.json",
+        "bytes": 22585,
+        "sha256": "3768bb98c340003481c9ce20d6e792134cb3e851ef00c16c4069ac51e375281e"
+      },
+      {
+        "path": "src/system.bundle.js",
+        "bytes": 27303,
+        "sha256": "f1bf370e6df5bf58763175b5135fc999c0b09e9a1b75f42e19eb37678c84c157"
+      }
+    ],
+    "engineExcluded": true,
+    "legacyFloatSizeAligned": true,
+    "nativeDeviceUpgrade": "pending",
+    "githubDownload": "pending"
+  },
+  "device": "pending",
+  "fidelity": "pending",
+  "exportExitCode": 36,
+  "nativeProjectAudit": {
+    "numericSdkProperties": true,
+    "buildToolsVersion": "35.0.0",
+    "versionName": "0.1.0",
+    "versionCode": 4,
+    "missingReferences": []
+  },
+  "sourceUnchanged": true,
+  "pngStorage": {
+    "mode": "lossless-IDAT-storage",
+    "pixelsAndMetadataPreserved": true,
+    "savedBytes": 1794934,
+    "files": [
+      {
+        "path": "assets/drama_fake_fiancee/native/1c/1c74da7b-0794-428a-960e-f7a8bcce78b7.png",
+        "beforeBytes": 2496802,
+        "afterBytes": 2357902,
+        "beforeSha256": "e3143146f4335dd678c0680eecfd5278c6d78a78612fc8375cf8e16454c26a21",
+        "afterSha256": "4f3299fbc6e28e5e38d68253b8ddd2693dc26eb6cb45038c174321aec92b9b8d",
+        "filteredScanlineSha256": "59ba4d5bec9e09e9925652b2891f256ce2ca4b16da11d6b83b5ef13cd3f23b84"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/4b/4b173146-9954-4640-b7e8-6dd3f7ae2f08.png",
+        "beforeBytes": 2752680,
+        "afterBytes": 2635135,
+        "beforeSha256": "a0fa029a7dde840563de21050e4c01525fa0c29db110c209dcd8eb4fdf4f9fce",
+        "afterSha256": "dc1368507d9f403baec76b1e32e28d8bad4a1815be247b9612495968028ccd5b",
+        "filteredScanlineSha256": "51a882660aa2b013689e095134a79fda2f91328ee2fd208b85c395deadf949c8"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/4c/4c3c5412-640d-4831-8fdf-64635b2c6b77.png",
+        "beforeBytes": 3194622,
+        "afterBytes": 3041731,
+        "beforeSha256": "66043843989796ee7b7e193edf6a411d1e9e48a576da12db91ad7d2a085112f5",
+        "afterSha256": "d30bc799a3ff85dca64657288be5f086b49e1614900cde18c59c4d53f0ae72b9",
+        "filteredScanlineSha256": "07a91517ccd1d678c247ffd74c1d099061407ce14dd932e0edca8046370d4175"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/89/89f631df-fdd7-4849-8f3b-a67861d900a9.png",
+        "beforeBytes": 3414933,
+        "afterBytes": 3245305,
+        "beforeSha256": "29cb3071554022717dcb684334bfed873ea4b014e577561029739e9f7a0687cd",
+        "afterSha256": "528a7c6d296e7c2f1e1f450ff7c501f265b5b93d74eba3726591862c35f1c44f",
+        "filteredScanlineSha256": "f6def93553a3c2ed88b54ae71007ea8ae4ac70f84039e1ac58b18e2404464b99"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/8e/8e835563-cc4e-404b-a82b-2af8c2f016fd.png",
+        "beforeBytes": 1255,
+        "afterBytes": 1222,
+        "beforeSha256": "8bc0d8bae65ea6bcd7bccac99bc005c8aa31030475f390fe9434486ad17883d3",
+        "afterSha256": "5fd185597d4740fd7194082e06a4c03f848f8b7e66d9f11bef6b8717b58dbbd2",
+        "filteredScanlineSha256": "9c40983f17a45db1799d291512b02f55630d27a2ec5e5769c9d9519656214e35"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/9e/9e4ee2ab-cea9-4102-85c0-26c8aab339d9.png",
+        "beforeBytes": 2953959,
+        "afterBytes": 2845008,
+        "beforeSha256": "1025a456fc51fc46b49d8ea76a4166182bb4d72d6a31d4afa1b43d21b3dedaa6",
+        "afterSha256": "a275a50f3e7bb5bf95c85c225c50db43b09575addb214374d17750f35e42f117",
+        "filteredScanlineSha256": "3424550feab12b417c3c3821dbdfb48438f82507698aec4f8e4fbd957db66997"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/ac/ac3b67b5-9d9a-4c84-85ef-b39fd1aedabc.png",
+        "beforeBytes": 1680,
+        "afterBytes": 1609,
+        "beforeSha256": "276bc6ac5a9b5bac59528dfe63acd05fb1cec2c43d4bf7dce8e469a2667804e6",
+        "afterSha256": "616d8413d03a6322e976b18ad60e4a4de5b0b34885515102f4658a154f9031dc",
+        "filteredScanlineSha256": "5b5c511bd9d16099527d32433e6ec8a718fd64d533cff4fb6a6f2f3e7c50ae1e"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/ad/ad720667-affb-4379-a0db-438ebbbf4bb2.png",
+        "beforeBytes": 6029,
+        "afterBytes": 6027,
+        "beforeSha256": "3024cdaa1ad2b3f6dc712d3f57b20f8933f74ac01e2314426156945d908dd3cc",
+        "afterSha256": "f92ce51c8b449209840ffe16cec6e40c81d2622e6feb8c733fd7dbce2cb3c029",
+        "filteredScanlineSha256": "ced067c85ce793d00e21ae5bdbc2af7c0941ceab6b0e67880efa9e2708533d35"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/b5/b575ce18-57ec-4a83-81d9-e700e3a1a345.png",
+        "beforeBytes": 10890,
+        "afterBytes": 10848,
+        "beforeSha256": "4525a8283396e95040bb4dfa14d3e53d7ffd5bfc47a3c5c37b91b8db3993c395",
+        "afterSha256": "6cd73e6c5aea299d3dc5bd2aa53d1dbc1aea9031c8a30a1f97a8c6827af66944",
+        "filteredScanlineSha256": "a08e2f45a7754936387dade1ac5789f39f245a2f1a686a833ede34aa1db7de0e"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c1/c161d3fc-d364-4b7c-b214-720d6ca9baaf.png",
+        "beforeBytes": 2764293,
+        "afterBytes": 2597198,
+        "beforeSha256": "e2d25eb11c3e96db27dfd36a00ae7ecbd0499bb085969a0bd2f7cbd6e5167696",
+        "afterSha256": "6fa9264bd859c20d280fa9b863e3406a2fcc7a99e5c3a40528964c83feb66824",
+        "filteredScanlineSha256": "a30c7fad6a31faeb28b5e11242862f893fadcd85d2f9dff682e298ced0f473ab"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c1/c1ac2a71-ae0c-440c-b035-98bbef765183.png",
+        "beforeBytes": 2581414,
+        "afterBytes": 2447464,
+        "beforeSha256": "23496f9b9c77730576d4b1637575e454aa8562038f7887854057aff918f97218",
+        "afterSha256": "25ae370998e1711f83b639cc3c99a2669778bd1abfd1cc156c1d78283bd131fa",
+        "filteredScanlineSha256": "1904dabe6544abd9a115551cd3dd83beb6673b424da76157ba8a117d3e654635"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c5/c520b17a-95c4-4450-84d4-c2a5cd21890c.png",
+        "beforeBytes": 1931,
+        "afterBytes": 1779,
+        "beforeSha256": "a217323c05043a51011090142a3afa5631365b4edf22ae71184d2e8a585418ef",
+        "afterSha256": "62413ba4bd7770e023836988f54fb8d6f615308879b825e627e2856a7c4948ac",
+        "filteredScanlineSha256": "64936336d4af3bef71cb693c15cc0fd265448440e07efd8c18dd80abe9dc1c8f"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c5/c5e2a3bd-8868-4b7c-9f12-70f08da408d4.png",
+        "beforeBytes": 2803,
+        "afterBytes": 2800,
+        "beforeSha256": "aa88a9ecbb4f00ab9c2bbdc1495d9bbb9b34b340d4772b762d243f01bb937d1a",
+        "afterSha256": "7f0f48389f1ed58aac5ba0b9fc7576fd2e6950b5163c9b21b9e5d4f1740222a8",
+        "filteredScanlineSha256": "03f909e8a0cd5417fabb91a3546822b1d05e2bd941968c7bb047d54ab3b3cfdf"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c7/c71207b4-299f-4439-814e-5feb8b20153e.png",
+        "beforeBytes": 2575,
+        "afterBytes": 2573,
+        "beforeSha256": "566cf4d00a1a34eedbfcbeb413cc2253f376975d26216c8da14730a8b9ca5b82",
+        "afterSha256": "84a42cf6a543b107a89bde6a105ffd33f636ada7b5e367ac465d5718639a401d",
+        "filteredScanlineSha256": "8bc1ff19e5d844a8c815c3c5de8ac4e2c50461e736f1cce49ce27a5c077ce1ca"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/c9/c961b180-a143-4882-bf45-b122562b3e38.png",
+        "beforeBytes": 6423599,
+        "afterBytes": 6057826,
+        "beforeSha256": "cf908c7bfb61f4c83f2ac104483d297ff7f4b5bea951aa1cbc3bbe4a4b51fa4b",
+        "afterSha256": "1f53d886055ed6fe7550891cf58c1d5f2f55678f2718a7715f2f59056dbc05e8",
+        "filteredScanlineSha256": "9085ba4a049bfac5e29dbba37ba6ce3f6c4bf5a2d2455e96d5bb407ea342c1ec"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/de/de930223-9e89-419d-a6ee-b344bb6ba08f.png",
+        "beforeBytes": 1584,
+        "afterBytes": 1523,
+        "beforeSha256": "50436b6bfb02057eff336d3ee0c2da6830b44a7facfe544a3d5d7eb1b87204fb",
+        "afterSha256": "0c9dc56d6f0051d502f0c6325cbe297537a610a62d2d8ec5c93d6ffeead20b2a",
+        "filteredScanlineSha256": "a4292f502f3f71a68738bd46e61595ad3b3fa440c9750fb995160ab46bd2e1c0"
+      },
+      {
+        "path": "assets/drama_fake_fiancee/native/f8/f80a42e8-02a4-44b6-9714-92331bfec9f2.png",
+        "beforeBytes": 4762,
+        "afterBytes": 4656,
+        "beforeSha256": "5239db60a1d4de112a16ca9a39af28698cdbc1d9295f452442b8f878720373a1",
+        "afterSha256": "65eac46c153dd38d149b103651744597ab547a54a56248ad56f5c9333d434ffa",
+        "filteredScanlineSha256": "45660779a1590768cf789317ef641f2670fc9cad990d12dc8da7d74ff505ef18"
+      },
+      {
+        "path": "assets/resources/native/02/027a8ad6-4bd0-4ba5-9b01-8cbee20ee973.png",
+        "beforeBytes": 8745,
+        "afterBytes": 8466,
+        "beforeSha256": "0e2472d08c9e61360aa216378117fc2a0f17c4e39aaf0ab92487a06e50ed7a1a",
+        "afterSha256": "dcee73cc89bdb8aa9552bdecc7781b9ece9923ca2c28df07b0ccd66262fd5cbf",
+        "filteredScanlineSha256": "3bd867b707094ea54726e5c12b4d946de5f5f70ee0aaa96ec16943c8efd07a93"
+      },
+      {
+        "path": "assets/resources/native/06/06b0dd3a-deb7-4352-9c56-f3f5574fc5cd.png",
+        "beforeBytes": 5764,
+        "afterBytes": 5463,
+        "beforeSha256": "d0324d54467683b829c3832c187f6c7f620d1320dc7dbecc335e7febcbe07acc",
+        "afterSha256": "b7d9dccbfe42c7cb22e1712b1d1588284e6309e67c20810f35ff28228ab0d17d",
+        "filteredScanlineSha256": "aaf70a6c441cc6d14380a29d7d0e697e223f2e28cb29a725d83bb86a5406f2f1"
+      },
+      {
+        "path": "assets/resources/native/06/06d9124f-2438-440b-b998-8441de53a7f3.png",
+        "beforeBytes": 5607,
+        "afterBytes": 5267,
+        "beforeSha256": "c4adb78db53021b835b6c4b3f99e578d97289850d3143ad8da06951faf122aae",
+        "afterSha256": "b4cbefc703faf220b6cad75c0dcfdb122a48487d8186eb9caa38bb4bfb652e79",
+        "filteredScanlineSha256": "d4b35f2b30f128c3e948a7e7086cc976d33f495a4df54b603872a833f0bff6cb"
+      },
+      {
+        "path": "assets/resources/native/09/0920ffcf-1103-4b4c-a312-a744673917a5.png",
+        "beforeBytes": 6823,
+        "afterBytes": 6651,
+        "beforeSha256": "30caa8df015949d8f3e7d0895b281ed9a826291cc5de0a5c88e3015aeec548fc",
+        "afterSha256": "8805af818444fe8369393a375df373b404f12991eabf1c6a0643490265c60e9b",
+        "filteredScanlineSha256": "17b979c632a83c1c4620544846e8489227cf2dd1480e30809dadf3123af62ebf"
+      },
+      {
+        "path": "assets/resources/native/0a/0a618551-e3f3-4afd-a168-507bba1a2932.png",
+        "beforeBytes": 6345857,
+        "afterBytes": 5933790,
+        "beforeSha256": "3b2237212cdde13b9d556e1495bbe289ad9f10fe4f47ba95c466ce0c4988617e",
+        "afterSha256": "bbd52df90740ad5867de1a3faea32d5a0582a498f408be612ecdd6aae9f183bb",
+        "filteredScanlineSha256": "76d197ea76945cb9a04b82ab0efa781ee2900f1451d11db0565b062a250aaf5a"
+      },
+      {
+        "path": "assets/resources/native/0d/0d68e3a6-a1f1-4bd2-84af-bec1b67de9d4.png",
+        "beforeBytes": 6146,
+        "afterBytes": 5884,
+        "beforeSha256": "0840af7aca0cdff286a793ad0da5309f6e7d4d546c716ebf9901bb33f7f97044",
+        "afterSha256": "61b35bcc14fc29d33ba1c65b2bda10c58bc3136b1a6c9c41dec80c41970ff7e9",
+        "filteredScanlineSha256": "c635f7ee2c8c2d20569e9ad352dda3cdec9988345de6ff5b65a37c72c0426860"
+      },
+      {
+        "path": "assets/resources/native/0d/0d6c04ea-6dc2-48a4-9a48-076614c72cf7.png",
+        "beforeBytes": 7875,
+        "afterBytes": 7611,
+        "beforeSha256": "70b0ed581ae2bad5f33f1e1c21fcab4885f85f404549c8112523902fca992b1f",
+        "afterSha256": "4b59da9f78f35c69312b4734709bdebf8a5ebdf5d0565dbcc6b827d9f1a2b275",
+        "filteredScanlineSha256": "1c659cea8c4309ce361ac9c1797a57d2ec495218939b5d15a266f1c57ece258c"
+      },
+      {
+        "path": "assets/resources/native/11/111711ea-e325-4e76-855f-d204e5b2c9b0.png",
+        "beforeBytes": 5856,
+        "afterBytes": 5572,
+        "beforeSha256": "985779a9af41297e7a0bd99af1a9aa4bfb1673add87c051428d86d940c548084",
+        "afterSha256": "5af53d14b5db83dd7f4d994f4f408f7c4ac071bddc0f4cbfbe297278e98c697c",
+        "filteredScanlineSha256": "124f33068e727f90049990bc9b29ceab2cf27c5730f5ca1a9eda1655181c855c"
+      },
+      {
+        "path": "assets/resources/native/12/122120dd-df9c-4133-9061-41eb57312759.png",
+        "beforeBytes": 196079,
+        "afterBytes": 195257,
+        "beforeSha256": "a7d7b45565ce7e8ac43eb689f2ecc0fb998660fbe6061ca55ab00dde452e6c0a",
+        "afterSha256": "8c330ed1a310782f165384b705ee4bfa21aae35c87a9a32e469b76fad784d8e6",
+        "filteredScanlineSha256": "ae955e05724bfb7f924a7c133e80bf250bc0b4d42a712f17796bd4f4a22ad5a8"
+      },
+      {
+        "path": "assets/resources/native/1a/1ae5244a-d5a3-4ec1-8608-0b4f4d56e822.png",
+        "beforeBytes": 8150,
+        "afterBytes": 7896,
+        "beforeSha256": "aeeab7b96cad9331b1fd2e411231902c1d8d226ee926650cc340964450375c52",
+        "afterSha256": "cb3895ca2b86127f29628f99027ab4b9297eca1cb4c845290dc6927a31b66518",
+        "filteredScanlineSha256": "e3a55008108045cf4dba6fc615a155d24ae130489f6def5034907ef6d80af30e"
+      },
+      {
+        "path": "assets/resources/native/21/21356f3b-99a6-422b-afcf-4ab6f630b0a4.png",
+        "beforeBytes": 2691,
+        "afterBytes": 2620,
+        "beforeSha256": "057852ba4c19612fc492a6bd3424c569e64d5f9a02aa3da0454592091ca31471",
+        "afterSha256": "92bd851a1722da0613801f4e407c790bf07bfe34488f5512e61b45b64a5cabcc",
+        "filteredScanlineSha256": "e22303036dbb9bd19de0c5eae8c44160522f0c7351ec8d9ff48c1631b215e23b"
+      },
+      {
+        "path": "assets/resources/native/28/2807b28d-5a09-429d-aae3-5d64129f024e.png",
+        "beforeBytes": 544367,
+        "afterBytes": 542148,
+        "beforeSha256": "28a6680ca79c20044e503ec666fc4b0d8b223fb2bf3852e5a2f97bf510a4564b",
+        "afterSha256": "8046dc6185b654af8a2dbe1ee53426b73582201bb2b7fd8a67b0d2535d8d723f",
+        "filteredScanlineSha256": "9065f998d1daa2e99e8e6a46599d86e390342a576b57aa9df3344473c9a5c35f"
+      },
+      {
+        "path": "assets/resources/native/2e/2ebc3f76-1de7-4c79-b756-d26eb7d21a43.png",
+        "beforeBytes": 5754,
+        "afterBytes": 5473,
+        "beforeSha256": "88cfaa3fe59618fa33a32db6b2b4300e10437776c6d9094714dba1e7b365c2a2",
+        "afterSha256": "4edc6f88feba36a4a7c8c7a2a0772e44b95ae4bab757fb62176f63c6a3ad2f33",
+        "filteredScanlineSha256": "87b294612e0471ea887af07310d4d7f32773e4411f6de72fd6884258a95a9c43"
+      },
+      {
+        "path": "assets/resources/native/2f/2f44ab9b-abea-4c37-911c-c42fdaaacd17.png",
+        "beforeBytes": 5590,
+        "afterBytes": 5308,
+        "beforeSha256": "d80bb259cfac2056c85a933521beb4cf036014d791f011b6f9ce70a11b04ce68",
+        "afterSha256": "a28167104d5f00abb7c70de3131b0ff5040ab9eee42a0044c199d7cb076acca5",
+        "filteredScanlineSha256": "25f62c2c02a4d6805c78b5ffb841a1ef078b356f10ca9a9842b448482a2b3dbc"
+      },
+      {
+        "path": "assets/resources/native/30/30b41378-e71c-43d2-b646-686d14e7235e.png",
+        "beforeBytes": 8764,
+        "afterBytes": 8493,
+        "beforeSha256": "741d6c107d756a4d386d50ece783d369403de6c973a59801b35c89a0a7044d71",
+        "afterSha256": "39e75d8bd94e698642172436c8a01fdde3343c0b71eab5a39ffbb563a5a687a6",
+        "filteredScanlineSha256": "37c92b8b8548c263cb5e42c62abb5a2f0d2f63929edfa4eec83c1de76e3bbfc2"
+      },
+      {
+        "path": "assets/resources/native/34/343ed55e-d45f-40ef-ac8c-e930e0b6ae69.png",
+        "beforeBytes": 6432,
+        "afterBytes": 6313,
+        "beforeSha256": "fad770da95d9e63bfe8dd538191895f686b8d6790c92c68a4322711ff4796489",
+        "afterSha256": "5a6438fc469443b7eddb3da143d30271d18100bc9f7064f16ad75d2a4fe2a609",
+        "filteredScanlineSha256": "cca85b3ab7fa8141325999b056dbacd42027c94aa6790946d80690e1f12ff015"
+      },
+      {
+        "path": "assets/resources/native/36/36961f4b-26a6-45b4-8f34-4be887bb2f2c.png",
+        "beforeBytes": 8417,
+        "afterBytes": 8306,
+        "beforeSha256": "dd8d49d84715b506d0045b875fa2fe265176d25b3741e44bf29544fb263721f8",
+        "afterSha256": "9c5e7d8ad2e21f86e797f40c8d4251edfbf5bb6a036118f53462672632831587",
+        "filteredScanlineSha256": "2e59f33787fd6004d76e9e8c7b18797d54ba8c0e7fe249501974bce00debd94a"
+      },
+      {
+        "path": "assets/resources/native/3d/3d632880-01a1-4899-ba6e-6a6e4f36a2cf.png",
+        "beforeBytes": 558684,
+        "afterBytes": 556538,
+        "beforeSha256": "51e169104af2496d0315aa264a3916b2925affa3152370434d9993a27cc8292a",
+        "afterSha256": "4e331b269f435860540bd08d5a0a60b8b609c928282f8a33568f9e2810a55ff8",
+        "filteredScanlineSha256": "7709cc5a5cea09676f7bcd01ace09e90c20eed5eee23857354db5562e53f9015"
+      },
+      {
+        "path": "assets/resources/native/42/425910cc-fc7f-42f3-b80a-8c6c650af56b.png",
+        "beforeBytes": 8021,
+        "afterBytes": 7808,
+        "beforeSha256": "91bf6276edc6a212140b276c02ea2045fa4828f3ed07c092a87d03b27ce2bb46",
+        "afterSha256": "50777a80a619431c4ffc7b55a8433666d90ff35b422c57a5a604c2a3299708b5",
+        "filteredScanlineSha256": "2d8c9062206e1e72df8c72a9db4f15e8e5a2fafbc8c4dd2da9e78c6e18eb7b6c"
+      },
+      {
+        "path": "assets/resources/native/45/4587b322-ac14-45e0-b843-a56236f29cb0.png",
+        "beforeBytes": 8655,
+        "afterBytes": 8396,
+        "beforeSha256": "e23d1a7cc126724bfda4bbfe6feb6a75ad695df3fab0b5f68c4f2020bea525ad",
+        "afterSha256": "8c62dbcf2f9892d7e26a80dfcf86f93ca211886ee4e85f47b1cd3016b7dc4cc6",
+        "filteredScanlineSha256": "c447972c0bab94c87f7da923bd6712491f6e28b53a97ec7bb79063f3c78caff5"
+      },
+      {
+        "path": "assets/resources/native/47/47b0492d-ff30-4dc2-a1e4-eb2dd67efcf9.png",
+        "beforeBytes": 1988,
+        "afterBytes": 1844,
+        "beforeSha256": "7ee2f3dbecaa783a6a11e7dc9885625e6244528b83a9a5c9ba8be1ff27b872e9",
+        "afterSha256": "ff0648fef0cc54117a86acfd69db40c0b7ebd3c4046c86531b18eb8823854635",
+        "filteredScanlineSha256": "05d03b7e498f88d79da717d0ef6a14c545588e3c9026e8ebf9bd5b2a946d599f"
+      },
+      {
+        "path": "assets/resources/native/4b/4b7bee49-b4f0-4867-89ce-27bbeaba280a.png",
+        "beforeBytes": 24635,
+        "afterBytes": 24261,
+        "beforeSha256": "4ad58da0678e19384fef1b4b64aead5cc7023d7b512aaa2059e08482bf41f58a",
+        "afterSha256": "d741da1bf5c46c58363d7f95ddadef7e97faf440009b61c3f4cdf3dc10fe24ac",
+        "filteredScanlineSha256": "f2e1eae85e6da0a82f95c6cf5779b7f645523b379258a0c6d09d8120f32ad29c"
+      },
+      {
+        "path": "assets/resources/native/50/50cf2fbb-440a-4907-8a07-758c0eaa535c.png",
+        "beforeBytes": 8023,
+        "afterBytes": 7737,
+        "beforeSha256": "7a778047e0414b8f7c4b962d1bb6a870f21b5e8a816d06132be9d477eccd216b",
+        "afterSha256": "a314db2c01764cbb7b5809b78faaa7574be31499bd9f72ef882e85d964f21fe8",
+        "filteredScanlineSha256": "98ec25ce210c2d8274ad28b81a18e998263cd1ae36060d0473b172946e737cf0"
+      },
+      {
+        "path": "assets/resources/native/51/5146b64a-49dc-4edc-ab7d-d711a4aab267.png",
+        "beforeBytes": 7166,
+        "afterBytes": 7002,
+        "beforeSha256": "9da6b429b45e4acb9d25e4a547715c3b23dfddbaa78f2ceb36a86a724ac85582",
+        "afterSha256": "f6d37d91e123d53dc42a7dda22bd0493f7d3311a7afd8cd847634ba2d8e7789e",
+        "filteredScanlineSha256": "c6ae7e0c517bb69c87f5296bf7141e268d168a75b6e5b20c936d91d6a77e0ead"
+      },
+      {
+        "path": "assets/resources/native/59/59c0fa4b-c090-415c-b451-b6b04cb900df.png",
+        "beforeBytes": 10220,
+        "afterBytes": 9866,
+        "beforeSha256": "77f340135f93667f7a3de351f5cece09622e4e859f072ed6c25ba7e9fb013fda",
+        "afterSha256": "17137bcb9275a6389d347177960065407db13bf95db1f3cbca6171b882a1bae4",
+        "filteredScanlineSha256": "ecf9202788f675d2a15414441fb62988185f6eb0ca163ac1649862399ec35121"
+      },
+      {
+        "path": "assets/resources/native/63/6337aa96-b989-480d-9525-5e54cc3ae589.png",
+        "beforeBytes": 2172,
+        "afterBytes": 2143,
+        "beforeSha256": "85ce9d17bd729cb7cc6b35168c5746d509276dd1d58b40acc4886692e7d88716",
+        "afterSha256": "5e17e65f7400b6dc0e291e0b26f70ecfddb8936dfe503503b8c88e0cb4b0bfd5",
+        "filteredScanlineSha256": "6348c8706c536fd2f2376b9210ffe26e50ea07ccd5d4f258fdb9563c86a84d71"
+      },
+      {
+        "path": "assets/resources/native/64/64272d29-79a5-468e-9a35-add1e177870d.png",
+        "beforeBytes": 9158,
+        "afterBytes": 8942,
+        "beforeSha256": "ac29b8eaa6c9095e025e32502073d111211648cf6ffddc966c8cbdf7889badfc",
+        "afterSha256": "98b56fc84ba3e48123096de9fcff4ab61db36df4019eecd2d94501645b1b2232",
+        "filteredScanlineSha256": "19ca6b58d0b3c9e524c4c7dd6c0d3e5e511bb705c22b72374c28c2cbaba45194"
+      },
+      {
+        "path": "assets/resources/native/65/65d2b58c-5c1f-4099-a414-c025cd944c20.png",
+        "beforeBytes": 9267,
+        "afterBytes": 9059,
+        "beforeSha256": "23a36352d6bc18c87da3cae7312b6157e9df50441bc4fb70965ced9c2145db5e",
+        "afterSha256": "191f22334174e44c52baa41221e10fd3c9827b28930b20b3eabfd8bc80292ce1",
+        "filteredScanlineSha256": "989555942baf898f9c9aab6efcb04799845d256b1f0fea02ddfe117a59f1683f"
+      },
+      {
+        "path": "assets/resources/native/6d/6d787c62-12db-429d-af8a-d9f97e3d3487.png",
+        "beforeBytes": 7686,
+        "afterBytes": 7438,
+        "beforeSha256": "3c686e3974fd4b1e34f24052b0e6e4974ee63ecae329c768b478e3cde3eb4f04",
+        "afterSha256": "60b744ef94a77d0845a95e569358caae5a2e981e88d48b59018db33d4fa5b134",
+        "filteredScanlineSha256": "9c70f23e0c4a6662e88f3f276f6c0f2f13be37741b4cdf10d2e93d1508e03633"
+      },
+      {
+        "path": "assets/resources/native/6f/6f36dd92-055c-4f24-afa0-6f1b757b9117.png",
+        "beforeBytes": 934,
+        "afterBytes": 861,
+        "beforeSha256": "23ee2f8a9afd9774a73d618beea728883b36a7c5e539b72b3d4ed923d59e15ee",
+        "afterSha256": "9750851ff19b7adc5468f62dc9a2eb29db3092548de8d9d691a55b96c339b5db",
+        "filteredScanlineSha256": "65d628354dcfe7f792269b18dfd3c44228d1c4f6b7d3f74e17c351d8766884ab"
+      },
+      {
+        "path": "assets/resources/native/73/7361da9c-2095-4870-9c96-8e02b6b6bb4d.png",
+        "beforeBytes": 8593,
+        "afterBytes": 8328,
+        "beforeSha256": "76b19ffbbb3030b425dd8df77d25def8290ecbf8d134c667e546243f029d73e7",
+        "afterSha256": "96e09a68706e6333f05b95ddcaff2e0ea39750d8ec542eb206952a0db9d40a70",
+        "filteredScanlineSha256": "775f3ff59c74c0330add0d887240e0482220ea6b42aaab0f1d8b67838c8111b1"
+      },
+      {
+        "path": "assets/resources/native/78/78c1716b-c4af-4d0f-bdcd-a212f78f0aa7.png",
+        "beforeBytes": 5876,
+        "afterBytes": 5693,
+        "beforeSha256": "b8231aa337bd9472643a2cef97c2b79b1affc6becd94f366aeec37677b064c41",
+        "afterSha256": "d70f327e82a80e6283d412059feaaa9c138ac380df991e4009743c076e16043e",
+        "filteredScanlineSha256": "e7ef5674d8fbe678e0c1e8bf23b70f8b5d8b4511182860fca36b4b77a0929e47"
+      },
+      {
+        "path": "assets/resources/native/80/802a1341-b425-4a73-97c1-7b7304e35743.png",
+        "beforeBytes": 7470,
+        "afterBytes": 7227,
+        "beforeSha256": "77c44bf207ac45cd1f391a5390855470ab0c7ab227a2b67e8a9178e898b04481",
+        "afterSha256": "575d46212a5d1234e75ea601f8c25c9c218b0de083920165f559aa1de720b42d",
+        "filteredScanlineSha256": "0b7ca828de9bc28ec63fe168f3ea22cca89f0cb12b9bb1a30ad15c6af16c4a90"
+      },
+      {
+        "path": "assets/resources/native/80/80ca3d89-5f3c-4ff9-a926-c40d36fe7bcd.png",
+        "beforeBytes": 5795,
+        "afterBytes": 5595,
+        "beforeSha256": "e11ba7b6c8a47ac6923cc11d33a3654872cb6447175873c7b18daafde9d15a31",
+        "afterSha256": "5e7ca8cc7bcb09896a7f8f5302ab319abcf9d73fe9b7238fb7c04947ddc4cfe0",
+        "filteredScanlineSha256": "44e4ff4b5aa951f8d92a1d278f320611ef8fa3dd1b62c6735a2263e12f866f60"
+      },
+      {
+        "path": "assets/resources/native/81/81917504-cd0b-4c39-b87e-7eeceac5ccd2.png",
+        "beforeBytes": 16016,
+        "afterBytes": 15760,
+        "beforeSha256": "6104d043c57653457b67079adcdfb154be6459277d9f3a0fa0a593ac2a88c0fb",
+        "afterSha256": "26cf567ad00e22dcc1f703d3efa15abbec825a30c85bb4e9319c0804ba4f5d22",
+        "filteredScanlineSha256": "f753156e280f66a03e204393f26f7f360d9bb0b2a047bf5229fc6c3742cc599a"
+      },
+      {
+        "path": "assets/resources/native/88/88d046f2-c0a4-47a3-a136-e8e9b60466e1.png",
+        "beforeBytes": 7682,
+        "afterBytes": 7415,
+        "beforeSha256": "037979a3c5fd543e64d2315cd4eaac5a55fc87cc7f46ad39e7123a5209e83d21",
+        "afterSha256": "8705195cb030958959b53fa4bc702a62cade7c5902f539594ab4e9462086d59d",
+        "filteredScanlineSha256": "1a94a45391a2dcdbdf02027171ea3c467007a1ad31949a8d5789fa596d776f6d"
+      },
+      {
+        "path": "assets/resources/native/88/88e414dd-6804-4c60-98af-d660f4cb1e8c.png",
+        "beforeBytes": 8292,
+        "afterBytes": 8012,
+        "beforeSha256": "0cb233926a2e12e6cb3dc8bb0836878540c35817d83d7ccad8af4a79ce2e979a",
+        "afterSha256": "e29a04f7ac2079952e6df65f9fd36519be03d790fde3863fa743e2b09d622c3b",
+        "filteredScanlineSha256": "84f394382f1a945b9925518dd20fb5c3a63cb1888062528bd1630367008d2ea3"
+      },
+      {
+        "path": "assets/resources/native/89/8912d994-4f8e-42e0-811b-a5647e961c9c.png",
+        "beforeBytes": 7728,
+        "afterBytes": 7497,
+        "beforeSha256": "f11f9dae516ad004b84eafedd0fe33bc7daef2726f27826256d41045f5914e1f",
+        "afterSha256": "4166c7809d2eccf88c33fbf2082d59d4a7a41eb443756d3ca49e5cea03d472fa",
+        "filteredScanlineSha256": "c3e61c5ab0eb78f2987e49f58ab0434e048cf8cd3edb45fb54ce1f780c9a9d69"
+      },
+      {
+        "path": "assets/resources/native/89/894c3f68-c879-41d7-9b30-e6a454247524.png",
+        "beforeBytes": 7214,
+        "afterBytes": 7012,
+        "beforeSha256": "38e1efc29a93ac6001fb04ffeca531f861f385821ef9511da0d7a17669f9e64b",
+        "afterSha256": "788748217ba53fa7d94f63fd5b48e67003ef4276dd98c8cd467e0a149e9fea70",
+        "filteredScanlineSha256": "9e7d61915ca3e8c92c072f5a788ec84e13a6362647f9668b700bc1d268b80c14"
+      },
+      {
+        "path": "assets/resources/native/89/8960525e-fee6-40bb-a39d-b8b51a9ba155.png",
+        "beforeBytes": 7882,
+        "afterBytes": 7629,
+        "beforeSha256": "07d98bd23e61e6c7e4ffaa7e7c3fab7d93ca7b4788053b642ca51f26a98fdb48",
+        "afterSha256": "76aabd2f3661ebedc68af67b141ccaa42ea78177fbfd25a8bdcc6c9d9fbc30ae",
+        "filteredScanlineSha256": "ab64c77374bc3b0d3a877f66a8247bd438e07291cf0cd0f23a5a25237273513a"
+      },
+      {
+        "path": "assets/resources/native/89/896e7932-7df8-46c1-9468-c4d93a0fa950.png",
+        "beforeBytes": 7319,
+        "afterBytes": 7079,
+        "beforeSha256": "d66db9ccb65d347ae8c31ef6c6d09a3f17302bb54a654663473cc789c2645d3b",
+        "afterSha256": "01d749228ae9e50b6c91bfa04dd7b59e9eb6fd79b890f07cca8111c0495ee8c6",
+        "filteredScanlineSha256": "b47ae8b9bf787d5ecc7344a4a8f4fbbbd133ac1795e0df08a5a2bc32a2166517"
+      },
+      {
+        "path": "assets/resources/native/8a/8a705422-709f-48a0-8e67-7aecbd0a29ee.png",
+        "beforeBytes": 6799,
+        "afterBytes": 6602,
+        "beforeSha256": "01f438141f8e572c4b978237c821eba9658a286a353981164731d656556fd0f3",
+        "afterSha256": "6aa065f1f0c78b560345e1cd5ea035dc8f39550e08af7a20edbd3b25ac3f3502",
+        "filteredScanlineSha256": "ffc4137ce3baae2b0662b815bc35df1b72a28eb41d4c2f709623380098a9151c"
+      },
+      {
+        "path": "assets/resources/native/8b/8b773fc1-7e4b-482d-9b09-635f6515a8b9.png",
+        "beforeBytes": 7163,
+        "afterBytes": 6973,
+        "beforeSha256": "e3ef7f8bc8e77db77c02cdbd2bfec4a58c8041b431fce5b57ecd07e3fd4cf312",
+        "afterSha256": "774da3dcf44c99dc19d2185e1c4d0eb36a706b411d81bea01a2bb1821109701b",
+        "filteredScanlineSha256": "7ceb57a332cd12d4b345da596f7c4f98f1b5b6c6bfd28c3b383075ae08ec7310"
+      },
+      {
+        "path": "assets/resources/native/8d/8d537f7a-b035-42e6-96f9-2e692a9bf955.png",
+        "beforeBytes": 37146,
+        "afterBytes": 35918,
+        "beforeSha256": "bf2beb712130c015b199b5d5dd833559ab7773ca05600367f1c2d63e0d6f3e7a",
+        "afterSha256": "6abc3ce8cdcee0bffe33dc73d5ab10b46dac51f84842dd76b0100d4114afe791",
+        "filteredScanlineSha256": "1be85913b7c3cf2517790f4c1a3b3ca35f3262498431b9b33974621637097b4c"
+      },
+      {
+        "path": "assets/resources/native/95/958abfef-0c75-4e91-8405-e756a3f13b10.png",
+        "beforeBytes": 8612,
+        "afterBytes": 8311,
+        "beforeSha256": "d17f0dbe92d3976ca12d096dc7fe08616abbb9bae46c516e7be262fea1c9ac85",
+        "afterSha256": "aaa26e9fb1d910e3af19245aa8b1d061b19e34a8ff6a85f2973628ea0b839973",
+        "filteredScanlineSha256": "06ce7d45ac5f9befd1f406f969613078f02600dbcb1cb9578245e79baa89701c"
+      },
+      {
+        "path": "assets/resources/native/97/97a9818b-d4e6-4463-8640-1ebda365fced.png",
+        "beforeBytes": 8229,
+        "afterBytes": 7982,
+        "beforeSha256": "5634fbae22a47f6a2cca6481c046c11b0ea2f9b28beacb9d3823b7719df80123",
+        "afterSha256": "7fa9b8135b9593fe79c6967de956f8d4db48d18d4536bc9f052e9e8ec0f5c6e4",
+        "filteredScanlineSha256": "8bafb209512384ee6833c938236018a11da9b870e1e36ea668bbfe10a474f2ec"
+      },
+      {
+        "path": "assets/resources/native/98/986b1e94-dfa7-4ec5-8abc-50e4e252bf35.png",
+        "beforeBytes": 8308,
+        "afterBytes": 8078,
+        "beforeSha256": "5807bed8d173a83b9f9495211f09ce25c144847a3665c26ebf2e2af2a9769fff",
+        "afterSha256": "3fb7ed3ff5a40124b929b850242b05ffb2722a3355602afcb1942c7c6ece4bca",
+        "filteredScanlineSha256": "e392c234a765bc36b37e4d5a71eeb4da0499a300a2bf667ec0d797ef457e2277"
+      },
+      {
+        "path": "assets/resources/native/99/990b0d80-0322-425c-94d8-24cffd15b2d3.png",
+        "beforeBytes": 5705,
+        "afterBytes": 5527,
+        "beforeSha256": "c3b6a72e9f3534b7b7897be2815106af46728a61d0f63baf6b22eee148b3b9bf",
+        "afterSha256": "39e40d9862f222f5156f9acb5e21b8c95a01a3b3825937bafbee54cb15885304",
+        "filteredScanlineSha256": "487b42bbb20662124b131058b05aa27924b59072d8ddfd1aac5aa2ee6fd33e99"
+      },
+      {
+        "path": "assets/resources/native/99/99885493-20db-46bb-a88f-7406e36d5a09.png",
+        "beforeBytes": 8485,
+        "afterBytes": 8231,
+        "beforeSha256": "9eba0ad5ffa54ccc8d6b8268aef4c6925af3fe6d641809fa4177ffcbfab3780e",
+        "afterSha256": "ab2083e041c125d98a0133e6ee25abe4e471e3653bf0bed43bd6e0cf6239e8db",
+        "filteredScanlineSha256": "ce4e003e4b42be0f98754133809f4fce0ea062bea7ea65a93790185273418126"
+      },
+      {
+        "path": "assets/resources/native/9a/9ab37e71-20c0-4a2a-b6b7-bbdddede1c0c.png",
+        "beforeBytes": 8312,
+        "afterBytes": 8056,
+        "beforeSha256": "bde841432b62e6b9d0b3191316abefecde329ff08c3f5dc70ed0156150f98a86",
+        "afterSha256": "5b214f828ec33da3781c918f837393f08da3a760c5c0168a836682643ea41dc6",
+        "filteredScanlineSha256": "2682ee16951875a9919b98d690ddaf941ca5877a58809af8ba694da4f3d894a6"
+      },
+      {
+        "path": "assets/resources/native/9b/9b24a1c4-0c60-403b-930d-52a2be0a4e49.png",
+        "beforeBytes": 9175,
+        "afterBytes": 8870,
+        "beforeSha256": "26b73f1d3e8b456419acbfb556615c5269e7fdba8f2da007e052238ac607b3bf",
+        "afterSha256": "ee4eefe8147401254e08672d8a878cb78c5d52aa7a9a721fb5c17d99878c4394",
+        "filteredScanlineSha256": "1201c267cd8bf34a3f1bf3e5d29195b44c797cccdc7882742f679a130853fd76"
+      },
+      {
+        "path": "assets/resources/native/a3/a3003e0c-916c-4564-b5ce-b9f5d00e547b.png",
+        "beforeBytes": 6047,
+        "afterBytes": 5777,
+        "beforeSha256": "b0fff0112dce4206e410c60e3b7815affea4ef1d2e49b4d2ac3284899f6badc4",
+        "afterSha256": "ac6ea0ed2391306fa278611036776567ca93cf9438feb067bff727693467c6c2",
+        "filteredScanlineSha256": "fdfad8200f8712b6281a4e303c2a2707fc689a80ba4ba8940dd7b0a9546262ab"
+      },
+      {
+        "path": "assets/resources/native/a5/a5f3ea29-02d2-42c8-b1f1-3a534d51922d.png",
+        "beforeBytes": 8329,
+        "afterBytes": 8070,
+        "beforeSha256": "3a4de90aa4b1692561bcb647a9e0ef54825ac08604751ae32ba682ccf58f14e8",
+        "afterSha256": "d953ac42f5fb76706db2be4f5c2a4aeb401c302866a17e536b11e3064e77ee81",
+        "filteredScanlineSha256": "f52b1a2ae8ebd52d172a3d691b50b9d0da003a234f389b63af502587e51c15d2"
+      },
+      {
+        "path": "assets/resources/native/a6/a6bd733b-749b-4772-9abc-a703c7edd304.png",
+        "beforeBytes": 8119,
+        "afterBytes": 8026,
+        "beforeSha256": "5d7431b728b84557dbf5b419bdab8fee6581ad050539575a159e0822e279a67d",
+        "afterSha256": "a08458488036f2974efe3abdfcd0ba01f998f746aee05d451fba56011acd5d15",
+        "filteredScanlineSha256": "4d2b8f0d3e5018f52b6163393bd1bf396859e7354b0d0ed912d45f46c7560cd2"
+      },
+      {
+        "path": "assets/resources/native/ab/abf98966-03cd-4884-a7cf-8fc97daf9aff.png",
+        "beforeBytes": 9048,
+        "afterBytes": 8780,
+        "beforeSha256": "82cf5e76fb8b65f1cf3c86a66aaa52f33590ba7edaa7ca8a62d17c2e5da25d6a",
+        "afterSha256": "cee93dd2d01c59b4e40fa10ba01b8583ef8414845a652db387ce8b8e97b5e048",
+        "filteredScanlineSha256": "a0eacae771cc174b3de40cc2285b1f41057324c4add39eefd2ee64252a321341"
+      },
+      {
+        "path": "assets/resources/native/b3/b362f7b7-d04c-4a99-a774-8cd8212a024a.png",
+        "beforeBytes": 285695,
+        "afterBytes": 284060,
+        "beforeSha256": "60b78524641f696ad2d09bd14851f2d34a22390b65b4607bedda7f0fa3afb5bc",
+        "afterSha256": "d7a485cacd593103059eb81099c4a6b6c5b3ebf04b0753c5534311b137acbfc9",
+        "filteredScanlineSha256": "59468b3198f93dbcb74b86be819344bbd50c515ffcc27aad1d96f9f482bf869b"
+      },
+      {
+        "path": "assets/resources/native/b4/b49c080d-2d02-40be-8faf-bce5015675bd.png",
+        "beforeBytes": 7267,
+        "afterBytes": 7041,
+        "beforeSha256": "86d7a89d48e68a2a65687d1fdb72a165de28db379760a5c801fab3156ea89fa5",
+        "afterSha256": "ff12c6b4e6125b7e49d2ad1935d2eab64d3040cc3882cd7ebd5e47dce799eb45",
+        "filteredScanlineSha256": "d173c54e9d338a6d2e448c0dbe8c0efbcc636e4628a38b381544c818043a21b7"
+      },
+      {
+        "path": "assets/resources/native/b5/b5ce9a63-44b6-40ef-b267-b7030c0cfe33.png",
+        "beforeBytes": 8122,
+        "afterBytes": 7827,
+        "beforeSha256": "97b1f4fc378f696b231f9799c15c3fa67fb7e5b329d5afedf230a442b4826f9f",
+        "afterSha256": "61172c7495c72ac5bb875e2ea3f18708be3373cf8ffde80cf6b21fc21bf12452",
+        "filteredScanlineSha256": "e5759383e3d3079f2d0916f7060ab48fbd8f561452749072b4e8838717575ebf"
+      },
+      {
+        "path": "assets/resources/native/b6/b6ba74b1-5c4a-4ac1-b5d4-8bd13d46f8a5.png",
+        "beforeBytes": 540243,
+        "afterBytes": 538117,
+        "beforeSha256": "fb1af787452db952643886e1dd7e1ff16cdaf830d3c2f8cecbc4cd24802ca3fb",
+        "afterSha256": "138694f5f066055c37d0ab1ff04a53084828c879d66c4107fdc6318592976bba",
+        "filteredScanlineSha256": "fb8b5eb25d66e3e1a7d00aae36ef29f0b10de28c65b798d9f2971c0efca6c7a9"
+      },
+      {
+        "path": "assets/resources/native/b9/b9b92dd1-e038-44fc-a2f2-c65999a9264d.png",
+        "beforeBytes": 6099,
+        "afterBytes": 5828,
+        "beforeSha256": "79f9bb5e97b6ae2b3b8c1fbfb2898414c946adce7f8a2eed8d698427c9a8c049",
+        "afterSha256": "efdc28cb011633a43adc1b0164a4e32baab02b4c4802be3821b9329d1d2a194f",
+        "filteredScanlineSha256": "c01a08c658ffa1511d1c07537cfb6992c5e230bccf5b8139fcbd0d3c43ed50c6"
+      },
+      {
+        "path": "assets/resources/native/ba/ba179629-ab9a-4a97-8577-21c6fb849f57.png",
+        "beforeBytes": 552935,
+        "afterBytes": 550603,
+        "beforeSha256": "c2b4dac0112c847cd245b8cb0b38b2b1e0fe6cc6040154bd4e00edb580fbd715",
+        "afterSha256": "e7ed8b062a5a07f216e6e7b8ebb6717fdaa0110deb85003aab6c304357fb557c",
+        "filteredScanlineSha256": "3f894c2a69abf525aab46fe24b233484e8adca7c65f451bfc93b1b101f948fa3"
+      },
+      {
+        "path": "assets/resources/native/c2/c23a79f7-4448-4e7f-ad1d-ad9e42396a6e.png",
+        "beforeBytes": 6987,
+        "afterBytes": 6791,
+        "beforeSha256": "f556fe65c24cf26ec707c4bd090a66e7646738bd8f04f33ec50e056b9a1005c3",
+        "afterSha256": "69a9ccbe8e8d510a1c575dd1a6043d889fb63d170090f5179a9f039457d6f8a9",
+        "filteredScanlineSha256": "970352f0129f30d3bcb4a3f2f9a3d08ae40f2621e5cc6c7f4b4ba1e70a24866c"
+      },
+      {
+        "path": "assets/resources/native/c5/c5049a03-a421-4c7c-8524-00d56f6a90a3.png",
+        "beforeBytes": 6909,
+        "afterBytes": 6679,
+        "beforeSha256": "49fc4b2661e725c508254ec17c886e698f5628ba041afd22c332aff56cda84c1",
+        "afterSha256": "88e13516ad204cab797ffeb49a9ea17dfec2c87bc8a4189fb9dada17b8d83b47",
+        "filteredScanlineSha256": "fd8a882630b88a6da42d667462cc04fb2470638e99a54c29bf8bdc8ac71f81ae"
+      },
+      {
+        "path": "assets/resources/native/c7/c7ac861e-06ff-4987-8797-42797c646d56.png",
+        "beforeBytes": 7650,
+        "afterBytes": 7389,
+        "beforeSha256": "ee5c28fbd2c4ae6b6e7fd89c468e9bdb82c4fe44042864cb438485cd7e546ec0",
+        "afterSha256": "f42eedca3c1ca7db8d4011d2c9205c72cddc0a5bf6de569b4d2502f381c5b4f1",
+        "filteredScanlineSha256": "9534923efcd0f208a2cfebcafa37ef1d4dea5e52096b66e328e0d699facdc67c"
+      },
+      {
+        "path": "assets/resources/native/c9/c9093172-2486-4863-b3d8-0b1d46e1c3fd.png",
+        "beforeBytes": 924,
+        "afterBytes": 854,
+        "beforeSha256": "c16e8c965fbbee0b5fa97d59a7c5fd898f98393f493d2343727c5594575a090f",
+        "afterSha256": "fe7ff2f0ae5115e4b915006637f17d97b71d8e835969c16fa83328b5466b1019",
+        "filteredScanlineSha256": "48b8bc20213a85aa7f22ce93003ad9f67d62d83466dc2b38ac290b79007d6520"
+      },
+      {
+        "path": "assets/resources/native/cb/cb78bc3c-2d29-44cd-a408-d815a1cd0966.png",
+        "beforeBytes": 7396,
+        "afterBytes": 7176,
+        "beforeSha256": "9fa381c7c9d8e014555edf6b5f58ce1eb0852e573612c3f63a2486982f9b6532",
+        "afterSha256": "2ff042d7dfd23b6a7c1cf53e26c7a1bdb126662922a622258d3be288f82142f8",
+        "filteredScanlineSha256": "208cc88eb6de12dde22605d507a01373fef4914f84d9c6833d457134475ff754"
+      },
+      {
+        "path": "assets/resources/native/cc/cc2fd62f-e9ab-4894-927a-fc2a0938959c.png",
+        "beforeBytes": 5250,
+        "afterBytes": 5147,
+        "beforeSha256": "d2fb0822d9a85e5dab5ff312e86c559e2815ce147709d0fce1f3efe4d84185bf",
+        "afterSha256": "5703ff39e122531d9e24be1e770968925ecbc9ac0b40e6125c89507aad5d73a6",
+        "filteredScanlineSha256": "d8619ffc382aa418a6ef1bd603570bb06a26628afa28b80a21e36893b13fa914"
+      },
+      {
+        "path": "assets/resources/native/d4/d407b2e7-0de2-4132-a7eb-411101e13bf1.png",
+        "beforeBytes": 8940,
+        "afterBytes": 8739,
+        "beforeSha256": "1d9324ad866ca05e378e31c3edd8b82338be62b422678a9fedc166d1e202cfb5",
+        "afterSha256": "e3bd8bd543a231e7dad327134fdc1fd795b553647d21cd750dc5cd0d1237e727",
+        "filteredScanlineSha256": "dd41439e2e58ae209a1461c228b75e7391e63a401a924f9132e97ef3111e6433"
+      },
+      {
+        "path": "assets/resources/native/d4/d4c38c74-29ae-43c0-b76a-74f50829e53e.png",
+        "beforeBytes": 7046,
+        "afterBytes": 6835,
+        "beforeSha256": "a44eff34ee3fd9818ad6152922c7bd33f1ce108a159143445ce164b3793818c6",
+        "afterSha256": "91e9c9ef2f4b6a59ee65f023d0309fb3712635c724e1394fdee426c10116542e",
+        "filteredScanlineSha256": "f4ebea6f77b20eadcaa547478ecceadcd91165c8f6230a2978d5b2af0570ce3e"
+      },
+      {
+        "path": "assets/resources/native/da/da70abe6-a438-45e4-b2d6-a5c8e8ca1026.png",
+        "beforeBytes": 34557,
+        "afterBytes": 34555,
+        "beforeSha256": "a25c6639346eb0f8ded54e02fadff08a993aafa4f4c55c7bddb8b892378dfd05",
+        "afterSha256": "45acfe07fce7b4c80449702afb612f63a92babc220807c2395d736c5ff386ffd",
+        "filteredScanlineSha256": "83e1aa3872d7675e56b8686ec3a3a2f3649956293f2a8e6d04dc5b2cfd769944"
+      },
+      {
+        "path": "assets/resources/native/e4/e4a323cb-18c1-4f72-b6e1-16d86451ba6c.png",
+        "beforeBytes": 8414,
+        "afterBytes": 8183,
+        "beforeSha256": "4c5e6018f35c8662869a86ec36f5ef68f3a7b038abf7a125c859712503b54118",
+        "afterSha256": "102d4403061ed9b2b5d0f84a2c235339645686e777e5999e000ce1bdf6724e9d",
+        "filteredScanlineSha256": "5ff8789712786695fb9a22ea95a3114b218d80db7bfed89cd1ceb73e00c0248d"
+      },
+      {
+        "path": "assets/resources/native/e5/e534881f-7b86-44cb-93de-34c6c4df7307.png",
+        "beforeBytes": 7851,
+        "afterBytes": 7583,
+        "beforeSha256": "d7ef49c2c06b7ac1806ce7af49c5a95c9246e966efbd80e0cc6546b327b97b98",
+        "afterSha256": "b630d4e9dffa85ea8a1ceb8798390c99c3b901ee0a50549faca7add83a32e91b",
+        "filteredScanlineSha256": "fb0d0d683658d850a1015d618c7704bbf4a75d75c373abd800e6b6a662b8fa0c"
+      },
+      {
+        "path": "assets/resources/native/ea/ea8745f7-5a21-4af3-963c-eeac364f069d.png",
+        "beforeBytes": 2349,
+        "afterBytes": 2289,
+        "beforeSha256": "165c1e27a114ea355ce87378773416ba537f174ddcf6aeab121dd236103b2aed",
+        "afterSha256": "fb045a3ed741e96244a8f656158e39d859eefb37cb662414e8bd9646293bca70",
+        "filteredScanlineSha256": "6b8aeadeb6a951ae88f42abca3a396e7dd7c60614df2da89f4b47f7f06ffc6bd"
+      },
+      {
+        "path": "assets/resources/native/eb/eb88f536-ab3d-4e77-ba4f-d69175dfc271.png",
+        "beforeBytes": 5870,
+        "afterBytes": 5688,
+        "beforeSha256": "fb07ae782cdd8f4cdc711d09b04815d2e14ce01dc17d26258d4882d035650e1b",
+        "afterSha256": "99c9d4cf714f350750d4223c344d357cdb71ced237120796d5ddeeb2d9aaab65",
+        "filteredScanlineSha256": "5dc918cfd7f17b648b9a4c55563c2eb00d5f5084419ca374c7c71beaad540563"
+      },
+      {
+        "path": "assets/resources/native/f8/f8b25c4f-7942-4f46-b2ba-ffeffc2268a9.png",
+        "beforeBytes": 1316,
+        "afterBytes": 1300,
+        "beforeSha256": "b98b7bced9e75c82009f3d9d7c64dc21d39ba0a047ab8572cf31a814eba784de",
+        "afterSha256": "283e9cb42dbdc4eeb28196f682415d585563a349a7ef807d920da620cedc9dff",
+        "filteredScanlineSha256": "86c724797d298121fd237571712242bfe33761705abe2d340fb9e5c06c6f9c80"
+      },
+      {
+        "path": "assets/resources/native/f9/f94d59e8-a715-4eb7-910b-2e8017cc60db.png",
+        "beforeBytes": 2462,
+        "afterBytes": 2423,
+        "beforeSha256": "76118a267059fd4247353908bb5508847a73f6150d4d30f32ffbf64b15d357df",
+        "afterSha256": "56032b5cc197ad887a597296fd667032efcf927fd78511358246968cdfc7d788",
+        "filteredScanlineSha256": "04b589894e1c0bd80ef4118ac470ff43c6b99b0c7a65ba8f7ee6eda1744986ed"
+      },
+      {
+        "path": "assets/resources/native/f9/f9c84568-e833-4237-b1d2-84374707d895.png",
+        "beforeBytes": 1338,
+        "afterBytes": 1259,
+        "beforeSha256": "f402b97476d5936326560b12f8e5dd3d8e4dced27b8ca9a60203c84063f85fcc",
+        "afterSha256": "91d8026f13ceaea3e29ddfe9f3c3ae8f7d4490543bfbf112606e06d1d046385a",
+        "filteredScanlineSha256": "f425d8f21038989370f6157ba121d9a67c6486df92e245e1e188879bebdb3b47"
+      },
+      {
+        "path": "assets/resources/native/fe/fe34052e-95dd-4855-968e-a957d950030b.png",
+        "beforeBytes": 7122,
+        "afterBytes": 6896,
+        "beforeSha256": "2b376fcf150e4c81dd5d11ac4958c131f49d9f3f70b5f15b9ea7a8ac988df4ee",
+        "afterSha256": "d66129df1639a1005cc1243aec8a78e49d288740c0b9019247c1aa839bd313c3",
+        "filteredScanlineSha256": "5c7a5775c4826518cd40e64bffac8af4c37845620dfa1666ee18dddc04a5ec41"
+      },
+      {
+        "path": "assets/resources/native/ff/ff546544-38d9-471a-8249-63a8e4ced954.png",
+        "beforeBytes": 7748,
+        "afterBytes": 7508,
+        "beforeSha256": "ac76ca9db1d715549f1ae53626164a1878e2d6691f68b483c095c2331d4978fb",
+        "afterSha256": "cb713a346f1c467cd095d09eebf806ec4881715800b61b18e6d6a9f90e106b43",
+        "filteredScanlineSha256": "1bbc81c66630b7c7a26cf656fe3a8fb8a3e4387ca8f985a17ef5cd5270e5cd78"
+      }
+    ]
+  },
+  "makeExitCode": 36,
+  "delivery": "/Users/wkk/dotWorkers/little-steps-cocos/builds/android/avg_plus"
+}
