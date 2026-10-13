@@ -121,7 +121,7 @@ export class GamePresentation extends PresentationComponent {
         progress.children.forEach(child => { child.active = child.name === 'board' || child.name === GameUiNodeId.ProgressItems; });
         progress.getComponent(UITransform)?.setContentSize(345, 82);
         const alignment = progress.getComponent(Widget);
-        if (alignment) { alignment.left = 710; alignment.updateAlignment(); }
+        if (alignment) { alignment.left = 675; alignment.updateAlignment(); }
         const mask = progress.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
         const stencil = progress.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
         stencil.roundRect(-172.5, -41, 345, 82, 41); stencil.fill();
