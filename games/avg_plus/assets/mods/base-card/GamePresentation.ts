@@ -143,7 +143,19 @@ export class GamePresentation extends PresentationComponent {
         const visit = (node: Node) => {
             if (node.name === 'coin_icon') {
                 const icon = node.getComponent(Sprite);
-                if (icon) { icon.sizeMode = Sprite.SizeMode.CUSTOM; icon.spriteFrame = coinFrame; }
+                if (icon) {
+                    icon.sizeMode = Sprite.SizeMode.CUSTOM; icon.spriteFrame = coinFrame;
+                    icon.enabled = false;
+                    const size = node.getComponent(UITransform)!;
+                    const clip = new Node('coinCircle'); clip.layer = node.layer;
+                    clip.addComponent(UITransform).setContentSize(size.width, size.height); node.addChild(clip);
+                    const mask = clip.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
+                    const stencil = clip.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
+                    stencil.circle(0, 0, Math.min(size.width, size.height) * 0.43); stencil.fill();
+                    const pixels = new Node('sourcePixels'); pixels.layer = node.layer;
+                    pixels.addComponent(UITransform).setContentSize(size.width, size.height); clip.addChild(pixels);
+                    const clipped = pixels.addComponent(Sprite); clipped.sizeMode = Sprite.SizeMode.CUSTOM; clipped.spriteFrame = coinFrame;
+                }
             }
             node.children.forEach(visit);
         };

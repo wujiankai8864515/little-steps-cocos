@@ -165,7 +165,7 @@ export class GameSessionStore {
         this.assertIntegrity();
     }
 
-    /** 补牌只推进免费牌计数，绝不改变连续命中进度。 */
+    /** 补牌推进免费牌计数；关卡配置决定是否清空连击。旧关卡默认保留。 */
     public recordStockDraw(): void {
         if (this.economy?.streakResetOnDraw) { this._state.streakColors = []; this._state.streakSuits = []; }
         this._state.freeStockDraws = Math.min(
@@ -175,7 +175,7 @@ export class GameSessionStore {
         this.assertIntegrity();
     }
 
-    /** 记录一次命中并在第 4 次时原子结算奖励；进度稍后由 finishRewardCycle 清空。 */
+    /** 命中达到配置的连击数时原子结算奖励；旧关卡默认四次，视频关卡为五次。 */
     public recordHit(color: CardColor, suit: CardDef['suit'] | null = null): HitResolution {
         if (color !== 'red' && color !== 'black') {
             throw new Error(`[GameSessionStore] 不支持的牌色：${String(color)}。`);
