@@ -1,0 +1,10 @@
+{
+  "item": "AVG.ANDROID.04",
+  "candidate": "avg-plus-android-20261013T191931265103Z",
+  "failure": "APK does not declare only portrait orientations",
+  "rootCause": "audit mistakenly rejected CocosEditBoxActivity BEHIND (3); main AppActivity is portrait (1)",
+  "fix": "audit launcher separately; auxiliary activities may inherit its orientation",
+  "sourceVersionAudit": "versionName 0.1.0 and versionCode 2 confirmed by aapt",
+  "delivery": "previous fixed output retained; failed candidate is not promoted",
+  "newBuild": "pending"
+}

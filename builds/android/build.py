@@ -119,9 +119,30 @@ def audit_apk(path, game, env):
     if expected not in badging:
         raise ValueError('APK package/version does not match its configured channel identity')
     xml = subprocess.check_output([str(tools / 'aapt'), 'dump', 'xmltree', str(path), 'AndroidManifest.xml'], text=True)
-    orientations = re.findall(r'screenOrientation\([^)]*\)=\(type 0x10\)(0x[0-9a-f]+)', xml)
-    if not orientations or any(value not in ('0x1', '0x7') for value in orientations):
-        raise ValueError('APK does not declare only portrait orientations')
+    activities = []
+    current = None
+    for line in xml.splitlines():
+        element = re.match(r'^(\s*)E: (\w+)', line)
+        if element:
+            depth = len(element.group(1))
+            if current is not None and depth <= current['depth']:
+                current = None
+            if element.group(2) == 'activity':
+                current = {'depth': depth, 'name': '', 'orientation': None}
+                activities.append(current)
+        if current is None or len(line) - len(line.lstrip()) != current['depth'] + 2:
+            continue
+        name = re.search(r'android:name\([^)]*\)="([^"]+)"', line)
+        orientation = re.search(r'screenOrientation\([^)]*\)=\(type 0x10\)(0x[0-9a-f]+)', line)
+        if name:
+            current['name'] = name.group(1)
+        if orientation:
+            current['orientation'] = orientation.group(1)
+    launcher = next((activity for activity in activities if activity['name'] == 'com.cocos.game.AppActivity'), None)
+    # CocosEditBoxActivity uses BEHIND (3): it follows the portrait activity below it.
+    if not launcher or launcher['orientation'] not in ('0x1', '0x7') or any(
+            activity['orientation'] not in (None, '0x1', '0x7', '0x3') for activity in activities):
+        raise ValueError('APK launcher is not portrait or an auxiliary activity overrides it')
     certificate = subprocess.check_output([str(tools / 'apksigner'), 'verify', '--print-certs', str(path)], text=True,
                                           env=dict(os.environ, JAVA_HOME=env['java']))
     match = re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-f]+)', certificate)
@@ -132,7 +153,8 @@ def audit_apk(path, game, env):
     if sorted(abis) != sorted(game['appABIs']):
         raise ValueError('APK ABI differs from the configured channel')
     return {'packageName': game['packageName'], 'versionName': game['version'], 'versionCode': game['versionCode'],
-            'orientation': 'portrait', 'abis': abis, 'signatureVerified': True, 'certificateSha256': match.group(1),
+            'orientation': 'portrait', 'activities': [{k: v for k, v in a.items() if k != 'depth'} for a in activities],
+            'abis': abis, 'signatureVerified': True, 'certificateSha256': match.group(1),
             'signing': 'debug-candidate'}
 
 
