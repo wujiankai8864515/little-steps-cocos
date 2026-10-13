@@ -53,5 +53,5 @@ export interface CardLevelDefinition {
     readonly slots: readonly CardLevelSlotDefinition[];
     readonly currentCard?: CardLevelCurrentCardDefinition;
     readonly initialStockCount?: number;
-    readonly portraitLayout?: { readonly currentCardX: number };
+    readonly portraitLayout?: { readonly currentCardX: number; readonly stockAnchor?: 'left' | 'right' };
 }

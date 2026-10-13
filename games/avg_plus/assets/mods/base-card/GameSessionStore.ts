@@ -35,7 +35,9 @@ const ACTION_COST_RULES: Readonly<Record<PaidGameAction, ActionCostRule>> = {
 
 interface MutableSessionState {
     coins: number;
+    completionRewarded: boolean;
     streakColors: CardColor[];
+    streakSuits: (CardDef['suit'] | null)[];
     freeStockDraws: number;
     wildReady: boolean;
     /** 反滥用计数属于消费历史；普通牌局回撤绝不能降低它。 */
@@ -44,7 +46,9 @@ interface MutableSessionState {
 
 export interface GameSessionSnapshot {
     readonly coins: number;
+    readonly completionRewarded?: boolean;
     readonly streakColors: readonly CardColor[];
+    readonly streakSuits?: readonly (CardDef['suit'] | null)[];
     readonly freeStockDraws: number;
     readonly wildReady: boolean;
     readonly actionUses: Readonly<Record<PaidGameAction.Rollback | PaidGameAction.Wild, number>>;
@@ -53,6 +57,7 @@ export interface GameSessionSnapshot {
 export interface GameSessionViewState {
     readonly coins: number;
     readonly progressCells: readonly ProgressCellState[];
+    readonly progressSuits: readonly (CardDef['suit'] | null)[];
     readonly freeStockDraws: number;
     readonly freeStockUsedUp: boolean;
     readonly wildReady: boolean;
@@ -75,7 +80,9 @@ export interface RollbackResolution {
 function createInitialState(coins = INITIAL_COINS): MutableSessionState {
     return {
         coins,
+        completionRewarded: false,
         streakColors: [],
+        streakSuits: [],
         freeStockDraws: 0,
         wildReady: false,
         actionUses: {
@@ -95,6 +102,10 @@ export class GameSessionStore {
     private _state: MutableSessionState;
     public constructor(private readonly economy?: EconomyConfig, coins = INITIAL_COINS, private readonly freeStockCount = INITIAL_FREE_STOCK_COUNT) {
         if (!Number.isInteger(freeStockCount) || freeStockCount < 0 || freeStockCount > 52) throw new Error('[GameSessionStore] 免费备用牌数量非法。');
+        if (economy && (!['completionReward','streakRewardCoins'].every(key => {
+            const value = economy[key as 'completionReward' | 'streakRewardCoins']; return value === undefined || Number.isSafeInteger(value) && value >= 0;
+        }) || (economy.streakTarget !== undefined && (!Number.isInteger(economy.streakTarget) || economy.streakTarget < 1 || economy.streakTarget > 12)) ||
+            (economy.streakResetOnDraw !== undefined && typeof economy.streakResetOnDraw !== 'boolean'))) throw new Error('[GameSessionStore] 奖励或连击配置非法。');
         this._state = createInitialState(coins);
         this.assertIntegrity();
     }
@@ -106,6 +117,8 @@ export class GameSessionStore {
     public get coins(): number {
         return this._state.coins;
     }
+
+    private get streakTarget(): number { return this.economy?.streakTarget ?? HITS_PER_REWARD; }
 
     public get streakColors(): readonly CardColor[] {
         return [...this._state.streakColors];
@@ -154,6 +167,7 @@ export class GameSessionStore {
 
     /** 补牌只推进免费牌计数，绝不改变连续命中进度。 */
     public recordStockDraw(): void {
+        if (this.economy?.streakResetOnDraw) { this._state.streakColors = []; this._state.streakSuits = []; }
         this._state.freeStockDraws = Math.min(
             this.freeStockCount,
             this._state.freeStockDraws + 1,
@@ -162,22 +176,24 @@ export class GameSessionStore {
     }
 
     /** 记录一次命中并在第 4 次时原子结算奖励；进度稍后由 finishRewardCycle 清空。 */
-    public recordHit(color: CardColor): HitResolution {
+    public recordHit(color: CardColor, suit: CardDef['suit'] | null = null): HitResolution {
         if (color !== 'red' && color !== 'black') {
             throw new Error(`[GameSessionStore] 不支持的牌色：${String(color)}。`);
         }
-        if (this._state.streakColors.length >= HITS_PER_REWARD) {
+        if (this._state.streakColors.length >= this.streakTarget) {
             // 表现层即使上次动画中断，也不会污染下一轮连击。
             this._state.streakColors = [];
+            this._state.streakSuits = [];
         }
 
         this._state.streakColors.push(color);
+        this._state.streakSuits.push(suit);
         const progressIndex = this._state.streakColors.length - 1;
-        const rewardEarned = this._state.streakColors.length === HITS_PER_REWARD;
+        const rewardEarned = this._state.streakColors.length === this.streakTarget;
         const monochrome = rewardEarned
             && this._state.streakColors.every((item) => item === this._state.streakColors[0]);
         const rewardMultiplier: 1 | 2 = monochrome ? 2 : 1;
-        const rewardCoins = rewardEarned ? BASE_REWARD_COINS * rewardMultiplier : 0;
+        const rewardCoins = rewardEarned ? (this.economy?.streakRewardCoins ?? BASE_REWARD_COINS) * rewardMultiplier : 0;
         this._state.coins = Math.min(Number.MAX_SAFE_INTEGER, this._state.coins + rewardCoins);
         this.assertIntegrity();
 
@@ -191,16 +207,31 @@ export class GameSessionStore {
     }
 
     public finishRewardCycle(): void {
-        if (this._state.streakColors.length >= HITS_PER_REWARD) {
+        // The reference keeps all four marks until the next hit and does not award coins.
+        if (this.economy?.streakRewardCoins === 0) return;
+        if (this._state.streakColors.length >= this.streakTarget) {
             this._state.streakColors = [];
+            this._state.streakSuits = [];
         }
         this.assertIntegrity();
+    }
+
+    /** Called only by the move that changes the core from playing to complete. */
+    public awardCompletion(): number {
+        if (this._state.completionRewarded) return 0;
+        const before = this._state.coins;
+        this._state.completionRewarded = true;
+        this._state.coins = Math.min(Number.MAX_SAFE_INTEGER, before + (this.economy?.completionReward ?? 0));
+        this.assertIntegrity();
+        return this._state.coins - before;
     }
 
     public captureSnapshot(): GameSessionSnapshot {
         return {
             coins: this._state.coins,
+            completionRewarded: this._state.completionRewarded,
             streakColors: [...this._state.streakColors],
+            streakSuits: [...this._state.streakSuits],
             freeStockDraws: this._state.freeStockDraws,
             wildReady: this._state.wildReady,
             actionUses: { ...this._state.actionUses },
@@ -212,7 +243,9 @@ export class GameSessionStore {
         this.assertSnapshot(snapshot);
         this._state = {
             coins: snapshot.coins,
+            completionRewarded: snapshot.completionRewarded ?? false,
             streakColors: [...snapshot.streakColors],
+            streakSuits: [...(snapshot.streakSuits ?? snapshot.streakColors.map(() => null))],
             freeStockDraws: snapshot.freeStockDraws,
             wildReady: snapshot.wildReady,
             actionUses: { ...snapshot.actionUses },
@@ -242,7 +275,9 @@ export class GameSessionStore {
         const restoredCoins = this._state.coins - actionCoinDelta - cost;
         this._state = {
             coins: Math.max(0, Math.min(Number.MAX_SAFE_INTEGER, restoredCoins)),
+            completionRewarded: snapshot.completionRewarded ?? false,
             streakColors: [...snapshot.streakColors],
+            streakSuits: [...(snapshot.streakSuits ?? snapshot.streakColors.map(() => null))],
             freeStockDraws: snapshot.freeStockDraws,
             wildReady: snapshot.wildReady,
             actionUses: {
@@ -256,7 +291,7 @@ export class GameSessionStore {
 
     public getViewState(): GameSessionViewState {
         const cells: ProgressCellState[] = Array.from(
-            { length: HITS_PER_REWARD },
+            { length: this.streakTarget },
             (_, index) => {
                 const color = this._state.streakColors[index];
                 if (color === 'red') return ProgressCellState.Red;
@@ -268,6 +303,7 @@ export class GameSessionStore {
         return {
             coins: this._state.coins,
             progressCells: cells,
+            progressSuits: [...this._state.streakSuits],
             freeStockDraws: this._state.freeStockDraws,
             freeStockUsedUp: this._state.freeStockDraws >= this.freeStockCount,
             wildReady: this._state.wildReady,
@@ -280,6 +316,8 @@ export class GameSessionStore {
     }
 
     public assertIntegrity(): void {
+        if (this._state.streakSuits.length !== this._state.streakColors.length || this._state.streakSuits.some(suit => suit !== null && !['diamond','heart','spade','club'].includes(suit))) throw new Error('[GameSessionStore] 连击花色非法。');
+        if (typeof this._state.completionRewarded !== 'boolean') throw new Error('[GameSessionStore] 通关奖励标记非法。');
         const { coins, streakColors, freeStockDraws, actionUses } = this._state;
         if (typeof this._state.wildReady !== 'boolean') {
             throw new Error('[GameSessionStore] wildReady 状态非法。');
@@ -292,7 +330,7 @@ export class GameSessionStore {
             || freeStockDraws > this.freeStockCount) {
             throw new Error('[GameSessionStore] freeStockDraws 超出合法范围。');
         }
-        if (streakColors.length > HITS_PER_REWARD
+        if (streakColors.length > this.streakTarget
             || streakColors.some((color) => color !== 'red' && color !== 'black')) {
             throw new Error('[GameSessionStore] 连击进度非法。');
         }
@@ -311,7 +349,9 @@ export class GameSessionStore {
         const checkpoint = this._state;
         this._state = {
             coins: snapshot.coins,
+            completionRewarded: snapshot.completionRewarded ?? false,
             streakColors: [...snapshot.streakColors],
+            streakSuits: [...(snapshot.streakSuits ?? snapshot.streakColors.map(() => null))],
             freeStockDraws: snapshot.freeStockDraws,
             wildReady: snapshot.wildReady,
             actionUses: { ...snapshot.actionUses },

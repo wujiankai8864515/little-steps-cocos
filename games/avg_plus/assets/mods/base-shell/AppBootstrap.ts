@@ -120,7 +120,7 @@ export class AppBootstrap extends Component {
                 if(chapterId)this.route(()=>this.openAvg(chapterId));
                 else this.route(()=>this.returnToDetails());
             },{
-                initialCoins:started.coins,economy:this.config.economy,background:this.config.cardBackground,
+                initialCoins:started.coins,initialGems:started.gems,headerTitle:'Chapter 1 · Solitaire '+(this.levels.indexOf(levelId)+1),economy:this.config.economy,background:this.config.cardBackground,
                 checkpoint:async(state,action)=>{
                     await this.send({type:'shell.card',payload:{roundId:ownedRound,coins:state.session.coins,
                         complete:state.core.isComplete,played:action!=='card.open'}});

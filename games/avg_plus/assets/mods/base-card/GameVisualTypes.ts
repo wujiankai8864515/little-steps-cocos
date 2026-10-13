@@ -101,14 +101,17 @@ export function boardFlightAngle(
 export function stableVisibleBackupCardOffsets(
     originalOffsets: readonly number[],
     visibleCount: number,
+    anchor: 'left' | 'right' = 'left',
 ): readonly number[] {
     const count = Math.max(0, Math.floor(visibleCount));
     if (count === 0 || originalOffsets.length === 0) return [];
     const spacing = originalOffsets.length > 1
         ? originalOffsets[1] - originalOffsets[0]
         : 27;
-    return Array.from({ length: count }, (_, index) => originalOffsets[index]
-        ?? originalOffsets[0] + spacing * index);
+    const capacity = Math.max(count, originalOffsets.length);
+    const start = anchor === 'right' ? capacity - count : 0;
+    return Array.from({ length: count }, (_, index) => originalOffsets[start + index]
+        ?? originalOffsets[0] + spacing * (start + index));
 }
 
 /** 从中位开始，完成四次完整左右摆动，并在 1 秒时准确回到原角度。 */

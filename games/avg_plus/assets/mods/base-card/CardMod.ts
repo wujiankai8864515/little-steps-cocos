@@ -74,12 +74,14 @@ export function createCardMod(
                     const move = core.moveCard(slotId, session.wildReady);
                     if (!move.success || !move.removedCard) ctx.reject(`不能出这张牌：${move.failureReason}`);
                     if (session.wildReady) { session.setWildReady(false); session.spend(PaidGameAction.Wild); }
-                    const hit = session.recordHit(move.removedCard.color);
+                    const hit = session.recordHit(move.removedCard.color, move.removedCard.suit);
                     const progressCells = session.getViewState().progressCells;
+                    const progressSuits = session.getViewState().progressSuits;
                     session.finishRewardCycle();
+                    const completionRewardCoins = core.isComplete ? session.awardCompletion() : 0;
                     state.lastMove = { kind: 'board', slotId, cardName: move.removedCard.cardName };
                     ctx.recordUndo();
-                    ctx.result = { kind: 'play', slotId, move, hit, progressCells, rewardCoins: hit.rewardCoins, complete: core.isComplete };
+                    ctx.result = { kind: 'play', slotId, move, hit, progressCells, progressSuits, rewardCoins: hit.rewardCoins, completionRewardCoins, complete: core.isComplete };
                     break;
                 }
                 case 'card.draw': {

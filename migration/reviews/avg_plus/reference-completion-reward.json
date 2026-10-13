@@ -1,0 +1,63 @@
+{
+  "item": "AVG.REWARD.01",
+  "sourceVideoSha256": "e0118954c6bafe4e43108ec9ee684a11b84069e372382232912d2fcd0b3253ab",
+  "observed": {
+    "beforeCoins": 4200,
+    "rewardLabel": 1000,
+    "afterCoins": 5200,
+    "gems": 40,
+    "coinFlightSeconds": [
+      151,
+      153
+    ],
+    "storyExcluded": true,
+    "progressCells": 5,
+    "stockDrawClearsProgress": true
+  },
+  "priorMissing": "Completion medal, reward amount, gem wallet and actual 1000 payout; prior per-streak coins do not match unchanged gameplay wallet.",
+  "repair": "Configured 1000 completion reward, no streak coin payouts for reference mode, reward committed with final successful card move and persisted through normal checkpoint. Completion previews the pre-award balance and animates collection on Continue.",
+  "sourceFrame": "migration/reviews/avg_plus/reference/reward-150.png",
+  "unchangedAtlas": "games/avg_plus/assets/art/resources/assets/reference/reward_atlas.png",
+  "atlasSha256": "a7d7b45565ce7e8ac43eb689f2ecc0fb998660fbe6061ca55ab00dde452e6c0a",
+  "regions": {
+    "ref_reward_medal": {
+      "x": 448,
+      "y": 190,
+      "width": 70,
+      "height": 70
+    },
+    "ref_reward_coin": {
+      "x": 363,
+      "y": 15,
+      "width": 27,
+      "height": 28
+    },
+    "ref_reward_gem": {
+      "x": 518,
+      "y": 16,
+      "width": 28,
+      "height": 26
+    }
+  },
+  "native": "pending",
+  "fullFidelity": "pending: native screenshots/effects, hidden ranks/draw sequence, full streak card rewards, remaining video UI, physical phone and formal signing",
+  "validation": {
+    "typecheckFiles": 42,
+    "behaviorPassed": 60,
+    "behaviorFailed": 0,
+    "knownHistoricalMissingUUIDs": 18,
+    "native": "pending"
+  },
+  "shader": {
+    "basis": "Cocos 3.8.8 official builtin-sprite.effect",
+    "documentation": "https://docs.cocos.com/creator/3.8/manual/en/shader/effect-syntax.html",
+    "purpose": "Extract pip coverage from unchanged video regions at render time; tint white/red; source PNG bytes remain untouched"
+  },
+  "stock": {
+    "referenceAnchor": "right",
+    "config": "portraitLayout.stockAnchor",
+    "priorDefault": "left",
+    "native": "pending"
+  },
+  "priorNativeEvidenceRetained": "reference-cards-native-delivery.json"
+}

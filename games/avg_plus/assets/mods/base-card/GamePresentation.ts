@@ -6,6 +6,9 @@ import {
     director,
     Director,
     Graphics,
+    EffectAsset,
+    Material,
+    Mask,
     HorizontalTextAlignment,
     instantiate,
     Label,
@@ -31,6 +34,7 @@ import {
     type MoveResult,
     type SolitaireCoreSnapshot,
     type SolitaireGameState,
+    type CardDef,
 } from './HighLowSolitaireCore';
 import {
     GameSessionStore,
@@ -105,6 +109,43 @@ export class GamePresentation extends PresentationComponent {
     private paidEffectButtonGlow: Node | null = null;
     private paidEffectParticles: ParticleSystem2D | null = null;
     private paidEffectElapsed = 0;
+    protected referenceProgressSuits: readonly (CardDef['suit'] | null)[] = [];
+    private referencePips: Readonly<Record<string, SpriteFrame>> | null = null;
+    private referenceGlyphMaterial: Material | null = null;
+
+    protected initializeReferenceHud(boardFrame: SpriteFrame, pips: Readonly<Record<string, SpriteFrame>>, effect: EffectAsset, titleText: string, coinFrame: SpriteFrame): void {
+        this.referencePips = pips;
+        const material = this.referenceGlyphMaterial = new Material();
+        material.initialize({ effectAsset: effect, defines: { USE_TEXTURE: true } });
+        const progress = this.findNode(GameUiNodeId.RewardProgress)!;
+        progress.children.forEach(child => { child.active = child.name === 'board' || child.name === GameUiNodeId.ProgressItems; });
+        progress.getComponent(UITransform)?.setContentSize(345, 82);
+        const alignment = progress.getComponent(Widget);
+        if (alignment) { alignment.left = 710; alignment.updateAlignment(); }
+        const mask = progress.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
+        const stencil = progress.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
+        stencil.roundRect(-172.5, -41, 345, 82, 41); stencil.fill();
+        const board = progress.getChildByName('board')!;
+        board.setPosition(0, 0); board.getComponent(UITransform)?.setContentSize(345, 82);
+        const sprite = board.getComponent(Sprite)!; sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = boardFrame;
+        progress.getChildByName(GameUiNodeId.ProgressItems)?.setPosition(0, 0);
+        const title = new Node('chapterTitle'); title.layer = this.node.layer;
+        title.addComponent(UITransform).setContentSize(390, 75); this.node.addChild(title);
+        const titleWidget = title.addComponent(Widget); titleWidget.isAlignTop = true; titleWidget.isAlignLeft = true;
+        titleWidget.top = 104; titleWidget.left = 285; titleWidget.updateAlignment();
+        const g = title.addComponent(Graphics); g.fillColor = new Color(8, 7, 20, 150); g.roundRect(-195, -37.5, 390, 75, 37.5); g.fill();
+        const label = title.addComponent(Label); label.string = titleText; label.fontSize = 30; label.lineHeight = 42;
+        label.color = Color.WHITE; label.horizontalAlign = HorizontalTextAlignment.CENTER; label.verticalAlign = VerticalTextAlignment.CENTER;
+        const visit = (node: Node) => {
+            if (node.name === 'coin_icon') {
+                const icon = node.getComponent(Sprite);
+                if (icon) { icon.sizeMode = Sprite.SizeMode.CUSTOM; icon.spriteFrame = coinFrame; }
+            }
+            node.children.forEach(visit);
+        };
+        visit(this.node);
+    }
+    protected disposeReferenceHud(): void { this.referenceGlyphMaterial?.destroy(); this.referenceGlyphMaterial = null; }
     protected dispatch(_action: GameUiAction): Promise<void> { throw new Error('GamePageUI must supply dispatch'); }
     /** Prefab 挂到场景的同一帧就执行，禁止默认牌面在异步关卡加载前闪现。 */
     protected prepareOpeningVisualState(): void {
@@ -223,14 +264,16 @@ export class GamePresentation extends PresentationComponent {
         const stableOffsets = stableVisibleBackupCardOffsets(
             basePositions.map((position) => position.x),
             visibleCount,
+            this._level?.portraitLayout?.stockAnchor,
         );
+        const firstVisible = this._level?.portraitLayout?.stockAnchor === 'right' ? Math.max(0, cards.length - visibleCount) : 0;
         cards.forEach((child, index) => {
-            child.active = index < visibleCount;
-            if (index < visibleCount) {
+            child.active = index >= firstVisible && index < firstVisible + visibleCount;
+            if (child.active) {
                 const shadow = this.ensureCardShadow(child);
                 shadow.setVisible(!concealed);
                 const base = basePositions[index];
-                child.setPosition(stableOffsets[index], base.y, base.z);
+                child.setPosition(stableOffsets[index - firstVisible], base.y, base.z);
                 shadow.syncNow();
             } else {
                 this.cardShadowFor(child)?.setVisible(false);
@@ -427,7 +470,7 @@ export class GamePresentation extends PresentationComponent {
     protected renderProgress(view: Readonly<GamePageViewState>): void {
         const progressItems = this.findNode(GameUiNodeId.RewardProgress)
             ?.getChildByName(GameUiNodeId.ProgressItems) ?? null;
-        if (progressItems) this.renderProgressItems(progressItems, view.progressCells);
+        if (progressItems) this.renderProgressItems(progressItems, view.progressCells, view.progressSuits);
     }
 
     protected renderStatus(view: Readonly<GamePageViewState>): void {
@@ -1513,6 +1556,10 @@ export class GamePresentation extends PresentationComponent {
         if (!backup) return null;
         const cards = this.backupCardNodes(backup);
         if (cards.length === 0) return null;
+        if (this._level?.portraitLayout?.stockAnchor === 'right') {
+            const ordered = [...cards].sort((a,b) => a.position.x - b.position.x);
+            return ordered[ordered.length - 1] ?? null;
+        }
         const index = Math.max(0, Math.min(count, cards.length) - 1);
         return cards[index] ?? null;
     }
@@ -1614,7 +1661,7 @@ export class GamePresentation extends PresentationComponent {
     protected renderEconomy(view: Readonly<GamePageViewState>): void {
         const coinLabel = this.findNode(GameUiNodeId.CoinWallet)
             ?.getChildByName('coin_num')?.getComponent(Label) ?? null;
-        if (coinLabel) coinLabel.string = String(view.coins);
+        if (coinLabel) coinLabel.string = String(view.coins).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
         this.renderActionCost(PaidGameAction.Rollback, view.actionCosts[PaidGameAction.Rollback]);
         this.renderActionCost(PaidGameAction.Wild, view.actionCosts[PaidGameAction.Wild]);
@@ -1679,10 +1726,12 @@ export class GamePresentation extends PresentationComponent {
     protected renderProgressItems(
         progressItems: Node,
         cells: readonly ProgressCellState[],
+        suits?: readonly (CardDef['suit'] | null)[],
     ): void {
-        this.ensureProgressItemCount(progressItems);
+        if (suits) this.referenceProgressSuits = suits;
+        this.ensureProgressItemCount(progressItems, cells.length);
         progressItems.children.forEach((item, index) => {
-            if (index >= HITS_PER_REWARD) {
+            if (index >= cells.length) {
                 item.active = false;
                 return;
             }
@@ -1691,13 +1740,13 @@ export class GamePresentation extends PresentationComponent {
         });
     }
 
-    protected ensureProgressItemCount(progressItems: Node): void {
+    protected ensureProgressItemCount(progressItems: Node, count = HITS_PER_REWARD): void {
         const centerTemplate = progressItems.children[1] ?? null;
         if (!centerTemplate) return;
 
         const first = progressItems.children[0] ?? null;
         const spacing = centerTemplate.position.x - (first?.position.x ?? centerTemplate.position.x - 46.5);
-        while (progressItems.children.length < HITS_PER_REWARD) {
+        while (progressItems.children.length < count) {
             const index = progressItems.children.length;
             const item = instantiate(centerTemplate) as Node;
             item.name = `center_${index}`;
@@ -1711,6 +1760,22 @@ export class GamePresentation extends PresentationComponent {
     }
 
     protected renderProgressColor(item: Node, index: number, cellState: ProgressCellState): void {
+        if (this.referencePips && this.referenceGlyphMaterial) {
+            item.children.forEach(child => { child.active = false; });
+            item.setPosition((687 + index * 16 - 752) * 345 / 168, 0);
+            let glyph = item.getChildByName('referencePip');
+            if (!glyph) {
+                glyph = new Node('referencePip'); glyph.layer = item.layer;
+                glyph.addComponent(UITransform).setContentSize(14 * 345 / 168, 16 * 82 / 40);
+                item.addChild(glyph); const sprite = glyph.addComponent(Sprite);
+                sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.customMaterial = this.referenceGlyphMaterial;
+            }
+            glyph.active = cellState !== ProgressCellState.Empty;
+            const sprite = glyph.getComponent(Sprite)!;
+            sprite.spriteFrame = this.referencePips[this.referenceProgressSuits[index] ?? 'club'];
+            sprite.color = cellState === ProgressCellState.Red ? new Color(249, 49, 37) : new Color(245, 244, 250);
+            return;
+        }
         const suffix = index === 0 ? '01' : '02';
         const assetName = cellState === ProgressCellState.Red
             ? `img_main_progress_red${suffix}`

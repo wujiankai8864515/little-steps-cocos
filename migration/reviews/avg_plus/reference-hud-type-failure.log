@@ -1,0 +1,5 @@
+[96massets/mods/base-card/GamePresentation.ts[0m:[93m1559[0m:[93m128[0m - [91merror[0m[90m TS2550: [0mProperty 'at' does not exist on type 'Node[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.
+
+[7m1559[0m         if (this._level?.portraitLayout?.stockAnchor === 'right') return [...cards].sort((a,b) => a.position.x - b.position.x).at(-1) ?? null;
+[7m    [0m [91m                                                                                                                               ~~[0m
+

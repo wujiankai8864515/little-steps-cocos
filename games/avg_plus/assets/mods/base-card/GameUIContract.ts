@@ -1,4 +1,4 @@
-import type { SolitaireGameState } from './HighLowSolitaireCore';
+import type { CardDef, SolitaireGameState } from './HighLowSolitaireCore';
 import {
     PaidGameAction,
     type GameSessionViewState,
@@ -65,7 +65,7 @@ export interface GameUiComponentSpec {
     readonly runtimeOwned?: boolean;
 }
 
-/** 14 个有状态 UI 组件；进度组件内部固定渲染 4 个无状态 ProgressItem。 */
+/** 14 个有状态 UI 组件；进度数量和花色由视图状态提供。 */
 export const GAME_UI_COMPONENT_SPECS: readonly GameUiComponentSpec[] = [
     { id: GameUiComponentId.Board, node: GameUiNodeId.Board, viewFields: ['boardCards'], emits: [GameUiActionType.PlayBoardCard] },
     { id: GameUiComponentId.CurrentCard, node: GameUiNodeId.CurrentCard, viewFields: ['currentCardName'] },
@@ -113,6 +113,7 @@ export interface GamePageViewState {
     readonly stockRemainingCount: number;
     readonly coins: number;
     readonly progressCells: readonly ProgressCellState[];
+    readonly progressSuits: readonly (CardDef['suit'] | null)[];
     readonly actionCosts: Readonly<Record<PaidGameAction, number>>;
     readonly controls: GameControlViewState;
     readonly statusMessage: string;
@@ -173,6 +174,7 @@ export function buildGamePageViewState(source: Readonly<GamePageViewSource>): Ga
         stockRemainingCount: core.stockRemainingCount,
         coins: session.coins,
         progressCells: [...session.progressCells],
+        progressSuits: [...(session.progressSuits ?? [])],
         actionCosts: { ...session.actionCosts },
         controls: {
             retryVisible: session.freeStockUsedUp,

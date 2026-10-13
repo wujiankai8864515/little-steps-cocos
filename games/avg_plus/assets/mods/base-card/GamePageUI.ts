@@ -1,4 +1,4 @@
-import { _decorator, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
+import { _decorator, Node, Button, EffectAsset, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import type { CommittedContext } from '../../foundation/Contracts';
@@ -26,9 +26,11 @@ export class GamePageUI extends GamePresentation {
     private onCheckpoint: ((state: Readonly<CardState>, action: string) => Promise<void>) | null = null;
     private backgroundFrame: SpriteFrame | null = null;
     private initialStockCount = 10;
+    private gems = 0;
+    private completionRewardCoins = 0;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
-        initialCoins: number; economy: EconomyConfig; background?: CardBackgroundConfig;
+        initialCoins: number; initialGems?: number; headerTitle?: string; economy: EconomyConfig; background?: CardBackgroundConfig;
         checkpoint: (state: Readonly<CardState>, action: string) => Promise<void>;
     }): Promise<void> {
         const entryOpacity=this.node.getComponent(UIOpacity)??this.node.addComponent(UIOpacity);
@@ -37,6 +39,7 @@ export class GamePageUI extends GamePresentation {
         this.onExit = onExit ?? null;
         this.onComplete = onComplete ?? null;
         this.economy = options?.economy; this.onCheckpoint = options?.checkpoint ?? null;
+        this.gems = options?.initialGems ?? 0;
         if (options?.background) await this.applyBackground(options.background);
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
@@ -84,6 +87,17 @@ export class GamePageUI extends GamePresentation {
             const height = level.cardSize.width * wildFrame.originalSize.height / wildFrame.originalSize.width;
             wild.node.getComponent(UITransform)?.setContentSize(level.cardSize.width, height);
             wild.node.setPosition(0, (level.cardSize.height - height) / 2);
+        }
+        if (this.economy?.streakTarget === 5) {
+            const [board, spade, club, heart, diamond, coin, effect] = await this.lifetime.run(() => Promise.all([
+                CardSpriteLoader.loadSpriteFrame('ref_progress_board'),
+                CardSpriteLoader.loadSpriteFrame('ref_pip_spade'), CardSpriteLoader.loadSpriteFrame('ref_pip_club'),
+                CardSpriteLoader.loadSpriteFrame('ref_pip_heart'), CardSpriteLoader.loadSpriteFrame('ref_pip_diamond'),
+                CardSpriteLoader.loadSpriteFrame('ref_reward_coin'),
+                new Promise<EffectAsset>((resolve, reject) => resources.load('assets/reference/reference-glyph', EffectAsset, (error, asset) => error || !asset ? reject(error ?? new Error('进度材质缺失')) : resolve(asset))),
+            ]), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
+            this.lifetime.check();
+            this.initializeReferenceHud(board, {spade,club,heart,diamond}, effect, options?.headerTitle ?? level.levelId, coin);
         }
         const base = createCardMod(level, entry.config.seed ?? 20260917, {
             render: ctx => [{ id: 'base-card.render', timeoutMs: 10000, run: async scope => {
@@ -180,11 +194,13 @@ export class GamePageUI extends GamePresentation {
                 }
                 const completion = new Node('CardCompletion');
                 completion.layer = this.node.layer; this.node.addChild(completion);
-                completion.addComponent(CardCompletionUI).open(this.findNode(GameUiNodeId.CoinWallet), () => {
+                await this.lifetime.run(() => completion.addComponent(CardCompletionUI).open({
+                    coins: this.model().session.coins, gems: this.gems, rewardCoins: this.completionRewardCoins,
+                }, () => {
                     const callback = this.onComplete; this.onComplete = null; this.onExit = null;
                     // Keep the completed board stable until Continue; hand off after the button event.
                     this.scheduleOnce(() => callback?.(), 0);
-                });
+                }), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
             }
         } finally { if (this.node.isValid && !this.exiting) { this.refresh(false); this.lock(false); } }
     }
@@ -224,9 +240,10 @@ export class GamePageUI extends GamePresentation {
             return;
         }
         if (result.kind === 'play') {
+            this.completionRewardCoins = result.completionRewardCoins ?? 0;
             const source = this.findNode(GameUiNodeId.Board)?.getChildByName(result.slotId) ?? null;
             const progress = this.findNode(GameUiNodeId.RewardProgress)?.getChildByName(GameUiNodeId.ProgressItems);
-            if (progress) this.renderProgressItems(progress, result.progressCells);
+            if (progress) this.renderProgressItems(progress, result.progressCells, result.progressSuits);
             await this.animateBoardSuccess(source, result.move, core.getState());
             scope.check();
             if (result.rewardCoins) { this.showToast(`连击奖励 +${result.rewardCoins}`); await this.animateCoinReward(); scope.check(); await this.animateProgressReset(session.getViewState().progressCells); }
@@ -240,9 +257,10 @@ export class GamePageUI extends GamePresentation {
         // 不再播放“从按钮新增卡牌”的飞牌动画。
         else if (result.kind === 'addBackup') { /* afterRender 负责隐藏按钮并开放牌堆。 */ }
         else if (result.kind === 'rollback' && result.visual) {
+            this.referenceProgressSuits = session.getViewState().progressSuits;
             await Promise.all([this.animateRollback(result.visual, core.getState(), session.wildReady ? 'poker_wild' : core.currentCard!.cardName), this.animateProgressRestore(result.previousProgress, session.getViewState().progressCells)]);
         }
     }
     private lock(value: boolean): void { this.ensureInputBlocker().active = value; if (value) this.bringInputBlockerToFront(); }
-    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; this.backgroundFrame?.decRef(); this.backgroundFrame=null; super.onDestroy(); }
+    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; this.backgroundFrame?.decRef(); this.backgroundFrame=null; this.disposeReferenceHud(); super.onDestroy(); }
 }

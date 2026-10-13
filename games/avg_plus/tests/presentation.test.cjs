@@ -118,3 +118,11 @@ test('scene destruction settles animation waits and stops every owned tween',asy
  const check=view.visualCheckpoint();view.onDestroy();await pending;
  assert.equal(animation.stopped,true);assert.throws(check,/失效/);view.onDestroy();
 });
+
+test('reference right-anchored stock removes leftmost slots and keeps the top card fixed through draw and undo',()=>{
+ const slots=Array.from({length:15},(_,i)=>-117+i*22);
+ assert.deepEqual(stableVisibleBackupCardOffsets(slots,15,'right'),slots);
+ const after=stableVisibleBackupCardOffsets(slots,14,'right');assert.deepEqual(after,slots.slice(1));assert.equal(after.at(-1),slots.at(-1));
+ assert.deepEqual(stableVisibleBackupCardOffsets(slots,1,'right'),[slots.at(-1)]);
+ assert.deepEqual(stableVisibleBackupCardOffsets(slots,15,'right'),slots);
+});

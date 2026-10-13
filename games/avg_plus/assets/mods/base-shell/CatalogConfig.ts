@@ -2,6 +2,10 @@ export interface EconomyConfig {
     readonly initialCoins: number;
     readonly initialGems: number;
     readonly entryCost: number;
+    readonly completionReward?: number;
+    readonly streakRewardCoins?: number;
+    readonly streakTarget?: number;
+    readonly streakResetOnDraw?: boolean;
     readonly rollback: { readonly base: number; readonly increment: number };
     readonly wild: { readonly base: number; readonly increment: number };
     readonly addBackup: { readonly base: number; readonly increment: number };
@@ -52,10 +56,13 @@ export function parseCatalogConfig(value: any): CatalogConfig {
         throw new Error('目录配置结构无效');
     }
     const e = value.economy;
+    if ((e.streakTarget !== undefined && (!Number.isInteger(e.streakTarget) || e.streakTarget < 1 || e.streakTarget > 12)) ||
+        (e.streakResetOnDraw !== undefined && typeof e.streakResetOnDraw !== 'boolean')) throw new Error('连击配置无效');
     const b = value.cardBackground;
     if (b !== undefined && (!record(b) || typeof b.spritePath !== 'string' || !/^assets\/[A-Za-z0-9_/-]+$/.test(b.spritePath) ||
         b.spritePath.includes('..') || ![b.focalX,b.focalY].every(n => Number.isFinite(n) && n >= 0 && n <= 1))) throw new Error('卡牌背景配置无效');
     if (![e.initialCoins, e.initialGems, e.entryCost].every(amount) ||
+        !['completionReward', 'streakRewardCoins'].every(key => e[key] === undefined || amount(e[key])) ||
         !['rollback', 'wild', 'addBackup'].every(key => record(e[key]) && amount(e[key].base) && amount(e[key].increment))) {
         throw new Error('目录金币或动作费用配置无效');
     }

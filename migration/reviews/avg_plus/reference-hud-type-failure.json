@@ -1,0 +1,13 @@
+{
+  "item": "AVG.REFUI.01",
+  "trigger": "Typecheck after implementing a fixed right stock edge",
+  "evidence": "reference-hud-type-failure.log",
+  "rootCause": "Array.at is outside the current TS target library.",
+  "repair": "Use the sorted array final index; retain the library target.",
+  "afterRepair": {
+    "typecheckFiles": 42,
+    "testsPassed": 60,
+    "testsFailed": 0
+  },
+  "assetGate": "18 pre-existing UUIDs still missing; baseline unchanged"
+}

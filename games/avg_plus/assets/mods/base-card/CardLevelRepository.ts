@@ -98,6 +98,7 @@ export class CardLevelRepository {
         if (level.portraitLayout !== undefined && (!this.isRecord(level.portraitLayout) || !Number.isFinite(level.portraitLayout.currentCardX) || Math.abs(level.portraitLayout.currentCardX) > 500)) {
             throw new Error(`[CardLevelRepository] ${expectedLevelId} 竖屏操作行位置非法。`);
         }
+        if (level.portraitLayout?.stockAnchor !== undefined && !['left','right'].includes(level.portraitLayout.stockAnchor)) throw new Error(`[CardLevelRepository] ${expectedLevelId} 备用牌锚点非法。`);
 
         for (const slot of level.slots) {
             this.validateSlot(expectedLevelId, slot);
