@@ -1,0 +1,62 @@
+{
+  "item": "AVG.NATIVE.06",
+  "candidate": "avg-plus-android-20261013T213915002195Z",
+  "source": "e47653fd3b1ce7cb1b7b0901be8010611db798ed",
+  "apkSha256": "d9b66fa7707efe0c4b8afadb018121a5c76fce900d726fa1ca79e54ad38b61d5",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "initialStoredCoins": 4200,
+  "entryCost": 500,
+  "initialRoundCoins": 3700,
+  "wild": {
+    "successfulUseCost": 500,
+    "actualCoinsAfterUse": 3200,
+    "nextPrice": 600,
+    "rollbackCost": 50,
+    "actualCoinsAfterUndo": 3650,
+    "nextPriceAfterUndo": 600,
+    "restoredPreparedWildCancelledBeforeNormalPlay": true
+  },
+  "configuredLayout": {
+    "boardCards": 19,
+    "initialStockCount": 15,
+    "currentCardX": 110
+  },
+  "originalCrops": "passed: original back and wild, separate regions, no duplicate source price",
+  "stockEdgeTouch": {
+    "input": [
+      415,
+      1960
+    ],
+    "before": "no draw; current 7 diamond",
+    "after": "drawn 4 diamond; 14 stock remain",
+    "leftEdgeStable": true
+  },
+  "pause": "passed: paused board tap ignored, resume allowed",
+  "route": "reference-cards-solution.json",
+  "routeInputIntervalSeconds": 4,
+  "fullNewFirstLevel": "passed",
+  "expectedFinalCoins": 4050,
+  "actualPersistedCoins": 4050,
+  "dailyWins": 2,
+  "existingAvgResume": "passed: original chapter and visible 02/28",
+  "adsUnavailableNoReward": true,
+  "screens": [
+    "reference-cards-fixed-board.png",
+    "reference-cards-stock-edge-after-fix.png",
+    "reference-cards-paused.png",
+    "reference-cards-wild-cost-600.png",
+    "reference-cards-wild-undo.png",
+    "reference-cards-native-route-33.png",
+    "reference-cards-to-own-avg.png"
+  ],
+  "fullFidelity": "pending: hidden ranks/draw sequence, header/progress, completion award presentation, other reference UI/effects",
+  "physicalPhone": "pending",
+  "formalSigning": "pending",
+  "coldBoot": {
+    "status": "passed",
+    "coins": 4050,
+    "storyPageIndex": 1,
+    "evidence": "reference-cards-fixed-cold-menu.png"
+  }
+}

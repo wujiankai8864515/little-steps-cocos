@@ -49,7 +49,11 @@
     "layout": "passed: 19 cards, four fans, central king, 15 stock cards",
     "failedThenRepaired": "wild price included in crop; expanded pile outside hit bounds",
     "evidence": "reference-cards-native-failure.json",
-    "afterFix": "pending"
+    "afterFix": {
+      "candidate": "avg-plus-android-20261013T213915002195Z",
+      "status": "passed: original crops, hit bounds, full first level and own AVG resume",
+      "evidence": "reference-cards-native-delivery.json"
+    }
   },
   "fullFidelity": "pending: hidden ranks, exact draw sequence and other reference elements",
   "validation": {

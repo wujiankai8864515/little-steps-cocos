@@ -17,5 +17,11 @@
     "failed": 0,
     "scope": "catalog state, configured paid actions, rollback consumption history"
   },
-  "native": "pending"
+  "native": {
+    "status": "passed",
+    "priceBefore": 500,
+    "afterSuccess": 600,
+    "afterUndo": 600,
+    "evidence": "reference-cards-wild-cost-600.png"
+  }
 }
