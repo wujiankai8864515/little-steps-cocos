@@ -74,8 +74,8 @@ test('corrupt primary save falls back to a valid previous generation and retains
 });
 test('reference paid actions use JSON costs and preserve consumption history on undo',()=>{
  const s=new GameSessionStore(config().economy,5200);assert.equal(s.getActionCost(PaidGameAction.Rollback),50);assert.equal(s.getActionCost(PaidGameAction.Wild),500);assert.equal(s.getActionCost(PaidGameAction.AddBackup),500);
- const before=s.captureSnapshot();s.spend(PaidGameAction.Wild);assert.equal(s.coins,4700);assert.equal(s.getActionCost(PaidGameAction.Wild),1000);
- s.restoreForRollback(before,-500);assert.equal(s.coins,5150);assert.equal(s.getActionCost(PaidGameAction.Wild),1000);assert.equal(s.getActionCost(PaidGameAction.Rollback),50);
+ const before=s.captureSnapshot();s.spend(PaidGameAction.Wild);assert.equal(s.coins,4700);assert.equal(s.getActionCost(PaidGameAction.Wild),600);
+ s.restoreForRollback(before,-500);assert.equal(s.coins,5150);assert.equal(s.getActionCost(PaidGameAction.Wild),600);assert.equal(s.getActionCost(PaidGameAction.Rollback),50);
 });
 test('retry charges the current wallet instead of resetting it to the initial balance; insufficient retry preserves state',async()=>{
  const level=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/art/resources/config/card-levels',ids[0]+'.json')));

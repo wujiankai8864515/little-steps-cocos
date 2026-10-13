@@ -1,0 +1,21 @@
+{
+  "item": "AVG.CARD.02",
+  "sourceVideo": "/Users/wkk/Downloads/bc765723e70bda6ecc8189203cd990e6.mp4",
+  "referenceSecond": 144,
+  "frame": "migration/reviews/avg_plus/reference/wild-cost-144.png",
+  "frameSha256": "c8346c11bec2cffcf1c38b640434111e5ac93e4dd819397df047602cfe7d6186",
+  "observed": {
+    "initialWildPrice": 500,
+    "afterFirstSuccessfulWildPrice": 600,
+    "walletBefore": 5200,
+    "walletAfterFirst": 4700
+  },
+  "rootCause": "Previous channel economy configured an increment of 500 instead of the observed 100.",
+  "repair": "Use JSON wild price 500 + 100 per successful use; retain consumption history across rollback.",
+  "unit": {
+    "passed": 9,
+    "failed": 0,
+    "scope": "catalog state, configured paid actions, rollback consumption history"
+  },
+  "native": "pending"
+}
