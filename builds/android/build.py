@@ -94,11 +94,46 @@ def audit_native_export(stage, game):
     properties = re.sub(r'^PROP_BUILD_TOOLS_VERSION=.*$',
                         'PROP_BUILD_TOOLS_VERSION=' + game['buildToolsVersion'], properties, flags=re.M)
     properties_path.write_text(properties)
+    if not re.fullmatch(r'\d+\.\d+\.\d+', game['version']) or not isinstance(game['versionCode'], int) or game['versionCode'] < 1:
+        raise ValueError('Invalid configured Android application version')
+    # Creator's native template has hard-coded 1.0/1, independent of its game metadata.
+    gradle_path = stage / game['project'] / 'native/engine/android/app/build.gradle'
+    gradle = gradle_path.read_text()
+    gradle, code_count = re.subn(r'\bversionCode\s+\d+', 'versionCode ' + str(game['versionCode']), gradle)
+    gradle, name_count = re.subn(r'\bversionName\s+"[^"]*"', 'versionName "' + game['version'] + '"', gradle)
+    if code_count != 1 or name_count != 1:
+        raise ValueError('Unexpected Cocos native application version template')
+    gradle_path.write_text(gradle)
     log = (stage / 'export.log').read_text()
     missing = sorted(set(re.findall(r'Missing uuid: "([^"]+)"', log)))
     if missing:
         raise ValueError('Native prefab references missing assets: ' + ', '.join(missing))
-    return {'numericSdkProperties': True, 'buildToolsVersion': game['buildToolsVersion'], 'missingReferences': []}
+    return {'numericSdkProperties': True, 'buildToolsVersion': game['buildToolsVersion'],
+            'versionName': game['version'], 'versionCode': game['versionCode'], 'missingReferences': []}
+
+
+def audit_apk(path, game, env):
+    tools = Path(env['sdk']) / 'build-tools' / game['buildToolsVersion']
+    badging = subprocess.check_output([str(tools / 'aapt'), 'dump', 'badging', str(path)], text=True)
+    expected = f"package: name='{game['packageName']}' versionCode='{game['versionCode']}' versionName='{game['version']}'"
+    if expected not in badging:
+        raise ValueError('APK package/version does not match its configured channel identity')
+    xml = subprocess.check_output([str(tools / 'aapt'), 'dump', 'xmltree', str(path), 'AndroidManifest.xml'], text=True)
+    orientations = re.findall(r'screenOrientation\([^)]*\)=\(type 0x10\)(0x[0-9a-f]+)', xml)
+    if not orientations or any(value not in ('0x1', '0x7') for value in orientations):
+        raise ValueError('APK does not declare only portrait orientations')
+    certificate = subprocess.check_output([str(tools / 'apksigner'), 'verify', '--print-certs', str(path)], text=True,
+                                          env=dict(os.environ, JAVA_HOME=env['java']))
+    match = re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-f]+)', certificate)
+    if not match:
+        raise ValueError('APK signature verification did not return a certificate digest')
+    native_code = re.search(r"native-code: (.*)", badging)
+    abis = re.findall(r"'([^']+)'", native_code.group(1)) if native_code else []
+    if sorted(abis) != sorted(game['appABIs']):
+        raise ValueError('APK ABI differs from the configured channel')
+    return {'packageName': game['packageName'], 'versionName': game['version'], 'versionCode': game['versionCode'],
+            'orientation': 'portrait', 'abis': abis, 'signatureVerified': True, 'certificateSha256': match.group(1),
+            'signing': 'debug-candidate'}
 
 
 def build(args):
@@ -171,7 +206,8 @@ def build(args):
         if not apks:
             raise RuntimeError('Native compile produced no APK')
         record['apk'] = [{'path': str(p), 'bytes': p.stat().st_size,
-                          'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in apks]
+                          'sha256': hashlib.sha256(p.read_bytes()).hexdigest(),
+                          'audit': audit_apk(p, game, env)} for p in apks]
         record['sourceUnchanged'] = inputs(game['project']) == before
         if not record['sourceUnchanged']:
             raise RuntimeError('Source changed during build; candidate retained, fixed output not updated')
