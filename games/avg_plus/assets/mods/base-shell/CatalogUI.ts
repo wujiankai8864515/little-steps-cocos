@@ -150,14 +150,15 @@ export class CatalogUI extends PresentationComponent {
         const node=this.child(parent,'storyCover',width,height,x,y);
         const mask=node.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
         const stencil=node.getComponent(Graphics)!;
+        stencil.clear();stencil.fillColor=Color.WHITE;
         stencil.roundRect(-width/2,-height/2,width,height,38);stencil.fill();
         this.sprite(node,'coverBackground',story.bundle+'/'+story.background,0,0,width,height);
         for(let i=0;i<story.roles.length;i++) {
             const h=height*1.9,w=h/2.8;
-            this.sprite(node,'coverRole_'+i,story.bundle+'/'+story.roles[i],(i-(story.roles.length-1)/2)*width*0.36,-height*0.3,w,h);
+            this.sprite(node,'coverRole_'+i,story.bundle+'/'+story.roles[i],(i-(story.roles.length-1)/2)*width*0.36,-height*0.43,w,h);
         }
         const shade=this.child(node,'coverShade',width,height);const g=shade.addComponent(Graphics);
-        for(let i=0;i<24;i++){g.fillColor=new Color(18,10,37,Math.round(150*(1-i/24)));g.rect(-width/2,-height/2+i*height/24,width,height/24+1);g.fill();}
+        for(let i=0;i<96;i++){g.fillColor=new Color(18,10,37,Math.round(150*(1-i/96)));g.rect(-width/2,-height/2+i*height/96,width,height/96);g.fill();}
         const edge=this.child(parent,'coverBorder',width,height,x,y);const outline=edge.addComponent(Graphics);
         outline.lineWidth=3;outline.strokeColor=new Color(233,211,255,120);outline.roundRect(-width/2,-height/2,width,height,38);outline.stroke();
         return node;
@@ -220,7 +221,7 @@ export class CatalogUI extends PresentationComponent {
             const x=(i%2?1:-1)*263,y=584-Math.floor(i/2)*561;
             const tile=this.panel(root,'collection_'+c.id,x,y,478,495,new Color(52,32,87),30);
             const mask=tile.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
-            const g=tile.getComponent(Graphics)!;g.clear();g.roundRect(-239,-247.5,478,495,30);g.fill();
+            const g=tile.getComponent(Graphics)!;g.clear();g.fillColor=Color.WHITE;g.roundRect(-239,-247.5,478,495,30);g.fill();
             if(p.highestPage>=c.unlockPage){
                 const isRole=c.asset.startsWith('roles/');this.sprite(tile,'collectionImage',story.bundle+'/'+c.asset,0,isRole?-265:0,isRole?435:478,isRole?1218:495);
                 const bottom=this.panel(tile,'caption',0,-205,478,85,DARK,0);this.text(bottom,c.title,27,0,0,450,70);
@@ -284,9 +285,9 @@ export class CatalogUI extends PresentationComponent {
     private gradientPill(parent: Node,text: string,x: number,y: number,w: number,h: number,action:()=>void,font=45,disabled=false): void {
         const node=this.child(parent,text,w,h,x,y);
         const mask=node.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
-        const stencil=node.getComponent(Graphics)!;stencil.roundRect(-w/2,-h/2,w,h,h/2);stencil.fill();
+        const stencil=node.getComponent(Graphics)!;stencil.clear();stencil.fillColor=Color.WHITE;stencil.roundRect(-w/2,-h/2,w,h,h/2);stencil.fill();
         const paint=this.child(node,'gradient',w,h),g=paint.addComponent(Graphics);
-        for(let i=0;i<32;i++){const t=i/31;g.fillColor=disabled?new Color(69,43,83):new Color(Math.round(255-75*t),Math.round(113-108*t),Math.round(119+79*t));g.rect(-w/2+i*w/32,-h/2,w/32+1,h);g.fill();}
+        for(let i=0;i<160;i++){const t=i/159;g.fillColor=disabled?new Color(69,43,83):new Color(Math.round(255-75*t),Math.round(113-108*t),Math.round(119+79*t));g.rect(-w/2+i*w/160,-h/2,w/160,h);g.fill();}
         this.text(node,text,font,0,0,w-34,h-10).isBold=true;
         const button=node.addComponent(Button);button.interactable=!disabled;button.transition=Button.Transition.SCALE;button.zoomScale=1.035;button.duration=0.08;node.on(Button.EventType.CLICK,action,this);
     }

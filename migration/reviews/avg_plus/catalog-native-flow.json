@@ -1,0 +1,42 @@
+{
+  "item": "AVG.CATALOG.02",
+  "candidate": "avg-plus-android-20261013T192610475799Z",
+  "source": "76bca65",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "verified": [
+    "new APK supersedes old 0.1.0.2 cache without clearing user data",
+    "daily reward once: 5700 -> 5800",
+    "story favourite and personal rating",
+    "collections page locked before story reading",
+    "sound preference persists",
+    "original AVG page 1 -> page 2 -> exit -> resume page 2",
+    "card entry fee: 5800 -> 5300"
+  ],
+  "savedReadback": {
+    "coins": 5300,
+    "gems": 40,
+    "dailyClaimed": [
+      "login"
+    ],
+    "storyPageIndex": 1,
+    "storyPageCount": 28,
+    "favourite": true,
+    "rating": 5,
+    "sound": false,
+    "round": {
+      "id": 1,
+      "levelId": "level_difficulty1_01",
+      "complete": false,
+      "entryRefundable": true
+    }
+  },
+  "renderProblems": [
+    "gradient controls appear rectangular",
+    "cover crop cuts heads",
+    "cover overlay strip seams"
+  ],
+  "fix": "clear Mask default geometry, set opaque stencil fill, adjust crop and remove overlapping shade strips",
+  "newRenderVerification": "pending",
+  "fidelity": "pending"
+}

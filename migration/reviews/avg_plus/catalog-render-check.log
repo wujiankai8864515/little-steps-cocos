@@ -1,0 +1,78 @@
+Typecheck passed (42 files)
+✔ bad catalog and missing card texture reject and can recover on the next request (1.053208ms)
+✔ reference economy, story catalog and collection unlocks reference existing original assets/pages (4.117875ms)
+✔ daily login reward is claimable once; incomplete quests and duplicate inputs cannot grant coins (1.825083ms)
+✔ daily reset occurs on a newer UTC day; clock rollback cannot reopen an already claimed day (1.301417ms)
+✔ card entry debits once, early load failure refunds once, stale rounds and duplicate wins are rejected or idempotent (1.083916ms)
+✔ likes, favourites, rating and music preferences persist without changing wallet or actual chapter content (0.6165ms)
+✔ real AVG snapshot resumes the next page, keeps extension state, and reset retains earned collection progress (0.845292ms)
+✔ corrupt primary save falls back to a valid previous generation and retains rejected bytes; corrupt both fails visibly (0.310708ms)
+✔ reference paid actions use JSON costs and preserve consumption history on undo (0.24225ms)
+✔ retry charges the current wallet instead of resetting it to the initial balance; insufficient retry preserves state (10.904042ms)
+✔ the win handoff resolves a JSON card level to the existing AVG chapter (3.867041ms)
+✔ game flow validates references and leaves future JSON levels independently configurable (0.713292ms)
+✔ four hits, multiplier mod, rollback includes extension state and actual reward delta (15.949ms)
+✔ invalid play never changes snapshots; draw and undo preserve deck integrity (2.454208ms)
+✔ drawing while a legal move exists preserves state and requests a missed-move hint (0.988209ms)
+✔ wild-card use is billed only on successful play and its use counter survives undo (2.142709ms)
+✔ base modules run without optional mods; seeded card sessions match (3.405458ms)
+✔ single-backup test mode keeps one stock card and both opening cards miss the board (1.101583ms)
+✔ AVG default choices advance sequentially; branch mod changes the destination (0.650083ms)
+✔ invalid branch config, duplicate pages, invalid visual effects fail early (0.45525ms)
+✔ all 28 migrated AVG pages parse into JSON-safe config and play through in order (20.23825ms)
+✔ update SHA-256 matches Node crypto at padding boundaries and large files (66.63425ms)
+✔ update versions compare numerically and malformed versions reject (0.275166ms)
+✔ updates pin the native contract, repository, archive integrity and local search root (0.352875ms)
+✔ paid backup entry previews the five cards it unlocks (0.460583ms)
+✔ drawing the top backup card never repositions the remaining pile (0.398458ms)
+✔ backup slots expand dynamically from the fixed left edge (0.057625ms)
+✔ opening deal sends lower layers first, then scans each layer left-to-right and top-to-bottom (0.224375ms)
+✔ opening deal rejects cyclic cover relationships (0.188917ms)
+✔ opening timeline honors the configured render-frame interval (0.281292ms)
+✔ missed-move hint completes four left-right sways in exactly one second (0.115833ms)
+✔ board flight rotation matches the measured reference-video frames (0.117542ms)
+✔ board prefab and Figma levels share one-to-one card geometry (11.377417ms)
+✔ paid backup button is centered over the backup cards (0.691209ms)
+✔ a late asset continuation cannot mutate the presentation after cancellation (0.228875ms)
+✔ scene destruction settles animation waits and stops every owned tween (0.203791ms)
+✔ dependency order, tie-breaker, missing/cycle/conflicts and action collision (14.257625ms)
+✔ all modules commit atomically; hook failure leaves state and history unchanged (0.718208ms)
+✔ snapshots are detached and incompatible configs cannot restore (0.392083ms)
+✔ beforeAction timeout ignores late draft writes and unlocks (49.754334ms)
+✔ presentation timeout preserves committed state, runs cleanup, reports failure (7.062167ms)
+✔ busy duplicate input rejected; dispose cancels preparation without commit (0.617333ms)
+✔ follow-up cycle is bounded (1.323458ms)
+✔ async reducers rejected and do not poison next action (0.275ms)
+✔ invalid action payload never leaves runtime busy (0.325917ms)
+✔ undo includes every namespace and restores deterministic snapshot (0.740791ms)
+✔ late resource completion is discarded once; cancellation cleanup executes (37.450458ms)
+✔ dispose is reverse dependency order and idempotent (0.295125ms)
+✔ malformed action objects fail without poisoning the session (0.172ms)
+✔ presentation plans are sequential and an explicit parallel group owns sibling cancellation (0.29ms)
+✔ an async hook rejecting with a falsy value still aborts the transaction (0.304209ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 391.504125
+迁移丢失原 UUID: 0078d38f-8732-4fb8-a0c0-3447cda0f209
+迁移丢失原 UUID: a9a776a5-a9d2-4718-8568-c666007786ba
+迁移丢失原 UUID: 7ad9c6e6-a74e-4bb4-97aa-118644f40eef
+迁移丢失原 UUID: c7e41609-c537-4876-8a60-fc8c6d0bdcfa
+迁移丢失原 UUID: 27fc84e2-29cd-4f53-8916-adfcc29c563b
+迁移丢失原 UUID: d8aff24c-91a7-483d-b165-3a581cf57717
+迁移丢失原 UUID: 3903626d-0028-4aeb-9b64-c992eb9f8c58
+迁移丢失原 UUID: c3156fa7-3640-4d97-98c2-8e584c458917
+迁移丢失原 UUID: 0474e4e8-dbb1-4381-ac51-474986a0ed7d
+迁移丢失原 UUID: 94988f3f-6e4c-4f2e-ad20-d7c13cc42ca7
+迁移丢失原 UUID: 3e7931e3-a352-4216-b331-755e04230bf2
+迁移丢失原 UUID: bfcc5756-1752-4d89-90e4-75adfa8ed4e2
+迁移丢失原 UUID: 4d8a219c-97b1-4293-9658-62ba200cccdd
+迁移丢失原 UUID: aa3d0fe5-52f9-446b-8c65-a5a3406ba6af
+迁移丢失原 UUID: 7126a9d8-3525-4eb0-8822-824fe984e35d
+迁移丢失原 UUID: 71c1fc43-d1be-4b85-88e4-b728c5737434
+迁移丢失原 UUID: 52ea5f49-ea96-43c1-a307-682d6c7540f5
+迁移丢失原 UUID: 8dace988-2d8c-4425-bf2b-6fe35af512f9
