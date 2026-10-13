@@ -49,7 +49,7 @@ class AndroidChannelTests(unittest.TestCase):
                 self.assertEqual(json.loads(archive.read('assets/resources/import/level.json')), {'slots': [1, 2]})
             manifest = json.loads((output / 'avg-plus-project.manifest').read_text())
             self.assertEqual(manifest['assets']['avg-plus-assets.zip']['md5'], result['sha256'])
-            self.assertTrue(manifest['packageUrl'].endswith('/avg-plus/android/versions/0.1.0.0/'))
+            self.assertTrue(manifest['packageUrl'].endswith('/avg-plus/android/versions/' + result['version'] + '/'))
             main = (assets / 'main.js').read_text()
             self.assertLess(main.index('setSearchPaths'), main.index('require("src/system.bundle.js")'))
             self.assertEqual(json.loads((assets / 'project.manifest').read_text()), manifest)

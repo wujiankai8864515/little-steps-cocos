@@ -6,6 +6,7 @@ import { GamePresentation } from './GamePresentation';
 import { CardLevelRepository } from './CardLevelRepository';
 import { HighLowSolitaireCore } from './HighLowSolitaireCore';
 import { GameSessionStore } from './GameSessionStore';
+import { CardCompletionUI } from './CardCompletionUI';
 import { GameUiAction, GameUiActionType, GameUiNodeId, buildGamePageViewState, type GamePageViewState } from './GameUIContract';
 import { CardState, createCardMod } from './CardMod';
 import { loadProfile, extensionsFor } from '../Registry';
@@ -109,9 +110,13 @@ export class GamePageUI extends GamePresentation {
             } else if (type === 'card.play' && result.status === 'committed' &&
                 this.model().core.isComplete && this.onComplete) {
                 this.exiting = true;
-                const callback = this.onComplete; this.onComplete = null; this.onExit = null;
-                // Rule commit and its owned final-card animation have both settled before handoff.
-                this.scheduleOnce(() => callback(), 0);
+                const completion = new Node('CardCompletion');
+                completion.layer = this.node.layer; this.node.addChild(completion);
+                completion.addComponent(CardCompletionUI).open(this.findNode(GameUiNodeId.CoinWallet), () => {
+                    const callback = this.onComplete; this.onComplete = null; this.onExit = null;
+                    // Keep the completed board stable until Continue; hand off after the button event.
+                    this.scheduleOnce(() => callback?.(), 0);
+                });
             }
         } finally { if (this.node.isValid && !this.exiting) { this.refresh(false); this.lock(false); } }
     }
