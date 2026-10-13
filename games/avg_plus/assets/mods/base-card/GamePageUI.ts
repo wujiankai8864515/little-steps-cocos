@@ -1,4 +1,4 @@
-import { _decorator, Node, Button } from 'cc';
+import { _decorator, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import type { CommittedContext } from '../../foundation/Contracts';
@@ -10,7 +10,7 @@ import { CardCompletionUI } from './CardCompletionUI';
 import { GameUiAction, GameUiActionType, GameUiNodeId, buildGamePageViewState, type GamePageViewState } from './GameUIContract';
 import { CardState, createCardMod } from './CardMod';
 import { loadProfile, extensionsFor } from '../Registry';
-import type { EconomyConfig } from '../base-shell/CatalogConfig';
+import type { CardBackgroundConfig, EconomyConfig } from '../base-shell/CatalogConfig';
 const { ccclass } = _decorator;
 const PACKAGED_CONTENT_LOAD_TIMEOUT_MS = 30000;
 @ccclass('GamePageUI')
@@ -23,15 +23,19 @@ export class GamePageUI extends GamePresentation {
     private exiting = false;
     private economy: EconomyConfig | undefined;
     private onCheckpoint: ((state: Readonly<CardState>, action: string) => Promise<void>) | null = null;
+    private backgroundFrame: SpriteFrame | null = null;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
-        initialCoins: number; economy: EconomyConfig;
+        initialCoins: number; economy: EconomyConfig; background?: CardBackgroundConfig;
         checkpoint: (state: Readonly<CardState>, action: string) => Promise<void>;
     }): Promise<void> {
+        const entryOpacity=this.node.getComponent(UIOpacity)??this.node.addComponent(UIOpacity);
+        entryOpacity.opacity=0;
         this.prepareOpeningVisualState();
         this.onExit = onExit ?? null;
         this.onComplete = onComplete ?? null;
         this.economy = options?.economy; this.onCheckpoint = options?.checkpoint ?? null;
+        if (options?.background) await this.applyBackground(options.background);
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
         // 并使用与外层页面进入流程一致的 30 秒边界，避免先被默认 8 秒取消。
@@ -75,6 +79,7 @@ export class GamePageUI extends GamePresentation {
             diagnostic: entry => console.warn(`[Mods] ${entry.stage}: ${entry.message}`),
         });
         await this.runtime.open();
+        this.lifetime.check();entryOpacity.opacity=255;
         await this.send('card.open');
     }
     private bind(): void {
@@ -86,6 +91,22 @@ export class GamePageUI extends GamePresentation {
         ];
         pairs.forEach(([name, type]) => this.bindAction(name, type));
         this.ensureRewardProgressBackdrop(); this.ensureStatusLabel(); this.ensureInputBlocker();
+    }
+    private async applyBackground(config: CardBackgroundConfig): Promise<void> {
+        const frame = await this.lifetime.run(() => new Promise<SpriteFrame>((resolve,reject) =>
+            resources.load(config.spritePath+'/spriteFrame',SpriteFrame,(error,value)=>error||!value?reject(error??new Error('卡牌背景不存在')):resolve(value))),PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
+        this.lifetime.check();
+        const bg=this.findNode('bg'),sprite=bg?.getComponent(Sprite),transform=bg?.getComponent(UITransform);
+        if(!bg||!sprite||!transform)throw new Error('卡牌背景挂点缺失');
+        frame.addRef();this.backgroundFrame=frame;
+        const widget=bg.getComponent(Widget);if(widget)widget.enabled=false;
+        const viewport=view.getVisibleSize(),root=this.node.getComponent(UITransform)!;
+        const factor=Math.max(Math.max(root.width,viewport.width)/frame.rect.width,Math.max(root.height,viewport.height)/frame.rect.height);
+        const width=frame.rect.width*factor,height=frame.rect.height*factor;
+        transform.setContentSize(width,height);transform.setAnchorPoint(.5,.5);
+        sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=frame;
+        // Preserve the exact source frame's aspect ratio; portrait crops around the mansion.
+        bg.setPosition((.5-config.focalX)*width,(.5-config.focalY)*height);
     }
     private bindAction(name: GameUiNodeId, type: GameUiActionType): void {
         const node = this.findNode(name); if (!node) return;
@@ -195,5 +216,5 @@ export class GamePageUI extends GamePresentation {
         }
     }
     private lock(value: boolean): void { this.ensureInputBlocker().active = value; if (value) this.bringInputBlockerToFront(); }
-    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; super.onDestroy(); }
+    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; this.backgroundFrame?.decRef(); this.backgroundFrame=null; super.onDestroy(); }
 }

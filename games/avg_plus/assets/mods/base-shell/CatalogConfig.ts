@@ -36,7 +36,9 @@ export interface CatalogConfig {
     readonly economy: EconomyConfig;
     readonly stories: readonly StoryConfig[];
     readonly quests: readonly QuestConfig[];
+    readonly cardBackground?: CardBackgroundConfig;
 }
+export interface CardBackgroundConfig { readonly spritePath: string; readonly focalX: number; readonly focalY: number; }
 const ID = /^[A-Za-z0-9_-]+$/;
 const ASSET = /^(backgrounds|roles)\/[A-Za-z0-9_-]+$/;
 const METRICS: readonly QuestMetric[] = ['login', 'choices', 'gemChoices', 'wins', 'ads'];
@@ -50,6 +52,9 @@ export function parseCatalogConfig(value: any): CatalogConfig {
         throw new Error('目录配置结构无效');
     }
     const e = value.economy;
+    const b = value.cardBackground;
+    if (b !== undefined && (!record(b) || typeof b.spritePath !== 'string' || !/^assets\/[A-Za-z0-9_/-]+$/.test(b.spritePath) ||
+        b.spritePath.includes('..') || ![b.focalX,b.focalY].every(n => Number.isFinite(n) && n >= 0 && n <= 1))) throw new Error('卡牌背景配置无效');
     if (![e.initialCoins, e.initialGems, e.entryCost].every(amount) ||
         !['rollback', 'wild', 'addBackup'].every(key => record(e[key]) && amount(e[key].base) && amount(e[key].increment))) {
         throw new Error('目录金币或动作费用配置无效');
