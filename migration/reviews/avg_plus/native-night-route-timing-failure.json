@@ -1,0 +1,12 @@
+{
+  "candidate": "avg-plus-android-20261013T194415376325Z",
+  "route": "native-win-route.json",
+  "inputIntervalSeconds": 1.4,
+  "observed": "route ended with cards remaining and coins 4900, not completed",
+  "expectedRulesResult": "complete; 5100 coins from 4800 initial",
+  "errorsInApplicationLog": false,
+  "cause": "input driver did not wait for combined card flip and reward presentations; controls reject input while busy",
+  "retry": "new paid session, 4 seconds between inputs; no user data reset",
+  "secondAttempt": "fixed startup delay was too short; first screenshot shows details, not card game; no card win claimed",
+  "correctedDriver": "observe intro and fully dealt board before sending the known route"
+}
