@@ -77,7 +77,8 @@ def assemble(repository, destination, fetch=request, release_list=None):
     destination.mkdir(parents=True, exist_ok=False)
     versions = {}
     for release in releases(repository) if release_list is None else release_list:
-        names = {asset['name']: asset for asset in release.get('assets', [])}
+        names = {asset['name']: asset for asset in release.get('assets', [])
+                 if asset.get('state', 'uploaded') == 'uploaded'}
         required = ['avg-plus-project.manifest', 'avg-plus-version.manifest', 'avg-plus-assets.zip']
         if not all(name in names for name in required):
             continue

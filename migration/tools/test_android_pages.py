@@ -69,6 +69,17 @@ class PagesTests(unittest.TestCase):
         self.assertIn('正在准备', (destination / 'index.html').read_text())
         self.assertFalse((destination / 'avg-plus/android/latest').exists())
 
+    def test_incomplete_upload_never_publishes_a_latest_manifest(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary) / 'site'
+            release = {'assets': [{'name': name, 'state': 'new'} for name in
+                ['avg-plus-project.manifest', 'avg-plus-version.manifest', 'avg-plus-assets.zip']]}
+            def forbidden_fetch(*args):
+                self.fail('Incomplete release assets must not be downloaded')
+            with contextlib.redirect_stdout(io.StringIO()):
+                PAGES.assemble(REPO, destination, forbidden_fetch, [release])
+            self.assertFalse((destination / 'avg-plus/android/latest').exists())
+
     def test_immutable_version_cannot_change_content_or_compatibility(self):
         first = payload('0.1.0.0')
         with self.assertRaisesRegex(ValueError, 'previously published'):
