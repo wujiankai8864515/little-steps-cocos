@@ -1,0 +1,122 @@
+I/Cocos   (31657): 07:14:49 [INFO]: AndroidPlatform: APP_CMD_START
+I/Cocos   (31657): 07:14:49 [INFO]: AndroidPlatform: APP_CMD_RESUME
+D/Cocos   (31657): 07:14:49 [DEBUG]: AndroidPlatform: APP_CMD_INIT_WINDOW
+E/Cocos   (31657): 07:14:49 [ERROR]: E/ Failed to accquire interfaces, error: Permission denied
+E/Cocos   (31657):  Re-select port after 37000
+I/Cocos   (31657): 07:14:49 [INFO]: Setup EGLConfig: depth [24] stencil [8] sampleBuffer [0] sampleCount [0]
+D/Cocos   (31657): 07:14:49 [DEBUG]: EGL context bounded to thread 7aed131770
+I/Cocos   (31657): 07:14:49 [INFO]: GLES3 device initialized.
+I/Cocos   (31657): 07:14:49 [INFO]: RENDERER: Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+I/Cocos   (31657): 07:14:49 [INFO]: VENDOR: Google (Google Inc. (Google))
+I/Cocos   (31657): 07:14:49 [INFO]: VERSION: OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+I/Cocos   (31657): 07:14:49 [INFO]: COMPRESSED_FORMATS: etc1 etc2
+I/Cocos   (31657): 07:14:49 [INFO]: FRAMEBUFFER_FETCH: NONE
+I/Cocos   (31657): 07:14:49 [INFO]: MULTI_SAMPLE_RENDER_TO_TEXTURE: NONE
+I/Cocos   (31657): 07:14:49 [INFO]: Device validator enabled.
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ Initializing V8, version: 11.6.189.22
+D/Cocos   (31657):
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ libuv version: 1.13.1
+D/Cocos   (31657):
+E/Cocos   (31657): 07:14:49 [ERROR]: E/ failed to get addresses Permission denied
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ Number of interfaces: 0
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ Please query IP by running the following command in terminal: adb shell ip -4 -br addr
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ Debugger listening..., visit [
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/     devtools://devtools/bundled/js_app.html?v8only=true&ws=IP_ADDR_OF_THIS_DEVICE:43086/00010002-0003-4004-8005-000600070008
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/   ] in chrome browser to debug!
+D/Cocos   (31657): 07:14:49 [DEBUG]: D/ For help see https://nodejs.org/en/docs/inspector
+I/Cocos   (31657): 07:14:49 [INFO]: JS: injectWebAssembly ...
+W/Cocos   (31657): 07:14:50 [WARN]: JS: Failed to set shading scale, pipelineSceneData is invalid.
+D/Cocos   (31657): 07:14:50 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/temp)
+D/Cocos   (31657): 07:14:50 [DEBUG]: JS: [PHYSICS2D]: register box2d.
+I/Cocos   (31657): 07:14:50 [INFO]: AndroidPlatform: APP_CMD_WINDOW_REDRAW_NEEDED
+I/Cocos   (31657): 07:14:50 [INFO]: AndroidPlatform: APP_CMD_GAINED_FOCUS
+D/Cocos   (31657): 07:14:50 [DEBUG]: EGL context bounded to thread 7a62055770
+I/Cocos   (31657): 07:14:50 [INFO]: Device thread detached.
+D/Cocos   (31657): 07:14:50 [DEBUG]: JS: Cocos Creator v3.8.8
+D/Cocos   (31657): 07:14:50 [DEBUG]: JS: Using custom pipeline: Builtin
+I/Cocos   (31657): 07:14:50 [INFO]: Shader 'util/splash-screen|splash-screen-vs:vert|splash-screen-fs:frag' compilation succeeded.
+D/Cocos   (31657): 07:14:51 [DEBUG]: JS: Success to load scene: db://assets/mods/base-shell/scene.scene
+D/Cocos   (31657): 07:14:51 [DEBUG]: In the constructor of HttpClient!
+I/Cocos   (31657): 07:14:51 [INFO]: Shader 'internal/builtin-graphics|vs:vert|fs:frag' compilation succeeded.
+I/Cocos   (31657): 07:14:51 [INFO]: Shader 'for2d/builtin-sprite|sprite-vs:vert|sprite-fs:frag|CC_USE_EMBEDDED_ALPHA0|USE_TEXTURE1|IS_GRAY0' compilation succeeded.
+D/Cocos   (31657): 07:14:52 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/avg-plus-hot-update)
+D/Cocos   (31657): 07:14:52 [DEBUG]: find in flash memory dirPath(/data/user/0/com.wujiankai.avgplus/files/avg-plus-hot-update_temp)
+I/Cocos   (31657): 07:14:53 [INFO]: Shader 'internal/builtin-clear-stencil|sprite-vs:vert|sprite-fs:frag' compilation succeeded.
+D/Cocos   (31657): 07:15:40 [DEBUG]: D/ XMLHttpRequest_finalize, 0xb400007b95816210 ...
+D/Cocos   (31657):
+W/Cocos   (31657): 07:16:38 [WARN]: JS: Can't add renderable component to this node because it already have one.
+F/libc    (31657): /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native/cocos/2d/renderer/RenderEntity.cpp:105: ccstd::vector<RenderDrawInfo *> &cc::RenderEntity::getDynamicRenderDrawInfos(): assertion "(_renderEntityType)!=(RenderEntityType::STATIC)" failed
+F/libc    (31657): Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 31675 (Thread-2), pid 31657 (jiankai.avgplus)
+I/DEBUG   (32034): No guest state registers information for tid 31675
+I/DEBUG   (32034): No guest state registers information for tid 31657
+I/DEBUG   (32034): No guest state registers information for tid 31659
+I/DEBUG   (32034): No guest state registers information for tid 31660
+I/DEBUG   (32034): No guest state registers information for tid 31661
+I/DEBUG   (32034): No guest state registers information for tid 31662
+I/DEBUG   (32034): No guest state registers information for tid 31663
+I/DEBUG   (32034): No guest state registers information for tid 31664
+I/DEBUG   (32034): No guest state registers information for tid 31665
+I/DEBUG   (32034): No guest state registers information for tid 31666
+I/DEBUG   (32034): No guest state registers information for tid 31667
+I/DEBUG   (32034): No guest state registers information for tid 31668
+I/DEBUG   (32034): No guest state registers information for tid 31669
+I/DEBUG   (32034): No guest state registers information for tid 31671
+I/DEBUG   (32034): No guest state registers information for tid 31672
+I/DEBUG   (32034): No guest state registers information for tid 31676
+I/DEBUG   (32034): No guest state registers information for tid 31677
+I/DEBUG   (32034): No guest state registers information for tid 31678
+I/DEBUG   (32034): No guest state registers information for tid 31679
+I/DEBUG   (32034): No guest state registers information for tid 31680
+I/DEBUG   (32034): No guest state registers information for tid 31681
+I/DEBUG   (32034): No guest state registers information for tid 31694
+I/DEBUG   (32034): No guest state registers information for tid 31695
+I/DEBUG   (32034): No guest state registers information for tid 31709
+I/DEBUG   (32034): No guest state registers information for tid 31720
+I/DEBUG   (32034): No guest state registers information for tid 31721
+I/DEBUG   (32034): No guest state registers information for tid 31726
+I/DEBUG   (32034): No guest state registers information for tid 31727
+I/DEBUG   (32034): No guest state registers information for tid 31728
+I/DEBUG   (32034): No guest state registers information for tid 31729
+I/DEBUG   (32034): No guest state registers information for tid 31730
+I/DEBUG   (32034): No guest state registers information for tid 31738
+I/DEBUG   (32034): No guest state registers information for tid 31749
+I/DEBUG   (32034): No guest state registers information for tid 31750
+I/DEBUG   (32034): No guest state registers information for tid 31855
+I/DEBUG   (32034): No guest state registers information for tid 31856
+I/DEBUG   (32034): No guest state registers information for tid 31857
+I/DEBUG   (32034): No guest state registers information for tid 31858
+I/DEBUG   (32034): No guest state registers information for tid 31862
+I/DEBUG   (32034): No guest state registers information for tid 31868
+F/DEBUG   (32034): *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+F/DEBUG   (32034): Build fingerprint: 'google/sdk_gphone64_arm64/emu64a:15/AP31.240517.022/11948202:user/release-keys'
+F/DEBUG   (32034): Revision: '0'
+F/DEBUG   (32034): ABI: 'arm64'
+F/DEBUG   (32034): Guest architecture: 'arm'
+F/DEBUG   (32034): Timestamp: 2026-10-14 07:16:38.100667935+0800
+F/DEBUG   (32034): Process uptime: 110s
+F/DEBUG   (32034): Cmdline: com.wujiankai.avgplus
+F/DEBUG   (32034): pid: 31657, tid: 31675, name: Thread-2  >>> com.wujiankai.avgplus <<<
+F/DEBUG   (32034): uid: 10197
+F/DEBUG   (32034): tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+F/DEBUG   (32034): pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+F/DEBUG   (32034): signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+F/DEBUG   (32034): Abort message: '/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native/cocos/2d/renderer/RenderEntity.cpp:105: ccstd::vector<RenderDrawInfo *> &cc::RenderEntity::getDynamicRenderDrawInfos(): assertion "(_renderEntityType)!=(RenderEntityType::STATIC)" failed'
+F/DEBUG   (32034):     x0  0000000000000000  x1  0000000000007bbb  x2  0000000000000006  x3  0000007aed1302b0
+F/DEBUG   (32034):     x4  2d372d322e716e73  x5  2d372d322e716e73  x6  2d372d322e716e73  x7  7f7f7f7f7f7f7f7f
+F/DEBUG   (32034):     x8  00000000000000f0  x9  0000007da08ec428  x10 ffffff80fffffb9f  x11 0000000000000001
+F/DEBUG   (32034):     x12 000000006acebbd6  x13 000000007fffffff  x14 0000000000b2aee8  x15 000003ba81d65205
+F/DEBUG   (32034):     x16 0000007da099bff8  x17 0000007da0986280  x18 0000007a63a60000  x19 0000000000007ba9
+F/DEBUG   (32034):     x20 0000000000007bbb  x21 00000000ffffffff  x22 00000078015133c9  x23 000000000000000b
+F/DEBUG   (32034):     x24 0000007800000519  x25 0000000000000000  x26 b400007daaa24470  x27 0000007800182191
+F/DEBUG   (32034):     x28 0000007800000000  x29 0000007aed130330
+F/DEBUG   (32034):     lr  0000007da09246a4  sp  0000007aed130290  pc  0000007da09246d4  pst 0000000000001000
+F/DEBUG   (32034): 8 total frames
+F/DEBUG   (32034): backtrace:
+F/DEBUG   (32034):       #00 pc 000000000005b6d4  /apex/com.android.runtime/lib64/bionic/libc.so (abort+168) (BuildId: f133403da2d3b6395bda6a5bdf550f2d)
+F/DEBUG   (32034):       #01 pc 000000000005bf18  /apex/com.android.runtime/lib64/bionic/libc.so (__assert2+36) (BuildId: f133403da2d3b6395bda6a5bdf550f2d)
+F/DEBUG   (32034):       #02 pc 0000000002ac3418  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (cc::RenderEntity::getDynamicRenderDrawInfos()+84) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #03 pc 00000000031e97b4  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (cc::UIModelProxy::activeSubModels()+100) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #04 pc 00000000031d8f4c  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #05 pc 00000000034f0f28  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (jsbFunctionWrapper(v8::FunctionCallbackInfo<v8::Value> const&, bool (*)(se::State&), char const*)+492) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #06 pc 00000000031d8e74  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (js_cc_UIModelProxy_activeSubModelsRegistry(v8::FunctionCallbackInfo<v8::Value> const&)+44) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #07 pc 0000000004349528  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)

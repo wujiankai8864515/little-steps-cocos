@@ -134,7 +134,11 @@ export class GamePresentation extends PresentationComponent {
         const titleWidget = title.addComponent(Widget); titleWidget.isAlignTop = true; titleWidget.isAlignLeft = true;
         titleWidget.top = 104; titleWidget.left = 285; titleWidget.updateAlignment();
         const g = title.addComponent(Graphics); g.fillColor = new Color(8, 7, 20, 150); g.roundRect(-195, -37.5, 390, 75, 37.5); g.fill();
-        const label = title.addComponent(Label); label.string = titleText; label.fontSize = 30; label.lineHeight = 42;
+        // Graphics owns a dynamic native RenderEntity; Label owns a static one.
+        // Keep them on separate nodes instead of replacing the shared native entity.
+        const textNode = new Node('chapterTitleText'); textNode.layer = title.layer;
+        textNode.addComponent(UITransform).setContentSize(390, 75); title.addChild(textNode);
+        const label = textNode.addComponent(Label); label.string = titleText; label.fontSize = 30; label.lineHeight = 42;
         label.color = Color.WHITE; label.horizontalAlign = HorizontalTextAlignment.CENTER; label.verticalAlign = VerticalTextAlignment.CENTER;
         const visit = (node: Node) => {
             if (node.name === 'coin_icon') {

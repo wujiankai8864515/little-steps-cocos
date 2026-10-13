@@ -1,0 +1,35 @@
+F/libc    (31657): /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native/cocos/2d/renderer/RenderEntity.cpp:105: ccstd::vector<RenderDrawInfo *> &cc::RenderEntity::getDynamicRenderDrawInfos(): assertion "(_renderEntityType)!=(RenderEntityType::STATIC)" failed
+F/libc    (31657): Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 31675 (Thread-2), pid 31657 (jiankai.avgplus)
+F/DEBUG   (32034): *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+F/DEBUG   (32034): Build fingerprint: 'google/sdk_gphone64_arm64/emu64a:15/AP31.240517.022/11948202:user/release-keys'
+F/DEBUG   (32034): Revision: '0'
+F/DEBUG   (32034): ABI: 'arm64'
+F/DEBUG   (32034): Guest architecture: 'arm'
+F/DEBUG   (32034): Timestamp: 2026-10-14 07:16:38.100667935+0800
+F/DEBUG   (32034): Process uptime: 110s
+F/DEBUG   (32034): Cmdline: com.wujiankai.avgplus
+F/DEBUG   (32034): pid: 31657, tid: 31675, name: Thread-2  >>> com.wujiankai.avgplus <<<
+F/DEBUG   (32034): uid: 10197
+F/DEBUG   (32034): tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+F/DEBUG   (32034): pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+F/DEBUG   (32034): signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+F/DEBUG   (32034): Abort message: '/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native/cocos/2d/renderer/RenderEntity.cpp:105: ccstd::vector<RenderDrawInfo *> &cc::RenderEntity::getDynamicRenderDrawInfos(): assertion "(_renderEntityType)!=(RenderEntityType::STATIC)" failed'
+F/DEBUG   (32034):     x0  0000000000000000  x1  0000000000007bbb  x2  0000000000000006  x3  0000007aed1302b0
+F/DEBUG   (32034):     x4  2d372d322e716e73  x5  2d372d322e716e73  x6  2d372d322e716e73  x7  7f7f7f7f7f7f7f7f
+F/DEBUG   (32034):     x8  00000000000000f0  x9  0000007da08ec428  x10 ffffff80fffffb9f  x11 0000000000000001
+F/DEBUG   (32034):     x12 000000006acebbd6  x13 000000007fffffff  x14 0000000000b2aee8  x15 000003ba81d65205
+F/DEBUG   (32034):     x16 0000007da099bff8  x17 0000007da0986280  x18 0000007a63a60000  x19 0000000000007ba9
+F/DEBUG   (32034):     x20 0000000000007bbb  x21 00000000ffffffff  x22 00000078015133c9  x23 000000000000000b
+F/DEBUG   (32034):     x24 0000007800000519  x25 0000000000000000  x26 b400007daaa24470  x27 0000007800182191
+F/DEBUG   (32034):     x28 0000007800000000  x29 0000007aed130330
+F/DEBUG   (32034):     lr  0000007da09246a4  sp  0000007aed130290  pc  0000007da09246d4  pst 0000000000001000
+F/DEBUG   (32034): 8 total frames
+F/DEBUG   (32034): backtrace:
+F/DEBUG   (32034):       #00 pc 000000000005b6d4  /apex/com.android.runtime/lib64/bionic/libc.so (abort+168) (BuildId: f133403da2d3b6395bda6a5bdf550f2d)
+F/DEBUG   (32034):       #01 pc 000000000005bf18  /apex/com.android.runtime/lib64/bionic/libc.so (__assert2+36) (BuildId: f133403da2d3b6395bda6a5bdf550f2d)
+F/DEBUG   (32034):       #02 pc 0000000002ac3418  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (cc::RenderEntity::getDynamicRenderDrawInfos()+84) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #03 pc 00000000031e97b4  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (cc::UIModelProxy::activeSubModels()+100) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #04 pc 00000000031d8f4c  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #05 pc 00000000034f0f28  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (jsbFunctionWrapper(v8::FunctionCallbackInfo<v8::Value> const&, bool (*)(se::State&), char const*)+492) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #06 pc 00000000031d8e74  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (js_cc_UIModelProxy_activeSubModelsRegistry(v8::FunctionCallbackInfo<v8::Value> const&)+44) (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)
+F/DEBUG   (32034):       #07 pc 0000000004349528  /data/app/~~9A89FO8c-7zjAlto1ttQLQ==/com.wujiankai.avgplus-OG1tbBGPMAkPujmYoayF5g==/lib/arm64/libcocos.so (BuildId: b0e3448413ed0c38f15772abe971de1d7b637a62)

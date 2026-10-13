@@ -1,0 +1,32 @@
+{
+  "item": "AVG.REFUI.03",
+  "candidate": "avg-plus-android-20261013T230854159667Z",
+  "source": "230bb9f",
+  "device": "Android 35 ARM64 emulator-5554",
+  "trigger": "Tap Start after confirmed first-level intro",
+  "result": "Actual process PID 31657 exited with SIGABRT. Screenshot is launcher; candidate has not been published.",
+  "evidence": [
+    "reference-hud-native-crash.log",
+    "reference-hud-native-entry.log",
+    "reference-hud-native-board.png"
+  ],
+  "nativeAssertion": "RenderEntity::getDynamicRenderDrawInfos asserts that a Graphics entity cannot be STATIC; stack goes through UIModelProxy::activeSubModels",
+  "rootCause": "Chapter title attached Graphics and Label to one node, sharing native UI properties; Label replaces the dynamic RenderEntity needed by Graphics.",
+  "repair": "Separate the title text into its own child node; retain native assertions and shader path.",
+  "associatedSaveRepair": "Startup refunds an incomplete entry only when entryRefundable is true; persisting cleared round prevents duplicate refunds. Played and won rounds retain their balance.",
+  "retest": "pending",
+  "actualCrashSave": {
+    "coins": 3550,
+    "round": {
+      "id": 6,
+      "levelId": "level_difficulty1_01",
+      "complete": false,
+      "entryRefundable": true
+    }
+  },
+  "unitAfterFix": {
+    "typecheckFiles": 42,
+    "testsPassed": 61,
+    "testsFailed": 0
+  }
+}
