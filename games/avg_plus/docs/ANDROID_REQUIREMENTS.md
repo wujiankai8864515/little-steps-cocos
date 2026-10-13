@@ -15,8 +15,12 @@
 
 ## 当前证据边界
 
-已找到并观看参考视频截图；当前卡牌规则/表现/框架 42 项行为测试通过，安卓更新边界 6 项、资源打包 3 项及 Pages 发布校验 4 项通过。资源基线检查发现 18 个旧 UUID 缺失，尚未追溯；不得删除基线掩盖失败。已有工程的菜单、背景与视频差异明显，尚未达到复刻目标。
+已找到并观看参考视频截图；当前 39 个运行脚本类型检查、卡牌规则/表现/框架 42 项、安卓更新边界 7 项、资源打包 4 项、Pages 发布校验 5 项和 PNG 存储保真 2 项通过。资源基线检查发现 18 个旧 UUID 缺失，尚未追溯；不得删除基线掩盖失败。菜单、背景、牌背、关卡布局与经济数值仍和参考明显不同，尚未达到复刻目标。
 
-首个旧候选在 Android 35 ARM64 模拟器安装、竖屏启动成功；点击关卡失败，原因是未锚定的 `profiles/` 忽略规则错误排除了资源目录中的 `mods/profiles/default.json`。规则已修正并保留原配置/UUID，修复后的包与卡牌交互仍须重新验证。六个进度条 SpriteFrame 已从原素材恢复，干净导出不存在 Missing UUID 警告。
+首个旧候选在 Android 35 ARM64 模拟器安装、竖屏启动成功；点击关卡失败，原因是未锚定的 `profiles/` 忽略规则错误排除了资源目录中的 `mods/profiles/default.json`。规则已修正并保留原配置/UUID，后续原生构建已完整验证卡牌交互。六个进度条 SpriteFrame 已从原素材恢复，干净导出不存在 Missing UUID 警告。
 
-用户后来手动将 `little-steps-cocos` 改为公开，Pages 已设为 GitHub Actions。资源目标为 `https://wujiankai8864515.github.io/little-steps-cocos/avg-plus/android/`；新建仓库和已删除的 `little-steps-play` 不再使用。线上发布与实际升级、真实手机、完整截图对照均为 pending；参考截图与后续验证记录存 `migration/reviews/avg_plus`。
+用户后来手动将 `little-steps-cocos` 改为公开，Pages 已设为 GitHub Actions。资源入口为 `https://wujiankai8864515.github.io/little-steps-cocos/avg-plus/android/`；新建仓库和已删除的 `little-steps-play` 不再使用。发布事件转由 main 部署以保持 github-pages 环境保护；0.1.0.2 完整资源 ZIP 和两个清单已发布并可匿名下载。
+
+Android 35 ARM64 专用模拟器已完整打通第一关、回撤、抽牌、连击奖励、Great 完成页和 Continue 到既有第一章。90 张导出 PNG 的压缩存储已优化，扫描线与全部元数据一致；完成页金币居中、残留 HUD 隐藏已实测。奖励视频服务未配置，按钮仅报告暂不可用，不伪造奖励。真实手机、全部视频 UI 对照和正式签名仍为 pending。
+
+真实旧包更新曾发现 Cocos 3.8.8 把大文件 size 转为 float 后舍入 1 字节，导致下载正确却校验拒绝；现改为按原始 JSON 清单校验精确大小和 SHA，ZIP 用合法注释对齐以兼容旧包。实际安装的 0.1.0.0 APK SHA 已回读核实，并已从 Pages 升级到 0.1.0.2、重启、恢复搜索路径及确认启动健康；更新后完整 18 步卡牌通关、Great 页、Continue 到既有第一章和再次冷启动均已通过。证据另记 `native-upgrade.json`。网页或 mocked-native 测试不替代这些原生边界。验证记录在 `migration/reviews/avg_plus`。

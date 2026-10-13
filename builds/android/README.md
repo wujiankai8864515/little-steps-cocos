@@ -29,4 +29,6 @@ python3 -B builds/build.py android --game avg_plus
 
 更新包含游戏 `src`、Bundle 配置、动态 JSON、图片和音频，排除引擎 JS、JSB 适配器、native 身份和启动钩子。当前每次下载完整游戏 ZIP；不宣称已有逐文件差分更新。
 
+PNG 仅在隔离导出目录重新压缩 IDAT 存储，扫描线和所有非 IDAT 元数据逐字节校验不变；不改变源素材、尺寸、颜色或透明度。原导出 PNG 保留在候选的 `png-storage-originals`。Cocos 3.8.8 的 native Asset.size 使用 float，客户端按经过验证的 JS 清单读取精确字节数；ZIP 通过合法注释对齐长度，兼容旧 APK 的严格大小比较。
+
 本地验证：`python3 -B migration/tools/test_android_channel.py` 和 bundled Node 执行 `--test migration/tools/test_android_bootstrap.cjs`。这些覆盖打包、校验、失败和恢复边界，不能替代 GitHub 下载及安卓旧包更新实测。API 依据：[Cocos 原生热更新](https://docs.cocos.com/creator/3.8/manual/en/advanced-topics/hot-update-manager.html)、[命令行构建](https://docs.cocos.com/creator/3.8/manual/en/editor/publish/publish-in-command-line.html)。
