@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "id": "base-card",
+      "enabled": true,
+      "config": {
+        "seed": 20260917,
+        "singleBackupCardTest": false
+      }
+    },
+    {
+      "id": "base-avg",
+      "enabled": true,
+      "config": {}
+    },
+    {
+      "id": "reward-variant",
+      "enabled": false,
+      "config": {
+        "multiplier": 2
+      }
+    },
+    {
+      "id": "story-branch",
+      "enabled": false,
+      "config": {
+        "routes": {}
+      }
+    },
+    {
+      "id": "cinematic-style",
+      "enabled": false,
+      "config": {}
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "item": "AVG.NATIVE.02",
+  "candidate": "avg-plus-android-20261013T145650040734Z",
+  "apkSha256": "08833ceb542af2d1f5861de8f7abdc06401a2029e4c666ff56d9c6b9c5a82990",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "install": "passed",
+  "portraitStartup": "passed",
+  "cardEntry": "failed",
+  "error": "Bundle resources doesn't contain mods/profiles/default",
+  "rootCause": "Unanchored profiles/ ignore excluded assets/art/resources/mods/profiles/default.json from Git and frozen build mirror",
+  "fix": "Anchor Creator cache exclusion to /profiles/; track original default profile JSON and existing meta UUID",
+  "revalidation": "pending new APK",
+  "evidence": [
+    "native-card-initial.png",
+    "native-card-initial.log"
+  ]
+}
