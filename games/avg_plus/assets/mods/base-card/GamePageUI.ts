@@ -7,6 +7,7 @@ import { CardLevelRepository } from './CardLevelRepository';
 import { HighLowSolitaireCore } from './HighLowSolitaireCore';
 import { GameSessionStore } from './GameSessionStore';
 import { CardCompletionUI } from './CardCompletionUI';
+import { CardSpriteLoader } from './CardSpriteLoader';
 import { GameUiAction, GameUiActionType, GameUiNodeId, buildGamePageViewState, type GamePageViewState } from './GameUIContract';
 import { CardState, createCardMod } from './CardMod';
 import { loadProfile, extensionsFor } from '../Registry';
@@ -24,6 +25,7 @@ export class GamePageUI extends GamePresentation {
     private economy: EconomyConfig | undefined;
     private onCheckpoint: ((state: Readonly<CardState>, action: string) => Promise<void>) | null = null;
     private backgroundFrame: SpriteFrame | null = null;
+    private initialStockCount = 10;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
         initialCoins: number; economy: EconomyConfig; background?: CardBackgroundConfig;
@@ -57,6 +59,26 @@ export class GamePageUI extends GamePresentation {
         }
         // 测试开关默认关闭；仅在配置中显式开启时使用单张备用牌与强制不命中牌面。
         const singleBackupCardTest = configuredTestMode ?? false;
+        this.initialStockCount = singleBackupCardTest ? 1 : level.initialStockCount ?? 10;
+        if (level.portraitLayout) {
+            const current = this.findNode(GameUiNodeId.CurrentCard);
+            const alignment = current?.getComponent(Widget);
+            if (alignment) {
+                alignment.isAlignHorizontalCenter = true;
+                alignment.horizontalCenter = level.portraitLayout.currentCardX;
+                alignment.updateAlignment();
+            }
+        }
+        const [backFrame,wildFrame] = await this.lifetime.run(() => Promise.all([
+            CardSpriteLoader.loadSpriteFrame('poker_back_01'),CardSpriteLoader.loadSpriteFrame('poker_wild'),
+        ]),PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
+        this.lifetime.check();
+        this.findNode(GameUiNodeId.StockPile)?.children.forEach(child => {
+            const sprite = child.getComponent(Sprite);
+            if (sprite) { sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = backFrame; }
+        });
+        const wild = this.findNode(GameUiNodeId.Wild)?.getChildByName('icon')?.getComponent(Sprite);
+        if (wild) { wild.sizeMode = Sprite.SizeMode.CUSTOM; wild.spriteFrame = wildFrame; }
         const base = createCardMod(level, entry.config.seed ?? 20260917, {
             render: ctx => [{ id: 'base-card.render', timeoutMs: 10000, run: async scope => {
                 const restore = this.preserveVisualTransforms();
@@ -67,7 +89,7 @@ export class GamePageUI extends GamePresentation {
             } }],
             afterRender: () => { if (this.node.isValid) { this.cleanupTransientVisuals(); this.refresh(false); } },
         }, {
-            initialStockCount: singleBackupCardTest ? 1 : 10,
+            initialStockCount: this.initialStockCount,
             // 测试模式要能稳定观察免费牌耗尽后的付费入场效果。
             forceUnmatchedOpeningCards: singleBackupCardTest,
             initialCoins: options?.initialCoins,
@@ -163,7 +185,7 @@ export class GamePageUI extends GamePresentation {
     private model() {
         const state = this.runtime!.read<CardState>('base-card');
         const core = new HighLowSolitaireCore(this._level!); core.restoreSnapshot(state.core);
-        const session = new GameSessionStore(this.economy); session.restoreCheckpoint(state.session);
+        const session = new GameSessionStore(this.economy,undefined,this.initialStockCount); session.restoreCheckpoint(state.session);
         return { state, core, session };
     }
     private refresh(locked: boolean, concealed = false): GamePageViewState | null {

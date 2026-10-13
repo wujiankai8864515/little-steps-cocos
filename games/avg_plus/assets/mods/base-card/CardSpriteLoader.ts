@@ -1,8 +1,9 @@
-import { JsonAsset, resources, SpriteFrame } from 'cc';
+import { JsonAsset, Rect, resources, Size, SpriteFrame, Vec2 } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 
 interface CardCatalogAsset {
     readonly resourcePath: string;
+    readonly region?: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
 }
 
 interface CardCatalog {
@@ -39,7 +40,22 @@ export class CardSpriteLoader {
                     return;
                 }
 
-                resolve(spriteFrame);
+                try {
+                    if (!asset.region) { resolve(spriteFrame); return; }
+                    const region = asset.region;
+                    if (region.x + region.width > spriteFrame.texture.width || region.y + region.height > spriteFrame.texture.height) {
+                        throw new Error(`[CardSpriteLoader] 牌面裁切超出原图：${cardName}`);
+                    }
+                    // The original video frame stays intact. Each card owns a separate UV region.
+                    const cropped = spriteFrame.clone();
+                    cropped.packable = false;
+                    cropped.rect = new Rect(region.x, region.y, region.width, region.height);
+                    cropped.originalSize = new Size(region.width, region.height);
+                    cropped.offset = new Vec2(0, 0);
+                    spriteFrame.addRef(); // Source texture lives as long as the catalog cache.
+                    cropped.addRef();
+                    resolve(cropped);
+                } catch (error) { reject(error); }
             });
         }), 5000).finally(() => scope.dispose());
 
@@ -95,9 +111,16 @@ export class CardSpriteLoader {
                 throw new Error(`[CardSpriteLoader] card-catalog 资源项非法：${name}`);
             }
 
-            assets[name] = {
-                resourcePath: rawAsset.resourcePath,
-            };
+            let region: CardCatalogAsset['region'];
+            if (rawAsset.region !== undefined) {
+                const r = rawAsset.region;
+                if (!this.isRecord(r) || ![r.x,r.y,r.width,r.height].every(Number.isSafeInteger) ||
+                    (r.x as number) < 0 || (r.y as number) < 0 || (r.width as number) < 1 || (r.height as number) < 1) {
+                    throw new Error(`[CardSpriteLoader] 牌面裁切配置非法：${name}`);
+                }
+                region = { x:r.x as number,y:r.y as number,width:r.width as number,height:r.height as number };
+            }
+            assets[name] = { resourcePath: rawAsset.resourcePath, ...(region ? {region} : {}) };
         }
 
         return { assets };

@@ -1589,6 +1589,7 @@ export class GamePresentation extends PresentationComponent {
 
     protected async applyCardSprite(node: Node, cardName: string, version: number): Promise<void> {
         const sprite = node.getComponent(Sprite) ?? node.addComponent(Sprite);
+        sprite.sizeMode = Sprite.SizeMode.CUSTOM;
         try {
             const frame = await CardSpriteLoader.loadSpriteFrame(cardName);
             if (node.isValid && version === this._renderVersion) sprite.spriteFrame = frame;

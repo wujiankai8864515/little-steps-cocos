@@ -52,4 +52,6 @@ export interface CardLevelDefinition {
     readonly cardSize: CardLevelSize;
     readonly slots: readonly CardLevelSlotDefinition[];
     readonly currentCard?: CardLevelCurrentCardDefinition;
+    readonly initialStockCount?: number;
+    readonly portraitLayout?: { readonly currentCardX: number };
 }

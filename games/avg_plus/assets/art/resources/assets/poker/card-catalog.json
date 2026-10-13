@@ -3,9 +3,15 @@
     "poker_back_01": {
       "id": "back:01",
       "kind": "back",
-      "resourcePath": "assets/poker/backs/poker_back_01/spriteFrame",
-      "sha256": "c94b2053ff2383bcf8a91078aaa1ff0e115da248411c20e67b518d326684a3db",
-      "variant": "01"
+      "resourcePath": "assets/reference/cards_atlas/spriteFrame",
+      "sha256": "c2b4dac0112c847cd245b8cb0b38b2b1e0fe6cc6040154bd4e00edb580fbd715",
+      "variant": "01",
+      "region": {
+        "x": 435,
+        "y": 322,
+        "width": 61,
+        "height": 89
+      }
     },
     "poker_club_black_01": {
       "color": "black",
@@ -582,8 +588,14 @@
     "poker_wild": {
       "id": "wild",
       "kind": "wild",
-      "resourcePath": "assets/poker/fronts/poker_wild/spriteFrame",
-      "sha256": "a25c6639346eb0f8ded54e02fadff08a993aafa4f4c55c7bddb8b892378dfd05"
+      "resourcePath": "assets/reference/cards_atlas/spriteFrame",
+      "sha256": "c2b4dac0112c847cd245b8cb0b38b2b1e0fe6cc6040154bd4e00edb580fbd715",
+      "region": {
+        "x": 821,
+        "y": 321,
+        "width": 64,
+        "height": 89
+      }
     }
   },
   "cardSize": {

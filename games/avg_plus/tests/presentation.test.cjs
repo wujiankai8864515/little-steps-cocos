@@ -80,18 +80,25 @@ test('board flight rotation matches the measured reference-video frames',()=>{
  assert.equal(boardFlightAngle(20,-360,1),-360);
  assert.equal(boardFlightAngle(-40,360,1),360);
 });
-test('board prefab and Figma levels share one-to-one card geometry',()=>{
+test('JSON levels retain card geometry and declare an area containing every rotated card',()=>{
  const fs=require('node:fs'),path=require('node:path');
  const prefab=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/art/resources/prefabs/gamePage.prefab'),'utf8'));
  const boardIndex=prefab.findIndex(item=>item?.__type__==='cc.Node'&&item._name==='content');
  assert.notEqual(boardIndex,-1);
  const board=prefab[boardIndex];
  const transform=board._components.map(ref=>prefab[ref.__id__]).find(item=>item?.__type__==='cc.UITransform');
+ assert.deepEqual(transform._contentSize,{__type__:'cc.Size',width:1179,height:779});
  const configRoot=path.join(__dirname,'../assets/art/resources/config/card-levels');
  const levels=fs.readdirSync(configRoot).filter(name=>name.endsWith('.json')).map(name=>JSON.parse(fs.readFileSync(path.join(configRoot,name),'utf8')));
  for(const level of levels){
-  assert.deepEqual(transform._contentSize,{__type__:'cc.Size',width:level.designSize.width,height:level.designSize.height});
-  for(const slot of level.slots)assert.deepEqual({width:slot.width,height:slot.height},level.cardSize);
+  for(const slot of level.slots){
+   assert.deepEqual({width:slot.width,height:slot.height},level.cardSize);
+   const angle=slot.rotation*Math.PI/180;
+   const rx=Math.abs(Math.cos(angle))*slot.width/2+Math.abs(Math.sin(angle))*slot.height/2;
+   const ry=Math.abs(Math.sin(angle))*slot.width/2+Math.abs(Math.cos(angle))*slot.height/2;
+   assert.ok(Math.abs(slot.x)+rx<=level.designSize.width/2,`${level.levelId}/${slot.id} exceeds horizontal layout`);
+   assert.ok(Math.abs(slot.y)+ry<=level.designSize.height/2,`${level.levelId}/${slot.id} exceeds vertical layout`);
+  }
  }
 });
 test('paid backup button is centered over the backup cards',()=>{

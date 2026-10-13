@@ -93,7 +93,8 @@ function createInitialState(coins = INITIAL_COINS): MutableSessionState {
  */
 export class GameSessionStore {
     private _state: MutableSessionState;
-    public constructor(private readonly economy?: EconomyConfig, coins = INITIAL_COINS) {
+    public constructor(private readonly economy?: EconomyConfig, coins = INITIAL_COINS, private readonly freeStockCount = INITIAL_FREE_STOCK_COUNT) {
+        if (!Number.isInteger(freeStockCount) || freeStockCount < 0 || freeStockCount > 52) throw new Error('[GameSessionStore] 免费备用牌数量非法。');
         this._state = createInitialState(coins);
         this.assertIntegrity();
     }
@@ -154,7 +155,7 @@ export class GameSessionStore {
     /** 补牌只推进免费牌计数，绝不改变连续命中进度。 */
     public recordStockDraw(): void {
         this._state.freeStockDraws = Math.min(
-            INITIAL_FREE_STOCK_COUNT,
+            this.freeStockCount,
             this._state.freeStockDraws + 1,
         );
         this.assertIntegrity();
@@ -268,7 +269,7 @@ export class GameSessionStore {
             coins: this._state.coins,
             progressCells: cells,
             freeStockDraws: this._state.freeStockDraws,
-            freeStockUsedUp: this._state.freeStockDraws >= INITIAL_FREE_STOCK_COUNT,
+            freeStockUsedUp: this._state.freeStockDraws >= this.freeStockCount,
             wildReady: this._state.wildReady,
             actionCosts: {
                 [PaidGameAction.Rollback]: this.getActionCost(PaidGameAction.Rollback),
@@ -288,7 +289,7 @@ export class GameSessionStore {
         }
         if (!Number.isInteger(freeStockDraws)
             || freeStockDraws < 0
-            || freeStockDraws > INITIAL_FREE_STOCK_COUNT) {
+            || freeStockDraws > this.freeStockCount) {
             throw new Error('[GameSessionStore] freeStockDraws 超出合法范围。');
         }
         if (streakColors.length > HITS_PER_REWARD

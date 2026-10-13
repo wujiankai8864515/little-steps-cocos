@@ -28,13 +28,13 @@ export function createCardMod(
     setup: Readonly<CardSetupOptions> = {},
 ): Mod {
     if (!Number.isInteger(seed) || seed < 1 || seed > 0xffffffff) throw new Error('卡牌 seed 必须为 1–4294967295 的整数');
-    const initialStockCount = setup.initialStockCount ?? DEFAULT_INITIAL_STOCK_COUNT;
+    const initialStockCount = setup.initialStockCount ?? level.initialStockCount ?? DEFAULT_INITIAL_STOCK_COUNT;
     const initialRng = { rng: seed }; const first = new HighLowSolitaireCore(level, random(initialRng));
     first.startGame(initialStockCount, setup.forceUnmatchedOpeningCards ?? false);
-    const initialState: CardState = { core: first.captureSnapshot(), session: new GameSessionStore(setup.economy, setup.initialCoins).captureSnapshot(), paused: false, rng: initialRng.rng, lastMove: null };
+    const initialState: CardState = { core: first.captureSnapshot(), session: new GameSessionStore(setup.economy, setup.initialCoins, initialStockCount).captureSnapshot(), paused: false, rng: initialRng.rng, lastMove: null };
     const hydrate = (state: CardState) => {
         const core = new HighLowSolitaireCore(level, random(state)); core.restoreSnapshot(state.core);
-        const session = new GameSessionStore(setup.economy); session.restoreCheckpoint(state.session); return { core, session };
+        const session = new GameSessionStore(setup.economy,undefined,initialStockCount); session.restoreCheckpoint(state.session); return { core, session };
     };
     return {
         manifest, initialState,

@@ -92,6 +92,12 @@ export class CardLevelRepository {
         }
 
         const slotIds = new Set<string>();
+        if (level.initialStockCount !== undefined && (!Number.isInteger(level.initialStockCount) || level.initialStockCount < 0 || level.initialStockCount > 51 - level.slots.length)) {
+            throw new Error(`[CardLevelRepository] ${expectedLevelId} 初始备用牌数量超出牌池。`);
+        }
+        if (level.portraitLayout !== undefined && (!this.isRecord(level.portraitLayout) || !Number.isFinite(level.portraitLayout.currentCardX) || Math.abs(level.portraitLayout.currentCardX) > 500)) {
+            throw new Error(`[CardLevelRepository] ${expectedLevelId} 竖屏操作行位置非法。`);
+        }
 
         for (const slot of level.slots) {
             this.validateSlot(expectedLevelId, slot);
