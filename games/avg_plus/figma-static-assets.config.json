@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "figmaFileConfig": "figma-assets.config.json",
+  "temporaryDirectory": "temp/figma-static",
+  "inboxRoot": "assets/art/__figma_static_inbox__",
+  "formalRoot": "assets/art/textures",
+  "download": {
+    "allowedHosts": [
+      "www.figma.com"
+    ],
+    "format": "png",
+    "scale": 1,
+    "sourceKind": "figmaNativeExport",
+    "transparency": "required",
+    "maxConcurrency": 4,
+    "timeoutSeconds": 30,
+    "retries": 2
+  },
+  "containerNodeTypes": [
+    "canvas",
+    "frame",
+    "section",
+    "group"
+  ],
+  "exportNodeTypes": [
+    "symbol",
+    "component",
+    "component-set",
+    "frame",
+    "group",
+    "instance"
+  ]
+}

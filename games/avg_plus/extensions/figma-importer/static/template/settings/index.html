@@ -1,0 +1,135 @@
+<div id="app" class="workbench-app" data-testid="ftoc-import-workbench">
+    <header class="workbench-header">
+        <div class="brand-block">
+            <h2>FtoC 导入工作台</h2>
+            <span>Figma → Cocos Creator</span>
+        </div>
+        <span id="version" class="version-tag"></span>
+    </header>
+
+    <section class="file-toolbar">
+        <input id="jsonPath" class="file-path" type="text" readonly placeholder="尚未选择 Figma JSON" title="当前 Figma JSON 文件" data-testid="ftoc-json-path" />
+        <button id="browseBtn" type="button" data-testid="ftoc-browse-json">选择 JSON…</button>
+        <button id="clearBtn" class="icon-btn" type="button" title="清除所选 JSON" aria-label="清除所选 JSON" data-testid="ftoc-clear-json" disabled>×</button>
+    </section>
+
+    <div id="dropZone" class="drop-zone" tabindex="0" data-testid="ftoc-json-drop-zone">
+        <strong>拖入 Figma JSON</strong>
+        <span>当前文件同时用于预览、组件映射和完整导入</span>
+    </div>
+
+    <main id="workspaceSplit" class="workspace-split">
+        <section id="previewSection" class="preview-pane" data-testid="ftoc-unified-preview">
+            <header class="pane-header">
+                <div>
+                    <h3>画板预览</h3>
+                    <span id="previewMeta" class="pane-meta" data-testid="ftoc-preview-meta">尚未加载</span>
+                </div>
+                <div class="preview-tools">
+                    <button id="zoomOutBtn" class="icon-btn" type="button" title="缩小" aria-label="缩小" disabled>−</button>
+                    <span id="zoomLabel" class="zoom-label">100%</span>
+                    <button id="zoomInBtn" class="icon-btn" type="button" title="放大" aria-label="放大" disabled>+</button>
+                    <button id="actualSizeBtn" type="button" title="按画板原始尺寸显示" disabled>1:1</button>
+                    <button id="fitPreviewBtn" type="button" title="适应预览区域" disabled>适应</button>
+                    <button id="reloadPreviewBtn" class="icon-btn" type="button" title="重新加载预览" aria-label="重新加载预览" data-testid="ftoc-preview-reload" disabled>↻</button>
+                </div>
+            </header>
+
+            <div id="filePreview" class="file-preview" data-state="empty">
+                <div class="preview-empty">选择 JSON 后显示真实画板</div>
+                <dl class="preview-grid">
+                    <div><dt>文件</dt><dd id="previewFile">—</dd></div>
+                    <div><dt>画板</dt><dd id="previewName">—</dd></div>
+                    <div><dt>尺寸</dt><dd id="previewCanvas">—</dd></div>
+                    <div><dt>内容</dt><dd id="previewStats">—</dd></div>
+                </dl>
+            </div>
+
+            <div id="previewViewport" class="preview-viewport" data-testid="ftoc-preview-stage">
+                <div id="previewPlaceholder" class="canvas-placeholder">等待选择 JSON</div>
+                <div id="previewStage" class="preview-stage" hidden>
+                    <img id="previewImage" alt="Figma 画板预览" draggable="false" data-testid="ftoc-preview-image" />
+                    <div id="previewOverlay" class="preview-overlay" data-testid="ftoc-preview-overlay"></div>
+                </div>
+            </div>
+
+            <section class="selection-strip">
+                <div id="selectionSummary" class="selection-summary">未选择画板节点</div>
+                <div id="selectionHits" class="selection-hits" data-testid="ftoc-preview-hit-list"></div>
+            </section>
+
+            <footer class="preview-footer">
+                <button id="replacePanelBtn" type="button" data-testid="ftoc-open-resource-replace">高级局部替换</button>
+                <button id="importBtn" class="primary import-action" type="button" data-testid="ftoc-import-json" disabled>完整导入到当前场景</button>
+            </footer>
+        </section>
+
+        <div id="mappingSplitter" class="mapping-splitter" role="separator" aria-orientation="vertical" aria-valuemin="320" aria-valuemax="560" aria-valuenow="380" aria-label="调整组件映射宽度" tabindex="0" data-testid="ftoc-mapping-splitter" title="调整组件映射宽度"></div>
+        <aside id="mappingSection" class="mapping-pane" data-testid="ftoc-inline-component-mapping">
+            <header class="pane-header mapping-header">
+                <div>
+                    <h3>组件映射 / Assign Prefab</h3>
+                    <span id="mappingSummary" class="pane-meta" data-testid="ftoc-mapping-summary">0 条映射</span>
+                </div>
+                <button id="mappingRefreshBtn" class="icon-btn" type="button" title="刷新组件与映射" aria-label="刷新映射" data-testid="ftoc-mapping-refresh">↻</button>
+            </header>
+
+            <div class="mapping-toolbar">
+                <input id="componentSearch" type="search" placeholder="搜索组件" aria-label="搜索组件" />
+                <label class="check" title="关闭时只列最外层组件；开启后列出全部层级，包括内部元件"><input id="includeNested" type="checkbox" data-testid="ftoc-include-nested" />含内部元件</label>
+                <label class="check"><input id="hideMapped" type="checkbox" />只看未映射</label>
+            </div>
+
+            <div id="componentList" class="component-list">
+                <div class="empty">选择 JSON 后显示组件</div>
+            </div>
+
+            <section class="mapping-table-section">
+                <div class="subsection-title">工程映射</div>
+                <div id="mappingList" class="mapping-list"></div>
+            </section>
+        </aside>
+    </main>
+
+    <details class="utility-drawer">
+        <summary>资源与其他工具</summary>
+        <div class="utility-grid">
+            <section class="utility-section">
+                <h3>Figma 推送服务</h3>
+                <div class="push-row">
+                    <div class="push-status-group" data-tone="off">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span id="pushState" class="push-state" data-tone="off">检查中</span>
+                        <code>127.0.0.1:8787</code>
+                    </div>
+                    <div class="compact-actions">
+                        <button id="pushStartBtn" type="button">启动</button>
+                        <button id="pushStopBtn" type="button">停止</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="utility-section">
+                <h3>资源目录</h3>
+                <div id="dirList" class="dir-list"></div>
+                <div class="compact-actions">
+                    <button id="addBtn" type="button">添加目录…</button>
+                    <button id="resetBtn" type="button">恢复默认</button>
+                </div>
+            </section>
+
+            <section class="utility-section">
+                <h3>其他工具</h3>
+                <div class="secondary-actions">
+                    <button id="genStyleBtn" type="button">生成 TextStyles</button>
+                    <button id="exportBtn" type="button">导出 Cocos JSON</button>
+                    <button id="pushFigmaBtn" type="button">推送到 Figma</button>
+                </div>
+            </section>
+        </div>
+    </details>
+
+    <footer class="workbench-footer">
+        <span id="status" data-tone="info" data-testid="ftoc-workbench-status">就绪</span>
+    </footer>
+</div>

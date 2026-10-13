@@ -1,0 +1,14 @@
+{
+  "name": "avg_plus",
+  "uuid": "49c27d16-8e89-43c0-9535-4ee402b5c308",
+  "scripts": {
+    "guard:figma-review": "python3 .agents/skills/sync-figma-game-assets/scripts/figma_sync.py guard-build",
+    "check": "sh tools/check.sh",
+    "test": "node --test tests/*.test.cjs",
+    "check:types": "node tools/check-types.cjs",
+    "generate:manifests": "node tools/generate-manifests.cjs"
+  },
+  "creator": {
+    "version": "3.8.8"
+  }
+}

@@ -1,0 +1,75 @@
+<div id="app" class="replace-app" data-testid="ftoc-resource-replace">
+    <header class="toolbar">
+        <div class="field grow">
+            <label>JSON</label>
+            <input id="jsonPath" placeholder="留空则弹出选择框" data-testid="ftoc-replace-json-path" />
+        </div>
+        <div class="field">
+            <label>目标 rootUuid</label>
+            <input id="rootUuid" placeholder="选中根/最近导入" />
+        </div>
+    </header>
+
+    <section class="controls">
+        <div class="field compact">
+            <label>类型</label>
+            <select id="kind">
+                <option value="all">全部</option>
+                <option value="image">图片</option>
+                <option value="text">文字</option>
+            </select>
+        </div>
+        <div class="field compact">
+            <label>最低分</label>
+            <input id="minScore" type="number" value="300" min="0" step="10" />
+        </div>
+        <label class="check"><input id="flagImage" type="checkbox" checked />图片</label>
+        <label class="check"><input id="flagText" type="checkbox" checked />文字</label>
+        <label class="check"><input id="flagPosition" type="checkbox" checked />位置</label>
+        <label class="check"><input id="flagAlpha" type="checkbox" checked />保留透明度</label>
+    </section>
+
+    <section class="actions">
+        <button id="previewBtn" type="button" data-testid="ftoc-replace-load-preview">加载预览</button>
+        <button id="textureBtn">贴图预览</button>
+        <button id="importBtn" type="button" data-testid="ftoc-replace-import-json">完整导入</button>
+        <button id="savePrefabBtn">保存 Prefab（beta）</button>
+        <button id="instantiatePrefabBtn">实例化 Prefab（beta）</button>
+        <button id="scanBtn" type="button" data-testid="ftoc-replace-scan">扫描</button>
+        <button id="dryRunBtn">Dry Run</button>
+        <button id="applyBtn" class="primary" type="button" data-testid="ftoc-replace-apply">批量应用</button>
+    </section>
+
+    <main class="content">
+        <aside class="left-pane">
+            <div id="summary" class="summary"></div>
+            <div class="preview">
+                <div id="previewMeta" class="preview-meta">暂无预览</div>
+                <div id="previewStage" class="preview-stage">
+                    <img id="previewImage" hidden />
+                    <div id="previewOverlay" class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="texture-preview">
+                <div class="texture-toolbar">
+                    <span id="textureSummary" class="texture-summary">未扫描贴图</span>
+                    <label class="texture-check"><input id="textureOnlyMissing" type="checkbox" checked />只看需关注</label>
+                    <button id="textureCopyBtn">复制缺失</button>
+                    <button id="textureImportBtn">提前导入</button>
+                </div>
+                <div id="textures" class="textures"></div>
+            </div>
+            <div id="sources" class="sources"></div>
+        </aside>
+        <section class="match-panel">
+            <div class="attach-row">
+                <input id="figmaPath" placeholder="点击匹配行填入 Figma path，或手动输入" />
+                <button id="applySelectedBtn">应用到选中</button>
+                <button id="attachBtn">挂为子节点</button>
+            </div>
+            <div id="matches" class="matches"></div>
+        </section>
+    </main>
+
+    <footer id="status" class="status" data-testid="ftoc-replace-status"></footer>
+</div>

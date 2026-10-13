@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "figma": {
+    "fileUrl": "https://www.figma.com/design/YMuq2nhziNuRf309T17tkc/游戏工程文件"
+  },
+  "temporaryDirectory": "temp/figma-sync",
+  "lockFile": "figma-assets.lock.json",
+  "download": {
+    "allowedHosts": [
+      "www.figma.com"
+    ],
+    "maxConcurrency": 4,
+    "timeoutSeconds": 30,
+    "retries": 2
+  },
+  "groups": [
+    {
+      "id": "poker",
+      "sourcePath": [
+        "游戏资源",
+        "卡牌资源"
+      ],
+      "matchPrefix": "poker_",
+      "nodeTypes": [
+        "symbol",
+        "component"
+      ],
+      "expectedSize": {
+        "width": 162,
+        "height": 243
+      },
+      "downloadSource": "singleRawImage",
+      "transparency": "required",
+      "outputRoot": "assets/art/resources/assets/poker",
+      "reviewRoot": "assets/art/resources/assets/__figma_review__/poker",
+      "catalog": {
+        "path": "assets/art/resources/assets/poker/card-catalog.json",
+        "schemaVersion": 2
+      },
+      "rules": [
+        {
+          "id": "standard-front",
+          "pattern": "^poker_(?P<suit>diamond|heart|spade|club)_(?P<color>red|black)_(?P<rank>\\d{2})$",
+          "kind": "front",
+          "semanticId": "{suit}:{rank}",
+          "output": "fronts/{name}.png",
+          "resourcePath": "assets/poker/fronts/{name}/spriteFrame",
+          "catalogSection": "fronts",
+          "relations": [
+            {
+              "from": "suit",
+              "to": "color",
+              "map": {
+                "diamond": "red",
+                "heart": "red",
+                "spade": "black",
+                "club": "black"
+              }
+            }
+          ],
+          "matrix": {
+            "allowAdditional": false,
+            "dimensions": [
+              {
+                "capture": "suit",
+                "values": [
+                  "diamond",
+                  "heart",
+                  "spade",
+                  "club"
+                ]
+              },
+              {
+                "capture": "rank",
+                "range": {
+                  "start": 1,
+                  "end": 13,
+                  "width": 2
+                }
+              }
+            ]
+          },
+          "catalogFields": {
+            "suit": {
+              "capture": "suit"
+            },
+            "color": {
+              "capture": "color"
+            },
+            "rankCode": {
+              "capture": "rank"
+            },
+            "rankValue": {
+              "capture": "rank",
+              "type": "int"
+            },
+            "label": {
+              "capture": "rank",
+              "map": {
+                "01": "A",
+                "02": "2",
+                "03": "3",
+                "04": "4",
+                "05": "5",
+                "06": "6",
+                "07": "7",
+                "08": "8",
+                "09": "9",
+                "10": "10",
+                "11": "J",
+                "12": "Q",
+                "13": "K"
+              }
+            }
+          }
+        },
+        {
+          "id": "wild-front",
+          "pattern": "^poker_wild$",
+          "kind": "wild",
+          "semanticId": "wild",
+          "output": "fronts/{name}.png",
+          "resourcePath": "assets/poker/fronts/{name}/spriteFrame",
+          "catalogSection": "fronts",
+          "required": true,
+          "catalogFields": {}
+        },
+        {
+          "id": "card-back",
+          "pattern": "^poker_back_(?P<variant>\\d{2})$",
+          "kind": "back",
+          "semanticId": "back:{variant}",
+          "output": "backs/{name}.png",
+          "resourcePath": "assets/poker/backs/{name}/spriteFrame",
+          "catalogSection": "backs",
+          "matrix": {
+            "allowAdditional": true,
+            "dimensions": [
+              {
+                "capture": "variant",
+                "values": [
+                  "01"
+                ]
+              }
+            ]
+          },
+          "catalogFields": {
+            "variant": {
+              "capture": "variant"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

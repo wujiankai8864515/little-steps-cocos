@@ -1,0 +1,322 @@
+{
+  "package_version": 2,
+  "name": "figma-importer",
+  "displayName": "FtoC",
+  "version": "2.1.0",
+  "author": "figma2cocos",
+  "editor": ">=3.7.0",
+  "description": "FtoC：Figma 设计稿 → Cocos Creator 高保真导入器",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test tests/*.test.js",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@cocos/creator-types": "^3.8.6",
+    "@types/node": "^18.17.1",
+    "typescript": "^5.8.2"
+  },
+  "panels": {
+    "replace": {
+      "title": "Figma ResourceReplace（beta）",
+      "type": "dockable",
+      "main": "dist/panels/replace",
+      "size": {
+        "min-width": 720,
+        "min-height": 420,
+        "width": 980,
+        "height": 640
+      }
+    },
+    "settings": {
+      "title": "FtoC 导入工作台",
+      "type": "dockable",
+      "main": "dist/panels/settings",
+      "size": {
+        "min-width": 820,
+        "min-height": 560,
+        "width": 1120,
+        "height": 760
+      }
+    },
+    "component-mapping": {
+      "title": "FtoC 组件映射 / Assign Prefab",
+      "type": "dockable",
+      "main": "dist/panels/component-mapping",
+      "size": {
+        "min-width": 520,
+        "min-height": 420,
+        "width": 760,
+        "height": 680
+      }
+    }
+  },
+  "contributions": {
+    "menu": [
+      {
+        "path": "i18n:menu.extension/FtoC",
+        "label": "打开导入工作台",
+        "message": "open-settings-panel"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC",
+        "label": "组件映射 / Assign Prefab",
+        "message": "open-component-mapping-panel"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "导入 JSON / 打开工作台",
+        "message": "open-settings-panel"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "启动推送服务器（Figma → Cocos）",
+        "message": "start-push-server"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "停止推送服务器",
+        "message": "stop-push-server"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "从 JSON 生成 TextStyles 样式库（beta）",
+        "message": "generate-text-styles-from-json-beta"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "推送到 Figma 拉取队列（beta）",
+        "message": "push-tree-to-figma"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "导出 Cocos → Figma JSON（beta）",
+        "message": "export-tree-to-json-file"
+      },
+      {
+        "path": "i18n:menu.extension/FtoC/更多功能",
+        "label": "打开 ResourceReplace 面板（beta）",
+        "message": "open-replace-panel-beta"
+      }
+    ],
+    "messages": {
+      "open-replace-panel-beta": {
+        "methods": [
+          "openReplacePanelBeta"
+        ]
+      },
+      "open-settings-panel": {
+        "methods": [
+          "openSettingsPanel"
+        ]
+      },
+      "accept-pushed-json": {
+        "methods": [
+          "settings.acceptPushedJson"
+        ]
+      },
+      "clear-current-json-path": {
+        "methods": [
+          "clearCurrentJsonPath"
+        ]
+      },
+      "set-current-json-path": {
+        "methods": [
+          "setCurrentJsonPath"
+        ]
+      },
+      "open-component-mapping-panel": {
+        "methods": [
+          "openComponentMappingPanel"
+        ]
+      },
+      "get-push-server-status": {
+        "methods": [
+          "getPushServerStatus"
+        ]
+      },
+      "get-common-resource-dirs": {
+        "methods": [
+          "getCommonResourceDirs"
+        ]
+      },
+      "get-component-mappings": {
+        "methods": [
+          "getComponentMappings"
+        ]
+      },
+      "scan-component-identities-from-json": {
+        "methods": [
+          "scanComponentIdentitiesFromJson"
+        ]
+      },
+      "upsert-component-mapping": {
+        "methods": [
+          "upsertComponentMapping"
+        ]
+      },
+      "remove-component-mapping": {
+        "methods": [
+          "removeComponentMapping"
+        ]
+      },
+      "set-common-resource-dirs": {
+        "methods": [
+          "setCommonResourceDirs"
+        ]
+      },
+      "add-common-resource-dir": {
+        "methods": [
+          "addCommonResourceDir"
+        ]
+      },
+      "create-test-node": {
+        "methods": [
+          "createTestNode"
+        ]
+      },
+      "import-from-json": {
+        "methods": [
+          "importFromJson"
+        ]
+      },
+      "generate-text-styles-from-json-beta": {
+        "methods": [
+          "generateTextStylesFromJsonBeta"
+        ]
+      },
+      "start-push-server": {
+        "methods": [
+          "startPushServer"
+        ]
+      },
+      "stop-push-server": {
+        "methods": [
+          "stopPushServer"
+        ]
+      },
+      "stage-last-import-for-figma-pull": {
+        "methods": [
+          "stageLastImportForFigmaPull"
+        ]
+      },
+      "export-tree-for-figma-pull": {
+        "methods": [
+          "exportTreeForFigmaPull"
+        ]
+      },
+      "push-tree-to-figma": {
+        "methods": [
+          "pushTreeToFigma"
+        ]
+      },
+      "export-tree-to-json-file": {
+        "methods": [
+          "exportTreeToJsonFile"
+        ]
+      },
+      "save-node-as-prefab-beta": {
+        "methods": [
+          "saveNodeAsPrefabBeta"
+        ]
+      },
+      "instantiate-prefab-beta": {
+        "methods": [
+          "instantiatePrefabBeta"
+        ]
+      },
+      "replace-selected-from-json-beta": {
+        "methods": [
+          "replaceSelectedFromJsonBeta"
+        ]
+      },
+      "replace-selected-matched-node-from-json-beta": {
+        "methods": [
+          "replaceSelectedMatchedNodeFromJsonBeta"
+        ]
+      },
+      "scan-json-replace-candidates-beta": {
+        "methods": [
+          "scanJsonReplaceCandidatesBeta"
+        ]
+      },
+      "load-json-preview-beta": {
+        "methods": [
+          "loadJsonPreviewBeta"
+        ]
+      },
+      "scan-json-textures-beta": {
+        "methods": [
+          "scanJsonTexturesBeta"
+        ]
+      },
+      "import-missing-textures-beta": {
+        "methods": [
+          "importMissingTexturesBeta"
+        ]
+      },
+      "apply-matched-node-to-selected-beta": {
+        "methods": [
+          "applyMatchedNodeToSelectedBeta"
+        ]
+      },
+      "apply-json-node-to-target-beta": {
+        "methods": [
+          "applyJsonNodeToTargetBeta"
+        ]
+      },
+      "snapshot-replace-target-beta": {
+        "methods": [
+          "snapshotReplaceTargetBeta"
+        ]
+      },
+      "restore-replace-target-beta": {
+        "methods": [
+          "restoreReplaceTargetBeta"
+        ]
+      },
+      "select-replace-target-beta": {
+        "methods": [
+          "selectReplaceTargetBeta"
+        ]
+      },
+      "apply-matched-nodes-to-selected-root-beta": {
+        "methods": [
+          "applyMatchedNodesToSelectedRootBeta"
+        ]
+      },
+      "attach-matched-node-as-child-beta": {
+        "methods": [
+          "attachMatchedNodeAsChildBeta"
+        ]
+      }
+    },
+    "scene": {
+      "script": "./dist/scene.js",
+      "methods": [
+        "getSceneBuildVersion",
+        "getComponentStateRuntimeRevision",
+        "describeComponentMappingSelection",
+        "getImportContext",
+        "createEmptyNode",
+        "buildTree",
+        "replaceImagePlaceholders",
+        "applyComponentStates",
+        "restoreComponentStateActivity",
+        "applyMappedComponentStates",
+        "buildTextStyleRoot",
+        "exportTreeForFigma",
+        "describeNodeForReplaceBeta",
+        "listReplaceTargetsBeta",
+        "snapshotReplaceTargetBeta",
+        "restoreReplaceTargetBeta",
+        "selectReplaceTargetBeta",
+        "applyNodePatchBeta",
+        "serializeNodeAsPrefabBeta",
+        "instantiatePrefabBeta",
+        "replaceTreeBeta"
+      ]
+    }
+  }
+}

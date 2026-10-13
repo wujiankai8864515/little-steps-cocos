@@ -4,10 +4,13 @@
 
 三仓目前是同一 Git 仓库中的三个职责目录：
 
+`games/avg_plus` 已作为普通游戏目录纳入本仓 Git 管理，不保留独立 `.git` 或子模块配置。游戏自己的 `.gitignore` 继续排除 Cocos 缓存、构建产物及待审核资源。
+
 | 目录 | 维护内容 | 文档入口 |
 | --- | --- | --- |
 | engines/travel-core | 通用生命周期、资源门禁、输入、网格、骨骼与渲染能力 | [框架架构](engines/travel-core/docs/architecture.md) |
 | games/xiaoyu-cocos | 游戏页面、玩法、存档、动作、光照、原美术与字体来源 | [需求与验收](games/xiaoyu-cocos/docs/requirements.md)、[游戏架构](games/xiaoyu-cocos/docs/architecture.md) |
+| games/avg_plus | AVG + 高低接龙游戏及其 Mod、剧情和素材 | [游戏说明](games/avg_plus/README.md)、[Mod 架构](games/avg_plus/docs/MOD_ARCHITECTURE.md) |
 | builds | 公共打包入口及各渠道的配置、处理脚本和模板 | [微信打包与资源归属](builds/README.md) |
 
 [migration](migration/README.md) 保存迁移工具、历史证据、候选镜像、回读与失败记录，独立于日常打包仓。旧需求和设计原文保持可追溯；当前产品行为以游戏仓需求清单及最新用户覆盖为准。

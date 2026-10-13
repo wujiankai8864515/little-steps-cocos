@@ -1,0 +1,13 @@
+interface:
+  display_name: "关卡配置更新"
+  short_description: "从 Figma 读取每关牌阵配置到本地 JSON（源头 Figma、产物 JSON），先审阅后确认更新"
+  default_prompt: "Use $sync-figma-card-levels (关卡配置更新) to read the Figma 卡牌玩法界面 level configs (level_difficultyX_YY / main / bp_poker slots + bp_open_hand currentCard) into a review batch and wait for my approval before promotion."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "Read Figma page/node structure via get_figma_data --format json for the 卡牌玩法界面 level configs. Never call download_figma_images."
+
+policy:
+  allow_implicit_invocation: true

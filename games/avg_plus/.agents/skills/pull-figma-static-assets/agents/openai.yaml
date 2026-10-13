@@ -1,0 +1,13 @@
+interface:
+  display_name: "拉取 Figma 静态资源"
+  short_description: "按远端目录拉取直接下一层整体透明 PNG 到临时资源收件箱"
+  default_prompt: "Use $pull-figma-static-assets to list or pull one exact Figma static-resource directory into the temporary inbox without modifying formal textures."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "只读发现 Figma 目录，并以原生 1× PNG 导出直接子组件。"
+
+policy:
+  allow_implicit_invocation: true

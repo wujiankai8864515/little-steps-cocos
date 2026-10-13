@@ -1,0 +1,33 @@
+
+#///////////////////////////
+# Cocos Creator 3D Project
+#///////////////////////////
+library/
+temp/
+local/
+build/
+profiles/
+native
+#//////////////////////////
+# NPM
+#//////////////////////////
+node_modules/
+__pycache__/
+
+# Figma assets waiting for explicit human review. Never commit or build these.
+assets/art/resources/__figma_review__/
+assets/art/resources/__figma_review__.meta
+
+# One-shot Figma static assets waiting for manual selection into assets/art/textures.
+assets/art/__figma_static_inbox__/
+assets/art/__figma_static_inbox__.meta
+
+#//////////////////////////
+# VSCode
+#//////////////////////////
+.vscode/
+
+#//////////////////////////
+# WebStorm
+#//////////////////////////
+.idea/

@@ -1,0 +1,13 @@
+interface:
+  display_name: "审阅式同步 Figma 卡牌"
+  short_description: "先暂存审阅，再确认更新本项目的 Figma 卡牌资源"
+  default_prompt: "Use $sync-figma-game-assets to stage the configured Figma card assets for review and wait for my approval before promotion."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "Read Figma metadata and download component exports from the authenticated project file."
+
+policy:
+  allow_implicit_invocation: true

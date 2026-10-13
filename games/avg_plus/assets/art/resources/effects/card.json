@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "events": {
+    "card.open": [],
+    "card.play": [
+      {
+        "id": "cardPulseExample",
+        "kind": "pulse",
+        "target": "current",
+        "enabled": true,
+        "duration": 0.2,
+        "scale": 1.06
+      }
+    ],
+    "card.invalid": [],
+    "card.draw": [],
+    "card.reward": [],
+    "card.wild.prepare": [],
+    "card.wild.cancel": [],
+    "card.addBackup": [],
+    "card.rollback": [],
+    "card.complete": []
+  }
+}

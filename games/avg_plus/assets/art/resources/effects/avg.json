@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "events": {
+    "avg.page.enter": [
+      {
+        "id": "roleEntranceExample",
+        "kind": "moveIn",
+        "target": "roleLeft",
+        "enabled": true,
+        "duration": 0.3,
+        "x": -60,
+        "y": 0
+      }
+    ],
+    "avg.page.turn": [
+      {
+        "id": "dialogueFade",
+        "kind": "fadeIn",
+        "target": "dialoguePanel",
+        "duration": 0.18
+      }
+    ],
+    "avg.choice": [],
+    "avg.chapter.end": [
+      {
+        "id": "chapterEndFade",
+        "kind": "fadeIn",
+        "target": "endOverlay",
+        "duration": 0.28
+      }
+    ]
+  }
+}

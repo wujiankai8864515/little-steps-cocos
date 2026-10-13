@@ -1,0 +1,23 @@
+<div id="app" class="mapping-app">
+    <header class="mapping-header">
+        <div>
+            <h2>组件映射 / Assign Prefab</h2>
+            <p>选择场景中的 Figma 组件，再选择 Project Prefab，按默认或当前变体绑定。</p>
+        </div>
+        <div class="header-actions"><button id="refreshBtn">刷新</button><button id="scanBtn" data-testid="ftoc-mapping-scan-current-json" title="扫描 FtoC 导入工作台当前选中的 JSON">扫描当前 JSON</button></div>
+    </header>
+    <section id="selectedPrefab" class="selected-prefab"></section>
+    <section class="mapping-section scene-selection-section">
+        <div class="section-title"><h3>当前场景组件</h3><span class="summary">主入口</span></div>
+        <div id="sceneSelection" class="scene-selection"></div>
+    </section>
+    <section class="mapping-section">
+        <div class="section-title"><h3>最近导入的组件（辅助）</h3><span id="summary" class="summary">—</span></div>
+        <div id="detected" class="list"></div>
+    </section>
+    <section class="mapping-section">
+        <div class="section-title"><h3>工程映射表</h3></div>
+        <div id="mappings" class="list"></div>
+    </section>
+    <footer class="mapping-footer"><span id="status" data-tone="info"></span><button id="settingsBtn">返回 FtoC 面板</button><span id="version" class="version-tag"></span></footer>
+</div>
