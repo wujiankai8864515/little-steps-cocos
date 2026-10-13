@@ -1,0 +1,14 @@
+{
+  "item": "AVG.UPDATE.02",
+  "oldApkVersion": "0.1.0.0",
+  "attemptedResourceVersion": "0.1.0.1",
+  "downloadBytes": 32033763,
+  "downloadSha256": "271f203dcae4ed2e095a77b1b8aac883cc52a81a7fbb1149967937b830b6cfd1",
+  "pagesAndAndroidBytesMatch": true,
+  "result": "verification failed; three attempts; safe packaged fallback",
+  "rootCause": "Cocos 3.8.8 Manifest::parseAsset casts size to float; 32033763 becomes 32033764; strict native asset.size comparison rejects before SHA",
+  "evidence": "Installed engine native/extensions/assets-manager/Manifest.cpp:435 and migration/reviews/avg_plus/native-hot-update.log",
+  "fix": "Verify exact byte count and SHA against validated JS manifest; align ZIP container length to 32 bytes via legal ZIP comment for legacy APKs",
+  "targetVersion": "0.1.0.2",
+  "nativeRevalidation": "pending"
+}

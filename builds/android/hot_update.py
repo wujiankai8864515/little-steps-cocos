@@ -55,6 +55,12 @@ def prepare(assets, output, game, templates):
             info.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(info, data)
             files.append({'path': relative, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+    # Legacy APK verification compares native Asset.size (float) with the exact JSON integer.
+    # A legal ZIP comment aligns its length so float32 remains exact up to the 128 MiB limit.
+    padding = (-payload.stat().st_size) % 32
+    if padding:
+        with zipfile.ZipFile(payload, 'a') as archive:
+            archive.comment = b' ' * padding
     digest = hashlib.sha256(payload.read_bytes()).hexdigest()
     manifest = {
         'packageUrl': base + 'versions/' + game['hotUpdateVersion'] + '/',
@@ -73,7 +79,7 @@ def prepare(assets, output, game, templates):
         ['version', 'engineVersion', 'nativeCompatibility', 'remoteManifestUrl', 'remoteVersionUrl']})
     record = {'repository': repository, 'tag': tag, 'version': game['hotUpdateVersion'],
               'nativeCompatibility': game['nativeCompatibility'], 'zipBytes': payload.stat().st_size,
-              'sha256': digest, 'files': files, 'engineExcluded': True,
+              'sha256': digest, 'files': files, 'engineExcluded': True, 'legacyFloatSizeAligned': True,
               'nativeDeviceUpgrade': 'pending', 'githubDownload': 'pending'}
     write(output / 'payload-record.json', record)
     return record

@@ -51,10 +51,13 @@ export class NativeHotUpdate {
             }
             manager.setMaxConcurrentTask(1);
             manager.setVerifyCallback((path, asset) => {
-                if (this.lifetime.cancelled || asset.size !== manifest.assets['avg-plus-assets.zip'].size) return false;
+                const expected = manifest.assets['avg-plus-assets.zip'];
+                // Cocos 3.8.8 stores Asset.size in a C++ float; large odd byte counts are rounded.
+                // The validated JS manifest and actual bytes retain the exact integer length.
+                if (this.lifetime.cancelled || asset.md5 !== expected.md5) return false;
                 try {
                     const data = new Uint8Array(native.fileUtils.getDataFromFile(path));
-                    return data.byteLength === asset.size && sha256(data) === asset.md5;
+                    return data.byteLength === expected.size && sha256(data) === expected.md5;
                 } catch (_) { return false; }
             });
             await this.lifetime.run(scope => this.download(manager, scope, status), 600000);
