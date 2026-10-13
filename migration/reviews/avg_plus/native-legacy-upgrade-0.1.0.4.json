@@ -1,0 +1,41 @@
+{
+  "item": "AVG.PAGES.05",
+  "device": "Android 35 ARM64 emulator-5554",
+  "physicalDevice": false,
+  "actualInstalledLegacyApkSha256": "76d08ac0aa81f9ed4e1b4716a0f2118a892135db4ffd61720152fe92d7de35d4",
+  "targetResourceVersion": "0.1.0.4",
+  "allExtractedFiles": {
+    "count": 319,
+    "bytes": 33632799,
+    "status": "passed: every native cached file equals the verified release ZIP entry byte-for-byte",
+    "extraFiles": [
+      "Cocos-generated project.manifest"
+    ]
+  },
+  "marker": {
+    "compatibility": "avg_plus-cocos-3.8.8-native-1",
+    "version": "0.1.0.4",
+    "paths": [
+      "/data/user/0/com.wujiankai.avgplus/files/avg-plus-hot-update/"
+    ],
+    "probePending": false,
+    "probeAttempted": false
+  },
+  "saved": {
+    "coins": 4050,
+    "gems": 40,
+    "completedLevels": [
+      "level_difficulty1_01"
+    ],
+    "storyPageIndex": 1,
+    "dailyWins": 2
+  },
+  "update": "passed: downloaded, verified, restarted, healthy",
+  "coldBoot": "passed: cache restored, healthy markers clear, 4050 coins and original pageIndex 1 remain",
+  "verificationCorrection": {
+    "failedAssumption": "Reading downloaded ZIP after extraction.",
+    "evidence": "ADB returned 78-byte missing-file text, and the checksum assertion correctly failed.",
+    "rootCause": "Cocos removes the ZIP after extracting; exec-out does not propagate remote cat failure as a host exit status.",
+    "correctedCheck": "Compare the complete extracted native cache against every entry of the verified published ZIP; do not claim an absent cache ZIP was read."
+  }
+}

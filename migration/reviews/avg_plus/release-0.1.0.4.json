@@ -1,0 +1,59 @@
+{
+  "item": "AVG.PAGES.05",
+  "version": "0.1.0.4",
+  "tag": "avg-plus-android-0.1.0.4",
+  "htmlUrl": "https://github.com/wujiankai8864515/little-steps-cocos/releases/tag/avg-plus-android-0.1.0.4",
+  "draft": false,
+  "prerelease": true,
+  "source": "e47653fd3b1ce7cb1b7b0901be8010611db798ed",
+  "assets": [
+    {
+      "name": "avg-plus-assets.zip",
+      "bytes": 32886624,
+      "digest": "sha256:b9a40a7c51220d91155cd38634a4770f05aac7a6ddc4403ebfff6266b3b16f39",
+      "url": "https://github.com/wujiankai8864515/little-steps-cocos/releases/download/avg-plus-android-0.1.0.4/avg-plus-assets.zip"
+    },
+    {
+      "name": "avg-plus-project.manifest",
+      "bytes": 695,
+      "digest": "sha256:63e4dcb7554d9cdcefdf04d4a5c0ff9e1e670daf3b532ab58d967b22b0905854",
+      "url": "https://github.com/wujiankai8864515/little-steps-cocos/releases/download/avg-plus-android-0.1.0.4/avg-plus-project.manifest"
+    },
+    {
+      "name": "avg-plus-version.manifest",
+      "bytes": 372,
+      "digest": "sha256:c79299533e5bd10a308f553ce446e4b67abbac5080800134f840670b93b5f42b",
+      "url": "https://github.com/wujiankai8864515/little-steps-cocos/releases/download/avg-plus-android-0.1.0.4/avg-plus-version.manifest"
+    },
+    {
+      "name": "AVGPlus-debug.apk",
+      "bytes": 56503453,
+      "digest": "sha256:d9b66fa7707efe0c4b8afadb018121a5c76fce900d726fa1ca79e54ad38b61d5",
+      "url": "https://github.com/wujiankai8864515/little-steps-cocos/releases/download/avg-plus-android-0.1.0.4/AVGPlus-debug.apk"
+    }
+  ],
+  "pages": {
+    "status": "passed: latest manifest equals candidate manifest",
+    "version": "0.1.0.4",
+    "archiveSha256": "b9a40a7c51220d91155cd38634a4770f05aac7a6ddc4403ebfff6266b3b16f39",
+    "archiveBytes": 32886624
+  },
+  "legacyUpgrade": {
+    "status": "passed",
+    "evidence": "native-legacy-upgrade-0.1.0.4.json",
+    "allExtractedFiles": {
+      "count": 319,
+      "bytes": 33632799,
+      "status": "passed: every native cached file equals the verified release ZIP entry byte-for-byte",
+      "extraFiles": [
+        "Cocos-generated project.manifest"
+      ]
+    },
+    "coldBoot": "passed"
+  },
+  "anonymousApkDownload": {
+    "bytes": 56503453,
+    "sha256": "d9b66fa7707efe0c4b8afadb018121a5c76fce900d726fa1ca79e54ad38b61d5",
+    "status": "passed"
+  }
+}

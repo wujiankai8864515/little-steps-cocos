@@ -13,7 +13,7 @@ python3 -B builds/build.py android --game avg_plus
 
 工具默认读取本机 Cocos 3.8.8、`~/Library/Android/sdk`、其已安装 NDK、Android Studio JBR 和 Cocos 内置 CMake；可用 `COCOS_CREATOR`、`ANDROID_SDK_ROOT`、`ANDROID_NDK_HOME`、`AVG_PLUS_JAVA_HOME` 指定。不会修改微信渠道配置。
 
-当前产物属于 debug 预览候选。0.1.0.3 完整 APK 已在原仓库 Releases 发布并匿名下载核对 SHA-256；Pages 资源上线、实际旧 0.1.0.0 APK 升级至 0.1.0.3 和冷启动保留进度已在 Android 35 ARM64 模拟器通过。正式 release 签名、完整视频交互/截图对照及真实手机验证仍须完成。构建器将渠道应用版本写入原生 Gradle 模板，并实际审计 APK 包名、版本、竖屏、ABI 与签名，不能以模板默认版本冒充配置值。
+当前产物属于 debug 预览候选。0.1.0.4 完整 APK 已在原仓库 Releases 发布并匿名下载核对 SHA-256；Pages 资源上线、实际旧 0.1.0.0 APK 升级至 0.1.0.4 和冷启动保留进度已在 Android 35 ARM64 模拟器通过。旧客户端缓存内的 319 个解压文件与发布 ZIP 每项字节一致；下载 ZIP 会在解压后由 Cocos 删除，不能将不存在的缓存 ZIP 当作完整下载证据。正式 release 签名、完整视频交互/截图对照及真实手机验证仍须完成。构建器将渠道应用版本写入原生 Gradle 模板，并实际审计 APK 包名、版本、竖屏、ABI 与签名，不能以模板默认版本冒充配置值。
 
 ## 热更新资源
 
