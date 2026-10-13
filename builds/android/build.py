@@ -159,6 +159,8 @@ def build(args):
         if args.export_only:
             print(json.dumps({'stage': str(stage), 'review': str(review), 'export': 'passed'}))
             return
+        from png_storage import compact_assets
+        record['pngStorage'] = compact_assets(assets, stage / 'png-storage-originals')
         from hot_update import prepare
         record['hotUpdate'] = prepare(assets, stage / 'hot-update', game, CHANNEL / 'templates')
         write_json(review, record)

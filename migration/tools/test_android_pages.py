@@ -67,6 +67,8 @@ class PagesTests(unittest.TestCase):
     def test_no_release_does_not_claim_an_available_update(self):
         destination = self.assemble([])
         self.assertIn('正在准备', (destination / 'index.html').read_text())
+        self.assertEqual((destination / 'avg-plus/android/index.html').read_text(),
+                         (destination / 'index.html').read_text())
         self.assertFalse((destination / 'avg-plus/android/latest').exists())
 
     def test_incomplete_upload_never_publishes_a_latest_manifest(self):

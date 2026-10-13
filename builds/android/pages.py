@@ -115,6 +115,9 @@ def assemble(repository, destination, fetch=request, release_list=None):
         text = '安卓更新资源正在准备。'
     index = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AVG Plus 安卓更新</title><body><main><h1>AVG Plus 安卓更新</h1><p>''' + text + '''</p><p><a href="https://github.com/''' + repository + '''/releases">安卓版本下载</a></p></main></body></html>'''
     (destination / 'index.html').write_text(index)
+    channel = destination / 'avg-plus/android'
+    channel.mkdir(parents=True, exist_ok=True)
+    (channel / 'index.html').write_text(index)
     (destination / '.nojekyll').touch()
     record = {'repository': repository, 'baseUrl': base, 'latestVersion': current,
               'versions': [{key: value for key, value in entry.items() if not key.endswith('Bytes')} for entry in versions.values()]}
