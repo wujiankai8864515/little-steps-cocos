@@ -10,6 +10,7 @@ import { CardCompletionUI } from './CardCompletionUI';
 import { GameUiAction, GameUiActionType, GameUiNodeId, buildGamePageViewState, type GamePageViewState } from './GameUIContract';
 import { CardState, createCardMod } from './CardMod';
 import { loadProfile, extensionsFor } from '../Registry';
+import type { EconomyConfig } from '../base-shell/CatalogConfig';
 const { ccclass } = _decorator;
 const PACKAGED_CONTENT_LOAD_TIMEOUT_MS = 30000;
 @ccclass('GamePageUI')
@@ -20,11 +21,17 @@ export class GamePageUI extends GamePresentation {
     private onComplete: (() => void) | null = null;
     private bound = false;
     private exiting = false;
+    private economy: EconomyConfig | undefined;
+    private onCheckpoint: ((state: Readonly<CardState>, action: string) => Promise<void>) | null = null;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
-    public async open(levelId: string, onExit?: () => void, onComplete?: () => void): Promise<void> {
+    public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
+        initialCoins: number; economy: EconomyConfig;
+        checkpoint: (state: Readonly<CardState>, action: string) => Promise<void>;
+    }): Promise<void> {
         this.prepareOpeningVisualState();
         this.onExit = onExit ?? null;
         this.onComplete = onComplete ?? null;
+        this.economy = options?.economy; this.onCheckpoint = options?.checkpoint ?? null;
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
         // 并使用与外层页面进入流程一致的 30 秒边界，避免先被默认 8 秒取消。
@@ -59,6 +66,9 @@ export class GamePageUI extends GamePresentation {
             initialStockCount: singleBackupCardTest ? 1 : 10,
             // 测试模式要能稳定观察免费牌耗尽后的付费入场效果。
             forceUnmatchedOpeningCards: singleBackupCardTest,
+            initialCoins: options?.initialCoins,
+            economy: options?.economy,
+            retryCost: options?.economy.entryCost,
         });
         const extras = extensionsFor(profile, 'card', { root: this.node, find: name => this.findNode(name), context: () => levelId, afterInsert: () => this.bringInputBlockerToFront() });
         this.runtime = new Runtime([base, ...extras], { profile, level }, {
@@ -104,6 +114,11 @@ export class GamePageUI extends GamePresentation {
             const result = await runtime.dispatch({ type, ...(payload === undefined ? {} : { payload }) });
             if (!this.node.isValid) return;
             if (result.status === 'rejected' || result.status === 'failed') this.showToast(result.reason ?? '操作未完成');
+            if (result.status === 'committed' && this.onCheckpoint) {
+                try { await this.onCheckpoint(runtime.read<CardState>('base-card'), type); }
+                catch (error) { if (this.node.isValid) { console.error('[Card save]', error); this.showToast('进度保存未完成，请稍后重试'); } }
+                if (!this.node.isValid) return;
+            }
             if (type === 'card.exit' && result.status === 'committed') {
                 this.exiting = true; const callback = this.onExit; this.onExit = null;
                 this.scheduleOnce(() => callback?.(), 0);
@@ -127,7 +142,7 @@ export class GamePageUI extends GamePresentation {
     private model() {
         const state = this.runtime!.read<CardState>('base-card');
         const core = new HighLowSolitaireCore(this._level!); core.restoreSnapshot(state.core);
-        const session = new GameSessionStore(); session.restoreCheckpoint(state.session);
+        const session = new GameSessionStore(this.economy); session.restoreCheckpoint(state.session);
         return { state, core, session };
     }
     private refresh(locked: boolean, concealed = false): GamePageViewState | null {
@@ -180,5 +195,5 @@ export class GamePageUI extends GamePresentation {
         }
     }
     private lock(value: boolean): void { this.ensureInputBlocker().active = value; if (value) this.bringInputBlockerToFront(); }
-    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; super.onDestroy(); }
+    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; super.onDestroy(); }
 }

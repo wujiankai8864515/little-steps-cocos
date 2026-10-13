@@ -1,7 +1,7 @@
 import { _decorator, AssetManager, assetManager, JsonAsset, SpriteFrame, UIOpacity, tween } from 'cc';
 import { Runtime } from '../../foundation/Runtime';
 import { TaskScope } from '../../foundation/Tasks';
-import type { CommittedContext } from '../../foundation/Contracts';
+import type { CommittedContext, Snapshot } from '../../foundation/Contracts';
 import { AvgPresentation } from './AvgPresentation';
 import type { AvgPage } from './AvgTypes';
 import { parsePage } from './AvgContent';
@@ -14,9 +14,14 @@ export class AvgPlayer extends AvgPresentation {
     private readonly lifetime = new TaskScope();
     private pages: AvgPage[] = [];
     private onExit: (() => void) | null = null;
+    private onCheckpoint: ((snapshot: Snapshot, state: Readonly<AvgState>, pageCount: number, choice: boolean) => Promise<void>) | null = null;
     private chapter = { id: 'first-chapter', title: '霸总的假未婚妻', bundle: 'drama_fake_fiancee', path: 'chapters/第一章' };
-    public async open(onExit?: () => void, chapterId = 'first-chapter'): Promise<void> {
+    public async open(onExit?: () => void, chapterId = 'first-chapter', options?: {
+        snapshot: Snapshot | null;
+        checkpoint: (snapshot: Snapshot, state: Readonly<AvgState>, pageCount: number, choice: boolean) => Promise<void>;
+    }): Promise<void> {
         this.onExit = onExit ?? null; this.createView(); this.setLoading(true, '正在加载剧情…');
+        this.onCheckpoint = options?.checkpoint ?? null;
         try {
             const [profile, chapter] = await this.lifetime.run(() => Promise.all([loadProfile(), loadChapter(chapterId)]));
             this.chapter = chapter; this.title = chapter.title;
@@ -36,7 +41,9 @@ export class AvgPlayer extends AvgPresentation {
                 afterInsert: () => { const blocker = this.findNode('loadingOverlay'); if (blocker?.active) blocker.setSiblingIndex(this.node.children.length - 1); },
             });
             this.runtime = new Runtime([base, ...extras], { profile, chapter, pages: this.pages }, { diagnostic: entry => console.warn('[Mods]', entry) });
-            await this.runtime.open(); this.lifetime.check(); this.setLoading(false); await this.send('avg.open');
+            await this.runtime.open(); this.lifetime.check();
+            if (options?.snapshot) this.runtime.restoreSnapshot(options.snapshot);
+            this.setLoading(false); await this.send('avg.open');
         } catch (error) { if (this.node.isValid) this.setLoading(true, '剧情加载失败，请查看控制台'); throw error; }
     }
     private async send(type: string, payload?: unknown): Promise<void> {
@@ -44,7 +51,12 @@ export class AvgPlayer extends AvgPresentation {
         this.setInputBlocked(true);
         try {
             const result = await this.runtime.dispatch({ type, ...(payload === undefined ? {} : { payload }) });
+            if (this.lifetime.cancelled || !this.node.isValid) return;
             if (result.status === 'failed' || result.status === 'rejected') console.warn('[AvgPlayer]', result.reason);
+            if (result.status === 'committed' && this.onCheckpoint) {
+                await this.onCheckpoint(this.runtime.exportSnapshot(), this.runtime.read<AvgState>('base-avg'), this.pages.length, type === 'avg.choose');
+                this.lifetime.check();
+            }
             if (type === 'avg.exit' && result.status === 'committed') { const callback = this.onExit; this.onExit = null; this.scheduleOnce(() => callback?.(), 0); }
         } finally { if (this.node.isValid) this.setInputBlocked(false); }
     }
@@ -79,7 +91,7 @@ export class AvgPlayer extends AvgPresentation {
         await roles;
     }
     protected onDestroy(): void {
-        this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; super.onDestroy();
+        this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onCheckpoint = null; super.onDestroy();
         this._sprites.forEach(frame => frame.decRef()); this._sprites.clear();
     }
     private loadBundle(): Promise<AssetManager.Bundle> {

@@ -1,4 +1,5 @@
 import type { CardDef } from './HighLowSolitaireCore';
+import type { EconomyConfig } from '../base-shell/CatalogConfig';
 
 export const HITS_PER_REWARD = 4;
 export const INITIAL_COINS = 999;
@@ -71,9 +72,9 @@ export interface RollbackResolution {
     readonly coinsAfter: number;
 }
 
-function createInitialState(): MutableSessionState {
+function createInitialState(coins = INITIAL_COINS): MutableSessionState {
     return {
-        coins: INITIAL_COINS,
+        coins,
         streakColors: [],
         freeStockDraws: 0,
         wildReady: false,
@@ -91,10 +92,14 @@ function createInitialState(): MutableSessionState {
  * capture/restoreCheckpoint 用于异常时的原子恢复，restoreForRollback 则保留递增费用计数。
  */
 export class GameSessionStore {
-    private _state: MutableSessionState = createInitialState();
+    private _state: MutableSessionState;
+    public constructor(private readonly economy?: EconomyConfig, coins = INITIAL_COINS) {
+        this._state = createInitialState(coins);
+        this.assertIntegrity();
+    }
 
-    public reset(): void {
-        this._state = createInitialState();
+    public reset(coins = INITIAL_COINS): void {
+        this._state = createInitialState(coins);
     }
 
     public get coins(): number {
@@ -114,7 +119,7 @@ export class GameSessionStore {
     }
 
     public getActionCost(action: PaidGameAction): number {
-        const rule = ACTION_COST_RULES[action];
+        const rule = this.economy?.[action] ?? ACTION_COST_RULES[action];
         const uses = action === PaidGameAction.AddBackup ? 0 : this._state.actionUses[action];
         return Math.min(Number.MAX_SAFE_INTEGER, rule.base + rule.increment * uses);
     }

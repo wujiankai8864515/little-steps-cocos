@@ -8,11 +8,15 @@ import {
 } from './HighLowSolitaireCore';
 import { GameSessionStore, GameSessionSnapshot, PaidGameAction } from './GameSessionStore';
 import { manifest } from './ModManifest';
+import type { EconomyConfig } from '../base-shell/CatalogConfig';
 export interface CardState { core: SolitaireCoreSnapshot; session: GameSessionSnapshot; paused: boolean; rng: number; lastMove: { kind: 'board' | 'stock' | 'addBackup'; slotId?: string; cardName?: string } | null; }
 export interface CardPorts { render(ctx: CommittedContext): readonly PresentationTask[]; afterRender(ctx: CommittedContext): void; }
 export interface CardSetupOptions {
     readonly initialStockCount?: number;
     readonly forceUnmatchedOpeningCards?: boolean;
+    readonly initialCoins?: number;
+    readonly economy?: EconomyConfig;
+    readonly retryCost?: number;
 }
 function random(state: { rng: number }): () => number {
     return () => { let x = state.rng | 0; x ^= x << 13; x ^= x >>> 17; x ^= x << 5; state.rng = x >>> 0; return state.rng / 4294967296; };
@@ -27,10 +31,10 @@ export function createCardMod(
     const initialStockCount = setup.initialStockCount ?? DEFAULT_INITIAL_STOCK_COUNT;
     const initialRng = { rng: seed }; const first = new HighLowSolitaireCore(level, random(initialRng));
     first.startGame(initialStockCount, setup.forceUnmatchedOpeningCards ?? false);
-    const initialState: CardState = { core: first.captureSnapshot(), session: new GameSessionStore().captureSnapshot(), paused: false, rng: initialRng.rng, lastMove: null };
+    const initialState: CardState = { core: first.captureSnapshot(), session: new GameSessionStore(setup.economy, setup.initialCoins).captureSnapshot(), paused: false, rng: initialRng.rng, lastMove: null };
     const hydrate = (state: CardState) => {
         const core = new HighLowSolitaireCore(level, random(state)); core.restoreSnapshot(state.core);
-        const session = new GameSessionStore(); session.restoreCheckpoint(state.session); return { core, session };
+        const session = new GameSessionStore(setup.economy); session.restoreCheckpoint(state.session); return { core, session };
     };
     return {
         manifest, initialState,
@@ -49,7 +53,12 @@ export function createCardMod(
         execute(ctx: DraftContext) {
             let state = ctx.draft[manifest.id] as CardState;
             if (ctx.action.type === 'card.restart') {
-                ctx.clearHistory(); ctx.draft[manifest.id] = clone(initialState); ctx.result = { kind: 'open' }; return;
+                const retryCost = setup.retryCost;
+                if (retryCost !== undefined && (!Number.isSafeInteger(retryCost) || retryCost < 0)) ctx.reject('重试费用配置无效');
+                if (retryCost !== undefined && state.session.coins < retryCost) ctx.reject(`金币不足（需要 ${retryCost}）`);
+                const next = clone(initialState);
+                if (retryCost !== undefined) next.session = { ...next.session, coins: state.session.coins - retryCost };
+                ctx.clearHistory(); ctx.draft[manifest.id] = next; ctx.result = { kind: 'open' }; return;
             }
             if (ctx.action.type === 'card.open' || ctx.action.type === 'card.exit') { ctx.result = { kind: ctx.action.type.slice(5) }; return; }
             if (ctx.action.type === 'card.pause') { state.paused = !state.paused; ctx.result = { kind: 'pause' }; return; }

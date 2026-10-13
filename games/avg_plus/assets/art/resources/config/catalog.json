@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "economy": {
+    "initialCoins": 5700,
+    "initialGems": 40,
+    "entryCost": 500,
+    "rollback": { "base": 50, "increment": 0 },
+    "wild": { "base": 500, "increment": 500 },
+    "addBackup": { "base": 500, "increment": 0 }
+  },
+  "stories": [
+    {
+      "id": "fake-fiancee",
+      "chapterId": "first-chapter",
+      "title": "霸总的假未婚妻",
+      "subtitle": "HOT · ROMANCE",
+      "synopsis": "深夜医院，弟弟重病急需手术保证金，她被逼到走投无路。",
+      "bundle": "drama_fake_fiancee",
+      "background": "backgrounds/bg01",
+      "roles": ["roles/role_Luna", "roles/role_Eli"],
+      "collections": [
+        { "id": "hospital", "title": "深夜医院", "asset": "backgrounds/bg01", "unlockPage": 1 },
+        { "id": "luna", "title": "Luna", "asset": "roles/role_Luna", "unlockPage": 2 },
+        { "id": "eli", "title": "Eli", "asset": "roles/role_Eli", "unlockPage": 3 },
+        { "id": "mia", "title": "Mia", "asset": "roles/role_Mia", "unlockPage": 13 },
+        { "id": "jabari", "title": "Jabari", "asset": "roles/role_Jabari", "unlockPage": 26 }
+      ]
+    }
+  ],
+  "quests": [
+    { "id": "login", "label": "Daily login bonus", "target": 1, "reward": 100 },
+    { "id": "choices", "label": "Make your choices in a story", "target": 3, "reward": 150 },
+    { "id": "gemChoices", "label": "Choose gem options", "target": 1, "reward": 50 },
+    { "id": "wins", "label": "Clear solitaire levels", "target": 5, "reward": 250 },
+    { "id": "ads", "label": "Watch ads", "target": 4, "reward": 200 }
+  ]
+}
