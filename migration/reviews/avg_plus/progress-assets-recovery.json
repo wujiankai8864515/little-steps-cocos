@@ -1,0 +1,59 @@
+{
+  "item": "AVG.ART.01",
+  "trigger": "Clean native export reported six missing prefab SpriteFrames",
+  "rootCause": "Prefab already selected sprites under an ignored Figma inbox; Git-based isolated export omitted them",
+  "authorization": "User authorized all work needed for existing UI and exact card presentation; selected only sprites already referenced by the prefab",
+  "repair": "Moved original pixels and metadata together to tracked art/textures/progress; prefab references and UUIDs unchanged",
+  "assets": [
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_gray01.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_gray01.png",
+      "uuid": "6f36dd92-055c-4f24-afa0-6f1b757b9117",
+      "spriteUuid": "6f36dd92-055c-4f24-afa0-6f1b757b9117@f9941",
+      "sha256": "23ee2f8a9afd9774a73d618beea728883b36a7c5e539b72b3d4ed923d59e15ee",
+      "metaSHA256": "d5dce13b9366b4f2408d0a78d26e91c5ded2f99b5ecc04b7d5aab82457e8a1bc"
+    },
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_gray02.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_gray02.png",
+      "uuid": "c9093172-2486-4863-b3d8-0b1d46e1c3fd",
+      "spriteUuid": "c9093172-2486-4863-b3d8-0b1d46e1c3fd@f9941",
+      "sha256": "c16e8c965fbbee0b5fa97d59a7c5fd898f98393f493d2343727c5594575a090f",
+      "metaSHA256": "e0a8c505dbe52487ad5da52743be08e19556565d6e9e93b8843849f2304a6c62"
+    },
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_black01.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_black01.png",
+      "uuid": "ea8745f7-5a21-4af3-963c-eeac364f069d",
+      "spriteUuid": "ea8745f7-5a21-4af3-963c-eeac364f069d@f9941",
+      "sha256": "165c1e27a114ea355ce87378773416ba537f174ddcf6aeab121dd236103b2aed",
+      "metaSHA256": "1971d8fe68b3b494dbe15e988fe58d550772f7280ed28be5dbebef20a6ebd14d"
+    },
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_black02.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_black02.png",
+      "uuid": "6337aa96-b989-480d-9525-5e54cc3ae589",
+      "spriteUuid": "6337aa96-b989-480d-9525-5e54cc3ae589@f9941",
+      "sha256": "85ce9d17bd729cb7cc6b35168c5746d509276dd1d58b40acc4886692e7d88716",
+      "metaSHA256": "17f891e89f71ee943c3206a51f8df9f3702b30011cb651f2107ab249ec85d4a4"
+    },
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_red01.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_red01.png",
+      "uuid": "21356f3b-99a6-422b-afcf-4ab6f630b0a4",
+      "spriteUuid": "21356f3b-99a6-422b-afcf-4ab6f630b0a4@f9941",
+      "sha256": "057852ba4c19612fc492a6bd3424c569e64d5f9a02aa3da0454592091ca31471",
+      "metaSHA256": "41ebba31032d331da4066b324454b00bb66b4a2de7cc06d155db815387a12679"
+    },
+    {
+      "source": "games/avg_plus/assets/art/__figma_static_inbox__/组件库/元件/img_main_progress_red02.png",
+      "destination": "games/avg_plus/assets/art/textures/progress/img_main_progress_red02.png",
+      "uuid": "f94d59e8-a715-4eb7-910b-2e8017cc60db",
+      "spriteUuid": "f94d59e8-a715-4eb7-910b-2e8017cc60db@f9941",
+      "sha256": "76118a267059fd4247353908bb5508847a73f6150d4d30f32ffbf64b15d357df",
+      "metaSHA256": "eb1cdaf3acfd622ebbd60d31e151a79fb5de9436b8ae4bcc0b1dd180c390134b"
+    }
+  ],
+  "historical18UUIDs": "pending; independent pre-existing failure",
+  "visual": "pending"
+}
