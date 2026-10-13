@@ -71,6 +71,9 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
     const initial = saved ? clone(saved) : initialCatalogState(config, clock());
     validateCatalogState(initial);
     for (const s of config.stories) initial.stories[s.id] ??= freshProgress();
+    // A native abort can prevent the normal entry-failure callback. Recover the unplayed
+    // entry transaction once; an already played or completed round cannot be refunded.
+    if (initial.round?.entryRefundable && !initial.round.complete) initial.coins = Math.min(Number.MAX_SAFE_INTEGER, initial.coins + config.economy.entryCost);
     // Returning from an interrupted game preserves its last committed balance and progress.
     initial.page = 'catalog'; initial.returnPage = 'catalog'; initial.round = null;
     if (!config.stories.some(s => s.id === initial.selectedStory)) initial.selectedStory = config.stories[0].id;
