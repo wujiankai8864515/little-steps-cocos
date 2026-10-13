@@ -73,3 +73,15 @@ test('bootstrap restores paths before modules and falls back after an unconfirme
  vm.runInNewContext(hook,context);
  assert.equal(removed[0],'/data/avg-plus-hot-update/');assert.equal(JSON.parse(files.get('/data/avg-plus-hot-update-state.json')).blockedVersion,'0.1.0.1');
 });
+test('installing a newer APK supersedes an older/equal patch without deleting product saves or blocking a newer patch',()=>{
+ const hook=fs.readFileSync(root+'/builds/android/templates/hot-update-bootstrap.js','utf8');
+ for(const [packaged,cached,restored] of [['0.1.0.3','0.1.0.2',false],['0.1.0.3','0.1.0.3',false],['0.1.0.3','0.1.0.4',true],['0.1.0.9','0.1.0.10',true]]){
+  const marker='/data/avg-plus-hot-update-state.json',save='/data/product-save.json';
+  const files=new Map([['avg-plus-native.json',JSON.stringify({...identity,version:packaged})],[marker,JSON.stringify({compatibility:'native-1',version:cached,paths:['/data/avg-plus-hot-update/'],probePending:false})],[save,'user data']]);
+  let paths=['apk/'],removed=[];
+  const context={jsb:{fileUtils:{getWritablePath:()=>'/data/',getStringFromFile:key=>files.get(key),writeStringToFile:(value,key)=>{files.set(key,value);return true},removeDirectory:key=>removed.push(key),removeFile:key=>files.delete(key),isFileExist:()=>true,getSearchPaths:()=>paths,setSearchPaths:value=>paths=value}}};
+  vm.runInNewContext(hook,context);assert.equal(paths.includes('/data/avg-plus-hot-update/'),restored);
+  assert.equal(files.get(save),'user data');assert.equal(files.has(marker),restored);
+  if(!restored)assert.deepEqual(removed,['/data/avg-plus-hot-update/']);
+ }
+});

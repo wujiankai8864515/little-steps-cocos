@@ -12,6 +12,25 @@
         files.removeFile(marker);
         return;
     }
+    function versionParts(value) {
+        return typeof value === 'string' && /^\d+\.\d+\.\d+\.\d+$/.test(value) ? value.split('.').map(Number) : null;
+    }
+    function newerThanPackaged(value) {
+        var cached = versionParts(value), packaged = versionParts(identity.version);
+        if (!cached || !packaged) return false;
+        for (var index = 0; index < 4; index++) {
+            if (cached[index] !== packaged[index]) return cached[index] > packaged[index];
+        }
+        return false;
+    }
+    if (Array.isArray(state.paths) && state.paths.length && !newerThanPackaged(state.version)) {
+        // An APK upgrade already includes this patch or newer resources. Old cache cannot
+        // hide its new game code. Only this channel's cache/marker is removed; saves remain.
+        files.removeDirectory(cache);
+        files.removeFile(marker);
+        files.setSearchPaths(files.getSearchPaths().filter(function (path) { return path !== cache; }));
+        return;
+    }
     if (state.probePending && state.probeAttempted) {
         // The previous patched boot never reached a successfully loaded local catalog.
         files.removeDirectory(cache);
