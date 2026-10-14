@@ -92,7 +92,9 @@ export class CardLevelRepository {
         }
 
         const slotIds = new Set<string>();
-        if (level.initialStockCount !== undefined && (!Number.isInteger(level.initialStockCount) || level.initialStockCount < 0 || level.initialStockCount > 51 - level.slots.length)) {
+        const decks = level.deckCount ?? 1;
+        if (!Number.isInteger(decks) || decks < 1 || decks > 4) throw new Error(`[CardLevelRepository] ${expectedLevelId} 牌副数量非法。`);
+        if (level.initialStockCount !== undefined && (!Number.isInteger(level.initialStockCount) || level.initialStockCount < 0 || level.initialStockCount > decks * 52 - 1 - level.slots.length)) {
             throw new Error(`[CardLevelRepository] ${expectedLevelId} 初始备用牌数量超出牌池。`);
         }
         if (level.portraitLayout !== undefined && (!this.isRecord(level.portraitLayout) || !Number.isFinite(level.portraitLayout.currentCardX) || Math.abs(level.portraitLayout.currentCardX) > 500)) {
@@ -111,6 +113,13 @@ export class CardLevelRepository {
         }
 
         this.validateCurrentCard(expectedLevelId, level);
+        const fixed = new Map<string, number>();
+        for (const card of [...level.slots.map(s => s.figmaCard), ...(level.currentCard ? [level.currentCard.figmaCard] : [])]) {
+            if (card.side !== 'front') continue;
+            const count = (fixed.get(card.assetName) ?? 0) + 1;
+            if (count > decks) throw new Error(`[CardLevelRepository] ${expectedLevelId} 固定牌重复超过牌副数量：${card.assetName}`);
+            fixed.set(card.assetName, count);
+        }
 
         for (const slot of level.slots) {
             for (const coveredBy of slot.coveredBy) {
@@ -224,7 +233,7 @@ export class CardLevelRepository {
             const duplicateSlot = level.slots.find((slot) =>
                 slot.figmaCard.side === 'front' && slot.figmaCard.suit === audit.suit && slot.figmaCard.rankCode === audit.rankCode);
 
-            if (duplicateSlot) {
+            if (duplicateSlot && (level.deckCount ?? 1) === 1) {
                 throw new Error(`[CardLevelRepository] ${levelId} currentCard 与 ${duplicateSlot.id} 指定了同一张牌：${audit.assetName}`);
             }
         }

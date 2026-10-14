@@ -7,7 +7,7 @@ const {parseCatalogConfig}=require('../assets/mods/base-shell/CatalogConfig.ts')
 const {createCatalogMod,saveCatalogState,loadCatalogSave}=require('../assets/mods/base-shell/CatalogMod.ts');
 const read=(p)=>JSON.parse(fs.readFileSync(path.join(__dirname,p)));
 const config=()=>parseCatalogConfig(read('../assets/art/resources/config/catalog.json'));
-const level=()=>read('../assets/art/resources/config/card-levels/level_difficulty1_01.json');
+const level=()=>read('../../../migration/history/avg_plus/pre-figma-20261014/level_difficulty1_01.json');
 const route=()=>read('../../../migration/reviews/avg_plus/reference-cards-solution.json').route;
 
 test('reference five-hit meter uses JSON target, resets on draw, and checkpoint restores all marks without coin rewards',()=>{
@@ -26,7 +26,7 @@ test('completion marker makes the payout idempotent and survives snapshot restor
  const legacy={...s.captureSnapshot()};delete legacy.completionRewarded;reopened.restoreCheckpoint(legacy);assert.equal(reopened.coins,5200);
 });
 
-test('winning JSON level commits 1000 once, persists after a presentation failure, and rejects repeated win input',async()=>{
+test('winning the archived JSON fixture commits 1000 once, persists after a presentation failure, and rejects repeated win input',async()=>{
  const c=config(),lv=level(),round=new Runtime([createCardMod(lv,20260917,{
   render:ctx=>ctx.result?.complete?[{id:'failed-win-presentation',run:()=>{throw new Error('interrupted medal');}}]:[],afterRender:()=>{},
  },{economy:c.economy,initialCoins:5200})]);await round.open();

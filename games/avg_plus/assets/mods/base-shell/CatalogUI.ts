@@ -1,7 +1,7 @@
 import {
     _decorator, AssetManager, assetManager, BlockInputEvents, Button, Color,
     Graphics, HorizontalTextAlignment, Label, Mask, Node, Sprite, SpriteFrame,
-    UIOpacity, UITransform, VerticalTextAlignment,
+    ScrollView, UIOpacity, UITransform, VerticalTextAlignment,
 } from 'cc';
 import type { Action } from '../../foundation/Contracts';
 import { TaskScope } from '../../foundation/Tasks';
@@ -141,10 +141,21 @@ export class CatalogUI extends PresentationComponent {
         this.iconButton(root,'star',433,-367,88,()=>void this.send('shell.story',{id:story.id}).then(()=>this.send('shell.page',{page:'rating'})),false);
         this.text(root,story.synopsis,30,0,-508,995,150).color=MUTED;
         this.gradientPill(root, 'Resume',0,-683,790,120,()=>void this.send('shell.story',{id:story.id}));
-        this.text(root,'Solitaire',32,-360,-837,300,70).horizontalAlign=HorizontalTextAlignment.LEFT;
+        if(!favourites)this.levelList(root);
+    }
+    private levelList(root: Node): void {
+        this.text(root,`卡牌关卡 · ${this.levels.length} 关`,32,-260,-837,500,70).horizontalAlign=HorizontalTextAlignment.LEFT;
+        const viewport=this.child(root,'levelViewport',1050,340,0,-1050);
+        const mask=viewport.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
+        const stencil=viewport.getComponent(Graphics)!;stencil.clear();stencil.fillColor=Color.WHITE;
+        stencil.rect(-525,-170,1050,340);stencil.fill();
+        const content=this.child(viewport,'levelContent',1050,Math.ceil(this.levels.length/3)*150+18,0,170);
+        content.getComponent(UITransform)!.setAnchorPoint(.5,1);
+        const scroll=viewport.addComponent(ScrollView);scroll.content=content;scroll.horizontal=false;scroll.vertical=true;scroll.inertia=true;
         this.levels.forEach((id,index)=>{
-            const x=(index%3-1)*330,y=-980-Math.floor(index/3)*165;
-            this.pill(root,(this.state.completedLevels.includes(id)?'✓  ':'')+String(index+1),x,y,288,118,new Color(51,32,90),()=>this.page('intro',id),40);
+            const match=/^level_difficulty(\d+)_(\d{2})$/.exec(id)!;
+            const label=(this.state.completedLevels.includes(id)?'✓ ':'')+`${match[1]} · ${match[2]}`;
+            this.pill(content,label,(index%3-1)*330,-74-Math.floor(index/3)*150,288,118,new Color(51,32,90),()=>this.page('intro',id),36);
         });
     }
     private cover(parent: Node, story: StoryConfig, x: number, y: number, width: number, height: number): Node {

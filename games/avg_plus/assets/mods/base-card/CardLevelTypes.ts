@@ -53,5 +53,7 @@ export interface CardLevelDefinition {
     readonly slots: readonly CardLevelSlotDefinition[];
     readonly currentCard?: CardLevelCurrentCardDefinition;
     readonly initialStockCount?: number;
+    /** Large Figma boards may require several decks; omitted means the original single deck. */
+    readonly deckCount?: number;
     readonly portraitLayout?: { readonly currentCardX: number; readonly stockAnchor?: 'left' | 'right' };
 }

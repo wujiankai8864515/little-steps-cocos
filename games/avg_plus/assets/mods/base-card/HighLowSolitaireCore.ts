@@ -48,6 +48,8 @@ export interface CardDef {
     readonly rankLabel: string;
     readonly color: 'red' | 'black';
     readonly cardName: string;
+    /** Physical copy within the configured decks; absent is the original first deck. */
+    readonly copyIndex?: number;
 }
 
 export interface SlotState {
@@ -191,6 +193,10 @@ export class HighLowSolitaireCore {
         if (!Number.isInteger(initialStockCount) || initialStockCount < 0 || initialStockCount > 52) {
             throw new Error('[HighLowSolitaireCore] 初始备用牌数量必须是 0–52 的整数。');
         }
+        if (!Number.isInteger(this._level.deckCount ?? 1) || (this._level.deckCount ?? 1) < 1 || (this._level.deckCount ?? 1) > 4
+            || this._level.slots.length + initialStockCount + 1 > (this._level.deckCount ?? 1) * 52) {
+            throw new Error('[HighLowSolitaireCore] 关卡牌副数量不足或无效。');
+        }
         this._deck = this.createDeck();
         this.shuffle(this._deck);
 
@@ -222,7 +228,7 @@ export class HighLowSolitaireCore {
                 fixedCurrentCard = this._deck[index];
                 this._deck.splice(index, 1);
             } else {
-                console.warn(`[HighLowSolitaireCore] 当前牌 ${currentCardDef?.sourceName} 不在牌池，回退随机发牌。`);
+                throw new Error(`[HighLowSolitaireCore] 当前牌 ${currentCardDef?.sourceName} 不在配置牌池。`);
             }
         }
 
@@ -242,8 +248,7 @@ export class HighLowSolitaireCore {
                     slot.card = this._deck[index];
                     this._deck.splice(index, 1);
                 } else {
-                    // 匹配失败（理论上不会），fallback 到随机
-                    slot.card = this._deck.pop() ?? null;
+                    throw new Error(`[HighLowSolitaireCore] 固定牌 ${figmaCard.assetName} 超出配置牌副数量。`);
                 }
             }
         }
@@ -586,13 +591,15 @@ export class HighLowSolitaireCore {
         const names = new Set<string>();
         for (const card of allCards) {
             this.assertCard(card);
-            if (names.has(card.cardName)) {
+            const identity = this.cardIdentity(card);
+            if (names.has(identity)) {
                 throw new Error(`[HighLowSolitaireCore] 状态非法：牌组中存在重复牌 ${card.cardName}。`);
             }
-            names.add(card.cardName);
+            names.add(identity);
         }
-        if (names.size !== SUITS.length * RANKS.length) {
-            throw new Error(`[HighLowSolitaireCore] 状态非法：完整牌组应为 52 张，当前为 ${names.size} 张。`);
+        const expected = SUITS.length * RANKS.length * (this._level.deckCount ?? 1);
+        if (names.size !== expected) {
+            throw new Error(`[HighLowSolitaireCore] 状态非法：完整牌组应为 ${expected} 张，当前为 ${names.size} 张。`);
         }
 
         if (isComplete && slots.some((slot) => slot.card !== null)) {
@@ -612,6 +619,12 @@ export class HighLowSolitaireCore {
             || typeof card.rankCode !== 'string'
             || typeof card.rankLabel !== 'string') {
             throw new Error(`[HighLowSolitaireCore] 状态非法：卡牌数据损坏 ${card?.cardName ?? '(unknown)'}。`);
+        }
+        const copy = card.copyIndex ?? 0;
+        if (!Number.isInteger(copy) || copy < 0 || copy >= (this._level.deckCount ?? 1)
+            || card.cardName !== `poker_${card.suit}_${card.color}_${card.rankCode}`
+            || RANKS.find(rank => rank.code === card.rankCode)?.value !== card.rankValue) {
+            throw new Error('[HighLowSolitaireCore] 状态非法：卡牌身份或副本编号损坏。');
         }
     }
 
@@ -662,33 +675,36 @@ export class HighLowSolitaireCore {
 
     private createDeck(): CardDef[] {
         const deck: CardDef[] = [];
-
-        for (const suit of SUITS) {
-            for (const rank of RANKS) {
-                deck.push({
-                    suit,
-                    rankCode: rank.code,
-                    rankValue: rank.value,
-                    rankLabel: rank.label,
-                    color: SUIT_COLOR[suit],
-                    cardName: `poker_${suit}_${SUIT_COLOR[suit]}_${rank.code}`,
-                });
+        for (let copyIndex = 0; copyIndex < (this._level.deckCount ?? 1); copyIndex++) {
+            for (const suit of SUITS) {
+                for (const rank of RANKS) {
+                    deck.push({
+                        suit,
+                        rankCode: rank.code,
+                        rankValue: rank.value,
+                        rankLabel: rank.label,
+                        color: SUIT_COLOR[suit],
+                        cardName: `poker_${suit}_${SUIT_COLOR[suit]}_${rank.code}`,
+                        ...(copyIndex ? { copyIndex } : {}),
+                    });
+                }
             }
         }
 
         return deck;
     }
+    private cardIdentity(card: CardDef): string { return `${card.cardName}@${card.copyIndex ?? 0}`; }
 
     /** 当前牌池用尽时重建一副牌，只排除仍在桌面、当前牌和备用牌中的牌。 */
     private reshuffleRemainingDeck(): void {
         const inPlay = new Set<string>();
         for (const slot of this._slots) {
-            if (slot.card) inPlay.add(slot.card.cardName);
+            if (slot.card) inPlay.add(this.cardIdentity(slot.card));
         }
-        for (const card of this._stockPile) inPlay.add(card.cardName);
-        if (this._currentCard) inPlay.add(this._currentCard.cardName);
+        for (const card of this._stockPile) inPlay.add(this.cardIdentity(card));
+        if (this._currentCard) inPlay.add(this.cardIdentity(this._currentCard));
 
-        const fresh = this.createDeck().filter((card) => !inPlay.has(card.cardName));
+        const fresh = this.createDeck().filter((card) => !inPlay.has(this.cardIdentity(card)));
         this.shuffle(fresh);
         this._deck = fresh;
         // 废牌已经回收到新牌池；同步清空，保持 52 张牌唯一且避免历史无限增长。

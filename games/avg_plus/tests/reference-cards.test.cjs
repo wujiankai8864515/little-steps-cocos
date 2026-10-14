@@ -4,8 +4,8 @@ const {Runtime}=require('../assets/foundation/Runtime.ts');
 const {createCardMod}=require('../assets/mods/base-card/CardMod.ts');
 const {GameSessionStore}=require('../assets/mods/base-card/GameSessionStore.ts');
 const root=path.resolve(__dirname,'..');
-const level=()=>JSON.parse(fs.readFileSync(path.join(root,'assets/art/resources/config/card-levels/level_difficulty1_01.json')));
-test('reference JSON contains four overlapping fans and two central backs under the king, not the previous butterfly',async()=>{
+const level=()=>JSON.parse(fs.readFileSync(path.join(root,'../../migration/history/avg_plus/pre-figma-20261014/level_difficulty1_01.json')));
+test('the archived video JSON remains playable after the current levels switch back to Figma',async()=>{
  const json=level();assert.equal(json.slots.length,19);assert.equal(json.initialStockCount,15);
  for(let fan=0;fan<4;fan++){
   const group=json.slots.slice(fan*4,fan*4+4);

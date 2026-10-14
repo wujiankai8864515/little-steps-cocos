@@ -1,0 +1,1389 @@
+{
+  "schemaVersion": 1,
+  "levelId": "level_difficulty4_02",
+  "difficulty": 4,
+  "source": {
+    "type": "figma",
+    "fileKey": "YMuq2nhziNuRf309T17tkc",
+    "pageName": "卡牌玩法界面",
+    "frameName": "level_difficulty4_02",
+    "frameId": "616:49458",
+    "boardId": "616:49460",
+    "handId": "616:49660",
+    "cardNodeIds": [
+      "616:49604",
+      "616:49606",
+      "616:49608",
+      "616:49610",
+      "616:49612",
+      "616:49614",
+      "616:49616",
+      "616:49618",
+      "616:49620",
+      "616:49622",
+      "616:49624",
+      "616:49626",
+      "616:49628",
+      "616:49630",
+      "616:49632",
+      "616:49634",
+      "616:49636",
+      "616:49638",
+      "616:49640",
+      "616:49642",
+      "616:49644",
+      "616:49646",
+      "616:49648",
+      "616:49650",
+      "616:49652",
+      "616:58954",
+      "616:58955",
+      "616:58956",
+      "616:58957",
+      "616:58958",
+      "616:58959",
+      "616:58980",
+      "616:58981",
+      "616:58982",
+      "616:58983",
+      "616:58984",
+      "616:58985",
+      "616:58967",
+      "616:58968",
+      "616:58969",
+      "616:58970",
+      "616:58971",
+      "616:58972",
+      "616:58993",
+      "616:58994",
+      "616:58995",
+      "616:58996",
+      "616:58997",
+      "616:58998",
+      "616:49654",
+      "616:49656",
+      "616:49658"
+    ],
+    "boardSize": {
+      "width": 1179,
+      "height": 1079
+    }
+  },
+  "designSize": {
+    "width": 1179,
+    "height": 1079
+  },
+  "cardSize": {
+    "width": 162,
+    "height": 243
+  },
+  "initialStockCount": 10,
+  "deckCount": 2,
+  "slots": [
+    {
+      "id": "slot_001",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 301.745117,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 1,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_002",
+        "slot_003",
+        "slot_004",
+        "slot_005"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_002",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 248.285156,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 2,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_003",
+        "slot_004",
+        "slot_005",
+        "slot_006"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_001"
+      ]
+    },
+    {
+      "id": "slot_003",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 3,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_004",
+        "slot_005",
+        "slot_006",
+        "slot_025"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_001",
+        "slot_002"
+      ]
+    },
+    {
+      "id": "slot_004",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 4,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_005",
+        "slot_006",
+        "slot_025"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_001",
+        "slot_002",
+        "slot_003"
+      ]
+    },
+    {
+      "id": "slot_005",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 5,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_006",
+        "slot_025"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_001",
+        "slot_002",
+        "slot_003",
+        "slot_004"
+      ]
+    },
+    {
+      "id": "slot_006",
+      "sourceName": "poker_back_01",
+      "x": -283.769531,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 6,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_025"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_002",
+        "slot_003",
+        "slot_004",
+        "slot_005"
+      ]
+    },
+    {
+      "id": "slot_007",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 301.745117,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 7,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_008",
+        "slot_009",
+        "slot_010",
+        "slot_011"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_008",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 248.285156,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 8,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_009",
+        "slot_010",
+        "slot_011",
+        "slot_012"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_007"
+      ]
+    },
+    {
+      "id": "slot_009",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 9,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_010",
+        "slot_011",
+        "slot_012",
+        "slot_050"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_007",
+        "slot_008"
+      ]
+    },
+    {
+      "id": "slot_010",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 10,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_011",
+        "slot_012",
+        "slot_050"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_007",
+        "slot_008",
+        "slot_009"
+      ]
+    },
+    {
+      "id": "slot_011",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 11,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_012",
+        "slot_050"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_007",
+        "slot_008",
+        "slot_009",
+        "slot_010"
+      ]
+    },
+    {
+      "id": "slot_012",
+      "sourceName": "poker_back_01",
+      "x": 276.767578,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 12,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_050"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_008",
+        "slot_009",
+        "slot_010",
+        "slot_011"
+      ]
+    },
+    {
+      "id": "slot_013",
+      "sourceName": "poker_back_01",
+      "x": -451.726562,
+      "y": -321.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 13,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_014",
+        "slot_015"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_014",
+      "sourceName": "poker_back_01",
+      "x": -393.40625,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 14,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_015",
+        "slot_016"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_013"
+      ]
+    },
+    {
+      "id": "slot_015",
+      "sourceName": "poker_back_01",
+      "x": -335.087402,
+      "y": -301.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 15,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_016",
+        "slot_017"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_013",
+        "slot_014"
+      ]
+    },
+    {
+      "id": "slot_016",
+      "sourceName": "poker_back_01",
+      "x": -276.769531,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 16,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_017",
+        "slot_018"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_014",
+        "slot_015"
+      ]
+    },
+    {
+      "id": "slot_017",
+      "sourceName": "poker_back_01",
+      "x": -218.447998,
+      "y": -301.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 17,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_018",
+        "slot_051"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_015",
+        "slot_016"
+      ]
+    },
+    {
+      "id": "slot_018",
+      "sourceName": "poker_back_01",
+      "x": -160.128906,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 18,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_051"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_016",
+        "slot_017"
+      ]
+    },
+    {
+      "id": "slot_019",
+      "sourceName": "poker_back_01",
+      "x": 451.726562,
+      "y": -321.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 19,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_020",
+        "slot_021"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_020",
+      "sourceName": "poker_back_01",
+      "x": 393.40625,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 20,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_021",
+        "slot_022"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_019"
+      ]
+    },
+    {
+      "id": "slot_021",
+      "sourceName": "poker_back_01",
+      "x": 335.087402,
+      "y": -301.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 21,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_022",
+        "slot_023"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_019",
+        "slot_020"
+      ]
+    },
+    {
+      "id": "slot_022",
+      "sourceName": "poker_back_01",
+      "x": 276.769531,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 22,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_023",
+        "slot_024"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_020",
+        "slot_021"
+      ]
+    },
+    {
+      "id": "slot_023",
+      "sourceName": "poker_back_01",
+      "x": 218.448242,
+      "y": -301.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 23,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_024",
+        "slot_052"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_021",
+        "slot_022"
+      ]
+    },
+    {
+      "id": "slot_024",
+      "sourceName": "poker_back_01",
+      "x": 160.128906,
+      "y": -341.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 24,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_052"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_022",
+        "slot_023"
+      ]
+    },
+    {
+      "id": "slot_025",
+      "sourceName": "poker_club_black_04",
+      "x": -283.769531,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 25,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_club_black_04",
+        "suit": "club",
+        "color": "black",
+        "rankCode": "04",
+        "rankValue": 4,
+        "label": "4",
+        "rankLabel": "4"
+      },
+      "covers": [
+        "slot_003",
+        "slot_004",
+        "slot_005",
+        "slot_006"
+      ]
+    },
+    {
+      "id": "slot_026",
+      "sourceName": "poker_back_01",
+      "x": -96.769531,
+      "y": 248.280273,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 26,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_027",
+        "slot_028",
+        "slot_029",
+        "slot_030"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_027",
+      "sourceName": "poker_back_01",
+      "x": -96.769531,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 27,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_028",
+        "slot_029",
+        "slot_030",
+        "slot_031"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_026"
+      ]
+    },
+    {
+      "id": "slot_028",
+      "sourceName": "poker_back_01",
+      "x": -96.769531,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 28,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_029",
+        "slot_030",
+        "slot_031"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_026",
+        "slot_027"
+      ]
+    },
+    {
+      "id": "slot_029",
+      "sourceName": "poker_back_01",
+      "x": -96.769531,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 29,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_030",
+        "slot_031"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_026",
+        "slot_027",
+        "slot_028"
+      ]
+    },
+    {
+      "id": "slot_030",
+      "sourceName": "poker_back_01",
+      "x": -96.769531,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 30,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_031"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_026",
+        "slot_027",
+        "slot_028",
+        "slot_029"
+      ]
+    },
+    {
+      "id": "slot_031",
+      "sourceName": "poker_diamond_red_02",
+      "x": -96.769531,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 31,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_diamond_red_02",
+        "suit": "diamond",
+        "color": "red",
+        "rankCode": "02",
+        "rankValue": 2,
+        "label": "2",
+        "rankLabel": "2"
+      },
+      "covers": [
+        "slot_027",
+        "slot_028",
+        "slot_029",
+        "slot_030"
+      ]
+    },
+    {
+      "id": "slot_032",
+      "sourceName": "poker_back_01",
+      "x": -470.769531,
+      "y": 248.280273,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 32,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_033",
+        "slot_034",
+        "slot_035",
+        "slot_036"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_033",
+      "sourceName": "poker_back_01",
+      "x": -470.769531,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 33,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_034",
+        "slot_035",
+        "slot_036",
+        "slot_037"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_032"
+      ]
+    },
+    {
+      "id": "slot_034",
+      "sourceName": "poker_back_01",
+      "x": -470.769531,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 34,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_035",
+        "slot_036",
+        "slot_037"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_032",
+        "slot_033"
+      ]
+    },
+    {
+      "id": "slot_035",
+      "sourceName": "poker_back_01",
+      "x": -470.769531,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 35,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_036",
+        "slot_037"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_032",
+        "slot_033",
+        "slot_034"
+      ]
+    },
+    {
+      "id": "slot_036",
+      "sourceName": "poker_back_01",
+      "x": -470.769531,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 36,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_037"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_032",
+        "slot_033",
+        "slot_034",
+        "slot_035"
+      ]
+    },
+    {
+      "id": "slot_037",
+      "sourceName": "poker_diamond_red_01",
+      "x": -470.769531,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 37,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_diamond_red_01",
+        "suit": "diamond",
+        "color": "red",
+        "rankCode": "01",
+        "rankValue": 1,
+        "label": "A",
+        "rankLabel": "A"
+      },
+      "covers": [
+        "slot_033",
+        "slot_034",
+        "slot_035",
+        "slot_036"
+      ]
+    },
+    {
+      "id": "slot_038",
+      "sourceName": "poker_back_01",
+      "x": 90.230469,
+      "y": 248.280273,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 38,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_039",
+        "slot_040",
+        "slot_041",
+        "slot_042"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_039",
+      "sourceName": "poker_back_01",
+      "x": 90.230469,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 39,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_040",
+        "slot_041",
+        "slot_042",
+        "slot_043"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_038"
+      ]
+    },
+    {
+      "id": "slot_040",
+      "sourceName": "poker_back_01",
+      "x": 90.230469,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 40,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_041",
+        "slot_042",
+        "slot_043"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_038",
+        "slot_039"
+      ]
+    },
+    {
+      "id": "slot_041",
+      "sourceName": "poker_back_01",
+      "x": 90.230469,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 41,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_042",
+        "slot_043"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_038",
+        "slot_039",
+        "slot_040"
+      ]
+    },
+    {
+      "id": "slot_042",
+      "sourceName": "poker_back_01",
+      "x": 90.230469,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 42,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_043"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_038",
+        "slot_039",
+        "slot_040",
+        "slot_041"
+      ]
+    },
+    {
+      "id": "slot_043",
+      "sourceName": "poker_diamond_red_04",
+      "x": 90.230469,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 43,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_diamond_red_04",
+        "suit": "diamond",
+        "color": "red",
+        "rankCode": "04",
+        "rankValue": 4,
+        "label": "4",
+        "rankLabel": "4"
+      },
+      "covers": [
+        "slot_039",
+        "slot_040",
+        "slot_041",
+        "slot_042"
+      ]
+    },
+    {
+      "id": "slot_044",
+      "sourceName": "poker_back_01",
+      "x": 464.230469,
+      "y": 248.280273,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 44,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_045",
+        "slot_046",
+        "slot_047",
+        "slot_048"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": []
+    },
+    {
+      "id": "slot_045",
+      "sourceName": "poker_back_01",
+      "x": 464.230469,
+      "y": 194.824219,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 45,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_046",
+        "slot_047",
+        "slot_048",
+        "slot_049"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_044"
+      ]
+    },
+    {
+      "id": "slot_046",
+      "sourceName": "poker_back_01",
+      "x": 464.230469,
+      "y": 141.364258,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 46,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_047",
+        "slot_048",
+        "slot_049"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_044",
+        "slot_045"
+      ]
+    },
+    {
+      "id": "slot_047",
+      "sourceName": "poker_back_01",
+      "x": 464.230469,
+      "y": 87.904297,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 47,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_048",
+        "slot_049"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_044",
+        "slot_045",
+        "slot_046"
+      ]
+    },
+    {
+      "id": "slot_048",
+      "sourceName": "poker_back_01",
+      "x": 464.230469,
+      "y": 34.444336,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 48,
+      "initialFaceUp": false,
+      "coveredBy": [
+        "slot_049"
+      ],
+      "figmaCard": {
+        "side": "back",
+        "assetName": "poker_back_01",
+        "variant": "01"
+      },
+      "covers": [
+        "slot_044",
+        "slot_045",
+        "slot_046",
+        "slot_047"
+      ]
+    },
+    {
+      "id": "slot_049",
+      "sourceName": "poker_diamond_red_13",
+      "x": 464.230469,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 49,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_diamond_red_13",
+        "suit": "diamond",
+        "color": "red",
+        "rankCode": "13",
+        "rankValue": 13,
+        "label": "K",
+        "rankLabel": "K"
+      },
+      "covers": [
+        "slot_045",
+        "slot_046",
+        "slot_047",
+        "slot_048"
+      ]
+    },
+    {
+      "id": "slot_050",
+      "sourceName": "poker_club_black_12",
+      "x": 276.767578,
+      "y": -19.015625,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 50,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_club_black_12",
+        "suit": "club",
+        "color": "black",
+        "rankCode": "12",
+        "rankValue": 12,
+        "label": "Q",
+        "rankLabel": "Q"
+      },
+      "covers": [
+        "slot_009",
+        "slot_010",
+        "slot_011",
+        "slot_012"
+      ]
+    },
+    {
+      "id": "slot_051",
+      "sourceName": "poker_diamond_red_11",
+      "x": -101.804688,
+      "y": -381.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 51,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_diamond_red_11",
+        "suit": "diamond",
+        "color": "red",
+        "rankCode": "11",
+        "rankValue": 11,
+        "label": "J",
+        "rankLabel": "J"
+      },
+      "covers": [
+        "slot_017",
+        "slot_018"
+      ]
+    },
+    {
+      "id": "slot_052",
+      "sourceName": "poker_heart_red_03",
+      "x": 101.808594,
+      "y": -381.744141,
+      "width": 162,
+      "height": 243,
+      "rotation": 0,
+      "zIndex": 52,
+      "initialFaceUp": true,
+      "coveredBy": [],
+      "figmaCard": {
+        "side": "front",
+        "assetName": "poker_heart_red_03",
+        "suit": "heart",
+        "color": "red",
+        "rankCode": "03",
+        "rankValue": 3,
+        "label": "3",
+        "rankLabel": "3"
+      },
+      "covers": [
+        "slot_023",
+        "slot_024"
+      ]
+    }
+  ],
+  "currentCard": {
+    "sourceName": "poker_spade_black_13",
+    "figmaCard": {
+      "side": "front",
+      "assetName": "poker_spade_black_13",
+      "suit": "spade",
+      "color": "black",
+      "rankCode": "13",
+      "rankValue": 13,
+      "label": "K",
+      "rankLabel": "K"
+    }
+  }
+}
