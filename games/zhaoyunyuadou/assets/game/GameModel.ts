@@ -49,7 +49,7 @@ export const ITEMS: Item[] = [
     {id:'march',name:'行军丹',active:false,rarity:0,price:40,image:'marchPill_1',description:'体力+10'},
     {id:'seeker',name:'摸金校尉',active:false,rarity:3,price:150,image:'goldSeeker_1',description:'被动:所有铲子变成金铲子，铲出宝箱'},
 ];
-export interface MapSpec { id: number; name: string; grass: number[]; initial: number[]; owners: Side[]; paths: [number[], number[]]; divideY: number; entries: number[]; }
+export interface MapSpec { id: number; name: string; grass: number[]; initial: number[]; owners: Side[]; paths: [number[], number[]]; divideY: number;divideWidth:number;divideHeight:number; entries: number[]; }
 const idx = (x: number, y: number) => y * 8 + x;
 function line(x0: number, y0: number, x1: number, y1: number) {
     const out: number[] = []; const n = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0));
@@ -83,7 +83,8 @@ function referenceMap(raw: typeof REFERENCE_MAPS[number]): MapSpec {
         while(cell!==-1){walk.unshift(cell);cell=previous.get(cell)!;}
         const entry=raw.entry[side];entries.push(idx(entry.x,entry.y));if(entries[side]!==walk[0])walk.unshift(entries[side]);paths.push(walk);
     }
-    return {id:raw.id,name:['巨鹿','云梦泽','虎牢关','赤壁'][raw.id],grass,initial,owners,entries,paths:paths as [number[],number[]],divideY:raw.id===0?306:390};
+    const divider=[[304,640,184],[365,659,44],[384,640,23],[368,644,50]][raw.id];
+    return {id:raw.id,name:['巨鹿','云梦泽','虎牢关','赤壁'][raw.id],grass,initial,owners,entries,paths:paths as [number[],number[]],divideY:divider[0],divideWidth:divider[1],divideHeight:divider[2]};
 }
 export const MAPS: MapSpec[] = REFERENCE_MAPS.map(referenceMap);
 export interface Profile {
@@ -140,7 +141,7 @@ export interface Enemy { id: number; side: Side; progress: number; hp: number; m
 export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string; visited?:number[]; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
-export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; }
+export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
     readonly random: Random;
@@ -156,6 +157,9 @@ export class Battle {
         this.map = MAPS[mapId] || MAPS[0]; this.random = new Random(seed);
         this.saveId = Date.now().toString(36) + '-' + seed.toString(36);
         this.armies = [this.makeArmy(0), this.makeArmy(1)]; this.tutorialStep = tutorial ? 1 : 0;
+        // The public first-round tutorial already has 骑、枪、刀 in the rival's
+        // first three plots while the player learns to recruit and deploy.
+        if(tutorial){const kinds:UnitKind[]=['骑','枪','刀'];this.armies[1].unlocked.slice(0,3).forEach((cell,i)=>this.armies[1].units[cell]=this.unit(kinds[i]));}
     }
     owns(side: Side, cell: number) {
         return this.map.owners[cell] === side;
@@ -485,7 +489,8 @@ export class Battle {
         if (this.completed) return;
         this.completed = true; this.paused = false;
         const pool = this.weapons.filter(w => w.rarity <= Math.min(4, Math.floor(this.wave / 5)));
-        this.result = {id:this.saveId,win,reward:win ? 20 : 5,wave:this.wave,weaponId:win && pool.length ? this.random.pick(pool).id : null};
+        const weapon=win&&pool.length?this.random.pick(pool):null;
+        this.result = {id:this.saveId,win,reward:win ? 20 : 5,wave:this.wave,weaponId:weapon?.id??null,weaponFragments:weapon?1:0,weaponRequired:weapon?.fragmentNum};
         this.profile.bestWave = Math.max(this.profile.bestWave, this.wave); this.revision++;
     }
     snapshot() {
@@ -516,9 +521,17 @@ export function claimResult(profile: Profile, result: BattleResult, double = fal
     if (profile.rewards.includes(result.id)) return false;
     profile.rewards.push(result.id); profile.rewards = profile.rewards.slice(-64);
     profile.gold += result.reward * (double ? 2 : 1);
-    if (result.win) { profile.wins++; profile.stars++; if (result.weaponId !== null) profile.weapons[result.weaponId] = (profile.weapons[result.weaponId] || 0) + 1; }
+    if (result.win) { profile.wins++; profile.stars++; if (result.weaponId !== null){
+        if(result.weaponFragments!==undefined&&result.weaponRequired)awardWeaponFragments(profile,result.weaponId,result.weaponFragments,result.weaponRequired);
+        else profile.weapons[result.weaponId] = (profile.weapons[result.weaponId] || 0) + 1; // Already-saved v1 settlements keep their original promised reward.
+    } }
     else { profile.losses++; profile.stars = Math.max(1, profile.stars - 1); }
     return true;
+}
+export function awardWeaponFragments(profile:Profile,weaponId:number,count:number,required:number){
+    if(!Number.isInteger(weaponId)||weaponId<0||!Number.isFinite(count)||!Number.isInteger(required)||required<1)return 0;
+    const total=(profile.fragments[weaponId]||0)+Math.max(0,Math.floor(count)),complete=Math.floor(total/required);
+    profile.fragments[weaponId]=total%required;profile.weapons[weaponId]=(profile.weapons[weaponId]||0)+complete;return complete;
 }
 export function purchase(profile: Profile, id: string): string {
     const item = ITEMS.find(i => i.id === id); if (!item) return '道具不存在';

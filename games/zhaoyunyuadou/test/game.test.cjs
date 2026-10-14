@@ -40,6 +40,7 @@ test('recruitment is atomic when short of food, camp full or paused',()=>{
 });
 test('observed first tutorial recruits an archer and deploy unlocks battle clock',()=>{
     const b=round(true);b.advance(1);assert.equal(b.time,0);assert.equal(b.recruit(),'');assert.equal(b.armies[0].reserve[0].kind,'弓');
+    assert.deepEqual(Array.from(Object.values(b.armies[1].units),u=>u.kind),['骑','枪','刀']);
     b.advance(1);assert.equal(b.time,0);assert.equal(b.move(location('reserve',0),location('board',58)),'');
     b.advance(1/30);assert.ok(b.time>0);assert.equal(b.profile.tutorial,true);
 });
@@ -81,6 +82,16 @@ test('weapons are type-compatible, count-limited and equipped copies survive rec
 test('settlement is idempotent including double reward and reload',()=>{
     const b=round();b.finish(true);const r=b.result;assert.equal(M.claimResult(b.profile,r,true),true);const gold=b.profile.gold,stars=b.profile.stars;
     assert.equal(M.claimResult(b.profile,r,true),false);const p=M.restoreProfile(JSON.stringify(b.profile),now);assert.equal(M.claimResult(p,r,false),false);assert.equal(p.gold,gold);assert.equal(p.stars,stars);
+});
+test('weapon fragments assemble at the reference threshold and never duplicate a restored reward',()=>{
+    const p=M.newProfile(now);
+    assert.equal(M.awardWeaponFragments(p,1,1,2),0);assert.equal(p.weapons[1],0);assert.equal(p.fragments[1],1);
+    assert.equal(M.awardWeaponFragments(p,1,4,2),2);assert.equal(p.weapons[1],2);assert.equal(p.fragments[1],1);
+    const r={id:'fragment-reward',win:true,reward:20,wave:6,weaponId:1,weaponFragments:1,weaponRequired:2};
+    assert.equal(M.claimResult(p,r,true),true);assert.equal(p.weapons[1],3);assert.equal(p.fragments[1],0);assert.equal(p.gold,40);
+    const restored=M.restoreProfile(JSON.stringify(p),now);assert.equal(M.claimResult(restored,r),false);assert.equal(restored.weapons[1],3);
+    assert.equal(M.awardWeaponFragments(p,1,-10,2),0);assert.equal(p.weapons[1],3);
+    assert.equal(M.claimResult(p,{id:'legacy-promised-reward',win:true,reward:20,wave:1,weaponId:1}),true);assert.equal(p.weapons[1],4);
 });
 test('day boundary clears only daily items; stamina uses elapsed time and caps at 30',()=>{
     const p=M.newProfile(now);p.items=['god'];p.gold=100;p.stamina=5;p.staminaAt=now;
