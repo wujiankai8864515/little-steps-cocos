@@ -2,11 +2,14 @@
 
 根目录放公共脚本。渠道目录集中放本平台的配置、处理脚本、模板和固定产物；日常打包只需要看这里。
 
+AVG Plus 安卓已接入 `android --game avg_plus`，见 [安卓渠道](android/README.md) 和 [热更新发布手册](android/HOT_UPDATE.md)。新 AI 先读 [AVG Plus 接手入口](../games/avg_plus/docs/AI_HANDOFF.md)；该游戏的 APK／增量发布不使用下方小雨微信命令。已核验发布后只清理自己的构建产物，保留渠道配置、脚本与模板。
+
 ```text
 builds/
 ├── build.py                   # 公共打包入口，选择渠道
 ├── common.py                  # 公共路径、模板接入、资源门禁和HTTP传输
 ├── README.md
+├── android/                  # AVG Plus 安卓配置、构建／发布／差分脚本与模板
 └── wechatgame/
     ├── config.json            # 微信AppID、资源地址和构建选项
     ├── build.py               # 微信构建与固定项目更新

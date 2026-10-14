@@ -2,6 +2,8 @@
 
 当前产品、架构及打包说明分别由游戏仓、框架仓和打包仓维护。本目录保存迁移工具、候选、原始来源、失败证据和验证结果，不参与小游戏主包。
 
+AVG Plus 的接手入口在 [AI_HANDOFF.md](../games/avg_plus/docs/AI_HANDOFF.md)，Figma 关卡与内容维护见 [开发手册](../games/avg_plus/docs/DEVELOPMENT.md)，安卓发布和产物清理见 [热更新手册](../builds/android/HOT_UPDATE.md)。其本机原生截图、录屏、日志及失败证据保留私有，不自动提交公开仓；新 clone 不保证具有这些文件。下方 Godot／微信历史说明不代替 AVG Plus 安卓流程。
+
 | 目录 | 内容 |
 | --- | --- |
 | tools | Cocos 迁移、资源处理、截图和检查工具 |

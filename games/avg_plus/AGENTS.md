@@ -2,6 +2,8 @@
 
 本项目保留 Cocos Creator 3.8.8；架构以 docs/MOD_ARCHITECTURE.md 为准，操作流程见 docs/MOD_GUIDE.md。
 
+新 AI 先读 [接手入口](docs/AI_HANDOFF.md)；代码、Figma 关卡、剧情和验证命令见 [开发手册](docs/DEVELOPMENT.md)，安卓构建／热更新／恢复和清理见 [发布手册](../../builds/android/HOT_UPDATE.md)。继续任务后更新对应状态和验证边界，保留历史报告，不把旧时点当作当前状态。
+
 ## Git 归属
 
 本游戏是 `little-steps-cocos` 三仓结构下的 `games/avg_plus` 普通目录，统一由 `little-steps-cocos/.git` 管理。不要在游戏目录初始化独立仓库或添加子模块。提交从根仓进行并限定本次修改路径；保留本目录 `.gitignore` 的缓存、构建产物和待审核资源排除规则。

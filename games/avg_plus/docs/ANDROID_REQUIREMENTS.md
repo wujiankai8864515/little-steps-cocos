@@ -1,5 +1,7 @@
 # AVG Plus 竖屏安卓版本
 
+新 AI 先读 [接手总览](AI_HANDOFF.md)。当前开发／Figma／剧情维护见 [DEVELOPMENT.md](DEVELOPMENT.md)，构建、热更新、恢复和清理见 [HOT_UPDATE.md](../../../builds/android/HOT_UPDATE.md)。本文件保留用户需求和按时间追加的执行记录；历史版本、旧素材方案、旧检查数量与当时 pending 不自动代表现在状态，须结合最新用户覆盖、源码和回读核验。
+
 ## 当前需求与验收范围
 
 来源：用户在 2026-10-13 要求按其自有 App 视频严格复刻，改为竖屏安卓 App；随后明确排除视频剧情，剧情沿用本工程既有 AVG 表现和配置，并与卡牌流程衔接。

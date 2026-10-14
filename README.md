@@ -10,10 +10,20 @@
 | --- | --- | --- |
 | engines/travel-core | 通用生命周期、资源门禁、输入、网格、骨骼与渲染能力 | [框架架构](engines/travel-core/docs/architecture.md) |
 | games/xiaoyu-cocos | 游戏页面、玩法、存档、动作、光照、原美术与字体来源 | [需求与验收](games/xiaoyu-cocos/docs/requirements.md)、[游戏架构](games/xiaoyu-cocos/docs/architecture.md) |
-| games/avg_plus | AVG + 高低接龙游戏及其 Mod、剧情和素材 | [游戏说明](games/avg_plus/README.md)、[Mod 架构](games/avg_plus/docs/MOD_ARCHITECTURE.md) |
-| builds | 公共打包入口及各渠道的配置、处理脚本和模板 | [微信打包与资源归属](builds/README.md) |
+| games/avg_plus | AVG + 高低接龙游戏及其 Mod、剧情和素材 | [新 AI 接手入口](games/avg_plus/docs/AI_HANDOFF.md)、[游戏说明](games/avg_plus/README.md) |
+| builds | 公共打包入口及各渠道的配置、处理脚本和模板 | [渠道打包与资源归属](builds/README.md) |
 
 [migration](migration/README.md) 保存迁移工具、历史证据、候选镜像、回读与失败记录，独立于日常打包仓。旧需求和设计原文保持可追溯；当前产品行为以游戏仓需求清单及最新用户覆盖为准。
+
+## AVG Plus 安卓与接手文档
+
+新 AI 从 [接手总览](games/avg_plus/docs/AI_HANDOFF.md) 开始，开发与 Figma／剧情维护见 [开发手册](games/avg_plus/docs/DEVELOPMENT.md)，构建、增量发布、恢复上传及产物清理见 [热更新手册](builds/android/HOT_UPDATE.md)。当前使用原仓库 [Pages 下载入口](https://wujiankai8864515.github.io/little-steps-cocos/avg-plus/android/)，日常内容更新在本仓根目录执行：
+
+```sh
+python3 -B builds/build.py android --game avg_plus --hot-only --publish
+```
+
+先按手册完成必要源码备份和验证。首装／完整桥接 APK 去掉 `--hot-only`；不能用下方小雨微信命令替代。版本与尚未验收的真机／签名边界统一在接手总览维护。
 
 ## 微信小游戏打包
 

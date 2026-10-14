@@ -2,6 +2,10 @@
 
 游戏映射与渠道配置在 `config.json`。当前接入 `games/avg_plus`，原生竖屏，保持原场景 UUID 和动态 JSON 关卡资源。
 
+**完整操作见 [热更新发布手册](HOT_UPDATE.md)，新 AI 先读 [接手总览](../../games/avg_plus/docs/AI_HANDOFF.md)。** 手册覆盖源码门禁、必要文件增量、APK／桥接、版本、恢复上传、试启动／回退和安全清理。下文包含按事项积累的历史记录，最新状态与未完成项以带日期的接手总览和实际回读为准。
+
+2026-10-14 快照：最新资源 `0.1.0.13` / `2026-10-14-22-50-32`，两项变化 ZIP 100480 bytes；最新可安装 APK 与完整桥接为 `0.1.0.8`，仍属 debug 预览。两者服务端／匿名／Pages 校验完成，13 的新时限原生联网、物理手机与正式签名尚待验证。发布器重试仍存在移动 latest 选错增量父版的问题，见 [固定父版恢复](HOT_UPDATE.md#已知问题增量父版本在重试时漂移)；不要把旧记录直接重跑视为无条件可恢复。
+
 在三仓根目录执行：
 
 ```sh
@@ -13,7 +17,7 @@ python3 -B builds/build.py android --game avg_plus
 
 工具默认读取本机 Cocos 3.8.8、`~/Library/Android/sdk`、其已安装 NDK、Android Studio JBR 和 Cocos 内置 CMake；可用 `COCOS_CREATOR`、`ANDROID_SDK_ROOT`、`ANDROID_NDK_HOME`、`AVG_PLUS_JAVA_HOME` 指定。不会修改微信渠道配置。
 
-当前产物属于 debug 预览候选。0.1.0.4 完整 APK 已在原仓库 Releases 发布并匿名下载核对 SHA-256；Pages 资源上线、实际旧 0.1.0.0 APK 升级至 0.1.0.4 和冷启动保留进度已在 Android 35 ARM64 模拟器通过。旧客户端缓存内的 319 个解压文件与发布 ZIP 每项字节一致；下载 ZIP 会在解压后由 Cocos 删除，不能将不存在的缓存 ZIP 当作完整下载证据。正式 release 签名、完整视频交互/截图对照及真实手机验证仍须完成。构建器将渠道应用版本写入原生 Gradle 模板，并实际审计 APK 包名、版本、竖屏、ABI 与签名，不能以模板默认版本冒充配置值。
+产物属于 debug 预览。早期 0.1.0.4 完整 APK 已在原仓库 Releases 发布并匿名下载核对 SHA-256；当时的 Pages 资源上线、实际旧 0.1.0.0 APK 升级至 0.1.0.4 和冷启动保留进度已在 Android 35 ARM64 模拟器通过。旧客户端缓存内的 319 个解压文件与发布 ZIP 每项字节一致；下载 ZIP 会在解压后由 Cocos 删除，不能将不存在的缓存 ZIP 当作完整下载证据。正式 release 签名、完整视频交互/截图对照及真实手机验证仍须完成。构建器将渠道应用版本写入原生 Gradle 模板，并实际审计 APK 包名、版本、竖屏、ABI 与签名，不能以模板默认版本冒充配置值。
 
 ## 热更新资源
 
@@ -23,7 +27,7 @@ python3 -B builds/build.py android --game avg_plus
 
 发布和编辑 Release 的事件先触发 `main` 上的部署，保持 `github-pages` 环境现有保护规则。首页和 `avg-plus/android/` 入口都可打开；客户端只从 Pages 的不可变版本目录下载经过校验的完整桥接 ZIP 或必要变化文件 ZIP。
 
-各版本 ZIP 发布到 `avg-plus/android/versions/<version>/avg-plus-assets.zip`；发现入口是 `avg-plus/android/latest/avg-plus-project.manifest` 和 `avg-plus-version.manifest`。先发布不可修改的版本目录，核验内容后再更新 latest 清单；客户端校验 ZIP URL 必须与清单版本完全一致。
+完整桥接 ZIP 发布到 `avg-plus/android/versions/<version>/avg-plus-assets.zip`，旧协议发现入口是 `avg-plus/android/latest/avg-plus-project.manifest` 和 `avg-plus-version.manifest`。日常增量 ZIP 位于 `avg-plus/android/delta/versions/<version>/avg-plus-assets.zip`，现代发现入口为 `delta/latest/index.json`。先验证不可变版本和完整链，再部署 latest；客户端校验 ZIP URL 必须与清单版本完全一致。历史版本完整索引附件在对应 Release，Pages 的增量不可变目录不另放 `avg-plus-content.json`。
 
 `AVG.PAGES.16` 增量发现索引是每次启动都会请求的文件。站点生成时仅去掉此索引的 JSON 排版空白，保留完整版本链、文件索引、摘要和所有字段，旧客户端协议兼容；不可变版本 ZIP 与 Release 原附件不改变。五项 Pages 及四项差分/版本链检查通过。配套客户端请求时限为 8 秒，单次任务保护上限为 10 秒；真实网络与物理手机结果分别记录。
 
@@ -46,7 +50,7 @@ python3 -B builds/build.py android --game avg_plus --hot-only --publish
 
 上传使用完整的真实 ZIP/APK 附件，失败可有界重试；先创建草稿并核对 GitHub 服务端大小和 SHA，再开放版本，匿名完整下载校验，等待 Pages 版本和哈希回读。公开版本附件不可覆盖，不用 `--clobber`；如内容不同需分配新版本。发布后只清理此次隔离镜像、临时构建和固定输出；不会删除源码、原素材、其他游戏、渠道配置、模板、打包必要文件或文档。未验证的发布保留当前输出供恢复，不积累新的历史候选。
 
-新建草稿按标签查询可能返回 404；发布工具会在当前账户可读的 Release 列表中查找同一标签，再按 ID 回读当前附件。列表读取失败直接停止，不能当作版本不存在后重复创建。已有候选可通过 `python3 -B builds/android/publish.py --record migration/reviews/avg_plus/<candidate>.json` 继续发布，已上传且哈希一致的附件会直接复用。
+新建草稿按标签查询可能返回 404；发布工具会在当前账户可读的 Release 列表中查找同一标签，再按 ID 回读当前附件。列表读取失败直接停止，不能当作版本不存在后重复创建。仍保留产物且满足源码／父版本门禁的候选可通过 `python3 -B builds/android/publish.py --record migration/reviews/avg_plus/<candidate>.json` 继续发布，已上传且哈希一致的附件会直接复用。Pages latest 已前进或 main 与冻结提交不相同时，先按热更新手册检查，不能直接假定续传可行。
 
 增量客户端先复制自身当前缓存到暂存目录，按完整顺序下载缺失的版本，校验最后一版全部文件后切换目录。保留一版健康缓存至新版本首页真实打开；启动失败时利用恢复日志回退并屏蔽失败版本，后续修复版本仍可更新。旧单 ZIP 客户端先使用完整桥接版本升级，再进入增量通道。断网检查有时限并继续本地游戏。文件系统故障注入通过不等于真实安卓升级通过，原生边界必须单独记录。
 
