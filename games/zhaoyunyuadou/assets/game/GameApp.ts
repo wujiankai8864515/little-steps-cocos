@@ -5,12 +5,14 @@ import { InkRig } from './InkRig';
 import { BOSSES } from './ReferenceCombat';
 import { BASIC_UNITS, isBasicKind, UnitFramePlayer } from './ReferenceUnits';
 import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
+import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
 const skin = (group: string, name: string) => 'resources/img/' + group + '/' + name + '.png';
 interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
-interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;}
+interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
+interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;weapon?:WeaponView;}
 interface Drag { location?: Location; item?: string; weaponId?:number; startX: number; startY: number; node: Node; moved: boolean; }
 
 export class GameApp {
@@ -247,15 +249,20 @@ export class GameApp {
             const unit=b.armies[side].units[link.left],key=side+':'+unit.id+':'+link.hero.name;
             heroKeys.add(key);let view=this.heroViews.get(key);
             if(!view){const node=this.ui.node('general-'+key,this.combatLayer,0,0,160,80);view={node,unit,hero:link.hero,side,left:link.left,level:link.level,ready:false,motion:new HeroMotion(unit.attacks-(unit.cooldown>0?1:0))};this.heroViews.set(key,view);
+                if(unit.attacks>0&&(unit.cooldown>0||(unit.weaponUntil||0)>b.time)){
+                    const stats=b.stats(unit,link.hero,link.level,side);view.motion.seenAttacks=unit.attacks;view.motion.attacking=true;view.motion.elapsed=Math.max(0,b.time-(unit.weaponAt??(b.time-stats.interval+unit.cooldown)))*link.hero.speed/stats.interval;
+                }
                 if(HERO_RIGS[link.hero.name]){const captured=view,source='resources/anim/'+HERO_RIGS[link.hero.name]+'/skeleton_zh.json';void Promise.all([this.rig(node,source,'zhan1',40,80,1),this.rig(node,source,'zhan2',120,80,1)]).then(rigs=>{if(rigs.every(Boolean)&&isValid(node,true)){captured.rigs=rigs as InkRig[];captured.ready=true;this.revision=-1;}});}
                 else view.ready=true;
-                const weapon=b.stats(unit,link.hero,link.level,side).weapon,path=skin('weapon',weapon?'weapon_'+weapon.id:'default_'+link.hero.weaponType),spec=this.art.art.frames[path],ratio=70/Math.max(spec.original[0],spec.original[1]);this.ui.image(node,path,73,30,spec.original[0]*ratio,spec.original[1]*ratio);
             }
-            if(view.left!==link.left)view.motion.reset(unit.attacks);
+            const weaponId=b.stats(unit,link.hero,link.level,side).weapon?.id??-1;
+            if(!view.weapon||view.weapon.id!==weaponId){view.weapon?.parent.destroy();view.weapon=this.heroWeapon(view,weaponId);}
+            if(view.left!==link.left){view.motion.reset(unit.attacks);view.weapon.motion.reset(unit.attacks);}
             view.unit=unit;view.left=link.left;view.level=link.level;view.node.setPosition(link.left%8*80,-Math.floor(link.left/8)*80);
             view.node.setSiblingIndex(0); // Name sprites and level markers remain above the rig/weapon.
             if(view.rigs&&view.skin!==look.skin){for(const rig of view.rigs)rig.useSkin(look.skin);view.skin=look.skin;}
             if(view.rigs&&view.ready)for(const cell of [link.left,link.right]){const v=this.actors.get(b.armies[side].units[cell].id);if(v)v.glyph.active=false;}
+            view.weapon.parent.setSiblingIndex(view.node.children.length-1);
         }
         for(const[key,view]of Array.from(this.heroViews.entries()))if(!heroKeys.has(key)){view.node.destroy();this.heroViews.delete(key);}
         this.ui.setText('goldNum',Math.floor(b.armies[0].food).toString(),this.screen);this.ui.setText('goldNumTxt',b.cost().toString(),this.screen);this.ui.setText('round','第'+b.wave+'波',this.screen);
@@ -403,17 +410,49 @@ export class GameApp {
     }
     private animateHero(view:HeroView,dt:number){
         const stats=this.battle!.stats(view.unit,view.hero,view.level,view.side),rate=view.hero.speed/stats.interval;
-        const event=view.motion.advance(dt,view.unit.attacks,view.unit.cooldown,rate);
+        const event=view.motion.advance(dt,view.unit.attacks,Math.max(view.unit.cooldown,(view.unit.weaponUntil||0)-this.battle!.time),rate);
         if(view.rigs){
             for(let i=0;i<view.rigs.length;i++){
                 const rig=view.rigs[i],name=(event.attacking?'attack':'zhan')+(i+1);
-                if(event.started||rig.name!==name)rig.play(name,!event.attacking);
                 rig.playbackRate=event.attacking?rate:1;
+                if(event.started||rig.name!==name){rig.play(name,!event.attacking);if(event.attacking)rig.advance(view.motion.elapsed/rate);}
             }
         }else for(const cell of [view.left,view.left+1]){
             const unit=this.battle!.armies[view.side].units[cell],actor=unit&&this.actors.get(unit.id);if(!actor)continue;
             actor.glyph.getComponent(UITransform)!.setAnchorPoint(.5,0);actor.glyph.setPosition(40,-80);actor.glyph.angle=-event.pose.rotation;actor.glyph.setScale(event.pose.scaleX,event.pose.scaleY);
         }
+        const weapon=view.weapon;if(!weapon)return;
+        const {spec}=weapon,origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},targetX=view.unit.attackX??origin.x+spec.x,targetY=view.unit.attackY??origin.y+spec.y-100;
+        const pivotX=origin.x+spec.x,pivotY=origin.y+spec.y;
+        const distance=Math.hypot(targetX-(spec.type===2?origin.x+40:pivotX),targetY-(spec.type===2?origin.y+40:pivotY));
+        const pose=weapon.motion.advance(dt,view.unit.attacks,event.attacking,stats.weaponRate,{dx:targetX-pivotX,dy:targetY-pivotY,distance,range:stats.range});
+        // The original weapon is a child of the first word's bottom pivot.
+        weapon.parent.angle=view.rigs?0:-event.pose.rotation;weapon.parent.setScale(view.rigs?1:event.pose.scaleX,view.rigs?1:event.pose.scaleY);
+        weapon.root.angle=-pose.angle;weapon.root.active=pose.visible;weapon.root.setScale(pose.rootScale,pose.rootScale);
+        weapon.body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-pose.childY);
+        weapon.body.setScale(pose.scaleX,pose.scaleY);
+        if(weapon.trail)weapon.trail.active=pose.trail;
+    }
+    private heroWeapon(view:HeroView,id:number):WeaponView {
+        const spec=weaponGeometry(view.hero.weaponType as WeaponType,view.hero.name,id),parent=this.ui.node('weapon word pivot',view.node,40,80,80,80);
+        const root=this.ui.node('weapon hinge',parent,spec.x-40,spec.y-80,1,1),body=this.ui.image(root,skin('weapon',id<0?'default_'+spec.type:'weapon_'+id),0,0,spec.width,spec.height);
+        if(spec.centered)body.getComponent(UITransform)!.setAnchorPoint(.5,.5);
+        body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-spec.childY);
+        let trail:Node|undefined;
+        if(spec.type===1&&view.hero.name==='张飞'){
+            const range=this.battle!.stats(view.unit,view.hero,view.level,view.side).range*1.5;trail=this.ui.image(root,skin('effect','sweep'),0,0,range,range);trail.getComponent(UITransform)!.setAnchorPoint(.5,.5);trail.angle=-180;trail.addComponent(UIOpacity).opacity=128;
+        }else if(spec.type===1&&view.hero.name!=='马超'){
+            trail=this.ui.image(body,skin('gameObject','soldier/pikeEff2'),0,0,30,76);trail.getComponent(UITransform)!.setAnchorPoint(.5,.5);trail.setPosition(0,spec.height*.5-spec.tipY!);
+        }else if(spec.type===2){
+            const [x,y,sx,sy]=KNIFE_TRAILS[id]||KNIFE_TRAILS[-1];trail=this.ui.image(body,skin('effect','whiteTrail'),x,y,94,89);trail.getComponent(UITransform)!.setAnchorPoint(0,.5);trail.setScale(sx,sy);
+        }
+        if(trail)trail.active=false;
+        const motion=new WeaponMotion(spec,view.hero.name,view.unit.attacks),b=this.battle!,unit=view.unit;
+        if(unit.attacks>0&&(unit.cooldown>0||(unit.weaponUntil||0)>b.time)){
+            const stats=b.stats(unit,view.hero,view.level,view.side),origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},x=unit.attackX??origin.x+spec.x,y=unit.attackY??origin.y+spec.y;
+            motion.resume(unit.attacks,Math.max(0,b.time-(unit.weaponAt??(b.time-stats.interval+unit.cooldown))),stats.weaponRate,{dx:x-origin.x-spec.x,dy:y-origin.y-spec.y,distance:Math.hypot(x-origin.x-(spec.type===2?40:spec.x),y-origin.y-(spec.type===2?40:spec.y)),range:stats.range});
+        }
+        return {parent,root,body,trail,id,spec,motion};
     }
     private newOverlay(scene?:string,stack=false) {
         this.cancelDrag();if(stack&&this.overlay)this.overlayStack.push({node:this.overlay,ui:this.overlayUI!,kind:this.overlayKind});else this.closeAllOverlays();

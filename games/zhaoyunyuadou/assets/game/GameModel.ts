@@ -2,9 +2,10 @@
 import { REFERENCE_MAPS } from './ReferenceMaps';
 import { BOSSES, BOSS_CHANCES, BOSS_ROUNDS, EARLY_HEALTH, WAVE_COUNTS, WAVE_HEALTH } from './ReferenceCombat';
 import { BASIC_UNITS, BASIC_GROWTH, BasicKind, FARM_INTERVALS, HERO_DAMAGE_GROWTH, HERO_SPEED_GROWTH, isBasicKind } from './ReferenceUnits';
+import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceWeapons';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
-export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
+export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; weaponUntil?:number; weaponAt?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
 export interface Hero { name: string; chars: string; weaponType: number; range: number; power: number; speed: number; rarity: number; skill: string; }
 export const GLYPHS = '赵云张飞马超关羽平兴黄忠苞翼盖祖甄宓刘备';
 export const HEROES: Hero[] = [
@@ -259,7 +260,8 @@ export class Battle {
         if(weapon&&[3,6,22].includes(weapon.id))bonus+=(unit.streak||0)*(weapon.id===6?.15:.05);
         speed*=Math.max(.01,1+bonus);range*=this.ranges[unit.id]||1;
         if(unit.debuff==='rain')speed*=.6;
-        return {power,range,interval:1/speed,weapon};
+        const weaponRate=hero?weaponPlaybackRate(hero.weaponType as WeaponType,hero.name,weapon?.id??-1,hero.speed*speed,bonus):1;
+        return {power,range,interval:1/speed,weapon,weaponRate};
     }
     active(id: string, cell = -1,location:Location={area:'board',index:cell}): string {
         const item = ITEMS.find(i => i.id === id);
@@ -453,7 +455,7 @@ export class Battle {
                     if (unit.cooldown <= 0) { unit.cooldown = FARM_INTERVALS[unit.level-1]; army.food++; if (side === 0) this.profile.gold++; this.effect('food', cell, side, '+1'); this.revision++; }
                     continue;
                 }
-                if (second.has(cell) || unit.cooldown > 0 || (side === 1 && this.aiSilence > 0)) continue;
+                if (second.has(cell) || unit.cooldown > 0 || (unit.weaponUntil||0)>this.time || (side === 1 && this.aiSilence > 0)) continue;
                 const link = links.find(h => h.left === cell); if (unit.kind === '字' && !link) continue;
                 const stats = this.stats(unit, link?.hero, link?.level,side), pos = this.position(cell);
                 if (link) pos.x += 40;
@@ -461,6 +463,7 @@ export class Battle {
                 const targets = this.enemies.filter(e => e.side === side && e.hp > 0 && Math.hypot(e.x - pos.x, e.y - pos.y) <= stats.range).sort((a,b) => closestEnd?b.progress-a.progress:Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
                 if (!targets.length) continue;
                 unit.cooldown = stats.interval; unit.attacks++;
+                if(link){unit.weaponAt=this.time;unit.weaponUntil=this.time+weaponBusyDuration(link.hero.weaponType as WeaponType,link.hero.name)/stats.weaponRate;}
                 const target = targets[0];
                 unit.attackX=target.x;unit.attackY=target.y;
                 if(!link&&isBasicKind(unit.kind)){

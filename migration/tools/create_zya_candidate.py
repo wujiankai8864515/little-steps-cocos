@@ -34,12 +34,13 @@ def main():
     helper = """        (globalThis as any).__ZYA_QA__ = true;
         const qaQuery = new URLSearchParams(location.search);
         const fixture = qaQuery.get('fixture');
+        let qaRestoring=false,qaRestoreCompleted=false;
 """
     text = text.replace('    start() {','    start() {\n'+helper)
     text = text.replace('        void this.application.start();', """        const app:any=this.application;
         const inspectVisible=app.inspect.bind(app);
         const inspectControl=(name:string)=>{const e=app.screen&&app.ui.find(name,app.screen),sprite=e?.body.getComponent(Sprite),transform=e?.body.getComponent(QAUITransform);return e?{name,active:e.node.active,visible:e.node.activeInHierarchy,bodyActive:e.body.activeInHierarchy,skin:e.body.__inkSkin,frame:sprite?.spriteFrame?.rect,spriteEnabled:sprite?.enabledInHierarchy,position:e.node.position,world:e.node.worldPosition,bodyWorld:e.body.worldPosition,scale:e.node.scale,bounds:transform?.getBoundingBoxToWorld(),sibling:e.node.getSiblingIndex()}:null;};
-        app.inspect=()=>({...inspectVisible(),visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null});
+        app.inspect=()=>({...inspectVisible(),visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null,heroWeapons:Array.from(app.heroViews.values()).map((view:any)=>{const w=view.weapon;return {hero:view.hero.name,side:view.side,ready:view.ready,weapon:w?{id:w.id,type:w.spec.type,ready:!!w.body.getComponent(Sprite)?.spriteFrame,visible:w.root.activeInHierarchy,angle:w.root.angle,bodyPosition:w.body.position,bodyScale:w.body.scale,size:w.body.getComponent(QAUITransform).contentSize,elapsed:w.motion.time,attacks:w.motion.attacks,sibling:w.parent.getSiblingIndex(),siblings:view.node.children.length}:null};})});
         if(fixture==='home-stars'){app.profile.stars=Number(qaQuery.get('stars')||'2');app.profile.gold=20;app.profile.tutorial=true;}
         if(fixture==='merchant-home'){app.profile.losses=1;app.profile.tutorial=true;app.profile.gold=8623;app.profile.stamina=25;}
         if(fixture==='heroes')app.profile.tutorial=true;
@@ -61,7 +62,15 @@ def main():
                     for(const hero of HEROES.slice(side*6,side*6+6)){const cell=army.unlocked.find((cell:number)=>cell%8<7&&army.unlocked.includes(cell+1)&&!used.has(cell)&&!used.has(cell+1));if(cell===undefined)throw new Error('Hero fixture requires a legal adjacent pair');used.add(cell);used.add(cell+1);army.units[cell]=battle.unit('字',hero.chars[0],level);army.units[cell+1]=battle.unit('字',hero.chars[1],level);}
                     if(qaQuery.get('attack')==='1')for(let index=1;index<battle.map.paths[side].length-1;index+=3){const pos=battle.position(battle.map.paths[side][index]);battle.enemies.push({id:battle.nextId++,side,progress:index*80,hp:1000000,maxHp:1000000,speed:0,boss:false,slowed:0,x:pos.x,y:pos.y});}
                 }
-                await app.showBattle();battle.paused=qaQuery.get('attack')!=='1';
+                await app.showBattle();battle.paused=true;
+                if(qaQuery.get('attack')==='1'){
+                    const startWhenReady=()=>{if(app.art.metrics().admission.pending>0||Array.from(app.heroViews.values()).some((view:any)=>!view.ready||!view.weapon?.body.getComponent(Sprite)?.spriteFrame))return;battle.paused=false;director.off(Director.EVENT_AFTER_DRAW,startWhenReady);};
+                    director.on(Director.EVENT_AFTER_DRAW,startWhenReady);
+                    const freezeAt=Number(qaQuery.get('freezeAt')||'0');
+                    if(Number.isFinite(freezeAt)&&freezeAt>0)director.on(Director.EVENT_AFTER_UPDATE,()=>{if(battle.time<freezeAt)return;battle.paused=true;
+                        if(qaQuery.get('restore')==='1'&&!qaRestoring&&!qaRestoreCompleted){qaRestoring=true;const restored=Battle.restore(battle.snapshot(),app.profile,app.art.weapons);if(!restored)throw new Error('QA saved hero round failed restoration');restored.paused=true;app.battle=restored;void app.showBattle().then(()=>{restored.paused=true;qaRestoring=false;qaRestoreCompleted=true;document.documentElement.dataset.zyaRestored='true';});}
+                    });
+                }
             }
             else if(fixture==='weapons')await app.weapons();
             else if(fixture==='result'){
@@ -70,8 +79,10 @@ def main():
             if(qaQuery.get('capture')==='1'){
                 let captureTime=0;
                 director.on(Director.EVENT_AFTER_DRAW,()=>{
+                    if(qaRestoring||qaQuery.get('restore')==='1'&&!qaRestoreCompleted)return;
                     if(captureTime===0&&(fixture==='tutorial'&&(app.page!=='battle'||app.revision!==app.battle?.revision)||fixture==='result'&&app.page!=='result'))return;
-                    if(captureTime===0&&fixture==='heroes'&&Array.from(app.heroViews.values()).some((view:any)=>!view.ready))return;
+                    if(captureTime===0&&fixture==='heroes'&&(app.art.metrics().admission.pending>0||Array.from(app.heroViews.values()).some((view:any)=>!view.ready||!view.weapon?.body.getComponent(Sprite)?.spriteFrame)))return;
+                    if(captureTime===0&&fixture==='heroes'&&Number(qaQuery.get('freezeAt')||'0')>0&&app.battle.time<Number(qaQuery.get('freezeAt')))return;
                     const now=performance.now();if(now-captureTime<600)return;captureTime=now;
                     const canvas=document.getElementById('GameCanvas') as HTMLCanvasElement;
                     if(canvas){document.documentElement.dataset.zyaPng=canvas.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify(app.inspect());}
@@ -80,7 +91,7 @@ def main():
         });""")
     text = text.replace('                let captureTime=0;', '                let captureTime=0;let captureRequested=true;input.on(Input.EventType.KEY_DOWN,e=>{if(e.keyCode===KeyCode.F9)captureRequested=true;});')
     text = text.replace('if(now-captureTime<600)return;captureTime=now;', 'if(!captureRequested||now-captureTime<600)return;captureTime=now;captureRequested=false;')
-    text = "import { director, Director, input, Input, KeyCode, Sprite, UITransform as QAUITransform } from 'cc';\nimport { ITEMS, HEROES } from './game/GameModel';\n" + text
+    text = "import { director, Director, input, Input, KeyCode, Sprite, UITransform as QAUITransform } from 'cc';\nimport { Battle, ITEMS, HEROES } from './game/GameModel';\n" + text
     boot.write_text(text,encoding='utf-8')
     app_path = project / 'assets/game/GameApp.ts'
     app_text=app_path.read_text(encoding='utf-8')

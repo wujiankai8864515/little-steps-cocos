@@ -1,0 +1,71 @@
+{
+  "id": "ZYA-20",
+  "date": "2026-10-15",
+  "kind": "source and browser candidate verification, not formal release",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "execution": "inert text facts only; original runtime not executed",
+    "landmarks": {
+      "bow": "4160-4182: 124x56; parent 80x80 pivot .5,.5; scale 450/120/60/60/60ms",
+      "knife": "4244-4274: 42x118; pivot .5,.8; turn100, raise50 in parallel with extend180, cut180, recover150ms",
+      "pike": "4490-4538: 42x132; pivot .5,.5; short/default body -25; Zhao 5 thrusts, Zhang fixed .5 sweep, Ma throw200/hidden1000/rearm200ms",
+      "sword": "4616-4647: 33.6x105.6; pivot .5,.8; alternating +/-60, swing200ms and reach100/return50ms",
+      "availability": "6041-6065: skip generals while V_ is false; weapon tweens restore availability"
+    }
+  },
+  "changes": [
+    "Replaced uniform 70-pixel weapons with original per-type dimensions and handle pivots",
+    "Native-coordinate angle/shortest-turn and weapon pose sampler",
+    "Separate weapon parent follows first word bottom pivot; async rigs keep weapon sibling last",
+    "Restored original sweep, white trail and pike trail assets",
+    "Snapshot stores weaponUntil; model does not restart unfinished melee/throw animations",
+    "Bow fixed playback except weapon 3 additive bonus, Zhang fixed sweep rate",
+    "QA waits for weapon frames and all hero rigs, supports declared freezeAt frame timing",
+    "Saved weaponAt resumes weapon and paired rig progress when battle nodes are reconstructed; legacy rounds use cooldown fallback"
+  ],
+  "validation": {
+    "tests": 30,
+    "typecheck": "pass",
+    "browser": {
+      "v28": "pass build and real attacking/pause UI; initial ready screenshot lacks complete weapon-frame gate, retained",
+      "v29": "pass build; twelve ready weapons with exact dimensions/sibling order; real idle angle motion recorded",
+      "v30": "pass build; declared freeze fixture: cut/thrust time .433333, Ma hidden; rearm time1.333333, attacks1, visible. Not original same-phase pixel acceptance.",
+      "v31": "pass build; declared saved-round restore and actual Cocos node/mesh reconstruction at time1.333333: Ma attacks1, weaponUntil1.433333, elapsed1.3 and visible; no warn/error; twelve weapon frames ready, 79 entries/pending0. Forced level-4 fixture continuously ran to time24.8, Ma31 attacks; actual pause froze all exported weapon properties; actual drag 云41->66 removed Zhao weapon, return restored six heroes, no errors. Forced fixture levels do not validate original promotion caps."
+    },
+    "wechat": "zya-wechat-v6 building; device pending",
+    "resourcePeak": {
+      "entries": 82,
+      "pending": 0,
+      "estimatedReservedBytes": 135206720,
+      "scope": "actual browser flow; not measured device GPU/audio memory"
+    }
+  },
+  "remaining": [
+    "Native hero melee hit geometry and complete original weapon/hero special mechanics",
+    "Motion randomness and same-version same-phase whole-screen pixel comparison",
+    "All audio and warm-session resource release",
+    "WeChat device, online services and user approval",
+    "Renderer and fixed simulation clocks can differ within a frame; early-aim restore and full same-phase comparison remain unproven"
+  ],
+  "strictPixels": "unproven",
+  "evidence": [
+    "heroes-idle-v28.png",
+    "heroes-idle-ready-v28.png",
+    "heroes-attack-paused-v28.png",
+    "heroes-idle-v29.png",
+    "heroes-idle-motion-v29.png",
+    "heroes-cut-thrust-v30.png",
+    "heroes-rearm-v30.png",
+    "heroes-restored-rearm-v31.png",
+    "heroes-level4-paused-v31.png",
+    "heroes-split-weapon-v31.png",
+    "heroes-rejoined-weapon-v31.png"
+  ],
+  "runtimeSource": {
+    "assets/game/ReferenceWeapons.ts": "338874fc96d3386ca120e9eac11a5d54a032c7a4b843d34df363b3d3bf1e75c7",
+    "assets/game/GameModel.ts": "285f213552fb5078596d8d226da764d99fc183ac46824f2af15c4431fce5a06c",
+    "assets/game/GameApp.ts": "9d51c5d7efdad6c6a17776b7a5a981adc94e0dd2ddb3016d775ca616a408372b",
+    "test/game.test.cjs": "f77575edd05519325d9c866ee37e9e3d24aead4988d5518a90aa4915c62a36d0"
+  }
+}

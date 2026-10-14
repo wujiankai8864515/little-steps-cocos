@@ -15,10 +15,40 @@ const M = moduleFrom('GameModel');
 const R = moduleFrom('InkRigMath');
 const U = moduleFrom('ReferenceUnits');
 const H = moduleFrom('ReferenceHeroes');
+const W = moduleFrom('ReferenceWeapons');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
 const location = (area,index) => ({area,index});
+test('native weapons retain separate handle pivots, short-blade reach and pike offsets',()=>{
+    const bow=W.weaponGeometry(0,'黄忠'),knife=W.weaponGeometry(2,'关羽'),sword=W.weaponGeometry(3,'刘备');
+    assert.equal(bow.width,124);assert.equal(bow.height,56);assert.equal(bow.childY,10);
+    assert.equal(knife.rootHeight*knife.anchorY,94.4);assert.equal(knife.x,55);assert.equal(knife.y,38);
+    assert.equal(sword.width,33.6);assert.equal(sword.height,105.6);assert.equal(W.weaponGeometry(2,'关平',20).reach,30);
+    const short=W.weaponGeometry(1,'赵云',10);assert.equal(short.childY,41);assert.equal(short.tipY,50);assert.equal(W.weaponGeometry(1,'赵云',11).childY,66);assert.equal(W.weaponGeometry(1,'马超').x,140);
+    assert.equal(W.aimAngle(100,0),90);assert.equal(W.aimAngle(0,-100),0);assert.equal(W.aimAngle(0,100),180);assert.equal(W.angleDelta(720,-170),-170);assert.equal(W.angleDelta(179,-179),2);
+});
+test('weapon landmarks preserve five thrusts, full Zhang Fei sweep and Ma Chao hidden interval',()=>{
+    const pike=W.weaponGeometry(1,'赵云'),samples=[];
+    for(let t=.15;t<.58;t+=.005)samples.push(W.attackPose(pike,'赵云',t,0,90,100,200,1).trail);
+    assert.equal(samples.filter((value,index)=>value&&(index===0||!samples[index-1])).length,5);
+    assert.equal(W.attackPose(pike,'赵云',.25,0,90,100,200,1).childY,-39);
+    const zhang=W.weaponGeometry(1,'张飞');assert.equal(W.attackPose(zhang,'张飞',.1,0,0,100,200,1).angle,130);assert.equal(W.attackPose(zhang,'张飞',.4,0,0,100,200,1).angle,-230);
+    const ma=W.weaponGeometry(1,'马超');assert.equal(W.attackPose(ma,'马超',.2,0,90,100,200,1).visible,false);assert.equal(W.attackPose(ma,'马超',1.2,0,90,100,200,1).rootScale,0);assert.equal(W.attackPose(ma,'马超',1.4,0,90,100,200,1).visible,true);
+    const sword=W.weaponGeometry(3,'刘备');assert.equal(W.attackPose(sword,'刘备',0,0,0,100,200,1).angle,-60);assert.equal(W.attackPose(sword,'刘备',0,0,0,100,200,2).angle,60);
+    const motion=new W.WeaponMotion(pike,'赵云'),target={dx:100,dy:0,distance:100,range:200};motion.advance(.1,1,true,1,target);const frozen=JSON.stringify(motion);motion.advance(0,1,true,1,target);assert.equal(JSON.stringify(motion),frozen);motion.reset(1);assert.equal(motion.active,false);assert.equal(motion.time,0);
+    const rearm=new W.WeaponMotion(ma,'马超');rearm.resume(1,1.3,1,target);const restoredPose=rearm.advance(0,1,true,1,target);assert.equal(restoredPose.visible,true);assert.ok(Math.abs(restoredPose.rootScale-.5)<1e-12);assert.equal(rearm.attacks,1);
+});
+test('Ma Chao finishes his throw and rearm before attacking again, including save and pause',()=>{
+    const b=new M.Battle(M.newProfile(now),weapons,1,7),unit=b.unit('字','马');b.armies[0].units={53:unit,54:b.unit('字','超')};b.aiTime=10000;b.spawnTime=10000;
+    const p=b.position(53),index=b.map.paths[0].findIndex(cell=>{const e=b.position(cell);return Math.hypot(e.x-p.x-40,e.y-p.y)<150;}),target=b.position(b.map.paths[0][index]);assert.ok(index>=0);
+    b.enemies=[{id:900,side:0,progress:index*80,hp:1000000,maxHp:1000000,speed:0,boss:false,slowed:0,x:target.x,y:target.y}];
+    for(let i=0;i<20;i++)b.advance(1/30);assert.equal(unit.attacks,1);const saved=b.snapshot(),restored=M.Battle.restore(saved,b.profile,weapons);assert.ok(restored);
+    b.paused=true;b.advance(1);assert.equal(b.snapshot(),saved);b.paused=false;
+    for(let i=0;i<16;i++){b.advance(1/30);restored.advance(1/30);}assert.equal(unit.attacks,1);assert.equal(b.snapshot(),restored.snapshot());
+    for(let i=0;i<10;i++){b.advance(1/30);restored.advance(1/30);}assert.equal(unit.attacks,2);assert.equal(b.snapshot(),restored.snapshot());
+    assert.equal(W.weaponPlaybackRate(0,'黄忠',-1,2,.5),1);assert.equal(W.weaponPlaybackRate(0,'黄忠',3,2,.5),1.5);assert.equal(W.weaponPlaybackRate(1,'张飞',18,2,.5),1);
+});
 test('initial geometry, roads and unlock cells are valid on all four maps',()=>{
     for(const map of M.MAPS){
         const b = new M.Battle(M.newProfile(now),weapons,map.id,1);
