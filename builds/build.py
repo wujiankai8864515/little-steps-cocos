@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Shared entry point: python3 -B builds/build.py [channel] [options]."""
 import re
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -20,7 +21,11 @@ def main():
         if game == 'xiaoyu-cocos':
             del args[index:index + 2]
         elif re.fullmatch(r'[a-z0-9_-]+', game) and (directory / 'wechatgame/games' / (game + '.json')).is_file():
-            builder = directory / 'wechatgame/build_game.py'
+            mapping = json.loads((directory / 'wechatgame/games' / (game + '.json')).read_text())
+            entry = mapping.get('builder', 'build_game.py')
+            if not re.fullmatch(r'[a-z0-9_-]+\.py', entry):
+                raise SystemExit('Invalid WeChat builder mapping for game: ' + game)
+            builder = directory / 'wechatgame' / entry
         else:
             raise SystemExit('No WeChat packaging configuration for game: ' + game)
     if not builder.is_file():
