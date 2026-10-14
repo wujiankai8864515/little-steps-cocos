@@ -174,7 +174,74 @@
     },
     "merchantEntrance": "v26 controlled stock fixture: shopBtn is visible/enabled, original donkey/mihuan asset at 319,770. Actual click at 159,391 opened ShopScene; purchase allSpeed cost 60, inventory +1. Same-round lottery rejected without charge; no production fix needed. Prior absence interpretation was incorrect.",
     "heroMotion": "v27 actor original paired zhan1/zhan2 and attack1/attack2 with native rate, bottom-pivot generic word curves, original 80px canvases and two-layer borders; 12-hero/level-4 fixtures and actual split/rejoin input passed. Full weapon motion and same-phase pixels remain pending.",
-    "weaponMotion": "ZYA20: native weapon dimensions/pivots/tween landmarks and action availability; saved weaponAt and weaponUntil seed reconstructed weapon/rig progress. v29 idle, v30 phase and v31 restore/forced-level4/pause/split/rejoin actual Cocos UI passed. Full melee geometry, skills and strict same-phase pixels pending."
+    "weaponMotion": "ZYA20: native weapon dimensions/pivots/tween landmarks and action availability; saved weaponAt and weaponUntil seed reconstructed weapon/rig progress. v29 idle, v30 phase and v31 restore/forced-level4/pause/split/rejoin actual Cocos UI passed. Full melee geometry, skills and strict same-phase pixels pending.",
+    "latestNativeWeaponCandidate": {
+      "id": "ZYA-21",
+      "date": "2026-10-15",
+      "kind": "latest local-source native WeChat subpackage candidate, not formal release",
+      "sourceGameCommit": "ab370b67abd7ac43fc733353477f01ca7d3a5568",
+      "sourceParentCommit": "c91a49b2dd7a7aaacf72dc72244ea3e4c303f90d",
+      "build": "pass",
+      "candidate": "zya-wechat-v6",
+      "workingInputHashesChecked": 232,
+      "fixedOutputHashesChecked": 386,
+      "budgetAudit": {
+        "mainBytes": 3319626,
+        "totalBytes": 16483002,
+        "initialBytes": 11678690,
+        "sizes": {
+          "main": 3319626,
+          "zya_meta": 2317481,
+          "zya_effects": 1893082,
+          "zya_battle": 2215755,
+          "zya_maps": 695475,
+          "zya_home": 1083521,
+          "zya_audio": 3270647,
+          "zya_actors": 1687415
+        },
+        "subpackages": [
+          {
+            "name": "zya_actors",
+            "root": "subpackages/zya_actors/"
+          },
+          {
+            "name": "zya_audio",
+            "root": "subpackages/zya_audio/"
+          },
+          {
+            "name": "zya_battle",
+            "root": "subpackages/zya_battle/"
+          },
+          {
+            "name": "zya_effects",
+            "root": "subpackages/zya_effects/"
+          },
+          {
+            "name": "zya_home",
+            "root": "subpackages/zya_home/"
+          },
+          {
+            "name": "zya_maps",
+            "root": "subpackages/zya_maps/"
+          },
+          {
+            "name": "zya_meta",
+            "root": "subpackages/zya_meta/"
+          }
+        ],
+        "files": 386
+      },
+      "framework": {
+        "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+        "mode": "0o444"
+      },
+      "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+      "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+      "browserCandidate": "zya-web-v31",
+      "strictPixels": "unproven",
+      "device": "pending",
+      "online": "pending"
+    }
   },
   "pending": [
     "same-size pixel differences on all pages",
