@@ -48,4 +48,6 @@ python3 -m http.server 8816 --bind 127.0.0.1 --directory migration/output/boss-w
 
 `test/game.test.cjs` 包含数值、完整关卡可通关、计时边界、交易防重复和存档恢复回归。微信静态分包检查通过不等于真机验收；必须保留实际验证边界。
 
+本地源码副本为 `migration/output/boss-source-1.0.0.zip`。实际验证结果及未核验项见 [验证记录](docs/VALIDATION.md)。
+
 参考技术文档：[Cocos 3.8 命令行发布](https://docs.cocos.com/creator/3.8/manual/en/editor/publish/publish-in-command-line.html)、[Asset Bundle](https://docs.cocos.com/creator/3.8/manual/en/asset/bundle.html)。
