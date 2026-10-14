@@ -1,0 +1,24 @@
+{
+  "item": "AVG.UI.01",
+  "request": "2026-10-14 图片保持比例；使用已有卡牌元件和 UI",
+  "rootCause": [
+    "CatalogUI 背景 CUSTOM 直接设置封面宽高，2064×2752 被拉到 1010×1110",
+    "角色透明画布为 1000×2800；Sprite.trim 默认裁掉透明边缘后再填入指定宽高，改变人物比例"
+  ],
+  "repair": [
+    "封面及收藏背景按原始画布等比例 cover 并由已有圆角遮罩裁切",
+    "目录和 AVG 角色 Sprite.trim=false，保留原图透明留白",
+    "恢复既有 gamePage prefab、原牌背/万能牌/金币/进度组件；五格适配原进度轨道",
+    "完成页复用原金币组件和万能牌素材；未使用的视频 UI 帧移入历史目录"
+  ],
+  "firstTypeCheckFailure": {
+    "message": "GameUiNodeId.Coin 不存在",
+    "repair": "使用已有 GameUiNodeId.CoinWallet"
+  },
+  "verification": {
+    "types": "43 scripts passed",
+    "behavior": "61 passed",
+    "androidScreens": "pending"
+  },
+  "unrelatedChanges": "preserved"
+}

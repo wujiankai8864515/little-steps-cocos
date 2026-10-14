@@ -6,9 +6,6 @@ import {
     director,
     Director,
     Graphics,
-    EffectAsset,
-    Material,
-    Mask,
     HorizontalTextAlignment,
     instantiate,
     Label,
@@ -109,59 +106,6 @@ export class GamePresentation extends PresentationComponent {
     private paidEffectButtonGlow: Node | null = null;
     private paidEffectParticles: ParticleSystem2D | null = null;
     private paidEffectElapsed = 0;
-    protected referenceProgressSuits: readonly (CardDef['suit'] | null)[] = [];
-    private referencePips: Readonly<Record<string, SpriteFrame>> | null = null;
-    private referenceGlyphMaterial: Material | null = null;
-
-    protected initializeReferenceHud(boardFrame: SpriteFrame, pips: Readonly<Record<string, SpriteFrame>>, effect: EffectAsset, titleText: string, coinFrame: SpriteFrame): void {
-        this.referencePips = pips;
-        const material = this.referenceGlyphMaterial = new Material();
-        material.initialize({ effectAsset: effect, defines: { USE_TEXTURE: true } });
-        const progress = this.findNode(GameUiNodeId.RewardProgress)!;
-        progress.children.forEach(child => { child.active = child.name === 'board' || child.name === GameUiNodeId.ProgressItems; });
-        progress.getComponent(UITransform)?.setContentSize(345, 82);
-        const alignment = progress.getComponent(Widget);
-        if (alignment) { alignment.left = 675; alignment.updateAlignment(); }
-        const mask = progress.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
-        const stencil = progress.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
-        stencil.roundRect(-172.5, -41, 345, 82, 41); stencil.fill();
-        const board = progress.getChildByName('board')!;
-        board.setPosition(0, 0); board.getComponent(UITransform)?.setContentSize(345, 82);
-        const sprite = board.getComponent(Sprite)!; sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = boardFrame;
-        progress.getChildByName(GameUiNodeId.ProgressItems)?.setPosition(0, 0);
-        const title = new Node('chapterTitle'); title.layer = this.node.layer;
-        title.addComponent(UITransform).setContentSize(390, 75); this.node.addChild(title);
-        const titleWidget = title.addComponent(Widget); titleWidget.isAlignTop = true; titleWidget.isAlignLeft = true;
-        titleWidget.top = 104; titleWidget.left = 285; titleWidget.updateAlignment();
-        const g = title.addComponent(Graphics); g.fillColor = new Color(8, 7, 20, 150); g.roundRect(-195, -37.5, 390, 75, 37.5); g.fill();
-        // Graphics owns a dynamic native RenderEntity; Label owns a static one.
-        // Keep them on separate nodes instead of replacing the shared native entity.
-        const textNode = new Node('chapterTitleText'); textNode.layer = title.layer;
-        textNode.addComponent(UITransform).setContentSize(390, 75); title.addChild(textNode);
-        const label = textNode.addComponent(Label); label.string = titleText; label.fontSize = 30; label.lineHeight = 42;
-        label.color = Color.WHITE; label.horizontalAlign = HorizontalTextAlignment.CENTER; label.verticalAlign = VerticalTextAlignment.CENTER;
-        const visit = (node: Node) => {
-            if (node.name === 'coin_icon') {
-                const icon = node.getComponent(Sprite);
-                if (icon) {
-                    icon.sizeMode = Sprite.SizeMode.CUSTOM; icon.spriteFrame = coinFrame;
-                    icon.enabled = false;
-                    const size = node.getComponent(UITransform)!;
-                    const clip = new Node('coinCircle'); clip.layer = node.layer;
-                    clip.addComponent(UITransform).setContentSize(size.width, size.height); node.addChild(clip);
-                    const mask = clip.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
-                    const stencil = clip.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
-                    stencil.circle(0, 0, Math.min(size.width, size.height) * 0.43); stencil.fill();
-                    const pixels = new Node('sourcePixels'); pixels.layer = node.layer;
-                    pixels.addComponent(UITransform).setContentSize(size.width, size.height); clip.addChild(pixels);
-                    const clipped = pixels.addComponent(Sprite); clipped.sizeMode = Sprite.SizeMode.CUSTOM; clipped.spriteFrame = coinFrame;
-                }
-            }
-            node.children.forEach(visit);
-        };
-        visit(this.node);
-    }
-    protected disposeReferenceHud(): void { this.referenceGlyphMaterial?.destroy(); this.referenceGlyphMaterial = null; }
     protected dispatch(_action: GameUiAction): Promise<void> { throw new Error('GamePageUI must supply dispatch'); }
     /** Prefab 挂到场景的同一帧就执行，禁止默认牌面在异步关卡加载前闪现。 */
     protected prepareOpeningVisualState(): void {
@@ -1744,7 +1688,6 @@ export class GamePresentation extends PresentationComponent {
         cells: readonly ProgressCellState[],
         suits?: readonly (CardDef['suit'] | null)[],
     ): void {
-        if (suits) this.referenceProgressSuits = suits;
         this.ensureProgressItemCount(progressItems, cells.length);
         progressItems.children.forEach((item, index) => {
             if (index >= cells.length) {
@@ -1757,41 +1700,24 @@ export class GamePresentation extends PresentationComponent {
     }
 
     protected ensureProgressItemCount(progressItems: Node, count = HITS_PER_REWARD): void {
-        const centerTemplate = progressItems.children[1] ?? null;
-        if (!centerTemplate) return;
-
-        const first = progressItems.children[0] ?? null;
-        const spacing = centerTemplate.position.x - (first?.position.x ?? centerTemplate.position.x - 46.5);
+        const template = progressItems.children[1];
+        if (!template) return;
         while (progressItems.children.length < count) {
-            const index = progressItems.children.length;
-            const item = instantiate(centerTemplate) as Node;
-            item.name = `center_${index}`;
-            item.setPosition(
-                centerTemplate.position.x + spacing * (index - 1),
-                centerTemplate.position.y,
-                centerTemplate.position.z,
-            );
+            const item = instantiate(template) as Node;
+            item.name = `center_${progressItems.children.length}`;
             progressItems.addChild(item);
         }
+        // Keep the existing prefab's shapes and fit any configured count inside its track.
+        const spacing = 46.5;
+        const width = progressItems.getComponent(UITransform)?.width ?? 200;
+        const scale = Math.min(1, width / (Math.max(0, count - 1) * spacing + 60));
+        progressItems.children.forEach((item, index) => {
+            item.setScale(scale, scale, 1);
+            item.setPosition((index - (count - 1) / 2) * spacing * scale, 0, 0);
+        });
     }
 
     protected renderProgressColor(item: Node, index: number, cellState: ProgressCellState): void {
-        if (this.referencePips && this.referenceGlyphMaterial) {
-            item.children.forEach(child => { child.active = false; });
-            item.setPosition((687 + index * 16 - 752) * 345 / 168, 0);
-            let glyph = item.getChildByName('referencePip');
-            if (!glyph) {
-                glyph = new Node('referencePip'); glyph.layer = item.layer;
-                glyph.addComponent(UITransform).setContentSize(14 * 345 / 168, 16 * 82 / 40);
-                item.addChild(glyph); const sprite = glyph.addComponent(Sprite);
-                sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.customMaterial = this.referenceGlyphMaterial;
-            }
-            glyph.active = cellState !== ProgressCellState.Empty;
-            const sprite = glyph.getComponent(Sprite)!;
-            sprite.spriteFrame = this.referencePips[this.referenceProgressSuits[index] ?? 'club'];
-            sprite.color = cellState === ProgressCellState.Red ? new Color(249, 49, 37) : new Color(245, 244, 250);
-            return;
-        }
         const suffix = index === 0 ? '01' : '02';
         const assetName = cellState === ProgressCellState.Red
             ? `img_main_progress_red${suffix}`

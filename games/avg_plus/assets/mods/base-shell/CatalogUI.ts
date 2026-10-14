@@ -6,6 +6,7 @@ import {
 import type { Action } from '../../foundation/Contracts';
 import { TaskScope } from '../../foundation/Tasks';
 import { PresentationComponent } from '../shared/PresentationComponent';
+import { imageSize } from '../shared/ImageLayout';
 import type { CatalogConfig, StoryConfig } from './CatalogConfig';
 import type { CatalogPage, CatalogState } from './CatalogMod';
 
@@ -152,7 +153,7 @@ export class CatalogUI extends PresentationComponent {
         const stencil=node.getComponent(Graphics)!;
         stencil.clear();stencil.fillColor=Color.WHITE;
         stencil.roundRect(-width/2,-height/2,width,height,38);stencil.fill();
-        this.sprite(node,'coverBackground',story.bundle+'/'+story.background,0,0,width,height);
+        this.sprite(node,'coverBackground',story.bundle+'/'+story.background,0,0,width,height,'cover');
         for(let i=0;i<story.roles.length;i++) {
             const h=height*1.9,w=h/2.8;
             this.sprite(node,'coverRole_'+i,story.bundle+'/'+story.roles[i],(i-(story.roles.length-1)/2)*width*0.36,-height*0.43,w,h);
@@ -223,7 +224,7 @@ export class CatalogUI extends PresentationComponent {
             const mask=tile.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
             const g=tile.getComponent(Graphics)!;g.clear();g.fillColor=Color.WHITE;g.roundRect(-239,-247.5,478,495,30);g.fill();
             if(p.highestPage>=c.unlockPage){
-                const isRole=c.asset.startsWith('roles/');this.sprite(tile,'collectionImage',story.bundle+'/'+c.asset,0,isRole?-265:0,isRole?435:478,isRole?1218:495);
+                const isRole=c.asset.startsWith('roles/');this.sprite(tile,'collectionImage',story.bundle+'/'+c.asset,0,isRole?-265:0,isRole?435:478,isRole?1218:495,isRole?'contain':'cover');
                 const bottom=this.panel(tile,'caption',0,-205,478,85,DARK,0);this.text(bottom,c.title,27,0,0,450,70);
                 tile.addComponent(Button);tile.on(Button.EventType.CLICK,()=>this.showMessage(c.title),this);
             } else {
@@ -274,9 +275,11 @@ export class CatalogUI extends PresentationComponent {
         label.horizontalAlign=HorizontalTextAlignment.CENTER;label.verticalAlign=VerticalTextAlignment.CENTER;
         label.overflow=Label.Overflow.SHRINK;return label;
     }
-    private sprite(parent: Node,name: string,key: string,x: number,y: number,w: number,h: number): Node {
-        const node=this.child(parent,name,w,h,x,y),sprite=node.addComponent(Sprite);sprite.sizeMode=Sprite.SizeMode.CUSTOM;
-        const frame=this.sprites.get(key);if(!frame)throw new Error('目录纹理未加载：'+key);sprite.spriteFrame=frame;return node;
+    private sprite(parent: Node,name: string,key: string,x: number,y: number,w: number,h: number,mode: 'contain'|'cover'='contain'): Node {
+        const frame=this.sprites.get(key);if(!frame)throw new Error('目录纹理未加载：'+key);
+        const size=imageSize(frame.originalSize.width,frame.originalSize.height,w,h,mode);
+        const node=this.child(parent,name,size.width,size.height,x,y),sprite=node.addComponent(Sprite);
+        sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.trim=false;sprite.spriteFrame=frame;return node;
     }
     private pill(parent: Node,text: string,x: number,y: number,w: number,h: number,color: Color,action: ()=>void,font=37): Node {
         const node=this.panel(parent,text,x,y,w,h,color,h/2);this.text(node,text,font,0,0,w-36,h-10).isBold=true;

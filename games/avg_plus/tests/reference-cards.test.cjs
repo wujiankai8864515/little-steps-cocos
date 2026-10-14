@@ -25,12 +25,14 @@ test('configured free stock ends on the fifteenth draw and checkpoint restore ke
  session.recordStockDraw();session.recordStockDraw();assert.equal(session.freeStockDraws,15);
  assert.throws(()=>new GameSessionStore(undefined,5700,-1));assert.throws(()=>new GameSessionStore(undefined,5700,53));
 });
-test('card catalog crop references an unchanged full video frame and all regions remain inside it',()=>{
+test('card backs and wild cards use the existing project assets without video crops',()=>{
  const catalog=JSON.parse(fs.readFileSync(path.join(root,'assets/art/resources/assets/poker/card-catalog.json')));
+ const crypto=require('node:crypto');
  for(const name of ['poker_back_01','poker_wild']){
-  const item=catalog.assets[name];assert.equal(item.resourcePath,'assets/reference/cards_atlas/spriteFrame');
-  assert.ok(item.region.x+item.region.width<=960);assert.ok(item.region.y+item.region.height<=432);
+  const item=catalog.assets[name];assert.equal(item.region,undefined);
+  const folder=name==='poker_back_01'?'backs':'fronts';
+  assert.equal(item.resourcePath,`assets/poker/${folder}/${name}/spriteFrame`);
+  const data=fs.readFileSync(path.join(root,`assets/art/resources/assets/poker/${folder}/${name}.png`));
+  assert.equal(crypto.createHash('sha256').update(data).digest('hex'),item.sha256);
  }
- const original=fs.readFileSync(path.join(root,'../../migration/reviews/avg_plus/reference/cards-clear-02.png'));
- assert.deepEqual(fs.readFileSync(path.join(root,'assets/art/resources/assets/reference/cards_atlas.png')),original);
 });

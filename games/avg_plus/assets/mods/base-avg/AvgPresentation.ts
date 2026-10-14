@@ -399,6 +399,7 @@ export class AvgPresentation extends PresentationComponent {
         node.addComponent(UITransform).setContentSize(width, height);
         const sprite = node.addComponent(Sprite);
         sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+        sprite.trim = false;
         return node;
     }
 

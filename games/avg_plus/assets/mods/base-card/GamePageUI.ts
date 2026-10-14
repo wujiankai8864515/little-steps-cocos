@@ -1,4 +1,4 @@
-import { _decorator, Node, Button, EffectAsset, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
+import { _decorator, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import type { CommittedContext } from '../../foundation/Contracts';
@@ -41,6 +41,7 @@ export class GamePageUI extends GamePresentation {
         this.economy = options?.economy; this.onCheckpoint = options?.checkpoint ?? null;
         this.gems = options?.initialGems ?? 0;
         if (options?.background) await this.applyBackground(options.background);
+        else this.fitBackground();
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
         // 并使用与外层页面进入流程一致的 30 秒边界，避免先被默认 8 秒取消。
@@ -88,17 +89,6 @@ export class GamePageUI extends GamePresentation {
             wild.node.getComponent(UITransform)?.setContentSize(level.cardSize.width, height);
             wild.node.setPosition(0, (level.cardSize.height - height) / 2);
         }
-        if (this.economy?.streakTarget === 5) {
-            const [board, spade, club, heart, diamond, coin, effect] = await this.lifetime.run(() => Promise.all([
-                CardSpriteLoader.loadSpriteFrame('ref_progress_board'),
-                CardSpriteLoader.loadSpriteFrame('ref_pip_spade'), CardSpriteLoader.loadSpriteFrame('ref_pip_club'),
-                CardSpriteLoader.loadSpriteFrame('ref_pip_heart'), CardSpriteLoader.loadSpriteFrame('ref_pip_diamond'),
-                CardSpriteLoader.loadSpriteFrame('ref_reward_coin'),
-                new Promise<EffectAsset>((resolve, reject) => resources.load('assets/reference/reference-glyph', EffectAsset, (error, asset) => error || !asset ? reject(error ?? new Error('进度材质缺失')) : resolve(asset))),
-            ]), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
-            this.lifetime.check();
-            this.initializeReferenceHud(board, {spade,club,heart,diamond}, effect, options?.headerTitle ?? level.levelId, coin);
-        }
         const base = createCardMod(level, entry.config.seed ?? 20260917, {
             render: ctx => [{ id: 'base-card.render', timeoutMs: 10000, run: async scope => {
                 const restore = this.preserveVisualTransforms();
@@ -141,14 +131,19 @@ export class GamePageUI extends GamePresentation {
         const bg=this.findNode('bg'),sprite=bg?.getComponent(Sprite),transform=bg?.getComponent(UITransform);
         if(!bg||!sprite||!transform)throw new Error('卡牌背景挂点缺失');
         frame.addRef();this.backgroundFrame=frame;
+        sprite.spriteFrame=frame;
+        this.fitBackground(config.focalX,config.focalY);
+    }
+    private fitBackground(focalX=.5,focalY=.5): void {
+        const bg=this.findNode('bg'),sprite=bg?.getComponent(Sprite),transform=bg?.getComponent(UITransform),frame=sprite?.spriteFrame;
+        if(!bg||!sprite||!transform||!frame)throw new Error('卡牌背景挂点缺失');
         const widget=bg.getComponent(Widget);if(widget)widget.enabled=false;
         const viewport=view.getVisibleSize(),root=this.node.getComponent(UITransform)!;
-        const factor=Math.max(Math.max(root.width,viewport.width)/frame.rect.width,Math.max(root.height,viewport.height)/frame.rect.height);
-        const width=frame.rect.width*factor,height=frame.rect.height*factor;
+        const factor=Math.max(Math.max(root.width,viewport.width)/frame.originalSize.width,Math.max(root.height,viewport.height)/frame.originalSize.height);
+        const width=frame.originalSize.width*factor,height=frame.originalSize.height*factor;
         transform.setContentSize(width,height);transform.setAnchorPoint(.5,.5);
-        sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.spriteFrame=frame;
-        // Preserve the exact source frame's aspect ratio; portrait crops around the mansion.
-        bg.setPosition((.5-config.focalX)*width,(.5-config.focalY)*height);
+        sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.trim=false;
+        bg.setPosition((.5-focalX)*width,(.5-focalY)*height);
     }
     private bindAction(name: GameUiNodeId, type: GameUiActionType): void {
         const node = this.findNode(name); if (!node) return;
@@ -188,6 +183,8 @@ export class GamePageUI extends GamePresentation {
             } else if (type === 'card.play' && result.status === 'committed' &&
                 this.model().core.isComplete && this.onComplete) {
                 this.exiting = true;
+                const coinFrame=this.findNode(GameUiNodeId.CoinWallet)?.getChildByName('coin_icon')?.getComponent(Sprite)?.spriteFrame;
+                if(!coinFrame)throw new Error('原有金币组件资源缺失');
                 for (const child of this.node.children) {
                     // Completion keeps only the background; remaining stock/HUD must not show through.
                     if (child.name !== 'bg') child.active = false;
@@ -200,7 +197,7 @@ export class GamePageUI extends GamePresentation {
                     const callback = this.onComplete; this.onComplete = null; this.onExit = null;
                     // Keep the completed board stable until Continue; hand off after the button event.
                     this.scheduleOnce(() => callback?.(), 0);
-                }), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
+                }, coinFrame), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
             }
         } finally { if (this.node.isValid && !this.exiting) { this.refresh(false); this.lock(false); } }
     }
@@ -257,10 +254,9 @@ export class GamePageUI extends GamePresentation {
         // 不再播放“从按钮新增卡牌”的飞牌动画。
         else if (result.kind === 'addBackup') { /* afterRender 负责隐藏按钮并开放牌堆。 */ }
         else if (result.kind === 'rollback' && result.visual) {
-            this.referenceProgressSuits = session.getViewState().progressSuits;
             await Promise.all([this.animateRollback(result.visual, core.getState(), session.wildReady ? 'poker_wild' : core.currentCard!.cardName), this.animateProgressRestore(result.previousProgress, session.getViewState().progressCells)]);
         }
     }
     private lock(value: boolean): void { this.ensureInputBlocker().active = value; if (value) this.bringInputBlockerToFront(); }
-    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; this.backgroundFrame?.decRef(); this.backgroundFrame=null; this.disposeReferenceHud(); super.onDestroy(); }
+    protected onDestroy(): void { this.lifetime.dispose(); void this.runtime?.dispose(); this.onExit = null; this.onComplete = null; this.onCheckpoint = null; this.backgroundFrame?.decRef(); this.backgroundFrame=null; super.onDestroy(); }
 }

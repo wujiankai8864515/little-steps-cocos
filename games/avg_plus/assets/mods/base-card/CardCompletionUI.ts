@@ -1,10 +1,11 @@
 import {
     _decorator, BlockInputEvents, Button, Color, Graphics, HorizontalTextAlignment,
-    Label, Mask, Node, Sprite, SpriteFrame, UITransform, UIOpacity, Vec3, VerticalTextAlignment,
+    Label, Node, Sprite, SpriteFrame, UITransform, UIOpacity, Vec3, VerticalTextAlignment,
 } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { PresentationComponent } from '../shared/PresentationComponent';
 import { CardSpriteLoader } from './CardSpriteLoader';
+import { imageSize } from '../shared/ImageLayout';
 
 const { ccclass } = _decorator;
 export interface CompletionView {
@@ -27,12 +28,8 @@ export class CardCompletionUI extends PresentationComponent {
     private coinFrame: SpriteFrame | null = null;
     private controls: Button[] = [];
 
-    public async open(view: CompletionView, onContinue: () => void): Promise<void> {
-        const [medalFrame, coinFrame, gemFrame] = await this.lifetime.run(() => Promise.all([
-            CardSpriteLoader.loadSpriteFrame('ref_reward_medal'),
-            CardSpriteLoader.loadSpriteFrame('ref_reward_coin'),
-            CardSpriteLoader.loadSpriteFrame('ref_reward_gem'),
-        ]), 15000);
+    public async open(view: CompletionView, onContinue: () => void, coinFrame: SpriteFrame): Promise<void> {
+        const medalFrame = await this.lifetime.run(() => CardSpriteLoader.loadSpriteFrame('poker_wild'), 15000);
         this.lifetime.check(); this.coinFrame = coinFrame;
         this.node.addComponent(UITransform).setContentSize(1181, 2556);
         this.node.addComponent(BlockInputEvents);
@@ -49,14 +46,14 @@ export class CardCompletionUI extends PresentationComponent {
         this.visualTween(title.node).to(0.42, { scale: new Vec3(1, 1, 1) }, { easing: 'backOut' }).start();
 
         this.coinLabel = this.wallet(-145, 330, view.coins - view.rewardCoins, coinFrame, 'coin');
-        this.wallet(245, 245, view.gems, gemFrame, 'gem');
+        this.wallet(245, 245, view.gems, null, 'gem');
         this.medal = this.child(this.node, 'rewardMedal', 350, 350, 0, 70);
         const glow = this.medal.addComponent(Graphics);
         for (let radius = 250; radius >= 170; radius -= 8) {
             glow.fillColor = new Color(255, 161, 66, 9);
             glow.circle(0, 0, radius); glow.fill();
         }
-        this.image(this.medal, 'originalHeartMedal', medalFrame, 350, 350, 0, 0, 'coin');
+        this.image(this.medal, 'projectWildCard', medalFrame, 300, 400, 0, 0, 'card');
         const glowAlpha = this.medal.addComponent(UIOpacity);
         this.visualTween(glowAlpha).to(0.48, { opacity: 210 }).to(0.48, { opacity: 255 }).union().repeatForever().start();
         for (let index = 0; index < 12; index++) {
@@ -124,11 +121,18 @@ export class CardCompletionUI extends PresentationComponent {
         check(); this.lifetime.check();
     }
 
-    private wallet(x: number, width: number, amount: number, frame: SpriteFrame, kind: 'coin' | 'gem'): Label {
+    private wallet(x: number, width: number, amount: number, frame: SpriteFrame | null, kind: 'coin' | 'gem'): Label {
         const pill = this.child(this.node, 'completionWallet', width, 95, x, 1070);
         const g = pill.addComponent(Graphics); g.fillColor = new Color(25, 14, 44, 205);
         g.roundRect(-width / 2, -47.5, width, 95, 47.5); g.fill();
-        this.image(pill, 'walletIcon', frame, 76, 76, -width / 2 + 44, 0, kind);
+        if (frame) this.image(pill, 'walletIcon', frame, 76, 76, -width / 2 + 44, 0, kind);
+        else {
+            const gem=this.child(pill,'gemIcon',76,76,-width/2+44,0),paint=gem.addComponent(Graphics);
+            paint.fillColor=new Color(39,210,242);paint.moveTo(-34,9);paint.lineTo(-19,30);
+            paint.lineTo(19,30);paint.lineTo(34,9);paint.lineTo(0,-32);paint.close();paint.fill();
+            paint.strokeColor=new Color(140,244,255);paint.lineWidth=3;paint.moveTo(-34,9);paint.lineTo(34,9);
+            paint.moveTo(-19,30);paint.lineTo(0,-32);paint.lineTo(19,30);paint.stroke();
+        }
         const label = this.label(money(amount), 42, width - 92, 85, pill); label.isBold = true; label.node.setPosition(35, 0);
         return label;
     }
@@ -136,15 +140,10 @@ export class CardCompletionUI extends PresentationComponent {
         const node = new Node(name); node.layer = parent.layer;
         node.addComponent(UITransform).setContentSize(width, height); node.setPosition(x, y); parent.addChild(node); return node;
     }
-    private image(parent: Node, name: string, frame: SpriteFrame, width: number, height: number, x: number, y: number, shape: 'coin' | 'gem'): Node {
-        const node = this.child(parent, name, width, height, x, y);
-        const mask = node.addComponent(Mask); mask.type = Mask.Type.GRAPHICS_STENCIL;
-        const stencil = node.getComponent(Graphics)!; stencil.clear(); stencil.fillColor = Color.WHITE;
-        if (shape === 'coin') stencil.circle(0, 0, Math.min(width, height) * 0.47);
-        else { stencil.moveTo(-width * 0.45, height * 0.16); stencil.lineTo(-width * 0.26, height * 0.4); stencil.lineTo(width * 0.26, height * 0.4); stencil.lineTo(width * 0.45, height * 0.16); stencil.lineTo(0, -height * 0.43); stencil.close(); }
-        stencil.fill();
-        const image = this.child(node, 'sourcePixels', width, height), sprite = image.addComponent(Sprite);
-        sprite.sizeMode = Sprite.SizeMode.CUSTOM; sprite.spriteFrame = frame; return node;
+    private image(parent: Node, name: string, frame: SpriteFrame, width: number, height: number, x: number, y: number, _shape: 'coin' | 'gem' | 'card'): Node {
+        const size=imageSize(frame.originalSize.width,frame.originalSize.height,width,height);
+        const node=this.child(parent,name,size.width,size.height,x,y),sprite=node.addComponent(Sprite);
+        sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.trim=false;sprite.spriteFrame=frame;return node;
     }
     private label(text: string, size: number, width: number, height: number, parent = this.node): Label {
         const node = this.child(parent, 'label', width, height), label = node.addComponent(Label);
