@@ -11,7 +11,7 @@
     "artFrames": 1117,
     "layoutDefinitions": 64,
     "originalMaps": 4,
-    "modelTests": 24,
+    "modelTests": 26,
     "chromeInputs": [
       "start game",
       "recruit",
@@ -109,15 +109,15 @@
       }
     },
     "wechatCandidate": {
-      "name": "zya-wechat-v3",
-      "mainBytes": 3302013,
+      "name": "zya-wechat-v4",
+      "mainBytes": 3307531,
       "largestSubpackageBytes": 3270647,
-      "totalBytes": 16465389,
-      "homeUpperBoundBytes": 11661077,
+      "totalBytes": 16470907,
+      "homeUpperBoundBytes": 11666595,
       "platform": "7 native subpackages",
       "device": "pending",
       "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
-      "note": "Fresh latest local-source candidate, all budget and output hash checks passed; not formal release"
+      "note": "Fresh latest local-source candidate; budget checks and 386 fixed-output/candidate hashes match; not formal release"
     },
     "resourceAdmissionHome": {
       "entries": 42,
@@ -134,9 +134,9 @@
       "reservedBytes": 170437440,
       "pending": 0
     },
-    "gameGitCommit": "8201c0c",
-    "gameBackupCommit": "421d383",
-    "latestBrowserCandidate": "zya-web-v23",
+    "gameGitCommit": "5947b31",
+    "gameBackupCommit": "35191c9",
+    "latestBrowserCandidate": "zya-web-v24",
     "allMapScreens": [
       "zya-v19-map0.png",
       "zya-v19-map1.png",
@@ -167,7 +167,9 @@
     "online leaderboard/match/advertisements",
     "reference version alignment for current WeChat channel",
     "same-phase basic-unit animation comparison",
-    "native moving pike and rotating cavalry collision geometry"
+    "native moving pike and rotating cavalry collision geometry",
+    "reset basic attack pose after swaps within the same board parent",
+    "warm route/resource lifetime audit: all source resources would total 177 entries, over the unchanged 128-entry admission limit"
   ],
   "failedEvidence": [
     "zya-web-v1.log: Creator sandbox launch abort",

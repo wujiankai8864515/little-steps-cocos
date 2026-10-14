@@ -1,0 +1,30 @@
+{
+  "scope": "Static admission upper bound, not measured GPU/audio memory",
+  "result": {
+    "textureEntries": 94,
+    "textureBytes": 123073204,
+    "jsonEntries": 16,
+    "jsonEstimateBytes": 4497828,
+    "music": [
+      [
+        "resources/music/bg_battleScene_0.mp3",
+        13797376
+      ],
+      [
+        "resources/music/bg_battleScene_3.mp3",
+        30569248
+      ],
+      [
+        "resources/music/bg_mainScene.mp3",
+        15676544
+      ]
+    ],
+    "sfxEntries": 60,
+    "sfxEstimateBytes": 44213152,
+    "allEntries": 177,
+    "allEstimateBytes": 236021656,
+    "eightLargestSfxBytes": 23267392
+  },
+  "next": "Verify warm navigation; inspect per-resource lifetime/audio cache eviction without changing 128-entry/256-MiB budgets",
+  "device": "pending"
+}
