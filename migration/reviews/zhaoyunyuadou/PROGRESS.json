@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-15",
+  "goal": "1:1 Cocos recreation in user-created zhaoyunyuadou project",
+  "status": "active; strict screenshot acceptance unproven",
+  "completedEvidence": {
+    "projectUUIDPreserved": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+    "bootUUIDPreserved": "be9d2cea-79b2-4bea-9298-438460f08591",
+    "sceneUUIDPreserved": "be5c944f-c8e2-49aa-9330-2704b04f05c9",
+    "onlineSources": 5,
+    "losslessArtBytes": 13973397,
+    "artFrames": 1117,
+    "layoutDefinitions": 64,
+    "originalMaps": 4,
+    "modelTests": 21,
+    "chromeInputs": [
+      "start game",
+      "recruit",
+      "mouse drag to board",
+      "restore unfinished round",
+      "avatar selection and confirm",
+      "damage checkbox",
+      "weapon drag to hero card",
+      "weapon detail close",
+      "loss reward claim",
+      "pause and freeze",
+      "right resume",
+      "left surrender confirmation",
+      "cancel surrender returns to pause",
+      "live victory and loot claim",
+      "merchant delete cancel and confirm",
+      "full-slot lottery replace selected item",
+      "give up new lottery item",
+      "dynamic new and old item descriptions",
+      "all four map entry and divider layouts",
+      "win and loss settlement fixtures",
+      "v20 victory reward claim returns home and assembles threshold-one fragment"
+    ],
+    "actualChromeMatch": "v12 live match reached victory at wave 2, time 32.6667, lives [3,0]. Claim increased gold by 20, stars to 2, and short spear count to 1; browser evidence, not device",
+    "homeTextureEstimateBytes": 54379048,
+    "pixelComparisons": {
+      "home-v9": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 8.04815488873106,
+        "strict": "unproven"
+      },
+      "result-v11": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 8.106489701704545,
+        "strict": "unproven"
+      },
+      "shop-v8": {
+        "size": [
+          360,
+          640
+        ],
+        "MAE": 60.90420283564815,
+        "strict": "unproven; original short-screen scale was corrected later"
+      },
+      "tutorial-v19": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 10.555158025568181,
+        "strict": "unproven"
+      },
+      "result-v19": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 9.296152935606061,
+        "strict": "unproven"
+      },
+      "shop-v16": {
+        "size": [
+          360,
+          640
+        ],
+        "MAE": 36.20723379629629,
+        "strict": "unproven"
+      }
+    },
+    "wechatCandidate": {
+      "name": "zya-wechat-v3",
+      "mainBytes": 3302013,
+      "largestSubpackageBytes": 3270647,
+      "totalBytes": 16465389,
+      "homeUpperBoundBytes": 11661077,
+      "platform": "7 native subpackages",
+      "device": "pending",
+      "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+      "note": "Fresh latest local-source candidate, all budget and output hash checks passed; not formal release"
+    },
+    "resourceAdmissionHome": {
+      "entries": 42,
+      "reservedBytes": 74821976,
+      "pending": 0
+    },
+    "resourceAdmissionBattle": {
+      "entries": 80,
+      "reservedBytes": 134654752,
+      "pending": 0
+    },
+    "resourceAdmissionAfterVictory": {
+      "entries": 110,
+      "reservedBytes": 170437440,
+      "pending": 0
+    },
+    "gameGitCommit": "f8a9e8610106a7f5fb17d47f7ff8795eaeb6872d",
+    "gameBackupCommit": "a8c4506",
+    "latestBrowserCandidate": "zya-web-v20",
+    "allMapScreens": [
+      "zya-v19-map0.png",
+      "zya-v19-map1.png",
+      "zya-v19-map2.png",
+      "zya-v19-map3.png"
+    ],
+    "v20WinClaim": "Declared settlement fixture, not a live-match win: +20 gold, wins=1, stars=2, weapon 20=1 and residual fragments=0, battle cleared.",
+    "outlineAudit": "Installed Cocos 3.8.8 uses canvas lineWidth=outlineWidth*2; inert Laya core uses lineWidth=stroke. Existing stroke/2 mapping is correct; font-face and baseline differences remain.",
+    "remoteBackup": "pending readback after current commits"
+  },
+  "pending": [
+    "same-size pixel differences on all pages",
+    "remaining source-faithful actor/name motion",
+    "all buttons and interruptions",
+    "full original items/weapon semantics",
+    "WeChat device",
+    "online leaderboard/match/advertisements",
+    "remote Git readback",
+    "precise basic-unit idle and attack frame positioning",
+    "reference version alignment for current WeChat channel"
+  ],
+  "failedEvidence": [
+    "zya-web-v1.log: Creator sandbox launch abort",
+    "zya-web-v2.log: actor JSON misdetected as Spine",
+    "zya-v4-home.jpg: Set transform compatibility fixed in v4",
+    "zya-v4-tutorial.jpg: actor atlas orientation and input path corrected in v5",
+    "zya-v5-flow.jpg: mask geometry visual defect fixed in v6",
+    "zya-v6-home-canvas.png: truncated capture, retained; fixed chunked frozen export",
+    "zya-v10-weapon-drag-failed.jpg/json: UI swallowed global mouse-up; actual drag passed in v11",
+    "zya-web-v12: recruit mask had deferred Sprite/Graphics collision; fresh body repairs source",
+    "zya-web-v13: attempted pause fix inverted correct original bindings; corrected by inspecting label text, fresh check pending",
+    "ZYA-LAYOUT-FAILURES.json: dynamic empty text and map divider failures retained and repaired",
+    "zya-v19-win.png: native victory button variant corrected and verified in zya-v20-win.png"
+  ]
+}

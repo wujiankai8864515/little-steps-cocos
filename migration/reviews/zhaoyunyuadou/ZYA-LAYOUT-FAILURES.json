@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-15",
+  "source": "Public screenshots and inert layout/controller facts; no original runtime execution",
+  "failures": [
+    {
+      "trigger": "v16 full-slot lottery draw",
+      "evidence": "zya-v16-replace-empty-text.jpg",
+      "cause": "InkUI created Label only when text was serialized; empty Text nodes could not receive runtime strings",
+      "repair": "Create empty Text/Label components; preserve empty string",
+      "verification": "v18 actual browser: both newIntro and oldIntro appear; selecting replacement and giving up exercised; zya-v18-replace-text-fixed.png"
+    },
+    {
+      "trigger": "v17 maps 1, 2 and 3",
+      "evidence": [
+        "zya-v17-map1-yunmeng.png",
+        "zya-v17-map2-divider-before.png",
+        "zya-v17-map3-divider-before.png"
+      ],
+      "cause": "Kept default 184px giant-deer divider height after switching the sprite to other maps",
+      "repair": {
+        "0": [
+          304,
+          640,
+          184
+        ],
+        "1": [
+          365,
+          659,
+          44
+        ],
+        "2": [
+          384,
+          640,
+          23
+        ],
+        "3": [
+          368,
+          644,
+          50
+        ]
+      },
+      "verification": "v19 actual browser opened all four maps at 320x704; no oversized divider obstruction; PNGs and DOM-backed QA states retained",
+      "after": [
+        "zya-v19-map0.png",
+        "zya-v19-map1.png",
+        "zya-v19-map2.png",
+        "zya-v19-map3.png"
+      ]
+    },
+    {
+      "trigger": "v15 merchant at 360x640",
+      "evidence": "compare-v15-shop.json",
+      "cause": "Public WeChat short-screen reference retains a wider merchant panel than native 1.0.9 stage-height fitting",
+      "repair": "Explicit short-screen public-reference calibration, original item prefabs and 80% backdrop",
+      "verification": "compare-v16-shop.json; full-image MAE reduced from 60.2807 to 36.2072; strict acceptance remains unproven"
+    }
+  ],
+  "strict1to1": "pending",
+  "wechatDevice": "pending"
+}

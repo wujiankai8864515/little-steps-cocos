@@ -1,0 +1,15 @@
+{
+  "item": "ZYA-05",
+  "candidate": "zya-web-v13",
+  "trigger": "Click right 死战不休, then attempt further board action",
+  "failure": "Right button entered surrender confirmation; board coordinates subsequently hit confirmation and finished a loss at 0.1667 seconds",
+  "cause": "Assumed yes/no node names represented button placement instead of inspecting actual text. Original noBtn is red right 死战不休; yesBtn is blue left 耻辱下播.",
+  "repair": "Bind callbacks from verified layout meanings; resume noBtn, surrender yesBtn; keep animations frozen while paused.",
+  "verified": "zya-web-v14 actual Chrome: right resume closed overlay and advanced time 3.4667 to 7.6667; left opened surrender; cancel returned to pause with unchanged 13.0333 time and completed=false",
+  "evidence": [
+    "zya-v13-pause-loss.json",
+    "zya-v14-pause-cancel.jpg",
+    "zya-v14-pause-cancel.json"
+  ],
+  "device": "pending"
+}

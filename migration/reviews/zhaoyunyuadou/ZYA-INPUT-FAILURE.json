@@ -1,0 +1,11 @@
+{
+  "item": "ZYA-04",
+  "candidate": "zya-web-v10",
+  "trigger": "Drag long spear from weapon grid to Zhao Yun card in independent Chrome at 360x640",
+  "evidence": ["zya-v10-weapon-drag-failed.jpg", "zya-v10-weapon-drag-failed.json"],
+  "failure": "Drag image remained; equipment did not update",
+  "rootCause": "Cocos Creator 3.8.8 sends pointer events to UI before global input listeners. Destination Button swallowed mouse up.",
+  "repair": "Capture raw move, end and cancel at priority 2, ahead of UI dispatch; retain normal UI propagation. Disposal disables capture and removes it after draw.",
+  "verification": "zya-web-v11 Chrome drag from [276,233] to [72,480] produced equipped.ZhaoYun=11 and drag=null; weapon detail remained readable; no captured errors/warnings",
+  "pending": ["native device touch cancellation", "multitouch", "strict screenshot parity"]
+}

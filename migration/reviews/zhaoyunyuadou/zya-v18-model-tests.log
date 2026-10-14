@@ -1,0 +1,29 @@
+✔ initial geometry, roads and unlock cells are valid on all four maps (1.176083ms)
+✔ recruitment is atomic when short of food, camp full or paused (0.610958ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (1.19325ms)
+✔ invalid enemy-side/road drops preserve both source and food (0.244042ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (0.146875ms)
+✔ equal units merge, different units swap, level five never silently destroys units (0.1025ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (0.117917ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (0.182542ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (0.147917ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (0.180417ms)
+✔ settlement is idempotent including double reward and reload (0.308375ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (0.217458ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.084791ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (0.28875ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (0.083292ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (5.624125ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (0.145084ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (440.431917ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (5.251459ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (10.9045ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (44.904875ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 808.963542
