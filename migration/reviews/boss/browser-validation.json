@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "scope": "Independent Chrome; actual full race and input flows; explicitly labelled expedition clock and loss fixtures; not a WeChat device test",
+  "results": [
+    {
+      "name": "startup loads real reference art and no runtime errors",
+      "result": "passed"
+    },
+    {
+      "name": "help, settings, and saved audio/vibration toggles respond to actual clicks",
+      "result": "passed"
+    },
+    {
+      "name": "daily supplies and unavailable online/friend services use honest state",
+      "result": "passed"
+    },
+    {
+      "name": "expedition dispatch persists through browser reload",
+      "result": "passed"
+    },
+    {
+      "name": "offline expedition claim uses a labelled simulated clock, rewards exactly once",
+      "result": "passed"
+    },
+    {
+      "name": "company catalogue, locked levels, and brawl mode work without unlocking campaign",
+      "result": "passed"
+    },
+    {
+      "name": "gender, skin selector, preparation and 3 second countdown use actual input",
+      "result": "passed"
+    },
+    {
+      "name": "drag, arrows, A/D and pause stop/resume real engine time",
+      "result": "passed"
+    },
+    {
+      "name": "full-race-wall-time",
+      "seconds": 160.559,
+      "method": "actual engine clock and keyboard input"
+    },
+    {
+      "name": "full real-time race, boss duel, reward and next unlock succeed through actual controls",
+      "result": "passed"
+    },
+    {
+      "name": "all 10 experience cards are accessible and a purchased card is consumed exactly once",
+      "result": "passed"
+    },
+    {
+      "name": "loss/revival/result layouts use a labelled 200 energy failure fixture",
+      "result": "passed"
+    },
+    {
+      "name": "progress and settings survive reload and common phone/tablet screens retain controls",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/home-450x800.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/help.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/settings.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/records-initial.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/online-unconfigured.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/friends-web-boundary.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-idle.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-away.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-parcel.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/levels-company-1.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/levels-company-5.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/brawl-home.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-female.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/wardrobe.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-male.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/ready.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/pause.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/running.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/boss-duel.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/victory.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/cards-page-1.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/cards-page-2.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/cards-page-3.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/cards-page-4.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/experience-detail.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/failure.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/revived.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/home-390x844.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-390x844.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/home-360x640.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-360x640.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/home-768x1024.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-768x1024.png"
+  ],
+  "errors": [],
+  "finalState": {
+    "page": "home",
+    "mode": "campaign",
+    "selected": 2,
+    "save": {
+      "version": 2,
+      "coins": 43,
+      "earned": 113,
+      "unlocked": 2,
+      "cleared": [
+        {}
+      ],
+      "gender": "male",
+      "skin": "default",
+      "skins": [
+        "default"
+      ],
+      "cards": {
+        "spa": 0,
+        "beach": 0,
+        "savanna": 0,
+        "balloon": 0,
+        "dolphin": 0,
+        "onsen": 0,
+        "cat": 0,
+        "family": 0,
+        "iceland": 0,
+        "stars": 0
+      },
+      "fragments": {
+        "spa": 0,
+        "beach": 0,
+        "savanna": 3,
+        "balloon": 0,
+        "dolphin": 0,
+        "onsen": 0,
+        "cat": 0,
+        "family": 0,
+        "iceland": 0,
+        "stars": 0
+      },
+      "equipped": "",
+      "spa": false,
+      "music": true,
+      "vibration": true,
+      "tutorial": true,
+      "expedition": null,
+      "daily": "2026-10-15",
+      "runs": 3,
+      "victories": 1,
+      "records": [
+        {
+          "level": 1,
+          "energy": 1586,
+          "mode": "campaign",
+          "at": 1791997313426
+        }
+      ],
+      "settled": [
+        "run-1791997147919-995785487"
+      ]
+    },
+    "run": null,
+    "modal": "",
+    "nodes": 0
+  }
+}

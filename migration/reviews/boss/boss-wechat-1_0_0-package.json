@@ -1,0 +1,1292 @@
+{
+  "game": "boss",
+  "status": "local-build-not-published",
+  "checks": {
+    "correctAppid": true,
+    "portrait": true,
+    "nativeSubpackages": true,
+    "noRemoteBundle": true,
+    "mainWithin4MB": true,
+    "eachSubpackageWithin4MB": true,
+    "totalWithin30MB": true,
+    "entryExists": true,
+    "friendContextPresent": true,
+    "noReferenceCode": true
+  },
+  "sizes": {
+    "main": 3752481,
+    "cards": 1886233,
+    "company_1": 1597026,
+    "company_2": 1007753,
+    "company_3": 1098092,
+    "company_4": 1068189,
+    "company_5": 1197612,
+    "home": 249393,
+    "shared": 1122957
+  },
+  "totalBytes": 12979736,
+  "files": [
+    {
+      "path": "application.3d51c.js",
+      "bytes": 3308,
+      "sha256": "9224e8e0d8e4f0ce1d1279748055694da98c149e036444e523615e74bdb33b63",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/internal/config.21e73.json",
+      "bytes": 1933,
+      "sha256": "322a0c767f60e5a26c426a591dc7d29b2b96358acb4ccf0b3926beb53cc75ded",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/internal/import/0b/0b0f7a282.c42c3.json",
+      "bytes": 117126,
+      "sha256": "1c31e605c04ca108616054a2234ffd45f411d09bab5824a8e662780fcacc5169",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/internal/index.21e73.js",
+      "bytes": 45110,
+      "sha256": "19bd675acfdd6f12d4bfec92fa4fa354b57c1dee7256325dce20ebfc5657b58c",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/config.309ff.json",
+      "bytes": 927,
+      "sha256": "44f568500f6a08ee4088889f9be71b1523e569501dea092c145b077982146c7b",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/import/0c/0c19bdc22.3abc5.json",
+      "bytes": 205,
+      "sha256": "121f319940653f3314ca4a9ade4f4238dce656cc9f36437a41714d73e7c93acf",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/import/38/38367324-9d90-55de-9994-3fd0512c4dd6.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/import/59/59611491-3eb2-5393-a7e9-dbdcb44a6cf8.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/import/a5/a5416557-cc80-5e01-ba24-2bbdb28a57f6.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/import/ce/ce9f0a13-c8bd-52cf-a7d5-0f6caaede7f5.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/index.309ff.js",
+      "bytes": 599,
+      "sha256": "791f5b5bbaf6c985fc6d6aff16af6ff2663ed2e376a860991bb6b2a0cdc8e10a",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/native/38/38367324-9d90-55de-9994-3fd0512c4dd6.10496.png",
+      "bytes": 398503,
+      "sha256": "5ecc90190984a4c4e87a713eb79769a8b9c8bb29365abee79e4e2c3c19891348",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/native/59/59611491-3eb2-5393-a7e9-dbdcb44a6cf8.883fa.png",
+      "bytes": 241836,
+      "sha256": "4a1037e8d3d5c014bb0d2e4df6304c3b4d837c2107ea937b7258d432ba5f0d72",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/native/a5/a5416557-cc80-5e01-ba24-2bbdb28a57f6.609b5.png",
+      "bytes": 17102,
+      "sha256": "379d730851831198054605bfc85e3f7bbe415e630c19e69b293696971c9d2638",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/loading/native/ce/ce9f0a13-c8bd-52cf-a7d5-0f6caaede7f5.80018.png",
+      "bytes": 25091,
+      "sha256": "6ba8cfeffab4eb2aed726568db3c89a9ef111c2bbaf9a2cb3adc0daa413dd9b0",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/main/config.5b625.json",
+      "bytes": 597,
+      "sha256": "8ed6a226ba998c6ed7aa878c400af972573e55db690b58d0254d262571f8f1d0",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/main/import/ba/ba21476f-2866-4f81-9c4d-6e359316e448.8bce7.json",
+      "bytes": 192,
+      "sha256": "0a34e9263b215bb661d6334db6a255497c6cdac1f1c40b130f50bf9d91f4dd39",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/main/import/df/dfb10d9f-af07-41e6-a2bc-31e902524fd0.cce74.json",
+      "bytes": 1625,
+      "sha256": "ddef17a672a31eb61758aea742c4022fb86fd683bbb436c4d4c689fdf6d69c78",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/main/import/fd/fd8ec536-a354-4a17-9c74-4f3883c378c8.731f4.json",
+      "bytes": 480,
+      "sha256": "c2eee4552a460ed97591f527e127b95c811d5f796b9448f3f705974af9beba9d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/main/index.5b625.js",
+      "bytes": 67975,
+      "sha256": "431516546d0c06fcd1901d51cdcacd1351c4b8a556d8b7beea69c47090b880c6",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/config.23574.json",
+      "bytes": 986,
+      "sha256": "a17d65adef9bf0a85f42d2e82c99edbd33a85cf0aea486e92065717ab7d3605a",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/0c/0c2bca7b-647c-5d2c-a930-e34bbb1ac965.3415d.json",
+      "bytes": 116,
+      "sha256": "c3dda7d8bea84782aa1fe0f3498afdcb7b344d19c43aec4bda183ce13a401a7c",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/19/19b2841c-4237-46e2-b141-5af9cca2d9c2.2bba8.json",
+      "bytes": 137,
+      "sha256": "ca2a40b9023f8a11b1d30de6f1b6346f62a48dba833933430a9ae4361a76f631",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/30/30680c74-3648-5aae-8928-7f49741287e3.87fd3.json",
+      "bytes": 118,
+      "sha256": "1482b4655ff28b1b2520a2c3b7b4af83ef9188ff46c0c7f4c045b26ea8577a6a",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/37/379ea1e9-f8af-4cdd-ac97-e74697c4a970.85204.json",
+      "bytes": 6821,
+      "sha256": "60200cdaff9365ccf881b3d54cf8b52f9bfcad7fdb27ef82587da36a4f92cf76",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/49/49814d48-a216-5211-9009-4217566362b5.135a7.json",
+      "bytes": 117,
+      "sha256": "492922959ae28a0857ee9e87f851e1faa6fe2431faf1c395a4daae58744f0f8c",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/6c/6ca2eb7a-3955-588d-a76c-ac8cd80cc310.3b9ef.json",
+      "bytes": 133,
+      "sha256": "f726b4f5ad15e2bbdb58439231375524898566fe327c5d6967bc1b70389353e8",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/7a/7a902f29-39d9-578d-b917-da9728565e8a.672a4.json",
+      "bytes": 122,
+      "sha256": "ffc9906b501e817363ab078203c264b7a3736343254d91058ee13e3862095595",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/b0/b0f1cb39-e658-5d14-877a-982e964899cb.02750.json",
+      "bytes": 115,
+      "sha256": "9fbd21ca16a30bd8e64304d3b4b25a8645e3bf12b09fdc3635e0770fb87d01b2",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/da/dabe1137-31d1-5b2a-b768-093e85fd9c0d.5eaa9.json",
+      "bytes": 114,
+      "sha256": "d918ee68b065f0d60bb0dde8e4ec45a4995573f3bfa393b06740b48ef3a6044b",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/import/e2/e23a2158-aeb6-53bd-af3e-29c9707d6238.9faba.json",
+      "bytes": 120,
+      "sha256": "d30e7ab60752d908c3f4e2ee77391c1833aef061dfa31deacd88fc193eecf076",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/index.23574.js",
+      "bytes": 605,
+      "sha256": "51a07ab61ee49561d29734ff6ee095b0d8a47998bbe30a6f1973bf3c8b7faa25",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/0c/0c2bca7b-647c-5d2c-a930-e34bbb1ac965.4051a.wav",
+      "bytes": 6218,
+      "sha256": "43c45d67d642dc7560fdf8f1c684a254a20604fca67bec7146dfa97fbcfafe39",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/30/30680c74-3648-5aae-8928-7f49741287e3.8009c.wav",
+      "bytes": 508076,
+      "sha256": "c9936a350af0f419344330f9c1c8e994f3f7ab255fc900479d80568338275b52",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/49/49814d48-a216-5211-9009-4217566362b5.3c47e.wav",
+      "bytes": 3572,
+      "sha256": "4627a1278fc2f8d71a91a73973db7f49ecafcb30fa61f6a882e7f75591716c04",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/6c/6ca2eb7a-3955-588d-a76c-ac8cd80cc310.0e822/Alibaba-PuHuiTi-Heavy.ttf",
+      "bytes": 467204,
+      "sha256": "c33f40d0313be6dec05021868f017b7ecd00e11a3de21dfc7bc8377dc0d1c75d",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/7a/7a902f29-39d9-578d-b917-da9728565e8a.47b39.wav",
+      "bytes": 15478,
+      "sha256": "20163517ddbf813036726fad9b984f00513bfbfaefeb4c322c38d4fc87b96847",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/b0/b0f1cb39-e658-5d14-877a-982e964899cb.e6447.wav",
+      "bytes": 9746,
+      "sha256": "a8065b62d5496dcd00a3ba993ef84ee522e5c583710b6c4b21f196507e984c34",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/da/dabe1137-31d1-5b2a-b768-093e85fd9c0d.e829b.wav",
+      "bytes": 48554,
+      "sha256": "5cd72c0c5e8732934b63f35928adc80e6245f92316801048366bfc7639b03f86",
+      "bucket": "main"
+    },
+    {
+      "path": "assets/resources/native/e2/e23a2158-aeb6-53bd-af3e-29c9707d6238.6608b.wav",
+      "bytes": 33118,
+      "sha256": "ca1b96f8e9100a9a9f71160c79573f082bacc6d557efa45163c7077658e18071",
+      "bucket": "main"
+    },
+    {
+      "path": "cocos-js/cc.cf053.js",
+      "bytes": 1523778,
+      "sha256": "bb67f30836da56d358386933154baa30dbefca4cd5e2a235a40f790be94589cc",
+      "bucket": "main"
+    },
+    {
+      "path": "engine-adapter.e45dd.js",
+      "bytes": 23825,
+      "sha256": "284bcfac51f9b33373e2c751ac9678dd6cd365c386c93fe831f9516ee8c920f8",
+      "bucket": "main"
+    },
+    {
+      "path": "first-screen.js",
+      "bytes": 18364,
+      "sha256": "ff5e1afcc7ffcf0bb11f343107cee2b300c13c9c2314ca55333cb86a58c6097c",
+      "bucket": "main"
+    },
+    {
+      "path": "game.js",
+      "bytes": 2570,
+      "sha256": "bb44c5e19b47b35fe29868955869e1ee872c7cbaf9dc4a7c38ea2323ee3320cd",
+      "bucket": "main"
+    },
+    {
+      "path": "game.json",
+      "bytes": 855,
+      "sha256": "ad15e480b8cb4b25ff0f3c7452c64a7b3b238c81bd5e8275d9bc6c16a7fe0c4d",
+      "bucket": "main"
+    },
+    {
+      "path": "logo.png",
+      "bytes": 14496,
+      "sha256": "9e6a5832c6bc9c5f2da97dc54d916fd257a6ab35e9ffd57dbe88c435bd535940",
+      "bucket": "main"
+    },
+    {
+      "path": "open-data/index.js",
+      "bytes": 1745,
+      "sha256": "48cfecc0a837849445ac7645b73f0df6854841a0a946dcd48e6af85192f0df1f",
+      "bucket": "main"
+    },
+    {
+      "path": "project.config.json",
+      "bytes": 417,
+      "sha256": "b69b6f8a9e45ee86415ccc2227c8c79b26f95359ee78924d864d9eafaeb9b640",
+      "bucket": "main"
+    },
+    {
+      "path": "slogan.png",
+      "bytes": 11482,
+      "sha256": "b3113554f80c03f9ce51d12ea7c17d68bf7914b89d092743cc54cd370d7f65a9",
+      "bucket": "main"
+    },
+    {
+      "path": "src/chunks/bundle.fd93b.js",
+      "bytes": 3414,
+      "sha256": "8ea7b6c98a721a5c629c1ce09abb3d95a472ece4f364b51c2bd6da6d6685695e",
+      "bucket": "main"
+    },
+    {
+      "path": "src/effect.bin",
+      "bytes": 5755,
+      "sha256": "b0d92f8307e3109abe8af8a863d68feb58cf4f49cf000b1d48fbb3dc3ad45556",
+      "bucket": "main"
+    },
+    {
+      "path": "src/import-map.c1a41.js",
+      "bytes": 216,
+      "sha256": "bda290ff967f7db4a168d9dda870eabf1108155a8a855390b95f1583434dcc15",
+      "bucket": "main"
+    },
+    {
+      "path": "src/polyfills.bundle.43263.js",
+      "bytes": 8394,
+      "sha256": "cb588d11797e0ca56123d979812db39c8b38dd01c5a6761b2aa5f79cb1d4c701",
+      "bucket": "main"
+    },
+    {
+      "path": "src/settings.7010a.json",
+      "bytes": 2387,
+      "sha256": "016f9c94418f642178a98b30315448a831d3e5f1993e749144e84d068ebfaac2",
+      "bucket": "main"
+    },
+    {
+      "path": "src/system.bundle.f45da.js",
+      "bytes": 8319,
+      "sha256": "9e52437715d2e6a8acacb41f1c64d916e4b455d2a9d448f09cecd551dc084b84",
+      "bucket": "main"
+    },
+    {
+      "path": "subpackages/cards/config.0ac59.json",
+      "bytes": 3327,
+      "sha256": "553f839b2b9b2129f304324298c088fea3ba8f3640f4038bceb921f62e2dae04",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/game.js",
+      "bytes": 593,
+      "sha256": "3a91c64ace7887ce7cba6b9ca31545729ba38a2e8d9e0feb416163d867c58352",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/02/028d754e-b95b-5057-a989-918e6de5e17e.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/0e/0e09edbbe.d909f.json",
+      "bytes": 850,
+      "sha256": "a6e2d421a0a6b16c89974682f5cc58a2bce77243bd872de3a93c60d9919b9665",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/0f/0f2081bd-74a0-5f80-9903-7e1df430fca4.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/24/24d413b7-875a-55cb-99f8-3b819ff79547.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/47/47366840-8ef3-5b0b-96c2-2b21c0909d51.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/4c/4c9f80cd-9ce9-58d4-8de9-06d5181094e5.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/51/51d08233-de2d-5233-8f8e-6704e3cfcf33.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/52/52f1442f-d56a-5d2f-8bf0-9a9d661da630.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/53/53deb461-572e-5711-b49c-386fd2b043cd.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/6e/6e52f1eb-4269-573f-bffc-b38d3b6f60d6.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/81/81b5d7a6-ec1b-5a56-b8eb-45d574b0b224.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/88/882dcd94-7d2b-5fe1-a053-f342f5262138.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/d1/d1be7e48-4534-56d2-9561-435c7932fa7d.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/d5/d55f29cb-f8be-50ef-a96e-690ee88e4c30.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/df/dfab55cc-2fc2-54ae-a0b4-4a5e8e97960e.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/eb/eb1d95ab-9818-5755-8c40-ab9b97508037.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/eb/ebba0580-8fd9-50d5-ae07-a34250844955.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/f4/f42abe32-30b8-527d-8020-7bcdb7031181.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/f7/f7b827ba-3456-54a6-80e5-2dba0359f807.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/import/fa/fa38cd8c-3996-5b14-9e3f-fcbf3cad828a.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/02/028d754e-b95b-5057-a989-918e6de5e17e.d28f2.png",
+      "bytes": 9337,
+      "sha256": "687515d4a7f2557e9b14468dc9532b82f654a362df1e1a26ba2f56dee67371c2",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/0f/0f2081bd-74a0-5f80-9903-7e1df430fca4.dc3ad.png",
+      "bytes": 355137,
+      "sha256": "16fe93636d1855a9d14e3a00699a7632250e4f27c7438f4c91e53f0b725086f6",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/24/24d413b7-875a-55cb-99f8-3b819ff79547.77826.png",
+      "bytes": 1827,
+      "sha256": "3ab2670f6da51ea80b699720e01a17bf955c1a4fe6f92b5b46fe8a3b78417386",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/47/47366840-8ef3-5b0b-96c2-2b21c0909d51.8c290.png",
+      "bytes": 3355,
+      "sha256": "5e7ecc6b39a45f3ae90c248b9613b4af8bb1352368d1f70abd2666288ddecad6",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/4c/4c9f80cd-9ce9-58d4-8de9-06d5181094e5.5cc6a.png",
+      "bytes": 126921,
+      "sha256": "d7533a66463222d7de657a88d7a6ef73b2fe971bac5e6ebc499f3872e71f7db1",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/51/51d08233-de2d-5233-8f8e-6704e3cfcf33.004ca.png",
+      "bytes": 33345,
+      "sha256": "68a23530a5983c32ebec5eea941e73182e9f84abe96a7c55cf522e4e6ca7c37b",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/52/52f1442f-d56a-5d2f-8bf0-9a9d661da630.17cfa.png",
+      "bytes": 3605,
+      "sha256": "9c3c902cd35d8e1d1fef270c4505b411b9bed1935d86d741f29df910e241b623",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/53/53deb461-572e-5711-b49c-386fd2b043cd.4e2c7.png",
+      "bytes": 124964,
+      "sha256": "fc2985cdb1d5d32211be64b9099908e9e40762e8c8bb16045819bc0f7ef1cb89",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/6e/6e52f1eb-4269-573f-bffc-b38d3b6f60d6.7be38.png",
+      "bytes": 5832,
+      "sha256": "58d88fde504f911600163eec1a44cfd69950b1f93f2a409b64b77151b8e23f88",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/81/81b5d7a6-ec1b-5a56-b8eb-45d574b0b224.3ae08.png",
+      "bytes": 452169,
+      "sha256": "732f42fccca6abb7eec7198738ced915faf22da05099dbff91cbe560936d3692",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/88/882dcd94-7d2b-5fe1-a053-f342f5262138.f8b5b.png",
+      "bytes": 265918,
+      "sha256": "02a344f452d4434778feead5b74f0c776a75260cfb3eaad570d42b70614799e1",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/d1/d1be7e48-4534-56d2-9561-435c7932fa7d.600dd.png",
+      "bytes": 100271,
+      "sha256": "15f753ab32b0a3cd84c00119f3e2deba53766cd01aa57ad47d154ca7b9f4820f",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/d5/d55f29cb-f8be-50ef-a96e-690ee88e4c30.3c720.png",
+      "bytes": 73532,
+      "sha256": "638e2a05a3caf14b405862d1a55c86f377461c95696fbb013e6b96134d71cf34",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/df/dfab55cc-2fc2-54ae-a0b4-4a5e8e97960e.f66c0.png",
+      "bytes": 44967,
+      "sha256": "338ca5f047b834f62a50f935aebce273f4557d0c591435d1b1663e2fd0e8aac1",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/eb/eb1d95ab-9818-5755-8c40-ab9b97508037.f4259.png",
+      "bytes": 34708,
+      "sha256": "6a4fe5ad76d961f53533cf7640098e2ffa598629a8a5a67ec1318a7eb534f3d2",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/eb/ebba0580-8fd9-50d5-ae07-a34250844955.7c085.png",
+      "bytes": 115398,
+      "sha256": "73a04de5f2eb7e40eba261ee43ace301a74afb5e66462ad533a1058a8e6b3e8c",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/f4/f42abe32-30b8-527d-8020-7bcdb7031181.49753.png",
+      "bytes": 69896,
+      "sha256": "fbd1fe748435fdae64daded7604d94852bf0576e393afefabbbe01b998c38604",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/f7/f7b827ba-3456-54a6-80e5-2dba0359f807.9524b.png",
+      "bytes": 3591,
+      "sha256": "df7182bec00618fe53ade138bdc0c3d327729c172c2dcc852f29499ea307fda6",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/cards/native/fa/fa38cd8c-3996-5b14-9e3f-fcbf3cad828a.193d9.png",
+      "bytes": 55322,
+      "sha256": "a5999344183be513879f2686c6663f870773c8292378568109cf49f78dfdef01",
+      "bucket": "cards"
+    },
+    {
+      "path": "subpackages/company_1/config.63f5b.json",
+      "bytes": 1242,
+      "sha256": "1f27dea0cfdaf1f3d6d6c72bc741ff3cafb90202ee7cddd3b98bb5ca1c28bdee",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/game.js",
+      "bytes": 605,
+      "sha256": "3f1f24546227b1e49d0a6793e756b9450501742133cbaaa945cd4ed270cac8a1",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/04/044f8e0ec.cab07.json",
+      "bytes": 291,
+      "sha256": "49e8866986f3553c9c734c4e7b703fab9c3eefc02171e6aadf503678b0eb0f00",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/39/3967ccd4-ae1c-52f1-be36-6cfad7fd6bc2.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/56/56a8b860-03f6-5b0c-8c66-140f65caece3.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/8c/8c874658-6fa1-55b4-adf8-4782c70da97f.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/8d/8d8fe67f-f16c-553d-bf14-ef704a72fddc.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/ba/bac8075f-7bc6-5004-bea6-4583fdaaa570.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/import/bc/bc34938c-0296-5ee7-a4aa-a0a1ab2b4388.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/39/3967ccd4-ae1c-52f1-be36-6cfad7fd6bc2.c53d7.png",
+      "bytes": 202443,
+      "sha256": "a97315ed46befc4b13821c15d1263ba6b1a366ef0e6ab1d7a13f7bb365ed02ff",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/56/56a8b860-03f6-5b0c-8c66-140f65caece3.b8b35.png",
+      "bytes": 208324,
+      "sha256": "5f70eb6ec696a326d4238e6694ac5fb618a9d5317b79993df721d33ff6e93796",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/8c/8c874658-6fa1-55b4-adf8-4782c70da97f.b123a.png",
+      "bytes": 293466,
+      "sha256": "991c1ebbb18ace20c99e640f43297911f5e4a5855b793a70cbaa309058d0e8c8",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/8d/8d8fe67f-f16c-553d-bf14-ef704a72fddc.404c6.png",
+      "bytes": 250132,
+      "sha256": "111fd90a967887c82689ecfc99512026f3753c8d94efe46e606d5e7c9b9835b8",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/ba/bac8075f-7bc6-5004-bea6-4583fdaaa570.cf7ae.png",
+      "bytes": 179574,
+      "sha256": "cb48fbf5573d9b75ae3c9abb9e0a9fa30d87d18d442eab96bb0402b8b7bedf82",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_1/native/bc/bc34938c-0296-5ee7-a4aa-a0a1ab2b4388.bc3fd.png",
+      "bytes": 460517,
+      "sha256": "0740b97c0407c35ad3a60cabd0342525154d480f44d8b120f4c54a9f74930cb7",
+      "bucket": "company_1"
+    },
+    {
+      "path": "subpackages/company_2/config.612f2.json",
+      "bytes": 1088,
+      "sha256": "35eb278407de235086ae7892618dc27aaf208bf153be4b78de3720f1cdb810ce",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/game.js",
+      "bytes": 605,
+      "sha256": "c9644a2c77c941416f6d3fff58930d11160a651e6abe897a437262d7b51c2cf7",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/04/046f6067-11e9-50e6-bcd5-51e078d88863.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/0f/0fb14ac24.f6a3d.json",
+      "bytes": 248,
+      "sha256": "215009cdc9de6414ef00105a19baba0b869251919edbc6b9944f3b3e43b413d4",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/3f/3f702795-ac3f-5fea-ab1c-13a908c19330.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/45/453ad0cc-3c17-53f3-bbf5-3bccd51455fa.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/46/469acabf-304e-5f78-b861-1bd6be9d36f7.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/import/c9/c96b3e0f-2c6d-5f47-9e01-eedf3f87af5b.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/native/04/046f6067-11e9-50e6-bcd5-51e078d88863.21d0b.png",
+      "bytes": 215919,
+      "sha256": "1438b9e5f037f4658b1768304f226e12c4c5d9cee0238d40d1cfa500025bf661",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/native/3f/3f702795-ac3f-5fea-ab1c-13a908c19330.0ed3f.png",
+      "bytes": 204969,
+      "sha256": "2594a7a44100da382b0bf221baf1a0e031d07f94d0adf5cfe32afa30ddf3878b",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/native/45/453ad0cc-3c17-53f3-bbf5-3bccd51455fa.5745e.png",
+      "bytes": 163308,
+      "sha256": "45ce8e67e2b9c8bac1c8e68862ad54d0d0c26efdc21633d9f6e4a27636d43c86",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/native/46/469acabf-304e-5f78-b861-1bd6be9d36f7.db938.png",
+      "bytes": 186083,
+      "sha256": "1b583cdcde7478f40d8f562854282fe7c5d3a676d186322165dbf5bd3d3e749c",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_2/native/c9/c96b3e0f-2c6d-5f47-9e01-eedf3f87af5b.cf601.png",
+      "bytes": 235173,
+      "sha256": "eb386396282d8b3f2e1391f96c77316f4c9bde9a1f2ce84c2502f79cdd332133",
+      "bucket": "company_2"
+    },
+    {
+      "path": "subpackages/company_3/config.1a7fa.json",
+      "bytes": 1088,
+      "sha256": "c368060c5f9fb244877c7e85b55fb9dabd838d77f9a5ee22a05a445793399442",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/game.js",
+      "bytes": 605,
+      "sha256": "56498e765b9a37ca994fba937d1a20e36692a9d26c55ac895ee07a8e1171ebd9",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/0a/0af77d9bc.2a6cd.json",
+      "bytes": 248,
+      "sha256": "5176a554f438cfa8f13f49936bb5099add1a6b77870c0d85080741cedbd13540",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/15/15007464-7569-5a22-b8ec-11c17718eafb.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/ca/ca340ecd-d47b-5ceb-bc9c-73b0767b024a.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/d9/d9660c9a-7a29-5276-98c9-449a8604d99b.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/d9/d9c0c154-7320-5d00-92a1-e5b6b5cee5aa.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/import/db/db1149a1-77aa-5dae-bc43-07649aae5fd1.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/native/15/15007464-7569-5a22-b8ec-11c17718eafb.c8b6a.png",
+      "bytes": 252797,
+      "sha256": "1e7fc4d7da76055590bdffc6d5ea9d6524df4e27989ab753f809eb1ef6655ce4",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/native/ca/ca340ecd-d47b-5ceb-bc9c-73b0767b024a.d1631.png",
+      "bytes": 228606,
+      "sha256": "c4254111d1af4e4bcb1be7c6e46a9592ef0dcb6ad485210f05a13b49e814cd0c",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/native/d9/d9660c9a-7a29-5276-98c9-449a8604d99b.37869.png",
+      "bytes": 231442,
+      "sha256": "8983a3d543c1bbb31ff4096222740ba5eec13a48093a91c89d53198b8e677924",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/native/d9/d9c0c154-7320-5d00-92a1-e5b6b5cee5aa.fc5db.png",
+      "bytes": 198008,
+      "sha256": "dd34ae663bbe7613b6c13b3ebfbf439e3e0c5c9af0731ebd186b2fb0563143b9",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_3/native/db/db1149a1-77aa-5dae-bc43-07649aae5fd1.d7efa.png",
+      "bytes": 184938,
+      "sha256": "5e8335f994220e4ac9bde140ea46851e2e7e5a0b3f8e40f428fd048e922268bc",
+      "bucket": "company_3"
+    },
+    {
+      "path": "subpackages/company_4/config.ed446.json",
+      "bytes": 1088,
+      "sha256": "3abcbb056e5134f25f44103da93c50cbc5b9e118c512b6d3e642bd5d38d5569d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/game.js",
+      "bytes": 605,
+      "sha256": "d154a17661b10d308bc97dea7327220a4a5b54f9ef74a231e81301e78cb621ab",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/0c/0c9249d15.f993b.json",
+      "bytes": 248,
+      "sha256": "58c7e6661e50a1d452365a935e246a36d2e13c316930f1e81e10b82f4328278e",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/81/816628b7-650c-5fb8-a933-5846474062c2.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/89/895d2679-e9d2-5718-8edb-39b686bd81e1.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/a1/a1fb1500-de00-5cc1-9bbe-0d073faf520f.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/a6/a608ad24-3df2-5454-b7d1-81c169ab56fc.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/import/e8/e8519cbd-1fd9-578c-ba4a-7b417da327bc.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/native/81/816628b7-650c-5fb8-a933-5846474062c2.1f8ab.png",
+      "bytes": 155947,
+      "sha256": "a4dd8a42c7894c3bbdcad1865f577fc4bc657c8e5949b35bc881b588027920ef",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/native/89/895d2679-e9d2-5718-8edb-39b686bd81e1.804d5.png",
+      "bytes": 155931,
+      "sha256": "82e5f9c0b8c4f56086b3ca2483868c216a6fd14befccbf710bae5588e8bf8b34",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/native/a1/a1fb1500-de00-5cc1-9bbe-0d073faf520f.fdfef.png",
+      "bytes": 201193,
+      "sha256": "d39874d6c27d22e11a9f691bd17e69ebeb653e0e94ff7e27a9d66960ecfcdcab",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/native/a6/a608ad24-3df2-5454-b7d1-81c169ab56fc.26fa4.png",
+      "bytes": 325973,
+      "sha256": "61a98cde0c28810062a2798690db8f2492a0679560767f3b17caf3a281a4c3bd",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_4/native/e8/e8519cbd-1fd9-578c-ba4a-7b417da327bc.6a7e0.png",
+      "bytes": 226844,
+      "sha256": "008b8f8248d5873cd9a1be823f16cdfe4ef89f07dd972a8f73955539fd1dc3b9",
+      "bucket": "company_4"
+    },
+    {
+      "path": "subpackages/company_5/config.89c9c.json",
+      "bytes": 1088,
+      "sha256": "9ec709c679be052bed3892732331bff1c53a7d3759a1e5bffc0cb41dd4b51dc6",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/game.js",
+      "bytes": 605,
+      "sha256": "7d013b29bbd828e757843f21f165060c9f09224d12d991e7a91f5ad2979272d1",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/00/00937cac-5e4f-58c3-9a61-12653ca6d97f.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/02/020d239fe.920b0.json",
+      "bytes": 248,
+      "sha256": "337d1d7ad52fa2a105d8c7d7aac3f70c1f1727564959db1bced5b8b9955bfd86",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/74/74641106-04d5-511e-b414-036b9d486879.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/8d/8d61d064-4c86-51ae-b7a7-24fc8ff9e8e0.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/90/90937376-5f12-5d6a-be32-f3053138416b.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/import/ad/ad758921-5431-5aac-84d3-14923c2f5eef.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/native/00/00937cac-5e4f-58c3-9a61-12653ca6d97f.f09da.png",
+      "bytes": 188555,
+      "sha256": "4323e9670b2c39ffbe79e711c476479188f30d32bb9f12fa5fc537b079e118b1",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/native/74/74641106-04d5-511e-b414-036b9d486879.82986.png",
+      "bytes": 276936,
+      "sha256": "4553769a3c29f574143ef508287bbeca13ed5f6cc1d27739ea0dcb7b0b6c378b",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/native/8d/8d61d064-4c86-51ae-b7a7-24fc8ff9e8e0.24084.png",
+      "bytes": 250653,
+      "sha256": "7fc9c2794884f75325cc2446829d356a2b2ce9f9fc919e21278fcb17c44252f2",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/native/90/90937376-5f12-5d6a-be32-f3053138416b.f554a.png",
+      "bytes": 190527,
+      "sha256": "0aa7cb06773d0805fee114dda20f59d178082175197be5a6d968e8bd8f8e88b0",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/company_5/native/ad/ad758921-5431-5aac-84d3-14923c2f5eef.869a9.png",
+      "bytes": 288640,
+      "sha256": "c093cbfb154e6198ccdafa426d0e6604ab407c32f5d649d45e9f07db6cf94a3d",
+      "bucket": "company_5"
+    },
+    {
+      "path": "subpackages/home/config.12c79.json",
+      "bytes": 1403,
+      "sha256": "4a7abf2868f97fc65206fed9c7b79d6b17e89cbd6b469179ba241638862c1973",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/game.js",
+      "bytes": 590,
+      "sha256": "6b8c8d345bb3bd80c059ec939e3dd33b0ce3d13bb5d7351a1d48975c675feeb1",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/02/02c217260.87930.json",
+      "bytes": 334,
+      "sha256": "3852efbf877d963f3501c107e60d24dac5963f6eac138bab25cdd54da773df38",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/1b/1b42bdf3-b8aa-5f35-b0bd-70c08cf019b1.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/1c/1cf7580e-52df-5f64-8cc2-cb2779966d2c.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/4a/4a38992c-4b68-5c33-9d9d-b78e28d8bcdd.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/7e/7e54cf7b-fd6a-58c9-91ec-a793f12fdbda.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/8c/8cc2c69a-6429-5450-9449-62f09519c994.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/a1/a1ecfa69-fe3e-5f13-97b3-19b9591904eb.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/import/f8/f877ffeb-d816-56c0-b7f3-4b25857f39d3.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/1b/1b42bdf3-b8aa-5f35-b0bd-70c08cf019b1.3abe0.png",
+      "bytes": 86085,
+      "sha256": "f1446e1268ab2a61e23eb926f525f5c739d47ef1dbf99493856fc1ca0aa9b3a9",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/1c/1cf7580e-52df-5f64-8cc2-cb2779966d2c.01b4a.png",
+      "bytes": 23739,
+      "sha256": "c1c5c56dfff6fce054182e2b0ee0b5b36eef8a252a8e6030bd71933ac4e94231",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/4a/4a38992c-4b68-5c33-9d9d-b78e28d8bcdd.1298e.png",
+      "bytes": 23286,
+      "sha256": "ebf75366c8a3d70e9abac773a45c57e1cbfdad55390bfe6eb24d42fe83e88a11",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/7e/7e54cf7b-fd6a-58c9-91ec-a793f12fdbda.78528.png",
+      "bytes": 24917,
+      "sha256": "f4a5467eb06ff6887ad4cc4abe4bd061338ef597c4445a743c6b8b480a13c2cf",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/8c/8cc2c69a-6429-5450-9449-62f09519c994.3eb78.png",
+      "bytes": 19943,
+      "sha256": "ae92c7837ee274806b610599d54891c3498bf28b7b1d02fc99d344da58a203bd",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/a1/a1ecfa69-fe3e-5f13-97b3-19b9591904eb.5f8c3.png",
+      "bytes": 38754,
+      "sha256": "36a3883e176885afa8776738bfc5e83f48a660f598e2d5de36fac6ac89cac205",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/home/native/f8/f877ffeb-d816-56c0-b7f3-4b25857f39d3.69489.png",
+      "bytes": 29838,
+      "sha256": "85663c00c950586af99efaf369d91d85859e6643814331cf48b07305fffbeda7",
+      "bucket": "home"
+    },
+    {
+      "path": "subpackages/shared/config.82ced.json",
+      "bytes": 2370,
+      "sha256": "1b75baf06d03d7b01be2ac1599496642e97af029a2e47c75819186b7b7c5c332",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/game.js",
+      "bytes": 596,
+      "sha256": "6c07cc2a3024649373b803464ec0d550106ee4a2537d26130a5d29cdec756573",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/0b/0bce35c2d.7d2e2.json",
+      "bytes": 592,
+      "sha256": "3593351051c1fd30ed98bd8bfe782a2fa11f934b6c25a81d5789f0fa6cb13cc5",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/18/18c86e64-317c-55e6-8dc7-1207655eccd8.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/3a/3aaca9e7-7e68-5ee8-a73b-c18ab9064b53.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/52/52c41868-bb08-50de-b1b6-1c05be5b99f4.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/54/541b6836-20de-54e5-a2b4-4c457dab5b55.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/65/65009a77-6930-5f5c-b5b3-2df2c5263380.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/68/68776f06-c405-53d0-90c9-373c056cce54.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/78/78c8693b-a850-5c59-9fe2-7ec9ed49c671.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/7e/7e46e22b-1125-5721-90cb-001dee48529f.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/80/805ed506-7187-530d-bb95-46d046cdd0bd.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/a5/a5590dca-a1fe-5cd1-b784-9255566d97cb.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/b8/b8ee92ae-4a4b-5efa-8ee6-32ffcf2b52a4.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/c4/c42190c5-c0be-5db8-897c-dbd4c9069c51.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/import/c4/c4b7f63b-82d2-58d4-909a-be774593f44c.a2533.json",
+      "bytes": 72,
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/18/18c86e64-317c-55e6-8dc7-1207655eccd8.94a93.png",
+      "bytes": 257456,
+      "sha256": "96eb9feef072b0ad259490f1b83c339400ff084ae6064430b8196a11dc6e15fd",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/3a/3aaca9e7-7e68-5ee8-a73b-c18ab9064b53.3051b.png",
+      "bytes": 464942,
+      "sha256": "daa6e73fea43adf721c72b070afbf788085bb38f6992df02f6214ede1b66a58a",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/52/52c41868-bb08-50de-b1b6-1c05be5b99f4.98f9b.png",
+      "bytes": 112690,
+      "sha256": "1d2be76e479ead1af6ea2a88fa6776378927ebcecb6fa80b2a75fa878282a2b0",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/54/541b6836-20de-54e5-a2b4-4c457dab5b55.4189f.png",
+      "bytes": 55036,
+      "sha256": "20296d54401aa4d16f532db93622b21a1652e8bd774e01f428169e159a1a9ac9",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/65/65009a77-6930-5f5c-b5b3-2df2c5263380.aa7cc.png",
+      "bytes": 31028,
+      "sha256": "bc1031b1f48a4ff8d4997747f6f543f38038954957273c0cb87506cb85db809d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/68/68776f06-c405-53d0-90c9-373c056cce54.40b22.png",
+      "bytes": 50339,
+      "sha256": "d76f8a53871caff4b3b15e43b861d23b0b847f9893bee18caa82099f77ef82f0",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/78/78c8693b-a850-5c59-9fe2-7ec9ed49c671.dac60.png",
+      "bytes": 49692,
+      "sha256": "2ea2ab6bdc635302e16f07fd94db63a63acb22afb9a68d040115928b9078060d",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/7e/7e46e22b-1125-5721-90cb-001dee48529f.d5bfb.png",
+      "bytes": 3652,
+      "sha256": "3fe20264d4f3670887be941985071583fa32c2c02c9477367596d7d04a8f6475",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/80/805ed506-7187-530d-bb95-46d046cdd0bd.bacb7.png",
+      "bytes": 1041,
+      "sha256": "2f5df13b86c070f97dbfe04071ee2814a8193eae2c2754f96adcd4dcbcbde498",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/a5/a5590dca-a1fe-5cd1-b784-9255566d97cb.5b104.png",
+      "bytes": 9739,
+      "sha256": "ef27b3b4807084334f47fc9c3bfea40a5c0b6009622310a831ab0fdc6cbc6716",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/b8/b8ee92ae-4a4b-5efa-8ee6-32ffcf2b52a4.f06f4.png",
+      "bytes": 45010,
+      "sha256": "de4b79589f0bbb9dc66d41095e4d5872a9c71c697c87140f7c7bed916560e7d6",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/c4/c42190c5-c0be-5db8-897c-dbd4c9069c51.da638.png",
+      "bytes": 11111,
+      "sha256": "d1aaf8b6baff7c2c9ceda7671573c1b6c56c348f76a391514a8b11b077e2fedf",
+      "bucket": "shared"
+    },
+    {
+      "path": "subpackages/shared/native/c4/c4b7f63b-82d2-58d4-909a-be774593f44c.2c15b.png",
+      "bytes": 26727,
+      "sha256": "f90a7e1f1b69dd42dea055df614e6ac23db0d72e545757208eee0ed84f36eeba",
+      "bucket": "shared"
+    },
+    {
+      "path": "web-adapter.898ec.js",
+      "bytes": 102097,
+      "sha256": "ab0cbf5c7485c9024d42c892ba3c111e51701b539420bb54d2be38e0fd23d14e",
+      "bucket": "main"
+    }
+  ],
+  "device": "pending-actual-device",
+  "testAppid": true
+}

@@ -1,0 +1,101 @@
+{
+  "status": "local-playable-development-delivery",
+  "game": "games/boss",
+  "creator": "3.8.8",
+  "date": "2026-10-15",
+  "sourceCommit": "159f8ea246e3e3b82cd8fa8415a17d9e6630a8cb",
+  "rootCommit": "6f2725fb4a5193a23f4a6e8e4f6d4ecb56a305ab",
+  "modelTests": {
+    "passed": 20,
+    "levelSeeds": 250
+  },
+  "channelTests": {
+    "passed": 8
+  },
+  "typeErrors": 0,
+  "browser": {
+    "status": "passed",
+    "flows": 12,
+    "screenshots": 33,
+    "errors": [],
+    "fullRaceSeconds": 160.559,
+    "fixtures": "Offline expedition uses a simulated clock; loss fixture is labelled; complete race uses real engine clock and keyboard"
+  },
+  "finalRendering": "delivery-render-check.json",
+  "wechatPackage": {
+    "checks": {
+      "correctAppid": true,
+      "portrait": true,
+      "nativeSubpackages": true,
+      "noRemoteBundle": true,
+      "mainWithin4MB": true,
+      "eachSubpackageWithin4MB": true,
+      "totalWithin30MB": true,
+      "entryExists": true,
+      "friendContextPresent": true,
+      "noReferenceCode": true
+    },
+    "sizes": {
+      "main": 3753714,
+      "cards": 1886233,
+      "company_1": 1597026,
+      "company_2": 1007753,
+      "company_3": 1098092,
+      "company_4": 1068189,
+      "company_5": 1197612,
+      "home": 249393,
+      "shared": 1122957
+    },
+    "totalBytes": 12980969,
+    "inputsSHA256": "faef67d16263297e947c5de53b1157cbd10368c6dd599b4e5bc516618a900ad3",
+    "candidate": "boss-wechat-sdk-final"
+  },
+  "wechatSimulator": {
+    "status": "startup-and-input-flows-verified",
+    "version": "Stable 2.02.2608080 / library 3.17.3",
+    "checks": [
+      "real local test account",
+      "resource bundles loaded",
+      "home",
+      "prepare",
+      "countdown",
+      "running",
+      "gate energy feedback",
+      "actual failure",
+      "one recovery",
+      "right control",
+      "pause"
+    ],
+    "errorsObserved": 0,
+    "warnings": [
+      "SDK HarmonyOS notice",
+      "first-run gamecaches/cacheList.json missing"
+    ],
+    "swipe": "browser verified; physical device remains pending",
+    "finalFriendAccountRendering": "pending due to repeated UI bridge timeout",
+    "finalGraphicsChange": "high-screen padding verified in web; native build passed"
+  },
+  "actualPhone": "pending",
+  "release": "not uploaded; requires game-owned release AppID",
+  "externalServices": "rewarded video and global leaderboard require actual external configuration; no fake share rewards or fabricated players",
+  "remoteBackup": "auto-review rejected git push; no external upload performed",
+  "outputs": [
+    {
+      "path": "/Users/wkk/dotWorkers/little-steps-cocos/migration/output/boss-source-1.0.0.zip",
+      "bytes": 16803850,
+      "sha256": "4dd715271de21106bb960a00ba8557ff76195c560bed86ef0af635a31671dbdc"
+    },
+    {
+      "path": "/Users/wkk/dotWorkers/little-steps-cocos/migration/output/boss-wechatgame-1.0.0.zip",
+      "bytes": 11312033,
+      "sha256": "9259a068ea68ef094817ea9a45076e839cf7eee10ee7b9ff3bf382e7bfd53da4"
+    }
+  ],
+  "sdkContractTests": {
+    "passed": 3
+  },
+  "sdkRenderingFixture": "sdk-canvas-validation.json",
+  "gameAndSdkTests": {
+    "passed": 23
+  }
+}

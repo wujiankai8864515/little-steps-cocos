@@ -1,0 +1,9 @@
+{
+  "item": "BOSS-02",
+  "trigger": "After a successful full real-time first-level run, clicked continue on the result page",
+  "evidence": ["browser-validation-failed.json", "victory.png"],
+  "rootCause": "Preparation retained the completed run. The next frame rendered its result again, overriding the new preparation page.",
+  "fix": "Clear the previous run when entering preparation for a new attempt, also invalidating pending revival callbacks.",
+  "verification": "Full browser suite rerun pending with the corrected source; original failure preserved.",
+  "device": "pending"
+}

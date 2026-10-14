@@ -1,0 +1,9 @@
+{
+  "item": "BOSS-04",
+  "trigger": "Actual iPhone 12/13 simulator viewport is taller than the 720x1280 authored area",
+  "evidence": "wechat-run-before-padding.png",
+  "finding": "Road rectangle extended into the extra top and bottom safe margins. No gameplay or input issue was observed.",
+  "fix": "Use the dark surrounding color and bound the office road to the authored play area.",
+  "verification": "Fresh web/native builds and viewport inspection pending",
+  "device": "not an actual phone test"
+}

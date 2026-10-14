@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "name": "startup loads real reference art and no runtime errors",
+      "result": "passed"
+    },
+    {
+      "name": "help, settings, and saved audio/vibration toggles respond to actual clicks",
+      "result": "passed"
+    },
+    {
+      "name": "daily supplies and unavailable online/friend services use honest state",
+      "result": "passed"
+    },
+    {
+      "name": "expedition dispatch persists through browser reload",
+      "result": "passed"
+    },
+    {
+      "name": "offline expedition claim uses a labelled simulated clock, rewards exactly once",
+      "result": "passed"
+    },
+    {
+      "name": "company catalogue, locked levels, and brawl mode work without unlocking campaign",
+      "result": "passed"
+    },
+    {
+      "name": "gender, skin selector, preparation and 3 second countdown use actual input",
+      "result": "passed"
+    },
+    {
+      "name": "drag, arrows, A/D and pause stop/resume real engine time",
+      "result": "passed"
+    },
+    {
+      "name": "full-race-wall-time",
+      "seconds": 160.503,
+      "method": "actual engine clock and keyboard input"
+    }
+  ],
+  "screenshots": [
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/home-450x800.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/help.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/settings.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/records-initial.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/online-unconfigured.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/friends-web-boundary.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-idle.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-away.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/expedition-parcel.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/levels-company-1.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/levels-company-5.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/brawl-home.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-female.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/wardrobe.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/prepare-male.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/ready.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/pause.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/running.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/boss-duel.png",
+    "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/boss/victory.png"
+  ],
+  "errors": [
+    "page.waitForFunction: Timeout 18000ms exceeded.\n    at waitPage (/Users/wkk/dotWorkers/little-steps-cocos/migration/tools/verify_boss_browser.cjs:10:43)\n    at /Users/wkk/dotWorkers/little-steps-cocos/migration/tools/verify_boss_browser.cjs:102:50\n    at async check (/Users/wkk/dotWorkers/little-steps-cocos/migration/tools/verify_boss_browser.cjs:26:5)\n    at async main (/Users/wkk/dotWorkers/little-steps-cocos/migration/tools/verify_boss_browser.cjs:98:5)"
+  ]
+}

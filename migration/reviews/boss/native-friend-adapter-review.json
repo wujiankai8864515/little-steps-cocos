@@ -1,0 +1,10 @@
+{
+  "item": "BOSS-05",
+  "trigger": "Clicked friend ranks in the actual WeChat main domain",
+  "evidence": "Actual UI tool screenshot in this chat; subsequent screenshot capture timed out before saving a PNG",
+  "rootCause": "getSharedCanvas is the open-data-domain API; checking for it in the main domain hid the real feature. WeChat may also expose wx lexically.",
+  "primaryReference": "/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/cocos/ui/sub-context-view.ts:125-175,243-249",
+  "fix": "Use OpenDataContext.canvas, preserve a legacy fallback, resolve lexical wx, create/upload the texture like Cocos SubContextView, and handle unsupported surfaces safely.",
+  "validation": "Three SDK contract regressions passed; last native inspection pending because the desktop UI bridge timed out repeatedly, including after a reset of this chat's JS bindings",
+  "device": "pending"
+}

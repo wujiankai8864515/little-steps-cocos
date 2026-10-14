@@ -1,0 +1,9 @@
+{
+  "item": "BOSS-03",
+  "trigger": "Import native boss package into the current WeChat DevTools account",
+  "observed": ["CLI service port is disabled", "Legacy Creator test ID wx6ac3f5090a6b99c5 is not authorized for the logged-in developer"],
+  "fix": "Kept security settings unchanged; used ordinary GUI project import and the tool's own 测试号 control. It provided wx419147023f7331a0. Rebuild the mapped boss package with this real local test ID.",
+  "verification": "New isolated build and GUI startup pending",
+  "release": "not uploaded, not submitted",
+  "device": "pending actual device"
+}

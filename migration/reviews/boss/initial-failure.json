@@ -1,0 +1,10 @@
+{
+  "item": "BOSS-01",
+  "trigger": "First real browser startup of boss-web-initial",
+  "evidence": ["initial-home.png", "boss-web-initial-build.log"],
+  "rootCause": "The explicit build bundle list omitted the dynamically loaded resources bundle, so resources.load(data/levels) could not resolve the data.",
+  "fix": "Declare and include resources, explicitly load it before reading game configuration.",
+  "additionalFindings": "Provided font omits 109 Chinese characters used by authored UI; use the device font for Chinese. One TypeScript narrowing diagnostic corrected.",
+  "verification": "Pending rebuilt browser startup; original failed screenshot and candidate retained.",
+  "device": "pending"
+}
