@@ -167,13 +167,24 @@ export class CatalogUI extends PresentationComponent {
         content.getComponent(UITransform)!.setAnchorPoint(0,.5);
         const scroll=viewport.addComponent(ScrollView);scroll.content=content;
         scroll.horizontal=true;scroll.vertical=false;scroll.inertia=true;scroll.elastic=false;scroll.cancelInnerEvents=true;
-        viewport.on(ScrollView.EventType.SCROLL_ENDED,()=>{
-            if(scroll.isAutoScrolling())return;
-            const offset=-scroll.getScrollOffset().x;
-            const target=Math.max(0,Math.min(total-1,Math.round(offset/step)))*step;
-            // Native swipes may end between books; settle the cover and its buttons together.
-            if(Math.abs(offset-target)>1)scroll.scrollToOffset(new Vec2(target,0),.2);
-        },this);
+        let dragging=false,queued=false;
+        const settle=()=>{
+            if(queued)return;queued=true;
+            // Touch release can precede ScrollView.update applying the final native movement.
+            scroll.scheduleOnce(()=>{
+                queued=false;
+                if(!viewport.isValid || dragging || scroll.isAutoScrolling())return;
+                const offset=-scroll.getScrollOffset().x;
+                const target=Math.max(0,Math.min(total-1,Math.round(offset/step)))*step;
+                if(Math.abs(offset-target)>1)scroll.scrollToOffset(new Vec2(target,0),.2);
+            },0);
+        };
+        viewport.on(Node.EventType.TOUCH_START,()=>{dragging=true;},this,true);
+        viewport.on(Node.EventType.TOUCH_END,()=>{dragging=false;settle();},this,true);
+        viewport.on(Node.EventType.TOUCH_CANCEL,(event:{simulate?:boolean})=>{
+            if(!event.simulate){dragging=false;settle();}
+        },this,true);
+        viewport.on(ScrollView.EventType.SCROLL_ENDED,settle,this);
         for(let i=0;i<total;i++) {
             const panel=this.child(content,'story_'+i,step,1640,viewportWidth/2+i*step,-60);
             if(i<stories.length)this.realStoryCard(panel,stories[i]);
