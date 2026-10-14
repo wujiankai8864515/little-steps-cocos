@@ -92,6 +92,22 @@ def run_logged(command, cwd, log, env):
     return process.returncode
 
 
+def configure_startup(assets):
+    """Remove Creator's timed default logo only in the isolated channel export."""
+    path = Path(assets) / 'src/settings.json'
+    settings = json.loads(path.read_text())
+    if not isinstance(settings.get('splashScreen'), dict):
+        raise ValueError('Unexpected Cocos splash settings contract')
+    settings['splashScreen'] = {
+        'totalTime': 0, 'displayRatio': 1, 'autoFit': True,
+        'logo': {'type': 'none'},
+        'background': {'type': 'color', 'color': {'x': 24 / 255, 'y': 14 / 255, 'z': 45 / 255, 'w': 1}},
+    }
+    write_json(path, settings)
+    return {'defaultEngineLogo': False, 'forcedEngineSplashMs': 0,
+            'gameLoadingFirstDrawBeforePreparation': True, 'onlyIsolatedExportModified': True}
+
+
 def audit_native_export(stage, game):
     project = stage / 'output/android/proj'
     properties_path = project / 'gradle.properties'
@@ -236,6 +252,7 @@ def build(args):
         assets = stage / 'output/android/assets'
         if not (assets / 'main.js').is_file():
             raise RuntimeError('Creator did not export a native main.js')
+        record['startup'] = configure_startup(assets)
         record['nativeProjectAudit'] = audit_native_export(stage, game)
         from icons import install as install_icons
         record['icons'] = install_icons(stage, game)

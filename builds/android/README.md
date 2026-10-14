@@ -48,6 +48,8 @@ python3 -B builds/build.py android --game avg_plus --hot-only --publish
 
 Android 图标原画与五档密度 PNG 位于游戏 `source/android-icon`；渠道 XML 位于 `templates/avg-plus-icons`，包括普通、圆形、自适应、主题单色与 Android 12 启动图标。安装只作用于隔离原生导出，不能改 Creator 全局模板。PNG 源图由已调用的内置 imagegen 生成，确切提示词、模式与源图 SHA 在 `generation.json` 中；这些是必要源文件，应保留并备份。
 
+渠道关闭隔离导出的默认 Cocos Logo 与强制两秒 Splash，不修改 Creator 全局模板。游戏加载页先绘制、再准备内容，按真实阶段显示进度，首页绘制后淡出；系统启动主题与场景底色一致。构建检查未知 Splash 设置合约时拒绝继续，不能静默回到默认 Logo。
+
 PNG 仅在隔离导出目录重新压缩 IDAT 存储，扫描线和所有非 IDAT 元数据逐字节校验不变；不改变源素材、尺寸、颜色或透明度。原导出 PNG 保留在候选的 `png-storage-originals`。Cocos 3.8.8 的 native Asset.size 使用 float，客户端按经过验证的 JS 清单读取精确字节数；ZIP 通过合法注释对齐长度，兼容旧 APK 的严格大小比较。
 
 本地验证：`python3 -B migration/tools/test_android_channel.py` 和 bundled Node 执行 `--test migration/tools/test_android_bootstrap.cjs`。这些覆盖打包、校验、失败和恢复边界，不能替代 GitHub 下载及安卓旧包更新实测。API 依据：[Cocos 原生热更新](https://docs.cocos.com/creator/3.8/manual/en/advanced-topics/hot-update-manager.html)、[命令行构建](https://docs.cocos.com/creator/3.8/manual/en/editor/publish/publish-in-command-line.html)。

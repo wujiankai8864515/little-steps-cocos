@@ -14,6 +14,7 @@ import { GameFlow, parseGameFlow } from './GameFlow';
 import { CatalogConfig, parseCatalogConfig } from './CatalogConfig';
 import { CatalogState, createCatalogMod, loadCatalogSave, saveCatalogState } from './CatalogMod';
 import { CatalogUI } from './CatalogUI';
+import { StartupPresentation } from './StartupPresentation';
 
 const { ccclass, executionOrder } = _decorator;
 const CONTENT_TIMEOUT_MS = 30000;
@@ -33,22 +34,31 @@ export class AppBootstrap extends Component {
     private levels: string[] = [];
     private saveError: Error | null = null;
     private versionBadge: Node | null = null;
+    private startup: StartupPresentation | null = null;
 
     protected onLoad(): void { profiler.hideStats(); }
     protected start(): void {
         void this.startWithUpdate().catch(error => {
             if (this.lifetime.cancelled) return;
-            console.error('[Shell]', error); this.setMessage(error instanceof Error ? error.message : '启动失败，请重试');
+            console.error('[Shell]', error);
+            const message = error instanceof Error ? error.message : '启动失败，请重试';
+            if (this.startup?.isValid) this.startup.fail(message, () => game.restart());
+            else this.setMessage(message);
         });
     }
     private async startWithUpdate(): Promise<void> {
-        this.replaceScreen(this.loadingScreen());
+        const loadingRoot = new Node('LoadingRoot'); loadingRoot.layer = this.node.layer;
+        this.node.addChild(loadingRoot);
+        this.startup = loadingRoot.addComponent(StartupPresentation); this.startup.open();
+        await this.startup.firstDraw(); this.lifetime.check();
         const releaseInfo=await this.lifetime.run(()=>this.loadJson('config/release-info'),CONTENT_TIMEOUT_MS);
         this.lifetime.check();this.showVersion(releaseInfo.displayVersion);
+        this.startup.setStage('正在检查更新…', 0.2);
         const updater = new NativeHotUpdate(this.lifetime);
         const result = await updater.run(text => this.setMessage(text));
         this.lifetime.check();
         if (result === 'restart') { game.restart(); return; }
+        this.startup.setStage('正在准备你的故事…', 0.5);
         const [assets, flow, config, chapters] = await this.lifetime.run(() => Promise.all([
             this.loadLevels(), this.loadJson('config/game-flow').then(parseGameFlow),
             this.loadJson('config/catalog').then(parseCatalogConfig), this.loadJson('config/avg-chapters'),
@@ -64,6 +74,7 @@ export class AppBootstrap extends Component {
             if (!chapters.chapters?.some((c: any) => c.id === story.chapterId && c.bundle === story.bundle)) throw new Error('目录没有对应的既有剧情：'+story.title);
         }
         this.flow = flow; this.config = config;
+        this.startup.setStage('正在恢复进度…', 0.7);
         const saved = loadCatalogSave(sys.localStorage);
         this.shell = new Runtime([createCatalogMod(config,this.levels,saved,{
             save: state => {
@@ -74,7 +85,10 @@ export class AppBootstrap extends Component {
         })],{config,levels:this.levels});
         await this.shell.open();
         await this.send({type:'shell.open'});
+        this.startup.setStage('正在布置首页…', 0.85);
         await this.showLevelList();
+        this.lifetime.check();
+        await this.startup.finish(); this.startup = null;
         this.lifetime.check();
         if(this.catalogReady)updater.markHealthy();
     }
@@ -186,22 +200,14 @@ export class AppBootstrap extends Component {
     private loadGamePrefab():Promise<Prefab> {
         return new Promise((resolve,reject)=>resources.load('prefabs/gamePage',Prefab,(error,prefab)=>error||!prefab?reject(error??new Error('卡牌页面不存在')):resolve(prefab)));
     }
-    private loadingScreen():Node {
-        const root=new Node('LoadingRoot');root.layer=this.node.layer;root.addComponent(UITransform).setContentSize(1181,2556);
-        const g=root.addComponent(Graphics);g.fillColor=new Color(24,14,45);g.rect(-590.5,-1278,1181,2556);g.fill();
-        for(let radius=1050;radius>50;radius-=40){g.fillColor=new Color(126,28,193,7);g.circle(0,520,radius);g.fill();}
-        const title=new Node('title');title.layer=root.layer;title.addComponent(UITransform).setContentSize(1000,200);title.setPosition(0,540);root.addChild(title);
-        const logo=title.addComponent(Label);logo.string='Solitaire';logo.fontSize=115;logo.isBold=true;logo.isItalic=true;logo.color=new Color(255,196,213);logo.horizontalAlign=HorizontalTextAlignment.CENTER;
-        const message=new Node('message');message.layer=root.layer;message.addComponent(UITransform).setContentSize(1000,260);message.setPosition(0,-510);root.addChild(message);
-        const label=message.addComponent(Label);label.string='正在启动…';label.fontSize=35;label.lineHeight=45;label.color=Color.WHITE;label.horizontalAlign=HorizontalTextAlignment.CENTER;label.verticalAlign=VerticalTextAlignment.CENTER;
-        return root;
-    }
     private setMessage(message:string):void {
+        if(this.startup?.isValid){this.startup.setStage(message);return;}
         if(this.catalog?.isValid){this.catalog.showMessage(message);return;}
         const label=this.screen?.getChildByName('message')?.getComponent(Label);if(label)label.string=message;
     }
     private replaceScreen(next:Node):void {
         if(this.screen?.isValid)this.screen.destroy();this.screen=next;next.layer=this.node.layer;this.node.addChild(next);next.setPosition(0,0,0);
+        if(this.startup?.isValid)this.startup.node.setSiblingIndex(this.node.children.length-1);
         if(this.versionBadge?.isValid)this.versionBadge.setSiblingIndex(this.node.children.length-1);
     }
     private showVersion(value:string):void {

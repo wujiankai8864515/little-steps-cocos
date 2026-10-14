@@ -20,6 +20,31 @@ ICON_SPEC.loader.exec_module(ICONS)
 
 
 class AndroidChannelTests(unittest.TestCase):
+    def test_default_engine_splash_is_removed_without_changing_other_export_settings(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            assets = Path(temporary)
+            path = assets / 'src/settings.json'
+            path.parent.mkdir()
+            original = {'assets': {'bundles': ['resources', 'drama_fake_fiancee']},
+                        'screen': {'designResolution': {'width': 1181, 'height': 2556}},
+                        'splashScreen': {'totalTime': 2000, 'logo': {'type': 'default', 'base64': 'old Cocos logo'}}}
+            path.write_text(json.dumps(original))
+            BUILD.configure_startup(assets)
+            actual = json.loads(path.read_text())
+            self.assertEqual(actual['splashScreen']['totalTime'], 0)
+            self.assertEqual(actual['splashScreen']['logo'], {'type': 'none'})
+            self.assertNotIn('old Cocos logo', path.read_text())
+            self.assertEqual(actual['splashScreen']['background']['color']['w'], 1)
+            for key in ['assets', 'screen']:
+                self.assertEqual(actual[key], original[key])
+
+    def test_unknown_export_splash_contract_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / 'src/settings.json'; path.parent.mkdir()
+            path.write_text('{}')
+            with self.assertRaisesRegex(ValueError, 'splash settings contract'):
+                BUILD.configure_startup(Path(temporary))
+
     def test_icons_have_distinct_resource_names_and_leave_native_defaults_untouched(self):
         with tempfile.TemporaryDirectory() as temporary:
             stage = Path(temporary)
