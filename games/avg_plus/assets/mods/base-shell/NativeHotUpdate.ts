@@ -26,13 +26,19 @@ export class NativeHotUpdate {
         try { return JSON.parse(native.fileUtils.getStringFromFile(this.marker())) as BootState; }
         catch (_) { return null; }
     }
+    private writeState(state: BootState): boolean {
+        const target = this.marker(), temporary = target + '.writing';
+        if (native.fileUtils.writeStringToFile(JSON.stringify(state), temporary)
+            && native.fileUtils.renameFile(temporary, target)) return true;
+        native.fileUtils.removeFile(temporary); return false;
+    }
     public markHealthy(): void {
         if (!NATIVE) return;
         const state = this.readState();
         if (state?.probePending && state.compatibility === this.identity().nativeCompatibility) {
             state.probePending = false;
             state.probeAttempted = false;
-            native.fileUtils.writeStringToFile(JSON.stringify(state), this.marker());
+            if (!this.writeState(state)) { console.warn('[NativeHotUpdate] 启动确认未写入，保留上一版'); return; }
         }
         new NativeDeltaUpdate(this.lifetime,this.identity()).confirm();
     }
@@ -72,7 +78,7 @@ export class NativeHotUpdate {
                 compatibility: identity.nativeCompatibility, version: manifest.version,
                 paths: [cache], probePending: true, probeAttempted: false
             };
-            if (!native.fileUtils.writeStringToFile(JSON.stringify(state), this.marker())) {
+            if (!this.writeState(state)) {
                 throw new Error('无法保存更新启动状态');
             }
             status('更新完成，正在重新启动…');

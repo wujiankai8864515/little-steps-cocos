@@ -53,8 +53,8 @@ export function validateUpdate(value: unknown, identity: UpdateIdentity): Update
     return manifest;
 }
 
-/** SHA-256 over the downloaded ZIP, before AssetsManager is allowed to unpack it. */
-export function sha256(bytes: Uint8Array): string {
+/** SHA-256 blocks share one state; no per-block arrays or closures enter the GC queue. */
+function sha256Work(bytes: Uint8Array): { step(bytes: number): boolean; digest(): string } {
     const constants = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
         0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
         0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
@@ -71,20 +71,41 @@ export function sha256(bytes: Uint8Array): string {
     view.setUint32(data.length - 4, (bytes.length * 8) >>> 0);
     const words = new Uint32Array(64);
     const rotate = (x: number, n: number) => (x >>> n) | (x << (32 - n));
-    for (let offset = 0; offset < data.length; offset += 64) {
+    let offset = 0;
+    return { step(maxBytes: number): boolean {
+      const end = Math.min(data.length, offset + maxBytes);
+      for (; offset < end; offset += 64) {
         for (let i = 0; i < 16; i++) words[i] = view.getUint32(offset + i * 4);
         for (let i = 16; i < 64; i++) {
             const x = words[i - 15], y = words[i - 2];
             words[i] = words[i - 16] + (rotate(x,7) ^ rotate(x,18) ^ (x >>> 3)) +
                 words[i - 7] + (rotate(y,17) ^ rotate(y,19) ^ (y >>> 10));
         }
-        let [a,b,c,d,e,f,g,h] = Array.from(hash);
+        let a=hash[0],b=hash[1],c=hash[2],d=hash[3],e=hash[4],f=hash[5],g=hash[6],h=hash[7];
         for (let i = 0; i < 64; i++) {
             const t1 = (h + (rotate(e,6)^rotate(e,11)^rotate(e,25)) + ((e&f)^(~e&g)) + constants[i] + words[i]) >>> 0;
             const t2 = ((rotate(a,2)^rotate(a,13)^rotate(a,22)) + ((a&b)^(a&c)^(b&c))) >>> 0;
             h=g; g=f; f=e; e=(d+t1)>>>0; d=c; c=b; b=a; a=(t1+t2)>>>0;
         }
-        [a,b,c,d,e,f,g,h].forEach((value, i) => { hash[i] += value; });
+        hash[0]+=a;hash[1]+=b;hash[2]+=c;hash[3]+=d;
+        hash[4]+=e;hash[5]+=f;hash[6]+=g;hash[7]+=h;
+      }
+      return offset === data.length;
+    }, digest: () => Array.from(hash, value => value.toString(16).padStart(8, '0')).join('') };
+}
+
+/** Synchronous boundary required by Cocos' ZIP verify callback, before unpacking. */
+export function sha256(bytes: Uint8Array): string {
+    const work = sha256Work(bytes); work.step(Number.POSITIVE_INFINITY); return work.digest();
+}
+
+/** File verification yields after a small time budget so the loading page can draw. */
+export async function sha256Async(bytes: Uint8Array, check: () => void,
+    yieldControl = () => new Promise<void>(resolve => setTimeout(resolve, 0))): Promise<string> {
+    const work = sha256Work(bytes);
+    let deadline = Date.now() + 6;
+    for (;;) {
+        check(); if (work.step(128 * 1024)) return work.digest();
+        if (Date.now() >= deadline) { await yieldControl(); check(); deadline = Date.now() + 6; }
     }
-    return Array.from(hash, value => value.toString(16).padStart(8, '0')).join('');
 }

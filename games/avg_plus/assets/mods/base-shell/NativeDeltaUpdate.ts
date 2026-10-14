@@ -1,6 +1,6 @@
 import { native } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
-import { compareVersions, sha256, UpdateIdentity } from './UpdateProtocol';
+import { compareVersions, sha256, sha256Async, UpdateIdentity } from './UpdateProtocol';
 import { DeltaIndex, DeltaPatch, pendingPatches, validateDeltaIndex } from './DeltaProtocol';
 
 interface State {
@@ -153,7 +153,8 @@ export class NativeDeltaUpdate {
             const path=native.fileUtils.isFileExist(this.next+expected.path)?this.next+expected.path:expected.path;
             if(!native.fileUtils.isFileExist(path))throw new Error('增量内容文件缺失：'+expected.path);
             const data=new Uint8Array(native.fileUtils.getDataFromFile(path));
-            if (data.byteLength!==expected.bytes || sha256(data)!==expected.sha256) throw new Error('增量内容校验失败：'+expected.path);
+            if (data.byteLength!==expected.bytes
+                || await sha256Async(data,()=>this.lifetime.check())!==expected.sha256) throw new Error('增量内容校验失败：'+expected.path);
             if (index%16===0) { status(`正在校验内容 ${Math.floor(index/patch.files.length*100)}%`);await new Promise<void>(resolve=>setTimeout(resolve,0)); }
         }
     }

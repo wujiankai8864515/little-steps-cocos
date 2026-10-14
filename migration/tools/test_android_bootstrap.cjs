@@ -32,7 +32,9 @@ function fixture(options={}){
  }
  boundary={native:{
   EventAssetsManager:codes,AssetsManager:Manager,Manifest:class{constructor(content){Object.assign(this,JSON.parse(content))}},
-  fileUtils:{getWritablePath:()=>'/data/',getStringFromFile:key=>{if(!files.has(key))throw Error('missing');return files.get(key)},writeStringToFile:(value,key)=>{files.set(key,value);return true},getDataFromFile:()=>options.corrupt?new Uint8Array([9,2,3]).buffer:bytes.buffer}
+  fileUtils:{getWritablePath:()=>'/data/',getStringFromFile:key=>{if(!files.has(key))throw Error('missing');return files.get(key)},writeStringToFile:(value,key)=>{files.set(key,value);return true},
+   renameFile:(from,to)=>{if(!files.has(from))return false;files.set(to,files.get(from));files.delete(from);return true;},removeFile:key=>files.delete(key),
+   getDataFromFile:()=>options.corrupt?new Uint8Array([9,2,3]).buffer:bytes.buffer}
  }};
  const remote={version:'0.1.0.1',nativeCompatibility:options.incompatible?'native-2':identity.nativeCompatibility,packageUrl:base+'versions/0.1.0.1/',remoteManifestUrl:identity.remoteManifestUrl,remoteVersionUrl:base+'latest/avg-plus-version.manifest',assets:{'avg-plus-assets.zip':{size:bytes.length,md5:digest,compressed:true}},searchPaths:['']};
  global.XMLHttpRequest=class{
