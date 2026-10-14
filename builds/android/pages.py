@@ -168,7 +168,8 @@ def assemble(repository, destination, fetch=request, release_list=None):
         index_data={'schemaVersion':2,'bridgeVersion':bridge,'version':latest_any,
                     'displayVersion':snapshots[latest_any].get('displayVersion',''),
                     'nativeCompatibility':snapshots[bridge]['nativeCompatibility'],'updates':chain}
-        (delta/'index.json').write_text(json.dumps(index_data,ensure_ascii=False,indent=2)+'\n')
+        # Discovery is fetched at every startup; whitespace needlessly increases transfer time.
+        (delta/'index.json').write_text(json.dumps(index_data,ensure_ascii=False,separators=(',',':'))+'\n')
         (delta/'avg-plus-content.json').write_text(json.dumps(snapshots[latest_any],ensure_ascii=False,indent=2)+'\n')
         display=index_data['displayVersion'] or latest_any
         text=f'当前版本：{display}（北京时间）。游戏支持增量热更新，普通更新无需重新安装 APK。'

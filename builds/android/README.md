@@ -25,6 +25,8 @@ python3 -B builds/build.py android --game avg_plus
 
 各版本 ZIP 发布到 `avg-plus/android/versions/<version>/avg-plus-assets.zip`；发现入口是 `avg-plus/android/latest/avg-plus-project.manifest` 和 `avg-plus-version.manifest`。先发布不可修改的版本目录，核验内容后再更新 latest 清单；客户端校验 ZIP URL 必须与清单版本完全一致。
 
+`AVG.PAGES.16` 增量发现索引是每次启动都会请求的文件。站点生成时仅去掉此索引的 JSON 排版空白，保留完整版本链、文件索引、摘要和所有字段，旧客户端协议兼容；不可变版本 ZIP 与 Release 原附件不改变。五项 Pages 及四项差分/版本链检查通过。配套客户端请求时限为 8 秒，单次任务保护上限为 10 秒；真实网络与物理手机结果分别记录。
+
 启动钩子在 SystemJS 与游戏模块加载之前恢复缓存搜索路径。覆盖安装 APK 时，比其打包版本旧或相同的缓存会被淘汰；只处理自身热更新缓存与标记，产品存档保留。ZIP 经过 SHA-256 和大小检查后才解压；下载最多重试两次，断网和不兼容更新使用本地内容。更新成功保存待验证启动状态，重启后目录读取成功才确认健康；若新代码启动未完成，下次启动退回 APK 内容并屏蔽该版本。`nativeCompatibility` 是 native/引擎合约，修改 native 或引擎时必须升级合约并重新安装 APK。
 
 更新包含游戏 `src`、Bundle 配置、动态 JSON、图片和音频，排除引擎 JS、JSB 适配器、native 身份和启动钩子。增量以实际导出文件的哈希比较为准；Cocos 合并的脚本或 JSON 文件仍以整个变化文件进入 ZIP，未改变的图片、音频和配置文件不再上传。这里不做任意分片或二进制补丁。
