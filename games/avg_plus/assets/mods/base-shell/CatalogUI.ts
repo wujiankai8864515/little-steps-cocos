@@ -7,7 +7,7 @@ import type { Action } from '../../foundation/Contracts';
 import { TaskScope } from '../../foundation/Tasks';
 import { PresentationComponent } from '../shared/PresentationComponent';
 import { imageSize } from '../shared/ImageLayout';
-import type { CatalogConfig, StoryConfig } from './CatalogConfig';
+import type { CatalogConfig, StoryConfig, StoryPlaceholderConfig } from './CatalogConfig';
 import type { CatalogPage, CatalogState } from './CatalogMod';
 
 const { ccclass } = _decorator;
@@ -149,8 +149,31 @@ export class CatalogUI extends PresentationComponent {
             this.pill(root,'Back',-422,-1055,180,80,DARK,()=>this.page('catalog'),30);
         }
         if (!items.length) { this.text(root,'暂无收藏\n在详情页点击书签收藏剧情',38,0,220,940,190);return; }
-        // The local catalog currently contains one actual story; never fabricate reference plots.
         const story=items.find(s=>s.id===this.state.selectedStory)??items[0];
+        if(!favourites && this.config.placeholderStories?.length) this.storyCarousel(root,items,story);
+        else this.realStoryCard(root,story);
+        if(!favourites)this.levelList(root);
+    }
+    private storyCarousel(root: Node,items: readonly StoryConfig[],selected: StoryConfig): void {
+        const placeholders=this.config.placeholderStories??[];
+        const stories=[selected,...items.filter(s=>s.id!==selected.id)];
+        const total=stories.length+placeholders.length,step=1030,viewportWidth=1100;
+        this.text(root,`剧本 · ${total} 本   ‹ 左右滑动查看 ›`,26,0,899,1050,48).color=MUTED;
+        const viewport=this.child(root,'storyViewport',viewportWidth,1640,0,60);
+        const mask=viewport.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
+        const stencil=viewport.getComponent(Graphics)!;stencil.clear();stencil.fillColor=Color.WHITE;
+        stencil.rect(-viewportWidth/2,-820,viewportWidth,1640);stencil.fill();
+        const content=this.child(viewport,'storyContent',viewportWidth+(total-1)*step,1640,-viewportWidth/2,0);
+        content.getComponent(UITransform)!.setAnchorPoint(0,.5);
+        const scroll=viewport.addComponent(ScrollView);scroll.content=content;
+        scroll.horizontal=true;scroll.vertical=false;scroll.inertia=true;scroll.elastic=false;scroll.cancelInnerEvents=true;
+        for(let i=0;i<total;i++) {
+            const panel=this.child(content,'story_'+i,step,1640,viewportWidth/2+i*step,-60);
+            if(i<stories.length)this.realStoryCard(panel,stories[i]);
+            else this.placeholderStoryCard(panel,placeholders[i-stories.length]);
+        }
+    }
+    private realStoryCard(root: Node,story: StoryConfig): void {
         const card=this.cover(root,story,0,276,1010,1110);
         const title=this.text(card,story.title,61,0,440,890,132);title.isBold=true;
         title.enableWrapText=true;
@@ -162,7 +185,24 @@ export class CatalogUI extends PresentationComponent {
         this.iconButton(root,'star',433,-367,88,()=>void this.send('shell.story',{id:story.id}).then(()=>this.send('shell.page',{page:'rating'})),false);
         this.text(root,story.synopsis,30,0,-508,995,150).color=MUTED;
         this.gradientPill(root, 'Resume',0,-683,790,120,()=>void this.send('shell.story',{id:story.id}));
-        if(!favourites)this.levelList(root);
+    }
+    private placeholderStoryCard(root: Node,placeholder: StoryPlaceholderConfig): void {
+        const source=this.config.stories.find(s=>s.id===placeholder.coverStoryId)!;
+        const borrowed={...source,roles:placeholder.roleIndexes.map(i=>source.roles[i])};
+        const card=this.cover(root,borrowed,0,276,1010,1110);
+        const wash=this.child(card,'placeholderTint',1010,1110),paint=wash.addComponent(Graphics);
+        paint.fillColor=new Color(...placeholder.tint,90);paint.rect(-505,-555,1010,1110);paint.fill();
+        const message=()=>this.showMessage(`《${placeholder.title}》正在筹备中，敬请期待。`);
+        this.pill(card,'筹备中',325,465,235,77,new Color(...placeholder.tint,235),message,28);
+        this.text(card,placeholder.title,68,0,342,930,145).isBold=true;
+        this.text(card,placeholder.subtitle,29,0,233,960,65);
+        this.text(card,'占位剧本 · 敬请期待',29,0,-480,960,65);
+        const button=card.addComponent(Button);button.transition=Button.Transition.SCALE;button.zoomScale=1.012;
+        card.on(Button.EventType.CLICK,message,this);
+        this.text(root,placeholder.title,43,-170,-367,700,90).horizontalAlign=HorizontalTextAlignment.LEFT;
+        this.pill(root,'筹备中',355,-367,265,78,DARK,message,30);
+        this.text(root,placeholder.synopsis,30,0,-508,995,150).color=MUTED;
+        this.gradientPill(root,'敬请期待',0,-683,790,120,message);
     }
     private levelList(root: Node): void {
         this.text(root,`卡牌关卡 · ${this.levels.length} 关`,32,-260,-837,500,70).horizontalAlign=HorizontalTextAlignment.LEFT;

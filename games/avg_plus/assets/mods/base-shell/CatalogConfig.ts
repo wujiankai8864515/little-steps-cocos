@@ -28,6 +28,16 @@ export interface StoryConfig {
     readonly roles: readonly string[];
     readonly collections: readonly CollectionConfig[];
 }
+export interface StoryPlaceholderConfig {
+    readonly id: string;
+    readonly title: string;
+    readonly subtitle: string;
+    readonly synopsis: string;
+    /** Reuse prepared cover art; a placeholder has no chapter or playable story. */
+    readonly coverStoryId: string;
+    readonly roleIndexes: readonly number[];
+    readonly tint: readonly [number, number, number];
+}
 export type QuestMetric = 'login' | 'choices' | 'gemChoices' | 'wins' | 'ads';
 export interface QuestConfig {
     readonly id: QuestMetric;
@@ -39,6 +49,7 @@ export interface CatalogConfig {
     readonly schemaVersion: 1;
     readonly economy: EconomyConfig;
     readonly stories: readonly StoryConfig[];
+    readonly placeholderStories?: readonly StoryPlaceholderConfig[];
     readonly quests: readonly QuestConfig[];
     readonly cardBackground?: CardBackgroundConfig;
 }
@@ -80,6 +91,20 @@ export function parseCatalogConfig(value: any): CatalogConfig {
                 throw new Error('收藏配置无效');
             }
             collectionIds.add(c.id);
+        }
+    }
+    if (value.placeholderStories !== undefined) {
+        if (!Array.isArray(value.placeholderStories)) throw new Error('占位剧本配置无效');
+        for (const placeholder of value.placeholderStories) {
+            const cover = record(placeholder) && value.stories.find((s: StoryConfig) => s.id === placeholder.coverStoryId);
+            if (!cover || typeof placeholder.id !== 'string' || !ID.test(placeholder.id) || ids.has(placeholder.id) ||
+                !['title', 'subtitle', 'synopsis'].every(k => typeof placeholder[k] === 'string' && placeholder[k].length > 0) ||
+                !Array.isArray(placeholder.roleIndexes) || !placeholder.roleIndexes.length ||
+                new Set(placeholder.roleIndexes).size !== placeholder.roleIndexes.length ||
+                placeholder.roleIndexes.some((i: any) => !Number.isInteger(i) || i < 0 || i >= cover.roles.length) ||
+                !Array.isArray(placeholder.tint) || placeholder.tint.length !== 3 ||
+                !placeholder.tint.every((n: any) => Number.isInteger(n) && n >= 0 && n <= 255)) throw new Error('占位剧本或封面引用无效');
+            ids.add(placeholder.id);
         }
     }
     const questIds = new Set<string>();

@@ -21,6 +21,26 @@ test('reference economy, story catalog and collection unlocks reference existing
  for(const x of story.collections)assert.ok(fs.existsSync(path.join(root,'chapters/第一章',String(x.unlockPage).padStart(2,'0')+'.json')));
  for(const mutate of [x=>x.economy.rollback.base=-1,x=>x.stories[0].background='../x',x=>x.stories.push(x.stories[0]),x=>x.quests[0].target=0]){const invalid=config();mutate(invalid);assert.throws(()=>parseCatalogConfig(invalid));}
 });
+test('placeholder scripts reuse loaded original covers and never create playable chapters or change progress',async()=>{
+ const c=config();assert.equal(c.placeholderStories.length,3);assert.equal(c.stories.length,1);
+ const r=await shell(),before=r.exportSnapshot();
+ for(const placeholder of c.placeholderStories) {
+  const cover=c.stories.find(s=>s.id===placeholder.coverStoryId);assert.ok(cover);
+  for(const i of placeholder.roleIndexes)assert.ok(cover.roles[i]);
+  assert.equal(Object.hasOwn(placeholder,'chapterId'),false);
+  assert.equal((await send(r,'shell.story',{id:placeholder.id})).status,'rejected');
+  assert.deepEqual(r.exportSnapshot(),before);
+ }
+ assert.equal((await send(r,'shell.story',{id:c.stories[0].id})).status,'committed');
+ assert.equal(read(r).selectedStory,'fake-fiancee');assert.equal(read(r).coins,5700);await r.dispose();
+ const legacy=config();delete legacy.placeholderStories;assert.equal(parseCatalogConfig(legacy).stories.length,1);
+});
+test('placeholder cover references and IDs cannot escape the actual prepared catalog',()=>{
+ for(const mutate of [p=>delete p.id,p=>p.id='fake-fiancee',p=>p.coverStoryId='missing',
+   p=>p.roleIndexes=[99],p=>p.roleIndexes=[0,0],p=>p.tint=[255,256,0]]) {
+  const invalid=config();mutate(invalid.placeholderStories[0]);assert.throws(()=>parseCatalogConfig(invalid),/占位剧本/);
+ }
+});
 test('daily login reward is claimable once; incomplete quests and duplicate inputs cannot grant coins',async()=>{
  const r=await shell();assert.equal(read(r).coins,5700);
  assert.equal((await send(r,'shell.claim',{id:'wins'})).status,'rejected');assert.equal(read(r).coins,5700);
