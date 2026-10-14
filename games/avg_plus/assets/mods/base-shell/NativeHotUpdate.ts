@@ -1,7 +1,7 @@
 import { native } from 'cc';
 import { NATIVE } from 'cc/env';
 import { TaskScope } from '../../foundation/Tasks';
-import { compareVersions, sha256, UpdateIdentity, UpdateManifest, validateUpdate } from './UpdateProtocol';
+import { compareVersions, sha256, UpdateIdentity, UpdateManifest, validateUpdate, UPDATE_CHECK_TIMEOUT_MS, UPDATE_CHECK_BUDGET_MS } from './UpdateProtocol';
 import { NativeDeltaUpdate } from './NativeDeltaUpdate';
 
 type Result = 'local' | 'restart';
@@ -51,7 +51,7 @@ export class NativeHotUpdate {
             status('正在检查更新…');
             const incremental=await delta.run(status);
             this.lifetime.check();if(incremental)return incremental;
-            const manifest = await this.lifetime.run(scope => this.fetchManifest(identity, scope), 10000);
+            const manifest = await this.lifetime.run(scope => this.fetchManifest(identity, scope), UPDATE_CHECK_BUDGET_MS);
             this.lifetime.check();
             if (this.readState()?.blockedVersion === manifest.version) return 'local';
             const cache = native.fileUtils.getWritablePath() + 'avg-plus-hot-update/';
@@ -102,7 +102,7 @@ export class NativeHotUpdate {
                 error ? reject(error) : resolve(manifest!);
             };
             request.open('GET', identity.remoteManifestUrl + '?t=' + Date.now(), true);
-            request.timeout = 1800;
+            request.timeout = UPDATE_CHECK_TIMEOUT_MS;
             request.onload = () => {
                 if (request.status !== 200) return finish(new Error('更新服务暂不可用'));
                 try { scope.check(); finish(undefined, validateUpdate(JSON.parse(request.responseText), identity)); }

@@ -1,6 +1,6 @@
 import { native } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
-import { compareVersions, sha256, sha256Async, UpdateIdentity } from './UpdateProtocol';
+import { compareVersions, sha256, sha256Async, UpdateIdentity, UPDATE_CHECK_TIMEOUT_MS, UPDATE_CHECK_BUDGET_MS } from './UpdateProtocol';
 import { ContentFile, DeltaIndex, DeltaPatch, pendingPatches, validateDeltaIndex } from './DeltaProtocol';
 
 interface State {
@@ -80,7 +80,7 @@ export class NativeDeltaUpdate {
         // Reach a real healthy home before considering another update during a trial boot.
         if(cached && state!.probePending)return 'local';
         let index:DeltaIndex;
-        try { index=await this.lifetime.run(scope=>this.fetch(scope),2500); }
+        try { index=await this.lifetime.run(scope=>this.fetch(scope),UPDATE_CHECK_BUDGET_MS); }
         catch (error) { this.lifetime.check();console.warn('[Delta check] using local/legacy channel',error instanceof Error?error.message:String(error));return null; }
         const current=cached?state!.version!:this.identity.version;
         if (compareVersions(current,index.bridgeVersion)<0) return null;
@@ -164,7 +164,7 @@ export class NativeDeltaUpdate {
             const request=new XMLHttpRequest();let done=false;
             const finish=(error?:Error,value?:DeltaIndex)=>{if(done)return;done=true;release();request.onload=request.onerror=request.ontimeout=request.onabort=null;error?reject(error):resolve(value!);};
             const release=scope.own(()=>{request.abort();finish(new Error('更新检查取消'));});
-            request.open('GET',this.identity.hotUpdateBaseUrl+'delta/latest/index.json?t='+Date.now(),true);request.timeout=1800;
+            request.open('GET',this.identity.hotUpdateBaseUrl+'delta/latest/index.json?t='+Date.now(),true);request.timeout=UPDATE_CHECK_TIMEOUT_MS;
             request.onload=()=>{if(request.status!==200)return finish(new Error('增量入口不可用'));try{scope.check();finish(undefined,validateDeltaIndex(JSON.parse(request.responseText),this.identity));}catch(error){finish(error instanceof Error?error:new Error(String(error)));}};
             request.onerror=request.ontimeout=request.onabort=()=>finish(new Error('增量检查未完成'));request.send();
         });

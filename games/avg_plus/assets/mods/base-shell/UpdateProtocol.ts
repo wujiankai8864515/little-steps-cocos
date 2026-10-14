@@ -1,3 +1,7 @@
+// Allow a slow Pages response without letting a stalled check wait indefinitely.
+export const UPDATE_CHECK_TIMEOUT_MS = 8000;
+export const UPDATE_CHECK_BUDGET_MS = 10000;
+
 export interface UpdateIdentity {
     nativeCompatibility: string;
     githubRepository: string;
