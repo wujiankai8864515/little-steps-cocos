@@ -1,7 +1,7 @@
 import { native } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { compareVersions, sha256, sha256Async, UpdateIdentity } from './UpdateProtocol';
-import { DeltaIndex, DeltaPatch, pendingPatches, validateDeltaIndex } from './DeltaProtocol';
+import { ContentFile, DeltaIndex, DeltaPatch, pendingPatches, validateDeltaIndex } from './DeltaProtocol';
 
 interface State {
     compatibility: string; version?: string; blockedVersion?: string; paths: string[];
@@ -81,7 +81,7 @@ export class NativeDeltaUpdate {
         if(cached && state!.probePending)return 'local';
         let index:DeltaIndex;
         try { index=await this.lifetime.run(scope=>this.fetch(scope),2500); }
-        catch (error) { this.lifetime.check();console.warn('[Delta check] using local/legacy channel');return null; }
+        catch (error) { this.lifetime.check();console.warn('[Delta check] using local/legacy channel',error instanceof Error?error.message:String(error));return null; }
         const current=cached?state!.version!:this.identity.version;
         if (compareVersions(current,index.bridgeVersion)<0) return null;
         const patches=pendingPatches(index,current,state?.blockedVersion);
@@ -96,7 +96,7 @@ export class NativeDeltaUpdate {
         try {
             status('正在准备增量更新…');
             native.fileUtils.createDirectory(this.next);
-            if(cached)await this.copyTree(this.cache,this.next);
+            if(cached)await this.copyCachedFiles(patches[patches.length-1].files);
             let version=current;
             for (const patch of patches) {
                 await this.apply(patch,version,status);version=patch.version;
@@ -135,16 +135,17 @@ export class NativeDeltaUpdate {
         }
     }
 
-    private async copyTree(source:string,target:string):Promise<void> {
-        if (!native.fileUtils.isDirectoryExist(source)) return;
-        const files=native.fileUtils.listFiles(source);
+    private async copyCachedFiles(files:ContentFile[]):Promise<void> {
+        // Android listFiles includes ./ and ../. The verified snapshot is the
+        // complete game-file allowlist; no directory traversal is needed.
         for (let index=0;index<files.length;index++) {
-            this.lifetime.check();const path=files[index];
-            if (!path.startsWith(source)) throw new Error('本地缓存路径无效');
-            const destination=target+path.slice(source.length);
-            if (native.fileUtils.isDirectoryExist(path)) { native.fileUtils.createDirectory(destination);await this.copyTree(path,destination); }
-            else if (!native.fileUtils.writeDataToFile(native.fileUtils.getDataFromFile(path),destination)) throw new Error('本地资源复制失败');
-            if (index%16===0) await new Promise<void>(resolve=>setTimeout(resolve,0));
+            this.lifetime.check();const path=this.cache+files[index].path;
+            if (!native.fileUtils.isFileExist(path)) continue;
+            const destination=this.next+files[index].path;
+            const parent=destination.slice(0,destination.lastIndexOf('/')+1);
+            if (!native.fileUtils.isDirectoryExist(parent) && !native.fileUtils.createDirectory(parent)) throw new Error('本地资源目录创建失败');
+            if (!native.fileUtils.writeDataToFile(native.fileUtils.getDataFromFile(path),destination)) throw new Error('本地资源复制失败');
+            if (index%16===0 || files[index].bytes>1024*1024) await new Promise<void>(resolve=>setTimeout(resolve,0));
         }
     }
     private async verify(patch:DeltaPatch,status:(text:string)=>void):Promise<void> {

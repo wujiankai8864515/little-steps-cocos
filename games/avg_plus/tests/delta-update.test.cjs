@@ -60,6 +60,23 @@ test('only verified snapshots switch, preserve one rollback tree and clean it af
  updater.confirm();assert.equal(dirs.has(previous),true);
  const state=read(marker);state.probePending=false;put(marker,state);updater.confirm();assert.equal(dirs.has(previous),false);assert.equal(files.has(journalPath),false);
 });
+test('Android dot directory entries cannot recurse or copy unrelated files while unchanged nested assets survive',async()=>{
+ const updater=setup();const p=stage(updater);
+ put(cache+'assets/art/nested/photo.png','unchanged image');put(cache+'assets/config/levels.json','unchanged levels');
+ put(cache+'assets/orphan.bin','not in the verified snapshot');put(writable+'product-save.json','preserved progress');
+ p.files.push(file('assets/art/nested/photo.png','unchanged image'),file('assets/config/levels.json','unchanged levels'));
+ const list=native.fileUtils.listFiles,directory=native.fileUtils.isDirectoryExist;
+ native.fileUtils.listFiles=path=>[path+'./',path+'../',...[...files.keys()].filter(key=>key.startsWith(path))];
+ native.fileUtils.isDirectoryExist=path=>path.endsWith('/./')||path.endsWith('/../')||directory(path);
+ try {
+  assert.equal(await updater.run(()=>{}),'restart');
+  assert.equal(files.get(cache+'assets/art/nested/photo.png').toString(),'unchanged image');
+  assert.equal(files.get(cache+'assets/config/levels.json').toString(),'unchanged levels');
+  assert.equal(files.has(cache+'assets/orphan.bin'),false);
+  assert.equal(files.get(writable+'product-save.json').toString(),'preserved progress');
+  assert.equal(files.get(previous+'assets/art/nested/photo.png').toString(),'unchanged image');
+ } finally {native.fileUtils.listFiles=list;native.fileUtils.isDirectoryExist=directory;}
+});
 test('corrupt downloads and either directory rename failure leave the previous game and marker intact',async()=>{
  for(const failure of ['corrupt',cache,next]){
   const updater=setup();stage(updater,{corrupt:failure==='corrupt'});if(failure!=='corrupt')renameFailure=failure;
