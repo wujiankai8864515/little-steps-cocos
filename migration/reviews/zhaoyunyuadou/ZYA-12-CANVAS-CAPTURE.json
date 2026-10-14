@@ -1,0 +1,17 @@
+{
+  "id": "ZYA-12",
+  "scope": "QA-only paired after-draw PNG/state capture and isolated fixtures; no production Boot mutation",
+  "build": "v23 pass",
+  "verified": [
+    "v22 tutorial captures battle step 1 with time 0 rather than prior MatchScene",
+    "v22 paused PNG/state agree at time 19.4333 with attack 19",
+    "v23 initial home stars=2 reports and shows two gold frames",
+    "v23 claimed fixture returns to home stars=2 and F9 capture accepts changed page"
+  ],
+  "failedEvidenceRetained": "v21 initial tutorial capture and whole-image comparison describe wrong page; not a valid tutorial acceptance result",
+  "remaining": [
+    "strict pixels on all pages",
+    "real WeChat device"
+  ],
+  "originalRuntimeExecuted": false
+}

@@ -37,6 +37,9 @@ def main():
 """
     text = text.replace('    start() {','    start() {\n'+helper)
     text = text.replace('        void this.application.start();', """        const app:any=this.application;
+        const inspectVisible=app.inspect.bind(app);
+        app.inspect=()=>({...inspectVisible(),visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null});
+        if(fixture==='home-stars'){app.profile.stars=Number(qaQuery.get('stars')||'2');app.profile.gold=20;app.profile.tutorial=true;}
         if(fixture==='shop'||fixture==='lottery') {
             app.profile.gold=8623;app.profile.stamina=25;
             app.profile.items=['trash','range','pill','allSpeed','life','shovel','exorcism','together'];
@@ -54,15 +57,16 @@ def main():
             if(qaQuery.get('capture')==='1'){
                 let captureTime=0;
                 director.on(Director.EVENT_AFTER_DRAW,()=>{
+                    if(captureTime===0&&(fixture==='tutorial'&&(app.page!=='battle'||app.revision!==app.battle?.revision)||fixture==='result'&&app.page!=='result'))return;
                     const now=performance.now();if(now-captureTime<600)return;captureTime=now;
                     const canvas=document.getElementById('GameCanvas') as HTMLCanvasElement;
-                    if(canvas)document.documentElement.dataset.zyaPng=canvas.toDataURL('image/png');
+                    if(canvas){document.documentElement.dataset.zyaPng=canvas.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify(app.inspect());}
                 });
             }
         });""")
     text = text.replace('                let captureTime=0;', '                let captureTime=0;let captureRequested=true;input.on(Input.EventType.KEY_DOWN,e=>{if(e.keyCode===KeyCode.F9)captureRequested=true;});')
     text = text.replace('if(now-captureTime<600)return;captureTime=now;', 'if(!captureRequested||now-captureTime<600)return;captureTime=now;captureRequested=false;')
-    text = "import { director, Director, input, Input, KeyCode } from 'cc';\nimport { ITEMS } from './game/GameModel';\n" + text
+    text = "import { director, Director, input, Input, KeyCode, Sprite } from 'cc';\nimport { ITEMS } from './game/GameModel';\n" + text
     boot.write_text(text,encoding='utf-8')
     app_path = project / 'assets/game/GameApp.ts'
     app_text=app_path.read_text(encoding='utf-8')
@@ -79,7 +83,7 @@ def main():
     evidence = ROOT / 'migration/reviews/zhaoyunyuadou' / (args.name+'.json')
     evidence.parent.mkdir(parents=True,exist_ok=True)
     manifest = {'name':args.name,'kind':'browser QA candidate, not formal release','creator':'3.8.8','files':files,
-                'overrides':[{'file':'assets/Boot.ts','sourceSHA256':before,'purpose':'Declared QA inspection, optional fixed-state fixture and actual-canvas capture; original runtime not executed'},
+                'overrides':[{'file':'assets/Boot.ts','sourceSHA256':before,'purpose':'Declared QA inspection including visible home-star skins/UVs, optional fixed-state fixture and paired actual-canvas/state capture; original runtime not executed'},
                              {'file':'assets/game/GameApp.ts','purpose':'Isolated QA storage namespace; production saves untouched'}],
                 'build':'pending','visual':'pending','wechatDevice':'pending','startScene':config['startScene']}
     evidence.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')

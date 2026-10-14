@@ -53,6 +53,18 @@
       "cause": "Public WeChat short-screen reference retains a wider merchant panel than native 1.0.9 stage-height fitting",
       "repair": "Explicit short-screen public-reference calibration, original item prefabs and 80% backdrop",
       "verification": "compare-v16-shop.json; full-image MAE reduced from 60.2807 to 36.2072; strict acceptance remains unproven"
+    },
+    {
+      "trigger": "v21 first tutorial canvas export",
+      "evidence": [
+        "zya-v21-tutorial.png",
+        "zya-v21-tutorial.json",
+        "comparison/tutorial-v21.json"
+      ],
+      "cause": "Auto capture occurred during the preceding matching page, while the later state JSON described battle. The initial canvas key press did not replace this capture.",
+      "repair": "QA mirror captures tutorial only after BattleScene drawBattle revision is ready, and stores zyaPngState in the same after-draw callback as PNG. Evidence exporter must use that frozen state.",
+      "verification": "v22 captured PNG and zyaPngState both describe BattleScene, tutorial step 1, time 0, food 20 at 320x704. Whole-image MAE 10.172107, no rescaling; strict still unproven.",
+      "strict": "v21 first tutorial MAE is invalid for the requested tutorial state, retained as failed evidence"
     }
   ],
   "strict1to1": "pending",

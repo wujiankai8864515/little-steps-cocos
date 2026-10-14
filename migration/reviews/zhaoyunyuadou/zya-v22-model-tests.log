@@ -1,0 +1,33 @@
+✔ initial geometry, roads and unlock cells are valid on all four maps (9.790459ms)
+✔ recruitment is atomic when short of food, camp full or paused (1.307708ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (11.008334ms)
+✔ invalid enemy-side/road drops preserve both source and food (6.237666ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (2.886584ms)
+✔ equal units merge, different units swap, level five never silently destroys units (3.197667ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (0.76675ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (2.619709ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (4.840042ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (3.267417ms)
+✔ settlement is idempotent including double reward and reload (13.261166ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (2.520958ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.447875ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (9.929166ms)
+✔ native attack interval is seconds; bow releases after its wind-up and survives pause/restore (5.158834ms)
+✔ basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area (5.407583ms)
+✔ original unit frame canvases retain trim offsets and complete one attack before returning to idle (19.068291ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (6.363084ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (45.389375ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (2.018875ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (4356.439875ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (74.501625ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (108.214334ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (351.8525ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8270.490792
+

@@ -1,0 +1,180 @@
+{
+  "id": "ZYA-11",
+  "date": "2026-10-15",
+  "scope": "Basic unit natural canvas positions, declarative frame sampling, native seconds-based attack interval, delayed bow/melee attack, paused/restored wind-up",
+  "facts": "Read as inert text; neither public runtime nor downloaded JavaScript was executed",
+  "sourceSHA256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+  "sourceLines": {
+    "stats": 1115,
+    "FrameSkeleton": 1584,
+    "nativeInterval": 2177,
+    "bow": 2798,
+    "knife": 2857,
+    "pike": 2871,
+    "cavalry": 2879,
+    "frameConfig": 7346
+  },
+  "units": [
+    {
+      "kind": "刀",
+      "folder": "soldier_0",
+      "nativeOffset": [
+        -33,
+        -30
+      ],
+      "originalCanvas": [
+        120,
+        129
+      ],
+      "trimOffset": [
+        54,
+        56
+      ],
+      "trimBounds": [
+        38,
+        41
+      ],
+      "visibleIdleBoundsIn80pxCell": [
+        21,
+        26,
+        38,
+        41
+      ],
+      "idle": {
+        "frames": 7,
+        "seconds": 0.667
+      },
+      "attack": {
+        "frames": 19,
+        "seconds": 0.6,
+        "initialRate": 1,
+        "releaseSecondsAtLevel1": 0.5
+      },
+      "framePathsVerified": 26
+    },
+    {
+      "kind": "弓",
+      "folder": "soldier_1",
+      "nativeOffset": [
+        5,
+        13
+      ],
+      "originalCanvas": [
+        74,
+        95
+      ],
+      "trimOffset": [
+        21,
+        1
+      ],
+      "trimBounds": [
+        27,
+        52
+      ],
+      "visibleIdleBoundsIn80pxCell": [
+        26,
+        14,
+        27,
+        52
+      ],
+      "idle": {
+        "frames": 7,
+        "seconds": 0.667
+      },
+      "attack": {
+        "frames": 30,
+        "seconds": 1,
+        "initialRate": 1.25,
+        "releaseSecondsAtLevel1": 0.52
+      },
+      "framePathsVerified": 37
+    },
+    {
+      "kind": "枪",
+      "folder": "soldier_2_zh",
+      "nativeOffset": [
+        30,
+        5
+      ],
+      "originalCanvas": [
+        41,
+        68
+      ],
+      "trimOffset": [
+        5,
+        18
+      ],
+      "trimBounds": [
+        34,
+        48
+      ],
+      "visibleIdleBoundsIn80pxCell": [
+        35,
+        23,
+        34,
+        48
+      ],
+      "idle": {
+        "frames": 8,
+        "seconds": 0.667
+      },
+      "attack": {
+        "frames": 21,
+        "seconds": 0.667,
+        "initialRate": 1,
+        "releaseSecondsAtLevel1": 0.36
+      },
+      "framePathsVerified": 29
+    },
+    {
+      "kind": "骑",
+      "folder": "soldier_3_zh",
+      "nativeOffset": [
+        -95,
+        -108
+      ],
+      "originalCanvas": [
+        263,
+        294
+      ],
+      "trimOffset": [
+        106,
+        116
+      ],
+      "trimBounds": [
+        56,
+        61
+      ],
+      "visibleIdleBoundsIn80pxCell": [
+        11,
+        8,
+        56,
+        61
+      ],
+      "idle": {
+        "frames": 6,
+        "seconds": 0.6
+      },
+      "attack": {
+        "frames": 19,
+        "seconds": 0.6,
+        "initialRate": 1,
+        "releaseSecondsAtLevel1": 0.15
+      },
+      "framePathsVerified": 25
+    }
+  ],
+  "verification": {
+    "modelTests": 24,
+    "typecheck": "pass",
+    "webCandidate": "zya-web-v22",
+    "visual": "v22 actual Cocos 320x704 original frames visible; recruit/drag/pause exercised. Strict same-phase animation comparison pending.",
+    "wechatDevice": "pending",
+    "screenshotState": "zya-v22-paused.json; time 19.433333333333458, attack 19, cooldown .4; PNG and state captured in the same after-draw callback"
+  },
+  "remaining": [
+    "same-phase strict pixel comparison",
+    "rotating cavalry and moving pike native collision geometry",
+    "all hero/weapon skills and timing"
+  ]
+}
