@@ -117,7 +117,7 @@ def build(args, config, project, stage, name):
             entry_config=json.loads(entry.read_text()) if entry.exists() else {'projectname':config['displayName'],'compileType':'game','miniprogramRoot':'project/','setting':{'urlCheck':True,'es6':True},'condition':{}}
             entry_config['appid']=appid;write_json(entry,entry_config)
             manifest['fixedProject']=str(active);manifest['developerToolsRoot']=str(destination)
-        write_json(record,manifest);return {k:v for k,v in manifest.items() if k!='workingInputs'}
+        write_json(record,manifest);return {k:v for k,v in manifest.items() if k not in ['workingInputs','outputFiles']}
     except Exception as error:
         manifest.update(build='fail',error=str(error));write_json(record,manifest);raise
 
