@@ -13,6 +13,7 @@ function moduleFrom(name) {
 }
 const M = moduleFrom('GameModel');
 const R = moduleFrom('InkRigMath');
+const U = moduleFrom('ReferenceUnits');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
@@ -100,8 +101,39 @@ test('day boundary clears only daily items; stamina uses elapsed time and caps a
 test('reference archer reaches distant enemies and opponent does not borrow player gear',()=>{
     const b=round(),unit=b.unit('弓');b.armies[0].units[58]=unit;const p=b.position(58);
     b.enemies.push({id:100,side:0,progress:0,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x+200,y:p.y});
-    b.advance(1/30);assert.equal(b.shots.length,1);
+    b.advance(1/30);assert.equal(b.shots.length,0);assert.equal(b.pendingAttacks.length,1);
+    for(let i=0;i<17;i++)b.advance(1/30);assert.equal(b.shots.length,1);
     b.profile.equipped['赵云']=19;assert.equal(b.stats(b.unit('字','赵'),M.HEROES[0],1,1).weapon,undefined);
+});
+test('native attack interval is seconds; bow releases after its wind-up and survives pause/restore',()=>{
+    const b=round(),unit=b.unit('弓');b.armies[0].units[58]=unit;b.spawnTime=10000;b.aiTime=10000;
+    assert.equal(b.stats(unit).interval,.8);assert.equal(b.stats(b.unit('刀','刀',2)).interval,.8/1.5);assert.equal(b.stats(b.unit('字','赵'),M.HEROES[0]).interval,.8);
+    const p=b.position(b.map.paths[0][1]);b.enemies.push({id:900,side:0,progress:80,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x,y:p.y});
+    b.advance(.2);assert.equal(b.shots.length,0);assert.equal(b.pendingAttacks.length,1);
+    const saved=b.snapshot();b.paused=true;b.advance(2);assert.equal(b.snapshot(),saved);b.paused=false;
+    const restored=M.Battle.restore(saved,b.profile,weapons);assert.ok(restored);
+    for(let i=0;i<14;i++){b.advance(1/30);restored.advance(1/30);}
+    assert.equal(b.snapshot(),restored.snapshot());assert.ok(b.shots.length>0||b.enemies[0].hp<100);
+});
+test('basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area',()=>{
+    for(const kind of ['刀','枪','骑']){
+        const b=round(),unit=b.unit(kind);b.armies[0].units[58]=unit;
+        const p=b.position(58);b.enemies=[{id:901,side:0,progress:0,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x+60,y:p.y},{id:902,side:0,progress:100,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x+100,y:p.y},{id:903,side:0,progress:200,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x+60,y:p.y+40}];
+        b.releaseBasicAttack({unit:unit.id,side:0,cell:58,kind,target:901,ttl:0,damage:3,range:160,x:p.x,y:p.y,targetX:p.x+60,targetY:p.y});
+        assert.equal(b.shots.length,0);assert.equal(b.enemies[0].hp,97);assert.equal(b.enemies[1].hp,kind==='刀'?100:97);assert.equal(b.enemies[2].hp,kind==='骑'?97:100);
+    }
+});
+test('original unit frame canvases retain trim offsets and complete one attack before returning to idle',()=>{
+    const art=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/art.json')));
+    for(const kind of ['刀','弓','枪','骑']){
+        const spec=U.BASIC_UNITS[kind],player=new U.UnitFramePlayer(kind);let path=player.advance(0,0,.8);
+        const f=art.frames[path];assert.ok(f);assert.ok(spec.offset[0]+f.offset[0]>=0);assert.ok(spec.offset[1]+f.offset[1]>=0);assert.ok(spec.offset[0]+f.offset[0]+f.rect[2]<=80);assert.ok(spec.offset[1]+f.offset[1]+f.rect[3]<=80);
+        path=player.advance(0,1,.8);assert.ok(path.includes('attack_00'));assert.ok(art.frames[path]);
+        const frozen=player.elapsed;player.advance(0,1,.8);assert.equal(player.elapsed,frozen);
+        path=player.advance(spec.attackDuration/spec.initialRate+1e-5,1,.8);assert.equal(player.clip,'zhan');assert.ok(art.frames[path]);
+        player.reset(0);player.advance(0,1,.8,true);path=player.advance(spec.attackDuration/spec.initialRate+1e-5,1,.8,true);assert.equal(player.clip,'attack');assert.ok(path.includes(String(spec.attackFrames-1).padStart(2,'0')));player.advance(0,1,.8,false);assert.equal(player.clip,'zhan');
+        for(let i=0;i<200;i++){path=player.advance(1/60,i<50?1:2,.4);assert.ok(art.frames[path],path);}
+    }
 });
 test('brush, trash and traps preserve legal targets and reserve effects',()=>{
     const b=round();b.profile.items=['brush','trash','trap'];b.armies[0].reserve[0]=b.unit('字','赵');

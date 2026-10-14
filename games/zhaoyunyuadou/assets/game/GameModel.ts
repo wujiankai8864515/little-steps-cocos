@@ -1,9 +1,10 @@
 /** ZYA-02: deterministic game rules, independent of Cocos and wall-clock timers. */
 import { REFERENCE_MAPS } from './ReferenceMaps';
 import { BOSSES, BOSS_CHANCES, BOSS_ROUNDS, EARLY_HEALTH, WAVE_COUNTS, WAVE_HEALTH } from './ReferenceCombat';
+import { BASIC_UNITS, BasicKind, isBasicKind } from './ReferenceUnits';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
-export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; target?:number; streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
+export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
 export interface Hero { name: string; chars: string; weaponType: number; range: number; power: number; speed: number; rarity: number; skill: string; }
 export const GLYPHS = '赵云张飞马超关羽平兴黄忠苞翼盖祖甄宓刘备';
 export const HEROES: Hero[] = [
@@ -141,11 +142,13 @@ export interface Enemy { id: number; side: Side; progress: number; hp: number; m
 export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string; visited?:number[]; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
+export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
     readonly random: Random;
     armies: [Army, Army]; enemies: Enemy[] = []; shots: Shot[] = []; effects: Effect[] = [];
+    pendingAttacks:PendingAttack[]=[];
     time = 0; wave = 1; waveTime = 0; paused = false; completed = false; result: BattleResult | null = null;
     tutorialStep = 0; revision = 0; nextId = 1; spawnTime = 4; spawned = 0; aiTime = 1.5;
     boosts: Record<number, number> = {}; ranges: Record<number, number> = {}; cooldowns: Record<string, number> = {}; aiSilence = 0;
@@ -242,7 +245,8 @@ export class Battle {
         let range = hero ? hero.range : unit.kind === '弓' ? 280 : unit.kind === '枪' ? 200 : unit.kind === '骑' ? 160 : 120;
         if (weapon) { power += weapon.addAttPower; if ([1,11,21,32].includes(weapon.id)) range += 40;if(weapon.id===13)range+=80; if (weapon.id === 8) range *= 2;if(weapon.id===33)power+=3; }
         power *= (hero?[1,1.3,1.56,1.794,1.9734]:[1,1.5,2.1,2.73,3.4125])[level-1];
-        let speed=(hero?hero.speed:.8)*(hero?[1,1.5,2.1,2.73,3.276]:[1,1.5,2.1,2.73,3.4125])[level-1];
+        // The original xp field is an interval in seconds, not attacks/second.
+        let speed=1/(hero?hero.speed:.8)*(hero?[1,1.5,2.1,2.73,3.276]:[1,1.5,2.1,2.73,3.4125])[level-1];
         if (this.has('together')) speed*=side===0?1.5:1.3;
         if (this.has('allSpeed'))speed*=1.1;
         speed*=1+(this.boosts[unit.id]||0);range*=this.ranges[unit.id]||1;
@@ -327,6 +331,20 @@ export class Battle {
         for(const target of pool.slice(0,count))this.fire(unit,side,target,pos,damage,kind,kind==='fire'?45:0);
     }
     private battleEffect(kind:string,pos:{x:number;y:number},side:Side,text?:string){this.effects.push({id:this.nextId++,kind,x:pos.x,y:pos.y,text,ttl:.8,duration:.8,side});}
+    private releaseBasicAttack(attack:PendingAttack){
+        const unit=this.armies[attack.side].units[attack.cell];if(!unit||unit.id!==attack.unit||!isBasicKind(unit.kind)||['chaos','stun','sealed'].includes(unit.debuff||''))return;
+        const pool=this.enemies.filter(e=>e.side===attack.side&&e.hp>0&&Math.hypot(e.x-attack.x,e.y-attack.y)<=attack.range);
+        const target=pool.find(e=>e.id===attack.target)||pool.sort((a,b)=>attack.kind==='弓'?b.progress-a.progress:Math.hypot(a.x-attack.x,a.y-attack.y)-Math.hypot(b.x-attack.x,b.y-attack.y))[0];
+        if(!target)return;
+        if(attack.kind==='弓'){this.fire(unit,attack.side,target,{x:attack.x,y:attack.y},attack.damage,'弓');return;}
+        let hit:Enemy[]=[target];
+        if(attack.kind==='骑')hit=pool;
+        if(attack.kind==='枪'){
+            const dx=attack.targetX-attack.x,dy=attack.targetY-attack.y,length=Math.hypot(dx,dy)||1,ux=dx/length,uy=dy/length;
+            hit=pool.filter(e=>{const x=e.x-attack.x,y=e.y-attack.y,along=x*ux+y*uy;return along>=-20&&along<=attack.range&&Math.abs(x*uy-y*ux)<=25;});
+        }
+        for(const enemy of hit){enemy.hp-=attack.damage;this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(attack.damage)),ttl:.6,duration:.6,side:attack.side});}
+    }
     private weaponAttack(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},stats:ReturnType<Battle['stats']>,hero?:Hero){
         const id=stats.weapon?.id,first=!unit.seen?.includes(target.id);
         unit.streak=unit.target===target.id?(unit.streak||0)+1:0;unit.target=target.id;
@@ -413,6 +431,8 @@ export class Battle {
             this.revision++;
         }
         if (this.aiTime <= 0) { if (this.aiSilence <= 0) this.ai(); this.aiTime = 2.8 + this.random.next() * 1.7; }
+        for(const attack of this.pendingAttacks){attack.ttl-=dt;if(attack.ttl<=0)this.releaseBasicAttack(attack);}
+        this.pendingAttacks=this.pendingAttacks.filter(attack=>attack.ttl>0);
         for (const side of [0,1] as Side[]) {
             const army = this.armies[side], links = this.heroes(side), second = new Set(links.map(h => h.right));
             const snakeLinks=links.filter(link=>side===0&&this.profile.equipped[link.hero.name]===18),snakeIds=new Set(snakeLinks.map(link=>army.units[link.left].id));
@@ -431,11 +451,16 @@ export class Battle {
                 const link = links.find(h => h.left === cell); if (unit.kind === '字' && !link) continue;
                 const stats = this.stats(unit, link?.hero, link?.level,side), pos = this.position(cell);
                 if (link) pos.x += 40;
-                const targets = this.enemies.filter(e => e.side === side && e.hp > 0 && Math.hypot(e.x - pos.x, e.y - pos.y) <= stats.range).sort((a,b) => b.progress - a.progress);
+                const closestEnd=link?['赵云','关兴','张苞','张翼','黄祖'].includes(link.hero.name):unit.kind==='弓';
+                const targets = this.enemies.filter(e => e.side === side && e.hp > 0 && Math.hypot(e.x - pos.x, e.y - pos.y) <= stats.range).sort((a,b) => closestEnd?b.progress-a.progress:Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
                 if (!targets.length) continue;
                 unit.cooldown = stats.interval; unit.attacks++;
                 const target = targets[0];
-                this.weaponAttack(unit,side,target,pos,stats,link?.hero);
+                unit.attackX=target.x;unit.attackY=target.y;
+                if(!link&&isBasicKind(unit.kind)){
+                    unit.target=target.id;const delay=BASIC_UNITS[unit.kind].release*(unit.kind==='骑'?1:stats.interval/.8);
+                    if(this.pendingAttacks.length<160)this.pendingAttacks.push({unit:unit.id,side,cell,kind:unit.kind,target:target.id,ttl:delay,damage:stats.power,range:stats.range,x:pos.x,y:pos.y,targetX:target.x,targetY:target.y});
+                }else this.weaponAttack(unit,side,target,pos,stats,link?.hero);
                 if (link && unit.attacks % 8 === 0) {
                     this.effect('skill', cell, side, link.hero.skill);
                     const max = link.hero.name === '黄忠' ? 12 : 5,exclusive=link.hero.name==='黄忠'&&stats.weapon?.id===5?2:1;
@@ -497,7 +522,7 @@ export class Battle {
         return JSON.stringify({ version:1, map:this.map.id, seed:this.random.state, armies:this.armies, enemies:this.enemies, time:this.time,
             wave:this.wave, waveTime:this.waveTime, spawned:this.spawned, spawnTime:this.spawnTime, nextId:this.nextId, boosts:this.boosts,
             cooldowns:this.cooldowns, tutorialStep:this.tutorialStep, saveId:this.saveId, completed:this.completed, result:this.result,
-            shots:this.shots,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
+            shots:this.shots,pendingAttacks:this.pendingAttacks,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
             ranges:this.ranges,hazards:this.hazards,shovelTime:this.shovelTime,meteorTime:this.meteorTime,companions:this.companions,bossRound:this.bossRound,haze:this.haze });
     }
     static restore(text: string, profile: Profile, weapons: Weapon[]): Battle | null {
@@ -511,7 +536,7 @@ export class Battle {
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
-                completed:!!raw.completed,result:raw.result||null,shots:raw.shots||[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
+                completed:!!raw.completed,result:raw.result||null,shots:raw.shots||[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
                 aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
                 ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0}); return b;
         } catch (_) { return null; }
