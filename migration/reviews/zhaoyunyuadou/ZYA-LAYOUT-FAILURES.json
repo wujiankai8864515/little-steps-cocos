@@ -65,6 +65,17 @@
       "repair": "QA mirror captures tutorial only after BattleScene drawBattle revision is ready, and stores zyaPngState in the same after-draw callback as PNG. Evidence exporter must use that frozen state.",
       "verification": "v22 captured PNG and zyaPngState both describe BattleScene, tutorial step 1, time 0, food 20 at 320x704. Whole-image MAE 10.172107, no rescaling; strict still unproven.",
       "strict": "v21 first tutorial MAE is invalid for the requested tutorial state, retained as failed evidence"
+    },
+    {
+      "trigger": "v25 QA control diagnostic build",
+      "evidence": [
+        "zya-web-v25.log",
+        "zya-web-v25.json"
+      ],
+      "cause": "QA header imported UITransform twice, including its existing declaration in original Boot.ts. Creator rejected the mirrored Boot before script packing.",
+      "repair": "Alias QA import as QAUITransform and use the alias only in QA control inspection. Original Boot and native candidate unchanged.",
+      "verification": "v26 build passed and actual merchant click/purchase performed; alias fixes duplicate QA import.",
+      "scope": "QA mirror only; no production source was modified by this failure"
     }
   ],
   "strict1to1": "pending",

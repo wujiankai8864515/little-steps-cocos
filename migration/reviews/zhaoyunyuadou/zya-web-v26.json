@@ -1,0 +1,975 @@
+{
+  "name": "zya-web-v26",
+  "kind": "browser QA candidate, not formal release",
+  "creator": "3.8.8",
+  "files": [
+    {
+      "path": ".DS_Store",
+      "sha256": "501a809c5d46a4cdb2f1091d7fdb21ce72167f64535f452f6bf1d38a877eaedc"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "7b7bcc12a6aa416cf2d2e57904bbfa00d8e8963cc4f2b5b5e89766e32df951da"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c65eb9830835c49cf06852e21637466f5668e0456d6bb19a391492a87dd9a542"
+    },
+    {
+      "path": "assets/.DS_Store",
+      "sha256": "c413abf9af93e467442ca6253dac4d6e83011590a1226413fcb56f39a7018781"
+    },
+    {
+      "path": "assets/Boot.ts",
+      "sha256": "7f951451887ef1f2b3bbe9db4b615a416653623839a4b830e4d912e6084c8237"
+    },
+    {
+      "path": "assets/Boot.ts.meta",
+      "sha256": "950a40633a1e867d227090705b311edc10b3d78d9bd594f3e16df8ca52dcc40d"
+    },
+    {
+      "path": "assets/bundles/zya_actors/2bc7210fb6e6c415e89d.png",
+      "sha256": "abf6e935f55522bbe196bff1a06ed6b7b08282ee8f68e18b815ba36bed9ac6d5"
+    },
+    {
+      "path": "assets/bundles/zya_actors/307b527b10fece363af8.png",
+      "sha256": "351e75d33c48527931875eb6466e239574543ea55fc22f90799f060e2d9cf7d5"
+    },
+    {
+      "path": "assets/bundles/zya_actors/338498fb2d008e60022c.json",
+      "sha256": "8fe7052b879f10f3874848ae547eaaf40c20190e96203e0f21987dbfe953144a"
+    },
+    {
+      "path": "assets/bundles/zya_actors/338498fb2d008e60022c.json.meta",
+      "sha256": "5f66c34df8066e88f7fdb7e40f5052ac5a3c28cf93b7911b64815d69d6cc1d55"
+    },
+    {
+      "path": "assets/bundles/zya_actors/34d3987c498b0ebd096c.json",
+      "sha256": "1c452bc6bbd4d206254c345e2d4c55d0a6ae1fe4f1457e3c383589c846eefc51"
+    },
+    {
+      "path": "assets/bundles/zya_actors/34d3987c498b0ebd096c.json.meta",
+      "sha256": "341ee881c158afad1dcbdbb2c8d97dfa44c6f7c5103dca07255398997c746a7f"
+    },
+    {
+      "path": "assets/bundles/zya_actors/3bfb7948fdbda203a589.png",
+      "sha256": "17ae2cdcff51914cc60e45846a36f6a3976b48ee70aa3bf77714037c6fbaba90"
+    },
+    {
+      "path": "assets/bundles/zya_actors/3d51a70f5f90f90efdf9.png",
+      "sha256": "6bd83f7828b7070c30cac06068bf1e5a2694c7f9932ced4f944715ae80edbf22"
+    },
+    {
+      "path": "assets/bundles/zya_actors/4dfab5c3ca2e30986c26.png",
+      "sha256": "fb4566e19b7221963d31dcb99f049f9c3480657726dbd6617ff2e434986a466a"
+    },
+    {
+      "path": "assets/bundles/zya_actors/557784c7b77ca01f89ff.png",
+      "sha256": "6d19de1409d161384505f6385615a133101bc05c7b091bb6a29401a399096c7f"
+    },
+    {
+      "path": "assets/bundles/zya_actors/5b8507d9b6650855f4fc.json",
+      "sha256": "a021d19cdfa5aee032e4c98d4cc3b0aab8800359a5d6889cee002a8ab15b77e5"
+    },
+    {
+      "path": "assets/bundles/zya_actors/5b8507d9b6650855f4fc.json.meta",
+      "sha256": "528b57b2343269ad83eb2a4ef234af82e6594594a6a9e44d990d8f855d5d3609"
+    },
+    {
+      "path": "assets/bundles/zya_actors/65737a8ab7736e954b40.png",
+      "sha256": "fb2a10d89136b6af5d4469505d7b13012fc377be2385db0a8b9cc3a71053d017"
+    },
+    {
+      "path": "assets/bundles/zya_actors/76bf5df472b33497ddd0.json",
+      "sha256": "739a1a5f760c8fb35f54acb18f91dc98da2271b75a99dae141608301886f4684"
+    },
+    {
+      "path": "assets/bundles/zya_actors/76bf5df472b33497ddd0.json.meta",
+      "sha256": "a058e7335358d8b8f7439fa838e901afc2e6c913298e221c494e8ab6440dd0c9"
+    },
+    {
+      "path": "assets/bundles/zya_actors/77012da695967c2eac7e.png",
+      "sha256": "5dfd2a8160761f4ba696d010dd1af8db28eba35bd08143d808a83477f7dfae72"
+    },
+    {
+      "path": "assets/bundles/zya_actors/7c62d8cff0163f3012b0.png",
+      "sha256": "2b70d61e84d54736979d2a30daaa7a10eb634aae6a9e6685e4a7f7c57c97b482"
+    },
+    {
+      "path": "assets/bundles/zya_actors/898b1c951fc2244052bd.json",
+      "sha256": "a1ee1f1e9bcaee05861f9b96345ebbe56737d9325cb09ebb77e74fb71acd8e3c"
+    },
+    {
+      "path": "assets/bundles/zya_actors/898b1c951fc2244052bd.json.meta",
+      "sha256": "41d9b2e8c632c6c58667386d074a563f40c061c39d3adc371edeeac4e196bce4"
+    },
+    {
+      "path": "assets/bundles/zya_actors/8c76efc9411286c7eacc.png",
+      "sha256": "1edd3a1ed45bf9197277dd801e1010ac065f216034a400af9086c2726f1cdcd2"
+    },
+    {
+      "path": "assets/bundles/zya_actors/9046fd01d3afc1aae93a.json",
+      "sha256": "38b3df82b5ad66fe8df870652c6c1b7bd968e0349ab585a04ffc2b34bd007312"
+    },
+    {
+      "path": "assets/bundles/zya_actors/9046fd01d3afc1aae93a.json.meta",
+      "sha256": "c429c9fdbe860aa03fa30cecc623c9775c5406e8f5dfb1e750e15c736541765f"
+    },
+    {
+      "path": "assets/bundles/zya_actors/90b8b017b8b41d57ad89.json",
+      "sha256": "2d0e763ccfea11ae86101a50aed574f23507b8eff541641164cda69fc1094c25"
+    },
+    {
+      "path": "assets/bundles/zya_actors/90b8b017b8b41d57ad89.json.meta",
+      "sha256": "3cdd1bd39d2a4abb275ae1c3f23b8aa3b93445f687441af2f8b27b8f9c99e601"
+    },
+    {
+      "path": "assets/bundles/zya_actors/959e314494e124e4e972.png",
+      "sha256": "dbf8e97c07beb7f7f6b0ef64baf0c65326b95f6057d65a32bf7b71651dcea83a"
+    },
+    {
+      "path": "assets/bundles/zya_actors/ae2c6bf7257e13afe00f.png",
+      "sha256": "ab033ccd0ad74c8f8d8f7547ed9c5fbf4047f18f997b608408a662fbaec5453f"
+    },
+    {
+      "path": "assets/bundles/zya_actors/b5f3654012ddb85205de.json",
+      "sha256": "c927b8d758dad613c0e730873f8199dd9da92fd5c8c787117f7f915946479276"
+    },
+    {
+      "path": "assets/bundles/zya_actors/b5f3654012ddb85205de.json.meta",
+      "sha256": "630d4aa28a32eb7d301da6a75610e840d91106e1dbbf9e3723566a7bd730d0e6"
+    },
+    {
+      "path": "assets/bundles/zya_actors/b743752e756abb4a4010.json",
+      "sha256": "a8f3d547f7b7911f24f8b3502c248717d3b82b892038dd1c9f384ec6f54dc309"
+    },
+    {
+      "path": "assets/bundles/zya_actors/b743752e756abb4a4010.json.meta",
+      "sha256": "e25581c4649e36f6e160f0a9fa680728db77fbdfcb702d0bbc9705d8e3d9d4f4"
+    },
+    {
+      "path": "assets/bundles/zya_actors/bd313231dc80cc5add99.json",
+      "sha256": "86fd34354afea44b97586b0c037f5344afc32e3c4b18d2553eb7dffa2bcb3a72"
+    },
+    {
+      "path": "assets/bundles/zya_actors/bd313231dc80cc5add99.json.meta",
+      "sha256": "73c43f0ffa645b0be6db5dc4ef580ab3e33ecc445379fb39f4b358efb05e14e2"
+    },
+    {
+      "path": "assets/bundles/zya_actors/c259b2ff9eaa29b13690.png",
+      "sha256": "4a5198cd5b7a8246f844a597fc502a5069528c4e423d4850ca45b7437ded03d1"
+    },
+    {
+      "path": "assets/bundles/zya_actors/c71b085d6ca53b043303.json",
+      "sha256": "fd77cefaa9083fa5c90e18f51caded4156d7d9c7fbcdeea2a7dd769e7536ab11"
+    },
+    {
+      "path": "assets/bundles/zya_actors/c71b085d6ca53b043303.json.meta",
+      "sha256": "294df86a7efff5cfc57b2bf09a9db61f6bfb8422eeb5824ecb94c357b9389820"
+    },
+    {
+      "path": "assets/bundles/zya_actors/cd072bc2201be8bdb1f5.png",
+      "sha256": "e842df7fc7834d342d2773cfeff66ff05474c69485432fe494b9b926756280ac"
+    },
+    {
+      "path": "assets/bundles/zya_actors/d03f789c29fca162334e.json",
+      "sha256": "6d3ea0dfe8f12328d475f6d7c66083bd33e36e86296358102a6995a2d9880069"
+    },
+    {
+      "path": "assets/bundles/zya_actors/d03f789c29fca162334e.json.meta",
+      "sha256": "c0ec778ca234948ebaeca5992f31f88bba54de52563350a846eb026d563435a8"
+    },
+    {
+      "path": "assets/bundles/zya_actors/d7e5f19ffc89938da09c.png",
+      "sha256": "b7b7de44107e4fbacf37f6c9cc501fef7af8650f5f0e3b25545d1a63ab8a2b86"
+    },
+    {
+      "path": "assets/bundles/zya_actors/dc5e6b5a3eee72d236f8.json",
+      "sha256": "a1164584f49367ddbb35804eba50191f9de8429acf4be61e2fa738b863d8daa6"
+    },
+    {
+      "path": "assets/bundles/zya_actors/dc5e6b5a3eee72d236f8.json.meta",
+      "sha256": "fcf4d8e75ccad0f54045f5653812e9fe9c58e2b09af673bf4331ee5e6f31cf8e"
+    },
+    {
+      "path": "assets/bundles/zya_actors/de51538ece1fd827e037.json",
+      "sha256": "519b4893815886dad66be22cecc85f1a956e4d0a5eb47191cebc4c10f7600b4d"
+    },
+    {
+      "path": "assets/bundles/zya_actors/de51538ece1fd827e037.json.meta",
+      "sha256": "2990424be05d5b87b3e54f03f8707f97d970f9cc9662fa7844ea3069ad2175a3"
+    },
+    {
+      "path": "assets/bundles/zya_actors/e323822d8cca7894977c.png",
+      "sha256": "47b32dd2241f152cd7c5bc58da021ed408f89fd4286ca129ef251c97c8f9d698"
+    },
+    {
+      "path": "assets/bundles/zya_actors/ed949613e48b1ded09ef.json",
+      "sha256": "c3c1e2dbb83ba3bdac3e017043da41e02dde70a13a1b9a89d06464f71eaa9b85"
+    },
+    {
+      "path": "assets/bundles/zya_actors/ed949613e48b1ded09ef.json.meta",
+      "sha256": "60406cabe53b097ce35046197c87644ba7f8e654849830725d37dfeb30f01b0a"
+    },
+    {
+      "path": "assets/bundles/zya_actors/f9e693e7d78ff3566456.json",
+      "sha256": "b4d665d6b27816cf26dded1360daa96d397606d33231066b8bcba5b718566d98"
+    },
+    {
+      "path": "assets/bundles/zya_actors/f9e693e7d78ff3566456.json.meta",
+      "sha256": "5d1b1e82c620c81424099c0a21e8e4a49f220b18e174cddf725a62347bf3af5b"
+    },
+    {
+      "path": "assets/bundles/zya_actors.meta",
+      "sha256": "cbb73535223dd931d129573b56b2b920259cea8a34bed1056d3b102e5e8a768e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/02959a4a3fc5e84cfdb2.mp3",
+      "sha256": "274eb3a70ab1ec3cbd084fe13405a4ae4aa146eae8337b994ce6e723c7ef8c86"
+    },
+    {
+      "path": "assets/bundles/zya_audio/034b6f1e69805cf23bcb.mp3",
+      "sha256": "f9e1874141a54713b75b098846f2bde7ed5356eb0d902c84ab8fd10be263b94d"
+    },
+    {
+      "path": "assets/bundles/zya_audio/065a821da7bca4107aa9.mp3",
+      "sha256": "46eb6bb832cc8fab06a5d8af90b62bf97e2ad7c94251d0e87a1d3211ec1b621e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/075424044319f977dcc3.mp3",
+      "sha256": "879116aaaaa60666c47fdf1b2e34a363194f675f7779fc135c0d6f1e56273235"
+    },
+    {
+      "path": "assets/bundles/zya_audio/0850e241b73e12129ac5.mp3",
+      "sha256": "74685cd72b484e644fc0069bf87dbb3c3fa4f4727f13683a26b33d6975350d72"
+    },
+    {
+      "path": "assets/bundles/zya_audio/08fc53681fce9613ef55.mp3",
+      "sha256": "f231400ab26d2387f58e940cf06054e6ceca8fd92e7b030a2df0a59eb75996b0"
+    },
+    {
+      "path": "assets/bundles/zya_audio/0c3624a886a08493de14.mp3",
+      "sha256": "9dd780f353db44e3e2edb425c04142bd860ae51b9e1635c6510f609d3e72d9ef"
+    },
+    {
+      "path": "assets/bundles/zya_audio/1308f7649ce62eea552d.mp3",
+      "sha256": "60ca70b6e3db2225c1856cd89e2b3deffcfccc2eb7b060160747dd48d51bf558"
+    },
+    {
+      "path": "assets/bundles/zya_audio/16454db90a7083bedb52.mp3",
+      "sha256": "922b22775ffe4904c2ff0c89bb73b66575937a0ba60129e8257d2ceaf791a7cd"
+    },
+    {
+      "path": "assets/bundles/zya_audio/166e86c5f348f2f49e4f.mp3",
+      "sha256": "7ba37fedbcb736b14d643a76bdfeb65875e2492834403ded6c33db9e2dda9639"
+    },
+    {
+      "path": "assets/bundles/zya_audio/16fe78cf123db62cb888.mp3",
+      "sha256": "dd09da2c1b2955e0f9d18bc97d8211cc2b7d52d7d62e335f50b78699150393ad"
+    },
+    {
+      "path": "assets/bundles/zya_audio/174ad3b4208a9adad6d5.mp3",
+      "sha256": "acb74744756d90eccb0e52a2b9909ea3031ff593ed9fd116a86a62a6a3051763"
+    },
+    {
+      "path": "assets/bundles/zya_audio/1c8f23db4574a89fd4a9.mp3",
+      "sha256": "edefbaf5bf861dd8554db9a10109e4c1ec836a76aa1062ceff38504ed0b62d35"
+    },
+    {
+      "path": "assets/bundles/zya_audio/1d0224dcb68599b032d2.mp3",
+      "sha256": "34af96f454916434e28f44d3b5bf91847a909fc60f2e9c585dc071bf1cbbac73"
+    },
+    {
+      "path": "assets/bundles/zya_audio/232ca988e0e652de7560.mp3",
+      "sha256": "3d4c8ee94998f57dac01c406e6f05fade14749413c7b77c0b66561566d9a7690"
+    },
+    {
+      "path": "assets/bundles/zya_audio/2e3e105abbcdfc6175e4.mp3",
+      "sha256": "f00278c96b625b635196e307d5d570f0c649632c6310eb66f06c9fb1c8f2a549"
+    },
+    {
+      "path": "assets/bundles/zya_audio/322225c7feed6c0ea414.mp3",
+      "sha256": "7a6385cc562104f01919d4c84a57a71d46b9950a176f1cba92f308692dfbd38d"
+    },
+    {
+      "path": "assets/bundles/zya_audio/326f65cee6d5c7313f87.mp3",
+      "sha256": "94fc7c7ba47c106dbd6777808d2c45be5fe3eceb90eec6f783a678f4e967a643"
+    },
+    {
+      "path": "assets/bundles/zya_audio/3471be90ed19496b1fde.mp3",
+      "sha256": "07045519b8d602807a0328aa6950f6e26393b934729e53176763bfc9ba97fbcb"
+    },
+    {
+      "path": "assets/bundles/zya_audio/38401717b5ea33efc30a.mp3",
+      "sha256": "2a70b5dd95ae9f41aed2bcd6a0f02522972e77b710ee844d1036b798eef1b504"
+    },
+    {
+      "path": "assets/bundles/zya_audio/38ed8c14bc789e50707b.mp3",
+      "sha256": "3208ac01c929a9c09efb41df031cd6ea2201bb257a5375946e894543f1ff777e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/39e36c6fe2cd17c79939.mp3",
+      "sha256": "3e0b45c4c237bb63383c3a7b22638c035e3ac76693aa91dbd4d26b8f0a46d14e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/40b90bd72e2511e00216.mp3",
+      "sha256": "00c5e11f4fdd3a77f37739decbc8adea5afcf470a151b18cc955d1bc2d9e85b8"
+    },
+    {
+      "path": "assets/bundles/zya_audio/42ad2b4f02760d1947c9.mp3",
+      "sha256": "6a4c71004ac232601b818c1103cc54ead92f6fa815639b91f73538702721dc6c"
+    },
+    {
+      "path": "assets/bundles/zya_audio/4e0b3dfff22d839754eb.mp3",
+      "sha256": "a392df15b4db6dc9332fbf6964fed206c535678628d7b57584ed46466de0f3e3"
+    },
+    {
+      "path": "assets/bundles/zya_audio/4e1c9f8324edc03f8a29.mp3",
+      "sha256": "32b915a9087935ab343cf2fc9dfe7f70667945f6ffcd7eb3c9a96fedf98a2c1b"
+    },
+    {
+      "path": "assets/bundles/zya_audio/513e5efc68e8f6a8557a.mp3",
+      "sha256": "5c883ddbc87c8f7247940c0bc4686b321df681763ac48aacf5762909e9612843"
+    },
+    {
+      "path": "assets/bundles/zya_audio/58738a912f797a75fa4d.mp3",
+      "sha256": "8dc0c8d3db92ccb91edf7c3d96d295e1b4cd865a82e3207bd1e53f57ee35a03f"
+    },
+    {
+      "path": "assets/bundles/zya_audio/63c07951440ba5213d71.mp3",
+      "sha256": "124a93279f6f2d0a8d798fd27bc59b48812cd74515ac0b6e7a143c8c124b0ffd"
+    },
+    {
+      "path": "assets/bundles/zya_audio/668a059f6f83fe7a421c.mp3",
+      "sha256": "f09d1028bbdd4c7391650d02fab52f15360e3980ecca6728cff79699f589d63b"
+    },
+    {
+      "path": "assets/bundles/zya_audio/673031a40aa41723dece.mp3",
+      "sha256": "cca757257f2b499950df69b9a55ea8339cc0c8cb37fd4374a137d26c6c22be93"
+    },
+    {
+      "path": "assets/bundles/zya_audio/6969773134851e9d36a6.mp3",
+      "sha256": "ddae5d24cd5f47e0a14b8b5d4ad7b98bd10d69e6427daf2200b70ba8a1085e22"
+    },
+    {
+      "path": "assets/bundles/zya_audio/6a880ad891feef098947.mp3",
+      "sha256": "85135e55b36355d8cfb757e121bc7e55fe4868a7a552f7c83aab4dd24ff8a570"
+    },
+    {
+      "path": "assets/bundles/zya_audio/6adab6826bcf8bc14bc9.mp3",
+      "sha256": "36ea74b40f8e404600f876bea3aa8f973df48c37a2e968d4f015597def6dbe6f"
+    },
+    {
+      "path": "assets/bundles/zya_audio/6ccec7ccee6b354f802b.mp3",
+      "sha256": "96d85b96e610cfc148fcd61d48efafb827878e489bc3e7c7c0649d042ba96bb7"
+    },
+    {
+      "path": "assets/bundles/zya_audio/71642549a1a46f5a2969.mp3",
+      "sha256": "06b07f332e9e4da9878ea328305efb9f8da6d567f0b2fed4508a9b26866402bc"
+    },
+    {
+      "path": "assets/bundles/zya_audio/82944f26e45c8ca040b9.mp3",
+      "sha256": "435957be577d226098f04fe7d26baa3c137d6e4fcf2b8ade77d581a20b526f77"
+    },
+    {
+      "path": "assets/bundles/zya_audio/867faa2c11c5881522d9.mp3",
+      "sha256": "cd32e9d324463675c8443d37e0bbb95507e34f37d07b495b852c9cd041e3c9ab"
+    },
+    {
+      "path": "assets/bundles/zya_audio/89d7d49366aa6ed608c5.mp3",
+      "sha256": "8f3a41229e3ee7d844053b68f708872e016fda4e0cff8e1a35dd35c812716334"
+    },
+    {
+      "path": "assets/bundles/zya_audio/8f86b67e2dcf9003a1fd.mp3",
+      "sha256": "ac9280c22c2cb0281e55af8a10dd02205ef59a5ddb71ba60551b8d6fb7e0e03e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/9443b8ce610fb439ba83.mp3",
+      "sha256": "b035dc29e7e8f1d26f104e29c4644c7f1c19521fac345d7d773d92152274d4f2"
+    },
+    {
+      "path": "assets/bundles/zya_audio/9b117ef95525fffd1045.mp3",
+      "sha256": "5a85ae3bde85362f19c9d220e7dba822232228429a6245c21c93db1e37add3aa"
+    },
+    {
+      "path": "assets/bundles/zya_audio/9e115820394fdd28d7ab.mp3",
+      "sha256": "84bb8175711f74a62139f6a01d35439c6df1f1593fbb5aab93a2243623917776"
+    },
+    {
+      "path": "assets/bundles/zya_audio/a20fc29cbe3925db67df.mp3",
+      "sha256": "0c3786fd8e263af35c5bcf1aee24801bcb83af86323eacc55ae7b97ccb4661d4"
+    },
+    {
+      "path": "assets/bundles/zya_audio/ac9ddd1657adebcad688.mp3",
+      "sha256": "6330dbf5f6e83a0e48fae3f8a3a6499f7fd70d3ec29c54cb2d040431f3def0fd"
+    },
+    {
+      "path": "assets/bundles/zya_audio/ad8b96110424b4451a26.mp3",
+      "sha256": "c86284db41c7b2fb9cf55fdbcbe519096ac4e91d3925d2c0677c8bfd9bfcf3d9"
+    },
+    {
+      "path": "assets/bundles/zya_audio/bbea9d3fc9d089caac13.mp3",
+      "sha256": "a9579c777f9fff955dd0986380abfff7b975ed2252c27d8442c0f30c5ec88ea8"
+    },
+    {
+      "path": "assets/bundles/zya_audio/c89d72a4ffe7612ea678.mp3",
+      "sha256": "2033dd8708d2f77d71eff122a58163d4404d36e2d47d3e1051132a7b6264c5db"
+    },
+    {
+      "path": "assets/bundles/zya_audio/c8bc54a8af55167029e8.mp3",
+      "sha256": "1ee02657c197b60c13f1d6aaa4c774bc2278b18e58204ce3361df6f0fe7dc80c"
+    },
+    {
+      "path": "assets/bundles/zya_audio/cafca13d6288e65cf4b6.mp3",
+      "sha256": "5d022a4347c01df4995d7fb936fbd79f7bd4282852f90b2a4afe598052d7c263"
+    },
+    {
+      "path": "assets/bundles/zya_audio/cdb14189c56e7bb6496a.mp3",
+      "sha256": "a6afadd9506a8584a60dfc34d4890bc3e2a0fe021fed65cef4c02638dbdfd8da"
+    },
+    {
+      "path": "assets/bundles/zya_audio/cfb7e9f3a6cb9ecdfc04.mp3",
+      "sha256": "acf6f8d323500a3bcd81defe31c9560af19d92c15a6d9ee587f91d286e52d55e"
+    },
+    {
+      "path": "assets/bundles/zya_audio/d080dcbaabc927e375d0.mp3",
+      "sha256": "be517c6326660b1ab54f362a7fc374aaf29687ec577e15d7ca4256340d9728d7"
+    },
+    {
+      "path": "assets/bundles/zya_audio/db2a27aa384fcb3f4794.mp3",
+      "sha256": "f9fd3bbcc0de535f2ddee632e203adf04fc098479b3465116712cf8f9e31934f"
+    },
+    {
+      "path": "assets/bundles/zya_audio/e19d50cbb818eeac8975.mp3",
+      "sha256": "a5ac97aadc2a9d18f9972cea407d6c532e8d5e87bdeb378c66045cbf9503bcd8"
+    },
+    {
+      "path": "assets/bundles/zya_audio/e729ab174b3c2bc7eaa4.mp3",
+      "sha256": "f6a0ac5d9c78156c82d4c46e6ff6094c75581b5bc91e3eb2cd2d24cbd7d12906"
+    },
+    {
+      "path": "assets/bundles/zya_audio/edf52219ac612eea2593.mp3",
+      "sha256": "425bd17c5914ab8cab628b003114c09cb1310dc6a185804480d2e59aa2302893"
+    },
+    {
+      "path": "assets/bundles/zya_audio/eed5ba9040a47662acfb.mp3",
+      "sha256": "3e60d9bbf428eaec731e84bb8cead48678073da1cec9f6395072cda6293d78b8"
+    },
+    {
+      "path": "assets/bundles/zya_audio/f37b5e9ea4f069ac4232.mp3",
+      "sha256": "127bcdf75478620e29f9f8b089d175cb1a8efa273152721fd649c8d69e898563"
+    },
+    {
+      "path": "assets/bundles/zya_audio/f486f452394112c893f2.mp3",
+      "sha256": "aa31d01a87f79f9704a0f4d10e96e34fc46b2f7fc8353cb323409bfd3f424594"
+    },
+    {
+      "path": "assets/bundles/zya_audio/fa008d69bdc89ee843df.mp3",
+      "sha256": "a56bc3527a10ef8ad77f7ffb24cc62f825987ae0e901c1ae12c73c608bba521a"
+    },
+    {
+      "path": "assets/bundles/zya_audio/faca0dfdbe683a958982.mp3",
+      "sha256": "829d389aabd758ce5c6dda39b2a9e28ded76c2f8c8410b92251dc58f7043f2ca"
+    },
+    {
+      "path": "assets/bundles/zya_audio/fb1a34c36107745fc660.mp3",
+      "sha256": "bb88453a4cf1e88ed05ae0125004db1f5fb3b9af93dbc2de4ac56ae296f0f97c"
+    },
+    {
+      "path": "assets/bundles/zya_audio.meta",
+      "sha256": "899184f3380affcdd314a33c7ad3324a42ad7596bfee4d73cf581247a67136c7"
+    },
+    {
+      "path": "assets/bundles/zya_battle/0b745da14ce979c32054.png",
+      "sha256": "d0b07db5d7035a3d27ed3f583177a292b2c0e84e5882051162e0446acf7ec54e"
+    },
+    {
+      "path": "assets/bundles/zya_battle/2076ced2acdaa86e584f.png",
+      "sha256": "25119a015f363f012dffed889b83b0780312ee1f1cf1c7db1692f8d6a9ad191a"
+    },
+    {
+      "path": "assets/bundles/zya_battle/765fe0b71a70551870b8.png",
+      "sha256": "d89680a657b64da171c658b7ee82ad04a0a08e3dc5a5da389958211c88b4e6fb"
+    },
+    {
+      "path": "assets/bundles/zya_battle/87220713749e63b15b09.png",
+      "sha256": "0cdabb2186b40302fc9877b99390d5be03569f2f096eceb2de1d378ed0d22047"
+    },
+    {
+      "path": "assets/bundles/zya_battle/9866ea1d4dcfeffa397b.png",
+      "sha256": "f5e8507de8df292461bb302b93c892684350ed97bc32361df963ae8e4ba577cc"
+    },
+    {
+      "path": "assets/bundles/zya_battle/998f14e847fc82b0094f.png",
+      "sha256": "1369e3f145b89162e1ce7f8f60ac5adcc58e26473be44512696ac2d612c36076"
+    },
+    {
+      "path": "assets/bundles/zya_battle/a995d5fc3bdc5da081a1.png",
+      "sha256": "b2705400c7bc5072359b49618ffdceaf6019ed5d68ad1bf488f73f4a37bc7663"
+    },
+    {
+      "path": "assets/bundles/zya_battle/a9e064e1c87dcdd103ff.png",
+      "sha256": "a52473efdccc49c6cf54e573ac07b144415d2883e643408f79fa18fd156f2093"
+    },
+    {
+      "path": "assets/bundles/zya_battle/e2f833ba8f78178fdb61.png",
+      "sha256": "89d834360d4b603e93242d22c393c768561e458b1a7c181291bc7b1030537f2b"
+    },
+    {
+      "path": "assets/bundles/zya_battle.meta",
+      "sha256": "d102858cdfe18f1d8bfb6053291c922e5a0dc1d9111053ef36febe7895f0b5ea"
+    },
+    {
+      "path": "assets/bundles/zya_common/082a6c5416d86103bed4.png",
+      "sha256": "a14b2f78a12e4e219a8ca463e645acdee11938b2be3544274f2ce3394fee1d82"
+    },
+    {
+      "path": "assets/bundles/zya_common/29b6b9e71ead201cf6f4.png",
+      "sha256": "f26873926b2e13b943bb6d3cea5e981a0aa37b87d95ea9c71fe1c88928bfe945"
+    },
+    {
+      "path": "assets/bundles/zya_common/429ff10c0cee2c0bcced.png",
+      "sha256": "9b389c578f8fcbe9b860d4c3b8173a177290e1a89112e30cfd75bc1585c79505"
+    },
+    {
+      "path": "assets/bundles/zya_common/7df74c3b2ff9c3d50b7e.png",
+      "sha256": "f86992e91c590df85196cb867087b97c61a0636190f92b1192ecdc04d9ea51d2"
+    },
+    {
+      "path": "assets/bundles/zya_common/a31e973b84cc62f19140.png",
+      "sha256": "417434694319800ef5cb75ba7802873ac71f4084cef0548206d198ff19ae42e9"
+    },
+    {
+      "path": "assets/bundles/zya_common/b94fabb5ff3352932156.png",
+      "sha256": "01e5a78231dc497c2df087a4df2c6075caff2e33ca74d6f7c809e6250274fe14"
+    },
+    {
+      "path": "assets/bundles/zya_common/ce9804372ceb5a8dfd48.png",
+      "sha256": "263d7cede7bcaf421867324d1be716bfac6b65666bfd031aaca53ac4b5c7500e"
+    },
+    {
+      "path": "assets/bundles/zya_common/cec41bd2ab19d02cc5f3.png",
+      "sha256": "a6b8a2def1dbe8e7998a5349914042095726d008884fb878c2934cb37a91bb32"
+    },
+    {
+      "path": "assets/bundles/zya_common/d178c795ddff8f28c465.png",
+      "sha256": "bc167e15b4c62dcaa7e828bb8635003fd472b34a8ced95f0cbff30bbcad50bbc"
+    },
+    {
+      "path": "assets/bundles/zya_common/e278434e109bef9aab68.png",
+      "sha256": "f6c6fc6737cd69f2bcb2e7cdc373749fbe704eed1af71a82990aae2da3b61e7b"
+    },
+    {
+      "path": "assets/bundles/zya_common/e5e3d0a885131eda0929.png",
+      "sha256": "ddb4848869ebfc9099bb48e2f7c05fe633a53580420afd927ef53abf569846de"
+    },
+    {
+      "path": "assets/bundles/zya_common/f7e9d142e84b1adc699d.png",
+      "sha256": "d91923724b006636363553b8886f7979584958412fd2949c67955ff41d374362"
+    },
+    {
+      "path": "assets/bundles/zya_common/fb051eed00a7337759c9.png",
+      "sha256": "c019a32720b9902c7526d01b3a18ec2d577281f525f2d1f7f8d29c0482357d4d"
+    },
+    {
+      "path": "assets/bundles/zya_common/fb6f134873a2170a75b9.png",
+      "sha256": "de543e0ab956392fd1b86412590e652d6c7ad1299b64543e5444c89c06cb17b6"
+    },
+    {
+      "path": "assets/bundles/zya_common.meta",
+      "sha256": "c95135a03dbcd2e3365e2884b37969b71ccbd0ce2b488aac94528720c6976d7d"
+    },
+    {
+      "path": "assets/bundles/zya_effects/23da738e9eb661f09f4c.png",
+      "sha256": "193b7077a901afd739c75080d70e87260a10c762267d8ed0aa193e9419aae33f"
+    },
+    {
+      "path": "assets/bundles/zya_effects/3b0a24ceb6ba6ccb6bb6.png",
+      "sha256": "dad59f2ba6fec02534a8dd407472c6920303f6254ddf5ddd7fae589e8da45f48"
+    },
+    {
+      "path": "assets/bundles/zya_effects/46bc128ec68c7fb08530.png",
+      "sha256": "05e28dc610f3a150cc064fdd372a5b2f6eeb42aa25831d9bb6621cd1cd870f83"
+    },
+    {
+      "path": "assets/bundles/zya_effects/5924916cded1012ded33.png",
+      "sha256": "99a3cb779ad304b0234157962344668f74f04e4531ca3e095581dca1ee48bb68"
+    },
+    {
+      "path": "assets/bundles/zya_effects/64baab7e067ec021f1d2.png",
+      "sha256": "ef05fc3a32661c2c687d22f03e802c0d445dab90e8e48e9f5f83d1d6da8bce17"
+    },
+    {
+      "path": "assets/bundles/zya_effects.meta",
+      "sha256": "1e0c39749a422e0aba36df0da33836517c22c8014b68f9a0b3170b8c271e3b78"
+    },
+    {
+      "path": "assets/bundles/zya_home/00fbb66073663535aac5.png",
+      "sha256": "21aa8cb7a6ef18a8cdc324bed1df8f814fd812d0788fc5c3c1048ef465485ba6"
+    },
+    {
+      "path": "assets/bundles/zya_home/1057876f540c48dbb0ae.png",
+      "sha256": "5f8e8a2f79a2215446fdaa17ca0aee7daabfc6540eeffe4cd6936d91d8ee2bda"
+    },
+    {
+      "path": "assets/bundles/zya_home/4aa7ea55a6ecfa80bd97.png",
+      "sha256": "1bf71b5558338a89b66f588dd577ddabc9efbab6da616eb73fb518bc4f3740d4"
+    },
+    {
+      "path": "assets/bundles/zya_home/57ce7979ebe84e9a1013.png",
+      "sha256": "c1b2715914411b20dd127b46245720d34138216789ca9cc75654e57113c8eb42"
+    },
+    {
+      "path": "assets/bundles/zya_home/71ecfd4cd5f6d002b927.png",
+      "sha256": "dff968f66c1dd26b88d9913b1704fac1782eea3f75214b77ede30318f0e1d081"
+    },
+    {
+      "path": "assets/bundles/zya_home/727c9f67ea536e2709c4.png",
+      "sha256": "a63ec93fc86f8396e8fbaf0a42357126d4f66399bf1bae855cfe375c689888f3"
+    },
+    {
+      "path": "assets/bundles/zya_home/7bfd88ae6d9b81b9eef6.png",
+      "sha256": "fd6fca657761f1e04c24ac97029cdd40694c4ae2167bb7c02ffc41a304a4123c"
+    },
+    {
+      "path": "assets/bundles/zya_home/854cc2948656321487aa.png",
+      "sha256": "c4c15b87238384fd0c6fe3c541225080fc1e5e17f86fca1ea506963b434bfa03"
+    },
+    {
+      "path": "assets/bundles/zya_home/8707e010ca2eb5c2cdf7.png",
+      "sha256": "90bfa4a4b529a71983b2b2f1e895d66e8cb848171ea19a2724490fef55629ca8"
+    },
+    {
+      "path": "assets/bundles/zya_home/996c270864c0f3ae5e37.png",
+      "sha256": "4ed4216f184ec4ab69ee1460fafbee8c8f6be84705c0036205d20e3df48757c3"
+    },
+    {
+      "path": "assets/bundles/zya_home/b17a88c0eb541d03e45b.png",
+      "sha256": "56ead7a5bc2554cabdda284239e084eb07fddff85119edd3fabd3d80444467b9"
+    },
+    {
+      "path": "assets/bundles/zya_home/bd5e7864ca1fdb166436.png",
+      "sha256": "0b7a6039847ceac6d9441fb622de9c2e713cab6341f0009e4c8836903e8ca64c"
+    },
+    {
+      "path": "assets/bundles/zya_home/d159aa5a5b200302e58f.png",
+      "sha256": "c81e3b2322d89c3b295e5421f875bf7c8d26ad9087b1c68eac60b504ab4e5b6c"
+    },
+    {
+      "path": "assets/bundles/zya_home/e0da32bcff6db3cd0e8a.png",
+      "sha256": "bfd79eeb893a08807009e2c7122e5a37ef060fa4d229d226ee48a3370e5241c1"
+    },
+    {
+      "path": "assets/bundles/zya_home/ed35a7193743996e4848.png",
+      "sha256": "b35299665afb47cf0f0d82cf037dd6ac084fefdaecce50c8da0015e9561a89b2"
+    },
+    {
+      "path": "assets/bundles/zya_home/f145beb8466f42efeb6c.png",
+      "sha256": "8b76a32fb579a0a94a066f62275fac2e61b472d36b508f9e7471e9f053bf4a0b"
+    },
+    {
+      "path": "assets/bundles/zya_home.meta",
+      "sha256": "a25ad90609108b0fb9905f8c903830b6b36eb36c25e24a684057330d0e2cce3b"
+    },
+    {
+      "path": "assets/bundles/zya_maps/3a958d512b6fed1f7ae6.png",
+      "sha256": "d33f93b60a45ca65f69df299af96621c8e28a19b5b3942a64369fd800765ef7c"
+    },
+    {
+      "path": "assets/bundles/zya_maps/77e5bce186fb09c834b8.png",
+      "sha256": "9d6bf228a1e2e17535c788541a21d8821d33fea1087b7581dea8699828f32f7c"
+    },
+    {
+      "path": "assets/bundles/zya_maps/7b52d08bf7289ee4216e.png",
+      "sha256": "bb926116eb2823136d41c965d906579d7d0f08ce39e292f13d7b7f050aa73c1c"
+    },
+    {
+      "path": "assets/bundles/zya_maps/aa660c600bf6921244ad.png",
+      "sha256": "248469d1638d066733eefe5a07a5eaf4d7c70394faaf8d749996dc057e57bafc"
+    },
+    {
+      "path": "assets/bundles/zya_maps/c9eff1b24786937cedd4.png",
+      "sha256": "034ca36c2c434940bf1f3f2af297a55d023e3367ac3cc0ab20bbb34ea0e36c5f"
+    },
+    {
+      "path": "assets/bundles/zya_maps.meta",
+      "sha256": "c43ef7fd47479fcc2353b65a5b0501dc321a02036a45cfbf7c325a79040bf341"
+    },
+    {
+      "path": "assets/bundles/zya_meta/13caad9ff90b6f9795cf.png",
+      "sha256": "8a8cbf5bae3960ad4d74838f3a1c81eab86936690ee4402e54604181d8db41ab"
+    },
+    {
+      "path": "assets/bundles/zya_meta/1688fcaf706a8e3c3879.png",
+      "sha256": "7277aa8b117bd8eca8a6a121541b428c22c799646af6cbcffbed5b9873c995b5"
+    },
+    {
+      "path": "assets/bundles/zya_meta/2483b2107d50ac35d35c.png",
+      "sha256": "c6639225615397ebe03876b649b718f7aa71683cf3fed082ca8c046dc0291a1f"
+    },
+    {
+      "path": "assets/bundles/zya_meta/27bf7babc85ff4090518.png",
+      "sha256": "467b16762481f77bf2b224e8df234d6d06274f96b25cd86ed32a806b2fe66c93"
+    },
+    {
+      "path": "assets/bundles/zya_meta/2eb900b96bb20962e3c5.png",
+      "sha256": "f358cb02bf58941d6797a701b6b20d87ef3e2fda6a9dac58fa42b95fc05a5ea9"
+    },
+    {
+      "path": "assets/bundles/zya_meta/3248ab9f0187040d564c.png",
+      "sha256": "505f399add24c8d90888ea3de25828657ab8d183e325fda7a02898e62320370c"
+    },
+    {
+      "path": "assets/bundles/zya_meta/3530492b37d2f525f723.png",
+      "sha256": "3bf5524643160743b1c4ad2a0287df62de3baa3d664d579526774b24458c7e1f"
+    },
+    {
+      "path": "assets/bundles/zya_meta/3830255d3748a955095e.png",
+      "sha256": "37cc33175a56fdae0812e30fd818e54f93b4c216dfac3c9958976c6a7e5de51d"
+    },
+    {
+      "path": "assets/bundles/zya_meta/3eb34268b3dc23402414.png",
+      "sha256": "1d0892ba07a28f8025ba5f49d809b2959394b26cb8c30d1daaa1ef23ec27242f"
+    },
+    {
+      "path": "assets/bundles/zya_meta/48b0d96c6abcb95db241.png",
+      "sha256": "84aabcf6b20b719644ed2b2251ccbb98ac1da952cac6b8c9da929e4ec391c423"
+    },
+    {
+      "path": "assets/bundles/zya_meta/5dc2da9b39324ddc344b.png",
+      "sha256": "ae1037f11c59ba014adf22472c71c0c169aad2b3f762e6e1c4cc38374fa20760"
+    },
+    {
+      "path": "assets/bundles/zya_meta/615868becf71c27f4481.png",
+      "sha256": "873eb1259d013f02a6c572558fa69d8acaa99fb1a6ce42e3ac12a3b63dcaaae2"
+    },
+    {
+      "path": "assets/bundles/zya_meta/8bc731baf8d7944d3172.png",
+      "sha256": "4d0df972b109dca03520b3e37426e269eff2743072b3b1995920fbd3127b9427"
+    },
+    {
+      "path": "assets/bundles/zya_meta/94289dc1cf9defd9cdfc.png",
+      "sha256": "c1a75dc40f5b5b93907c8d526de098cfefa189b35efb0cd8206a0fb4e50e5856"
+    },
+    {
+      "path": "assets/bundles/zya_meta/962fcd5e9aa7bf5583be.png",
+      "sha256": "4008a1aa18dee77384049d18f8f6c189f5ad37d8049e9e5335dde207ee5b4cb5"
+    },
+    {
+      "path": "assets/bundles/zya_meta/98432d236006438d8cea.png",
+      "sha256": "d46f923d23156d364e51583e4a45880a3a43cfabc51e79dceca050ba3c64439f"
+    },
+    {
+      "path": "assets/bundles/zya_meta/9b80dfcce636e177a8bd.png",
+      "sha256": "9294d29dbf6646d0b34156c0390745b6a8a9c66942deb77ab720975af230846c"
+    },
+    {
+      "path": "assets/bundles/zya_meta/9d17d5e3031515918661.png",
+      "sha256": "779b75306bef31624df9abf05ff9119f2d2143efd5bda275f564ea16b984c4e3"
+    },
+    {
+      "path": "assets/bundles/zya_meta/9e34ad201c93e3839a3a.png",
+      "sha256": "88dab02709d5f1b66c03396e91b1f0befb2169e92d9caec772a15cc816ed3761"
+    },
+    {
+      "path": "assets/bundles/zya_meta/a21e19f61fd0faa9fbe1.png",
+      "sha256": "e75a1d9316832437258038c1ba9c09922a2c25903d2fd4bab3caf06eafafd7fa"
+    },
+    {
+      "path": "assets/bundles/zya_meta/b07d4e6a13151d2237ea.png",
+      "sha256": "2e2af52a1eb2a9b479ab110ab116f5e73d6f1b05133f8cd59a950ef18b64d66e"
+    },
+    {
+      "path": "assets/bundles/zya_meta/cb8b1a4473d077de0c81.png",
+      "sha256": "72d0ed03bacb39c5798dc47a906644503ad95333a58a063c6b9d31340f216165"
+    },
+    {
+      "path": "assets/bundles/zya_meta/d055a9f4b7ced16a2392.png",
+      "sha256": "0c715c19b069065c70aa35e2655fcae942e96bea717018387d62d1294219ce8f"
+    },
+    {
+      "path": "assets/bundles/zya_meta/d12c16c59cb05a426a48.png",
+      "sha256": "18cac60adab521f9b0393180c1d383ab1d4ec844632c079a6a3053da0543b2b5"
+    },
+    {
+      "path": "assets/bundles/zya_meta/d3b735ccdd7ac2eb48c8.png",
+      "sha256": "41d423f1a9415de9e4e1b83f3337fd25329cf56f6352e3f89538453a27d96e2e"
+    },
+    {
+      "path": "assets/bundles/zya_meta/d70a3afb22e5373425cc.png",
+      "sha256": "6bc928ea718132fd8582216651371fcacd58848c93586e09cb7eae50a72052a3"
+    },
+    {
+      "path": "assets/bundles/zya_meta/dc1e1157eeb335991726.png",
+      "sha256": "207035ce3dc4f05712e77f2dd190401793f5992fcc3f3ce9a53b8e6bd7edb5fd"
+    },
+    {
+      "path": "assets/bundles/zya_meta/ea3d033beab616a28c34.png",
+      "sha256": "a1a3c053f750a426eb5eb6de2eeba9889ed9dbd716312a3292743f35ec133e51"
+    },
+    {
+      "path": "assets/bundles/zya_meta/f7f625f490da072d1c22.png",
+      "sha256": "76bcb1a8a16cb2c330d9e05dc66ba6d4a48cca826a25bce30451501c4941c419"
+    },
+    {
+      "path": "assets/bundles/zya_meta.meta",
+      "sha256": "92a49612edfc9aa8aa5487d6e9c4ff9f0989157aae189fa64945c99f630fc4fb"
+    },
+    {
+      "path": "assets/game/ArtStore.ts",
+      "sha256": "0f07a36029f706fc9e8a2cc2d23ca72be8f5c987155f392f057d3931c45b639e"
+    },
+    {
+      "path": "assets/game/GameApp.ts",
+      "sha256": "3b04ac398a77c5f35d417dfe9c2f8ca6d14bbbc2e9b7a1f8f41a914227ca9f0f"
+    },
+    {
+      "path": "assets/game/GameModel.ts",
+      "sha256": "40e0f58f1aa8671db946af5b52d1914b0a9d96621f10f7f6d98adb3d9a0bdc87"
+    },
+    {
+      "path": "assets/game/InkRig.ts",
+      "sha256": "4cfa7fddd63e9978e6f722d79b750595090e0b3523f3b3247c6a6e5615fd8ad0"
+    },
+    {
+      "path": "assets/game/InkRigMath.ts",
+      "sha256": "c98424cf122a72ac73b072e7702ff7a25a10ec08cc22b6333baa2372cc1f3202"
+    },
+    {
+      "path": "assets/game/InkUI.ts",
+      "sha256": "ce697cd4cc01ee21b9f6ec2b2877867334253b1e819ee4ad8947f7428fbfbaf2"
+    },
+    {
+      "path": "assets/game/ReferenceCombat.ts",
+      "sha256": "d49dfe3037e275b9fd7404429c0520da8a5eab72835546307fb6d953aa86dfd1"
+    },
+    {
+      "path": "assets/game/ReferenceCombat.ts.meta",
+      "sha256": "f265baaa58d1171dd5da446b2139248ebee352834d10cf19eaf1af19c0cb04f9"
+    },
+    {
+      "path": "assets/game/ReferenceMaps.ts",
+      "sha256": "10c6dfd051269b779f467b5e5c47a744e3e9ae4e8098a2bcb28b825e8896e844"
+    },
+    {
+      "path": "assets/game/ReferenceUnits.ts",
+      "sha256": "98c70b94c436de0ae8cea4e6ac32334b49aa4ddf14ba71a29f400850974cad96"
+    },
+    {
+      "path": "assets/game/ReferenceUnits.ts.meta",
+      "sha256": "c507c26a21e2765cf9175d2adf484f95d098e63be0f91f55524907a7a2429379"
+    },
+    {
+      "path": "assets/plugins/travel-core.js",
+      "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d"
+    },
+    {
+      "path": "assets/plugins/travel-core.js.meta",
+      "sha256": "950f5347a840b390595810781b0ad85da494b058a46bdaa828f3aeee7264ff2f"
+    },
+    {
+      "path": "assets/resources/data/art.json",
+      "sha256": "c402399f67f0ae22c93062626a7269729d0f39f7256fe26d791049d18021523a"
+    },
+    {
+      "path": "assets/resources/data/layouts.json",
+      "sha256": "ad42a9bf30d8703487ac088b392c8bd810e7f53e0dd13346a60760beffed276f"
+    },
+    {
+      "path": "assets/resources/data/rank.json",
+      "sha256": "e937cb36daea904a5924c72e9a83630cefa385616f1a67a7c723ef73c028e99b"
+    },
+    {
+      "path": "assets/resources/data/rankData.json",
+      "sha256": "18f9810a13ca1f890da55eb9a19ef36de10afbcd13fba683d74dd501bdafa74f"
+    },
+    {
+      "path": "assets/resources/data/weapon.json",
+      "sha256": "2318e8c21b8935b18dc97d53bdc210467a4482ace53fc88e52876214723e6f33"
+    },
+    {
+      "path": "assets/resources/data/weaponTxt.json",
+      "sha256": "f2c13418c8c072de141cbc6dd293f5102cd8c9d295d0e5da43a28940dde87d4a"
+    },
+    {
+      "path": "assets/scene.scene",
+      "sha256": "561f4accbd62993d675435c15224a0060b8049f9278ae8f8268bdaf102257642"
+    },
+    {
+      "path": "assets/scene.scene.meta",
+      "sha256": "67ac0cb4ef88dca9c2c0488d806e1b88787f9a8df71e7ee11910302006b78603"
+    },
+    {
+      "path": "docs/ASSET_PROVENANCE.json",
+      "sha256": "f19ea772a1dcad357ac14548d7fd9178b2b0bf4f9481bed13dd6ff8197d609eb"
+    },
+    {
+      "path": "docs/REQUIREMENTS.md",
+      "sha256": "e2d8329d28573fbf8445b992a77e73e18b864a2c088cbdbbbed1fc0c53c91030"
+    },
+    {
+      "path": "package.json",
+      "sha256": "95aa510d22e85a435ec21e9e7f522c820b564e08a7e41d82f2782a2627b3420a"
+    },
+    {
+      "path": "settings/.DS_Store",
+      "sha256": "de60155bf2e30263d632859f3fb9b04f8b097f3f27473674b5cfcb118abc05cc"
+    },
+    {
+      "path": "settings/v2/packages/builder.json",
+      "sha256": "a3e1a8df580b6ebec15ad16c9bbef785806567bfbc093821852bb3606028e702"
+    },
+    {
+      "path": "settings/v2/packages/cocos-service.json",
+      "sha256": "a0a1c311fb68ae92cb801dd92536369f7e9912ca1c15f0c0a63b4c0caa7faec9"
+    },
+    {
+      "path": "settings/v2/packages/device.json",
+      "sha256": "93af91e0b90038cedc84d08651f845e1c2e2ae460321c19f083c27a178e451f8"
+    },
+    {
+      "path": "settings/v2/packages/engine.json",
+      "sha256": "24dfc1309272cce565d0c9f1052343578fd46b8d5b9e46a3d36ba6242445eb01"
+    },
+    {
+      "path": "settings/v2/packages/information.json",
+      "sha256": "1bf5a0b31fa5ae55f1be0e99c7a368789ba23bf518911437fd89ac1b67150e93"
+    },
+    {
+      "path": "settings/v2/packages/program.json",
+      "sha256": "d914f9f19ffe02724337936d8c7907798c8666566902b78243eb1aa8da0baedd"
+    },
+    {
+      "path": "settings/v2/packages/project.json",
+      "sha256": "6cb23a2127c3376e5940168a37a4d48b09d0113fe4a871ff77aec09ab5203673"
+    },
+    {
+      "path": "test/game.test.cjs",
+      "sha256": "f6f39f07fcec8f966e2de69a495a6e16f8ec8093389815b7cd83fef48da53b96"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "be9afa22456a27d3413babf42e35abb0068941f50d3d122f9f2b9fb8124b71d4"
+    }
+  ],
+  "overrides": [
+    {
+      "file": "assets/Boot.ts",
+      "sourceSHA256": "7f951451887ef1f2b3bbe9db4b615a416653623839a4b830e4d912e6084c8237",
+      "purpose": "Declared QA inspection including visible home-star skins/UVs, optional fixed-state fixture and paired actual-canvas/state capture; original runtime not executed"
+    },
+    {
+      "file": "assets/game/GameApp.ts",
+      "purpose": "Isolated QA storage namespace; production saves untouched"
+    }
+  ],
+  "build": "pass",
+  "visual": "pending",
+  "wechatDevice": "pending",
+  "startScene": "be5c944f-c8e2-49aa-9330-2704b04f05c9",
+  "returnCode": 36,
+  "assetImports": "pass",
+  "seconds": 62.970366541005205,
+  "log": "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/zhaoyunyuadou/zya-web-v26.log",
+  "output": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/zya-web-v26/output/preview"
+}

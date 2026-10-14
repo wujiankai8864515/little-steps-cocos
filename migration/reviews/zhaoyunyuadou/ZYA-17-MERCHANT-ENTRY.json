@@ -1,0 +1,24 @@
+{
+  "id": "ZYA-17",
+  "scope": "Merchant entrance diagnosis and actual visible-icon interaction; QA stock fixture",
+  "incorrectEarlierObservation": "Merchant entrance absent after v24 loss",
+  "resolution": "Original donkey + mihuan images were misidentified as home hero art. Actual node active, sprite frame loaded, and visible-icon click opened shop. No production patch required.",
+  "input": [
+    159,
+    391
+  ],
+  "purchase": {
+    "item": "allSpeed",
+    "goldBefore": 8623,
+    "goldAfter": 8563,
+    "items": [
+      "allSpeed"
+    ],
+    "dailyLottery": false
+  },
+  "secondSameRoundDraw": "Rejected as sold, no charge and no item; not counted as successful lottery",
+  "screen": "zya-v26-merchant-purchase.png",
+  "diagnosticFailure": "v25 duplicate UITransform import; fixed with QAUITransform alias; original Boot preserved",
+  "device": "pending",
+  "strictPixels": "pending"
+}
