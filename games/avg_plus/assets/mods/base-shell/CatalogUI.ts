@@ -1,7 +1,7 @@
 import {
     _decorator, AssetManager, assetManager, BlockInputEvents, Button, Color,
     Graphics, HorizontalTextAlignment, Label, Mask, Node, Sprite, SpriteFrame,
-    ScrollView, UIOpacity, UITransform, VerticalTextAlignment,
+    ScrollView, UIOpacity, UITransform, Vec2, VerticalTextAlignment,
 } from 'cc';
 import type { Action } from '../../foundation/Contracts';
 import { TaskScope } from '../../foundation/Tasks';
@@ -167,6 +167,13 @@ export class CatalogUI extends PresentationComponent {
         content.getComponent(UITransform)!.setAnchorPoint(0,.5);
         const scroll=viewport.addComponent(ScrollView);scroll.content=content;
         scroll.horizontal=true;scroll.vertical=false;scroll.inertia=true;scroll.elastic=false;scroll.cancelInnerEvents=true;
+        viewport.on(ScrollView.EventType.SCROLL_ENDED,()=>{
+            if(scroll.isAutoScrolling())return;
+            const offset=-scroll.getScrollOffset().x;
+            const target=Math.max(0,Math.min(total-1,Math.round(offset/step)))*step;
+            // Native swipes may end between books; settle the cover and its buttons together.
+            if(Math.abs(offset-target)>1)scroll.scrollToOffset(new Vec2(target,0),.2);
+        },this);
         for(let i=0;i<total;i++) {
             const panel=this.child(content,'story_'+i,step,1640,viewportWidth/2+i*step,-60);
             if(i<stories.length)this.realStoryCard(panel,stories[i]);
