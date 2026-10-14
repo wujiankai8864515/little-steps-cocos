@@ -44,6 +44,8 @@ python3 -B builds/build.py android --game avg_plus --hot-only --publish
 
 上传使用完整的真实 ZIP/APK 附件，失败可有界重试；先创建草稿并核对 GitHub 服务端大小和 SHA，再开放版本，匿名完整下载校验，等待 Pages 版本和哈希回读。公开版本附件不可覆盖，不用 `--clobber`；如内容不同需分配新版本。发布后只清理此次隔离镜像、临时构建和固定输出；不会删除源码、原素材、其他游戏、渠道配置、模板、打包必要文件或文档。未验证的发布保留当前输出供恢复，不积累新的历史候选。
 
+新建草稿按标签查询可能返回 404；发布工具会在当前账户可读的 Release 列表中查找同一标签，再按 ID 回读当前附件。列表读取失败直接停止，不能当作版本不存在后重复创建。已有候选可通过 `python3 -B builds/android/publish.py --record migration/reviews/avg_plus/<candidate>.json` 继续发布，已上传且哈希一致的附件会直接复用。
+
 增量客户端先复制自身当前缓存到暂存目录，按完整顺序下载缺失的版本，校验最后一版全部文件后切换目录。保留一版健康缓存至新版本首页真实打开；启动失败时利用恢复日志回退并屏蔽失败版本，后续修复版本仍可更新。旧单 ZIP 客户端先使用完整桥接版本升级，再进入增量通道。断网检查有时限并继续本地游戏。文件系统故障注入通过不等于真实安卓升级通过，原生边界必须单独记录。
 
 Android 图标原画与五档密度 PNG 位于游戏 `source/android-icon`；渠道 XML 位于 `templates/avg-plus-icons`，包括普通、圆形、自适应、主题单色与 Android 12 启动图标。安装只作用于隔离原生导出，不能改 Creator 全局模板。PNG 源图由已调用的内置 imagegen 生成，确切提示词、模式与源图 SHA 在 `generation.json` 中；这些是必要源文件，应保留并备份。
@@ -53,3 +55,5 @@ Android 图标原画与五档密度 PNG 位于游戏 `source/android-icon`；渠
 PNG 仅在隔离导出目录重新压缩 IDAT 存储，扫描线和所有非 IDAT 元数据逐字节校验不变；不改变源素材、尺寸、颜色或透明度。原导出 PNG 保留在候选的 `png-storage-originals`。Cocos 3.8.8 的 native Asset.size 使用 float，客户端按经过验证的 JS 清单读取精确字节数；ZIP 通过合法注释对齐长度，兼容旧 APK 的严格大小比较。
 
 本地验证：`python3 -B migration/tools/test_android_channel.py` 和 bundled Node 执行 `--test migration/tools/test_android_bootstrap.cjs`。这些覆盖打包、校验、失败和恢复边界，不能替代 GitHub 下载及安卓旧包更新实测。API 依据：[Cocos 原生热更新](https://docs.cocos.com/creator/3.8/manual/en/advanced-topics/hot-update-manager.html)、[命令行构建](https://docs.cocos.com/creator/3.8/manual/en/editor/publish/publish-in-command-line.html)。
+
+发布恢复检查：`python3 -B migration/tools/test_android_publisher.py`。0.1.0.6 已从远端核验的 `c3b8e6a` 发布完整桥接包与 APK，五个实际附件均经过服务端摘要和匿名完整下载检查，Pages 版本/哈希回读通过。该 APK 是调试签名 ARM64 竖屏预览版；安卓模拟器已打通冷启动、首关、千金币奖励、原 AVG 与目录返回，真实手机性能、正式签名和完整视频对照仍待验证。

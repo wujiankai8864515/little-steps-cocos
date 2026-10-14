@@ -26,7 +26,19 @@ def gh(*args, optional=False):
 
 def api(repository,tag):
     output=gh('api',f'repos/{repository}/releases/tags/{tag}',optional=True)
-    return json.loads(output)if output else None
+    if output:return json.loads(output)
+    # A newly created draft can be listed by its owner while the tag endpoint
+    # still returns 404. Do not create a duplicate or lose upload recovery.
+    for page in range(1,101):
+        items=json.loads(gh('api',f'repos/{repository}/releases?per_page=100&page={page}'))
+        if not isinstance(items,list):raise ValueError('Unexpected releases API response')
+        found=next((release for release in items if release.get('tag_name')==tag),None)
+        if found is not None:
+            release=json.loads(gh('api',f'repos/{repository}/releases/{found["id"]}'))
+            if release.get('tag_name')!=tag:raise ValueError('Release tag readback differs')
+            return release
+        if len(items)<100:return None
+    raise RuntimeError('Release listing did not reach its end')
 
 
 def base_snapshot(game):
