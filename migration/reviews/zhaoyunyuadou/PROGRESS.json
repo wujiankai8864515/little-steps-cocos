@@ -364,13 +364,98 @@
         "reservedEstimateBytes": 139153600,
         "pending": 0
       },
-      "nativeCandidate": "pending v8",
+      "nativeCandidate": "v8 pass,236 source/386 output hashes",
       "remaining": [
         "per-weapon skill modifiers",
         "publisher same-phase motion/trails/dust",
         "promotion/XP",
         "audio lifetime/devices"
       ]
+    },
+    "latestHeroSkillsCandidate": {
+      "id": "ZYA-25",
+      "date": "2026-10-15",
+      "kind": "fresh local-source WeChat native subpackage candidate; not formal/device acceptance",
+      "candidate": "zya-wechat-v8",
+      "build": "pass",
+      "sourceGameCommit": "4d48bf3077eaafa1cff6679e48f90df6f3c58957",
+      "sourceParentCommit": "64f0ca17e892ef63714adc51c04b8412a5e34e1b",
+      "sourceHashesChecked": 236,
+      "fixedOutputHashesChecked": 386,
+      "audit": {
+        "mainBytes": 3348132,
+        "totalBytes": 16511508,
+        "initialBytes": 11707196,
+        "sizes": {
+          "main": 3348132,
+          "zya_meta": 2317481,
+          "zya_effects": 1893082,
+          "zya_battle": 2215755,
+          "zya_maps": 695475,
+          "zya_home": 1083521,
+          "zya_audio": 3270647,
+          "zya_actors": 1687415
+        },
+        "subpackages": [
+          {
+            "name": "zya_actors",
+            "root": "subpackages/zya_actors/"
+          },
+          {
+            "name": "zya_audio",
+            "root": "subpackages/zya_audio/"
+          },
+          {
+            "name": "zya_battle",
+            "root": "subpackages/zya_battle/"
+          },
+          {
+            "name": "zya_effects",
+            "root": "subpackages/zya_effects/"
+          },
+          {
+            "name": "zya_home",
+            "root": "subpackages/zya_home/"
+          },
+          {
+            "name": "zya_maps",
+            "root": "subpackages/zya_maps/"
+          },
+          {
+            "name": "zya_meta",
+            "root": "subpackages/zya_meta/"
+          }
+        ],
+        "files": 386
+      },
+      "framework": {
+        "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+        "mode": "0o444",
+        "symlink": "../../../../engines/travel-core/dist/travel-core.js"
+      },
+      "uuidsPreserved": true,
+      "browser": "zya-web-v40",
+      "tests": 49,
+      "savedCanvasComparison": {
+        "times": [
+          0.7,
+          3.299999999999998
+        ],
+        "size": [
+          320,
+          704
+        ],
+        "differentPixels": [
+          0,
+          0
+        ],
+        "scope": "Own declared scene reconstruction, not publisher-game screenshot fidelity"
+      },
+      "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+      "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+      "device": "pending",
+      "originalPixels": "unproven",
+      "online": "pending"
     }
   },
   "pending": [
