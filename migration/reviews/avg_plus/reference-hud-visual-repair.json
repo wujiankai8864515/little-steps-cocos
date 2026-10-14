@@ -15,5 +15,34 @@
     "height": 16
   },
   "priorNativeScreenshot": "migration/reviews/avg_plus/reference-hud-progress-restored.png",
-  "nativeRetest": "pending"
+  "nativeRetest": {
+    "candidate": "avg-plus-android-20261013T235030595751Z",
+    "sourceCommit": "c00079e7d4b4cf8f0be39e172e334d18dbfd4725",
+    "sourceUnchanged": true,
+    "installedApkSha256": "53d87a84ded8e0f4c1e2fad07dc74f8593dcb313ffdf12637b18550b16d1ed5c",
+    "coinClipping": "passed: top and paid-action coins circular without purple rectangle",
+    "heart": "passed: clean heart shape",
+    "entry": "passed without prior RenderEntity assertion",
+    "progressDrawAndUndo": "passed; 4000 -> 3950 undo fee once",
+    "complete": "19-card native route passed; 1000 persisted before Continue",
+    "coinFlight": "actual screenshot",
+    "ownAvgPage": "02/28",
+    "coldStartCoins": 4950,
+    "gems": 40,
+    "round": null,
+    "evidence": [
+      "reference-hud-visual-native-board.png",
+      "reference-hud-visual-native-route-05.png",
+      "reference-hud-visual-native-progress-cleared.png",
+      "reference-hud-visual-native-progress-restored.png",
+      "reference-hud-visual-native-completion.png",
+      "reference-hud-visual-native-coin-flight.png",
+      "reference-hud-visual-native-own-avg-02.png",
+      "reference-hud-visual-native-cold-menu-4950.png"
+    ],
+    "fullFidelity": "pending",
+    "physicalPhone": "pending",
+    "coldPid": "5363",
+    "coldLog": "reference-hud-visual-native-cold.log"
+  }
 }
