@@ -29,8 +29,9 @@ export interface MissedMoveSwayKeyframe {
 }
 
 /**
- * 参考视频按约 60fps 逐帧发射：每个渲染帧只启动一张牌，单张飞行互相
- * 重叠，但绝不在同一个 tick 批量起飞。全部落位后再统一翻面。
+ * 参考视频按约 60fps 错峰发射，单张飞行互相重叠。实际调度使用同一条
+ * 时间轴；低帧率下补发本帧到期的牌，不把每张牌的等待误差累计到下一张。
+ * 全部落位后再统一翻面。
  */
 export const OPENING_DEAL_TIMING = {
     cardDuration: 0.32,
@@ -40,6 +41,14 @@ export const OPENING_DEAL_TIMING = {
     currentDrawDuration: 0.36,
     flipHalfDuration: 0.07,
 } as const;
+
+/** 从整段动画的累计时间计算已到期的发牌数，第一张在时间零发出。 */
+export function dueOpeningLaunchCount(elapsed: number, total: number): number {
+    const count = Math.max(0, Math.floor(total));
+    if (!Number.isFinite(elapsed) || elapsed < 0 || count === 0) return 0;
+    const interval = OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps;
+    return Math.min(count, Math.floor((elapsed + 1e-9) / interval) + 1);
+}
 
 /** 仅位移使用越过落点再回弹的曲线，其余属性保持线性。 */
 export const OPENING_DEAL_POSITION_EASING = 'backOut' as const;

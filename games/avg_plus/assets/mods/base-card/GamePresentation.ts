@@ -63,6 +63,7 @@ import {
     buildMissedMoveSwayKeyframes,
     buildOpeningDealSchedule,
     buildOpeningStockSchedule,
+    dueOpeningLaunchCount,
     stableVisibleBackupCardOffsets,
     OPENING_DEAL_POSITION_EASING,
     OPENING_DEAL_TIMING,
@@ -332,38 +333,32 @@ export class GamePresentation extends PresentationComponent {
         await new Promise<void>((resolve) => director.once(Director.EVENT_AFTER_DRAW, resolve));
         checkVisual();
 
-        // Keep the reference's four-frame spacing at 60 Hz as an elapsed-time interval.
-        // Counting four actual frames would make 52-card boards exceed the transaction
-        // deadline on slower devices. Only the next card's tween is launched each interval.
-        const landings: Promise<void>[] = [];
-        for (const step of schedule) {
+        const launches: (() => Promise<void>)[] = schedule.map(step => () => {
             const destination = target.get(step.slotId)!;
             // 后发牌必须处于先发牌之上，才能形成真实的逐张叠压。
             step.node.setSiblingIndex(content.children.length - 1);
-            landings.push(this.animateOpeningLanding(
+            return this.animateOpeningLanding(
                 step.node,
                 destination.position,
                 destination.angle,
                 destination.scale,
                 OPENING_DEAL_TIMING.cardDuration,
-            ));
-            await this.waitForOpeningLaunchFrames();
-            checkVisual();
-        }
+            );
+        });
         for (const step of buildOpeningStockSchedule(backupCards.length)) {
             const entry = backupCards[step.index];
-            entry.node.setSiblingIndex((backup?.children.length ?? 1) - 1);
-            landings.push(this.animateOpeningLanding(
-                entry.node,
-                entry.position,
-                entry.angle,
-                entry.node.scale.clone(),
-                OPENING_DEAL_TIMING.backupCardDuration,
-            ));
-            await this.waitForOpeningLaunchFrames();
-            checkVisual();
+            launches.push(() => {
+                entry.node.setSiblingIndex((backup?.children.length ?? 1) - 1);
+                return this.animateOpeningLanding(
+                    entry.node,
+                    entry.position,
+                    entry.angle,
+                    entry.node.scale.clone(),
+                    OPENING_DEAL_TIMING.backupCardDuration,
+                );
+            });
         }
-        await Promise.all(landings);
+        await this.animateOpeningLaunches(launches);
         checkVisual();
 
         const faceUp = view.boardCards
@@ -384,7 +379,7 @@ export class GamePresentation extends PresentationComponent {
         checkVisual();
     }
 
-    /** 启动单张牌的落位；调用方负责保证每个渲染帧只调用一次。 */
+    /** 启动单张牌的落位；调度方按累计时间控制起飞顺序。 */
     protected animateOpeningLanding(
         node: Node,
         position: Readonly<Vec3>,
@@ -409,11 +404,39 @@ export class GamePresentation extends PresentationComponent {
         });
     }
 
-    /** Match the configured reference beat without slowing the deal at lower frame rates. */
-    protected async waitForOpeningLaunchFrames(): Promise<void> {
-        await this.waitForVisual(resolve => this.visualTween({elapsed: 0})
-            .to(OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps, {elapsed: 1})
-            .call(resolve).start());
+    /** 每张牌共享一个时钟，避免独立 Tween 的首帧和取整误差逐张累加。 */
+    protected async animateOpeningLaunches(launches: readonly (() => Promise<void>)[]): Promise<void> {
+        const checkVisual = this.visualCheckpoint();
+        if (launches.length === 0) return;
+        const landings: Promise<void>[] = [];
+        let next = 0;
+        const launchDue = (elapsed: number) => {
+            checkVisual();
+            const due = dueOpeningLaunchCount(elapsed, launches.length);
+            while (next < due) {
+                const landing = launches[next++]();
+                // 落牌与发牌时钟同时运行；提前观察拒绝，最终仍由 Promise.all 报错。
+                void landing.catch(() => {});
+                landings.push(landing);
+            }
+        };
+        // 在时钟 wait 之外启动首张，避免它的清理范围包含这张牌的落位 Tween。
+        launchDue(0);
+        if (launches.length > 1) {
+            const duration = (launches.length - 1)
+                * OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps;
+            const clock = { elapsed: 0 };
+            await this.waitForVisual(resolve => this.visualTween(clock)
+                .to(duration, { elapsed: duration }, {
+                    onUpdate: () => launchDue(clock.elapsed),
+                })
+                .call(() => { launchDue(duration); resolve(); })
+                .start());
+        }
+        checkVisual();
+        if (next !== launches.length) throw new Error('发牌时钟未完成');
+        await Promise.all(landings);
+        checkVisual();
     }
 
     /** 参考视频四张明牌与当前牌同时翻开，总时长约 0.14s。 */
