@@ -74,6 +74,7 @@ def main():
               'packages':{'web-mobile':{'orientation':'portrait'}}}
     config_path = destination / 'build-config.json'
     config_path.write_text(json.dumps(config,indent=2)+'\n')
+    (destination/'preview.html').write_text('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>赵云与阿斗 · Cocos 预览</title><style>html,body{margin:0;width:100%;height:100%;background:#171615}body{display:grid;place-items:center}iframe{border:0;width:min(100vw,calc(100vh * 320 / 704));height:min(100vh,calc(100vw * 704 / 320))}</style><iframe title="赵云与阿斗" src="./output/preview/"></iframe>',encoding='utf-8')
     files = [{'path':p.relative_to(source).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(source.rglob('*')) if p.is_file() and not any(s in p.relative_to(source).parts for s in ['.git','library','temp','local','build','profiles','.creator'])]
     evidence = ROOT / 'migration/reviews/zhaoyunyuadou' / (args.name+'.json')
     evidence.parent.mkdir(parents=True,exist_ok=True)
