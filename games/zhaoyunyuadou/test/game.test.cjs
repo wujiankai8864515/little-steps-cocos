@@ -1,0 +1,144 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const test = require('node:test');
+const ts = require('/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar.unpacked/node_modules/typescript');
+const source = path.resolve(__dirname,'../assets/game');
+function moduleFrom(name) {
+    const code = ts.transpileModule(fs.readFileSync(path.join(source,name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText;
+    const m = {exports:{}}; const load = name => name.startsWith('./') ? moduleFrom(name.slice(2)) : require(name);
+    vm.runInNewContext(code,{module:m,exports:m.exports,require:load,Date,Math,Set,Map,Float32Array,Uint16Array,console}); return m.exports;
+}
+const M = moduleFrom('GameModel');
+const R = moduleFrom('InkRigMath');
+const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
+const now = 1791993600000;
+const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
+const location = (area,index) => ({area,index});
+test('initial geometry, roads and unlock cells are valid on all four maps',()=>{
+    for(const map of M.MAPS){
+        const b = new M.Battle(M.newProfile(now),weapons,map.id,1);
+        for(const side of [0,1]){
+            assert.ok(b.armies[side].unlocked.length >= 4);
+            assert.ok(b.armies[side].unlocked.every(n=>b.owns(side,n)&&map.grass.includes(n)));
+            for(const cell of map.paths[side])assert.ok(Number.isInteger(cell)&&cell>=0&&cell<80);
+            assert.ok(map.paths[side].every(n=>!map.grass.includes(n)),'road never overlaps a deployment cell');
+            for(let i=1;i<map.paths[side].length;i++){
+                const a=b.position(map.paths[side][i-1]),c=b.position(map.paths[side][i]); assert.equal(Math.abs(a.x-c.x)+Math.abs(a.y-c.y),80);
+            }
+        }
+    }
+});
+test('recruitment is atomic when short of food, camp full or paused',()=>{
+    const b=round(); assert.equal(b.cost(),10); assert.equal(b.recruit(),''); assert.equal(b.armies[0].food,10); assert.equal(b.cost(),12);
+    const before=b.snapshot(); assert.notEqual(b.recruit(),''); assert.equal(b.snapshot(),before);
+    b.armies[0].food=1000; for(let i=1;i<5;i++)assert.equal(b.recruit(),'');
+    const food=b.armies[0].food,count=b.armies[0].recruitCount;assert.notEqual(b.recruit(),'');assert.equal(b.armies[0].food,food);assert.equal(b.armies[0].recruitCount,count);
+    b.paused=true;assert.notEqual(b.recruit(),'');assert.equal(b.armies[0].food,food);
+});
+test('observed first tutorial recruits an archer and deploy unlocks battle clock',()=>{
+    const b=round(true);b.advance(1);assert.equal(b.time,0);assert.equal(b.recruit(),'');assert.equal(b.armies[0].reserve[0].kind,'弓');
+    b.advance(1);assert.equal(b.time,0);assert.equal(b.move(location('reserve',0),location('board',58)),'');
+    b.advance(1/30);assert.ok(b.time>0);assert.equal(b.profile.tutorial,true);
+});
+test('invalid enemy-side/road drops preserve both source and food',()=>{
+    const b=round();b.armies[0].reserve[0]=b.unit('刀');
+    for(const cell of [11,0,79,-1,100]){const before=b.snapshot();assert.notEqual(b.move(location('reserve',0),location('board',cell)),'');assert.equal(b.snapshot(),before);}
+});
+test('shovels unlock a single legal plot and are consumed exactly once',()=>{
+    const b=round();b.armies[0].reserve[0]=b.unit('铲');const cell=b.map.grass.find(n=>b.owns(0,n)&&!b.armies[0].unlocked.includes(n));
+    const count=b.armies[0].unlocked.length;assert.equal(b.move(location('reserve',0),location('board',cell)),'');assert.equal(b.armies[0].unlocked.length,count+1);assert.equal(b.armies[0].reserve[0],null);
+    b.move(location('reserve',0),location('board',cell));assert.equal(b.armies[0].unlocked.length,count+1);
+});
+test('equal units merge, different units swap, level five never silently destroys units',()=>{
+    const b=round();b.armies[0].reserve[0]=b.unit('枪');b.armies[0].units[58]=b.unit('枪');
+    assert.equal(b.move(location('reserve',0),location('board',58)),'');assert.equal(b.armies[0].units[58].level,2);assert.equal(b.armies[0].reserve[0],null);
+    const a=b.unit('刀'),c=b.unit('弓');b.armies[0].reserve[0]=a;b.armies[0].units[59]=c;b.move(location('reserve',0),location('board',59));assert.equal(b.armies[0].reserve[0].id,c.id);assert.equal(b.armies[0].units[59].id,a.id);
+    const d=b.unit('枪','枪',5),e=b.unit('枪','枪',5);b.armies[0].reserve[1]=d;b.armies[0].units[60]=e;b.move(location('reserve',1),location('board',60));assert.equal(b.armies[0].reserve[1].id,e.id);assert.equal(b.armies[0].units[60].id,d.id);
+});
+test('heroes require ordered horizontal name fragments, breaking adjacency removes the link',()=>{
+    const b=round();b.armies[0].units[58]=b.unit('字','赵',2);b.armies[0].units[59]=b.unit('字','云',2);assert.equal(b.heroes(0)[0].hero.name,'赵云');
+    b.move(location('board',59),location('board',66));assert.equal(b.heroes(0).length,0);
+    b.armies[0].units[59]=b.unit('字','赵');assert.equal(b.heroes(0).length,0);
+    b.armies[0].units[63]=b.unit('字','赵');b.armies[0].units[64]=b.unit('字','云');assert.equal(b.heroes(0).length,0);
+});
+test('active items use legal targets and enforce cooldown; invalid drops do not consume cooldown',()=>{
+    const b=round();b.profile.items=['god','speed'];b.armies[0].units[58]=b.unit('刀');assert.notEqual(b.active('god',59),'');assert.equal(b.cooldowns.god,undefined);
+    assert.equal(b.active('god',58),'');assert.equal(b.armies[0].units[58].level,2);assert.notEqual(b.active('god',58),'');assert.equal(b.armies[0].units[58].level,2);
+    assert.equal(b.active('speed',58),'');assert.equal(b.boosts[b.armies[0].units[58].id],.4);
+});
+test('shop purchases and 2/6 slot limits do not charge on failure',()=>{
+    const p=M.newProfile(now);p.gold=1000;assert.equal(M.purchase(p,'god'),'');const gold=p.gold;assert.notEqual(M.purchase(p,'god'),'');assert.equal(p.gold,gold);
+    M.purchase(p,'speed');const balance=p.gold;assert.notEqual(M.purchase(p,'training'),'');assert.equal(p.gold,balance);
+    for(const id of ['farmer','recruit','promotion','shovel','seeker','life'])assert.equal(M.purchase(p,id),'');const g=p.gold;assert.notEqual(M.purchase(p,'allSpeed'),'');assert.equal(p.gold,g);
+});
+test('weapons are type-compatible, count-limited and equipped copies survive recycling',()=>{
+    const p=M.newProfile(now);p.weapons[11]=1;p.weapons[1]=2;assert.equal(M.equipWeapon(p,weapons,'赵云',11),'');assert.notEqual(M.equipWeapon(p,weapons,'张飞',11),'');assert.notEqual(M.equipWeapon(p,weapons,'关羽',11),'');
+    const gold=M.recycleWeapons(p,weapons);assert.equal(p.weapons[11],1);assert.equal(p.weapons[1],0);assert.ok(gold>0);
+});
+test('settlement is idempotent including double reward and reload',()=>{
+    const b=round();b.finish(true);const r=b.result;assert.equal(M.claimResult(b.profile,r,true),true);const gold=b.profile.gold,stars=b.profile.stars;
+    assert.equal(M.claimResult(b.profile,r,true),false);const p=M.restoreProfile(JSON.stringify(b.profile),now);assert.equal(M.claimResult(p,r,false),false);assert.equal(p.gold,gold);assert.equal(p.stars,stars);
+});
+test('day boundary clears only daily items; stamina uses elapsed time and caps at 30',()=>{
+    const p=M.newProfile(now);p.items=['god'];p.gold=100;p.stamina=5;p.staminaAt=now;
+    M.refreshProfile(p,now+900000);assert.equal(p.stamina,8);M.refreshProfile(p,now+86400000);assert.equal(p.stamina,30);assert.equal(p.gold,100);assert.equal(p.items.length,0);
+});
+test('reference archer reaches distant enemies and opponent does not borrow player gear',()=>{
+    const b=round(),unit=b.unit('弓');b.armies[0].units[58]=unit;const p=b.position(58);
+    b.enemies.push({id:100,side:0,progress:0,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x:p.x+200,y:p.y});
+    b.advance(1/30);assert.equal(b.shots.length,1);
+    b.profile.equipped['赵云']=19;assert.equal(b.stats(b.unit('字','赵'),M.HEROES[0],1,1).weapon,undefined);
+});
+test('brush, trash and traps preserve legal targets and reserve effects',()=>{
+    const b=round();b.profile.items=['brush','trash','trap'];b.armies[0].reserve[0]=b.unit('字','赵');
+    assert.equal(b.active('brush',0,location('reserve',0)),'');assert.notEqual(b.armies[0].reserve[0].char,'赵');
+    const food=b.armies[0].food;assert.equal(b.active('trash',0,location('reserve',0)),'');assert.equal(b.armies[0].reserve[0],null);assert.equal(b.armies[0].food,food+1);
+    assert.notEqual(b.active('trap',58),'');assert.equal(b.cooldowns.trap,undefined);assert.equal(b.hazards.length,0);
+    assert.equal(b.active('trap',b.map.paths[0][1]),'');assert.equal(b.hazards.length,1);
+});
+test('passive pills affect both camps as described; periodic shovel survives a full camp',()=>{
+    const p=M.newProfile(now);p.items=['pill','life','shovel'];const b=new M.Battle(p,weapons,0,1);assert.deepEqual(Array.from(b.armies,a=>a.lives),[9,6]);
+    b.spawnTime=10000;b.aiTime=10000;b.waveTime=-10000;for(let i=0;i<5;i++)b.armies[0].reserve[i]=b.unit('刀');
+    for(let i=0;i<1810;i++)b.advance(1/30);assert.equal(b.armies[0].reserve.filter(u=>u.kind==='铲').length,0);
+    b.armies[0].reserve[2]=null;b.advance(1/30);assert.equal(b.armies[0].reserve[2].kind,'铲');
+});
+test('promotion upgrades in-place; march pill consumes no daily slot; UID remains stable',()=>{
+    const p=M.newProfile(now);p.gold=500;p.stamina=10;assert.equal(M.purchase(p,'promotion'),'');assert.equal(M.purchase(p,'promotion'),'');assert.equal(p.itemLevels.promotion,2);assert.equal(p.items.length,1);
+    assert.equal(M.purchase(p,'promotion'),'');assert.equal(p.itemLevels.promotion,3);const gold=p.gold;assert.notEqual(M.purchase(p,'promotion'),'');assert.equal(p.gold,gold);
+    assert.equal(M.purchase(p,'march'),'');assert.equal(p.stamina,20);assert.equal(p.items.length,1);const uid=p.uid;M.refreshProfile(p,now+900000);assert.equal(p.uid,uid);assert.equal(M.restoreProfile(JSON.stringify(p),now+900000).uid,uid);
+});
+test('every compatible weapon completes a bounded combat simulation and survives restoration',()=>{
+    for(const weapon of weapons){const b=round(),hero=M.HEROES.find(h=>h.weaponType===weapon.type);if(!hero)continue;b.profile.equipped[hero.name]=weapon.id;
+        b.armies[0].units[58]=b.unit('字',hero.chars[0],3);b.armies[0].units[59]=b.unit('字',hero.chars[1],3);
+        for(let i=0;i<2000&&!b.completed;i++)b.advance(1/30);assert.ok(Number.isFinite(b.time));assert.ok(b.enemies.every(e=>Number.isFinite(e.hp)&&Number.isFinite(e.x)&&Number.isFinite(e.y)));assert.ok(b.shots.length<=160);
+        const restored=M.Battle.restore(b.snapshot(),b.profile,weapons);assert.ok(restored);assert.equal(restored.snapshot(),b.snapshot());
+    }
+});
+test('corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat',()=>{
+    assert.equal(M.restoreProfile('{bad',now).stamina,30);const b=round();b.armies[0].units[58]=b.unit('弓','弓',3);
+    for(let i=0;i<400;i++)b.advance(1/30);
+    const c=M.Battle.restore(b.snapshot(),b.profile,weapons);assert.ok(c);
+    for(let i=0;i<90;i++){b.advance(1/30);c.advance(1/30);}assert.equal(c.snapshot(),b.snapshot());
+});
+test('full AI battle terminates, bounds live entities and reaches real kill/leak settlement',()=>{
+    const b=round();b.armies[0].units[58]=b.unit('弓','弓',3);b.armies[0].units[59]=b.unit('枪','枪',3);
+    let max=0;for(let i=0;i<18030&&!b.completed;i++){b.advance(1/30);max=Math.max(max,b.enemies.length);}
+    assert.equal(b.completed,true);assert.ok(b.result);assert.ok(max<=200);assert.ok(b.kills>0);assert.ok(b.time<=600.1);
+});
+test('reference bone curves, weights and mesh vertices stay finite in all imported actors',()=>{
+    const root=path.resolve(__dirname,'../assets/resources/data/art.json');const art=JSON.parse(fs.readFileSync(root));
+    for(const [source,spec]of Object.entries(art.frames)){
+        if(spec.kind!=='json'||!source.includes('/anim/'))continue;
+        const data=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/bundles',spec.bundle,spec.file+'.json')));
+        if(!data.bones||!data.animations)continue;
+        const bones=new Map(data.bones.map((b,i)=>[b.name,i]));
+        for(const animation of Object.values(data.animations))for(const t of [0,R.duration(animation)*0.37,R.duration(animation)*0.79]){
+            const matrices=R.boneMatrices(data,animation,t);assert.ok(matrices.flat().every(Number.isFinite));
+            for(const slot of data.slots){const name=R.attachmentAt(slot,animation,t),a=data.skins.default?.[slot.name]?.[name];if(!a)continue;
+                const v=a.type==='mesh'?R.meshVertices(a,matrices,bones.get(slot.bone),animation.deform?.default?.[slot.name]?.[name],t):R.regionVertices(a,matrices[bones.get(slot.bone)]);assert.ok([...v].every(Number.isFinite));}
+        }
+    }
+});
