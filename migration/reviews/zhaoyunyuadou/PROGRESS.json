@@ -124,7 +124,11 @@
     ],
     "v20WinClaim": "Declared settlement fixture, not a live-match win: +20 gold, wins=1, stars=2, weapon 20=1 and residual fragments=0, battle cleared.",
     "outlineAudit": "Installed Cocos 3.8.8 uses canvas lineWidth=outlineWidth*2; inert Laya core uses lineWidth=stroke. Existing stroke/2 mapping is correct; font-face and baseline differences remain.",
-    "remoteBackup": "pending readback after current commits"
+    "remoteBackup": {
+      "commit": "b55427c1af5d0fa6984e3a7486948c029337fef8",
+      "checkedFiles": 434,
+      "result": "pass"
+    }
   },
   "pending": [
     "same-size pixel differences on all pages",
@@ -133,7 +137,6 @@
     "full original items/weapon semantics",
     "WeChat device",
     "online leaderboard/match/advertisements",
-    "remote Git readback",
     "precise basic-unit idle and attack frame positioning",
     "reference version alignment for current WeChat channel"
   ],
