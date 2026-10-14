@@ -82,3 +82,17 @@ test('offline checks retain the complete local game without starting a transacti
  const updater=setup();updater.fetch=async()=>{throw Error('offline');};
  assert.equal(await updater.run(()=>{}),null);assert.equal(files.get(cache+'src/game.js').toString(),'healthy6');assert.equal(files.has(journalPath),false);
 });
+test('unconfirmed content reaches home before another update and does not replace its healthy backup',async()=>{
+ const updater=setup();stage(updater);await updater.run(()=>{});
+ updater.fetch=async()=>{assert.fail('A trial boot should not fetch another update');};
+ assert.equal(await updater.run(()=>{}),'local');assert.equal(files.get(previous+'src/game.js').toString(),'healthy6');
+ assert.equal(read(journalPath).version,'0.1.0.7');assert.equal(read(marker).probePending,true);
+});
+test('an APK-only baseline ignores orphan cache files and retains the rejected newer version after recovery',async()=>{
+ const updater=setup();files.delete(marker);put(cache+'assets/junk.json','orphan');stage(updater);
+ assert.equal(await updater.run(()=>{}),'restart');assert.equal(read(journalPath).previous.paths.length,0);
+ assert.equal(files.has(cache+'assets/junk.json'),false);
+ const failed=read(marker);failed.blockedVersion=failed.version;failed.paths=[];failed.probePending=false;put(marker,failed);
+ assert.equal(updater.recover(),false);assert.equal(read(marker).version,'0.1.0.6');assert.equal(read(marker).blockedVersion,'0.1.0.7');
+ assert.deepEqual(read(marker).paths,[]);assert.equal(dirs.has(previous),false);assert.equal(files.has(journalPath),false);
+});

@@ -27,7 +27,12 @@
         // An APK upgrade already includes this patch or newer resources. Old cache cannot
         // hide its new game code. Only this channel's cache/marker is removed; saves remain.
         files.removeDirectory(cache);
-        files.removeFile(marker);
+        if (newerThanPackaged(state.blockedVersion)) {
+            // A rejected newer delta must stay blocked when recovery returns to APK content.
+            files.writeStringToFile(JSON.stringify({compatibility: identity.nativeCompatibility,
+                version: identity.version, blockedVersion: state.blockedVersion,
+                paths: [], probePending: false, probeAttempted: false}), marker);
+        } else files.removeFile(marker);
         files.setSearchPaths(files.getSearchPaths().filter(function (path) { return path !== cache; }));
         return;
     }

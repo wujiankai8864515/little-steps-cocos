@@ -23,7 +23,11 @@ export class NativeDeltaUpdate {
         try { return JSON.parse(native.fileUtils.getStringFromFile(path)) as T; } catch { return null; }
     }
     private write(path: string, value: unknown): void {
-        if (!native.fileUtils.writeStringToFile(JSON.stringify(value), path)) throw new Error('更新状态写入失败');
+        const temporary=path+'.writing';
+        if (!native.fileUtils.writeStringToFile(JSON.stringify(value), temporary)
+            || !native.fileUtils.renameFile(temporary,path)) {
+            native.fileUtils.removeFile(temporary);throw new Error('更新状态写入失败');
+        }
     }
     private removeDirectory(path: string): void { if (native.fileUtils.isDirectoryExist(path)) native.fileUtils.removeDirectory(path); }
     private cleanStaging(): void { this.removeDirectory(this.next); this.removeDirectory(this.next.slice(0,-1)+'_temp/'); }
@@ -47,6 +51,11 @@ export class NativeDeltaUpdate {
             this.cleanStaging();native.fileUtils.removeFile(this.journalPath);return false;
         }
         this.cleanStaging();this.removeDirectory(this.cache);
+        if (!journal.previous.paths?.length) {
+            this.write(this.marker,{compatibility:this.identity.nativeCompatibility,version:this.identity.version,
+                blockedVersion:journal.version,paths:[],probePending:false,probeAttempted:false});
+            this.removeDirectory(this.previous);native.fileUtils.removeFile(this.journalPath);return false;
+        }
         if (native.fileUtils.isDirectoryExist(this.previous)) {
             if (!native.fileUtils.renameFile(this.previous,this.cache)) throw new Error('无法恢复上一版资源');
             this.write(this.marker,{...journal.previous,paths:[this.cache],blockedVersion:journal.version,
@@ -65,18 +74,20 @@ export class NativeDeltaUpdate {
     }
 
     public async run(status:(text:string)=>void):Promise<'restart'|'local'|null> {
+        const state=this.read<State>(this.marker);
+        const cached=state?.compatibility===this.identity.nativeCompatibility && state.paths?.length===1
+            && state.paths[0]===this.cache && native.fileUtils.isDirectoryExist(this.cache) && Boolean(state.version);
+        // Reach a real healthy home before considering another update during a trial boot.
+        if(cached && state!.probePending)return 'local';
         let index:DeltaIndex;
         try { index=await this.lifetime.run(scope=>this.fetch(scope),2500); }
         catch (error) { this.lifetime.check();console.warn('[Delta check] using local/legacy channel');return null; }
-        const state=this.read<State>(this.marker);
-        const current=state?.compatibility===this.identity.nativeCompatibility && state.paths?.length===1
-            && state.paths[0]===this.cache && native.fileUtils.isDirectoryExist(this.cache) && state.version
-            ? state.version:this.identity.version;
+        const current=cached?state!.version!:this.identity.version;
         if (compareVersions(current,index.bridgeVersion)<0) return null;
         const patches=pendingPatches(index,current,state?.blockedVersion);
         if (!patches.length) return 'local';
         const previous:State={compatibility:this.identity.nativeCompatibility,version:current,
-            paths:native.fileUtils.isDirectoryExist(this.cache)?[this.cache]:[],probePending:false,probeAttempted:false,
+            paths:cached?[this.cache]:[],probePending:false,probeAttempted:false,
             ...(state?.blockedVersion?{blockedVersion:state.blockedVersion}:{})};
         const journal:Journal={compatibility:this.identity.nativeCompatibility,version:index.version,phase:'staging',previous};
         const searchPaths=native.fileUtils.getSearchPaths();
@@ -85,7 +96,7 @@ export class NativeDeltaUpdate {
         try {
             status('正在准备增量更新…');
             native.fileUtils.createDirectory(this.next);
-            await this.copyTree(this.cache,this.next);
+            if(cached)await this.copyTree(this.cache,this.next);
             let version=current;
             for (const patch of patches) {
                 await this.apply(patch,version,status);version=patch.version;

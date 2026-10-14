@@ -85,3 +85,14 @@ test('installing a newer APK supersedes an older/equal patch without deleting pr
   if(!restored)assert.deepEqual(removed,['/data/avg-plus-hot-update/']);
  }
 });
+test('returning to the packaged version preserves a rejected newer delta instead of retrying a boot loop',()=>{
+ const hook=fs.readFileSync(root+'/builds/android/templates/hot-update-bootstrap.js','utf8');
+ const marker='/data/avg-plus-hot-update-state.json';
+ const files=new Map([['avg-plus-native.json',JSON.stringify({...identity,version:'0.1.0.6'})],
+  [marker,JSON.stringify({compatibility:'native-1',version:'0.1.0.6',blockedVersion:'0.1.0.7',paths:['/data/avg-plus-hot-update/'],probePending:false})]]);
+ let paths=['apk/'];
+ const context={jsb:{fileUtils:{getWritablePath:()=>'/data/',getStringFromFile:key=>files.get(key),writeStringToFile:(value,key)=>{files.set(key,value);return true},removeDirectory:()=>{},removeFile:key=>files.delete(key),isFileExist:()=>true,getSearchPaths:()=>paths,setSearchPaths:value=>paths=value}}};
+ vm.runInNewContext(hook,context);
+ assert.equal(JSON.parse(files.get(marker)).blockedVersion,'0.1.0.7');
+ assert.deepEqual(JSON.parse(files.get(marker)).paths,[]);assert.deepEqual(paths,['apk/']);
+});
