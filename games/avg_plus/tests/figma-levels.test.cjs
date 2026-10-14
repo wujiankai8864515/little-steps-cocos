@@ -53,3 +53,41 @@ test('duplicate fixed cards and the 52-slot board require distinct physical copi
   core.restoreSnapshot(snapshot);assert.deepEqual(core.captureSnapshot(),snapshot);
  }
 });
+test('every actual Figma board completes across two seeds with pause, undo, snapshot recovery and conserved physical cards',async()=>{
+ const economy=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/art/resources/config/catalog.json'))).economy;
+ for(const level of levels)for(const seed of [1,20260917]){
+  const runtime=new Runtime([createCardMod(level,seed,undefined,{economy,initialCoins:1000000,retryCost:500})]);await runtime.open();
+  let turns=0;
+  while(!runtime.read('base-card').core.isComplete){
+   assert.ok(turns++<200,level.levelId+' did not progress');
+   const before=runtime.read('base-card'),core=new HighLowSolitaireCore(level);core.restoreSnapshot(before.core);
+   if(turns===4){const saved=runtime.exportSnapshot();runtime.restoreSnapshot(saved);assert.deepEqual(runtime.read('base-card'),before);}
+   if(turns===7){
+    await runtime.dispatch({type:'card.pause'});const paused=runtime.exportSnapshot();
+    assert.equal((await runtime.dispatch({type:'card.draw'})).status,'rejected');assert.deepEqual(runtime.exportSnapshot(),paused);
+    await runtime.dispatch({type:'card.pause'});assert.deepEqual(runtime.read('base-card').core,before.core);assert.equal(runtime.read('base-card').session.coins,before.session.coins);
+   }
+   const legal=core.legalMoveSlotIds;
+   if(!legal.length&&core.stockRemainingCount){assert.equal((await runtime.dispatch({type:'card.draw'})).status,'committed');continue;}
+   let slotId=legal[(turns+seed)%legal.length];
+   if(!slotId){
+    assert.equal((await runtime.dispatch({type:'card.wild'})).status,'committed');
+    slotId=core.slots.find(slot=>slot.card&&slot.faceUp&&slot.isFullyExposed)?.slotId;
+    assert.ok(slotId,level.levelId+' has a permanently covered board');
+   }
+   const prior=runtime.read('base-card');
+   assert.equal((await runtime.dispatch({type:'card.play',payload:{slotId}})).status,'committed');
+   if(turns%5===0&&!runtime.read('base-card').core.isComplete){
+    assert.equal((await runtime.dispatch({type:'card.rollback'})).status,'committed');
+    assert.deepEqual(runtime.read('base-card').core,prior.core);assert.equal(runtime.read('base-card').session.coins,prior.session.coins-50);
+    assert.equal((await runtime.dispatch({type:'card.play',payload:{slotId}})).status,'committed');
+   }
+   const snapshot=runtime.read('base-card').core;
+   const physical=[snapshot.currentCard,...snapshot.slots.map(s=>s.card),...snapshot.stockPile,...snapshot.usedPile,...snapshot.deck].filter(Boolean);
+   assert.equal(physical.length,52*level.deckCount);assert.equal(new Set(physical.map(c=>c.cardName+'@'+(c.copyIndex??0))).size,physical.length);
+  }
+  const won=runtime.exportSnapshot();assert.equal(won.state['base-card'].session.completionRewarded,true);
+  assert.equal((await runtime.dispatch({type:'card.play',payload:{slotId:'already-won'}})).status,'rejected');assert.deepEqual(runtime.exportSnapshot(),won);
+  await runtime.dispose();
+ }
+});
