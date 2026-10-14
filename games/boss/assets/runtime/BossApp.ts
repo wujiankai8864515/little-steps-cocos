@@ -306,8 +306,9 @@ export class BossApp {
     }
     private drawRun() {
         this.clear('run');
-        this.ui.panel(this.frame, 'road-base', 360, 640, 1800, 2600, '#344b69', '#344b69', 0);
-        this.ui.panel(this.frame, 'road-carpet', 360, 768, 520, 1260, '#244262', '#d6b662', 0);
+        this.ui.panel(this.frame, 'road-base', 360, 640, 1800, 2600, C.night, C.night, 0);
+        this.ui.panel(this.frame, 'road-floor', 360, 730, 720, 830, '#344b69', '#344b69', 0);
+        this.ui.panel(this.frame, 'road-carpet', 360, 730, 520, 830, '#244262', '#d6b662', 0);
         for (let i = 0; i < 8; i++) {
             const line = this.ui.node(this.frame, 'road-line-' + i, 360, 300 + i * 120, 400, 12); const g = line.addComponent(Graphics);
             g.fillColor = color('#59728d'); g.rect(-86, -17, 4, 34); g.rect(86, -17, 4, 34); g.fill(); this.roadLines.push(line);
