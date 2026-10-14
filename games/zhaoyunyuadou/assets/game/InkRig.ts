@@ -5,7 +5,7 @@ import { attachmentAt, boneMatrices, duration, meshVertices, regionVertices, set
 export class InkRig {
     private slots: {node:cc.Node;sprite:any;attachment:string|null;mesh:any}[]=[];
     private skin:any; private boneNames=new Map<string,number>(); private animation:any; private length=1; time=0;
-    private MeshSprite:any; name:string;
+    private MeshSprite:any; private loop=true;private completed=false;private onComplete:(()=>void)|undefined; name:string;
     constructor(public root:cc.Node,public art:ArtStore,public source:string,public data:any,name:string,referenceOrigin=false) {
         this.MeshSprite=(globalThis as any).LittleStepsCore.registerCocos(cc);
         this.skin={};for(const key of Object.keys(data.skins.default||{}))this.skin[key]={...data.skins.default[key],...(data.skins['1']?.[key]||{})};
@@ -15,9 +15,15 @@ export class InkRig {
         for(const slot of data.slots){const node=new cc.Node(slot.name);node.layer=root.layer;root.addChild(node);node.setPosition(offset[0],-offset[1]);node.addComponent(cc.UITransform).setContentSize(1,1);const sprite=node.addComponent(this.MeshSprite);this.slots.push({node,sprite,attachment:null,mesh:null});}
         this.play(name);this.pose(0);
     }
-    play(name:string){this.name=name;this.animation=this.data.animations[name]||this.data.animations[Object.keys(this.data.animations)[0]];this.length=duration(this.animation);this.time=0;}
+    play(name:string,loop=true,onComplete?:()=>void){this.name=name;this.animation=this.data.animations[name]||this.data.animations[Object.keys(this.data.animations)[0]];this.length=duration(this.animation);this.time=0;this.loop=loop;this.completed=false;this.onComplete=onComplete;}
     useSkin(name:string){const base=this.data.skins.default||{},selected=this.data.skins[name]||{};this.skin={};for(const key of Array.from(new Set(Object.keys(base).concat(Object.keys(selected)))))this.skin[key]={...(base[key]||{}),...(selected[key]||{})};for(const slot of this.slots)slot.attachment=null;this.pose(this.time);}
-    advance(dt:number){this.time=(this.time+dt)%this.length;this.pose(this.time);}
+    advance(dt:number){
+        if(this.completed)return;
+        const next=this.time+dt;
+        if(this.loop){this.time=next%this.length;this.pose(this.time);return;}
+        this.time=Math.min(next,this.length);this.pose(this.time);
+        if(next>=this.length){this.completed=true;const callback=this.onComplete;this.onComplete=undefined;callback?.();}
+    }
     pose(t:number){
         if(!cc.isValid(this.root,true))return;const matrices=boneMatrices(this.data,this.animation,t);
         for(let i=0;i<this.slots.length;i++){

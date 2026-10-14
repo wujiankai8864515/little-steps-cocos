@@ -75,10 +75,10 @@ export class InkUI {
             s.color = inkColor(d.color); this.skin(body,d.skin,d.sizeGrid);
             if (d.gray) s.grayscale = true;
         }
-        if (d.text !== undefined || d.kind === 'ComboBox') {
+        if (d.text !== undefined || d.kind === 'Text' || d.kind === 'Label' || d.kind === 'ComboBox') {
             const textNode=body.getComponent(Sprite)?this.node('$label',body,0,0,w,h):body;
             const label = textNode.addComponent(Label); label.useSystemFont = true; label.fontFamily = d.font || 'Arial';
-            label.string = d.text === undefined ? '简体中文' : d.text; label.fontSize = d.fontSize || (d.kind==='ComboBox'?30:24);
+            label.string = d.text === undefined ? (d.kind==='ComboBox'?'简体中文':'') : d.text; label.fontSize = d.fontSize || (d.kind==='ComboBox'?30:24);
             label.lineHeight = label.fontSize + (d.leading || 2); label.color = inkColor(d.color || (d.kind==='ComboBox'?'#ffffff':'#000000')); label.isBold = !!d.bold;
             label.horizontalAlign = d.align === 'center'||d.kind==='ComboBox' ? Label.HorizontalAlign.CENTER : d.align === 'right' ? Label.HorizontalAlign.RIGHT : Label.HorizontalAlign.LEFT;
             label.verticalAlign = d.valign === 'middle'||d.kind==='ComboBox' ? Label.VerticalAlign.CENTER : d.valign === 'bottom' ? Label.VerticalAlign.BOTTOM : Label.VerticalAlign.TOP;

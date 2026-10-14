@@ -98,6 +98,7 @@ export class GameApp {
         this.screen=this.ui.scene('MainScene');const box=this.ui.find('box',this.screen)!;
         this.ui.setText('goldTxt',this.profile.gold.toString(),this.screen);this.ui.setText('staminaTxt',this.profile.stamina.toString(),this.screen);
         this.ui.setText('rankTxt',rankName(this.profile.stars),this.screen);this.ui.show('star5',false,this.screen);
+        this.ui.find('staminaTxt',this.screen)!.body.getComponent(Label)!.color=inkColor(this.profile.stamina<1?'#e95b55':this.profile.stamina<=10?'#2797d6':'#f7de76');
         for(let i=0;i<5;i++){const e=this.ui.find('star'+i,this.screen);if(e)this.ui.skin(e.body,skin('gameOverUI',i<(this.profile.stars-1)%5+1?'star4':'star3'));}
         const avatar=this.ui.find('avatarImg',this.screen);if(avatar)this.ui.skin(avatar.body,skin('mainUI','avatar/avatar'+this.profile.avatar));
         this.ui.show('followBtn',false,this.screen);this.ui.show('ageTip',false,this.screen);
@@ -150,6 +151,7 @@ export class GameApp {
         mask.body.addComponent(Mask).type=Mask.Type.GRAPHICS_RECT;
         this.ui.image(mask.body,skin('battleUI','btn2'),0,0,260,131);
         const divide=this.ui.find('divide',this.screen)!;divide.node.setPosition(0,-this.battle.map.divideY);
+        divide.node.getComponent(UITransform)!.setContentSize(this.battle.map.divideWidth,this.battle.map.divideHeight);divide.body.getComponent(UITransform)!.setContentSize(this.battle.map.divideWidth,this.battle.map.divideHeight);
         this.ui.skin(divide.body,skin('map','divide_'+this.battle.map.id));
         this.heroLayer=this.ui.node('hero borders',this.board,0,0,640,800);
         this.combatLayer=this.ui.node('dynamic battle',this.ui.find('gameObjectBox',this.screen)!.body,0,0,640,800);
@@ -166,11 +168,11 @@ export class GameApp {
                 if(!this.battle.map.grass.includes(neighbor)){g.moveTo(ax,-ay);g.lineTo(bx,-by);}
             }
         }g.stroke();
-        for(const cell of this.battle.map.entries){const pos=this.battle.position(cell);await this.rig(this.board,'resources/anim/grass/skeleton.json','idle0',pos.x,pos.y+40,0.6);}
+        for(const cell of this.battle.map.entries){const pos=this.battle.position(cell);await this.rig(this.board,'resources/anim/grass/skeleton.json','idle'+this.battle.map.id,pos.x,pos.y+40,1);}
         for(const side of [0,1] as Side[]) {
             const cell=this.battle.map.paths[side].slice(-1)[0],pos=this.battle.position(cell);
-            const a=this.ui.node('adou-'+side,this.board,pos.x,pos.y+38,1,1);
-            await this.rig(a,'resources/anim/aDou/skeleton.json','zhan',0,0,1.1);
+            const a=this.ui.node('adou-'+side,this.board,pos.x-40,pos.y-40,80,80);
+            await this.rig(a,'resources/anim/aDou/skeleton.json','zhan',45-49.33/2,70-78.62,1,true);
         }
         this.board.on(Node.EventType.TOUCH_START,(e:EventTouch)=>this.dragStart(e,'board'));
         this.reserve.on(Node.EventType.TOUCH_START,(e:EventTouch)=>this.dragStart(e,'reserve'));
@@ -309,16 +311,17 @@ export class GameApp {
             if(!n){
                 n=this.ui.node('enemy-'+enemy.id,this.combatLayer,0,0,80,80);
                 this.ui.image(n,skin('gameObject','enemy/shadow1'),16,51,47,20);
-                const glyph=this.ui.image(n,skin('gameObject','enemy/mob_0_zh'),12,10,56,60);if(enemy.boss){glyph.getComponent(Sprite)!.color=inkColor('#d3382f');glyph.setScale(1.5,1.5);}
+                const glyph=this.ui.image(n,skin('gameObject','enemy/mob_0_zh'),40,80,80,80,undefined,'mob-glyph');glyph.getComponent(UITransform)!.setAnchorPoint(.5,0);if(enemy.boss){glyph.getComponent(Sprite)!.color=inkColor('#d3382f');glyph.setScale(1.5,1.5);}
                 if(enemy.bossType!==undefined){const type=enemy.bossType,sources=['boss0','boss0','boss0','boss1','boss1','boss1','huaXiong','lvBu','dongZhuo','boss2','boss2','boss2'],animations=['goliang','gobao','gojiao','goxiang','gozhen','godiao','gohx','golvbu','godz','godian','goxia','gocao'];
                     const captured=n;void this.rig(n,'resources/anim/'+sources[type]+'/skeleton_zh.json',animations[type],40,65,.8).then(rig=>{if(rig&&isValid(captured,true)){glyph.active=false;(captured as any).__rig=rig;}});
                     this.ui.text(n,BOSSES[type].name,0,-40,80,32,23,'#edcf73',4);}
-                this.ui.image(n,skin('gameObject','enemy/hpBg'),12,3,62,11);
-                this.ui.image(n,skin('gameObject','enemy/hp1'),16,6,54,5,undefined,'hp');
-                this.ui.text(n,'',4,-19,72,24,20,'#ffffff',5).name='hpNum';this.mobs.set(enemy.id,n);
+                const hpY=enemy.boss?-40:3;this.ui.image(n,skin('gameObject','enemy/hpBg'),12,hpY,62,11);
+                this.ui.image(n,skin('gameObject','enemy/hp1'),16,hpY+3,54,5,undefined,'hp');
+                this.ui.text(n,'',20,hpY-6,47,21,20,'#ffffff',5).name='hpNum';this.mobs.set(enemy.id,n);
             }
             n.setPosition(enemy.x-40,-enemy.y+40);const hp=n.getChildByName('hp')!;hp.setScale(Math.max(0,enemy.hp/enemy.maxHp),1);
-            n.getChildByName('hpNum')!.getComponent(Label)!.string=this.profile.settings.damage?Math.ceil(enemy.hp).toString():'';
+            n.getChildByName('hpNum')!.getComponent(Label)!.string=Math.ceil(enemy.hp).toString();
+            if(!enemy.boss)n.getChildByName('mob-glyph')!.setScale(1,1+.02*Math.sin(b.time*Math.PI/.195+enemy.id));
         }
         for(const[id,n]of Array.from(this.mobs.entries()))if(!current.has(id)){n.destroy();this.mobs.delete(id);}
         current.clear();
@@ -341,6 +344,8 @@ export class GameApp {
             n.setPosition(effect.x-65,-effect.y+35+(effect.duration-effect.ttl)*35);n.getComponent(UIOpacity)!.opacity=Math.min(255,effect.ttl/effect.duration*400);
         }
         for(const[id,n]of Array.from(this.effects.entries()))if(!current.has(id)){n.destroy();this.effects.delete(id);}
+        for(const view of Array.from(this.actors.values())){let pike=view.node.getChildByName('unit-pike');const visible=view.unit.kind==='枪'&&view.node.parent===this.combatLayer;
+            if(visible&&!pike){pike=this.ui.image(view.node,skin('gameObject','soldier/pike'),23,38,30,71,undefined,'unit-pike');pike.getComponent(UITransform)!.setAnchorPoint(.5,.5);}if(pike)pike.active=visible;}
         for(const view of Array.from(this.heroViews.values()))if(view.rig){const animation=view.unit.cooldown>0?'attack1':'zhan2';if(view.rig.name!==animation)view.rig.play(animation);}
         if(b.haze>0&&!this.hazeNode){this.hazeNode=this.ui.image(this.combatLayer,skin('gameObject','enemy/blackCloud0'),0,0,640,800);this.hazeNode.getComponent(Sprite)!.color=new Color(255,255,255,180);}else if(b.haze<=0&&this.hazeNode){this.hazeNode.destroy();this.hazeNode=null;}
         const items=this.ui.find('box',this.screen)!.body.getChildByName('items-runtime');
@@ -425,16 +430,23 @@ export class GameApp {
     private async shop(tab='shop') {
         if(!await this.prepare('shop',['meta','battle','effects']))return;this.storePage=tab;
         const {ui,element}=this.newOverlay('ShopScene');const box=ui.find('box',element!)!;
-        const scale=this.height/1386;box.node.setScale(scale,scale);box.node.setPosition(320,-this.height/2);const token=this.marketToken();if(this.offersToken&&this.offersToken!==token)this.offers=[];this.offersToken=token;this.offers=this.offers.length?this.offers:this.dailyOffers();const sold=this.profile.marketSold===token;
+        // Public WeChat short-screen shots retain the merchant's full-width
+        // panel. Its 1200px visible content fits above the cropped footer.
+        const scale=this.height<1386?Math.min(1,this.height/1200):this.height/1386;box.node.setScale(scale,scale);box.node.setPosition(320,-693*scale);
+        const background=ui.find('bg',element!)!.body.getChildByName('rect')?.getComponent(Graphics);if(background){background.clear();background.fillColor=new Color(0,0,0,204);background.rect(0,-this.height,640,this.height);background.fill();}
+        const token=this.marketToken();if(this.offersToken&&this.offersToken!==token)this.offers=[];this.offersToken=token;this.offers=this.offers.length?this.offers:this.dailyOffers();const sold=this.profile.marketSold===token;
         ui.setText('goldTxt',this.profile.gold.toString(),element!);ui.setText('staminaTxt',this.profile.stamina.toString(),element!);
+        ui.find('staminaTxt',element!)!.body.getComponent(Label)!.color=inkColor(this.profile.stamina<1?'#e95b55':'#f7de76');
         ui.show('shopBox',tab==='shop',element!);ui.show('lotteryBox',tab==='lottery',element!);ui.show('lotteryLabelRect',false,element!);
         ui.button(ui.find('xBtn',element!),()=>this.closeOverlay());ui.button(ui.find('shopLabel',element!),()=>this.shop('shop'));ui.button(ui.find('lotteryLabel',element!),()=>this.shop('lottery'));
         const active=ui.find('activePropsBox',element!)!,passive=ui.find('passivePropsBox',element!)!;
         active.body.destroyAllChildren();passive.body.destroyAllChildren();
         let a=0,p=0;
         for(const id of this.profile.items){const item=ITEMS.find(i=>i.id===id)!;const parent=item.active?active.body:passive.body,index=item.active?a++:p++;
-            const n=ui.image(parent,skin('shop','propsBg1'),10+index*86,5,82,81);ui.image(n,skin('props',item.image),6,6,70,70);
-            const remove=ui.image(n,skin('shop','deleteBtn'),60,-5,28,28);ui.button(remove,()=>this.removeItem(id));}
+            const def=JSON.parse(JSON.stringify(this.art.layouts.shopPropsItem));def.x=51+index*86;def.y=item.active?50:40;
+            const owned=ui.mount(def,parent,533,90);ui.skin(owned.body,skin('props',item.active?'activePropsBg':'passivePropsBg'));
+            ui.skin(ui.find('rarity',owned)!.body,skin('shop','itemBg'+(item.active?0:1)+'_'+item.rarity));ui.skin(ui.find('img',owned)!.body,skin('props',item.image));
+            ui.button(ui.find('deleteBtn',owned),()=>this.removeItem(id));}
         if(tab==='shop') {
             const list=ui.find('list',element!)!.body;
             for(let i=0;i<this.offers.length;i++){
@@ -447,27 +459,37 @@ export class GameApp {
                 ui.button(ui.find('btn',row),()=>{if(sold){this.toast('已售完');return;}const error=purchase(this.profile,item.id);if(error)this.toast(error);else{this.profile.marketSold=token;this.save();this.play('popup_notification');this.shop(tab);}});
             }
         } else {
-            const lucky=ui.find('luckyBox',element!)!.body,choices=ITEMS.slice(5,13);
+            ui.skin(ui.find('shopBg',element!)!.body,skin('shop','shopBg2'),'50,50,50,50,0');
+            const lucky=ui.find('luckyBox',element!)!.body,choices=this.lotteryChoices(),positions=[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,1]];
             for(let i=0;i<8;i++){
-                const positions=[[0,0],[170,0],[340,0],[0,138],[340,138],[0,276],[170,276],[340,276]],item=choices[i];
-                const n=ui.image(lucky,skin('shop','lottery/itemBg'),positions[i][0],positions[i][1],150,130);
-                ui.image(n,skin('props',item.image),35,8,80,80);ui.text(n,item.name,3,84,144,42,28,'#ffffff',4);
-                ui.button(n,()=>this.toast(item.description));
+                const item=choices[i];if(!item)continue;const def=JSON.parse(JSON.stringify(this.art.layouts.lotteryItem));def.x=77+positions[i][0]*174.5;def.y=66+positions[i][1]*141.5;
+                const row=ui.mount(def,lucky,503,415);ui.skin(row.body,skin('shop','lottery/rarityBg'+item.rarity));ui.skin(ui.find('img',row)!.body,skin('props',item.image));ui.setText('name',item.name,row);
+                ui.button(row,()=>this.toast(item.description));
             }
-            ui.show('luckyBtnAd',true,element!);ui.button(ui.find('luckyBtn',element!),()=>this.lottery());
+            ui.show('luckyBtnAd',!this.profile.daily.lottery,element!);ui.show('luckyBtnGold',this.profile.daily.lottery,element!);ui.button(ui.find('luckyBtn',element!),()=>this.lottery());
         }
     }
     private dailyOffers(){const rng=new Random(this.profile.day*179+113);const pool=[...ITEMS];const out:Item[]=[];for(let i=0;i<3;i++){const item=rng.pick(pool);out.push(item);pool.splice(pool.indexOf(item),1);}return out;}
     private marketToken(){return this.profile.day+':'+(this.profile.wins+this.profile.losses);}
     private removeItem(id:string){const item=ITEMS.find(i=>i.id===id);if(!item)return;const {ui,element}=this.newOverlay('DeletePropsTipDialog',true);ui.setText('tipTxt','您确定要删除'+item.name+'道具吗',element!);ui.button(ui.find('cancelBtn',element!),()=>this.closeOverlay());ui.button(ui.find('confirmBtn',element!),()=>{this.profile.items=this.profile.items.filter(value=>value!==id);delete this.profile.itemLevels[id];this.save();this.closeOverlay();this.shop(this.storePage);});}
+    private lotteryChoices(){const pool=ITEMS.filter(item=>item.id!=='march'&&!this.profile.items.includes(item.id)),rng=new Random(this.profile.day*179+this.profile.wins+this.profile.losses+317),out:Item[]=[];while(pool.length&&out.length<8){const item=rng.pick(pool);out.push(item);pool.splice(pool.indexOf(item),1);}return out;}
     private lottery() {
         if(this.profile.marketSold===this.marketToken()){this.toast('已售完');return;}
-        const key='lottery-'+this.profile.day;
-        const pool=ITEMS.filter(item=>!this.profile.items.includes(item.id)&&this.profile.items.filter(id=>ITEMS.find(i=>i.id===id)!.active===item.active).length<(item.active?2:6));const rng=new Random(Date.now());
-        const item=rng.pick(pool);if(!item){this.toast('所有道具已获得');return;}
+        const rng=new Random(Date.now()),item=rng.pick(this.lotteryChoices());if(!item){this.toast('所有道具已获得');return;}
         if(this.profile.daily.lottery&&this.profile.gold<100){this.toast('金币不足');return;}
         if(this.profile.daily.lottery)this.profile.gold-=100;else this.profile.daily.lottery=true;
-        this.profile.items.push(item.id);this.profile.itemLevels[item.id]=1;this.profile.marketSold=this.marketToken();this.save();this.play('lottery');this.shop('lottery');this.toast('获得 '+item.name);
+        this.profile.marketSold=this.marketToken();this.save();this.play('lottery');
+        const owned=this.profile.items.filter(id=>ITEMS.find(i=>i.id===id)!.active===item.active);
+        if(owned.length>=(item.active?2:6)){this.replaceItem(item,owned);return;}
+        this.profile.items.push(item.id);this.profile.itemLevels[item.id]=1;this.save();this.shop('lottery');this.toast('获得 '+item.name);
+    }
+    private replaceItem(item:Item,owned:string[]){
+        const {ui}=this.newOverlay(undefined,true);ui.rect(this.overlay!,0,0,640,this.height,'#00000099');
+        const def=JSON.parse(JSON.stringify(this.art.layouts.ReplacePropsTipDialog)),scale=Math.min(1,this.height/1100);def.x=320;def.y=this.height/2;def.anchorX=.5;def.anchorY=.5;def.scaleX=scale;def.scaleY=scale;
+        const pane=ui.mount(def,this.overlay!,640,this.height);ui.skin(ui.find('newPropsItem',pane)!.body,skin('shop','itemBg'+(item.active?0:1)+'_'+item.rarity));ui.skin(ui.find('newPropsImg',pane)!.body,skin('props',item.image));ui.setText('newIntro',item.description,pane);
+        let selected=owned[0];const redraw=()=>{ui.setText('oldIntro',ITEMS.find(i=>i.id===selected)!.description,pane);for(let i=0;i<6;i++){const slot=ui.find('props'+i,pane)!;slot.node.active=i<owned.length;if(i>=owned.length)continue;const previous=ITEMS.find(p=>p.id===owned[i])!;ui.skin(slot.body,skin('shop','itemBg'+(previous.active?0:1)+'_'+previous.rarity));ui.skin(ui.find('img',slot)!.body,skin('props',previous.image));const opacity=slot.node.getComponent(UIOpacity)||slot.node.addComponent(UIOpacity);opacity.opacity=owned[i]===selected?255:150;}};
+        for(let i=0;i<owned.length;i++)ui.button(ui.find('props'+i,pane),()=>{selected=owned[i];redraw();});redraw();
+        ui.button(ui.find('giveUpBtn',pane),()=>{this.closeOverlay();this.shop('lottery');});ui.button(ui.find('replaceBtn',pane),()=>{const index=this.profile.items.indexOf(selected);if(index<0||this.profile.items.includes(item.id))return;this.profile.items.splice(index,1,item.id);delete this.profile.itemLevels[selected];this.profile.itemLevels[item.id]=1;this.save();this.closeOverlay();this.shop('lottery');this.toast('获得 '+item.name);});
     }
     private async weapons() {
         if(!await this.prepare('weapons',['meta']))return;this.clear('weapons');this.screen=this.ui.scene('WeaponScene');
@@ -554,19 +576,24 @@ export class GameApp {
         const r=this.battle.result;this.clear('result');this.screen=this.ui.scene('GameOverScene');
         this.musicToken++;this.music.stop();
         this.ui.show('winBg',r.win,this.screen);this.ui.show('loseBg',!r.win,this.screen);this.ui.show('winBox',r.win,this.screen);this.ui.show('loseBox',!r.win,this.screen);
-        this.ui.show('upTxt',false,this.screen);this.ui.show('star5',false,this.screen);this.ui.show('arrow',false,this.screen);this.ui.show('lightning',false,this.screen);this.ui.show('cloud',!r.win,this.screen);
+        this.ui.skin(this.ui.find('getBtnAd',this.screen)!.body,skin('gameOverUI',r.win?'btn6':'btn5'));
+        this.ui.show('upTxt',r.win,this.screen);this.ui.show('star5',false,this.screen);this.ui.show('arrow',r.win,this.screen);this.ui.show('lightning',false,this.screen);this.ui.show('cloud',!r.win,this.screen);
+        if(r.win){for(const[name,w,h]of [['rankBg0',491,251],['rankBg1',435,200],['rankBg2',341,145]] as [string,number,number][]){const glow=this.ui.find(name,this.screen)!;glow.node.getComponent(UITransform)!.setContentSize(w,h);glow.body.getComponent(UITransform)!.setContentSize(w,h);glow.body.setPosition(-w/2,h);}this.ui.skin(this.ui.find('arrow',this.screen)!.body,skin('gameOverUI','arrow1'));}
         const box=this.ui.find('box',this.screen)!;
         const nextStars=this.profile.rewards.includes(r.id)?this.profile.stars:r.win?this.profile.stars+1:Math.max(1,this.profile.stars-1);
         this.ui.setText('goldNumTxt','X'+r.reward,this.screen);this.ui.setText('rankTxt1',rankName(nextStars),this.screen);this.ui.setText('rankTxt2','',this.screen);
         for(let i=0;i<5;i++){const star=this.ui.find('star'+i,this.screen);if(star){const filled=i<(nextStars-1)%5+1;star.node.getComponent(UIOpacity)!.opacity=filled?255:77;this.ui.skin(star.body,skin('gameOverUI',filled?'star1':'star0'));}}
         const actorParent=this.ui.find(r.win?'winBox':'loseBox',this.screen)!.body;
-        await this.rig(actorParent,'resources/anim/aDou/skeleton.json',r.win?'zhan':'attack',r.win?290:285,r.win?530:520,r.win?2.3:1.8,true);
+        const adou=await this.rig(actorParent,'resources/anim/aDou/skeleton.json','dakai',r.win?290:285,r.win?530:520,r.win?2.3:1.8,true);
+        adou?.play('dakai',false,()=>adou.play(r.win?'hejiu':'attack',r.win));
         if(!r.win){const floor=this.ui.find('loseFloor',this.screen)!.body;
-            for(let i=0;i<5;i++){const angle=(i+1)*Math.PI*.4,n=this.ui.node('thief-orbit-'+i,floor,275+200*Math.cos(angle)-40,130+100*Math.sin(angle)-40,80,80);(n as any).__orbit=angle;
-                this.ui.image(n,skin('gameObject','soldier/shadow2'),17,58,50,22).getComponent(Sprite)!.color=new Color(255,255,255,128);
-                await this.rig(n,'resources/anim/thief/skeleton_zh.json','animation',11,12,1,true);}
-        }else{for(const[x,y]of [[80,605],[80,740],[490,605],[490,740]])await this.rig(actorParent,'resources/anim/dancer/skeleton.json','wu',x,y,1,true);}
-        if(r.weaponId!==null){const w=this.art.weapons.find(w=>w.id===r.weaponId);this.ui.text(box.body,'获得 '+w.txt,120,785,400,65,35,'#fbe2a0',4);}
+            for(let i=0;i<5;i++){const angle=(i+1)*Math.PI*.4,n=this.ui.node('thief-orbit-'+i,floor,275+200*Math.cos(angle),130+100*Math.sin(angle),80,80),body=this.ui.node('centered thief',n,-40,-40,80,80);
+                this.ui.image(body,skin('gameObject','soldier/shadow2'),17,58,50,22).getComponent(Sprite)!.color=new Color(255,255,255,128);
+                const thief=await this.rig(body,'resources/anim/thief/skeleton_zh.json','animation',11,12,1,true);thief?.play('animation',false);
+                (n as any).__orbit={angle,dir:i%2?1:-1,actor:thief?.root};}
+        }else{for(const[x,y]of [[0,570],[500,570],[110,670],[410,670]])await this.rig(actorParent,'resources/anim/dancer/skeleton.json','wu',x,y,1,true);}
+        if(r.weaponId!==null){const w=this.art.weapons.find(w=>w.id===r.weaponId)!;const area=this.ui.find('weaponBox',this.screen)!.body,def=JSON.parse(JSON.stringify(this.art.layouts.weaponFragment));def.width=Math.max(100,w.txt.length*32+36);def.x=8+def.width/2;def.y=33;for(const child of def.children)child.width=def.width;
+            const fragment=this.ui.mount(def,area,400,100);this.ui.skin(this.ui.find('bg',fragment)!.body,skin('weaponBag','rarity'+w.rarity));this.ui.setText('name',w.txt,fragment);}
         const receive=(double:boolean)=>{if(claimResult(this.profile,r,double)){this.save();sys.localStorage.removeItem(ROUND_KEY);}this.battle=null;this.home();};
         this.bind('getBtn',()=>receive(false));this.bind('getBtnAd',()=>receive(true));this.play(r.win?'game_win':'game_lose');this.save();
     }
@@ -586,7 +613,14 @@ export class GameApp {
     advance(dt:number) {
         if(!this.alive||this.suspended)return;dt=Math.min(0.25,dt);this.soundGate=Math.max(0,this.soundGate-dt);
         if(!(this.page==='battle'&&this.battle?.paused))for(const rig of this.rigs)rig.advance(dt);
-        if(this.page==='result'&&this.screen){const floor=this.ui.find('loseFloor',this.screen);if(floor)for(const node of floor.body.children)if((node as any).__orbit!==undefined){const angle=(node as any).__orbit-=dt*.6;node.setPosition(275+200*Math.cos(angle)-40,-(130+100*Math.sin(angle)-40));}}
+        if(this.page==='result'&&this.screen){
+            const light=this.ui.find('goldLight',this.screen);if(light)light.node.angle=(light.node.angle-dt*60)%360;
+            const floor=this.ui.find('loseFloor',this.screen);if(floor)for(const node of floor.body.children){const orbit=(node as any).__orbit;if(!orbit)continue;
+                orbit.angle-=dt*.6;const y=130+100*Math.sin(orbit.angle);node.setPosition(275+200*Math.cos(orbit.angle),-y);
+                node.setScale(Math.max(-1,Math.min(1,node.scale.x+(y<130?-1:1)*dt*6)),1);
+                if(orbit.actor&&isValid(orbit.actor,true)){let scale=orbit.actor.scale.y;if(scale>1.3)orbit.dir=-1;else if(scale<.7)orbit.dir=1;scale+=dt*1.2*orbit.dir;orbit.actor.setScale(1,scale);}
+            }
+        }
         if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0){this.toastNode?.destroy();this.toastNode=null;}}
         if(this.page==='match'){this.matchTime-=dt;if(this.matchTime<1.2)this.ui.setText('title','匹配完成',this.screen);if(this.matchTime<=0){this.matchTime=999;this.showBattle();}}
         if(this.page==='battle'&&this.battle){this.battle.advance(dt);if(this.battle.revision!==this.revision)this.drawBattle();this.drawDynamic(dt);if(this.battle.completed)this.result();}
@@ -600,6 +634,6 @@ export class GameApp {
         const redraw=this.page==='battle'?this.showBattle():this.page==='weapons'?this.weapons():this.page==='ranks'?this.ranks():this.page==='result'?this.result():this.page==='home'?this.home():Promise.resolve();
         redraw.then(()=>{if(modal==='ShopScene')this.shop(tab);else if(modal==='SettingScene')this.settings();else if(modal==='PauseDialog')this.pause();else if(modal==='GetStaminaDialog')this.stamina();});
     }
-    inspect() {return {page:this.page,overlay:!!this.overlay,drag:this.drag?{weapon:this.drag.weaponId,item:this.drag.item,location:this.drag.location,moved:this.drag.moved}:null,profile:this.profile,battle:this.battle?{wave:this.battle.wave,time:this.battle.time,lives:this.battle.armies.map(a=>a.lives),food:this.battle.armies[0].food,cost:this.battle.cost(),reserve:this.battle.armies[0].reserve,units:this.battle.armies[0].units,heroes:this.battle.heroes(0),tutorial:this.battle.tutorialStep,completed:this.battle.completed}:null,art:this.art.metrics(),height:this.height};}
+    inspect() {return {page:this.page,overlay:!!this.overlay,overlayKind:this.overlayKind,drag:this.drag?{weapon:this.drag.weaponId,item:this.drag.item,location:this.drag.location,moved:this.drag.moved}:null,profile:this.profile,battle:this.battle?{map:this.battle.map.id,mapName:this.battle.map.name,paused:this.battle.paused,wave:this.battle.wave,time:this.battle.time,lives:this.battle.armies.map(a=>a.lives),food:this.battle.armies[0].food,cost:this.battle.cost(),reserve:this.battle.armies[0].reserve,units:this.battle.armies[0].units,heroes:this.battle.heroes(0),tutorial:this.battle.tutorialStep,completed:this.battle.completed}:null,art:this.art.metrics(),height:this.height};}
     dispose(){this.alive=false;this.root.active=false;const dispatcher=this.pointerDispatcher;dispatcher.dispatchEvent=()=>true;dispatcher.onThrowException=()=>{};director.once(Director.EVENT_AFTER_DRAW,()=>{const list=(input as any)._eventDispatcherList,index=list?.indexOf(dispatcher);if(index>=0)list.splice(index,1);});this.musicToken++;this.music.stop();this.musicNode.destroy();this.save();this.cancelDrag();input.off(Input.EventType.KEY_DOWN,this.key);game.off(Game.EVENT_HIDE,this.hide);game.off(Game.EVENT_SHOW,this.show);this.art.dispose();this.root.destroy();}
 }
