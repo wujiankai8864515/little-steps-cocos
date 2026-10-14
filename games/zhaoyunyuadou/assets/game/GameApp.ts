@@ -264,7 +264,10 @@ export class GameApp {
         this.rigs=this.rigs.filter(rig=>isValid(rig.root));
         this.tutorial?.destroy();this.tutorial=null;
         if(b.tutorialStep===1||b.tutorialStep===2) {
-            this.tutorial=this.ui.text(box,b.tutorialStep===1?'点击下方红色按钮 征召士兵':'拖动营地中的字 放到白色格子',15,300,610,70,40,'#ffd000',7);
+            // Calibrated to the larger caption in the public WeChat 320×704
+            // screenshot; the native 1.0.9 controller uses 40 px text.
+            this.tutorial=this.ui.text(box,b.tutorialStep===1?'点击下方红色按钮 征召士兵':'拖动营地中的字 放到白色格子',15,294,610,70,45,'#FFD700',5);
+            const label=this.tutorial.getComponent(Label)!;label.isBold=true;label.outlineColor=inkColor('#7B2800');
         }
         this.revision=b.revision;
     }

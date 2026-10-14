@@ -11,7 +11,7 @@
     "artFrames": 1117,
     "layoutDefinitions": 64,
     "originalMaps": 4,
-    "modelTests": 21,
+    "modelTests": 24,
     "chromeInputs": [
       "start game",
       "recruit",
@@ -33,9 +33,12 @@
       "dynamic new and old item descriptions",
       "all four map entry and divider layouts",
       "win and loss settlement fixtures",
-      "v20 victory reward claim returns home and assembles threshold-one fragment"
+      "v20 victory reward claim returns home and assembles threshold-one fragment",
+      "v22 original-frame archer recruit and drag to board",
+      "v22 pause freezes actual battle at time 19.433333333333458 with attack 19 winding up",
+      "v22 reload preserves attack 19, continue reaches live victory, claim assembles weapon 10 and clears round"
     ],
-    "actualChromeMatch": "v12 live match reached victory at wave 2, time 32.6667, lives [3,0]. Claim increased gold by 20, stars to 2, and short spear count to 1; browser evidence, not device",
+    "actualChromeMatch": "v22 latest basic-unit model: restored paused attack 19 at time 19.4333, resumed and reached real victory at wave 2, time 34.8667, lives [3,0]. Claim +20 gold, stars 2, wins 1, weapon 10=1, residual 0; round cleared. Browser evidence, not device.",
     "homeTextureEstimateBytes": 54379048,
     "pixelComparisons": {
       "home-v9": {
@@ -85,6 +88,24 @@
         ],
         "MAE": 36.20723379629629,
         "strict": "unproven"
+      },
+      "tutorial-v22": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 10.172107303503788,
+        "resize": "none",
+        "strict": "unproven"
+      },
+      "tutorial-v23": {
+        "size": [
+          320,
+          704
+        ],
+        "MAE": 9.092505622632576,
+        "resize": "none",
+        "strict": "unproven"
       }
     },
     "wechatCandidate": {
@@ -113,9 +134,9 @@
       "reservedBytes": 170437440,
       "pending": 0
     },
-    "gameGitCommit": "f8a9e8610106a7f5fb17d47f7ff8795eaeb6872d",
-    "gameBackupCommit": "a8c4506",
-    "latestBrowserCandidate": "zya-web-v20",
+    "gameGitCommit": "8201c0c",
+    "gameBackupCommit": "421d383",
+    "latestBrowserCandidate": "zya-web-v23",
     "allMapScreens": [
       "zya-v19-map0.png",
       "zya-v19-map1.png",
@@ -128,7 +149,14 @@
       "commit": "b55427c1af5d0fa6984e3a7486948c029337fef8",
       "checkedFiles": 434,
       "result": "pass"
-    }
+    },
+    "basicUnitFrames": {
+      "source": "public native inert declarative facts",
+      "canvas": "original natural size and trim offsets",
+      "web": "v22 visible original idle/attack frames, pike trail, bow turn; model tests verify wind-up and pause/restore",
+      "collision": "Single/line/area implemented; native moving pike and rotating cavalry collision remain pending"
+    },
+    "tutorialCaption": "v23 actual whole-image comparison: native brown stroke and bold style with explicit public-WeChat 45px caption calibration. Yellow bounds close to reference, font-face still pending."
   },
   "pending": [
     "same-size pixel differences on all pages",
@@ -137,8 +165,9 @@
     "full original items/weapon semantics",
     "WeChat device",
     "online leaderboard/match/advertisements",
-    "precise basic-unit idle and attack frame positioning",
-    "reference version alignment for current WeChat channel"
+    "reference version alignment for current WeChat channel",
+    "same-phase basic-unit animation comparison",
+    "native moving pike and rotating cavalry collision geometry"
   ],
   "failedEvidence": [
     "zya-web-v1.log: Creator sandbox launch abort",
