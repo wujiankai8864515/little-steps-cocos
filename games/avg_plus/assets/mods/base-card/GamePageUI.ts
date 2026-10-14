@@ -253,7 +253,7 @@ export class GamePageUI extends GamePresentation {
             };
             button('resume', '继续游戏', 65, new Color(192, 47, 151), 'card.pause');
             button('restart', `重新开始 · ${this.economy?.entryCost ?? 0} 金币`, -80, new Color(88, 57, 116), 'card.restart');
-            button('exit', '返回主页', -225, new Color(88, 57, 116), 'card.exit');
+            button('exit', '返回剧情', -225, new Color(88, 57, 116), 'card.exit');
         }
         this.pauseOverlay.active = true;
         this.pauseOverlay.setSiblingIndex(this.node.children.length - 1);

@@ -190,6 +190,7 @@ export class GamePresentation extends PresentationComponent {
         const current = this.findNode(GameUiNodeId.CurrentCard);
         if (!current) return;
         const shadow = this.ensureCardShadow(current);
+        shadow.setSimulatedHeight(0);
         // The opening current card is represented by the flying duplicate from the stock.
         // Keep the prefab anchor hidden so its previous/default face cannot flash while the
         // card-back texture is loading asynchronously.
@@ -239,6 +240,7 @@ export class GamePresentation extends PresentationComponent {
             child.active = index >= firstVisible && index < firstVisible + visibleCount;
             if (child.active) {
                 const shadow = this.ensureCardShadow(child);
+                shadow.setSimulatedHeight(0);
                 shadow.setVisible(!concealed);
                 const base = basePositions[index];
                 child.setPosition(stableOffsets[index - firstVisible], base.y, base.z);
@@ -330,9 +332,9 @@ export class GamePresentation extends PresentationComponent {
         await new Promise<void>((resolve) => director.once(Director.EVENT_AFTER_DRAW, resolve));
         checkVisual();
 
-        // 参考视频不是同一帧批量创建 tween 再附加 delay，而是逐帧发射：
-        // 当前帧只启动一张，下一渲染帧再启动下一张。飞行过程仍然重叠，
-        // 因此既有快速连续感，又能明确看到后发牌逐张盖到先发牌上。
+        // Keep the reference's four-frame spacing at 60 Hz as an elapsed-time interval.
+        // Counting four actual frames would make 52-card boards exceed the transaction
+        // deadline on slower devices. Only the next card's tween is launched each interval.
         const landings: Promise<void>[] = [];
         for (const step of schedule) {
             const destination = target.get(step.slotId)!;
@@ -407,11 +409,11 @@ export class GamePresentation extends PresentationComponent {
         });
     }
 
-    /** 严格跨过配置数量的已绘制帧，保证视觉节拍不受逻辑 tick 影响。 */
+    /** Match the configured reference beat without slowing the deal at lower frame rates. */
     protected async waitForOpeningLaunchFrames(): Promise<void> {
-        for (let frame = 0; frame < OPENING_DEAL_TIMING.launchFrameGap; frame++) {
-            await new Promise<void>((resolve) => director.once(Director.EVENT_AFTER_DRAW, resolve));
-        }
+        await this.waitForVisual(resolve => this.visualTween({elapsed: 0})
+            .to(OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps, {elapsed: 1})
+            .call(resolve).start());
     }
 
     /** 参考视频四张明牌与当前牌同时翻开，总时长约 0.14s。 */
