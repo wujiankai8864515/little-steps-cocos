@@ -1,8 +1,9 @@
 import {AudioClip, AudioSource, Node, resources, sys} from 'cc';
 import {GameStore, StoragePort} from '../core/Store';
 import {SHARE_LINES} from '../core/Config';
+import {wechatApi, friendSurface} from './Wechat';
 
-export const wxApi = () => (globalThis as any).wx;
+export const wxApi = wechatApi;
 export function storagePort(): StoragePort {
     const wx = wxApi();
     return {
@@ -13,7 +14,8 @@ export function storagePort(): StoragePort {
 export class Platform {
     adUnitId = ''; leaderboardEndpoint = '';
     get hasAd() { return !!this.adUnitId && !!wxApi()?.createRewardedVideoAd; }
-    get hasFriends() { return !!wxApi()?.getOpenDataContext && !!wxApi()?.getSharedCanvas; }
+    get hasFriends() { return typeof wxApi()?.getOpenDataContext === 'function'; }
+    friendSurface() { return friendSurface(wxApi()); }
     share(level: number) {
         const wx = wxApi(); if (!wx?.shareAppMessage) return false;
         wx.shareAppMessage({title: SHARE_LINES[Math.floor(Math.random() * SHARE_LINES.length)], query: 'level=' + level}); return true;

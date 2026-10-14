@@ -12,10 +12,24 @@ Module._extensions['.ts'] = (module, filename) => {
 const {validateLevels, CARDS, MAX_ENERGY} = require('../assets/core/Config.ts');
 const {RunModel, gateValue, flipGate, buildTrack} = require('../assets/core/RunModel.ts');
 const {GameStore} = require('../assets/core/Store.ts');
+const {friendSurface} = require('../assets/runtime/Wechat.ts');
 const levels = validateLevels(JSON.parse(fs.readFileSync(path.join(__dirname, '../assets/resources/data/levels.json'))));
 const memory = () => {const values = new Map(); return {get: key => values.get(key) || null, set: (key, value) => values.set(key, value), values};};
 const running = (id = 1, energy = 100) => {const run = new RunModel(levels[id - 1], 'campaign', energy, 12); run.phase = 'running'; return run;};
 const gateRow = gate => ({kind: 'gate', at: 1, gates: [gate, gate, gate]});
+
+test('WeChat main domain uses OpenDataContext.canvas without requiring getSharedCanvas', () => {
+    const canvas = {width: 600, height: 700}; const context = {canvas, postMessage() {}};
+    assert.equal(friendSurface({getOpenDataContext: () => context}).canvas, canvas);
+});
+test('legacy shared canvas remains usable and its context can receive messages', () => {
+    const canvas = {}; const context = {postMessage() {}};
+    assert.equal(friendSurface({getOpenDataContext: () => context, getSharedCanvas: () => canvas}).canvas, canvas);
+});
+test('unsupported, missing and throwing open data APIs fall back safely', () => {
+    assert.equal(friendSurface(null), null); assert.equal(friendSurface({getOpenDataContext: () => ({})}), null);
+    assert.equal(friendSurface({getOpenDataContext: () => {throw Error('unsupported');}}), null);
+});
 
 test('all 25 levels retain the reference scene names, counts, and company mapping', () => {
     assert.equal(levels.length, 25); assert.equal(levels[24].companyId, 5);

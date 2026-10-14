@@ -20,6 +20,7 @@ export class BossApp {
     private beam: Graphics | null = null; private battleBoss: Node | null = null; private starting = false; private reward = 0;
     private tripLabel: Label | null = null; private friendTexture: Texture2D | null = null; private friendSprite: Sprite | null = null;
     private friendTimer = 0; private previewNow = 0;
+    private friendCanvas: any = null;
     private rowSignature = ''; private buddies = new Map<string, Node>(); private shield: Node | null = null;
     private particles: {node: Node; vx: number; vy: number; life: number}[] = []; private fireTimer = 0;
     constructor(private root: Node) {
@@ -246,12 +247,21 @@ export class BossApp {
     private friends() {
         const modal = this.openModal('friends', '好友排行榜');
         if (!this.platform.hasFriends) {this.ui.text(modal, 'friends-unavailable', '在微信里与好友比一比\n本机战绩已保存在这里', 360, 677, 31, 570, 220); return;}
-        const wx = wxApi(); wx.getOpenDataContext().postMessage({type: 'boss:rank', width: 600, height: 700});
-        const canvas = wx.getSharedCanvas(); canvas.width = 600; canvas.height = 700;
-        const node = this.ui.node(modal, 'friends-canvas', 360, 690, 600, 700);
-        this.friendTexture = new Texture2D(); this.friendTexture.image = new ImageAsset(canvas);
-        const frame = new SpriteFrame(); frame.texture = this.friendTexture;
-        this.friendSprite = node.addComponent(Sprite); this.friendSprite.spriteFrame = frame; this.friendSprite.sizeMode = Sprite.SizeMode.CUSTOM;
+        const surface = this.platform.friendSurface();
+        if (!surface) {this.ui.text(modal, 'friends-unavailable', '好友榜暂时不可用，请稍后再试', 360, 677, 31, 570, 220); return;}
+        try {
+            const canvas = surface.canvas; canvas.width = 600; canvas.height = 700; this.friendCanvas = canvas;
+            const node = this.ui.node(modal, 'friends-canvas', 360, 690, 600, 700);
+            const image = new ImageAsset(); image.reset(canvas);
+            this.friendTexture = new Texture2D(); this.friendTexture.image = image; this.friendTexture.create(canvas.width, canvas.height);
+            const frame = new SpriteFrame(); frame.texture = this.friendTexture;
+            this.friendSprite = node.addComponent(Sprite); this.friendSprite.spriteFrame = frame; this.friendSprite.sizeMode = Sprite.SizeMode.CUSTOM;
+            surface.context.postMessage({type: 'boss:rank', width: 600, height: 700});
+        } catch (_) {
+            modal.getChildByName('friends-canvas')?.destroy();
+            this.friendTexture?.destroy(); this.friendTexture = null; this.friendSprite = null; this.friendCanvas = null;
+            this.ui.text(modal, 'friends-unavailable', '好友榜暂时不可用，请稍后再试', 360, 677, 31, 570, 220);
+        }
     }
     private async onlineRanks() {
         const modal = this.openModal('online-ranks', '全网排行榜');
@@ -286,7 +296,7 @@ export class BossApp {
         this.ui.button(modal, 'button-modal-close', '×', 630, 309, 56, 56, () => this.closeModal());
         return modal;
     }
-    private closeModal() { this.modal?.destroy(); this.modal = null; this.friendSprite = null; this.friendTexture?.destroy(); this.friendTexture = null; }
+    private closeModal() { this.modal?.destroy(); this.modal = null; this.friendSprite = null; this.friendCanvas = null; this.friendTexture?.destroy(); this.friendTexture = null; }
     toast(text: string, good = true) {
         this.toastNode?.destroy(); this.toastNode = this.ui.node(this.root, 'toast');
         this.ui.panel(this.toastNode, 'toast-bg', 360, 354, 642, 94, '#09213b', good ? C.teal : C.red, 14, 250);
@@ -498,7 +508,7 @@ export class BossApp {
             if (e && this.now() >= e.end && button?.getChildByName('caption')?.getComponent(Label)?.string !== '打开远征包裹') this.expeditionPage();
         }
         if (this.friendTexture && this.friendSprite && (this.friendTimer += dt) > .15) {
-            this.friendTimer = 0; try {this.friendTexture.uploadData(wxApi().getSharedCanvas());} catch (_) {}
+            this.friendTimer = 0; try {this.friendTexture.uploadData(this.friendCanvas);} catch (_) {}
         }
         for (const particle of this.particles) {
             if (!particle.node.isValid) continue; particle.life -= dt; particle.vy -= 320 * dt;
