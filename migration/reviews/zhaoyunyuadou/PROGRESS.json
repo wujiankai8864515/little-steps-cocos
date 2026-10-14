@@ -36,7 +36,9 @@
       "v20 victory reward claim returns home and assembles threshold-one fragment",
       "v22 original-frame archer recruit and drag to board",
       "v22 pause freezes actual battle at time 19.433333333333458 with attack 19 winding up",
-      "v22 reload preserves attack 19, continue reaches live victory, claim assembles weapon 10 and clears round"
+      "v22 reload preserves attack 19, continue reaches live victory, claim assembles weapon 10 and clears round",
+      "v24 live loss and single reward claim",
+      "v24 warm home to weapons and back"
     ],
     "actualChromeMatch": "v22 latest basic-unit model: restored paused attack 19 at time 19.4333, resumed and reached real victory at wave 2, time 34.8667, lives [3,0]. Claim +20 gold, stars 2, wins 1, weapon 10=1, residual 0; round cleared. Browser evidence, not device.",
     "homeTextureEstimateBytes": 54379048,
@@ -146,9 +148,10 @@
     "v20WinClaim": "Declared settlement fixture, not a live-match win: +20 gold, wins=1, stars=2, weapon 20=1 and residual fragments=0, battle cleared.",
     "outlineAudit": "Installed Cocos 3.8.8 uses canvas lineWidth=outlineWidth*2; inert Laya core uses lineWidth=stroke. Existing stroke/2 mapping is correct; font-face and baseline differences remain.",
     "remoteBackup": {
-      "commit": "b55427c1af5d0fa6984e3a7486948c029337fef8",
-      "checkedFiles": 434,
-      "result": "pass"
+      "commit": "64b144b2a4a116a8021173ddb8a6c343085863cd",
+      "checkedGameFiles": 234,
+      "result": "pass",
+      "scope": "source and symlink bytes; not historical broad evidence-file count"
     },
     "basicUnitFrames": {
       "source": "public native inert declarative facts",
@@ -156,7 +159,13 @@
       "web": "v22 visible original idle/attack frames, pike trail, bow turn; model tests verify wind-up and pause/restore",
       "collision": "Single/line/area implemented; native moving pike and rotating cavalry collision remain pending"
     },
-    "tutorialCaption": "v23 actual whole-image comparison: native brown stroke and bold style with explicit public-WeChat 45px caption calibration. Yellow bounds close to reference, font-face still pending."
+    "tutorialCaption": "v23 actual whole-image comparison: native brown stroke and bold style with explicit public-WeChat 45px caption calibration. Yellow bounds close to reference, font-face still pending.",
+    "actualChromeLossV24": "Latest source candidate: recruited/deployed a single archer, real loss at wave 2, time 37.8, lives [0,3]. Claim +5 gold, losses=1, stars stayed 1; round cleared. Then weapons and back home, no warning/error logs.",
+    "resourceAdmissionWarmWeapons": {
+      "entries": 112,
+      "reservedBytes": 170680864,
+      "pending": 0
+    }
   },
   "pending": [
     "same-size pixel differences on all pages",
@@ -169,7 +178,8 @@
     "same-phase basic-unit animation comparison",
     "native moving pike and rotating cavalry collision geometry",
     "reset basic attack pose after swaps within the same board parent",
-    "warm route/resource lifetime audit: all source resources would total 177 entries, over the unchanged 128-entry admission limit"
+    "warm route/resource lifetime audit: all source resources would total 177 entries, over the unchanged 128-entry admission limit",
+    "v24 merchant entrance not visible after real loss; node activation/render/input path requires inspection"
   ],
   "failedEvidence": [
     "zya-web-v1.log: Creator sandbox launch abort",
