@@ -2,6 +2,8 @@
 
 根目录放公共脚本。渠道目录集中放本平台的配置、处理脚本、模板和固定产物；日常打包只需要看这里。
 
+「向老板开炮／向老板开跑／boss」对应 `games/boss`，使用 `python3 -B builds/build.py wechatgame --game boss`，微信开发者工具打开 `builds/wechatgame/boss`。配置在 `wechatgame/games/boss.json`，独立模板在 `wechatgame/game-templates/boss`，原生分包与其他游戏的固定产物分别维护。默认使用测试 AppID；发布前换成此游戏自己的 AppID。验证预览使用同一入口加 `--preview`，输出在 `migration/output/boss-web`。
+
 AVG Plus 安卓已接入 `android --game avg_plus`，见 [安卓渠道](android/README.md) 和 [热更新发布手册](android/HOT_UPDATE.md)。新 AI 先读 [AVG Plus 接手入口](../games/avg_plus/docs/AI_HANDOFF.md)；该游戏的 APK／增量发布不使用下方小雨微信命令。已核验发布后只清理自己的构建产物，保留渠道配置、脚本与模板。
 
 ```text

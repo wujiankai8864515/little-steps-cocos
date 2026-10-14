@@ -12,6 +12,17 @@ def main():
     if not re.fullmatch(r'[a-z0-9_-]+', channel):
         raise SystemExit('Invalid channel')
     builder = directory / channel / 'build.py'
+    if channel == 'wechatgame' and '--game' in args:
+        index = args.index('--game')
+        if index + 1 >= len(args):
+            raise SystemExit('--game requires a game name')
+        game = args[index + 1]
+        if game == 'xiaoyu-cocos':
+            del args[index:index + 2]
+        elif re.fullmatch(r'[a-z0-9_-]+', game) and (directory / 'wechatgame/games' / (game + '.json')).is_file():
+            builder = directory / 'wechatgame/build_game.py'
+        else:
+            raise SystemExit('No WeChat packaging configuration for game: ' + game)
     if not builder.is_file():
         raise SystemExit('No builder for channel: ' + channel)
     raise SystemExit(subprocess.run([sys.executable, str(builder), *args], cwd=directory.parent).returncode)
