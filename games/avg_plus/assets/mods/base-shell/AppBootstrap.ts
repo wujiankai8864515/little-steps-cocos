@@ -27,6 +27,8 @@ export class AppBootstrap extends Component {
     private shell: Runtime | null = null;
     private screen: Node | null = null;
     private catalog: CatalogUI | null = null;
+    private catalogRoot: Node | null = null;
+    private reusableCatalog: CatalogUI | null = null;
     private loading = false;
     private catalogReady = false;
     private flow!: GameFlow;
@@ -94,9 +96,16 @@ export class AppBootstrap extends Component {
     }
     public async showLevelList(): Promise<void> {
         if(!this.shell||this.lifetime.cancelled)return;
+        if (this.catalogReady && this.catalogRoot?.isValid && this.reusableCatalog?.isValid) {
+            this.catalog = this.reusableCatalog; this.replaceScreen(this.catalogRoot);
+            this.catalog.render(this.state());
+            if (this.saveError) this.setMessage(this.saveError.message);
+            return;
+        }
         const root=new Node('CatalogRoot');root.layer=this.node.layer;
+        this.catalogRoot=root;
         this.replaceScreen(root);
-        const catalog=this.catalog=root.addComponent(CatalogUI);
+        const catalog=this.catalog=this.reusableCatalog=root.addComponent(CatalogUI);
         await this.lifetime.run(()=>catalog.open(this.config,this.levels,this.state(),{
             send: action => this.send(action),startCard:()=>this.openGame(),readStory:()=>this.openAvg(),
         }),CONTENT_TIMEOUT_MS);
@@ -206,7 +215,14 @@ export class AppBootstrap extends Component {
         const label=this.screen?.getChildByName('message')?.getComponent(Label);if(label)label.string=message;
     }
     private replaceScreen(next:Node):void {
-        if(this.screen?.isValid)this.screen.destroy();this.screen=next;next.layer=this.node.layer;this.node.addChild(next);next.setPosition(0,0,0);
+        if(this.screen?.isValid && this.screen!==next) {
+            if(this.screen===this.catalogRoot)this.screen.active=false;
+            else this.screen.destroy();
+        }
+        this.screen=next;next.layer=this.node.layer;next.active=true;
+        if(next.parent!==this.node)this.node.addChild(next);
+        else next.setSiblingIndex(this.node.children.length-1);
+        next.setPosition(0,0,0);
         if(this.startup?.isValid)this.startup.node.setSiblingIndex(this.node.children.length-1);
         if(this.versionBadge?.isValid)this.versionBadge.setSiblingIndex(this.node.children.length-1);
     }

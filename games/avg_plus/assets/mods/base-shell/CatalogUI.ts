@@ -173,6 +173,8 @@ export class CatalogUI extends PresentationComponent {
         const content=this.child(viewport,'levelContent',1050,Math.ceil(this.levels.length/3)*150+18,0,170);
         content.getComponent(UITransform)!.setAnchorPoint(.5,1);
         const scroll=viewport.addComponent(ScrollView);scroll.content=content;scroll.horizontal=false;scroll.vertical=true;scroll.inertia=true;
+        // Clamp at the first/last row; rapid wheel/touch input must never leave a blank viewport.
+        scroll.elastic=false;
         this.levels.forEach((id,index)=>{
             const match=/^level_difficulty(\d+)_(\d{2})$/.exec(id)!;
             const label=(this.state.completedLevels.includes(id)?'✓ ':'')+`${match[1]} · ${match[2]}`;
