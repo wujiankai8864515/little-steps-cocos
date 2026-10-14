@@ -1,6 +1,7 @@
 """Channel tests cover payload contents, startup-before-modules and failed-boot fallback."""
 import importlib.util
 import json
+import shutil
 from pathlib import Path
 import tempfile
 import unittest
@@ -13,9 +14,34 @@ SPEC.loader.exec_module(PACKAGING)
 BUILD_SPEC = importlib.util.spec_from_file_location('android_build', ROOT / 'builds/android/build.py')
 BUILD = importlib.util.module_from_spec(BUILD_SPEC)
 BUILD_SPEC.loader.exec_module(BUILD)
+ICON_SPEC = importlib.util.spec_from_file_location('android_icons', ROOT / 'builds/android/icons.py')
+ICONS = importlib.util.module_from_spec(ICON_SPEC)
+ICON_SPEC.loader.exec_module(ICONS)
 
 
 class AndroidChannelTests(unittest.TestCase):
+    def test_icons_have_distinct_resource_names_and_leave_native_defaults_untouched(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            stage = Path(temporary)
+            game = json.loads((ROOT / 'builds/android/config.json').read_text())['games']['avg_plus']
+            source = stage / game['project']
+            shutil.copytree(ROOT / game['project'] / 'source/android-icon', source / 'source/android-icon')
+            native = source / 'native/engine/android'
+            (native / 'app').mkdir(parents=True)
+            (native / 'app/AndroidManifest.xml').write_text('<application android:icon="@mipmap/ic_launcher"><activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/></application>')
+            original = native / 'res/mipmap-mdpi/ic_launcher.png'
+            original.parent.mkdir(parents=True); original.write_bytes(b'unchanged Cocos default')
+            ICONS.install(stage, game)
+            generated = stage / 'output/android/proj/res'
+            self.assertEqual(original.read_bytes(), b'unchanged Cocos default')
+            self.assertFalse(any(generated.rglob('ic_launcher*')))
+            self.assertEqual(len(list(generated.glob('mipmap-*/avg_launcher.png'))), 5)
+            self.assertEqual(len(list(generated.glob('drawable-*/avg_icon_art.png'))), 5)
+            manifest = (native / 'app/AndroidManifest.xml').read_text()
+            self.assertIn('@mipmap/avg_launcher"', manifest)
+            self.assertIn('@mipmap/avg_launcher_round"', manifest)
+            self.assertIn('@mipmap/avg_launcher</item>', (generated / 'values-v31/styles.xml').read_text())
+
     def test_default_runtime_profile_is_in_the_actual_frozen_source_set(self):
         sources = BUILD.inputs('games/avg_plus')
         profile = 'games/avg_plus/assets/art/resources/mods/profiles/default.json'
