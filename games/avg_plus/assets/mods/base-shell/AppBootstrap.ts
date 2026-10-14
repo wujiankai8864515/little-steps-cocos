@@ -1,7 +1,7 @@
 import {
     _decorator, AudioSource, Color, Component, director, game, Graphics,
     HorizontalTextAlignment, instantiate, JsonAsset, Label, Node, Prefab,
-    profiler, resources, sys, UITransform, VerticalTextAlignment,
+    profiler, resources, sys, UITransform, VerticalTextAlignment, Widget,
 } from 'cc';
 import { GamePageUI } from '../base-card/GamePageUI';
 import { CardLevelRepository } from '../base-card/CardLevelRepository';
@@ -32,6 +32,7 @@ export class AppBootstrap extends Component {
     private config!: CatalogConfig;
     private levels: string[] = [];
     private saveError: Error | null = null;
+    private versionBadge: Node | null = null;
 
     protected onLoad(): void { profiler.hideStats(); }
     protected start(): void {
@@ -42,6 +43,8 @@ export class AppBootstrap extends Component {
     }
     private async startWithUpdate(): Promise<void> {
         this.replaceScreen(this.loadingScreen());
+        const releaseInfo=await this.lifetime.run(()=>this.loadJson('config/release-info'),CONTENT_TIMEOUT_MS);
+        this.lifetime.check();this.showVersion(releaseInfo.displayVersion);
         const updater = new NativeHotUpdate(this.lifetime);
         const result = await updater.run(text => this.setMessage(text));
         this.lifetime.check();
@@ -51,7 +54,7 @@ export class AppBootstrap extends Component {
             this.loadJson('config/catalog').then(parseCatalogConfig), this.loadJson('config/avg-chapters'),
         ]), CONTENT_TIMEOUT_MS);
         this.lifetime.check();
-        this.levels = assets.map(a => a.json?.levelId as string).filter(id => typeof id === 'string')
+        this.levels = assets
             .sort((a,b) => a.localeCompare(b,undefined,{numeric:true}));
         if (!this.levels.length || new Set(this.levels).size !== this.levels.length) throw new Error('卡牌目录为空或重复');
         for (const [levelId,chapterId] of Object.entries(flow.afterWin)) {
@@ -172,8 +175,10 @@ export class AppBootstrap extends Component {
             source.volume=(music?state.settings.music:state.settings.sound)?1:0;
         }
     }
-    private loadLevels():Promise<JsonAsset[]> {
-        return new Promise((resolve,reject)=>resources.loadDir('config/card-levels',JsonAsset,(error,assets)=>error?reject(error):resolve(assets)));
+    private async loadLevels():Promise<string[]> {
+        const index=await this.loadJson('config/card-index');
+        if(index.schemaVersion!==1||!Array.isArray(index.levels)||index.levels.some((id:any)=>typeof id!=='string'||!/^level_difficulty\d+_\d{2}$/.test(id)))throw new Error('关卡索引无效');
+        return [...index.levels];
     }
     private loadJson(path:string):Promise<any> {
         return new Promise((resolve,reject)=>resources.load(path,JsonAsset,(error,asset)=>error||!asset?reject(error??new Error('配置缺失：'+path)):resolve(asset.json)));
@@ -197,6 +202,19 @@ export class AppBootstrap extends Component {
     }
     private replaceScreen(next:Node):void {
         if(this.screen?.isValid)this.screen.destroy();this.screen=next;next.layer=this.node.layer;this.node.addChild(next);next.setPosition(0,0,0);
+        if(this.versionBadge?.isValid)this.versionBadge.setSiblingIndex(this.node.children.length-1);
+    }
+    private showVersion(value:string):void {
+        if(value!=='开发版本'&&!/^\d{4}(?:-\d{2}){5}$/.test(value))throw new Error('版本时间格式无效');
+        const root=this.versionBadge=new Node('VersionBadge');root.layer=this.node.layer;
+        root.addComponent(UITransform).setContentSize(840,44);this.node.addChild(root);
+        const widget=root.addComponent(Widget);widget.isAlignBottom=true;widget.bottom=18;
+        widget.isAlignHorizontalCenter=true;widget.horizontalCenter=0;widget.updateAlignment();
+        const background=root.addComponent(Graphics);background.fillColor=new Color(15,10,29,170);
+        background.roundRect(-420,-22,840,44,22);background.fill();
+        const text=new Node('VersionText');text.layer=root.layer;text.addComponent(UITransform).setContentSize(830,44);root.addChild(text);
+        const label=text.addComponent(Label);label.string='版本 '+value;label.fontSize=23;label.lineHeight=32;
+        label.color=new Color(230,215,246,230);label.horizontalAlign=HorizontalTextAlignment.CENTER;label.verticalAlign=VerticalTextAlignment.CENTER;
     }
     protected onDestroy():void {this.lifetime.dispose();void this.shell?.dispose();}
 }

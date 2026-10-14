@@ -103,7 +103,11 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
                 case 'shell.story':
                     if (!config.stories.some(story => story.id === payload.id)) ctx.reject('剧情不存在');
                     s.selectedStory = payload.id; s.page = 'details'; break;
-                case 'shell.like': progress.liked = !progress.liked; break;
+                case 'shell.like': {
+                    const id=payload.storyId??s.selectedStory;
+                    if(!config.stories.some(story=>story.id===id))ctx.reject('剧情不存在');
+                    s.stories[id].liked=!s.stories[id].liked;break;
+                }
                 case 'shell.favourite': progress.favourite = !progress.favourite; break;
                 case 'shell.rate':
                     if (!Number.isInteger(payload.rating) || payload.rating < 1 || payload.rating > 5) ctx.reject('评分无效');

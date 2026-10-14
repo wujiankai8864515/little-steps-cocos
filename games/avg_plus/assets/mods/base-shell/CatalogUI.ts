@@ -35,6 +35,7 @@ export class CatalogUI extends PresentationComponent {
     private notification: Label | null = null;
     private countdown: Label | null = null;
     private previousPage: CatalogPage | null = null;
+    private renderGeneration = 0;
 
     public async open(config: CatalogConfig, levels: readonly string[], state: Readonly<CatalogState>, navigation: CatalogNavigation): Promise<void> {
         this.config = config; this.levels = levels; this.navigation = navigation;
@@ -42,26 +43,46 @@ export class CatalogUI extends PresentationComponent {
         this.node.addComponent(BlockInputEvents);
         this.backdrop(this.node);
         const loading = this.text(this.node, '正在读取内容…', 36, 0, 0, 900, 100);
-        await this.lifetime.run(() => Promise.all(config.stories.map(s => this.loadStoryArt(s))), 30000);
+        await this.lifetime.run(scope => Promise.all(config.stories.map(s => this.loadStoryArt(s,scope))), 30000);
         this.lifetime.check(); loading.node.destroy();
         this.render(state);
         this.schedule(this.updateCountdown, 1);
     }
-    private async loadStoryArt(story: StoryConfig): Promise<void> {
+    private async loadStoryArt(story: StoryConfig,scope: TaskScope): Promise<void> {
         const bundle = assetManager.getBundle(story.bundle) ?? await new Promise<AssetManager.Bundle>((resolve, reject) =>
             assetManager.loadBundle(story.bundle, (error, value) => error || !value ? reject(error ?? new Error('剧情素材包不存在')) : resolve(value)));
-        this.lifetime.check();
-        const paths = new Set([story.background, ...story.roles, ...story.collections.map(c => c.asset)]);
+        scope.check();
+        const paths = new Set([story.background, ...story.roles]);
+        await this.loadArt(bundle,story.bundle,paths,scope);
+    }
+    private async loadArt(bundle: AssetManager.Bundle,bundleName: string,paths: Set<string>,scope: TaskScope): Promise<void> {
         await Promise.all(Array.from(paths).map(async path => {
+            if(this.sprites.has(bundleName+'/'+path))return;
             const frame = await new Promise<SpriteFrame>((resolve, reject) => bundle.load(path + '/spriteFrame', SpriteFrame,
                 (error, value) => error || !value ? reject(error ?? new Error('目录素材不存在：' + path)) : resolve(value)));
-            this.lifetime.check();
-            const key = story.bundle + '/' + path;
+            scope.check();
+            const key = bundleName + '/' + path;
             if (!this.sprites.has(key)) { frame.addRef(); this.sprites.set(key, frame); }
         }));
     }
     public render(state: Readonly<CatalogState>): void {
         if (this.lifetime.cancelled || !this.node.isValid) return;
+        const generation=++this.renderGeneration;
+        if(state.page==='collections') {
+            const story=this.config.stories.find(s=>s.id===state.selectedStory)!;
+            const missing=new Set(story.collections.filter(c=>state.stories[story.id].highestPage>=c.unlockPage
+                &&!this.sprites.has(story.bundle+'/'+c.asset)).map(c=>c.asset));
+            if(missing.size) {
+                this.cancelVisuals();this.content?.destroy();this.state=state;
+                const root=this.content=this.child(this.node,'CollectionLoading',WIDTH,HEIGHT);
+                this.text(root,'正在读取收藏…',36,0,0,950,100);
+                this.closeButton(root);
+                void this.lifetime.run(scope=>this.loadArt(assetManager.getBundle(story.bundle)!,story.bundle,missing,scope),30000)
+                    .then(()=>{if(generation===this.renderGeneration)this.render(state);})
+                    .catch(error=>{if(generation===this.renderGeneration&&!this.lifetime.cancelled)this.text(root,'读取失败，请稍后重试',34,0,-140,1000,100);console.warn('[Collection art]',error);});
+                return;
+            }
+        }
         this.cancelVisuals();
         this.content?.destroy(); this.countdown = null; this.notification = null;
         this.state = state;
@@ -131,13 +152,13 @@ export class CatalogUI extends PresentationComponent {
         // The local catalog currently contains one actual story; never fabricate reference plots.
         const story=items.find(s=>s.id===this.state.selectedStory)??items[0];
         const card=this.cover(root,story,0,276,1010,1110);
-        const title=this.text(card,story.title,67,-40,305,880,230);title.isBold=true;
+        const title=this.text(card,story.title,61,0,440,890,132);title.isBold=true;
         title.enableWrapText=true;
         this.text(card,'Chapter 1  ·  Solitaire '+this.state.completedLevels.length+' / '+this.levels.length,29,0,-480,960,65);
         const button=card.addComponent(Button);button.transition=Button.Transition.SCALE;button.zoomScale=1.012;
         card.on(Button.EventType.CLICK,()=>void this.send('shell.story',{id:story.id}),this);
         this.text(root,story.title,43,-170,-367,700,90).horizontalAlign=HorizontalTextAlignment.LEFT;
-        this.iconButton(root,'heart',240,-367,88,()=>{void this.send('shell.story',{id:story.id}).then(()=>this.send('shell.like'));},this.state.stories[story.id].liked);
+        this.iconButton(root,'heart',240,-367,88,()=>void this.send('shell.like',{storyId:story.id}),this.state.stories[story.id].liked);
         this.iconButton(root,'star',433,-367,88,()=>void this.send('shell.story',{id:story.id}).then(()=>this.send('shell.page',{page:'rating'})),false);
         this.text(root,story.synopsis,30,0,-508,995,150).color=MUTED;
         this.gradientPill(root, 'Resume',0,-683,790,120,()=>void this.send('shell.story',{id:story.id}));
@@ -166,11 +187,12 @@ export class CatalogUI extends PresentationComponent {
         stencil.roundRect(-width/2,-height/2,width,height,38);stencil.fill();
         this.sprite(node,'coverBackground',story.bundle+'/'+story.background,0,0,width,height,'cover');
         for(let i=0;i<story.roles.length;i++) {
-            const h=height*1.9,w=h/2.8;
+            const h=height*1.6,w=h/2.8;
             this.sprite(node,'coverRole_'+i,story.bundle+'/'+story.roles[i],(i-(story.roles.length-1)/2)*width*0.36,-height*0.43,w,h);
         }
         const shade=this.child(node,'coverShade',width,height);const g=shade.addComponent(Graphics);
         for(let i=0;i<96;i++){g.fillColor=new Color(18,10,37,Math.round(150*(1-i/96)));g.rect(-width/2,-height/2+i*height/96,width,height/96);g.fill();}
+        for(let i=0;i<40;i++){g.fillColor=new Color(14,9,27,Math.round(190*(1-i/40)));g.rect(-width/2,height/2-(i+1)*height/160,width,height/160);g.fill();}
         const edge=this.child(parent,'coverBorder',width,height,x,y);const outline=edge.addComponent(Graphics);
         outline.lineWidth=3;outline.strokeColor=new Color(233,211,255,120);outline.roundRect(-width/2,-height/2,width,height,38);outline.stroke();
         return node;
@@ -178,8 +200,8 @@ export class CatalogUI extends PresentationComponent {
     private details(root: Node): void {
         this.header(root,true);const story=this.story,p=this.state.stories[story.id];
         this.cover(root,story,0,182,1010,1440);
-        this.text(root,story.subtitle,28,0,770,960,70).isBold=true;
-        const title=this.text(root,story.title,73,0,602,970,170);title.isBold=true;
+        this.text(root,story.subtitle,28,0,855,960,70).isBold=true;
+        const title=this.text(root,story.title,69,0,735,970,140);title.isBold=true;
         this.text(root,'Chapter 1  ·  '+(p.pageCount?`${p.pageIndex+1} / ${p.pageCount}`:'尚未开始')+'  ·  Solitaire '+this.state.completedLevels.length+' / '+this.levels.length,29,0,-469,1000,70);
         this.text(root,story.synopsis,32,0,-641,1010,160).color=MUTED;
         this.iconButton(root,'heart',-355,-833,104,()=>void this.send('shell.like'),p.liked);
@@ -235,7 +257,7 @@ export class CatalogUI extends PresentationComponent {
             const mask=tile.addComponent(Mask);mask.type=Mask.Type.GRAPHICS_STENCIL;
             const g=tile.getComponent(Graphics)!;g.clear();g.fillColor=Color.WHITE;g.roundRect(-239,-247.5,478,495,30);g.fill();
             if(p.highestPage>=c.unlockPage){
-                const isRole=c.asset.startsWith('roles/');this.sprite(tile,'collectionImage',story.bundle+'/'+c.asset,0,isRole?-265:0,isRole?435:478,isRole?1218:495,isRole?'contain':'cover');
+                const isRole=c.asset.startsWith('roles/');this.sprite(tile,'collectionImage',story.bundle+'/'+c.asset,0,isRole?-320:0,isRole?435:478,isRole?1218:495,isRole?'contain':'cover');
                 const bottom=this.panel(tile,'caption',0,-205,478,85,DARK,0);this.text(bottom,c.title,27,0,0,450,70);
                 tile.addComponent(Button);tile.on(Button.EventType.CLICK,()=>this.showMessage(c.title),this);
             } else {

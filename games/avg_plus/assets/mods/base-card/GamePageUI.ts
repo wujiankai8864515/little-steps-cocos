@@ -1,4 +1,4 @@
-import { _decorator, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, Widget, view } from 'cc';
+import { _decorator, BlockInputEvents, Color, Graphics, HorizontalTextAlignment, Label, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, VerticalTextAlignment, Widget, view } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import type { CommittedContext } from '../../foundation/Contracts';
@@ -28,6 +28,7 @@ export class GamePageUI extends GamePresentation {
     private initialStockCount = 10;
     private gems = 0;
     private completionRewardCoins = 0;
+    private pauseOverlay: Node | null = null;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
         initialCoins: number; initialGems?: number; headerTitle?: string; economy: EconomyConfig; background?: CardBackgroundConfig;
@@ -73,8 +74,11 @@ export class GamePageUI extends GamePresentation {
                 alignment.updateAlignment();
             }
         }
+        const faces=Array.from(new Set([...(level.currentCard?[level.currentCard.sourceName]:[]),
+            ...level.slots.filter(slot=>slot.initialFaceUp).map(slot=>slot.sourceName!)]));
         const [backFrame,wildFrame] = await this.lifetime.run(() => Promise.all([
             CardSpriteLoader.loadSpriteFrame('poker_back_01'),CardSpriteLoader.loadSpriteFrame('poker_wild'),
+            ...faces.map(name=>CardSpriteLoader.loadSpriteFrame(name)),
         ]),PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
         this.lifetime.check();
         this.findNode(GameUiNodeId.StockPile)?.children.forEach(child => {
@@ -214,7 +218,46 @@ export class GamePageUI extends GamePresentation {
         const version = ++this._renderVersion;
         this.renderBoard(view, version, concealed); this.renderCurrent(view, version, concealed); this.renderBackup(view, concealed);
         this.renderProgress(view); this.renderEconomy(view); this.renderStatus(view); this.renderActionState(view);
+        this.renderPause(state.paused);
         return view;
+    }
+    private renderPause(paused: boolean): void {
+        if (!paused) { if (this.pauseOverlay?.isValid) this.pauseOverlay.active = false; return; }
+        if (!this.pauseOverlay?.isValid) {
+            const overlay = this.pauseOverlay = new Node('PausedGame'); overlay.layer = this.node.layer;
+            const size = view.getVisibleSize();
+            overlay.addComponent(UITransform).setContentSize(size.width, size.height);
+            overlay.addComponent(BlockInputEvents); this.node.addChild(overlay);
+            const dim = overlay.addComponent(Graphics); dim.fillColor = new Color(20, 12, 39, 210);
+            dim.rect(-size.width / 2, -size.height / 2, size.width, size.height); dim.fill();
+            const panel = new Node('pausePanel'); panel.layer = overlay.layer; overlay.addChild(panel);
+            panel.addComponent(UITransform).setContentSize(830, 700);
+            const paint = panel.addComponent(Graphics); paint.fillColor = new Color(48, 27, 70);
+            paint.roundRect(-415, -350, 830, 700, 46); paint.fill();
+            paint.strokeColor = new Color(189, 135, 207, 170); paint.lineWidth = 2;
+            paint.roundRect(-415, -350, 830, 700, 46); paint.stroke();
+            const text = (name: string, value: string, y: number, parent = panel) => {
+                const node = new Node(name); node.layer = panel.layer; parent.addChild(node); node.setPosition(0, y);
+                node.addComponent(UITransform).setContentSize(690, 100); const label = node.addComponent(Label);
+                label.string = value; label.fontSize = name === 'title' ? 64 : 38; label.lineHeight = 78;
+                label.horizontalAlign = HorizontalTextAlignment.CENTER; label.verticalAlign = VerticalTextAlignment.CENTER;
+                label.color = Color.WHITE; return node;
+            };
+            text('title', '已暂停', 225);
+            const button = (name: string, value: string, y: number, color: Color, type: string) => {
+                const node = new Node(name); node.layer = panel.layer; panel.addChild(node); node.setPosition(0, y);
+                node.addComponent(UITransform).setContentSize(670, 108);
+                const g = node.addComponent(Graphics); g.fillColor = color; g.roundRect(-335, -54, 670, 108, 54); g.fill();
+                text(name+'Label', value, 0, node); const b = node.addComponent(Button); this.configureButtonFeedback(b, 1.025);
+                node.on(Button.EventType.CLICK, () => void this.send(type), this);
+            };
+            button('resume', '继续游戏', 65, new Color(192, 47, 151), 'card.pause');
+            button('restart', `重新开始 · ${this.economy?.entryCost ?? 0} 金币`, -80, new Color(88, 57, 116), 'card.restart');
+            button('exit', '返回主页', -225, new Color(88, 57, 116), 'card.exit');
+        }
+        this.pauseOverlay.active = true;
+        this.pauseOverlay.setSiblingIndex(this.node.children.length - 1);
+        this.bringInputBlockerToFront();
     }
     private async present(ctx: CommittedContext, scope: TaskScope): Promise<void> {
         if (!this.node.isValid || !this.runtime) return;

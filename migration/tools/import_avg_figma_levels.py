@@ -137,6 +137,8 @@ def run(source_path, verify_only=False):
                 meta.write_text(json.dumps({'ver':'2.0.1','importer':'json','imported':True,
                     'uuid':str(uuid.uuid5(uuid.NAMESPACE_URL,'avg-plus:card-level:'+level['levelId'])),
                     'files':['.json'],'subMetas':{},'userData':{}},indent=2)+'\n')
+        index=LEVELS.parent/'card-index.json'
+        index.write_text(json.dumps({'schemaVersion':1,'levels':sorted(l['levelId']for l in levels)},indent=2)+'\n')
     report={'item':'AVG.FIGMA.02','fileKey':source['fileKey'],'page':source['pageName'],
             'sourceSha256':hashlib.sha256(source_path.read_bytes()).hexdigest(),'levelCount':len(levels),
             'slotCount':sum(len(l['slots'])for l in levels),'written':not verify_only,

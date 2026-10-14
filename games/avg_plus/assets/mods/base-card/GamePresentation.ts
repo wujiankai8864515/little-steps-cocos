@@ -106,6 +106,8 @@ export class GamePresentation extends PresentationComponent {
     private paidEffectButtonGlow: Node | null = null;
     private paidEffectParticles: ParticleSystem2D | null = null;
     private paidEffectElapsed = 0;
+    private readonly boardNodes = new Map<string, Node>();
+    private readonly displayedFrames = new WeakMap<Node, { name: string; frame: SpriteFrame }>();
     protected dispatch(_action: GameUiAction): Promise<void> { throw new Error('GamePageUI must supply dispatch'); }
     /** Prefab 挂到场景的同一帧就执行，禁止默认牌面在异步关卡加载前闪现。 */
     protected prepareOpeningVisualState(): void {
@@ -127,14 +129,20 @@ export class GamePresentation extends PresentationComponent {
             this._level.designSize.width,
             this._level.designSize.height,
         );
-        const oldCards = [...content.children];
-        content.removeAllChildren();
-        oldCards.forEach((card) => card.destroy());
-
+        const visible = new Set(view.boardCards.map(slot => slot.slotId));
+        for (const [id, node] of this.boardNodes) {
+            if (!visible.has(id)) this.setCardAndShadowActive(node, false);
+        }
         for (const slot of view.boardCards) {
-            const node = this.createBoardCard(slot);
-            content.addChild(node);
+            let node = this.boardNodes.get(slot.slotId);
+            if (!node?.isValid) {
+                node = this.createBoardCard(slot); content.addChild(node);
+                this.boardNodes.set(slot.slotId, node);
+            }
+            node.setPosition(slot.x, slot.y, 0); node.angle = slot.rotation; node.setScale(1, 1, 1);
+            node.getComponent(Button)!.interactable = slot.interactable;
             const shadow = this.ensureCardShadow(node);
+            shadow.setSimulatedHeight(0); shadow.setSiblingPairIndex(slot.zIndex - 1);
             // SpriteFrame 是异步加载的。开场阶段连阴影也必须先隐藏，否则会在
             // animateOpeningDeal 把节点移到屏外之前，以最终位置穿帮一帧。
             node.active = !concealed;
@@ -845,6 +853,40 @@ export class GamePresentation extends PresentationComponent {
         // 飞牌落下的同一帧就替换旧当前牌，之后的统一重绘不会闪回旧牌面。
         const currentSprite = current.getComponent(Sprite);
         if (currentSprite && arrivedFrame) currentSprite.spriteFrame = arrivedFrame;
+        await this.animateCardArrival(current);
+        checkVisual();
+    }
+
+    /** Bounded, texture-free highlights keep the project's original card artwork legible. */
+    protected async animateCardArrival(card: Node): Promise<void> {
+        if (this.prefersReducedMotion()) return;
+        const checkpoint = this.visualCheckpoint();
+        const position = this.rootPositionOf(card), transform = card.getComponent(UITransform);
+        if (!transform) return;
+        const root = new Node('cardArrivalGlow'); root.layer = this.node.layer;
+        root.addComponent(UITransform).setContentSize(1, 1); root.setPosition(position);
+        this.node.addChild(root); this.bringInputBlockerToFront();
+        // Sizes are derived in root space rather than from the historical prefab dimensions.
+        const world = card.worldScale, rootScale = this.node.worldScale;
+        const width = transform.width * Math.abs(world.x / rootScale.x);
+        const height = transform.height * Math.abs(world.y / rootScale.y);
+        const outline = root.addComponent(Graphics);
+        outline.strokeColor = new Color(255, 229, 160, 205); outline.lineWidth = 3;
+        outline.roundRect(-width / 2 - 7, -height / 2 - 7, width + 14, height + 14, 12); outline.stroke();
+        const alpha = root.addComponent(UIOpacity);
+        for (let index = 0; index < 10; index++) {
+            const angle = index * Math.PI / 5, star = new Node('glint'); star.layer = root.layer;
+            star.addComponent(UITransform).setContentSize(16, 16); root.addChild(star);
+            const x = Math.cos(angle) * width * .42, y = Math.sin(angle) * height * .44;
+            star.setPosition(x, y); const paint = star.addComponent(Graphics);
+            paint.fillColor = index % 2 ? new Color(255, 227, 153) : new Color(235, 184, 237);
+            paint.moveTo(0, 9); paint.lineTo(2, 2); paint.lineTo(7, 0); paint.lineTo(2, -2);
+            paint.lineTo(0, -9); paint.lineTo(-2, -2); paint.lineTo(-7, 0); paint.lineTo(-2, 2);
+            paint.close(); paint.fill();
+            this.visualTween(star).to(.22, {position: new Vec3(x * 1.3, y * 1.25, 0), scale: new Vec3(.2, .2, 1)}, {easing: 'quadOut'}).start();
+        }
+        await this.waitForVisual(done => this.visualTween(alpha).to(.22, {opacity: 0}, {easing: 'quadIn'}).call(done).start());
+        checkpoint(); root.destroy();
     }
 
     /** 消除牌以固定时长沿抛物线落下，并以当前牌中线决定单圈旋转方向。 */
@@ -1580,6 +1622,7 @@ export class GamePresentation extends PresentationComponent {
             'rollbackBoard',
             'rollbackStock',
             'progress_hit_flash',
+            'cardArrivalGlow',
         ]);
         for (const child of [...root.children]) {
             const transient = exactNames.has(child.name)
@@ -1610,9 +1653,13 @@ export class GamePresentation extends PresentationComponent {
     protected async applyCardSprite(node: Node, cardName: string, version: number): Promise<void> {
         const sprite = node.getComponent(Sprite) ?? node.addComponent(Sprite);
         sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+        const displayed = this.displayedFrames.get(node);
+        if (displayed?.name === cardName && sprite.spriteFrame === displayed.frame) return;
         try {
             const frame = await CardSpriteLoader.loadSpriteFrame(cardName);
-            if (node.isValid && version === this._renderVersion) sprite.spriteFrame = frame;
+            if (node.isValid && version === this._renderVersion) {
+                sprite.spriteFrame = frame; this.displayedFrames.set(node, {name: cardName, frame});
+            }
         } catch (error) {
             console.error(`[GamePageUI] 加载牌面失败：${cardName}`, error);
         }
