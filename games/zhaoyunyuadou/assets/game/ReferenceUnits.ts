@@ -1,5 +1,9 @@
 /** Declarative frame/attack facts from the public native data, not its runtime. */
 export type BasicKind='刀'|'弓'|'枪'|'骑';
+export const BASIC_GROWTH=[1,1.5,2.1,2.73,3.4125] as const;
+export const HERO_DAMAGE_GROWTH=[1,1.5,2.1,2.73,3.276] as const;
+export const HERO_SPEED_GROWTH=[1,1.3,1.56,1.794,1.9734] as const;
+export const FARM_INTERVALS=[20,10,5,3,2] as const;
 export const BASIC_UNITS={
     '刀':{folder:'soldier_0',offset:[-33,-30],idleFrames:7,idleDuration:.667,attackFrames:19,attackDuration:.6,initialRate:1,release:.5,target:'nearest',damageType:'单体'},
     '弓':{folder:'soldier_1',offset:[5,13],idleFrames:7,idleDuration:.667,attackFrames:30,attackDuration:1,initialRate:1.25,release:.52,target:'closest_end',damageType:'单体'},

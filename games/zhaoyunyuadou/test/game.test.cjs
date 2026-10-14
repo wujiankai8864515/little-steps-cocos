@@ -123,6 +123,26 @@ test('basic melee targets nearest, knife hits one, pike pierces a line and caval
         assert.equal(b.shots.length,0);assert.equal(b.enemies[0].hp,97);assert.equal(b.enemies[1].hp,kind==='刀'?100:97);assert.equal(b.enemies[2].hp,kind==='骑'?97:100);
     }
 });
+test('hero damage and speed use their distinct native growth tables; speed bonuses add',()=>{
+    const b=round(),unit=b.unit('字','赵',2),hero=M.HEROES[0],stats=b.stats(unit,hero);
+    assert.ok(Math.abs(stats.power-3)<1e-12);assert.ok(Math.abs(stats.interval-.8/1.3)<1e-12);
+    const max=b.stats(b.unit('字','赵',5),hero);assert.ok(Math.abs(max.power-6.552)<1e-12);assert.ok(Math.abs(max.interval-.8/1.9734)<1e-12);
+    const basic=b.unit('刀');b.profile.items=['together','allSpeed'];b.boosts[basic.id]=.4;
+    assert.ok(Math.abs(b.stats(basic).interval-.4)<1e-12);assert.ok(Math.abs(b.stats(basic,undefined,1,1).interval-.8/1.8)<1e-12);
+});
+test('farmer harvest waits for the native 20/10/5/3/2 thresholds and merging retains work',()=>{
+    for(const level of [4,5]){
+        const b=round(),farmer=b.unit('农','农',level);b.armies[0].units[58]=farmer;b.spawnTime=10000;b.aiTime=10000;
+        const limit=level===4?3:2,food=b.armies[0].food;
+        for(let i=0;i<(limit-.2)*30;i++)b.advance(1/30);assert.equal(b.armies[0].food,food);
+        for(let i=0;i<10;i++)b.advance(1/30);assert.equal(b.armies[0].food,food+1);assert.equal(b.profile.gold,1);
+    }
+    const b=round(),farmer=b.unit('农');b.armies[0].units[58]=farmer;b.armies[0].reserve[0]=b.unit('农');b.spawnTime=10000;b.aiTime=10000;
+    for(let i=0;i<180;i++)b.advance(1/30);const food=b.armies[0].food;assert.equal(b.profile.gold,0);
+    assert.equal(b.move(location('reserve',0),location('board',58)),'');assert.equal(farmer.level,2);assert.ok(Math.abs(farmer.cooldown-4)<1e-9);
+    for(let i=0;i<114;i++)b.advance(1/30);assert.equal(b.armies[0].food,food);
+    for(let i=0;i<10;i++)b.advance(1/30);assert.equal(b.armies[0].food,food+1);
+});
 test('original unit frame canvases retain trim offsets and complete one attack before returning to idle',()=>{
     const art=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/art.json')));
     for(const kind of ['刀','弓','枪','骑']){

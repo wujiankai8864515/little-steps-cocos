@@ -1,7 +1,7 @@
 /** ZYA-02: deterministic game rules, independent of Cocos and wall-clock timers. */
 import { REFERENCE_MAPS } from './ReferenceMaps';
 import { BOSSES, BOSS_CHANCES, BOSS_ROUNDS, EARLY_HEALTH, WAVE_COUNTS, WAVE_HEALTH } from './ReferenceCombat';
-import { BASIC_UNITS, BasicKind, isBasicKind } from './ReferenceUnits';
+import { BASIC_UNITS, BASIC_GROWTH, BasicKind, FARM_INTERVALS, HERO_DAMAGE_GROWTH, HERO_SPEED_GROWTH, isBasicKind } from './ReferenceUnits';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
 export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
@@ -174,7 +174,13 @@ export class Battle {
     }
     has(id: string) { return this.profile.items.includes(id); }
     cost(side: Side = 0) { return 10 + this.armies[side].recruitCount * 2; }
-    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? 20 : 0, attacks: 0 }; }
+    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? FARM_INTERVALS[level-1] : 0, attacks: 0 }; }
+    private changeLevel(unit:Unit,level:number){
+        const previous=unit.level;unit.level=Math.max(1,Math.min(5,level));
+        // Native farming keeps accumulated work while its level changes the
+        // production threshold, rather than restarting a full harvest cycle.
+        if(unit.kind==='农')unit.cooldown=Math.max(0,unit.cooldown+FARM_INTERVALS[unit.level-1]-FARM_INTERVALS[previous-1]);
+    }
     draw(side: Side): Unit {
         const v = this.random.next();
         const heroRate = side === 0 && this.has('recruit') ? 0.38 : 0.19;
@@ -220,7 +226,7 @@ export class Battle {
         const target = this.get(to, side);
         if(target?.debuff==='lock'||unit.debuff==='lock')return '暂时不能合成，请使用神兵符解除';
         if (target && target.kind === unit.kind && target.char === unit.char && target.level === unit.level && unit.level < 5 && unit.kind !== '铲') {
-            target.level++; this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
+            this.changeLevel(target,target.level+1); this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
         } else {
             this.set(from, target || null, side); this.set(to, unit, side);
         }
@@ -244,15 +250,15 @@ export class Battle {
         let power = hero ? hero.power : unit.kind === '刀' ? 3 : 2;
         let range = hero ? hero.range : unit.kind === '弓' ? 280 : unit.kind === '枪' ? 200 : unit.kind === '骑' ? 160 : 120;
         if (weapon) { power += weapon.addAttPower; if ([1,11,21,32].includes(weapon.id)) range += 40;if(weapon.id===13)range+=80; if (weapon.id === 8) range *= 2;if(weapon.id===33)power+=3; }
-        power *= (hero?[1,1.3,1.56,1.794,1.9734]:[1,1.5,2.1,2.73,3.4125])[level-1];
+        power *= (hero?HERO_DAMAGE_GROWTH:BASIC_GROWTH)[level-1];
         // The original xp field is an interval in seconds, not attacks/second.
-        let speed=1/(hero?hero.speed:.8)*(hero?[1,1.5,2.1,2.73,3.276]:[1,1.5,2.1,2.73,3.4125])[level-1];
-        if (this.has('together')) speed*=side===0?1.5:1.3;
-        if (this.has('allSpeed'))speed*=1.1;
-        speed*=1+(this.boosts[unit.id]||0);range*=this.ranges[unit.id]||1;
-        if((unit.speedUntil||0)>this.time)speed*=1+(unit.speedBuff||0);
+        let speed=1/(hero?hero.speed:.8)*(hero?HERO_SPEED_GROWTH:BASIC_GROWTH)[level-1],bonus=this.boosts[unit.id]||0;
+        if (this.has('together')) bonus+=side===0?.5:.3;
+        if (this.has('allSpeed'))bonus+=.1;
+        if((unit.speedUntil||0)>this.time)bonus+=unit.speedBuff||0;
+        if(weapon&&[3,6,22].includes(weapon.id))bonus+=(unit.streak||0)*(weapon.id===6?.15:.05);
+        speed*=Math.max(.01,1+bonus);range*=this.ranges[unit.id]||1;
         if(unit.debuff==='rain')speed*=.6;
-        if(weapon&&[3,6,22].includes(weapon.id))speed*=1+(unit.streak||0)*(weapon.id===6?.15:.05);
         return {power,range,interval:1/speed,weapon};
     }
     active(id: string, cell = -1,location:Location={area:'board',index:cell}): string {
@@ -268,7 +274,7 @@ export class Battle {
             else {
                 if (id === 'god' && unit.level === 5) return '已满5级';
                 const delta = id === 'training' && this.random.next() < 0.45 ? -1 : 1;
-                unit.level = Math.max(1, Math.min(5, unit.level + delta));
+                this.changeLevel(unit,unit.level+delta);
                 const link = location.area==='board'?this.heroes(0).find(h => h.left === cell || h.right === cell):undefined;
                 if (link) this.armies[0].units[link.left === cell ? link.right : link.left].level = unit.level;
                 this.effect('merge', cell, 0, delta > 0 ? '等级提升' : '等级降低');
@@ -444,7 +450,7 @@ export class Battle {
                 if(unit.debuff&&(unit.level>(unit.debuffLevel||0)||(unit.debuffUntil&&unit.debuffUntil<=this.time))){delete unit.debuff;delete unit.debuffUntil;this.revision++;}
                 if(['chaos','stun','sealed'].includes(unit.debuff||''))continue;
                 if (unit.kind === '农') {
-                    if (unit.cooldown <= 0) { unit.cooldown = 20 / (2 ** (unit.level - 1)); army.food++; if (side === 0) this.profile.gold++; this.effect('food', cell, side, '+1'); this.revision++; }
+                    if (unit.cooldown <= 0) { unit.cooldown = FARM_INTERVALS[unit.level-1]; army.food++; if (side === 0) this.profile.gold++; this.effect('food', cell, side, '+1'); this.revision++; }
                     continue;
                 }
                 if (second.has(cell) || unit.cooldown > 0 || (side === 1 && this.aiSilence > 0)) continue;
