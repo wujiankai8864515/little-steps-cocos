@@ -1,0 +1,114 @@
+{
+  "id": "ZYA-24",
+  "date": "2026-10-15",
+  "kind": "per-general combat reconstruction; candidate, not original-game acceptance",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "executed": false,
+    "facts": {
+      "base": "4378–4406 independent pre/post counters, cast rate1+.2*level, resumed normals not counted",
+      "jump": "4406–4452: virtual Uw empty, one explicit landing hit; distance-faded radius200 splash;5/1 jumps;250ms fixed launch timer",
+      "shout": "4853–4872:15pre;500ms prep,3 waves153x157; first-wave collision;2s/1s stun, no direct damage",
+      "passive": "4877–4890: Ma normal30%/boss10%,500ms/200ms and maxHP10%/2%; GuanXing/ZhangBao10%300ms, bosses excluded",
+      "holyBlade": "4901–4915:20post;5x power;40x110;wave(.5,50,0),300px/s;normal-enemy knockdown2s;no food",
+      "HuangZhong": "4917–4955:30pre,road-point fire rain,150radius2x damage;levels3/5 plateau,1/1/2/2/3 straight piercing normal arrows",
+      "arrowRain": "4956–4973:30pre;5 groups x10,570/(2.5*castRate)ms per group,arc1000..1200,projectile speed.5",
+      "phantom": "4994–5088:30post;one left-word clone at.8 scale,300px/s along road,7 forward returns,hit cache reset100ms",
+      "normalOverrides": "GuanPing knife NR390degree sweep400..760ms,bold5,60px extension;LiuBei/ZhangYi target100,HuangGai first-hit102;ZhangFei weapon starts100/W ms later;GuanYu+.05 speed per repeated target cap5",
+      "effectDimensions": "rocketEff64x64, electricEff100x100, native50ms/50ms frame landmarks; crack76x17"
+    }
+  },
+  "validation": {
+    "tests": 49,
+    "typecheck": "pass",
+    "web": "v40 pass; no browser warnings/errors",
+    "native": "pending fresh v8",
+    "pixelAcceptance": "unproven",
+    "browser": "v40 full320x704 RGBA and PNG bytes equal before/after saved scene reconstruction at.7 and3.3seconds; source attack/flight/skill state equal",
+    "resourcePeak": {
+      "entries": 86,
+      "reservedEstimateBytes": 139153600,
+      "pending": 0,
+      "scope": "browser admission estimate, not device memory"
+    },
+    "gameCommit": "4d48bf3"
+  },
+  "failedEvidence": [
+    {
+      "candidate": "v38",
+      "files": [
+        "skills-cast-v38.png",
+        "skills-cast-restored-v38.png",
+        "skills-cast-restore-diff-v38.png",
+        "skills-cast-restore-v38.json"
+      ],
+      "differentPixels": 5232,
+      "rgbaMAE": 1.614383212002841,
+      "cause": "QA round seed derived from time, so random fire-point count and Ma proc differ; reconstructed phantom rig not ready at first capture. Comparison invalid as saved-state equality.",
+      "repair": "v39 QA seed fixed0x5a5941, capture waits for phantom rig; unchanged production RNG"
+    },
+    {
+      "check": "early rule regression",
+      "result": "35/38 then48/49; old tests assumed GuanPing target-only/HuangZhong curved; last new test chose enemy-side drop",
+      "repair": "GuanXing/HuangZu cover common knife/curve, native overrides independently tested, legal free plot used for split"
+    },
+    {
+      "candidate": "v39",
+      "files": [
+        "skills-cast-v39.png",
+        "skills-cast-restored-v39.png",
+        "skills-cast-restore-diff-v39.png",
+        "skills-cast-restore-v39.json"
+      ],
+      "modelEqual": true,
+      "combatEqual": true,
+      "weaponsEqual": true,
+      "differentPixels": 440,
+      "rgbaMAE": 0.022312233664772727,
+      "cause": "Residual overlap-edge differences, despite identical saved state. Late capture additionally blocked by float 3.299999999999998 <3.3.",
+      "repair": "v40 stable combat draw ordering by semantic role/id; matching float tolerance on freeze and capture guards. Sprite effects use native explode64x64/electric100x100."
+    }
+  ],
+  "remaining": [
+    "per-weapon special modifiers and full geometry",
+    "native skill same-phase poses, trails and dust vs publisher screenshot",
+    "native promotion/XP caps",
+    "same-channel whole-page pixel fidelity",
+    "audio lifetime and WeChat device"
+  ],
+  "evidence": [
+    "skills-cast-detail-v39.png",
+    "skills-cast-restore-diff-v38.png",
+    "skills-cast-restore-diff-v39.png",
+    "skills-cast-restore-v38.json",
+    "skills-cast-restore-v39.json",
+    "skills-cast-restored-v38.json",
+    "skills-cast-restored-v38.png",
+    "skills-cast-restored-v39.json",
+    "skills-cast-restored-v39.png",
+    "skills-cast-v38.json",
+    "skills-cast-v38.png",
+    "skills-cast-v39.json",
+    "skills-cast-v39.png",
+    "skills-late-v38.json",
+    "skills-late-v38.png",
+    "skills-cast-restore-v40.json",
+    "skills-cast-restored-v40.json",
+    "skills-cast-restored-v40.png",
+    "skills-cast-v40.json",
+    "skills-cast-v40.png",
+    "skills-late-restore-v40.json",
+    "skills-late-restored-v40.json",
+    "skills-late-restored-v40.png",
+    "skills-late-v40.json",
+    "skills-late-v40.png",
+    "hero-skills-tests-v39.log",
+    "zya-web-v38.json",
+    "zya-web-v38.log",
+    "zya-web-v39.json",
+    "zya-web-v39.log",
+    "zya-web-v40.json",
+    "zya-web-v40.log"
+  ]
+}

@@ -338,6 +338,39 @@
       "originalPixels": "unproven",
       "device": "pending",
       "online": "pending"
+    },
+    "nativeHeroSkills": {
+      "source": "ZYA24-native-hero-skills.json",
+      "tests": 49,
+      "typecheck": "pass",
+      "runtime": "zya-web-v40",
+      "canvasReconstruction": {
+        "size": [
+          320,
+          704
+        ],
+        "times": [
+          0.7,
+          3.299999999999998
+        ],
+        "differentPixels": [
+          0,
+          0
+        ],
+        "scope": "Own declared reconstruction, not publisher-game pixel acceptance"
+      },
+      "resourcePeak": {
+        "entries": 86,
+        "reservedEstimateBytes": 139153600,
+        "pending": 0
+      },
+      "nativeCandidate": "pending v8",
+      "remaining": [
+        "per-weapon skill modifiers",
+        "publisher same-phase motion/trails/dust",
+        "promotion/XP",
+        "audio lifetime/devices"
+      ]
     }
   },
   "pending": [

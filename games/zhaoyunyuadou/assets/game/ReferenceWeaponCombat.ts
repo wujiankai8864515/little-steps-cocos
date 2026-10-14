@@ -16,7 +16,7 @@ export function rotatePoint(x:number,y:number,degrees:number):Point {
 }
 export function nativeWeaponAim(type:WeaponType,hero:string,pivot:Point,target:Point){
     const dx=target.x-pivot.x,dy=target.y-pivot.y;
-    if(type===0)return aimAngle(dx,dy-100); // Wi.create(50), initial tangent.
+    if(type===0)return aimAngle(dx,hero==='黄忠'?dy:dy-100); // 黄忠 overrides the curve with a straight movement.
     if(type===1&&hero==='马超'&&Math.abs(dx)>60)return 0;
     return aimAngle(dx,dy);
 }
@@ -38,11 +38,12 @@ export function weaponStrikePlans(type:WeaponType,hero:string,id:number,origin:P
         add('area',.15,.1,pivot.x+local.x,pivot.y+local.y,aim,aim,count===1?10:range,range,5,count===1?.15:0);
         for(let i=1;i<count;i++)add('area',.25+(2*i-1)*.2/count,.2/count,pivot.x+local.x,pivot.y+local.y,aim,aim,range,range,5);
     }else if(type===2){
-        // Strategy 100: selected target is hit when the cut requests removal.
-        add('target',.46,0,pivot.x,pivot.y,aim,aim,0,0,0);
+        if(hero==='关平')add('area',.4,.36,pivot.x,pivot.y,aim+45,aim-345,range,range,5,.36);
+        else add('target',.46,0,pivot.x,pivot.y,aim,aim,0,0,0);
     }else{
         const swing=attack%2===1?-60:60;
-        add('area',0,.2,pivot.x,pivot.y,aim+swing,aim-swing,range,range,10,.15);
+        if(hero==='刘备'||hero==='张翼')add('target',.2,0,pivot.x,pivot.y,aim,aim,0,0,0);
+        else add('area',0,.2,pivot.x,pivot.y,aim+swing,aim-swing,range,range,10,.15);
     }
     return {aim,plans};
 }

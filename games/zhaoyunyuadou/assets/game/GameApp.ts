@@ -6,6 +6,7 @@ import { BOSSES } from './ReferenceCombat';
 import { BASIC_UNITS, isBasicKind, UnitFramePlayer } from './ReferenceUnits';
 import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
 import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
+import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
@@ -13,6 +14,7 @@ const skin = (group: string, name: string) => 'resources/img/' + group + '/' + n
 interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
 interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;nocked?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
 interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;weapon?:WeaponView;}
+interface SkillView {node:Node;rig?:InkRig;weapon?:Node;}
 interface Drag { location?: Location; item?: string; weaponId?:number; startX: number; startY: number; node: Node; moved: boolean; }
 
 export class GameApp {
@@ -21,6 +23,7 @@ export class GameApp {
     private screen: Element; private overlay: Node | null = null; private overlayUI: InkUI | null = null;
     private rigs: InkRig[] = [];private battleClocks:InkRig[]=[]; private actors = new Map<number,ActorView>(); private mobs = new Map<number,Node>();
     private projectiles = new Map<number,Node>(); private effects = new Map<number,Node>();
+    private skillViews=new Map<number,SkillView>();
     private board: Node; private reserve: Node; private combatLayer: Node; private heroLayer: Node;
     private tutorial: Node; private revision = -1; private drag: Drag | null = null;
     private saveTime = 0; private soundGate = 0; private audio: AudioSource; private pageToken = 0;
@@ -83,7 +86,7 @@ export class GameApp {
     private firstDraw(){return new Promise<void>(resolve=>director.once(Director.EVENT_AFTER_DRAW,resolve));}
     private clear(page: string) {
         this.pageToken++; this.cancelDrag(); this.closeAllOverlays(); this.rigs=[];
-        this.actors.clear();this.mobs.clear();this.projectiles.clear();this.effects.clear();this.heroViews.clear();this.battleClocks=[];this.hazeNode=null;
+        this.actors.clear();this.mobs.clear();this.projectiles.clear();this.effects.clear();this.skillViews.clear();this.heroViews.clear();this.battleClocks=[];this.hazeNode=null;
         this.ui.dispose();this.page=page;this.screen=null;this.revision=-1;this.toastNode=null;this.toastTime=0;
     }
     private async prepare(page: string, groups: string[]) {
@@ -355,16 +358,16 @@ export class GameApp {
             }
             n.setPosition(enemy.x-40,-enemy.y+40);const hp=n.getChildByName('hp')!;hp.setScale(Math.max(0,enemy.hp/enemy.maxHp),1);
             n.getChildByName('hpNum')!.getComponent(Label)!.string=Math.ceil(enemy.hp).toString();
-            if(!enemy.boss)n.getChildByName('mob-glyph')!.setScale(1,1+.02*Math.sin(b.time*Math.PI/.195+enemy.id));
+            if(!enemy.boss){const glyph=n.getChildByName('mob-glyph')!;glyph.setScale(1,1+.02*Math.sin(b.time*Math.PI/.195+enemy.id));glyph.angle=(enemy.knocked||0)>0?90:0;}
         }
         for(const[id,n]of Array.from(this.mobs.entries()))if(!current.has(id)){n.destroy();this.mobs.delete(id);}
         current.clear();
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
-            if(!n){const special:Record<string,string>={fire:'weapon/arrow_9',eagle:'weapon/bullet/eagleArrow_01',snake:'weapon/bullet/lingShe_1',flower:'weapon/bullet/lihua',flyingPike:'weapon/weapon_19',blade:'weapon/bullet/newDQ',meteor:'props/meteor_2',sword:'weapon/default_3'};
+            if(!n){const special:Record<string,string>={fireRain:'weapon/arrow_9',rainArrow:'weapon/arrow_2',holyBlade:'weapon/weapon_40',fire:'weapon/arrow_9',eagle:'weapon/bullet/eagleArrow_01',snake:'weapon/bullet/lingShe_1',flower:'weapon/bullet/lihua',flyingPike:'weapon/weapon_19',blade:'weapon/bullet/newDQ',meteor:'props/meteor_2',sword:'weapon/default_3'};
                 const standard=shot.kind==='throw'?'weapon/'+(shot.weaponId===undefined?'default_1':'weapon_'+shot.weaponId):shot.kind==='arrow'&&shot.weaponId===undefined?'weapon/default_arrow_1':shot.kind==='arrow'||shot.kind==='弓'||shot.hero==='黄忠'||shot.hero==='黄祖'?'weapon/arrow_'+(shot.weaponId!==undefined?Math.min(shot.weaponId,9):0):'gameObject/soldier/pike';
                 const path='resources/img/'+(special[shot.kind]||standard)+'.png';
-                const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,shot.width??width*ratio,shot.height??height*ratio);n.getComponent(UITransform)!.setAnchorPoint(shot.anchorX??.5,shot.anchorY===undefined?.5:1-shot.anchorY);this.projectiles.set(shot.id,n);}
+                const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,shot.width??width*ratio,shot.height??height*ratio);n.getComponent(UITransform)!.setAnchorPoint(shot.anchorX??.5,shot.anchorY===undefined?.5:1-shot.anchorY);if(shot.kind==='holyBlade')n.addComponent(UIOpacity).opacity=128;this.projectiles.set(shot.id,n);}
             n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
@@ -372,18 +375,40 @@ export class GameApp {
         for(const effect of b.effects){
             if(effect.kind==='damage'&&!this.profile.settings.damage)continue;current.add(effect.id);let n=this.effects.get(effect.id);
             if(!n){
-                n=this.ui.text(this.combatLayer,effect.text||'',effect.x-65,effect.y-35,130,50,effect.kind==='damage'?30:24,effect.kind==='skill'?'#ffd25d':'#ffffff',5);
+                if(['stomp','fire','lightning'].includes(effect.kind)){const path=effect.kind==='stomp'?'crack':effect.kind==='fire'?'explode0':'electric1',size=effect.kind==='stomp'?[76,17]:effect.kind==='fire'?[64,64]:[100,100];n=this.ui.image(this.combatLayer,skin('effect',path),0,0,size[0],size[1]);n.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
+                else n=this.ui.text(this.combatLayer,effect.text||'',effect.x-65,effect.y-35,130,50,effect.kind==='damage'?30:24,effect.kind==='skill'?'#ffd25d':'#ffffff',5);
                 n.addComponent(UIOpacity);this.effects.set(effect.id,n);
-                if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill')this.play('general_pike_attack');
+                if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill'){const sounds:Record<string,string>={'大喝':'general_ground_slam','跳斩':'guanyu_skill_roar','火箭烈':'general_fire_arrow_rain','箭雨':'general_arrow_rain','圣剑':'holyBlade_skill'};if(sounds[effect.text||''])this.play(sounds[effect.text!]);}else if(effect.kind==='stomp')this.play('jumpSlash_stomp');else if(effect.kind==='lightning')this.play('maChao_attack_lightning');
             }
-            n.setPosition(effect.x-65,-effect.y+35+(effect.duration-effect.ttl)*35);n.getComponent(UIOpacity)!.opacity=Math.min(255,effect.ttl/effect.duration*400);
+            const elapsed=effect.duration-effect.ttl;
+            if(['stomp','fire','lightning'].includes(effect.kind)){
+                n.setPosition(effect.x,-effect.y);
+                if(effect.kind==='fire')this.ui.skin(n,skin('effect','explode'+Math.min(5,Math.floor(elapsed/.05))));
+                if(effect.kind==='lightning')this.ui.skin(n,skin('effect','electric'+(1+(Math.floor(elapsed/.05)+effect.id)%3)));
+                if(effect.kind==='stomp')n.setScale(.8+.2*Math.min(1,elapsed/.1),.5+.5*Math.min(1,elapsed/.1));
+                const end=effect.kind==='stomp'?.6:effect.kind==='fire'?.4:.25;n.active=elapsed<end;n.getComponent(UIOpacity)!.opacity=255*Math.max(0,Math.min(1,(end-elapsed)/(effect.kind==='stomp'?.3:.1)));
+            }else{n.setPosition(effect.x-65,-effect.y+35+elapsed*35);n.getComponent(UIOpacity)!.opacity=Math.min(255,effect.ttl/effect.duration*400);}
         }
         for(const[id,n]of Array.from(this.effects.entries()))if(!current.has(id)){n.destroy();this.effects.delete(id);}
         for(const view of Array.from(this.actors.values()))this.animateBasicUnit(view,b.paused?0:dt);
         for(const view of Array.from(this.heroViews.values()))this.animateHero(view,b.paused?0:dt);
+        this.animateSkillViews();
         if(b.haze>0&&!this.hazeNode){this.hazeNode=this.ui.image(this.combatLayer,skin('gameObject','enemy/blackCloud0'),0,0,640,800);this.hazeNode.getComponent(Sprite)!.color=new Color(255,255,255,180);}else if(b.haze<=0&&this.hazeNode){this.hazeNode.destroy();this.hazeNode=null;}
         const items=this.ui.find('box',this.screen)!.body.getChildByName('items-runtime');
         if(items)for(const node of items.children){const id=node.name.slice(5),remaining=b.cooldowns[id]||0;const label=node.getChildByName('remaining')?.getComponent(Label);if(label)label.string=remaining>0?String(Math.ceil(remaining)):'';const icon=node.getChildByName('item-icon')?.getComponent(Sprite);if(icon)icon.grayscale=remaining>0;}
+        this.orderCombat();
+    }
+    private orderCombat(){
+        // Reconstructed nodes arrive together; live ones arrive over many
+        // frames. Draw order must depend on their role and saved id, not age.
+        const keys=new Map<Node,[number,number]>(),jumping=new Set(this.battle!.heroSkills.filter(skill=>skill.kind==='jump').map(skill=>skill.unit));
+        for(const view of this.heroViews.values())keys.set(view.node,[jumping.has(view.unit.id)?4:0,view.unit.id]);
+        for(const view of this.actors.values())if(view.node.parent===this.combatLayer)keys.set(view.node,[jumping.has(view.unit.id)?4:1,view.unit.id+.5]);
+        for(const[id,node]of this.mobs)keys.set(node,[2,id]);for(const[id,node]of this.projectiles)keys.set(node,[3,id]);
+        for(const[id,view]of this.skillViews)keys.set(view.node,[view.node.name.startsWith('skill-phantom')?5:0,id]);
+        for(const[id,node]of this.effects)keys.set(node,[6,id]);if(this.hazeNode)keys.set(this.hazeNode,[7,0]);
+        const nodes=this.combatLayer.children.slice().sort((a,b)=>{const x=keys.get(a)||[-1,0],y=keys.get(b)||[-1,0];return x[0]-y[0]||x[1]-y[1];});
+        nodes.forEach((node,index)=>{if(node.getSiblingIndex()!==index)node.setSiblingIndex(index);});
     }
     private animateBasicUnit(view:ActorView,dt:number){
         const unit=view.unit,b=this.battle!;if(!isBasicKind(unit.kind))return;
@@ -416,6 +441,8 @@ export class GameApp {
     }
     private animateHero(view:HeroView,dt:number){
         const stats=this.battle!.stats(view.unit,view.hero,view.level,view.side),rate=view.hero.speed/stats.interval;
+        view.node.setScale(1,1);view.node.setPosition(view.left%8*80,-Math.floor(view.left/8)*80);
+        for(const cell of [view.left,view.left+1]){const unit=this.battle!.armies[view.side].units[cell],actor=unit&&this.actors.get(unit.id);if(actor)actor.node.setPosition(cell%8*80,-Math.floor(cell/8)*80);}
         const elapsed=view.unit.weaponAt===undefined?undefined:Math.max(0,this.battle!.time-view.unit.weaponAt);
         const event=view.motion.advance(dt,view.unit.attacks,Math.max(view.unit.cooldown,(view.unit.weaponUntil||0)-this.battle!.time),rate,elapsed,Math.max(0,this.battle!.time-(view.unit.idleAt??0)));
         if(view.rigs){
@@ -434,14 +461,58 @@ export class GameApp {
         const {spec}=weapon,origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},targetX=view.unit.attackX??origin.x+spec.x,targetY=view.unit.attackY??origin.y+spec.y-100;
         const pivotX=origin.x+spec.x,pivotY=origin.y+spec.y;
         const distance=Math.hypot(targetX-(spec.type===2?origin.x+40:pivotX),targetY-(spec.type===2?origin.y+40:pivotY));
-        const pose=weapon.motion.advance(dt,view.unit.attacks,event.attacking,view.unit.weaponRate??stats.weaponRate,{dx:targetX-pivotX,dy:targetY-pivotY,distance,range:stats.range,angle:view.unit.weaponAim},elapsed,Math.max(0,this.battle!.time-(view.unit.idleAt??0)));
+        const weaponElapsed=elapsed===undefined?undefined:Math.max(0,elapsed-(view.hero.name==='张飞'?.1/rate:0));
+        const pose=weapon.motion.advance(dt,view.unit.attacks,event.attacking,view.unit.weaponRate??stats.weaponRate,{dx:targetX-pivotX,dy:targetY-pivotY,distance,range:stats.range,angle:view.unit.weaponAim},weaponElapsed,Math.max(0,this.battle!.time-(view.unit.idleAt??0)));
         // Native sF animates C_ (the glyph), while leftWord remains stationary.
-        weapon.parent.angle=0;weapon.parent.setScale(1,1);
+        weapon.parent.angle=0;weapon.parent.setScale(1,1);weapon.parent.setPosition(40,-80);
         weapon.root.angle=-pose.angle;weapon.root.active=pose.visible;weapon.root.setScale(pose.rootScale,pose.rootScale);
         weapon.body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-pose.childY);
         weapon.body.setScale(pose.scaleX,pose.scaleY);
         if(weapon.trail)weapon.trail.active=pose.trail;
         if(weapon.nocked){weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));}
+        const skill=this.battle!.heroSkills.find(skill=>skill.unit===view.unit.id&&HERO_SKILLS[skill.hero].interrupt);
+        if(skill)this.animateHeroSkill(view,skill);
+    }
+    private animateHeroSkill(view:HeroView,skill:HeroSkillState){
+        const now=this.battle!.time,elapsed=now-skill.born,weapon=view.weapon!,origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},clamp=(n:number)=>Math.max(0,Math.min(1,n));
+        if(skill.kind==='shout'){
+            const t=elapsed<.25?elapsed/.25:elapsed<.5?(elapsed-.25)/.25:elapsed<.65?(elapsed-.5)/.15:clamp((elapsed-.65)/.15);
+            const sx=elapsed<.25?1+.2*t:elapsed<.5?1.2-.3*t:elapsed<.65?.9+.3*t:1.2-.2*t,sy=elapsed<.25?1-.2*t:elapsed<.5?.8+.3*t:elapsed<.65?1.1-.3*t:.8+.2*t;
+            const jump=elapsed<.25?0:elapsed<.25+.1/skill.rate?-80*clamp((elapsed-.25)*skill.rate/.1):elapsed<.25+.2/skill.rate?-80*(1-clamp((elapsed-.25-.1/skill.rate)*skill.rate/.1)):0;
+            view.node.setScale(sx,sy);view.node.setPosition(origin.x+80*(1-sx),-origin.y-80*(1-sy)-jump);
+            for(const cell of [view.left,view.left+1]){const unit=this.battle!.armies[view.side].units[cell],actor=this.actors.get(unit.id);if(actor){actor.node.setPosition(origin.x+80+(cell-view.left)*80*sx-80*sx,-origin.y-80*(1-sy)-jump);actor.glyph.setScale(sx,sy);}}
+            weapon.trail&&(weapon.trail.active=false);
+        }else if(skill.kind==='jump'){
+            const dx=skill.x-origin.x-40,dy=skill.y-origin.y-40,unit=this.battle!.armies[view.side].units[view.left],actor=this.actors.get(unit.id);
+            if(actor){actor.node.setPosition(origin.x+dx,-origin.y-dy);actor.node.setSiblingIndex(this.combatLayer.children.length-1);}
+            weapon.parent.setPosition(40+dx,-80-dy);weapon.parent.setSiblingIndex(view.node.children.length-1);
+            const attack=Math.max(0,now-skill.ends-.25)*skill.rate;weapon.root.angle=skill.phase===3?0:attack<.25?-48*clamp(attack/.25):attack<.4?-48:attack<.5?-24+152*clamp((attack-.4)/.1):128*(1-clamp((attack-.5)/.22));
+            weapon.root.active=true;weapon.trail&&(weapon.trail.active=attack>=.4&&attack<.5);
+        }else if(skill.kind==='arrowRain'||skill.kind==='fireRain'){
+            const interval=skill.kind==='arrowRain'?.228/skill.rate:2.85/((10+skill.points.length)*skill.rate),draw=clamp(1-(skill.next-now)/interval);
+            weapon.body.setScale(1-.13*draw,1+.29*draw);weapon.root.angle=30;
+            if(weapon.nocked){weapon.nocked.active=true;weapon.nocked.setPosition(0,-40*draw);}
+        }
+    }
+    private animateSkillViews(){
+        const battle=this.battle!,current=new Set<number>();
+        for(const skill of battle.heroSkills){
+            if(skill.kind!=='shout'&&skill.kind!=='phantom')continue;current.add(skill.id);let view=this.skillViews.get(skill.id);
+            if(!view){const node=this.ui.node('skill-'+skill.kind+'-'+skill.id,this.combatLayer,0,0,1,1);view={node};this.skillViews.set(skill.id,view);
+                if(skill.kind==='shout')for(let i=0;i<3;i++){const ring=this.ui.image(node,skin('effect','soundWave'),0,0,153,157,undefined,'ring'+i);ring.getComponent(UITransform)!.setAnchorPoint(.5,.5);ring.addComponent(UIOpacity);}
+                else{const captured=view;void this.rig(node,'resources/anim/zhaoYun/skeleton_zh.json','zhan1',0,40,1).then(rig=>{if(rig&&isValid(node,true)){captured.rig=rig;rig.simulationClock=true;rig.useSkin(heroAppearance(skill.hero,skill.level).skin);}});const weapon=this.ui.image(node,skin('weapon',skill.weaponId===undefined?'default_1':'weapon_'+skill.weaponId),0,0,42,132);weapon.getComponent(UITransform)!.setAnchorPoint(.5,.5);view.weapon=weapon;}
+            }
+            view.node.setPosition(skill.x,-skill.y);
+            if(skill.kind==='shout')for(let i=0;i<3;i++){const pose=shoutRing(battle.time-skill.born,skill.rate,skill.range,i),ring=view.node.getChildByName('ring'+i)!;ring.setScale(pose.scale,pose.scale);ring.getComponent(UIOpacity)!.opacity=Math.round(pose.alpha*255);}
+            else{
+                const point=skill.points[skill.index],previous=skill.points[skill.index-skill.direction];let sx=.8,sy=.8,rotation=0;
+                if(skill.phase===1&&point&&previous){if(point.x>previous.x)sx=-.8;else if(point.y>previous.y){rotation=90;sx=-.8;}else if(point.y<previous.y){rotation=-90;sx=-.8;sy=-.8;}}
+                view.node.angle=rotation;view.node.setScale(sx,sy);if(view.rig){const name=skill.phase===1?'attack1':'zhan1';if(view.rig.name!==name)view.rig.play(name,true);view.rig.seek((battle.time-skill.born)*(skill.phase===1?5:1));}
+                if(view.weapon){const phase=(battle.time-skill.ends)%.1;view.weapon.angle=80+(skill.id*17%40);view.weapon.setPosition(0,-60*(phase<.05?phase/.05:1-(phase-.05)/.05));}
+            }
+        }
+        for(const[id,view]of Array.from(this.skillViews.entries()))if(!current.has(id)){view.rig?.dispose();view.node.destroy();this.skillViews.delete(id);}
+        this.rigs=this.rigs.filter(rig=>isValid(rig.root));
     }
     private heroWeapon(view:HeroView,id:number):WeaponView {
         const spec=weaponGeometry(view.hero.weaponType as WeaponType,view.hero.name,id),parent=this.ui.node('weapon word pivot',view.node,40,80,80,80);

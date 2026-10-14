@@ -21,7 +21,7 @@ export function weaponPlaybackRate(type:WeaponType,hero:string,id:number,rate:nu
 export function weaponBusyDuration(type:WeaponType,hero:string){
     if(type===0)return 0;
     if(type===1)return hero==='马超'?1.4:hero==='张飞'?.7:hero==='赵云'?.67:.35;
-    return type===2?.61:.2;
+    return type===2?(hero==='关平'?1.01:.61):.2;
 }
 const clamp=(x:number)=>Math.max(0,Math.min(1,x));
 const lerp=(a:number,b:number,t:number,ease:'linear'|'quadOut'|'cubicIn'='linear')=>{let u=clamp(t);if(ease==='quadOut')u=1-(1-u)*(1-u);if(ease==='cubicIn')u=u*u*u;return a+(b-a)*u;};
@@ -49,6 +49,10 @@ export function attackPose(spec:WeaponGeometry,hero:string,time:number,from:numb
         p.childY=lerp(end,spec.childY,(t-.25-repeats)/.1);p.scaleY=lerp(1.2,1,(t-.25-repeats)/.1);return p;
     }
     if(spec.type===2){
+        if(hero==='关平'){
+            p.angle=t<.1?from+angleDelta(from,aim)*clamp(t/.1):t<.4?lerp(aim,aim+45,(t-.1)/.3,'cubicIn'):t<.76?lerp(aim+45,aim-345,(t-.4)/.36):lerp(aim-345,aim,(t-.76)/.25);
+            p.childY=t<.4?spec.childY:t<.76?lerp(spec.childY,spec.childY-60,(t-.4)/.36):lerp(spec.childY-60,spec.childY,(t-.76)/.25);p.trail=t>=.4&&t<.76;return p;
+        }
         if(t<.1)p.angle=from+angleDelta(from,aim)*clamp(t/.1);
         else if(t<.15)p.angle=lerp(aim,aim+45,(t-.1)/.05,'cubicIn');
         else if(t<.28)p.angle=aim+45;
