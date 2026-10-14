@@ -9,7 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 ROOT = Path(__file__).resolve().parents[2]
 CHANNEL = Path(__file__).resolve().parent
@@ -18,6 +18,16 @@ CHANNEL = Path(__file__).resolve().parent
 def write_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+
+def stamp_project(project, game, source_commit, display_version):
+    config = project / 'assets/art/resources/config'
+    levels = sorted(p.stem for p in (config / 'card-levels').glob('*.json'))
+    if not levels:
+        raise ValueError('No game JSON levels')
+    write_json(config / 'card-index.json', {'schemaVersion': 1, 'levels': levels})
+    write_json(config / 'release-info.json', {'schemaVersion': 1, 'displayVersion': display_version,
+        'hotUpdateVersion': game['hotUpdateVersion'], 'sourceCommit': source_commit, 'timezone': 'Asia/Shanghai'})
 
 
 def inputs(project):
@@ -94,8 +104,9 @@ def audit_native_export(stage, game):
     properties = re.sub(r'^PROP_BUILD_TOOLS_VERSION=.*$',
                         'PROP_BUILD_TOOLS_VERSION=' + game['buildToolsVersion'], properties, flags=re.M)
     properties_path.write_text(properties)
-    if not re.fullmatch(r'\d+\.\d+\.\d+', game['version']) or not isinstance(game['versionCode'], int) or game['versionCode'] < 1:
+    if not re.fullmatch(r'\d{4}(?:-\d{2}){5}', game['version']) or not isinstance(game['versionCode'], int) or game['versionCode'] < 1:
         raise ValueError('Invalid configured Android application version')
+    datetime.strptime(game['version'], '%Y-%m-%d-%H-%M-%S')
     # Creator's native template has hard-coded 1.0/1, independent of its game metadata.
     gradle_path = stage / game['project'] / 'native/engine/android/app/build.gradle'
     gradle = gradle_path.read_text()
@@ -163,16 +174,33 @@ def build(args):
     if args.game not in settings['games']:
         raise ValueError('No Android configuration for game: ' + args.game)
     game = settings['games'][args.game]
+    game = dict(game)
+    if args.hot_version:
+        if not re.fullmatch(r'\d+\.\d+\.\d+\.\d+', args.hot_version):
+            raise ValueError('Invalid hot-update version')
+        game['hotUpdateVersion'] = args.hot_version
+        game['hotUpdateTag'] = 'avg-plus-android-' + args.hot_version
+    if args.publish:
+        from publish import next_version, base_snapshot, gh
+        if gh('auth','status',optional=True)is None:raise RuntimeError('Automatic publication requires one-time GitHub CLI authorization')
+        if not args.hot_version:
+            game['hotUpdateVersion']=next_version(game);game['hotUpdateTag']='avg-plus-android-'+game['hotUpdateVersion']
+        if args.hot_only and not args.delta_base:
+            args._delta_snapshot=base_snapshot(game)
     if args.release:
         raise ValueError('Release signing has not been configured; do not label debug APKs as releases')
     env = environment()
     plan = {'game': args.game, 'source': game['project'], 'environment': env,
             'orientation': 'portrait', 'githubRepository': game['githubRepository'],
-            'release': False, 'verification': 'pending'}
+            'release': False, 'verification': 'pending', 'hotOnly': args.hot_only}
     if args.inspect:
         print(json.dumps(plan, ensure_ascii=False, indent=2))
         return
     before = inputs(game['project'])
+    source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    display_version = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d-%H-%M-%S')
+    game['version'] = display_version
+    game['displayVersion'] = display_version
     name = 'avg-plus-android-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
     stage = ROOT / 'migration/work' / name
     stage.mkdir(parents=True)
@@ -184,6 +212,7 @@ def build(args):
             shutil.copy2(ROOT / relative, target)
     if inputs(game['project']) != before:
         raise RuntimeError('Source changed while freezing; previous candidate retained')
+    stamp_project(project, game, source_commit, display_version)
     configuration = export_config(game, stage, env, debug=True)
     config_path = stage / 'build-config.json'
     write_json(config_path, configuration)
@@ -195,7 +224,7 @@ def build(args):
     child_env = dict(os.environ, JAVA_HOME=env['java'], ANDROID_SDK_ROOT=env['sdk'],
                      ANDROID_HOME=env['sdk'], ANDROID_NDK_HOME=env['ndk'])
     record = dict(plan, item='AVG.ANDROID.01', candidate=name,
-                  sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                  sourceCommit=source_commit, displayVersion=display_version,
                   sourceMode='local-working-copy', workingInputs=before, stage=str(stage),
                   export='pending', apk='pending', hotUpdate='pending', device='pending', fidelity='pending')
     review = ROOT / 'migration/reviews/avg_plus' / (name + '.json')
@@ -208,6 +237,8 @@ def build(args):
         if not (assets / 'main.js').is_file():
             raise RuntimeError('Creator did not export a native main.js')
         record['nativeProjectAudit'] = audit_native_export(stage, game)
+        from icons import install as install_icons
+        record['icons'] = install_icons(stage, game)
         record['export'] = 'passed'
         record['sourceUnchanged'] = inputs(game['project']) == before
         if not record['sourceUnchanged']:
@@ -220,7 +251,33 @@ def build(args):
         record['pngStorage'] = compact_assets(assets, stage / 'png-storage-originals')
         from hot_update import prepare
         record['hotUpdate'] = prepare(assets, stage / 'hot-update', game, CHANNEL / 'templates')
+        from delta import prepare as prepare_delta
+        delta_base=json.loads(Path(args.delta_base).read_text()) if args.delta_base else getattr(args,'_delta_snapshot',None)
+        record['delta'] = prepare_delta(stage / 'hot-update', delta_base)
         write_json(review, record)
+        if args.hot_only:
+            record['apk'] = 'not-built: game-only update; existing installation retained'
+            if inputs(game['project']) != before:
+                raise RuntimeError('Source changed during hot export; candidate retained')
+            destination = CHANNEL / args.game / 'hot-update'
+            if destination.exists():
+                destination.rename(stage / 'previous-hot-delivery')
+            try:
+                shutil.copytree(stage / 'hot-update', destination)
+            except Exception:
+                if destination.exists():
+                    shutil.rmtree(destination)
+                if (stage / 'previous-hot-delivery').exists():
+                    (stage / 'previous-hot-delivery').rename(destination)
+                raise
+            record['delivery'] = str(destination)
+            write_json(review, record)
+            if args.publish:
+                from publish import publish
+                print(json.dumps(publish(review,game),ensure_ascii=False,indent=2));return
+            print(json.dumps({'delivery': str(destination), 'review': str(review),
+                              'apk': 'not-built', 'device': 'pending'}, ensure_ascii=False))
+            return
         print('Compiling APK; log: ' + str(stage / 'compile.log'), flush=True)
         record['makeExitCode'] = run_logged([env['creator'], '--project', str(project), '--build',
             'stage=make;configPath=' + str(config_path)], ROOT, stage / 'compile.log', child_env)
@@ -252,6 +309,9 @@ def build(args):
             raise
         record['delivery'] = str(destination)
         write_json(review, record)
+        if args.publish:
+            from publish import publish
+            print(json.dumps(publish(review,game),ensure_ascii=False,indent=2));return
         print(json.dumps({'delivery': str(destination), 'review': str(review), 'device': 'pending',
                           'fidelity': 'pending'}, ensure_ascii=False))
     except Exception as error:
@@ -266,6 +326,10 @@ def main():
     parser.add_argument('--inspect', action='store_true', help='Print verified local tool paths without building')
     parser.add_argument('--export-only', action='store_true', help='Export a candidate native project without claiming APK delivery')
     parser.add_argument('--release', action='store_true')
+    parser.add_argument('--hot-only', action='store_true', help='Export game scripts/resources without compiling or replacing the APK')
+    parser.add_argument('--hot-version', help='Allocate a hot-resource version without editing the game/channel source configuration')
+    parser.add_argument('--delta-base', help='Verified prior content snapshot; emits only changed files in the delta delivery')
+    parser.add_argument('--publish', action='store_true', help='Automatically upload verified necessary client artifacts, verify Pages, and clean build outputs')
     build(parser.parse_args())
 
 

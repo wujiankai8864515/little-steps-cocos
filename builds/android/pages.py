@@ -7,8 +7,11 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import re
+import sys
 import urllib.request
 import zipfile
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from delta import validate_snapshot, validate_delta, key as version_key
 
 
 def request(url, maximum=2 * 1024 * 1024):
@@ -76,7 +79,8 @@ def assemble(repository, destination, fetch=request, release_list=None):
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=False)
     versions = {}
-    for release in releases(repository) if release_list is None else release_list:
+    items = releases(repository) if release_list is None else release_list
+    for release in items:
         names = {asset['name']: asset for asset in release.get('assets', [])
                  if asset.get('state', 'uploaded') == 'uploaded'}
         required = ['avg-plus-project.manifest', 'avg-plus-version.manifest', 'avg-plus-assets.zip']
@@ -103,6 +107,42 @@ def assemble(repository, destination, fetch=request, release_list=None):
         versions[version] = {'version': version, 'sha256': digest, 'tag': release['tag_name'],
                              'releaseUrl': release['html_url'], 'manifestBytes': manifest_bytes,
                              'versionBytes': version_manifest_bytes}
+    snapshots, delta_releases = {}, []
+    for release in items:
+        names={asset['name']:asset for asset in release.get('assets',[]) if asset.get('state','uploaded')=='uploaded'}
+        if 'avg-plus-content.json' not in names:continue
+        snapshot=validate_snapshot(json.loads(fetch(names['avg-plus-content.json']['browser_download_url'])))
+        version=snapshot['version']
+        if version in snapshots and snapshots[version]!=snapshot:raise ValueError('Published content snapshot changed')
+        snapshots[version]=snapshot
+        if 'avg-plus-delta.json'in names:
+            if 'avg-plus-assets.zip'not in names:raise ValueError('Delta archive missing')
+            delta_releases.append((release,names,snapshot))
+        elif version not in versions:raise ValueError('Bridge snapshot has no full legacy payload')
+        else:
+            bridge_payload=destination/'avg-plus/android/versions'/version/'avg-plus-assets.zip'
+            with zipfile.ZipFile(bridge_payload)as archive:
+                expected={f['path']:f for f in snapshot['files']}
+                if len(archive.namelist())!=len(expected)or set(archive.namelist())!=set(expected):raise ValueError('Bridge content index differs from its full payload')
+                for name,file in expected.items():
+                    if archive.getinfo(name).file_size!=file['bytes']or hashlib.sha256(archive.read(name)).hexdigest()!=file['sha256']:
+                        raise ValueError('Bridge content file digest mismatch')
+    patches=[]
+    for release,names,snapshot in sorted(delta_releases,key=lambda item:version_key(item[2]['version'])):
+        metadata_bytes=fetch(names['avg-plus-delta.json']['browser_download_url'])
+        metadata=json.loads(metadata_bytes)
+        parent=snapshots.get(metadata.get('baseVersion'))
+        if not parent or any(metadata.get(k)!=snapshot.get(k)for k in ['version','nativeCompatibility','files','displayVersion']):
+            raise ValueError('Delta snapshot/parent mismatch')
+        payload=fetch(names['avg-plus-assets.zip']['browser_download_url'],128*1024*1024)
+        validate_delta(metadata,payload,parent)
+        folder=destination/'avg-plus/android/delta/versions'/snapshot['version'];folder.mkdir(parents=True,exist_ok=False)
+        (folder/'avg-plus-assets.zip').write_bytes(payload);(folder/'avg-plus-delta.json').write_bytes(metadata_bytes)
+        patches.append({'version':snapshot['version'],'baseVersion':parent['version'],
+            'displayVersion':snapshot.get('displayVersion',''),'nativeCompatibility':snapshot['nativeCompatibility'],
+            'packageUrl':base+'delta/versions/'+snapshot['version']+'/',
+            'archive':metadata['archive'],'removed':metadata['removed'],'files':metadata['files'],
+            'releaseUrl':release['html_url']})
     if versions:
         current = max(versions, key=lambda value: tuple(map(int, value.split('.'))))
         latest = destination / 'avg-plus/android/latest'
@@ -113,13 +153,32 @@ def assemble(repository, destination, fetch=request, release_list=None):
     else:
         current = None
         text = '安卓更新资源正在准备。'
+    latest_any=current
+    if snapshots:
+        bridge=max((v for v in snapshots if v in versions),key=version_key,default=None)
+        if not bridge:raise ValueError('Incremental channel has no bridge')
+        latest_any=max(snapshots,key=version_key)
+        chain=[];cursor=bridge
+        for patch in patches:
+            if version_key(patch['version'])<=version_key(bridge):continue
+            if patch['baseVersion']!=cursor:raise ValueError('Incremental chain is not continuous')
+            chain.append(patch);cursor=patch['version']
+        if cursor!=latest_any:raise ValueError('Latest incremental snapshot is unreachable')
+        delta=destination/'avg-plus/android/delta/latest';delta.mkdir(parents=True)
+        index_data={'schemaVersion':2,'bridgeVersion':bridge,'version':latest_any,
+                    'displayVersion':snapshots[latest_any].get('displayVersion',''),
+                    'nativeCompatibility':snapshots[bridge]['nativeCompatibility'],'updates':chain}
+        (delta/'index.json').write_text(json.dumps(index_data,ensure_ascii=False,indent=2)+'\n')
+        (delta/'avg-plus-content.json').write_text(json.dumps(snapshots[latest_any],ensure_ascii=False,indent=2)+'\n')
+        display=index_data['displayVersion'] or latest_any
+        text=f'当前版本：{display}（北京时间）。游戏支持增量热更新，普通更新无需重新安装 APK。'
     index = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AVG Plus 安卓更新</title><body><main><h1>AVG Plus 安卓更新</h1><p>''' + text + '''</p><p><a href="https://github.com/''' + repository + '''/releases">安卓版本下载</a></p></main></body></html>'''
     (destination / 'index.html').write_text(index)
     channel = destination / 'avg-plus/android'
     channel.mkdir(parents=True, exist_ok=True)
     (channel / 'index.html').write_text(index)
     (destination / '.nojekyll').touch()
-    record = {'repository': repository, 'baseUrl': base, 'latestVersion': current,
+    record = {'repository': repository, 'baseUrl': base, 'latestVersion': latest_any, 'legacyVersion':current,
               'versions': [{key: value for key, value in entry.items() if not key.endswith('Bytes')} for entry in versions.values()]}
     (destination / 'deployment.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(record, ensure_ascii=False))

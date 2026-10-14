@@ -19,15 +19,34 @@ python3 -B builds/build.py android --game avg_plus
 
 按用户最新要求使用 `little-steps-cocos` 的 GitHub Pages，在 `avg-plus/android` 目录发布更新。用户已将该仓设置为公开以启用当前套餐的 Pages。`little-steps-play` 已由用户删除，新建的 `avg-plus-android-updates` 停止使用，用户表示将自行删除。客户端不携带 GitHub 凭据。
 
-`.github/workflows/avg-plus-pages.yml` 在手动触发、发布 Release 或修改部署脚本时组装并部署 Pages。它只将验证后的 Release 更新资源与下载索引放进站点；构建产物不提交到源码分支。每个 Release 需上传三个固定名称的资源文件，APK 可一并作为 Release 资产上传。`pages.py` 校验所有版本 ZIP 的 SHA-256、大小、路径和清单一致性，保存历史版本目录，再按最高资源版本生成 latest 入口。
+`.github/workflows/avg-plus-pages.yml` 在手动触发、发布 Release 或修改部署脚本时组装并部署 Pages。它只将验证后的 Release 更新资源与下载索引放进站点；构建产物不提交到源码分支。完整桥接版本包含完整 ZIP、两个旧协议清单及完整文件索引；后续增量版本包含变化文件 ZIP、增量元数据及完整文件索引。APK 只在首装或需要原生变化时生成。`pages.py` 校验 ZIP 与每个文件的 SHA-256、大小、路径、清单和完整版本链；未完成附件不会发布。
 
-发布和编辑 Release 的事件先触发 `main` 上的部署，保持 `github-pages` 环境现有保护规则。未完成附件不会进入站点。首页和 `avg-plus/android/` 入口都可打开；客户端只从 Pages 的不可变版本目录下载完整 ZIP。
+发布和编辑 Release 的事件先触发 `main` 上的部署，保持 `github-pages` 环境现有保护规则。首页和 `avg-plus/android/` 入口都可打开；客户端只从 Pages 的不可变版本目录下载经过校验的完整桥接 ZIP 或必要变化文件 ZIP。
 
 各版本 ZIP 发布到 `avg-plus/android/versions/<version>/avg-plus-assets.zip`；发现入口是 `avg-plus/android/latest/avg-plus-project.manifest` 和 `avg-plus-version.manifest`。先发布不可修改的版本目录，核验内容后再更新 latest 清单；客户端校验 ZIP URL 必须与清单版本完全一致。
 
 启动钩子在 SystemJS 与游戏模块加载之前恢复缓存搜索路径。覆盖安装 APK 时，比其打包版本旧或相同的缓存会被淘汰；只处理自身热更新缓存与标记，产品存档保留。ZIP 经过 SHA-256 和大小检查后才解压；下载最多重试两次，断网和不兼容更新使用本地内容。更新成功保存待验证启动状态，重启后目录读取成功才确认健康；若新代码启动未完成，下次启动退回 APK 内容并屏蔽该版本。`nativeCompatibility` 是 native/引擎合约，修改 native 或引擎时必须升级合约并重新安装 APK。
 
-更新包含游戏 `src`、Bundle 配置、动态 JSON、图片和音频，排除引擎 JS、JSB 适配器、native 身份和启动钩子。当前每次下载完整游戏 ZIP；不宣称已有逐文件差分更新。
+更新包含游戏 `src`、Bundle 配置、动态 JSON、图片和音频，排除引擎 JS、JSB 适配器、native 身份和启动钩子。增量以实际导出文件的哈希比较为准；Cocos 合并的脚本或 JSON 文件仍以整个变化文件进入 ZIP，未改变的图片、音频和配置文件不再上传。这里不做任意分片或二进制补丁。
+
+## 自动发布与输出清理
+
+官方 GitHub CLI 在当前账户完成一次授权后，先提交并推送必要源码，再从根仓执行：
+
+```sh
+# 首装／完整桥接版本，包含 APK。
+python3 -B builds/build.py android --game avg_plus --publish
+# 日常游戏内容更新，只构建和上传真实变化文件，不编译 APK。
+python3 -B builds/build.py android --game avg_plus --hot-only --publish
+```
+
+`--publish` 读取已发布版本自动分配下一个内部资源版本。显示版本与 APK versionName 由构建镜像写入北京时间 `年-月-日-时-分-秒`，源工程与模板保持可编辑。`--hot-only --publish` 自动读取线上最新完整文件索引作为增量基线。冻结输入逐文件核对 GitHub main 对应源码，未备份输入禁止发布。
+
+上传使用完整的真实 ZIP/APK 附件，失败可有界重试；先创建草稿并核对 GitHub 服务端大小和 SHA，再开放版本，匿名完整下载校验，等待 Pages 版本和哈希回读。公开版本附件不可覆盖，不用 `--clobber`；如内容不同需分配新版本。发布后只清理此次隔离镜像、临时构建和固定输出；不会删除源码、原素材、其他游戏、渠道配置、模板、打包必要文件或文档。未验证的发布保留当前输出供恢复，不积累新的历史候选。
+
+增量客户端先复制自身当前缓存到暂存目录，按完整顺序下载缺失的版本，校验最后一版全部文件后切换目录。保留一版健康缓存至新版本首页真实打开；启动失败时利用恢复日志回退并屏蔽失败版本，后续修复版本仍可更新。旧单 ZIP 客户端先使用完整桥接版本升级，再进入增量通道。断网检查有时限并继续本地游戏。文件系统故障注入通过不等于真实安卓升级通过，原生边界必须单独记录。
+
+Android 图标原画与五档密度 PNG 位于游戏 `source/android-icon`；渠道 XML 位于 `templates/avg-plus-icons`，包括普通、圆形、自适应、主题单色与 Android 12 启动图标。安装只作用于隔离原生导出，不能改 Creator 全局模板。PNG 源图由已调用的内置 imagegen 生成，确切提示词、模式与源图 SHA 在 `generation.json` 中；这些是必要源文件，应保留并备份。
 
 PNG 仅在隔离导出目录重新压缩 IDAT 存储，扫描线和所有非 IDAT 元数据逐字节校验不变；不改变源素材、尺寸、颜色或透明度。原导出 PNG 保留在候选的 `png-storage-originals`。Cocos 3.8.8 的 native Asset.size 使用 float，客户端按经过验证的 JS 清单读取精确字节数；ZIP 通过合法注释对齐长度，兼容旧 APK 的严格大小比较。
 

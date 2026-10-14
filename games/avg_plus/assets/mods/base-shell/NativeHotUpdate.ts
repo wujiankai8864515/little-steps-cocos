@@ -2,6 +2,7 @@ import { native } from 'cc';
 import { NATIVE } from 'cc/env';
 import { TaskScope } from '../../foundation/Tasks';
 import { compareVersions, sha256, UpdateIdentity, UpdateManifest, validateUpdate } from './UpdateProtocol';
+import { NativeDeltaUpdate } from './NativeDeltaUpdate';
 
 type Result = 'local' | 'restart';
 interface BootState {
@@ -33,12 +34,17 @@ export class NativeHotUpdate {
             state.probeAttempted = false;
             native.fileUtils.writeStringToFile(JSON.stringify(state), this.marker());
         }
+        new NativeDeltaUpdate(this.lifetime,this.identity()).confirm();
     }
     public async run(status: (text: string) => void): Promise<Result> {
         if (!NATIVE) return 'local';
         try {
             const identity = this.identity();
+            const delta=new NativeDeltaUpdate(this.lifetime,identity);
+            if(delta.recover())return 'restart';
             status('正在检查更新…');
+            const incremental=await delta.run(status);
+            this.lifetime.check();if(incremental)return incremental;
             const manifest = await this.lifetime.run(scope => this.fetchManifest(identity, scope), 10000);
             this.lifetime.check();
             if (this.readState()?.blockedVersion === manifest.version) return 'local';
@@ -90,7 +96,7 @@ export class NativeHotUpdate {
                 error ? reject(error) : resolve(manifest!);
             };
             request.open('GET', identity.remoteManifestUrl + '?t=' + Date.now(), true);
-            request.timeout = 8000;
+            request.timeout = 1800;
             request.onload = () => {
                 if (request.status !== 200) return finish(new Error('更新服务暂不可用'));
                 try { scope.check(); finish(undefined, validateUpdate(JSON.parse(request.responseText), identity)); }

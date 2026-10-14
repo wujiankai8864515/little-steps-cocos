@@ -67,6 +67,7 @@ def prepare(assets, output, game, templates):
         'remoteManifestUrl': manifest_url,
         'remoteVersionUrl': base + 'latest/avg-plus-version.manifest',
         'version': game['hotUpdateVersion'], 'engineVersion': '3.8.8',
+        'displayVersion': game.get('displayVersion', ''),
         'nativeCompatibility': game['nativeCompatibility'],
         'assets': {'avg-plus-assets.zip': {
             'size': payload.stat().st_size, 'md5': digest, 'compressed': True
@@ -78,6 +79,7 @@ def prepare(assets, output, game, templates):
     write(output / 'avg-plus-version.manifest', {k: manifest[k] for k in
         ['version', 'engineVersion', 'nativeCompatibility', 'remoteManifestUrl', 'remoteVersionUrl']})
     record = {'repository': repository, 'tag': tag, 'version': game['hotUpdateVersion'],
+              'displayVersion': game.get('displayVersion', ''),
               'nativeCompatibility': game['nativeCompatibility'], 'zipBytes': payload.stat().st_size,
               'sha256': digest, 'files': files, 'engineExcluded': True, 'legacyFloatSizeAligned': True,
               'nativeDeviceUpgrade': 'pending', 'githubDownload': 'pending'}
