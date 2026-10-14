@@ -14,6 +14,7 @@ function moduleFrom(name) {
 const M = moduleFrom('GameModel');
 const R = moduleFrom('InkRigMath');
 const U = moduleFrom('ReferenceUnits');
+const H = moduleFrom('ReferenceHeroes');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
@@ -153,6 +154,20 @@ test('original unit frame canvases retain trim offsets and complete one attack b
         path=player.advance(spec.attackDuration/spec.initialRate+1e-5,1,.8);assert.equal(player.clip,'zhan');assert.ok(art.frames[path]);
         player.reset(0);player.advance(0,1,.8,true);path=player.advance(spec.attackDuration/spec.initialRate+1e-5,1,.8,true);assert.equal(player.clip,'attack');assert.ok(path.includes(String(spec.attackFrames-1).padStart(2,'0')));player.advance(0,1,.8,false);assert.equal(player.clip,'zhan');
         for(let i=0;i<200;i++){path=player.advance(1/60,i<50?1:2,.4);assert.ok(art.frames[path],path);}
+    }
+});
+test('paired hero clips keep left/right glyphs and native bottom-pivot motion through pauses',()=>{
+    assert.equal(H.HERO_RIGS['赵云'],'zhaoYun');assert.equal(H.heroAppearance('赵云',4).skin,'2');assert.equal(H.heroAppearance('马超',5).skin,'3');
+    assert.equal(H.heroAppearance('刘备',2).background,1);assert.equal(H.heroAppearance('关平',2).background,3);assert.equal(H.heroAppearance('黄忠',4).color,'#ffffff');
+    const motion=new H.HeroMotion();let event=motion.advance(.15,1,.7,1);assert.equal(event.started,true);assert.equal(event.attacking,true);assert.ok(Math.abs(event.pose.rotation+3)<1e-12);assert.ok(Math.abs(event.pose.scaleY-.95)<1e-12);
+    const frozen=motion.elapsed;motion.advance(0,1,.7,1);assert.equal(motion.elapsed,frozen);
+    event=motion.advance(.06,1,.5,2);assert.ok(Math.abs(event.pose.scaleY-1.05)<1e-12);assert.ok(Math.abs(event.pose.rotation+2)<1e-12);
+    event=motion.advance(0,1,0,1);assert.equal(event.attacking,false);assert.equal(event.pose.scaleY,1);
+    motion.reset(1);assert.equal(motion.attacking,false);assert.equal(motion.elapsed,0);
+    const art=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/art.json')));
+    for(const folder of Object.values(H.HERO_RIGS)){
+        const spec=art.frames['resources/anim/'+folder+'/skeleton_zh.json'];const data=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/bundles/'+spec.bundle+'/'+spec.file+'.json')));
+        for(const name of ['zhan1','zhan2','attack1','attack2'])assert.ok(data.animations[name]);for(const skin of ['1','2','3'])assert.ok(data.skins[skin]);
     }
 });
 test('brush, trash and traps preserve legal targets and reserve effects',()=>{

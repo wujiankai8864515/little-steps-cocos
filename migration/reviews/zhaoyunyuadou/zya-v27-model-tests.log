@@ -1,0 +1,36 @@
+✔ initial geometry, roads and unlock cells are valid on all four maps (8.612583ms)
+✔ recruitment is atomic when short of food, camp full or paused (2.767584ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (16.330041ms)
+✔ invalid enemy-side/road drops preserve both source and food (7.016042ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (0.599292ms)
+✔ equal units merge, different units swap, level five never silently destroys units (1.246834ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (1.83675ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (2.931209ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (2.278667ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (5.417ms)
+✔ settlement is idempotent including double reward and reload (2.7345ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (1.310625ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.814209ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (7.577916ms)
+✔ native attack interval is seconds; bow releases after its wind-up and survives pause/restore (4.684291ms)
+✔ basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area (0.18425ms)
+✔ hero damage and speed use their distinct native growth tables; speed bonuses add (0.077291ms)
+✔ farmer harvest waits for the native 20/10/5/3/2 thresholds and merging retains work (20.594458ms)
+✔ original unit frame canvases retain trim offsets and complete one attack before returning to idle (9.432625ms)
+✔ paired hero clips keep left/right glyphs and native bottom-pivot motion through pauses (13.125334ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (2.882208ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (71.852625ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (2.376542ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (3827.233041ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (38.820625ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (105.348375ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (319.57275ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7413.58875
+

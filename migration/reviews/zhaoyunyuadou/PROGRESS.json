@@ -11,7 +11,7 @@
     "artFrames": 1117,
     "layoutDefinitions": 64,
     "originalMaps": 4,
-    "modelTests": 26,
+    "modelTests": 27,
     "chromeInputs": [
       "start game",
       "recruit",
@@ -38,7 +38,10 @@
       "v22 pause freezes actual battle at time 19.433333333333458 with attack 19 winding up",
       "v22 reload preserves attack 19, continue reaches live victory, claim assembles weapon 10 and clears round",
       "v24 live loss and single reward claim",
-      "v24 warm home to weapons and back"
+      "v24 warm home to weapons and back",
+      "v26 actual visible donkey merchant click and purchase 60 gold",
+      "v27 twelve legal hero pairs, original level 4 variants",
+      "v27 paired auto attacks, pause/resume, split 云 to cell 66 and rejoin at 41"
     ],
     "actualChromeMatch": "v22 latest basic-unit model: restored paused attack 19 at time 19.4333, resumed and reached real victory at wave 2, time 34.8667, lives [3,0]. Claim +20 gold, stars 2, wins 1, weapon 10=1, residual 0; round cleared. Browser evidence, not device.",
     "homeTextureEstimateBytes": 54379048,
@@ -138,7 +141,7 @@
     },
     "gameGitCommit": "5947b31",
     "gameBackupCommit": "35191c9",
-    "latestBrowserCandidate": "zya-web-v24",
+    "latestBrowserCandidate": "zya-web-v27",
     "allMapScreens": [
       "zya-v19-map0.png",
       "zya-v19-map1.png",
@@ -165,7 +168,9 @@
       "entries": 112,
       "reservedBytes": 170680864,
       "pending": 0
-    }
+    },
+    "merchantEntrance": "v26 controlled stock fixture: shopBtn is visible/enabled, original donkey/mihuan asset at 319,770. Actual click at 159,391 opened ShopScene; purchase allSpeed cost 60, inventory +1. Same-round lottery rejected without charge; no production fix needed. Prior absence interpretation was incorrect.",
+    "heroMotion": "v27 actor original paired zhan1/zhan2 and attack1/attack2 with native rate, bottom-pivot generic word curves, original 80px canvases and two-layer borders; 12-hero/level-4 fixtures and actual split/rejoin input passed. Full weapon motion and same-phase pixels remain pending."
   },
   "pending": [
     "same-size pixel differences on all pages",
@@ -177,9 +182,8 @@
     "reference version alignment for current WeChat channel",
     "same-phase basic-unit animation comparison",
     "native moving pike and rotating cavalry collision geometry",
-    "reset basic attack pose after swaps within the same board parent",
     "warm route/resource lifetime audit: all source resources would total 177 entries, over the unchanged 128-entry admission limit",
-    "v24 merchant entrance not visible after real loss; node activation/render/input path requires inspection"
+    "actual input capture for basic unit swap pose reset and remaining full native weapon motion"
   ],
   "failedEvidence": [
     "zya-web-v1.log: Creator sandbox launch abort",

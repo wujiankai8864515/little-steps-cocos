@@ -1,0 +1,124 @@
+{
+  "id": "ZYA-18",
+  "source": "inert native source and original actor JSON; no original runtime execution",
+  "sourceLines": {
+    "nativeFramePairs": 4732,
+    "idleClips": 4762,
+    "attackClips": 4776,
+    "levelSkins": 4812,
+    "colors": 4852,
+    "background": 1275
+  },
+  "rigs": [
+    "zhaoYun",
+    "zhangFei",
+    "maChao"
+  ],
+  "positions": [
+    [
+      40,
+      80
+    ],
+    [
+      120,
+      80
+    ]
+  ],
+  "scale": 1,
+  "clips": [
+    [
+      "zhan1",
+      "zhan2"
+    ],
+    [
+      "attack1",
+      "attack2"
+    ]
+  ],
+  "levelSkins": {
+    "1-3": "1",
+    "4": "2",
+    "5": "3"
+  },
+  "backgroundLayers": {
+    "fiveLevelGeneral": [
+      1,
+      2
+    ],
+    "otherGeneral": [
+      3,
+      4
+    ],
+    "body": [
+      160,
+      80
+    ],
+    "border": [
+      -4,
+      -4,
+      168,
+      88
+    ]
+  },
+  "wordCanvas": [
+    80,
+    80
+  ],
+  "glyphColor": {
+    "unlinked": "#cd8831",
+    "fiveLevelGeneral": "#cd8831",
+    "otherGeneral": "#be74de",
+    "level4-5": "#ffffff"
+  },
+  "nativeGenericAttackKeyframes": [
+    [
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0.15,
+      -3,
+      1.04,
+      0.95
+    ],
+    [
+      0.27,
+      -2,
+      0.97,
+      1.05
+    ],
+    [
+      0.39,
+      0,
+      1.04,
+      0.89
+    ],
+    [
+      0.6,
+      0,
+      1,
+      1
+    ]
+  ],
+  "verification": {
+    "tests": 27,
+    "typecheck": "pass",
+    "web": "v27 passed: 12 heroes visible in legal adjacent pairs, level 4 original variants visible, actual automatic attacks, pause/resume at time 57.9, move 云 from 41 to 66 removes 赵云 and restores ordinary glyphs; move back restores paired rig. No warning/error logs.",
+    "strictPixels": "pending",
+    "weaponMotion": "pending",
+    "device": "pending",
+    "admission": {
+      "entries": 82,
+      "reservedBytes": 135206720,
+      "pending": 0
+    },
+    "screens": [
+      "zya-v27-heroes-idle.png",
+      "zya-v27-heroes-level4.png",
+      "zya-v27-heroes-attack.png",
+      "zya-v27-heroes-rejoined.png"
+    ]
+  }
+}

@@ -4,7 +4,7 @@ import { attachmentAt, boneMatrices, duration, meshVertices, regionVertices, set
 
 export class InkRig {
     private slots: {node:cc.Node;sprite:any;attachment:string|null;mesh:any}[]=[];
-    private skin:any; private boneNames=new Map<string,number>(); private animation:any; private length=1; time=0;
+    private skin:any; private skinName='1';private boneNames=new Map<string,number>(); private animation:any; private length=1; time=0;playbackRate=1;
     private MeshSprite:any; private loop=true;private completed=false;private onComplete:(()=>void)|undefined; name:string;
     constructor(public root:cc.Node,public art:ArtStore,public source:string,public data:any,name:string,referenceOrigin=false) {
         this.MeshSprite=(globalThis as any).LittleStepsCore.registerCocos(cc);
@@ -16,10 +16,10 @@ export class InkRig {
         this.play(name);this.pose(0);
     }
     play(name:string,loop=true,onComplete?:()=>void){this.name=name;this.animation=this.data.animations[name]||this.data.animations[Object.keys(this.data.animations)[0]];this.length=duration(this.animation);this.time=0;this.loop=loop;this.completed=false;this.onComplete=onComplete;}
-    useSkin(name:string){const base=this.data.skins.default||{},selected=this.data.skins[name]||{};this.skin={};for(const key of Array.from(new Set(Object.keys(base).concat(Object.keys(selected)))))this.skin[key]={...(base[key]||{}),...(selected[key]||{})};for(const slot of this.slots)slot.attachment=null;this.pose(this.time);}
+    useSkin(name:string){this.skinName=name;const base=this.data.skins.default||{},selected=this.data.skins[name]||{};this.skin={};for(const key of Array.from(new Set(Object.keys(base).concat(Object.keys(selected)))))this.skin[key]={...(base[key]||{}),...(selected[key]||{})};for(const slot of this.slots)slot.attachment=null;this.pose(this.time);}
     advance(dt:number){
         if(this.completed)return;
-        const next=this.time+dt;
+        const next=this.time+dt*this.playbackRate;
         if(this.loop){this.time=next%this.length;this.pose(this.time);return;}
         this.time=Math.min(next,this.length);this.pose(this.time);
         if(next>=this.length){this.completed=true;const callback=this.onComplete;this.onComplete=undefined;callback?.();}
@@ -41,7 +41,7 @@ export class InkRig {
                 slot.mesh={source:new Float32Array(uv),vertices:new Float32Array(uv.length),indices:new Uint16Array(mesh?attachment.triangles:[0,1,2,1,3,2]),vertexUV:mapped};
                 slot.sprite.spriteFrame=frame;slot.sprite.configure(slot.mesh,[1,1]);
             }
-            const deform=this.animation.deform?.['1']?.[reference.name]?.[name]||this.animation.deform?.default?.[reference.name]?.[name];
+            const deform=this.animation.deform?.[this.skinName]?.[reference.name]?.[name]||this.animation.deform?.default?.[reference.name]?.[name];
             slot.mesh.vertices.set(mesh?meshVertices(attachment,matrices,bone,deform,t):regionVertices(attachment,matrices[bone]));
             slot.sprite.geometryChanged();
         }
