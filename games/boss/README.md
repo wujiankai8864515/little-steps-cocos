@@ -10,7 +10,7 @@
 python3 -B builds/build.py wechatgame --game boss
 ```
 
-微信开发者工具打开 `builds/wechatgame/boss`。可分享给研发的压缩包为 `migration/output/boss-wechatgame-1.0.0.zip`。默认是测试 AppID 的本地开发包，尚未提交微信审核。`--device` 同样使用原生分包，无需同 Wi-Fi 或资源服务器。
+微信开发者工具打开 `builds/wechatgame/boss`。可分享给研发的压缩包为 `migration/output/boss-wechatgame-1.0.0.zip`。默认使用本机微信工具内置「测试号」提供的 AppID，是尚未提交微信审核的本地开发包。其他开发者导入时如提示没有开发者权限，应使用自己工具的「测试号」。`--device` 同样使用原生分包，无需同 Wi-Fi 或资源服务器。CLI 服务端口关闭时，使用工具「项目 → 导入项目」，无需修改安全设置。
 
 ```sh
 python3 -B builds/build.py wechatgame --game boss --preview
