@@ -49,6 +49,18 @@ test('card entry debits once, early load failure refunds once, stale rounds and 
  assert.equal((await send(r,'shell.abort',{roundId:next})).status,'rejected');
  await send(r,'shell.page',{page:'intro'});assert.equal(read(r).selectedLevel,ids[1]);await r.dispose();
 });
+test('leaving an unfinished round closes its identity and permits the next entry without replaying old checkpoints',async()=>{
+ const r=await shell();await send(r,'shell.page',{page:'intro',levelId:ids[0]});await send(r,'shell.start');
+ const first=read(r).round.id;
+ await send(r,'shell.card',{roundId:first,coins:5150,complete:false,played:true,ended:true});
+ assert.equal(read(r).round,null);assert.equal(read(r).coins,5150);assert.equal(read(r).page,'details');
+ assert.equal((await send(r,'shell.card',{roundId:first,coins:999999,complete:true,played:true,ended:true})).status,'rejected');
+ await send(r,'shell.page',{page:'intro',levelId:ids[1]});
+ assert.equal((await send(r,'shell.start')).status,'committed');assert.equal(read(r).coins,4650);
+ assert.notEqual(read(r).round.id,first);
+ assert.equal((await send(r,'shell.card',{roundId:first,coins:999999,complete:false,ended:true})).status,'rejected');
+ assert.equal(read(r).coins,4650);assert.equal(read(r).round.levelId,ids[1]);await r.dispose();
+});
 test('likes, favourites, rating and music preferences persist without changing wallet or actual chapter content',async()=>{
  const r=await shell();await send(r,'shell.like');await send(r,'shell.favourite');await send(r,'shell.rate',{rating:5});await send(r,'shell.setting',{key:'music'});
  const saved=read(r);const reopened=await shell({saved});

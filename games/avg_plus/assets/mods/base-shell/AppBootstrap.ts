@@ -140,7 +140,7 @@ export class AppBootstrap extends Component {
                 initialCoins:started.coins,initialGems:started.gems,headerTitle:'Chapter 1 · Solitaire '+(this.levels.indexOf(levelId)+1),economy:this.config.economy,background:this.config.cardBackground,
                 checkpoint:async(state,action)=>{
                     await this.send({type:'shell.card',payload:{roundId:ownedRound,coins:state.session.coins,
-                        complete:state.core.isComplete,played:action!=='card.open'}});
+                        complete:state.core.isComplete,played:action!=='card.open',ended:action==='card.exit'}});
                 },
             }),CONTENT_TIMEOUT_MS);
             this.lifetime.check();this.applyPreferences(this.state());

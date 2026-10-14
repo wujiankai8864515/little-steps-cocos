@@ -29,6 +29,7 @@ export class GamePageUI extends GamePresentation {
     private gems = 0;
     private completionRewardCoins = 0;
     private pauseOverlay: Node | null = null;
+    private checkpointSaved = false;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
         initialCoins: number; initialGems?: number; headerTitle?: string; economy: EconomyConfig; background?: CardBackgroundConfig;
@@ -171,20 +172,21 @@ export class GamePageUI extends GamePresentation {
     private async send(type: string, payload?: unknown): Promise<void> {
         const runtime = this.runtime;
         if (!runtime || runtime.isBusy || this.exiting) return;
+        this.checkpointSaved = false;
         this.lock(true);
         try {
             const result = await runtime.dispatch({ type, ...(payload === undefined ? {} : { payload }) });
             if (!this.node.isValid) return;
             if (result.status === 'rejected' || result.status === 'failed') this.showToast(result.reason ?? '操作未完成');
-            if (result.status === 'committed' && this.onCheckpoint) {
-                try { await this.onCheckpoint(runtime.read<CardState>('base-card'), type); }
-                catch (error) { if (this.node.isValid) { console.error('[Card save]', error); this.showToast('进度保存未完成，请稍后重试'); } }
+            if (result.status === 'committed' && this.onCheckpoint && !this.checkpointSaved) {
+                try { await this.onCheckpoint(runtime.read<CardState>('base-card'), type); this.checkpointSaved = true; }
+                catch (error) { if (this.node.isValid) { console.error('[Card save]', error); this.showToast('进度保存未完成，请稍后重试'); } return; }
                 if (!this.node.isValid) return;
             }
             if (type === 'card.exit' && result.status === 'committed') {
                 this.exiting = true; const callback = this.onExit; this.onExit = null;
                 this.scheduleOnce(() => callback?.(), 0);
-            } else if (type === 'card.play' && result.status === 'committed' &&
+            } else if (result.status === 'committed' &&
                 this.model().core.isComplete && this.onComplete) {
                 this.exiting = true;
                 const coinFrame=this.findNode(GameUiNodeId.CoinWallet)?.getChildByName('coin_icon')?.getComponent(Sprite)?.spriteFrame;
@@ -261,6 +263,11 @@ export class GamePageUI extends GamePresentation {
     }
     private async present(ctx: CommittedContext, scope: TaskScope): Promise<void> {
         if (!this.node.isValid || !this.runtime) return;
+        // Persist the committed wallet and completion before its animation can be interrupted.
+        if (this.onCheckpoint) {
+            await this.onCheckpoint(ctx.state['base-card'] as CardState, ctx.action.type);
+            this.lifetime.check(); scope.check(); this.checkpointSaved = true;
+        }
         const result = ctx.result;
         const { core, session } = this.model();
         if (result.kind === 'open') {

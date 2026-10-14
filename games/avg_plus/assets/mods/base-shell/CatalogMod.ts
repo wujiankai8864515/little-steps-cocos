@@ -132,6 +132,8 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
                 case 'shell.card':
                     if (!s.round || s.round.id !== payload.roundId) return ctx.reject('过期牌局结果');
                     if (typeof payload.complete !== 'boolean') ctx.reject('牌局结果无效');
+                    if (payload.ended !== undefined && typeof payload.ended !== 'boolean') ctx.reject('牌局退出结果无效');
+                    if (payload.played !== undefined && typeof payload.played !== 'boolean') ctx.reject('牌局操作结果无效');
                     s.coins = amount(payload.coins);
                     if (payload.played) s.round.entryRefundable = false;
                     if (payload.complete && !s.round.complete) {
@@ -139,6 +141,7 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
                         if (!s.completedLevels.includes(s.round.levelId)) s.completedLevels.push(s.round.levelId);
                         s.daily.counts.wins++; // A repeated callback in the same round cannot count again.
                     }
+                    if (payload.ended) { s.round = null; s.page = 'details'; }
                     break;
                 case 'shell.avg': {
                     if (payload.storyId !== story.id || !count(payload.pageIndex) || !count(payload.pageCount) || payload.pageCount < 1 || payload.pageIndex >= payload.pageCount || typeof payload.finished !== 'boolean') ctx.reject('剧情进度无效');
