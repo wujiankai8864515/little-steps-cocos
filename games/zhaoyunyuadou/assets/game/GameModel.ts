@@ -3,9 +3,10 @@ import { REFERENCE_MAPS } from './ReferenceMaps';
 import { BOSSES, BOSS_CHANCES, BOSS_ROUNDS, EARLY_HEALTH, WAVE_COUNTS, WAVE_HEALTH } from './ReferenceCombat';
 import { BASIC_UNITS, BASIC_GROWTH, BasicKind, FARM_INTERVALS, HERO_DAMAGE_GROWTH, HERO_SPEED_GROWTH, isBasicKind } from './ReferenceUnits';
 import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceWeapons';
+import { advanceFlight, createFlight, enemyInRange, Flight, strikeOverlaps, StrikePlan, strikeShape, weaponStrikePlans } from './ReferenceWeaponCombat';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
-export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; weaponUntil?:number; weaponAt?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
+export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
 export interface Hero { name: string; chars: string; weaponType: number; range: number; power: number; speed: number; rarity: number; skill: string; }
 export const GLYPHS = '赵云张飞马超关羽平兴黄忠苞翼盖祖甄宓刘备';
 export const HEROES: Hero[] = [
@@ -140,16 +141,18 @@ export class Random {
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
 export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; bossType?:number; castIn?:number; }
-export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string; visited?:number[]; }
+export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string; visited?:number[]; flight?:Flight; rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
 export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
+export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
     readonly random: Random;
     armies: [Army, Army]; enemies: Enemy[] = []; shots: Shot[] = []; effects: Effect[] = [];
     pendingAttacks:PendingAttack[]=[];
+    weaponStrikes:WeaponStrike[]=[];
     time = 0; wave = 1; waveTime = 0; paused = false; completed = false; result: BattleResult | null = null;
     tutorialStep = 0; revision = 0; nextId = 1; spawnTime = 4; spawned = 0; aiTime = 1.5;
     boosts: Record<number, number> = {}; ranges: Record<number, number> = {}; cooldowns: Record<string, number> = {}; aiSilence = 0;
@@ -175,7 +178,7 @@ export class Battle {
     }
     has(id: string) { return this.profile.items.includes(id); }
     cost(side: Side = 0) { return 10 + this.armies[side].recruitCount * 2; }
-    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? FARM_INTERVALS[level-1] : 0, attacks: 0 }; }
+    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? FARM_INTERVALS[level-1] : 0, attacks: 0,idleAt:this.time }; }
     private changeLevel(unit:Unit,level:number){
         const previous=unit.level;unit.level=Math.max(1,Math.min(5,level));
         // Native farming keeps accumulated work while its level changes the
@@ -226,11 +229,14 @@ export class Battle {
         }
         const target = this.get(to, side);
         if(target?.debuff==='lock'||unit.debuff==='lock')return '暂时不能合成，请使用神兵符解除';
+        const affected=this.heroes(side).filter(link=>[link.left,link.right].some(cell=>from.area==='board'&&from.index===cell||to.area==='board'&&to.index===cell)).map(link=>army.units[link.left]);
+        for(const heroUnit of affected){this.weaponStrikes=this.weaponStrikes.filter(strike=>strike.unit!==heroUnit.id);delete heroUnit.weaponAt;delete heroUnit.weaponUntil;delete heroUnit.weaponAim;delete heroUnit.weaponRate;heroUnit.cooldown=0;heroUnit.idleAt=this.time;}
         if (target && target.kind === unit.kind && target.char === unit.char && target.level === unit.level && unit.level < 5 && unit.kind !== '铲') {
             this.changeLevel(target,target.level+1); this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
         } else {
             this.set(from, target || null, side); this.set(to, unit, side);
         }
+        for(const link of this.heroes(side))if([link.left,link.right].some(cell=>from.area==='board'&&from.index===cell||to.area==='board'&&to.index===cell))army.units[link.left].idleAt=this.time;
         if (side === 0 && to.area === 'board') {
             this.deployed++; if (this.tutorialStep === 2) { this.tutorialStep = 3; this.profile.tutorial = true; }
         }
@@ -330,9 +336,10 @@ export class Battle {
         if(type===11){const cell=cells.sort((a,b)=>army.units[b].level-army.units[a].level)[0];if(cell!==undefined)debuff(cell,'sealed');}
         this.revision++;
     }
-    private fire(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},power:number,kind:string,splash=0,weaponId?:number,hero?:string){
+    private fire(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},power:number,kind:string,splash=0,weaponId?:number,hero?:string,flight?:{arc:number;multiplier:number;width:number;height:number;anchorX:number;anchorY:number}){
         if(this.shots.length>=160)return;
-        this.shots.push({id:this.nextId++,side,from:unit.id,target:target.id,x:pos.x,y:pos.y,damage:power,speed:kind==='eagle'?180:550,kind,splash,weaponId,hero,visited:[]});
+        if(kind==='弓'&&!hero)flight={arc:120,multiplier:1.75,width:22,height:72,anchorX:.5,anchorY:.9};
+        this.shots.push({id:this.nextId++,side,from:unit.id,target:target.id,x:pos.x,y:pos.y,damage:power,speed:kind==='eagle'?180:550,kind,splash,weaponId,hero,visited:[],...(flight?{flight:createFlight(pos,target,flight.arc,flight.multiplier,flight.height/1.5,this.time),width:flight.width,height:flight.height,anchorX:flight.anchorX,anchorY:flight.anchorY}:{})});
     }
     private burst(unit:Unit,side:Side,pos:{x:number;y:number},damage:number,kind:string,count:number){
         const pool=this.enemies.filter(e=>e.side===side&&e.hp>0).sort((a,b)=>Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
@@ -341,7 +348,7 @@ export class Battle {
     private battleEffect(kind:string,pos:{x:number;y:number},side:Side,text?:string){this.effects.push({id:this.nextId++,kind,x:pos.x,y:pos.y,text,ttl:.8,duration:.8,side});}
     private releaseBasicAttack(attack:PendingAttack){
         const unit=this.armies[attack.side].units[attack.cell];if(!unit||unit.id!==attack.unit||!isBasicKind(unit.kind)||['chaos','stun','sealed'].includes(unit.debuff||''))return;
-        const pool=this.enemies.filter(e=>e.side===attack.side&&e.hp>0&&Math.hypot(e.x-attack.x,e.y-attack.y)<=attack.range);
+        const pool=this.enemies.filter(e=>e.side===attack.side&&e.hp>0&&enemyInRange({x:attack.x,y:attack.y},attack.range,e));
         const target=pool.find(e=>e.id===attack.target)||pool.sort((a,b)=>attack.kind==='弓'?b.progress-a.progress:Math.hypot(a.x-attack.x,a.y-attack.y)-Math.hypot(b.x-attack.x,b.y-attack.y))[0];
         if(!target)return;
         if(attack.kind==='弓'){this.fire(unit,attack.side,target,{x:attack.x,y:attack.y},attack.damage,'弓');return;}
@@ -353,19 +360,15 @@ export class Battle {
         }
         for(const enemy of hit){enemy.hp-=attack.damage;this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(attack.damage)),ttl:.6,duration:.6,side:attack.side});}
     }
-    private weaponAttack(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},stats:ReturnType<Battle['stats']>,hero?:Hero){
-        const id=stats.weapon?.id,first=!unit.seen?.includes(target.id);
+    private weaponAttack(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},stats:ReturnType<Battle['stats']>,hero:Hero,cell:number){
+        const id=stats.weapon?.id;
         unit.streak=unit.target===target.id?(unit.streak||0)+1:0;unit.target=target.id;
-        if(first){unit.seen=(unit.seen||[]).concat(target.id).slice(-128);}
         let power=stats.power;
         if(id===8)power*=1+Math.hypot(target.x-pos.x,target.y-pos.y)/Math.max(1,stats.range);
-        if(id===26&&first){this.profile.gold++;this.battleEffect('food',pos,side,'+1');}
-        if([12,17].includes(id!)&&first&&this.random.next()<.2){const count=id===12?1:hero?.name==='马超'?5:3;this.burst(unit,side,target,power*count,'pike',count);this.battleEffect('pike',target,side);}
-        if(id===14&&first&&this.random.next()<.2)target.held=2;
         if([23,27].includes(id!)&&this.random.next()<.1){for(const other of Object.values(this.armies[side].units)){const cell=Number(Object.keys(this.armies[side].units).find(key=>this.armies[side].units[Number(key)].id===other.id)),p=this.position(cell);if(Math.hypot(p.x-pos.x,p.y-pos.y)<200){other.speedBuff=id===23?.2:.3;other.speedUntil=this.time+10;}}this.battleEffect(id===27?'tiger':'roar',pos,side);}
-        if(id===25&&this.random.next()<.1)target.held=1;
         if(id===30&&this.random.next()<.1){power*=5;for(const e of this.enemies)if(e.side===side&&Math.hypot(e.x-target.x,e.y-target.y)<100)e.held=1.5;this.battleEffect('slam',target,side);}
-        this.fire(unit,side,target,pos,power,unit.kind,id===5?70:unit.kind==='刀'?48:unit.kind==='枪'?30:0,id,hero?.name);
+        const attack=weaponStrikePlans(hero.weaponType as WeaponType,hero.name,id??-1,{x:cell%8*80,y:Math.floor(cell/8)*80},target,stats.range,stats.weaponRate,unit.attacks);unit.weaponAim=attack.aim;
+        if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,weaponId:id,target:target.id,damage:power,born:this.time+plan.delay,visited:[]});
         if(id===4&&this.random.next()<.1)this.burst(unit,side,pos,power,'eagle',8);
         if(id===5&&this.random.next()<.1){this.burst(unit,side,pos,power,'fire',12);this.battleEffect('fire',target,side);}
         if(id===9&&unit.attacks%10===0)for(let i=0;i<10;i++)this.fire(unit,side,target,pos,power,'fire',45);
@@ -377,14 +380,49 @@ export class Battle {
     }
     private weaponHit(shot:Shot,target:Enemy){
         const id=shot.weaponId,unit=Object.values(this.armies[shot.side].units).find(unit=>unit.id===shot.from);
+        const first=unit&&!unit.seen?.includes(target.id);if(first)unit!.seen=(unit!.seen||[]).concat(target.id).slice(-128);
+        if(first&&id===26){this.profile.gold++;this.battleEffect('food',target,shot.side,'+1');}
+        if(first&&[12,17].includes(id!)&&this.random.next()<.2){const count=id===12?1:shot.hero==='马超'?5:3;this.burst(unit!,shot.side,target,shot.damage*count,'pike',count);this.battleEffect('pike',target,shot.side);}
+        if(first&&id===14&&this.random.next()<.2)target.held=2;
+        if(id===25&&this.random.next()<.1)target.held=.5;
         if(id===2&&this.random.next()<.1)target.progress=Math.max(0,target.progress-80);
-        if(id===7&&this.random.next()<.5){const visited=(shot.visited||[]).concat(target.id),next=this.enemies.find(e=>e.side===shot.side&&e.hp>0&&!visited.includes(e.id)&&Math.hypot(e.x-target.x,e.y-target.y)<240);if(next&&visited.length<12){shot.visited=visited;shot.target=next.id;shot.x=target.x;shot.y=target.y;return true;}}
+        if(id===7&&this.random.next()<.5){const visited=(shot.visited||[]).concat(target.id),next=this.enemies.find(e=>e.side===shot.side&&e.hp>0&&!visited.includes(e.id)&&Math.hypot(e.x-target.x,e.y-target.y)<240);if(next&&visited.length<12){shot.visited=visited;shot.target=next.id;shot.x=target.x;shot.y=target.y;if(shot.flight)shot.flight=createFlight(target,next,50,3,(shot.height||72)/1.5,this.time);return true;}}
         if(unit&&target.hp<=0){
             if(id===15){unit.speedBuff=.5;unit.speedUntil=this.time+2;}
             if(id===16)this.burst(unit,shot.side,target,shot.damage,'flower',8);
             if(id===29)this.burst(unit,shot.side,target,shot.damage,'blade',12);
         }
         return false;
+    }
+    private hitShot(shot:Shot,target:Enemy){
+        if(target.hp<=0)return false;
+        target.hp-=shot.damage;this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-20,text:String(Math.ceil(shot.damage)),ttl:.6,duration:.6,side:shot.side});
+        if(shot.splash>0)for(const other of this.enemies)if(other.id!==target.id&&other.hp>0&&other.side===target.side&&Math.hypot(other.x-target.x,other.y-target.y)<=shot.splash)other.hp-=shot.damage*.45;
+        return this.weaponHit(shot,target);
+    }
+    private advanceWeaponStrikes(dt:number){
+        for(const strike of this.weaponStrikes){
+            if(strike.done||this.time<strike.born)continue;
+            const unit=this.armies[strike.side].units[strike.cell],link=this.heroes(strike.side).find(link=>link.left===strike.cell&&link.hero.name===strike.hero);
+            if(!unit||unit.id!==strike.unit||!link||['chaos','stun','sealed'].includes(unit.debuff||'')){strike.done=true;continue;}
+            const target=this.enemies.find(enemy=>enemy.id===strike.target&&enemy.hp>0);
+            if(strike.kind==='arrow'||strike.kind==='throw'){
+                if(target)this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',strike.weaponId===5?70:0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
+                strike.done=true;continue;
+            }
+            const asShot=(enemy:Enemy):Shot=>({id:strike.id,side:strike.side,from:strike.unit,target:enemy.id,x:strike.x,y:strike.y,damage:strike.damage,speed:0,kind:'melee',splash:0,weaponId:strike.weaponId,hero:strike.hero});
+            if(strike.kind==='target'){if(target)this.hitShot(asShot(target),target);strike.done=true;continue;}
+            const end=strike.born+strike.duration,start=Math.max(strike.born,this.time-dt),finish=Math.min(end,this.time);
+            if(start<=finish){
+                const a=strikeShape(strike,start-strike.born),b=strikeShape(strike,finish-strike.born),samples=Math.max(1,Math.ceil(Math.abs(b.angle-a.angle)/5)),visited=new Set(strike.visited);
+                for(let i=0;i<=samples;i++){
+                    const shape=strikeShape(strike,start-strike.born+(finish-start)*i/samples);
+                    for(const enemy of this.enemies)if(enemy.side===strike.side&&enemy.hp>0&&!visited.has(enemy.id)&&strikeOverlaps(shape,enemy)){visited.add(enemy.id);strike.visited.push(enemy.id);this.hitShot(asShot(enemy),enemy);}
+                }
+            }
+            if(this.time>=end)strike.done=true;
+        }
+        this.weaponStrikes=this.weaponStrikes.filter(strike=>!strike.done);
     }
     private ai() {
         const army = this.armies[1];
@@ -441,6 +479,7 @@ export class Battle {
         if (this.aiTime <= 0) { if (this.aiSilence <= 0) this.ai(); this.aiTime = 2.8 + this.random.next() * 1.7; }
         for(const attack of this.pendingAttacks){attack.ttl-=dt;if(attack.ttl<=0)this.releaseBasicAttack(attack);}
         this.pendingAttacks=this.pendingAttacks.filter(attack=>attack.ttl>0);
+        this.advanceWeaponStrikes(dt);
         for (const side of [0,1] as Side[]) {
             const army = this.armies[side], links = this.heroes(side), second = new Set(links.map(h => h.right));
             const snakeLinks=links.filter(link=>side===0&&this.profile.equipped[link.hero.name]===18),snakeIds=new Set(snakeLinks.map(link=>army.units[link.left].id));
@@ -460,16 +499,16 @@ export class Battle {
                 const stats = this.stats(unit, link?.hero, link?.level,side), pos = this.position(cell);
                 if (link) pos.x += 40;
                 const closestEnd=link?['赵云','关兴','张苞','张翼','黄祖'].includes(link.hero.name):unit.kind==='弓';
-                const targets = this.enemies.filter(e => e.side === side && e.hp > 0 && Math.hypot(e.x - pos.x, e.y - pos.y) <= stats.range).sort((a,b) => closestEnd?b.progress-a.progress:Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
-                if (!targets.length) continue;
+                const targets = this.enemies.filter(e => e.side === side && e.hp > 0 && enemyInRange(pos,stats.range,e)).sort((a,b) => closestEnd?b.progress-a.progress:Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
+                if (!targets.length) {if(unit.idleAt===undefined)unit.idleAt=this.time;continue;}
                 unit.cooldown = stats.interval; unit.attacks++;
-                if(link){unit.weaponAt=this.time;unit.weaponUntil=this.time+weaponBusyDuration(link.hero.weaponType as WeaponType,link.hero.name)/stats.weaponRate;}
+                if(link){delete unit.idleAt;unit.weaponAt=this.time;unit.weaponRate=stats.weaponRate;unit.weaponUntil=this.time+weaponBusyDuration(link.hero.weaponType as WeaponType,link.hero.name)/stats.weaponRate;}
                 const target = targets[0];
                 unit.attackX=target.x;unit.attackY=target.y;
                 if(!link&&isBasicKind(unit.kind)){
                     unit.target=target.id;const delay=BASIC_UNITS[unit.kind].release*(unit.kind==='骑'?1:stats.interval/.8);
                     if(this.pendingAttacks.length<160)this.pendingAttacks.push({unit:unit.id,side,cell,kind:unit.kind,target:target.id,ttl:delay,damage:stats.power,range:stats.range,x:pos.x,y:pos.y,targetX:target.x,targetY:target.y});
-                }else this.weaponAttack(unit,side,target,pos,stats,link?.hero);
+                }else if(link)this.weaponAttack(unit,side,target,pos,stats,link.hero,cell);
                 if (link && unit.attacks % 8 === 0) {
                     this.effect('skill', cell, side, link.hero.skill);
                     const max = link.hero.name === '黄忠' ? 12 : 5,exclusive=link.hero.name==='黄忠'&&stats.weapon?.id===5?2:1;
@@ -484,11 +523,15 @@ export class Battle {
         for (const shot of this.shots) {
             const target = this.enemies.find(e => e.id === shot.target && e.hp > 0);
             if (!target) { shot.damage = 0; continue; }
+            if(shot.flight){
+                const pose=advanceFlight(shot.flight,shot,target,this.time);
+                if(pose.arrived){if(!this.hitShot(shot,target))shot.damage=0;}
+                else{shot.x=pose.x;shot.y=pose.y;shot.rotation=pose.angle;}
+                continue;
+            }
             const dx = target.x - shot.x, dy = target.y - shot.y, distance = Math.hypot(dx, dy);
             if (distance <= shot.speed * dt) {
-                target.hp -= shot.damage; this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y - 20,text:Math.ceil(shot.damage).toString(),ttl:0.6,duration:0.6,side:shot.side});
-                if (shot.splash > 0) for (const other of this.enemies) if (other.id !== target.id && other.side === target.side && Math.hypot(other.x - target.x, other.y - target.y) <= shot.splash) other.hp -= shot.damage * 0.45;
-                if(!this.weaponHit(shot,target))shot.damage = 0;
+                if(!this.hitShot(shot,target))shot.damage=0;
             } else { shot.x += dx / distance * shot.speed * dt; shot.y += dy / distance * shot.speed * dt; }
         }
         this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
@@ -531,7 +574,7 @@ export class Battle {
         return JSON.stringify({ version:1, map:this.map.id, seed:this.random.state, armies:this.armies, enemies:this.enemies, time:this.time,
             wave:this.wave, waveTime:this.waveTime, spawned:this.spawned, spawnTime:this.spawnTime, nextId:this.nextId, boosts:this.boosts,
             cooldowns:this.cooldowns, tutorialStep:this.tutorialStep, saveId:this.saveId, completed:this.completed, result:this.result,
-            shots:this.shots,pendingAttacks:this.pendingAttacks,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
+            shots:this.shots,pendingAttacks:this.pendingAttacks,weaponStrikes:this.weaponStrikes,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
             ranges:this.ranges,hazards:this.hazards,shovelTime:this.shovelTime,meteorTime:this.meteorTime,companions:this.companions,bossRound:this.bossRound,haze:this.haze });
     }
     static restore(text: string, profile: Profile, weapons: Weapon[]): Battle | null {
@@ -545,7 +588,7 @@ export class Battle {
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
-                completed:!!raw.completed,result:raw.result||null,shots:raw.shots||[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
+                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
                 aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
                 ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0}); return b;
         } catch (_) { return null; }

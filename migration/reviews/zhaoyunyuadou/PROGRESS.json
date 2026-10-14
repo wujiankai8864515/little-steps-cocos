@@ -11,7 +11,7 @@
     "artFrames": 1117,
     "layoutDefinitions": 64,
     "originalMaps": 4,
-    "modelTests": 30,
+    "modelTests": 38,
     "chromeInputs": [
       "start game",
       "recruit",
@@ -241,6 +241,37 @@
       "strictPixels": "unproven",
       "device": "pending",
       "online": "pending"
+    },
+    "nativeCombat": {
+      "source": "ZYA22-native-weapon-hit.json",
+      "tests": 38,
+      "runtime": "zya-web-v37",
+      "savedCanvasComparisons": {
+        "times": [
+          0.5333333333333333,
+          3.3
+        ],
+        "size": [
+          320,
+          704
+        ],
+        "differentPixels": [
+          0,
+          0
+        ],
+        "scope": "declared reconstruction fixtures, not publisher-game acceptance"
+      },
+      "liveInputs": [
+        "pause/resume",
+        "cloud41->66 cancels Zhao queued attacks",
+        "return cloud41 restores six heroes"
+      ],
+      "remaining": [
+        "Full special weapons and hero skills",
+        "Native promotion caps",
+        "Publisher same-version/same-phase pixels",
+        "Audio lifetime and devices"
+      ]
     }
   },
   "pending": [

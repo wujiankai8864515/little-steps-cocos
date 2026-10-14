@@ -11,7 +11,7 @@ import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, I
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
 const skin = (group: string, name: string) => 'resources/img/' + group + '/' + name + '.png';
 interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
-interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
+interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;nocked?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
 interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;weapon?:WeaponView;}
 interface Drag { location?: Location; item?: string; weaponId?:number; startX: number; startY: number; node: Node; moved: boolean; }
 
@@ -19,7 +19,7 @@ export class GameApp {
     root: Node; ui: InkUI; art = new ArtStore(); profile: Profile; battle: Battle | null = null;
     page = 'loading'; height = 1386; alive = true; suspended = false;
     private screen: Element; private overlay: Node | null = null; private overlayUI: InkUI | null = null;
-    private rigs: InkRig[] = []; private actors = new Map<number,ActorView>(); private mobs = new Map<number,Node>();
+    private rigs: InkRig[] = [];private battleClocks:InkRig[]=[]; private actors = new Map<number,ActorView>(); private mobs = new Map<number,Node>();
     private projectiles = new Map<number,Node>(); private effects = new Map<number,Node>();
     private board: Node; private reserve: Node; private combatLayer: Node; private heroLayer: Node;
     private tutorial: Node; private revision = -1; private drag: Drag | null = null;
@@ -83,7 +83,7 @@ export class GameApp {
     private firstDraw(){return new Promise<void>(resolve=>director.once(Director.EVENT_AFTER_DRAW,resolve));}
     private clear(page: string) {
         this.pageToken++; this.cancelDrag(); this.closeAllOverlays(); this.rigs=[];
-        this.actors.clear();this.mobs.clear();this.projectiles.clear();this.effects.clear();this.heroViews.clear();this.hazeNode=null;
+        this.actors.clear();this.mobs.clear();this.projectiles.clear();this.effects.clear();this.heroViews.clear();this.battleClocks=[];this.hazeNode=null;
         this.ui.dispose();this.page=page;this.screen=null;this.revision=-1;this.toastNode=null;this.toastTime=0;
     }
     private async prepare(page: string, groups: string[]) {
@@ -91,11 +91,11 @@ export class GameApp {
         return this.alive && token===this.pageToken;
     }
     private bind(name:string,callback:()=>void,within?:Element){this.ui.button(this.ui.find(name,within),()=>{this.play('btn_down');callback();});}
-    private async rig(parent:Node,source:string,animation:string,x:number,y:number,scale=1,referenceOrigin=false) {
+    private async rig(parent:Node,source:string,animation:string,x:number,y:number,scale=1,referenceOrigin=false,battleClock=false) {
         const token=this.pageToken,data=await this.art.actor(source);
         if(!this.alive||token!==this.pageToken||!isValid(parent,true))return;
         const n=this.ui.node('actor:'+source,parent,x,y,1,1);n.setScale(scale,scale);
-        const rig=new InkRig(n,this.art,source,data,animation,referenceOrigin);this.rigs.push(rig);return rig;
+        const rig=new InkRig(n,this.art,source,data,animation,referenceOrigin);this.rigs.push(rig);if(battleClock){rig.simulationClock=true;this.battleClocks.push(rig);rig.seek(this.battle?.time||0);}return rig;
     }
     async home() {
         if(!await this.prepare('home',['home']))return;const token=this.pageToken;await this.art.layout('MainScene');if(!this.alive||token!==this.pageToken)return;this.clear('home');
@@ -173,11 +173,11 @@ export class GameApp {
                 if(!this.battle.map.grass.includes(neighbor)){g.moveTo(ax,-ay);g.lineTo(bx,-by);}
             }
         }g.stroke();
-        for(const cell of this.battle.map.entries){const pos=this.battle.position(cell);await this.rig(this.board,'resources/anim/grass/skeleton.json','idle'+this.battle.map.id,pos.x,pos.y+40,1);}
+        for(const cell of this.battle.map.entries){const pos=this.battle.position(cell);await this.rig(this.board,'resources/anim/grass/skeleton.json','idle'+this.battle.map.id,pos.x,pos.y+40,1,false,true);}
         for(const side of [0,1] as Side[]) {
             const cell=this.battle.map.paths[side].slice(-1)[0],pos=this.battle.position(cell);
             const a=this.ui.node('adou-'+side,this.board,pos.x-40,pos.y-40,80,80);
-            await this.rig(a,'resources/anim/aDou/skeleton.json','zhan',45-49.33/2,70-78.62,1,true);
+            await this.rig(a,'resources/anim/aDou/skeleton.json','zhan',45-49.33/2,70-78.62,1,true,true);
         }
         this.board.on(Node.EventType.TOUCH_START,(e:EventTouch)=>this.dragStart(e,'board'));
         this.reserve.on(Node.EventType.TOUCH_START,(e:EventTouch)=>this.dragStart(e,'reserve'));
@@ -268,12 +268,12 @@ export class GameApp {
         this.ui.setText('goldNum',Math.floor(b.armies[0].food).toString(),this.screen);this.ui.setText('goldNumTxt',b.cost().toString(),this.screen);this.ui.setText('round','第'+b.wave+'波',this.screen);
         this.ui.find('maskImg',this.screen)!.body.getComponent(UITransform)!.setContentSize(260*Math.min(1,b.armies[0].food/b.cost()),131);
         for(const side of [0,1] as Side[]) {
-            const old=this.board.getChildByName('lives-'+side);old?.destroy();const pos=b.position(b.map.paths[side].slice(-1)[0]);
+            this.removeNamed(this.board,'lives-'+side);const pos=b.position(b.map.paths[side].slice(-1)[0]);
             const lives=this.ui.node('lives-'+side,this.board,pos.x-40,pos.y-64,80,35);
             for(let i=0;i<b.armies[side].maxLives;i++)this.ui.image(lives,skin('battleUI',i<b.armies[side].lives?'heart1':'heart2'),i%3*26,Math.floor(i/3)*-20,25,23);
         }
         const box=this.ui.find('box',this.screen)!.body;
-        box.getChildByName('items-runtime')?.destroy();const items=this.ui.node('items-runtime',box,20,1138,600,240);
+        this.removeNamed(box,'items-runtime');const items=this.ui.node('items-runtime',box,20,1138,600,240);
         let active=0,passive=0;
         for(const id of this.profile.items) {
             const item=ITEMS.find(p=>p.id===id);if(!item)continue;
@@ -293,6 +293,10 @@ export class GameApp {
             const label=this.tutorial.getComponent(Label)!;label.isBold=true;label.outlineColor=inkColor('#7B2800');
         }
         this.revision=b.revision;
+    }
+    private removeNamed(parent:Node,name:string){
+        // destroy() is deferred; detach every old instance before reusing a name.
+        for(const child of parent.children.filter(child=>child.name===name)){child.removeFromParent();child.destroy();}
     }
     private recruit() {
         if(this.page!=='battle'||this.overlay||!this.battle)return;
@@ -335,6 +339,7 @@ export class GameApp {
     private cancelDrag(){if(this.drag){this.drag.node.destroy();this.drag=null;}}
     private drawDynamic(dt:number) {
         const b=this.battle!;const current=new Set<number>();
+        for(const rig of this.battleClocks)if(isValid(rig.root,true))rig.seek(b.time);
         for(const enemy of b.enemies){
             current.add(enemy.id);let n=this.mobs.get(enemy.id);
             if(!n){
@@ -357,9 +362,10 @@ export class GameApp {
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
             if(!n){const special:Record<string,string>={fire:'weapon/arrow_9',eagle:'weapon/bullet/eagleArrow_01',snake:'weapon/bullet/lingShe_1',flower:'weapon/bullet/lihua',flyingPike:'weapon/weapon_19',blade:'weapon/bullet/newDQ',meteor:'props/meteor_2',sword:'weapon/default_3'};
-                const path='resources/img/'+(special[shot.kind]||(shot.kind==='弓'||shot.hero==='黄忠'||shot.hero==='黄祖'?'weapon/arrow_'+(shot.weaponId!==undefined?Math.min(shot.weaponId,9):0):'gameObject/soldier/pike'))+'.png';
-                const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,width*ratio,height*ratio);n.getComponent(UITransform)!.setAnchorPoint(.5,.5);this.projectiles.set(shot.id,n);}
-            n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
+                const standard=shot.kind==='throw'?'weapon/'+(shot.weaponId===undefined?'default_1':'weapon_'+shot.weaponId):shot.kind==='arrow'&&shot.weaponId===undefined?'weapon/default_arrow_1':shot.kind==='arrow'||shot.kind==='弓'||shot.hero==='黄忠'||shot.hero==='黄祖'?'weapon/arrow_'+(shot.weaponId!==undefined?Math.min(shot.weaponId,9):0):'gameObject/soldier/pike';
+                const path='resources/img/'+(special[shot.kind]||standard)+'.png';
+                const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,shot.width??width*ratio,shot.height??height*ratio);n.getComponent(UITransform)!.setAnchorPoint(shot.anchorX??.5,shot.anchorY===undefined?.5:1-shot.anchorY);this.projectiles.set(shot.id,n);}
+            n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
         current.clear();
@@ -410,12 +416,15 @@ export class GameApp {
     }
     private animateHero(view:HeroView,dt:number){
         const stats=this.battle!.stats(view.unit,view.hero,view.level,view.side),rate=view.hero.speed/stats.interval;
-        const event=view.motion.advance(dt,view.unit.attacks,Math.max(view.unit.cooldown,(view.unit.weaponUntil||0)-this.battle!.time),rate);
+        const elapsed=view.unit.weaponAt===undefined?undefined:Math.max(0,this.battle!.time-view.unit.weaponAt);
+        const event=view.motion.advance(dt,view.unit.attacks,Math.max(view.unit.cooldown,(view.unit.weaponUntil||0)-this.battle!.time),rate,elapsed,Math.max(0,this.battle!.time-(view.unit.idleAt??0)));
         if(view.rigs){
             for(let i=0;i<view.rigs.length;i++){
                 const rig=view.rigs[i],name=(event.attacking?'attack':'zhan')+(i+1);
                 rig.playbackRate=event.attacking?rate:1;
-                if(event.started||rig.name!==name){rig.play(name,!event.attacking);if(event.attacking)rig.advance(view.motion.elapsed/rate);}
+                rig.simulationClock=true;
+                if(event.started||rig.name!==name)rig.play(name,!event.attacking);
+                rig.seek(view.motion.elapsed);
             }
         }else for(const cell of [view.left,view.left+1]){
             const unit=this.battle!.armies[view.side].units[cell],actor=unit&&this.actors.get(unit.id);if(!actor)continue;
@@ -425,20 +434,22 @@ export class GameApp {
         const {spec}=weapon,origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},targetX=view.unit.attackX??origin.x+spec.x,targetY=view.unit.attackY??origin.y+spec.y-100;
         const pivotX=origin.x+spec.x,pivotY=origin.y+spec.y;
         const distance=Math.hypot(targetX-(spec.type===2?origin.x+40:pivotX),targetY-(spec.type===2?origin.y+40:pivotY));
-        const pose=weapon.motion.advance(dt,view.unit.attacks,event.attacking,stats.weaponRate,{dx:targetX-pivotX,dy:targetY-pivotY,distance,range:stats.range});
-        // The original weapon is a child of the first word's bottom pivot.
-        weapon.parent.angle=view.rigs?0:-event.pose.rotation;weapon.parent.setScale(view.rigs?1:event.pose.scaleX,view.rigs?1:event.pose.scaleY);
+        const pose=weapon.motion.advance(dt,view.unit.attacks,event.attacking,view.unit.weaponRate??stats.weaponRate,{dx:targetX-pivotX,dy:targetY-pivotY,distance,range:stats.range,angle:view.unit.weaponAim},elapsed,Math.max(0,this.battle!.time-(view.unit.idleAt??0)));
+        // Native sF animates C_ (the glyph), while leftWord remains stationary.
+        weapon.parent.angle=0;weapon.parent.setScale(1,1);
         weapon.root.angle=-pose.angle;weapon.root.active=pose.visible;weapon.root.setScale(pose.rootScale,pose.rootScale);
         weapon.body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-pose.childY);
         weapon.body.setScale(pose.scaleX,pose.scaleY);
         if(weapon.trail)weapon.trail.active=pose.trail;
+        if(weapon.nocked){weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));}
     }
     private heroWeapon(view:HeroView,id:number):WeaponView {
         const spec=weaponGeometry(view.hero.weaponType as WeaponType,view.hero.name,id),parent=this.ui.node('weapon word pivot',view.node,40,80,80,80);
         const root=this.ui.node('weapon hinge',parent,spec.x-40,spec.y-80,1,1),body=this.ui.image(root,skin('weapon',id<0?'default_'+spec.type:'weapon_'+id),0,0,spec.width,spec.height);
         if(spec.centered)body.getComponent(UITransform)!.setAnchorPoint(.5,.5);
         body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-spec.childY);
-        let trail:Node|undefined;
+        let trail:Node|undefined,nocked:Node|undefined;
+        if(spec.type===0){nocked=this.ui.image(body,skin('weapon',id<0?'default_arrow_1':'arrow_'+id),0,0,22,72);nocked.getComponent(UITransform)!.setAnchorPoint(.5,.1);nocked.active=false;}
         if(spec.type===1&&view.hero.name==='张飞'){
             const range=this.battle!.stats(view.unit,view.hero,view.level,view.side).range*1.5;trail=this.ui.image(root,skin('effect','sweep'),0,0,range,range);trail.getComponent(UITransform)!.setAnchorPoint(.5,.5);trail.angle=-180;trail.addComponent(UIOpacity).opacity=128;
         }else if(spec.type===1&&view.hero.name!=='马超'){
@@ -450,9 +461,9 @@ export class GameApp {
         const motion=new WeaponMotion(spec,view.hero.name,view.unit.attacks),b=this.battle!,unit=view.unit;
         if(unit.attacks>0&&(unit.cooldown>0||(unit.weaponUntil||0)>b.time)){
             const stats=b.stats(unit,view.hero,view.level,view.side),origin={x:view.left%8*80,y:Math.floor(view.left/8)*80},x=unit.attackX??origin.x+spec.x,y=unit.attackY??origin.y+spec.y;
-            motion.resume(unit.attacks,Math.max(0,b.time-(unit.weaponAt??(b.time-stats.interval+unit.cooldown))),stats.weaponRate,{dx:x-origin.x-spec.x,dy:y-origin.y-spec.y,distance:Math.hypot(x-origin.x-(spec.type===2?40:spec.x),y-origin.y-(spec.type===2?40:spec.y)),range:stats.range});
-        }
-        return {parent,root,body,trail,id,spec,motion};
+            motion.resume(unit.attacks,Math.max(0,b.time-(unit.weaponAt??(b.time-stats.interval+unit.cooldown))),unit.weaponRate??stats.weaponRate,{dx:x-origin.x-spec.x,dy:y-origin.y-spec.y,distance:Math.hypot(x-origin.x-(spec.type===2?40:spec.x),y-origin.y-(spec.type===2?40:spec.y)),range:stats.range,angle:unit.weaponAim});
+        }else if(unit.attacks>0){motion.from=spec.type===1&&view.hero.name==='张飞'?130:(unit.weaponAim??0)+(spec.type===3?(unit.attacks%2===1?60:-60):0);motion.angle=motion.from;}
+        return {parent,root,body,trail,nocked,id,spec,motion};
     }
     private newOverlay(scene?:string,stack=false) {
         this.cancelDrag();if(stack&&this.overlay)this.overlayStack.push({node:this.overlay,ui:this.overlayUI!,kind:this.overlayKind});else this.closeAllOverlays();
@@ -697,7 +708,7 @@ export class GameApp {
     private save(){if(!this.profile)return;sys.localStorage.setItem(PROFILE_KEY,JSON.stringify(this.profile));if(this.battle)sys.localStorage.setItem(ROUND_KEY,this.battle.snapshot());}
     advance(dt:number) {
         if(!this.alive||this.suspended)return;dt=Math.min(0.25,dt);this.soundGate=Math.max(0,this.soundGate-dt);
-        if(!(this.page==='battle'&&this.battle?.paused))for(const rig of this.rigs)rig.advance(dt);
+        if(!(this.page==='battle'&&this.battle?.paused))for(const rig of this.rigs)if(!rig.simulationClock)rig.advance(dt);
         if(this.page==='result'&&this.screen){
             const light=this.ui.find('goldLight',this.screen);if(light)light.node.angle=(light.node.angle-dt*60)%360;
             const floor=this.ui.find('loseFloor',this.screen);if(floor)for(const node of floor.body.children){const orbit=(node as any).__orbit;if(!orbit)continue;

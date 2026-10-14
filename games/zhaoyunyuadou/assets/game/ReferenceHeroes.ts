@@ -26,11 +26,13 @@ export class HeroMotion {
     seenAttacks:number;attacking=false;elapsed=0;
     constructor(attacks=0){this.seenAttacks=attacks;}
     reset(attacks:number){this.seenAttacks=attacks;this.attacking=false;this.elapsed=0;}
-    advance(dt:number,attacks:number,cooldown:number,rate:number){
+    advance(dt:number,attacks:number,cooldown:number,rate:number,elapsedSeconds?:number,idleSeconds?:number){
         const started=attacks!==this.seenAttacks;
         if(started){this.seenAttacks=attacks;this.attacking=true;this.elapsed=0;}
         if(this.attacking&&cooldown<=0){this.attacking=false;this.elapsed=0;}
-        this.elapsed+=Math.max(0,dt)*(this.attacking?Math.max(.01,rate):1);
+        if(this.attacking&&elapsedSeconds!==undefined)this.elapsed=Math.max(0,elapsedSeconds)*Math.max(.01,rate);
+        else if(!this.attacking&&idleSeconds!==undefined)this.elapsed=Math.max(0,idleSeconds);
+        else this.elapsed+=Math.max(0,dt)*(this.attacking?Math.max(.01,rate):1);
         return {started,attacking:this.attacking,pose:wordPose(this.attacking,this.elapsed)};
     }
 }

@@ -16,10 +16,73 @@ const R = moduleFrom('InkRigMath');
 const U = moduleFrom('ReferenceUnits');
 const H = moduleFrom('ReferenceHeroes');
 const W = moduleFrom('ReferenceWeapons');
+const C = moduleFrom('ReferenceWeaponCombat');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
 const location = (area,index) => ({area,index});
+function heroRound(name,cell=40,level=1){
+    const b=new M.Battle(M.newProfile(now),weapons,1,7),hero=M.HEROES.find(h=>h.name===name),unit=b.unit('字',hero.chars[0],level);
+    b.armies[0].units={[cell]:unit,[cell+1]:b.unit('字',hero.chars[1],level)};b.armies[0].unlocked=b.map.grass.filter(n=>b.owns(0,n));b.aiTime=b.spawnTime=10000;b.waveTime=-10000;
+    unit.attacks=1;unit.weaponAt=0;unit.weaponRate=1;
+    const add=(id,x,y,side=0)=>{const e={id,side,progress:0,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x,y};b.enemies.push(e);return e;};
+    const attack=target=>{const pos=b.position(cell);pos.x+=40;b.weaponAttack(unit,0,target,pos,b.stats(unit,hero,level,0),hero,cell);};
+    return {b,hero,unit,add,attack};
+}
+test('native range tests enemy boxes; rotated hit areas distinguish overlap from edge contact',()=>{
+    assert.equal(C.enemyInRange({x:0,y:0},200,{x:239,y:0}),true);assert.equal(C.enemyInRange({x:0,y:0},200,{x:240,y:0}),false);
+    const line={x:0,y:0,angle:0,length:200,bold:5};assert.equal(C.strikeOverlaps(line,{x:0,y:-100}),true);assert.equal(C.strikeOverlaps(line,{x:44,y:-100}),true);assert.equal(C.strikeOverlaps(line,{x:45,y:-100}),false);assert.equal(C.strikeOverlaps(line,{x:0,y:-250}),false);
+    assert.equal(C.strikeOverlaps({...line,angle:90},{x:100,y:0}),true);assert.equal(C.strikeOverlaps({...line,angle:90},{x:-100,y:0}),false);
+});
+test('knife hits the chosen target at cut completion without a projectile or intercepting a neighbour',()=>{
+    const {b,unit,add,attack}=heroRound('关平'),target=add(901,100,340),neighbour=add(902,110,350);attack(target);
+    b.time=.45;b.advanceWeaponStrikes(1/30);assert.equal(target.hp,100);assert.equal(b.shots.length,0);
+    const saved=b.snapshot(),restored=M.Battle.restore(saved,b.profile,weapons);assert.ok(restored);b.paused=true;b.advance(1);assert.equal(b.snapshot(),saved);b.paused=false;
+    target.x=600;restored.enemies[0].x=600;b.time=restored.time=.46;b.advanceWeaponStrikes(1/30);restored.advanceWeaponStrikes(1/30);
+    assert.equal(target.hp,97);assert.equal(neighbour.hp,100);assert.equal(b.weaponStrikes.length,0);assert.equal(b.shots.length,0);assert.equal(b.snapshot(),restored.snapshot());
+    assert.deepEqual(Array.from(unit.seen),[901]);
+});
+test('Zhao Yun has five distinct piercing hits; each thrust hits a target once and ignores off-line or other-side enemies',()=>{
+    const {b,add,attack}=heroRound('赵云'),target=add(901,50,300),behind=add(902,50,230),offLine=add(903,150,300),otherSide=add(904,50,300,1);attack(target);
+    assert.equal(b.weaponStrikes.length,5);let restored;
+    for(let i=1;i<=20;i++){b.time=i/30;b.advanceWeaponStrikes(1/30);if(i===6)restored=M.Battle.restore(b.snapshot(),b.profile,weapons);else if(i>6){restored.time=b.time;restored.advanceWeaponStrikes(1/30);assert.equal(b.snapshot(),restored.snapshot());}}
+    assert.equal(target.hp,90);assert.equal(behind.hp,90);assert.equal(offLine.hp,100);assert.equal(otherSide.hp,100);assert.equal(b.shots.length,0);
+});
+test('Zhang Fei sweeps every direction once, while a sword sweep excludes targets behind it',()=>{
+    const z=heroRound('张飞',42),targets=[[210,290],[360,440],[210,590],[60,440]].map((p,i)=>z.add(901+i,...p)),far=z.add(910,510,440);z.attack(targets[0]);
+    z.b.time=.09;z.b.advanceWeaponStrikes(1/30);assert.ok(targets.every(e=>e.hp===100));
+    for(let i=3;i<=14;i++){z.b.time=i/30;z.b.advanceWeaponStrikes(1/30);}assert.ok(targets.every(e=>e.hp===90));assert.equal(far.hp,100);assert.equal(z.b.shots.length,0);
+    const s=heroRound('刘备',42),front=s.add(921,160,320),back=s.add(922,160,560);s.attack(front);
+    for(let i=1;i<=8;i++){s.b.time=i/30;s.b.advanceWeaponStrikes(1/30);}assert.equal(front.hp,90);assert.equal(back.hp,100);assert.equal(s.b.shots.length,0);
+});
+test('five fast thrusts survive sub-frame durations and weapon/word sampling follows the saved simulation clock',()=>{
+    const {b,add,attack}=heroRound('赵云',40,5),target=add(901,50,300);attack(target);
+    assert.ok(b.weaponStrikes[1].duration<1/30);for(let i=1;i<=12;i++){b.time=i/30;b.advanceWeaponStrikes(1/30);}assert.ok(Math.abs(target.hp-(100-5*6.552))<1e-9);
+    const pike=W.weaponGeometry(1,'赵云'),motion=new W.WeaponMotion(pike,'赵云'),word=new H.HeroMotion(),aim={dx:100,dy:0,distance:100,range:200};
+    motion.advance(.1,1,true,1.5,aim,.2);word.advance(.1,1,.4,1.5,.2);assert.ok(Math.abs(motion.time-.3)<1e-12);assert.ok(Math.abs(word.elapsed-.3)<1e-12);
+    const state=JSON.stringify(motion);motion.advance(0,1,true,1.5,aim,.2);assert.equal(JSON.stringify(motion),state);
+});
+test('idle word phase survives reconstruction and new units start their own idle clock',()=>{
+    const {b,unit}=heroRound('张苞');unit.attacks=0;b.time=.5333333333333333;const restored=M.Battle.restore(b.snapshot(),b.profile,weapons);assert.ok(restored);
+    const live=new H.HeroMotion(),rebuilt=new H.HeroMotion();
+    const a=live.advance(.017,0,0,1,undefined,b.time-unit.idleAt),other=restored.armies[0].units[40],c=rebuilt.advance(.1,0,0,1,undefined,restored.time-other.idleAt);
+    assert.deepEqual(a.pose,c.pose);assert.equal(live.elapsed,b.time);b.time=4;assert.equal(b.unit('字','张').idleAt,4);
+    const spec=W.weaponGeometry(1,'张苞'),first=new W.WeaponMotion(spec,'张苞'),second=new W.WeaponMotion(spec,'张苞'),target={dx:100,dy:0,distance:100,range:200};
+    const p=first.advance(.017,0,false,1,target,undefined,3.3),q=second.advance(.1,0,false,1,target,undefined,3.3);assert.deepEqual(p,q);assert.equal(first.idleTime,3.3);
+    assert.equal(W.attackPose(W.weaponGeometry(1,'张飞'),'张飞',.7,0,0,100,200,1).angle,130);
+});
+test('bow and Ma Chao wait for release, preserve native projectile dimensions, and save curved flight progress',()=>{
+    const bow=heroRound('黄忠'),target=bow.add(901,240,440);bow.attack(target);bow.b.time=.44;bow.b.advanceWeaponStrikes(1/30);assert.equal(bow.b.shots.length,0);
+    bow.b.time=.45;bow.b.advanceWeaponStrikes(1/30);assert.equal(bow.b.shots.length,1);const arrow=bow.b.shots[0];assert.equal(arrow.width,22);assert.equal(arrow.height,72);assert.equal(arrow.anchorY,.9);assert.equal(arrow.flight.multiplier,3);
+    const pose=C.advanceFlight(arrow.flight,arrow,target,.5);assert.equal(pose.arrived,false);assert.ok(pose.y<arrow.y-10);arrow.x=pose.x;arrow.y=pose.y;arrow.rotation=pose.angle;bow.b.time=.5;
+    const saved=bow.b.snapshot(),restored=M.Battle.restore(saved,bow.b.profile,weapons);assert.ok(restored);assert.equal(restored.snapshot(),saved);bow.b.paused=true;bow.b.advance(1);assert.equal(bow.b.snapshot(),saved);
+    const m=heroRound('马超'),enemy=m.add(902,140,320);m.attack(enemy);m.b.time=.19;m.b.advanceWeaponStrikes(1/30);assert.equal(m.b.shots.length,0);m.b.time=.2;m.b.advanceWeaponStrikes(1/30);const spear=m.b.shots[0];assert.equal(spear.kind,'throw');assert.equal(spear.width,42);assert.equal(spear.height,132);assert.equal(spear.anchorX,0);assert.equal(spear.flight.multiplier,5);
+});
+test('splitting a hero cancels queued strikes; corrupt new flight data is discarded without losing the round',()=>{
+    const {b,add,attack}=heroRound('赵云');attack(add(901,50,300));assert.equal(b.weaponStrikes.length,5);assert.equal(b.move(location('board',41),location('reserve',0)),'');assert.equal(b.weaponStrikes.length,0);
+    const legacy=JSON.parse(b.snapshot());delete legacy.weaponStrikes;assert.ok(M.Battle.restore(JSON.stringify(legacy),b.profile,weapons));
+    const bow=heroRound('黄忠');bow.attack(bow.add(902,240,440));bow.b.time=.45;bow.b.advanceWeaponStrikes(1/30);const bad=JSON.parse(bow.b.snapshot());bad.shots[0].flight.progress=null;const restored=M.Battle.restore(JSON.stringify(bad),bow.b.profile,weapons);assert.ok(restored);assert.equal(restored.shots.length,0);
+});
 test('native weapons retain separate handle pivots, short-blade reach and pike offsets',()=>{
     const bow=W.weaponGeometry(0,'黄忠'),knife=W.weaponGeometry(2,'关羽'),sword=W.weaponGeometry(3,'刘备');
     assert.equal(bow.width,124);assert.equal(bow.height,56);assert.equal(bow.childY,10);

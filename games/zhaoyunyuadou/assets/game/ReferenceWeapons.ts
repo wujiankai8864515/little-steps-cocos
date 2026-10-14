@@ -36,7 +36,7 @@ export function attackPose(spec:WeaponGeometry,hero:string,time:number,from:numb
         if(hero==='马超'){p.angle=from+angleDelta(from,aim)*clamp(t/.2);p.childY=lerp(spec.childY,40,t/.2);p.visible=t<.2||t>=1.2;p.rootScale=t<1.2?1:clamp((t-1.2)/.2);if(t>=1.2)p.childY=0;return p;}
         if(hero==='张飞'){
             // Native sweep uses a fixed .5 rate: 100/300/300 ms landmarks.
-            p.angle=t<.1?lerp(from,130,t/.1,'cubicIn'):t<.4?lerp(130,-230,(t-.1)/.3):-230;
+            p.angle=t<.1?lerp(from,130,t/.1,'cubicIn'):t<.4?lerp(130,-230,(t-.1)/.3):t<.7?-230:130;
             const extended=range/spec.height;p.childY=t<.05?lerp(spec.childY,extended,t/.05,'quadOut'):t<.4?extended:lerp(extended,spec.childY,(t-.4)/.2);p.trail=t>=.1&&t<.4;return p;
         }
         p.angle=from+angleDelta(from,aim)*clamp(t/.05);
@@ -61,16 +61,16 @@ export function attackPose(spec:WeaponGeometry,hero:string,time:number,from:numb
 export class WeaponMotion {
     attacks:number;time=0;idleTime=0;active=false;aim=0;distance=0;range=200;from=0;angle=0;alternating=0;
     constructor(public spec:WeaponGeometry,public hero:string,attacks=0){this.attacks=attacks;}
-    resume(attacks:number,seconds:number,rate:number,target:{dx:number;dy:number;distance:number;range:number}){
-        this.attacks=attacks;this.active=true;this.time=Math.max(0,seconds)*Math.max(.01,rate);this.from=0;this.aim=aimAngle(target.dx,target.dy);this.distance=target.distance;this.range=target.range;this.alternating=attacks;
+    resume(attacks:number,seconds:number,rate:number,target:{dx:number;dy:number;distance:number;range:number;angle?:number}){
+        this.attacks=attacks;this.active=true;this.time=Math.max(0,seconds)*Math.max(.01,rate);this.from=0;this.aim=target.angle??aimAngle(target.dx,target.dy);this.distance=target.distance;this.range=target.range;this.alternating=attacks;
     }
     reset(attacks:number){this.attacks=attacks;this.time=0;this.idleTime=0;this.active=false;this.from=0;this.angle=0;this.alternating=0;}
-    advance(dt:number,attacks:number,engaged:boolean,rate:number,target:{dx:number;dy:number;distance:number;range:number}){
-        if(attacks!==this.attacks){this.attacks=attacks;this.active=true;this.time=0;this.from=this.angle;this.aim=aimAngle(target.dx,target.dy);this.distance=target.distance;this.range=target.range;this.alternating++;}
+    advance(dt:number,attacks:number,engaged:boolean,rate:number,target:{dx:number;dy:number;distance:number;range:number;angle?:number},elapsedSeconds?:number,idleSeconds?:number){
+        if(attacks!==this.attacks){this.attacks=attacks;this.active=true;this.time=0;this.from=this.angle;this.aim=target.angle??aimAngle(target.dx,target.dy);this.distance=target.distance;this.range=target.range;this.alternating++;}
         if(this.active&&!engaged){this.active=false;this.idleTime=0;this.from=this.angle;}
         const step=Math.max(0,dt);
-        if(this.active){this.time+=step*Math.max(.01,rate);const pose=attackPose(this.spec,this.hero,this.time,this.from,this.aim,this.distance,this.range,this.alternating);this.angle=pose.angle;return pose;}
-        this.idleTime+=step;const t=this.idleTime;
+        if(this.active){this.time=elapsedSeconds===undefined?this.time+step*Math.max(.01,rate):Math.max(0,elapsedSeconds)*Math.max(.01,rate);const pose=attackPose(this.spec,this.hero,this.time,this.from,this.aim,this.distance,this.range,this.alternating);this.angle=pose.angle;return pose;}
+        this.idleTime=idleSeconds===undefined?this.idleTime+step:Math.max(0,idleSeconds);const t=this.idleTime;
         let angle=t<1?this.from:t<1.3?lerp(this.from,this.spec.idleAngle,(t-1)/.3):this.spec.idleAngle;
         if(t>=1.3&&this.spec.type!==1&&this.spec.idleAngle!==0){const club=this.spec.idleAngle===-90,cycle=club?1.25:1.3,phase=(t-1.3)%cycle,first=club?-60:this.spec.type===0?-33:18,last=club?-90:this.spec.type===0?-27:12,start=t<1.3+cycle?this.spec.idleAngle:last;angle=phase<.6?lerp(start,first,phase/.6):phase<1.2?lerp(first,last,(phase-.6)/.6):last;}
         this.angle=angle;const bobPhase=Math.max(0,t-1.3)%.6,bob=bobPhase<.3?lerp(0,-4,bobPhase/.3):lerp(-4,0,(bobPhase-.3)/.3,'quadOut');

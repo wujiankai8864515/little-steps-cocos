@@ -1,0 +1,156 @@
+{
+  "id": "ZYA-22",
+  "date": "2026-10-15",
+  "kind": "native combat source facts and browser candidate; not formal acceptance",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "executed": false,
+    "facts": {
+      "range": "3986-4003 circle-vs-80x80 enemy rectangle, radius-1",
+      "hitStrategies": "2204-2233 target-on-removal (100), or multi-overlap (103)",
+      "knife": "4267 cut end: .10 + max(.05,.18) + .18 = .46 / rate",
+      "pike": "4526-4534: growing 150ms area during first thrust, five discrete Zhao hit windows",
+      "sweep": "4526: Zhang fixed .5 rate, 100ms setup then 300ms full rotation",
+      "sword": "4622: 150ms linear hit-area sweep; 200ms visual quadOut swing",
+      "arrow": "4093-4103 22x72 and pivot .5,.9; 4169-4182 pull450ms; 2521-2550 target Bezier with remaining-distance slowdown",
+      "throw": "4518-4525 release200ms, 42x132 pivot0,.5; speed1 curved or5 aligned",
+      "glyphParent": "4760-4783 animate glyph C_ only; weapon parent is stationary",
+      "tweenParallel": "laya-core-reference.txt Tween.parallel/_check waits until all parallel branches complete"
+    }
+  },
+  "changes": [
+    "Replaced hero generic homing shots with saved native target/area/arrow/throw stages",
+    "Original rounded-degree SAT and target acquisition against full enemy boxes",
+    "Each thrust/rotation retains visited enemy ids; high-speed sub-frame phases sample swept angles",
+    "Bow and Ma projectile release delays, native dimensions/pivots, curves and flight progress",
+    "First-hit gold and pike effects trigger on actual contact; stun500ms",
+    "Splitting/merging affected name cancels queued weapon stages",
+    "Weapon and paired rig attack poses use saved simulation time; stationary handle parent",
+    "One held arrow is rendered during bow wind-up",
+    "Shared simulation clock for battle idle rigs and generic/paired hero idle pose",
+    "Saved idleAt for newly created/recombined letters and idle transitions",
+    "Immediate detach before deferred named runtime replacement prevents duplicate life/item nodes and alpha overdraw"
+  ],
+  "validation": {
+    "tests": 38,
+    "typecheck": "pass",
+    "webBuild": "v32-v37 pass; latest v37 runtime selected",
+    "browser": "v37 actual Cocos canvas before/reconstruction identical at .533333s and3.3s: both320x704 RGBA, zero changed pixels, identical PNG bytes. Live forced level4 fixture ran36.3s; pause froze all exported attack/flight state at36.3666667, cloud41->66 canceled Zhao stages, return restored six heroes. Two life groups throughout, no errors. Forced levels are not promotion-cap acceptance.",
+    "wechat": "zya-wechat-v7 building; device pending",
+    "resourcePeak": {
+      "entries": 82,
+      "pending": 0,
+      "reservedEstimateBytes": 135206720,
+      "scope": "browser admission estimate, not measured GPU/device memory"
+    }
+  },
+  "strictPixels": "unproven",
+  "remaining": [
+    "Complete per-weapon special projectiles, per-hero skills and native promotion limits",
+    "Early aim and idle randomness, full same-channel/same-phase pixel comparison",
+    "Audio/long-session resources, device and online services"
+  ],
+  "note": "Swept angle sampling preserves short hit phases between fixed 30Hz ticks; exact native frame scheduling still needs same-phase comparison. Early Adou crop diagnosis was refined by numeric rig equality and maximum-difference coordinates: remaining glyph pixels were idle 张苞, heart-edge overdraw was separate. Buffer-dirty and atlas experiments are not in selected runtime.",
+  "evidence": [
+    "heroes-native-hit-windup-v32.png",
+    "heroes-native-hit-windup-v32.json",
+    "heroes-native-flight-v32.png",
+    "heroes-native-flight-v32.json",
+    "heroes-native-flight-restored-v32.png",
+    "heroes-native-flight-restored-v32.json",
+    "heroes-native-flight-v33.png",
+    "heroes-native-flight-restored-v33.png",
+    "heroes-native-flight-restored-late-v33.png",
+    "flight-restore-comparison-v33.json",
+    "flight-restore-adou-detail-v33.png",
+    "adou-diagnostic-before-v34.png",
+    "adou-diagnostic-before-v34.json",
+    "adou-diagnostic-restored-v34.png",
+    "adou-diagnostic-restored-v34.json",
+    "adou-rig-diagnostic-v34.json",
+    "heroes-native-flight-v36.png",
+    "heroes-native-flight-restored-v36.png",
+    "flight-restore-comparison-v36.json",
+    "heroes-native-flight-v37.png",
+    "heroes-native-flight-restored-v37.png",
+    "flight-restore-comparison-v37.json",
+    "heroes-native-late-v37.png",
+    "heroes-native-late-restored-v37.png",
+    "late-restore-comparison-v37.json",
+    "native-combat-paused-v37.png",
+    "native-combat-split-v37.png",
+    "native-combat-rejoined-v37.png"
+  ],
+  "failure": {
+    "candidate": "zya-web-v32",
+    "trigger": "freezeAt=.533 then Battle.restore and actual scene reconstruction",
+    "evidence": [
+      "heroes-native-flight-v32.png",
+      "heroes-native-flight-restored-v32.png"
+    ],
+    "cause": "Adou idle rigs advanced independent wall-clock and restarted on construction",
+    "repair": "Drive battle Adou/grass idle rigs from saved battle time; avoid double-advancing simulation-clock rigs",
+    "status": "resolved for two stated reconstruction fixtures; old failed captures retained"
+  },
+  "diagnosis": [
+    {
+      "candidate": "v32",
+      "differentPixels": 3847,
+      "MAE_RGBA": 0.37293590198863635,
+      "cause": "Independent battle idle clocks restart"
+    },
+    {
+      "candidate": "v33",
+      "differentPixels": 1072,
+      "MAE_RGBA": 0.04080588600852273,
+      "remaining": "Idle glyph phase and heart edges"
+    },
+    {
+      "candidate": "v34",
+      "rigDataDifferences": 0,
+      "evidence": "adou-rig-diagnostic-v34.json"
+    },
+    {
+      "candidate": "v35",
+      "build": "pass",
+      "use": "not selected",
+      "experiment": "Explicit mesh-buffer dirty flag; removed after residuals were localized to other actors/ordinary sprites; no pixel pass claimed"
+    },
+    {
+      "candidate": "v36",
+      "repairs": [
+        "Saved idleAt for letter/hero phase",
+        "Fixed authored atlas frames as non-packable"
+      ],
+      "result": "v36 corrected idle glyph phase, but same246 heart-edge pixels remained; atlas experiment removed because it did not address the residual."
+    },
+    {
+      "candidate": "v37",
+      "repairs": [
+        "Use saved idle clock for weapons as well as glyphs/rigs",
+        "Normalize Zhang sweep rotation to130 at completion",
+        "Detach all prior same-name heart/item runtime nodes before deferred destroy"
+      ],
+      "differentPixels": 0,
+      "MAE_RGBA": 0,
+      "PNGBytesIdentical": true,
+      "scope": "declared .533333s reconstruction fixture",
+      "latePhase": {
+        "time": 3.3,
+        "differentPixels": 0,
+        "MAE_RGBA": 0,
+        "PNGBytesIdentical": true
+      }
+    }
+  ],
+  "runtimeSource": {
+    "assets/game/ReferenceWeaponCombat.ts": "16e4d8ebd28e155ed1d8a0771ac72ee6d45f3594ee245ba67f03b0ddd9c49385",
+    "assets/game/ReferenceWeapons.ts": "8204e3dad5265911b9439d0cd98b3152fb27b7a799915e291442c401e54c481c",
+    "assets/game/ReferenceHeroes.ts": "9bcba8a06e6e2115bbb59c2ba64ade460d24f2eb8769926c117ae846bfb82fa0",
+    "assets/game/GameModel.ts": "7efdf6e7a0a13bfa1ab1dc9df8131be8e8f964818ccd26657bd2b5afb23c8a5d",
+    "assets/game/GameApp.ts": "c8a75e6014b36bb0bab69af90b0a4fefab1e3a3ff11b54be7165b10d07c1cafe",
+    "assets/game/InkRig.ts": "d0ef27c0a23a4d17b53b12bfd2b58e31c14bea18a48fea510effeae63cd220d4",
+    "test/game.test.cjs": "0e4140b04cd5761faab7be989ebe7ee76bb805e95bcd3d3ba5bf4f33cd627df0"
+  }
+}
