@@ -1,0 +1,283 @@
+{
+  "source": "public Android 1.0.9 declarative item constants; online screenshots may use earlier revisions",
+  "tables": [
+    [
+      {
+        "name": "shovel",
+        "txt": "铲子",
+        "intro": "{type}一把可以开荒的铲子",
+        "Xa": 999,
+        "cd": 0,
+        "rarity": 3
+      },
+      {
+        "name": "bulldozer",
+        "txt": "推土车",
+        "intro": "{type}将敌人向后推,阿斗安全无忧",
+        "Xa": 999,
+        "cd": 0,
+        "rarity": 3
+      },
+      {
+        "name": "writingBrush",
+        "txt": "毛笔",
+        "intro": "{type}可以逆天改字",
+        "Xa": 50,
+        "cd": 30000,
+        "rarity": 2,
+        "ja": 10,
+        "Ha": 12
+      },
+      {
+        "name": "trainingSpell",
+        "txt": "练兵符",
+        "intro": "{type}拖到单位上有概率升一级或降一级",
+        "Xa": 60,
+        "cd": 65000,
+        "rarity": 2,
+        "ja": 8,
+        "Ha": 8
+      },
+      {
+        "name": "upLvlSpell",
+        "txt": "神兵符",
+        "intro": "{type}拖到单位上升一级",
+        "Xa": 90,
+        "cd": 55000,
+        "rarity": 3,
+        "ja": 5,
+        "Ha": 3
+      },
+      {
+        "name": "lifePill",
+        "txt": "包子",
+        "intro": "{type}55%概率给阿斗续一条命，45%概率减少一条命",
+        "Xa": 50,
+        "cd": 90000,
+        "rarity": 1,
+        "ja": 10,
+        "Ha": 12
+      },
+      {
+        "name": "longRange",
+        "txt": "御敌千里",
+        "intro": "{type}使远程单位攻击范围翻倍，全局生效",
+        "Xa": 30,
+        "cd": 60000,
+        "rarity": 0,
+        "ja": 20,
+        "Ha": 25
+      },
+      {
+        "name": "inkstone",
+        "txt": "砚台",
+        "intro": "{type}打翻砚台，泼出墨汁，使敌方部队攻速缓慢，持续5秒",
+        "Xa": 30,
+        "cd": 90000,
+        "rarity": 0,
+        "ja": 20,
+        "Ha": 25
+      },
+      {
+        "name": "trap",
+        "txt": "陷阱",
+        "intro": "{type}敌人掉下去一时会爬不出来",
+        "Xa": 35,
+        "cd": 50000,
+        "rarity": 0,
+        "ja": 15,
+        "Ha": 20
+      },
+      {
+        "name": "landmine",
+        "txt": "地雷",
+        "intro": "{type}可炸死敌人",
+        "Xa": 50,
+        "cd": 55000,
+        "rarity": 1,
+        "ja": 10,
+        "Ha": 12
+      },
+      {
+        "name": "attSpeedSpell",
+        "txt": "攻速符",
+        "intro": "{type}单位攻速+40%，全局生效",
+        "Xa": 80,
+        "cd": 90000,
+        "rarity": 2,
+        "ja": 6,
+        "Ha": 4
+      },
+      {
+        "name": "exorcismSpell",
+        "txt": "降妖符",
+        "intro": "{type}boss施法有50%失败率，并反噬boss自身血量",
+        "Xa": 80,
+        "cd": -1,
+        "rarity": 2,
+        "ja": 6,
+        "Ha": 4
+      },
+      {
+        "name": "farmer",
+        "txt": "农民",
+        "intro": "{type}可以刷出农民，每20秒+1金币，升级生产速度翻倍",
+        "Xa": 90,
+        "cd": -1,
+        "rarity": 2,
+        "ja": 5,
+        "Ha": 3
+      },
+      {
+        "name": "recruit",
+        "txt": "招贤榜",
+        "intro": "{type}武将刷出概率x2",
+        "Xa": 90,
+        "cd": -1,
+        "rarity": 2,
+        "ja": 8,
+        "Ha": 8
+      },
+      {
+        "name": "allAttSpeedSpell",
+        "txt": "攻速符(全体)",
+        "intro": "{type}双方所有单位攻速+10%，全局生效",
+        "Xa": 60,
+        "cd": -1,
+        "rarity": 1,
+        "ja": 8,
+        "Ha": 8
+      },
+      {
+        "name": "goingHandInHand",
+        "txt": "齐头并进",
+        "intro": "{type}我方单位攻速+50%，对方单位攻速+30%，全局生效",
+        "Xa": 90,
+        "cd": -1,
+        "rarity": 2,
+        "ja": 5,
+        "Ha": 3
+      },
+      {
+        "name": "xuMingPill",
+        "txt": "续命丹",
+        "intro": "{type}我方阿斗+5条命，对方阿斗+3条命",
+        "Xa": 50,
+        "cd": -1,
+        "rarity": 0,
+        "ja": 10,
+        "Ha": 12
+      },
+      {
+        "name": "daBuPill",
+        "txt": "大补丸",
+        "intro": "{type}我方阿斗+3条命",
+        "Xa": 40,
+        "cd": -1,
+        "rarity": 0,
+        "ja": 12,
+        "Ha": 15
+      },
+      {
+        "name": "silt",
+        "txt": "淤泥",
+        "intro": "{type}道路泥泞，我方敌人移速-10%，全局生效",
+        "Xa": 40,
+        "cd": -1,
+        "rarity": 0,
+        "ja": 12,
+        "Ha": 15
+      },
+      {
+        "name": "superShovel",
+        "txt": "洛阳铲",
+        "intro": "{type}每60秒生成一个铲子",
+        "Xa": 120,
+        "cd": -1,
+        "rarity": 3,
+        "ja": 3,
+        "Ha": 1
+      },
+      {
+        "name": "meteor",
+        "txt": "陨石",
+        "intro": "{type}当敌人接近阿斗时，会落下陨石消灭敌人",
+        "Xa": 150,
+        "cd": -1,
+        "rarity": 3,
+        "ja": 2,
+        "Ha": 1
+      },
+      {
+        "name": "trashCan",
+        "txt": "垃圾桶",
+        "intro": "{type}1馒头回收无用文字",
+        "Xa": 150,
+        "cd": 0,
+        "rarity": 3,
+        "ja": 2,
+        "Ha": 1
+      },
+      {
+        "name": "promotionOrder",
+        "txt": "升职令",
+        "intro": "{type}刷出的兵有{level}%概率升到2级",
+        "Xa": 100,
+        "cd": -1,
+        "rarity": 1,
+        "ja": 8,
+        "Ha": 5,
+        "za": [
+          1,
+          2,
+          3
+        ],
+        "Wa": [
+          5,
+          10,
+          15
+        ],
+        "Na": [
+          1,
+          2,
+          3
+        ],
+        "$a": [
+          100,
+          100,
+          150
+        ],
+        "qa": [
+          8,
+          5,
+          3
+        ],
+        "Va": [
+          5,
+          3,
+          2
+        ]
+      },
+      {
+        "name": "marchPill",
+        "txt": "行军丹",
+        "intro": "{type}体力+10",
+        "Xa": 40,
+        "cd": 0,
+        "rarity": 0,
+        "ja": 12,
+        "Ha": 15
+      },
+      {
+        "name": "goldSeeker",
+        "txt": "摸金校尉",
+        "intro": "{type}让所有铲子变成金铲子，铲出宝箱",
+        "Xa": 150,
+        "cd": -1,
+        "rarity": 3,
+        "ja": 2,
+        "Ha": 1
+      }
+    ]
+  ]
+}
