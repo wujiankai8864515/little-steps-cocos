@@ -1,0 +1,161 @@
+{
+  "id": "ZYA-49",
+  "verifiedAt": "2026-10-15T10:15:13.813607+00:00",
+  "problem": "Developer Tools upload main package was 5246KB, exceeding its 4096KB limit. Raw Cocos output size alone had passed.",
+  "fix": {
+    "es6": true,
+    "minified": true,
+    "uploadWithSourceMap": false,
+    "persistence": "Channel mapping applied to generated project and fixed Developer Tools entry config",
+    "syntaxConversion": "Required for framework optional chaining; retained failed v20 upload evidence"
+  },
+  "candidate": "zya-wechat-v21",
+  "appid": "wx4d41972686e54c11",
+  "creator": "3.8.8",
+  "developerToolsVersion": "2.02.2608080 darwin-arm64",
+  "buildEntry": "python3 -B builds/build.py wechatgame --game zhaoyunyuadou --name zya-wechat-v21",
+  "fingerprintVerification": {
+    "sourceFilesMatched": 415,
+    "candidateOutputFilesMatched": 480,
+    "fixedOutputFilesMatched": 480,
+    "v19ToV21ChangedOutputFiles": [
+      "project.config.json"
+    ],
+    "gameAndEngineOutputUnchanged": true
+  },
+  "rawOutputAudit": {
+    "mainBytes": 3400159,
+    "totalBytes": 16618875,
+    "initialBytes": 11801350,
+    "sizes": {
+      "main": 3400159,
+      "zya_meta": 2337439,
+      "zya_effects": 1896435,
+      "zya_battle": 2221906,
+      "zya_maps": 699184,
+      "zya_home": 1094605,
+      "zya_audio": 3270647,
+      "zya_actors": 1698500
+    },
+    "subpackages": [
+      {
+        "name": "zya_actors",
+        "root": "subpackages/zya_actors/"
+      },
+      {
+        "name": "zya_audio",
+        "root": "subpackages/zya_audio/"
+      },
+      {
+        "name": "zya_battle",
+        "root": "subpackages/zya_battle/"
+      },
+      {
+        "name": "zya_effects",
+        "root": "subpackages/zya_effects/"
+      },
+      {
+        "name": "zya_home",
+        "root": "subpackages/zya_home/"
+      },
+      {
+        "name": "zya_maps",
+        "root": "subpackages/zya_maps/"
+      },
+      {
+        "name": "zya_meta",
+        "root": "subpackages/zya_meta/"
+      }
+    ],
+    "files": 480,
+    "sizeMethod": "raw output bytes; DevTools compilation/upload size must be verified separately"
+  },
+  "upload": {
+    "version": "1.1.2",
+    "status": "success",
+    "observedText": "代码上传成功",
+    "completionLog": "上传完成，耗时：15525ms",
+    "experienceVersionOverwrite": "Authorized by human and confirmed in Developer Tools upload flow",
+    "serverSizeAndSyntaxGate": "passed",
+    "compiledMainBytes": "Not exposed; raw output size is not the compiled upload size",
+    "evidence": "wechat-upload-v21.png",
+    "evidenceSHA256": "78a5fb241b6d6864b0c4b6a47f3a6aa9d653aee145698ab80e5e8f22b7753f85"
+  },
+  "runVerification": {
+    "environment": "WeChat Developer Tools simulator; not a physical phone",
+    "input": "Native UI only; window raised before interaction",
+    "flow": [
+      "Home rendered",
+      "Clicked 开始游戏",
+      "Match screen transitioned to 第1波",
+      "Clicked 征兵: food 20 to 10 and 弓 appeared in camp",
+      "Dragged 弓 from camp to white grid",
+      "Tutorial advanced; enemies and combat appeared, food increased to 14"
+    ],
+    "errors": 0,
+    "warnings": 1,
+    "screenshots": [
+      {
+        "path": "wechat-battle-v21.png",
+        "sha256": "9d343ba95282bbf407c7b61ad13dc43b5b28a0399b80549f6aaec09af0d61791"
+      },
+      {
+        "path": "wechat-playing-v21.png",
+        "sha256": "f0d26086b9dad1d69abbf2f9d56a39cd94c3d2b180934eb2872fba608ea210d2"
+      }
+    ]
+  },
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444"
+  },
+  "frameworkSymlink": "../../../../engines/travel-core/dist/travel-core.js",
+  "pluginFlags": {
+    "Web": true,
+    "MiniGame": true,
+    "Native": false
+  },
+  "uuids": {
+    "project": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+    "boot": "be9d2cea-79b2-4bea-9298-438460f08591",
+    "scene": "be5c944f-c8e2-49aa-9330-2704b04f05c9"
+  },
+  "security": {
+    "urlCheck": true,
+    "CLIServicePort": "left disabled",
+    "personalWeChat": "not used",
+    "accountIdentifier": "excluded"
+  },
+  "budgetsUnchanged": {
+    "batchSpecs": 80,
+    "entries": 128,
+    "estimatedBytes": 268435456,
+    "homeInitialBytes": 19000000,
+    "mainBytes": 4000000,
+    "subpackageBytes": 4000000,
+    "totalBytes": 30000000
+  },
+  "validation": {
+    "build": "pass",
+    "pythonSyntax": "pass",
+    "gitDiffCheck": "pass",
+    "gameRegression": {
+      "passed": 113,
+      "failed": 0,
+      "log": "ZYA48-dragon-after.log",
+      "gameOutputUnchangedSinceRegression": true
+    },
+    "settingsFiles": [
+      {
+        "path": "builds/wechatgame/zhaoyunyuadou/project/src/settings.1e569.json",
+        "sha256": "686843896d614721e688b27d9761127f053344c7730987ca88e088a7a0ed848d"
+      }
+    ]
+  },
+  "pending": [
+    "Physical device acceptance",
+    "Strict original screenshot parity",
+    "Full original service coverage and remaining special weapons"
+  ],
+  "publicationBoundary": "Authorized experience upload only; no production review submission or release"
+}

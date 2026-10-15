@@ -1,0 +1,30 @@
+{
+  "id": "ZYA-49",
+  "error": "main package source size 5246KB exceed max limit 4096KB",
+  "appid": "wx4d41972686e54c11",
+  "ideVersion": "2.02.2608080",
+  "rawOutputMainBytes": 3399917,
+  "entrySettingsBefore": {
+    "es6": true,
+    "minified": false,
+    "uploadWithSourceMap": true
+  },
+  "cause": "The old entry config disabled upload minification; raw file bytes did not cover transformed upload bytes. ES6 conversion remains required by framework plugin syntax.",
+  "fix": "Keep ES6 syntax conversion enabled, enable upload minification, disable source-map upload. Persist in channel mapping and both configs.",
+  "securityChecks": "urlCheck remains true; CLI service port remains disabled",
+  "privacy": "User account identifier excluded",
+  "attempts": [
+    {
+      "candidate": "zya-wechat-v20",
+      "version": "1.1.2",
+      "settings": {
+        "es6": false,
+        "minified": true,
+        "uploadWithSourceMap": false
+      },
+      "result": "upload compilation failed",
+      "error": "invalid file: src/assets/plugins/travel-core.9efa0.js, SyntaxError: Unexpected token .",
+      "cause": "Framework plugin still contains optional chaining; disabling IDE syntax conversion is incompatible with upload compiler."
+    }
+  ]
+}

@@ -91,6 +91,11 @@ def build(args, config, project, stage, name):
         if result.returncode not in (0,36) or 'Importer exec failed' in log.read_text(errors='replace'):
             raise RuntimeError('Creator build or asset import failed; inspect '+str(log))
         if not (output/'game.js').is_file() or not (output/'game.json').is_file():raise RuntimeError('Missing generated WeChat entry files')
+        package_config_path=output/'project.config.json'
+        package_config=json.loads(package_config_path.read_text())
+        package_config.setdefault('setting',{}).update(config.get('devtoolsSettings',{}))
+        write_json(package_config_path,package_config)
+        manifest['devtoolsSettings']=config.get('devtoolsSettings',{})
         files=[p for p in output.rglob('*') if p.is_file()]
         total=sum(p.stat().st_size for p in files)
         game_config=json.loads((output/'game.json').read_text());subpackages=game_config.get('subpackages',game_config.get('subPackages',[]))
@@ -103,7 +108,7 @@ def build(args, config, project, stage, name):
         if any(value>config['limits']['subpackageBytes'] for key,value in sizes.items() if key!='main'):raise RuntimeError('Native subpackage exceeds 4 MB: '+str(sizes))
         if initial>config['limits']['initialBytes']:raise RuntimeError('Home first-load exceeds 19 MB: '+str(initial))
         if (output/'remote').is_dir() and any((output/'remote').rglob('*')):raise RuntimeError('Unexpected remote resource dependency')
-        manifest.update(build='pass',audit={'mainBytes':main,'totalBytes':total,'initialBytes':initial,'sizes':sizes,'subpackages':subpackages,'files':len(files)},output=str(output),log=str(log))
+        manifest.update(build='pass',audit={'mainBytes':main,'totalBytes':total,'initialBytes':initial,'sizes':sizes,'subpackages':subpackages,'files':len(files),'sizeMethod':'raw output bytes; DevTools compilation/upload size must be verified separately'},output=str(output),log=str(log))
         manifest['outputFiles']=[{'path':file.relative_to(output).as_posix(),'sha256':hashlib.sha256(file.read_bytes()).hexdigest()} for file in sorted(files)]
         if fingerprint(project)!=inputs or hashlib.sha256((ROOT/'engines/travel-core/dist/travel-core.js').read_bytes()).hexdigest()!=framework_hash:raise RuntimeError('构建期间源码或资源改变，保留候选并重新打包，固定产物未覆盖。')
         if not args.build_only:
@@ -115,7 +120,9 @@ def build(args, config, project, stage, name):
             prepared.rename(active)
             entry=destination/'project.config.json'
             entry_config=json.loads(entry.read_text()) if entry.exists() else {'projectname':config['displayName'],'compileType':'game','miniprogramRoot':'project/','setting':{'urlCheck':True,'es6':True},'condition':{}}
-            entry_config['appid']=appid;write_json(entry,entry_config)
+            entry_config['appid']=appid
+            entry_config.setdefault('setting',{}).update(config.get('devtoolsSettings',{}))
+            write_json(entry,entry_config)
             manifest['fixedProject']=str(active);manifest['developerToolsRoot']=str(destination)
         write_json(record,manifest);return {k:v for k,v in manifest.items() if k not in ['workingInputs','outputFiles']}
     except Exception as error:
