@@ -14,7 +14,7 @@
 python3 -B builds/build.py wechatgame --game zhaoyunyuadou
 ```
 
-本游戏固定输出为 `builds/wechatgame/zhaoyunyuadou`，采用微信原生分包。配置中的 `touristappid` 用于本地开发候选，不是发布 AppID。浏览器截图候选及本地 HTTP 服务只用于验证，不作为真机资源服务器。
+本游戏固定输出为 `builds/wechatgame/zhaoyunyuadou`，微信开发者工具导入此目录，入口指向 `project/`。微信 AppID 为 `wx4d41972686e54c11`，持久配置在 `builds/wechatgame/games/zhaoyunyuadou.json`；每次公共入口构建会同步到工具入口及包内 `project.config.json`。采用微信原生分包，无需本机或局域网资源服务器。浏览器截图候选及本地 HTTP 服务只用于验证。AppID 配置与构建检查不代表真机或发布验收。
 
 ## 验证边界
 
