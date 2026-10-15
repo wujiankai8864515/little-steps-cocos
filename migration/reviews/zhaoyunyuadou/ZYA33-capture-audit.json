@@ -1,0 +1,30 @@
+{
+  "id": "ZYA-33",
+  "date": "2026-10-15",
+  "kind": "capture validation audit; no production game change",
+  "trigger": "same frozen tutorial at battle.time=0 looks different in direct canvas PNG and browser composited JPEG",
+  "evidence": {
+    "rawCanvas": "tutorial-reference-pose-v52.png",
+    "browserComposite": "tutorial-browser-v52.jpg",
+    "browserEncoding": "JPEG JFIF, first bytes FF D8 FF E0",
+    "observed": "Adou and grass mesh actors present in browser image are absent in direct canvas PNG",
+    "comparisonLimits": "browser image includes a pre-existing injected toolbar and JPEG/color conversion, so it is not a pixel-acceptance replacement"
+  },
+  "production": "unverified intro-pose modifications reversed; runtime remains game commit 91b8888",
+  "priorResults": "v44 exact own-restore PNG pairs prove equality of captured contents only; full rendered-scene equality requires revalidation",
+  "renderTextureTrial": {
+    "candidate": "zya-web-v53",
+    "build": "pass",
+    "typecheck": "pass",
+    "runtimeErrors": [],
+    "evidence": ["tutorial-render-texture-v53.png", "tutorial-render-texture-v53.json"],
+    "method": "explicit camera RenderTexture target, full-frame submission, readPixels and vertical flip at battle.time=0",
+    "result": "unresolved: captured PNG still omits mesh actors visible in browser composite; no production renderer change accepted"
+  },
+  "next": "inspect actual mesh render data and compare browser composite with complete framebuffer contents; prioritize requested WeChat AppID integration first",
+  "documentation": "https://docs.cocos.com/creator/3.8/manual/zh/asset/render-texture.html",
+  "api": "https://docs.cocos.com/creator/3.8/api/en/class/RenderTexture",
+  "status": "capture completeness unresolved after v53",
+  "strictPublisherPixels": "pending",
+  "device": "pending"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ZYA32-QA4",
+  "kind": "diagnostic variations retained; not accepted as final game",
+  "guideBehindUnits": {
+    "candidate": "v49",
+    "png": "tutorial-probe-guide-behind-v49.png",
+    "result": "glyphs visible but overlap the guide; rejected",
+    "worldPosition": "unchanged: x16.875,y1240.875"
+  },
+  "fittedPose": {
+    "candidate": "v50",
+    "png": "tutorial-compact-v50.png",
+    "fullCanvasMAE": 10.582629024621212,
+    "previousBlankMAE": 10.20941495028409,
+    "result": "reject: cropped glyph fit enlarged the original 80x80 art",
+    "reference": "reference/tutorial.png"
+  },
+  "correction": "preserve 80x80 source canvas, use the reference intro display size and vertical placement; v52 pending",
+  "strictPixels": "pending",
+  "originalCanvasTrial": {
+    "candidate": "v51",
+    "png": "tutorial-original-canvas-v51.png",
+    "fullCanvasMAE": 10.404242128314394,
+    "result": "original alpha canvas retained, but intro size/placement still mismatches reference; rejected as final pose"
+  },
+  "referencePoseTrial": {
+    "candidate": "v52",
+    "png": "tutorial-reference-pose-v52.png",
+    "fullCanvasMAE": 10.564538944128788,
+    "result": "rejected; no improvement over v45 blank baseline"
+  },
+  "production": "all uncommitted intro-pose modifications reversed to game commit 91b8888; rejected patch retained",
+  "newFinding": {
+    "canvasCapture": "tutorial-reference-pose-v52.png",
+    "compositedBrowserCapture": "tutorial-browser-v52.jpg",
+    "observation": "fixed battle time zero; WebGL canvas PNG omits visible Adou and grass mesh characters present in browser JPEG",
+    "scope": "capture timing/pipeline unproven; prior own-scene exact-PNG results verify captured content only, full-render equivalence must be rechecked",
+    "next": "inspect standard RenderTexture capture and compare complete renderer output"
+  }
+}

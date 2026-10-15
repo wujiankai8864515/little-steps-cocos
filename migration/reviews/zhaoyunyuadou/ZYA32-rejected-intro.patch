@@ -1,0 +1,32 @@
+diff --git a/assets/game/GameApp.ts b/assets/game/GameApp.ts
+index 6a3a64e..3bc07fb 100644
+--- a/assets/game/GameApp.ts
++++ b/assets/game/GameApp.ts
+@@ -12,7 +12,7 @@ import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, I
+ 
+ const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
+ const skin = (group: string, name: string) => 'resources/img/' + group + '/' + name + '.png';
+-interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
++interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; introPose?:boolean;motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
+ interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;nocked?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
+ interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;weapon?:WeaponView;}
+ interface SkillView {node:Node;rig?:InkRig;weapon?:Node;}
+@@ -415,6 +415,18 @@ export class GameApp {
+     private animateBasicUnit(view:ActorView,dt:number){
+         const unit=view.unit,b=this.battle!;if(!isBasicKind(unit.kind))return;
+         const size=view.node.parent===this.reserve?90:80,spec=BASIC_UNITS[unit.kind],interval=b.stats(unit).interval;
++        // The pinned WeChat tutorial shows compact letter poses while its
++        // battle clock is stopped. Later native frame canvases overlap the
++        // tutorial caption; start those clips when deployment starts the clock.
++        if((b.tutorialStep===1||b.tutorialStep===2)&&view.node.parent===this.combatLayer){
++            const path=this.glyph(unit);
++            view.introPose=true;if(view.motion)view.motion.active=false;view.glyph.setParent(view.node);
++            this.ui.skin(view.glyph,path);view.glyph.getComponent(Sprite)!.trim=false;
++            view.glyph.getComponent(UITransform)!.setAnchorPoint(0,1);view.glyph.getComponent(UITransform)!.setContentSize(80,80);
++            view.glyph.setPosition((size-60)/2,10);view.glyph.setScale(.75,.75);view.glyph.angle=0;
++            const pike=view.node.getChildByName('unit-pike');if(pike)pike.active=false;view.level.setSiblingIndex(view.node.children.length-1);return;
++        }
++        if(view.introPose){delete view.introPose;view.glyph.setScale(1,1);if(view.motion){view.motion.active=true;view.glyph.setParent(view.motion);}}
+         if(!view.frame||view.frame.kind!==unit.kind){const windup=view.node.parent===this.combatLayer&&b.pendingAttacks.some(attack=>attack.unit===unit.id);view.frame=new UnitFramePlayer(unit.kind,unit.attacks-(windup?1:0));view.motion=this.ui.node('unit motion',view.node,size/2,size/2,80,80);view.glyph.setParent(view.motion);view.frameParent=view.node.parent;view.frameX=view.node.position.x;view.frameY=view.node.position.y;}
+         if(view.frameParent!==view.node.parent||view.frameX!==view.node.position.x||view.frameY!==view.node.position.y){view.frame.reset(unit.attacks);view.frameParent=view.node.parent;view.frameX=view.node.position.x;view.frameY=view.node.position.y;view.motion!.angle=0;view.turn=undefined;const pike=view.node.getChildByName('unit-pike');if(pike)pike.angle=0;}
+         view.motion!.setPosition(size/2,-size/2);

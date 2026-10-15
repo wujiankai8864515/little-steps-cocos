@@ -1,0 +1,11 @@
+{
+  "id": "ZYA32-QA1",
+  "candidate": "zya-web-v46",
+  "scope": "isolated QA helper only; production game unchanged",
+  "finding": "actor inspection referenced UIOpacity without importing it in frozen Boot.ts",
+  "result": "actor inspection invalid; do not use this candidate for render diagnosis",
+  "fix": "add explicit UIOpacity import in builder; retain v46 and build new v47 after v46 exits",
+  "runtime": "not executed",
+  "gameSource": "unchanged",
+  "diagnostics": "TS2304 Boot.ts(26,438): Cannot find name UIOpacity"
+}

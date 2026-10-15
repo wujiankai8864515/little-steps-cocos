@@ -1,0 +1,212 @@
+{
+  "id": "ZYA32-QA2",
+  "candidate": "zya-web-v47",
+  "productionSource": "unchanged since 91b8888",
+  "typecheck": "pass",
+  "frame": {
+    "time": 0,
+    "tutorialStep": 1,
+    "admission": {
+      "entries": 77,
+      "reservedBytes": 134222496,
+      "pending": 2
+    }
+  },
+  "actors": [
+    {
+      "id": 1,
+      "kind": "骑",
+      "active": true,
+      "glyphActive": true,
+      "glyphFrame": {
+        "rect": {
+          "x": 641,
+          "y": 1124,
+          "width": 56,
+          "height": 60
+        },
+        "original": {
+          "width": 263,
+          "height": 294
+        },
+        "offset": {
+          "x": 2.5,
+          "y": 0
+        },
+        "packable": false,
+        "textureWidth": 1537,
+        "textureHeight": 1561
+      },
+      "glyphVertices": [
+        282.375,
+        1179,
+        0,
+        0.4170461893081665,
+        0.7584881782531738,
+        1,
+        1,
+        1,
+        1,
+        345.375,
+        1179,
+        0,
+        0.4534808099269867,
+        0.7584881782531738,
+        1,
+        1,
+        1,
+        1,
+        282.375,
+        1246.5,
+        0,
+        0.4170461893081665,
+        0.7200512290000916,
+        1,
+        1,
+        1,
+        1,
+        345.375,
+        1246.5,
+        0,
+        0.4534808099269867,
+        0.7200512290000916,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelActive": true
+    },
+    {
+      "id": 2,
+      "kind": "枪",
+      "active": true,
+      "glyphActive": true,
+      "glyphFrame": {
+        "rect": {
+          "x": 1466,
+          "y": 148,
+          "width": 35,
+          "height": 48
+        },
+        "original": {
+          "width": 41,
+          "height": 68
+        },
+        "offset": {
+          "x": 1,
+          "y": -8
+        },
+        "packable": false,
+        "textureWidth": 1537,
+        "textureHeight": 1561
+      },
+      "glyphVertices": [
+        398.25,
+        1176.75,
+        0,
+        0.9538061022758484,
+        0.12556053698062897,
+        1,
+        1,
+        1,
+        1,
+        437.625,
+        1176.75,
+        0,
+        0.9765777587890625,
+        0.12556053698062897,
+        1,
+        1,
+        1,
+        1,
+        398.25,
+        1230.75,
+        0,
+        0.9538061022758484,
+        0.09481102228164673,
+        1,
+        1,
+        1,
+        1,
+        437.625,
+        1230.75,
+        0,
+        0.9765777587890625,
+        0.09481102228164673,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelActive": true
+    },
+    {
+      "id": 3,
+      "kind": "刀",
+      "active": true,
+      "glyphActive": true,
+      "glyphFrame": {
+        "rect": {
+          "x": 417,
+          "y": 1472,
+          "width": 38,
+          "height": 40
+        },
+        "original": {
+          "width": 120,
+          "height": 129
+        },
+        "offset": {
+          "x": 13,
+          "y": -12.5
+        },
+        "packable": false,
+        "textureWidth": 1537,
+        "textureHeight": 1561
+      },
+      "glyphVertices": [
+        473.625,
+        1181.25,
+        0,
+        0.27130773663520813,
+        0.9686098694801331,
+        1,
+        1,
+        1,
+        1,
+        516.375,
+        1181.25,
+        0,
+        0.29603123664855957,
+        0.9686098694801331,
+        1,
+        1,
+        1,
+        1,
+        473.625,
+        1226.25,
+        0,
+        0.27130773663520813,
+        0.9429852366447449,
+        1,
+        1,
+        1,
+        1,
+        516.375,
+        1226.25,
+        0,
+        0.29603123664855957,
+        0.9429852366447449,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelActive": true
+    }
+  ],
+  "finding": "all three actors, glyphs and level markers are active with finite vertex geometry and opaque vertex colors; actual canvas remains blank in their cells",
+  "rootCause": "unproven; v48 probes render stencil state and guide/mask interactions",
+  "acceptance": "diagnostic only, no pixel acceptance"
+}

@@ -1,0 +1,103 @@
+{
+  "id": "ZYA32-QA3",
+  "candidate": "zya-web-v48",
+  "typecheck": "pass",
+  "scope": "diagnostic variations only; neither hidden-UI variation is accepted as a game fix or publisher match",
+  "control": "tutorial-stencil-v48.png",
+  "experiments": [
+    {
+      "variation": "full UI",
+      "png": "tutorial-stencil-v48.png",
+      "sha256": "261dbb97bc99f99096bf646ff2ebb8168869d021dc2dfeb7b54b2c74092a0d3d",
+      "outcome": "rival glyphs invisible",
+      "time": 0,
+      "tutorial": 1,
+      "actors": [
+        {
+          "id": 1,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 1783315864
+        },
+        {
+          "id": 2,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 1783315864
+        },
+        {
+          "id": 3,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 1783315864
+        }
+      ]
+    },
+    {
+      "variation": "guide node hidden",
+      "png": "tutorial-probe-no-guide-v48.png",
+      "sha256": "7b1916752b7ea834cc74e295be710d2691590f477b5eafda0cd1a99d1561438a",
+      "outcome": "rival glyphs visible",
+      "time": 0,
+      "tutorial": 1,
+      "actors": [
+        {
+          "id": 1,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2074019980
+        },
+        {
+          "id": 2,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2074019980
+        },
+        {
+          "id": 3,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2074019980
+        }
+      ]
+    },
+    {
+      "variation": "recruitment mask node hidden",
+      "png": "tutorial-probe-no-mask-v48.png",
+      "sha256": "3c5949f0c2e2c643ba04966783fcd8069c3bcbbebead5f739621a73605ef1af0",
+      "outcome": "rival glyphs invisible",
+      "time": 0,
+      "tutorial": 1,
+      "actors": [
+        {
+          "id": 1,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2562571278
+        },
+        {
+          "id": 2,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2562571278
+        },
+        {
+          "id": 3,
+          "visible": true,
+          "stencil": 0,
+          "indices": 6,
+          "hash": 2562571278
+        }
+      ]
+    }
+  ],
+  "result": "guide interaction reproduced; recruitment mask excluded; test full guide behind units next"
+}
