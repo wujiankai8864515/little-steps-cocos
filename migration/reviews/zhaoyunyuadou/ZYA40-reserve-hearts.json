@@ -1,0 +1,84 @@
+{
+  "id": "ZYA-40",
+  "date": "2026-10-15",
+  "scope": "Evidence-based reserve and endpoint hearts UI correction, strict full-game pixels remain pending",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "reserveAnchors": [
+      "6937-6939",
+      "6956-6958"
+    ],
+    "heartAnchors": [
+      "7007-7013",
+      "layouts.json:heart"
+    ],
+    "reserveRule": "First cell refresh_MAP_0; remaining four refresh_MAP_1; same 90x90 display size",
+    "heartRule": "Original 25x19 and .5/.5 pivot, x=10+i%3*26, y=-20*(ceil(lives/3)-floor(i/3)-1)-21; show surviving count"
+  },
+  "before": {
+    "candidate": "zya-web-v55",
+    "image": "tutorial-border-v55.png",
+    "wholeImageMAE": 6.844369969223485,
+    "bugs": [
+      "All reserve slots used first-cell border",
+      "Hearts stretched to 25x23; no centered pivot; incorrect vertical offset and multi-row order",
+      "Displayed maxLives with empty hearts after lost lives instead of current count"
+    ]
+  },
+  "after": {
+    "candidate": "zya-web-v62",
+    "image": "tutorial-hearts-reserve-v62.png",
+    "wholeImageMAE": 6.664103929924242,
+    "pixelsOver10Fraction": 0.14032759232954545,
+    "canvasSize": [
+      320,
+      704
+    ],
+    "resized": false,
+    "masked": false,
+    "lifeCount": [
+      3,
+      3
+    ],
+    "lifeSize": [
+      25,
+      19
+    ],
+    "time": 0,
+    "pending": 0,
+    "capture": {
+      "method": "canvas-after-draw",
+      "serial": 2,
+      "at": 18963,
+      "readyFrames": 850
+    },
+    "admission": {
+      "entries": 77,
+      "reservedBytes": 134222496,
+      "pending": 0
+    },
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  },
+  "verification": {
+    "creator": "3.8.8 build pass",
+    "sourceTypecheck": "pass",
+    "rules": "unchanged; prior current 80 model tests pass",
+    "threeHearts": "actual rendered state inspected both endpoints",
+    "multipleRows": "native formula adopted; 4-9-heart browser captures not yet performed"
+  },
+  "retainedEvidence": [
+    "comparison/tutorial-v55-border.png",
+    "comparison/tutorial-v55-border.json",
+    "comparison/tutorial-v62-hearts-reserve.png",
+    "comparison/tutorial-v62-hearts-reserve.json"
+  ],
+  "remaining": [
+    "Font rasterization, caption and Adou animation phase differ from public tutorial screenshot",
+    "Strict all-screen 1:1 incomplete",
+    "Life loss/gain animation pending",
+    "WeChat device pending"
+  ],
+  "originalRuntimeExecuted": false
+}

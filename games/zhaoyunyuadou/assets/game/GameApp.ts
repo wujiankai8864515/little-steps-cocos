@@ -171,7 +171,7 @@ export class GameApp {
             const isGrass=this.battle.map.grass.includes(n),name='tile-'+n;
             this.ui.image(tiles,skin('map',isGrass?'grass_'+this.battle.map.id+'_'+this.battle.map.owners[n]:'road_'+this.battle.map.id),n%8*80,Math.floor(n/8)*80,80,80,undefined,name);
         }
-        for(let n=0;n<5;n++)this.ui.image(this.reserve,skin('map','refresh_'+this.battle.map.id+'_0'),n*90,0,90,90,undefined,'reserve-'+n);
+        for(let n=0;n<5;n++)this.ui.image(this.reserve,skin('map','refresh_'+this.battle.map.id+'_'+(n===0?0:1)),n*90,0,90,90,undefined,'reserve-'+n);
         const outline=this.ui.node('terrain outlines',this.board,0,0,640,800),g=outline.addComponent(Graphics);g.fillColor=Color.BLACK;
         // Reference V$: black 3 px terrain edges and a 6 px outer border.
         // Filled strips preserve vertical and horizontal coverage in Cocos.
@@ -281,8 +281,10 @@ export class GameApp {
         this.ui.find('maskImg',this.screen)!.body.getComponent(UITransform)!.setContentSize(260*Math.min(1,b.armies[0].food/b.cost()),131);
         for(const side of [0,1] as Side[]) {
             this.removeNamed(this.board,'lives-'+side);const pos=b.position(b.map.paths[side].slice(-1)[0]);
-            const lives=this.ui.node('lives-'+side,this.board,pos.x-40,pos.y-64,80,35);
-            for(let i=0;i<b.armies[side].maxLives;i++)this.ui.image(lives,skin('battleUI',i<b.armies[side].lives?'heart1':'heart2'),i%3*26,Math.floor(i/3)*-20,25,23);
+            const lives=this.ui.node('lives-'+side,this.board,pos.x-40,pos.y-40,80,35),count=b.armies[side].lives,rows=Math.ceil(count/3);
+            // Original heart prefab is 25×19 with a centered pivot; K$ stacks
+            // surviving hearts in rows of three above the endpoint.
+            for(let i=0;i<count;i++)this.ui.image(lives,skin('battleUI','heart1'),i%3*26-2.5,-20*(rows-Math.floor(i/3)-1)-30.5,25,19);
         }
         const box=this.ui.find('box',this.screen)!.body;
         this.removeNamed(box,'items-runtime');const items=this.ui.node('items-runtime',box,20,1138,600,240);
