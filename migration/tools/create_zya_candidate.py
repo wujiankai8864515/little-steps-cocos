@@ -35,7 +35,7 @@ def main():
     helper = """        (globalThis as any).__ZYA_QA__ = true;
         const qaQuery = new URLSearchParams(location.search);
         const fixture = qaQuery.get('fixture');
-        let qaRestoring=false,qaRestoreCompleted=false;
+        let qaRestoring=false,qaRestoreCompleted=false,qaCrossbowFrozen=false;
 """
     text = text.replace('    start() {','    start() {\n'+helper)
     text = text.replace('        void this.application.start();', """        const app:any=this.application;
@@ -45,7 +45,7 @@ def main():
         const inspectActorNode=(node:any)=>{if(!node)return null;const t=node.getComponent(QAUITransform),sprite=node.getComponent(Sprite),label=node.getComponent(Label),ld=label?.renderData,f=sprite?.spriteFrame,d=sprite?.renderData;return {name:node.name,valid:node.isValid,active:node.active,visible:node.activeInHierarchy,layer:node.layer,position:node.position,scale:node.scale,world:node.worldMatrix,anchor:t?.anchorPoint,size:t?.contentSize,bounds:t?.getBoundingBoxToWorld(),opacity:node.getComponent(UIOpacity)?.opacity,label:label?{text:label.string,stencilStage:label.stencilStage,indexCount:ld?.indexCount,dataHash:ld?.dataHash,textureHash:ld?.textureHash,renderFlag:label._renderFlag}:null,sprite:sprite?{enabled:sprite.enabled,renderFlag:sprite._renderFlag,stencilStage:sprite.stencilStage,indexCount:d?.indexCount,vertexCount:d?.vertexCount,dataHash:d?.dataHash,color:sprite.color,trim:sprite.trim,frame:f?{rect:f.rect,original:f.originalSize,offset:f.offset,packable:f.packable,textureWidth:f.texture?.width,textureHeight:f.texture?.height}:null,vertices:d?.chunk?Array.from(d.chunk.vb.slice(0,d.dataLength*d.floatStride)):null}:null};};
         const inspectActor=(view:any)=>{const ancestors=[];for(let node=view.node.parent;node&&ancestors.length<10;node=node.parent)ancestors.push(inspectActorNode(node));return {unit:view.unit,node:inspectActorNode(view.node),glyph:inspectActorNode(view.glyph),level:inspectActorNode(view.level),motion:inspectActorNode(view.motion),frame:view.frame?{kind:view.frame.kind,clip:view.frame.clip,elapsed:view.frame.elapsed,seenAttacks:view.frame.seenAttacks}:null,ancestors};};
         const inspectControl=(name:string)=>{const e=app.screen&&app.ui.find(name,app.screen),sprite=e?.body.getComponent(Sprite),transform=e?.body.getComponent(QAUITransform);return e?{name,active:e.node.active,visible:e.node.activeInHierarchy,bodyActive:e.body.activeInHierarchy,skin:e.body.__inkSkin,frame:sprite?.spriteFrame?.rect,spriteEnabled:sprite?.enabledInHierarchy,position:e.node.position,world:e.node.worldPosition,bodyWorld:e.body.worldPosition,scale:e.node.scale,bounds:transform?.getBoundingBoxToWorld(),sibling:e.node.getSiblingIndex()}:null;};
-        app.inspect=()=>({...inspectVisible(),permanentBuffs:fixture==='buffs'&&app.battle?{progress:app.battle.heroProgress,boosts:app.battle.boosts,ranges:app.battle.ranges,cooldowns:app.battle.cooldowns,stats:app.battle.heroes(0).flatMap((link:any)=>[link.left,link.right].map(cell=>{const stats=app.battle.stats(app.battle.armies[0].units[cell],link.hero,link.level);return {name:link.hero.name,cell,interval:stats.interval,range:stats.range};}))}:null,renderProbes:qaQuery.get('actors')==='1'?{guide:inspectActorNode(app.tutorial),mask:inspectActorNode(app.screen&&app.ui.find('maskImg',app.screen)?.body)}:null,basicActors:qaQuery.get('actors')==='1'?Array.from(app.actors.values()).map(inspectActor):null,visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null,heroWeapons:Array.from(app.heroViews.values()).map((view:any)=>{const w=view.weapon;return {hero:view.hero.name,side:view.side,ready:view.ready,weapon:w?{id:w.id,type:w.spec.type,ready:!!w.body.getComponent(Sprite)?.spriteFrame,visible:w.root.activeInHierarchy,angle:w.root.angle,bodyPosition:w.body.position,bodyScale:w.body.scale,size:w.body.getComponent(QAUITransform).contentSize,elapsed:w.motion.time,attacks:w.motion.attacks,sibling:w.parent.getSiblingIndex(),siblings:view.node.children.length}:null};})});
+        app.inspect=()=>({...inspectVisible(),permanentBuffs:fixture==='buffs'&&app.battle?{progress:app.battle.heroProgress,boosts:app.battle.boosts,ranges:app.battle.ranges,cooldowns:app.battle.cooldowns,stats:app.battle.heroes(0).flatMap((link:any)=>[link.left,link.right].map(cell=>{const stats=app.battle.stats(app.battle.armies[0].units[cell],link.hero,link.level);return {name:link.hero.name,cell,interval:stats.interval,range:stats.range};}))}:null,renderProbes:qaQuery.get('actors')==='1'?{guide:inspectActorNode(app.tutorial),mask:inspectActorNode(app.screen&&app.ui.find('maskImg',app.screen)?.body)}:null,basicActors:qaQuery.get('actors')==='1'?Array.from(app.actors.values()).map(inspectActor):null,visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null,heroWeapons:Array.from(app.heroViews.values()).map((view:any)=>{const w=view.weapon;return {hero:view.hero.name,side:view.side,ready:view.ready,weapon:w?{id:w.id,type:w.spec.type,ready:!!w.body.getComponent(Sprite)?.spriteFrame,visible:w.root.activeInHierarchy,angle:w.root.angle,bodyPosition:w.body.position,bodyScale:w.body.scale,size:w.body.getComponent(QAUITransform).contentSize,nocked:w.nocked?{active:w.nocked.activeInHierarchy,skin:w.nocked.__inkSkin,size:w.nocked.getComponent(QAUITransform).contentSize,anchor:w.nocked.getComponent(QAUITransform).anchorPoint,position:w.nocked.position,overlay:w.nocked.getChildByName('crossbow-nocked-arrow')?.activeInHierarchy}:null,elapsed:w.motion.time,attacks:w.motion.attacks,sibling:w.parent.getSiblingIndex(),siblings:view.node.children.length}:null};})});
         if(qaQuery.get('probeNoGuide')==='1'||qaQuery.get('probeNoRecruitMask')==='1'||qaQuery.get('probeGuideBehindUnits')==='1')director.on(Director.EVENT_AFTER_UPDATE,()=>{
             if(app.page!=='battle')return;
             if(qaQuery.get('probeNoGuide')==='1'&&app.tutorial)app.tutorial.active=false;
@@ -54,7 +54,7 @@ def main():
         });
         if(fixture==='home-stars'){app.profile.stars=Number(qaQuery.get('stars')||'2');app.profile.gold=20;app.profile.tutorial=true;}
         if(fixture==='merchant-home'){app.profile.losses=1;app.profile.tutorial=true;app.profile.gold=8623;app.profile.stamina=25;}
-        if(fixture==='heroes'||fixture==='growth'||fixture==='buffs'||fixture==='pikes'||fixture==='birds')app.profile.tutorial=true;
+        if(fixture==='heroes'||fixture==='growth'||fixture==='buffs'||fixture==='pikes'||fixture==='birds'||fixture==='crossbow')app.profile.tutorial=true;
         if(fixture==='buffs')app.profile.items=['speed','range'];
         if(fixture==='shop'||fixture==='lottery') {
             app.profile.gold=8623;app.profile.stamina=25;
@@ -74,6 +74,22 @@ def main():
                     label.fontSize*=2;label.lineHeight*=2;label.outlineWidth*=2;
                 }
             }else if(fixture==='tutorial'){await app.startRound(Number(qaQuery.get('map')||'0'));}
+            else if(fixture==='crossbow'){
+                app.profile.equipped={'黄忠':9};app.profile.weapons={9:1};app.profile.items=[];
+                await app.startRound(1);app.matchTime=999;const battle=app.battle;
+                battle.aiTime=battle.spawnTime=100000;battle.waveTime=-100000;battle.tutorialStep=0;battle.armies[1].units={};
+                battle.armies[0].units={40:battle.unit('字','黄'),41:battle.unit('字','忠')};battle.armies[0].unlocked=battle.map.grass.filter((cell:number)=>battle.owns(0,cell));battle.armies[0].reserve=[null,null,null,null,null];
+                const unit=battle.armies[0].units[40],path=battle.map.paths[0];battle.heroes(0);battle.random.state=1;
+                const indices=qaQuery.get('targets')==='sparse'?Array.from(new Set(Array.from({length:6},(_,i)=>1+Math.floor(i*(path.length-3)/5)))):Array.from({length:path.length-2},(_,i)=>i+1);
+                for(const i of indices){const p=battle.position(path[i]);battle.enemies.push({id:battle.nextId++,side:0,progress:i*80,hp:100000,maxHp:100000,speed:0,boss:false,slowed:0,x:p.x,y:p.y});}
+                const phase=Number(qaQuery.get('phase')||'.7'),advance=battle.advance.bind(battle);
+                // Natural ten-attack charge; only cap the final QA capture step.
+                battle.advance=(dt:number)=>advance(unit.crossbowVolley?Math.min(dt,Math.max(0,unit.crossbowVolley.born+phase-battle.time)):dt);
+                await app.showBattle();
+                director.on(Director.EVENT_AFTER_UPDATE,()=>{const volley=unit.crossbowVolley;if(!volley||battle.time+1e-8<volley.born+phase)return;battle.paused=true;qaCrossbowFrozen=true;
+                    if(qaQuery.get('restore')==='1'&&!qaRestoring&&!qaRestoreCompleted){qaRestoring=true;const restored=Battle.restore(battle.snapshot(),app.profile,app.art.weapons);if(!restored)throw new Error('QA crossbow restoration failed');restored.paused=true;app.battle=restored;void app.showBattle().then(()=>{restored.paused=true;qaRestoring=false;qaRestoreCompleted=true;document.documentElement.dataset.zyaRestored='true';});}
+                });
+            }
             else if(fixture==='birds'){
                 app.profile.equipped={'黄忠':4,'黄祖':8};app.profile.weapons={4:1,8:1};app.profile.items=[];
                 await app.startRound(1);app.matchTime=999;const battle=app.battle;
@@ -157,6 +173,7 @@ def main():
                 let captureTime=0;let qaCaptureBusy=false;let qaReadyFrames=0;let qaCaptureSerial=0;
                 director.on(Director.EVENT_AFTER_DRAW,()=>{
                     if(qaCaptureBusy)return;
+                    if(fixture==='crossbow'&&!qaCrossbowFrozen)return;
                     if(app.art.metrics().admission.pending>0){qaReadyFrames=0;return;}
                     if(++qaReadyFrames<3)return;
                     if(qaRestoring||qaQuery.get('restore')==='1'&&!qaRestoreCompleted)return;

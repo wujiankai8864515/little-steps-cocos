@@ -37,6 +37,47 @@ function startSkill(fixture){
 }
 const closeTo=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
 function weaponHitShot(f,id,target,damage=10){return {id:990,from:f.unit.id,side:0,target:target.id,x:target.x,y:target.y,damage,speed:0,kind:'melee',splash:0,weaponId:id,hero:f.hero.name,heroId:f.b.heroes(0)[0].id};}
+function crossbowFixture(name='黄忠',level=1){const f=heroRound(name,40,level);f.b.profile.equipped[name]=9;const target=f.add(901,400,240);target.hp=target.maxHp=100000;f.unit.cooldown=10000;return {...f,target};}
+function armCrossbow(f){for(let i=0;i<11;i++){f.unit.attacks=i+1;f.attack(f.target);}f.b.weaponStrikes=[];f.b.shots=[];}
+test('crossbow counts ten ordinary attacks, then replaces the eleventh with a saved two-second volley',()=>{
+    const f=crossbowFixture();for(let i=0;i<10;i++){f.unit.attacks=i+1;f.attack(f.target);assert.equal(f.unit.crossbowCount,i+1);assert.equal(f.unit.crossbowVolley,undefined);assert.equal(f.b.shots.length,0);}
+    assert.equal(f.b.weaponStrikes.length,10);f.b.weaponStrikes=[];f.unit.attacks=11;f.attack(f.target);assert.equal(f.unit.crossbowCount,0);assert.ok(f.unit.crossbowVolley);assert.equal(f.b.weaponStrikes.length,0);assert.equal(f.b.shots.length,0);assert.ok(f.unit.weaponUntil>=2);
+});
+test('crossbow emits ten timed draws, with native return-sweep angles and 45ms release windups',()=>{
+    const f=crossbowFixture();armCrossbow(f);const base=f.unit.crossbowVolley.aim,expected=[-50,-30,-10,10,30,50,30,10,-10,-30];
+    for(let i=0;i<10;i++){f.b.time=i===0?1/30:i*.2;f.b.advanceCrossbows();const plan=f.b.weaponStrikes.at(-1);closeTo(plan.angle,base+expected[i]);closeTo(plan.born,f.b.time+.045);closeTo(plan.fireArrowBorn,f.b.time);assert.equal(f.unit.crossbowVolley.count,i+1);}
+    assert.equal(f.b.weaponStrikes.length,10);f.b.time=2.04;f.b.advanceCrossbows();assert.equal(f.unit.crossbowVolley,undefined);
+});
+test('crossbow flame volleys retain Huang Zhong level-based arrow counts',()=>{
+    for(const [level,count]of [[1,1],[3,2],[5,3]]){const f=crossbowFixture('黄忠',level);armCrossbow(f);f.b.time=1/30;f.b.advanceCrossbows();assert.equal(f.b.weaponStrikes.length,count);}
+});
+test('fire-arrow frame and collider preserve native 22x72 geometry with the lower pivot',()=>{
+    const box=X.crossbowFireHitBox({x:100,y:200},{born:0,dx:0,dy:-1});assert.equal(box.x,100);closeTo(box.y,207.2);assert.equal(box.length,50);assert.equal(box.bold,11);assert.equal(X.crossbowFireFrame(.65,.2),3);assert.equal(X.crossbowFireFrame(.8,.2),1);
+});
+test('crossbow fire arrow travels straight after its selected target dies, hits one enemy and applies five-second burn',()=>{
+    const f=crossbowFixture();armCrossbow(f);f.b.time=1/30;f.b.advanceCrossbows();const plan=f.b.weaponStrikes[0];f.target.hp=0;f.b.time=plan.born;f.b.advanceWeaponStrikes(1/30);assert.equal(f.b.shots.length,1);const shot=f.b.shots[0];assert.ok(shot.crossbowFire);assert.equal(shot.splash,0);assert.equal(shot.width,22);assert.equal(shot.height,72);
+    const point={x:shot.x+shot.crossbowFire.dx*100,y:shot.y+shot.crossbowFire.dy*100},a=f.add(902,point.x,point.y),same=f.add(903,point.x,point.y),rival=f.add(904,point.x,point.y,1),power=f.b.stats(f.unit,f.hero,undefined,0).power;f.b.time+=1/30;f.b.advanceShots(1/30);closeTo(a.hp,100-power);assert.equal(same.hp,100);assert.equal(rival.hp,100);assert.equal(f.b.shots.length,0);assert.equal(a.burn.stacks[0].damage,1);closeTo(a.burn.stacks[0].until,f.b.time+5);
+});
+test('crossbow partial volley, pending flame arrow and future combat restore deterministically without repeating draws',()=>{
+    const f=crossbowFixture();armCrossbow(f);for(let i=0;i<20;i++)f.b.advance(1/30);assert.equal(f.unit.crossbowVolley.count,4);const snapshot=f.b.snapshot(),copy=M.Battle.restore(snapshot,f.b.profile,weapons);assert.ok(copy);assert.equal(copy.snapshot(),snapshot);
+    f.b.paused=true;const paused=f.b.snapshot();f.b.advance(.25);assert.equal(f.b.snapshot(),paused);f.b.paused=false;for(let i=0;i<35;i++){f.b.advance(1/30);copy.advance(1/30);}assert.equal(copy.snapshot(),f.b.snapshot());assert.equal(f.unit.crossbowVolley.count,10);
+});
+test('split or unequipped crossbow cancels pending draws and resets charge without transferring it to another formation',()=>{
+    for(const split of [true,false]){const f=crossbowFixture();armCrossbow(f);f.b.time=.3;f.b.advanceCrossbows();if(split){delete f.b.armies[0].units[41];f.b.heroes(0);}else f.b.profile.equipped['黄忠']=0;f.b.advanceCrossbows();assert.equal(f.unit.crossbowVolley,undefined);assert.equal(f.unit.crossbowCount,undefined);assert.equal(f.b.weaponStrikes.filter(s=>s.fireArrowBorn!==undefined).length,0);}
+});
+test('mixed phoenix and crossbow burns keep independent damage and expiry under a shared burn clock',()=>{
+    const f=heroRound('黄忠'),enemy=f.add(901,100,340);enemy.hp=1000;f.unit.cooldown=10000;f.b.addArrowBurn(enemy,1,5);f.b.addArrowBurn(enemy,10,2);closeTo(enemy.burn.end,5);for(let i=0;i<151;i++)f.b.advance(1/30);assert.equal(enemy.hp,975);assert.ok(enemy.burn);assert.equal(enemy.burn.stacks.length,0);
+});
+test('invalid crossbow charge, volley and flame arrow are sanitized while valid legacy rounds still load',()=>{
+    const f=crossbowFixture();armCrossbow(f);f.b.time=.3;f.b.advanceCrossbows();const raw=JSON.parse(f.b.snapshot());raw.armies[0].units[40].crossbowCount=11;raw.armies[0].units[40].crossbowVolley.count=100;raw.weaponStrikes[0].fireArrowBorn='bad';const copy=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(copy);assert.equal(copy.armies[0].units[40].crossbowCount,undefined);assert.equal(copy.armies[0].units[40].crossbowVolley,undefined);assert.equal(copy.weaponStrikes.length,0);
+});
+test('both ordinary and flame crossbow arrows read the active owner power after promotion',()=>{
+    for(const flame of [false,true]){const f=crossbowFixture();if(flame){armCrossbow(f);f.b.time=1/30;f.b.advanceCrossbows();}else f.attack(f.target);const plan=f.b.weaponStrikes[0];f.b.time=plan.born;f.b.advanceWeaponStrikes(1/30);const shot=f.b.shots[0],before=shot.damage;f.b.addHeroExperience(f.b.heroProgress[0],10,false);const current=f.b.stats(f.unit,f.hero,undefined,0).power;assert.ok(current>before);const hp=f.target.hp;f.b.hitShot(shot,f.target);closeTo(f.target.hp,hp-current);}
+});
+test('crossbow charge survives reload independently of global attack count and resets after the complete volley',()=>{
+    const f=crossbowFixture();for(let i=0;i<7;i++)f.attack(f.target);const copy=M.Battle.restore(f.b.snapshot(),f.b.profile,weapons),unit=copy.armies[0].units[40];assert.equal(unit.crossbowCount,7);unit.attacks=999;copy.weaponAttack(unit,0,copy.enemies[0],{x:80,y:440},copy.stats(unit,f.hero,undefined,0),f.hero,40);assert.equal(unit.crossbowCount,8);assert.equal(unit.crossbowVolley,undefined);
+    const fresh=crossbowFixture();armCrossbow(fresh);for(let i=0;i<64;i++)fresh.b.advance(1/30);assert.equal(fresh.unit.crossbowVolley,undefined);assert.equal(fresh.unit.crossbowCount,0);fresh.unit.attacks++;fresh.attack(fresh.target);assert.equal(fresh.unit.crossbowCount,1);assert.equal(fresh.unit.crossbowVolley,undefined);
+});
 function birdFixture(id,roll=0){const f=heroRound('黄忠');f.b.profile.equipped['黄忠']=id;f.b.random.next=()=>roll;const target=f.add(901,400,240);f.attack(target);const plan=f.b.weaponStrikes[0];f.b.time=plan.born;f.b.advanceWeaponStrikes(1/30);return {...f,target,plan,shot:f.b.shots[0]};}
 test('eagle roll replaces the drawn arrow, preserves native size and uses ten percent at attack selection',()=>{
     for(const [roll,eagle]of [[0,true],[.0999,true],[.1,false]]){const f=birdFixture(4,roll);assert.equal(f.b.shots.length,1);assert.equal(f.shot.kind,eagle?'eagle':'arrow');assert.equal(!!f.shot.bird,eagle);if(eagle){assert.equal(f.shot.width,187);assert.equal(f.shot.height,124);assert.equal(f.shot.anchorX,.3);assert.equal(f.shot.bird.rate,.35);assert.equal(f.shot.bird.born,0);assert.equal(f.shot.splash,0);}}

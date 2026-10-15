@@ -6,10 +6,10 @@ import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceW
 import { advanceFlight, createFlight, enemyInRange, Flight, strikeOverlaps, StrikePlan, strikeShape, weaponStrikePlans } from './ReferenceWeaponCombat';
 import { HERO_SKILLS, HeroSkillState, hitPassive, huangZhongArrows, huangZhongGrowth, quadraticPose, shoutRing, skillRate, SkillProjectile, validHeroSkill, validSkillProjectile } from './ReferenceHeroSkills';
 import { characterLevelCap, DamageOwner, experienceAwards, experienceLevel, feedExperience, HeroProgress, heroExperienceTable, heroLevelCap, partExperience, trainingDelta, validExperience, validHeroProgress } from './ReferenceProgression';
-import { ArrowBurn, BirdArrowKind, BirdArrowState, birdArrowDamage, birdArrowHitBox, birdArrowOrigin, birdArrowSpec, FlyingPikeTiming, flyingPikeChance, flyingPikeTiming, GroundPikeState, groundPikeRule, groundPikeSpikes, validArrowBurn, validBirdArrow, validFlyingPike, validGroundPike } from './ReferenceSpecialWeapons';
+import { CrossbowFireArrow, CrossbowVolley, crossbowFireHitBox, crossbowVolleyAngle, validCrossbowFire, validCrossbowVolley, ArrowBurn, BirdArrowKind, BirdArrowState, birdArrowDamage, birdArrowHitBox, birdArrowOrigin, birdArrowSpec, FlyingPikeTiming, flyingPikeChance, flyingPikeTiming, GroundPikeState, groundPikeRule, groundPikeSpikes, validArrowBurn, validBirdArrow, validFlyingPike, validGroundPike } from './ReferenceSpecialWeapons';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
-export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; experience?:number;idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; skillCount?:number;skillResume?:boolean;chain?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
+export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; experience?:number;idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; crossbowCount?:number; crossbowVolley?:CrossbowVolley; skillCount?:number;skillResume?:boolean;chain?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
 export interface Hero { name: string; chars: string; weaponType: number; range: number; power: number; speed: number; rarity: number; skill: string; }
 export interface HeroLink {hero:Hero;left:number;right:number;level:number;id:number;experience:number;maxLevel:number;}
 export const GLYPHS = '赵云张飞马超关羽平兴黄忠苞翼盖祖甄宓刘备';
@@ -145,11 +145,11 @@ export class Random {
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
 export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean;lootSettled?:boolean; bossType?:number; castIn?:number; burn?:ArrowBurn;push?:{x:number;y:number};rejoin?:number; }
-export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; flyingPike?:FlyingPikeTiming; bird?:BirdArrowState; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
+export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; flyingPike?:FlyingPikeTiming; bird?:BirdArrowState; crossbowFire?:CrossbowFireArrow; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; piercing?:GroundPikeState; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
 export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
-export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;procStarted?:boolean;birdKind?:BirdArrowKind;birdAnimationAt?:number;}
+export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;procStarted?:boolean;birdKind?:BirdArrowKind;birdAnimationAt?:number;fireArrowBorn?:number;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
@@ -285,7 +285,7 @@ export class Battle {
         const unit=this.armies[progress.side].units[progress.left];
         this.weaponStrikes=this.weaponStrikes.filter(s=>s.heroId!==progress.id);
         this.heroSkills=this.heroSkills.filter(s=>s.heroId!==progress.id);
-        if(unit?.id===progress.leftUnit){for(const key of ['skillCount','skillResume','chain','streak','seen','target','weaponAt','weaponUntil','weaponAim','weaponRate','speedBuff','speedUntil'] as const)delete unit[key];unit.cooldown=0;unit.idleAt=this.time;}
+        if(unit?.id===progress.leftUnit){for(const key of ['skillCount','skillResume','chain','streak','seen','target','weaponAt','weaponUntil','weaponAim','weaponRate','speedBuff','speedUntil','crossbowCount','crossbowVolley'] as const)delete unit[key];unit.cooldown=0;unit.idleAt=this.time;}
         this.heroProgress=this.heroProgress.filter(p=>p.id!==progress.id);
     }
     private newHero(side:Side,pair:{hero:Hero;left:number;right:number},legacy=false){
@@ -472,7 +472,11 @@ export class Battle {
         let power=stats.power;
         if([23,27].includes(id!)&&this.random.next()<.1){for(const other of Object.values(this.armies[side].units)){const cell=Number(Object.keys(this.armies[side].units).find(key=>this.armies[side].units[Number(key)].id===other.id)),p=this.position(cell);if(Math.hypot(p.x-pos.x,p.y-pos.y)<200){other.speedBuff=id===23?.2:.3;other.speedUntil=this.time+10;}}this.battleEffect(id===27?'tiger':'roar',pos,side);}
         if(id===30&&this.random.next()<.1){power*=5;for(const e of this.enemies)if(e.side===side&&Math.hypot(e.x-target.x,e.y-target.y)<100)e.held=1.5;this.battleEffect('slam',target,side);}
-        const attack=weaponStrikePlans(hero.weaponType as WeaponType,hero.name,id??-1,{x:cell%8*80,y:Math.floor(cell/8)*80},target,stats.range,stats.weaponRate,unit.attacks);unit.weaponAim=attack.aim;
+        const previousAim=unit.weaponAim??0,attack=weaponStrikePlans(hero.weaponType as WeaponType,hero.name,id??-1,{x:cell%8*80,y:Math.floor(cell/8)*80},target,stats.range,stats.weaponRate,unit.attacks);unit.weaponAim=attack.aim;
+        if(id===9){
+            if((unit.crossbowCount||0)>=10){unit.crossbowCount=0;unit.crossbowVolley={heroId:link.id,born:this.time,aim:attack.aim,count:0,next:this.time,fromAngle:previousAim};unit.weaponUntil=this.time+2+1/30;return;}
+            unit.crossbowCount=(unit.crossbowCount||0)+1;
+        }else if(unit.crossbowCount!==undefined||unit.crossbowVolley)this.cancelCrossbow(unit);
         if(hero.name==='黄忠'){
             const first=attack.plans[0],count=huangZhongArrows(this.heroes(side).find(link=>link.left===cell)?.level||unit.level);attack.plans.length=0;
             for(let i=0;i<count;i++){const delta=(i-Math.floor(count/2))*10;attack.plans.push({...first,angle:first.angle+delta,endAngle:first.angle+delta});}
@@ -482,7 +486,6 @@ export class Battle {
         const delay=hero.name==='张飞'?.1/(hero.speed/stats.interval):0;
         if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,heroId:link.id,weaponId:id,target:target.id,damage:power,born:this.time+delay+plan.delay,visited:[],...(birdKind?{birdKind,birdAnimationAt:this.time}:{})});
         if(id===5&&this.random.next()<.1){this.burst(unit,side,pos,power,'fire',12);this.battleEffect('fire',target,side);}
-        if(id===9&&unit.attacks%10===0)for(let i=0;i<10;i++)this.fire(unit,side,target,pos,power,'fire',45,id,hero.name,undefined,link.id);
         if(id===24&&unit.attacks%10===0)this.burst(unit,side,pos,power,'blade',12);
         if(id===28&&this.random.next()<.1)this.burst(unit,side,pos,power,'meteor',12);
         if(id!==undefined&&id>=34&&unit.attacks%10===0){const positive=(id%2===0)||id===43;this.battleEffect(positive?'sword':'coldSword',pos,side);
@@ -528,13 +531,36 @@ export class Battle {
     }
     private hitShot(shot:Shot,target:Enemy){
         if(target.hp<=0)return false;
-        const owner=this.damageOwner(shot.from,shot.side,shot.hero,shot.heroId);this.damageEnemy(target,shot.damage,owner);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-20,text:String(Math.ceil(shot.damage)),ttl:.6,duration:.6,side:shot.side});
+        const damage=shot.weaponId===9&&['arrow','crossbowFire'].includes(shot.kind)?this.currentShotPower(shot):shot.damage,owner=this.damageOwner(shot.from,shot.side,shot.hero,shot.heroId);this.damageEnemy(target,damage,owner);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-20,text:String(Math.ceil(damage)),ttl:.6,duration:.6,side:shot.side});
         const passive=hitPassive(shot.hero||'',target.boss);
         if(passive&&passive.chance>0&&this.random.next()<passive.chance){target.held=Math.max(target.held||0,passive.stun);if(passive.maxHealth){const damage=target.maxHp*passive.maxHealth;this.damageEnemy(target,damage,owner);this.battleEffect('lightning',target,shot.side);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-40,text:String(Math.ceil(damage)),ttl:.6,duration:.6,side:shot.side});}}
         if(shot.hero==='张飞'){target.moveDebuff=-.1;target.moveDebuffUntil=this.time+2;}
         if(shot.kind==='holyBlade'&&!target.boss)target.knocked=2;
         if(shot.splash>0)for(const other of this.enemies)if(other.id!==target.id&&other.hp>0&&other.side===target.side&&Math.hypot(other.x-target.x,other.y-target.y)<=shot.splash)this.damageEnemy(other,shot.damage*.45,owner);
         return shot.skill?false:this.weaponHit(shot,target);
+    }
+    private cancelCrossbow(unit:Unit,reset=true){
+        this.weaponStrikes=this.weaponStrikes.filter(strike=>strike.unit!==unit.id||strike.fireArrowBorn===undefined);
+        delete unit.crossbowVolley;if(reset)delete unit.crossbowCount;unit.weaponUntil=Math.min(unit.weaponUntil??this.time,this.time);
+    }
+    private advanceCrossbows(){
+        for(const side of [0,1] as Side[]){const links=this.heroes(side);
+            for(const unit of Object.values(this.armies[side].units)){
+                if(unit.crossbowCount===undefined&&!unit.crossbowVolley)continue;
+                const link=links.find(link=>this.armies[side].units[link.left].id===unit.id);
+                if(!link||side!==0||this.profile.equipped[link.hero.name]!==9){this.cancelCrossbow(unit);continue;}
+                const volley=unit.crossbowVolley;if(!volley)continue;
+                if(volley.heroId!==link.id){this.cancelCrossbow(unit);continue;}
+                if(['chaos','stun','sealed'].includes(unit.debuff||'')){this.cancelCrossbow(unit,false);continue;}
+                if(this.time>volley.born+2+1e-8){delete unit.crossbowVolley;unit.weaponUntil=Math.min(unit.weaponUntil??this.time,this.time);continue;}
+                if(volley.count>=10||this.time+1e-8<volley.next)continue;
+                const aim=crossbowVolleyAngle(volley.aim,volley.count),angle=aim*Math.PI/180,pivot={x:link.left%8*80+40,y:Math.floor(link.left/8)*80+40};
+                const target={x:pivot.x+Math.sin(angle)*1000,y:pivot.y-Math.cos(angle)*1000+(link.hero.name==='黄忠'?0:100)};
+                const stats=this.stats(unit,link.hero,link.level,side),attack=weaponStrikePlans(0,link.hero.name,9,{x:pivot.x-40,y:pivot.y-40},target,stats.range,10,unit.attacks),base=attack.plans[0],count=link.hero.name==='黄忠'?huangZhongArrows(link.level):1;
+                for(let i=0;i<count&&this.weaponStrikes.length<768;i++){const delta=(i-Math.floor(count/2))*10;this.weaponStrikes.push({...base,angle:aim+delta,endAngle:aim+delta,id:this.nextId++,unit:unit.id,side,cell:link.left,hero:link.hero.name,heroId:link.id,weaponId:9,target:unit.target!,damage:stats.power,born:this.time+base.delay,visited:[],fireArrowBorn:this.time});}
+                volley.fromAngle=volley.drawAngle??volley.fromAngle;volley.drawAngle=aim;volley.drawAt=this.time;volley.count++;volley.next=volley.born+volley.count*.2;unit.weaponAim=aim;
+            }
+        }
     }
     private advanceWeaponStrikes(dt:number){
         for(const strike of this.weaponStrikes){
@@ -544,7 +570,10 @@ export class Battle {
             if(!strike.procStarted){strike.procStarted=true;if(strike.weaponId===19&&this.random.next()<=flyingPikeChance(strike.hero))this.flyingPikes(unit,strike.side,strike.cell,strike.hero,link.id,this.stats(unit,link.hero,link.level,strike.side).power);}
             const target=this.enemies.find(enemy=>enemy.id===strike.target&&enemy.hp>0);
             if(strike.kind==='arrow'||strike.kind==='throw'){
-                if(strike.birdKind){
+                if(strike.fireArrowBorn!==undefined){
+                    const angle=strike.angle*Math.PI/180,shot=this.fire(unit,strike.side,target||{id:strike.target} as Enemy,strike,strike.damage,'crossbowFire',0,9,strike.hero,undefined,strike.heroId);
+                    if(shot)Object.assign(shot,{speed:3000,width:22,height:72,anchorX:.5,anchorY:.9,rotation:strike.angle,skill:true,crossbowFire:{born:strike.fireArrowBorn,dx:Math.sin(angle),dy:-Math.cos(angle)}});
+                }else if(strike.birdKind){
                     const spec=birdArrowSpec(strike.birdKind),angle=strike.angle*Math.PI/180,shot=this.fire(unit,strike.side,target||{id:strike.target} as Enemy,strike,strike.damage,strike.birdKind,0,strike.weaponId,strike.hero,undefined,strike.heroId);
                     if(shot)Object.assign(shot,{width:spec.width,height:spec.height,anchorX:spec.anchorX,anchorY:spec.anchorY,rotation:strike.angle,skill:true,bird:{kind:strike.birdKind,born:strike.birdAnimationAt!,startX:strike.x,startY:strike.y,dx:Math.sin(angle),dy:-Math.cos(angle),rate:spec.rate}});
                 }else if(target){const shot=this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',strike.weaponId===5?70:0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
@@ -688,6 +717,7 @@ export class Battle {
     }
     private advanceShots(dt:number){
         for (const shot of this.shots) {
+            if(shot.crossbowFire){this.advanceCrossbowFire(shot,dt);continue;}
             if(shot.bird){this.advanceBirdArrow(shot,dt);continue;}
             if(shot.motion){this.advanceSkillProjectile(shot,dt);continue;}
             const target = this.enemies.find(e => e.id === shot.target && e.hp > 0);
@@ -713,6 +743,16 @@ export class Battle {
         }
         this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
     }
+    private currentShotPower(shot:Shot){
+        const owner=this.heroes(shot.side).find(link=>link.id===shot.heroId);
+        return owner&&shot.side===0&&this.profile.equipped[owner.hero.name]===shot.weaponId?this.stats(this.armies[shot.side].units[owner.left],owner.hero,undefined,shot.side).power:shot.damage;
+    }
+    private advanceCrossbowFire(shot:Shot,dt:number){
+        const arrow=shot.crossbowFire!;shot.x+=arrow.dx*shot.speed*dt;shot.y+=arrow.dy*shot.speed*dt;
+        if(shot.x<-100||shot.x>740||shot.y<-100||shot.y>this.projectileHeight+100){shot.damage=0;return;}
+        const target=this.enemies.find(enemy=>enemy.side===shot.side&&enemy.hp>0&&strikeOverlaps(crossbowFireHitBox(shot,arrow),enemy));
+        if(target){this.hitShot(shot,target);if(target.hp>0)this.addArrowBurn(target,1,5);shot.damage=0;}
+    }
     private advanceBirdArrow(shot:Shot,dt:number){
         const bird=shot.bird!;shot.x+=bird.dx*bird.rate*1000*dt;shot.y+=bird.dy*bird.rate*1000*dt;
         bird.rate=Math.min(birdArrowSpec(bird.kind).rate,bird.rate+dt);
@@ -726,9 +766,9 @@ export class Battle {
             if(enemy.hp>0&&bird.kind==='eagle'){const push=enemy.push||(enemy.push={x:0,y:0});push.x+=bird.dx*24;push.y+=bird.dy*24;}
         }
     }
-    private addArrowBurn(enemy:Enemy){
-        if(!enemy.burn||!enemy.burn.stacks.length)enemy.burn={born:this.time,next:this.time+1/30,end:this.time+2,frame:Math.floor(this.random.next()*4),stacks:[]};
-        enemy.burn.stacks.push({until:this.time+2,damage:10});enemy.burn.end=this.time+2;
+    private addArrowBurn(enemy:Enemy,damage=10,duration=2){
+        if(!enemy.burn||!enemy.burn.stacks.length)enemy.burn={born:this.time,next:this.time+1/30,end:this.time+duration,frame:Math.floor(this.random.next()*4),stacks:[]};
+        enemy.burn.stacks.push({until:this.time+duration,damage});enemy.burn.end=Math.max(enemy.burn.end,this.time+duration);
     }
     private advanceArrowBurn(enemy:Enemy){
         const burn=enemy.burn;if(!burn)return;burn.stacks=burn.stacks.filter(stack=>stack.until>this.time+1e-8);
@@ -805,6 +845,7 @@ export class Battle {
         if (this.aiTime <= 0) { if (this.aiSilence <= 0) this.ai(); this.aiTime = 2.8 + this.random.next() * 1.7; }
         for(const attack of this.pendingAttacks){attack.ttl-=dt;if(attack.ttl<=0)this.releaseBasicAttack(attack);}
         this.pendingAttacks=this.pendingAttacks.filter(attack=>attack.ttl>0);
+        this.advanceCrossbows();
         this.advanceWeaponStrikes(dt);
         this.advanceHeroSkills(dt);
         for (const side of [0,1] as Side[]) {
@@ -899,11 +940,15 @@ export class Battle {
                 if (!Array.isArray(army.reserve) || army.reserve.length !== 5 || !Array.isArray(army.unlocked) || !army.units || !Number.isFinite(army.food) || !Number.isFinite(army.lives)) return null;
                 for (const unit of [...army.reserve, ...Object.values(army.units)] as (Unit|null)[]) if (unit && (!Number.isInteger(unit.id) || !Number.isInteger(unit.level) || unit.level < 1 || unit.level > 5 || !['刀','弓','枪','骑','农','字','铲'].includes(unit.kind))) return null;
                 for(const unit of [...army.reserve,...Object.values(army.units)] as (Unit|null)[])if(unit?.kind==='字'&&!validExperience(unit.experience))unit.experience=partExperience(unit.level);
+                for(const unit of [...army.reserve,...Object.values(army.units)] as (Unit|null)[])if(unit){
+                    if(unit.crossbowCount!==undefined&&(!Number.isInteger(unit.crossbowCount)||unit.crossbowCount<0||unit.crossbowCount>10))delete unit.crossbowCount;
+                    if(unit.crossbowVolley&&!validCrossbowVolley(unit.crossbowVolley)){delete unit.crossbowVolley;unit.weaponUntil=Math.min(unit.weaponUntil??raw.time,raw.time);}
+                }
             }
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
-                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.bird||s.kind===s.bird.kind&&validBirdArrow(s.bird)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))&&(!s.flyingPike||s.kind==='flyingPike'&&s.speed>0&&validFlyingPike(s.flyingPike))&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&(s.procStarted===undefined||typeof s.procStarted==='boolean')&&(s.birdKind===undefined||s.kind==='arrow'&&['eagle','phoenix'].includes(s.birdKind)&&Number.isFinite(s.birdAnimationAt)&&s.birdAnimationAt!>=0)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:Array.isArray(raw.effects)?raw.effects.filter((e:Effect)=>e&&(e.kind!=='groundPike'||validGroundPike(e.piercing!)&&Number.isSafeInteger(e.id)&&[0,1].includes(e.side)&&[e.x,e.y,e.ttl,e.duration].every(Number.isFinite)&&e.duration===1&&e.ttl>=0&&e.ttl<=1)).slice(-100):[],aiTime:raw.aiTime||1.5,
+                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.crossbowFire||s.kind==='crossbowFire'&&s.weaponId===9&&validCrossbowFire(s.crossbowFire))&&(!s.bird||s.kind===s.bird.kind&&validBirdArrow(s.bird)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))&&(!s.flyingPike||s.kind==='flyingPike'&&s.speed>0&&validFlyingPike(s.flyingPike))&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&(s.procStarted===undefined||typeof s.procStarted==='boolean')&&(s.fireArrowBorn===undefined||s.kind==='arrow'&&s.weaponId===9&&Number.isFinite(s.fireArrowBorn)&&s.fireArrowBorn>=0)&&(s.birdKind===undefined||s.kind==='arrow'&&['eagle','phoenix'].includes(s.birdKind)&&Number.isFinite(s.birdAnimationAt)&&s.birdAnimationAt!>=0)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:Array.isArray(raw.effects)?raw.effects.filter((e:Effect)=>e&&(e.kind!=='groundPike'||validGroundPike(e.piercing!)&&Number.isSafeInteger(e.id)&&[0,1].includes(e.side)&&[e.x,e.y,e.ttl,e.duration].every(Number.isFinite)&&e.duration===1&&e.ttl>=0&&e.ttl<=1)).slice(-100):[],aiTime:raw.aiTime||1.5,
                 aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
                 ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0,projectileHeight:Number.isFinite(raw.projectileHeight)&&raw.projectileHeight>=640&&raw.projectileHeight<=4096?raw.projectileHeight:1386});
             for(const enemy of b.enemies){

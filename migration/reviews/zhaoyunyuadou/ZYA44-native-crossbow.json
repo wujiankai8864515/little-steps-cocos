@@ -1,0 +1,95 @@
+{
+  "id": "ZYA-44",
+  "date": "2026-10-15",
+  "scope": "Original crossbow charge, timed volley, straight fire arrows, shared burn, rendering and round restoration",
+  "reference": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "executed": false,
+    "anchors": {
+      "Ge": "4233-4243",
+      "Di": "2353-2362",
+      "draw": "4163-4177",
+      "HuangZhong": "4949",
+      "burn": "1982-1994,2437-2439"
+    }
+  },
+  "implemented": {
+    "charge": "Ten ordinary attacks then the next eligible attack replaces the shot with a ten-draw volley",
+    "timing": "200 ms between draws, 45 ms windup, independent saved charge and draw state",
+    "angles": [
+      -50,
+      -30,
+      -10,
+      10,
+      30,
+      50,
+      30,
+      10,
+      -10,
+      -30
+    ],
+    "fireArrow": "22x72, lower pivot, arrow_8 child, 200 ms frames, 3000 px/s straight; first actual enemy hit; current owner damage; one-point five-second stacked burn",
+    "HuangZhongCounts": [
+      1,
+      1,
+      2,
+      2,
+      3
+    ],
+    "cancellation": "Split and unequip clear charge and pending volley; already fired arrows retain identity",
+    "restore": "Validates charge, volley and fire state; old unfinished rounds remain loadable"
+  },
+  "validation": {
+    "tests": {
+      "pass": 102,
+      "fail": 0,
+      "log": "ZYA44-crossbow-verified.log"
+    },
+    "typecheck": "Source and v65/v66 mirror pass",
+    "failureEvidence": {
+      "before": "ZYA44-crossbow-before.log: 100 tests, 92 pass, 8 expected missing-controller failures",
+      "commandError": "ZYA44-test-command-error.log retained; wrong test cwd corrected, no code failure",
+      "intermediate": "ZYA44-crossbow-after.log: 100 pass"
+    },
+    "browser": {
+      "candidates": [
+        "zya-web-v65",
+        "zya-web-v66"
+      ],
+      "matchingProductionInputHashes": 421,
+      "naturalCombat": "No seeded charge: 11 real attacks arm volley at 8.366666666666648 seconds; two draws in both captures",
+      "drawAndBurnPhase": 0.2333333333333333,
+      "sparseActualFlightPhase": 0.3333333333333333,
+      "restorePngPairs": [
+        {
+          "base": "crossbow-draw-base-v65",
+          "restored": "crossbow-draw-restored-v66",
+          "fullFrame": "320x704",
+          "byteIdentical": true,
+          "sha256": "64227872ae0284b177f89b105f0745aa0d4d6afaecb434d6732741dbb09cf3b5"
+        },
+        {
+          "base": "crossbow-flight-base-v66",
+          "restored": "crossbow-flight-restored-v66",
+          "fullFrame": "320x704",
+          "byteIdentical": true,
+          "sha256": "f05fd5a3a89777c64451db065961e3e6e8bddc747157fb8025ecdae0b3a9d13d"
+        }
+      ],
+      "pendingAssets": 0,
+      "assetEntries": 77,
+      "estimatedBytes": 134222496,
+      "consoleWarningsErrors": []
+    }
+  },
+  "framework": "Unchanged read-only plugin, budgets unchanged",
+  "accountLogin": "not used",
+  "pending": [
+    "Strict publisher screenshot parity",
+    "Native three fire particles and arrow trail",
+    "Remaining special weapon families and full original product coverage",
+    "Physical WeChat device acceptance"
+  ],
+  "delivery": "User requested rapid wrap: completion over perfection; no further feature work in this pass"
+}

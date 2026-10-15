@@ -1,0 +1,214 @@
+✖ crossbow counts ten ordinary attacks, then replaces the eleventh with a saved two-second volley (2.244708ms)
+✖ crossbow emits ten timed draws, with native return-sweep angles and 45ms release windups (0.541041ms)
+✖ crossbow flame volleys retain Huang Zhong level-based arrow counts (0.232417ms)
+✔ fire-arrow frame and collider preserve native 22x72 geometry with the lower pivot (0.155458ms)
+✖ crossbow fire arrow travels straight after its selected target dies, hits one enemy and applies five-second burn (0.332625ms)
+✖ crossbow partial volley, pending flame arrow and future combat restore deterministically without repeating draws (1.264625ms)
+✖ split or unequipped crossbow cancels pending draws and resets charge without transferring it to another formation (0.247ms)
+✖ mixed phoenix and crossbow burns keep independent damage and expiry under a shared burn clock (0.150917ms)
+✖ invalid crossbow charge, volley and flame arrow are sanitized while valid legacy rounds still load (0.19275ms)
+✔ eagle roll replaces the drawn arrow, preserves native size and uses ten percent at attack selection (0.517875ms)
+✔ bird pose uses the pre-release animation clock, native collision body and distance-scaled phoenix damage (0.146625ms)
+✔ eagle flies without a living chosen target, pierces once per enemy, slows on contact and recovers speed (0.37075ms)
+✔ phoenix always replaces ordinary arrows, uses fixed ten-point stacked burns and no generic splash (0.148958ms)
+✔ phoenix reads current general power separately for targets after a same-frame promotion (0.217292ms)
+✔ phoenix from a split formation retains its old damage owner and never borrows a replacement general (0.171084ms)
+✔ stacked phoenix burns tick together, pause deterministically and settle fatal damage before movement (0.807333ms)
+✔ bird flight, burn clock and push restore exactly, with malformed new fields rejected independently (1.366375ms)
+✔ burn animation grows and fades on the saved battle clock (0.071083ms)
+✔ bird lifetime uses the current saved stage height and restores legacy bounds safely (0.254208ms)
+✔ two-second phoenix burn applies two ticks and expires without phantom damage during its visual fade (0.5665ms)
+✔ iron pike applies one immediate twofold ground hit and a half-second hold, only on its first contact (0.277959ms)
+✔ tiger pike chooses three distinct enemies, or five for Ma Chao, each at threefold damage (0.222625ms)
+✔ first-contact pike history retains a living target beyond 128 expired contacts (0.130916ms)
+✔ Long Dan proc occurs once per released thrust, with Zhao Yun five percent and other generals ten percent (0.388833ms)
+✔ flying pikes cover the entire living side, preserve enumeration fades and deal fivefold snapshotted power (0.579167ms)
+✔ delayed flying pikes stay still before launch, restore in flight, and never damage another enemy (0.52ms)
+✔ ground pike lift and flying-pike fades retain the native phase landmarks (0.145333ms)
+✔ a ground proc reads the current general power after promotion without borrowing a reformed identity (0.342375ms)
+✔ a kill during a multi-target ground proc promotes the general before the next target is hit (0.106375ms)
+✔ malformed new pike payloads are discarded while legacy projectiles and the round survive (0.212917ms)
+✔ a speed spell on either half affects the general once and records both inherited parts (0.312334ms)
+✔ feeding stores permanent bonuses on the destination part without retroactively buffing the current general (0.193666ms)
+✔ a range spell targets one ranged general, refuses a duplicate, and retains part inheritance on reformation (0.2095ms)
+✔ targeted permanent spells reject farmers, loose characters, melee range targets and existing weapon range buffs (0.116042ms)
+✔ basic merges inherit additive speed, retain one range grant and remove consumed bonus records (0.062709ms)
+✔ legacy general bonus migration preserves applied speed, range, identity and in-flight counters (0.204709ms)
+✔ a later range spell appends to fed part records and cannot be used during the ranged cast (0.40375ms)
+✔ permanent speed changes retain elapsed cooldown work, and temporary formation buffs do not survive splitting (0.144084ms)
+✔ native formations inherit maximum part experience, with separate major/minor thresholds (0.160208ms)
+✔ one named general per side retains the existing formation when an earlier duplicate appears (0.100083ms)
+✔ standalone equal characters swap; a matching character feeds either half regardless of source level (0.102958ms)
+✔ feeding preserves the target cast and counters, splits the source general, and never eats a max-level target (0.179041ms)
+✔ hero kills award one experience and divide .5 among other contributors, with one settlement (0.128916ms)
+✔ basic kills share .2; destroyed generals remain in the assist divisor; ownerless deaths grant no experience (0.07475ms)
+✔ released projectiles retain a destroyed formation identity after splitting, reforming and restoring (0.155ms)
+✔ promotion uses the general experience table, respects character caps, and training uses native odds (0.167584ms)
+✔ growth preserves cooldown work, serializes fractional assists and restores legacy levels/casts without resetting (0.255459ms)
+✔ Ma Chao passive lethal damage awards experience once; basic melee distributes existing assists (0.204125ms)
+✔ legacy in-flight skills acquire the preserved general identity and malformed growth IDs cannot overflow it (0.416459ms)
+✔ mine and meteor deaths collect food and kills once, retain assists, and never leak after dying (0.243708ms)
+✔ reflected boss deaths settle once before movement, while genuine leaks grant no kill rewards or experience (0.279125ms)
+✔ native skills have separate pre/post counts, independent cast speed, and no invented Huang Gai ability (1.311709ms)
+✔ both shouts grow three native rings, stun once, and resume without direct damage or global knockback (0.187041ms)
+✔ Ma Chao, Guan Xing and Zhang Bao trigger per-hit passives with distinct boss rules (0.220583ms)
+✔ Huang Zhong plateaus at levels 3/5 and shoots 1/1/2/2/3 straight piercing arrows (0.382667ms)
+✔ Guan Ping sweeps a whole circle, while Liu Bei/Zhang Yi target and Huang Gai stop on the first overlap (0.37325ms)
+✔ Guan Yu builds additive speed only on a repeated target and resets on retarget (0.851375ms)
+✔ arrow rain releases five groups of ten; fire rain covers the road without instant global damage (0.34825ms)
+✔ holy blade deals fivefold piercing damage and knockdown without awarding food (0.067ms)
+✔ jump slash has one/five landings, distance-faded splash, a return flight and identical restored state (5.228583ms)
+✔ Zhao Yun phantom follows the road for seven return passes and is cancelled when his name is split (1.173083ms)
+✔ malformed skill and skill-projectile data is discarded while legacy saves keep the round (0.216208ms)
+✔ native range tests enemy boxes; rotated hit areas distinguish overlap from edge contact (0.06775ms)
+✔ knife hits the chosen target at cut completion without a projectile or intercepting a neighbour (0.193708ms)
+✔ Zhao Yun has five distinct piercing hits; each thrust hits a target once and ignores off-line or other-side enemies (0.69125ms)
+✔ Zhang Fei sweeps every direction once, while a sword sweep excludes targets behind it (0.419584ms)
+✔ five fast thrusts survive sub-frame durations and weapon/word sampling follows the saved simulation clock (0.42325ms)
+✔ idle word phase survives reconstruction and new units start their own idle clock (0.180291ms)
+✔ bow and Ma Chao wait for release, preserve native projectile dimensions, and save curved flight progress (0.238166ms)
+✔ splitting a hero cancels queued strikes; corrupt new flight data is discarded without losing the round (0.253625ms)
+✔ native weapons retain separate handle pivots, short-blade reach and pike offsets (0.0565ms)
+✔ weapon landmarks preserve five thrusts, full Zhang Fei sweep and Ma Chao hidden interval (0.23175ms)
+✔ Ma Chao finishes his throw and rearm before attacking again, including save and pause (0.872416ms)
+✔ initial geometry, roads and unlock cells are valid on all four maps (0.179083ms)
+✔ recruitment is atomic when short of food, camp full or paused (0.126458ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (0.079209ms)
+✔ invalid enemy-side/road drops preserve both source and food (1.536208ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (0.070583ms)
+✔ equal units merge, different units swap, level five never silently destroys units (0.056375ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (0.058958ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (0.052458ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (0.110667ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (0.10875ms)
+✔ settlement is idempotent including double reward and reload (0.231917ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (0.062833ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.028584ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (0.199584ms)
+✔ native attack interval is seconds; bow releases after its wind-up and survives pause/restore (0.351ms)
+✔ basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area (0.11875ms)
+✔ hero damage and speed use their distinct native growth tables; speed bonuses add (0.052417ms)
+✔ farmer harvest waits for the native 20/10/5/3/2 thresholds and merging retains work (1.731708ms)
+✔ original unit frame canvases retain trim offsets and complete one attack before returning to idle (1.802625ms)
+✔ paired hero clips keep left/right glyphs and native bottom-pivot motion through pauses (1.784833ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (0.089709ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (5.330458ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (0.097542ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (556.036083ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (7.707333ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (12.91325ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (28.800584ms)
+ℹ tests 100
+ℹ suites 0
+ℹ pass 92
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1032.113209
+
+✖ failing tests:
+
+test at test/game.test.cjs:42:1
+✖ crossbow counts ten ordinary attacks, then replaces the eleventh with a saved two-second volley (2.244708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 1
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:43:98)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:46:1
+✖ crossbow emits ten timed draws, with native return-sweep angles and 45ms release windups (0.541041ms)
+  TypeError: Cannot read properties of undefined (reading 'aim')
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:47:79)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at test/game.test.cjs:51:1
+✖ crossbow flame volleys retain Huang Zhong level-based arrow counts (0.232417ms)
+  TypeError: f.b.advanceCrossbows is not a function
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:52:121)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test/game.test.cjs:57:1
+✖ crossbow fire arrow travels straight after its selected target dies, hits one enemy and applies five-second burn (0.332625ms)
+  TypeError: f.b.advanceCrossbows is not a function
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:58:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test/game.test.cjs:61:1
+✖ crossbow partial volley, pending flame arrow and future combat restore deterministically without repeating draws (1.264625ms)
+  TypeError: Cannot read properties of undefined (reading 'count')
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:62:120)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test/game.test.cjs:65:1
+✖ split or unequipped crossbow cancels pending draws and resets charge without transferring it to another formation (0.247ms)
+  TypeError: f.b.advanceCrossbows is not a function
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:66:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test/game.test.cjs:68:1
+✖ mixed phoenix and crossbow burns keep independent damage and expiry under a shared burn clock (0.150917ms)
+  AssertionError [ERR_ASSERTION]: 2 != 5
+      at closeTo (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:38:41)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:69:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:71:1
+✖ invalid crossbow charge, volley and flame arrow are sanitized while valid legacy rounds still load (0.19275ms)
+  TypeError: f.b.advanceCrossbows is not a function
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:72:62)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

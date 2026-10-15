@@ -5,14 +5,15 @@ import { InkRig } from './InkRig';
 import { BOSSES } from './ReferenceCombat';
 import { BASIC_UNITS, isBasicKind, UnitFramePlayer } from './ReferenceUnits';
 import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
-import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
+import { attackPose, KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
 import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
 import { characterLevelCap, heroExperienceTable } from './ReferenceProgression';
-import { arrowBurnPose, birdArrowFrame, birdArrowPose, birdArrowSpec, flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
+import { arrowBurnPose, birdArrowFrame, birdArrowPose, birdArrowSpec, crossbowFireFrame, flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
 const skin = (group: string, name: string) => 'resources/img/' + group + '/' + name + '.png';
+const crossbowFireSkin=(frame:number)=>'resources/img/weapon/bullet/fireArrowEff_0'+frame+'.jpg';
 interface ActorView { node: Node; glyph: Node; level: Node; unit: Unit; last: string; motion?:Node;frame?:UnitFramePlayer;frameParent?:Node;frameX?:number;frameY?:number;pikeFrom?:number;turn?:{mode:string;from:number;to:number;elapsed:number}; }
 interface WeaponView {parent:Node;root:Node;body:Node;trail?:Node;nocked?:Node;id:number;spec:WeaponGeometry;motion:WeaponMotion;}
 interface HeroView {node:Node;rigs?:InkRig[];unit:Unit;hero:Hero;side:Side;left:number;level:number;ready:boolean;motion:HeroMotion;skin?:string;weapon?:WeaponView;}
@@ -384,6 +385,10 @@ export class GameApp {
         current.clear();
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
+            if(!n&&shot.crossbowFire){
+                n=this.ui.image(this.combatLayer,crossbowFireSkin(crossbowFireFrame(b.time,shot.crossbowFire.born)),0,0,22,72);n.getComponent(UITransform)!.setAnchorPoint(.5,.1);
+                this.ui.image(n,skin('weapon','arrow_8'),-11,-64.8,22,72);this.projectiles.set(shot.id,n);
+            }
             if(!n&&shot.bird){
                 const spec=birdArrowSpec(shot.bird.kind),frame=birdArrowPose(b.time,shot.bird,shot).frame;
                 n=this.ui.image(this.combatLayer,skin('weapon/bullet',(shot.bird.kind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+frame),0,0,spec.width,spec.height);n.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);
@@ -404,6 +409,7 @@ export class GameApp {
             if(shot.flyingPike){const pose=flyingPikePose(b.time,shot.flyingPike),ring=n.getChildByName('flying-pike-ring')!;
                 n.setScale(1,pose.scaleY);n.getComponent(UIOpacity)!.opacity=255*pose.alpha;ring.getComponent(UIOpacity)!.opacity=255*pose.ringAlpha;this.ui.skin(ring,skin('effect','quan0'+pose.ringFrame));}
             if(shot.bird){const pose=birdArrowPose(b.time,shot.bird,shot);n.setScale(pose.scale,pose.scale);this.ui.skin(n,skin('weapon/bullet',(shot.bird.kind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+pose.frame));const flash=n.getChildByName('eagle-hit');if(flash)flash.active=pose.flash;}
+            if(shot.crossbowFire)this.ui.skin(n,crossbowFireSkin(crossbowFireFrame(b.time,shot.crossbowFire.born)));
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
         current.clear();
@@ -516,10 +522,18 @@ export class GameApp {
         weapon.body.setScale(pose.scaleX,pose.scaleY);
         if(weapon.trail)weapon.trail.active=pose.trail;
         if(weapon.nocked){
+            const overlay=weapon.nocked.getChildByName('crossbow-nocked-arrow');if(overlay)overlay.active=false;
             weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));
             const bird=this.battle!.weaponStrikes.find(strike=>strike.unit===view.unit.id&&strike.birdKind&&strike.birdAnimationAt===view.unit.weaponAt);
             if(bird){const spec=birdArrowSpec(bird.birdKind!);weapon.nocked.getComponent(UITransform)!.setContentSize(spec.width,spec.height);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);this.ui.skin(weapon.nocked,skin('weapon/bullet',(bird.birdKind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+birdArrowFrame(bird.birdKind!,this.battle!.time-bird.birdAnimationAt!)));}
             else{weapon.nocked.getComponent(UITransform)!.setContentSize(22,72);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(.5,.1);this.ui.skin(weapon.nocked,skin('weapon',weapon.id<0?'default_arrow_1':'arrow_'+weapon.id));}
+        }
+        const volley=view.unit.crossbowVolley;
+        if(weapon.id===9&&volley?.drawAt!==undefined&&weapon.nocked){
+            const time=Math.max(0,(this.battle!.time-volley.drawAt)*10),pose=attackPose(spec,view.hero.name,time,volley.fromAngle,volley.drawAngle!,0,stats.range,view.unit.attacks);
+            weapon.root.angle=-pose.angle;weapon.body.setScale(pose.scaleX,pose.scaleY);weapon.motion.aim=volley.drawAngle!;
+            weapon.nocked.active=time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,time/.45));this.ui.skin(weapon.nocked,crossbowFireSkin(crossbowFireFrame(this.battle!.time,volley.drawAt)));
+            let overlay=weapon.nocked.getChildByName('crossbow-nocked-arrow');if(!overlay)overlay=this.ui.image(weapon.nocked,skin('weapon','arrow_8'),-11,-64.8,22,72,undefined,'crossbow-nocked-arrow');overlay.active=true;
         }
         const skill=this.battle!.heroSkills.find(skill=>skill.unit===view.unit.id&&HERO_SKILLS[skill.hero].interrupt);
         if(skill)this.animateHeroSkill(view,skill);
