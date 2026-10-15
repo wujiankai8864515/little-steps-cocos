@@ -1,0 +1,178 @@
+{
+  "id": "ZYA-45",
+  "date": "2026-10-15",
+  "kind": "fresh local native-subpackage candidate, not formal release or device acceptance",
+  "candidate": "zya-wechat-v17",
+  "appid": "wx4d41972686e54c11",
+  "sourceGameCommit": "855d0630a7714f6e1b3fa021b31c9abf5716df82",
+  "sourceParentCommit": "69c0cf2e472dad9350ea08238ecbc51296d8358c",
+  "sourceMode": "local-working-copy",
+  "sourceIncludesUncommittedEditorMetadata": true,
+  "sourceHashesChecked": 415,
+  "fixedOutputHashesChecked": 480,
+  "hashMismatches": [],
+  "build": "pass",
+  "audit": {
+    "mainBytes": 3390377,
+    "totalBytes": 16609093,
+    "initialBytes": 11791568,
+    "sizes": {
+      "main": 3390377,
+      "zya_meta": 2337439,
+      "zya_effects": 1896435,
+      "zya_battle": 2221906,
+      "zya_maps": 699184,
+      "zya_home": 1094605,
+      "zya_audio": 3270647,
+      "zya_actors": 1698500
+    },
+    "subpackages": [
+      {
+        "name": "zya_actors",
+        "root": "subpackages/zya_actors/"
+      },
+      {
+        "name": "zya_audio",
+        "root": "subpackages/zya_audio/"
+      },
+      {
+        "name": "zya_battle",
+        "root": "subpackages/zya_battle/"
+      },
+      {
+        "name": "zya_effects",
+        "root": "subpackages/zya_effects/"
+      },
+      {
+        "name": "zya_home",
+        "root": "subpackages/zya_home/"
+      },
+      {
+        "name": "zya_maps",
+        "root": "subpackages/zya_maps/"
+      },
+      {
+        "name": "zya_meta",
+        "root": "subpackages/zya_meta/"
+      }
+    ],
+    "files": 480
+  },
+  "projectConfigs": {
+    "builds/wechatgame/zhaoyunyuadou/project.config.json": {
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "compileType": "game",
+      "miniprogramRoot": "project/",
+      "setting": {
+        "urlCheck": true,
+        "es6": true
+      },
+      "condition": {}
+    },
+    "builds/wechatgame/zhaoyunyuadou/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    },
+    "migration/work/zya-wechat-v17/output/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    }
+  },
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444",
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js",
+    "pluginFlags": {
+      "isPlugin": true,
+      "loadPluginInEditor": false,
+      "loadPluginInWeb": true,
+      "loadPluginInNative": false,
+      "loadPluginInMiniGame": true,
+      "executionScope": "global"
+    }
+  },
+  "UUIDs": {
+    "project": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+    "Boot": "be9d2cea-79b2-4bea-9298-438460f08591",
+    "scene": "be5c944f-c8e2-49aa-9330-2704b04f05c9"
+  },
+  "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+  "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+  "remoteResourceDependencies": false,
+  "includedChange": "ZYA-44 original crossbow charge, volley, straight fire arrows, stacked burn and saved round restoration",
+  "rulesTests": {
+    "passed": 102,
+    "failed": 0,
+    "log": "ZYA44-crossbow-verified.log"
+  },
+  "typecheck": "pass",
+  "browser": "Two full draw/burn and actual-flight PNG pairs byte-identical after round restore; no warnings/errors",
+  "accountLogin": "not used",
+  "wechatDevice": "pending",
+  "strictPublisherPixels": "pending",
+  "formalRelease": "not requested",
+  "qaFixtureInProduction": false
+}
