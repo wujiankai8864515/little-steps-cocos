@@ -1,0 +1,163 @@
+{
+  "id": "ZYA-37",
+  "date": "2026-10-15",
+  "kind": "fresh local native-subpackage candidate, not formal release or device acceptance",
+  "candidate": "zya-wechat-v13",
+  "appid": "wx4d41972686e54c11",
+  "sourceGameCommit": "7090e57bf688816da74b13da4c3875184a5331f4",
+  "sourceParentCommit": "9d2cb818b6520a5bfff6ece08bb5443c0b046c94",
+  "sourceMode": "local-working-copy",
+  "sourceIncludesUncommittedEditorMetadata": true,
+  "sourceHashesChecked": 413,
+  "fixedOutputHashesChecked": 480,
+  "hashMismatches": [],
+  "build": "pass",
+  "audit": {
+    "mainBytes": 3371730,
+    "totalBytes": 16590446,
+    "initialBytes": 11772921,
+    "sizes": {
+      "main": 3371730,
+      "zya_meta": 2337439,
+      "zya_effects": 1896435,
+      "zya_battle": 2221906,
+      "zya_maps": 699184,
+      "zya_home": 1094605,
+      "zya_audio": 3270647,
+      "zya_actors": 1698500
+    },
+    "subpackages": [
+      {
+        "name": "zya_actors",
+        "root": "subpackages/zya_actors/"
+      },
+      {
+        "name": "zya_audio",
+        "root": "subpackages/zya_audio/"
+      },
+      {
+        "name": "zya_battle",
+        "root": "subpackages/zya_battle/"
+      },
+      {
+        "name": "zya_effects",
+        "root": "subpackages/zya_effects/"
+      },
+      {
+        "name": "zya_home",
+        "root": "subpackages/zya_home/"
+      },
+      {
+        "name": "zya_maps",
+        "root": "subpackages/zya_maps/"
+      },
+      {
+        "name": "zya_meta",
+        "root": "subpackages/zya_meta/"
+      }
+    ],
+    "files": 480
+  },
+  "projectConfigs": {
+    "builds/wechatgame/zhaoyunyuadou/project.config.json": {
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "compileType": "game",
+      "miniprogramRoot": "project/",
+      "setting": {
+        "urlCheck": true,
+        "es6": true
+      },
+      "condition": {}
+    },
+    "builds/wechatgame/zhaoyunyuadou/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    },
+    "migration/work/zya-wechat-v13/output/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    }
+  },
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444"
+  },
+  "UUIDs": {
+    "project": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+    "Boot": "be9d2cea-79b2-4bea-9298-438460f08591",
+    "scene": "be5c944f-c8e2-49aa-9330-2704b04f05c9"
+  },
+  "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+  "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+  "includedChange": "ZYA-36 targeted permanent buffs and inherited part records",
+  "rulesTests": 70,
+  "typecheck": "pass",
+  "browser": "v56 actual item drags and normal saved-round continue passed",
+  "accountLogin": "not used",
+  "wechatDevice": "pending",
+  "strictPublisherPixels": "pending",
+  "formalRelease": "not requested"
+}
