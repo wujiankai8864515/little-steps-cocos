@@ -1,0 +1,158 @@
+{
+  "id": "ZYA-26",
+  "date": "2026-10-15",
+  "scope": "Shop composition against the public360x640 WeChat screenshot; not full product/device acceptance",
+  "reference": {
+    "path": "reference/screen-03.png",
+    "sourceURL": "https://pics.pejdw.com/img/12155803ztvpavtgnhbho.png",
+    "sha256": "f97062fe958a837e7d4b39801ef2381091c18fdf616c6f3a089104e3805a6fcc",
+    "size": [
+      360,
+      640
+    ]
+  },
+  "baseline": {
+    "path": "shop-baseline-v40.png",
+    "wholeImageMAE": 36.20723379629629,
+    "rowTopPixels": [
+      187,
+      277,
+      367
+    ],
+    "rowRightBorderPixels": [
+      324,
+      326
+    ],
+    "originalRowTopPixels": [
+      188,
+      279,
+      370
+    ],
+    "originalRightBorderPixels": [
+      328,
+      330
+    ]
+  },
+  "change": {
+    "shortScaleCorrection": "81/80",
+    "shortCentreX": 324,
+    "shortTopOffsetLogical": -2.6666666666666665,
+    "footer": "Absent from short reference, preserved on long screens",
+    "sourceAssets": "unchanged original lossless pixels"
+  },
+  "diagnostics": {
+    "inference": "Reference screenshot appears to contain DisplayP3-encoded RGB values with profile metadata removed; not proven device provenance. Production color is unchanged.",
+    "sourceGoldRGB": [
+      255,
+      185,
+      0
+    ],
+    "referenceGoldRGB": [
+      244,
+      186,
+      65
+    ],
+    "srgbToP3Control": [
+      244,
+      188,
+      65
+    ],
+    "conversionReference": "https://www.w3.org/TR/css-color-4/#color-conversion-code",
+    "osICCProfiles": [
+      "/System/Library/ColorSync/Profiles/sRGB Profile.icc",
+      "/System/Library/ColorSync/Profiles/Display P3.icc"
+    ],
+    "p3AnalysisWholeMAE": 34.90081163194444,
+    "affineAnalysisWholeMAE": 16.189470486111112,
+    "affineP3AnalysisWholeMAE": 14.4541796875,
+    "warning": "Analysis transforms are not actual Cocos renders or acceptance. Raw reference/actual/diff comparisons remain authoritative.",
+    "browserScreenshot": {
+      "path": "shop-browser-v41.jpg",
+      "encoding": "JPEG returned by browser screenshot API; saved with correct extension",
+      "wholeImageMAE": 13.34502170138889,
+      "sourceGoldPixelRange": "approximately244/188/65, consistent with screenshot color conversion plus JPEG compression",
+      "notUsedAsCanvasAcceptance": true
+    },
+    "browserOuterWidget": "Existing browser-injected ccpfont toolbar observed in DOM, absent from built index and raw game canvas; not changed."
+  },
+  "validation": {
+    "web": "v41 pass",
+    "rawWholeImageMAE": 16.089632523148147,
+    "input": {
+      "shortViewport": [
+        360,
+        640
+      ],
+      "fullSlots": "toast, no charge,8 items retained",
+      "cancelDelete": "pill retained, gold8623",
+      "confirmDelete": "pill removed, gold8623",
+      "purchaseFarmer": "gold8533, farmer added,8 items, all offers sold",
+      "repeatSoldClick": "gold8533 unchanged",
+      "longViewport": [
+        320,
+        704
+      ],
+      "longFooter": "visible",
+      "lottery": "tab and draw clicked; full-slot replacement opened",
+      "replace": "god replaced trash,8 items,gold8623,daily.lottery=true,sold token set"
+    },
+    "typecheck": "pass",
+    "strict1to1": "unproven",
+    "device": "pending",
+    "actualRowTopPixels": [
+      188,
+      279,
+      370
+    ],
+    "actualRowBottomSpans": [
+      [
+        268,
+        270
+      ],
+      [
+        359,
+        361
+      ],
+      [
+        451,
+        452
+      ]
+    ],
+    "resourcePeak": {
+      "entries": 83,
+      "reservedEstimateBytes": 127743096,
+      "pending": 0,
+      "scope": "browser admission estimate, not device memory"
+    }
+  },
+  "evidence": [
+    "compare-shop-v41.json",
+    "compare-shop-v41.png",
+    "lottery-long-v41.json",
+    "lottery-long-v41.png",
+    "lottery-replace-dialog-v41.json",
+    "lottery-replace-dialog-v41.png",
+    "lottery-replaced-v41.json",
+    "lottery-replaced-v41.png",
+    "shop-browser-v41.jpg",
+    "shop-delete-dialog-v41.jpg",
+    "shop-full-slots-v41.json",
+    "shop-full-slots-v41.png",
+    "shop-layout-v41.json",
+    "shop-layout-v41.png",
+    "shop-long-v41.json",
+    "shop-long-v41.png",
+    "shop-purchased-browser-v41.jpg",
+    "shop-purchased-v41.json",
+    "shop-purchased-v41.png",
+    "zya-web-v41.json",
+    "zya-web-v41.log",
+    "shop-baseline-v40.png",
+    "shop-baseline-v40.json",
+    "compare-shop-v41.png",
+    "compare-shop-v41.json",
+    "shop-affine-analysis-v40.png",
+    "shop-affine-p3-analysis-v40.png",
+    "shop-p3-analysis-v16.png"
+  ]
+}

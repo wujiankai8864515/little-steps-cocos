@@ -597,9 +597,13 @@ export class GameApp {
     private async shop(tab='shop') {
         if(!await this.prepare('shop',['meta','battle','effects']))return;this.storePage=tab;
         const {ui,element}=this.newOverlay('ShopScene');const box=ui.find('box',element!)!;
-        // Public WeChat short-screen shots retain the merchant's full-width
-        // panel. Its 1200px visible content fits above the cropped footer.
-        const scale=this.height<1386?Math.min(1,this.height/1200):this.height/1386;box.node.setScale(scale,scale);box.node.setPosition(320,-693*scale);
+        // Public 360x640 capture: row tops188/279/370, right edge330.
+        // The short-screen merchant uses a slightly enlarged, left-held
+        // composition; centring the smaller panel compressed every row.
+        const short=this.height<1386,correction=short?81/80:1;
+        const scale=(short?Math.min(1,this.height/1200):this.height/1386)*correction;
+        box.node.setScale(scale,scale);box.node.setPosition(320*correction,-693*scale+(short?8/3:0));
+        const footer=box.children.find(child=>child.definition.text==='tip:道具仅当天有效');if(footer)footer.node.active=!short;
         const background=ui.find('bg',element!)!.body.getChildByName('rect')?.getComponent(Graphics);if(background){background.clear();background.fillColor=new Color(0,0,0,204);background.rect(0,-this.height,640,this.height);background.fill();}
         const token=this.marketToken();if(this.offersToken&&this.offersToken!==token)this.offers=[];this.offersToken=token;this.offers=this.offers.length?this.offers:this.dailyOffers();const sold=this.profile.marketSold===token;
         ui.setText('goldTxt',this.profile.gold.toString(),element!);ui.setText('staminaTxt',this.profile.stamina.toString(),element!);
