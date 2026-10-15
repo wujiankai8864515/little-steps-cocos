@@ -17,6 +17,8 @@ export function trainingDelta(level:number,roll:number){return level<3||roll<=(l
 export interface HeroProgress {
     id:number;side:0|1;left:number;leftUnit:number;rightUnit:number;name:string;
     level:number;experience:number;
+    /** Applied to this formation; part records may change independently when fed. */
+    speedBonus?:number;rangeBonus?:number;
 }
 export function validHeroProgress(value:HeroProgress,names:readonly string[]){
     return value&&Number.isSafeInteger(value.id)&&value.id>0&&value.id<Number.MAX_SAFE_INTEGER&&[0,1].includes(value.side)&&Number.isInteger(value.left)&&value.left>=0&&value.left<79&&value.left%8<7&&

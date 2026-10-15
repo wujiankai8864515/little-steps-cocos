@@ -1,0 +1,97 @@
+✔ a speed spell on either half affects the general once and records both inherited parts (1.831334ms)
+✔ feeding stores permanent bonuses on the destination part without retroactively buffing the current general (0.490291ms)
+✔ a range spell targets one ranged general, refuses a duplicate, and retains part inheritance on reformation (0.317833ms)
+✔ targeted permanent spells reject farmers, loose characters, melee range targets and existing weapon range buffs (0.16625ms)
+✖ basic merges inherit additive speed, retain one range grant and remove consumed bonus records (0.30725ms)
+✔ legacy general bonus migration preserves applied speed, range, identity and in-flight counters (0.3355ms)
+✔ native formations inherit maximum part experience, with separate major/minor thresholds (0.207625ms)
+✔ one named general per side retains the existing formation when an earlier duplicate appears (0.133916ms)
+✔ standalone equal characters swap; a matching character feeds either half regardless of source level (0.15375ms)
+✔ feeding preserves the target cast and counters, splits the source general, and never eats a max-level target (0.459125ms)
+✔ hero kills award one experience and divide .5 among other contributors, with one settlement (0.242708ms)
+✔ basic kills share .2; destroyed generals remain in the assist divisor; ownerless deaths grant no experience (0.093042ms)
+✔ released projectiles retain a destroyed formation identity after splitting, reforming and restoring (0.380708ms)
+✔ promotion uses the general experience table, respects character caps, and training uses native odds (0.158167ms)
+✔ growth preserves cooldown work, serializes fractional assists and restores legacy levels/casts without resetting (0.2995ms)
+✔ Ma Chao passive lethal damage awards experience once; basic melee distributes existing assists (0.214833ms)
+✔ legacy in-flight skills acquire the preserved general identity and malformed growth IDs cannot overflow it (0.683083ms)
+✔ mine and meteor deaths collect food and kills once, retain assists, and never leak after dying (0.748083ms)
+✔ reflected boss deaths settle once before movement, while genuine leaks grant no kill rewards or experience (0.332083ms)
+✔ native skills have separate pre/post counts, independent cast speed, and no invented Huang Gai ability (1.67375ms)
+✔ both shouts grow three native rings, stun once, and resume without direct damage or global knockback (0.195791ms)
+✔ Ma Chao, Guan Xing and Zhang Bao trigger per-hit passives with distinct boss rules (0.235583ms)
+✔ Huang Zhong plateaus at levels 3/5 and shoots 1/1/2/2/3 straight piercing arrows (0.835458ms)
+✔ Guan Ping sweeps a whole circle, while Liu Bei/Zhang Yi target and Huang Gai stop on the first overlap (0.395584ms)
+✔ Guan Yu builds additive speed only on a repeated target and resets on retarget (0.820041ms)
+✔ arrow rain releases five groups of ten; fire rain covers the road without instant global damage (0.406208ms)
+✔ holy blade deals fivefold piercing damage and knockdown without awarding food (0.083458ms)
+✔ jump slash has one/five landings, distance-faded splash, a return flight and identical restored state (4.912708ms)
+✔ Zhao Yun phantom follows the road for seven return passes and is cancelled when his name is split (1.08925ms)
+✔ malformed skill and skill-projectile data is discarded while legacy saves keep the round (0.22625ms)
+✔ native range tests enemy boxes; rotated hit areas distinguish overlap from edge contact (0.080541ms)
+✔ knife hits the chosen target at cut completion without a projectile or intercepting a neighbour (0.24175ms)
+✔ Zhao Yun has five distinct piercing hits; each thrust hits a target once and ignores off-line or other-side enemies (0.694125ms)
+✔ Zhang Fei sweeps every direction once, while a sword sweep excludes targets behind it (0.441959ms)
+✔ five fast thrusts survive sub-frame durations and weapon/word sampling follows the saved simulation clock (0.423709ms)
+✔ idle word phase survives reconstruction and new units start their own idle clock (0.175625ms)
+✔ bow and Ma Chao wait for release, preserve native projectile dimensions, and save curved flight progress (0.26875ms)
+✔ splitting a hero cancels queued strikes; corrupt new flight data is discarded without losing the round (0.245916ms)
+✔ native weapons retain separate handle pivots, short-blade reach and pike offsets (0.071ms)
+✔ weapon landmarks preserve five thrusts, full Zhang Fei sweep and Ma Chao hidden interval (0.256917ms)
+✔ Ma Chao finishes his throw and rearm before attacking again, including save and pause (0.906833ms)
+✔ initial geometry, roads and unlock cells are valid on all four maps (0.22ms)
+✔ recruitment is atomic when short of food, camp full or paused (0.129625ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (0.097291ms)
+✔ invalid enemy-side/road drops preserve both source and food (0.078958ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (0.046959ms)
+✔ equal units merge, different units swap, level five never silently destroys units (0.055625ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (0.059ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (0.058667ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (0.114292ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (0.112209ms)
+✔ settlement is idempotent including double reward and reload (0.230625ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (0.069792ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.028708ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (0.209042ms)
+✔ native attack interval is seconds; bow releases after its wind-up and survives pause/restore (0.38825ms)
+✔ basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area (0.123417ms)
+✔ hero damage and speed use their distinct native growth tables; speed bonuses add (0.049208ms)
+✔ farmer harvest waits for the native 20/10/5/3/2 thresholds and merging retains work (1.958708ms)
+✔ original unit frame canvases retain trim offsets and complete one attack before returning to idle (1.824584ms)
+✔ paired hero clips keep left/right glyphs and native bottom-pivot motion through pauses (1.605084ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (0.097166ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (6.290792ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (0.170125ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (548.997917ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (7.932375ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (13.287ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (29.599875ms)
+ℹ tests 68
+ℹ suites 0
+ℹ pass 67
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1078.891542
+
+✖ failing tests:
+
+test at test/game.test.cjs:67:1
+✖ basic merges inherit additive speed, retain one range grant and remove consumed bonus records (0.30725ms)
+  AssertionError [ERR_ASSERTION]: 0.24242424242424243 != 0.27972027972027974
+      at closeTo (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:37:41)
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:71:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

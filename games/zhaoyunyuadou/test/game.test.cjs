@@ -34,6 +34,64 @@ function heroRound(name,cell=40,level=1){
 function startSkill(fixture){
     const {b,hero,unit}=fixture;return b.startHeroSkill(unit,0,40,hero,unit.level,b.stats(unit,hero,unit.level,0));
 }
+const closeTo=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
+test('a speed spell on either half affects the general once and records both inherited parts',()=>{
+    const {b,hero,unit}=heroRound('赵云');b.profile.items=['speed'];
+    assert.equal(b.active('speed',41),'');closeTo(b.stats(unit,hero).interval,.8/1.4);
+    assert.equal(b.boosts[unit.id],.4);assert.equal(b.boosts[b.armies[0].units[41].id],.4);
+    b.cooldowns.speed=0;assert.equal(b.active('speed',40),'');closeTo(b.stats(b.armies[0].units[41],hero).interval,.8/1.8);
+    const saved=b.snapshot(),restored=M.Battle.restore(saved,b.profile,weapons);assert.ok(restored);assert.equal(restored.snapshot(),saved);closeTo(restored.stats(restored.armies[0].units[41],hero).interval,.8/1.8);
+});
+test('feeding stores permanent bonuses on the destination part without retroactively buffing the current general',()=>{
+    const {b,hero,unit}=heroRound('赵云');b.profile.items=['speed'];b.active('speed',41);
+    const incoming=b.unit('字','云');b.armies[0].reserve[0]=incoming;b.boosts[incoming.id]=1.2;b.ranges[incoming.id]=2;
+    const identity=b.heroes(0)[0].id;assert.equal(b.move(location('reserve',0),location('board',40)),'');
+    assert.equal(b.heroes(0)[0].id,identity);closeTo(b.stats(unit,hero,2).interval,.8/1.3/1.4);assert.equal(b.stats(unit,hero,2).range,200);
+    closeTo(b.boosts[unit.id],1.6);assert.equal(b.ranges[unit.id],2);assert.equal(b.boosts[incoming.id],undefined);assert.equal(b.ranges[incoming.id],undefined);
+    assert.equal(b.move(location('board',41),location('reserve',0)),'');assert.equal(b.move(location('reserve',0),location('board',41)),'');
+    assert.notEqual(b.heroes(0)[0].id,identity);closeTo(b.stats(unit,hero,2).interval,.8/1.3/3);assert.equal(b.stats(unit,hero,2).range,400);
+});
+test('a range spell targets one ranged general, refuses a duplicate, and retains part inheritance on reformation',()=>{
+    const {b,hero,unit}=heroRound('黄忠');b.profile.items=['range'];const other=b.unit('弓');b.armies[0].units[42]=other;
+    assert.equal(b.active('range',41),'');assert.equal(b.stats(unit,hero).range,720);assert.equal(b.stats(other).range,280);
+    b.cooldowns.range=0;assert.notEqual(b.active('range',40),'');assert.equal(b.cooldowns.range,0);
+    const saved=b.snapshot(),restored=M.Battle.restore(saved,b.profile,weapons);assert.equal(restored.snapshot(),saved);assert.equal(restored.stats(restored.armies[0].units[41],hero).range,720);
+    b.move(location('board',41),location('reserve',0));b.move(location('reserve',0),location('board',41));assert.equal(b.stats(unit,hero).range,1080);
+});
+test('targeted permanent spells reject farmers, loose characters, melee range targets and existing weapon range buffs',()=>{
+    const b=round();b.profile.items=['speed','range'];b.armies[0].units[58]=b.unit('农');b.armies[0].reserve[0]=b.unit('字','赵');
+    assert.notEqual(b.active('speed',58),'');assert.notEqual(b.active('speed',-1,location('reserve',0)),'');assert.equal(b.cooldowns.speed,undefined);
+    const melee=heroRound('赵云');melee.b.profile.items=['range'];assert.notEqual(melee.b.active('range',41),'');assert.equal(melee.b.cooldowns.range,undefined);
+    const bow=heroRound('黄忠');bow.b.profile.items=['range'];bow.b.profile.equipped['黄忠']=1;assert.notEqual(bow.b.active('range',41),'');assert.equal(bow.b.cooldowns.range,undefined);
+});
+test('basic merges inherit additive speed, retain one range grant and remove consumed bonus records',()=>{
+    const b=round(),source=b.unit('弓'),target=b.unit('弓');b.armies[0].units[58]=source;b.armies[0].units[59]=target;
+    b.boosts[source.id]=.8;b.boosts[target.id]=.4;b.ranges[source.id]=b.ranges[target.id]=2;
+    assert.equal(b.move(location('board',58),location('board',59)),'');assert.equal(target.level,2);
+    closeTo(b.stats(target).interval,.8/1.5/2.2);assert.equal(b.stats(target).range,560);assert.equal(b.boosts[source.id],undefined);assert.equal(b.ranges[source.id],undefined);
+});
+test('legacy general bonus migration preserves applied speed, range, identity and in-flight counters',()=>{
+    const {b,hero,unit}=heroRound('黄忠');b.profile.equipped['黄忠']=1;b.boosts[unit.id]=.4;b.boosts[b.armies[0].units[41].id]=.8;b.ranges[unit.id]=2;unit.skillCount=17;
+    const raw=JSON.parse(b.snapshot()),id=raw.heroProgress[0].id;delete raw.heroProgress[0].speedBonus;delete raw.heroProgress[0].rangeBonus;
+    const restored=M.Battle.restore(JSON.stringify(raw),b.profile,weapons);assert.ok(restored);assert.equal(restored.heroes(0)[0].id,id);assert.equal(restored.armies[0].units[40].skillCount,17);
+    closeTo(restored.stats(restored.armies[0].units[40],hero).interval,.8/1.4);closeTo(restored.stats(restored.armies[0].units[41],hero).range,800);
+    raw.heroProgress[0].speedBonus=null;raw.heroProgress[0].rangeBonus=-1;const repaired=M.Battle.restore(JSON.stringify(raw),b.profile,weapons);assert.equal(repaired.heroes(0)[0].id,id);closeTo(repaired.stats(repaired.armies[0].units[40],hero).interval,.8/1.4);
+});
+test('a later range spell appends to fed part records and cannot be used during the ranged cast',()=>{
+    const {b,hero,unit,add}=heroRound('黄忠');b.profile.items=['range'];const incoming=b.unit('字','忠');b.armies[0].reserve[0]=incoming;b.ranges[incoming.id]=2;
+    b.move(location('reserve',0),location('board',41));assert.equal(b.stats(unit,hero).range,360);
+    add(901,100,340);assert.equal(b.startHeroSkill(unit,0,40,hero,2,b.stats(unit,hero,2)),true);assert.notEqual(b.active('range',40),'');assert.equal(b.cooldowns.range,undefined);b.heroSkills=[];
+    assert.equal(b.active('range',40),'');assert.equal(b.ranges[b.armies[0].units[41].id],3);
+    b.move(location('board',41),location('reserve',0));b.move(location('reserve',0),location('board',41));assert.equal(b.stats(unit,hero).range,1440);
+});
+test('permanent speed changes retain elapsed cooldown work, and temporary formation buffs do not survive splitting',()=>{
+    const {b,hero,unit}=heroRound('赵云');b.profile.items=['speed'];unit.cooldown=.6;
+    b.active('speed',41);closeTo(unit.cooldown,.6+.8/1.4-.8);
+    unit.speedBuff=.5;unit.speedUntil=100;b.move(location('board',41),location('reserve',0));assert.equal(unit.speedBuff,undefined);assert.equal(unit.speedUntil,undefined);
+    b.move(location('reserve',0),location('board',41));closeTo(b.stats(unit,hero).interval,.8/1.8);
+    const ordinary=round(),a=ordinary.unit('弓'),c=ordinary.unit('弓');ordinary.armies[0].units[58]=a;ordinary.armies[0].units[59]=c;c.cooldown=.6;ordinary.boosts[a.id]=.4;
+    ordinary.move(location('board',58),location('board',59));closeTo(c.cooldown,Math.max(0,.6+.8/1.5/1.4-.8));
+});
 test('native formations inherit maximum part experience, with separate major/minor thresholds',()=>{
     const b=heroRound('赵云').b;b.armies[0].units={40:b.unit('字','赵',2),41:b.unit('字','云',4)};
     let link=b.heroes(0)[0];assert.equal(link.level,4);assert.equal(link.experience,75);assert.equal(link.maxLevel,5);assert.equal(b.armies[0].units[40].level,4);

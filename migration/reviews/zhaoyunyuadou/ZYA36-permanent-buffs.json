@@ -1,0 +1,107 @@
+{
+  "id": "ZYA-36",
+  "date": "2026-10-15",
+  "kind": "permanent targeted-buff behavior from inert original reference; not publisher runtime acceptance",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "executed": false,
+    "anchors": {
+      "speedSpell": 3154,
+      "rangeSpell": 3100,
+      "permanentRecords": 3588,
+      "feedTransfer": 5390,
+      "formationAggregation": 3493,
+      "rangeTargetAndDuplicateRules": 5312,
+      "elapsedCooldown": 6042
+    }
+  },
+  "before": {
+    "tests": 68,
+    "pass": 62,
+    "fail": 6,
+    "log": "ZYA36-buffs-before.log",
+    "issues": [
+      "right-part speed spell did not change general attack speed",
+      "feeding and basic merges lost inherited permanent records",
+      "range spell modified both sides instead of one ranged target",
+      "temporary general speed persisted after splitting",
+      "right-part detail stats did not represent the full general"
+    ]
+  },
+  "implementation": {
+    "formation": "separate applied speed/range from persistent character records; sum records when forming",
+    "activeSpeed": "either part applies one +40% to current general; record +40% on both parts; basic soldiers are supported; farmer/loose word rejected",
+    "activeRange": "only chosen archer or bow general; duplicate/range-weapon/casting targets rejected; one current base-range addition",
+    "feeding": "append consumed part records only to selected target part; current cast and applied buffs stay intact until reformation",
+    "basicMerge": "speed stacks, existing basic range grant suppresses another immediate grant; consumed records removed",
+    "elapsedWork": "new spell or basic merge adjusts remaining cooldown by the interval difference",
+    "legacy": "old general records retain the previously applied left-part speed and actual old weapon-inclusive range; preserve identities, experience and counters",
+    "temporary": "temporary general speed is cleared when the formation splits"
+  },
+  "oracleRepair": {
+    "log": "ZYA36-buffs-after.log",
+    "pass": 67,
+    "fail": 1,
+    "cause": "new basic-merge expectation used hero growth 1.3 instead of original basic growth 1.5",
+    "fix": "corrected test expectation from ReferenceUnits; no implementation relaxation"
+  },
+  "final": {
+    "tests": 70,
+    "pass": 70,
+    "fail": 0,
+    "log": "ZYA36-buffs-final2.log",
+    "typecheck": "pass",
+    "diffCheck": "pass",
+    "browser": "pass: v56 actual drag, right-word detail, inherited feed, split/reform and normal saved-round continue",
+    "wechat": "pending latest candidate"
+  },
+  "strictPublisherPixels": "pending",
+  "device": "pending",
+  "browser": {
+    "candidate": "zya-web-v56",
+    "viewport": [
+      320,
+      704
+    ],
+    "fixture": "declared deterministic two-general fixture; incoming cloud begins with a permanent +40% record",
+    "steps": [
+      "buffs-before-v56",
+      "buffs-speed-right-v56",
+      "buffs-speed-info-v56",
+      "buffs-range-right-v56",
+      "buffs-fed-v56",
+      "buffs-reformed-v56",
+      "buffs-resume-prompt-v56",
+      "buffs-resumed-v56"
+    ],
+    "speedRight": {
+      "attackRate": 1.75,
+      "leftAndRightEqual": true
+    },
+    "rangeRight": {
+      "赵云": 200,
+      "黄忠": 720
+    },
+    "feed": {
+      "identity": 8,
+      "level": 2,
+      "experience": 10,
+      "appliedSpeedBonus": 0.4,
+      "rightPartSpeedRecord": 0.8
+    },
+    "reform": {
+      "identity": 12,
+      "appliedSpeedBonus": 1.2000000000000002,
+      "attackRate": 3.5750000000000006
+    },
+    "normalResume": "real Continue Battle button; identities, experience, part records and derived stats equal",
+    "observedAdmission": {
+      "entries": 76,
+      "reservedBytes": 123662176,
+      "pending": 0
+    },
+    "consoleWarningsAndErrors": 0,
+    "toolRepair": "initial export helper retained an old tab binding; attributes were valid. Export now takes the active tab explicitly. No game mutation was needed."
+  }
+}

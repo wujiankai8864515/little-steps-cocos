@@ -217,6 +217,16 @@ export class Battle {
         else if (unit) this.armies[side].units[location.index] = unit;
         else delete this.armies[side].units[location.index];
     }
+    private partSpeed(unit:Unit){const value=this.boosts[unit.id];return Number.isFinite(value)&&value>0?value:0;}
+    private partRange(unit:Unit){const value=this.ranges[unit.id];return Number.isFinite(value)&&value>1?value-1:0;}
+    private inheritPermanent(source:Unit,target:Unit){
+        const speed=this.partSpeed(source),range=this.partRange(source);
+        if(speed)this.boosts[target.id]=this.partSpeed(target)+speed;
+        // Native oD stores all character records, but an ordinary soldier's
+        // existing range grant suppresses a second immediate range application.
+        if(range&&(target.kind==='字'||!this.partRange(target)))this.ranges[target.id]=1+this.partRange(target)+range;
+        delete this.boosts[source.id];delete this.ranges[source.id];
+    }
     move(from: Location, to: Location, side: Side = 0): string {
         if (this.completed || this.paused) return '暂停中';
         if (from.area === to.area && from.index === to.index) return '';
@@ -241,12 +251,15 @@ export class Battle {
         if(unit.kind==='字'&&destination&&destination.level<destination.maxLevel&&destination.hero.chars.includes(unit.char)&&unit.id!==army.units[destination.left].id&&unit.id!==army.units[destination.right].id){
             const source=from.area==='board'?links.find(link=>link.left===from.index||link.right===from.index):undefined;
             if(source)this.cancelHero(this.heroProgress.find(p=>p.id===source.id)!);
-            this.set(from,null,side);this.addHeroExperience(this.heroProgress.find(p=>p.id===destination.id)!,feedExperience(destination.level));this.merges++;this.heroes(side);this.revision++;return '';
+            this.set(from,null,side);this.addHeroExperience(this.heroProgress.find(p=>p.id===destination.id)!,feedExperience(destination.level));this.inheritPermanent(unit,target!);this.merges++;this.heroes(side);this.revision++;return '';
         }
         const affected=links.filter(link=>[link.left,link.right].some(cell=>from.area==='board'&&from.index===cell||to.area==='board'&&to.index===cell));
         for(const link of affected)this.cancelHero(this.heroProgress.find(p=>p.id===link.id)!);
         if (target && target.kind === unit.kind && target.char === unit.char && target.level === unit.level && unit.level < 5 && unit.kind !== '铲'&&unit.kind!=='字') {
-            this.changeLevel(target,target.level+1); this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
+            const interval=this.stats(target,undefined,target.level,side).interval;
+            this.inheritPermanent(unit,target);this.changeLevel(target,target.level+1);
+            if(target.kind!=='农'&&target.cooldown>0)target.cooldown=Math.max(0,target.cooldown+this.stats(target,undefined,target.level,side).interval-interval);
+            this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
         } else {
             this.set(from, target || null, side); this.set(to, unit, side);
         }
@@ -270,12 +283,14 @@ export class Battle {
         const unit=this.armies[progress.side].units[progress.left];
         this.weaponStrikes=this.weaponStrikes.filter(s=>s.heroId!==progress.id);
         this.heroSkills=this.heroSkills.filter(s=>s.heroId!==progress.id);
-        if(unit?.id===progress.leftUnit){for(const key of ['skillCount','skillResume','chain','streak','seen','target','weaponAt','weaponUntil','weaponAim','weaponRate'] as const)delete unit[key];unit.cooldown=0;unit.idleAt=this.time;}
+        if(unit?.id===progress.leftUnit){for(const key of ['skillCount','skillResume','chain','streak','seen','target','weaponAt','weaponUntil','weaponAim','weaponRate','speedBuff','speedUntil'] as const)delete unit[key];unit.cooldown=0;unit.idleAt=this.time;}
         this.heroProgress=this.heroProgress.filter(p=>p.id!==progress.id);
     }
     private newHero(side:Side,pair:{hero:Hero;left:number;right:number},legacy=false){
         const units=this.armies[side].units,left=units[pair.left],right=units[pair.right],level=Math.min(left.level,right.level),table=heroExperienceTable(pair.hero.name);
-        const progress:HeroProgress={id:this.nextId++,side,left:pair.left,leftUnit:left.id,rightUnit:right.id,name:pair.hero.name,level:legacy?level:1,experience:legacy?table[Math.min(table.length-1,level-1)]:0};
+        const weapon=side===0?this.weapons.find(w=>w.id===this.profile.equipped[pair.hero.name]):undefined;
+        const progress:HeroProgress={id:this.nextId++,side,left:pair.left,leftUnit:left.id,rightUnit:right.id,name:pair.hero.name,level:legacy?level:1,experience:legacy?table[Math.min(table.length-1,level-1)]:0,
+            speedBonus:this.partSpeed(left)+(legacy?0:this.partSpeed(right)),rangeBonus:legacy?this.partRange(left)*this.attackRange(left,pair.hero,weapon)/pair.hero.range:this.partRange(left)+this.partRange(right)};
         this.heroProgress.push(progress);
         if(!legacy){left.attacks=0;left.cooldown=0;left.idleAt=this.time;this.addHeroExperience(progress,Math.max(validExperience(left.experience)?left.experience:partExperience(left.level),validExperience(right.experience)?right.experience:partExperience(right.level)),false);}
         return progress;
@@ -313,21 +328,29 @@ export class Battle {
         const food=enemy.boss?20:1;this.armies[enemy.side].food+=food;if(enemy.side===0)this.kills++;
         this.effects.push({id:this.nextId++,kind:'food',x:enemy.x,y:enemy.y,text:'+'+food,ttl:.65,duration:.65,side:enemy.side});this.revision++;
     }
-    stats(unit: Unit, hero?: Hero, level = unit.level, side:Side=0) {
+    private attackRange(unit:Unit,hero?:Hero,weapon?:Weapon){
+        let range=hero?hero.range:unit.kind==='弓'?280:unit.kind==='枪'?200:unit.kind==='骑'?160:120;
+        if(weapon){if([1,11,21,32].includes(weapon.id))range+=40;if(weapon.id===13)range+=80;if(weapon.id===8)range*=2;}
+        return range;
+    }
+    stats(unit: Unit, hero?: Hero, level?:number, side:Side=0) {
+        const progress=hero?this.heroProgress.find(p=>p.side===side&&p.name===hero.name&&(p.leftUnit===unit.id||p.rightUnit===unit.id)):undefined;
+        if(progress)unit=this.armies[side].units[progress.left];
+        level=level??progress?.level??unit.level;
         const weapon = hero && side===0 ? this.weapons.find(w => w.id === this.profile.equipped[hero.name]) : undefined;
         let power = hero ? hero.power : unit.kind === '刀' ? 3 : 2;
-        let range = hero ? hero.range : unit.kind === '弓' ? 280 : unit.kind === '枪' ? 200 : unit.kind === '骑' ? 160 : 120;
-        if (weapon) { power += weapon.addAttPower; if ([1,11,21,32].includes(weapon.id)) range += 40;if(weapon.id===13)range+=80; if (weapon.id === 8) range *= 2;if(weapon.id===33)power+=3; }
+        let range=this.attackRange(unit,hero,weapon);
+        if (weapon) { power += weapon.addAttPower;if(weapon.id===33)power+=3; }
         const growth=hero?.name==='黄忠'?huangZhongGrowth(level):level-1;
         power *= (hero?HERO_DAMAGE_GROWTH:BASIC_GROWTH)[growth];
         // The original xp field is an interval in seconds, not attacks/second.
-        let speed=1/(hero?hero.speed:.8)*(hero?HERO_SPEED_GROWTH:BASIC_GROWTH)[growth],bonus=this.boosts[unit.id]||0;
+        let speed=1/(hero?hero.speed:.8)*(hero?HERO_SPEED_GROWTH:BASIC_GROWTH)[growth],bonus=progress?.speedBonus??this.partSpeed(unit);
         if (this.has('together')) bonus+=side===0?.5:.3;
         if (this.has('allSpeed'))bonus+=.1;
         if((unit.speedUntil||0)>this.time)bonus+=unit.speedBuff||0;
         if(hero?.name==='关羽')bonus+=Math.min(5,unit.chain||0);
         if(weapon&&[3,6,22].includes(weapon.id))bonus+=(unit.streak||0)*(weapon.id===6?.15:.05);
-        speed*=Math.max(.01,1+bonus);range*=this.ranges[unit.id]||1;
+        speed*=Math.max(.01,1+bonus);range+=(hero?hero.range:this.attackRange(unit))*(progress?.rangeBonus??this.partRange(unit));
         if(unit.debuff==='rain')speed*=.6;
         const weaponRate=hero?weaponPlaybackRate(hero.weaponType as WeaponType,hero.name,weapon?.id??-1,hero.speed*speed,bonus):1;
         return {power,range,interval:1/speed,weapon,weaponRate};
@@ -336,10 +359,28 @@ export class Battle {
         const item = ITEMS.find(i => i.id === id);
         if (!item?.active || !this.has(id) || this.completed || this.paused) return '道具不可用';
         if ((this.cooldowns[id] || 0) > 0) return '道具冷却中';
-        if (['god','speed','training','brush','trash'].includes(id)) {
+        if (['god','speed','training','brush','trash','range'].includes(id)) {
             if(location.area==='board'&&!this.owns(0,cell))return '拖到我方单位上使用';
             const unit = this.get(location); if (!unit||unit.kind==='铲') return '拖到我方单位上使用';
-            if (id === 'speed') this.boosts[unit.id] = (this.boosts[unit.id]||0)+.4;
+            const link=location.area==='board'?this.heroes(0).find(h=>h.left===cell||h.right===cell):undefined;
+            if(id==='speed'||id==='range'){
+                if(unit.kind==='农'||unit.kind==='字'&&!link)return '拖到士兵或武将上使用';
+                const progress=link?this.heroProgress.find(p=>p.id===link.id)!:undefined,parts=link?[this.armies[0].units[link.left],this.armies[0].units[link.right]]:[unit];
+                if(id==='range'){
+                    if(unit.kind!=='弓'&&link?.hero.weaponType!==0)return '只能对远程单位使用';
+                    if(link&&this.heroSkills.some(skill=>skill.heroId===link.id))return '武将技能施放中，不能使用';
+                    const weapon=link?this.stats(unit,link.hero,link.level).weapon:undefined;
+                    if((progress?.rangeBonus??this.partRange(unit))>0||weapon&&[1,8].includes(weapon.id))return '该单位已经有射程增益';
+                    for(const part of parts)this.ranges[part.id]=2+this.partRange(part);
+                    if(progress)progress.rangeBonus=(progress.rangeBonus||0)+1;
+                    this.effect('skill',link?.left??cell,0,'御敌千里');
+                }else{
+                    const actor=parts[0],before=this.stats(actor,link?.hero,link?.level).interval;
+                    for(const part of parts)this.boosts[part.id]=this.partSpeed(part)+.4;
+                    if(progress)progress.speedBonus=(progress.speedBonus||0)+.4;
+                    if(actor.cooldown>0)actor.cooldown=Math.max(0,actor.cooldown+this.stats(actor,link?.hero,link?.level).interval-before);
+                }
+            }
             else if(id==='brush'){if(unit.kind!=='字')return '毛笔只能改字牌';const choices=GLYPHS.split('').filter(char=>char!==unit.char);unit.char=this.random.pick(choices);}
             else if(id==='trash'){if(unit.kind!=='字')return '垃圾桶只回收字牌';this.set(location,null,0);this.armies[0].food++;}
             else {
@@ -353,9 +394,6 @@ export class Battle {
             this.heroes(0);
         } else if (id === 'ink') {
             this.aiSilence = 5; this.effect('ink', 20, 1);
-        } else if(id==='range') {
-            for(const army of this.armies)for(const unit of [...Object.values(army.units),...army.reserve])if(unit&&(unit.kind==='弓'||unit.kind==='字'))this.ranges[unit.id]=2;
-            this.effect('skill',60,0,'御敌千里');
         } else if(id==='bun') {
             const army=this.armies[0];army.lives=Math.max(1,Math.min(9,army.lives+(this.random.next()<.55?1:-1)));army.maxLives=Math.max(army.maxLives,army.lives);this.effect('hit',this.map.paths[0].slice(-1)[0],0,'续命');
         } else if(id==='trap'||id==='mine') {
@@ -798,6 +836,9 @@ export class Battle {
                 if(!validHeroProgress(progress,HEROES.map(h=>h.name))||ids.has(progress.id)||names.has(progress.side+':'+progress.name))continue;
                 const units=b.armies[progress.side].units,left=units[progress.left],right=units[progress.left+1];
                 if(left?.id!==progress.leftUnit||right?.id!==progress.rightUnit||left.kind!=='字'||right.kind!=='字'||left.char+right.char!==progress.name)continue;
+                const hero=HEROES.find(h=>h.name===progress.name)!,weapon=progress.side===0?weapons.find(w=>w.id===profile.equipped[progress.name]):undefined;
+                if(!validExperience(progress.speedBonus))progress.speedBonus=b.partSpeed(left);
+                if(!validExperience(progress.rangeBonus))progress.rangeBonus=b.partRange(left)*b.attackRange(left,hero,weapon)/hero.range;
                 ids.add(progress.id);names.add(progress.side+':'+progress.name);b.heroProgress.push(progress);b.nextId=Math.max(b.nextId,progress.id+1);
             }
             // v1 saves predate separate general experience. Keep their current

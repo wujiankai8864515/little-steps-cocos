@@ -45,7 +45,7 @@ def main():
         const inspectActorNode=(node:any)=>{if(!node)return null;const t=node.getComponent(QAUITransform),sprite=node.getComponent(Sprite),label=node.getComponent(Label),ld=label?.renderData,f=sprite?.spriteFrame,d=sprite?.renderData;return {name:node.name,valid:node.isValid,active:node.active,visible:node.activeInHierarchy,layer:node.layer,position:node.position,scale:node.scale,world:node.worldMatrix,anchor:t?.anchorPoint,size:t?.contentSize,bounds:t?.getBoundingBoxToWorld(),opacity:node.getComponent(UIOpacity)?.opacity,label:label?{text:label.string,stencilStage:label.stencilStage,indexCount:ld?.indexCount,dataHash:ld?.dataHash,textureHash:ld?.textureHash,renderFlag:label._renderFlag}:null,sprite:sprite?{enabled:sprite.enabled,renderFlag:sprite._renderFlag,stencilStage:sprite.stencilStage,indexCount:d?.indexCount,vertexCount:d?.vertexCount,dataHash:d?.dataHash,color:sprite.color,trim:sprite.trim,frame:f?{rect:f.rect,original:f.originalSize,offset:f.offset,packable:f.packable,textureWidth:f.texture?.width,textureHeight:f.texture?.height}:null,vertices:d?.chunk?Array.from(d.chunk.vb.slice(0,d.dataLength*d.floatStride)):null}:null};};
         const inspectActor=(view:any)=>{const ancestors=[];for(let node=view.node.parent;node&&ancestors.length<10;node=node.parent)ancestors.push(inspectActorNode(node));return {unit:view.unit,node:inspectActorNode(view.node),glyph:inspectActorNode(view.glyph),level:inspectActorNode(view.level),motion:inspectActorNode(view.motion),frame:view.frame?{kind:view.frame.kind,clip:view.frame.clip,elapsed:view.frame.elapsed,seenAttacks:view.frame.seenAttacks}:null,ancestors};};
         const inspectControl=(name:string)=>{const e=app.screen&&app.ui.find(name,app.screen),sprite=e?.body.getComponent(Sprite),transform=e?.body.getComponent(QAUITransform);return e?{name,active:e.node.active,visible:e.node.activeInHierarchy,bodyActive:e.body.activeInHierarchy,skin:e.body.__inkSkin,frame:sprite?.spriteFrame?.rect,spriteEnabled:sprite?.enabledInHierarchy,position:e.node.position,world:e.node.worldPosition,bodyWorld:e.body.worldPosition,scale:e.node.scale,bounds:transform?.getBoundingBoxToWorld(),sibling:e.node.getSiblingIndex()}:null;};
-        app.inspect=()=>({...inspectVisible(),renderProbes:qaQuery.get('actors')==='1'?{guide:inspectActorNode(app.tutorial),mask:inspectActorNode(app.screen&&app.ui.find('maskImg',app.screen)?.body)}:null,basicActors:qaQuery.get('actors')==='1'?Array.from(app.actors.values()).map(inspectActor):null,visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null,heroWeapons:Array.from(app.heroViews.values()).map((view:any)=>{const w=view.weapon;return {hero:view.hero.name,side:view.side,ready:view.ready,weapon:w?{id:w.id,type:w.spec.type,ready:!!w.body.getComponent(Sprite)?.spriteFrame,visible:w.root.activeInHierarchy,angle:w.root.angle,bodyPosition:w.body.position,bodyScale:w.body.scale,size:w.body.getComponent(QAUITransform).contentSize,elapsed:w.motion.time,attacks:w.motion.attacks,sibling:w.parent.getSiblingIndex(),siblings:view.node.children.length}:null};})});
+        app.inspect=()=>({...inspectVisible(),permanentBuffs:fixture==='buffs'&&app.battle?{progress:app.battle.heroProgress,boosts:app.battle.boosts,ranges:app.battle.ranges,cooldowns:app.battle.cooldowns,stats:app.battle.heroes(0).flatMap((link:any)=>[link.left,link.right].map(cell=>{const stats=app.battle.stats(app.battle.armies[0].units[cell],link.hero,link.level);return {name:link.hero.name,cell,interval:stats.interval,range:stats.range};}))}:null,renderProbes:qaQuery.get('actors')==='1'?{guide:inspectActorNode(app.tutorial),mask:inspectActorNode(app.screen&&app.ui.find('maskImg',app.screen)?.body)}:null,basicActors:qaQuery.get('actors')==='1'?Array.from(app.actors.values()).map(inspectActor):null,visibleStars:app.page==='home'?[0,1,2,3,4].map(index=>{const e=app.ui.find('star'+index,app.screen),sprite=e?.body.getComponent(Sprite);return {index,skin:e?.body.__inkSkin,rect:sprite?.spriteFrame?.rect,color:sprite?.color,gray:sprite?.grayscale,visible:e?.node.activeInHierarchy};}):null,homeControls:app.page==='home'?['shopBtn','shopWalk','talkHitArea','mat','weaponBtn'].map(inspectControl):null,heroWeapons:Array.from(app.heroViews.values()).map((view:any)=>{const w=view.weapon;return {hero:view.hero.name,side:view.side,ready:view.ready,weapon:w?{id:w.id,type:w.spec.type,ready:!!w.body.getComponent(Sprite)?.spriteFrame,visible:w.root.activeInHierarchy,angle:w.root.angle,bodyPosition:w.body.position,bodyScale:w.body.scale,size:w.body.getComponent(QAUITransform).contentSize,elapsed:w.motion.time,attacks:w.motion.attacks,sibling:w.parent.getSiblingIndex(),siblings:view.node.children.length}:null};})});
         if(qaQuery.get('probeNoGuide')==='1'||qaQuery.get('probeNoRecruitMask')==='1'||qaQuery.get('probeGuideBehindUnits')==='1')director.on(Director.EVENT_AFTER_UPDATE,()=>{
             if(app.page!=='battle')return;
             if(qaQuery.get('probeNoGuide')==='1'&&app.tutorial)app.tutorial.active=false;
@@ -54,7 +54,8 @@ def main():
         });
         if(fixture==='home-stars'){app.profile.stars=Number(qaQuery.get('stars')||'2');app.profile.gold=20;app.profile.tutorial=true;}
         if(fixture==='merchant-home'){app.profile.losses=1;app.profile.tutorial=true;app.profile.gold=8623;app.profile.stamina=25;}
-        if(fixture==='heroes'||fixture==='growth')app.profile.tutorial=true;
+        if(fixture==='heroes'||fixture==='growth'||fixture==='buffs')app.profile.tutorial=true;
+        if(fixture==='buffs')app.profile.items=['speed','range'];
         if(fixture==='shop'||fixture==='lottery') {
             app.profile.gold=8623;app.profile.stamina=25;
             app.profile.items=['trash','range','pill','allSpeed','life','shovel','exorcism','together'];
@@ -73,6 +74,18 @@ def main():
                     label.fontSize*=2;label.lineHeight*=2;label.outlineWidth*=2;
                 }
             }else if(fixture==='tutorial'){await app.startRound(Number(qaQuery.get('map')||'0'));}
+            else if(fixture==='buffs'&&qaQuery.get('resume')==='1'){
+                // Keep the normal saved-round prompt for a real continue click.
+            }
+            else if(fixture==='buffs'){
+                await app.startRound(1);app.matchTime=999;const battle=app.battle;
+                battle.aiTime=battle.spawnTime=100000;battle.waveTime=-100000;battle.random.state=0x5a5941;battle.tutorialStep=0;battle.armies[1].units={};
+                battle.armies[0].units={40:battle.unit('字','赵'),41:battle.unit('字','云'),42:battle.unit('字','黄'),43:battle.unit('字','忠')};
+                battle.armies[0].unlocked=battle.map.grass.filter((cell:number)=>battle.owns(0,cell));
+                const incoming=battle.unit('字','云');battle.boosts[incoming.id]=.4;
+                battle.armies[0].reserve=[incoming,battle.unit('农'),battle.unit('弓'),null,null];
+                battle.heroes(0);await app.showBattle();
+            }
             else if(fixture==='growth'&&qaQuery.get('resume')==='1'){
                 // Retain the normal saved-round prompt for a real UI click.
             }
