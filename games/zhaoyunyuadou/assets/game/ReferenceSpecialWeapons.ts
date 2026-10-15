@@ -77,3 +77,36 @@ export function validArrowBurn(value:ArrowBurn){
     return value&&[value.born,value.next,value.end,value.frame].every(Number.isFinite)&&value.born>=0&&value.next>=value.born&&value.end>=value.born&&Number.isInteger(value.frame)&&value.frame>=0&&value.frame<4&&Array.isArray(value.stacks)&&value.stacks.length<=25600&&value.stacks.every(s=>s&&Number.isFinite(s.until)&&s.until>=value.born&&[1,10].includes(s.damage));
 }
 export function arrowBurnPose(now:number,value:ArrowBurn){return {frame:1+(value.frame+Math.floor(Math.max(0,now-value.born)/.07+1e-8))%4,scale:now<value.end?clamp((now-value.born)/.5):1-clamp((now-value.end)/.5)};}
+
+export interface FireDragonPart {index:number;born:number;x:number;y:number;angle:number;alive:boolean;visited:number[];lastFireX?:number;lastFireY?:number;}
+export interface FireDragon {born:number;startX:number;startY:number;dx:number;dy:number;phase:number;next:number;parts:FireDragonPart[];}
+export interface DragonGroundFire {id:number;side:0|1;from:number;hero:string;heroId:number;damage:number;x:number;y:number;born:number;next:number;frame:number;}
+export interface FireSparks {target:number;points:{x:number;y:number;frames:number[]}[];}
+export function createFireDragon(born:number,point:{x:number;y:number},angle:number,phase:number):FireDragon{
+    const a=angle*Math.PI/180;return {born,startX:point.x,startY:point.y,dx:Math.sin(a),dy:-Math.cos(a),phase,next:1,parts:[{index:0,born,x:point.x,y:point.y,angle,alive:true,visited:[]}]};
+}
+export function fireDragonPartSpec(index:number,elapsed=0){
+    return index===0?{width:61,height:100,scale:1+.5*clamp(elapsed/.5),imageY:22}:index===14?{width:45,height:50,scale:.8,imageY:0}:{width:37,height:50,scale:1+(15-index)/15,imageY:0};
+}
+export function fireDragonPartPosition(dragon:FireDragon,part:FireDragonPart,now:number){
+    const elapsed=Math.max(0,now-part.born),amplitude=part.index===0?7.5:part.index===14?0:15*Math.sin(Math.PI*part.index/14),wave=Math.sin(elapsed*10+dragon.phase)*amplitude;
+    return {x:dragon.startX+dragon.dx*elapsed*500+wave*dragon.dy,y:dragon.startY+dragon.dy*elapsed*500-wave*dragon.dx};
+}
+export function fireDragonPartHits(index:number){return index===0||index===14||index===4||index===10;}
+export function fireDragonHitBox(part:FireDragonPart,now:number){
+    const spec=fireDragonPartSpec(part.index,now-part.born),a=part.angle*Math.PI/180,h=spec.height*spec.scale,w=spec.width*spec.scale;
+    return {x:part.x-h/2*Math.sin(a),y:part.y+h/2*Math.cos(a),angle:part.angle,length:h-w,bold:w/2};
+}
+export function fireDragonRoad(grid:readonly (readonly string[])[],side:0|1,point:{x:number;y:number}){
+    const x=Math.floor((point.x+22.5)/80),y=Math.floor((point.y+25)/80);return grid[x]?.[y]==='0_'+side;
+}
+export function dragonGroundFirePose(now:number,fire:Pick<DragonGroundFire,'born'|'frame'>){
+    const elapsed=Math.max(0,now-fire.born);return {frame:1+(fire.frame+Math.floor(elapsed/.07+1e-8))%4,scale:1-clamp((elapsed-5)/.5)};
+}
+export function groundFlamePose(elapsed:number,frame:number){return {frame:1+(frame+Math.floor(Math.max(0,elapsed)/.07+1e-8))%4,scale:elapsed<.5?clamp(elapsed/.5):1-clamp((elapsed-1)/.5)};}
+export function fireSparkPose(elapsed:number,frames:number[]){return {frame:elapsed<.05?0:frames[Math.min(3,Math.floor((elapsed+1e-8)/.05))],alpha:1-clamp((elapsed-.2)/.1)};}
+export function validFireSparks(value:FireSparks){return value&&Number.isSafeInteger(value.target)&&value.target>0&&Array.isArray(value.points)&&value.points.length===3&&value.points.every(p=>p&&[p.x,p.y].every(Number.isFinite)&&p.x>=20&&p.x<60&&p.y>=20&&p.y<60&&Array.isArray(p.frames)&&p.frames.length===4&&new Set(p.frames).size===4&&p.frames.every(f=>Number.isInteger(f)&&f>=0&&f<4));}
+export function validFireDragon(value:FireDragon){
+    return value&&[value.born,value.startX,value.startY,value.dx,value.dy,value.phase].every(Number.isFinite)&&value.born>=0&&value.phase>=0&&value.phase<100&&Math.abs(Math.hypot(value.dx,value.dy)-1)<1e-6&&Number.isInteger(value.next)&&value.next>=1&&value.next<=15&&Array.isArray(value.parts)&&value.parts.length===value.next&&value.parts.every((p,i)=>p&&p.index===i&&[p.born,p.x,p.y,p.angle].every(Number.isFinite)&&p.born>=value.born&&typeof p.alive==='boolean'&&Array.isArray(p.visited)&&p.visited.length<=200&&p.visited.every(id=>Number.isSafeInteger(id)&&id>0)&&(p.index!==14||[p.lastFireX,p.lastFireY].every(Number.isFinite)));
+}
+export function validDragonGroundFire(value:DragonGroundFire){return value&&[value.id,value.from,value.heroId].every(id=>Number.isSafeInteger(id)&&id>0)&&[0,1].includes(value.side)&&typeof value.hero==='string'&&[value.damage,value.x,value.y,value.born,value.next].every(Number.isFinite)&&value.damage>0&&value.born>=0&&value.next>=value.born&&Number.isInteger(value.frame)&&value.frame>=0&&value.frame<4;}

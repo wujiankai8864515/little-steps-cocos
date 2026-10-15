@@ -9,6 +9,7 @@ import { attackPose, KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion,
 import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
 import { characterLevelCap, heroExperienceTable } from './ReferenceProgression';
 import { arrowBurnPose, birdArrowFrame, birdArrowPose, birdArrowSpec, crossbowFireFrame, flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
+import { dragonGroundFirePose, fireDragonPartSpec, fireSparkPose, groundFlamePose } from './ReferenceSpecialWeapons';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
@@ -373,7 +374,7 @@ export class GameApp {
             n.getChildByName('hpNum')!.getComponent(Label)!.string=Math.ceil(enemy.hp).toString();
             let burn=n.getChildByName('arrow-burn');
             if(enemy.burn){
-                if(!burn){burn=this.ui.image(n,skin('effect','fireGround_01'),40,54,18,28,undefined,'arrow-burn');burn.getComponent(UITransform)!.setAnchorPoint(.5,0);burn.setSiblingIndex(0);}
+                if(!burn){burn=this.ui.image(n,skin('effect','fireGround_01'),40,80,80,80,undefined,'arrow-burn');burn.getComponent(UITransform)!.setAnchorPoint(.5,0);burn.setSiblingIndex(0);}
                 const pose=arrowBurnPose(b.time,enemy.burn);burn.active=pose.scale>0;burn.setScale(pose.scale,pose.scale);this.ui.skin(burn,skin('effect','fireGround_0'+pose.frame));
             }else if(burn)burn.active=false;
             const piercing=b.effects.filter(effect=>effect.piercing?.target===enemy.id).slice(-1)[0],pose=groundPikePose(piercing?piercing.duration-piercing.ttl:1);
@@ -385,6 +386,7 @@ export class GameApp {
         current.clear();
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
+            if(!n&&shot.dragon){n=this.ui.node('fire-dragon-'+shot.id,this.combatLayer,0,0,61,100);this.projectiles.set(shot.id,n);}
             if(!n&&shot.crossbowFire){
                 n=this.ui.image(this.combatLayer,crossbowFireSkin(crossbowFireFrame(b.time,shot.crossbowFire.born)),0,0,22,72);n.getComponent(UITransform)!.setAnchorPoint(.5,.1);
                 this.ui.image(n,skin('weapon','arrow_8'),-11,-64.8,22,72);this.projectiles.set(shot.id,n);
@@ -405,18 +407,33 @@ export class GameApp {
                 const standard=shot.kind==='throw'?'weapon/'+(shot.weaponId===undefined?'default_1':'weapon_'+shot.weaponId):shot.kind==='arrow'&&shot.weaponId===undefined?'weapon/default_arrow_1':shot.kind==='arrow'||shot.kind==='弓'||shot.hero==='黄忠'||shot.hero==='黄祖'?'weapon/arrow_'+(shot.weaponId!==undefined?Math.min(shot.weaponId,9):0):'gameObject/soldier/pike';
                 const path='resources/img/'+(special[shot.kind]||standard)+'.png';
                 const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,shot.width??width*ratio,shot.height??height*ratio);n.getComponent(UITransform)!.setAnchorPoint(shot.anchorX??.5,shot.anchorY===undefined?.5:1-shot.anchorY);if(shot.kind==='holyBlade')n.addComponent(UIOpacity).opacity=128;this.projectiles.set(shot.id,n);}
-            n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
+            n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.dragon)n.angle=0;else if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
+            if(shot.dragon)for(const part of shot.dragon.parts){
+                const spec=fireDragonPartSpec(part.index,b.time-part.born),name='dragon-part-'+part.index;let node=n.getChildByName(name);
+                if(!node){node=this.ui.node(name,n,0,0,spec.width,spec.height);node.getComponent(UITransform)!.setAnchorPoint(.5,.5);this.ui.image(node,skin('weapon/bullet',part.index===0?'dragonPartHead':'dragonPartBody'),-spec.width/2,-spec.height/2+spec.imageY,spec.width,spec.height);}
+                node.active=part.alive;node.setPosition(part.x-shot.x,shot.y-part.y);node.angle=-part.angle;node.setScale(spec.scale,spec.scale);node.setSiblingIndex(0);
+            }
             if(shot.flyingPike){const pose=flyingPikePose(b.time,shot.flyingPike),ring=n.getChildByName('flying-pike-ring')!;
                 n.setScale(1,pose.scaleY);n.getComponent(UIOpacity)!.opacity=255*pose.alpha;ring.getComponent(UIOpacity)!.opacity=255*pose.ringAlpha;this.ui.skin(ring,skin('effect','quan0'+pose.ringFrame));}
             if(shot.bird){const pose=birdArrowPose(b.time,shot.bird,shot);n.setScale(pose.scale,pose.scale);this.ui.skin(n,skin('weapon/bullet',(shot.bird.kind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+pose.frame));const flash=n.getChildByName('eagle-hit');if(flash)flash.active=pose.flash;}
             if(shot.crossbowFire)this.ui.skin(n,crossbowFireSkin(crossbowFireFrame(b.time,shot.crossbowFire.born)));
+        }
+        for(const fire of b.dragonFires){
+            const id=-fire.id,pose=dragonGroundFirePose(b.time,fire);current.add(id);let node=this.projectiles.get(id);
+            if(!node){node=this.ui.image(this.combatLayer,skin('effect','fireGround_0'+pose.frame),0,0,44,44,undefined,'dragon-ground-fire-'+fire.id);node.getComponent(UITransform)!.setAnchorPoint(.5,.5);this.projectiles.set(id,node);}
+            this.ui.skin(node,skin('effect','fireGround_0'+pose.frame));node.setPosition(fire.x,-fire.y);node.setScale(pose.scale,pose.scale);node.setSiblingIndex(0);
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
         current.clear();
         for(const effect of b.effects){
             if(effect.kind==='damage'&&!this.profile.settings.damage)continue;current.add(effect.id);let n=this.effects.get(effect.id);
             if(!n){
-                if(effect.piercing){
+                if(effect.fireSparks){
+                    n=this.ui.node('fire-sparks-'+effect.id,this.combatLayer,0,0,80,80);
+                    for(const point of effect.fireSparks.points){const child=this.ui.image(n,skin('props','fire0'),point.x,point.y,20,20);child.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
+                }
+                else if(effect.groundFlame){n=this.ui.image(this.combatLayer,skin('effect','fireGround_01'),0,0,80,80,undefined,'ground-flame-'+effect.id);n.getComponent(UITransform)!.setAnchorPoint(.5,0);}
+                else if(effect.piercing){
                     n=this.ui.node('ground-pike-'+effect.id,this.combatLayer,0,0,80,230);n.addComponent(Mask).type=Mask.Type.GRAPHICS_RECT;
                     const path=skin('weapon','weapon_'+effect.piercing.weaponId),size=this.art.art.frames[path].original;
                     for(const spike of effect.piercing.spikes){const image=this.ui.image(n,path,spike.x,spike.y+150,size[0],size[1]);image.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
@@ -427,7 +444,14 @@ export class GameApp {
                 if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='heroLevel'&&effect.text==='等级提升')this.play('general_level_up');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill'){const sounds:Record<string,string>={'大喝':'general_ground_slam','跳斩':'guanyu_skill_roar','火箭烈':'general_fire_arrow_rain','箭雨':'general_arrow_rain','圣剑':'holyBlade_skill'};if(sounds[effect.text||''])this.play(sounds[effect.text!]);}else if(effect.kind==='stomp')this.play('jumpSlash_stomp');else if(effect.kind==='lightning')this.play('maChao_attack_lightning');
             }
             const elapsed=effect.duration-effect.ttl;
-            if(effect.piercing){
+            if(effect.fireSparks){
+                const target=b.enemies.find(enemy=>enemy.id===effect.fireSparks!.target);n.active=!!target;if(target)n.setPosition(target.x-40,-target.y+40);
+                effect.fireSparks.points.forEach((point,index)=>{const pose=fireSparkPose(elapsed,point.frames);this.ui.skin(n!.children[index],skin('props','fire'+pose.frame));n!.getComponent(UIOpacity)!.opacity=255*pose.alpha;});
+            }
+            else if(effect.groundFlame){
+                const target=b.enemies.find(enemy=>enemy.id===effect.groundFlame!.target),pose=groundFlamePose(elapsed,effect.groundFlame.frame);n.active=!!target;if(target)n.setPosition(target.x,-target.y-40);n.setScale(pose.scale,pose.scale);this.ui.skin(n,skin('effect','fireGround_0'+pose.frame));
+            }
+            else if(effect.piercing){
                 const target=b.enemies.find(enemy=>enemy.id===effect.piercing!.target),pose=groundPikePose(elapsed);n.active=!!target;
                 if(target)n.setPosition(target.x-40,-target.y+190);
                 effect.piercing.spikes.forEach((spike,index)=>{const child=n!.children[index];child.setPosition(spike.x,-spike.y-150+pose.rise);child.setScale(1,pose.growth);child.angle=-spike.angle;});
@@ -523,9 +547,12 @@ export class GameApp {
         if(weapon.trail)weapon.trail.active=pose.trail;
         if(weapon.nocked){
             const overlay=weapon.nocked.getChildByName('crossbow-nocked-arrow');if(overlay)overlay.active=false;
+            const dragonHead=weapon.nocked.getChildByName('dragon-nocked-head');if(dragonHead)dragonHead.active=false;weapon.nocked.getComponent(Sprite)!.enabled=true;
             weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));
             const bird=this.battle!.weaponStrikes.find(strike=>strike.unit===view.unit.id&&strike.birdKind&&strike.birdAnimationAt===view.unit.weaponAt);
-            if(bird){const spec=birdArrowSpec(bird.birdKind!);weapon.nocked.getComponent(UITransform)!.setContentSize(spec.width,spec.height);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);this.ui.skin(weapon.nocked,skin('weapon/bullet',(bird.birdKind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+birdArrowFrame(bird.birdKind!,this.battle!.time-bird.birdAnimationAt!)));}
+            const dragon=this.battle!.weaponStrikes.find(strike=>strike.unit===view.unit.id&&strike.dragonPhase!==undefined);
+            if(dragon){weapon.nocked.getComponent(Sprite)!.enabled=false;weapon.nocked.getComponent(UITransform)!.setContentSize(61,100);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(.5,.5);const head=dragonHead||this.ui.image(weapon.nocked,skin('weapon/bullet','dragonPartHead'),-30.5,-28,61,100,undefined,'dragon-nocked-head');head.active=true;}
+            else if(bird){const spec=birdArrowSpec(bird.birdKind!);weapon.nocked.getComponent(UITransform)!.setContentSize(spec.width,spec.height);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);this.ui.skin(weapon.nocked,skin('weapon/bullet',(bird.birdKind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+birdArrowFrame(bird.birdKind!,this.battle!.time-bird.birdAnimationAt!)));}
             else{weapon.nocked.getComponent(UITransform)!.setContentSize(22,72);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(.5,.1);this.ui.skin(weapon.nocked,skin('weapon',weapon.id<0?'default_arrow_1':'arrow_'+weapon.id));}
         }
         const volley=view.unit.crossbowVolley;

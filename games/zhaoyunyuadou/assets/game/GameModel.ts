@@ -4,6 +4,7 @@ import { BOSSES, BOSS_CHANCES, BOSS_ROUNDS, EARLY_HEALTH, WAVE_COUNTS, WAVE_HEAL
 import { BASIC_UNITS, BASIC_GROWTH, BasicKind, FARM_INTERVALS, HERO_DAMAGE_GROWTH, HERO_SPEED_GROWTH, isBasicKind } from './ReferenceUnits';
 import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceWeapons';
 import { advanceFlight, createFlight, enemyInRange, Flight, strikeOverlaps, StrikePlan, strikeShape, weaponStrikePlans } from './ReferenceWeaponCombat';
+import { createFireDragon, DragonGroundFire, FireDragon, FireSparks, fireDragonHitBox, fireDragonPartHits, fireDragonPartPosition, fireDragonRoad, validDragonGroundFire, validFireDragon, validFireSparks } from './ReferenceSpecialWeapons';
 import { HERO_SKILLS, HeroSkillState, hitPassive, huangZhongArrows, huangZhongGrowth, quadraticPose, shoutRing, skillRate, SkillProjectile, validHeroSkill, validSkillProjectile } from './ReferenceHeroSkills';
 import { characterLevelCap, DamageOwner, experienceAwards, experienceLevel, feedExperience, HeroProgress, heroExperienceTable, heroLevelCap, partExperience, trainingDelta, validExperience, validHeroProgress } from './ReferenceProgression';
 import { CrossbowFireArrow, CrossbowVolley, crossbowFireHitBox, crossbowVolleyAngle, validCrossbowFire, validCrossbowVolley, ArrowBurn, BirdArrowKind, BirdArrowState, birdArrowDamage, birdArrowHitBox, birdArrowOrigin, birdArrowSpec, FlyingPikeTiming, flyingPikeChance, flyingPikeTiming, GroundPikeState, groundPikeRule, groundPikeSpikes, validArrowBurn, validBirdArrow, validFlyingPike, validGroundPike } from './ReferenceSpecialWeapons';
@@ -145,11 +146,11 @@ export class Random {
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
 export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean;lootSettled?:boolean; bossType?:number; castIn?:number; burn?:ArrowBurn;push?:{x:number;y:number};rejoin?:number; }
-export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; flyingPike?:FlyingPikeTiming; bird?:BirdArrowState; crossbowFire?:CrossbowFireArrow; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
-export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; piercing?:GroundPikeState; }
+export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; flyingPike?:FlyingPikeTiming; bird?:BirdArrowState; dragon?:FireDragon; crossbowFire?:CrossbowFireArrow; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
+export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; piercing?:GroundPikeState; groundFlame?:{target:number;frame:number};fireSparks?:FireSparks; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
 export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
-export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;procStarted?:boolean;birdKind?:BirdArrowKind;birdAnimationAt?:number;fireArrowBorn?:number;}
+export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;procStarted?:boolean;birdKind?:BirdArrowKind;birdAnimationAt?:number;fireArrowBorn?:number;dragonPhase?:number;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
@@ -159,6 +160,7 @@ export class Battle {
     weaponStrikes:WeaponStrike[]=[];
     heroSkills:HeroSkillState[]=[];
     heroProgress:HeroProgress[]=[];
+    dragonFires:DragonGroundFire[]=[];
     time = 0; wave = 1; waveTime = 0; paused = false; completed = false; result: BattleResult | null = null;
     tutorialStep = 0; revision = 0; nextId = 1; spawnTime = 4; spawned = 0; aiTime = 1.5;
     boosts: Record<number, number> = {}; ranges: Record<number, number> = {}; cooldowns: Record<string, number> = {}; aiSilence = 0;
@@ -483,9 +485,10 @@ export class Battle {
         }
         const birdKind:BirdArrowKind|undefined=id===8?'phoenix':id===4&&Math.floor(this.random.next()*100)<10?'eagle':undefined;
         if(birdKind){const origin=birdArrowOrigin({x:cell%8*80+40,y:Math.floor(cell/8)*80+40},attack.aim,birdKind);for(const plan of attack.plans){plan.x=origin.x;plan.y=origin.y;}}
+        const dragonPhase=id===5&&Math.floor(this.random.next()*100)<10?this.random.next()*100:undefined;
+        if(dragonPhase!==undefined){const first=attack.plans[0],origin=birdArrowOrigin({x:cell%8*80+40,y:Math.floor(cell/8)*80+40},attack.aim,'phoenix');attack.plans.length=1;Object.assign(first,origin,{angle:attack.aim,endAngle:attack.aim});}
         const delay=hero.name==='张飞'?.1/(hero.speed/stats.interval):0;
-        if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,heroId:link.id,weaponId:id,target:target.id,damage:power,born:this.time+delay+plan.delay,visited:[],...(birdKind?{birdKind,birdAnimationAt:this.time}:{})});
-        if(id===5&&this.random.next()<.1){this.burst(unit,side,pos,power,'fire',12);this.battleEffect('fire',target,side);}
+        if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,heroId:link.id,weaponId:id,target:target.id,damage:power,born:this.time+delay+plan.delay,visited:[],...(birdKind?{birdKind,birdAnimationAt:this.time}:{}),...(dragonPhase===undefined?{}:{dragonPhase})});
         if(id===24&&unit.attacks%10===0)this.burst(unit,side,pos,power,'blade',12);
         if(id===28&&this.random.next()<.1)this.burst(unit,side,pos,power,'meteor',12);
         if(id!==undefined&&id>=34&&unit.attacks%10===0){const positive=(id%2===0)||id===43;this.battleEffect(positive?'sword':'coldSword',pos,side);
@@ -570,13 +573,16 @@ export class Battle {
             if(!strike.procStarted){strike.procStarted=true;if(strike.weaponId===19&&this.random.next()<=flyingPikeChance(strike.hero))this.flyingPikes(unit,strike.side,strike.cell,strike.hero,link.id,this.stats(unit,link.hero,link.level,strike.side).power);}
             const target=this.enemies.find(enemy=>enemy.id===strike.target&&enemy.hp>0);
             if(strike.kind==='arrow'||strike.kind==='throw'){
-                if(strike.fireArrowBorn!==undefined){
+                if(strike.dragonPhase!==undefined){
+                    const shot=this.fire(unit,strike.side,target||{id:strike.target} as Enemy,strike,strike.damage,'fireDragon',0,5,strike.hero,undefined,strike.heroId);
+                    if(shot)Object.assign(shot,{speed:500,width:61,height:100,anchorX:.5,anchorY:.5,rotation:strike.angle,skill:true,dragon:createFireDragon(this.time,strike,strike.angle,strike.dragonPhase)});
+                }else if(strike.fireArrowBorn!==undefined){
                     const angle=strike.angle*Math.PI/180,shot=this.fire(unit,strike.side,target||{id:strike.target} as Enemy,strike,strike.damage,'crossbowFire',0,9,strike.hero,undefined,strike.heroId);
                     if(shot)Object.assign(shot,{speed:3000,width:22,height:72,anchorX:.5,anchorY:.9,rotation:strike.angle,skill:true,crossbowFire:{born:strike.fireArrowBorn,dx:Math.sin(angle),dy:-Math.cos(angle)}});
                 }else if(strike.birdKind){
                     const spec=birdArrowSpec(strike.birdKind),angle=strike.angle*Math.PI/180,shot=this.fire(unit,strike.side,target||{id:strike.target} as Enemy,strike,strike.damage,strike.birdKind,0,strike.weaponId,strike.hero,undefined,strike.heroId);
                     if(shot)Object.assign(shot,{width:spec.width,height:spec.height,anchorX:spec.anchorX,anchorY:spec.anchorY,rotation:strike.angle,skill:true,bird:{kind:strike.birdKind,born:strike.birdAnimationAt!,startX:strike.x,startY:strike.y,dx:Math.sin(angle),dy:-Math.cos(angle),rate:spec.rate}});
-                }else if(target){const shot=this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',strike.weaponId===5?70:0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
+                }else if(target){const shot=this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
                     if(shot&&strike.hero==='黄忠'){const angle=strike.angle*Math.PI/180;delete shot.flight;shot.rotation=strike.angle;shot.motion={kind:'line',born:this.time,startX:shot.x,startY:shot.y,dx:Math.sin(angle),dy:-Math.cos(angle),speed:3000,expires:this.time+2};}}
                 strike.done=true;continue;
             }
@@ -717,6 +723,7 @@ export class Battle {
     }
     private advanceShots(dt:number){
         for (const shot of this.shots) {
+            if(shot.dragon){this.advanceFireDragon(shot);continue;}
             if(shot.crossbowFire){this.advanceCrossbowFire(shot,dt);continue;}
             if(shot.bird){this.advanceBirdArrow(shot,dt);continue;}
             if(shot.motion){this.advanceSkillProjectile(shot,dt);continue;}
@@ -743,7 +750,7 @@ export class Battle {
         }
         this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
     }
-    private currentShotPower(shot:Shot){
+    private currentShotPower(shot:Pick<Shot,'side'|'heroId'|'weaponId'|'damage'>){
         const owner=this.heroes(shot.side).find(link=>link.id===shot.heroId);
         return owner&&shot.side===0&&this.profile.equipped[owner.hero.name]===shot.weaponId?this.stats(this.armies[shot.side].units[owner.left],owner.hero,undefined,shot.side).power:shot.damage;
     }
@@ -751,7 +758,44 @@ export class Battle {
         const arrow=shot.crossbowFire!;shot.x+=arrow.dx*shot.speed*dt;shot.y+=arrow.dy*shot.speed*dt;
         if(shot.x<-100||shot.x>740||shot.y<-100||shot.y>this.projectileHeight+100){shot.damage=0;return;}
         const target=this.enemies.find(enemy=>enemy.side===shot.side&&enemy.hp>0&&strikeOverlaps(crossbowFireHitBox(shot,arrow),enemy));
-        if(target){this.hitShot(shot,target);if(target.hp>0)this.addArrowBurn(target,1,5);shot.damage=0;}
+        if(target){this.hitShot(shot,target);this.fireImpact(target);if(target.hp>0)this.addArrowBurn(target,1,5);shot.damage=0;}
+    }
+    private advanceFireDragon(shot:Shot){
+        const dragon=shot.dragon!,radius=Math.hypot(61,100)/4;
+        for(const part of dragon.parts.slice()){
+            if(!part.alive)continue;
+            const p=fireDragonPartPosition(dragon,part,this.time),dx=p.x-part.x,dy=p.y-part.y;if(dx||dy)part.angle=Math.atan2(dx,-dy)*180/Math.PI;part.x=p.x;part.y=p.y;
+            const protectedHead=part.index===0&&dragon.next<15;
+            if(!protectedHead&&(p.x<-100||p.x>740||p.y<-100||p.y>this.projectileHeight+100)){part.alive=false;continue;}
+            if(part.index===0&&dragon.next<15&&Math.hypot(p.x-dragon.startX,p.y-dragon.startY)>radius*(dragon.next+1)){
+                const index=dragon.next++;dragon.parts.push({index,born:this.time,x:dragon.startX,y:dragon.startY,angle:Math.atan2(dragon.dx,-dragon.dy)*180/Math.PI,alive:true,visited:[],...(index===14?{lastFireX:0,lastFireY:0}:{})});
+            }
+            if(part.index===14&&(Math.abs(part.x-part.lastFireX!)>20||Math.abs(part.y-part.lastFireY!)>20)&&fireDragonRoad(REFERENCE_MAPS[this.map.id].grid,shot.side,part)){
+                if(this.dragonFires.length<4096)this.dragonFires.push({id:this.nextId++,side:shot.side,from:shot.from,hero:shot.hero!,heroId:shot.heroId!,damage:this.currentShotPower(shot),x:part.x+22*(this.random.next()-.5),y:part.y+22*(this.random.next()-.5),born:this.time,next:this.time,frame:Math.floor(this.random.next()*4)});
+                part.lastFireX=part.x;part.lastFireY=part.y;
+            }
+            if(fireDragonPartHits(part.index))for(const enemy of this.enemies)if(enemy.side===shot.side&&enemy.hp>0&&!part.visited.includes(enemy.id)&&strikeOverlaps(fireDragonHitBox(part,this.time),enemy)){
+                part.visited.push(enemy.id);this.hitShot({...shot,damage:this.currentShotPower(shot)},enemy);this.fireImpact(enemy);
+            }
+        }
+        if(!dragon.parts.some(p=>p.alive))shot.damage=0;
+    }
+    private advanceDragonFires(){
+        this.dragonFires=this.dragonFires.filter(fire=>this.time<fire.born+5.5);
+        for(const fire of this.dragonFires){
+            if(this.time>=fire.born+5||this.time<=fire.next+1e-8)continue;
+            let hit=false;
+            for(const enemy of this.enemies)if(enemy.side===fire.side&&enemy.hp>0&&strikeOverlaps({x:fire.x,y:fire.y+22,angle:0,length:0,bold:22},enemy)){
+                const power=this.currentShotPower({...fire,weaponId:5});this.damageEnemy(enemy,power,this.damageOwner(fire.from,fire.side,fire.hero,fire.heroId));hit=true;
+                this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(power)),ttl:.6,duration:.6,side:fire.side});
+                this.effects.push({id:this.nextId++,kind:'groundFlame',x:enemy.x,y:enemy.y,ttl:1.5,duration:1.5,side:fire.side,groundFlame:{target:enemy.id,frame:Math.floor(this.random.next()*4)}});
+            }
+            if(hit)fire.next=this.time+1;
+        }
+    }
+    private fireImpact(enemy:Enemy){
+        const points=[];for(let i=0;i<3;i++){const x=20+40*this.random.next(),y=20+40*this.random.next(),frames=[0,1,2,3];for(let j=3;j>0;j--){const index=Math.floor(this.random.next()*(j+1));[frames[j],frames[index]]=[frames[index],frames[j]];}points.push({x,y,frames});}
+        this.effects.push({id:this.nextId++,kind:'fireSparks',x:enemy.x,y:enemy.y,ttl:.3,duration:.3,side:enemy.side,fireSparks:{target:enemy.id,points}});
     }
     private advanceBirdArrow(shot:Shot,dt:number){
         const bird=shot.bird!;shot.x+=bird.dx*bird.rate*1000*dt;shot.y+=bird.dy*bird.rate*1000*dt;
@@ -886,6 +930,7 @@ export class Battle {
             }
         }
         this.advanceShots(dt);
+        this.advanceDragonFires();
         for (const enemy of this.enemies) {
             if(enemy.hp>0)this.advanceArrowBurn(enemy);
             if (enemy.hp <= 0) {
@@ -930,7 +975,7 @@ export class Battle {
             wave:this.wave, waveTime:this.waveTime, spawned:this.spawned, spawnTime:this.spawnTime, nextId:this.nextId, boosts:this.boosts,
             cooldowns:this.cooldowns, tutorialStep:this.tutorialStep, saveId:this.saveId, completed:this.completed, result:this.result,
             shots:this.shots,pendingAttacks:this.pendingAttacks,weaponStrikes:this.weaponStrikes,heroSkills:this.heroSkills,heroProgress:this.heroProgress,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
-            ranges:this.ranges,hazards:this.hazards,shovelTime:this.shovelTime,meteorTime:this.meteorTime,companions:this.companions,bossRound:this.bossRound,haze:this.haze,projectileHeight:this.projectileHeight });
+            ranges:this.ranges,hazards:this.hazards,shovelTime:this.shovelTime,meteorTime:this.meteorTime,companions:this.companions,bossRound:this.bossRound,haze:this.haze,projectileHeight:this.projectileHeight,dragonFires:this.dragonFires });
     }
     static restore(text: string, profile: Profile, weapons: Weapon[]): Battle | null {
         try {
@@ -948,8 +993,8 @@ export class Battle {
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
-                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.crossbowFire||s.kind==='crossbowFire'&&s.weaponId===9&&validCrossbowFire(s.crossbowFire))&&(!s.bird||s.kind===s.bird.kind&&validBirdArrow(s.bird)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))&&(!s.flyingPike||s.kind==='flyingPike'&&s.speed>0&&validFlyingPike(s.flyingPike))&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0&&(s.flight.targetX===undefined&&s.flight.targetY===undefined||Number.isFinite(s.flight.targetX)&&Number.isFinite(s.flight.targetY)))&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&(s.procStarted===undefined||typeof s.procStarted==='boolean')&&(s.fireArrowBorn===undefined||s.kind==='arrow'&&s.weaponId===9&&Number.isFinite(s.fireArrowBorn)&&s.fireArrowBorn>=0)&&(s.birdKind===undefined||s.kind==='arrow'&&['eagle','phoenix'].includes(s.birdKind)&&Number.isFinite(s.birdAnimationAt)&&s.birdAnimationAt!>=0)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:Array.isArray(raw.effects)?raw.effects.filter((e:Effect)=>e&&(e.kind!=='groundPike'||validGroundPike(e.piercing!)&&Number.isSafeInteger(e.id)&&[0,1].includes(e.side)&&[e.x,e.y,e.ttl,e.duration].every(Number.isFinite)&&e.duration===1&&e.ttl>=0&&e.ttl<=1)).slice(-100):[],aiTime:raw.aiTime||1.5,
-                aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
+                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.dragon||s.kind==='fireDragon'&&s.weaponId===5&&validFireDragon(s.dragon))&&(!s.crossbowFire||s.kind==='crossbowFire'&&s.weaponId===9&&validCrossbowFire(s.crossbowFire))&&(!s.bird||s.kind===s.bird.kind&&validBirdArrow(s.bird)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))&&(!s.flyingPike||s.kind==='flyingPike'&&s.speed>0&&validFlyingPike(s.flyingPike))&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0&&(s.flight.targetX===undefined&&s.flight.targetY===undefined||Number.isFinite(s.flight.targetX)&&Number.isFinite(s.flight.targetY)))&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&(s.procStarted===undefined||typeof s.procStarted==='boolean')&&(s.dragonPhase===undefined||s.kind==='arrow'&&s.weaponId===5&&Number.isFinite(s.dragonPhase)&&s.dragonPhase>=0&&s.dragonPhase<100)&&(s.fireArrowBorn===undefined||s.kind==='arrow'&&s.weaponId===9&&Number.isFinite(s.fireArrowBorn)&&s.fireArrowBorn>=0)&&(s.birdKind===undefined||s.kind==='arrow'&&['eagle','phoenix'].includes(s.birdKind)&&Number.isFinite(s.birdAnimationAt)&&s.birdAnimationAt!>=0)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:Array.isArray(raw.effects)?raw.effects.filter((e:Effect)=>e&&(!e.fireSparks||e.kind==='fireSparks'&&e.duration===.3&&validFireSparks(e.fireSparks))&&(!e.groundFlame||e.kind==='groundFlame'&&e.duration===1.5&&Number.isSafeInteger(e.groundFlame.target)&&e.groundFlame.target>0&&Number.isInteger(e.groundFlame.frame)&&e.groundFlame.frame>=0&&e.groundFlame.frame<4)&&(e.kind!=='groundPike'||validGroundPike(e.piercing!)&&Number.isSafeInteger(e.id)&&[0,1].includes(e.side)&&[e.x,e.y,e.ttl,e.duration].every(Number.isFinite)&&e.duration===1&&e.ttl>=0&&e.ttl<=1)).slice(-100):[],aiTime:raw.aiTime||1.5,
+                dragonFires:Array.isArray(raw.dragonFires)?raw.dragonFires.filter((f:DragonGroundFire)=>validDragonGroundFire(f)&&HEROES.some(h=>h.name===f.hero)).slice(0,4096):[],aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
                 ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0,projectileHeight:Number.isFinite(raw.projectileHeight)&&raw.projectileHeight>=640&&raw.projectileHeight<=4096?raw.projectileHeight:1386});
             for(const enemy of b.enemies){
                 if(enemy.burn&&!validArrowBurn(enemy.burn))delete enemy.burn;

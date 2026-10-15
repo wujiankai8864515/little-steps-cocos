@@ -1,0 +1,58 @@
+{
+  "id": "ZYA-48",
+  "date": "2026-10-15",
+  "scope": "Replace approximate iron-bow fire burst with original fire dragon and saved ground flames",
+  "reference": {
+    "inertSourceSHA256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "anchors": {
+      "Ue": "4217-4221: ten percent proc, one dragon including Huang Zhong, 450ms bow windup",
+      "Ii": "2363-2370: 500px/s, 10 radians/sec sine movement",
+      "Ci": "2380-2425: fifteen growing/tapered parts, colliding segments 0/4/10/14, tail drops ground fire",
+      "Ti": "2371-2379: 44x44 ground fire, five-second life, one-second hit interval, half-second shrink",
+      "groundFireEff": "1240,1982-1994: pooled 80x80 enemy flame",
+      "hitSparks": "1239,1326-1331: three 20x20 sparks, 50ms frames, 100ms fade"
+    },
+    "executed": false
+  },
+  "validation": {
+    "rulesTests": {
+      "passed": 113,
+      "failed": 0,
+      "log": "ZYA48-dragon-after.log"
+    },
+    "typecheck": "Source passed",
+    "browser": {
+      "candidate": "zya-web-v67",
+      "fullFrame": "320x704",
+      "time": 1.6000000000000016,
+      "partCount": 15,
+      "groundFires": 3,
+      "ready": {
+        "textureCount": 67,
+        "estimatedTextureBytes": 88951508,
+        "frameCount": 129,
+        "admission": {
+          "entries": 77,
+          "reservedBytes": 134222496,
+          "pending": 0
+        }
+      },
+      "restoredPngByteIdentical": true,
+      "sha256": "ac9bf45a6be9eb28ee3a03e220b871ebac7896878643ea37c9abd37ba9809f1e",
+      "consoleErrorsWarnings": []
+    }
+  },
+  "notes": [
+    "Removed twelve generic fire arrows and generic splash from iron bow",
+    "Crossbow now uses the shared native fire-impact particles",
+    "Enemy burn image size corrected from cropped original size to pooled 80x80",
+    "Long-lived fired projectiles preserve previous owner fallback after formation split",
+    "Ground fire list has a 4096-entry corrupt-save/runtime guard"
+  ],
+  "wechat": "Native v19 ran to home in DevTools with specified AppID; subsequent upload failed at compiled-main 5246KB despite raw-output main 3399917 bytes. ZYA49 handles upload settings.",
+  "pending": [
+    "Full original screenshot parity",
+    "Physical device acceptance",
+    "Other special weapon families and full original service coverage"
+  ]
+}

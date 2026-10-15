@@ -39,6 +39,45 @@ const closeTo=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-10,`${ac
 function weaponHitShot(f,id,target,damage=10){return {id:990,from:f.unit.id,side:0,target:target.id,x:target.x,y:target.y,damage,speed:0,kind:'melee',splash:0,weaponId:id,hero:f.hero.name,heroId:f.b.heroes(0)[0].id};}
 function crossbowFixture(name='黄忠',level=1){const f=heroRound(name,40,level);f.b.profile.equipped[name]=9;const target=f.add(901,400,240);target.hp=target.maxHp=100000;f.unit.cooldown=10000;return {...f,target};}
 function armCrossbow(f){for(let i=0;i<11;i++){f.unit.attacks=i+1;f.attack(f.target);}f.b.weaponStrikes=[];f.b.shots=[];}
+function dragonFixture(proc=true,name='黄忠',level=1){const f=heroRound(name,40,level);f.b.profile.equipped[name]=5;const target=f.add(901,40,720);target.hp=target.maxHp=100000;f.unit.cooldown=10000;f.b.random.state=proc?1:0xdeadbeef;f.attack(target);return {...f,target};}
+test('iron bow replaces a proc with one fire dragon even at Huang Zhong level five, and ordinary arrows have no splash',()=>{
+    const f=dragonFixture(true,'黄忠',5);assert.equal(f.b.weaponStrikes.length,1);assert.ok(Number.isFinite(f.b.weaponStrikes[0].dragonPhase));assert.equal(f.b.shots.length,0);assert.equal(f.b.effects.length,0);
+    const normal=dragonFixture(false,'黄忠',5);assert.equal(normal.b.weaponStrikes.length,3);assert.ok(normal.b.weaponStrikes.every(s=>s.dragonPhase===undefined));normal.b.time=.45;normal.b.advanceWeaponStrikes(1/30);assert.equal(normal.b.shots.length,3);assert.ok(normal.b.shots.every(s=>s.splash===0&&!s.dragon));
+});
+test('fire dragon releases after the bow windup and keeps its fixed direction after the selected target dies',()=>{
+    const f=dragonFixture();f.target.hp=0;f.b.time=.44;f.b.advanceWeaponStrikes(1/30);assert.equal(f.b.shots.length,0);f.b.time=.45;f.b.advanceWeaponStrikes(1/30);assert.equal(f.b.shots.length,1);const shot=f.b.shots[0];assert.equal(shot.kind,'fireDragon');assert.equal(shot.dragon.parts.length,1);assert.equal(shot.splash,0);f.b.time+=1/30;f.b.advanceShots(1/30);assert.ok(f.b.shots.includes(shot));assert.ok(shot.dragon.parts[0].y>shot.dragon.startY);
+});
+test('fire dragon preserves native wave frequency, fifteen-part taper, head growth and the four colliding segments',()=>{
+    const d=X.createFireDragon(1,{x:100,y:200},90,.4),head=d.parts[0];const p=X.fireDragonPartPosition(d,head,1.2);closeTo(p.x,200);closeTo(p.y,200-Math.sin(2.4)*7.5);
+    const body={...head,index:7};const q=X.fireDragonPartPosition(d,body,1.2);closeTo(q.y,200-Math.sin(2.4)*15);const tail=X.fireDragonPartPosition(d,{...head,index:14},1.2);closeTo(tail.y,200);
+    assert.deepEqual({...X.fireDragonPartSpec(0,.5)},{width:61,height:100,scale:1.5,imageY:22});closeTo(X.fireDragonPartSpec(1).scale,1+14/15);assert.equal(X.fireDragonPartSpec(14).width,45);assert.equal(X.fireDragonPartSpec(14).scale,.8);
+    assert.deepEqual(Array.from({length:15},(_,i)=>i).filter(X.fireDragonPartHits),[0,4,10,14]);
+});
+test('fire dragon spawns segments progressively, leaves only friendly-road flames and preserves the tail after the head is culled',()=>{
+    const f=dragonFixture();f.b.time=.45;f.b.advanceWeaponStrikes(1/30);const shot=f.b.shots[0];for(let i=1;i<=60;i++){f.b.time=.45+i/30;f.b.advanceShots(1/30);}assert.equal(shot.dragon.next,15);assert.equal(shot.dragon.parts.length,15);assert.ok(f.b.dragonFires.length>0);
+    assert.ok(shot.dragon.parts.every((p,i)=>p.index===i));for(let i=1;i<15;i++)assert.ok(shot.dragon.parts[i].born>shot.dragon.parts[i-1].born);
+    assert.equal(X.fireDragonRoad([['0_0','0_1','1_0']],0,{x:0,y:0}),true);assert.equal(X.fireDragonRoad([['0_0','0_1','1_0']],0,{x:0,y:80}),false);assert.equal(X.fireDragonRoad([['0_0','0_1','1_0']],0,{x:0,y:160}),false);
+    const d=shot.dragon;d.parts[0].alive=false;for(let i=1;i<14;i++)d.parts[i].alive=false;const tail=d.parts[14];const y=tail.y;f.b.time+=1/30;f.b.advanceShots(1/30);assert.ok(f.b.shots.includes(shot));assert.ok(tail.y>y);
+});
+test('dragon head pierces once per enemy using current owner damage and cannot hit the other camp',()=>{
+    const f=dragonFixture();f.b.time=.45;f.b.advanceWeaponStrikes(1/30);const shot=f.b.shots[0];f.b.time+=1/30;const point=X.fireDragonPartPosition(shot.dragon,shot.dragon.parts[0],f.b.time),a=f.add(902,point.x,point.y),rival=f.add(903,point.x,point.y,1);
+    f.b.addHeroExperience(f.b.heroProgress[0],10,false);const power=f.b.stats(f.unit,f.hero,undefined,0).power;f.b.advanceShots(1/30);closeTo(a.hp,100-power);assert.equal(rival.hp,100);assert.ok(shot.dragon.parts[0].visited.includes(a.id));const hp=a.hp;f.b.advanceShots(0);assert.equal(a.hp,hp);assert.ok(f.b.effects.some(e=>e.fireSparks));
+});
+test('ground fire pulses stack by patch, hit all friendly targets, follow current damage, stop at five seconds and shrink for half a second',()=>{
+    const f=dragonFixture(),a=f.add(902,200,400),b=f.add(903,200,400),rival=f.add(904,200,400,1),link=f.b.heroes(0)[0];f.b.dragonFires=[1,2].map(id=>({id:990+id,side:0,from:f.unit.id,hero:f.hero.name,heroId:link.id,damage:6,x:200,y:400,born:0,next:0,frame:0}));
+    const power=f.b.stats(f.unit,f.hero,undefined,0).power;f.b.time=1/30;f.b.advanceDragonFires();closeTo(a.hp,100-2*power);closeTo(b.hp,100-2*power);assert.equal(rival.hp,100);const hp=a.hp;f.b.time=1+1/30;f.b.advanceDragonFires();assert.equal(a.hp,hp);
+    f.b.addHeroExperience(f.b.heroProgress[0],10,false);const current=f.b.stats(f.unit,f.hero,undefined,0).power;f.b.time+=1/30;f.b.advanceDragonFires();closeTo(a.hp,hp-2*current);assert.ok(f.b.effects.some(e=>e.groundFlame));
+    const endHp=a.hp;f.b.time=5;f.b.advanceDragonFires();assert.equal(a.hp,endHp);assert.equal(f.b.dragonFires.length,2);closeTo(X.dragonGroundFirePose(5.25,f.b.dragonFires[0]).scale,.5);f.b.time=5.5;f.b.advanceDragonFires();assert.equal(f.b.dragonFires.length,0);
+});
+test('fire dragon segments, ground fire timers and hit animations resume identically without duplicate segments or flame ticks',()=>{
+    const f=dragonFixture();for(let i=0;i<55;i++)f.b.advance(1/30);assert.ok(f.b.shots.some(s=>s.dragon));assert.ok(f.b.dragonFires.length);const saved=f.b.snapshot(),copy=M.Battle.restore(saved,f.b.profile,weapons);assert.ok(copy);assert.equal(copy.snapshot(),saved);f.b.paused=true;f.b.advance(.25);assert.equal(f.b.snapshot(),saved);f.b.paused=false;
+    for(let i=0;i<180;i++){f.b.advance(1/30);copy.advance(1/30);assert.equal(copy.snapshot(),f.b.snapshot());}
+});
+test('malformed dragon state, road flame and impact particles are isolated while legacy rounds load without dragon fields',()=>{
+    const f=dragonFixture();f.b.time=.45;f.b.advanceWeaponStrikes(1/30);const raw=JSON.parse(f.b.snapshot());raw.shots[0].dragon.parts[0].visited=['bad'];raw.dragonFires=[{id:1,side:0,from:1,hero:'黄忠',heroId:1,damage:6,x:0,y:0,born:0,next:-1,frame:0}];const restored=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(restored);assert.equal(restored.shots.length,0);assert.equal(restored.dragonFires.length,0);
+    delete raw.dragonFires;raw.shots=[];const legacy=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(legacy);assert.equal(legacy.dragonFires.length,0);
+    assert.equal(X.validFireSparks({target:1,points:[{x:20,y:20,frames:[0,0,1,2]}]}),false);closeTo(X.fireSparkPose(.25,[3,2,1,0]).alpha,.5);assert.equal(X.fireSparkPose(.049,[3,2,1,0]).frame,0);assert.equal(X.fireSparkPose(.05,[3,2,1,0]).frame,2);closeTo(X.groundFlamePose(.25,0).scale,.5);closeTo(X.groundFlamePose(1.25,0).scale,.5);
+});
 test('crossbow counts ten ordinary attacks, then replaces the eleventh with a saved two-second volley',()=>{
     const f=crossbowFixture();for(let i=0;i<10;i++){f.unit.attacks=i+1;f.attack(f.target);assert.equal(f.unit.crossbowCount,i+1);assert.equal(f.unit.crossbowVolley,undefined);assert.equal(f.b.shots.length,0);}
     assert.equal(f.b.weaponStrikes.length,10);f.b.weaponStrikes=[];f.unit.attacks=11;f.attack(f.target);assert.equal(f.unit.crossbowCount,0);assert.ok(f.unit.crossbowVolley);assert.equal(f.b.weaponStrikes.length,0);assert.equal(f.b.shots.length,0);assert.ok(f.unit.weaponUntil>=2);
