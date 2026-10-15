@@ -18,6 +18,7 @@ const H = moduleFrom('ReferenceHeroes');
 const W = moduleFrom('ReferenceWeapons');
 const C = moduleFrom('ReferenceWeaponCombat');
 const S = moduleFrom('ReferenceHeroSkills');
+const P = moduleFrom('ReferenceProgression');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
@@ -25,7 +26,7 @@ const location = (area,index) => ({area,index});
 function heroRound(name,cell=40,level=1){
     const b=new M.Battle(M.newProfile(now),weapons,1,7),hero=M.HEROES.find(h=>h.name===name),unit=b.unit('字',hero.chars[0],level);
     b.armies[0].units={[cell]:unit,[cell+1]:b.unit('字',hero.chars[1],level)};b.armies[0].unlocked=b.map.grass.filter(n=>b.owns(0,n));b.aiTime=b.spawnTime=10000;b.waveTime=-10000;
-    unit.attacks=1;unit.weaponAt=0;unit.weaponRate=1;
+    b.heroes(0);unit.attacks=1;unit.weaponAt=0;unit.weaponRate=1;
     const add=(id,x,y,side=0)=>{const e={id,side,progress:0,hp:100,maxHp:100,speed:0,boss:false,slowed:0,x,y};b.enemies.push(e);return e;};
     const attack=target=>{const pos=b.position(cell);pos.x+=40;b.weaponAttack(unit,0,target,pos,b.stats(unit,hero,level,0),hero,cell);};
     return {b,hero,unit,add,attack};
@@ -33,6 +34,84 @@ function heroRound(name,cell=40,level=1){
 function startSkill(fixture){
     const {b,hero,unit}=fixture;return b.startHeroSkill(unit,0,40,hero,unit.level,b.stats(unit,hero,unit.level,0));
 }
+test('native formations inherit maximum part experience, with separate major/minor thresholds',()=>{
+    const b=heroRound('赵云').b;b.armies[0].units={40:b.unit('字','赵',2),41:b.unit('字','云',4)};
+    let link=b.heroes(0)[0];assert.equal(link.level,4);assert.equal(link.experience,75);assert.equal(link.maxLevel,5);assert.equal(b.armies[0].units[40].level,4);
+    b.armies[0].units={40:b.unit('字','关'),41:b.unit('字','平')};link=b.heroes(0)[0];const progress=b.heroProgress[0];
+    b.addHeroExperience(progress,8);assert.equal(b.heroes(0)[0].level,2);assert.equal(progress.experience,8);assert.equal(b.armies[0].units[40].experience,10);
+    b.addHeroExperience(progress,.1);assert.equal(b.armies[0].units[41].experience,8.1);
+    b.addHeroExperience(progress,14.9);assert.equal(progress.level,3);assert.equal(progress.experience,23);assert.equal(b.armies[0].units[40].experience,35);
+    b.addHeroExperience(progress,100);b.addHeroExperience(progress,-23);assert.equal(progress.level,3);assert.equal(progress.experience,23);assert.equal(b.armies[0].units[40].experience,35);
+    assert.equal(P.characterLevelCap('关'),5);assert.equal(P.characterLevelCap('平'),3);assert.equal(P.partExperience(5),130);
+});
+test('one named general per side retains the existing formation when an earlier duplicate appears',()=>{
+    const f=heroRound('赵云',42),original=f.b.heroes(0)[0];
+    f.b.armies[0].units[40]=f.b.unit('字','赵',5);f.b.armies[0].units[41]=f.b.unit('字','云',5);
+    const links=f.b.heroes(0);assert.equal(links.length,1);assert.equal(links[0].id,original.id);assert.equal(links[0].left,42);assert.equal(links[0].level,1);
+    assert.equal(f.b.move(location('board',43),location('reserve',0)),'');assert.equal(f.b.heroes(0)[0].left,40);assert.equal(f.b.heroes(0)[0].level,5);
+});
+test('standalone equal characters swap; a matching character feeds either half regardless of source level',()=>{
+    const f=heroRound('赵云'),b=f.b,identity=b.heroes(0)[0].id;
+    b.armies[0].reserve[0]=b.unit('字','赵',5);assert.equal(b.move(location('reserve',0),location('board',41)),'');assert.equal(b.armies[0].reserve[0],null);
+    let hero=b.heroes(0)[0];assert.equal(hero.id,identity);assert.equal(hero.level,2);assert.equal(hero.experience,10);assert.equal(b.armies[0].units[40].char,'赵');assert.equal(b.armies[0].units[41].char,'云');
+    b.armies[0].reserve[0]=b.unit('字','云');b.move(location('reserve',0),location('board',40));hero=b.heroes(0)[0];assert.equal(hero.level,3);assert.equal(hero.experience,35);assert.equal(b.armies[0].units[41].level,3);
+    const a=b.unit('字','祖'),c=b.unit('字','祖');b.armies[0].reserve[0]=a;b.armies[0].reserve[1]=c;b.move(location('reserve',0),location('reserve',1));assert.equal(b.armies[0].reserve[0].id,c.id);assert.equal(b.armies[0].reserve[1].id,a.id);assert.equal(a.level,1);assert.equal(c.level,1);
+});
+test('feeding preserves the target cast and counters, splits the source general, and never eats a max-level target',()=>{
+    const f=heroRound('关平'),b=f.b;f.add(901,100,340);startSkill(f);f.unit.skillCount=7;const cast=b.heroSkills[0].id,target=b.heroes(0)[0].id;
+    b.armies[0].units[42]=b.unit('字','关');b.armies[0].units[43]=b.unit('字','羽');const source=b.heroes(0).find(h=>h.hero.name==='关羽').id;
+    assert.equal(b.move(location('board',42),location('board',41)),'');assert.equal(b.heroProgress.some(p=>p.id===source),false);assert.equal(b.heroes(0)[0].id,target);assert.equal(b.heroSkills[0].id,cast);assert.equal(f.unit.skillCount,7);assert.equal(b.armies[0].units[43].char,'羽');
+    b.armies[0].reserve[0]=b.unit('字','平');b.move(location('reserve',0),location('board',40));assert.equal(b.heroes(0)[0].level,3);
+    const spare=b.unit('字','平'),old=b.armies[0].units[40];b.armies[0].reserve[0]=spare;b.move(location('reserve',0),location('board',40));assert.equal(b.armies[0].reserve[0].id,old.id);assert.equal(b.armies[0].units[40].id,spare.id);assert.equal(b.heroSkills.length,0);
+});
+test('hero kills award one experience and divide .5 among other contributors, with one settlement',()=>{
+    const f=heroRound('赵云'),b=f.b;for(const [cell,name]of [[42,'关羽'],[44,'黄忠']]){b.armies[0].units[cell]=b.unit('字',name[0]);b.armies[0].units[cell+1]=b.unit('字',name[1]);}
+    const heroes=b.heroes(0),enemy=f.add(901,100,340),owner=h=>({side:0,hero:true,heroId:h.id});enemy.hp=3;
+    b.damageEnemy(enemy,.5,owner(heroes[0]));b.damageEnemy(enemy,.5,owner(heroes[1]));b.damageEnemy(enemy,2,owner(heroes[2]));
+    assert.equal(b.heroProgress.find(p=>p.id===heroes[0].id).experience,.25);assert.equal(b.heroProgress.find(p=>p.id===heroes[1].id).experience,.25);assert.equal(b.heroProgress.find(p=>p.id===heroes[2].id).experience,1);
+    b.damageEnemy(enemy,999,owner(heroes[0]));assert.equal(b.heroProgress.find(p=>p.id===heroes[0].id).experience,.25);assert.equal(enemy.experienceSettled,true);
+    const boss=f.add(902,100,340);boss.boss=true;boss.hp=1;b.damageEnemy(boss,1,owner(heroes[0]));assert.equal(b.heroProgress.find(p=>p.id===heroes[0].id).experience,1.25);
+});
+test('basic kills share .2; destroyed generals remain in the assist divisor; ownerless deaths grant no experience',()=>{
+    const f=heroRound('赵云'),b=f.b,id=b.heroes(0)[0].id,enemy=f.add(901,100,340);enemy.hp=2;
+    b.damageEnemy(enemy,.1,{side:0,hero:true,heroId:id});b.damageEnemy(enemy,.1,{side:0,hero:true,heroId:9999});b.damageEnemy(enemy,2,{side:0,hero:false});assert.equal(b.heroProgress[0].experience,.1);
+    const noSource=f.add(902,100,340);noSource.hp=1;b.damageEnemy(noSource,.1,{side:0,hero:true,heroId:id});b.damageEnemy(noSource,1);assert.equal(b.heroProgress[0].experience,.1);
+    const awards=P.experienceAwards({side:0,hero:true,heroId:id},[id,id,8,9]);assert.equal(awards.length,3);assert.equal(awards[0].experience,1);assert.equal(awards[1].experience,.25);
+});
+test('released projectiles retain a destroyed formation identity after splitting, reforming and restoring',()=>{
+    const f=heroRound('黄祖'),b=f.b,enemy=f.add(901,200,340),old=b.heroes(0)[0].id;enemy.hp=1;
+    const shot=b.fire(f.unit,0,enemy,{x:80,y:440},10,'arrow',0,undefined,'黄祖');assert.equal(shot.heroId,old);
+    b.move(location('board',41),location('reserve',0));b.move(location('reserve',0),location('board',41));const current=b.heroes(0)[0].id;assert.notEqual(current,old);
+    const restored=M.Battle.restore(b.snapshot(),b.profile,weapons);assert.ok(restored);assert.equal(restored.shots[0].heroId,old);restored.hitShot(restored.shots[0],restored.enemies[0]);assert.equal(restored.heroProgress[0].experience,0);
+});
+test('promotion uses the general experience table, respects character caps, and training uses native odds',()=>{
+    const f=heroRound('关平'),b=f.b;b.profile.items=['god','training'];assert.equal(b.active('god',41),'');assert.equal(b.heroes(0)[0].experience,8);assert.equal(b.heroes(0)[0].level,2);b.cooldowns.god=0;
+    assert.equal(b.active('god',40),'');assert.equal(b.heroes(0)[0].experience,23);assert.equal(b.heroes(0)[0].level,3);b.cooldowns.god=0;
+    assert.notEqual(b.active('god',41),'');assert.equal(b.cooldowns.god,0);assert.notEqual(b.active('training',40),'');assert.equal(b.cooldowns.training,undefined);
+    b.armies[0].reserve[0]=b.unit('字','平',3);assert.notEqual(b.active('god',-1,location('reserve',0)),'');b.armies[0].reserve[0]=b.unit('字','关',3);assert.equal(b.active('god',-1,location('reserve',0)),'');assert.equal(b.armies[0].reserve[0].level,4);
+    assert.equal(P.trainingDelta(1,.99),1);assert.equal(P.trainingDelta(2,.99),1);assert.equal(P.trainingDelta(3,.7),1);assert.equal(P.trainingDelta(3,.7001),-1);assert.equal(P.trainingDelta(4,.6),1);assert.equal(P.trainingDelta(4,.6001),-1);
+});
+test('growth preserves cooldown work, serializes fractional assists and restores legacy levels/casts without resetting',()=>{
+    const f=heroRound('赵云'),b=f.b,p=b.heroProgress[0];f.unit.cooldown=.6;const before=b.stats(f.unit,f.hero,1).interval;b.addHeroExperience(p,10);assert.ok(Math.abs(f.unit.cooldown-(.6+.8/1.3-before))<1e-12);
+    b.addHeroExperience(p,.25);const saved=b.snapshot(),restored=M.Battle.restore(saved,b.profile,weapons);assert.equal(restored.snapshot(),saved);assert.equal(restored.heroProgress[0].experience,10.25);
+    const legacy=JSON.parse(saved);delete legacy.heroProgress;for(const unit of Object.values(legacy.armies[0].units))delete unit.experience;legacy.armies[0].units[40].level=4;legacy.armies[0].units[41].level=2;legacy.armies[0].units[40].attacks=29;legacy.armies[0].units[40].skillCount=28;
+    const old=M.Battle.restore(JSON.stringify(legacy),b.profile,weapons);assert.ok(old);assert.equal(old.heroes(0)[0].level,2);assert.equal(old.armies[0].units[40].level,4);assert.equal(old.armies[0].units[40].attacks,29);assert.equal(old.armies[0].units[40].skillCount,28);
+    const corrupt=JSON.parse(saved);corrupt.heroProgress[0].experience=-1;corrupt.armies[0].units[40].experience='bad';const repaired=M.Battle.restore(JSON.stringify(corrupt),b.profile,weapons);assert.ok(repaired);assert.equal(repaired.heroes(0)[0].level,2);assert.ok(Number.isFinite(repaired.armies[0].units[40].experience));
+});
+test('Ma Chao passive lethal damage awards experience once; basic melee distributes existing assists',()=>{
+    const f=heroRound('马超'),b=f.b,enemy=f.add(901,100,340);enemy.hp=2;b.random.next=()=>0;
+    const shot={id:999,from:f.unit.id,side:0,target:enemy.id,x:0,y:0,damage:1,speed:0,kind:'melee',splash:0,hero:'马超',heroId:b.heroes(0)[0].id};
+    b.hitShot(shot,enemy);assert.equal(b.heroProgress[0].experience,1);b.hitShot(shot,enemy);assert.equal(b.heroProgress[0].experience,1);
+    const basic=b.unit('刀'),other=f.add(902,100,340);b.armies[0].units[42]=basic;other.hp=3;b.damageEnemy(other,1,{side:0,hero:true,heroId:shot.heroId});
+    b.releaseBasicAttack({unit:basic.id,side:0,cell:42,kind:'刀',target:other.id,damage:3,range:200,x:100,y:340,targetX:100,targetY:340});assert.equal(b.heroProgress[0].experience,1.2);
+});
+test('legacy in-flight skills acquire the preserved general identity and malformed growth IDs cannot overflow it',()=>{
+    const f=heroRound('赵云'),b=f.b;f.add(901,100,340);startSkill(f);f.unit.skillCount=17;
+    const raw=JSON.parse(b.snapshot()),phase=raw.heroSkills[0].phase;delete raw.heroProgress;for(const skill of raw.heroSkills)delete skill.heroId;
+    const restored=M.Battle.restore(JSON.stringify(raw),b.profile,weapons);assert.ok(restored);assert.equal(restored.heroSkills[0].phase,phase);assert.equal(restored.heroSkills[0].heroId,restored.heroes(0)[0].id);assert.equal(restored.armies[0].units[40].skillCount,17);
+    restored.time=.8;restored.advanceHeroSkills(1/30);assert.equal(restored.heroSkills[0].phase,1);
+    const broken=JSON.parse(b.snapshot());broken.heroProgress[0].id=Number.MAX_SAFE_INTEGER;const repaired=M.Battle.restore(JSON.stringify(broken),b.profile,weapons);assert.ok(repaired);assert.ok(Number.isSafeInteger(repaired.nextId));assert.ok(repaired.heroes(0)[0].id<Number.MAX_SAFE_INTEGER);
+});
 test('native skills have separate pre/post counts, independent cast speed, and no invented Huang Gai ability',()=>{
     const expected={'赵云':[30,false],'张飞':[15,true],'马超':[0,false],'关羽':[20,true],'黄忠':[30,true],'关平':[15,true],'关兴':[0,false],'张苞':[0,false],'张翼':[20,true],'黄盖':[0,false],'刘备':[20,false],'黄祖':[30,true]};
     for(const hero of M.HEROES){const spec=S.HERO_SKILLS[hero.name];assert.equal(spec.every,expected[hero.name][0]);assert.equal(spec.before,expected[hero.name][1]);assert.equal(hero.skill,spec.name);}

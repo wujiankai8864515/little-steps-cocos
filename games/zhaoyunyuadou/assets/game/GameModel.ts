@@ -5,10 +5,12 @@ import { BASIC_UNITS, BASIC_GROWTH, BasicKind, FARM_INTERVALS, HERO_DAMAGE_GROWT
 import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceWeapons';
 import { advanceFlight, createFlight, enemyInRange, Flight, strikeOverlaps, StrikePlan, strikeShape, weaponStrikePlans } from './ReferenceWeaponCombat';
 import { HERO_SKILLS, HeroSkillState, hitPassive, huangZhongArrows, huangZhongGrowth, quadraticPose, shoutRing, skillRate, SkillProjectile, validHeroSkill, validSkillProjectile } from './ReferenceHeroSkills';
+import { characterLevelCap, DamageOwner, experienceAwards, experienceLevel, feedExperience, HeroProgress, heroExperienceTable, heroLevelCap, partExperience, trainingDelta, validExperience, validHeroProgress } from './ReferenceProgression';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
-export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; skillCount?:number;skillResume?:boolean;chain?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
+export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; experience?:number;idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; skillCount?:number;skillResume?:boolean;chain?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
 export interface Hero { name: string; chars: string; weaponType: number; range: number; power: number; speed: number; rarity: number; skill: string; }
+export interface HeroLink {hero:Hero;left:number;right:number;level:number;id:number;experience:number;maxLevel:number;}
 export const GLYPHS = '赵云张飞马超关羽平兴黄忠苞翼盖祖甄宓刘备';
 export const HEROES: Hero[] = [
     { name:'赵云',chars:'赵云',weaponType:1,range:200,power:2,speed:.8,rarity:2,skill:'七进七出' },
@@ -141,12 +143,12 @@ export class Random {
     pick<T>(items: T[]) { return items[Math.floor(this.next() * items.length)]; }
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
-export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number; bossType?:number; castIn?:number; }
-export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string; visited?:number[]; flight?:Flight; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
+export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean; bossType?:number; castIn?:number; }
+export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
 export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
-export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;}
+export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
@@ -155,6 +157,7 @@ export class Battle {
     pendingAttacks:PendingAttack[]=[];
     weaponStrikes:WeaponStrike[]=[];
     heroSkills:HeroSkillState[]=[];
+    heroProgress:HeroProgress[]=[];
     time = 0; wave = 1; waveTime = 0; paused = false; completed = false; result: BattleResult | null = null;
     tutorialStep = 0; revision = 0; nextId = 1; spawnTime = 4; spawned = 0; aiTime = 1.5;
     boosts: Record<number, number> = {}; ranges: Record<number, number> = {}; cooldowns: Record<string, number> = {}; aiSilence = 0;
@@ -180,9 +183,10 @@ export class Battle {
     }
     has(id: string) { return this.profile.items.includes(id); }
     cost(side: Side = 0) { return 10 + this.armies[side].recruitCount * 2; }
-    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? FARM_INTERVALS[level-1] : 0, attacks: 0,idleAt:this.time }; }
+    unit(kind: UnitKind, char: string = kind, level = 1): Unit { return { id: this.nextId++, kind, char, level, cooldown: kind === '农' ? FARM_INTERVALS[level-1] : 0, attacks: 0,idleAt:this.time,...(kind==='字'?{experience:partExperience(level)}:{}) }; }
     private changeLevel(unit:Unit,level:number){
         const previous=unit.level;unit.level=Math.max(1,Math.min(5,level));
+        if(unit.kind==='字')unit.experience=partExperience(unit.level);
         // Native farming keeps accumulated work while its level changes the
         // production threshold, rather than restarting a full harvest cycle.
         if(unit.kind==='农')unit.cooldown=Math.max(0,unit.cooldown+FARM_INTERVALS[unit.level-1]-FARM_INTERVALS[previous-1]);
@@ -231,9 +235,17 @@ export class Battle {
         }
         const target = this.get(to, side);
         if(target?.debuff==='lock'||unit.debuff==='lock')return '暂时不能合成，请使用神兵符解除';
-        const affected=this.heroes(side).filter(link=>[link.left,link.right].some(cell=>from.area==='board'&&from.index===cell||to.area==='board'&&to.index===cell)).map(link=>army.units[link.left]);
-        for(const heroUnit of affected){this.weaponStrikes=this.weaponStrikes.filter(strike=>strike.unit!==heroUnit.id);this.heroSkills=this.heroSkills.filter(skill=>skill.unit!==heroUnit.id);delete heroUnit.skillCount;delete heroUnit.skillResume;delete heroUnit.chain;delete heroUnit.weaponAt;delete heroUnit.weaponUntil;delete heroUnit.weaponAim;delete heroUnit.weaponRate;heroUnit.cooldown=0;heroUnit.idleAt=this.time;}
-        if (target && target.kind === unit.kind && target.char === unit.char && target.level === unit.level && unit.level < 5 && unit.kind !== '铲') {
+        const links=this.heroes(side),destination=to.area==='board'?links.find(link=>link.left===to.index||link.right===to.index):undefined;
+        // A loose matching character feeds either half of a general. The
+        // general keeps its identity, queued attacks and current skill.
+        if(unit.kind==='字'&&destination&&destination.level<destination.maxLevel&&destination.hero.chars.includes(unit.char)&&unit.id!==army.units[destination.left].id&&unit.id!==army.units[destination.right].id){
+            const source=from.area==='board'?links.find(link=>link.left===from.index||link.right===from.index):undefined;
+            if(source)this.cancelHero(this.heroProgress.find(p=>p.id===source.id)!);
+            this.set(from,null,side);this.addHeroExperience(this.heroProgress.find(p=>p.id===destination.id)!,feedExperience(destination.level));this.merges++;this.heroes(side);this.revision++;return '';
+        }
+        const affected=links.filter(link=>[link.left,link.right].some(cell=>from.area==='board'&&from.index===cell||to.area==='board'&&to.index===cell));
+        for(const link of affected)this.cancelHero(this.heroProgress.find(p=>p.id===link.id)!);
+        if (target && target.kind === unit.kind && target.char === unit.char && target.level === unit.level && unit.level < 5 && unit.kind !== '铲'&&unit.kind!=='字') {
             this.changeLevel(target,target.level+1); this.set(from, null, side); this.merges++; this.effect('merge', to.index, side, '等级提升');
         } else {
             this.set(from, target || null, side); this.set(to, unit, side);
@@ -244,15 +256,57 @@ export class Battle {
         }
         this.revision++; return '';
     }
-    heroes(side: Side): { hero: Hero; left: number; right: number; level: number }[] {
-        const units = this.armies[side].units, results: { hero: Hero; left: number; right: number; level: number }[] = [];
+    private heroPairs(side:Side){
+        const units = this.armies[side].units, results:{hero:Hero;left:number;right:number}[]=[];
         for (const key of Object.keys(units)) {
             const cell = Number(key), unit = units[cell], right = units[cell + 1];
             if (cell % 8 === 7 || unit.kind !== '字' || !right || right.kind !== '字') continue;
             const hero = HEROES.find(h => h.chars === unit.char + right.char);
-            if (hero) results.push({ hero, left: cell, right: cell + 1, level: Math.min(unit.level, right.level) });
+            if (hero) results.push({ hero, left: cell, right: cell + 1 });
         }
         return results;
+    }
+    private cancelHero(progress:HeroProgress){
+        const unit=this.armies[progress.side].units[progress.left];
+        this.weaponStrikes=this.weaponStrikes.filter(s=>s.heroId!==progress.id);
+        this.heroSkills=this.heroSkills.filter(s=>s.heroId!==progress.id);
+        if(unit?.id===progress.leftUnit){for(const key of ['skillCount','skillResume','chain','streak','seen','target','weaponAt','weaponUntil','weaponAim','weaponRate'] as const)delete unit[key];unit.cooldown=0;unit.idleAt=this.time;}
+        this.heroProgress=this.heroProgress.filter(p=>p.id!==progress.id);
+    }
+    private newHero(side:Side,pair:{hero:Hero;left:number;right:number},legacy=false){
+        const units=this.armies[side].units,left=units[pair.left],right=units[pair.right],level=Math.min(left.level,right.level),table=heroExperienceTable(pair.hero.name);
+        const progress:HeroProgress={id:this.nextId++,side,left:pair.left,leftUnit:left.id,rightUnit:right.id,name:pair.hero.name,level:legacy?level:1,experience:legacy?table[Math.min(table.length-1,level-1)]:0};
+        this.heroProgress.push(progress);
+        if(!legacy){left.attacks=0;left.cooldown=0;left.idleAt=this.time;this.addHeroExperience(progress,Math.max(validExperience(left.experience)?left.experience:partExperience(left.level),validExperience(right.experience)?right.experience:partExperience(right.level)),false);}
+        return progress;
+    }
+    heroes(side:Side):HeroLink[]{
+        const units=this.armies[side].units,pairs=this.heroPairs(side),matches=(p:HeroProgress,pair:typeof pairs[number])=>p.left===pair.left&&p.name===pair.hero.name&&p.leftUnit===units[pair.left].id&&p.rightUnit===units[pair.right].id;
+        for(const progress of this.heroProgress.slice())if(progress.side===side&&!pairs.some(pair=>matches(progress,pair)))this.cancelHero(progress);
+        const names=new Set(this.heroProgress.filter(p=>p.side===side).map(p=>p.name)),out:HeroLink[]=[];
+        for(const pair of pairs){let progress=this.heroProgress.find(p=>p.side===side&&matches(p,pair));if(!progress){if(names.has(pair.hero.name))continue;progress=this.newHero(side,pair);names.add(pair.hero.name);}
+            out.push({...pair,level:progress.level,id:progress.id,experience:progress.experience,maxLevel:heroLevelCap(pair.hero.name)});}
+        return out;
+    }
+    private addHeroExperience(progress:HeroProgress,amount:number,visual=true){
+        if(!Number.isFinite(amount)||heroLevelCap(progress.name)===3&&progress.level===3)return;
+        const units=this.armies[progress.side].units,left=units[progress.left],right=units[progress.left+1];if(left?.id!==progress.leftUnit||right?.id!==progress.rightUnit)return;
+        const hero=HEROES.find(h=>h.name===progress.name)!;if(left.char+right.char!==hero.chars)return;
+        const previous=progress.level,oldInterval=this.stats(left,hero,previous,progress.side).interval;
+        progress.experience=Math.min(Number.MAX_SAFE_INTEGER,Math.max(0,progress.experience+amount));left.experience=right.experience=progress.experience;
+        const level=experienceLevel(progress.name,progress.experience);
+        if(level!==previous){progress.level=level;this.changeLevel(left,level);this.changeLevel(right,level);if(left.cooldown>0)left.cooldown=Math.max(0,left.cooldown+this.stats(left,hero,level,progress.side).interval-oldInterval);this.revision++;
+            if(visual)this.effect('heroLevel',progress.left,progress.side,level>previous?'等级提升':'等级降低');}
+    }
+    private damageOwner(unit:number,side:Side,hero?:string,heroId?:number):DamageOwner{
+        return {side,hero:!!hero,heroId:heroId??(hero?this.heroes(side).find(link=>link.hero.name===hero&&this.armies[side].units[link.left].id===unit)?.id:undefined)};
+    }
+    private damageEnemy(enemy:Enemy,damage:number,owner?:DamageOwner){
+        if(enemy.hp<=0||!Number.isFinite(damage)||damage<=0)return false;
+        if(owner?.hero&&owner.heroId){if(!enemy.contributors)enemy.contributors=[];if(!enemy.contributors.includes(owner.heroId))enemy.contributors.push(owner.heroId);}
+        enemy.hp-=damage;
+        if(enemy.hp<=0&&!enemy.experienceSettled){enemy.experienceSettled=true;for(const award of experienceAwards(owner,enemy.contributors||[])){const progress=this.heroProgress.find(p=>p.id===award.id&&p.side===enemy.side);if(progress)this.addHeroExperience(progress,award.experience);}}
+        return true;
     }
     stats(unit: Unit, hero?: Hero, level = unit.level, side:Side=0) {
         const weapon = hero && side===0 ? this.weapons.find(w => w.id === this.profile.equipped[hero.name]) : undefined;
@@ -284,13 +338,14 @@ export class Battle {
             else if(id==='brush'){if(unit.kind!=='字')return '毛笔只能改字牌';const choices=GLYPHS.split('').filter(char=>char!==unit.char);unit.char=this.random.pick(choices);}
             else if(id==='trash'){if(unit.kind!=='字')return '垃圾桶只回收字牌';this.set(location,null,0);this.armies[0].food++;}
             else {
-                if (id === 'god' && unit.level === 5) return '已满5级';
-                const delta = id === 'training' && this.random.next() < 0.45 ? -1 : 1;
-                this.changeLevel(unit,unit.level+delta);
                 const link = location.area==='board'?this.heroes(0).find(h => h.left === cell || h.right === cell):undefined;
-                if (link) this.armies[0].units[link.left === cell ? link.right : link.left].level = unit.level;
-                this.effect('merge', cell, 0, delta > 0 ? '等级提升' : '等级降低');
+                const cap=link?.maxLevel||(unit.kind==='字'?characterLevelCap(unit.char):5),level=link?.level||unit.level;
+                if (level >= cap) return '已满'+cap+'级';
+                const delta = id === 'training'?trainingDelta(level,level<3?0:this.random.next()):1;
+                if(link){const next=heroExperienceTable(link.hero.name)[Math.max(0,level+delta-1)];if(next!==undefined)this.addHeroExperience(this.heroProgress.find(p=>p.id===link.id)!,next-link.experience);}
+                else{this.changeLevel(unit,Math.min(cap,unit.level+delta));this.effect('merge',cell,0,delta>0?'等级提升':'等级降低');}
             }
+            this.heroes(0);
         } else if (id === 'ink') {
             this.aiSilence = 5; this.effect('ink', 20, 1);
         } else if(id==='range') {
@@ -333,21 +388,22 @@ export class Battle {
         if(type===3){const empty=army.unlocked.filter(cell=>!army.units[cell]),chosen=this.random.pick(empty);if(chosen!==undefined){army.unlocked=army.unlocked.filter(cell=>cell!==chosen);this.effect('unlock',chosen,enemy.side);}}
         if(type===4){for(const side of [0,1] as Side[])for(const unit of Object.values(this.armies[side].units)){unit.debuff='rain';unit.debuffLevel=unit.level;unit.debuffUntil=0;}}
         if(type===5){const cell=cells.sort((a,b)=>army.units[a].level-army.units[b].level)[0],other=this.armies[enemy.side===0?1:0],free=other.unlocked.find(cell=>!other.units[cell]);if(cell!==undefined&&free!==undefined){other.units[free]=army.units[cell];delete army.units[cell];}}
-        if(type===7){for(const cell of cells.slice(0,3)){army.units[cell].level=Math.max(1,army.units[cell].level-1);debuff(cell,'lock',8);}}
+        if(type===7){const changed=new Set<number>();for(const cell of cells.slice(0,3)){const link=this.heroes(enemy.side).find(h=>h.left===cell||h.right===cell);if(link){if(!changed.has(link.id)){changed.add(link.id);const table=heroExperienceTable(link.hero.name);this.addHeroExperience(this.heroProgress.find(p=>p.id===link.id)!,table[Math.max(0,link.level-2)]-link.experience);}}else this.changeLevel(army.units[cell],army.units[cell].level-1);debuff(cell,'lock',8);}}
         if(type===8){const chosen=cells.find(cell=>{const p=this.position(cell);return Math.hypot(p.x-enemy.x,p.y-enemy.y)<200;});if(chosen!==undefined){delete army.units[chosen];enemy.maxHp*=1.3;enemy.hp+=enemy.maxHp*.3;}}
         if(type===9){for(const cell of cells.slice(0,2))debuff(cell,'stun');}
         if(type===10&&enemy.side===0)this.haze=5;
         if(type===11){const cell=cells.sort((a,b)=>army.units[b].level-army.units[a].level)[0];if(cell!==undefined)debuff(cell,'sealed');}
-        this.revision++;
+        this.heroes(0);this.heroes(1);this.revision++;
     }
-    private fire(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},power:number,kind:string,splash=0,weaponId?:number,hero?:string,flight?:{arc:number;multiplier:number;width:number;height:number;anchorX:number;anchorY:number}){
+    private fire(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},power:number,kind:string,splash=0,weaponId?:number,hero?:string,flight?:{arc:number;multiplier:number;width:number;height:number;anchorX:number;anchorY:number},heroId?:number){
         if(this.shots.length>=160)return;
         if(kind==='弓'&&!hero)flight={arc:120,multiplier:1.75,width:22,height:72,anchorX:.5,anchorY:.9};
-        const shot:Shot={id:this.nextId++,side,from:unit.id,target:target.id,x:pos.x,y:pos.y,damage:power,speed:kind==='eagle'?180:550,kind,splash,weaponId,hero,visited:[],...(flight?{flight:createFlight(pos,target,flight.arc,flight.multiplier,flight.height/1.5,this.time),width:flight.width,height:flight.height,anchorX:flight.anchorX,anchorY:flight.anchorY}:{})};this.shots.push(shot);return shot;
+        const shot:Shot={id:this.nextId++,side,from:unit.id,target:target.id,x:pos.x,y:pos.y,damage:power,speed:kind==='eagle'?180:550,kind,splash,weaponId,hero,heroId:hero?heroId??this.damageOwner(unit.id,side,hero).heroId:undefined,visited:[],...(flight?{flight:createFlight(pos,target,flight.arc,flight.multiplier,flight.height/1.5,this.time),width:flight.width,height:flight.height,anchorX:flight.anchorX,anchorY:flight.anchorY}:{})};this.shots.push(shot);return shot;
     }
-    private burst(unit:Unit,side:Side,pos:{x:number;y:number},damage:number,kind:string,count:number){
+    private burst(unit:Unit,side:Side,pos:{x:number;y:number},damage:number,kind:string,count:number,hero?:string,heroId?:number){
+        const link=hero?undefined:this.heroes(side).find(h=>this.armies[side].units[h.left].id===unit.id);hero=hero||link?.hero.name;heroId=heroId??link?.id;
         const pool=this.enemies.filter(e=>e.side===side&&e.hp>0).sort((a,b)=>Math.hypot(a.x-pos.x,a.y-pos.y)-Math.hypot(b.x-pos.x,b.y-pos.y));
-        for(const target of pool.slice(0,count))this.fire(unit,side,target,pos,damage,kind,kind==='fire'?45:0);
+        for(const target of pool.slice(0,count))this.fire(unit,side,target,pos,damage,kind,kind==='fire'?45:0,undefined,hero,undefined,heroId);
     }
     private battleEffect(kind:string,pos:{x:number;y:number},side:Side,text?:string){this.effects.push({id:this.nextId++,kind,x:pos.x,y:pos.y,text,ttl:.8,duration:.8,side});}
     private releaseBasicAttack(attack:PendingAttack){
@@ -362,10 +418,10 @@ export class Battle {
             const dx=attack.targetX-attack.x,dy=attack.targetY-attack.y,length=Math.hypot(dx,dy)||1,ux=dx/length,uy=dy/length;
             hit=pool.filter(e=>{const x=e.x-attack.x,y=e.y-attack.y,along=x*ux+y*uy;return along>=-20&&along<=attack.range&&Math.abs(x*uy-y*ux)<=25;});
         }
-        for(const enemy of hit){enemy.hp-=attack.damage;this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(attack.damage)),ttl:.6,duration:.6,side:attack.side});}
+        for(const enemy of hit){this.damageEnemy(enemy,attack.damage,{side:attack.side,hero:false});this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(attack.damage)),ttl:.6,duration:.6,side:attack.side});}
     }
     private weaponAttack(unit:Unit,side:Side,target:Enemy,pos:{x:number;y:number},stats:ReturnType<Battle['stats']>,hero:Hero,cell:number){
-        const id=stats.weapon?.id;
+        const id=stats.weapon?.id,link=this.heroes(side).find(h=>h.left===cell&&h.hero.name===hero.name);if(!link)return;
         if(hero.name==='关羽')unit.chain=unit.target===target.id?Math.min(5,(unit.chain||0)+.05):0;
         unit.streak=unit.target===target.id?(unit.streak||0)+1:0;unit.target=target.id;
         let power=stats.power;
@@ -378,54 +434,54 @@ export class Battle {
             for(let i=0;i<count;i++){const delta=(i-Math.floor(count/2))*10;attack.plans.push({...first,angle:first.angle+delta,endAngle:first.angle+delta});}
         }
         const delay=hero.name==='张飞'?.1/(hero.speed/stats.interval):0;
-        if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,weaponId:id,target:target.id,damage:power,born:this.time+delay+plan.delay,visited:[]});
+        if(this.weaponStrikes.length+attack.plans.length<=768)for(const plan of attack.plans)this.weaponStrikes.push({...plan,id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,heroId:link.id,weaponId:id,target:target.id,damage:power,born:this.time+delay+plan.delay,visited:[]});
         if(id===4&&this.random.next()<.1)this.burst(unit,side,pos,power,'eagle',8);
         if(id===5&&this.random.next()<.1){this.burst(unit,side,pos,power,'fire',12);this.battleEffect('fire',target,side);}
-        if(id===9&&unit.attacks%10===0)for(let i=0;i<10;i++)this.fire(unit,side,target,pos,power,'fire',45);
+        if(id===9&&unit.attacks%10===0)for(let i=0;i<10;i++)this.fire(unit,side,target,pos,power,'fire',45,id,hero.name,undefined,link.id);
         if(id===19&&this.random.next()<.1){this.burst(unit,side,pos,power*1.5,'flyingPike',20);this.battleEffect('pike',pos,side);}
         if(id===24&&unit.attacks%10===0)this.burst(unit,side,pos,power,'blade',12);
         if(id===28&&this.random.next()<.1)this.burst(unit,side,pos,power,'meteor',12);
         if(id!==undefined&&id>=34&&unit.attacks%10===0){const positive=(id%2===0)||id===43;this.battleEffect(positive?'sword':'coldSword',pos,side);
-            if(positive)this.burst(unit,side,pos,power*(1+stats.weapon!.rarity*.3),'sword',8);else for(const enemy of this.enemies)if(enemy.side===side&&Math.hypot(enemy.x-pos.x,enemy.y-pos.y)<320){enemy.slowed=3;enemy.hp-=power;}}
+            if(positive)this.burst(unit,side,pos,power*(1+stats.weapon!.rarity*.3),'sword',8);else for(const enemy of this.enemies)if(enemy.side===side&&Math.hypot(enemy.x-pos.x,enemy.y-pos.y)<320){enemy.slowed=3;this.damageEnemy(enemy,power,{side,hero:true,heroId:link.id});}}
     }
     private weaponHit(shot:Shot,target:Enemy){
         const id=shot.weaponId,unit=Object.values(this.armies[shot.side].units).find(unit=>unit.id===shot.from);
         const first=unit&&!unit.seen?.includes(target.id);if(first)unit!.seen=(unit!.seen||[]).concat(target.id).slice(-128);
         if(first&&id===26){this.profile.gold++;this.battleEffect('food',target,shot.side,'+1');}
-        if(first&&[12,17].includes(id!)&&this.random.next()<.2){const count=id===12?1:shot.hero==='马超'?5:3;this.burst(unit!,shot.side,target,shot.damage*count,'pike',count);this.battleEffect('pike',target,shot.side);}
+        if(first&&[12,17].includes(id!)&&this.random.next()<.2){const count=id===12?1:shot.hero==='马超'?5:3;this.burst(unit!,shot.side,target,shot.damage*count,'pike',count,shot.hero,shot.heroId);this.battleEffect('pike',target,shot.side);}
         if(first&&id===14&&this.random.next()<.2)target.held=2;
         if(id===25&&this.random.next()<.1)target.held=.5;
         if(id===2&&this.random.next()<.1)target.progress=Math.max(0,target.progress-80);
         if(id===7&&this.random.next()<.5){const visited=(shot.visited||[]).concat(target.id),next=this.enemies.find(e=>e.side===shot.side&&e.hp>0&&!visited.includes(e.id)&&Math.hypot(e.x-target.x,e.y-target.y)<240);if(next&&visited.length<12){shot.visited=visited;shot.target=next.id;shot.x=target.x;shot.y=target.y;if(shot.flight)shot.flight=createFlight(target,next,50,3,(shot.height||72)/1.5,this.time);return true;}}
         if(unit&&target.hp<=0){
             if(id===15){unit.speedBuff=.5;unit.speedUntil=this.time+2;}
-            if(id===16)this.burst(unit,shot.side,target,shot.damage,'flower',8);
-            if(id===29)this.burst(unit,shot.side,target,shot.damage,'blade',12);
+            if(id===16)this.burst(unit,shot.side,target,shot.damage,'flower',8,shot.hero,shot.heroId);
+            if(id===29)this.burst(unit,shot.side,target,shot.damage,'blade',12,shot.hero,shot.heroId);
         }
         return false;
     }
     private hitShot(shot:Shot,target:Enemy){
         if(target.hp<=0)return false;
-        target.hp-=shot.damage;this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-20,text:String(Math.ceil(shot.damage)),ttl:.6,duration:.6,side:shot.side});
+        const owner=this.damageOwner(shot.from,shot.side,shot.hero,shot.heroId);this.damageEnemy(target,shot.damage,owner);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-20,text:String(Math.ceil(shot.damage)),ttl:.6,duration:.6,side:shot.side});
         const passive=hitPassive(shot.hero||'',target.boss);
-        if(passive&&passive.chance>0&&this.random.next()<passive.chance){target.held=Math.max(target.held||0,passive.stun);if(passive.maxHealth){const damage=target.maxHp*passive.maxHealth;target.hp-=damage;this.battleEffect('lightning',target,shot.side);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-40,text:String(Math.ceil(damage)),ttl:.6,duration:.6,side:shot.side});}}
+        if(passive&&passive.chance>0&&this.random.next()<passive.chance){target.held=Math.max(target.held||0,passive.stun);if(passive.maxHealth){const damage=target.maxHp*passive.maxHealth;this.damageEnemy(target,damage,owner);this.battleEffect('lightning',target,shot.side);this.effects.push({id:this.nextId++,kind:'damage',x:target.x,y:target.y-40,text:String(Math.ceil(damage)),ttl:.6,duration:.6,side:shot.side});}}
         if(shot.hero==='张飞'){target.moveDebuff=-.1;target.moveDebuffUntil=this.time+2;}
         if(shot.kind==='holyBlade'&&!target.boss)target.knocked=2;
-        if(shot.splash>0)for(const other of this.enemies)if(other.id!==target.id&&other.hp>0&&other.side===target.side&&Math.hypot(other.x-target.x,other.y-target.y)<=shot.splash)other.hp-=shot.damage*.45;
+        if(shot.splash>0)for(const other of this.enemies)if(other.id!==target.id&&other.hp>0&&other.side===target.side&&Math.hypot(other.x-target.x,other.y-target.y)<=shot.splash)this.damageEnemy(other,shot.damage*.45,owner);
         return shot.skill?false:this.weaponHit(shot,target);
     }
     private advanceWeaponStrikes(dt:number){
         for(const strike of this.weaponStrikes){
             if(strike.done||this.time<strike.born)continue;
             const unit=this.armies[strike.side].units[strike.cell],link=this.heroes(strike.side).find(link=>link.left===strike.cell&&link.hero.name===strike.hero);
-            if(!unit||unit.id!==strike.unit||!link||['chaos','stun','sealed'].includes(unit.debuff||'')){strike.done=true;continue;}
+            if(!unit||unit.id!==strike.unit||!link||link.id!==strike.heroId||['chaos','stun','sealed'].includes(unit.debuff||'')){strike.done=true;continue;}
             const target=this.enemies.find(enemy=>enemy.id===strike.target&&enemy.hp>0);
             if(strike.kind==='arrow'||strike.kind==='throw'){
                 if(target){const shot=this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',strike.weaponId===5?70:0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
                     if(shot&&strike.hero==='黄忠'){const angle=strike.angle*Math.PI/180;delete shot.flight;shot.rotation=strike.angle;shot.motion={kind:'line',born:this.time,startX:shot.x,startY:shot.y,dx:Math.sin(angle),dy:-Math.cos(angle),speed:3000,expires:this.time+2};}}
                 strike.done=true;continue;
             }
-            const asShot=(enemy:Enemy):Shot=>({id:strike.id,side:strike.side,from:strike.unit,target:enemy.id,x:strike.x,y:strike.y,damage:strike.damage,speed:0,kind:'melee',splash:0,weaponId:strike.weaponId,hero:strike.hero});
+            const asShot=(enemy:Enemy):Shot=>({id:strike.id,side:strike.side,from:strike.unit,target:enemy.id,x:strike.x,y:strike.y,damage:strike.damage,speed:0,kind:'melee',splash:0,weaponId:strike.weaponId,hero:strike.hero,heroId:strike.heroId});
             if(strike.kind==='target'){if(target)this.hitShot(asShot(target),target);strike.done=true;continue;}
             const end=strike.born+strike.duration,start=Math.max(strike.born,this.time-dt),finish=Math.min(end,this.time);
             if(start<=finish){
@@ -446,15 +502,16 @@ export class Battle {
     }
     private startHeroSkill(unit:Unit,side:Side,cell:number,hero:Hero,level:number,stats:ReturnType<Battle['stats']>){
         const spec=HERO_SKILLS[hero.name];if(!spec.kind||this.heroSkills.length>=64)return false;
+        const link=this.heroes(side).find(h=>h.left===cell&&h.hero.name===hero.name);if(!link)return false;
         const pool=this.skillTargets(side,cell,stats.range,true),target=pool.sort((a,b)=>b.progress-a.progress)[0];if(!target)return false;
         const pos=this.position(cell),rate=skillRate(level);unit.skillCount=0;unit.skillResume=false;
         this.effect('skill',cell,side,spec.name);
         if(spec.kind==='holyBlade'){
             const origin={x:cell%8*80,y:Math.floor(cell/8)*80},nearest=pool.sort((a,b)=>Math.hypot(a.x-pos.x-40,a.y-pos.y)-Math.hypot(b.x-pos.x-40,b.y-pos.y))[0],dx=nearest.x-40-origin.x,dy=nearest.y-40-origin.y,length=Math.hypot(dx,dy)||1;
-            if(this.shots.length<160)this.shots.push({id:this.nextId++,side,from:unit.id,target:nearest.id,x:origin.x,y:origin.y,damage:5*stats.power,speed:300,kind:'holyBlade',splash:0,hero:hero.name,skill:true,visited:[],width:40,height:110,anchorX:.5,anchorY:.5,motion:{kind:'wave',born:this.time,startX:origin.x,startY:origin.y,dx:dx/length,dy:dy/length,speed:300,expires:this.time+10}});
+            if(this.shots.length<160)this.shots.push({id:this.nextId++,side,from:unit.id,target:nearest.id,x:origin.x,y:origin.y,damage:5*stats.power,speed:300,kind:'holyBlade',splash:0,hero:hero.name,heroId:link.id,skill:true,visited:[],width:40,height:110,anchorX:.5,anchorY:.5,motion:{kind:'wave',born:this.time,startX:origin.x,startY:origin.y,dx:dx/length,dy:dy/length,speed:300,expires:this.time+10}});
             return true;
         }
-        const skill:HeroSkillState={id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,kind:spec.kind,level,born:this.time,next:this.time,phase:0,count:0,damage:stats.power,range:stats.range,rate,x:pos.x,y:pos.y,fromX:pos.x,fromY:pos.y,toX:pos.x,toY:pos.y,target:target.id,visited:[],points:[],index:0,direction:-1,ends:this.time,weaponId:stats.weapon?.id};
+        const skill:HeroSkillState={id:this.nextId++,unit:unit.id,side,cell,hero:hero.name,heroId:link.id,kind:spec.kind,level,born:this.time,next:this.time,phase:0,count:0,damage:stats.power,range:stats.range,rate,x:pos.x,y:pos.y,fromX:pos.x,fromY:pos.y,toX:pos.x,toY:pos.y,target:target.id,visited:[],points:[],index:0,direction:-1,ends:this.time,weaponId:stats.weapon?.id};
         if(spec.interrupt){this.weaponStrikes=this.weaponStrikes.filter(s=>s.unit!==unit.id);unit.cooldown=0;unit.weaponUntil=this.time;}
         if(skill.kind==='shout')skill.next=this.time+.5;
         if(skill.kind==='arrowRain')skill.next=this.time+.228/rate;
@@ -484,12 +541,12 @@ export class Battle {
         if(spec.interrupt){unit.skillResume=!spec.replace;unit.cooldown=0;unit.idleAt=this.time;}
     }
     private skillDamage(skill:HeroSkillState,enemy:Enemy,damage:number){
-        if(damage>0)this.hitShot({id:skill.id,from:skill.unit,side:skill.side,target:enemy.id,x:skill.x,y:skill.y,damage,speed:0,kind:'skillHit',splash:0,hero:skill.hero,skill:true},enemy);
+        if(damage>0)this.hitShot({id:skill.id,from:skill.unit,side:skill.side,target:enemy.id,x:skill.x,y:skill.y,damage,speed:0,kind:'skillHit',splash:0,hero:skill.hero,heroId:skill.heroId,skill:true},enemy);
     }
     private advanceHeroSkills(dt:number){
         for(const skill of this.heroSkills){
             const unit=this.armies[skill.side].units[skill.cell],link=this.heroes(skill.side).find(h=>h.left===skill.cell&&h.hero.name===skill.hero);
-            if(!unit||unit.id!==skill.unit||!link){skill.done=true;continue;}
+            if(!unit||unit.id!==skill.unit||!link||link.id!==skill.heroId){skill.done=true;continue;}
             if(['chaos','stun','sealed'].includes(unit.debuff||'')){this.finishHeroSkill(skill,unit);continue;}
             if(skill.kind==='shout'){
                 const ring=shoutRing(this.time-skill.born,skill.rate,skill.range,0),radius=153*ring.scale/2;
@@ -503,7 +560,7 @@ export class Battle {
                         for(let i=0;i<10&&pool.length;i++){const target=pool.length<10?pool[i%pool.length]:this.random.pick(pool);const shot=this.fire(unit,skill.side,target,origin,skill.damage,'rainArrow',0,undefined,skill.hero,{arc:1000+this.random.next()*200,multiplier:.5,width:22,height:72,anchorX:.5,anchorY:.9});if(shot){shot.skill=true;shot.flight!.lastAt=release;}}
                         skill.count++;skill.next+=.228/skill.rate;if(skill.count===5)this.finishHeroSkill(skill,unit);
                     }else{
-                        const point=skill.points[skill.index++];if(point&&this.shots.length<160)this.shots.push({id:this.nextId++,side:skill.side,from:unit.id,target:-1,x:origin.x,y:origin.y,damage:skill.damage*2,speed:1,kind:'fireRain',splash:150,hero:skill.hero,skill:true,visited:[],width:22,height:72,anchorX:.5,anchorY:.9,motion:{kind:'point',born:release,startX:origin.x,startY:origin.y,dx:0,dy:0,speed:1,expires:release+1,toX:point.x,toY:point.y,arc:500+this.random.next()*250,duration:1}});
+                        const point=skill.points[skill.index++];if(point&&this.shots.length<160)this.shots.push({id:this.nextId++,side:skill.side,from:unit.id,target:-1,x:origin.x,y:origin.y,damage:skill.damage*2,speed:1,kind:'fireRain',splash:150,hero:skill.hero,heroId:skill.heroId,skill:true,visited:[],width:22,height:72,anchorX:.5,anchorY:.9,motion:{kind:'point',born:release,startX:origin.x,startY:origin.y,dx:0,dy:0,speed:1,expires:release+1,toX:point.x,toY:point.y,arc:500+this.random.next()*250,duration:1}});
                         skill.next+=2.85/((10+skill.points.length)*skill.rate);if(skill.index>=skill.points.length)this.finishHeroSkill(skill,unit);
                     }
                 }
@@ -571,11 +628,12 @@ export class Battle {
                 continue;
             }
             const keys = Object.keys(army.units).map(Number);
-            const match = keys.find(n => army.units[n].kind === unit.kind && army.units[n].char === unit.char && army.units[n].level === unit.level && unit.level < 5);
+            const links=this.heroes(1),feed=unit.kind==='字'?links.find(link=>link.level<link.maxLevel&&link.hero.chars.includes(unit.char)):undefined;
+            const match = feed?.left??(unit.kind!=='字'?keys.find(n => army.units[n].kind === unit.kind && army.units[n].char === unit.char && army.units[n].level === unit.level && unit.level < 5):undefined);
             const empty = army.unlocked.filter(n => !army.units[n]);
             let cell = match;
             if (cell === undefined && unit.kind === '字') {
-                cell = empty.find(n => HEROES.some(h => h.chars[0] === unit.char && n % 8 < 7 && army.units[n + 1]?.char === h.chars[1] || h.chars[1] === unit.char && n % 8 > 0 && army.units[n - 1]?.char === h.chars[0]));
+                cell = empty.find(n => HEROES.some(h => !links.some(link=>link.hero.name===h.name)&&(h.chars[0] === unit.char && n % 8 < 7 && army.units[n + 1]?.char === h.chars[1] || h.chars[1] === unit.char && n % 8 > 0 && army.units[n - 1]?.char === h.chars[0])));
             }
             if (cell === undefined && empty.length) cell = this.random.pick(empty);
             if (cell !== undefined) this.move({area:'reserve',index:i}, {area:'board',index:cell}, 1);
@@ -584,7 +642,7 @@ export class Battle {
         const keys = Object.keys(army.units).map(Number);
         for (let i = 0; i < keys.length; i++) for (let j = i + 1; j < keys.length; j++) {
             const a = army.units[keys[i]], b = army.units[keys[j]];
-            if (a && b && a.char === b.char && a.kind === b.kind && a.level === b.level && a.level < 5) {
+            if (a && b && a.kind!=='字'&&a.char === b.char && a.kind === b.kind && a.level === b.level && a.level < 5) {
                 this.move({area:'board',index:keys[i]}, {area:'board',index:keys[j]}, 1); return;
             }
         }
@@ -683,8 +741,9 @@ export class Battle {
             if((enemy.moveDebuffUntil||0)>this.time)speed*=Math.max(0,1+(enemy.moveDebuff||0));
             if(enemy.held>0||enemy.knocked>0)speed=0;
             if(enemy.side===0&&this.has('silt'))speed*=.9;
-            for(const hazard of this.hazards){const p=this.position(hazard.cell);if(enemy.side===0&&hazard.ttl>0&&Math.hypot(p.x-enemy.x,p.y-enemy.y)<40){hazard.ttl=0;if(hazard.kind==='mine')enemy.hp=0;else enemy.slowed=5;this.effect(hazard.kind,hazard.cell,0);}}
-            if(enemy.side===0&&this.has('meteor')&&this.meteorTime<=0&&enemy.progress>(this.map.paths[0].length-3)*80){enemy.hp=0;this.meteorTime=3;this.effect('meteor',this.map.paths[0].slice(-2)[0],0);}
+            for(const hazard of this.hazards){const p=this.position(hazard.cell);if(enemy.side===0&&hazard.ttl>0&&Math.hypot(p.x-enemy.x,p.y-enemy.y)<40){hazard.ttl=0;if(hazard.kind==='mine')this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});else enemy.slowed=5;this.effect(hazard.kind,hazard.cell,0);}}
+            if(enemy.side===0&&this.has('meteor')&&this.meteorTime<=0&&enemy.progress>(this.map.paths[0].length-3)*80){this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});this.meteorTime=3;this.effect('meteor',this.map.paths[0].slice(-2)[0],0);}
+            if(enemy.hp<=0)continue;
             enemy.progress += speed * dt; this.enemyPosition(enemy);
             if (enemy.progress >= (this.map.paths[enemy.side].length - 1) * 80) {
                 enemy.hp = -999; this.armies[enemy.side].lives = Math.max(0, this.armies[enemy.side].lives - 1);
@@ -707,10 +766,11 @@ export class Battle {
         this.profile.bestWave = Math.max(this.profile.bestWave, this.wave); this.revision++;
     }
     snapshot() {
+        this.heroes(0);this.heroes(1);
         return JSON.stringify({ version:1, map:this.map.id, seed:this.random.state, armies:this.armies, enemies:this.enemies, time:this.time,
             wave:this.wave, waveTime:this.waveTime, spawned:this.spawned, spawnTime:this.spawnTime, nextId:this.nextId, boosts:this.boosts,
             cooldowns:this.cooldowns, tutorialStep:this.tutorialStep, saveId:this.saveId, completed:this.completed, result:this.result,
-            shots:this.shots,pendingAttacks:this.pendingAttacks,weaponStrikes:this.weaponStrikes,heroSkills:this.heroSkills,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
+            shots:this.shots,pendingAttacks:this.pendingAttacks,weaponStrikes:this.weaponStrikes,heroSkills:this.heroSkills,heroProgress:this.heroProgress,effects:this.effects,aiTime:this.aiTime,aiSilence:this.aiSilence,kills:this.kills,merges:this.merges,deployed:this.deployed,accumulator:this.accumulator,
             ranges:this.ranges,hazards:this.hazards,shovelTime:this.shovelTime,meteorTime:this.meteorTime,companions:this.companions,bossRound:this.bossRound,haze:this.haze });
     }
     static restore(text: string, profile: Profile, weapons: Weapon[]): Battle | null {
@@ -720,13 +780,31 @@ export class Battle {
             for (const army of raw.armies) {
                 if (!Array.isArray(army.reserve) || army.reserve.length !== 5 || !Array.isArray(army.unlocked) || !army.units || !Number.isFinite(army.food) || !Number.isFinite(army.lives)) return null;
                 for (const unit of [...army.reserve, ...Object.values(army.units)] as (Unit|null)[]) if (unit && (!Number.isInteger(unit.id) || !Number.isInteger(unit.level) || unit.level < 1 || unit.level > 5 || !['刀','弓','枪','骑','农','字','铲'].includes(unit.kind))) return null;
+                for(const unit of [...army.reserve,...Object.values(army.units)] as (Unit|null)[])if(unit?.kind==='字'&&!validExperience(unit.experience))unit.experience=partExperience(unit.level);
             }
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
                 completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
                 aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
-                ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0}); return b;
+                ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0});
+            if(!Number.isSafeInteger(b.nextId)||b.nextId<1)return null;
+            const ids=new Set<number>(),names=new Set<string>();
+            for(const progress of (Array.isArray(raw.heroProgress)?raw.heroProgress:[]).slice(0,80) as HeroProgress[]){
+                if(!validHeroProgress(progress,HEROES.map(h=>h.name))||ids.has(progress.id)||names.has(progress.side+':'+progress.name))continue;
+                const units=b.armies[progress.side].units,left=units[progress.left],right=units[progress.left+1];
+                if(left?.id!==progress.leftUnit||right?.id!==progress.rightUnit||left.kind!=='字'||right.kind!=='字'||left.char+right.char!==progress.name)continue;
+                ids.add(progress.id);names.add(progress.side+':'+progress.name);b.heroProgress.push(progress);b.nextId=Math.max(b.nextId,progress.id+1);
+            }
+            // v1 saves predate separate general experience. Keep their current
+            // levels, attack counts and casts; future formations use native XP.
+            for(const side of [0,1] as Side[])for(const pair of b.heroPairs(side))if(!names.has(side+':'+pair.hero.name)){b.newHero(side,pair,true);names.add(side+':'+pair.hero.name);}
+            for(const enemy of b.enemies)if(enemy.contributors!==undefined)enemy.contributors=Array.isArray(enemy.contributors)?Array.from(new Set(enemy.contributors.filter(id=>Number.isSafeInteger(id)&&id>0))).slice(0,128):[];
+            const legacy=!Array.isArray(raw.heroProgress),owner=(unit:number,side:Side,hero:string)=>b.heroes(side).find(h=>h.hero.name===hero&&b.armies[side].units[h.left].id===unit)?.id;
+            for(const shot of b.shots)if(shot.hero&&(!Number.isSafeInteger(shot.heroId)||shot.heroId!<1))shot.heroId=(legacy?owner(shot.from,shot.side,shot.hero):undefined)??b.nextId++;
+            for(const strike of b.weaponStrikes)if(!Number.isSafeInteger(strike.heroId)||strike.heroId!<1)strike.heroId=(legacy?owner(strike.unit,strike.side,strike.hero):undefined)??b.nextId++;
+            for(const skill of b.heroSkills)if(!Number.isSafeInteger(skill.heroId)||skill.heroId!<1)skill.heroId=(legacy?owner(skill.unit,skill.side,skill.hero):undefined)??b.nextId++;
+            return b;
         } catch (_) { return null; }
     }
 }

@@ -7,6 +7,7 @@ import { BASIC_UNITS, isBasicKind, UnitFramePlayer } from './ReferenceUnits';
 import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
 import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
 import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
+import { characterLevelCap, heroExperienceTable } from './ReferenceProgression';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
@@ -21,6 +22,7 @@ export class GameApp {
     root: Node; ui: InkUI; art = new ArtStore(); profile: Profile; battle: Battle | null = null;
     page = 'loading'; height = 1386; alive = true; suspended = false;
     private screen: Element; private overlay: Node | null = null; private overlayUI: InkUI | null = null;
+    private unitInfoUpdate:(()=>void)|null=null;
     private rigs: InkRig[] = [];private battleClocks:InkRig[]=[]; private actors = new Map<number,ActorView>(); private mobs = new Map<number,Node>();
     private projectiles = new Map<number,Node>(); private effects = new Map<number,Node>();
     private skillViews=new Map<number,SkillView>();
@@ -378,7 +380,7 @@ export class GameApp {
                 if(['stomp','fire','lightning'].includes(effect.kind)){const path=effect.kind==='stomp'?'crack':effect.kind==='fire'?'explode0':'electric1',size=effect.kind==='stomp'?[76,17]:effect.kind==='fire'?[64,64]:[100,100];n=this.ui.image(this.combatLayer,skin('effect',path),0,0,size[0],size[1]);n.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
                 else n=this.ui.text(this.combatLayer,effect.text||'',effect.x-65,effect.y-35,130,50,effect.kind==='damage'?30:24,effect.kind==='skill'?'#ffd25d':'#ffffff',5);
                 n.addComponent(UIOpacity);this.effects.set(effect.id,n);
-                if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill'){const sounds:Record<string,string>={'大喝':'general_ground_slam','跳斩':'guanyu_skill_roar','火箭烈':'general_fire_arrow_rain','箭雨':'general_arrow_rain','圣剑':'holyBlade_skill'};if(sounds[effect.text||''])this.play(sounds[effect.text!]);}else if(effect.kind==='stomp')this.play('jumpSlash_stomp');else if(effect.kind==='lightning')this.play('maChao_attack_lightning');
+                if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='heroLevel'&&effect.text==='等级提升')this.play('general_level_up');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill'){const sounds:Record<string,string>={'大喝':'general_ground_slam','跳斩':'guanyu_skill_roar','火箭烈':'general_fire_arrow_rain','箭雨':'general_arrow_rain','圣剑':'holyBlade_skill'};if(sounds[effect.text||''])this.play(sounds[effect.text!]);}else if(effect.kind==='stomp')this.play('jumpSlash_stomp');else if(effect.kind==='lightning')this.play('maChao_attack_lightning');
             }
             const elapsed=effect.duration-effect.ttl;
             if(['stomp','fire','lightning'].includes(effect.kind)){
@@ -546,6 +548,7 @@ export class GameApp {
         return {ui,element:null};
     }
     private closeOverlay() {
+        this.unitInfoUpdate=null;
         if(this.overlay){this.overlay.destroy();this.overlay=null;this.overlayUI=null;this.overlayKind='';}
         const previous=this.overlayStack.pop();if(previous){this.overlay=previous.node;this.overlayUI=previous.ui;this.overlayKind=previous.kind;}
         if(this.page==='battle'&&this.battle&&!this.suspended&&!this.overlay)this.battle.paused=false;
@@ -571,11 +574,19 @@ export class GameApp {
     private unitInfo(unit:Unit,location:Location) {
         const {ui}=this.newOverlay();const definition=JSON.parse(JSON.stringify(this.art.layouts.UnitInfoDialog));definition.x=320;definition.y=380;
         const pane=ui.mount(definition,this.overlay!,640,this.height);ui.show('buffTipBk',false,pane);ui.show('buffArea',false,pane);ui.show('buffAreaExtend',false,pane);ui.show('expArea',false,pane);ui.show('weaponBox',false,pane);
-        const icon=ui.find('iconArea',pane)!;ui.image(icon.body,this.glyph(unit),18,18,90,90);
+        const icon=ui.find('iconArea',pane)!;
         const hero=location.area==='board'?this.battle!.heroes(0).find(h=>h.left===location.index||h.right===location.index):undefined;
-        const stats=this.battle!.stats(unit,hero?.hero,hero?.level);
-        ui.setText('title',(hero?.hero.name||unit.char)+'Lv.'+unit.level+'(单体)',pane);
-        ui.setText('power','攻击力:'+stats.power.toFixed(2),pane);ui.setText('speed','攻速:'+Math.floor(100/stats.interval),pane);ui.setText('lvlTip','满级5级',pane);
+        if(hero)for(const [i,char]of hero.hero.chars.split('').entries())ui.image(icon.body,this.glyph({...unit,char,level:1}),63+(i?1:-1)*80/3-40,23,80,80);
+        else ui.image(icon.body,this.glyph(unit),18,18,90,90);
+        const title=ui.find('title',pane)!.body;title.getComponent(UITransform)!.setContentSize(157,28);title.getComponent(Label)!.overflow=Label.Overflow.SHRINK;
+        this.unitInfoUpdate=()=>{
+            if(!this.battle||!this.overlay||this.battle.get(location)?.id!==unit.id){this.closeOverlay();return;}
+            const link=hero?this.battle.heroes(0).find(h=>h.id===hero.id):undefined;if(hero&&!link){this.closeOverlay();return;}
+            const stats=this.battle.stats(unit,link?.hero,link?.level),labels:Record<string,string>={'赵云':'快攻贯穿','张飞':'范围','关平':'范围','黄忠':'贯穿','枪':'贯穿','骑':'范围'};
+            ui.setText('title',(link?.hero.name||unit.char)+'Lv.'+(link?.level||unit.level)+'('+(labels[link?.hero.name||unit.kind]||'单体')+')',pane);
+            ui.setText('power','攻击力:'+stats.power.toFixed(2),pane);ui.setText('speed','攻速:'+(1/stats.interval).toFixed(2),pane);ui.setText('lvlTip','满级'+(link?.maxLevel||(unit.kind==='字'?characterLevelCap(unit.char):5))+'级',pane);
+            if(link){const table=heroExperienceTable(link.hero.name),next=table[link.level],ratio=next?Math.min(1,link.experience/next):1;ui.show('expArea',true,pane);ui.setText('expNum','('+link.experience.toFixed(1)+'/ '+(next??'已满级')+' )',pane);const bar=ui.find('expBar',pane)!;bar.body.getComponent(UITransform)!.setContentSize(Math.max(0,ratio*232-8),7);}
+        };this.unitInfoUpdate();
         ui.button(this.overlay!,()=>this.closeOverlay());
     }
     private deck(tab=0) {
@@ -795,7 +806,7 @@ export class GameApp {
         if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0){this.toastNode?.destroy();this.toastNode=null;}}
         if(this.page==='match'){this.matchTime-=dt;if(this.matchTime<1.2)this.ui.setText('title','匹配完成',this.screen);if(this.matchTime<=0){this.matchTime=999;this.showBattle();}}
         if(this.page==='battle'&&this.battle){this.battle.advance(dt);if(this.battle.revision!==this.revision)this.drawBattle();this.drawDynamic(dt);if(this.battle.completed)this.result();}
-        this.saveTime+=dt;if(this.saveTime>=5){this.saveTime=0;refreshProfile(this.profile);this.save();}
+        this.unitInfoUpdate?.();this.saveTime+=dt;if(this.saveTime>=5){this.saveTime=0;refreshProfile(this.profile);this.save();}
         if((globalThis as any).__ZYA_QA__&&typeof document!=='undefined')document.documentElement.dataset.zya=JSON.stringify(this.inspect());
     }
     resize(canvasHeight:number) {

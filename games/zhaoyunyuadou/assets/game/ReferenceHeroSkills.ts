@@ -40,12 +40,12 @@ export interface HeroSkillState {
     born:number;next:number;phase:number;count:number;damage:number;range:number;rate:number;
     x:number;y:number;fromX:number;fromY:number;toX:number;toY:number;
     target:number;visited:number[];points:SkillPoint[];index:number;direction:number;ends:number;
-    weaponId?:number;done?:boolean;
+    weaponId?:number;heroId?:number;done?:boolean;
 }
 export function validHeroSkill(value:HeroSkillState){
     return value&&Number.isInteger(value.id)&&Number.isInteger(value.unit)&&[0,1].includes(value.side)&&Number.isInteger(value.cell)&&value.cell>=0&&value.cell<80&&HERO_SKILLS[value.hero]?.kind===value.kind&&
         Number.isInteger(value.level)&&value.level>=1&&value.level<=5&&[value.born,value.next,value.phase,value.count,value.damage,value.range,value.rate,value.x,value.y,value.fromX,value.fromY,value.toX,value.toY,value.target,value.index,value.direction,value.ends].every(Number.isFinite)&&
-        value.rate>0&&value.damage>0&&Number.isInteger(value.phase)&&value.phase>=0&&value.phase<=3&&Number.isInteger(value.count)&&value.count>=0&&value.count<=7&&Array.isArray(value.visited)&&value.visited.length<=200&&value.visited.every(Number.isInteger)&&Array.isArray(value.points)&&value.points.length<=400&&value.points.every(p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y));
+        value.rate>0&&value.damage>0&&(value.heroId===undefined||Number.isInteger(value.heroId)&&value.heroId>0)&&Number.isInteger(value.phase)&&value.phase>=0&&value.phase<=3&&Number.isInteger(value.count)&&value.count>=0&&value.count<=7&&Array.isArray(value.visited)&&value.visited.length<=200&&value.visited.every(Number.isInteger)&&Array.isArray(value.points)&&value.points.length<=400&&value.points.every(p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y));
 }
 export function quadraticPose(start:SkillPoint,end:SkillPoint,progress:number,arc:number){
     const t=Math.max(0,Math.min(1,progress)),u=1-t;return {x:start.x+(end.x-start.x)*t,y:u*u*start.y+2*u*t*((start.y+end.y)/2-arc)+t*t*end.y};
