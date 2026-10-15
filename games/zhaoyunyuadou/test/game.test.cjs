@@ -37,6 +37,52 @@ function startSkill(fixture){
 }
 const closeTo=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
 function weaponHitShot(f,id,target,damage=10){return {id:990,from:f.unit.id,side:0,target:target.id,x:target.x,y:target.y,damage,speed:0,kind:'melee',splash:0,weaponId:id,hero:f.hero.name,heroId:f.b.heroes(0)[0].id};}
+function birdFixture(id,roll=0){const f=heroRound('黄忠');f.b.profile.equipped['黄忠']=id;f.b.random.next=()=>roll;const target=f.add(901,400,240);f.attack(target);const plan=f.b.weaponStrikes[0];f.b.time=plan.born;f.b.advanceWeaponStrikes(1/30);return {...f,target,plan,shot:f.b.shots[0]};}
+test('eagle roll replaces the drawn arrow, preserves native size and uses ten percent at attack selection',()=>{
+    for(const [roll,eagle]of [[0,true],[.0999,true],[.1,false]]){const f=birdFixture(4,roll);assert.equal(f.b.shots.length,1);assert.equal(f.shot.kind,eagle?'eagle':'arrow');assert.equal(!!f.shot.bird,eagle);if(eagle){assert.equal(f.shot.width,187);assert.equal(f.shot.height,124);assert.equal(f.shot.anchorX,.3);assert.equal(f.shot.bird.rate,.35);assert.equal(f.shot.bird.born,0);assert.equal(f.shot.splash,0);}}
+});
+test('bird pose uses the pre-release animation clock, native collision body and distance-scaled phoenix damage',()=>{
+    const state={kind:'eagle',born:0,startX:0,startY:0,dx:0,dy:-1,rate:.35};assert.equal(X.birdArrowPose(.45,state,{x:0,y:0}).frame,1);assert.equal(X.birdArrowPose(.7,state,{x:0,y:-80}).frame,4);
+    closeTo(X.birdArrowOrigin({x:40,y:40},0,'eagle').x,72.538);closeTo(X.birdArrowOrigin({x:40,y:40},0,'phoenix').y,61.6);
+    const box=X.birdArrowHitBox(state,{x:100,y:200});closeTo(box.x,65.9);closeTo(box.y,210);assert.equal(box.bold,22);assert.equal(box.length,28);
+    assert.equal(X.birdArrowDamage('eagle',7,1000),21);assert.equal(X.birdArrowDamage('phoenix',7,249),7);assert.equal(X.birdArrowDamage('phoenix',7,750),10);assert.equal(X.birdArrowDamage('phoenix',7,4000),14);assert.equal(X.birdArrowPose(.7,{...state,kind:'phoenix',rate:1},{x:0,y:-500}).scale,2);
+});
+test('eagle flies without a living chosen target, pierces once per enemy, slows on contact and recovers speed',()=>{
+    const f=birdFixture(4);assert.ok(f.shot.bird);f.target.hp=0;const p={x:f.shot.x+f.shot.bird.dx*35,y:f.shot.y+f.shot.bird.dy*35},box=X.birdArrowHitBox(f.shot.bird,p),a=box.angle*Math.PI/180,centre={x:box.x+(box.length+2*box.bold)/2*Math.sin(a),y:box.y-(box.length+2*box.bold)/2*Math.cos(a)};
+    const enemy=f.add(902,centre.x,centre.y),rival=f.add(903,centre.x,centre.y,1),power=f.b.stats(f.unit,f.hero,1,0).power;f.b.time+=.1;f.b.advanceShots(.1);closeTo(enemy.hp,100-3*power);assert.equal(rival.hp,100);assert.equal(f.shot.bird.rate,.1);assert.ok(enemy.push);const hp=enemy.hp;
+    f.b.time+=.1;f.b.advanceShots(.1);assert.equal(enemy.hp,hp);closeTo(f.shot.bird.rate,.2);assert.ok(f.b.shots.includes(f.shot));
+});
+test('phoenix always replaces ordinary arrows, uses fixed ten-point stacked burns and no generic splash',()=>{
+    const f=birdFixture(8);assert.equal(f.shot.kind,'phoenix');assert.ok(f.shot.bird);assert.equal(f.shot.width,44);assert.equal(f.shot.height,72);assert.equal(f.shot.splash,0);const state=f.shot.bird,p={x:f.shot.x+state.dx*100,y:f.shot.y+state.dy*100};f.target.x=p.x;f.target.y=p.y;f.target.hp=1000;
+    const power=f.b.stats(f.unit,f.hero,1,0).power;f.b.time+=.1;f.b.advanceShots(.1);closeTo(f.target.hp,1000-power);assert.equal(f.target.burn.stacks.length,1);assert.equal(f.target.burn.stacks[0].damage,10);closeTo(f.target.burn.stacks[0].until,f.b.time+2);assert.equal(f.shot.bird.rate,.2);
+});
+test('phoenix reads current general power separately for targets after a same-frame promotion',()=>{
+    const f=birdFixture(8),progress=f.b.heroProgress[0];progress.experience=9;for(const unit of Object.values(f.b.armies[0].units))unit.experience=9;
+    const before=f.b.stats(f.unit,f.hero,undefined,0).power,bird=f.shot.bird,p={x:f.shot.x+bird.dx*100,y:f.shot.y+bird.dy*100};f.target.x=p.x;f.target.y=p.y;f.target.hp=1;const next=f.add(902,p.x,p.y);next.hp=1000;
+    f.b.time+=.1;f.b.advanceShots(.1);assert.equal(f.b.heroes(0)[0].level,2);const after=f.b.stats(f.unit,f.hero,undefined,0).power;assert.ok(after>before);closeTo(next.hp,1000-after);
+});
+test('phoenix from a split formation retains its old damage owner and never borrows a replacement general',()=>{
+    const f=birdFixture(8),oldPower=f.shot.damage,bird=f.shot.bird,p={x:f.shot.x+bird.dx*100,y:f.shot.y+bird.dy*100};f.target.x=p.x;f.target.y=p.y;f.target.hp=1000;
+    f.b.armies[0].units={};f.b.heroes(0);f.b.armies[0].units={40:f.b.unit('字','黄',5),41:f.b.unit('字','忠',5)};f.b.heroes(0);const replacement=f.b.heroProgress[0];replacement.level=5;const nextPower=f.b.stats(f.b.armies[0].units[40],f.hero,5,0).power;assert.ok(nextPower>oldPower);
+    f.b.time+=.1;f.b.advanceShots(.1);closeTo(f.target.hp,1000-oldPower);
+});
+test('stacked phoenix burns tick together, pause deterministically and settle fatal damage before movement',()=>{
+    const f=heroRound('黄忠'),enemy=f.add(901,100,340);enemy.hp=39;enemy.progress=(f.b.map.paths[0].length-1)*80-1;enemy.speed=500;f.b.enemyPosition(enemy);f.b.addArrowBurn(enemy);f.b.addArrowBurn(enemy);f.unit.cooldown=10000;const food=f.b.armies[0].food;
+    f.b.paused=true;const saved=f.b.snapshot();f.b.advance(.25);assert.equal(f.b.snapshot(),saved);f.b.paused=false;enemy.speed=0;f.b.advance(1/30);assert.equal(enemy.hp,19);for(let i=0;i<29;i++)f.b.advance(1/30);assert.equal(enemy.hp,19);enemy.speed=500;f.b.advance(1/30);assert.equal(f.b.enemies.length,0);assert.equal(f.b.armies[0].lives,3);assert.equal(f.b.armies[0].food,food+1);assert.equal(f.b.kills,1);
+});
+test('bird flight, burn clock and push restore exactly, with malformed new fields rejected independently',()=>{
+    const f=birdFixture(8);f.unit.cooldown=10000;const e=f.add(902,200,400);f.b.addArrowBurn(e);e.push={x:24,y:0};const saved=f.b.snapshot(),restored=M.Battle.restore(saved,f.b.profile,weapons);assert.ok(restored);assert.equal(restored.snapshot(),saved);
+    for(let i=0;i<15;i++){f.b.advance(1/30);restored.advance(1/30);}assert.equal(restored.snapshot(),f.b.snapshot());
+    const raw=JSON.parse(saved);raw.shots[0].bird.dx=2;raw.enemies[1].burn.stacks[0].damage=-1;raw.enemies[1].push.x='bad';const repaired=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(repaired);assert.equal(repaired.shots.length,0);assert.equal(repaired.enemies[1].burn,undefined);assert.equal(repaired.enemies[1].push,undefined);
+});
+test('burn animation grows and fades on the saved battle clock',()=>{const value={born:2,next:2,end:4,frame:2,stacks:[{until:4,damage:10}]};assert.equal(X.arrowBurnPose(2,value).scale,0);assert.equal(X.arrowBurnPose(2.5,value).scale,1);assert.equal(X.arrowBurnPose(4.25,value).scale,.5);assert.equal(X.arrowBurnPose(4.5,value).scale,0);assert.equal(X.arrowBurnPose(2.07,value).frame,4);});
+test('bird lifetime uses the current saved stage height and restores legacy bounds safely',()=>{
+    const f=birdFixture(4);f.shot.y=1490;f.b.projectileHeight=1408;f.b.advanceShots(0);assert.equal(f.b.shots.length,1);const saved=f.b.snapshot();assert.equal(M.Battle.restore(saved,f.b.profile,weapons).projectileHeight,1408);
+    f.b.projectileHeight=1386;f.b.advanceShots(0);assert.equal(f.b.shots.length,0);const old=JSON.parse(saved);delete old.projectileHeight;assert.equal(M.Battle.restore(JSON.stringify(old),f.b.profile,weapons).projectileHeight,1386);
+});
+test('two-second phoenix burn applies two ticks and expires without phantom damage during its visual fade',()=>{
+    const f=heroRound('黄忠'),enemy=f.add(901,100,340);f.unit.cooldown=10000;f.b.addArrowBurn(enemy);for(let i=0;i<75;i++)f.b.advance(1/30);assert.equal(enemy.hp,80);assert.equal(enemy.burn,undefined);assert.equal(f.b.armies[0].lives,3);
+});
 test('iron pike applies one immediate twofold ground hit and a half-second hold, only on its first contact',()=>{
     const f=heroRound('赵云'),target=f.add(901,100,340),other=f.add(902,180,340);f.b.random.next=()=>0;
     f.b.weaponHit(weaponHitShot(f,12,target),target);assert.equal(target.hp,80);assert.equal(other.hp,100);assert.equal(target.held,.5);assert.equal(f.b.shots.length,0);

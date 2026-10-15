@@ -1,0 +1,226 @@
+{
+  "id": "ZYA-42",
+  "date": "2026-10-15",
+  "scope": "Native eagle and phoenix projectiles, attack replacement, collision, slowdown, knockback, burn and saved animation; not full weapon or publisher-pixel acceptance",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "anchors": {
+      "eagleWeapon": "4208-4212",
+      "phoenixWeapon": "4227-4232",
+      "eagleProjectile": "2300-2308",
+      "sharedHitSlowdown": "2290-2293",
+      "phoenixProjectile": "2450-2458",
+      "stackedFixedBurn": "1982-1994,2437-2439",
+      "knockbackAndRoadReturn": "1789-1829",
+      "projectileBoundsAndHitCache": "2728-2785",
+      "nativeBowReleaseCentre": "4163-4177"
+    },
+    "runtimeExecuted": false
+  },
+  "before": {
+    "eagle": "A normal arrow plus up to eight extra homing eagle shots, no native hit slowdown/frames/push",
+    "phoenix": "Generic arrow with damage based on original target distance; no native growth, burn, piercing or images"
+  },
+  "after": {
+    "selection": "Eagle at floor(random*100)<10 replaces normal volley; phoenix always replaces it; Huang Zhong multi-arrow count retained",
+    "eagle": "187x124, .3/.5 pivot, 44x72 offset collider, four frames/100ms, straight 350px/s and 3x snapshotted power; one contact per enemy; hit flash and directional push",
+    "phoenix": "44x72, centered pivot, four frames/200ms, straight 1000px/s; scale=1+traveled/500; current owner power+floor(traveled/250), capped at double; promotion affects next target, replacement formation never borrowed",
+    "slowdown": "speed coefficient x.2 at each hit, minimum .1, recovers +1 per second toward native coefficient",
+    "burn": "Each phoenix hit adds independent fixed 10-point/2-second stack; shared immediate-next-step then 1-second tick, 70ms original flame frames, .5-second grow and fade; fatal tick settles before movement",
+    "knockback": "direction*.3 grids impulse, saved velocity, .9 per 60Hz source frame normalized to fixed clock; nearest-road clamp and return waypoint",
+    "clocks": "Drawn and released bird animation use original attack-start clock; burns, impacts, velocity, collision cache and return position saved",
+    "bounds": "Saved current logical stage height +100; old saves default to authored 1386; horizontal -100..740"
+  },
+  "tests": {
+    "initial": {
+      "total": 87,
+      "pass": 82,
+      "fail": 5,
+      "log": "ZYA42-birds-before.log"
+    },
+    "final": {
+      "total": 91,
+      "pass": 91,
+      "fail": 0,
+      "log": "ZYA42-birds-verified.log"
+    },
+    "additionalCoverage": [
+      "ten-percent boundary",
+      "dead selected target does not remove straight bird",
+      "one collision per target and side isolation",
+      "native collider/pivot/frame landmarks",
+      "current power after same-frame promotion",
+      "old formation damage ownership",
+      "fixed stacked burn, expiry and fatal settlement",
+      "paused and future deterministic restoration",
+      "malformed fields and legacy stage bounds"
+    ]
+  },
+  "build": {
+    "v63": "pass",
+    "v64": "pass",
+    "sourceTypecheck": "pass",
+    "v63Typecheck": "pass",
+    "v64Typecheck": "pass"
+  },
+  "browser": {
+    "restorePairs": [
+      {
+        "phase": 0.3,
+        "before": "birds-draw-base-v63.png",
+        "after": "birds-draw-restored-v63.png",
+        "sha256": "60f40542ee4c24355e994efdb08e966d48046a3e9c847371fa8701059ac0db97",
+        "pngByteEqual": true,
+        "differentPixels": 0,
+        "size": [
+          320,
+          704
+        ],
+        "capture": {
+          "method": "canvas-after-draw",
+          "serial": 2,
+          "at": 15178.200000017881,
+          "readyFrames": 759
+        }
+      },
+      {
+        "phase": 0.7,
+        "before": "birds-base-v63.png",
+        "after": "birds-restored-v63.png",
+        "sha256": "befbe51e2e673893b8f3a21d65b17aec9742286d70141bada3cd2446a1db7b4f",
+        "pngByteEqual": true,
+        "differentPixels": 0,
+        "size": [
+          320,
+          704
+        ],
+        "capture": {
+          "method": "canvas-after-draw",
+          "serial": 2,
+          "at": 28992.59999999404,
+          "readyFrames": 1553
+        }
+      }
+    ],
+    "finalCandidate": "v64",
+    "finalPNG": "birds-final-v64.png",
+    "finalSHA256": "befbe51e2e673893b8f3a21d65b17aec9742286d70141bada3cd2446a1db7b4f",
+    "sameAsV63CompleteFlightFrame": true,
+    "lives": [
+      3,
+      3
+    ],
+    "enemies": 6,
+    "pending": 0,
+    "admission": {
+      "entries": 77,
+      "reservedBytes": 134222496,
+      "pending": 0
+    },
+    "projectiles": [
+      {
+        "kind": "eagle",
+        "bird": {
+          "kind": "eagle",
+          "born": 0,
+          "startX": 7.462000000000001,
+          "startY": 418.4,
+          "dx": 1.2246467991473532e-16,
+          "dy": 1,
+          "rate": 0.3333333333333333,
+          "hitAt": 0.4666666666666666
+        }
+      },
+      {
+        "kind": "phoenix",
+        "bird": {
+          "kind": "phoenix",
+          "born": 0,
+          "startX": 216.25565660566855,
+          "startY": 425.77630047004,
+          "dx": -0.7525766947068778,
+          "dy": 0.658504607868518,
+          "rate": 0.3333333333333333,
+          "hitAt": 0.5666666666666667
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "id": 15,
+        "position": {
+          "x": 7.462000000000008,
+          "y": -476.73333333333335,
+          "z": 0
+        },
+        "size": {
+          "width": 187,
+          "height": 124
+        },
+        "anchor": {
+          "x": 0.3,
+          "y": 0.5
+        },
+        "ready": true,
+        "skin": "resources/img/weapon/bullet/eagleArrow_04.png",
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "flash": false,
+        "ring": null
+      },
+      {
+        "id": 16,
+        "position": {
+          "x": 90.82620748785563,
+          "y": -535.5270684481264,
+          "z": 0
+        },
+        "size": {
+          "width": 44,
+          "height": 72
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "ready": true,
+        "skin": "resources/img/weapon/bullet/huoFengHuang_04.png",
+        "scale": {
+          "x": 1.3333333333333335,
+          "y": 1.3333333333333335,
+          "z": 1
+        },
+        "ring": null
+      }
+    ],
+    "burnNodes": [
+      {
+        "skin": "resources/img/effect/fireGround_02.png",
+        "scale": {
+          "x": 0.2666666666666666,
+          "y": 0.2666666666666666,
+          "z": 1
+        },
+        "active": true
+      }
+    ],
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  },
+  "unchanged": [
+    "Original image pixels, source asset files and bundle mapping",
+    "80 specs/batch, 128-entry/256MiB admission and Home19MB limits",
+    "Framework source, plugin link and safety settings"
+  ],
+  "remaining": [
+    "No same-state publisher eagle/phoenix screenshot acceptance yet",
+    "Eagle feather particles and all trail effects not reconstructed",
+    "All other special weapon families and weapon-specific skill modifiers still pending",
+    "Strict full-page 1:1, audio and long-session verification incomplete",
+    "WeChat device and performance untested"
+  ]
+}

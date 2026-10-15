@@ -37,3 +37,32 @@ export function flyingPikePose(now:number,timing:FlyingPikeTiming){
     const alpha=clamp((now-timing.appear)/.2),ringAlpha=now<timing.launch?clamp((now-timing.born)/.2):1-clamp((now-timing.launch)/.2);
     return {alpha,scaleY:alpha,ringAlpha,ringFrame:1+Math.floor(Math.max(0,Math.min(now,timing.launch)-timing.born)/.1+1e-8)%3};
 }
+
+export type BirdArrowKind='eagle'|'phoenix';
+export interface BirdArrowState {kind:BirdArrowKind;born:number;startX:number;startY:number;dx:number;dy:number;rate:number;hitAt?:number;}
+export interface ArrowBurn {born:number;next:number;end:number;frame:number;stacks:{until:number;damage:number}[];}
+export function birdArrowSpec(kind:BirdArrowKind){return kind==='eagle'?{width:187,height:124,anchorX:.3,anchorY:.5,rate:.35,interval:.1}:{width:44,height:72,anchorX:.5,anchorY:.5,rate:1,interval:.2};}
+export function birdArrowOrigin(pivot:{x:number;y:number},angle:number,kind:BirdArrowKind){
+    // _R releases Cy(bullet,true), after the bow's 40 px draw and .87/1.29 squash.
+    const a=angle*Math.PI/180,x=kind==='eagle'?187*(.5-.3)*.87:0,y=-30+40*1.29;
+    return {x:pivot.x+x*Math.cos(a)-y*Math.sin(a),y:pivot.y+x*Math.sin(a)+y*Math.cos(a)};
+}
+export function birdArrowPose(now:number,state:BirdArrowState,point:{x:number;y:number}){
+    const distance=Math.hypot(point.x-state.startX,point.y-state.startY);
+    return {scale:state.kind==='phoenix'?1+distance/500:1,frame:birdArrowFrame(state.kind,now-state.born),flash:state.hitAt!==undefined&&now-state.hitAt<.2};
+}
+export function birdArrowFrame(kind:BirdArrowKind,elapsed:number){return 1+Math.floor(Math.max(0,elapsed)/birdArrowSpec(kind).interval+1e-8)%4;}
+export function birdArrowDamage(kind:BirdArrowKind,power:number,distance:number){return kind==='eagle'?power*3:Math.min(power+Math.floor(distance/250),2*power);}
+export function birdArrowHitBox(state:BirdArrowState,point:{x:number;y:number}){
+    const angle=Math.atan2(state.dx,-state.dy),scale=state.kind==='phoenix'?1+Math.hypot(point.x-state.startX,point.y-state.startY)/500:1;
+    const x=state.kind==='eagle'?22-187*.3:0,y=state.kind==='eagle'?36-124*.5:0;
+    const cx=point.x+x*Math.cos(angle)-y*Math.sin(angle),cy=point.y+x*Math.sin(angle)+y*Math.cos(angle),w=44*scale,h=72*scale;
+    return {x:cx-h/2*Math.sin(angle),y:cy+h/2*Math.cos(angle),angle:angle*180/Math.PI,length:h-w,bold:w/2};
+}
+export function validBirdArrow(value:BirdArrowState){
+    return value&&['eagle','phoenix'].includes(value.kind)&&[value.born,value.startX,value.startY,value.dx,value.dy,value.rate].every(Number.isFinite)&&value.born>=0&&Math.abs(Math.hypot(value.dx,value.dy)-1)<1e-6&&value.rate>=.1&&value.rate<=birdArrowSpec(value.kind).rate&&(value.hitAt===undefined||Number.isFinite(value.hitAt)&&value.hitAt>=value.born);
+}
+export function validArrowBurn(value:ArrowBurn){
+    return value&&[value.born,value.next,value.end,value.frame].every(Number.isFinite)&&value.born>=0&&value.next>=value.born&&value.end>=value.born&&Number.isInteger(value.frame)&&value.frame>=0&&value.frame<4&&Array.isArray(value.stacks)&&value.stacks.length<=10240&&value.stacks.every(s=>s&&Number.isFinite(s.until)&&s.until>=value.born&&s.damage===10);
+}
+export function arrowBurnPose(now:number,value:ArrowBurn){return {frame:1+(value.frame+Math.floor(Math.max(0,now-value.born)/.07+1e-8))%4,scale:now<value.end?clamp((now-value.born)/.5):1-clamp((now-value.end)/.5)};}

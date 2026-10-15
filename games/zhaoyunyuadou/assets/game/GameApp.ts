@@ -8,7 +8,7 @@ import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
 import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
 import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
 import { characterLevelCap, heroExperienceTable } from './ReferenceProgression';
-import { flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
+import { arrowBurnPose, birdArrowFrame, birdArrowPose, birdArrowSpec, flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
@@ -146,6 +146,7 @@ export class GameApp {
     }
     async showBattle() {
         if(!this.battle)return;if(!await this.prepare('battle',['maps','battle','effects','actors']))return;
+        this.battle.projectileHeight=this.height;
         this.clear('battle');this.screen=this.ui.scene('BattleScene');
         void this.setMusic('music/bg_battleScene_'+(this.battle.map.id===3?3:0));
         const box=this.ui.find('box',this.screen)!;
@@ -369,6 +370,11 @@ export class GameApp {
             }
             n.setPosition(enemy.x-40,-enemy.y+40);const hp=n.getChildByName('hp')!;hp.setScale(Math.max(0,enemy.hp/enemy.maxHp),1);
             n.getChildByName('hpNum')!.getComponent(Label)!.string=Math.ceil(enemy.hp).toString();
+            let burn=n.getChildByName('arrow-burn');
+            if(enemy.burn){
+                if(!burn){burn=this.ui.image(n,skin('effect','fireGround_01'),40,54,18,28,undefined,'arrow-burn');burn.getComponent(UITransform)!.setAnchorPoint(.5,0);burn.setSiblingIndex(0);}
+                const pose=arrowBurnPose(b.time,enemy.burn);burn.active=pose.scale>0;burn.setScale(pose.scale,pose.scale);this.ui.skin(burn,skin('effect','fireGround_0'+pose.frame));
+            }else if(burn)burn.active=false;
             const piercing=b.effects.filter(effect=>effect.piercing?.target===enemy.id).slice(-1)[0],pose=groundPikePose(piercing?piercing.duration-piercing.ttl:1);
             const glyph=n.getChildByName('mob-glyph')!,base=enemy.boss?1.5:1,idle=enemy.boss?1:1+.02*Math.sin(b.time*Math.PI/.195+enemy.id);
             glyph.setPosition(40,-80+pose.lift);glyph.setScale(base*pose.scaleX,base*idle*pose.scaleY);glyph.angle=((enemy.knocked||0)>0?90:0)-pose.angle;
@@ -378,6 +384,12 @@ export class GameApp {
         current.clear();
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
+            if(!n&&shot.bird){
+                const spec=birdArrowSpec(shot.bird.kind),frame=birdArrowPose(b.time,shot.bird,shot).frame;
+                n=this.ui.image(this.combatLayer,skin('weapon/bullet',(shot.bird.kind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+frame),0,0,spec.width,spec.height);n.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);
+                if(shot.bird.kind==='eagle'){const flash=this.ui.image(n,skin('weapon/bullet','eagleArrowAttackEff'),68-spec.width*spec.anchorX,-10-spec.height*spec.anchorY,27.5,26.5,undefined,'eagle-hit');flash.getComponent(UITransform)!.setAnchorPoint(.5,.5);flash.active=false;}
+                this.projectiles.set(shot.id,n);
+            }
             if(!n&&shot.flyingPike){
                 n=this.ui.image(this.combatLayer,skin('effect','longDanLiangYinQiangBk'),0,0,20,66);n.addComponent(UIOpacity);
                 this.ui.image(n,skin('weapon','weapon_19'),0,0,20,66);
@@ -391,6 +403,7 @@ export class GameApp {
             n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
             if(shot.flyingPike){const pose=flyingPikePose(b.time,shot.flyingPike),ring=n.getChildByName('flying-pike-ring')!;
                 n.setScale(1,pose.scaleY);n.getComponent(UIOpacity)!.opacity=255*pose.alpha;ring.getComponent(UIOpacity)!.opacity=255*pose.ringAlpha;this.ui.skin(ring,skin('effect','quan0'+pose.ringFrame));}
+            if(shot.bird){const pose=birdArrowPose(b.time,shot.bird,shot);n.setScale(pose.scale,pose.scale);this.ui.skin(n,skin('weapon/bullet',(shot.bird.kind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+pose.frame));const flash=n.getChildByName('eagle-hit');if(flash)flash.active=pose.flash;}
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
         current.clear();
@@ -502,7 +515,12 @@ export class GameApp {
         weapon.body.setPosition(spec.childX-spec.rootWidth*spec.anchorX,spec.rootHeight*spec.anchorY-pose.childY);
         weapon.body.setScale(pose.scaleX,pose.scaleY);
         if(weapon.trail)weapon.trail.active=pose.trail;
-        if(weapon.nocked){weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));}
+        if(weapon.nocked){
+            weapon.nocked.active=event.attacking&&weapon.motion.active&&weapon.motion.time<.45;weapon.nocked.setPosition(0,-40*Math.min(1,weapon.motion.time/.45));
+            const bird=this.battle!.weaponStrikes.find(strike=>strike.unit===view.unit.id&&strike.birdKind&&strike.birdAnimationAt===view.unit.weaponAt);
+            if(bird){const spec=birdArrowSpec(bird.birdKind!);weapon.nocked.getComponent(UITransform)!.setContentSize(spec.width,spec.height);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(spec.anchorX,1-spec.anchorY);this.ui.skin(weapon.nocked,skin('weapon/bullet',(bird.birdKind==='eagle'?'eagleArrow_0':'huoFengHuang_0')+birdArrowFrame(bird.birdKind!,this.battle!.time-bird.birdAnimationAt!)));}
+            else{weapon.nocked.getComponent(UITransform)!.setContentSize(22,72);weapon.nocked.getComponent(UITransform)!.setAnchorPoint(.5,.1);this.ui.skin(weapon.nocked,skin('weapon',weapon.id<0?'default_arrow_1':'arrow_'+weapon.id));}
+        }
         const skill=this.battle!.heroSkills.find(skill=>skill.unit===view.unit.id&&HERO_SKILLS[skill.hero].interrupt);
         if(skill)this.animateHeroSkill(view,skill);
     }
