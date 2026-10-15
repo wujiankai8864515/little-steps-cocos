@@ -56,6 +56,14 @@ def main():
             if(fixture==='shop'||fixture==='lottery'){
                 app.offers=['recruit','farmer','promotion'].map(id=>ITEMS.find(item=>item.id===id));
                 await app.shop(fixture==='lottery'?'lottery':'shop');
+                // Declared raster-quality experiment, only in this QA mirror.
+                // It preserves each label's displayed bounds and font family.
+                if(qaQuery.get('textRaster')==='2')for(const e of app.overlayUI.elements){
+                    const label=e.body.getComponent(Label);if(!label||e.body.children.length)continue;
+                    const transform=e.body.getComponent(QAUITransform),size=transform.contentSize;
+                    transform.setContentSize(size.width*2,size.height*2);e.body.setScale(.5,.5);
+                    label.fontSize*=2;label.lineHeight*=2;label.outlineWidth*=2;
+                }
             }else if(fixture==='tutorial'){await app.startRound(Number(qaQuery.get('map')||'0'));}
             else if(fixture==='heroes'){
                 await app.startRound(1);app.matchTime=999;const battle=app.battle;

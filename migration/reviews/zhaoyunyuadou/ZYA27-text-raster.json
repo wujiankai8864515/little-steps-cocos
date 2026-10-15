@@ -1,0 +1,54 @@
+{
+  "id": "ZYA-27",
+  "date": "2026-10-15",
+  "kind": "Declared QA-only font raster experiment; not selected for game runtime",
+  "runtime": "zya-web-v42",
+  "experiment": {
+    "query": "textRaster=2",
+    "fontFamily": "unchanged Arial/native fallback",
+    "fontSizeLineHeightOutline": "multiplied2",
+    "labelContentBounds": "multiplied2 with node scale.5, visual bounds retained",
+    "productionGameCodeChanged": false,
+    "originalProgramExecuted": false
+  },
+  "reference": "reference/screen-03.png",
+  "actual": "shop-text2-v42.png",
+  "comparison": "compare-shop-text2-v42.json",
+  "wholeImageMAE": {
+    "default": 16.089632523148147,
+    "experiment": 16.78839554398148
+  },
+  "textRegionMAE": {
+    "default": {
+      "name1": 53.86470588235294,
+      "desc1": 15.988680988680988,
+      "name2": 36.06470588235294,
+      "desc2": 37.91836734693877,
+      "name3": 47.204313725490195,
+      "desc3": 19.97028897028897
+    },
+    "experiment": {
+      "name1": 58.40098039215686,
+      "desc1": 19.565180565180565,
+      "name2": 38.83960784313725,
+      "desc2": 42.275946275946275,
+      "name3": 52.352745098039215,
+      "desc3": 23.39444153729868
+    }
+  },
+  "decision": "reject: whole image and all six named text regions worsened; retain default renderer",
+  "sourceFacts": {
+    "originalInertEngine": "laya-core-reference.txt sets defaultFont Arial; business source does not override it",
+    "installedCocos": "3.8.8 cocos/2d/assembler/label/ttfUtils.ts uses view.getScaleX for style.fontScale",
+    "onlyBundledAPKFont": "res/font/optimistic_vf.ttf, not imported or used"
+  },
+  "defaultControl": {
+    "differentPixels": 0,
+    "rgbaMAE": 0.0,
+    "pngIdentical": true,
+    "sha256": "227c54c185a5838877972aa2bc7b021cfe015b90a924c7b935b0a1f5b6393d4d",
+    "scope": "Default renderer control across QA builds, not original-game acceptance"
+  },
+  "strictPixels": "unproven",
+  "device": "pending"
+}
