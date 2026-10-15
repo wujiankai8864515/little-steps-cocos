@@ -9,7 +9,7 @@ export interface StrikePlan {
 }
 export interface Flight {
     startX:number;startY:number;controlX:number;controlY:number;progress:number;
-    multiplier:number;arrival:number;lastAt:number;
+    multiplier:number;arrival:number;lastAt:number;targetX?:number;targetY?:number;
 }
 export function rotatePoint(x:number,y:number,degrees:number):Point {
     const a=degrees*Math.PI/180,c=Math.cos(a),s=Math.sin(a);return {x:x*c-y*s,y:x*s+y*c};
@@ -65,9 +65,13 @@ export function enemyInRange(origin:Point,radius:number,enemy:Point){
     return dx*dx+dy*dy<=(radius-1)*(radius-1);
 }
 export function createFlight(start:Point,target:Point,arc:number,multiplier:number,arrival:number,now:number):Flight {
-    return {startX:start.x,startY:start.y,controlX:(start.x+target.x)/2,controlY:(start.y+target.y)/2-arc,progress:0,multiplier,arrival,lastAt:now};
+    return {startX:start.x,startY:start.y,controlX:(start.x+target.x)/2,controlY:(start.y+target.y)/2-arc,progress:0,multiplier,arrival,lastAt:now,targetX:target.x,targetY:target.y};
 }
-export function advanceFlight(flight:Flight,position:Point,target:Point,now:number){
+export function advanceFlight(flight:Flight,position:Point,target:Point|undefined,now:number){
+    if(target){flight.targetX=target.x;flight.targetY=target.y;}
+    // Native TargetEnemyBezierMovement freezes its last endpoint when the enemy disappears.
+    if(flight.targetX===undefined||flight.targetY===undefined)return {x:position.x,y:position.y,angle:0,arrived:true};
+    target={x:flight.targetX,y:flight.targetY};
     const dt=Math.max(0,now-flight.lastAt);flight.lastAt=now;
     const total=Math.hypot(target.x-flight.startX,target.y-flight.startY),remaining=Math.hypot(target.x-position.x,target.y-position.y);
     flight.progress+=dt*flight.multiplier/.5*(total>0?Math.sqrt(Math.max(.1,remaining/total)):1);

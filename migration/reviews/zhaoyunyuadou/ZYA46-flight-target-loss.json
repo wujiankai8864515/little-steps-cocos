@@ -1,0 +1,43 @@
+{
+  "id": "ZYA-46",
+  "date": "2026-10-15",
+  "previousGoalTurn": "progress: ZYA44/ZYA45 source, fresh native package and remote readback completed",
+  "scope": "Released curved projectile target loss",
+  "reference": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "executed": false,
+    "Wi": "2524-2553: gb freezes cached yb when target lookup fails; Ck continues to endpoint",
+    "targetHitStrategy": "2205-2213 and 2735-2785: targeted hit remains bound to original ID"
+  },
+  "before": "Any missing live target instantly erased an already released curved arrow/spear",
+  "after": "New flights cache launch endpoint and update while target lives; target loss preserves trajectory and finishes without retargeting or awarding phantom damage",
+  "saveCompatibility": "Cached endpoint serialized; malformed partial/nonfinite coordinate pairs discard projectile without discarding round; older flights without cache remain loadable and initialize from a live target. Legacy targetless flights without an endpoint expire safely as before.",
+  "validation": {
+    "before": "ZYA46-flight-target-loss-before.log: added three regression cases fail against prior implementation",
+    "rulesTests": {
+      "pass": 105,
+      "fail": 0,
+      "log": "ZYA46-flight-target-loss-after.log"
+    },
+    "typecheck": "Source Cocos tsconfig --noEmit passed",
+    "coverage": [
+      "Actual released Huang Zu bow and Ma Chao spear: target moves then dies, projectile continues, neighbour unharmed, eventual disposal",
+      "Post-loss snapshot reload and 120 subsequent flight steps identical",
+      "Launch endpoint exists before first step, latest living position updates cache",
+      "Malformed cache and older live-target snapshots"
+    ],
+    "browserNewCapture": "not run; model-only change, existing full-frame restoration captures do not prove original pixel parity"
+  },
+  "unchanged": [
+    "Rendering code",
+    "Original art",
+    "Scene, Boot and project UUIDs",
+    "Framework plugin and resource budgets"
+  ],
+  "pending": [
+    "Strict publisher screenshots and full product coverage",
+    "Remaining special weapon families and visual effects",
+    "Physical WeChat device acceptance"
+  ]
+}

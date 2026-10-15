@@ -459,6 +459,29 @@ test('splitting a hero cancels queued strikes; corrupt new flight data is discar
     const legacy=JSON.parse(b.snapshot());delete legacy.weaponStrikes;assert.ok(M.Battle.restore(JSON.stringify(legacy),b.profile,weapons));
     const bow=heroRound('黄祖');bow.attack(bow.add(902,240,440));bow.b.time=.45;bow.b.advanceWeaponStrikes(1/30);const bad=JSON.parse(bow.b.snapshot());bad.shots[0].flight.progress=null;const restored=M.Battle.restore(JSON.stringify(bad),bow.b.profile,weapons);assert.ok(restored);assert.equal(restored.shots.length,0);
 });
+test('released curved arrows and thrown spears finish toward the last target position after its death, without retargeting',()=>{
+    for(const name of ['黄祖','马超']){
+        const f=heroRound(name),target=f.add(901,400,240);f.unit.cooldown=10000;f.attack(target);f.b.time=name==='马超'?.2:.45;f.b.advanceWeaponStrikes(1/30);
+        const shot=f.b.shots[0];assert.ok(shot.flight);f.b.time+=1/60;f.b.advanceShots(1/60);target.x=430;target.y=210;f.b.time+=1/60;f.b.advanceShots(1/60);
+        const previous={x:shot.x,y:shot.y};target.hp=0;f.b.enemies=[];const neighbour=f.add(902,430,210);f.b.time+=1/60;f.b.advanceShots(1/60);
+        assert.ok(f.b.shots.includes(shot));assert.ok(Math.hypot(shot.x-previous.x,shot.y-previous.y)>0);assert.equal(shot.flight.targetX,430);assert.equal(shot.flight.targetY,210);
+        const saved=f.b.snapshot(),copy=M.Battle.restore(saved,f.b.profile,weapons);assert.ok(copy);assert.equal(copy.snapshot(),saved);
+        for(let i=0;i<120;i++){f.b.time+=1/60;copy.time=f.b.time;f.b.advanceShots(1/60);copy.advanceShots(1/60);assert.equal(copy.snapshot(),f.b.snapshot());}
+        assert.equal(f.b.shots.length,0);assert.equal(neighbour.hp,100);
+    }
+});
+test('curved flight caches launch aim before its first step and refreshes it only while the selected target exists',()=>{
+    const start={x:0,y:0},target={x:300,y:100},flight=C.createFlight(start,target,120,1.75,48,0),position={...start};
+    assert.equal(flight.targetX,300);assert.equal(flight.targetY,100);
+    const first=C.advanceFlight(flight,position,undefined,1/30);assert.equal(first.arrived,false);assert.ok(first.x>0);
+    Object.assign(position,{x:first.x,y:first.y});const moved={x:330,y:80};C.advanceFlight(flight,position,moved,2/30);assert.equal(flight.targetX,330);assert.equal(flight.targetY,80);
+    const legacy={...flight};delete legacy.targetX;delete legacy.targetY;C.advanceFlight(legacy,position,moved,3/30);assert.equal(legacy.targetX,330);assert.equal(legacy.targetY,80);
+});
+test('saved flight aim rejects partial or nonfinite target coordinates while older live-target rounds remain readable',()=>{
+    const f=heroRound('黄祖'),target=f.add(901,400,240);f.attack(target);f.b.time=.45;f.b.advanceWeaponStrikes(1/30);const raw=JSON.parse(f.b.snapshot());
+    for(const invalid of [{targetX:null,targetY:240},{targetX:400,targetY:undefined}]){const bad=JSON.parse(JSON.stringify(raw));Object.assign(bad.shots[0].flight,invalid);const copy=M.Battle.restore(JSON.stringify(bad),f.b.profile,weapons);assert.ok(copy);assert.equal(copy.shots.length,0);}
+    delete raw.shots[0].flight.targetX;delete raw.shots[0].flight.targetY;const legacy=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(legacy);assert.equal(legacy.shots.length,1);legacy.time+=1/30;legacy.advanceShots(1/30);assert.equal(legacy.shots[0].flight.targetX,400);
+});
 test('native weapons retain separate handle pivots, short-blade reach and pike offsets',()=>{
     const bow=W.weaponGeometry(0,'黄忠'),knife=W.weaponGeometry(2,'关羽'),sword=W.weaponGeometry(3,'刘备');
     assert.equal(bow.width,124);assert.equal(bow.height,56);assert.equal(bow.childY,10);
