@@ -1,0 +1,76 @@
+{
+  "id": "ZYA-31",
+  "date": "2026-10-15",
+  "kind": "fresh local-source WeChat native-subpackage candidate; not device or formal acceptance",
+  "candidate": "zya-wechat-v10",
+  "sourceGameCommit": "91b888894f5079f5ec81f4a9eae00ca0decb1059",
+  "sourceParentCommit": "cf392942774a906a24f26928002f3a55ac584835",
+  "build": "pass",
+  "sourceHashesChecked": 238,
+  "fixedOutputHashesChecked": 386,
+  "hashMismatches": [],
+  "audit": {
+    "mainBytes": 3359091,
+    "totalBytes": 16522467,
+    "initialBytes": 11718155,
+    "sizes": {
+      "main": 3359091,
+      "zya_meta": 2317481,
+      "zya_effects": 1893082,
+      "zya_battle": 2215755,
+      "zya_maps": 695475,
+      "zya_home": 1083521,
+      "zya_audio": 3270647,
+      "zya_actors": 1687415
+    },
+    "subpackages": [
+      {
+        "name": "zya_actors",
+        "root": "subpackages/zya_actors/"
+      },
+      {
+        "name": "zya_audio",
+        "root": "subpackages/zya_audio/"
+      },
+      {
+        "name": "zya_battle",
+        "root": "subpackages/zya_battle/"
+      },
+      {
+        "name": "zya_effects",
+        "root": "subpackages/zya_effects/"
+      },
+      {
+        "name": "zya_home",
+        "root": "subpackages/zya_home/"
+      },
+      {
+        "name": "zya_maps",
+        "root": "subpackages/zya_maps/"
+      },
+      {
+        "name": "zya_meta",
+        "root": "subpackages/zya_meta/"
+      }
+    ],
+    "files": 386
+  },
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444"
+  },
+  "projectUUID": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+  "BootUUID": "be9d2cea-79b2-4bea-9298-438460f08591",
+  "sceneUUID": "be5c944f-c8e2-49aa-9330-2704b04f05c9",
+  "rulesTests": {
+    "pass": 62,
+    "fail": 0
+  },
+  "typecheck": "pass",
+  "browser": "v44 growth, normal saved-round resume and two exact own-scene restore PNG pairs; v45 detail UI passed at 320x704 and 360x640",
+  "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+  "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+  "originalPixels": "unproven",
+  "device": "pending",
+  "online": "pending"
+}
