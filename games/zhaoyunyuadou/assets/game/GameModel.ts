@@ -6,6 +6,7 @@ import { weaponBusyDuration, weaponPlaybackRate, WeaponType } from './ReferenceW
 import { advanceFlight, createFlight, enemyInRange, Flight, strikeOverlaps, StrikePlan, strikeShape, weaponStrikePlans } from './ReferenceWeaponCombat';
 import { HERO_SKILLS, HeroSkillState, hitPassive, huangZhongArrows, huangZhongGrowth, quadraticPose, shoutRing, skillRate, SkillProjectile, validHeroSkill, validSkillProjectile } from './ReferenceHeroSkills';
 import { characterLevelCap, DamageOwner, experienceAwards, experienceLevel, feedExperience, HeroProgress, heroExperienceTable, heroLevelCap, partExperience, trainingDelta, validExperience, validHeroProgress } from './ReferenceProgression';
+import { FlyingPikeTiming, flyingPikeChance, flyingPikeTiming, GroundPikeState, groundPikeRule, groundPikeSpikes, validFlyingPike, validGroundPike } from './ReferenceSpecialWeapons';
 export type Side = 0 | 1; // 0 player, 1 computer opponent
 export type UnitKind = '刀' | '弓' | '枪' | '骑' | '农' | '字' | '铲';
 export interface Unit { id: number; kind: UnitKind; char: string; level: number; cooldown: number; attacks: number; experience?:number;idleAt?:number; weaponUntil?:number; weaponAt?:number; weaponRate?:number; weaponAim?:number; skillCount?:number;skillResume?:boolean;chain?:number; target?:number; attackX?:number;attackY?:number;streak?:number; seen?:number[]; speedBuff?:number; speedUntil?:number; debuff?:string; debuffLevel?:number; debuffUntil?:number; }
@@ -144,11 +145,11 @@ export class Random {
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
 export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean;lootSettled?:boolean; bossType?:number; castIn?:number; }
-export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
-export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
+export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; flyingPike?:FlyingPikeTiming; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
+export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; piercing?:GroundPikeState; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
 export interface PendingAttack {unit:number;side:Side;cell:number;kind:BasicKind;target:number;ttl:number;damage:number;range:number;x:number;y:number;targetX:number;targetY:number;}
-export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;}
+export interface WeaponStrike extends StrikePlan {id:number;unit:number;side:Side;cell:number;hero:string;heroId?:number;weaponId?:number;target:number;damage:number;born:number;visited:number[];done?:boolean;procStarted?:boolean;}
 export interface BattleResult { id: string; win: boolean; reward: number; wave: number; weaponId: number | null; weaponFragments?:number;weaponRequired?:number; }
 export class Battle {
     readonly map: MapSpec;
@@ -481,7 +482,6 @@ export class Battle {
         if(id===4&&this.random.next()<.1)this.burst(unit,side,pos,power,'eagle',8);
         if(id===5&&this.random.next()<.1){this.burst(unit,side,pos,power,'fire',12);this.battleEffect('fire',target,side);}
         if(id===9&&unit.attacks%10===0)for(let i=0;i<10;i++)this.fire(unit,side,target,pos,power,'fire',45,id,hero.name,undefined,link.id);
-        if(id===19&&this.random.next()<.1){this.burst(unit,side,pos,power*1.5,'flyingPike',20);this.battleEffect('pike',pos,side);}
         if(id===24&&unit.attacks%10===0)this.burst(unit,side,pos,power,'blade',12);
         if(id===28&&this.random.next()<.1)this.burst(unit,side,pos,power,'meteor',12);
         if(id!==undefined&&id>=34&&unit.attacks%10===0){const positive=(id%2===0)||id===43;this.battleEffect(positive?'sword':'coldSword',pos,side);
@@ -489,9 +489,21 @@ export class Battle {
     }
     private weaponHit(shot:Shot,target:Enemy){
         const id=shot.weaponId,unit=Object.values(this.armies[shot.side].units).find(unit=>unit.id===shot.from);
-        const first=unit&&!unit.seen?.includes(target.id);if(first)unit!.seen=(unit!.seen||[]).concat(target.id).slice(-128);
+        const seen=Array.isArray(unit?.seen)?unit!.seen!:[],first=unit&&!seen.includes(target.id);
+        if(first){const living=new Set(this.enemies.filter(enemy=>enemy.hp>0).map(enemy=>enemy.id));unit!.seen=seen.filter(id=>living.has(id)).concat(target.id);}
         if(first&&id===26){this.profile.gold++;this.battleEffect('food',target,shot.side,'+1');}
-        if(first&&[12,17].includes(id!)&&this.random.next()<.2){const count=id===12?1:shot.hero==='马超'?5:3;this.burst(unit!,shot.side,target,shot.damage*count,'pike',count,shot.hero,shot.heroId);this.battleEffect('pike',target,shot.side);}
+        if(first&&[12,17].includes(id!)&&this.random.next()<=.2){
+            const rule=groundPikeRule(id!,shot.hero||'')!,pool=id===12?(target.hp>0?[target]:[]):this.enemies.filter(enemy=>enemy.side===shot.side&&enemy.hp>0);
+            const source=this.heroes(shot.side).find(link=>link.id===shot.heroId);
+            for(let i=0;i<rule.targets&&pool.length;i++){
+                const index=id===12?0:Math.floor(this.random.next()*pool.length),enemy=pool.splice(index,1)[0];
+                const power=source&&shot.side===0&&this.profile.equipped[source.hero.name]===id?this.stats(this.armies[shot.side].units[source.left],source.hero,undefined,shot.side).power:shot.damage;
+                const piercing:GroundPikeState={target:enemy.id,weaponId:id as 12|17,spikes:groundPikeSpikes(rule.spikes,()=>this.random.next())};
+                enemy.held=Math.max(enemy.held||0,.5);this.damageEnemy(enemy,power*rule.damage,this.damageOwner(shot.from,shot.side,shot.hero,shot.heroId));
+                this.effects.push({id:this.nextId++,kind:'damage',x:enemy.x,y:enemy.y-20,text:String(Math.ceil(power*rule.damage)),ttl:.6,duration:.6,side:shot.side});
+                this.effects.push({id:this.nextId++,kind:'groundPike',x:enemy.x,y:enemy.y,ttl:1,duration:1,side:shot.side,piercing});
+            }
+        }
         if(first&&id===14&&this.random.next()<.2)target.held=2;
         if(id===25&&this.random.next()<.1)target.held=.5;
         if(id===2&&this.random.next()<.1)target.progress=Math.max(0,target.progress-80);
@@ -502,6 +514,16 @@ export class Battle {
             if(id===29)this.burst(unit,shot.side,target,shot.damage,'blade',12,shot.hero,shot.heroId);
         }
         return false;
+    }
+    private flyingPikes(unit:Unit,side:Side,cell:number,hero:string,heroId:number,power:number){
+        const origin={x:cell%8*80+80,y:Math.floor(cell/8)*80+10};
+        // Native enumeration advances even for an enemy in the other camp.
+        this.enemies.forEach((target,index)=>{if(target.side!==side||target.hp<=0)return;
+            const shot=this.fire(unit,side,target,origin,power*5,'flyingPike',0,19,hero,undefined,heroId);
+            // pa.Ck moves 10*gS pixels per frame, gS=2; normalize the pinned
+            // build's 60 FPS baseline to this model's fixed-step clock.
+            if(shot)Object.assign(shot,{speed:1200,width:20,height:66,anchorX:0,anchorY:0,skill:true,flyingPike:flyingPikeTiming(this.time,index+1)});
+        });
     }
     private hitShot(shot:Shot,target:Enemy){
         if(target.hp<=0)return false;
@@ -518,6 +540,7 @@ export class Battle {
             if(strike.done||this.time<strike.born)continue;
             const unit=this.armies[strike.side].units[strike.cell],link=this.heroes(strike.side).find(link=>link.left===strike.cell&&link.hero.name===strike.hero);
             if(!unit||unit.id!==strike.unit||!link||link.id!==strike.heroId||['chaos','stun','sealed'].includes(unit.debuff||'')){strike.done=true;continue;}
+            if(!strike.procStarted){strike.procStarted=true;if(strike.weaponId===19&&this.random.next()<=flyingPikeChance(strike.hero))this.flyingPikes(unit,strike.side,strike.cell,strike.hero,link.id,this.stats(unit,link.hero,link.level,strike.side).power);}
             const target=this.enemies.find(enemy=>enemy.id===strike.target&&enemy.hp>0);
             if(strike.kind==='arrow'||strike.kind==='throw'){
                 if(target){const shot=this.fire(unit,strike.side,target,strike,strike.damage,strike.kind==='throw'?'throw':'arrow',strike.weaponId===5?70:0,strike.weaponId,strike.hero,{arc:strike.arc!,multiplier:strike.projectileSpeed!,width:strike.kind==='throw'?42:22,height:strike.kind==='throw'?132:72,anchorX:strike.kind==='throw'?0:.5,anchorY:strike.kind==='throw'?.5:.9});
@@ -659,6 +682,32 @@ export class Battle {
         }
         if(shot.x!==old.x||shot.y!==old.y)shot.rotation=Math.atan2(shot.x-old.x,old.y-shot.y)*180/Math.PI;
     }
+    private advanceShots(dt:number){
+        for (const shot of this.shots) {
+            if(shot.motion){this.advanceSkillProjectile(shot,dt);continue;}
+            const target = this.enemies.find(e => e.id === shot.target && e.hp > 0);
+            if (!target) { shot.damage = 0; continue; }
+            if(shot.flyingPike){
+                const dx=target.x-shot.x,dy=target.y-shot.y,distance=Math.hypot(dx,dy),step=shot.speed*Math.max(0,Math.min(dt,this.time-shot.flyingPike.launch));
+                shot.rotation=Math.atan2(dx,-dy)*180/Math.PI;
+                if(this.time<shot.flyingPike.launch)continue;
+                if(distance<=100+step){this.hitShot(shot,target);shot.damage=0;}
+                else{shot.x+=dx/distance*step;shot.y+=dy/distance*step;}
+                continue;
+            }
+            if(shot.flight){
+                const pose=advanceFlight(shot.flight,shot,target,this.time);
+                if(pose.arrived){if(!this.hitShot(shot,target))shot.damage=0;}
+                else{shot.x=pose.x;shot.y=pose.y;shot.rotation=pose.angle;}
+                continue;
+            }
+            const dx = target.x - shot.x, dy = target.y - shot.y, distance = Math.hypot(dx, dy);
+            if (distance <= shot.speed * dt) {
+                if(!this.hitShot(shot,target))shot.damage=0;
+            } else { shot.x += dx / distance * shot.speed * dt; shot.y += dy / distance * shot.speed * dt; }
+        }
+        this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
+    }
     private ai() {
         const army = this.armies[1];
         this.recruit(1);
@@ -754,22 +803,7 @@ export class Battle {
                 }
             }
         }
-        for (const shot of this.shots) {
-            if(shot.motion){this.advanceSkillProjectile(shot,dt);continue;}
-            const target = this.enemies.find(e => e.id === shot.target && e.hp > 0);
-            if (!target) { shot.damage = 0; continue; }
-            if(shot.flight){
-                const pose=advanceFlight(shot.flight,shot,target,this.time);
-                if(pose.arrived){if(!this.hitShot(shot,target))shot.damage=0;}
-                else{shot.x=pose.x;shot.y=pose.y;shot.rotation=pose.angle;}
-                continue;
-            }
-            const dx = target.x - shot.x, dy = target.y - shot.y, distance = Math.hypot(dx, dy);
-            if (distance <= shot.speed * dt) {
-                if(!this.hitShot(shot,target))shot.damage=0;
-            } else { shot.x += dx / distance * shot.speed * dt; shot.y += dy / distance * shot.speed * dt; }
-        }
-        this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
+        this.advanceShots(dt);
         for (const enemy of this.enemies) {
             if (enemy.hp <= 0) {
                 this.collectEnemyLoot(enemy);continue;
@@ -827,7 +861,7 @@ export class Battle {
             Object.assign(b, {armies:raw.armies,enemies:Array.isArray(raw.enemies) ? raw.enemies.slice(0,200) : [],time:raw.time,
                 wave:Math.max(1,Math.min(20,raw.wave)),waveTime:raw.waveTime,spawned:raw.spawned,spawnTime:raw.spawnTime,nextId:raw.nextId,
                 boosts:raw.boosts||{},cooldowns:raw.cooldowns||{},tutorialStep:raw.tutorialStep,saveId:raw.saveId,
-                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:raw.effects||[],aiTime:raw.aiTime||1.5,
+                completed:!!raw.completed,result:raw.result||null,shots:Array.isArray(raw.shots)?raw.shots.filter((s:Shot)=>s&&Number.isInteger(s.id)&&Number.isInteger(s.from)&&Number.isInteger(s.target)&&[0,1].includes(s.side)&&[s.x,s.y,s.damage,s.speed].every(Number.isFinite)&&(!s.flyingPike||s.kind==='flyingPike'&&s.speed>0&&validFlyingPike(s.flyingPike))&&(!s.flight||[s.flight.startX,s.flight.startY,s.flight.controlX,s.flight.controlY,s.flight.progress,s.flight.multiplier,s.flight.arrival,s.flight.lastAt].every(Number.isFinite)&&s.flight.multiplier>0&&s.flight.arrival>=0)&&(!s.motion||validSkillProjectile(s.motion)&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger))).slice(0,160):[],pendingAttacks:Array.isArray(raw.pendingAttacks)?raw.pendingAttacks.filter((a:PendingAttack)=>a&&isBasicKind(a.kind)&&Number.isFinite(a.ttl)&&Number.isFinite(a.damage)&&Number.isFinite(a.range)&&[0,1].includes(a.side)&&Number.isInteger(a.cell)&&a.cell>=0&&a.cell<80).slice(0,160):[],weaponStrikes:Array.isArray(raw.weaponStrikes)?raw.weaponStrikes.filter((s:WeaponStrike)=>s&&['target','area','arrow','throw'].includes(s.kind)&&(s.procStarted===undefined||typeof s.procStarted==='boolean')&&Number.isInteger(s.id)&&Number.isInteger(s.unit)&&Number.isInteger(s.target)&&Number.isInteger(s.cell)&&s.cell>=0&&s.cell<80&&[0,1].includes(s.side)&&HEROES.some(h=>h.name===s.hero)&&[s.born,s.duration,s.damage,s.x,s.y,s.angle,s.endAngle,s.length,s.endLength,s.bold,s.tween].every(Number.isFinite)&&s.duration>=0&&s.damage>0&&Array.isArray(s.visited)&&s.visited.length<=200&&s.visited.every(Number.isInteger)&&(!['arrow','throw'].includes(s.kind)||Number.isFinite(s.arc)&&Number.isFinite(s.projectileSpeed)&&s.projectileSpeed>0)).slice(0,768):[],heroSkills:Array.isArray(raw.heroSkills)?raw.heroSkills.filter(validHeroSkill).slice(0,64):[],effects:Array.isArray(raw.effects)?raw.effects.filter((e:Effect)=>e&&(e.kind!=='groundPike'||validGroundPike(e.piercing!)&&Number.isSafeInteger(e.id)&&[0,1].includes(e.side)&&[e.x,e.y,e.ttl,e.duration].every(Number.isFinite)&&e.duration===1&&e.ttl>=0&&e.ttl<=1)).slice(-100):[],aiTime:raw.aiTime||1.5,
                 aiSilence:raw.aiSilence||0,kills:raw.kills||0,merges:raw.merges||0,deployed:raw.deployed||0,accumulator:raw.accumulator||0,
                 ranges:raw.ranges||{},hazards:raw.hazards||[],shovelTime:raw.shovelTime??60,meteorTime:raw.meteorTime||0,companions:raw.companions||{},bossRound:!!raw.bossRound,haze:raw.haze||0});
             if(!Number.isSafeInteger(b.nextId)||b.nextId<1)return null;

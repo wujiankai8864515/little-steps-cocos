@@ -1,0 +1,223 @@
+✖ iron pike applies one immediate twofold ground hit and a half-second hold, only on its first contact (1.692458ms)
+✖ tiger pike chooses three distinct enemies, or five for Ma Chao, each at threefold damage (0.23025ms)
+✖ first-contact pike history retains a living target beyond 128 expired contacts (0.212333ms)
+✖ Long Dan proc occurs once per released thrust, with Zhao Yun five percent and other generals ten percent (0.503083ms)
+✖ flying pikes cover the entire living side, preserve enumeration fades and deal fivefold snapshotted power (0.388542ms)
+✖ delayed flying pikes stay still before launch, restore in flight, and never damage another enemy (0.241667ms)
+✔ ground pike lift and flying-pike fades retain the native phase landmarks (0.219042ms)
+✖ malformed new pike payloads are discarded while legacy projectiles and the round survive (1.009208ms)
+✔ a speed spell on either half affects the general once and records both inherited parts (0.412791ms)
+✔ feeding stores permanent bonuses on the destination part without retroactively buffing the current general (0.477542ms)
+✔ a range spell targets one ranged general, refuses a duplicate, and retains part inheritance on reformation (0.279042ms)
+✔ targeted permanent spells reject farmers, loose characters, melee range targets and existing weapon range buffs (0.137084ms)
+✔ basic merges inherit additive speed, retain one range grant and remove consumed bonus records (0.072042ms)
+✔ legacy general bonus migration preserves applied speed, range, identity and in-flight counters (0.262458ms)
+✔ a later range spell appends to fed part records and cannot be used during the ranged cast (0.4005ms)
+✔ permanent speed changes retain elapsed cooldown work, and temporary formation buffs do not survive splitting (0.166625ms)
+✔ native formations inherit maximum part experience, with separate major/minor thresholds (0.164083ms)
+✔ one named general per side retains the existing formation when an earlier duplicate appears (0.1035ms)
+✔ standalone equal characters swap; a matching character feeds either half regardless of source level (0.121458ms)
+✔ feeding preserves the target cast and counters, splits the source general, and never eats a max-level target (0.18375ms)
+✔ hero kills award one experience and divide .5 among other contributors, with one settlement (0.208709ms)
+✔ basic kills share .2; destroyed generals remain in the assist divisor; ownerless deaths grant no experience (0.091667ms)
+✔ released projectiles retain a destroyed formation identity after splitting, reforming and restoring (0.265666ms)
+✔ promotion uses the general experience table, respects character caps, and training uses native odds (0.161292ms)
+✔ growth preserves cooldown work, serializes fractional assists and restores legacy levels/casts without resetting (0.272917ms)
+✔ Ma Chao passive lethal damage awards experience once; basic melee distributes existing assists (0.195625ms)
+✔ legacy in-flight skills acquire the preserved general identity and malformed growth IDs cannot overflow it (0.604667ms)
+✔ mine and meteor deaths collect food and kills once, retain assists, and never leak after dying (0.617833ms)
+✔ reflected boss deaths settle once before movement, while genuine leaks grant no kill rewards or experience (0.312917ms)
+✔ native skills have separate pre/post counts, independent cast speed, and no invented Huang Gai ability (1.349917ms)
+✔ both shouts grow three native rings, stun once, and resume without direct damage or global knockback (0.1945ms)
+✔ Ma Chao, Guan Xing and Zhang Bao trigger per-hit passives with distinct boss rules (0.243209ms)
+✔ Huang Zhong plateaus at levels 3/5 and shoots 1/1/2/2/3 straight piercing arrows (0.973083ms)
+✔ Guan Ping sweeps a whole circle, while Liu Bei/Zhang Yi target and Huang Gai stop on the first overlap (0.389125ms)
+✔ Guan Yu builds additive speed only on a repeated target and resets on retarget (0.8445ms)
+✔ arrow rain releases five groups of ten; fire rain covers the road without instant global damage (0.367625ms)
+✔ holy blade deals fivefold piercing damage and knockdown without awarding food (0.067625ms)
+✔ jump slash has one/five landings, distance-faded splash, a return flight and identical restored state (5.153166ms)
+✔ Zhao Yun phantom follows the road for seven return passes and is cancelled when his name is split (1.215792ms)
+✔ malformed skill and skill-projectile data is discarded while legacy saves keep the round (0.228333ms)
+✔ native range tests enemy boxes; rotated hit areas distinguish overlap from edge contact (0.071833ms)
+✔ knife hits the chosen target at cut completion without a projectile or intercepting a neighbour (0.248875ms)
+✔ Zhao Yun has five distinct piercing hits; each thrust hits a target once and ignores off-line or other-side enemies (0.71375ms)
+✔ Zhang Fei sweeps every direction once, while a sword sweep excludes targets behind it (0.422083ms)
+✔ five fast thrusts survive sub-frame durations and weapon/word sampling follows the saved simulation clock (0.425875ms)
+✔ idle word phase survives reconstruction and new units start their own idle clock (0.167583ms)
+✔ bow and Ma Chao wait for release, preserve native projectile dimensions, and save curved flight progress (0.226458ms)
+✔ splitting a hero cancels queued strikes; corrupt new flight data is discarded without losing the round (0.27125ms)
+✔ native weapons retain separate handle pivots, short-blade reach and pike offsets (0.055084ms)
+✔ weapon landmarks preserve five thrusts, full Zhang Fei sweep and Ma Chao hidden interval (0.224667ms)
+✔ Ma Chao finishes his throw and rearm before attacking again, including save and pause (0.906458ms)
+✔ initial geometry, roads and unlock cells are valid on all four maps (0.198041ms)
+✔ recruitment is atomic when short of food, camp full or paused (0.109708ms)
+✔ observed first tutorial recruits an archer and deploy unlocks battle clock (0.082166ms)
+✔ invalid enemy-side/road drops preserve both source and food (0.073625ms)
+✔ shovels unlock a single legal plot and are consumed exactly once (0.042583ms)
+✔ equal units merge, different units swap, level five never silently destroys units (0.053334ms)
+✔ heroes require ordered horizontal name fragments, breaking adjacency removes the link (0.056458ms)
+✔ active items use legal targets and enforce cooldown; invalid drops do not consume cooldown (0.053791ms)
+✔ shop purchases and 2/6 slot limits do not charge on failure (0.105166ms)
+✔ weapons are type-compatible, count-limited and equipped copies survive recycling (0.103042ms)
+✔ settlement is idempotent including double reward and reload (0.233542ms)
+✔ weapon fragments assemble at the reference threshold and never duplicate a restored reward (0.079875ms)
+✔ day boundary clears only daily items; stamina uses elapsed time and caps at 30 (0.027333ms)
+✔ reference archer reaches distant enemies and opponent does not borrow player gear (0.201541ms)
+✔ native attack interval is seconds; bow releases after its wind-up and survives pause/restore (0.380916ms)
+✔ basic melee targets nearest, knife hits one, pike pierces a line and cavalry sweeps an area (0.115042ms)
+✔ hero damage and speed use their distinct native growth tables; speed bonuses add (0.045833ms)
+✔ farmer harvest waits for the native 20/10/5/3/2 thresholds and merging retains work (2.077959ms)
+✔ original unit frame canvases retain trim offsets and complete one attack before returning to idle (2.51125ms)
+✔ paired hero clips keep left/right glyphs and native bottom-pivot motion through pauses (2.768417ms)
+✔ brush, trash and traps preserve legal targets and reserve effects (0.123791ms)
+✔ passive pills affect both camps as described; periodic shovel survives a full camp (6.4755ms)
+✔ promotion upgrades in-place; march pill consumes no daily slot; UID remains stable (0.134667ms)
+✔ every compatible weapon completes a bounded combat simulation and survives restoration (551.586125ms)
+✔ corrupt storage safely restores fresh state and unfinished rounds retain deterministic combat (7.787917ms)
+✔ full AI battle terminates, bounds live entities and reaches real kill/leak settlement (12.993125ms)
+✔ reference bone curves, weights and mesh vertices stay finite in all imported actors (31.723041ms)
+ℹ tests 78
+ℹ suites 0
+ℹ pass 71
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 980.997916
+
+✖ failing tests:
+
+test at test/game.test.cjs:40:1
+✖ iron pike applies one immediate twofold ground hit and a half-second hold, only on its first contact (1.692458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  100 !== 80
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:42:61)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 100,
+    expected: 80,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:46:1
+✖ tiger pike chooses three distinct enemies, or five for Ma Chao, each at threefold damage (0.23025ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:49:73)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:53:1
+✖ first-contact pike history retains a living target beyond 128 expired contacts (0.212333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  100 !== 80
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:55:100)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 100,
+    expected: 80,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:57:1
+✖ Long Dan proc occurs once per released thrust, with Zhao Yun five percent and other generals ten percent (0.503083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 0
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:60:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:64:1
+✖ flying pikes cover the entire living side, preserve enumeration fades and deal fivefold snapshotted power (0.388542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:66:124)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/game.test.cjs:70:1
+✖ delayed flying pikes stay still before launch, restore in flight, and never damage another enemy (0.241667ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:72:121)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test/game.test.cjs:83:1
+✖ malformed new pike payloads are discarded while legacy projectiles and the round survive (1.009208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (/Users/wkk/dotWorkers/little-steps-cocos/games/zhaoyunyuadou/test/game.test.cjs:87:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

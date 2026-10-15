@@ -1,0 +1,100 @@
+{
+  "id": "ZYA-38",
+  "status": "candidate-verified; original strict pixel and WeChat device pending",
+  "scope": "Native ground pikes 12/17 and flying pikes 19, deterministic saved effects and timing; wrap at user request",
+  "source": {
+    "path": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "sha256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "anchors": {
+      "groundPose": "2027-2042",
+      "flyingPike": "2610-2616",
+      "currentPowerGetter": "4492",
+      "groundWeapon12": "4544",
+      "groundWeapon17": "4583-4594",
+      "flyingWeapon19": "4609-4616"
+    },
+    "originalRuntimeExecuted": false
+  },
+  "behavior": {
+    "ground12": "1 target, 2x current owner power, 1 saved spike",
+    "ground17": "3 targets, Ma Chao 5, 3x current owner power per chosen target, 5 saved spikes each",
+    "groundTiming": "150 ms cubicOut rise, hold to .5 s, .25 s cubicIn fall, squash and recover; .5 s delayed fade",
+    "flying19": "Per released thrust/throw: Zhao Yun .05, others .1; every living same-side enemy; 5x current power; deterministic staggered fade and launch born+1 s",
+    "restore": "Saved RNG, effects, proc marker, timing, orientation and homing; malformed payload validation and legacy fallback"
+  },
+  "verification": {
+    "tests": {
+      "passed": 80,
+      "failed": 0,
+      "log": "ZYA38-pike-verified.log"
+    },
+    "sourceTypecheck": "pass",
+    "candidateTypecheck": "v61 pass",
+    "creatorBuild": "v61 pass, returnCode 36 success log",
+    "browser": {
+      "size": [
+        320,
+        704
+      ],
+      "time": 0.7,
+      "enemies": 6,
+      "lives": [
+        3,
+        3
+      ],
+      "groundEffects": 6,
+      "flyingPikes": 12,
+      "pending": 0,
+      "admission": {
+        "entries": 78,
+        "reservedBytes": 134484640,
+        "pending": 0
+      },
+      "consoleWarnings": 0,
+      "consoleErrors": 0,
+      "restoreFlag": true,
+      "pngByteEqual": true,
+      "differentPixels": 0,
+      "before": {
+        "path": "pikes-base-v61.png",
+        "sha256": "6516d7044a7c5e28b2842b6f2447880a82fef205fbbe1052531a5ae4780f0882"
+      },
+      "after": {
+        "path": "pikes-restored-v61.png",
+        "sha256": "6516d7044a7c5e28b2842b6f2447880a82fef205fbbe1052531a5ae4780f0882"
+      }
+    }
+  },
+  "retainedFailures": [
+    {
+      "evidence": "ZYA38-pike-before.log",
+      "cause": "New expected native pike rules absent before implementation",
+      "repair": "Explicit ground/flying rules and clocked effects"
+    },
+    {
+      "evidence": [
+        "ZYA38-pike-final3.log",
+        "ZYA38-pike-final4.log"
+      ],
+      "cause": "New test oracle used 1.75 hero power growth; native table uses 1.5 for next level",
+      "repair": "Corrected expected HP to 961 and 928; production rules unchanged"
+    },
+    {
+      "evidence": [
+        "pikes-invalid-road-v60.png",
+        "pikes-invalid-road-v60.json",
+        "ZYA38-road-fixture-repair.json"
+      ],
+      "cause": "QA fixture hardcoded an out-of-range road index, leading to NaN position and immediate leak",
+      "repair": "Derive six distinct interior indexes from actual path length; v61 has six finite targets, no leak; production unchanged"
+    }
+  ],
+  "remaining": [
+    "Strict all-screen 1:1 is unaccepted; screenshots span different channel versions",
+    "Other special weapon families and skill modifiers are not fully reconciled",
+    "Weapon 5 textual double-skill claim conflicts with pinned native implementation",
+    "All skill midcast promotions, trails/dust, audio and long-session resource lifetime pending",
+    "Extreme projectile saturation not accepted",
+    "WeChat device, performance, network matching and ads pending"
+  ]
+}

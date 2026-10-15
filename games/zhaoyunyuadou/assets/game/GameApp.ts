@@ -8,6 +8,7 @@ import { HERO_RIGS, heroAppearance, HeroMotion } from './ReferenceHeroes';
 import { KNIFE_TRAILS, WeaponGeometry, weaponGeometry, WeaponMotion, WeaponType } from './ReferenceWeapons';
 import { HERO_SKILLS, HeroSkillState, shoutRing } from './ReferenceHeroSkills';
 import { characterLevelCap, heroExperienceTable } from './ReferenceProgression';
+import { flyingPikePose, groundPikePose } from './ReferenceSpecialWeapons';
 import { Battle, claimResult, dayKey, equipWeapon, GLYPHS, Hero, HEROES, Item, ITEMS, Location, MAPS, newProfile, Profile, purchase, Random, rankName, recycleWeapons, refreshProfile, restoreProfile, Side, Unit } from './GameModel';
 
 const PROFILE_KEY = 'zya.cocos.profile.v1', ROUND_KEY = 'zya.cocos.round.v1';
@@ -366,30 +367,52 @@ export class GameApp {
             }
             n.setPosition(enemy.x-40,-enemy.y+40);const hp=n.getChildByName('hp')!;hp.setScale(Math.max(0,enemy.hp/enemy.maxHp),1);
             n.getChildByName('hpNum')!.getComponent(Label)!.string=Math.ceil(enemy.hp).toString();
-            if(!enemy.boss){const glyph=n.getChildByName('mob-glyph')!;glyph.setScale(1,1+.02*Math.sin(b.time*Math.PI/.195+enemy.id));glyph.angle=(enemy.knocked||0)>0?90:0;}
+            const piercing=b.effects.filter(effect=>effect.piercing?.target===enemy.id).slice(-1)[0],pose=groundPikePose(piercing?piercing.duration-piercing.ttl:1);
+            const glyph=n.getChildByName('mob-glyph')!,base=enemy.boss?1.5:1,idle=enemy.boss?1:1+.02*Math.sin(b.time*Math.PI/.195+enemy.id);
+            glyph.setPosition(40,-80+pose.lift);glyph.setScale(base*pose.scaleX,base*idle*pose.scaleY);glyph.angle=((enemy.knocked||0)>0?90:0)-pose.angle;
+            const rig=(n as any).__rig as InkRig|undefined;if(rig){rig.root.setPosition(40,-65+pose.lift);rig.root.setScale(.8*pose.scaleX,.8*pose.scaleY);rig.root.angle=-pose.angle;}
         }
         for(const[id,n]of Array.from(this.mobs.entries()))if(!current.has(id)){n.destroy();this.mobs.delete(id);}
         current.clear();
         for(const shot of b.shots){
             current.add(shot.id);let n=this.projectiles.get(shot.id);
+            if(!n&&shot.flyingPike){
+                n=this.ui.image(this.combatLayer,skin('effect','longDanLiangYinQiangBk'),0,0,20,66);n.addComponent(UIOpacity);
+                this.ui.image(n,skin('weapon','weapon_19'),0,0,20,66);
+                const ring=this.ui.image(n,skin('effect','quan01'),10,33,130,52,undefined,'flying-pike-ring');ring.getComponent(UITransform)!.setAnchorPoint(.5,.5);ring.angle=-90;ring.addComponent(UIOpacity);
+                this.projectiles.set(shot.id,n);
+            }
             if(!n){const special:Record<string,string>={fireRain:'weapon/arrow_9',rainArrow:'weapon/arrow_2',holyBlade:'weapon/weapon_40',fire:'weapon/arrow_9',eagle:'weapon/bullet/eagleArrow_01',snake:'weapon/bullet/lingShe_1',flower:'weapon/bullet/lihua',flyingPike:'weapon/weapon_19',blade:'weapon/bullet/newDQ',meteor:'props/meteor_2',sword:'weapon/default_3'};
                 const standard=shot.kind==='throw'?'weapon/'+(shot.weaponId===undefined?'default_1':'weapon_'+shot.weaponId):shot.kind==='arrow'&&shot.weaponId===undefined?'weapon/default_arrow_1':shot.kind==='arrow'||shot.kind==='弓'||shot.hero==='黄忠'||shot.hero==='黄祖'?'weapon/arrow_'+(shot.weaponId!==undefined?Math.min(shot.weaponId,9):0):'gameObject/soldier/pike';
                 const path='resources/img/'+(special[shot.kind]||standard)+'.png';
                 const spec=this.art.art.frames[path],width=spec?.original[0]||8,height=spec?.original[1]||50,ratio=(shot.kind==='eagle'?85:50)/Math.max(width,height);n=this.ui.image(this.combatLayer,path,0,0,shot.width??width*ratio,shot.height??height*ratio);n.getComponent(UITransform)!.setAnchorPoint(shot.anchorX??.5,shot.anchorY===undefined?.5:1-shot.anchorY);if(shot.kind==='holyBlade')n.addComponent(UIOpacity).opacity=128;this.projectiles.set(shot.id,n);}
             n.setPosition(shot.x,-shot.y);const target=b.enemies.find(e=>e.id===shot.target);if(shot.rotation!==undefined)n.angle=-shot.rotation;else if(target)n.angle=-Math.atan2(target.y-shot.y,target.x-shot.x)*180/Math.PI-90;
+            if(shot.flyingPike){const pose=flyingPikePose(b.time,shot.flyingPike),ring=n.getChildByName('flying-pike-ring')!;
+                n.setScale(1,pose.scaleY);n.getComponent(UIOpacity)!.opacity=255*pose.alpha;ring.getComponent(UIOpacity)!.opacity=255*pose.ringAlpha;this.ui.skin(ring,skin('effect','quan0'+pose.ringFrame));}
         }
         for(const[id,n]of Array.from(this.projectiles.entries()))if(!current.has(id)){n.destroy();this.projectiles.delete(id);}
         current.clear();
         for(const effect of b.effects){
             if(effect.kind==='damage'&&!this.profile.settings.damage)continue;current.add(effect.id);let n=this.effects.get(effect.id);
             if(!n){
-                if(['stomp','fire','lightning'].includes(effect.kind)){const path=effect.kind==='stomp'?'crack':effect.kind==='fire'?'explode0':'electric1',size=effect.kind==='stomp'?[76,17]:effect.kind==='fire'?[64,64]:[100,100];n=this.ui.image(this.combatLayer,skin('effect',path),0,0,size[0],size[1]);n.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
+                if(effect.piercing){
+                    n=this.ui.node('ground-pike-'+effect.id,this.combatLayer,0,0,80,230);n.addComponent(Mask).type=Mask.Type.GRAPHICS_RECT;
+                    const path=skin('weapon','weapon_'+effect.piercing.weaponId),size=this.art.art.frames[path].original;
+                    for(const spike of effect.piercing.spikes){const image=this.ui.image(n,path,spike.x,spike.y+150,size[0],size[1]);image.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
+                }
+                else if(['stomp','fire','lightning'].includes(effect.kind)){const path=effect.kind==='stomp'?'crack':effect.kind==='fire'?'explode0':'electric1',size=effect.kind==='stomp'?[76,17]:effect.kind==='fire'?[64,64]:[100,100];n=this.ui.image(this.combatLayer,skin('effect',path),0,0,size[0],size[1]);n.getComponent(UITransform)!.setAnchorPoint(.5,.5);}
                 else n=this.ui.text(this.combatLayer,effect.text||'',effect.x-65,effect.y-35,130,50,effect.kind==='damage'?30:24,effect.kind==='skill'?'#ffd25d':'#ffffff',5);
                 n.addComponent(UIOpacity);this.effects.set(effect.id,n);
                 if(effect.kind==='merge')this.play('soldier_merge_upgrade');else if(effect.kind==='heroLevel'&&effect.text==='等级提升')this.play('general_level_up');else if(effect.kind==='hit'){this.play('adou_hit');if(this.profile.settings.vibration){const wx=(globalThis as any).wx;wx?.vibrateShort?.({type:'medium'});}}else if(effect.kind==='skill'){const sounds:Record<string,string>={'大喝':'general_ground_slam','跳斩':'guanyu_skill_roar','火箭烈':'general_fire_arrow_rain','箭雨':'general_arrow_rain','圣剑':'holyBlade_skill'};if(sounds[effect.text||''])this.play(sounds[effect.text!]);}else if(effect.kind==='stomp')this.play('jumpSlash_stomp');else if(effect.kind==='lightning')this.play('maChao_attack_lightning');
             }
             const elapsed=effect.duration-effect.ttl;
-            if(['stomp','fire','lightning'].includes(effect.kind)){
+            if(effect.piercing){
+                const target=b.enemies.find(enemy=>enemy.id===effect.piercing!.target),pose=groundPikePose(elapsed);n.active=!!target;
+                if(target)n.setPosition(target.x-40,-target.y+190);
+                effect.piercing.spikes.forEach((spike,index)=>{const child=n!.children[index];child.setPosition(spike.x,-spike.y-150+pose.rise);child.setScale(1,pose.growth);child.angle=-spike.angle;});
+                n.getComponent(UIOpacity)!.opacity=255*pose.alpha;
+            }
+            else if(['stomp','fire','lightning'].includes(effect.kind)){
                 n.setPosition(effect.x,-effect.y);
                 if(effect.kind==='fire')this.ui.skin(n,skin('effect','explode'+Math.min(5,Math.floor(elapsed/.05))));
                 if(effect.kind==='lightning')this.ui.skin(n,skin('effect','electric'+(1+(Math.floor(elapsed/.05)+effect.id)%3)));
@@ -414,7 +437,7 @@ export class GameApp {
         for(const view of this.actors.values())if(view.node.parent===this.combatLayer)keys.set(view.node,[jumping.has(view.unit.id)?4:1,view.unit.id+.5]);
         for(const[id,node]of this.mobs)keys.set(node,[2,id]);for(const[id,node]of this.projectiles)keys.set(node,[3,id]);
         for(const[id,view]of this.skillViews)keys.set(view.node,[view.node.name.startsWith('skill-phantom')?5:0,id]);
-        for(const[id,node]of this.effects)keys.set(node,[6,id]);if(this.hazeNode)keys.set(this.hazeNode,[7,0]);
+        for(const[id,node]of this.effects)keys.set(node,[node.name.startsWith('ground-pike-')?1.75:6,id]);if(this.hazeNode)keys.set(this.hazeNode,[7,0]);
         const nodes=this.combatLayer.children.slice().sort((a,b)=>{const x=keys.get(a)||[-1,0],y=keys.get(b)||[-1,0];return x[0]-y[0]||x[1]-y[1];});
         nodes.forEach((node,index)=>{if(node.getSiblingIndex()!==index)node.setSiblingIndex(index);});
     }

@@ -1,0 +1,12 @@
+{
+  "id": "ZYA-38-road-fixture-repair",
+  "candidate": "zya-web-v60",
+  "cause": "hardcoded path index16 exceeded map1 path length; produced null x/y and one immediate leak",
+  "evidence": [
+    "pikes-invalid-road-v60.png",
+    "pikes-invalid-road-v60.json"
+  ],
+  "repair": "derive six unique interior path indexes from the selected map length, excluding both endpoints",
+  "productionCodeChanged": false,
+  "replacementCandidate": "zya-web-v61"
+}

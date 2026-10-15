@@ -19,6 +19,7 @@ const W = moduleFrom('ReferenceWeapons');
 const C = moduleFrom('ReferenceWeaponCombat');
 const S = moduleFrom('ReferenceHeroSkills');
 const P = moduleFrom('ReferenceProgression');
+const X = moduleFrom('ReferenceSpecialWeapons');
 const weapons = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../assets/resources/data/weapon.json')));
 const now = 1791993600000;
 const round = (tutorial=false) => new M.Battle(M.newProfile(now),weapons,0,123456,tutorial);
@@ -35,6 +36,66 @@ function startSkill(fixture){
     const {b,hero,unit}=fixture;return b.startHeroSkill(unit,0,40,hero,unit.level,b.stats(unit,hero,unit.level,0));
 }
 const closeTo=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
+function weaponHitShot(f,id,target,damage=10){return {id:990,from:f.unit.id,side:0,target:target.id,x:target.x,y:target.y,damage,speed:0,kind:'melee',splash:0,weaponId:id,hero:f.hero.name,heroId:f.b.heroes(0)[0].id};}
+test('iron pike applies one immediate twofold ground hit and a half-second hold, only on its first contact',()=>{
+    const f=heroRound('赵云'),target=f.add(901,100,340),other=f.add(902,180,340);f.b.random.next=()=>0;
+    f.b.weaponHit(weaponHitShot(f,12,target),target);assert.equal(target.hp,80);assert.equal(other.hp,100);assert.equal(target.held,.5);assert.equal(f.b.shots.length,0);
+    const effect=f.b.effects.find(e=>e.piercing);assert.equal(effect.piercing.weaponId,12);assert.equal(effect.piercing.spikes.length,1);
+    f.b.weaponHit(weaponHitShot(f,12,target),target);assert.equal(target.hp,80);assert.equal(f.b.effects.filter(e=>e.piercing).length,1);
+});
+test('tiger pike chooses three distinct enemies, or five for Ma Chao, each at threefold damage',()=>{
+    for(const [name,count]of [['赵云',3],['马超',5]]){
+        const f=heroRound(name),targets=Array.from({length:6},(_,i)=>f.add(901+i,80+i*80,240));const rival=f.add(920,80,240,1);f.b.random.next=()=>0;
+        f.b.weaponHit(weaponHitShot(f,17,targets[0]),targets[0]);assert.equal(targets.filter(e=>e.hp===70).length,count);assert.equal(rival.hp,100);assert.equal(f.b.shots.length,0);
+        const effects=f.b.effects.filter(e=>e.piercing);assert.equal(new Set(effects.map(e=>e.piercing.target)).size,count);assert.ok(effects.every(e=>e.piercing.spikes.length===5&&e.piercing.weaponId===17));
+    }
+});
+test('first-contact pike history retains a living target beyond 128 expired contacts',()=>{
+    const f=heroRound('赵云'),old=f.add(901,100,340),next=f.add(902,180,340);f.unit.seen=[old.id,...Array.from({length:128},(_,i)=>1000+i)];f.b.random.next=()=>0;
+    f.b.weaponHit(weaponHitShot(f,12,next),next);f.b.weaponHit(weaponHitShot(f,12,old),old);assert.equal(next.hp,80);assert.equal(old.hp,100);assert.ok(f.unit.seen.includes(old.id));
+});
+test('Long Dan proc occurs once per released thrust, with Zhao Yun five percent and other generals ten percent',()=>{
+    for(const [name,roll,count]of [['赵云',.06,0],['赵云',.05,3],['张苞',.06,3]]){
+        const f=heroRound(name);f.b.profile.equipped[name]=19;const target=f.add(901,400,240);f.add(902,480,240);f.add(903,560,240);f.b.random.next=()=>roll;f.attack(target);
+        assert.equal(f.b.shots.length,0);const strike=f.b.weaponStrikes[0];f.b.time=strike.born;f.b.advanceWeaponStrikes(1/30);
+        assert.equal(f.b.shots.filter(s=>s.flyingPike).length,count);f.b.advanceWeaponStrikes(1/1000);assert.equal(f.b.shots.filter(s=>s.flyingPike).length,count);
+    }
+});
+test('flying pikes cover the entire living side, preserve enumeration fades and deal fivefold snapshotted power',()=>{
+    const f=heroRound('张苞');f.b.profile.equipped['张苞']=19;const a=f.add(901,400,410);f.add(920,80,410,1);const c=f.add(902,600,410);const dead=f.add(903,520,410);dead.hp=0;f.b.random.next=()=>0;f.attack(a);
+    f.b.time=f.b.weaponStrikes[0].born;f.b.advanceWeaponStrikes(1/30);const shots=f.b.shots.filter(s=>s.flyingPike);assert.equal(shots.length,2);assert.deepEqual(Array.from(shots,s=>s.target),[a.id,c.id]);
+    closeTo(shots[0].flyingPike.appear,shots[0].flyingPike.born+.1);closeTo(shots[1].flyingPike.appear,shots[1].flyingPike.born+.3);
+    assert.ok(shots.every(s=>s.damage===85&&s.width===20&&s.height===66&&s.flyingPike.launch===s.flyingPike.born+1));
+});
+test('delayed flying pikes stay still before launch, restore in flight, and never damage another enemy',()=>{
+    const f=heroRound('赵云');f.b.profile.equipped['赵云']=19;const target=f.add(901,400,410),rival=f.add(902,80,410,1);target.hp=1000;f.b.random.next=()=>0;f.attack(target);
+    f.b.time=f.b.weaponStrikes[0].born;f.b.advanceWeaponStrikes(1/30);const shot=f.b.shots.find(s=>s.flyingPike),x=shot.x,y=shot.y,born=shot.flyingPike.born;
+    f.b.time=born+.5;f.b.advanceShots(.5);assert.equal(shot.x,x);assert.equal(shot.y,y);assert.equal(target.hp,1000);
+    f.b.time=born+1.05;f.b.advanceShots(.05);assert.ok(shot.x>x);const saved=f.b.snapshot(),restored=M.Battle.restore(saved,f.b.profile,weapons);assert.ok(restored);assert.equal(restored.snapshot(),saved);
+    f.b.paused=true;f.b.advance(1);assert.equal(f.b.snapshot(),saved.replace('"paused":false','"paused":true'));f.b.paused=false;
+    for(let i=1;i<=6;i++){f.b.time=restored.time=born+1.05+i*.05;f.b.advanceShots(.05);restored.advanceShots(.05);assert.equal(f.b.snapshot(),restored.snapshot());}
+    assert.equal(target.hp,940);assert.equal(rival.hp,100);assert.equal(f.b.shots.length,0);
+});
+test('ground pike lift and flying-pike fades retain the native phase landmarks',()=>{
+    const pose=X.groundPikePose(.075);closeTo(pose.growth,.875);closeTo(pose.lift,52.5);closeTo(X.groundPikePose(.625).lift,52.5);closeTo(X.groundPikePose(.8).scaleY,.6);closeTo(X.groundPikePose(.9).scaleX,1.25);assert.equal(X.groundPikePose(1).alpha,0);
+    const timing=X.flyingPikeTiming(2,3);assert.equal(timing.appear,2.3);assert.equal(timing.launch,3);closeTo(X.flyingPikePose(2.4,timing).alpha,.5);closeTo(X.flyingPikePose(3.1,timing).ringAlpha,.5);assert.equal(X.flyingPikePose(3.5,timing).ringFrame,X.flyingPikePose(3,timing).ringFrame);
+});
+test('a ground proc reads the current general power after promotion without borrowing a reformed identity',()=>{
+    const f=heroRound('马超');f.b.profile.equipped['马超']=12;const target=f.add(901,100,340),other=f.add(902,180,340);target.hp=other.hp=1000;const shot=weaponHitShot(f,12,target,13);f.b.random.next=()=>0;
+    f.b.addHeroExperience(f.b.heroProgress[0],10);f.b.weaponHit(shot,target);closeTo(target.hp,961);
+    f.b.move(location('board',41),location('reserve',0));f.b.move(location('reserve',0),location('board',41));f.b.addHeroExperience(f.b.heroProgress[0],25);
+    f.b.weaponHit({...shot,target:other.id},other);closeTo(other.hp,974);
+});
+test('a kill during a multi-target ground proc promotes the general before the next target is hit',()=>{
+    const f=heroRound('马超');f.b.profile.equipped['马超']=17;const first=f.add(901,100,340),second=f.add(902,180,340),third=f.add(903,260,340);first.hp=1;second.hp=third.hp=1000;f.b.addHeroExperience(f.b.heroProgress[0],9);f.b.random.next=()=>0;
+    f.b.weaponHit(weaponHitShot(f,17,first,16),first);assert.equal(f.b.heroes(0)[0].level,2);closeTo(second.hp,928);closeTo(third.hp,928);
+});
+test('malformed new pike payloads are discarded while legacy projectiles and the round survive',()=>{
+    const f=heroRound('赵云'),target=f.add(901,400,410),raw=JSON.parse(f.b.snapshot());
+    raw.shots=[{...weaponHitShot(f,19,target),kind:'flyingPike',speed:1200,flyingPike:{born:0,appear:-1,launch:1}}, {...weaponHitShot(f,19,target),id:991,kind:'flyingPike',speed:550}];
+    raw.effects=[{id:992,side:0,kind:'groundPike',x:100,y:340,ttl:1,duration:1,piercing:{target:901,weaponId:12,spikes:[{x:null,y:70,angle:0}]}}];
+    const restored=M.Battle.restore(JSON.stringify(raw),f.b.profile,weapons);assert.ok(restored);assert.equal(restored.shots.length,1);assert.equal(restored.shots[0].id,991);assert.equal(restored.effects.length,0);
+});
 test('a speed spell on either half affects the general once and records both inherited parts',()=>{
     const {b,hero,unit}=heroRound('赵云');b.profile.items=['speed'];
     assert.equal(b.active('speed',41),'');closeTo(b.stats(unit,hero).interval,.8/1.4);
