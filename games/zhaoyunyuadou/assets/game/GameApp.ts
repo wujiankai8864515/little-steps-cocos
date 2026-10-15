@@ -171,13 +171,19 @@ export class GameApp {
             this.ui.image(tiles,skin('map',isGrass?'grass_'+this.battle.map.id+'_'+this.battle.map.owners[n]:'road_'+this.battle.map.id),n%8*80,Math.floor(n/8)*80,80,80,undefined,name);
         }
         for(let n=0;n<5;n++)this.ui.image(this.reserve,skin('map','refresh_'+this.battle.map.id+'_0'),n*90,0,90,90,undefined,'reserve-'+n);
-        const outline=this.ui.node('terrain outlines',this.board,0,0,640,800),g=outline.addComponent(Graphics);g.strokeColor=inkColor('#171613');g.lineWidth=3;
-        g.rect(0,-800,640,800);
-        for(const cell of this.battle.map.grass){const x=cell%8*80,y=Math.floor(cell/8)*80;
-            for(const[neighbor,ax,ay,bx,by]of [[cell-8,x,y,x+80,y],[cell+8,x,y+80,x+80,y+80],[cell-1,x,y,x,y+80],[cell+1,x+80,y,x+80,y+80]]){
-                if(!this.battle.map.grass.includes(neighbor)){g.moveTo(ax,-ay);g.lineTo(bx,-by);}
+        const outline=this.ui.node('terrain outlines',this.board,0,0,640,800),g=outline.addComponent(Graphics);g.fillColor=Color.BLACK;
+        // Reference V$: black 3 px terrain edges and a 6 px outer border.
+        // Filled strips preserve vertical and horizontal coverage in Cocos.
+        const edge=(ax:number,ay:number,bx:number,by:number,width:number)=>{
+            if(ax===bx)g.rect(ax-width/2,-Math.max(ay,by),width,Math.abs(by-ay));
+            else g.rect(Math.min(ax,bx),-ay-width/2,Math.abs(bx-ax),width);
+        };
+        for(const cell of this.battle.map.grass){const col=cell%8,row=Math.floor(cell/8),x=col*80,y=row*80;
+            for(const[neighbor,inside,ax,ay,bx,by]of [[cell-8,row>0,x,y,x+80,y],[cell+8,row<9,x,y+80,x+80,y+80],[cell-1,col>0,x,y,x,y+80],[cell+1,col<7,x+80,y,x+80,y+80]] as [number,boolean,number,number,number,number][]){
+                if(inside&&!this.battle.map.grass.includes(neighbor))edge(ax,ay,bx,by,3);
             }
-        }g.stroke();
+        }
+        edge(0,0,640,0,6);edge(0,800,640,800,6);edge(0,0,0,800,6);edge(640,0,640,800,6);g.fill();
         for(const cell of this.battle.map.entries){const pos=this.battle.position(cell);await this.rig(this.board,'resources/anim/grass/skeleton.json','idle'+this.battle.map.id,pos.x,pos.y+40,1,false,true);}
         for(const side of [0,1] as Side[]) {
             const cell=this.battle.map.paths[side].slice(-1)[0],pos=this.battle.position(cell);

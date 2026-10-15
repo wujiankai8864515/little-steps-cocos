@@ -1,0 +1,42 @@
+{
+  "id": "ZYA-35",
+  "date": "2026-10-15",
+  "kind": "map outline visual correction using original numeric data",
+  "referenceSource": {
+    "file": "migration/.cache/zhaoyunyuadou/reference-readable.txt",
+    "method": "V$",
+    "lines": [
+      6942,
+      6946
+    ],
+    "terrainColor": "#000000",
+    "terrainWidth": 3,
+    "outerColor": "#000000",
+    "outerWidth": 6
+  },
+  "before": {
+    "candidate": "zya-web-v54",
+    "image": "tutorial-ready-canvas-v54.png",
+    "fullImageMAE": 9.025377308238637,
+    "implementation": "same 3 px #171613 stroke for both borders"
+  },
+  "after": {
+    "candidate": "zya-web-v55",
+    "image": "tutorial-border-v55.png",
+    "fullImageMAE": 6.844369969223485,
+    "implementation": "filled black strips using original inner/outer widths; grid neighbor checks prevent wrap across columns",
+    "pending": 0,
+    "time": 0,
+    "capture": {
+      "method": "canvas-after-draw",
+      "serial": 2,
+      "at": 16152.300000011921,
+      "readyFrames": 674
+    }
+  },
+  "comparison": "same 320x704 full image; no resize or masked regions",
+  "build": "pass",
+  "typecheck": "pass",
+  "strictPublisherPixels": "pending",
+  "device": "pending"
+}
