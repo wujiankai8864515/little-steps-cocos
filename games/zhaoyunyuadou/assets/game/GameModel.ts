@@ -143,7 +143,7 @@ export class Random {
     pick<T>(items: T[]) { return items[Math.floor(this.next() * items.length)]; }
 }
 export interface Army { units: Record<number, Unit>; unlocked: number[]; reserve: (Unit | null)[]; food: number; recruitCount: number; lives: number; maxLives: number; }
-export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean; bossType?:number; castIn?:number; }
+export interface Enemy { id: number; side: Side; progress: number; hp: number; maxHp: number; speed: number; boss: boolean; slowed: number; x: number; y: number; held?:number; moveDebuffUntil?:number;moveDebuff?:number;knocked?:number;contributors?:number[];experienceSettled?:boolean;lootSettled?:boolean; bossType?:number; castIn?:number; }
 export interface Shot { id: number; side: Side; from: number; target: number; x: number; y: number; damage: number; speed: number; kind: string; splash: number; weaponId?:number; hero?:string;heroId?:number; visited?:number[]; flight?:Flight; motion?:SkillProjectile; skill?:boolean;rotation?:number;width?:number;height?:number;anchorX?:number;anchorY?:number; }
 export interface Effect { id: number; kind: string; x: number; y: number; text?: string; ttl: number; duration: number; side: Side; }
 export interface Location { area: 'board' | 'reserve'; index: number; }
@@ -308,6 +308,11 @@ export class Battle {
         if(enemy.hp<=0&&!enemy.experienceSettled){enemy.experienceSettled=true;for(const award of experienceAwards(owner,enemy.contributors||[])){const progress=this.heroProgress.find(p=>p.id===award.id&&p.side===enemy.side);if(progress)this.addHeroExperience(progress,award.experience);}}
         return true;
     }
+    private collectEnemyLoot(enemy:Enemy){
+        if(enemy.hp>0||enemy.lootSettled)return;enemy.lootSettled=true;
+        const food=enemy.boss?20:1;this.armies[enemy.side].food+=food;if(enemy.side===0)this.kills++;
+        this.effects.push({id:this.nextId++,kind:'food',x:enemy.x,y:enemy.y,text:'+'+food,ttl:.65,duration:.65,side:enemy.side});this.revision++;
+    }
     stats(unit: Unit, hero?: Hero, level = unit.level, side:Side=0) {
         const weapon = hero && side===0 ? this.weapons.find(w => w.id === this.profile.equipped[hero.name]) : undefined;
         let power = hero ? hero.power : unit.kind === '刀' ? 3 : 2;
@@ -379,7 +384,7 @@ export class Battle {
         return enemy;
     }
     private bossSkill(enemy:Enemy){const type=enemy.bossType;if(type===undefined)return;const boss=BOSSES[type],army=this.armies[enemy.side],cells=Object.keys(army.units).map(Number);
-        if(enemy.side===0&&this.has('exorcism')&&this.random.next()<.5){enemy.hp-=enemy.maxHp*.15;this.battleEffect('exorcism',enemy,enemy.side,'反噬');return;}
+        if(enemy.side===0&&this.has('exorcism')&&this.random.next()<.5){this.damageEnemy(enemy,enemy.maxHp*.15);this.battleEffect('exorcism',enemy,enemy.side,'反噬');return;}
         this.battleEffect('bossSkill',enemy,enemy.side,boss.skill);
         const debuff=(cell:number,name:string,seconds=0)=>{const unit=army.units[cell];if(unit){unit.debuff=name;unit.debuffLevel=unit.level;unit.debuffUntil=seconds?this.time+seconds:0;}};
         if(type===0){for(const cell of cells.slice(0,4))debuff(cell,'chaos',5);}
@@ -729,21 +734,20 @@ export class Battle {
         this.shots = this.shots.filter(s => s.damage > 0).slice(-160);
         for (const enemy of this.enemies) {
             if (enemy.hp <= 0) {
-                this.armies[enemy.side].food += enemy.boss ? 20 : 1; if (enemy.side === 0) this.kills++;
-                this.effects.push({id:this.nextId++,kind:'food',x:enemy.x,y:enemy.y,text:'+' + (enemy.boss ? 20 : 1),ttl:0.65,duration:0.65,side:enemy.side});
-                this.revision++; continue;
+                this.collectEnemyLoot(enemy);continue;
             }
             enemy.slowed = Math.max(0, enemy.slowed - dt);
             if(enemy.bossType!==undefined){enemy.castIn=(enemy.castIn||0)-dt;if(enemy.castIn<=0){enemy.castIn=BOSSES[enemy.bossType].cooldown;this.bossSkill(enemy);}}
+            if(enemy.hp<=0){this.collectEnemyLoot(enemy);continue;}
             enemy.held=Math.max(0,(enemy.held||0)-dt);
             enemy.knocked=Math.max(0,(enemy.knocked||0)-dt);
             let speed = enemy.speed * (enemy.slowed > 0 ? 0.3 : 1);
             if((enemy.moveDebuffUntil||0)>this.time)speed*=Math.max(0,1+(enemy.moveDebuff||0));
             if(enemy.held>0||enemy.knocked>0)speed=0;
             if(enemy.side===0&&this.has('silt'))speed*=.9;
-            for(const hazard of this.hazards){const p=this.position(hazard.cell);if(enemy.side===0&&hazard.ttl>0&&Math.hypot(p.x-enemy.x,p.y-enemy.y)<40){hazard.ttl=0;if(hazard.kind==='mine')this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});else enemy.slowed=5;this.effect(hazard.kind,hazard.cell,0);}}
-            if(enemy.side===0&&this.has('meteor')&&this.meteorTime<=0&&enemy.progress>(this.map.paths[0].length-3)*80){this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});this.meteorTime=3;this.effect('meteor',this.map.paths[0].slice(-2)[0],0);}
-            if(enemy.hp<=0)continue;
+            for(const hazard of this.hazards){const p=this.position(hazard.cell);if(enemy.hp>0&&enemy.side===0&&hazard.ttl>0&&Math.hypot(p.x-enemy.x,p.y-enemy.y)<40){hazard.ttl=0;if(hazard.kind==='mine')this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});else enemy.slowed=5;this.effect(hazard.kind,hazard.cell,0);}}
+            if(enemy.hp>0&&enemy.side===0&&this.has('meteor')&&this.meteorTime<=0&&enemy.progress>(this.map.paths[0].length-3)*80){this.damageEnemy(enemy,enemy.hp,{side:0,hero:false});this.meteorTime=3;this.effect('meteor',this.map.paths[0].slice(-2)[0],0);}
+            if(enemy.hp<=0){this.collectEnemyLoot(enemy);continue;}
             enemy.progress += speed * dt; this.enemyPosition(enemy);
             if (enemy.progress >= (this.map.paths[enemy.side].length - 1) * 80) {
                 enemy.hp = -999; this.armies[enemy.side].lives = Math.max(0, this.armies[enemy.side].lives - 1);

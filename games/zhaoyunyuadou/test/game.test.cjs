@@ -112,6 +112,19 @@ test('legacy in-flight skills acquire the preserved general identity and malform
     restored.time=.8;restored.advanceHeroSkills(1/30);assert.equal(restored.heroSkills[0].phase,1);
     const broken=JSON.parse(b.snapshot());broken.heroProgress[0].id=Number.MAX_SAFE_INTEGER;const repaired=M.Battle.restore(JSON.stringify(broken),b.profile,weapons);assert.ok(repaired);assert.ok(Number.isSafeInteger(repaired.nextId));assert.ok(repaired.heroes(0)[0].id<Number.MAX_SAFE_INTEGER);
 });
+test('mine and meteor deaths collect food and kills once, retain assists, and never leak after dying',()=>{
+    for(const kind of ['mine','meteor']){
+        const f=heroRound('赵云'),b=f.b,road=b.map.paths[0],cell=road.at(-1),pos=b.position(cell),enemy=f.add(901,pos.x,pos.y);enemy.progress=(road.length-2)*80+79;enemy.speed=1000;enemy.hp=10;b.enemyPosition(enemy);f.unit.debuff='sealed';f.unit.debuffLevel=f.unit.level;
+        b.damageEnemy(enemy,1,{side:0,hero:true,heroId:b.heroes(0)[0].id});if(kind==='mine')b.hazards=[{cell,kind:'mine',ttl:60}];else b.profile.items=['meteor'];
+        const food=b.armies[0].food,lives=b.armies[0].lives;b.advance(1/30);assert.equal(b.armies[0].food,food+1);assert.equal(b.kills,1);assert.equal(b.heroProgress[0].experience,.2);assert.equal(b.armies[0].lives,lives);assert.equal(b.enemies.length,0);
+        b.advance(1/30);assert.equal(b.armies[0].food,food+1);assert.equal(b.kills,1);assert.equal(b.heroProgress[0].experience,.2);
+    }
+});
+test('reflected boss deaths settle once before movement, while genuine leaks grant no kill rewards or experience',()=>{
+    const f=heroRound('赵云'),b=f.b,road=b.map.paths[0],p=b.position(road.at(-2)),boss=f.add(901,p.x,p.y);boss.progress=(road.length-2)*80+79;boss.speed=1000;boss.hp=10;boss.boss=true;boss.bossType=0;boss.castIn=0;f.unit.debuff='sealed';b.profile.items=['exorcism'];b.random.next=()=>0;
+    const food=b.armies[0].food,lives=b.armies[0].lives;b.damageEnemy(boss,1,{side:0,hero:true,heroId:b.heroes(0)[0].id});b.advance(1/30);assert.equal(b.armies[0].food,food+20);assert.equal(b.kills,1);assert.equal(b.armies[0].lives,lives);assert.equal(b.heroProgress[0].experience,0);
+    const enemy=f.add(902,p.x,p.y);enemy.progress=(road.length-2)*80+79;enemy.speed=1000;b.damageEnemy(enemy,1,{side:0,hero:true,heroId:b.heroes(0)[0].id});b.advance(1/30);assert.equal(b.armies[0].lives,lives-1);assert.equal(b.armies[0].food,food+20);assert.equal(b.kills,1);assert.equal(b.heroProgress[0].experience,0);
+});
 test('native skills have separate pre/post counts, independent cast speed, and no invented Huang Gai ability',()=>{
     const expected={'赵云':[30,false],'张飞':[15,true],'马超':[0,false],'关羽':[20,true],'黄忠':[30,true],'关平':[15,true],'关兴':[0,false],'张苞':[0,false],'张翼':[20,true],'黄盖':[0,false],'刘备':[20,false],'黄祖':[30,true]};
     for(const hero of M.HEROES){const spec=S.HERO_SKILLS[hero.name];assert.equal(spec.every,expected[hero.name][0]);assert.equal(spec.before,expected[hero.name][1]);assert.equal(hero.skill,spec.name);}
