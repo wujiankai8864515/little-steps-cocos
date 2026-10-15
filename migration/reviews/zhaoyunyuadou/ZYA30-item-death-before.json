@@ -1,0 +1,28 @@
+{
+  "id": "ZYA-30",
+  "kind": "own Cocos model regression; original program not executed",
+  "trigger": "mine kills after the enemy-loop reward branch",
+  "sourceSHA256": "d124aade5996d740612107e950c7e79dc7d0ce9e5d8b29a67e62ff6e7edaeaf5",
+  "before": {
+    "food": 20,
+    "lives": 3,
+    "kills": 0,
+    "xp": 0
+  },
+  "actual": {
+    "food": 20,
+    "lives": 3,
+    "kills": 0,
+    "xp": 0.2,
+    "enemies": 0
+  },
+  "expected": {
+    "food": 21,
+    "lives": 3,
+    "kills": 1,
+    "xp": 0.2,
+    "enemies": 0
+  },
+  "result": "fail: mine kill loses food and kill count; assist XP correct",
+  "fix": "pending"
+}

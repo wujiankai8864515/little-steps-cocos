@@ -1,0 +1,35 @@
+{
+  "id": "ZYA-30",
+  "kind": "same own-model trigger after fix; no original program executed",
+  "sourceSHA256": "fc3c7386019398f82d86093b72dbb1d5b932962834680e527cf6184092b331d5",
+  "before": {
+    "food": 20,
+    "lives": 3,
+    "kills": 0,
+    "xp": 0
+  },
+  "actual": {
+    "food": 21,
+    "lives": 3,
+    "kills": 1,
+    "xp": 0.2,
+    "enemies": 0
+  },
+  "expected": {
+    "food": 21,
+    "lives": 3,
+    "kills": 1,
+    "xp": 0.2,
+    "enemies": 0
+  },
+  "result": "pass",
+  "modelTests": {
+    "pass": 62,
+    "fail": 0,
+    "log": "ZYA30-model-tests.log"
+  },
+  "typecheck": "pass",
+  "browser": "latest v45 build and growth UI smoke pass; item death verified in own model tests",
+  "device": "pending",
+  "nativeItemPixelComparison": "pending"
+}
