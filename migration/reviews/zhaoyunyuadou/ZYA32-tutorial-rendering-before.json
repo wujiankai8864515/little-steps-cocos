@@ -1,0 +1,95 @@
+{
+  "id": "ZYA-32",
+  "date": "2026-10-15",
+  "kind": "retained browser rendering regression; fix pending",
+  "candidate": "zya-web-v45",
+  "gameCommit": "91b888894f5079f5ec81f4a9eae00ca0decb1059",
+  "viewport": [
+    320,
+    704
+  ],
+  "trigger": "fresh first-round tutorial, before player deployment",
+  "observed": "three rival unit nodes exist but their glyphs and level marks are blank; after deploying the archer the rival characters become visible",
+  "expected": "骑、枪、刀 visible while tutorialStep is 1 or 2, as in the pinned public tutorial and earlier v23 comparison",
+  "baselineComparison": "comparison/tutorial-v23.png",
+  "before": {
+    "png": "tutorial-blank-units-v45.png",
+    "sha256": "0f9cf19e4b9ba60b36eaaf8551c11506dcbd2eba88762334fa168226d6f58fb9",
+    "time": 0,
+    "tutorialStep": 1,
+    "drawOrder": [
+      {
+        "name": "unit-1",
+        "position": {
+          "x": 240,
+          "y": -80,
+          "z": 0
+        },
+        "angle": 0,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "name": "unit-2",
+        "position": {
+          "x": 320,
+          "y": -80,
+          "z": 0
+        },
+        "angle": 0,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "name": "unit-3",
+        "position": {
+          "x": 400,
+          "y": -80,
+          "z": 0
+        },
+        "angle": 0,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      }
+    ],
+    "admission": {
+      "entries": 77,
+      "reservedBytes": 134222496,
+      "pending": 2
+    }
+  },
+  "after": {
+    "png": "tutorial-units-after-deploy-v45.png",
+    "sha256": "925d945e5e52e0703fc0dffcdadf59cdbb90d2390b549db1002abc5992cec6ac",
+    "time": 0.3,
+    "tutorialStep": 3,
+    "units": {
+      "58": {
+        "id": 4,
+        "kind": "弓",
+        "char": "弓",
+        "level": 1,
+        "cooldown": -0.3,
+        "attacks": 0,
+        "idleAt": 0
+      }
+    },
+    "admission": {
+      "entries": 80,
+      "reservedBytes": 134654752,
+      "pending": 0
+    }
+  },
+  "rootCause": "unproven; inspect actor active state, sprite geometry and hierarchy in an isolated QA mirror next",
+  "strictPixels": "fail",
+  "device": "pending"
+}
