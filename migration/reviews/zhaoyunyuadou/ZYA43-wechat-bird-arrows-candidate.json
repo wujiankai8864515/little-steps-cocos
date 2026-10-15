@@ -1,0 +1,178 @@
+{
+  "id": "ZYA-43",
+  "date": "2026-10-15",
+  "kind": "fresh local native-subpackage candidate, not formal release or device acceptance",
+  "candidate": "zya-wechat-v16",
+  "appid": "wx4d41972686e54c11",
+  "sourceGameCommit": "4f243355653c181db7e8835e5b6d524b6d3e25f7",
+  "sourceParentCommit": "d8d623a22752cd502a8ff55f25e81588c823788a",
+  "sourceMode": "local-working-copy",
+  "sourceIncludesUncommittedEditorMetadata": true,
+  "sourceHashesChecked": 415,
+  "fixedOutputHashesChecked": 480,
+  "hashMismatches": [],
+  "build": "pass",
+  "audit": {
+    "mainBytes": 3384743,
+    "totalBytes": 16603459,
+    "initialBytes": 11785934,
+    "sizes": {
+      "main": 3384743,
+      "zya_meta": 2337439,
+      "zya_effects": 1896435,
+      "zya_battle": 2221906,
+      "zya_maps": 699184,
+      "zya_home": 1094605,
+      "zya_audio": 3270647,
+      "zya_actors": 1698500
+    },
+    "subpackages": [
+      {
+        "name": "zya_actors",
+        "root": "subpackages/zya_actors/"
+      },
+      {
+        "name": "zya_audio",
+        "root": "subpackages/zya_audio/"
+      },
+      {
+        "name": "zya_battle",
+        "root": "subpackages/zya_battle/"
+      },
+      {
+        "name": "zya_effects",
+        "root": "subpackages/zya_effects/"
+      },
+      {
+        "name": "zya_home",
+        "root": "subpackages/zya_home/"
+      },
+      {
+        "name": "zya_maps",
+        "root": "subpackages/zya_maps/"
+      },
+      {
+        "name": "zya_meta",
+        "root": "subpackages/zya_meta/"
+      }
+    ],
+    "files": 480
+  },
+  "projectConfigs": {
+    "builds/wechatgame/zhaoyunyuadou/project.config.json": {
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "compileType": "game",
+      "miniprogramRoot": "project/",
+      "setting": {
+        "urlCheck": true,
+        "es6": true
+      },
+      "condition": {}
+    },
+    "builds/wechatgame/zhaoyunyuadou/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    },
+    "migration/work/zya-wechat-v16/output/project/project.config.json": {
+      "description": "项目配置文件。",
+      "miniprogramRoot": "./",
+      "setting": {
+        "urlCheck": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": false,
+        "enhance": true,
+        "useIsolateContext": true
+      },
+      "compileType": "game",
+      "libVersion": "widelyUsed",
+      "appid": "wx4d41972686e54c11",
+      "projectname": "赵云与阿斗",
+      "condition": {
+        "search": {
+          "current": -1,
+          "list": []
+        },
+        "conversation": {
+          "current": -1,
+          "list": []
+        },
+        "game": {
+          "currentL": -1,
+          "list": [],
+          "current": -1
+        },
+        "miniprogram": {
+          "current": -1,
+          "list": []
+        }
+      }
+    }
+  },
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444",
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js",
+    "pluginFlags": {
+      "isPlugin": true,
+      "loadPluginInEditor": false,
+      "loadPluginInWeb": true,
+      "loadPluginInNative": false,
+      "loadPluginInMiniGame": true,
+      "executionScope": "global"
+    }
+  },
+  "UUIDs": {
+    "project": "7902ddb1-bb27-4f17-a4cc-a79818a2e078",
+    "Boot": "be9d2cea-79b2-4bea-9298-438460f08591",
+    "scene": "be5c944f-c8e2-49aa-9330-2704b04f05c9"
+  },
+  "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou/project",
+  "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/zhaoyunyuadou",
+  "remoteResourceDependencies": false,
+  "includedChange": "ZYA-42 original eagle/phoenix arrows, saved slowdown, push, burn, animation and stage-height bounds",
+  "rulesTests": {
+    "passed": 91,
+    "failed": 0,
+    "log": "ZYA42-birds-verified.log"
+  },
+  "typecheck": "pass",
+  "browser": "v63 .3-second drawn and .7-second impact complete frame pairs byte-identical after restore; final v64 impact PNG byte-identical to v63; no warnings/errors",
+  "accountLogin": "not used",
+  "wechatDevice": "pending",
+  "strictPublisherPixels": "pending",
+  "formalRelease": "not requested",
+  "qaFixtureInProduction": false
+}
