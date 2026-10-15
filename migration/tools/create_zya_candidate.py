@@ -108,9 +108,11 @@ def main():
                 await app.startRound(0);app.matchTime=999;app.battle.finish(qaQuery.get('win')==='1');await app.result();
             }else if(fixture==='settings')app.settings();
             if(qaQuery.get('capture')==='1'){
-                let captureTime=0;let qaCaptureBusy=false;
+                let captureTime=0;let qaCaptureBusy=false;let qaReadyFrames=0;let qaCaptureSerial=0;
                 director.on(Director.EVENT_AFTER_DRAW,()=>{
                     if(qaCaptureBusy)return;
+                    if(app.art.metrics().admission.pending>0){qaReadyFrames=0;return;}
+                    if(++qaReadyFrames<3)return;
                     if(qaRestoring||qaQuery.get('restore')==='1'&&!qaRestoreCompleted)return;
                     if(captureTime===0&&(fixture==='tutorial'&&(app.page!=='battle'||app.revision!==app.battle?.revision)||fixture==='result'&&app.page!=='result'))return;
                     if(captureTime===0&&fixture==='heroes'&&(app.art.metrics().admission.pending>0||Array.from(app.heroViews.values()).some((view:any)=>!view.ready||!view.weapon?.body.getComponent(Sprite)?.spriteFrame)||Array.from(app.skillViews.values()).some((view:any)=>view.node.name.startsWith('skill-phantom')&&!view.rig)))return;
@@ -130,14 +132,16 @@ def main():
                                 const output=document.createElement('canvas');output.width=width;output.height=height;const context=output.getContext('2d')!;
                                 const bitmap=context.createImageData(width,height),row=width*4,flip=qaQuery.get('rtFlip')!=='0';
                                 for(let y=0;y<height;y++){const source=flip?height-y-1:y;bitmap.data.set(pixels.subarray(source*row,(source+1)*row),y*row);}context.putImageData(bitmap,0,0);
-                                document.documentElement.dataset.zyaPng=output.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify({...app.inspect(),qaCapture:{method:'render-texture',width,height,flip,fullFrameWait:true}});
+                                document.documentElement.dataset.zyaPng=output.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify({...app.inspect(),qaCapture:{method:'render-texture',width,height,flip,fullFrameWait:true,serial:++qaCaptureSerial,at:performance.now(),readyFrames:qaReadyFrames}});
                             }catch(error){document.documentElement.dataset.zyaCaptureError=String(error);console.error('[ZYA QA] full capture',error);}finally{cleanup();}
                         })));
-                    }else if(canvas){document.documentElement.dataset.zyaPng=canvas.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify({...app.inspect(),qaCapture:{method:'canvas-after-draw'}});} 
+                    }else if(canvas){document.documentElement.dataset.zyaPng=canvas.toDataURL('image/png');document.documentElement.dataset.zyaPngState=JSON.stringify({...app.inspect(),qaCapture:{method:'canvas-after-draw',serial:++qaCaptureSerial,at:performance.now(),readyFrames:qaReadyFrames}});} 
                 });
             }
         });""")
-    text = text.replace('                let captureTime=0;let qaCaptureBusy=false;', '                let captureTime=0;let qaCaptureBusy=false;let captureRequested=true;input.on(Input.EventType.KEY_DOWN,e=>{if(e.keyCode===KeyCode.F9)captureRequested=true;});')
+    text = text.replace('                let captureTime=0;let qaCaptureBusy=false;', """                let captureTime=0;let qaCaptureBusy=false;let captureRequested=true;input.on(Input.EventType.KEY_DOWN,e=>{if(e.keyCode===KeyCode.F9)captureRequested=true;});
+                if(qaQuery.get('captureButton')==='1'){const button=document.createElement('button');button.textContent='抓取验证帧';button.id='zya-qa-capture';button.style.cssText='position:fixed;right:0;bottom:0;z-index:2147483647;font-size:10px';button.onclick=()=>{captureRequested=true;document.documentElement.dataset.zyaCaptureRequested=String(performance.now());};document.body.appendChild(button);}
+""")
     text = text.replace('if(now-captureTime<600)return;captureTime=now;', 'if(!captureRequested||now-captureTime<600)return;captureTime=now;captureRequested=false;')
     text = "import { Canvas, RenderTexture, director, Director, input, Input, KeyCode, Label, Sprite, UIOpacity, UITransform as QAUITransform } from 'cc';\nimport { Battle, ITEMS, HEROES } from './game/GameModel';\n" + text
     boot.write_text(text,encoding='utf-8')

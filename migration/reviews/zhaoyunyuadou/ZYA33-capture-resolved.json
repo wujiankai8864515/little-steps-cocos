@@ -1,0 +1,36 @@
+{
+  "id": "ZYA-33-followup",
+  "date": "2026-10-15",
+  "kind": "capture audit resolution; QA mirror changes only",
+  "trigger": "prior captures omitted asynchronous mesh actors",
+  "before": {
+    "image": "tutorial-render-texture-v53.png",
+    "state": "tutorial-render-texture-v53.json",
+    "pending": 1,
+    "time": 0
+  },
+  "after": {
+    "image": "tutorial-ready-canvas-v54.png",
+    "state": "tutorial-ready-canvas-v54.json",
+    "browser": "tutorial-ready-browser-v54.jpg",
+    "pending": 0,
+    "time": 0,
+    "rigs": 2,
+    "capture": {
+      "method": "canvas-after-draw",
+      "serial": 2,
+      "at": 13831.800000011921,
+      "readyFrames": 535
+    },
+    "sha256": "03445692280ecf244e04efdec599f207a3fa741f6ad344be50c431cefe9e51bb"
+  },
+  "result": "Adou, grass and rival letters are present in the direct PNG after assets settle and explicit capture refresh",
+  "cause": "capture began while pending=1; previous native F9 attempt did not provide a refreshed serial or timestamp, so it did not establish a stable-frame failure",
+  "fix": "all captures require pending=0 for at least three consecutive frames; optional visible QA capture button; paired serial and timestamp verify refreshed evidence",
+  "productionRendererChanged": false,
+  "renderTextureRequired": false,
+  "build": "pass",
+  "typecheck": "pass",
+  "strictPublisherPixels": "pending",
+  "oldExactRestorePairs": "historical equality of captured contents only; full-frame restore revalidation pending"
+}
