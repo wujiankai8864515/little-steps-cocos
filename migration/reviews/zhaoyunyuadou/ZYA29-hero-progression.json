@@ -1,0 +1,326 @@
+{
+  "id": "ZYA-29",
+  "date": "2026-10-15",
+  "kind": "native hero progression port; original program read as inert text only",
+  "source": {
+    "url": "https://play.google.com/store/apps/details?id=com.zyyad.mihuan",
+    "readableSHA256": "004b2d6fb22f97fe039e5ea5b88b457d8c0929689a82a1284d1d45318d91954a",
+    "anchors": {
+      "partLevelXP": 2166,
+      "formationMaximumPartXP": 3493,
+      "killAssistAwards": 3540,
+      "promotionTable": 3561,
+      "uniqueGeneral": 3636,
+      "generalGrowth": 4796,
+      "trainingOddsAndCaps": 3073,
+      "matchingCharacterFeedOrSwap": 5378
+    }
+  },
+  "rules": {
+    "majorThresholds": [
+      0,
+      10,
+      35,
+      75,
+      130
+    ],
+    "minorThresholds": [
+      0,
+      8,
+      23
+    ],
+    "majorNames": [
+      "赵云",
+      "张飞",
+      "马超",
+      "关羽",
+      "黄忠",
+      "刘备"
+    ],
+    "formation": "maximum part experience; one named general per side; preserve existing formation",
+    "feed": "matching loose character onto either half; incoming level does not change gain; major-table interval at destination level; at cap swaps",
+    "killXP": 1,
+    "heroAssistPool": 0.5,
+    "otherSourceAssistPool": 0.2,
+    "expiredContributors": "retained in divisor; no recipient if no active general with exact identity",
+    "training": "levels 1/2 guaranteed; level3 70%; level4 60%; capped targets rejected",
+    "legacy": "v1 saves without heroProgress preserve min-pair display level, original part levels and attack/skill counters; future formations use native experience"
+  },
+  "verification": {
+    "modelTests": {
+      "pass": 62,
+      "fail": 0,
+      "log": "ZYA30-model-tests.log"
+    },
+    "typecheck": "pass",
+    "browserCandidate": "zya-web-v45",
+    "browser": "growth, normal resume and own same-frame restores pass; strict publisher acceptance pending",
+    "wechatCandidate": "zya-wechat-v10",
+    "earlyUI": {
+      "candidate": "zya-web-v43",
+      "viewport": [
+        320,
+        704
+      ],
+      "result": "growth values and max-level swap pass; QA tutorial not disabled, timing not accepted",
+      "snapshots": [
+        {
+          "png": "growth-fixture-v43.png",
+          "sha256": "8e636e68040a256d732a2a489da48f71e7e484f26fcaa5fbcb8b26acd032a3ee",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 13,
+              "level": 3,
+              "experience": 35
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 1,
+              "experience": 0
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        },
+        {
+          "png": "growth-level4-v43.png",
+          "sha256": "ddcb9b7c886523fcdf2e3841aeb65ca06062cafbb378cdfa48403f27324cb8c3",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 13,
+              "level": 4,
+              "experience": 75
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 1,
+              "experience": 0
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        },
+        {
+          "png": "growth-level5-v43.png",
+          "sha256": "50d3c69ab327c54ce6ac34e0284dbd138c73943a1b3d7ed89a5dff3ca9bd813c",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 13,
+              "level": 5,
+              "experience": 130
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 1,
+              "experience": 0
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        },
+        {
+          "png": "growth-minor3-v43.png",
+          "sha256": "e23aacba4e6583c91bbb00d91fef1c7be9c3418dfef820db26f0b1d33304bb62",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 13,
+              "level": 5,
+              "experience": 130
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 3,
+              "experience": 35
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        },
+        {
+          "png": "growth-info-v43.png",
+          "sha256": "705706fcd46af5f422a27257c17ec4b6741034288d2b45c8c60ca12e24968329",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 13,
+              "level": 5,
+              "experience": 130
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 3,
+              "experience": 35
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        },
+        {
+          "png": "growth-max-swap-v43.png",
+          "sha256": "d55a77e2cd0b3e31146018a57c0030391502b0c63c1976f01e93cd65abd4bf29",
+          "heroes": [
+            {
+              "name": "赵云",
+              "id": 19,
+              "level": 5,
+              "experience": 130
+            },
+            {
+              "name": "关平",
+              "id": 14,
+              "level": 3,
+              "experience": 35
+            }
+          ],
+          "tutorialStep": 1,
+          "time": 0
+        }
+      ],
+      "issues": [
+        "QA growth fixture retained tutorialStep=1; game clock stayed at zero",
+        "unit-info showed only one character and clamped the title"
+      ],
+      "fixes": [
+        "isolated growth fixture disables tutorial and preserves normal saved-round prompt on resume",
+        "unit-info uses original two-character icon positions, untruncated title, matching attack label and live experience refresh"
+      ]
+    },
+    "browserV44": {
+      "growthAndNormalResume": "pass",
+      "viewport": [
+        320,
+        704
+      ],
+      "tutorialStep": 0,
+      "progression": [
+        {
+          "name": "赵云",
+          "levels": [
+            3,
+            4,
+            5
+          ],
+          "experience": [
+            35,
+            75,
+            130
+          ],
+          "id": 10
+        },
+        {
+          "name": "关平",
+          "levels": [
+            1,
+            2,
+            3
+          ],
+          "experience": [
+            0,
+            10,
+            35
+          ],
+          "id": 11
+        }
+      ],
+      "resume": "normal startup prompt, real continue button; identities, experience and reserve retained",
+      "maxAdmission": {
+        "entries": 79,
+        "reservedBytes": 134820416,
+        "pending": 0
+      },
+      "consoleErrorsOrWarnings": 0,
+      "titleIssue": "Zhao Yun long attack label overlaps max-level hint; bounded shrink awaiting v45 visual check",
+      "artifacts": [
+        "growth-level4-info-v44.png",
+        "growth-minor3-info-v44.png",
+        "growth-paused-v44.png",
+        "growth-restored-v44.png"
+      ]
+    },
+    "ownSceneRestore": {
+      "kind": "own fixture before/after restoration; not publisher reference",
+      "wholeCanvas": [
+        320,
+        704
+      ],
+      "masks": false,
+      "results": [
+        {
+          "time": 0.7,
+          "before": "migration/reviews/zhaoyunyuadou/skills-cast-v44.png",
+          "after": "migration/reviews/zhaoyunyuadou/skills-cast-restored-v44.png",
+          "pngSHA256": "2c0b6bad8197daa355e83205a6f25f1071a1e3529bd1640136c683e67cb86b03",
+          "fullImageMAE": 0.0,
+          "exactPixelFraction": 1.0,
+          "pending": 0,
+          "skillCount": 7,
+          "shotCount": 41
+        },
+        {
+          "time": 3.299999999999998,
+          "before": "migration/reviews/zhaoyunyuadou/skills-late-v44.png",
+          "after": "migration/reviews/zhaoyunyuadou/skills-late-restored-v44.png",
+          "pngSHA256": "730664388ec6995c1c74ebcf85cdc12c1ec3cb34d72c74801142fa1724caefaf",
+          "fullImageMAE": 0.0,
+          "exactPixelFraction": 1.0,
+          "pending": 0,
+          "skillCount": 2,
+          "shotCount": 3
+        }
+      ],
+      "admissionPeak": {
+        "entries": 86,
+        "reservedBytes": 139153600,
+        "pending": 0
+      }
+    },
+    "browserV45": {
+      "result": "own UI pass; strict publisher comparison pending",
+      "viewports": [
+        [
+          320,
+          704
+        ],
+        [
+          360,
+          640
+        ]
+      ],
+      "title": "full title shrinks inside 157-pixel bound; separate max-level hint remains visible",
+      "fields": {
+        "title": "赵云Lv.4(快攻贯穿)",
+        "limit": "满级5级",
+        "experience": "(75.0/ 130 )",
+        "barWidth": 125.84615384615384
+      },
+      "artifacts": [
+        "growth-level4-info-v45.png",
+        "growth-level4-info-short-v45.png"
+      ],
+      "consoleErrorsOrWarnings": 0,
+      "pending": 0,
+      "normalFlow": "home -> match -> recruit archer -> drag to board passed; 20->10 food, cost 10->12, tutorial 1->2->3",
+      "knownRegression": "ZYA32: rival glyphs blank until first deployment; fix pending"
+    }
+  },
+  "remaining": [
+    "strict publisher same-state pixel acceptance",
+    "all special weapon effects and skill modifiers",
+    "feeding buff lifetime/aggregation against reference",
+    "mid-cast level changes against same-frame original",
+    "full audio and lifetime audit",
+    "device and online services",
+    "ZYA32 first tutorial rival glyph visibility before deployment"
+  ],
+  "gameCommit": "217cff6",
+  "followupDeathFix": "91b8888"
+}
