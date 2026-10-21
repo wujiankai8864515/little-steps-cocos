@@ -14,7 +14,6 @@ export function createCinematicStyle(domain: 'card' | 'avg', host: ExtensionHost
                 const kind = ctx.result?.kind;
                 if (kind === 'open') events = ['card.open'];
                 if (['play','draw','addBackup','rollback','wild.prepare','wild.cancel'].includes(kind)) events = [`card.${kind}`];
-                if (kind === 'missedMove') events = ['card.invalid'];
                 if (ctx.result?.rewardCoins) events.push('card.reward');
                 if (ctx.result?.complete) events.push('card.complete');
             } else {

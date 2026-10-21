@@ -10,7 +10,7 @@ test('redrawing after a cancelled large opening lands current and stock shadows 
  const page=new GamePresentation(),current=node('current',20,-800),stock=node('stock',-300,-800);
  const cards=[node('back0',-117,0),node('back1',-95,0)];
  const shadows=new Map([current,...cards].map(n=>[n,{simulatedHeight:550,setSimulatedHeight(h){this.simulatedHeight=h},setVisible(v){this.visible=v},syncNow(){}}]));
- page._level={};page.findNode=id=>id==='backup'?stock:current;page.backupCardNodes=()=>cards;
+ page._level={};page.findNode=id=>id==='backup'?stock:id==='current'?current:null;page.backupCardNodes=()=>cards;
  page.ensureBackupCardCapacity=()=>cards;page.ensureCardShadow=n=>shadows.get(n);page.cardShadowFor=n=>shadows.get(n);
  page.stackBackupCardsLeftToRight=()=>{};page.applyCardSprite=async()=>{};
  page.renderCurrent({currentCardName:'poker_spade_black_13'},1);

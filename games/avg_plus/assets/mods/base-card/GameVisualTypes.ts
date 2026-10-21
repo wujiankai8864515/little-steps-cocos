@@ -1,8 +1,11 @@
 export interface UndoVisual {
-    readonly kind: 'board' | 'stock' | 'addBackup';
+    readonly kind: 'board' | 'stock' | 'addBackup' | 'wild';
     readonly slotId?: string;
     readonly cardName?: string;
+    readonly usedWild?: boolean;
 }
+
+export type CardSound = 'deal' | 'play' | 'draw' | 'undo';
 
 export interface OpeningDealSlot {
     readonly id: string;
@@ -15,12 +18,7 @@ export interface OpeningDealStep {
     readonly slotId: string;
     readonly layer: number;
     readonly row: number;
-    readonly launchFrame: number;
-}
-
-export interface OpeningStockStep {
-    readonly index: number;
-    readonly launchFrame: number;
+    readonly launchTime: number;
 }
 
 export interface MissedMoveSwayKeyframe {
@@ -29,29 +27,84 @@ export interface MissedMoveSwayKeyframe {
 }
 
 /**
- * 参考视频按约 60fps 错峰发射，单张飞行互相重叠。实际调度使用同一条
- * 时间轴；低帧率下补发本帧到期的牌，不把每张牌的等待误差累计到下一张。
- * 全部落位后再统一翻面。
+ * 场上牌共用累计时间轴，按牌数压缩错峰间隔；包含翻面在内不超过 1.5 秒。
  */
 export const OPENING_DEAL_TIMING = {
-    cardDuration: 0.32,
-    backupCardDuration: 0.32,
-    launchFrameGap: 4,
-    referenceFps: 60,
-    currentDrawDuration: 0.36,
+    boardDuration: 1.1,
+    cardDuration: 0.24,
+    maximumLaunchInterval: 0.12,
+    currentDrawDelay: 0.2,
+    currentDrawDuration: 0.18,
     flipHalfDuration: 0.07,
 } as const;
 
 /** 从整段动画的累计时间计算已到期的发牌数，第一张在时间零发出。 */
+export function openingBoardLaunchInterval(total: number): number {
+    if (total <= 1) return 0;
+    return Math.min(OPENING_DEAL_TIMING.maximumLaunchInterval,
+        (OPENING_DEAL_TIMING.boardDuration - OPENING_DEAL_TIMING.cardDuration
+            - OPENING_DEAL_TIMING.flipHalfDuration * 2) / (total - 1));
+}
+
 export function dueOpeningLaunchCount(elapsed: number, total: number): number {
     const count = Math.max(0, Math.floor(total));
     if (!Number.isFinite(elapsed) || elapsed < 0 || count === 0) return 0;
-    const interval = OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps;
+    const interval = openingBoardLaunchInterval(count);
+    if (!interval) return count;
     return Math.min(count, Math.floor((elapsed + 1e-9) / interval) + 1);
 }
 
-/** 仅位移使用越过落点再回弹的曲线，其余属性保持线性。 */
-export const OPENING_DEAL_POSITION_EASING = 'backOut' as const;
+/** 场上牌直接落位，不越过终点，不回弹。 */
+export const OPENING_DEAL_POSITION_EASING = 'linear' as const;
+
+/** 每条轨迹依次为视频帧、相对最终位置 X/Y（像素）、顺时针转角。 */
+export type OpeningStockSample = readonly [number, number, number, number];
+export interface OpeningStockMotion {
+    readonly schemaVersion: 1;
+    readonly referenceFps: number;
+    readonly referenceCardWidth: number;
+    readonly referenceCardHeight: number;
+    readonly referenceBottomGap: number;
+    readonly duration: number;
+    readonly tracks: readonly (readonly OpeningStockSample[])[];
+}
+
+export function parseOpeningStockMotion(value: any): OpeningStockMotion {
+    const positive = (number: unknown): number is number => typeof number === 'number' && Number.isFinite(number) && number > 0;
+    if (!value || value.schemaVersion !== 1 ||
+        !['referenceFps','referenceCardWidth','referenceCardHeight','referenceBottomGap','duration'].every(key => positive(value[key])) ||
+        !Array.isArray(value.tracks) || value.tracks.length < 2 || value.tracks.length > 64) throw new Error('备用牌开场轨迹配置无效');
+    const lastFrame = value.duration * value.referenceFps;
+    for (const track of value.tracks) {
+        if (!Array.isArray(track) || track.length < 2 || track.length > 600) throw new Error('备用牌轨迹采样数量无效');
+        let previous = -1;
+        for (const sample of track) {
+            if (!Array.isArray(sample) || sample.length !== 4 || !sample.every((number: unknown) => typeof number === 'number' && Number.isFinite(number)) ||
+                sample[0] <= previous || sample[0] > lastFrame || sample[2] < 0 || sample[3] < 0 || sample[3] > 90) throw new Error('备用牌轨迹采样无效');
+            previous = sample[0];
+        }
+        const first = track[0], last = track[track.length - 1];
+        if (first[0] !== 0 || first[3] !== 90 || last[0] !== lastFrame || last.slice(1).some((number: number) => number !== 0)) throw new Error('备用牌轨迹起止状态无效');
+    }
+    return value as OpeningStockMotion;
+}
+
+export function sampleOpeningStockMotion(motion: OpeningStockMotion, elapsed: number, index: number, count: number): {
+    readonly x: number; readonly y: number; readonly angle: number;
+} {
+    const frame = Math.max(0, Math.min(motion.duration, elapsed)) * motion.referenceFps;
+    const sample = (track: readonly OpeningStockSample[]) => {
+        const next = track.findIndex(point => point[0] >= frame);
+        if (next <= 0) return track[next < 0 ? track.length - 1 : 0].slice(1);
+        const left = track[next - 1], right = track[next];
+        const progress = (frame - left[0]) / (right[0] - left[0]);
+        return [1, 2, 3].map(axis => left[axis] + (right[axis] - left[axis]) * progress);
+    };
+    const at = count <= 1 ? 0 : Math.max(0, Math.min(1, index / (count - 1))) * (motion.tracks.length - 1);
+    const left = Math.floor(at), right = Math.ceil(at), progress = at - left;
+    const a = sample(motion.tracks[left]), b = sample(motion.tracks[right]);
+    return { x: a[0] + (b[0] - a[0]) * progress, y: a[1] + (b[1] - a[1]) * progress, angle: a[2] + (b[2] - a[2]) * progress };
+}
 
 /**
  * Figma 牌阵坐标中的同一视觉行允许有轻微高低错位（例如扇形牌阵）。
@@ -189,18 +242,10 @@ export function buildOpeningDealSchedule(slots: readonly OpeningDealSlot[]): rea
                 slotId: slot.id,
                 layer,
                 row,
-                launchFrame: result.length * OPENING_DEAL_TIMING.launchFrameGap,
+                launchTime: 0,
             }));
         });
     }
-    return result;
-}
-
-/** 备用牌从左到右逐张落位，后来的牌自然盖住前一张形成牌叠。 */
-export function buildOpeningStockSchedule(visibleCount: number): readonly OpeningStockStep[] {
-    const count = Math.max(0, Math.floor(visibleCount));
-    return Array.from({ length: count }, (_, index) => ({
-        index,
-        launchFrame: index * OPENING_DEAL_TIMING.launchFrameGap,
-    }));
+    const interval = openingBoardLaunchInterval(result.length);
+    return result.map((step, index) => ({ ...step, launchTime: index * interval }));
 }

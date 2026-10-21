@@ -24,6 +24,7 @@ import {
     Widget,
 } from 'cc';
 import { CardLevelRepository } from './CardLevelRepository';
+import type { TaskScope } from '../../foundation/Tasks';
 import type { CardLevelDefinition } from './CardLevelTypes';
 import { CardSpriteLoader } from './CardSpriteLoader';
 import {
@@ -35,7 +36,6 @@ import {
 } from './HighLowSolitaireCore';
 import {
     GameSessionStore,
-    HITS_PER_REWARD,
     PaidGameAction,
     ProgressCellState,
     type GameSessionSnapshot,
@@ -62,12 +62,14 @@ import {
     boardFlightAngle,
     buildMissedMoveSwayKeyframes,
     buildOpeningDealSchedule,
-    buildOpeningStockSchedule,
     dueOpeningLaunchCount,
+    openingBoardLaunchInterval,
+    sampleOpeningStockMotion,
     stableVisibleBackupCardOffsets,
-    OPENING_DEAL_POSITION_EASING,
     OPENING_DEAL_TIMING,
+    type CardSound,
     type UndoVisual,
+    type OpeningStockMotion,
 } from './GameVisualTypes';
 
 const { ccclass } = _decorator;
@@ -79,6 +81,10 @@ const BOARD_CARD_FULL_TURN = 360;
 const PAID_ACTION_ENTRY_DURATION = 0.82;
 const PAID_ACTION_ENTRY_STAGGER = 0.075;
 const PAID_EFFECT_CYCLE_DURATION = 1;
+const MAX_PROGRESS_ITEMS = 4;
+const PROGRESS_ITEM_PADDING = 12;
+const PROGRESS_ITEM_GAP = 6;
+const PROGRESS_ARROW_INSET = 13;
 
 interface BoardFlightGeometry {
     readonly start: Vec3;
@@ -92,10 +98,21 @@ interface BoardFlightGeometry {
     readonly curve: number;
 }
 
+interface OpeningStockCard {
+    readonly node: Node;
+    readonly position: Vec3;
+    readonly angle: number;
+    readonly width: number;
+    readonly height: number;
+    readonly bottomDistance: number;
+}
+
 /** Base-card layout, renderers and default animations. Never mutates game state. */
 @ccclass('GamePresentation')
 export class GamePresentation extends PresentationComponent {
+    protected playCardSound(_sound: CardSound): void { /* GamePageUI supplies the page-owned audio. */ }
     protected _level: CardLevelDefinition | null = null;
+    protected _openingStockMotion: OpeningStockMotion | null = null;
     protected _renderVersion = 0;
     private readonly _backupCardBasePositions = new WeakMap<Node, Vec3>();
     private paidActionsVisible = false;
@@ -251,6 +268,48 @@ export class GamePresentation extends PresentationComponent {
             }
         });
         this.stackBackupCardsLeftToRight(backup);
+        this.alignAddBackupToVisibleCards();
+    }
+
+    /** 按当前可见牌背的实际边界居中，不能使用保留了隐藏牌槽的 backup 容器宽度。 */
+    private alignAddBackupToVisibleCards(): void {
+        const backup = this.findNode(GameUiNodeId.StockPile);
+        const button = this.findNode(GameUiNodeId.AddBackup);
+        const parent = button?.parent;
+        const parentTransform = parent?.getComponent(UITransform);
+        const icon = button?.getChildByName('icon')?.getComponent(UITransform);
+        if (!backup || !button || !parentTransform || !icon) return;
+
+        let left = Infinity;
+        let right = -Infinity;
+        for (const card of this.backupCardNodes(backup)) {
+            if (!card.active) continue;
+            const transform = (this.findSpriteNode(card) ?? card).getComponent(UITransform);
+            if (!transform) continue;
+            const bounds = transform.getBoundingBoxToWorld();
+            if (bounds.width <= 0) continue;
+            left = Math.min(left, bounds.xMin);
+            right = Math.max(right, bounds.xMax);
+        }
+        if (!Number.isFinite(left) || !Number.isFinite(right)) return;
+
+        const bounds = icon.getBoundingBoxToWorld();
+        const center = new Vec3((bounds.xMin + bounds.xMax) * 0.5, bounds.center.y, 0);
+        const target = new Vec3((left + right) * 0.5, center.y, 0);
+        const offset = parentTransform.convertToNodeSpaceAR(target).x
+            - parentTransform.convertToNodeSpaceAR(center).x;
+        // 横向交给动态牌堆布局，Widget 继续负责原有的底部对齐。
+        const widget = button.getComponent(Widget);
+        if (widget) {
+            widget.isAlignLeft = false;
+            widget.isAlignRight = false;
+            widget.isAlignHorizontalCenter = false;
+        }
+        if (Math.abs(offset) > 0.0001) {
+            button.setPosition(button.position.x + offset, button.position.y, button.position.z);
+        }
+        const origin = this.paidActionPositions.get(GameUiNodeId.AddBackup);
+        if (origin) origin.x = button.position.x;
     }
 
     protected prefersReducedMotion(): boolean {
@@ -260,7 +319,7 @@ export class GamePresentation extends PresentationComponent {
         return Boolean(matchMedia?.('(prefers-reduced-motion: reduce)').matches);
     }
 
-    /** 参考视频：牌阵错峰下落，下方牌组随后升入，全部到位后统一翻牌。 */
+    /** 场上牌线性错峰落位；备用牌按参考视频的整条牌链轨迹独立入场。 */
     protected async animateOpeningDeal(view: Readonly<GamePageViewState>): Promise<void> {
         const checkVisual = this.visualCheckpoint();
         const content = this.findNode(GameUiNodeId.Board);
@@ -272,6 +331,8 @@ export class GamePresentation extends PresentationComponent {
 
         const current = this.findNode(GameUiNodeId.CurrentCard);
         const backup = this.findNode(GameUiNodeId.StockPile);
+        const stockMotion = this._openingStockMotion;
+        if (!stockMotion) throw new Error('备用牌开场轨迹未加载');
         // 当前牌是备用牌组装阶段额外发出的临时牌，不占用真实备用牌数量。
         // 否则它飞走后 refresh 会按真实库存重新激活节点，看起来像牌堆补回一张。
         const openingCurrentSource = backup ? this.createOpeningCurrentSource(backup) : null;
@@ -303,24 +364,20 @@ export class GamePresentation extends PresentationComponent {
         }
 
         const backupRootY = backup ? this.rootPositionOf(backup).y : 0;
-        const backupCards = backup ? this.backupCardNodes(backup)
+        const backupScaleY = backup ? Math.abs(backup.worldScale.y / this.node.worldScale.y) : 1;
+        const backupCards: OpeningStockCard[] = backup ? this.backupCardNodes(backup)
             .filter((child) => child.active)
             .sort((left, right) => left.position.x - right.position.x)
-            .map((node) => ({ node, position: node.position.clone(), angle: node.angle })) : [];
-        const backupSourceX = backupCards[0]?.position.x ?? 0;
+            .map((node) => ({
+                node, position: node.position.clone(), angle: node.angle,
+                width: (node.getComponent(UITransform)?.width ?? this._level!.cardSize.width) * Math.abs(node.scale.x),
+                height: (node.getComponent(UITransform)?.height ?? this._level!.cardSize.height) * Math.abs(node.scale.y),
+                bottomDistance: (rootHeight * 0.5 + backupRootY) / backupScaleY + node.position.y,
+            })) : [];
         for (const entry of backupCards) {
-            const transform = entry.node.getComponent(UITransform);
-            const halfHeight = (transform?.height ?? this._level.cardSize.height) * 0.5;
-            // 备用牌不能作为一个整体上移。每张牌从同一底部牌口出发，再依次
-            // 展开到各自 x，后到的牌覆盖前一张，才能形成视频里的牌叠节奏。
-            entry.node.setPosition(
-                backupSourceX,
-                -rootHeight * 0.5 - backupRootY - halfHeight - topMargin,
-                entry.position.z,
-            );
-            entry.node.angle = -6;
-            this.ensureCardShadow(entry.node).setSimulatedHeight(BOARD_CARD_ARC_HEIGHT);
+            this.ensureCardShadow(entry.node).setSimulatedHeight(0);
         }
+        this.applyOpeningStockPose(backupCards, stockMotion, 0);
         if (backup) backup.active = true;
 
         // 当前牌不是独立入场元素。真正的锚点在备用牌抽出、飞行并翻面完成前
@@ -330,11 +387,14 @@ export class GamePresentation extends PresentationComponent {
         // The page is instantiated immediately before `open`. Starting tweens before its
         // first draw lets the first game tick consume the prefab/asset loading time and
         // makes the whole deal appear to complete instantly in a production build.
+        const openingOpacity = this.node.getComponent(UIOpacity);
+        if (openingOpacity) openingOpacity.opacity = 255;
         await new Promise<void>((resolve) => director.once(Director.EVENT_AFTER_DRAW, resolve));
         checkVisual();
 
         const launches: (() => Promise<void>)[] = schedule.map(step => () => {
             const destination = target.get(step.slotId)!;
+            this.playCardSound('deal');
             // 后发牌必须处于先发牌之上，才能形成真实的逐张叠压。
             step.node.setSiblingIndex(content.children.length - 1);
             return this.animateOpeningLanding(
@@ -345,62 +405,91 @@ export class GamePresentation extends PresentationComponent {
                 OPENING_DEAL_TIMING.cardDuration,
             );
         });
-        for (const step of buildOpeningStockSchedule(backupCards.length)) {
-            const entry = backupCards[step.index];
-            launches.push(() => {
-                entry.node.setSiblingIndex((backup?.children.length ?? 1) - 1);
-                return this.animateOpeningLanding(
-                    entry.node,
-                    entry.position,
-                    entry.angle,
-                    entry.node.scale.clone(),
-                    OPENING_DEAL_TIMING.backupCardDuration,
-                );
-            });
-        }
-        await this.animateOpeningLaunches(launches);
-        checkVisual();
-
         const faceUp = view.boardCards
             .filter((slot) => slot.faceUp)
             .sort((left, right) => left.x - right.x);
-        await Promise.all([
-            ...faceUp.map((slot) => {
+        const dealBoard = async () => {
+            await this.animateOpeningLaunches(launches);
+            checkVisual();
+            await Promise.all(faceUp.map((slot) => {
                 const node = content.getChildByName(slot.slotId);
                 return node ? this.animateOpeningCardFlip(node, slot.cardName) : Promise.resolve();
-            }),
-            this.animateBackupToCurrent(
+            }));
+            checkVisual();
+        };
+        const dealStock = async () => {
+            await this.animateOpeningStock(backupCards, stockMotion);
+            checkVisual();
+            await this.animateOpeningFrameClock(OPENING_DEAL_TIMING.currentDrawDelay, () => {});
+            checkVisual();
+            await this.animateBackupToCurrent(
                 openingCurrentSource,
                 view.currentCardName,
                 true,
                 OPENING_DEAL_TIMING.currentDrawDuration,
-            ),
-        ]);
+            );
+            checkVisual();
+        };
+        await Promise.all([dealBoard(), dealStock()]);
         checkVisual();
     }
 
+    /** 一只时钟同时驱动整条牌链，保留视频中沿牌叠传播的弯曲和回正。 */
+    protected async animateOpeningStock(cards: readonly OpeningStockCard[], motion: OpeningStockMotion): Promise<void> {
+        if (!cards.length) return;
+        await this.animateOpeningFrameClock(motion.duration, elapsed => this.applyOpeningStockPose(cards, motion, elapsed));
+    }
+
+    protected openingTime(): number {
+        return (typeof performance !== 'undefined' ? performance.now() : Date.now()) / 1000;
+    }
+
+    /** Tween 仅提供帧回调；用真实经过时间推进，避免掉帧把视频节奏拉慢。 */
+    protected async animateOpeningFrameClock(duration: number, update: (elapsed: number) => void): Promise<void> {
+        const checkVisual = this.visualCheckpoint();
+        const started = this.openingTime();
+        await this.waitForVisual(resolve => this.visualTween({ frame: 0 })
+            .to(60, { frame: 1 }, { easing: 'linear', onUpdate: () => {
+                checkVisual();
+                const elapsed = Math.min(duration, Math.max(0, this.openingTime() - started));
+                update(elapsed);
+                if (elapsed >= duration) resolve();
+            } })
+            .start());
+        checkVisual();
+    }
+
+    protected applyOpeningStockPose(cards: readonly OpeningStockCard[], motion: OpeningStockMotion, elapsed: number): void {
+        cards.forEach((entry, index) => {
+            const pose = sampleOpeningStockMotion(motion, elapsed, index, cards.length);
+            const radians = pose.angle * Math.PI / 180;
+            const referenceHalf = (Math.abs(Math.sin(radians)) * motion.referenceCardWidth
+                + Math.abs(Math.cos(radians)) * motion.referenceCardHeight) * 0.5;
+            const half = (Math.abs(Math.sin(radians)) * entry.width + Math.abs(Math.cos(radians)) * entry.height) * 0.5;
+            // 竖屏的牌堆距屏幕下沿更远；用可见边界归一后，出屏时刻仍与视频一致。
+            const offsetY = pose.y / (motion.referenceBottomGap + referenceHalf) * (entry.bottomDistance + half);
+            entry.node.setPosition(entry.position.x + pose.x / motion.referenceCardWidth * entry.width,
+                entry.position.y - offsetY, entry.position.z);
+            entry.node.angle = entry.angle - pose.angle;
+        });
+    }
+
     /** 启动单张牌的落位；调度方按累计时间控制起飞顺序。 */
-    protected animateOpeningLanding(
+    protected async animateOpeningLanding(
         node: Node,
         position: Readonly<Vec3>,
         angle: number,
         scale: Readonly<Vec3>,
         duration: number,
     ): Promise<void> {
-        return this.waitForVisual((resolve) => {
-            // 回弹只属于落位位移；牌面角度与离地高度保持线性，避免整张牌
-            // 连同旋转和阴影一起“橡皮化”。
-            this.tweenCardHeight(node, duration, 0, 0, 'linear');
-            node.setScale(scale.x, scale.y, scale.z);
-            this.visualTween(node)
-                .to(duration, { angle }, { easing: 'linear' })
-                .start();
-            this.visualTween(node)
-                .to(duration, { position: new Vec3(position.x, position.y, position.z) }, {
-                    easing: OPENING_DEAL_POSITION_EASING,
-                })
-                .call(() => resolve())
-                .start();
+        const start = node.position.clone(), startAngle = node.angle;
+        node.setScale(scale.x, scale.y, scale.z);
+        await this.animateOpeningFrameClock(duration, elapsed => {
+            const progress = elapsed / duration;
+            node.setPosition(start.x + (position.x - start.x) * progress,
+                start.y + (position.y - start.y) * progress, start.z + (position.z - start.z) * progress);
+            node.angle = startAngle + (angle - startAngle) * progress;
+            this.cardShadowFor(node)?.setSimulatedHeight(BOARD_CARD_ARC_HEIGHT * (1 - progress));
         });
     }
 
@@ -424,14 +513,8 @@ export class GamePresentation extends PresentationComponent {
         launchDue(0);
         if (launches.length > 1) {
             const duration = (launches.length - 1)
-                * OPENING_DEAL_TIMING.launchFrameGap / OPENING_DEAL_TIMING.referenceFps;
-            const clock = { elapsed: 0 };
-            await this.waitForVisual(resolve => this.visualTween(clock)
-                .to(duration, { elapsed: duration }, {
-                    onUpdate: () => launchDue(clock.elapsed),
-                })
-                .call(() => { launchDue(duration); resolve(); })
-                .start());
+                * openingBoardLaunchInterval(launches.length);
+            await this.animateOpeningFrameClock(duration, launchDue);
         }
         checkVisual();
         if (next !== launches.length) throw new Error('发牌时钟未完成');
@@ -762,6 +845,9 @@ export class GamePresentation extends PresentationComponent {
     }
 
     protected update(deltaTime: number): void {
+        if (this.findNode(GameUiNodeId.AddBackup)?.activeInHierarchy) {
+            this.alignAddBackupToVisibleCards();
+        }
         const root = this.paidEffectRoot;
         if (!root?.isValid || !root.activeInHierarchy) return;
         // 入场时牌堆与按钮都在移动，两道边缘光必须逐帧跟随。
@@ -811,6 +897,7 @@ export class GamePresentation extends PresentationComponent {
         state: Readonly<SolitaireGameState>,
     ): Promise<void> {
         const checkVisual = this.visualCheckpoint();
+        this.playCardSound('play');
         const content = this.findNode(GameUiNodeId.Board);
         const animations: Promise<void>[] = [this.animateCardToCurrent(sourceNode)];
         if (!content) {
@@ -832,36 +919,24 @@ export class GamePresentation extends PresentationComponent {
         checkVisual();
     }
 
-    /** 玩家在仍有可消除牌时点备用牌：只提示合法牌，不改变牌局。 */
-    protected async animateMissedMoveHint(slotIds: readonly string[]): Promise<void> {
-        const checkVisual = this.visualCheckpoint();
+    /** 抽牌时提示刚刚错过的牌；抽牌结束或取消即停止，不占用独立操作时长。 */
+    protected showMissedMoveHint(slotIds: readonly string[], scope: TaskScope): void {
+        scope.check();
         const content = this.findNode(GameUiNodeId.Board);
         if (!content) return;
-        const animations = slotIds.map((slotId) => content.getChildByName(slotId))
-            .filter((node): node is Node => Boolean(node))
-            .map((node) => this.animateMissedMoveHintCard(node));
-        await Promise.all(animations);
-        checkVisual();
-    }
-
-    private async animateMissedMoveHintCard(node: Node): Promise<void> {
-        const checkVisual = this.visualCheckpoint();
-        const originalAngle = node.angle;
-        try {
-            await this.waitForVisual((resolve) => {
-                let sequence = this.visualTween(node);
-                for (const frame of buildMissedMoveSwayKeyframes()) {
-                    sequence = sequence.to(
-                        frame.duration,
-                        { angle: originalAngle + frame.angleOffset },
-                        { easing: 'sineInOut' },
-                    );
-                }
-                sequence.call(resolve).start();
+        for (const slotId of slotIds) {
+            const node = content.getChildByName(slotId);
+            if (!node?.isValid) continue;
+            const originalAngle = node.angle;
+            const sequence = tween(node);
+            scope.own(() => {
+                sequence.stop();
+                if (node.isValid) node.angle = originalAngle;
             });
-            checkVisual();
-        } finally {
-            if (node.isValid) node.angle = originalAngle;
+            for (const frame of buildMissedMoveSwayKeyframes()) {
+                sequence.to(frame.duration, { angle: originalAngle + frame.angleOffset }, { easing: 'sineInOut' });
+            }
+            sequence.start();
         }
     }
 
@@ -1000,6 +1075,7 @@ export class GamePresentation extends PresentationComponent {
         duration = FLY_DURATION,
     ): Promise<void> {
         const checkVisual = this.visualCheckpoint();
+        this.playCardSound('draw');
         const current = this.findNode(GameUiNodeId.CurrentCard);
         if (!sourceNode || !current || !cardName) return;
         const flying = this.createFlyingVisual(sourceNode, 'backupToCurrent');
@@ -1133,6 +1209,7 @@ export class GamePresentation extends PresentationComponent {
 
     protected async animateWildToCurrent(): Promise<void> {
         const checkVisual = this.visualCheckpoint();
+        this.playCardSound('draw');
         const wildIcon = this.findNode(GameUiNodeId.Wild)?.getChildByName('icon')
             ?? this.findNode(GameUiNodeId.Wild);
         const current = this.findNode(GameUiNodeId.CurrentCard);
@@ -1220,72 +1297,61 @@ export class GamePresentation extends PresentationComponent {
         restoredCurrentCardName: string,
     ): Promise<void> {
         const checkVisual = this.visualCheckpoint();
-        if (visual.kind === 'board' && visual.slotId) {
-            const current = this.findNode(GameUiNodeId.CurrentCard);
-            const targetWorld = this.boardSlotWorldPosition(visual.slotId);
-            if (!current) return;
-            const flying = this.createFlyingVisual(current, 'rollbackBoard');
-            // 飞出的副本保留撤销前的牌面；底下的当前牌先换回快照中的牌，避免两张旧牌重叠。
+        this.playCardSound('undo');
+        // 撤销付费补牌只恢复领取按钮；背后的五张预览牌保留原位。
+        if (visual.kind === 'addBackup') return;
+        const current = this.findNode(GameUiNodeId.CurrentCard);
+        if (!current) return;
+        const isWild = visual.kind === 'wild';
+        const flying = this.createFlyingVisual(current, isWild ? 'rollbackWild'
+            : visual.kind === 'board' ? 'rollbackBoard' : 'rollbackStock');
+        const wildReturn = visual.kind === 'board' && visual.usedWild
+            ? this.createFlyingVisual(current, 'rollbackWild') : null;
+        try {
+            // 副本保存被撤动作的牌；锚点立即恢复真正的当前牌，不把万能牌混入备用牌。
             await this.replaceCurrentCardBeforeRollback(current, restoredCurrentCardName);
             checkVisual();
-            if (!flying || !targetWorld) return;
-            const definition = this._level?.slots.find((slot) => slot.id === visual.slotId);
-            const boardPosition = this.worldToRoot(targetWorld);
-            const currentPosition = this.rootPositionOf(current);
-            const geometry = this.createBoardFlightGeometry(
-                boardPosition,
-                currentPosition,
-                this.boardSlotScaleFor(flying, visual.slotId),
-                this.targetScaleFor(flying, current),
-                definition?.rotation ?? 0,
-            );
-            // 正向是 0 -> 1；回撤严格按同一条轨迹、角度、缩放和阴影 1 -> 0 倒放。
-            await this.tweenBoardFlight(flying, geometry, 1, 0);
+            const flights: Promise<void>[] = [];
+            if (wildReturn) {
+                const frame = await CardSpriteLoader.loadSpriteFrame('poker_wild');
+                checkVisual();
+                wildReturn.getComponent(Sprite)!.spriteFrame = frame;
+            }
+            if (flying) {
+                if (visual.kind === 'board' && visual.slotId) {
+                    const targetWorld = this.boardSlotWorldPosition(visual.slotId);
+                    const definition = this._level?.slots.find(slot => slot.id === visual.slotId);
+                    if (targetWorld) flights.push(this.slideRollbackVisual(flying, this.worldToRoot(targetWorld),
+                        this.boardSlotScaleFor(flying, visual.slotId), definition?.rotation ?? 0));
+                } else if (visual.kind === 'stock') {
+                    const target = this.getTopBackupNode(restored.stockRemainingCount);
+                    const frame = await CardSpriteLoader.loadSpriteFrame('poker_back_01');
+                    checkVisual();
+                    flying.getComponent(Sprite)!.spriteFrame = frame;
+                    if (target) flights.push(this.slideRollbackVisual(flying, this.rootPositionOf(target), this.targetScaleFor(flying, target)));
+                }
+            }
+            const returningWild = isWild ? flying : wildReturn;
+            const wildTarget = this.findNode(GameUiNodeId.Wild)?.getChildByName('icon') ?? this.findNode(GameUiNodeId.Wild);
+            if (returningWild && wildTarget) flights.push(this.slideRollbackVisual(returningWild,
+                this.rootPositionOf(wildTarget), this.targetScaleFor(returningWild, wildTarget)));
+            await Promise.all(flights);
             checkVisual();
-            this.destroyFlyingVisual(flying);
-            return;
+        } finally {
+            if (flying) this.destroyFlyingVisual(flying);
+            if (wildReturn) this.destroyFlyingVisual(wildReturn);
         }
+    }
 
-        if (visual.kind === 'stock') {
-            const current = this.findNode(GameUiNodeId.CurrentCard);
-            const target = this.getTopBackupNode(restored.stockRemainingCount);
-            if (!current) return;
-            const flying = this.createFlyingVisual(current, 'rollbackStock');
-            // 同样先固定恢复后的当前牌，再让撤销的牌翻成牌背飞回备用牌堆。
-            await this.replaceCurrentCardBeforeRollback(current, restoredCurrentCardName);
-            checkVisual();
-            if (!flying || !target) return;
-            const backFrame = await CardSpriteLoader.loadSpriteFrame('poker_back_01');
-            checkVisual();
-            const sprite = flying.getComponent(Sprite)!;
-            const destination = this.rootPositionOf(target);
-            const middle = new Vec3(
-                flying.position.x + (destination.x - flying.position.x) * 0.5,
-                flying.position.y + (destination.y - flying.position.y) * 0.5 + 40,
-                0,
-            );
-            await this.waitForVisual((resolve) => {
-                this.tweenCardFlightHeight(flying, 0.18, 0.2);
-                this.visualTween(flying)
-                    .to(0.18, { position: middle, scale: new Vec3(0.05, 1, 1), angle: 5 }, { easing: 'quadIn' })
-                    .call(() => { sprite.spriteFrame = backFrame; })
-                    .to(0.2, { position: destination, scale: this.targetScaleFor(flying, target), angle: 0 }, { easing: 'quadOut' })
-                    .call(() => resolve())
-                    .start();
-            });
-            checkVisual();
-            this.destroyFlyingVisual(flying);
-            return;
-        }
-
-        const backup = this.findNode(GameUiNodeId.StockPile);
-        if (!backup) return;
-        const origin = backup.scale.clone();
-        await this.waitForVisual((resolve) => {
-            this.visualTween(backup)
-                .to(0.14, { scale: new Vec3(origin.x * 0.88, origin.y * 0.88, origin.z) }, { easing: 'quadIn' })
-                .to(0.22, { scale: origin }, { easing: 'backOut' })
-                    .call(() => resolve())
+    /** 仅直线缓动平移和尺寸匹配，不倒放出牌曲线，不翻面或整圈旋转。 */
+    protected async slideRollbackVisual(flying: Node, position: Vec3, scale: Vec3, angle = 0): Promise<void> {
+        const checkVisual = this.visualCheckpoint();
+        flying.angle = angle;
+        this.cardShadowFor(flying)?.setSimulatedHeight(0);
+        await this.waitForVisual(resolve => {
+            this.visualTween(flying)
+                .to(0.28, { position, scale }, { easing: 'quadInOut' })
+                .call(() => resolve())
                 .start();
         });
         checkVisual();
@@ -1646,6 +1712,7 @@ export class GamePresentation extends PresentationComponent {
             'wildToCurrent',
             'rollbackBoard',
             'rollbackStock',
+            'rollbackWild',
             'progress_hit_flash',
             'cardArrivalGlow',
         ]);
@@ -1760,9 +1827,10 @@ export class GamePresentation extends PresentationComponent {
         cells: readonly ProgressCellState[],
         suits?: readonly (CardDef['suit'] | null)[],
     ): void {
-        this.ensureProgressItemCount(progressItems, cells.length);
+        const count = Math.min(cells.length, MAX_PROGRESS_ITEMS);
+        this.ensureProgressItemCount(progressItems, count);
         progressItems.children.forEach((item, index) => {
-            if (index >= cells.length) {
+            if (index >= count) {
                 item.active = false;
                 return;
             }
@@ -1771,7 +1839,12 @@ export class GamePresentation extends PresentationComponent {
         });
     }
 
-    protected ensureProgressItemCount(progressItems: Node, count = HITS_PER_REWARD): void {
+    protected ensureProgressItemCount(progressItems: Node, count = MAX_PROGRESS_ITEMS): void {
+        count = Math.min(count, MAX_PROGRESS_ITEMS);
+        for (const item of progressItems.children.slice(MAX_PROGRESS_ITEMS)) {
+            item.removeFromParent();
+            item.destroy();
+        }
         const template = progressItems.children[1];
         if (!template) return;
         while (progressItems.children.length < count) {
@@ -1779,13 +1852,21 @@ export class GamePresentation extends PresentationComponent {
             item.name = `center_${progressItems.children.length}`;
             progressItems.addChild(item);
         }
-        // Keep the existing prefab's shapes and fit any configured count inside its track.
-        const spacing = 46.5;
-        const width = progressItems.getComponent(UITransform)?.width ?? 200;
-        const scale = Math.min(1, width / (Math.max(0, count - 1) * spacing + 60));
-        progressItems.children.forEach((item, index) => {
+        if (!count) return;
+        const items = progressItems.children.slice(0, count);
+        const widths = items.map((item, index) => item.getComponent(UITransform)?.width ?? (index === 0 ? 60 : 57));
+        // 箭头素材的凹口为 13 设计单位；嵌合后再保留统一间隙。
+        const contentWidth = widths.reduce((sum, width) => sum + width, 0)
+            + (items.length - 1) * (PROGRESS_ITEM_GAP - PROGRESS_ARROW_INSET);
+        const transform = progressItems.getComponent(UITransform);
+        const width = transform?.width ?? 200;
+        const scale = Math.min(1, Math.max(0, width - PROGRESS_ITEM_PADDING * 2) / contentWidth);
+        let left = -width * (transform?.anchorPoint.x ?? 0.5) + (width - contentWidth * scale) / 2;
+        items.forEach((item, index) => {
             item.setScale(scale, scale, 1);
-            item.setPosition((index - (count - 1) / 2) * spacing * scale, 0, 0);
+            const anchor = item.getComponent(UITransform)?.anchorPoint.x ?? 0.5;
+            item.setPosition(left + widths[index] * anchor * scale, 0, 0);
+            left += (widths[index] + PROGRESS_ITEM_GAP - PROGRESS_ARROW_INSET) * scale;
         });
     }
 

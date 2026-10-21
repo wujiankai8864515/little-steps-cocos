@@ -14,8 +14,8 @@ test('the archived video JSON remains playable after the current levels switch b
  }
  assert.deepEqual(json.slots[18].covers,['slot_017','slot_018']);assert.equal(json.slots[18].figmaCard.assetName,'poker_heart_red_13');
  const r=new Runtime([createCardMod(json,20260917)]);await r.open();const s=r.read('base-card');
- assert.equal(s.core.slots.filter(x=>x.faceUp&&x.isFullyExposed).length,5);assert.equal(s.core.stockPile.length,15);assert.equal(s.core.currentCard.cardName,'poker_diamond_red_07');
- const cards=[...s.core.slots.map(x=>x.card),...s.core.stockPile,...s.core.deck,s.core.currentCard];assert.equal(cards.length,52);assert.equal(new Set(cards.map(x=>x.cardName)).size,52);await r.dispose();
+ assert.equal(s.core.slots.filter(x=>x.faceUp&&x.isFullyExposed).length,5);assert.equal(s.core.stockRemainingCount,15);assert.equal(s.core.currentCard.cardName,'poker_diamond_red_07');
+ const cards=[...s.core.slots.map(x=>x.card),s.core.currentCard];assert.equal(cards.length,20);assert.equal(new Set(cards.map(x=>x.cardName)).size,20);await r.dispose();
 });
 test('configured free stock ends on the fifteenth draw and checkpoint restore keeps that boundary',()=>{
  const session=new GameSessionStore(undefined,5700,15);
@@ -23,7 +23,8 @@ test('configured free stock ends on the fifteenth draw and checkpoint restore ke
  const previous=session.captureSnapshot();session.recordStockDraw();assert.equal(session.getViewState().freeStockUsedUp,true);
  session.restoreCheckpoint(previous);assert.equal(session.freeStockDraws,14);assert.equal(session.getViewState().freeStockUsedUp,false);
  session.recordStockDraw();session.recordStockDraw();assert.equal(session.freeStockDraws,15);
- assert.throws(()=>new GameSessionStore(undefined,5700,-1));assert.throws(()=>new GameSessionStore(undefined,5700,53));
+ assert.throws(()=>new GameSessionStore(undefined,5700,-1));assert.throws(()=>new GameSessionStore(undefined,5700,Number.MAX_SAFE_INTEGER+1));
+ const large=new GameSessionStore(undefined,5700,100);for(let i=0;i<100;i++)large.recordStockDraw();assert.equal(large.freeStockDraws,100);assert.equal(large.getViewState().freeStockUsedUp,true);
 });
 test('card backs and wild cards use the existing project assets without video crops',()=>{
  const catalog=JSON.parse(fs.readFileSync(path.join(root,'assets/art/resources/assets/poker/card-catalog.json')));

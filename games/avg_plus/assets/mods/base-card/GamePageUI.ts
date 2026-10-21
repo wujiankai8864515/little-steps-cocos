@@ -1,4 +1,4 @@
-import { _decorator, BlockInputEvents, Color, Graphics, HorizontalTextAlignment, Label, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, VerticalTextAlignment, Widget, view } from 'cc';
+import { _decorator, AudioClip, AudioSource, BlockInputEvents, Color, Graphics, HorizontalTextAlignment, JsonAsset, Label, Node, Button, resources, Sprite, SpriteFrame, UIOpacity, UITransform, VerticalTextAlignment, Widget, view } from 'cc';
 import { TaskScope } from '../../foundation/Tasks';
 import { Runtime } from '../../foundation/Runtime';
 import type { CommittedContext } from '../../foundation/Contracts';
@@ -10,6 +10,7 @@ import { CardCompletionUI } from './CardCompletionUI';
 import { CardSpriteLoader } from './CardSpriteLoader';
 import { GameUiAction, GameUiActionType, GameUiNodeId, buildGamePageViewState, type GamePageViewState } from './GameUIContract';
 import { CardState, createCardMod } from './CardMod';
+import { parseOpeningStockMotion, type CardSound } from './GameVisualTypes';
 import { loadProfile, extensionsFor } from '../Registry';
 import type { CardBackgroundConfig, EconomyConfig } from '../base-shell/CatalogConfig';
 const { ccclass } = _decorator;
@@ -28,11 +29,17 @@ export class GamePageUI extends GamePresentation {
     private initialStockCount = 10;
     private gems = 0;
     private completionRewardCoins = 0;
+    private completionUI: CardCompletionUI | null = null;
     private pauseOverlay: Node | null = null;
     private checkpointSaved = false;
+    private cardSounds: Partial<Record<CardSound, AudioSource[]>> = {};
+    private readonly cardSoundClips = new Set<AudioClip>();
+    private dealSoundVoice = 0;
+    private lastDealSoundAt = -Infinity;
     protected onLoad(): void { this.prepareOpeningVisualState(); }
     public async open(levelId: string, onExit?: () => void, onComplete?: () => void, options?: {
         initialCoins: number; initialGems?: number; headerTitle?: string; economy: EconomyConfig; background?: CardBackgroundConfig;
+        soundEnabled?: boolean;
         checkpoint: (state: Readonly<CardState>, action: string) => Promise<void>;
     }): Promise<void> {
         const entryOpacity=this.node.getComponent(UIOpacity)??this.node.addComponent(UIOpacity);
@@ -47,15 +54,20 @@ export class GamePageUI extends GamePresentation {
         this.bind(); this.setStatus('正在加载关卡…');
         // 打包环境首次读取资源 Bundle 会明显慢于编辑器；关卡和 profile 并行加载，
         // 并使用与外层页面进入流程一致的 30 秒边界，避免先被默认 8 秒取消。
-        const [level, profile] = await this.lifetime.run(
+        const [level, profile, stockMotion] = await this.lifetime.run(
             () => Promise.all([
                 new CardLevelRepository().loadLevel(levelId),
                 loadProfile(),
+                new Promise<JsonAsset>((resolve, reject) => resources.load('config/card-opening-motion', JsonAsset,
+                    (error, asset) => error || !asset ? reject(error ?? new Error('备用牌开场轨迹缺失')) : resolve(asset))),
+                this.loadCardSounds(options?.soundEnabled ?? true),
             ]),
             PACKAGED_CONTENT_LOAD_TIMEOUT_MS,
         );
+        this.lifetime.check();
         if (!this.node.isValid) return;
         this._level = level;
+        this._openingStockMotion = parseOpeningStockMotion(stockMotion.json);
         if (!this.validateUiContract()) throw new Error('卡牌 prefab 节点合约不完整');
         const entry = profile.modules.find(item => item.id === 'base-card' && item.enabled);
         if (!entry) throw new Error('当前组合未启用 base-card');
@@ -102,7 +114,12 @@ export class GamePageUI extends GamePresentation {
                 const release = scope.own(cleanup);
                 try { await this.present(ctx, scope); } finally { cleanup(); release(); }
             } }],
-            afterRender: () => { if (this.node.isValid) { this.cleanupTransientVisuals(); this.refresh(false); } },
+            afterRender: () => { if (this.node.isValid) {
+                this.cleanupTransientVisuals();
+                if (this.completionUI?.isValid) this.completionUI.updateCoins(this.model().session.coins);
+                else this.refresh(false);
+                const opacity = this.node.getComponent(UIOpacity); if (opacity) opacity.opacity = 255;
+            } },
         }, {
             initialStockCount: this.initialStockCount,
             // 测试模式要能稳定观察免费牌耗尽后的付费入场效果。
@@ -116,8 +133,66 @@ export class GamePageUI extends GamePresentation {
             diagnostic: entry => console.warn(`[Mods] ${entry.stage}: ${entry.message}`),
         });
         await this.runtime.open();
-        this.lifetime.check();entryOpacity.opacity=255;
+        this.lifetime.check();
         await this.send('card.open');
+    }
+    private async loadCardSounds(enabled: boolean): Promise<void> {
+        const kinds: CardSound[] = ['deal', 'play', 'draw', 'undo'];
+        let loaded: (AudioClip | null)[];
+        try {
+            loaded = await this.lifetime.run(() => Promise.all(kinds.map(kind =>
+                new Promise<AudioClip | null>(resolve => resources.load(`audio/cards/card-${kind}`, AudioClip,
+                    (error, asset) => {
+                        if (error || !asset) console.warn(`[Card audio] ${kind} 加载失败`, error);
+                        resolve(error ? null : asset ?? null);
+                    })))), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
+        } catch (error) {
+            this.lifetime.check();
+            console.warn('[Card audio] 加载失败，保留正常牌局操作', error);
+            return;
+        }
+        this.lifetime.check();
+        if (!this.node.isValid) return;
+        this.lifetime.own(() => this.disposeCardSounds());
+        loaded.forEach((clip, index) => {
+            if (!clip) return;
+            clip.addRef(); this.cardSoundClips.add(clip);
+            const kind = kinds[index], voices: AudioSource[] = [];
+            for (let voice = 0; voice < (kind === 'deal' ? 3 : 1); voice++) {
+                const node = new Node(`cardSound_${kind}_${voice}`);
+                this.node.addChild(node);
+                const source = node.addComponent(AudioSource);
+                source.playOnAwake = false; source.loop = false;
+                source.volume = enabled ? 1 : 0;
+                source.clip = clip;
+                voices.push(source);
+            }
+            this.cardSounds[kind] = voices;
+        });
+    }
+    protected playCardSound(kind: CardSound): void {
+        if (this.lifetime.cancelled || !this.node.isValid) return;
+        const voices = this.cardSounds[kind];
+        if (!voices?.length || !voices[0].isValid || voices[0].volume === 0) return;
+        if (kind === 'deal') {
+            const now = this.openingTime();
+            // 大牌阵按真实时间合并同一拍，避免低帧率追帧时几十张牌的声音同时叠加。
+            if (now - this.lastDealSoundAt < 0.045) return;
+            this.lastDealSoundAt = now;
+        }
+        const source = voices[kind === 'deal' ? this.dealSoundVoice++ % voices.length : 0];
+        try { source.play(); }
+        catch (error) { console.warn('[Card audio] 播放失败，保留正常牌局操作', error); }
+    }
+    private disposeCardSounds(): void {
+        for (const voices of Object.values(this.cardSounds)) for (const source of voices ?? []) {
+            if (!source.isValid) continue;
+            source.stop(); source.clip = null;
+            if (source.node.isValid) source.node.destroy();
+        }
+        this.cardSounds = {};
+        for (const clip of this.cardSoundClips) clip.decRef();
+        this.cardSoundClips.clear();
     }
     private bind(): void {
         if (this.bound) return; this.bound = true;
@@ -169,11 +244,20 @@ export class GamePageUI extends GamePresentation {
         };
         await this.send(mapping[action.type], action.type === GameUiActionType.PlayBoardCard ? { slotId: action.slotId } : undefined);
     }
+    public get canGrantCoins(): boolean {
+        return Boolean(this.runtime && !this.runtime.isBusy && !this.lifetime.cancelled && this.node.isValid &&
+            (!this.exiting || this.completionUI?.isValid));
+    }
+    public async grantCoins(): Promise<void> {
+        if (!this.canGrantCoins) throw new Error('牌局暂未就绪');
+        await this.send('card.grantCoins');
+    }
     private async send(type: string, payload?: unknown): Promise<void> {
         const runtime = this.runtime;
-        if (!runtime || runtime.isBusy || this.exiting) return;
+        const walletOnly = type === 'card.grantCoins';
+        if (!runtime || runtime.isBusy || (this.exiting && !walletOnly)) return;
         this.checkpointSaved = false;
-        this.lock(true);
+        if (!walletOnly) this.lock(true);
         try {
             const result = await runtime.dispatch({ type, ...(payload === undefined ? {} : { payload }) });
             if (!this.node.isValid) return;
@@ -186,7 +270,7 @@ export class GamePageUI extends GamePresentation {
             if (type === 'card.exit' && result.status === 'committed') {
                 this.exiting = true; const callback = this.onExit; this.onExit = null;
                 this.scheduleOnce(() => callback?.(), 0);
-            } else if (result.status === 'committed' &&
+            } else if (!walletOnly && result.status === 'committed' &&
                 this.model().core.isComplete && this.onComplete) {
                 this.exiting = true;
                 const coinFrame=this.findNode(GameUiNodeId.CoinWallet)?.getChildByName('coin_icon')?.getComponent(Sprite)?.spriteFrame;
@@ -197,7 +281,8 @@ export class GamePageUI extends GamePresentation {
                 }
                 const completion = new Node('CardCompletion');
                 completion.layer = this.node.layer; this.node.addChild(completion);
-                await this.lifetime.run(() => completion.addComponent(CardCompletionUI).open({
+                this.completionUI = completion.addComponent(CardCompletionUI);
+                await this.lifetime.run(() => this.completionUI!.open({
                     coins: this.model().session.coins, gems: this.gems, rewardCoins: this.completionRewardCoins,
                 }, () => {
                     const callback = this.onComplete; this.onComplete = null; this.onExit = null;
@@ -205,7 +290,11 @@ export class GamePageUI extends GamePresentation {
                     this.scheduleOnce(() => callback?.(), 0);
                 }, coinFrame), PACKAGED_CONTENT_LOAD_TIMEOUT_MS);
             }
-        } finally { if (this.node.isValid && !this.exiting) { this.refresh(false); this.lock(false); } }
+        } finally { if (this.node.isValid) {
+            if (this.completionUI?.isValid) this.completionUI.updateCoins(this.model().session.coins);
+            else if (!this.exiting) this.refresh(false);
+            if (!this.exiting && !walletOnly) this.lock(false);
+        } }
     }
     private model() {
         const state = this.runtime!.read<CardState>('base-card');
@@ -295,14 +384,18 @@ export class GamePageUI extends GamePresentation {
             scope.check();
             if (result.rewardCoins) { this.showToast(`连击奖励 +${result.rewardCoins}`); await this.animateCoinReward(); scope.check(); await this.animateProgressReset(session.getViewState().progressCells); }
         } else if (result.kind === 'draw') {
-            await this.animateBackupToCurrent(this.getTopBackupNode(core.stockRemainingCount + 1), result.cardName);
-        } else if (result.kind === 'missedMove') {
-            await this.animateMissedMoveHint(result.slotIds);
+            const hintScope = scope.child();
+            try {
+                // 提示只伴随本次抽牌；不等待摇摆结束，也不延长输入锁定。
+                this.showMissedMoveHint(result.missedSlotIds ?? [], hintScope);
+                await this.animateBackupToCurrent(this.getTopBackupNode(core.stockRemainingCount + 1), result.cardName);
+                scope.check();
+            } finally { hintScope.dispose(); }
         } else if (result.kind === 'wild.prepare') await this.animateWildToCurrent();
-        else if (result.kind === 'wild.cancel') await this.animateCurrentCardFlip(core.currentCard!.cardName);
+        else if (result.kind === 'wild.cancel') await this.animateRollback({ kind: 'wild' }, core.getState(), core.currentCard!.cardName);
         // 付费备用牌已在按钮后方完整展示；领取时只让 afterRender 刷新并隐藏按钮，
         // 不再播放“从按钮新增卡牌”的飞牌动画。
-        else if (result.kind === 'addBackup') { /* afterRender 负责隐藏按钮并开放牌堆。 */ }
+        else if (result.kind === 'addBackup') { this.playCardSound('deal'); /* afterRender 负责隐藏按钮并开放牌堆。 */ }
         else if (result.kind === 'rollback' && result.visual) {
             await Promise.all([this.animateRollback(result.visual, core.getState(), session.wildReady ? 'poker_wild' : core.currentCard!.cardName), this.animateProgressRestore(result.previousProgress, session.getViewState().progressCells)]);
         }

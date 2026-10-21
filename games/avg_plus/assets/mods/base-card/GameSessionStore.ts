@@ -101,7 +101,7 @@ function createInitialState(coins = INITIAL_COINS): MutableSessionState {
 export class GameSessionStore {
     private _state: MutableSessionState;
     public constructor(private readonly economy?: EconomyConfig, coins = INITIAL_COINS, private readonly freeStockCount = INITIAL_FREE_STOCK_COUNT) {
-        if (!Number.isInteger(freeStockCount) || freeStockCount < 0 || freeStockCount > 52) throw new Error('[GameSessionStore] 免费备用牌数量非法。');
+        if (!Number.isSafeInteger(freeStockCount) || freeStockCount < 0) throw new Error('[GameSessionStore] 免费备用牌数量非法。');
         if (economy && (!['completionReward','streakRewardCoins'].every(key => {
             const value = economy[key as 'completionReward' | 'streakRewardCoins']; return value === undefined || Number.isSafeInteger(value) && value >= 0;
         }) || (economy.streakTarget !== undefined && (!Number.isInteger(economy.streakTarget) || economy.streakTarget < 1 || economy.streakTarget > 12)) ||
@@ -116,6 +116,14 @@ export class GameSessionStore {
 
     public get coins(): number {
         return this._state.coins;
+    }
+
+    /** 外部赠币不进入出牌历史，回撤仍以当前余额扣除被撤动作的净变化。 */
+    public grantCoins(amount: number): void {
+        if (!Number.isSafeInteger(amount) || amount <= 0 || !Number.isSafeInteger(this._state.coins + amount)) {
+            throw new Error('[GameSessionStore] 赠送金币数值无效。');
+        }
+        this._state.coins += amount;
     }
 
     private get streakTarget(): number { return this.economy?.streakTarget ?? HITS_PER_REWARD; }

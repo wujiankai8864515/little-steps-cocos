@@ -90,12 +90,15 @@ export class CardLevelRepository {
         if (!Array.isArray(level.slots) || level.slots.length === 0) {
             throw new Error(`[CardLevelRepository] ${expectedLevelId} 至少需要一个 slot。`);
         }
+        if (level.slots.length > 51) {
+            throw new Error(`[CardLevelRepository] ${expectedLevelId} 牌型区最多 51 张，必须为当前牌保留牌面。`);
+        }
 
         const slotIds = new Set<string>();
         const decks = level.deckCount ?? 1;
         if (!Number.isInteger(decks) || decks < 1 || decks > 4) throw new Error(`[CardLevelRepository] ${expectedLevelId} 牌副数量非法。`);
-        if (level.initialStockCount !== undefined && (!Number.isInteger(level.initialStockCount) || level.initialStockCount < 0 || level.initialStockCount > decks * 52 - 1 - level.slots.length)) {
-            throw new Error(`[CardLevelRepository] ${expectedLevelId} 初始备用牌数量超出牌池。`);
+        if (level.initialStockCount !== undefined && (!Number.isSafeInteger(level.initialStockCount) || level.initialStockCount < 0)) {
+            throw new Error(`[CardLevelRepository] ${expectedLevelId} 初始备用牌数量必须是非负安全整数。`);
         }
         if (level.portraitLayout !== undefined && (!this.isRecord(level.portraitLayout) || !Number.isFinite(level.portraitLayout.currentCardX) || Math.abs(level.portraitLayout.currentCardX) > 500)) {
             throw new Error(`[CardLevelRepository] ${expectedLevelId} 竖屏操作行位置非法。`);
@@ -113,12 +116,11 @@ export class CardLevelRepository {
         }
 
         this.validateCurrentCard(expectedLevelId, level);
-        const fixed = new Map<string, number>();
+        const fixed = new Set<string>();
         for (const card of [...level.slots.map(s => s.figmaCard), ...(level.currentCard ? [level.currentCard.figmaCard] : [])]) {
             if (card.side !== 'front') continue;
-            const count = (fixed.get(card.assetName) ?? 0) + 1;
-            if (count > decks) throw new Error(`[CardLevelRepository] ${expectedLevelId} 固定牌重复超过牌副数量：${card.assetName}`);
-            fixed.set(card.assetName, count);
+            if (fixed.has(card.assetName)) throw new Error(`[CardLevelRepository] ${expectedLevelId} 指定了重复固定牌：${card.assetName}`);
+            fixed.add(card.assetName);
         }
 
         for (const slot of level.slots) {
@@ -233,7 +235,7 @@ export class CardLevelRepository {
             const duplicateSlot = level.slots.find((slot) =>
                 slot.figmaCard.side === 'front' && slot.figmaCard.suit === audit.suit && slot.figmaCard.rankCode === audit.rankCode);
 
-            if (duplicateSlot && (level.deckCount ?? 1) === 1) {
+            if (duplicateSlot) {
                 throw new Error(`[CardLevelRepository] ${levelId} currentCard 与 ${duplicateSlot.id} 指定了同一张牌：${audit.assetName}`);
             }
         }

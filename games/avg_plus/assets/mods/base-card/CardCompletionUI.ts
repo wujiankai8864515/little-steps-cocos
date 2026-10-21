@@ -27,8 +27,13 @@ export class CardCompletionUI extends PresentationComponent {
     private rewardLabel: Label | null = null;
     private coinFrame: SpriteFrame | null = null;
     private controls: Button[] = [];
+    private initialCoins = 0;
+    private displayedCoins = 0;
+    private additionalCoins = 0;
 
     public async open(view: CompletionView, onContinue: () => void, coinFrame: SpriteFrame): Promise<void> {
+        this.initialCoins = view.coins;
+        this.displayedCoins = view.coins - view.rewardCoins;
         const medalFrame = await this.lifetime.run(() => CardSpriteLoader.loadSpriteFrame('poker_wild'), 15000);
         this.lifetime.check(); this.coinFrame = coinFrame;
         this.node.addComponent(UITransform).setContentSize(1181, 2556);
@@ -83,13 +88,21 @@ export class CardCompletionUI extends PresentationComponent {
                     if (this.lifetime.cancelled || !this.node.isValid) return;
                     // The payout remains committed even if the collection presentation failed.
                     console.error('[Completion presentation]', error);
-                    if (this.coinLabel) this.coinLabel.string = money(view.coins);
+                    this.displayedCoins = view.coins; this.refreshWallet();
                     this.deliver(onContinue);
                 });
             }),
         ];
         const opacity = this.node.addComponent(UIOpacity); opacity.opacity = 0;
         this.visualTween(opacity).to(0.3, { opacity: 255 }).start();
+    }
+
+    public updateCoins(coins: number): void {
+        this.additionalCoins = coins - this.initialCoins;
+        this.refreshWallet();
+    }
+    private refreshWallet(): void {
+        if (this.coinLabel) this.coinLabel.string = money(this.displayedCoins + this.additionalCoins);
     }
 
     private deliver(onContinue: () => void): void {
@@ -115,7 +128,7 @@ export class CardCompletionUI extends PresentationComponent {
             this.visualTween({ elapsed: 0 }).delay(1.34).call(done).start();
         });
         check(); this.lifetime.check();
-        if (this.coinLabel) this.coinLabel.string = money(view.coins);
+        this.displayedCoins = view.coins; this.refreshWallet();
         await this.waitForVisual(done => this.visualTween(this.node.getComponent(UIOpacity)!)
             .delay(0.2).to(0.3, { opacity: 0 }).call(done).start());
         check(); this.lifetime.check();

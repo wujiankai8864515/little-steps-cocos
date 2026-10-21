@@ -38,7 +38,7 @@ export function createCardMod(
     };
     return {
         manifest, initialState,
-        actions: ['card.open','card.play','card.draw','card.wild','card.addBackup','card.rollback','card.pause','card.restart','card.exit'],
+        actions: ['card.open','card.play','card.draw','card.wild','card.addBackup','card.rollback','card.pause','card.restart','card.exit','card.grantCoins'],
         validate(states) {
             const state = states[manifest.id] as CardState;
             if (!state || !Number.isInteger(state.rng) || state.rng < 1 || state.rng > 0xffffffff || typeof state.paused !== 'boolean') throw new Error('卡牌状态无效');
@@ -47,11 +47,19 @@ export function createCardMod(
         },
         restoreUndo(previous: CardState, current: CardState, after: CardState): CardState {
             const { session } = hydrate(clone(current));
-            session.restoreForRollback(previous.session, after.session.coins - previous.session.coins);
+            // 万能牌只是待用选择；撤销其消除动作后归还道具位，恢复原普通当前牌。
+            session.restoreForRollback({ ...previous.session, wildReady: false }, after.session.coins - previous.session.coins);
             return { ...previous, session: session.captureSnapshot(), paused: current.paused };
         },
         execute(ctx: DraftContext) {
             let state = ctx.draft[manifest.id] as CardState;
+            if (ctx.action.type === 'card.grantCoins') {
+                const { session } = hydrate(state);
+                session.grantCoins(1000);
+                state.session = session.captureSnapshot();
+                ctx.result = { kind: 'grantCoins', amount: 1000 };
+                return;
+            }
             if (ctx.action.type === 'card.restart') {
                 const retryCost = setup.retryCost;
                 if (retryCost !== undefined && (!Number.isSafeInteger(retryCost) || retryCost < 0)) ctx.reject('重试费用配置无效');
@@ -86,14 +94,10 @@ export function createCardMod(
                 }
                 case 'card.draw': {
                     if (session.wildReady || !core.stockRemainingCount) ctx.reject('当前不能补牌');
-                    const legalSlotIds = core.legalMoveSlotIds;
-                    if (legalSlotIds.length > 0) {
-                        ctx.result = { kind: 'missedMove', slotIds: legalSlotIds };
-                        break;
-                    }
+                    const missedSlotIds = core.legalMoveSlotIds;
                     if (!core.drawStockPile()) ctx.reject('没有备用牌');
                     session.recordStockDraw(); state.lastMove = { kind: 'stock', cardName: core.currentCard!.cardName };
-                    ctx.recordUndo(); ctx.result = { kind: 'draw', cardName: core.currentCard!.cardName }; break;
+                    ctx.recordUndo(); ctx.result = { kind: 'draw', cardName: core.currentCard!.cardName, missedSlotIds }; break;
                 }
                 case 'card.wild': {
                     if (!session.wildReady) afford(PaidGameAction.Wild);
@@ -101,14 +105,25 @@ export function createCardMod(
                 }
                 case 'card.addBackup': {
                     if (session.wildReady || core.stockRemainingCount) ctx.reject('只有牌堆耗尽后可以加牌');
-                    afford(PaidGameAction.AddBackup); const added = core.addStockCards(5).length;
-                    if (!added) ctx.reject('无牌可补'); session.spend(PaidGameAction.AddBackup);
+                    afford(PaidGameAction.AddBackup); const added = core.addStockCards(5);
+                    if (added !== 5) ctx.reject('无法足额补牌'); session.spend(PaidGameAction.AddBackup);
                     state.lastMove = { kind: 'addBackup' }; ctx.recordUndo(); ctx.result = { kind: 'addBackup', added }; break;
                 }
                 case 'card.rollback': {
+                    const previousProgress = session.getViewState().progressCells;
+                    if (session.wildReady) {
+                        // 尚未使用的万能牌等同取消选择，不弹出上一条出牌／抽牌历史，也不收费。
+                        session.setWildReady(false);
+                        ctx.result = { kind: 'rollback', visual: { kind: 'wild' }, previousProgress };
+                        break;
+                    }
                     afford(PaidGameAction.Rollback);
-                    const visual = clone(state.lastMove); const previousProgress = session.getViewState().progressCells;
-                    ctx.undo(); ctx.result = { kind: 'rollback', visual, previousProgress }; return;
+                    const visual = clone(state.lastMove);
+                    const previous = ctx.undo()['base-card'] as CardState;
+                    ctx.result = { kind: 'rollback', visual: visual ? {
+                        ...visual, usedWild: visual.kind === 'board' && previous.session.wildReady,
+                    } : null, previousProgress };
+                    return;
                 }
                 default: ctx.reject('未知卡牌动作');
             }

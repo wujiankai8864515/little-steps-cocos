@@ -17,20 +17,36 @@ test('four hits, multiplier mod, rollback includes extension state and actual re
  await r.dispatch({type:'card.play',payload:{slotId:'slot_004'}});assert.equal(r.read('base-card').session.coins,1299);
  await r.dispatch({type:'card.rollback'});assert.equal(r.read('base-card').session.coins,699);assert.equal(r.read('base-card').session.actionUses.rollback,2);await r.dispose();
 });
-test('invalid play never changes snapshots; draw and undo preserve deck integrity',async()=>{
+test('invalid play never changes snapshots; draw and undo preserve board integrity',async()=>{
  const r=new Runtime([createCardMod(level([4,5,6,7,8]),123)]);await r.open();const initial=r.exportSnapshot();
  assert.equal((await r.dispatch({type:'card.play',payload:{slotId:'slot_005'}})).status,'rejected');assert.deepEqual(r.exportSnapshot(),initial);
  await r.dispatch({type:'card.draw'});await r.dispatch({type:'card.rollback'});assert.deepEqual(r.read('base-card').core,initial.state['base-card'].core);assert.equal(r.read('base-card').session.coins,899);await r.dispose();
 });
-test('drawing while a legal move exists preserves state and requests a missed-move hint',async()=>{
- const results=[];const r=new Runtime([createCardMod(level(),123,{render(ctx){results.push(ctx.result);return []},afterRender(){}})]);await r.open();const initial=r.exportSnapshot();
- assert.equal((await r.dispatch({type:'card.draw'})).status,'committed');assert.deepEqual(r.exportSnapshot(),initial);
- assert.deepEqual(results,[{kind:'missedMove',slotIds:['slot_001']}]);await r.dispose();
+test('a missed-move hint never vetoes drawing, and undo replays the same random face',async()=>{
+ const results=[];const r=new Runtime([createCardMod(level([2,13,5,6]),123,{render(ctx){results.push(ctx.result);return []},afterRender(){}})]);await r.open();const initial=r.exportSnapshot().state['base-card'];
+ assert.equal((await r.dispatch({type:'card.draw'})).status,'committed');const drawn=r.read('base-card');
+ assert.equal(drawn.core.stockRemainingCount,initial.core.stockRemainingCount-1);
+ assert.equal(drawn.core.usedPile.length,initial.core.usedPile.length+1);
+ assert.deepEqual(drawn.core.slots,initial.core.slots);assert.notEqual(drawn.rng,initial.rng);
+ assert.equal(drawn.session.freeStockDraws,1);assert.equal(drawn.session.coins,initial.session.coins);
+ assert.deepEqual(results,[{kind:'draw',cardName:drawn.core.currentCard.cardName,missedSlotIds:['slot_001','slot_002']}]);
+ assert.equal((await r.dispatch({type:'card.rollback'})).status,'committed');const undone=r.read('base-card');
+ assert.deepEqual(undone.core,initial.core);assert.equal(undone.rng,initial.rng);assert.equal(undone.session.freeStockDraws,0);
+ assert.equal((await r.dispatch({type:'card.draw'})).status,'committed');
+ assert.deepEqual(r.read('base-card').core,drawn.core);assert.equal(r.read('base-card').rng,drawn.rng);
+ assert.deepEqual(results.at(-1),results[0]);await r.dispose();
+});
+test('the last backup card can be used despite a missed move and still unlocks paid refill',async()=>{
+ const r=new Runtime([createCardMod(level(),123,undefined,{initialStockCount:1})]);await r.open();
+ assert.equal((await r.dispatch({type:'card.draw'})).status,'committed');
+ assert.equal(r.read('base-card').core.stockRemainingCount,0);assert.equal(r.read('base-card').session.freeStockDraws,1);
+ assert.equal((await r.dispatch({type:'card.addBackup'})).status,'committed');
+ assert.equal(r.read('base-card').core.stockRemainingCount,5);await r.dispose();
 });
 test('wild-card use is billed only on successful play and its use counter survives undo',async()=>{
  const r=new Runtime([createCardMod(level(),2)]);await r.open();await r.dispatch({type:'card.wild'});assert.equal(r.read('base-card').session.coins,999);
  await r.dispatch({type:'card.play',payload:{slotId:'slot_005'}});assert.equal(r.read('base-card').session.coins,899);
- await r.dispatch({type:'card.rollback'});assert.equal(r.read('base-card').session.actionUses.wild,1);assert.equal(r.read('base-card').session.coins,899);assert.equal(r.read('base-card').session.wildReady,true);await r.dispose();
+ await r.dispatch({type:'card.rollback'});assert.equal(r.read('base-card').session.actionUses.wild,1);assert.equal(r.read('base-card').session.coins,899);assert.equal(r.read('base-card').session.wildReady,false);await r.dispose();
 });
 test('base modules run without optional mods; seeded card sessions match',async()=>{
  const a=new Runtime([createCardMod(level(),12)]), b=new Runtime([createCardMod(level(),12)]);await a.open();await b.open();assert.deepEqual(a.read('base-card'),b.read('base-card'));await a.dispose();await b.dispose();
@@ -41,12 +57,12 @@ test('single-backup test mode keeps one stock card and both opening cards miss t
  let core=r.read('base-card').core;
  const exposedRanks=core.slots.filter(slot=>slot.isFullyExposed&&slot.faceUp).map(slot=>slot.card.rankValue);
  const adjacent=(left,right)=>Math.abs(left-right)===1||Math.abs(left-right)===12;
- assert.equal(core.stockPile.length,1);
- assert.notEqual(core.stockPile[0].cardName,core.currentCard.cardName);
+ assert.equal(core.stockRemainingCount,1);
+ assert.equal('stockPile' in core,false);
  assert.equal(exposedRanks.some(rank=>adjacent(rank,core.currentCard.rankValue)),false);
  assert.equal((await r.dispatch({type:'card.draw'})).status,'committed');
  core=r.read('base-card').core;
- assert.equal(core.stockPile.length,0);
+ assert.equal(core.stockRemainingCount,0);
  assert.equal(exposedRanks.some(rank=>adjacent(rank,core.currentCard.rankValue)),false);
  await r.dispose();
 });

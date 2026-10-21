@@ -10,11 +10,20 @@ const base=path.join(__dirname,'../assets/art/resources/config/card-levels');
 const source=JSON.parse(fs.readFileSync(path.join(__dirname,'../../../migration/reviews/avg_plus/figma-level-source-20261014.json')));
 const levels=source.levels.map(raw=>JSON.parse(fs.readFileSync(path.join(base,raw.name+'.json'))));
 const repository=new CardLevelRepository();
+// Keep the source geometry intact; the new unique-face rule rejects these two designs.
+const invalidLevels=new Map([['level_difficulty1_06',/同一张牌/],['level_difficulty4_02',/51/]]);
+const playableLevels=levels.filter(level=>!invalidLevels.has(level.levelId));
+function assertLiveUnique(snapshot){
+ const cards=[snapshot.currentCard,...snapshot.slots.map(s=>s.card)].filter(Boolean);
+ assert.equal(new Set(cards.map(c=>c.cardName)).size,cards.length);
+}
 test('all 40 Figma boards retain every real card component, local center, rotation and opening hand',()=>{
  assert.equal(levels.length,40);assert.equal(levels.reduce((n,l)=>n+l.slots.length,0),893);
  assert.deepEqual([1,2,3,4].map(d=>levels.filter(l=>l.difficulty===d).length),[10,10,10,10]);
  for(let index=0;index<levels.length;index++){
-  const level=levels[index],raw=source.levels[index];repository.validateLevel(level.levelId,level);
+  const level=levels[index],raw=source.levels[index];
+  if(invalidLevels.has(level.levelId))assert.throws(()=>repository.validateLevel(level.levelId,level),invalidLevels.get(level.levelId));
+  else repository.validateLevel(level.levelId,level);
   assert.equal(level.source.frameId,raw.id);assert.equal(level.slots.length,raw.board.cards.length);
   assert.equal(level.currentCard.sourceName,raw.hand[0].name);
   level.slots.forEach((slot,i)=>{
@@ -26,14 +35,14 @@ test('all 40 Figma boards retain every real card component, local center, rotati
   });
  }
 });
-test('all 40 actual levels start, restore, perform a legal move or draw, and undo without losing cards',async()=>{
- for(const level of levels){
+test('all 38 satisfiable actual levels start, restore, perform a move or draw, and undo with unique live faces',async()=>{
+ assert.equal(playableLevels.length,38);
+ for(const level of playableLevels){
   const runtime=new Runtime([createCardMod(level,20260917,undefined,{initialStockCount:level.initialStockCount})]);await runtime.open();
   const before=runtime.read('base-card').core;
   const core=new HighLowSolitaireCore(level);core.restoreSnapshot(before);
-  assert.equal(before.slots.length,level.slots.length);assert.equal(before.stockPile.length,10);
-  const physical=[before.currentCard,...before.slots.map(s=>s.card),...before.stockPile,...before.usedPile,...before.deck];
-  assert.equal(physical.length,52*level.deckCount);assert.equal(new Set(physical.map(c=>c.cardName+'@'+(c.copyIndex??0))).size,physical.length);
+  assert.equal(before.slots.length,level.slots.length);assert.equal(before.stockRemainingCount,10);
+  assertLiveUnique(before);
   for(const slot of before.slots){const config=level.slots.find(s=>s.id===slot.slotId);if(config.initialFaceUp)assert.equal(slot.card.cardName,config.sourceName);}
   const legal=core.legalMoveSlotIds[0];
   assert.equal((await runtime.dispatch(legal?{type:'card.play',payload:{slotId:legal}}:{type:'card.draw'})).status,'committed',level.levelId);
@@ -42,20 +51,21 @@ test('all 40 actual levels start, restore, perform a legal move or draw, and und
   await runtime.dispose();
  }
 });
-test('duplicate fixed cards and the 52-slot board require distinct physical copies; corrupted copies reject',()=>{
+test('the two unsatisfiable designs reject regardless of legacy deckCount, without mutating their fixed cards',()=>{
  const repeated=levels.find(l=>l.levelId==='level_difficulty1_06'),large=levels.find(l=>l.levelId==='level_difficulty4_02');
  assert.equal(repeated.deckCount,2);assert.equal(large.slots.length,52);assert.equal(large.deckCount,2);
  for(const level of [repeated,large]){
-  assert.throws(()=>repository.validateLevel(level.levelId,{...level,deckCount:1}));
-  const core=new HighLowSolitaireCore(level);core.startGame(10);const snapshot=core.captureSnapshot();
-  const bad=JSON.parse(JSON.stringify(snapshot));bad.currentCard.copyIndex=8;assert.throws(()=>core.restoreSnapshot(bad),/副本编号/);
-  const duplicate=JSON.parse(JSON.stringify(snapshot));duplicate.deck[1]=duplicate.deck[0];assert.throws(()=>core.restoreSnapshot(duplicate),/重复牌/);
-  core.restoreSnapshot(snapshot);assert.deepEqual(core.captureSnapshot(),snapshot);
+  const before=structuredClone(level);
+  for(const deckCount of [1,2,4]){
+   assert.throws(()=>repository.validateLevel(level.levelId,{...level,deckCount}),invalidLevels.get(level.levelId));
+   assert.throws(()=>createCardMod({...level,deckCount},12),/51|固定牌无效或重复/);
+  }
+  assert.deepEqual(level,before);
  }
 });
-test('every actual Figma board completes across two seeds with pause, undo, snapshot recovery and conserved physical cards',async()=>{
+test('every satisfiable Figma board completes across two seeds with pause, undo, snapshot recovery and unique live faces',async()=>{
  const economy=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/art/resources/config/catalog.json'))).economy;
- for(const level of levels)for(const seed of [1,20260917]){
+ for(const level of playableLevels)for(const seed of [1,20260917]){
   const runtime=new Runtime([createCardMod(level,seed,undefined,{economy,initialCoins:1000000,retryCost:500})]);await runtime.open();
   let turns=0;
   while(!runtime.read('base-card').core.isComplete){
@@ -80,11 +90,12 @@ test('every actual Figma board completes across two seeds with pause, undo, snap
    if(turns%5===0&&!runtime.read('base-card').core.isComplete){
     assert.equal((await runtime.dispatch({type:'card.rollback'})).status,'committed');
     assert.deepEqual(runtime.read('base-card').core,prior.core);assert.equal(runtime.read('base-card').session.coins,prior.session.coins-50);
+    assert.equal(runtime.read('base-card').session.wildReady,false);
+    if(prior.session.wildReady)assert.equal((await runtime.dispatch({type:'card.wild'})).status,'committed');
     assert.equal((await runtime.dispatch({type:'card.play',payload:{slotId}})).status,'committed');
    }
    const snapshot=runtime.read('base-card').core;
-   const physical=[snapshot.currentCard,...snapshot.slots.map(s=>s.card),...snapshot.stockPile,...snapshot.usedPile,...snapshot.deck].filter(Boolean);
-   assert.equal(physical.length,52*level.deckCount);assert.equal(new Set(physical.map(c=>c.cardName+'@'+(c.copyIndex??0))).size,physical.length);
+   assertLiveUnique(snapshot);
   }
   const won=runtime.exportSnapshot();assert.equal(won.state['base-card'].session.completionRewarded,true);
   assert.equal((await runtime.dispatch({type:'card.play',payload:{slotId:'already-won'}})).status,'rejected');assert.deepEqual(runtime.exportSnapshot(),won);

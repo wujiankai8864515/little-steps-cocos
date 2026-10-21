@@ -53,7 +53,7 @@ export interface CardLevelDefinition {
     readonly slots: readonly CardLevelSlotDefinition[];
     readonly currentCard?: CardLevelCurrentCardDefinition;
     readonly initialStockCount?: number;
-    /** Large Figma boards may require several decks; omitted means the original single deck. */
+    /** 旧版 Figma 导入的审计字段；不再增加可用牌面或放宽场上去重约束。 */
     readonly deckCount?: number;
     readonly portraitLayout?: { readonly currentCardX: number; readonly stockAnchor?: 'left' | 'right' };
 }

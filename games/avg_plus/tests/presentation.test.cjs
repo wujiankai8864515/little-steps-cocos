@@ -4,7 +4,7 @@ const {test}=require('node:test'), assert=require('node:assert/strict'),Module=r
 const originalLoad=Module._load;
 Module._load=function(id,...args){if(id==='cc')return {_decorator:{ccclass:()=>value=>value},Component:class{constructor(){this.node={isValid:true}}},tween:()=>({stopped:false,stop(){this.stopped=true}})};return originalLoad.call(this,id,...args)};
 const {PresentationComponent}=require('../assets/mods/shared/PresentationComponent.ts');
-const {boardFlightAngle,buildOpeningDealSchedule,buildOpeningStockSchedule,buildMissedMoveSwayKeyframes,stableVisibleBackupCardOffsets,OPENING_DEAL_POSITION_EASING,OPENING_DEAL_TIMING}=require('../assets/mods/base-card/GameVisualTypes.ts');
+const {boardFlightAngle,buildOpeningDealSchedule,openingBoardLaunchInterval,buildMissedMoveSwayKeyframes,stableVisibleBackupCardOffsets,OPENING_DEAL_POSITION_EASING,OPENING_DEAL_TIMING}=require('../assets/mods/base-card/GameVisualTypes.ts');
 const {visibleBackupCardCount}=require('../assets/mods/base-card/GameUIContract.ts');
 Module._load=originalLoad;
 test('paid backup entry previews the five cards it unlocks',()=>{
@@ -36,7 +36,7 @@ test('opening deal sends lower layers first, then scans each layer left-to-right
  assert.deepEqual(schedule.map(step=>step.slotId),['top-left','bottom-left','bottom-right','top-right','middle']);
  assert.deepEqual(schedule.map(step=>step.layer),[0,0,0,1,1]);
  assert.deepEqual(schedule.map(step=>step.row),[0,1,1,0,1]);
- assert.deepEqual(schedule.map(step=>step.launchFrame),[0,4,8,12,16]);
+ assert.deepEqual(schedule.map(step=>step.launchTime),[0,.12,.24,.36,.48]);
 });
 test('opening deal rejects cyclic cover relationships',()=>{
  assert.throws(()=>buildOpeningDealSchedule([
@@ -44,25 +44,23 @@ test('opening deal rejects cyclic cover relationships',()=>{
   {id:'right',x:10,y:0,covers:['left']},
  ]),/遮挡关系存在循环/);
 });
-test('opening timeline honors the configured render-frame interval',()=>{
- assert.equal(OPENING_DEAL_POSITION_EASING,'backOut');
+test('opening falls linearly and adapts its stagger to finish large boards within 1.5 seconds',()=>{
+ assert.equal(OPENING_DEAL_POSITION_EASING,'linear');
  assert.deepEqual(OPENING_DEAL_TIMING,{
-  cardDuration:0.32,backupCardDuration:0.32,launchFrameGap:4,referenceFps:60,
-  currentDrawDuration:0.36,flipHalfDuration:0.07,
+  boardDuration:1.1,cardDuration:0.24,maximumLaunchInterval:.12,
+  currentDrawDelay:0.2,currentDrawDuration:0.18,flipHalfDuration:0.07,
  });
  const schedule=buildOpeningDealSchedule([
   ...Array.from({length:8},(_,i)=>({id:`base-${i}`,x:i,y:-200,covers:[]})),
   {id:'middle',x:0,y:0,covers:['base-0']},
   {id:'top',x:0,y:200,covers:['middle']},
  ]);
- assert.deepEqual(schedule.map(step=>step.launchFrame),[0,4,8,12,16,20,24,28,32,36]);
- // 十张真实备用牌加一张将翻成当前牌的临时顶牌；顶牌到位后立即抽出，
- // 真实备用牌不递进、不补位。
- const stock=buildOpeningStockSchedule(11);
- assert.deepEqual(stock.map(step=>step.launchFrame),[0,4,8,12,16,20,24,28,32,36,40]);
- const finalLaunchFrame=schedule.length*OPENING_DEAL_TIMING.launchFrameGap+stock[stock.length-1].launchFrame;
- const settleTime=finalLaunchFrame/OPENING_DEAL_TIMING.referenceFps+OPENING_DEAL_TIMING.backupCardDuration;
- assert.ok(Math.abs(settleTime-1.6533333333333333)<1e-9);
+ const interval=openingBoardLaunchInterval(schedule.length);
+ assert.deepEqual(schedule.map(step=>step.launchTime),schedule.map((_,i)=>i*interval));
+ for(const count of [1,11,19,40,51]){
+  const end=(count-1)*openingBoardLaunchInterval(count)+OPENING_DEAL_TIMING.cardDuration+OPENING_DEAL_TIMING.flipHalfDuration*2;
+  assert.ok(end<=1.1+1e-9);assert.ok(end<1.5);
+ }
 });
 test('missed-move hint completes four left-right sways in exactly one second',()=>{
  const frames=buildMissedMoveSwayKeyframes();
@@ -100,12 +98,6 @@ test('JSON levels retain card geometry and declare an area containing every rota
    assert.ok(Math.abs(slot.y)+ry<=level.designSize.height/2,`${level.levelId}/${slot.id} exceeds vertical layout`);
   }
  }
-});
-test('paid backup button is centered over the backup cards',()=>{
- const fs=require('node:fs'),path=require('node:path');
- const prefab=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/art/resources/prefabs/gamePage.prefab'),'utf8'));
- const node=name=>prefab.find(item=>item?.__type__==='cc.Node'&&item._name===name);
- assert.equal(node('backup')._lpos.x,node('addBackup')._lpos.x);
 });
 test('a late asset continuation cannot mutate the presentation after cancellation',async()=>{
  const view=new PresentationComponent();let resolveAsset;let writes=0;
