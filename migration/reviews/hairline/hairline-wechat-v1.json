@@ -1,0 +1,537 @@
+{
+  "schema": 1,
+  "game": "hairline",
+  "name": "hairline-wechat-v1",
+  "sourceMode": "local-working-copy",
+  "workingInputs": [
+    {
+      "path": "assets/Boot.ts",
+      "sha256": "b549f03bf89021632b3f5cbc1f02319b37e5c4851e222118ec3162ad6bf5a504",
+      "symlink": null
+    },
+    {
+      "path": "assets/Boot.ts.meta",
+      "sha256": "d00349145be7aee56493b0adde3e7448568c1d9c46ca762d32f80205f4b4ba29",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/ambient.wav",
+      "sha256": "4fa196aa416dc0baff4bc7590c4a2117beaf9449c5122b8d66a1cc51d94ca764",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/bubble.wav",
+      "sha256": "9ac7d2bd8dff686a22a61b2d1c1da2d6a64c49bc368d84468953c0cc22fe0c1c",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/click.wav",
+      "sha256": "2098168116bf72bb2701d02865e65ca950be13cd9a04114cd53e47d604e2aa08",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/hair.wav",
+      "sha256": "6b6db1e7253ebe7460f1dbd165dd4ccb62f264266d95de05197c5551287ba7b0",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/hit.wav",
+      "sha256": "0d4934b0341a435ed4343ec950e38796c6929d972ee34e7893222d2463fb309d",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/merge.wav",
+      "sha256": "f2224c5f7f2577ec71b405a64f8fea85fb21879024292eda42c58dca5f5dca0b",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio/win.wav",
+      "sha256": "01fa3c295e6cf19298d2ec273c81f146c6c01c090b4e4318962c2becab385587",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/audio.meta",
+      "sha256": "f9a3485df9de9476e9b585420d0886750e9920956ce927e16653f8952d1f9549",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/brush.ttf",
+      "sha256": "a9ea3631796f830a2f428adc3a8ff3495a634c9700bb6b787534f35705c63114",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/dog.png",
+      "sha256": "56a2cccf471fad87534f1ef5cc628d510c27570da2379f06cb61231b93b05477",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/floor.png",
+      "sha256": "a3b909ac458c5866f719976b3862407d3c37e7db37f4dab4a4f4a1f59ebfe11e",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/home.png",
+      "sha256": "987424d2282cc8e50b06055ffbcc772542acbf7573295c17bc65040f28815882",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/left-props.png",
+      "sha256": "8bd65ef5469d82c5a8ceae23225bc26826d5a24e26d19705dff7199c1effdd88",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/paper.png",
+      "sha256": "4663952f801c6443268d8a61e7be9a4e3ab1787f9a2fbc029e1144b1063606f3",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/plant.png",
+      "sha256": "540b7057733ac3a18767e0ce3363ec9107566e31a1d73321f621b972f9e4c8cd",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/right-props.png",
+      "sha256": "b8b2520d1cfb6bd7c1755bfea8122b0ab36af8291bdc833f49436d4f2181cd2c",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/sources.json",
+      "sha256": "26aaec9783d2995ca0725af8480bca1466561f0dc038791d5bc4c2296e5f8adf",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/ui.ttf",
+      "sha256": "1c9d1578d103b8f6c3f004527f03aed6fcb0c73bbafbd34bf116a788673d3f4f",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office/water.png",
+      "sha256": "582235aafdfdce61108ae7971612100c4e10bd00f19f6a6ccb57b6a886de0c23",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles/office.meta",
+      "sha256": "25cd1ea303b789110d5a0b34c70980d6318de3d3ed7a963e86c9bde828b0f789",
+      "symlink": null
+    },
+    {
+      "path": "assets/bundles.meta",
+      "sha256": "f540dda8a1ede762a5dfe269ced34ece7148ef87ae2431e50f64d57018ff0bd4",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/HairlineGame.ts",
+      "sha256": "58372992e570d0eb4f03b056f167f1608285340b931798c7509786876a2af029",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/HairlineGame.ts.meta",
+      "sha256": "6109849bb782ca98cbc1cc79c2848d7b83f1e24e9fc8734530bec65b4b85e5ea",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/Model.ts",
+      "sha256": "8624eb45ff0ceae9948ab48a38372f5e13ce4841c4650ff9fdc184a26861dfc3",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/Model.ts.meta",
+      "sha256": "b31572aa15b4bc93f03ebdce7e431bcbb1d0c4112024da3adafc1c0f4ad80437",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/OfficeUI.ts",
+      "sha256": "a900dfef4c6d0824ea355f2e9409d226dfff0ea8c493a68ebcf85ac4054f8f76",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/OfficeUI.ts.meta",
+      "sha256": "ffd175a14b2d88f60ae3096a1d57e6803cb0922a8720f3b6ac0c9b6eb40a648f",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/Platform.ts",
+      "sha256": "91eb2e28646d183bce9b6ae22915ac1ae009992b1a13a8df1520b42f4b7f2f05",
+      "symlink": null
+    },
+    {
+      "path": "assets/game/Platform.ts.meta",
+      "sha256": "72eb5aa0831cbc63cbc6f66cf5d49a94e082cc15fc9b8a209870f245264d18c0",
+      "symlink": null
+    },
+    {
+      "path": "assets/game.meta",
+      "sha256": "791343f266335db2b0313cf57e2f839c2eff8e6ee0b88af33b2b12e4e4b95339",
+      "symlink": null
+    },
+    {
+      "path": "assets/plugins/travel-core.js",
+      "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+      "symlink": "../../../../engines/travel-core/dist/travel-core.js"
+    },
+    {
+      "path": "assets/plugins/travel-core.js.meta",
+      "sha256": "a6e2dd61453bb323405427e6c94960a19bc291da46dfa0116ee905bc45a9789b",
+      "symlink": null
+    },
+    {
+      "path": "assets/plugins.meta",
+      "sha256": "d77c61b1425a32d5589191bd7506f2080ac4ae8c2a5dfc03db7dc2980266960c",
+      "symlink": null
+    },
+    {
+      "path": "assets/scene.scene",
+      "sha256": "5e7724e3bc6fe17f6f3646b9f274ef0ee88e17dfb605669e4e27b4a692ff7516",
+      "symlink": null
+    },
+    {
+      "path": "assets/scene.scene.meta",
+      "sha256": "3f78cb583fc74106f8bea4a9244264f6e75964c532eed0a2ccf237cd84d07b10",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/builder.json",
+      "sha256": "a3e1a8df580b6ebec15ad16c9bbef785806567bfbc093821852bb3606028e702",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/cocos-service.json",
+      "sha256": "a0a1c311fb68ae92cb801dd92536369f7e9912ca1c15f0c0a63b4c0caa7faec9",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/device.json",
+      "sha256": "93af91e0b90038cedc84d08651f845e1c2e2ae460321c19f083c27a178e451f8",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/engine.json",
+      "sha256": "32a543921155652a584d6906e3c21e97e31ca18969d376569bceac2612ed5b34",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/information.json",
+      "sha256": "1bf5a0b31fa5ae55f1be0e99c7a368789ba23bf518911437fd89ac1b67150e93",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/program.json",
+      "sha256": "d914f9f19ffe02724337936d8c7907798c8666566902b78243eb1aa8da0baedd",
+      "symlink": null
+    },
+    {
+      "path": "settings/v2/packages/project.json",
+      "sha256": "6cb23a2127c3376e5940168a37a4d48b09d0113fe4a871ff77aec09ab5203673",
+      "symlink": null
+    },
+    {
+      "path": "package.json",
+      "sha256": "9361e9632079fca75e2435b137c08dfe4dc7ceb0f1d6841a27562d65ae30ddd1",
+      "symlink": null
+    }
+  ],
+  "kind": "local development candidate, not a formal release",
+  "creator": "3.8.8",
+  "bundles": [
+    {
+      "name": "office",
+      "compression": "subpackage",
+      "remote": false
+    }
+  ],
+  "appid": "touristappid",
+  "resourceMode": "subpackage",
+  "device": "pending",
+  "build": "pass",
+  "visual": "pending",
+  "framework": {
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444"
+  },
+  "buildExitCode": 36,
+  "devtoolsSettings": {
+    "es6": true,
+    "minified": true,
+    "uploadWithSourceMap": false
+  },
+  "audit": {
+    "mainBytes": 2078102,
+    "totalBytes": 4770438,
+    "initialBytes": 4770438,
+    "sizes": {
+      "main": 2078102,
+      "office": 2692336
+    },
+    "subpackages": [
+      {
+        "name": "office",
+        "root": "subpackages/office/"
+      }
+    ],
+    "files": 63,
+    "sizeMethod": "raw output bytes; DevTools compilation/upload size must be verified separately"
+  },
+  "output": "/Users/wkk/dotWorkers/little-steps-cocos/migration/work/hairline-wechat-v1/output/project",
+  "log": "/Users/wkk/dotWorkers/little-steps-cocos/migration/reviews/hairline/hairline-wechat-v1.log",
+  "outputFiles": [
+    {
+      "path": "application.169c8.js",
+      "sha256": "1d430bd4f668a83819204ee6f3f335780d4d8df4859ea3659baed973405bb5df"
+    },
+    {
+      "path": "assets/internal/config.21e73.json",
+      "sha256": "322a0c767f60e5a26c426a591dc7d29b2b96358acb4ccf0b3926beb53cc75ded"
+    },
+    {
+      "path": "assets/internal/import/0b/0b0f7a282.c42c3.json",
+      "sha256": "1c31e605c04ca108616054a2234ffd45f411d09bab5824a8e662780fcacc5169"
+    },
+    {
+      "path": "assets/internal/index.21e73.js",
+      "sha256": "19bd675acfdd6f12d4bfec92fa4fa354b57c1dee7256325dce20ebfc5657b58c"
+    },
+    {
+      "path": "assets/main/config.ff816.json",
+      "sha256": "25f99db7e4905d0634b2d86fea6b96c74c4e9d8f587a151dbc3d8fc84bf63d97"
+    },
+    {
+      "path": "assets/main/import/ba/ba21476f-2866-4f81-9c4d-6e359316e448.8bce7.json",
+      "sha256": "0a34e9263b215bb661d6334db6a255497c6cdac1f1c40b130f50bf9d91f4dd39"
+    },
+    {
+      "path": "assets/main/import/ce/ce883ba4-1a20-4ef4-8238-69b48b515e4d.05284.json",
+      "sha256": "e7101e7a1524addd845c573ed1433c1e9c202699edcaaf03741b8057ea3de07b"
+    },
+    {
+      "path": "assets/main/import/fd/fd8ec536-a354-4a17-9c74-4f3883c378c8.731f4.json",
+      "sha256": "c2eee4552a460ed97591f527e127b95c811d5f796b9448f3f705974af9beba9d"
+    },
+    {
+      "path": "assets/main/index.ff816.js",
+      "sha256": "ba6fad356cf837925e9459e9bfa174275aed8e3373c36baab0fc30d1d0a51ebb"
+    },
+    {
+      "path": "cocos-js/cc.9055f.js",
+      "sha256": "e88297b8e8986ee559daa87d8e2159fe5a611250e10a0888d4b1cad585f5a617"
+    },
+    {
+      "path": "engine-adapter.js",
+      "sha256": "284bcfac51f9b33373e2c751ac9678dd6cd365c386c93fe831f9516ee8c920f8"
+    },
+    {
+      "path": "first-screen.js",
+      "sha256": "ff5e1afcc7ffcf0bb11f343107cee2b300c13c9c2314ca55333cb86a58c6097c"
+    },
+    {
+      "path": "game.js",
+      "sha256": "7270dc5dac17e479d5bc0d52875fac984d999669f45759c9db78f16947a6752a"
+    },
+    {
+      "path": "game.json",
+      "sha256": "0fa8db2641ee395271db148c8b8771216ad8e4ba5979110e155268c3552cd53c"
+    },
+    {
+      "path": "logo.png",
+      "sha256": "9e6a5832c6bc9c5f2da97dc54d916fd257a6ab35e9ffd57dbe88c435bd535940"
+    },
+    {
+      "path": "project.config.json",
+      "sha256": "5e7d08daea1c6f64207b799d5bc6b527b7c7d8587b38e9f19b445c33a6f96727"
+    },
+    {
+      "path": "slogan.png",
+      "sha256": "b3113554f80c03f9ce51d12ea7c17d68bf7914b89d092743cc54cd370d7f65a9"
+    },
+    {
+      "path": "src/assets/plugins/travel-core.9efa0.js",
+      "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d"
+    },
+    {
+      "path": "src/chunks/bundle.fd93b.js",
+      "sha256": "8ea7b6c98a721a5c629c1ce09abb3d95a472ece4f364b51c2bd6da6d6685695e"
+    },
+    {
+      "path": "src/effect.bin",
+      "sha256": "b0d92f8307e3109abe8af8a863d68feb58cf4f49cf000b1d48fbb3dc3ad45556"
+    },
+    {
+      "path": "src/import-map.f2f78.js",
+      "sha256": "c9c2607966a73879434709c8d3500ce11f4c4bdbf25fe65e4e14f712ca814026"
+    },
+    {
+      "path": "src/polyfills.bundle.43263.js",
+      "sha256": "cb588d11797e0ca56123d979812db39c8b38dd01c5a6761b2aa5f79cb1d4c701"
+    },
+    {
+      "path": "src/settings.d4b79.json",
+      "sha256": "90e8344a63cbb5112056247f71af7cde0d956a63b89168905bc704c6342d211d"
+    },
+    {
+      "path": "src/system.bundle.f45da.js",
+      "sha256": "9e52437715d2e6a8acacb41f1c64d916e4b455d2a9d448f09cecd551dc084b84"
+    },
+    {
+      "path": "subpackages/office/config.bc2e5.json",
+      "sha256": "0db70b768247bf89ac9a1f1ef9ef1ccee986d1758d0299bf6730491243e19fb5"
+    },
+    {
+      "path": "subpackages/office/game.js",
+      "sha256": "d23c10138ee55b64c6b2ee06da525908232c35bfd36fb9fcff97cf4d2ce98c29"
+    },
+    {
+      "path": "subpackages/office/import/04/048853ce-f736-4fa9-9e5e-a6e87f347b88.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/09/09c2afd0d.c8ef4.json",
+      "sha256": "fb951ccb8ff94a63ccaa0fba1bbe7ce0500ef951af5ea3b1fb8070f19857f7cc"
+    },
+    {
+      "path": "subpackages/office/import/0e/0e58ea4c-1bb4-482a-a7b7-2387a2525ddd.da8f8.json",
+      "sha256": "c9d8217b193e4e7383e0b3a590d3dd9459a87b914b61dee6245ecd51d8b64405"
+    },
+    {
+      "path": "subpackages/office/import/11/11611b77-77d6-44de-8711-365a2b32fcf6.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/21/211f5014-a48f-4cfe-8217-ac0b8445ec17.ee8d7.json",
+      "sha256": "cf8dba9dfb5249d40b44c82e3ebeb8d418ce2e96279722598e0425e51889fa35"
+    },
+    {
+      "path": "subpackages/office/import/2f/2fb5ae4a-2ec3-41fd-a489-c181b58b00cb.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/31/3121ec60-bba3-4206-b078-e1af0965fac2.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/37/37dcea9c-0fff-47e8-a673-df4d29367136.b3cb8.json",
+      "sha256": "b04fa714fca6f71670780a4f0e9a250c8c517ce1a03519f78d123473c613fccf"
+    },
+    {
+      "path": "subpackages/office/import/43/439ffca0-b98a-4784-b997-b2ad2c47e4d4.6a3a4.json",
+      "sha256": "e4afa3f7193442c7b26b69e426b60ab004e391087d10e1e6c02b1556b9e933d7"
+    },
+    {
+      "path": "subpackages/office/import/48/48d0c484-ee0a-4782-9cdc-db6749737202.d086f.json",
+      "sha256": "56c6f298b1d970f73024b9292f45a2b68cc5a5f4dad5efe9b14c97a8a5b256a4"
+    },
+    {
+      "path": "subpackages/office/import/6f/6fd8b7b1-3b50-4845-a748-e95a808b7b94.8d94a.json",
+      "sha256": "ac9f25a96a2a32c27c53e7333ad8ddea9dc8240f763893931a65701fb3e616f7"
+    },
+    {
+      "path": "subpackages/office/import/84/84d2cd0b-6e8b-4f0b-89dc-83cef79f6e04.b36dc.json",
+      "sha256": "307c4268b8d87c64b896c83362fc7762c975b46cd20ef2432ce783a541945102"
+    },
+    {
+      "path": "subpackages/office/import/97/97534836-d33c-4880-ba35-ada3bfe47f59.2261a.json",
+      "sha256": "47204a2a09b8dd4408328282efa9427a4ded65713fe5504200ff0687edba823e"
+    },
+    {
+      "path": "subpackages/office/import/ba/ba81f303-709f-4109-85a5-be7505676afd.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/dd/ddebbb96-6f7d-45e1-9c14-d9277c9adc96.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/e5/e5f63f51-54cf-44d9-b192-60aea8270dc1.25ff8.json",
+      "sha256": "e2f659bb7441e97d1855a9d6d0e3c7d948597c13dd789cfc36d386bb2390ec2b"
+    },
+    {
+      "path": "subpackages/office/import/ed/ed102117-202f-4128-8fbe-bb3ede7f370d.fb0df.json",
+      "sha256": "b387decfca544fe2a5e020b30a3bac070a62a09d5b5c2320e0ea755cfd8ccf7c"
+    },
+    {
+      "path": "subpackages/office/import/ed/edc3d3a0-42b4-4799-afbe-9436fbc24a15.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/import/ef/ef87ee2b-337d-4e7f-8781-85924aa7e53b.a2533.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "subpackages/office/native/04/048853ce-f736-4fa9-9e5e-a6e87f347b88.522c6.png",
+      "sha256": "56a2cccf471fad87534f1ef5cc628d510c27570da2379f06cb61231b93b05477"
+    },
+    {
+      "path": "subpackages/office/native/0e/0e58ea4c-1bb4-482a-a7b7-2387a2525ddd.257d6.wav",
+      "sha256": "f2224c5f7f2577ec71b405a64f8fea85fb21879024292eda42c58dca5f5dca0b"
+    },
+    {
+      "path": "subpackages/office/native/11/11611b77-77d6-44de-8711-365a2b32fcf6.c20b3.png",
+      "sha256": "b8b2520d1cfb6bd7c1755bfea8122b0ab36af8291bdc833f49436d4f2181cd2c"
+    },
+    {
+      "path": "subpackages/office/native/21/211f5014-a48f-4cfe-8217-ac0b8445ec17.8355d.wav",
+      "sha256": "6b6db1e7253ebe7460f1dbd165dd4ccb62f264266d95de05197c5551287ba7b0"
+    },
+    {
+      "path": "subpackages/office/native/2f/2fb5ae4a-2ec3-41fd-a489-c181b58b00cb.0b61c.png",
+      "sha256": "8bd65ef5469d82c5a8ceae23225bc26826d5a24e26d19705dff7199c1effdd88"
+    },
+    {
+      "path": "subpackages/office/native/31/3121ec60-bba3-4206-b078-e1af0965fac2.fa40c.png",
+      "sha256": "582235aafdfdce61108ae7971612100c4e10bd00f19f6a6ccb57b6a886de0c23"
+    },
+    {
+      "path": "subpackages/office/native/37/37dcea9c-0fff-47e8-a673-df4d29367136.413f0.wav",
+      "sha256": "9ac7d2bd8dff686a22a61b2d1c1da2d6a64c49bc368d84468953c0cc22fe0c1c"
+    },
+    {
+      "path": "subpackages/office/native/43/439ffca0-b98a-4784-b997-b2ad2c47e4d4.745f7.wav",
+      "sha256": "4fa196aa416dc0baff4bc7590c4a2117beaf9449c5122b8d66a1cc51d94ca764"
+    },
+    {
+      "path": "subpackages/office/native/48/48d0c484-ee0a-4782-9cdc-db6749737202.d153d/brush.ttf",
+      "sha256": "a9ea3631796f830a2f428adc3a8ff3495a634c9700bb6b787534f35705c63114"
+    },
+    {
+      "path": "subpackages/office/native/6f/6fd8b7b1-3b50-4845-a748-e95a808b7b94.cad74.wav",
+      "sha256": "0d4934b0341a435ed4343ec950e38796c6929d972ee34e7893222d2463fb309d"
+    },
+    {
+      "path": "subpackages/office/native/84/84d2cd0b-6e8b-4f0b-89dc-83cef79f6e04.6c6f5/ui.ttf",
+      "sha256": "1c9d1578d103b8f6c3f004527f03aed6fcb0c73bbafbd34bf116a788673d3f4f"
+    },
+    {
+      "path": "subpackages/office/native/ba/ba81f303-709f-4109-85a5-be7505676afd.5a789.png",
+      "sha256": "987424d2282cc8e50b06055ffbcc772542acbf7573295c17bc65040f28815882"
+    },
+    {
+      "path": "subpackages/office/native/dd/ddebbb96-6f7d-45e1-9c14-d9277c9adc96.86ee1.png",
+      "sha256": "540b7057733ac3a18767e0ce3363ec9107566e31a1d73321f621b972f9e4c8cd"
+    },
+    {
+      "path": "subpackages/office/native/e5/e5f63f51-54cf-44d9-b192-60aea8270dc1.c0681.wav",
+      "sha256": "2098168116bf72bb2701d02865e65ca950be13cd9a04114cd53e47d604e2aa08"
+    },
+    {
+      "path": "subpackages/office/native/ed/ed102117-202f-4128-8fbe-bb3ede7f370d.bcf42.wav",
+      "sha256": "01fa3c295e6cf19298d2ec273c81f146c6c01c090b4e4318962c2becab385587"
+    },
+    {
+      "path": "subpackages/office/native/ed/edc3d3a0-42b4-4799-afbe-9436fbc24a15.a59e5.png",
+      "sha256": "4663952f801c6443268d8a61e7be9a4e3ab1787f9a2fbc029e1144b1063606f3"
+    },
+    {
+      "path": "subpackages/office/native/ef/ef87ee2b-337d-4e7f-8781-85924aa7e53b.6a9ee.png",
+      "sha256": "a3b909ac458c5866f719976b3862407d3c37e7db37f4dab4a4f4a1f59ebfe11e"
+    },
+    {
+      "path": "web-adapter.js",
+      "sha256": "ab0cbf5c7485c9024d42c892ba3c111e51701b539420bb54d2be38e0fd23d14e"
+    }
+  ],
+  "fixedProject": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/hairline/project",
+  "developerToolsRoot": "/Users/wkk/dotWorkers/little-steps-cocos/builds/wechatgame/hairline",
+  "postBuildVerification": {
+    "status": "fail",
+    "reason": "Scene used 22-character UUID compression; Creator registered the Boot script with 23-character class ID. Missing-class errors were caught during log inspection.",
+    "resolution": "Use Creator 23-character class ID and reject missing-class logs in public builder."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "game": "hairline",
+  "builder": "replica.py",
+  "displayName": "守护我的发际线",
+  "project": "games/hairline",
+  "startScene": "ce883ba4-1a20-4ef4-8238-69b48b515e4d",
+  "appid": "wx419147023f7331a0",
+  "resourceMode": "subpackage",
+  "initialBundles": [
+    "office"
+  ],
+  "separateEngine": false,
+  "devtoolsSettings": {
+    "es6": true,
+    "minified": true,
+    "uploadWithSourceMap": false
+  },
+  "destination": "builds/wechatgame/hairline",
+  "limits": {
+    "mainBytes": 4000000,
+    "subpackageBytes": 4000000,
+    "totalBytes": 30000000,
+    "initialBytes": 19000000
+  },
+  "appidKind": "WeChat Developer Tools test ID selected via import dialog, not production AppID"
+}

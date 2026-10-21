@@ -40,12 +40,12 @@ def run(args):
         raise ValueError('This game currently supports fresh local-source native-subpackage candidates only.')
     project = ROOT / config['project']
     if not project.is_dir(): raise ValueError('Configured game project is missing')
-    name = args.name or 'zya-wechat-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+    name = args.name or config['game']+'-wechat-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
     if not re.fullmatch(r'[a-zA-Z0-9_-]+',name):raise ValueError('Candidate name must contain only ASCII letters, digits, hyphens or underscores')
     stage = ROOT / 'migration/work' / name
     if stage.exists(): raise FileExistsError('Use a new evidence name; previous candidates are retained')
     cache = ROOT / 'migration/.cache'; cache.mkdir(parents=True,exist_ok=True)
-    with (cache / 'zya-wechat-build.lock').open('a') as lock:
+    with (cache / (config['game']+'-wechat-build.lock')).open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX | fcntl.LOCK_NB)
         return build(args, config, project, stage, name)
 
@@ -78,7 +78,7 @@ def build(args, config, project, stage, name):
              'packages':{'wechatgame':{'appid':appid,'orientation':'portrait','separateEngine':False,
                                       'useSubpackages':True,'useSplashScreen':False}}}
     config_path=stage/'build-config.json';write_json(config_path,options)
-    record=ROOT/'migration/reviews/zhaoyunyuadou'/(name+'.json')
+    record=ROOT/'migration/reviews'/config['game']/(name+'.json')
     manifest={'schema':1,'game':config['game'],'name':name,'sourceMode':'local-working-copy','workingInputs':inputs,
               'kind':'local development candidate, not a formal release','creator':'3.8.8','bundles':bundles,
               'appid':appid,'resourceMode':'subpackage','device':'pending','build':'pending','visual':'pending',
@@ -88,7 +88,8 @@ def build(args, config, project, stage, name):
         with log.open('w') as handle:
             result=subprocess.run([CREATOR,'--project',str(mirror),'--build','configPath='+str(config_path)],stdout=handle,stderr=subprocess.STDOUT,cwd=ROOT)
         output=stage/'output/project';manifest['buildExitCode']=result.returncode
-        if result.returncode not in (0,36) or 'Importer exec failed' in log.read_text(errors='replace'):
+        build_log=log.read_text(errors='replace')
+        if result.returncode not in (0,36) or 'Importer exec failed' in build_log or 'Missing class:' in build_log:
             raise RuntimeError('Creator build or asset import failed; inspect '+str(log))
         if not (output/'game.js').is_file() or not (output/'game.json').is_file():raise RuntimeError('Missing generated WeChat entry files')
         package_config_path=output/'project.config.json'
@@ -102,7 +103,8 @@ def build(args, config, project, stage, name):
         roots=[(entry['name'],entry['root'].strip('/')+'/') for entry in subpackages];sizes={'main':0}
         for file in files:
             relative=file.relative_to(output).as_posix();bucket=next((name_ for name_,root in roots if relative.startswith(root)),'main');sizes[bucket]=sizes.get(bucket,0)+file.stat().st_size
-        main=sizes['main'];initial=main+sum(value for key,value in sizes.items() if key in ['zya_home','zya_actors','zya_meta','zya_audio'])
+        initial_bundles=config.get('initialBundles',['zya_home','zya_actors','zya_meta','zya_audio'])
+        main=sizes['main'];initial=main+sum(value for key,value in sizes.items() if key in initial_bundles)
         if total>config['limits']['totalBytes'] or main>config['limits']['mainBytes']:raise RuntimeError('WeChat package exceeds configured byte limits')
         if not subpackages:raise RuntimeError('Native asset subpackages were not generated')
         if any(value>config['limits']['subpackageBytes'] for key,value in sizes.items() if key!='main'):raise RuntimeError('Native subpackage exceeds 4 MB: '+str(sizes))
@@ -116,7 +118,7 @@ def build(args, config, project, stage, name):
             active=destination/'project';prepared=destination/('project.next-'+name)
             shutil.copytree(output,prepared)
             if active.exists():
-                archive=ROOT/'migration/output/zhaoyunyuadou'/('previous-'+name);archive.parent.mkdir(parents=True,exist_ok=True);active.rename(archive)
+                archive=ROOT/'migration/output'/config['game']/('previous-'+name);archive.parent.mkdir(parents=True,exist_ok=True);active.rename(archive)
             prepared.rename(active)
             entry=destination/'project.config.json'
             entry_config=json.loads(entry.read_text()) if entry.exists() else {'projectname':config['displayName'],'compileType':'game','miniprogramRoot':'project/','setting':{'urlCheck':True,'es6':True},'condition':{}}
@@ -130,5 +132,5 @@ def build(args, config, project, stage, name):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--game',required=True,choices=['zhaoyunyuadou']);parser.add_argument('--name');parser.add_argument('--appid');parser.add_argument('--device',action='store_true');parser.add_argument('--build-only',action='store_true');parser.add_argument('--readback');parser.add_argument('--stage-existing',action='store_true');parser.add_argument('--serve-only',action='store_true');parser.add_argument('--server');parser.add_argument('--resource-mode',default='subpackage',choices=['subpackage','remote']);
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--game',required=True,choices=['zhaoyunyuadou','hairline']);parser.add_argument('--name');parser.add_argument('--appid');parser.add_argument('--device',action='store_true');parser.add_argument('--build-only',action='store_true');parser.add_argument('--readback');parser.add_argument('--stage-existing',action='store_true');parser.add_argument('--serve-only',action='store_true');parser.add_argument('--server');parser.add_argument('--resource-mode',default='subpackage',choices=['subpackage','remote']);
     print(json.dumps(run(parser.parse_args()),ensure_ascii=False))

@@ -1,0 +1,92 @@
+{
+  "id": "HL04",
+  "date": "2026-10-22",
+  "candidate": "hairline-wechat-v7",
+  "kind": "local playable development candidate; not release",
+  "build": "pass",
+  "rules": {
+    "passed": 28,
+    "failed": 0,
+    "evidence": "HL03-rules-final.log"
+  },
+  "typecheck": {
+    "result": "pass",
+    "evidence": "HL04-typecheck-final.log"
+  },
+  "sourceFingerprintsMatched": 63,
+  "outputHashesMatched": 63,
+  "rawBytes": {
+    "mainBytes": 2085045,
+    "totalBytes": 4007095,
+    "initialBytes": 4007095,
+    "sizes": {
+      "main": 2085045,
+      "office": 1922050
+    },
+    "subpackages": [
+      {
+        "name": "office",
+        "root": "subpackages/office/"
+      }
+    ],
+    "files": 63,
+    "sizeMethod": "raw output bytes; DevTools compilation/upload size must be verified separately"
+  },
+  "framework": {
+    "symlink": "../../../../engines/travel-core/dist/travel-core.js",
+    "sha256": "4bf6b72c51840d8a4a38cb3fcfef71602b9fc85fe6689c60947184a29f50a97d",
+    "mode": "0o444",
+    "pluginWeb": true,
+    "pluginNative": false
+  },
+  "security": {
+    "urlCheck": true,
+    "sourceMapsUpload": false,
+    "nativeSubpackage": true,
+    "resourceServer": false
+  },
+  "nativeUI": {
+    "tool": "WeChat Developer Tools Stable 2.02.2608080 macOS arm64; MiniGame library 3.17.5",
+    "actualObserved": [
+      "Home and collection screens",
+      "Summon five visible camp slots with fee reduction",
+      "Fast drag four starting units from camp to fishpond in v7",
+      "Drag shovel to adjacent cell 41; water area expands",
+      "Independent AI units, enemies with distinct side bars",
+      "Wave advances to 3 with player kills and increased money",
+      "Pause return home exposes continue entry in v6",
+      "Loss and single result settlement in v4"
+    ],
+    "screenshots": [
+      "HL04-home-v6.png",
+      "HL04-collection-v6.png",
+      "HL04-resume-entry-v6.png"
+    ],
+    "notClaimed": [
+      "Physical device success",
+      "Production upload acceptance",
+      "Pixel-perfect visual parity",
+      "Real advertising callbacks",
+      "Complete native click coverage for sign-in, achievements, experience cards and avatar"
+    ]
+  },
+  "coldResume": {
+    "status": "pending - observed discrepancy",
+    "detail": "v6 showed continue entry after pause/home; reopening v7 displayed start game. Profile currency persisted. No confirmed cause; model serialization tests pass but native reload needs retest."
+  },
+  "toolInterruption": {
+    "status": "unresolved native tool access",
+    "detail": "After own local storage console inspection, native AX/screenshot/getApp calls repeatedly returned timeoutReached or noWindowsAvailable. App process remained running. No force quit, user data reset, CLI service enabling or security changes performed."
+  },
+  "production": {
+    "appid": "pending; currently Developer Tools assigned test ID wx419147023f7331a0",
+    "adUnit": "not configured; reward entries hidden",
+    "device": "pending"
+  },
+  "archive": {
+    "path": "migration/output/hairline/hairline-wechat-v7.zip",
+    "bytes": 2049519,
+    "sha256": "f19294e23bcd75a8835cbb6f82c94a81dfb17f2fa9e73e16af446cf5fc322215",
+    "zipCRC": "pass"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "HL01-HL03",
+  "date": "2026-10-22",
+  "failures": [
+    {
+      "candidate": "hairline-wechat-v1",
+      "trigger": "Inspect Creator logs after build",
+      "evidence": "hairline-wechat-v1.log",
+      "rootCause": "Scene used short UUID compression incompatible with the registered script class ID",
+      "fix": "Use Creator 23-character class ID and reject Missing class logs in the public builder"
+    },
+    {
+      "candidate": "hairline-wechat-v2",
+      "trigger": "First actual launch in WeChat Developer Tools",
+      "evidence": "HL01-v2-texture-load-failure.png",
+      "rootCause": "PNG imported as texture, runtime requested absent spriteFrame subasset",
+      "fix": "Load Texture2D subassets, create owned SpriteFrames and release them with the resource lifetime"
+    },
+    {
+      "candidate": "hairline-wechat-v3",
+      "trigger": "Actual home screenshot and button click",
+      "evidence": "HL02-v3-label-layout-before.png",
+      "rootCause": "Label and Sprite components changed node dimensions after UITransform sizing; global touch listeners were insufficient for this UI dispatch path",
+      "fix": "Restore content size after component properties; route input through the full-screen root Node"
+    },
+    {
+      "candidate": "hairline-wechat-v4",
+      "trigger": "Five-slot summon reduced money but camp contents were hidden",
+      "evidence": "HL03-v4-flow-before-camp-layer-fix.png",
+      "rootCause": "Camp glyphs were beneath the static camp background in sibling order",
+      "fix": "Render camp contents in a separate screen layer above the camp backdrop; render AI fishpond and units using mirrored display coordinates"
+    },
+    {
+      "candidate": "hairline-wechat-v5",
+      "trigger": "Full Cocos TypeScript check",
+      "error": "TS2345 at HairlineGame.ts:350: number is not assignable to Readonly<Vec3>",
+      "rootCause": "Node.setScale was called with one numeric argument",
+      "fix": "Pass x, y, z explicitly; v6 full typecheck passed"
+    },
+    {
+      "candidate": "hairline-wechat-v6",
+      "trigger": "Fast native drag occasionally opened unit details instead of dropping",
+      "rootCause": "Gesture movement was tracked only by move events; end position did not independently classify a drag",
+      "fix": "Treat end displacement above 8 design pixels as a drag, and detach old camp/pond layers before deferred destruction",
+      "candidateWithFix": "hairline-wechat-v7"
+    }
+  ],
+  "otherCorrections": [
+    "AI has independent random stream; AI draws cannot alter the player next summon",
+    "Boss locks and meetings apply to both sides",
+    "外出 uses a saved patrol position and per-leg visited targets",
+    "Static source mockup dogs were removed from furniture crops",
+    "Home background reduced to a 256-color 720px PNG below 500KB, original reference preserved",
+    "Custom avatars reserve 16MiB in ResourceGate and reject images beyond 2048x2048"
+  ],
+  "remaining": [
+    "Production AppID and rewarded ad unit configuration",
+    "Physical-device performance, advertisements, permissions and upload acceptance",
+    "Full original art animation polish and strict reference screenshot parity"
+  ]
+}
