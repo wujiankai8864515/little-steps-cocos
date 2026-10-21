@@ -4,7 +4,13 @@
 
 用 Cocos Creator 3.8.8 打开工程，等待资源导入；打开 `assets/mods/base-shell/scene.scene` 并预览。初始只启用 base-card 和 base-avg，三个扩展示例默认关闭。
 
-默认 profile 关闭 `base-card.config.singleBackupCardTest`，开局有 10 张可操作备用牌，开场翻出的当前牌不计入其中；需要快速调试付费备用牌入口时可临时将该开关设为 `true`，此时只保留 1 张备用牌并强制开场牌不命中。
+当前 default profile 已关闭调试模式（`base-card.config.singleBackupCardTest=false`）：备用数量按关卡配置初始化，未指定时为 10 张；当前牌和首次抽牌不再强制避开开局可接牌。付费和重开仍按 `catalog.json` 的现有经济配置扣费，重开恢复正常关卡配置。需要临时验证单张耗尽时，才将开关设为 `true` 并重新进入会话；此模式开局 1 张备用牌，当前牌与第一次抽牌均不命中开局可点牌。
+
+备用牌只记数量，翻出前不预定牌面；每次 `card.draw` 同步事务从 52 种牌面中排除全部仍在牌型区的牌（包括背面）后等概率抽取，再保存随机状态并播放动画。旧当前牌在替换时释放，允许跨时间再次抽到；命中牌从场上转到当前位，历史牌不占用候选。牌型区、当前牌、备用牌总数可以超过 52；付费加 5 张只足额增加数量，不消耗随机数。
+
+牌型区最多 51 张，固定场上牌及固定当前牌不得重复。不能满足的配置明确拒绝，入场预检失败不扣费；不随机替换设计牌、不删牌。旧 `deckCount` 只保留为导入审计字段，不能放宽去重。当前 40 个 JSON 均保留原样，其中 `level_difficulty1_06` 固定当前牌与 slot_010 重复、`level_difficulty4_02` 有 52 个牌位，按新规则拒绝入场，待设计修订。
+
+`base-card` 2.0.0 使用 `SolitaireCoreSnapshot.schemaVersion=2`，`stockRemainingCount` 代替旧 `stockPile/deck`；旧快照拒绝恢复。回撤恢复牌面、数量、测试约束及 RNG，重做相同翻牌得到相同结果；既有递增回撤费用、付费重开和通关奖励规则保留。产品目录／阅读存档结构没有变化。
 
 组合配置：`assets/art/resources/mods/profiles/default.json`。
 - reward-variant：enabled=true 后，multiplier 控制四连击奖励倍率，1–100 整数。
@@ -23,8 +29,9 @@
 
 可配置类型：pulse、shake、fadeIn、moveIn、sprite、prefab。常用字段：id、kind、target、enabled、duration、delay、x、y、scale；shake 使用 amount。when 可限制为精确关卡 ID，或 AVG 的 `章节ID/页面ID`。
 
-卡牌事件：card.open/play/draw/reward/wild.prepare/wild.cancel/addBackup/rollback/complete。玩家在仍有可消除牌时点击备用牌，会保留牌局状态、摇摆提示所有可消除牌，并触发 card.invalid；其他非法动作仍由框架拒绝，不触发成功表现。
+卡牌事件：card.open/play/draw/reward/wild.prepare/wild.cancel/addBackup/rollback/complete。玩家在仍有可消除牌时点击备用牌，仍正常消耗一张备用牌、替换当前牌并记录回撤，同时摇摆提示抽牌前错过的可消除牌；提示随抽牌动画结束或取消而收起，不额外延长输入锁定，特效事件为 card.draw。非法动作仍由框架拒绝，不触发成功表现。
 卡牌挂点：root、content、current、backup、progress、coin、wild、addBackup、rollback。source 是适配器提供的可选挂点，默认示例不提供它。
+`addBackup` 的横向位置由表现层按当前可见备用牌的实际左右边界动态计算；耗尽时以待领取的 5 张预览牌为准。不要在 prefab 中把按钮 X 与 backup 容器 X 相等当作居中，隐藏牌槽、扩容和左右锚点会改变可见牌堆中心。按钮、费用和特效随运行时布局更新，原垂直位置与入场动画保留。
 AVG 事件：avg.page.enter/page.turn/choice/chapter.end；挂点：root、background、roleLeft、roleRight、dialoguePanel、choices、endOverlay。
 
 例如 card.reward 中加入：

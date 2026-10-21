@@ -79,7 +79,7 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
     if (!config.stories.some(s => s.id === initial.selectedStory)) initial.selectedStory = config.stories[0].id;
     return {
         manifest, initialState: initial,
-        actions: ['shell.open','shell.page','shell.story','shell.like','shell.favourite','shell.rate','shell.setting','shell.claim','shell.start','shell.abort','shell.card','shell.avg','shell.reset'],
+        actions: ['shell.open','shell.page','shell.story','shell.like','shell.favourite','shell.rate','shell.setting','shell.claim','shell.start','shell.abort','shell.card','shell.avg','shell.reset','shell.grantCoins'],
         validate(states) { validateCatalogState(states[manifest.id]); },
         execute(ctx) {
             const s = ctx.draft[manifest.id] as CatalogState;
@@ -91,6 +91,8 @@ export function createCatalogMod(config: CatalogConfig, levels: readonly string[
             const amount = (value: number) => { if (!count(value)) ctx.reject('金币数值无效'); return value; };
             switch (ctx.action.type) {
                 case 'shell.open': s.page = 'catalog'; break;
+                case 'shell.grantCoins':
+                    s.coins = amount(s.coins + 1000); break;
                 case 'shell.page':
                     if (!PAGES.includes(payload.page)) ctx.reject('页面不存在');
                     if (payload.page !== s.page && ['quests','settings','collections','rating','restart'].includes(payload.page)) s.returnPage = s.page;

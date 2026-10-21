@@ -1,7 +1,8 @@
 import {
-    _decorator, AudioSource, Color, Component, director, game, Graphics,
+    _decorator, AudioSource, BlockInputEvents, Color, Component, director, game, Graphics,
     HorizontalTextAlignment, instantiate, JsonAsset, Label, Node, Prefab,
     profiler, resources, sys, UITransform, VerticalTextAlignment, Widget,
+    type EventTouch,
 } from 'cc';
 import { GamePageUI } from '../base-card/GamePageUI';
 import { CardLevelRepository } from '../base-card/CardLevelRepository';
@@ -37,6 +38,10 @@ export class AppBootstrap extends Component {
     private saveError: Error | null = null;
     private versionBadge: Node | null = null;
     private startup: StartupPresentation | null = null;
+    private coinBall: Node | null = null;
+    private pendingCoinGrants = 0;
+    private coinGrantInFlight = false;
+    private coinBallDrag: { id: number | null; x: number; y: number; nodeX: number; nodeY: number; moved: boolean } | null = null;
 
     protected onLoad(): void { profiler.hideStats(); }
     protected start(): void {
@@ -86,6 +91,7 @@ export class AppBootstrap extends Component {
             render: state => { if(this.catalog?.isValid)this.catalog.render(state); },
         })],{config,levels:this.levels});
         await this.shell.open();
+        this.createCoinBall();
         await this.send({type:'shell.open'});
         this.startup.setStage('正在布置首页…', 0.85);
         await this.showLevelList();
@@ -146,10 +152,10 @@ export class AppBootstrap extends Component {
                 if(chapterId)this.route(()=>this.openAvg(chapterId));
                 else this.route(()=>this.returnToDetails());
             },{
-                initialCoins:started.coins,initialGems:started.gems,headerTitle:'Chapter 1 · Solitaire '+(this.levels.indexOf(levelId)+1),economy:this.config.economy,background:this.config.cardBackground,
+                initialCoins:started.coins,initialGems:started.gems,headerTitle:'Chapter 1 · Solitaire '+(this.levels.indexOf(levelId)+1),economy:this.config.economy,background:this.config.cardBackground,soundEnabled:started.settings.sound,
                 checkpoint:async(state,action)=>{
                     await this.send({type:'shell.card',payload:{roundId:ownedRound,coins:state.session.coins,
-                        complete:state.core.isComplete,played:action!=='card.open',ended:action==='card.exit'}});
+                        complete:state.core.isComplete,played:action!=='card.open'&&action!=='card.grantCoins',ended:action==='card.exit'}});
                 },
             }),CONTENT_TIMEOUT_MS);
             this.lifetime.check();this.applyPreferences(this.state());
@@ -191,6 +197,81 @@ export class AppBootstrap extends Component {
     private route(work:()=>Promise<void>):void {
         void work().catch(error=>{if(!this.lifetime.cancelled){console.error('[Route]',error);this.setMessage(String(error));}});
     }
+    /** Global overlay remains outside every page's input blocker and modal hierarchy. */
+    private createCoinBall(): void {
+        if (this.coinBall?.isValid) return;
+        const root = this.coinBall = new Node('FloatingCoinBall'); root.layer = this.node.layer;
+        root.addComponent(UITransform).setContentSize(144, 144);
+        root.addComponent(BlockInputEvents); this.node.addChild(root);
+        const placement = root.addComponent(Widget);
+        placement.isAlignRight = true; placement.right = 24;
+        placement.isAlignTop = true; placement.top = 366; placement.updateAlignment();
+        const paint = root.addComponent(Graphics);
+        paint.fillColor = new Color(15, 8, 30, 90); paint.circle(0, -5, 72); paint.fill();
+        paint.fillColor = new Color(65, 25, 95, 242); paint.circle(0, 0, 67); paint.fill();
+        paint.strokeColor = new Color(255, 218, 112); paint.lineWidth = 4; paint.circle(0, 0, 67); paint.stroke();
+        paint.fillColor = new Color(255, 204, 66); paint.circle(0, 26, 21); paint.fill();
+        paint.strokeColor = new Color(255, 245, 177); paint.lineWidth = 3; paint.circle(0, 26, 15); paint.stroke();
+        const text = new Node('CoinAmount'); text.layer = root.layer;
+        text.addComponent(UITransform).setContentSize(134, 48); text.setPosition(0, -23); root.addChild(text);
+        const label = text.addComponent(Label); label.string = '+1000'; label.fontSize = 32; label.lineHeight = 42;
+        label.isBold = true; label.color = Color.WHITE;
+        label.horizontalAlign = HorizontalTextAlignment.CENTER; label.verticalAlign = VerticalTextAlignment.CENTER;
+        root.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
+            event.propagationStopped = true;
+            if (this.coinBallDrag) return;
+            const point = event.getUILocation();
+            this.coinBallDrag = { id: event.getID(), x: point.x, y: point.y,
+                nodeX: root.position.x, nodeY: root.position.y, moved: false };
+            root.setScale(0.96, 0.96, 1);
+        }, this);
+        root.on(Node.EventType.TOUCH_MOVE, (event: EventTouch) => {
+            event.propagationStopped = true;
+            const drag = this.coinBallDrag; if (!drag || drag.id !== event.getID()) return;
+            const point = event.getUILocation(), dx = point.x - drag.x, dy = point.y - drag.y;
+            if (Math.hypot(dx, dy) > 12) drag.moved = true;
+            if (!drag.moved) return;
+            placement.enabled = false;
+            root.setPosition(drag.nodeX + dx, drag.nodeY + dy); this.clampCoinBall();
+        }, this);
+        const finish = (event: EventTouch, cancelled: boolean) => {
+            event.propagationStopped = true;
+            const drag = this.coinBallDrag; if (!drag || drag.id !== event.getID()) return;
+            this.coinBallDrag = null; root.setScale(1, 1, 1);
+            if (!cancelled && !drag.moved && this.pendingCoinGrants < Number.MAX_SAFE_INTEGER) this.pendingCoinGrants++;
+        };
+        root.on(Node.EventType.TOUCH_END, (event: EventTouch) => finish(event, false), this);
+        root.on(Node.EventType.TOUCH_CANCEL, (event: EventTouch) => finish(event, true), this);
+        this.raiseCoinBall();
+    }
+    private raiseCoinBall(): void {
+        if (this.coinBall?.isValid && this.node.children[this.node.children.length - 1] !== this.coinBall) {
+            this.coinBall.setSiblingIndex(this.node.children.length - 1);
+        }
+    }
+    private clampCoinBall(): void {
+        const ball = this.coinBall, bounds = this.node.getComponent(UITransform);
+        if (!ball?.isValid || !bounds) return;
+        const x = Math.max(0, bounds.width / 2 - 92), y = Math.max(0, bounds.height / 2 - 92);
+        ball.setPosition(Math.max(-x, Math.min(x, ball.position.x)), Math.max(-y, Math.min(y, ball.position.y)));
+    }
+    protected lateUpdate(): void {
+        this.raiseCoinBall(); this.clampCoinBall();
+        if (!this.pendingCoinGrants || this.coinGrantInFlight || this.loading || !this.shell || this.shell.isBusy || this.lifetime.cancelled) return;
+        const page = this.screen?.getComponent(GamePageUI) ?? null;
+        if (page && !page.canGrantCoins) return;
+        this.pendingCoinGrants--; this.coinGrantInFlight = true;
+        this.route(async () => {
+            try {
+                await this.lifetime.run(async scope => {
+                    // A live card session owns its wallet; its checkpoint writes the shell too.
+                    if (page) await page.grantCoins();
+                    else await this.send({ type: 'shell.grantCoins' });
+                    scope.check();
+                }, CONTENT_TIMEOUT_MS);
+            } finally { this.coinGrantInFlight = false; }
+        });
+    }
     private applyPreferences(state:Readonly<CatalogState>):void {
         const scene=director.getScene();if(!scene)return;
         for(const source of scene.getComponentsInChildren(AudioSource)) {
@@ -225,6 +306,7 @@ export class AppBootstrap extends Component {
         next.setPosition(0,0,0);
         if(this.startup?.isValid)this.startup.node.setSiblingIndex(this.node.children.length-1);
         if(this.versionBadge?.isValid)this.versionBadge.setSiblingIndex(this.node.children.length-1);
+        this.raiseCoinBall();
     }
     private showVersion(value:string):void {
         if(value!=='开发版本'&&!/^\d{4}(?:-\d{2}){5}$/.test(value))throw new Error('版本时间格式无效');
