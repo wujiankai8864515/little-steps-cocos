@@ -1,5 +1,9 @@
 # AVG Plus：安卓构建与热更新发布手册
 
+**2026-10-21 发布补充（当前线上）：** 最新资源为 [0.1.0.14](https://github.com/wujiankai8864515/little-steps-cocos/releases/tag/avg-plus-android-0.1.0.14)，显示 `2026-10-21-17-56-15`，源码 `0e7edabd1e78756b9a8ad7520d5abe82754d465f`。13→14 的增量 ZIP 含 14 个变化文件、无删除文件，171,872 bytes，SHA-256 `89e9f2a2663e1747746a954400007408cd274d66875ad5e97efa082f45182a00`；完整索引 73,559 bytes、SHA-256 `b9e475c3949a9c0e962a166696c26e4e1799b4361350bd535460bc9e8957c84f`；增量元数据 76,474 bytes、SHA-256 `174368f18897243dcfec726d242e148700d386b910d7ea889b8d5714473ed880`。三个附件均完成服务端和匿名完整下载校验，Pages latest 已核对为 14。最新 APK／旧协议桥接仍为 8，原生合约未变，不需要覆盖安装。本次未触发下文所述重试漂移问题，该已知问题仍未修复。
+
+专用 Android 35 ARM64 模拟器已从官方 8 APK 真实联网更新至 14，确认健康启动；按缓存优先、APK 后备核对全部 361 个生效文件的大小和 SHA-256。46 个脚本类型、148 项游戏行为和 32 项发布相关检查通过；18 项历史 UUID 缺失保留，物理手机验证仍 pending。详细状态见 [交接入口](../../games/avg_plus/docs/AI_HANDOFF.md)，私有证据为 `migration/reviews/avg_plus/publication-20261021`、`publication-0.1.0.14.json`。自己的隔离构建和固定输出已按默认规则清理；以下 2026-10-14 数值表保持历史含义。
+
 本页是 `games/avg_plus` 的操作手册，以实际 [build.py](build.py)、[publish.py](publish.py)、[pages.py](pages.py) 和客户端协议为依据。工程与用户约束先读 [新 AI 接手入口](../../games/avg_plus/docs/AI_HANDOFF.md)。状态快照为 **2026-10-14，北京时间**；接手时重新回读线上数据，不从文件名或旧报告推断 latest。
 
 ## 日常最短流程
