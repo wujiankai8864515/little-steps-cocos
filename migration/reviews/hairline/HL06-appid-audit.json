@@ -1,0 +1,46 @@
+{
+  "id": "HL06",
+  "date": "2026-10-22",
+  "candidate": "hairline-wechat-v8",
+  "change": "Switch local Hairline WeChat build to user-supplied AppID",
+  "appidChecks": {
+    "mapping": "wx4d41972686e54c11",
+    "creatorBuild": "wx4d41972686e54c11",
+    "devtoolsRoot": "wx4d41972686e54c11",
+    "generatedProject": "wx4d41972686e54c11"
+  },
+  "build": "pass",
+  "sourceFingerprintsMatched": 63,
+  "outputHashesMatched": 63,
+  "audit": {
+    "mainBytes": 2085045,
+    "totalBytes": 4007095,
+    "initialBytes": 4007095,
+    "sizes": {
+      "main": 2085045,
+      "office": 1922050
+    },
+    "subpackages": [
+      {
+        "name": "office",
+        "root": "subpackages/office/"
+      }
+    ],
+    "files": 63,
+    "sizeMethod": "raw output bytes; DevTools compilation/upload size must be verified separately"
+  },
+  "urlCheck": true,
+  "nativeSubpackage": true,
+  "uploadPerformed": false,
+  "device": "pending",
+  "adUnit": "not configured",
+  "nativeUIRetest": "not performed; AppID/config-only update",
+  "workingInputNote": "Preserved existing local home.png.meta alpha import flag change; builder fingerprints include this local change. It is not staged as part of the AppID commit.",
+  "zip": {
+    "path": "migration/output/hairline/hairline-wechat-v8.zip",
+    "bytes": 2049517,
+    "sha256": "fdb80bab3c3496a5caa5106bf0e24ca4cd3da9f2d7235aaf98001812051449a9",
+    "CRC": "pass"
+  },
+  "unresolved": "Existing v7 cold-start resume discrepancy and full DOCX visual acceptance remain pending; AppID update does not resolve them."
+}
